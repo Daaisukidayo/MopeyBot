@@ -5,7 +5,7 @@ module.exports = ({
 
     $onlyIf[$authorID==$botOwnerID]
     Shutting down the bot and turning it on in a few seconds.
-    $setTimeout[$exec[npm start];10s]
     $botDestroy
+    $setTimeout[$exec[npm start];10s]
     `
 })
