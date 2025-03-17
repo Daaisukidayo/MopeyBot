@@ -4,7 +4,7 @@
 
 ###### Do not spam commands excessively to slow down the bot. Violating this rule will result in a permanent block from using the bot.
 
-## Rules for Using `m!report` Command
+## Rules for Using `mreport` Command
 
 ### 1️⃣ Stay On Topic.
 ###### Do not use m!report for irrelevant messages. Misuse may result in a temporary ban from using the bot. The duration of the ban will be specified in the block reason and may increase with repeated violations.
