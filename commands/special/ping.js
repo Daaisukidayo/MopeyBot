@@ -11,6 +11,6 @@ module.exports = ({
     
     $let[cdTime;5s]
     $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]
-    **Current bot ping: $pingms**\n**Execution time: $floor[$executionTime]ms** 
+    **Current bot ping: \`$ping\`ms**\n**Execution time: \`$floor[$executionTime]\`ms\nMopey uptime: \`$parseMS[$uptime]\`** 
   `
 })
