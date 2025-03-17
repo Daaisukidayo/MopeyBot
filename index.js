@@ -1,8 +1,8 @@
 // ========== ENVIRONMENT CONFIGURATION ==========
 // Load environment variables before anything else
 
-const dotenv = require("dotenv"); // Loads our .env file
-dotenv.config(); // Must run this before other code
+const dotenv = require("dotenv"); 
+dotenv.config(); 
 
 // ========== IMPORTS ==========
 // Bring in the essentials for our bot’s operations
@@ -71,7 +71,6 @@ const client = new ForgeClient({
 client.commands.load("./commands");
 
 // ========== LOGIN ==========
-
 client.login(process.env.TOKEN);
 
 // ========== READY EVENT ==========
@@ -120,7 +119,7 @@ ForgeDB.variables({
 });
 
 // ========== FUNCTIONS ==========
-// Executes when the a user doesn't accept the rules
+// Executes when a user doesn't accept the rules
 
 client.functions.add({
   name: "rulesSchema",
