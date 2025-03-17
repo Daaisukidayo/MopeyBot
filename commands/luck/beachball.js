@@ -5,7 +5,7 @@ module.exports = [{
   code:`
 
     $reply
-  
+
     $onlyIf[$getGlobalVar[botEnabled]==true]
     $onlyIf[$getUserVar[isBanned]==false]
     $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
