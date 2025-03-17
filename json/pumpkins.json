@@ -1,0 +1,112 @@
+{
+    "pk0": {
+        "mc": [
+            400,
+            751
+        ],
+        "desc": "Pumpkin",
+        "emoji": "<:0_pumpkin:1279092215800397854>",
+        "clr": "D97522",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508760049483959/0.png"
+    },
+    "pk1": {
+        "mc": [
+            1000,
+            1501
+        ],
+        "desc": "__Rare Jack-o'-lantern Pumpkin__",
+        "emoji": "<:1_jack_pumpkin:1279092277251276881>",
+        "clr": "D97522",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508760469180436/1.png"
+    },
+    "pk2": {
+        "mc": [
+            2000,
+            4001
+        ],
+        "desc": "__Rare Golden Pumpkin__",
+        "emoji": "<:2_gold_pumpkin:1279092382943412304>",
+        "clr": "F4BA17",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508760850599998/2.png"
+    },
+    "pk3": {
+        "mc": [
+            5000,
+            9001
+        ],
+        "desc": "__Rare Platinum Pumpkin__",
+        "emoji": "<:3_plat_pumpkin:1279445447961743423>",
+        "clr": "A8A8A8",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508761064636597/3.png"
+    },
+    "pk4": {
+        "mc": [
+            10000,
+            15001
+        ],
+        "desc": "__Rare Diamond Pumpkin__",
+        "emoji": "<:4_diamond_pumpkin:1279092441663672320>",
+        "clr": "1dfcff",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508761492459610/4.png"
+    },
+    "pk5": {
+        "mc": [
+            20000,
+            30001
+        ],
+        "desc": "__Rare Lapis Lazuli Pumpkin__",
+        "emoji": "<:5_lapis_pumpkin:1279445578929016843>",
+        "clr": "3104fb",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508761718816768/5.png"
+    },
+    "pk6": {
+        "mc": [
+            40000,
+            50001
+        ],
+        "desc": "__Rare Topaz Pumpkin__",
+        "emoji": "<:6_topaz_pumpkin:1279445627113050143>",
+        "clr": "F2B01A",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508761937182750/6.png"
+    },
+    "pk7": {
+        "mc": [
+            60000,
+            70001
+        ],
+        "desc": "__Rare Quartz Pumpkin__",
+        "emoji": "<:7_quartz_pumpkin:1279445822743773328>",
+        "clr": "fffff1",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508762289377463/7.png"
+    },
+    "pk8": {
+        "mc": [
+            80000,
+            90001
+        ],
+        "desc": "__Rare Musgravite Pumpkin__",
+        "emoji": "<:8_musgravite_pumpkin:1279446610698567731>",
+        "clr": "8F5B98",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508762763198495/8.png"
+    },
+    "pk9": {
+        "mc": [
+            100000,
+            120001
+        ],
+        "desc": "__Rare Onyx Pumpkin__",
+        "emoji": "<:9_onyx_pumpkin:1279446634295595030>",
+        "clr": "2b2b2b",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279508763145146461/9.png"
+    },
+    "pk10": {
+        "mc": [
+            150000,
+            200001
+        ],
+        "desc": "__Rare Painite Pumpkin__",
+        "emoji": "<:10_painite_pumpkin:1279446650217299978>",
+        "clr": "8F1917",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279463223279485023/10.png"
+    }
+}

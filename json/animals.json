@@ -1,0 +1,1503 @@
+{
+  "mouse": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Mouse",
+    "trig": "mouse",
+
+    "v0": {
+      "vCode": "s1-v2",
+      "name": "Mouse",
+      "description": "Season 1 | Version 2",
+      "emoji": "<:MouseS1:1291425874700271788>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448472133745/MouseS1.png"
+    },
+
+    "v1": {
+      "vCode": "s1-v1",
+      "name": "Mouse",
+      "description": "Season 1 | Version 1",
+      "emoji": "<:MouseS1v1:1331659474183655474>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331659774806331412/Mouse-S1-v1.png"
+    },
+
+    "v2": {
+      "vCode": "s2",
+      "name": "Mouse",
+      "description": "Season 2",
+      "emoji": "<:MouseS2:1290349331895029852>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1290348739596128308/MouseS2.png"
+    },
+
+    "v3": {
+      "vCode": "s2-w",
+      "name": "Mouse",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:MouseS2Winter:1331658994326044722>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291456445795008542/Mouse-S2-Winter.png"
+    },
+
+    "v4": {
+      "vCode": "lsp",
+      "name": "Purple Mouse",
+      "description": "Locked Skinpack",
+      "emoji": "<:PurpleMouse:1290701105243754531>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1290704801134547201/PurpleMouse.png"
+    },
+
+    "v5": {
+      "vCode": "gsp",
+      "name": "Golden Mouse",
+      "description": "Golden Skinpack",
+      "emoji": "<:GoldenMouse:1290701057143472238>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1290704801453183060/GoldenMouse.png"
+    },
+
+    "v6": {
+      "vCode": "legacy",
+      "name": "Mouse",
+      "description": "Legacy Skinpack",
+      "emoji": "<:ClassicMouse:1331661370864963725>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331660918039248948/ClassicMouse.png"
+    },
+
+    "v7": {
+      "vCode": "legacy-winter-v1",
+      "name": "Mouse",
+      "description": "Legacy Skinpack | Winter Version 1",
+      "emoji": "<:LegacyMouseWinterV1:1331663395992113283>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331663922784112640/LegacyMouseWinterV1.png"
+    },
+
+    "v8": {
+      "vCode": "legacy-winter-v2",
+      "name": "Mouse",
+      "description": "Legacy Skinpack | Winter Version 2",
+      "emoji": "<:LegacyMouseWinterV2:1331663409212690534>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331663923426103326/LegacyMouseWinterV2.png"
+    },
+
+    "v9": {
+      "vCode": "goldtrim",
+      "name": "Mouse",
+      "description": "Land Gold Trim Skinpack",
+      "emoji": "<:MouseGoldTrim:1331664429053513780>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331665088339382292/Mouse-GoldTrim.png"
+    },
+
+    "v10": {
+      "vCode": "hsp2020",
+      "name": "Robo Mouse",
+      "description": "Halloween Skinpack 2020",
+      "emoji": "<:RoboMouse:1331666011967193138>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331666345942843422/RoboMouse.png"
+    },
+
+    "v11": {
+      "vCode": "ssp2021",
+      "name": "Bubbly Mouse",
+      "description": "Summer Skinpack 2021",
+      "emoji": "<:BubblyMouse:1331666787753787423>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331668462376063016/BubblyMouse.png"
+    },
+
+    "v12": {
+      "vCode": "ssp2022",
+      "name": "Super Mouse",
+      "description": "Summer Skinpack 2022",
+      "emoji": "<:SuperMouse:1331675123236864001>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331674554442977310/SuperMouse.png"
+    },
+
+    "v13": {
+      "vCode": "hsp2021-1",
+      "name": "Light Plague Rat",
+      "description": "Halloween Skinpack 2021",
+      "emoji": "<:LightPlagueRat:1331670155217866962>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331668975360147466/LightPlagueRat.png"
+    },
+
+    "v14": {
+      "vCode": "hsp2021-2",
+      "name": "Dark Plague Rat",
+      "description": "Halloween Skinpack 2021",
+      "emoji": "<:DarkPlagueRat:1331670165120876574>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331668975683240032/DarkPlagueRat.png"
+    }
+  },
+
+  "desertRat": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Desert Rat",
+    "trig": "desertRat",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Desert Rat",
+      "description": "Season 1",
+      "emoji": "<:DesertRatS1:1291425991587270676>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448224800860/DesertRat-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Desert Rat",
+      "description": "Season 2",
+      "emoji": "<:DesertRatS2:1290350508627722301>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1290348740548497481/DesertRat-S2.png"
+    },
+
+    "v2": {
+      "vCode": "legacy",
+      "name": "Desert Rat",
+      "description": "Legacy Skinpack",
+      "emoji": "<:DesertRatClassic:1331696156560068649>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331697554148163706/DesertRatClassic.png"
+    },
+
+    "v3": {
+      "vCode": "goldtrim",
+      "name": "Desert Rat",
+      "description": "Desert Gold Trim Skinpack",
+      "emoji": "<:DesertRatGoldTrim:1331696932803838034>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331697419783503992/DesertRat-GoldTrim.png"
+    },
+
+    "v4": {
+      "vCode": "hsp2020",
+      "name": "Cacti Rat",
+      "description": "Halloween Skinpack 2020",
+      "emoji": "<:CactiRat:1331697830229966882>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331697419372597309/CactiRat.png"
+    }
+  },
+
+  "shrimp": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Shrimp",
+    "trig": "shrimp",
+
+    "v0": {
+      "vCode": "s1-v1",
+      "name": "Shrimp",
+      "description": "Season 1 | Version 1",
+      "emoji": "<:ShrimpS1V1:1332053552595599380>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332059009947271168/Shrimp-S1V1.png"
+    },
+
+    "v1": {
+      "vCode": "s1-v2",
+      "name": "Shrimp",
+      "description": "Season 1 | Version 2",
+      "emoji": "<:ShrimpS1:1291425951338467440>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448707145799/Shrimp-S1.png"
+    },
+
+    "v2": {
+      "vCode": "s2",
+      "name": "Shrimp",
+      "description": "Season 2",
+      "emoji": "<:ShrimpS2:1290350647459450972>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1290348741143826462/Shrimp-S2.png"
+    },
+
+    "v3": {
+      "vCode": "s2-w",
+      "name": "Shrimp",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:ShrimpS2Winter:1291425929322823758>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332059009645285467/Shrimp-S2-Winter.png"
+    },
+
+    "v4": {
+      "vCode": "legacy",
+      "name": "Shrimp",
+      "description": "Legacy Skinpack",
+      "emoji": "<:ShrimpClassic:1332053833316306945>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332059010521759875/ShrimpClassic.png"
+    },
+
+    "v5": {
+      "vCode": "legacy-w",
+      "name": "Shrimp",
+      "description": "Legacy Skinpack | Winter Version",
+      "emoji": "<:ShrimpClassicWinter:1332053845190246480>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332059010836336711/ShrimpClassicWinter.png"
+    },
+
+    "v6": {
+      "vCode": "goldtrim",
+      "name": "Shrimp",
+      "description": "Ocean Gold Trim Skinpack",
+      "emoji": "<:ShrimpGoldTrim:1332054190351978666>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332059438005227560/Shrimp-GoldTrim.png"
+    },
+
+    "v7": {
+      "vCode": "may2021",
+      "name": "Deluxe Shrimp",
+      "description": "May 2021 Skinpack",
+      "emoji": "<:DeluxeShrimp:1332054246866292888>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332059011633254470/DeluxeShrimp.png"
+    },
+
+    "v8": {
+      "vCode": "ssp2021",
+      "name": "Chef Shrimp",
+      "description": "Summer Skinpack 2021",
+      "emoji": "<:ChefShrimp:1332054266487246898>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332059011260092446/ChefShrimp.png"
+    }
+  },
+
+  "arcticChipmunk": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Arctic Chipmunk",
+    "trig": "arcticChipmunk",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Arctic Chipmunk",
+      "description": "Season 1",
+      "emoji": "<:ChipmunkS1:1291426701351583754>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331654447943651358/Chipmunk-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Arctic Chipmunk",
+      "description": "Season 2",
+      "emoji": "<:ChipmunkS2:1290350695698137118>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1290348740049109106/Chipmunk-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Arctic Chipmunk",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:ChipmunkS2Winter:1291426691142520872>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332392310788587531/Chipmunk-S2-Winter.png"
+    },
+
+    "v3": {
+      "vCode": "legacy",
+      "name": "Arctic Chipmunk",
+      "description": "Legacy Skinpack",
+      "emoji": "<:ArcticChipmunkClassic:1332390003870924840>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332392307718099025/ArcticChipmunkClassic.png"
+    },
+
+    "v4": {
+      "vCode": "legacy-w",
+      "name": "Arctic Chipmunk",
+      "description": "Legacy Skinpack | Winter Version",
+      "emoji": "<:ArcticChipmunkClassicWinter:1332390685566828575>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332392308733382727/ArcticChipmunkClassicWinter.png"
+    },
+
+    "v5": {
+      "vCode": "goldtrim",
+      "name": "Arctic Chipmunk",
+      "description": "Arctic Gold Trim Skinpack",
+      "emoji": "<:ArcticChipmunkGoldTrim:1332391843530408107>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332392309723103293/ArcticChipmunkGoldTrim.png"
+    },
+
+    "v6": {
+      "vCode": "ssp2021",
+      "name": "Playful Munk",
+      "description": "Summer Skinpack 2021",
+      "emoji": "<:PlayfulMunk:1332391870776479764>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332392310222094456/PlayfulMunk.png"
+    }
+  },
+
+  "tarsier": {
+    "canFly": false,
+    "biome": "Forest",
+    "fullName": "Tarsier",
+    "trig": "tarsier",
+
+    "v0": {
+      "vCode": "s2",
+      "name": "Tarsier",
+      "description": "Season 2",
+      "emoji": "<:Tarsier:1290351366119620708>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1290348740875518056/Tarsier.png"
+    }
+  },
+
+  "rabbit": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Rabbit",
+    "trig": "rabbit",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Rabbit",
+      "description": "Season 1",
+      "emoji": "<:RabbitS1:1291427677558931572>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457736697057310/Rabbit-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Rabbit",
+      "description": "Season 2",
+      "emoji": "<:RabbitS2:1291427653055807530>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457736906903622/Rabbit-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Rabbit",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:RabbitS2Winter:1291427664296415297>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457737154236469/Rabbit-S2-Winter.png"
+    }
+  },
+
+  "pigeon": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Pigeon",
+    "trig": "pigeon",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Pigeon",
+      "description": "Season 1",
+      "emoji": "<:PigeonS1:1332411742273273856>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332411454439292929/Pigeon-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Pigeon",
+      "description": "Season 2",
+      "emoji": "<:PigeonS2:1291427610860978237>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332412600570351707/Pigeon-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Pigeon",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:PigeonS2Winter:1291427628632379423>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457737707884666/Pigeon-S2-Winter.png"
+    }
+  },
+
+  "whiteDove": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "White Dove",
+    "trig": "whiteDove",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "White Dove",
+      "description": "Season 1",
+      "emoji": "<:WhiteDoveS1:1332414122146402346>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1332414732874809397/WhiteDove-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "White Dove",
+      "description": "Season 2",
+      "emoji": "<:WhiteDoveS2:1291258772492255263>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286733625265623082/white_dove.png"
+    }
+  },
+
+  "desertChipmunk": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Desert Chipmunk",
+    "trig": "desertChipmunk",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Desert Chipmunk",
+      "description": "Season 1",
+      "emoji": "<:DesertChipmunkS1:1291427348473839666>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457592375115797/DesertChipmunk-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Desert Chipmunk",
+      "description": "Season 2",
+      "emoji": "<:DesertChipmunkS2:1291427318970974238>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591737581679/DesertChipmunk-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Desert Chipmunk",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:DesertChipmunkS2Winter:1291427332396941352>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591985176637/DesertChipmunk-S2-Winter.png"
+    }
+  },
+
+  "trout": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Trout",
+    "trig": "trout",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Trout",
+      "description": "Season 1",
+      "emoji": "<:TroutS1:1291427844194439284>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457593742721117/Trout-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Trout",
+      "description": "Season 2",
+      "emoji": "<:TroutS2:1291427823273381959>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457593046204496/Trout-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Trout",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:TroutS2Winter:1291427833402363975>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457593469833346/Trout-S2-Winter.png"
+    }
+  },
+
+  "arcticHare": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Arctic Hare",
+    "trig": "arcticHare",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Arctic Hare",
+      "description": "Season 1",
+      "emoji": "<:ArcticHareS1:1291427235751788675>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591427334255/ArcticHare-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Arctic Hare",
+      "description": "Season 2",
+      "emoji": "<:ArcticHareS2:1291427190692380783>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457590789931172/ArcticHare-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Arctic Hare",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:ArcticHareS2Winter:1291427205989011527>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591121154068/ArcticHare-S2-Winter.png"
+    }
+  },
+
+  "chukar": {
+    "canFly": true,
+    "biome": "Forest",
+    "fullName": "Chukar",
+    "trig": "chukar",
+
+    "v0": {
+      "vCode": "s2",
+      "name": "Chukar",
+      "description": "Season 2",
+      "emoji": "<:ChukarS2:1291427563578589204>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457592731897909/Chukar-S2.png"
+    }
+  },
+
+  "mole": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Rabbit",
+    "trig": "mole",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Mole",
+      "description": "Season 1",
+      "emoji": "<:MoleS1:1291428307308511273>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457970198020187/Mole-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Mole",
+      "description": "Season 2",
+      "emoji": "<:MoleS2:1291428285221437472>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457970546278480/Mole-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Mole",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:MoleS2Winter:1291428295325388926>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457970835558420/Mole-S2-Winter.png"
+    }
+  },
+
+  "chicken": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Chicken",
+    "trig": "chicken",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Chicken",
+      "description": "Season 1",
+      "emoji": "<:ChickenS1:1333092004820942860>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1333092292159995994/Chicken-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Chicken",
+      "description": "Season 2",
+      "emoji": "<:ChickenS2:1291428272915218442>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457971339006075/Chicken-S2.png"
+    }
+  },
+
+  "meerkat": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Meerkat",
+    "trig": "meerkat",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Meerkat",
+      "description": "Season 1",
+      "emoji": "<:MeerkatS1:1291428108465082409>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457933896319078/Meerkat-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Meerkat",
+      "description": "Season 2",
+      "emoji": "<:MeerkatS2:1291428085971030057>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457933149995048/Meerkat-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Meerkat",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:MeerkatS2Winter:1291428095777177705>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457933447663790/Meerkat-S2-Winter.png"
+    }
+  },
+
+  "crab": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Crab",
+    "trig": "crab",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Crab",
+      "description": "Season 1",
+      "emoji": "<:CrabS1:1291428698939068446>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457935226044487/Crab-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Crab",
+      "description": "Season 2",
+      "emoji": "<:CrabS2:1291428674649718964>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457934416412764/Crab-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Crab",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:CrabS2Winter:1291428685815087137>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457934882242581/Crab-S2-Winter.png"
+    }
+  },
+
+  "penguin": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Penguin",
+    "trig": "penguin",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Penguin",
+      "description": "Season 1",
+      "emoji": "<:PenguinS1:1291428028395814932>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457932810125382/Penguin-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Penguin",
+      "description": "Season 2",
+      "emoji": "<:PenguinS2:1291427995134722099>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457932193566831/Penguin-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Penguin",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:PenguinS2Winter:1291428006002429994>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457932508266537/Penguin-S2-Winter.png"
+    }
+  },
+
+  "flyingLizard": {
+    "canFly": true,
+    "biome": "Forest",
+    "fullName": "Flying Lizard",
+    "trig": "flyingLizard",
+
+    "v0": {
+      "vCode": "s2",
+      "name": "Flying Lizard",
+      "description": "Season 2",
+      "emoji": "<:FlyingLizard:1291428239239020687>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291457934177599558/FlyingLizard.png"
+    }
+  },
+
+  "pig": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Pig",
+    "trig": "pig",
+
+    "v0": {
+      "vCode": "s1-v2",
+      "name": "Pig",
+      "description": "Season 1",
+      "emoji": "<:PigS1v2:1333508176343203860>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1333508715201953854/Pig-S1-v2.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Pig",
+      "description": "Season 2",
+      "emoji": "<:PigS2:1291429320211955844>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276589764638/Pig-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Pig",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:PigS2Winter:1291429334774452386>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276337975326/Pig-S2-Winter.png"
+    }
+  },
+
+  "pinkyPig": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Pinky Pig",
+    "trig": "pinkyPig",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Pinky Pig",
+      "description": "Season 1",
+      "emoji": "<:PinkyPigS1:1333508206428815360>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1335299481146757201/PinkyPig-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Pinky Pig",
+      "description": "Season 2",
+      "emoji": "<:PinkyPigS2:1284520701541351454>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286733625592905891/pinkypig-S2.png"
+    }
+  },
+
+  "stinkyPig": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Stinky Pig",
+    "trig": "stinkyPig",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Stinky Pig",
+      "description": "Season 1",
+      "emoji": "<:StinkyPigS1:1333508221968584714>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1335299481545084938/StinkyPig-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Stinky Pig",
+      "description": "Season 2",
+      "emoji": "<:StinkyPigS2:1284520753793863831>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286733625928454275/StinkyPig-S2.png"
+    }
+  },
+
+  "woodpecker": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Woodpecker",
+    "trig": "woodpecker",
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Woodpecker",
+      "description": "Season 2",
+      "emoji": "<:WoodpeckerS2:1291429347466412072>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276883361843/Woodpecker-S2.png"
+    }
+  },
+
+  "armadillo": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Armadillo",
+    "trig": "armadillo",
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Armadillo",
+      "description": "Season 2",
+      "emoji": "<:ArmadilloS2:1291429055748640870>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459275788652595/Armadillo-S2.png"
+    }
+  },
+
+  "seaHorse": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Sea Horse",
+    "trig": "seaHorse",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Sea Horse",
+      "description": "Season 1",
+      "emoji": "<:SeahorseS1:1291429464949133364>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297879789719/Seahorse-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Sea Horse",
+      "description": "Season 2",
+      "emoji": "<:SeahorseS2:1291429430584938597>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297338724384/Seahorse-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Sea Horse",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:SeahorseS2Winter:1291429453645484082>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297582256198/Seahorse-S2-Winter.png"
+    }
+  },
+
+  "seal": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Seal",
+    "trig": "seal",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Seal",
+      "description": "Season 1",
+      "emoji": "<:SealS1:1291429019262128189>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459275524149348/Seal-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Seal",
+      "description": "Season 2",
+      "emoji": "<:SealS2:1291428996134731837>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459274836283402/Seal-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Seal",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:SealS2Winter:1291429006503182358>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459275150983250/Seal-S2-Winter.png"
+    }
+  },
+
+  "kakapo": {
+    "canFly": true,
+    "biome": "Forest",
+    "fullName": "Kakapo",
+    "trig": "kakapo",
+
+    "v0": {
+      "vCode": "s2",
+      "name": "Kakapo",
+      "description": "Season 2",
+      "emoji": "<:KakapoS2:1291429273349132410>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276027461662/Kakapo-S2.png"
+    }
+  },
+
+  "deer": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Deer",
+    "trig": "deer",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Deer",
+      "description": "Season 1",
+      "emoji": "<:DeerS1:1291430265889099849>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076994744381/Deer-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Deer",
+      "description": "Season 2",
+      "emoji": "<:DeerS2:1291430215456919693>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480077338542172/Deer-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Deer",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:DeerS2Winter:1291430228677103677>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076327714877/Deer-S2-Winter.png"
+    }
+  },
+
+  "doe": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Doe",
+    "trig": "doe",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Doe",
+      "description": "Season 1",
+      "emoji": "<:DoeS1:1291430288529952911>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076583571457/Doe-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Doe",
+      "description": "Season 2",
+      "emoji": "<:DoeS2:1284520854276804680>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286733626133708861/Doe-S2.png"
+    }
+  },
+
+  "marshDeer": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Marsh Deer",
+    "trig": "marshDeer",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Marsh Deer",
+      "description": "Season 1",
+      "emoji": "<:MarshDeerS1:1291430302895444070>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480204962693141/Marsh_Deer-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Marsh Deer",
+      "description": "Season 2",
+      "emoji": "<:MarshDeerS2:1284520894894702788>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286733626905464942/MarshDeer-S2.png"
+    }
+  },
+
+  "gazelle": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Gazelle",
+    "trig": "gazelle",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Gazelle",
+      "description": "Season 1",
+      "emoji": "<:GazelleS1:1291429668528066702>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480075669078057/Gazelle-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Gazelle",
+      "description": "Season 2",
+      "emoji": "<:GazelleS2:1291429655978446920>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480075455172638/Gazelle-S2.png"
+    }
+  },
+
+  "squid": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Squid",
+    "trig": "squid",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Squid",
+      "description": "Season 1",
+      "emoji": "<:SquidS1:1291430540213489714>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205319340155/Squid-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Squid",
+      "description": "Season 2",
+      "emoji": "<:SquidS2:1291430517186760865>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205600489513/Squid-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Squid",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:SquidS2Winter:1291430528313987104>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205847691294/Squid-S2-Winter.png"
+    }
+  },
+
+  "flamingo": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Flamingo",
+    "trig": "flamingo",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Flamingo",
+      "description": "Season 1",
+      "emoji": "<:FlamingoS1:1336376893267775528>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1336377666684588032/Flamingo-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Flamingo",
+      "description": "Season 2",
+      "emoji": "<:FlamingoS2:1291430551206629447>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480206313521295/Flamingo-S2.png"
+    }
+  },
+
+  "reindeer": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Reindeer",
+    "trig": "reindeer",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Reindeer",
+      "description": "Season 1",
+      "emoji": "<:ReindeerS1:1291429583500873839>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480074788540470/Reindeer-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Reindeer",
+      "description": "Season 2",
+      "emoji": "<:ReindeerS2:1291429559337484422>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480074545135768/Reindeer-S2.png"
+    }
+  },
+
+  "muskDeer": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Musk Deer",
+    "trig": "muskDeer",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Musk Deer",
+      "description": "Season 1",
+      "emoji": "<:MuskDeerS1:1291429595744047165>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480075031674952/MuskDeer-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Musk Deer",
+      "description": "Season 2",
+      "emoji": "<:MuskDeerS2:1284540790583984139>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286733627601977477/MuskDeer-S2.png"
+    }
+  },
+
+  "swinehoe": {
+    "canFly": true,
+    "biome": "Forest",
+    "fullName": "Swinehoe",
+    "trig": "swinehoe",
+
+    "v0": {
+      "vCode": "s2",
+      "name": "Swinehoe",
+      "description": "Season 2",
+      "emoji": "<:SwinehoeS2:1291430007545139333>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076080123934/Swinehoe.png"
+    }
+  },
+
+  "goldenPheasant": {
+    "canFly": true,
+    "biome": "Forest",
+    "fullName": "Golden Pheasant",
+    "trig": "goldenPheasant",
+
+    "v0": {
+      "vCode": "s2",
+      "name": "Golden Pheasant",
+      "description": "Season 2",
+      "emoji": "<:GoldenPheasantS2:1285692782765408360>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286733626628767816/GoldenPheasant.png"
+    }
+  },
+
+  "fox": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Fox",
+    "trig": "fox",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Fox",
+      "description": "Season 1",
+      "emoji": "<:FoxS1:1291430809231953952>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614393872416/Fox-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Fox",
+      "description": "Season 2",
+      "emoji": "<:FoxS2:1291430732522192896>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614608044132/Fox-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Fox",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:FoxS2Winter:1291430796791648368>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613458804878/Fox-S2-Winter.png"
+    }
+  },
+
+  "hedgehog": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Hedgehog",
+    "trig": "hedgehog",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Hedgehog",
+      "description": "Season 1",
+      "emoji": "<:HedgehogS1:1291430861086134332>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613735366656/Hedgehog-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Hedgehog",
+      "description": "Season 2",
+      "emoji": "<:HedgehogS2:1291430829087789066>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613962121348/Hedgehog-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Hedgehog",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:HedgehogS2Winter:1291430839787458681>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614184288380/Hedgehog-S2-Winter.png"
+    }
+  },
+
+  "peacock": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Peacock",
+    "trig": "peacock",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Peacock",
+      "description": "Season 1",
+      "emoji": "<:PeacockS1:1337028604881670226>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1337037604952080495/Peacock-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Peacock",
+      "description": "Season 2",
+      "emoji": "<:PeacockS2:1291430902898888704>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480686569459785/Peacock-S2.png"
+    }
+  },
+
+  "fennecFox": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Fennec Fox",
+    "trig": "fennecFox",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Fennec Fox",
+      "description": "Season 1",
+      "emoji": "<:FennecFoxS1:1291430678730248334>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613102030989/FennecFox-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Fennec Fox",
+      "description": "Season 2",
+      "emoji": "<:FennecFoxS2:1291430668667981834>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612754034690/FennecFox-S2.png"
+    }
+  },
+
+  "jellyfish": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Jellyfish",
+    "trig": "jellyfish",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Jellyfish",
+      "description": "Season 1",
+      "emoji": "<:JellyfishS1:1291430997157744770>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480687131492382/Jellyfish-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Jellyfish",
+      "description": "Season 2",
+      "emoji": "<:JellyfishS2:1291430985438859356>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480686846545930/Jellyfish-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Jellyfish",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:JellyfishS2Winter:1337044388056137819>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1337047419933818960/Jellyfish-S2-Winter.png"
+    }
+  },
+
+  "arcticFox": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Arctic Fox",
+    "trig": "arcticFox",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Arctic Fox",
+      "description": "Season 1",
+      "emoji": "<:ArcticFoxS1:1291430637932122194>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612502241321/ArcticFox-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Arctic Fox",
+      "description": "Season 2",
+      "emoji": "<:ArcticFoxS2:1291430623306711060>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612200386590/ArcticFox-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Arctic Fox",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:ArcticFoxS2Winter:1337048370576883742>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1337048791282614412/ArcticFox-S2-Winter.png"
+    }
+  },
+
+  "zebra": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Zebra",
+    "trig": "zebra",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Zebra",
+      "description": "Season 1",
+      "emoji": "<:ZebraS1:1291436281485725797>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113658658960/Zebra-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Zebra",
+      "description": "Season 2",
+      "emoji": "<:ZebraS2:1291436256647053382>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112995958886/Zebra-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Zebra",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:ZebraS2Winter:1291436268487704726>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113230970890/Zebra-S2-Winter.png"
+    }
+  },
+
+  "donkey": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Donkey",
+    "trig": "donkey",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Donkey",
+      "description": "Season 1",
+      "emoji": "<:DonkeyS1:1291436063059087451>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480909391855697/Donkey-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Donkey",
+      "description": "Season 2",
+      "emoji": "<:DonkeyS2:1291436028732899449>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908016386048/Donkey-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Donkey",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:DonkeyS2Winter:1291436049758814280>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908423106560/Donkey-S2-Winter.png"
+    }
+  },
+
+  "macaw": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Macaw",
+    "trig": "macaw",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Macaw",
+      "description": "Season 1",
+      "emoji": "<:MacawS1:1291435943429013565>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480909945638912/Macaw-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Macaw",
+      "description": "Season 2",
+      "emoji": "<:MacawS2:1291435930338459658>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112660672625/Macaw-S2.png"
+    }
+  },
+
+  "blueMacaw": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Blue Macaw",
+    "trig": "blueMacaw",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Blue Macaw",
+      "description": "Season 1",
+      "emoji": "<:BlueMacawS1:1291435973057445888>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908683018321/BlueMacaw-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Blue Macaw",
+      "description": "Season 2",
+      "emoji": "<:BlueMacawS2:1284540918648541287>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286733627836600431/BlueMacaw.png"
+    }
+  },
+
+  "rareMacaw": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Rare Macaw",
+    "trig": "rareMacaw",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Pakistan Macaw",
+      "description": "Season 1",
+      "emoji": "<:PakistanMacawS1:1291435993710198868>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112211750994/PakistanMacaw-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Pakistan Macaw",
+      "description": "Season 2",
+      "emoji": "<:PakistanMacawS2:1284540970876145704>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286733633834713222/PakistanMacaw.png"
+    },
+
+    "v2": {
+      "vCode": "s1",
+      "name": "USSR Macaw",
+      "description": "Season 1",
+      "emoji": "<:USSRMacawS1:1287125634539323463>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1287125928056717355/USSR_Macaw.png"
+    },
+
+    "v3": {
+      "vCode": "s2",
+      "name": "USSR Macaw",
+      "description": "Season 2",
+      "emoji": "<:USSRMacawS2:1288058610655690804>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1288064073983987787/USSR_Macaw-S2.png"
+    }
+  },
+
+  "warthog": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Warthog",
+    "trig": "warthog",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Warthog",
+      "description": "Season 1",
+      "emoji": "<:WarthogS1:1291435873455575153>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480907588436189/Warthog-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Warthog",
+      "description": "Season 2",
+      "emoji": "<:WarthogS2:1291435861593952318>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480907320135732/Warthog-S2.png"
+    }
+  },
+
+  "turtle": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Turtle",
+    "trig": "turtle",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Turtle",
+      "description": "Season 1",
+      "emoji": "<:TurtleS1:1291436332626874378>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291481114279542836/Turtle-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Turtle",
+      "description": "Season 2",
+      "emoji": "<:TurtleS2:1291436319808946286>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113994461196/Turtle-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Turtle",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:TurtleS2Winter:1338158405579182203>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1338158779002261624/Turtle-S2-Winter.png"
+    }
+  },
+
+  "muskox": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Muskox",
+    "trig": "muskox",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Muskox",
+      "description": "Season 1",
+      "emoji": "<:MuskoxS1:1291435721181106258>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480906950906009/Muskox-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Muskox",
+      "description": "Season 2",
+      "emoji": "<:MuskoxS2:1291435711123165295>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1291480906669752442/Muskox-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Muskox",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:MuskoxS2Winter:1338159518609182900>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1338160466278617218/Muskox-S2-Winter.png"
+    }
+  }
+}
