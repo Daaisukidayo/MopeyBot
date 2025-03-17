@@ -83,8 +83,7 @@ module.exports = [{
     ${vars()}
 
     $deferUpdate
-
-    `
+  `
 }];
 
 function vars() {
