@@ -64,7 +64,7 @@ const client = new ForgeClient({
     "userUpdate", 
     "voiceStateUpdate"
   ],
-  prefixes: ["$getGuildVar[prefix]"],
+  prefixes: ["$if[$guildID!=;$getGuildVar[prefix];.]"],
 });
 
 // ========== LOAD COMMANDS ==========
