@@ -1,79 +1,112 @@
 {
-  "bb0": {
-  	"mc": [400, 751],
-  	"desc": "Beachball",
-  	"emoji": "<:0_beachball:1279447760591917099>",
-  	"clr": "f06d5f",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765970411585636/0.png"
-  },
-  "bb1": {
-  	"mc": [1000, 1501],
-  	"desc": "Amber Beachball",
-  	"emoji": "<:1_amber_beachball:1279447777675579443>",
-  	"clr": "FF941C",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765970889474101/1.png"
-  },
-  "bb2": {
-  	"mc": [2000, 4001],
-  	"desc": "Golden Beachball",
-  	"emoji": "<:2_gold_beachball:1279447797237809262>",
-  	"clr": "F4BA17",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765971237605519/2.png"
-  },
-  "bb3": {
-  	"mc": [5000, 9001],
-  	"desc": "Platinum Beachball",
-  	"emoji": "<:3_plat_beachball:1279447828745158706>",
-  	"clr": "A8A8A8",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765971665686700/3.png"
-  },
-  "bb4": {
-  	"mc": [10000, 15001],
-  	"desc": "Diamond Beachball",
-  	"emoji": "<:4_diamond_beachball:1279447841017958431>",
-  	"clr": "1dfcff",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765972089307147/4.png"
-  },
-  "bb5": {
-  	"mc": [20000, 30001],
-  	"desc": "Jade Beachball",
-  	"emoji": "<:5_jade_beachball:1279447880108740719>",
-  	"clr": "61B761",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765972353552474/5.png"
-  },
-  "bb6": {
-  	"mc": [40000, 50001],
-  	"desc": "Pearl Beachball",
-  	"emoji": "<:6_pearl_beachball:1279447853676105814>",
-  	"clr": "F4DFF4",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765972915326986/6.png"
-  },
-  "bb7": {
-  	"mc": [60000, 70001],
-  	"desc": "Pink Diamond Beachball",
-  	"emoji": "<:7_pinkdiamond_beachball:1279447866477248582>",
-  	"clr": "fc3cb1",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765973355860071/7.png"
-  },
-  "bb8": {
-  	"mc": [80000, 90001],
-  	"desc": "Opal Beachball",
-  	"emoji": "<:8_opal_beachball:1279447898047905822>",
-  	"clr": "9471FF",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765973578027090/8.png"
-  },
-  "bb9": {
-  	"mc": [100000, 120001],
-  	"desc": "Aquamarine Beachball",
-  	"emoji": "<:9_aquamarine_beachball:1279447909183655998>",
-  	"clr": "81A7B4",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765973934538803/9.png"
-  },
-  "bb10": {
-  	"mc": [150000, 200001],
-  	"desc": "Tanzanite Beachball",
-  	"emoji": "<:10_tanzanite_beachball:1279447929060593675>",
-  	"clr": "3A3ADE",
-  	"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765993475801088/10.png"
-  }
+	"bb0": {
+		"mc": [
+			400,
+			751
+		],
+		"desc": "Beachball",
+		"emoji": "<:0_beachball:1279447760591917099>",
+		"clr": "f06d5f",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765970411585636/0.png"
+	},
+	"bb1": {
+		"mc": [
+			1000,
+			1501
+		],
+		"desc": "Amber Beachball",
+		"emoji": "<:1_amber_beachball:1279447777675579443>",
+		"clr": "FF941C",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765970889474101/1.png"
+	},
+	"bb2": {
+		"mc": [
+			2000,
+			4001
+		],
+		"desc": "Golden Beachball",
+		"emoji": "<:2_gold_beachball:1279447797237809262>",
+		"clr": "F4BA17",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765971237605519/2.png"
+	},
+	"bb3": {
+		"mc": [
+			5000,
+			9001
+		],
+		"desc": "Platinum Beachball",
+		"emoji": "<:3_plat_beachball:1279447828745158706>",
+		"clr": "A8A8A8",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765971665686700/3.png"
+	},
+	"bb4": {
+		"mc": [
+			10000,
+			15001
+		],
+		"desc": "Diamond Beachball",
+		"emoji": "<:4_diamond_beachball:1279447841017958431>",
+		"clr": "1dfcff",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765972089307147/4.png"
+	},
+	"bb5": {
+		"mc": [
+			20000,
+			30001
+		],
+		"desc": "Jade Beachball",
+		"emoji": "<:5_jade_beachball:1279447880108740719>",
+		"clr": "61B761",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765972353552474/5.png"
+	},
+	"bb6": {
+		"mc": [
+			40000,
+			50001
+		],
+		"desc": "Pearl Beachball",
+		"emoji": "<:6_pearl_beachball:1279447853676105814>",
+		"clr": "F4DFF4",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765972915326986/6.png"
+	},
+	"bb7": {
+		"mc": [
+			60000,
+			70001
+		],
+		"desc": "Pink Diamond Beachball",
+		"emoji": "<:7_pinkdiamond_beachball:1279447866477248582>",
+		"clr": "fc3cb1",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765973355860071/7.png"
+	},
+	"bb8": {
+		"mc": [
+			80000,
+			90001
+		],
+		"desc": "Opal Beachball",
+		"emoji": "<:8_opal_beachball:1279447898047905822>",
+		"clr": "9471FF",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765973578027090/8.png"
+	},
+	"bb9": {
+		"mc": [
+			100000,
+			120001
+		],
+		"desc": "Aquamarine Beachball",
+		"emoji": "<:9_aquamarine_beachball:1279447909183655998>",
+		"clr": "81A7B4",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765973934538803/9.png"
+	},
+	"bb10": {
+		"mc": [
+			150000,
+			200001
+		],
+		"desc": "Tanzanite Beachball",
+		"emoji": "<:10_tanzanite_beachball:1279447929060593675>",
+		"clr": "3A3ADE",
+		"thum": "https://media.discordapp.net/attachments/701793335941136464/1279765993475801088/10.png"
+	}
 }
