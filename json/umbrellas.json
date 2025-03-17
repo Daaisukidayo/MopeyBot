@@ -1,0 +1,112 @@
+{
+    "ur0": {
+        "mc": [
+            400,
+            751
+        ],
+        "desc": "an Umbrella <:0_umbrella:1279452562466017321>",
+        "emoji": "<:0_umbrella:1279452562466017321>",
+        "clr": "da1d36",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835645065302148/0.png"
+    },
+    "ur1": {
+        "mc": [
+            1000,
+            1501
+        ],
+        "desc": "__Rare Purple Umbrella__ <:1_purple_umbrella:1279452606246420622>",
+        "emoji": "<:1_purple_umbrella:1279452606246420622>",
+        "clr": "be70c0",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835645304639530/1.png"
+    },
+    "ur2": {
+        "mc": [
+            2000,
+            4001
+        ],
+        "desc": "__Rare Golden Umbrella__ <:2_gold_umbrella:1279452649338572906>",
+        "emoji": "<:2_gold_umbrella:1279452649338572906>",
+        "clr": "edc255",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835645526806651/2.png"
+    },
+    "ur3": {
+        "mc": [
+            5000,
+            9001
+        ],
+        "desc": "__Rare Platinum Umbrella__ <:3_plat_umbrella:1279452660185174027>",
+        "emoji": "<:3_plat_umbrella:1279452660185174027>",
+        "clr": "C6C6C6",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835645795110984/3.png"
+    },
+    "ur4": {
+        "mc": [
+            10000,
+            15001
+        ],
+        "desc": "__Rare Diamond Umbrella__ <:4_diamond_umbrella:1279452671438225441>",
+        "emoji": "<:4_diamond_umbrella:1279452671438225441>",
+        "clr": "34dbf2",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835646156083282/4.png"
+    },
+    "ur5": {
+        "mc": [
+            20000,
+            30001
+        ],
+        "desc": "__Rare Emerald Umbrella__ <:5_emerald_umbrella:1279452681773125782>",
+        "emoji": "<:5_emerald_umbrella:1279452681773125782>",
+        "clr": "24eb3c",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835646495690813/5.png"
+    },
+    "ur6": {
+        "mc": [
+            40000,
+            50001
+        ],
+        "desc": "__Rare Ruby Umbrella__ <:6_ruby_umbrella:1279452693059862528>",
+        "emoji": "<:6_ruby_umbrella:1279452693059862528>",
+        "clr": "bc1834",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835646923378731/6.png"
+    },
+    "ur7": {
+        "mc": [
+            60000,
+            70001
+        ],
+        "desc": "__Rare Sapphire Umbrella__ <:7_sapphire_umbrella:1279452704036360234>",
+        "emoji": "<:7_sapphire_umbrella:1279452704036360234>",
+        "clr": "2473ec",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835647204659271/7.png"
+    },
+    "ur8": {
+        "mc": [
+            80000,
+            90001
+        ],
+        "desc": "__Rare Amethyst Umbrella__ <:8_amethyst_umbrella:1279452717269647384>",
+        "emoji": "<:8_amethyst_umbrella:1279452717269647384>",
+        "clr": "8c24ec",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835647514906644/8.png"
+    },
+    "ur9": {
+        "mc": [
+            100000,
+            120001
+        ],
+        "desc": "__Rare Ammolite Umbrella__ <:9_ammolite_umbrella:1279452729688985626>",
+        "emoji": "<:9_ammolite_umbrella:1279452729688985626>",
+        "clr": "B87D3D",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835647766429747/9.png"
+    },
+    "ur10": {
+        "mc": [
+            150000,
+            200001
+        ],
+        "desc": "__Rare Taaffeite Umbrella__ <:10_taaffeite_umbrella:1279452741722439760>",
+        "emoji": "<:10_taaffeite_umbrella:1279452741722439760>",
+        "clr": "66375D",
+        "thum": "https://media.discordapp.net/attachments/701793335941136464/1279835664774463680/10.png"
+    }
+}
