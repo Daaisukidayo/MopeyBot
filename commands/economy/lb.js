@@ -38,15 +38,12 @@ module.exports = [{
 
     ${vars()}
 
-    $setTimeout[
-        $deleteComponentFrom[$channelID;$get[lbmsgID];left-$authorID]
-        $deleteComponentFrom[$channelID;$get[lbmsgID];right-$authorID]
+    
+
+    $setTimeout[ 
         $addActionRow
         $addButton[left-$authorID;;Primary;⬅️;true]
         $addButton[right-$authorID;;Primary;➡️;true] 
-    ;${cdtime - 3}s]
-
-    $setTimeout[ 
         $!editMessage[$channelID;$get[lbmsgID];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
         $deleteMessageVar[page;$get[lbmsgID]]  
         $deleteMessageVar[pages;$get[lbmsgID]]  
@@ -61,6 +58,10 @@ module.exports = [{
     $onlyIf[$or[$customID==left-$authorID;$customID==right-$authorID]==true]
 
     $let[lbmsgID;$messageID]
+
+    $onlyIf[$getMessageVar[page;$get[lbmsgID]]!=]
+    $onlyIf[$getMessageVar[pages;$get[lbmsgID]]!=]
+    $onlyIf[$getMessageVar[rowsPerPage;$get[lbmsgID]]!=]
 
     $if[$customID==left-$authorID;
 
