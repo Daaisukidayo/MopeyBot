@@ -1,9 +1,9 @@
 module.exports = [{
-  name: "beachball",
+  name: "pumpkin",
   type: "messageCreate",
-  aliases: ["bb"],
-  code:`
-
+  aliases: ["pk"],
+  code: `
+  
     $reply
   
     $onlyIf[$getGlobalVar[botEnabled]==true]
@@ -11,7 +11,7 @@ module.exports = [{
     $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
     $onlyIf[$getUserVar[onSlowmode]==false]
 
-    $jsonLoad[data;$readFile[json/beachballs.json]]
+    $jsonLoad[data;$readFile[json/pumpkins.json]]
         
     $let[rarityValues;20--50--100--200--500--1000--1500--2000--3500--5000]
     $textSplit[$get[rarityValues];--]
@@ -54,8 +54,8 @@ module.exports = [{
 
     $sendMessage[$channelID;
         $color[$get[clr]]
-        $description[### $randomText[You were walking across the ocean and saw a $get[desc];You were wandering around the ocean and spotted a $get[desc];You stumbled upon $get[desc] while exploring;You were gliding across the ocean when you found a $get[desc];You discovered a $get[desc] while roaming the ocean;You were cruising through the wild and noticed a $get[desc];You found a $get[desc] lying on the ocean;You were sliding through the ocean when you saw a $get[desc];You noticed a $get[desc] on your path]!
-        ### $randomText[You held it for some time, goaled it and earned;You held it carefully, goaled it, and earned;You carried it for a while, scored it, and earned;You held onto it, delivered it to the waterpull, and earned;You protected it, goaled it, and collected;You kept it safe, scored it, and gained;You grabbed it, goaled it, and pocketed;You carried it to the waterpull and earned;You picked it up, delivered it to the waterpull, and earned;You kept it safe, goaled it, and scored;You held it carefully, goaled it, and earned] $separateNumber[$get[MC];.]$getGlobalVar[emoji]!]
+        $description[### $randomText[You were walking across the map and saw a $get[desc];You were wandering around the map and spotted a $get[desc];You stumbled upon $get[desc] while exploring;You were gliding across the map when you found a $get[desc];You discovered a $get[desc] while roaming the map;You were cruising through the wild and noticed a $get[desc];You found a $get[desc] lying on the map;You were sliding through the map when you saw a $get[desc];You noticed a $get[desc] on your path]!
+        ### $randomText[You held it for some time, goaled it and earned;You held it carefully, goaled it, and earned;You carried it for a while, scored it, and earned;You held onto it, delivered it to the hole, and earned;You protected it, goaled it, and collected;You kept it safe, scored it, and gained;You grabbed it, goaled it, and pocketed;You carried it to the hole and earned;You picked it up, delivered it to the hole, and earned;You kept it safe, goaled it, and scored;You held it carefully, goaled it, and earned] $separateNumber[$get[MC];.]$getGlobalVar[emoji]!]
         $thumbnail[$get[thum]]
         $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
 
@@ -65,8 +65,5 @@ module.exports = [{
     ]
     
     $callFunction[logSchema;$commandName | Got: $get[desc]]
-
-  `
+`
 }]
-
-
