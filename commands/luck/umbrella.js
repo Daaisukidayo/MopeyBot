@@ -11,6 +11,9 @@ module.exports = ({
     $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
     $onlyIf[$getUserVar[onSlowmode]==false]
 
+    $let[cdTime;20s]
+    $if[$getUserVar[dev]==false; $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]] ]
+
     $jsonLoad[data;$readFile[json/umbrellas.json]]
         
     $let[rarityValues;20--50--100--200--500--1000--1500--2000--3500--5000]
