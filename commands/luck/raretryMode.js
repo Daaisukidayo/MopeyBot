@@ -16,9 +16,9 @@ module.exports = [{
             $if[$or[$get[i]==1;$get[i]==4];$addActionRow] 
 
             $if[$getUserVar[rtMode]==$arrayAt[modes;$get[i]];
-                    $addButton[$arrayAt[modes;$get[i]]-$authorID;$toTitleCase[$arrayAt[modes;$get[i]]];secondary;;true]
+                    $addButton[$arrayAt[modes;$get[i]]-$authorID;$toTitleCase[$arrayAt[modes;$get[i]]];Secondary;;true]
             ;
-                    $addButton[$arrayAt[modes;$get[i]]-$authorID;$toTitleCase[$arrayAt[modes;$get[i]]];success]
+                    $addButton[$arrayAt[modes;$get[i]]-$authorID;$toTitleCase[$arrayAt[modes;$get[i]]];Success]
             ];i;asc]
     
 `
