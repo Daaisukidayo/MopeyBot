@@ -2,7 +2,18 @@ module.exports = [{
   name: "raretrymode",
   aliases: ["rtm", "rtmode"],
   type: "messageCreate",
-  code: embed()
+  code: `
+    $reply
+  
+    $onlyIf[$getGlobalVar[botEnabled]==true]
+    $onlyIf[$getUserVar[isBanned]==false]
+    $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
+    $onlyIf[$getUserVar[onSlowmode]==false]
+
+    $let[cdTime;1m]
+    $if[$getUserVar[dev]==false;  $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]  ]
+    
+    ${embed()}`
 },{
   type: "interactionCreate",
   allowedInteractionTypes: [ "button" ],
@@ -13,7 +24,7 @@ module.exports = [{
 
     $setUserVar[rtMode;$splitText[0]]
 
-    $interactionUpdate
+    ${embed()}
 
     $deferUpdate`
 }]

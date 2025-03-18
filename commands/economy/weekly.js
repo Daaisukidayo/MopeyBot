@@ -17,15 +17,7 @@ module.exports = [{
     $let[lastWeek;$getUserVar[lastWeeklyWeek;$authorID;-1]]
    
 
-    $let[dayOfWeek;$switch[$day[Long];
-      $case[Monday;1]
-      $case[Tuesday;2]
-      $case[Wednesday;3]
-      $case[Thursday;4]
-      $case[Friday;5]
-      $case[Saturday;6]
-      $case[Sunday;7]
-    ]]
+    $let[dayOfWeek;$switch[$day[Long];$case[Monday;1]$case[Tuesday;2]$case[Wednesday;3]$case[Thursday;4]$case[Friday;5]$case[Saturday;6]$case[Sunday;7]]]
 
     $let[remainingDays;$sub[7;$get[dayOfWeek]]]
     $let[remainingHours;$sub[24;$get[currentHour]]]
