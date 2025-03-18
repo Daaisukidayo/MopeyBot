@@ -10,6 +10,9 @@ module.exports = [{
     $onlyIf[$getUserVar[isBanned]==false]
     $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
     $onlyIf[$getUserVar[onSlowmode]==false]
+    
+    $let[cdTime;20s]
+    $if[$getUserVar[dev]==false; $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]] ]
 
     $jsonLoad[data;$readFile[json/beachballs.json]]
         
