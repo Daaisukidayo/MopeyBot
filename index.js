@@ -170,7 +170,7 @@ client.functions.add({
       $title[⏰ Cooldown!]
       $description[Cooldown will end $get[relativeTimeLeft] $get[longDateTime]!]
       $color[$getGlobalVar[cooldownColor]]    
-      $deleteIn[$if[$or[$get[time]>10000;$get[time]==0]==true;10s;$get[time]]]
+      $deleteIn[$if[$or[$get[time]>30000;$get[time]==0];10s;$get[time]]]
     ]
   `
 });
