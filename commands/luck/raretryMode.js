@@ -17,7 +17,7 @@ module.exports = [{
                     $addButton[$arrayAt[modes;$env[i]]-$authorID;$toTitleCase[$arrayAt[modes;$env[i]]];Secondary;;true]
             ;
                     $addButton[$arrayAt[modes;$env[i]]-$authorID;$toTitleCase[$arrayAt[modes;$env[i]]];Success]
-            ];i;asc]
+            ];i;desc]
     
 `
 },{
