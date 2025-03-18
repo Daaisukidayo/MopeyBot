@@ -21,11 +21,12 @@ module.exports = ({
       
     $if[$getUserVar[dev]==false;
 
-      $onlyIf[$and[$get[currentDay]!=$get[lastDay];$get[currentHour]>=0]==true;
+      $onlyIf[$and[$get[currentDay]!=$get[lastDay];$get[currentHour]>=0];
+        $let[cd;$sum[$parseString[$get[remainingHours]h$get[remainingMinutes]m];$getTimestamp]]
         $callFunction[cooldownSchema;$commandName]
         $description[## You already claimed your daily reward! 
         ## Cooldown will reset at 00:00 AM (UTC+0) every day!
-        ## Time left: \`$get[remainingHours]H $get[remainingMinutes]M\`]
+        ## Time left: $discordTimestamp[$get[cd];RelativeTime] $discordTimestamp[$get[cd];LongDateTime]]
       ]
     ]
 

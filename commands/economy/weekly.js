@@ -15,9 +15,7 @@ module.exports = [{
     $let[currentWeek;$week]  
   
     $let[lastWeek;$getUserVar[lastWeeklyWeek;$authorID;-1]]
-    $let[remainingDays;$sub[7;$get[currentDay]]]
-    $let[remainingHours;$sub[24;$get[currentHour]]]
-    $let[remainingMinutes;$sub[60;$get[currentMinute]]]
+   
 
     $let[dayOfWeek;$switch[$day[Long];
       $case[Monday;1]
