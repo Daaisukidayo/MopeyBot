@@ -8,15 +8,18 @@ module.exports = [{
     $description[# Choose your raretry mode:]
     $color[228b22]
 
-    $addActionRow
-    $addButton[inferno-$authorID;Inferno;$if[$getUserVar[rtMode]==inferno;secondary\;\;true;success]]
-    $addButton[default-$authorID;Default;$if[$getUserVar[rtMode]==default;secondary\;\;true;success]]
-    $addButton[medium-$authorID;Medium;$if[$getUserVar[rtMode]==medium;secondary\;\;true;success]]
+    $arrayLoad[modes;, ;inferno, default, medium, hard, insane, impossible]
 
-    $addActionRow
-    $addButton[hard-$authorID;Hard;$if[$getUserVar[rtMode]==hard;secondary\;\;true;success]]
-    $addButton[insane-$authorID;Insane;$if[$getUserVar[rtMode]==insane;secondary\;\;true;success]]
-    $addButton[impossible-$authorID;Impossible;$if[$getUserVar[rtMode]==impossible;secondary\;\;true;success]]
+
+    $loop[$arrayLength[modes];
+            $if[$or[$env[i]==1;$env[i]==4];$addActionRow] 
+
+            $if[$getUserVar[rtMode]==$arrayAt[$env[i]];
+                    $addButton[$arrayAt[$env[i]]-$authorID;$toTitleCase[$arrayAt[$env[i]]];secondary;;true]
+            ;
+                    $addButton[$arrayAt[$env[i]]-$authorID;$toTitleCase[$arrayAt[$env[i]]];success]
+            ];i;asc]
+    
 `
 },{
   type: "interactionCreate",
