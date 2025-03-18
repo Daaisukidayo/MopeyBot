@@ -77,7 +77,8 @@ function coinsBalance() {
       $onlyIf[$getUserVar[onSlowmode]==false]
 
       $let[cdTime;5s]
-      $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]
+      $if[$getUserVar[dev]==false; $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]] ]
+
     ]
 
     $addActionRow

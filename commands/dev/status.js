@@ -3,15 +3,6 @@ module.exports = ({
   type: "messageCreate",
   code: `
     $onlyIf[$authorID==$botOwnerID]
-    CPU: $cpu
-    CPU architecture: $cpuArch
-    CPU Cores: $cpuCores
-    CPU Model: $cpuModel
-    CPU Speed: $cpuSpeed MHz
-    OS: $os
-    OS Uptime: $parseMS[$osUptime]
-    Bot Uptime: $parseMS[$uptime]
-    Ram: $ram MB
-    Total ram: $ramTotal GB
+    CPU: $cpu\nCPU architecture: $cpuArch\nCPU Cores: $cpuCores\nCPU Model: $cpuModel\nCPU Speed: $cpuSpeed MHz\nOS: $os\nOS Uptime: $parseMS[$osUptime]\nBot Uptime: $parseMS[$uptime]\nRam: $ram MB\nTotal ram: $ramTotal GB
   `
 })
