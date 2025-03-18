@@ -10,14 +10,15 @@ module.exports = [{
 
     $arrayLoad[modes;, ;inferno, default, medium, hard, insane, impossible]
 
+    $let[i;1]
 
     $loop[$arrayLength[modes];
-            $if[$or[$env[i]==1;$env[i]==4];$addActionRow] 
+            $if[$or[$get[i]==1;$get[i]==4];$addActionRow] 
 
-            $if[$getUserVar[rtMode]==$arrayAt[$env[i]];
-                    $addButton[$arrayAt[$env[i]]-$authorID;$toTitleCase[$arrayAt[$env[i]]];secondary;;true]
+            $if[$getUserVar[rtMode]==$arrayAt[modes;$get[i]];
+                    $addButton[$arrayAt[modes;$get[i]]-$authorID;$toTitleCase[$arrayAt[modes;$get[i]]];secondary;;true]
             ;
-                    $addButton[$arrayAt[$env[i]]-$authorID;$toTitleCase[$arrayAt[$env[i]]];success]
+                    $addButton[$arrayAt[modes;$get[i]]-$authorID;$toTitleCase[$arrayAt[modes;$get[i]]];success]
             ];i;asc]
     
 `
