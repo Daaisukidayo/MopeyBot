@@ -53,7 +53,7 @@ module.exports = [{
       $let[remainingHours;$sub[24;$get[currentHour]]]
       $let[remainingMinutes;$sub[60;$get[currentMinute]]]
 
-      $let[cd;$sum[$math[86400000 * $get[remainingDays]];$unparseDigital[$get[remainingHours]:$get[remainingMinutes]:00];$getTimestamp]]
+      $let[cd;$sum[$parseString[$get[remainingDays]d$get[remainingHours]h$get[remainingMinutes]m];$getTimestamp]]
   
       $sendMessage[$channelID;
         $callFunction[cooldownSchema;$commandName]
