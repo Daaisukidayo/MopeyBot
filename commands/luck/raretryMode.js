@@ -8,7 +8,7 @@ module.exports = [{
   allowedInteractionTypes: [ "button" ],
   code: `
     $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;  $ephemeral This button is not for you!  $deferUpdate]
+    $onlyIf[$splitText[1]==$authorID;  $ephemeral $interactionReply[This button is not for you!]  $deferUpdate]
     $onlyIf[$or[$splitText[0]==inferno;$splitText[0]==default;$splitText[0]==medium;$splitText[0]==hard;$splitText[0]==insane;$splitText[0]==impossible]]
 
     $setUserVar[rtMode;$splitText[0]]
