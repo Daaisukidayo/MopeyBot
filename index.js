@@ -107,6 +107,7 @@ ForgeDB.variables({
   prefix: ".",
   emoji: "🪙",
   acceptedRules: false,
+  rtMode: "default",
   MC: 0,
   MUID: -1,
   maxID: 0,

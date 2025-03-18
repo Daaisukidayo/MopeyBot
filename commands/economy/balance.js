@@ -40,19 +40,7 @@ module.exports = [{
 
     $!editMessage[$channelID;$messageID;
 
-        $addField[🛒 __Bought packs:__;$if[$get[and]==true;none;
-        \`\`\`$toTitleCase[
-        $if[$get[ssp]==true;Summer skinpack]
-        $if[$get[hsp]==true;Halloween skinpack]
-        $if[$get[gsp]==true;Golden skinpack]
-        $if[$get[lsp]==true;Locked skinpack]
-        $if[$get[sfsp]==true;Storefront skinpack]
-        $if[$get[ct]==true;Legacy skinpack]
-        $if[$get[lgt]==true;Gold trim Land skinpack]
-        $if[$get[lgt]==true;Gold trim Desert skinpack]
-        $if[$get[ogt]==true;Gold trim Ocean skinpack]
-        $if[$get[agt]==true;Gold trim Arctic skinpack]]\`\`\`]]
-
+        $addField[🛒 __Bought packs:__;$if[$get[and];none;\`\`\`$toTitleCase[$if[$get[ssp];Summer skinpack]\n$if[$get[hsp];Halloween skinpack]\n$if[$get[gsp];Golden skinpack]\n$if[$get[lsp];Locked skinpack]\n$if[$get[sfsp];Storefront skinpack]\n$if[$get[ct];Legacy skinpack]\n$if[$get[lgt];Gold trim Land skinpack]\n$if[$get[lgt];Gold trim Desert skinpack]\n$if[$get[ogt];Gold trim Ocean skinpack]\n$if[$get[agt];Gold trim Arctic skinpack]]\`\`\`]]
         $title[__BALANCE__]
         $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
         $thumbnail[$userAvatar[$authorID]]
@@ -86,19 +74,19 @@ function coinsBalance() {
     $addButton[packs-$authorID;Packs;Primary;🛒]
     
     $if[$isButton==false;
-      ${embed()}
+      ${sendMessage()}
     ;
-      $!editMessage[$channelID;$messageID;${onlyEmbed()}]
+      $!editMessage[$channelID;$messageID;${embed()}]
     ]
     $async[$wait[1m] $disableButtonsOf[$channelID;$get[msg]]]
   `
 }
 
-function embed() {
-    return `$let[msg;$sendMessage[$channelID;${onlyEmbed()};true]]`
+function sendMessage() {
+    return `$let[msg;$sendMessage[$channelID;${embed()};true]]`
 }
 
-function onlyEmbed() {
+function embed() {
   return `$addField[💰 __Coins:__;**\`$separateNumber[$getUserVar[MC];.]\`$getGlobalVar[emoji]**]
     $title[__BALANCE__]
     $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
