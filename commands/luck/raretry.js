@@ -152,7 +152,7 @@ module.exports = [{
     $let[t2;https://media.discordapp.net/attachments/701793335941136464/1286730609045143632/KeelBilledToucan.png]
     $let[t1;https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png]
 
-    $setInterval[
+    $loop[500;$wait[1s]
         
     $c[!        CHANCES AND COINS GENERATOR        ]
 
@@ -604,7 +604,7 @@ module.exports = [{
         $footer[$if[$get[p]>0;Rarity: 1/$get[f] • ]Raretry mode: $getUserVar[rtMode]]
     ]
     
-    ;1s]
+    ]
 
     $callFunction[logSchema;$commandName]
   `
