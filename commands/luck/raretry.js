@@ -364,27 +364,27 @@ module.exports = [{
     $let[1;$get[c$get[mode]1]]
 
 
-    $let[r10;1==$randomNumber[1;$sum[1;$get[10]]]]
-    $let[r9;1==$randomNumber[1;$sum[1;$get[9]]]]
-    $let[r8;1==$randomNumber[1;$sum[1;$get[8]]]]
-    $let[r7;1==$randomNumber[1;$sum[1;$get[7]]]]
-    $let[r6;1==$randomNumber[1;$sum[1;$get[6]]]]
-    $let[r5;1==$randomNumber[1;$sum[1;$get[5]]]]
-    $let[r4;1==$randomNumber[1;$sum[1;$get[4]]]]
-    $let[r3;1==$randomNumber[1;$sum[1;$get[3]]]]
-    $let[r2;1==$randomNumber[1;$sum[1;$get[2]]]]
-    $let[r1;1==$randomNumber[1;$sum[1;$get[1]]]]
+    $let[r10;$randomNumber[1;$sum[1;$get[10]]]]
+    $let[r9;$randomNumber[1;$sum[1;$get[9]]]]
+    $let[r8;$randomNumber[1;$sum[1;$get[8]]]]
+    $let[r7;$randomNumber[1;$sum[1;$get[7]]]]
+    $let[r6;$randomNumber[1;$sum[1;$get[6]]]]
+    $let[r5;$randomNumber[1;$sum[1;$get[5]]]]
+    $let[r4;$randomNumber[1;$sum[1;$get[4]]]]
+    $let[r3;$randomNumber[1;$sum[1;$get[3]]]]
+    $let[r2;$randomNumber[1;$sum[1;$get[2]]]]
+    $let[r1;$randomNumber[1;$sum[1;$get[1]]]]
 
-    $if[$get[r10];  $let[p;10];
-    $if[$get[r9];   $let[p;9];
-    $if[$get[r8];   $let[p;8];
-    $if[$get[r7];   $let[p;7];
-    $if[$get[r6];   $let[p;6];
-    $if[$get[r5];   $let[p;5];
-    $if[$get[r4];   $let[p;4];
-    $if[$get[r3];   $let[p;3];
-    $if[$get[r2];   $let[p;2];
-    $if[$get[r1];   $let[p;1];
+    $if[1==$get[r10];  $let[p;10];
+    $if[1==$get[r9];   $let[p;9];
+    $if[1==$get[r8];   $let[p;8];
+    $if[1==$get[r7];   $let[p;7];
+    $if[1==$get[r6];   $let[p;6];
+    $if[1==$get[r5];   $let[p;5];
+    $if[1==$get[r4];   $let[p;4];
+    $if[1==$get[r3];   $let[p;3];
+    $if[1==$get[r2];   $let[p;2];
+    $if[1==$get[r1];   $let[p;1];
                     $let[p;0]
     ]]]]]]]]]]
 
