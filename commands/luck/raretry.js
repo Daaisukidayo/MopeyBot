@@ -244,7 +244,7 @@ module.exports = [{
 
         
     $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10];
-            $get[p;$message[0]]
+            $let[p;$message[0]]
     ]
 
         
@@ -321,9 +321,11 @@ module.exports = [{
     $let[rrare6;$randomText[$get[rare39];$get[rare40];$get[rare41];$get[rare42];$get[rare43]]]
     $let[rrare5;$randomText[$get[rare54];$get[rare55];$get[rare30];$get[rare31];$get[rare32];$get[rare33];$get[rare34];$get[rare35];$get[rare36];$get[rare37];$get[rare38]]]
     $let[rrare4;$randomText[$get[rare20];$get[rare21];$get[rare22];$get[rare23];$get[rare24];$get[rare25];$get[rare26]]]
-    $let[rrare3;$randomText[$get[rare11];$get[rare12];$get[rare13];$get[rare14];$get[rare15];$get[rare16];$get[rare17];$get[rare18];$get[rare19]$if[$getget[lsp;$authorID];;$get[rare27];$get[rare28];$get[rare29]]]]
+    $let[rrare3;$randomText[$get[rare11];$get[rare12];$get[rare13];$get[rare14];$get[rare15];$get[rare16];$get[rare17];$get[rare18];$get[rare19]$if[$env[userPacks;lockedSP];\;$get[rare27]\;$get[rare28]\;$get[rare29]]]]
     $let[rrare2;$randomText[$get[rare4];$get[rare5];$get[rare6];$get[rare7];$get[rare8];$get[rare9];$get[rare10]]]
     $let[rrare1;$randomText[$get[rare1];$get[rare2];$get[rare3]]]
+
+    $jsonLoad[raresGroup;{10: [$get[rare51], $get[rare52], $get[rare53], \]}]
 
         
     $c[!      THUMBNAIL      ]
