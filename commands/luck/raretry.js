@@ -3,7 +3,6 @@ module.exports = [{
   aliases: ["rt"],
   type: "messageCreate",
   code: `
-    $stop
     $reply
   
     $onlyIf[$getGlobalVar[botEnabled];
