@@ -6,13 +6,15 @@ module.exports = [{
     $stop
     $reply
   
-    $onlyIf[$getGloballet[botEnabled]==true]
-    $onlyIf[$getUserlet[isBanned]==false]
-    $onlyIf[$getUserlet[acceptedRules]==true;$callFunction[rulesSchema;]]
-    $onlyIf[$getUserlet[onSlowmode]==false]
+    $onlyIf[$getGlobalVar[botEnabled];
+    $onlyIf[$getUserVar[isBanned]==false]
+    $onlyIf[$getUserVar[acceptedRules];$callFunction[rulesSchema;]]
+    $onlyIf[$getUserVar[onSlowmode]==false]
 
     $let[cdTime;10s]
-    $if[$getUserlet[dev]==false;  $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]  ]
+    $if[$getUserVar[dev]==false;  $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]  ]
+
+    $jsonLoad[userPacks;$getUserVar[userPacks]]
 
 
         
@@ -241,7 +243,7 @@ module.exports = [{
     ]]]]]]]]]]
 
         
-    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]]==true;$message[0]>=0;$message[0]<=10];
+    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10];
             $get[p;$message[0]]
     ]
 
@@ -319,7 +321,7 @@ module.exports = [{
     $let[rrare6;$randomText[$get[rare39];$get[rare40];$get[rare41];$get[rare42];$get[rare43]]]
     $let[rrare5;$randomText[$get[rare54];$get[rare55];$get[rare30];$get[rare31];$get[rare32];$get[rare33];$get[rare34];$get[rare35];$get[rare36];$get[rare37];$get[rare38]]]
     $let[rrare4;$randomText[$get[rare20];$get[rare21];$get[rare22];$get[rare23];$get[rare24];$get[rare25];$get[rare26]]]
-    $let[rrare3;$randomText[$get[rare11];$get[rare12];$get[rare13];$get[rare14];$get[rare15];$get[rare16];$get[rare17];$get[rare18];$get[rare19]$if[$getget[lsp;$authorID]==true];$get[rare27];$get[rare28];$get[rare29]$endif]]
+    $let[rrare3;$randomText[$get[rare11];$get[rare12];$get[rare13];$get[rare14];$get[rare15];$get[rare16];$get[rare17];$get[rare18];$get[rare19]$if[$getget[lsp;$authorID];;$get[rare27];$get[rare28];$get[rare29]]]]
     $let[rrare2;$randomText[$get[rare4];$get[rare5];$get[rare6];$get[rare7];$get[rare8];$get[rare9];$get[rare10]]]
     $let[rrare1;$randomText[$get[rare1];$get[rare2];$get[rare3]]]
 
@@ -511,6 +513,8 @@ module.exports = [{
         ]
     ]
 
+    $log[-$get[th]-]
+
 
     $let[thum;$get[t$get[th]]]
     $let[MC;$get[m$get[mode]$get[p]]]
@@ -518,7 +522,7 @@ module.exports = [{
     $let[desc;$get[desc$get[p]]]
     $let[clr;$get[clr$get[p]]]
 
-    $if[$and[$getUserVar[dev]!=false;$isNumber[$message[1]]==true;$message[1]>0];
+    $if[$and[$getUserVar[dev]!=false;$isNumber[$message[1]];$message[1]>0];
         $if[$get[rare$message[1]]==;
             $let[desc;undefined]
             $let[thum;]
@@ -543,53 +547,49 @@ module.exports = [{
 
     $c[TODO========================================================================]
 
-    $if[$and[$var[p]==7;$var[desc]==$var[rare44]]==true]
-    $if[$and[$getVar[ct;$authorID]==false;$getVar[gsp;$authorID]==false;$getVar[lsp;$authorID]==false;$getVar[sfsp;$authorID]==false]!=true]
+    $if[$and[$get[p]==7;$get[desc]==$get[rare44];$and[$env[userPacks;legacySP];$env[userPacks;goldenSP];$env[userPacks;lockedSP];$env[userPacks;storefrontSP]]];
+        
+        $addActionRow
+        $addStringSelectMenu[luckkdmenu-$authorID;Choose an upgrade:]
+        $addOption[King Dragon;;$getUserVar[rtMode]luckkd-$authorID;<:kingdragonseason2:1280238249360494825>]
+    
+        $if[$env[userPacks;legacySP];
+            $addOption[King Dragon;;$getUserVar[rtMode]luckoldkd-$authorID;<:king_dragon:715588377650528398>]
+        ]
+        
+        $if[$env[userPacks;goldenSP];
+            $addOption[Golden King; Dragon;$getUserVar[rtMode]luckgkd-$authID;;;<:golden_kd:73548382105056053>;]
+        ]
+    
+        $if[$env[userPacks;lockedSP];
+            $addOption[King Ripper;;$getUserVar[rtMode]luckkr-$authorID;<:king_ripper:735483931851227264>]
+            $addOption[King Stan;;$getUserVar[rtMode]luckkst-$authorID;<:king_stan:735484001275609118>]
+            $addOption[King Shah;;$getUserVar[rtMode]luckksh-$authorID;<:king_shah:735484059500806174>]
+            $addOption[Queen Celeste;;$getUserVar[rtMode]luckqc-$authorID;<:queen_celeste:735484190187061268>]
+            $addOption[Queen Scarlet;;$getUserVar[rtMode]luckqs-$authorID;<:queen_scarlet:735484138949312582>]
+        ]
+    
+        $if[$env[userPacks;storefrontSP];
+            $addOption[Queen Flame;;$getUserVar[rtMode]luckqf-$authorID;<:queen_flame:884030972629229568>]
+        ]
+    
+        $var[MC;0]
+        $var[thum;]
+        $var[msgdesc;## Choose an upgrade:
+        # <:kingdragonseason2:1280238249360494825> $if[$env[userPacks;legacySP];<:king_dragon:715588377650528398>] $if[$env[userPacks;goldenSP];<:golden_kd:735483821050560583>] $if[$env[userPacks;lockedSP];<:king_ripper:735483931851227264> <:king_stan:735484001275609118> <:king_shah:735484059500806174> <:queen_celeste:735484190187061268> <:queen_scarlet:735484138949312582>] $if[$env[userPacks;storefrontSP];<:queen_flame:884030972629229568>]]
+    ]
   
-      $newSelectMenu[luckkdmenu-$authorID;1;1;Choose an upgrade:;]
-      $addSelectMenuOption[luckkdmenu-$authorID;King Dragon;$getVar[gamemode;$authorID]luckkd-$authorID;;;<:kingdragonseason2:1280238249360494825>;]
-  
-      $if[$getVar[ct;$authorID]==true]
-        $addSelectMenuOption[luckkdmenu-$authorID;King Dragon;$getVar[gamemode;$authorID]luckoldkd-$authorID;;;<:king_dragon:715588377650528398>;]
-      $endif
-      
-      $if[$getVar[gsp;$authorID]==true]
-        $addSelectMenuOption[luckkdmenu-$authorID;Golden King Dragon;$getVar[gamemode;$authorID]luckgkd-$authorID;;;<:golden_kd:735483821050560583>;]
-      $endif
-  
-      $if[$getVar[lsp;$authorID]==true]
-        $addSelectMenuOption[luckkdmenu-$authorID;King Ripper;$getVar[gamemode;$authorID]luckkr-$authorID;;;<:king_ripper:735483931851227264>;]
-        $addSelectMenuOption[luckkdmenu-$authorID;King Stan;$getVar[gamemode;$authorID]luckkst-$authorID;;;<:king_stan:735484001275609118>;]
-        $addSelectMenuOption[luckkdmenu-$authorID;King Shah;$getVar[gamemode;$authorID]luckksh-$authorID;;;<:king_shah:735484059500806174>;]
-        $addSelectMenuOption[luckkdmenu-$authorID;Queen Celeste;$getVar[gamemode;$authorID]luckqc-$authorID;;;<:queen_celeste:735484190187061268>;]
-        $addSelectMenuOption[luckkdmenu-$authorID;Queen Scarlet;$getVar[gamemode;$authorID]luckqs-$authorID;;;<:queen_scarlet:735484138949312582>;]
-      $endif
-  
-      $if[$getVar[sfsp;$authorID]==true]
-        $addSelectMenuOption[luckkdmenu-$authorID;Queen Flame;$getVar[gamemode;$authorID]luckqf-$authorID;;;<:queen_flame:884030972629229568>;]
-      $endif
-  
-      $var[MC;0]
-      $var[thum;]
-      $var[msgdesc;## Choose an upgrade:
-      # <:kingdragonseason2:1280238249360494825> $if[$getVar[ct;$authorID]==true]<:king_dragon:715588377650528398>$endif $if[$getVar[gsp;$authorID]==true]<:golden_kd:735483821050560583>$endif $if[$getVar[lsp;$authorID]==true]<:king_ripper:735483931851227264> <:king_stan:735484001275609118> <:king_shah:735484059500806174> <:queen_celeste:735484190187061268> <:queen_scarlet:735484138949312582>$endif $if[$getVar[sfsp;$authorID]==true]<:queen_flame:884030972629229568>$endif]
-    $endif
-  $endif
-  
-  $setVar[MC;$sum[$getVar[MC;$authorID];$var[MC]];$authorID]
-  
-  $color[$var[clr]]
-  $description[$var[msgdesc]]
-  $thumbnail[$var[thum]]
-  $author[$nickname • MUID: $getVar[uid;$authorID]]$authorIcon[$authorAvatar]
-  $footer[$if[$var[p]>0]Rarity: 1/$var[f] • $endifRaretry mode: $getVar[gamemode;$authorID]]
-  
+    $callFunction[sumMC;$get[MC]]  
 
+    $sendMessage[$channelID;
+        $color[$var[clr]]
+        $description[$var[msgdesc]]
+        $thumbnail[$var[thum]]
+        $author[$nickname • MUID: $getUserVar[MUID];$userAvatar]
+        $footer[$if[$var[p]>0;Rarity: 1/$var[f] • ]Raretry mode: $getUserVar[rtMode]]
+    ]
 
-
-
-
-
+    $callFunction[logSchema;$commandName]
   `
 }]
 
