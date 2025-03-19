@@ -327,7 +327,7 @@ module.exports = [{
     ;
         $let[rrare3;$randomText[$get[rare11];$get[rare12];$get[rare13];$get[rare14];$get[rare15];$get[rare16];$get[rare17];$get[rare18];$get[rare19]]]
     ]
-        
+
     $let[rrare2;$randomText[$get[rare4];$get[rare5];$get[rare6];$get[rare7];$get[rare8];$get[rare9];$get[rare10]]]
     $let[rrare1;$randomText[$get[rare1];$get[rare2];$get[rare3]]]
 
@@ -566,7 +566,7 @@ module.exports = [{
         ]
         
         $if[$env[userPacks;goldenSP];
-            $addOption[Golden King; Dragon;$getUserVar[rtMode]luckgkd-$authID;;;<:golden_kd:73548382105056053>;]
+            $addOption[Golden King Dragon;;$getUserVar[rtMode]luckgkd-$authID;<:golden_kd:73548382105056053>;]
         ]
     
         $if[$env[userPacks;lockedSP];
