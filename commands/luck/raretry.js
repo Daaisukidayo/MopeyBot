@@ -205,7 +205,7 @@ module.exports = [{
 
     
     
-    $let[mode;$switch[$getUserget[rtMode];$case[inferno;0]$case[default;1]$case[medium;2] $case[hard;3]$case[insane;4]$case[impossible;5]]]
+    $let[mode;$switch[$getUserVar[rtMode];$case[inferno;0]$case[default;1]$case[medium;2] $case[hard;3]$case[insane;4]$case[impossible;5]]]
 
     $let[10;$get[c$get[md]10]]
     $let[9;$get[c$get[md]9]]
