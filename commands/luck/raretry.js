@@ -224,6 +224,8 @@ module.exports = [{
     $let[2;$get[c$get[mode]2]]
     $let[1;$get[c$get[mode]1]]
 
+    $setInterval[
+
     $let[r10;1==$randomNumber[1;$sum[1;$get[10]]]]
     $let[r9;1==$randomNumber[1;$sum[1;$get[9]]]]
     $let[r8;1==$randomNumber[1;$sum[1;$get[8]]]]
@@ -597,6 +599,8 @@ module.exports = [{
         $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
         $footer[$if[$get[p]>0;Rarity: 1/$get[f] • ]Raretry mode: $getUserVar[rtMode]]
     ]
+    
+    ];1s]
 
     $callFunction[logSchema;$commandName]
   `
