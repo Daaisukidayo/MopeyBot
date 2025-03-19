@@ -580,20 +580,19 @@ module.exports = [{
             $addOption[Queen Flame;;$getUserVar[rtMode]luckqf-$authorID;<:queen_flame:884030972629229568>]
         ]
     
-        $var[MC;0]
-        $var[thum;]
-        $var[msgdesc;## Choose an upgrade:
-        # <:kingdragonseason2:1280238249360494825> $if[$env[userPacks;legacySP];<:king_dragon:715588377650528398>] $if[$env[userPacks;goldenSP];<:golden_kd:735483821050560583>] $if[$env[userPacks;lockedSP];<:king_ripper:735483931851227264> <:king_stan:735484001275609118> <:king_shah:735484059500806174> <:queen_celeste:735484190187061268> <:queen_scarlet:735484138949312582>] $if[$env[userPacks;storefrontSP];<:queen_flame:884030972629229568>]]
+        $let[MC;0]
+        $let[thum;]
+        $let[msgdesc;## Choose an upgrade:\n# <:kingdragonseason2:1280238249360494825> $if[$env[userPacks;legacySP];<:king_dragon:715588377650528398>] $if[$env[userPacks;goldenSP];<:golden_kd:735483821050560583>] $if[$env[userPacks;lockedSP];<:king_ripper:735483931851227264> <:king_stan:735484001275609118> <:king_shah:735484059500806174> <:queen_celeste:735484190187061268> <:queen_scarlet:735484138949312582>] $if[$env[userPacks;storefrontSP];<:queen_flame:884030972629229568>]]
     ]
   
     $callFunction[sumMC;$get[MC]]  
 
     $sendMessage[$channelID;
-        $color[$var[clr]]
-        $description[$var[msgdesc]]
-        $thumbnail[$var[thum]]
+        $color[$get[clr]]
+        $description[$get[msgdesc]]
+        $thumbnail[$get[thum]]
         $author[$nickname • MUID: $getUserVar[MUID];$userAvatar]
-        $footer[$if[$var[p]>0;Rarity: 1/$var[f] • ]Raretry mode: $getUserVar[rtMode]]
+        $footer[$if[$get[p]>0;Rarity: 1/$get[f] • ]Raretry mode: $getUserVar[rtMode]]
     ]
 
     $callFunction[logSchema;$commandName]
