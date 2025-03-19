@@ -210,7 +210,7 @@ module.exports = [{
         $case[medium;$let[mode;2]]
         $case[hard;$let[mode;3]]
         $case[insane;$let[mode;4]]
-        $case[impossible;$let[mode;5]]]
+        $case[impossible;$let[mode;5]]
     ]
 
     $let[10;$get[c$get[mode]10]]
@@ -438,26 +438,26 @@ module.exports = [{
         $case[10;$switch[$get[rrare10];
             $case[$get[rare53];$let[th;53]]
             $case[$get[rare52];$let[th;52]]
-            $case[$get[rare51];$let[th;51]]]]
+            $case[$get[rare51];$let[th;51]]]
         ]
 
         $case[9;$switch[$get[rrare9];
             $case[$get[rare50];$let[th;50]]
             $case[$get[rare49];$let[th;49]]
-            $case[$get[rare48];$let[th;48]]]]
+            $case[$get[rare48];$let[th;48]]]
         ]
 
         $case[8;$switch[$get[rrare8];
             $case[$get[rare47];$let[th;47]]
             $case[$get[rare46];$let[th;46]]
-            $case[$get[rare45];$let[th;45]]]]
+            $case[$get[rare45];$let[th;45]]]
         ]
 
         $case[7;$switch[$get[rrare7];
             $case[$get[rare29];$let[th;29]]
             $case[$get[rare28];$let[th;28]]
             $case[$get[rare27];$let[th;27]]
-            $case[$get[rare44];$let[th;44]]]]
+            $case[$get[rare44];$let[th;44]]]
         ]
 
         $case[6;$switch[$get[rrare6];
@@ -465,7 +465,7 @@ module.exports = [{
             $case[$get[rare42];$let[th;42]]
             $case[$get[rare41];$let[th;41]]
             $case[$get[rare40];$let[th;40]]
-            $case[$get[rare39];$let[th;39]]]]
+            $case[$get[rare39];$let[th;39]]]
         ]
 
         $case[5;$switch[$get[rrare5];
@@ -479,7 +479,7 @@ module.exports = [{
             $case[$get[rare33];$let[th;33]]
             $case[$get[rare32];$let[th;32]]
             $case[$get[rare31];$let[th;31]]
-            $case[$get[rare30];$let[th;30]]]]
+            $case[$get[rare30];$let[th;30]]]
         ]
 
         $case[4;$switch[$get[rrare4];
@@ -489,7 +489,7 @@ module.exports = [{
             $case[$get[rare23];$let[th;23]]
             $case[$get[rare22];$let[th;22]]
             $case[$get[rare21];$let[th;21]]
-            $case[$get[rare20];$let[th;20]]]]
+            $case[$get[rare20];$let[th;20]]]
         ]
 
         $case[3;$switch[$get[rrare3];
@@ -504,7 +504,7 @@ module.exports = [{
             $case[$get[rare14];$let[th;14]]
             $case[$get[rare13];$let[th;13]]
             $case[$get[rare12];$let[th;12]]
-            $case[$get[rare11];$let[th;11]]]]
+            $case[$get[rare11];$let[th;11]]]
         ]
 
         $case[2;$switch[$get[rrare2];
@@ -514,20 +514,17 @@ module.exports = [{
             $case[$get[rare7];$let[th;7]]
             $case[$get[rare6];$let[th;6]]
             $case[$get[rare5];$let[th;5]]
-            $case[$get[rare4];$let[th;4]]]]
+            $case[$get[rare4];$let[th;4]]]
         ]
 
         $case[1;$switch[$get[rrare1];
             $case[$get[rare3];$let[th;3]]
             $case[$get[rare2];$let[th;2]]
-            $case[$get[rare1];$let[th;1]]]]
+            $case[$get[rare1];$let[th;1]]]
         ]
+
+        $case[0;$let[th;]]
     ]
-
-    $log[-$get[th]-]
-    $let[th;$replace[$get[th]; ;]]
-    $log[-$get[th]-]
-
 
     $let[thum;$get[t$get[th]]]
     $let[MC;$get[m$get[mode]$get[p]]]
