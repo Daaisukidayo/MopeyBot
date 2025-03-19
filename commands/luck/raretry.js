@@ -16,6 +16,143 @@ module.exports = [{
     $jsonLoad[userPacks;$getUserVar[userPacks]]
 
 
+    
+    $c[!      RARE ANIMALS TEXT      ]
+
+
+    $let[rare1;Choco Toucan <:ChocoToucanS2:1284567662353059971>]
+    $let[rare2;Keel Billed Toucan <:KeelBilledToucanS2:1284567675212664964>]
+    $let[rare3;Markhor <:MarkhorS2:1284568638170595459>]
+
+    $let[rare4;Blue Macaw <:BlueMacawS2:1284540918648541287>]
+    $let[rare5;Yellow Pufferfish <:YellowPufferfishS2:1284567779156168846>]
+    $let[rare6;Lioness <:LionessS2:1284568161206800505>]
+    $let[rare7;Doe <:DoeS2:1284520854276804680>]
+    $let[rare8;Jaguar <:JaguarS2:1284567739440300052>]
+    $let[rare9;Leopard <:LeopardS2:1284567751641530579>]
+    $let[rare10;Fiery Toucan <:FieryToucanS2:1284567688781238323>]
+
+    $let[rare11;Black Panther <:BlackPantherS2:1284567767764177028>]
+    $let[rare12;Lion Cub <:LionCubS2:1284568208082341929>]
+    $let[rare13;Black Maned Lion <:BlackManedLionS2:1284568114562076903>]
+    $let[rare14;White Dove <:WhiteDoveS2:1291258772492255263>]
+    $let[rare15;Pinky Pig <:PinkyPigS2:1284520701541351454>]
+    $let[rare16;Marsh Deer <:MarshDeerS2:1284520894894702788>]
+    $let[rare17;Momaffie <:MomaffieS2:1284567606422147202>]
+    $let[rare18;Momaffie Family <:MomaffieFamilyS2:1284567618627571896>]
+    $let[rare19;Golden Pheasant <:GoldenPheasantS2:1285692782765408360>]
+    $let[rare20;White Tiger <:WhiteTigerS2:1284568061474508810>]
+
+    $let[rare21;White Lion <:WhiteLionS2:1284568130668199966>]
+    $let[rare22;White Lioness <:WhiteLionessS2:1284568171931766927>]
+    $let[rare23;White Lion Cub <:WhiteLionCubS2:1284568220644409386>]
+    $let[rare24;Big Goat <:BigGoatS2:1284568654092173404>]
+    $let[rare25;Jackass <:JackassS2:1284567568299851918>]
+    $let[rare26;Girabie <:GirabieS2:1284567631956807701>]
+    $let[rare27;The Bigfoot <:TheBigfootS2:1285617256562425967>]
+    $let[rare28;The Snowman <:TheSnowmanS2:1284570594075218014>]
+    $let[rare29;The Snowgirl <:TheSnowgirlS1:1284570612018315346>]
+    $let[rare30;Stinky Pig <:StinkyPigS2:1284520753793863831>]
+
+    $let[rare31;Musk Deer <:MuskDeerS2:1284540790583984139>]
+    $let[rare32;Black Lion <:BlackLionS2:1284568143435661374>]
+    $let[rare33;Black Lioness <:BlackLionessS2:1284568191569235999>]
+    $let[rare34;Black Lion Cub <:BlackLionCubS2:1284568232950366290>]
+    $let[rare35;White Rhino <:WhiteRhinoS2:1284568524806684724>]
+    $let[rare36;Golden Eagle <:GoldenEagleS2:1284568352404279326>]
+    $let[rare37;Predator Falcon <:PredatorFalconS2:1284568255599476786>]
+    $let[rare38;Aqua Yeti <:AquaYetiS2:1284570581093711914>]
+    $let[rare39;Lava Toucan <:LavaToucanS2:1284567706171080725>]
+    $let[rare40;Demon Pufferfish <:DemonPufferfishS2:1284567803596116047>]
+
+    $let[rare41;Black Rhino <:BlackRhinoS2:1284568536362127493>]
+    $let[rare42;White Giraffe <:WhiteGiraffeS2:1284570509589352478>]
+    $let[rare43;Giraffe Family <:GiraffeFamilyS2:1284570523786936450>]
+    $let[rare44;King Dragon <:KingDragonS2:1280238249360494825>]
+    $let[rare45;Pakistan Macaw <:PakistanMacawS2:1284540970876145704>]
+    $let[rare46;Pakistan Toucan <:PakistanToucanS2:1284567718351077386>]
+    $let[rare47;Pakistan Vulture <:PakistanVultureS2:1284568287971377233>]
+    $let[rare48;Shaheen Falcon <:ShaheenFalconS2:1284568268493033533>]
+    $let[rare49;Harpy Eagle <:ShahbazS2:1284568371043635352>]
+    $let[rare50;Greater Spotted Eagle <:GoldenShahbazS2:1284568382850727997>]
+
+    $let[rare51;USSR Macaw <:USSRMacawS2:1288058610655690804>]
+    $let[rare52;USSR Toucan <:USSRToucanS2:1288058651075940382>]
+    $let[rare53;USSR Vulture <:USSRVultureS2:1288058686241243157>]
+
+    $let[rare54;Black Bear <:BlackBearS2:1288058731363569684>]
+    $let[rare55;Black Tiger <:BlackTigerS2:1288058719082643526>]
+
+    
+    $c[!      THUMBNAIL      ]
+
+    $let[t55;https://media.discordapp.net/attachments/701793335941136464/1288064073644376095/BlackTiger.png]
+    $let[t54;https://media.discordapp.net/attachments/701793335941136464/1288064073321287711/BlackBear.png]
+
+    $let[t53;https://media.discordapp.net/attachments/701793335941136464/1288064074789421077/USSR_Vulture-S2.png]
+    $let[t52;https://media.discordapp.net/attachments/701793335941136464/1288064074365534208/USSR_Toucan-S2.png]
+    $let[t51;https://media.discordapp.net/attachments/701793335941136464/1288064073983987787/USSR_Macaw-S2.png]
+
+    $let[t50;https://media.discordapp.net/attachments/701793335941136464/1286734456077680826/GoldenShahbaz.png]
+    $let[t49;https://media.discordapp.net/attachments/701793335941136464/1286734456690049024/Shahbaz.png]
+    $let[t48;https://media.discordapp.net/attachments/701793335941136464/1286734151457968222/ShaheenFalcon.png]
+
+    $let[t47;https://media.discordapp.net/attachments/701793335941136464/1286734150849663066/PakistanVulture.png]
+    $let[t46;https://media.discordapp.net/attachments/701793335941136464/1286730610446041212/PakistanToucan.png]
+    $let[t45;https://media.discordapp.net/attachments/701793335941136464/1286733633834713222/PakistanMacaw.png]
+
+    $let[t44;https://media.discordapp.net/attachments/701793335941136464/1286734722700935188/kds2.png]
+
+    $let[t43;https://media.discordapp.net/attachments/701793335941136464/1286734721174343740/Giraffe_family.png]
+    $let[t42;https://media.discordapp.net/attachments/701793335941136464/1286734721425866884/WhiteGiraffe.png]
+    $let[t41;https://media.discordapp.net/attachments/701793335941136464/1286734455423242424/BlackRhino.png]
+    $let[t40;https://media.discordapp.net/attachments/701793335941136464/1286730608113881140/DemonPufferfish.png]
+    $let[t39;https://media.discordapp.net/attachments/701793335941136464/1286730609326297214/LavaToucan.png]
+
+    $let[t38;https://media.discordapp.net/attachments/701793335941136464/1286734721690112000/AquaYeti.png]
+    $let[t37;https://media.discordapp.net/attachments/701793335941136464/1286734151109705748/PredatorFalcon.png]
+    $let[t36;https://media.discordapp.net/attachments/701793335941136464/1286734455754457088/GoldenEagle.png]
+    $let[t35;https://media.discordapp.net/attachments/701793335941136464/1286734456954294352/WhiteRhino.png]
+    $let[t34;https://media.discordapp.net/attachments/701793335941136464/1286734150342148148/BlackLionCub.png]
+    $let[t33;https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png]
+    $let[t32;https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png]
+    $let[t31;https://media.discordapp.net/attachments/701793335941136464/1286733627601977477/MuskDeer-S2.png]
+    $let[t30;https://media.discordapp.net/attachments/701793335941136464/1286733625928454275/StinkyPig-S2.png]
+
+    $let[t29;https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png]
+    $let[t28;https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png]
+    $let[t27;https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png]
+    $let[t26;https://media.discordapp.net/attachments/701793335941136464/1286734058289762485/Girabie.png]
+    $let[t25;https://media.discordapp.net/attachments/701793335941136464/1286733633268355225/Jackass.png]
+    $let[t24;https://media.discordapp.net/attachments/701793335941136464/1286734455092023296/BigGoat.png]
+    $let[t23;https://media.discordapp.net/attachments/701793335941136464/1286734061607452752/WhiteLionCub.png]
+
+    $let[t22;https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png]
+    $let[t21;https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png]
+    $let[t20;https://media.discordapp.net/attachments/701793335941136464/1286734059422093375/WhiteTiger.png]
+    $let[t19;https://media.discordapp.net/attachments/701793335941136464/1286733626628767816/GoldenPheasant.png]
+    $let[t18;https://media.discordapp.net/attachments/701793335941136464/1286734059053256737/Momaffie_family.png]
+    $let[t17;https://media.discordapp.net/attachments/701793335941136464/1286734058642210939/Momaffie.png]
+    $let[t16;https://media.discordapp.net/attachments/701793335941136464/1286733626905464942/MarshDeer-S2.png]
+    $let[t15;https://media.discordapp.net/attachments/701793335941136464/1286733625592905891/pinkypig-S2.png]
+    $let[t14;https://media.discordapp.net/attachments/701793335941136464/1286733625265623082/white_dove.png]
+    $let[t13;https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png]
+    $let[t12;https://media.discordapp.net/attachments/701793335941136464/1286734060387041394/LionCub.png]
+    $let[t11;https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png]
+
+    $let[t10;https://media.discordapp.net/attachments/701793335941136464/1286730608390701066/FieryToucan.png]
+    $let[t9;https://media.discordapp.net/attachments/701793335941136464/1286730609888067654/Leopard.png]
+    $let[t8;https://media.discordapp.net/attachments/701793335941136464/1286730608680370289/Jaguar.png]
+    $let[t7;https://media.discordapp.net/attachments/701793335941136464/1286733626133708861/Doe-S2.png]
+    $let[t6;https://media.discordapp.net/attachments/701793335941136464/1286734060651286589/Lioness.png]
+    $let[t5;https://media.discordapp.net/attachments/701793335941136464/1286730611494621268/YellowPufferfish.png]
+    $let[t4;https://media.discordapp.net/attachments/701793335941136464/1286733627836600431/BlueMacaw.png]
+
+    $let[t3;https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png]
+    $let[t2;https://media.discordapp.net/attachments/701793335941136464/1286730609045143632/KeelBilledToucan.png]
+    $let[t1;https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png]
+
+    $setInterval[
         
     $c[!        CHANCES AND COINS GENERATOR        ]
 
@@ -203,142 +340,6 @@ module.exports = [{
     $let[m50;0]
 
     
-    $c[!      RARE ANIMALS TEXT      ]
-
-
-    $let[rare1;Choco Toucan <:ChocoToucanS2:1284567662353059971>]
-    $let[rare2;Keel Billed Toucan <:KeelBilledToucanS2:1284567675212664964>]
-    $let[rare3;Markhor <:MarkhorS2:1284568638170595459>]
-
-    $let[rare4;Blue Macaw <:BlueMacawS2:1284540918648541287>]
-    $let[rare5;Yellow Pufferfish <:YellowPufferfishS2:1284567779156168846>]
-    $let[rare6;Lioness <:LionessS2:1284568161206800505>]
-    $let[rare7;Doe <:DoeS2:1284520854276804680>]
-    $let[rare8;Jaguar <:JaguarS2:1284567739440300052>]
-    $let[rare9;Leopard <:LeopardS2:1284567751641530579>]
-    $let[rare10;Fiery Toucan <:FieryToucanS2:1284567688781238323>]
-
-    $let[rare11;Black Panther <:BlackPantherS2:1284567767764177028>]
-    $let[rare12;Lion Cub <:LionCubS2:1284568208082341929>]
-    $let[rare13;Black Maned Lion <:BlackManedLionS2:1284568114562076903>]
-    $let[rare14;White Dove <:WhiteDoveS2:1291258772492255263>]
-    $let[rare15;Pinky Pig <:PinkyPigS2:1284520701541351454>]
-    $let[rare16;Marsh Deer <:MarshDeerS2:1284520894894702788>]
-    $let[rare17;Momaffie <:MomaffieS2:1284567606422147202>]
-    $let[rare18;Momaffie Family <:MomaffieFamilyS2:1284567618627571896>]
-    $let[rare19;Golden Pheasant <:GoldenPheasantS2:1285692782765408360>]
-    $let[rare20;White Tiger <:WhiteTigerS2:1284568061474508810>]
-
-    $let[rare21;White Lion <:WhiteLionS2:1284568130668199966>]
-    $let[rare22;White Lioness <:WhiteLionessS2:1284568171931766927>]
-    $let[rare23;White Lion Cub <:WhiteLionCubS2:1284568220644409386>]
-    $let[rare24;Big Goat <:BigGoatS2:1284568654092173404>]
-    $let[rare25;Jackass <:JackassS2:1284567568299851918>]
-    $let[rare26;Girabie <:GirabieS2:1284567631956807701>]
-    $let[rare27;The Bigfoot <:TheBigfootS2:1285617256562425967>]
-    $let[rare28;The Snowman <:TheSnowmanS2:1284570594075218014>]
-    $let[rare29;The Snowgirl <:TheSnowgirlS1:1284570612018315346>]
-    $let[rare30;Stinky Pig <:StinkyPigS2:1284520753793863831>]
-
-    $let[rare31;Musk Deer <:MuskDeerS2:1284540790583984139>]
-    $let[rare32;Black Lion <:BlackLionS2:1284568143435661374>]
-    $let[rare33;Black Lioness <:BlackLionessS2:1284568191569235999>]
-    $let[rare34;Black Lion Cub <:BlackLionCubS2:1284568232950366290>]
-    $let[rare35;White Rhino <:WhiteRhinoS2:1284568524806684724>]
-    $let[rare36;Golden Eagle <:GoldenEagleS2:1284568352404279326>]
-    $let[rare37;Predator Falcon <:PredatorFalconS2:1284568255599476786>]
-    $let[rare38;Aqua Yeti <:AquaYetiS2:1284570581093711914>]
-    $let[rare39;Lava Toucan <:LavaToucanS2:1284567706171080725>]
-    $let[rare40;Demon Pufferfish <:DemonPufferfishS2:1284567803596116047>]
-
-    $let[rare41;Black Rhino <:BlackRhinoS2:1284568536362127493>]
-    $let[rare42;White Giraffe <:WhiteGiraffeS2:1284570509589352478>]
-    $let[rare43;Giraffe Family <:GiraffeFamilyS2:1284570523786936450>]
-    $let[rare44;King Dragon <:KingDragonS2:1280238249360494825>]
-    $let[rare45;Pakistan Macaw <:PakistanMacawS2:1284540970876145704>]
-    $let[rare46;Pakistan Toucan <:PakistanToucanS2:1284567718351077386>]
-    $let[rare47;Pakistan Vulture <:PakistanVultureS2:1284568287971377233>]
-    $let[rare48;Shaheen Falcon <:ShaheenFalconS2:1284568268493033533>]
-    $let[rare49;Harpy Eagle <:ShahbazS2:1284568371043635352>]
-    $let[rare50;Greater Spotted Eagle <:GoldenShahbazS2:1284568382850727997>]
-
-    $let[rare51;USSR Macaw <:USSRMacawS2:1288058610655690804>]
-    $let[rare52;USSR Toucan <:USSRToucanS2:1288058651075940382>]
-    $let[rare53;USSR Vulture <:USSRVultureS2:1288058686241243157>]
-
-    $let[rare54;Black Bear <:BlackBearS2:1288058731363569684>]
-    $let[rare55;Black Tiger <:BlackTigerS2:1288058719082643526>]
-
-    
-    $c[!      THUMBNAIL      ]
-
-    $let[t55;https://media.discordapp.net/attachments/701793335941136464/1288064073644376095/BlackTiger.png]
-    $let[t54;https://media.discordapp.net/attachments/701793335941136464/1288064073321287711/BlackBear.png]
-
-    $let[t53;https://media.discordapp.net/attachments/701793335941136464/1288064074789421077/USSR_Vulture-S2.png]
-    $let[t52;https://media.discordapp.net/attachments/701793335941136464/1288064074365534208/USSR_Toucan-S2.png]
-    $let[t51;https://media.discordapp.net/attachments/701793335941136464/1288064073983987787/USSR_Macaw-S2.png]
-
-    $let[t50;https://media.discordapp.net/attachments/701793335941136464/1286734456077680826/GoldenShahbaz.png]
-    $let[t49;https://media.discordapp.net/attachments/701793335941136464/1286734456690049024/Shahbaz.png]
-    $let[t48;https://media.discordapp.net/attachments/701793335941136464/1286734151457968222/ShaheenFalcon.png]
-
-    $let[t47;https://media.discordapp.net/attachments/701793335941136464/1286734150849663066/PakistanVulture.png]
-    $let[t46;https://media.discordapp.net/attachments/701793335941136464/1286730610446041212/PakistanToucan.png]
-    $let[t45;https://media.discordapp.net/attachments/701793335941136464/1286733633834713222/PakistanMacaw.png]
-
-    $let[t44;https://media.discordapp.net/attachments/701793335941136464/1286734722700935188/kds2.png]
-
-    $let[t43;https://media.discordapp.net/attachments/701793335941136464/1286734721174343740/Giraffe_family.png]
-    $let[t42;https://media.discordapp.net/attachments/701793335941136464/1286734721425866884/WhiteGiraffe.png]
-    $let[t41;https://media.discordapp.net/attachments/701793335941136464/1286734455423242424/BlackRhino.png]
-    $let[t40;https://media.discordapp.net/attachments/701793335941136464/1286730608113881140/DemonPufferfish.png]
-    $let[t39;https://media.discordapp.net/attachments/701793335941136464/1286730609326297214/LavaToucan.png]
-
-    $let[t38;https://media.discordapp.net/attachments/701793335941136464/1286734721690112000/AquaYeti.png]
-    $let[t37;https://media.discordapp.net/attachments/701793335941136464/1286734151109705748/PredatorFalcon.png]
-    $let[t36;https://media.discordapp.net/attachments/701793335941136464/1286734455754457088/GoldenEagle.png]
-    $let[t35;https://media.discordapp.net/attachments/701793335941136464/1286734456954294352/WhiteRhino.png]
-    $let[t34;https://media.discordapp.net/attachments/701793335941136464/1286734150342148148/BlackLionCub.png]
-    $let[t33;https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png]
-    $let[t32;https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png]
-    $let[t31;https://media.discordapp.net/attachments/701793335941136464/1286733627601977477/MuskDeer-S2.png]
-    $let[t30;https://media.discordapp.net/attachments/701793335941136464/1286733625928454275/StinkyPig-S2.png]
-
-    $let[t29;https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png]
-    $let[t28;https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png]
-    $let[t27;https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png]
-    $let[t26;https://media.discordapp.net/attachments/701793335941136464/1286734058289762485/Girabie.png]
-    $let[t25;https://media.discordapp.net/attachments/701793335941136464/1286733633268355225/Jackass.png]
-    $let[t24;https://media.discordapp.net/attachments/701793335941136464/1286734455092023296/BigGoat.png]
-    $let[t23;https://media.discordapp.net/attachments/701793335941136464/1286734061607452752/WhiteLionCub.png]
-
-    $let[t22;https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png]
-    $let[t21;https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png]
-    $let[t20;https://media.discordapp.net/attachments/701793335941136464/1286734059422093375/WhiteTiger.png]
-    $let[t19;https://media.discordapp.net/attachments/701793335941136464/1286733626628767816/GoldenPheasant.png]
-    $let[t18;https://media.discordapp.net/attachments/701793335941136464/1286734059053256737/Momaffie_family.png]
-    $let[t17;https://media.discordapp.net/attachments/701793335941136464/1286734058642210939/Momaffie.png]
-    $let[t16;https://media.discordapp.net/attachments/701793335941136464/1286733626905464942/MarshDeer-S2.png]
-    $let[t15;https://media.discordapp.net/attachments/701793335941136464/1286733625592905891/pinkypig-S2.png]
-    $let[t14;https://media.discordapp.net/attachments/701793335941136464/1286733625265623082/white_dove.png]
-    $let[t13;https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png]
-    $let[t12;https://media.discordapp.net/attachments/701793335941136464/1286734060387041394/LionCub.png]
-    $let[t11;https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png]
-
-    $let[t10;https://media.discordapp.net/attachments/701793335941136464/1286730608390701066/FieryToucan.png]
-    $let[t9;https://media.discordapp.net/attachments/701793335941136464/1286730609888067654/Leopard.png]
-    $let[t8;https://media.discordapp.net/attachments/701793335941136464/1286730608680370289/Jaguar.png]
-    $let[t7;https://media.discordapp.net/attachments/701793335941136464/1286733626133708861/Doe-S2.png]
-    $let[t6;https://media.discordapp.net/attachments/701793335941136464/1286734060651286589/Lioness.png]
-    $let[t5;https://media.discordapp.net/attachments/701793335941136464/1286730611494621268/YellowPufferfish.png]
-    $let[t4;https://media.discordapp.net/attachments/701793335941136464/1286733627836600431/BlueMacaw.png]
-
-    $let[t3;https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png]
-    $let[t2;https://media.discordapp.net/attachments/701793335941136464/1286730609045143632/KeelBilledToucan.png]
-    $let[t1;https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png]
-
-
 
     
     
@@ -362,7 +363,6 @@ module.exports = [{
     $let[2;$get[c$get[mode]2]]
     $let[1;$get[c$get[mode]1]]
 
-    $setInterval[
 
     $let[r10;1==$randomNumber[1;$sum[1;$get[10]]]]
     $let[r9;1==$randomNumber[1;$sum[1;$get[9]]]]
