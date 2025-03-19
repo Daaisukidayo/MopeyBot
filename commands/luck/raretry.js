@@ -5,7 +5,7 @@ module.exports = [{
   code: `
     $reply
   
-    $onlyIf[$getGlobalVar[botEnabled];
+    $onlyIf[$getGlobalVar[botEnabled]]
     $onlyIf[$getUserVar[isBanned]==false]
     $onlyIf[$getUserVar[acceptedRules];$callFunction[rulesSchema;]]
     $onlyIf[$getUserVar[onSlowmode]==false]
@@ -594,7 +594,7 @@ module.exports = [{
         $color[$get[clr]]
         $description[$get[msgdesc]]
         $thumbnail[$get[thum]]
-        $author[$nickname • MUID: $getUserVar[MUID];$userAvatar]
+        $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
         $footer[$if[$get[p]>0;Rarity: 1/$get[f] • ]Raretry mode: $getUserVar[rtMode]]
     ]
 
