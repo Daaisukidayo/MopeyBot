@@ -203,59 +203,6 @@ module.exports = [{
     $let[m50;0]
 
     
-    
-    $switch[$getUserVar[rtMode];
-        $case[inferno;$let[mode;0]]
-        $case[default;$let[mode;1]]
-        $case[medium;$let[mode;2]]
-        $case[hard;$let[mode;3]]
-        $case[insane;$let[mode;4]]
-        $case[impossible;$let[mode;5]]
-    ]
-
-    $let[10;$get[c$get[mode]10]]
-    $let[9;$get[c$get[mode]9]]
-    $let[8;$get[c$get[mode]8]]
-    $let[7;$get[c$get[mode]7]]
-    $let[6;$get[c$get[mode]6]]
-    $let[5;$get[c$get[mode]5]]
-    $let[4;$get[c$get[mode]4]]
-    $let[3;$get[c$get[mode]3]]
-    $let[2;$get[c$get[mode]2]]
-    $let[1;$get[c$get[mode]1]]
-
-    $setInterval[
-
-    $let[r10;1==$randomNumber[1;$sum[1;$get[10]]]]
-    $let[r9;1==$randomNumber[1;$sum[1;$get[9]]]]
-    $let[r8;1==$randomNumber[1;$sum[1;$get[8]]]]
-    $let[r7;1==$randomNumber[1;$sum[1;$get[7]]]]
-    $let[r6;1==$randomNumber[1;$sum[1;$get[6]]]]
-    $let[r5;1==$randomNumber[1;$sum[1;$get[5]]]]
-    $let[r4;1==$randomNumber[1;$sum[1;$get[4]]]]
-    $let[r3;1==$randomNumber[1;$sum[1;$get[3]]]]
-    $let[r2;1==$randomNumber[1;$sum[1;$get[2]]]]
-    $let[r1;1==$randomNumber[1;$sum[1;$get[1]]]]
-
-    $if[$get[r10];  $let[p;10];
-    $if[$get[r9];   $let[p;9];
-    $if[$get[r8];   $let[p;8];
-    $if[$get[r7];   $let[p;7];
-    $if[$get[r6];   $let[p;6];
-    $if[$get[r5];   $let[p;5];
-    $if[$get[r4];   $let[p;4];
-    $if[$get[r3];   $let[p;3];
-    $if[$get[r2];   $let[p;2];
-    $if[$get[r1];   $let[p;1];
-                    $let[p;0]
-    ]]]]]]]]]]
-
-        
-    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10];
-            $let[p;$message[0]]
-    ]
-
-        
     $c[!      RARE ANIMALS TEXT      ]
 
 
@@ -322,23 +269,7 @@ module.exports = [{
     $let[rare54;Black Bear <:BlackBearS2:1288058731363569684>]
     $let[rare55;Black Tiger <:BlackTigerS2:1288058719082643526>]
 
-    $let[rrare10;$randomText[$get[rare51];$get[rare52];$get[rare53]]]
-    $let[rrare9;$randomText[$get[rare48];$get[rare49];$get[rare50]]]
-    $let[rrare8;$randomText[$get[rare45];$get[rare46];$get[rare47]]]
-    $let[rrare7;$randomText[$get[rare27];$get[rare28];$get[rare29];$get[rare44]]]
-    $let[rrare6;$randomText[$get[rare39];$get[rare40];$get[rare41];$get[rare42];$get[rare43]]]
-    $let[rrare5;$randomText[$get[rare54];$get[rare55];$get[rare30];$get[rare31];$get[rare32];$get[rare33];$get[rare34];$get[rare35];$get[rare36];$get[rare37];$get[rare38]]]
-    $let[rrare4;$randomText[$get[rare20];$get[rare21];$get[rare22];$get[rare23];$get[rare24];$get[rare25];$get[rare26]]]
     
-    $if[$env[userPacks;lockedSP];
-        $let[rrare3;$randomText[$get[rare11];$get[rare12];$get[rare13];$get[rare14];$get[rare15];$get[rare16];$get[rare17];$get[rare18];$get[rare19];$get[rare27];$get[rare28];$get[rare29]]]
-    ;
-        $let[rrare3;$randomText[$get[rare11];$get[rare12];$get[rare13];$get[rare14];$get[rare15];$get[rare16];$get[rare17];$get[rare18];$get[rare19]]]
-    ]
-
-    $let[rrare2;$randomText[$get[rare4];$get[rare5];$get[rare6];$get[rare7];$get[rare8];$get[rare9];$get[rare10]]]
-    $let[rrare1;$randomText[$get[rare1];$get[rare2];$get[rare3]]]
-        
     $c[!      THUMBNAIL      ]
 
     $let[t55;https://media.discordapp.net/attachments/701793335941136464/1288064073644376095/BlackTiger.png]
@@ -408,6 +339,79 @@ module.exports = [{
     $let[t1;https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png]
 
 
+
+    
+    
+    $switch[$getUserVar[rtMode];
+        $case[inferno;$let[mode;0]]
+        $case[default;$let[mode;1]]
+        $case[medium;$let[mode;2]]
+        $case[hard;$let[mode;3]]
+        $case[insane;$let[mode;4]]
+        $case[impossible;$let[mode;5]]
+    ]
+
+    $let[10;$get[c$get[mode]10]]
+    $let[9;$get[c$get[mode]9]]
+    $let[8;$get[c$get[mode]8]]
+    $let[7;$get[c$get[mode]7]]
+    $let[6;$get[c$get[mode]6]]
+    $let[5;$get[c$get[mode]5]]
+    $let[4;$get[c$get[mode]4]]
+    $let[3;$get[c$get[mode]3]]
+    $let[2;$get[c$get[mode]2]]
+    $let[1;$get[c$get[mode]1]]
+
+    $setInterval[
+
+    $let[r10;1==$randomNumber[1;$sum[1;$get[10]]]]
+    $let[r9;1==$randomNumber[1;$sum[1;$get[9]]]]
+    $let[r8;1==$randomNumber[1;$sum[1;$get[8]]]]
+    $let[r7;1==$randomNumber[1;$sum[1;$get[7]]]]
+    $let[r6;1==$randomNumber[1;$sum[1;$get[6]]]]
+    $let[r5;1==$randomNumber[1;$sum[1;$get[5]]]]
+    $let[r4;1==$randomNumber[1;$sum[1;$get[4]]]]
+    $let[r3;1==$randomNumber[1;$sum[1;$get[3]]]]
+    $let[r2;1==$randomNumber[1;$sum[1;$get[2]]]]
+    $let[r1;1==$randomNumber[1;$sum[1;$get[1]]]]
+
+    $if[$get[r10];  $let[p;10];
+    $if[$get[r9];   $let[p;9];
+    $if[$get[r8];   $let[p;8];
+    $if[$get[r7];   $let[p;7];
+    $if[$get[r6];   $let[p;6];
+    $if[$get[r5];   $let[p;5];
+    $if[$get[r4];   $let[p;4];
+    $if[$get[r3];   $let[p;3];
+    $if[$get[r2];   $let[p;2];
+    $if[$get[r1];   $let[p;1];
+                    $let[p;0]
+    ]]]]]]]]]]
+
+        
+    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10];
+            $let[p;$message[0]]
+    ]
+
+        
+
+    $let[rrare10;$randomText[$get[rare51];$get[rare52];$get[rare53]]]
+    $let[rrare9;$randomText[$get[rare48];$get[rare49];$get[rare50]]]
+    $let[rrare8;$randomText[$get[rare45];$get[rare46];$get[rare47]]]
+    $let[rrare7;$randomText[$get[rare27];$get[rare28];$get[rare29];$get[rare44]]]
+    $let[rrare6;$randomText[$get[rare39];$get[rare40];$get[rare41];$get[rare42];$get[rare43]]]
+    $let[rrare5;$randomText[$get[rare54];$get[rare55];$get[rare30];$get[rare31];$get[rare32];$get[rare33];$get[rare34];$get[rare35];$get[rare36];$get[rare37];$get[rare38]]]
+    $let[rrare4;$randomText[$get[rare20];$get[rare21];$get[rare22];$get[rare23];$get[rare24];$get[rare25];$get[rare26]]]
+    
+    $if[$env[userPacks;lockedSP];
+        $let[rrare3;$randomText[$get[rare11];$get[rare12];$get[rare13];$get[rare14];$get[rare15];$get[rare16];$get[rare17];$get[rare18];$get[rare19];$get[rare27];$get[rare28];$get[rare29]]]
+    ;
+        $let[rrare3;$randomText[$get[rare11];$get[rare12];$get[rare13];$get[rare14];$get[rare15];$get[rare16];$get[rare17];$get[rare18];$get[rare19]]]
+    ]
+
+    $let[rrare2;$randomText[$get[rare4];$get[rare5];$get[rare6];$get[rare7];$get[rare8];$get[rare9];$get[rare10]]]
+    $let[rrare1;$randomText[$get[rare1];$get[rare2];$get[rare3]]]
+        
 
     $let[desc10;$get[rrare10]]
     $let[desc9;$get[rrare9]]
@@ -600,7 +604,7 @@ module.exports = [{
         $footer[$if[$get[p]>0;Rarity: 1/$get[f] • ]Raretry mode: $getUserVar[rtMode]]
     ]
     
-    ];1s]
+    ;1s]
 
     $callFunction[logSchema;$commandName]
   `
