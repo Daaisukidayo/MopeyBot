@@ -336,9 +336,6 @@ module.exports = [{
 
     $let[rrare2;$randomText[$get[rare4];$get[rare5];$get[rare6];$get[rare7];$get[rare8];$get[rare9];$get[rare10]]]
     $let[rrare1;$randomText[$get[rare1];$get[rare2];$get[rare3]]]
-
-    $jsonLoad[raresGroup;{10: [$get[rare51], $get[rare52], $get[rare53], \]}]
-
         
     $c[!      THUMBNAIL      ]
 
@@ -719,6 +716,8 @@ const animal = "rare53"; // Replace with dynamic value
 
 const thumbnail = getThumbnail(rarity, animal);
 const description = getDescription(rarity);
+const raresGroup = { 10: ["$get[rare51]", "$get[rare52]", "$get[rare53]"] };
+
 
 
 // You can now replace the repetitive logic in your code with these functions to make it more concise and maintainable.
