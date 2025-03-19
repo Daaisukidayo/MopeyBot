@@ -521,6 +521,8 @@ module.exports = [{
     ]
 
     $log[-$get[th]-]
+    $let[th;$replace[$get[th]; ;]]
+    $log[-$get[th]-]
 
 
     $let[thum;$get[t$get[th]]]
