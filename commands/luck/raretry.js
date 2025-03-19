@@ -204,18 +204,25 @@ module.exports = [{
 
     
     
-    $let[mode;$switch[$getUserVar[rtMode];$case[inferno;0]$case[default;1]$case[medium;2] $case[hard;3]$case[insane;4]$case[impossible;5]]]
+    $switch[$getUserVar[rtMode];
+        $case[inferno;$let[mode;0]]
+        $case[default;$let[mode;1]]
+        $case[medium;$let[mode;2]]
+        $case[hard;$let[mode;3]]
+        $case[insane;$let[mode;4]]
+        $case[impossible;$let[mode;5]]]
+    ]
 
-    $let[10;$get[c$get[md]10]]
-    $let[9;$get[c$get[md]9]]
-    $let[8;$get[c$get[md]8]]
-    $let[7;$get[c$get[md]7]]
-    $let[6;$get[c$get[md]6]]
-    $let[5;$get[c$get[md]5]]
-    $let[4;$get[c$get[md]4]]
-    $let[3;$get[c$get[md]3]]
-    $let[2;$get[c$get[md]2]]
-    $let[1;$get[c$get[md]1]]
+    $let[10;$get[c$get[mode]10]]
+    $let[9;$get[c$get[mode]9]]
+    $let[8;$get[c$get[mode]8]]
+    $let[7;$get[c$get[mode]7]]
+    $let[6;$get[c$get[mode]6]]
+    $let[5;$get[c$get[mode]5]]
+    $let[4;$get[c$get[mode]4]]
+    $let[3;$get[c$get[mode]3]]
+    $let[2;$get[c$get[mode]2]]
+    $let[1;$get[c$get[mode]1]]
 
     $let[r10;1==$randomNumber[1;$sum[1;$get[10]]]]
     $let[r9;1==$randomNumber[1;$sum[1;$get[9]]]]
