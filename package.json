@@ -15,8 +15,7 @@
     "@tryforge/forge.db": "github:tryforge/forgedb",
     "@tryforge/forgescript": "github:tryforge/ForgeScript#dev",
     "dotenv": "^16.4.7",
-    "sqlite3": "^5.1.7",
-    "test": "^3.3.0"
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
