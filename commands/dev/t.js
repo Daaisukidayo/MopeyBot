@@ -76,7 +76,7 @@ module.exports = [{
     $if[$get[p]==0;
         $let[content;## $randomText[You tried to get rares but you got nothing;You tried to get rares but ended up with nothing;You went raretrying but found nothing this time;You tried your luck with rares but didn’t find any;You were farming for rares but got nothing special;You tried evolving into a rare but failed].] 
     ;
-        $let[content;## $randomText[You tried to get rares and you got;You tried to get rares and picked;You tried your luck with rares and got;You went after rares and got;You tried evolving into a rare and succeeded with] __$get[desc]__]
+        $let[content;## $randomText[You tried to get rares and you got;You tried to get rares and picked;You tried your luck with rares and got;You went after rares and got;You tried evolving into a rare and succeeded with] __$get[content]__]
     
         $if[$get[MC]!=0;
             $let[content;$get[content] $randomText[earning;gaining;collecting;scoring] $separateNumber[$get[MC];.]$getGlobalVar[emoji]]
@@ -87,7 +87,7 @@ module.exports = [{
   
     
 
-    $if[$and[$get[p]==7;$get[desc]==$get[rare44];$and[$env[userPacks;legacySP];$env[userPacks;goldenSP];$env[userPacks;lockedSP];$env[userPacks;storefrontSP]]];
+    $if[$and[$get[p]==7;$get[thumbnailAndContentIndex]==0;$and[$env[userPacks;legacySP];$env[userPacks;goldenSP];$env[userPacks;lockedSP];$env[userPacks;storefrontSP]]];
         
         $addActionRow
         $addStringSelectMenu[luckkdmenu-$authorID;Choose an upgrade:]
