@@ -69,7 +69,7 @@ module.exports = [{
             $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
         ]
   
-    ;$sendMessage[$channelID;An error occured: $get[err]] $stop;err]
+    ;$sendMessage[$channelID;An error occured: $error] $stop]
   
   
     $if[$get[p]==0;
