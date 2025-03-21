@@ -135,6 +135,8 @@ module.exports = [{
         $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
         $footer[$if[$get[p]>0;Rarity: 1/$get[baseChance] • ]Raretry mode: $getUserVar[rtMode]]
     ]
+
+    $log[break 6]
   
     $callFunction[logSchema;$commandName]
     `
