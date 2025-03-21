@@ -151,8 +151,6 @@ module.exports = [{
     $let[t3;https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png]
     $let[t2;https://media.discordapp.net/attachments/701793335941136464/1286730609045143632/KeelBilledToucan.png]
     $let[t1;https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png]
-
-    $loop[500;$wait[1s]
         
     $c[!        CHANCES AND COINS GENERATOR        ]
 
@@ -602,8 +600,6 @@ module.exports = [{
         $thumbnail[$get[thum]]
         $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
         $footer[$if[$get[p]>0;Rarity: 1/$get[f] • ]Raretry mode: $getUserVar[rtMode]]
-    ]
-    
     ]
 
     $callFunction[logSchema;$commandName]
