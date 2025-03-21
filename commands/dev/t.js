@@ -37,6 +37,8 @@ module.exports = [{
     $let[MC;0]
     $let[thumbnail;]
 
+    $log[break 1]
+
 
     $loop[10;
         $let[baseChance;$env[raresGroup;category_$get[i];chance;$getUserVar[rtMode]]]
@@ -47,6 +49,8 @@ module.exports = [{
             $let[MC;$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]]]
             $break
         ]
+
+        $log[$get[i]]
         
         $let[i;$math[$get[i] - 1]]
     ]
@@ -55,6 +59,8 @@ module.exports = [{
     $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10];
         $let[p;$message[0]]
     ]
+
+    $log[break 2]
 
     $if[$get[p]>0;
 
@@ -67,7 +73,7 @@ module.exports = [{
         $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
     ]
   
-    
+    $log[break 3]
   
   
     $if[$get[p]==0;
@@ -81,6 +87,8 @@ module.exports = [{
 
         $let[content;$get[content]!]
     ] 
+
+    $log[break 4]
   
     
 
@@ -114,6 +122,8 @@ module.exports = [{
         $let[thumbnail;]
         $let[content;## Choose an upgrade:\n# <:kingdragonseason2:1280238249360494825> $if[$env[userPacks;legacySP];<:king_dragon:715588377650528398>] $if[$env[userPacks;goldenSP];<:golden_kd:735483821050560583>] $if[$env[userPacks;lockedSP];<:king_ripper:735483931851227264> <:king_stan:735484001275609118> <:king_shah:735484059500806174> <:queen_celeste:735484190187061268> <:queen_scarlet:735484138949312582>] $if[$env[userPacks;storefrontSP];<:queen_flame:884030972629229568>]]
     ]
+
+    $log[break 5]
 
     $callFunction[sumMC;$get[MC]]  
   
