@@ -29,47 +29,45 @@ module.exports = [{
     $let[default_mc_1;0]
 
 
-    $try[
+    $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] 
 
-        $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] 
+    $let[i;10]
+    $let[p;0]
+    $let[color;d0321d]
+    $let[MC;0]
+    $let[thumbnail;]
+
+
+    $loop[10;
+        $let[baseChance;$env[raresGroup;category_$get[i];chance;$getUserVar[rtMode]]]
+        
+        $if[1==$randomNumber[1;$sum[1;$get[baseChance]]];
+            $let[p;$get[i]]
+            $let[color;$env[raresGroup;category_$get[i];color]]
+            $let[MC;$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]]]
+            $break
+        ]
+        
+        $let[i;$math[$get[i] - 1]]
+    ]
+
     
-        $let[i;10]
-        $let[p;0]
-        $let[color;d0321d]
-        $let[MC;0]
-        $let[thumbnail;]
+    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10];
+        $let[p;$message[0]]
+    ]
 
+    $if[$get[p]>0;
 
-        $loop[10;
-            $let[baseChance;$env[raresGroup;category_$get[i];chance;$getUserVar[rtMode]]]
-            
-            $if[1==$randomNumber[1;$sum[1;$get[baseChance]]];
-                $let[p;$get[i]]
-                $let[color;$env[raresGroup;category_$get[i];color]]
-                $let[MC;$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]]]
-                $break
-            ]
-            
-            $let[i;$math[$get[i] - 1]]
-        ]
+        $arrayLoad[thumbnails;;$env[raresGroup;category_$get[p];thumbnail]]
+        $arrayLoad[contents;;$env[raresGroup;category_$get[p];content]]
     
-        
-        $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10];
-            $let[p;$message[0]]
-        ]
-
-        $if[$get[p]>0;
-
-            $arrayLoad[thumbnails;;$env[raresGroup;category_$get[p];thumbnail]]
-            $arrayLoad[contents;;$env[raresGroup;category_$get[p];content]]
-        
-        
-            $let[thumbnailAndContentIndex;$randomIndex[thumbnails]]
-            $let[thumbnail;$arrayAt[thumbnails;$get[thumbnailAndContentIndex]]]
-            $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
-        ]
+    
+        $let[thumbnailAndContentIndex;$randomIndex[thumbnails]]
+        $let[thumbnail;$arrayAt[thumbnails;$get[thumbnailAndContentIndex]]]
+        $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
+    ]
   
-    ;$sendMessage[$channelID;An error occured: $error] $stop]
+    
   
   
     $if[$get[p]==0;
