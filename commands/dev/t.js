@@ -40,7 +40,7 @@ module.exports = [{
         $let[thumbnail;]
 
 
-        $loop[9;
+        $loop[10;
             $let[baseChance;$env[raresGroup;category_$get[i];chance;$getUserVar[rtMode]]]
             
             $if[1==$randomNumber[1;$sum[1;$get[baseChance]]];
@@ -60,7 +60,6 @@ module.exports = [{
 
         $if[$get[p]>0;
 
-            $c[Getting thumbnail and tontent from raretry data based ]
             $arrayLoad[thumbnails;;$env[raresGroup;category_$get[p];thumbnail]]
             $arrayLoad[contents;;$env[raresGroup;category_$get[p];content]]
         
@@ -70,7 +69,7 @@ module.exports = [{
             $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
         ]
   
-    ;$sendMessage[$channelID;An error occured: $env[err]] $stop;err]
+    ;$sendMessage[$channelID;An error occured: $get[err]] $stop;err]
   
   
     $if[$get[p]==0;
