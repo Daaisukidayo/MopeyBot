@@ -62,7 +62,7 @@ module.exports = [{
         $arrayLoad[contents;;$env[raresGroup;category_$get[p];content]]
     
     
-        $let[thumbnailAndContentIndex;$randomIndex[thumbnails]]
+        $let[thumbnailAndContentIndex;$arrayRandomIndex[thumbnails]]
         $let[thumbnail;$arrayAt[thumbnails;$get[thumbnailAndContentIndex]]]
         $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
     ]
