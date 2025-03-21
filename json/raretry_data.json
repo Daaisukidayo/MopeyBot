@@ -1,17 +1,9 @@
 {
     "category_10": {
 
-        "content": [
-            "USSR Macaw <:USSRMacawS2:1288058610655690804>", 
-            "USSR Toucan <:USSRToucanS2:1288058651075940382>",
-            "USSR Vulture <:USSRVultureS2:1288058686241243157>"
-        ],
+        "content": ["USSR Macaw <:USSRMacawS2:1288058610655690804>", "USSR Toucan <:USSRToucanS2:1288058651075940382>", "USSR Vulture <:USSRVultureS2:1288058686241243157>"],
 
-        "thumbnail": [
-            "https://media.discordapp.net/attachments/701793335941136464/1288064073983987787/USSR_Macaw-S2.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1288064074365534208/USSR_Toucan-S2.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1288064074789421077/USSR_Vulture-S2.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1288064073983987787/USSR_Macaw-S2.png", "https://media.discordapp.net/attachments/701793335941136464/1288064074365534208/USSR_Toucan-S2.png", "https://media.discordapp.net/attachments/701793335941136464/1288064074789421077/USSR_Vulture-S2.png"],
               
         "color": "B80000",
       
@@ -36,17 +28,9 @@
 
     "category_9": {
 
-        "content": [
-            "Shaheen Falcon <:ShaheenFalconS2:1284568268493033533>",
-            "Harpy Eagle <:HarpyEagleS2:1284568371043635352>",
-            "Greater Spotted Eagle <:GreaterSpottedEagleS2:1284568382850727997>"
-        ],
+        "content": ["Shaheen Falcon <:ShaheenFalconS2:1284568268493033533>", "Harpy Eagle <:HarpyEagleS2:1284568371043635352>", "Greater Spotted Eagle <:GreaterSpottedEagleS2:1284568382850727997>"],
 
-        "thumbnail": [
-            "https://media.discordapp.net/attachments/701793335941136464/1286734151457968222/ShaheenFalcon.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734456690049024/Shahbaz.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734456077680826/GoldenShahbaz.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1286734151457968222/ShaheenFalcon.png", "https://media.discordapp.net/attachments/701793335941136464/1286734456690049024/Shahbaz.png", "https://media.discordapp.net/attachments/701793335941136464/1286734456077680826/GoldenShahbaz.png"],
 
         "color": "50351E",
 
@@ -71,17 +55,9 @@
 
     "category_8": {
 
-        "content": [
-            "Pakistan Macaw <:PakistanMacawS2:1284540970876145704>", 
-            "Pakistan Toucan <:PakistanToucanS2:1284567718351077386>",
-            "Pakistan Vulture <:PakistanVultureS2:1284568287971377233>"
-        ],
+        "content": ["Pakistan Macaw <:PakistanMacawS2:1284540970876145704>", "Pakistan Toucan <:PakistanToucanS2:1284567718351077386>", "Pakistan Vulture <:PakistanVultureS2:1284568287971377233>"],
 
-        "thumbnail": [
-            "https://media.discordapp.net/attachments/701793335941136464/1286733633834713222/PakistanMacaw.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286730610446041212/PakistanToucan.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734150849663066/PakistanVulture.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1286733633834713222/PakistanMacaw.png", "https://media.discordapp.net/attachments/701793335941136464/1286730610446041212/PakistanToucan.png", "https://media.discordapp.net/attachments/701793335941136464/1286734150849663066/PakistanVulture.png"],
 
         "color": "12713a",
       
@@ -106,19 +82,9 @@
     
     "category_7": {
 
-        "content": [
-            "King Dragon <:KingDragonS2:1280238249360494825>", 
-            "The Bigfoot <:TheBigfootS2:1285617256562425967>",
-            "The Snowman <:TheSnowmanS2:1284570594075218014>",
-            "The Snowgirl <:TheSnowgirlS1:1284570612018315346>"
-        ],
+        "content": ["King Dragon <:KingDragonS2:1280238249360494825>", "The Bigfoot <:TheBigfootS2:1285617256562425967>", "The Snowman <:TheSnowmanS2:1284570594075218014>", "The Snowgirl <:TheSnowgirlS1:1284570612018315346>"],
 
-        "thumbnail": [
-            "https://media.discordapp.net/attachments/701793335941136464/1286734722700935188/kds2.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1286734722700935188/kds2.png", "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png", "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png", "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png"],
 
         "color": "d61b4a",
 
@@ -143,21 +109,9 @@
     
     "category_6": {
 
-        "content": [
-            "White Giraffe Family <:WhiteGiraffeFamilyS2:1284570523786936450>", 
-            "White Giraffe <:WhiteGiraffeS2:1284570509589352478>",
-            "Black Rhino <:BlackRhinoS2:1284568536362127493>",
-            "Demon Pufferfish <:DemonPufferfishS2:1284567803596116047>",
-            "Lava Toucan <:LavaToucanS2:1284567706171080725>"
-        ],
+        "content": ["White Giraffe Family <:WhiteGiraffeFamilyS2:1284570523786936450>", "White Giraffe <:WhiteGiraffeS2:1284570509589352478>", "Black Rhino <:BlackRhinoS2:1284568536362127493>", "Demon Pufferfish <:DemonPufferfishS2:1284567803596116047>", "Lava Toucan <:LavaToucanS2:1284567706171080725>"],
 
-        "thumbnail": [
-            "https://media.discordapp.net/attachments/701793335941136464/1286734721174343740/Giraffe_family.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734721425866884/WhiteGiraffe.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734455423242424/BlackRhino.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286730608113881140/DemonPufferfish.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286730609326297214/LavaToucan.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1286734721174343740/Giraffe_family.png", "https://media.discordapp.net/attachments/701793335941136464/1286734721425866884/WhiteGiraffe.png", "https://media.discordapp.net/attachments/701793335941136464/1286734455423242424/BlackRhino.png", "https://media.discordapp.net/attachments/701793335941136464/1286730608113881140/DemonPufferfish.png", "https://media.discordapp.net/attachments/701793335941136464/1286730609326297214/LavaToucan.png"],
           
         "color": "452591",
           
@@ -182,33 +136,9 @@
     
     "category_5": {
 
-        "content": [
-            "Black Tiger <:BlackTigerS2:1288058719082643526>",
-            "Black Bear <:BlackBearS2:1288058731363569684>",
-            "Aqua Yeti <:AquaYetiS2:1284570581093711914>",
-            "Predator Falcon <:PredatorFalconS2:1284568255599476786>",
-            "Golden Eagle <:GoldenEagleS2:1284568352404279326>",
-            "White Rhino <:WhiteRhinoS2:1284568524806684724>",
-            "Black Lion Cub <:BlackLionCubS2:1284568232950366290>",
-            "Black Lioness <:BlackLionessS2:1284568191569235999>",
-            "Black Lion <:BlackLionS2:1284568143435661374>",
-            "Musk Deer <:MuskDeerS2:1284540790583984139>",
-            "Stinky Pig <:StinkyPigS2:1284520753793863831>"
-        ],
+        "content": ["Black Tiger <:BlackTigerS2:1288058719082643526>", "Black Bear <:BlackBearS2:1288058731363569684>", "Aqua Yeti <:AquaYetiS2:1284570581093711914>", "Predator Falcon <:PredatorFalconS2:1284568255599476786>", "Golden Eagle <:GoldenEagleS2:1284568352404279326>", "White Rhino <:WhiteRhinoS2:1284568524806684724>", "Black Lion Cub <:BlackLionCubS2:1284568232950366290>", "Black Lioness <:BlackLionessS2:1284568191569235999>", "Black Lion <:BlackLionS2:1284568143435661374>", "Musk Deer <:MuskDeerS2:1284540790583984139>", "Stinky Pig <:StinkyPigS2:1284520753793863831>"],
 
-        "thumbnail": [
-            "https://media.discordapp.net/attachments/701793335941136464/1288064073644376095/BlackTiger.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1288064073321287711/BlackBear.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734721690112000/AquaYeti.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734151109705748/PredatorFalcon.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734455754457088/GoldenEagle.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734456954294352/WhiteRhino.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734150342148148/BlackLionCub.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286733627601977477/MuskDeer-S2.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286733625928454275/StinkyPig-S2.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1288064073644376095/BlackTiger.png", "https://media.discordapp.net/attachments/701793335941136464/1288064073321287711/BlackBear.png", "https://media.discordapp.net/attachments/701793335941136464/1286734721690112000/AquaYeti.png", "https://media.discordapp.net/attachments/701793335941136464/1286734151109705748/PredatorFalcon.png", "https://media.discordapp.net/attachments/701793335941136464/1286734455754457088/GoldenEagle.png", "https://media.discordapp.net/attachments/701793335941136464/1286734456954294352/WhiteRhino.png", "https://media.discordapp.net/attachments/701793335941136464/1286734150342148148/BlackLionCub.png", "https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png", "https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png", "https://media.discordapp.net/attachments/701793335941136464/1286733627601977477/MuskDeer-S2.png", "https://media.discordapp.net/attachments/701793335941136464/1286733625928454275/StinkyPig-S2.png"],
 
         "color": "750e0e",
        
@@ -233,25 +163,9 @@
     
     "category_4": {
 
-        "content": [
-            "Girabie <:GirabieS2:1284567631956807701>",
-            "Jackass <:JackassS2:1284567568299851918>",
-            "Big Goat <:BigGoatS2:1284568654092173404>",
-            "White Lion Cub <:WhiteLionCubS2:1284568220644409386>",
-            "White Lioness <:WhiteLionessS2:1284568171931766927>",
-            "White Lion <:WhiteLionS2:1284568130668199966>",
-            "White Tiger <:WhiteTigerS2:1284568061474508810>"
-        ],
+        "content": ["Girabie <:GirabieS2:1284567631956807701>", "Jackass <:JackassS2:1284567568299851918>", "Big Goat <:BigGoatS2:1284568654092173404>", "White Lion Cub <:WhiteLionCubS2:1284568220644409386>", "White Lioness <:WhiteLionessS2:1284568171931766927>", "White Lion <:WhiteLionS2:1284568130668199966>", "White Tiger <:WhiteTigerS2:1284568061474508810>"],
 
-        "thumbnail": [  
-            "https://media.discordapp.net/attachments/701793335941136464/1286734058289762485/Girabie.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286733633268355225/Jackass.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734455092023296/BigGoat.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734061607452752/WhiteLionCub.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734059422093375/WhiteTiger.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1286734058289762485/Girabie.png", "https://media.discordapp.net/attachments/701793335941136464/1286733633268355225/Jackass.png", "https://media.discordapp.net/attachments/701793335941136464/1286734455092023296/BigGoat.png", "https://media.discordapp.net/attachments/701793335941136464/1286734061607452752/WhiteLionCub.png", "https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png", "https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png", "https://media.discordapp.net/attachments/701793335941136464/1286734059422093375/WhiteTiger.png"],
 
         "color": "ffffff",
 
@@ -276,29 +190,9 @@
     
     "category_3": {
 
-        "content": [   
-            "Golden Pheasant <:GoldenPheasantS2:1285692782765408360>",
-            "Momaffie Family <:MomaffieFamilyS2:1284567618627571896>",
-            "Momaffie <:MomaffieS2:1284567606422147202>",
-            "Marsh Deer <:MarshDeerS2:1284520894894702788>",
-            "Pinky Pig <:PinkyPigS2:1284520701541351454>",
-            "White Dove <:WhiteDoveS2:1291258772492255263>",
-            "Black Maned Lion <:BlackManedLionS2:1284568114562076903>",
-            "Lion Cub <:LionCubS2:1284568208082341929>",
-            "Black Panther <:BlackPantherS2:1284567767764177028>"
-        ],
+        "content": ["Golden Pheasant <:GoldenPheasantS2:1285692782765408360>", "Momaffie Family <:MomaffieFamilyS2:1284567618627571896>", "Momaffie <:MomaffieS2:1284567606422147202>", "Marsh Deer <:MarshDeerS2:1284520894894702788>", "Pinky Pig <:PinkyPigS2:1284520701541351454>", "White Dove <:WhiteDoveS2:1291258772492255263>", "Black Maned Lion <:BlackManedLionS2:1284568114562076903>", "Lion Cub <:LionCubS2:1284568208082341929>", "Black Panther <:BlackPantherS2:1284567767764177028>"],
 
-        "thumbnail": [  
-            "https://media.discordapp.net/attachments/701793335941136464/1286733626628767816/GoldenPheasant.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734059053256737/Momaffie_family.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734058642210939/Momaffie.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286733626905464942/MarshDeer-S2.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286733625592905891/pinkypig-S2.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286733625265623082/white_dove.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734060387041394/LionCub.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1286733626628767816/GoldenPheasant.png", "https://media.discordapp.net/attachments/701793335941136464/1286734059053256737/Momaffie_family.png", "https://media.discordapp.net/attachments/701793335941136464/1286734058642210939/Momaffie.png", "https://media.discordapp.net/attachments/701793335941136464/1286733626905464942/MarshDeer-S2.png", "https://media.discordapp.net/attachments/701793335941136464/1286733625592905891/pinkypig-S2.png", "https://media.discordapp.net/attachments/701793335941136464/1286733625265623082/white_dove.png", "https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png", "https://media.discordapp.net/attachments/701793335941136464/1286734060387041394/LionCub.png", "https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png"],
 
         "color": "f3ab0f",
 
@@ -323,25 +217,9 @@
     
     "category_2": {
 
-        "content": [   
-            "Fiery Toucan <:FieryToucanS2:1284567688781238323>",
-            "Leopard <:LeopardS2:1284567751641530579>",
-            "Jaguar <:JaguarS2:1284567739440300052>",
-            "Doe <:DoeS2:1284520854276804680>",
-            "Lioness <:LionessS2:1284568161206800505>",
-            "Yellow Pufferfish <:YellowPufferfishS2:1284567779156168846>",
-            "Blue Macaw <:BlueMacawS2:1284540918648541287>"
-        ],
+        "content": ["Fiery Toucan <:FieryToucanS2:1284567688781238323>", "Leopard <:LeopardS2:1284567751641530579>", "Jaguar <:JaguarS2:1284567739440300052>", "Doe <:DoeS2:1284520854276804680>", "Lioness <:LionessS2:1284568161206800505>", "Yellow Pufferfish <:YellowPufferfishS2:1284567779156168846>", "Blue Macaw <:BlueMacawS2:1284540918648541287>"],
 
-        "thumbnail": [  
-            "https://media.discordapp.net/attachments/701793335941136464/1286730608390701066/FieryToucan.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286730609888067654/Leopard.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286730608680370289/Jaguar.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286733626133708861/Doe-S2.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286734060651286589/Lioness.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286730611494621268/YellowPufferfish.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286733627836600431/BlueMacaw.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1286730608390701066/FieryToucan.png", "https://media.discordapp.net/attachments/701793335941136464/1286730609888067654/Leopard.png", "https://media.discordapp.net/attachments/701793335941136464/1286730608680370289/Jaguar.png", "https://media.discordapp.net/attachments/701793335941136464/1286733626133708861/Doe-S2.png", "https://media.discordapp.net/attachments/701793335941136464/1286734060651286589/Lioness.png", "https://media.discordapp.net/attachments/701793335941136464/1286730611494621268/YellowPufferfish.png", "https://media.discordapp.net/attachments/701793335941136464/1286733627836600431/BlueMacaw.png"],
 
         "color": "ffff00",
 
@@ -366,17 +244,9 @@
     
     "category_1": {
 
-        "content": [   
-            "Choco Toucan <:ChocoToucanS2:1284567662353059971>",
-            "Keel Billed Toucan <:KeelBilledToucanS2:1284567675212664964>",
-            "Markhor <:MarkhorS2:1284568638170595459>"
-        ],
+        "content": ["Choco Toucan <:ChocoToucanS2:1284567662353059971>", "Keel Billed Toucan <:KeelBilledToucanS2:1284567675212664964>", "Markhor <:MarkhorS2:1284568638170595459>"],
 
-        "thumbnail": [  
-            "https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286730609045143632/KeelBilledToucan.png",
-            "https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png"
-        ],
+        "thumbnail": ["https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png", "https://media.discordapp.net/attachments/701793335941136464/1286730609045143632/KeelBilledToucan.png", "https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png"],
 
         "color": "c0c0c0",
 

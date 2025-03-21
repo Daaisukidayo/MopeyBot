@@ -37,8 +37,6 @@ module.exports = [{
     $let[MC;0]
     $let[thumbnail;]
 
-    $log[break 1]
-
 
     $loop[10;
         $let[baseChance;$env[raresGroup;category_$get[i];chance;$getUserVar[rtMode]]]
@@ -47,39 +45,34 @@ module.exports = [{
             $let[p;$get[i]]
             $let[color;$env[raresGroup;category_$get[i];color]]
             $let[MC;$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]]]
-            $log[$get[i],p: $get[p], color: $get[color], MC: $get[MC]]
+            $let[MC;$eval[$get[MC];false]]
             $break
         ]
 
-        
-        
         $let[i;$math[$get[i] - 1]]
     ]
+
+    
 
     
     $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10];
         $let[p;$message[0]]
     ]
 
-    $log[break 2]
 
     $if[$get[p]>0;
 
-        $arrayLoad[thumbnails;;$env[raresGroup;category_$get[p];thumbnail]]
-        $arrayLoad[contents;;$env[raresGroup;category_$get[p];content]]
+        $arrayLoad[thumbnails;, ;$env[raresGroup;category_$get[p];thumbnail]]
+        $arrayLoad[contents;, ;$env[raresGroup;category_$get[p];content]]
     
     
         $let[thumbnailAndContentIndex;$arrayRandomIndex[thumbnails]]
         $let[thumbnail;$arrayAt[thumbnails;$get[thumbnailAndContentIndex]]]
         $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
+
     ]
-  
-    $log[break 3
-    random index: $get[thumbnailAndContentIndex]
-    thumbnail: $get[thumbnail]
-    content: $get[content]]
-  
-  
+
+
     $if[$get[p]==0;
         $let[content;## $randomText[You tried to get rares but you got nothing;You tried to get rares but ended up with nothing;You went raretrying but found nothing this time;You tried your luck with rares but didn’t find any;You were farming for rares but got nothing special;You tried evolving into a rare but failed].] 
     ;
@@ -92,9 +85,6 @@ module.exports = [{
         $let[content;$get[content]!]
     ] 
 
-    $log[break 4]
-  
-    
 
     $if[$and[$get[p]==7;$get[thumbnailAndContentIndex]==0;$and[$env[userPacks;legacySP];$env[userPacks;goldenSP];$env[userPacks;lockedSP];$env[userPacks;storefrontSP]]];
         
@@ -107,7 +97,7 @@ module.exports = [{
         ]
         
         $if[$env[userPacks;goldenSP];
-            $addOption[Golden King Dragon;;$getUserVar[rtMode]luckgkd-$authID;<:golden_kd:73548382105056053>;]
+            $addOption[Golden King Dragon;;$getUserVar[rtMode]luckgkd-$authorID;<:golden_kd:73548382105056053>;]
         ]
     
         $if[$env[userPacks;lockedSP];
@@ -127,12 +117,11 @@ module.exports = [{
         $let[content;## Choose an upgrade:\n# <:kingdragonseason2:1280238249360494825> $if[$env[userPacks;legacySP];<:king_dragon:715588377650528398>] $if[$env[userPacks;goldenSP];<:golden_kd:735483821050560583>] $if[$env[userPacks;lockedSP];<:king_ripper:735483931851227264> <:king_stan:735484001275609118> <:king_shah:735484059500806174> <:queen_celeste:735484190187061268> <:queen_scarlet:735484138949312582>] $if[$env[userPacks;storefrontSP];<:queen_flame:884030972629229568>]]
     ]
 
-    $log[break 5]
 
-    $callFunction[sumMC;$get[MC]]  
-  
+    $callFunction[sumMC;$get[MC]]
+
+
     $sendMessage[$channelID;
-        ExecutionTime: **$executionTimeMS**
         $color[$get[color]]
         $description[$get[content]]
         $thumbnail[$get[thumbnail]]
@@ -140,7 +129,6 @@ module.exports = [{
         $footer[$if[$get[p]>0;Rarity: 1/$get[baseChance] • ]Raretry mode: $getUserVar[rtMode]]
     ]
 
-    $log[break 6]
   
     $callFunction[logSchema;$commandName]
     `
