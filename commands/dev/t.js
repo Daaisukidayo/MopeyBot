@@ -47,10 +47,11 @@ module.exports = [{
             $let[p;$get[i]]
             $let[color;$env[raresGroup;category_$get[i];color]]
             $let[MC;$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]]]
+            $log[$get[i],p: $get[p], color: $get[color], MC: $get[MC]]
             $break
         ]
 
-        $log[$get[i]]
+        
         
         $let[i;$math[$get[i] - 1]]
     ]
@@ -73,7 +74,10 @@ module.exports = [{
         $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
     ]
   
-    $log[break 3]
+    $log[break 3
+    random index: $get[thumbnailAndContentIndex]
+    thumbnail: $get[thumbnail]
+    content: $get[content]]
   
   
     $if[$get[p]==0;
