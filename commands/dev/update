@@ -1,0 +1,8 @@
+module.exports = {
+  name: "update",
+  type: "messageCreate",
+  code: `
+    $onlyIf[$authorID==$botOwnerID]
+    $updateCommands
+    Commands successfully updated in \`$executionTime\`MS!
+  `}

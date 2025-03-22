@@ -29,51 +29,53 @@ module.exports = [{
     $let[default_mc_1;0]
 
 
-    $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] 
+    $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading data from json with all "rare" categories]
 
-    $let[i;10]
+    $c[⬇️ Base variables if nothing catched]
     $let[p;0]
-    $let[color;d0321d]
+    $let[color;$getGlobalVar[errorColor]]
     $let[MC;0]
     $let[thumbnail;]
 
 
-    $loop[10;
-        $let[baseChance;$env[raresGroup;category_$get[i];chance;$getUserVar[rtMode]]]
-        
-        $if[1==$randomNumber[1;$sum[1;$get[baseChance]]];
-            $let[p;$get[i]]
-            $let[color;$env[raresGroup;category_$get[i];color]]
-            $let[MC;$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]]]
-            $let[MC;$eval[$get[MC];false]]
-            $break
-        ]
-
-        $let[i;$math[$get[i] - 1]]
-    ]
-
-    
-
-    
-    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10];
+    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10]; $c[⬅️ Summon specific category by message]
         $let[p;$message[0]]
+        $let[color;$env[raresGroup;category_$get[p];color]]
+        $let[MC;$eval[$env[raresGroup;category_$get[p];mc;$getUserVar[rtMode]];false]]
+        $let[baseChance;$env[raresGroup;category_$get[p];chance;$getUserVar[rtMode]]]
+    ;
+        $let[i;10]
+
+        $loop[10;
+            $let[baseChance;$env[raresGroup;category_$get[i];chance;$getUserVar[rtMode]]] $c[⬅️ Chance to catch rare (from json)]
+            
+            $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we catched rare), getting coins and color from json and saving iteration as "p" variable]
+                $let[p;$get[i]]
+                $let[color;$env[raresGroup;category_$get[i];color]]
+                $let[MC;$eval[$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]];true]]
+                $break
+            ]
+
+            $let[i;$math[$get[i] - 1]]
+        ]
     ]
+    
 
 
     $if[$get[p]>0;
 
-        $arrayLoad[thumbnails;, ;$env[raresGroup;category_$get[p];thumbnail]]
-        $arrayLoad[contents;, ;$env[raresGroup;category_$get[p];content]]
-    
+        $arrayLoad[thumbnails;,;$advancedReplace[$env[raresGroup;category_$get[p];thumbnail];\n;;";;\\];;\\[;]]   $c[⬅️ Making and fixing thumbnail array from json object]
+        $arrayLoad[contents;,;$advancedReplace[$env[raresGroup;category_$get[p];content];\n;;";;\\];;\\[;]]       $c[⬅️ Making and fixing content array from json object]
+
     
         $let[thumbnailAndContentIndex;$arrayRandomIndex[thumbnails]]
-        $let[thumbnail;$arrayAt[thumbnails;$get[thumbnailAndContentIndex]]]
-        $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
+        $let[thumbnail;$arrayAt[thumbnails;$get[thumbnailAndContentIndex]]]     $c[⬅️ Getting random thumbnail from saved array]
+        $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]         $c[⬅️ Getting random content from saved array]
 
     ]
 
 
-    $if[$get[p]==0;
+    $if[$get[p]==0; $c[⬅️ Content if nothing catched]
         $let[content;## $randomText[You tried to get rares but you got nothing;You tried to get rares but ended up with nothing;You went raretrying but found nothing this time;You tried your luck with rares but didn’t find any;You were farming for rares but got nothing special;You tried evolving into a rare but failed].] 
     ;
         $let[content;## $randomText[You tried to get rares and you got;You tried to get rares and picked;You tried your luck with rares and got;You went after rares and got;You tried evolving into a rare and succeeded with] __$get[content]__]
@@ -85,7 +87,7 @@ module.exports = [{
         $let[content;$get[content]!]
     ] 
 
-
+    $c[⬇️ If rare equals King Dragon and we have skin for it]
     $if[$and[$get[p]==7;$get[thumbnailAndContentIndex]==0;$and[$env[userPacks;legacySP];$env[userPacks;goldenSP];$env[userPacks;lockedSP];$env[userPacks;storefrontSP]]];
         
         $addActionRow
@@ -118,7 +120,7 @@ module.exports = [{
     ]
 
 
-    $callFunction[sumMC;$get[MC]]
+    $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
 
 
     $sendMessage[$channelID;
@@ -130,6 +132,6 @@ module.exports = [{
     ]
 
   
-    $callFunction[logSchema;$commandName]
+    $callFunction[logSchema;$commandName] $c[⬅️ Custom function to log when someone used command]
     `
 }]

@@ -11,14 +11,17 @@ module.exports = [{
   
     $let[currentHour;$hour]
     $let[currentMinute;$minute]
-    $let[currentDay;$day]  
-    $let[currentWeek;$week]  
-  
-    $let[lastWeek;$getUserVar[lastWeeklyWeek;$authorID;-1]]
-   
+    $let[currentDay;$day]
+    $let[currentWeek;$week]
 
     $let[dayOfWeek;$switch[$day[Long];$case[Monday;1]$case[Tuesday;2]$case[Wednesday;3]$case[Thursday;4]$case[Friday;5]$case[Saturday;6]$case[Sunday;7]]]
+    
+    $if[$or[$get[dayOfWeek]==6;$get[dayOfWeek]==7];
+      $let[currentWeek;$math[$week - 1]] 
+    ]
 
+    $let[lastWeek;$getUserVar[lastWeeklyWeek;$authorID;-1]]
+   
     $let[remainingDays;$sub[7;$get[dayOfWeek]]]
     $let[remainingHours;$sub[24;$get[currentHour]]]
     $let[remainingMinutes;$sub[60;$get[currentMinute]]]
