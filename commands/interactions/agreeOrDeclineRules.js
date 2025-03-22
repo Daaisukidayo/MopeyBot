@@ -1,43 +1,41 @@
-module.exports = [{
-  type: "interactionCreate",
-  allowedInteractionTypes: [ "button" ],
-  code: `
+module.exports = [
+  {
+    type: "interactionCreate",
+    allowedInteractionTypes: ["button"],
+    code: `
+      $onlyIf[$getUserVar[acceptedRules]==false]
+      $onlyIf[$customID==acceptrules-$authorID]
 
-    $onlyIf[$getUserVar[acceptedRules]==false]
-    $onlyIf[$customID==acceptrules-$authorID]
-
-    $!editMessage[$channelID;$messageID;
-      $callFunction[rulesEmbeds;]
-      $color[$getGlobalVar[luckyColor]]
-      $footer[Thank you for agreeing to the rules!]
-    ]
-
-    $setUserVar[acceptedRules;true]
-
-    $if[$getUserVar[MUID]==-1;
-          
-      $setGlobalVar[maxID;$sum[1;$getGlobalVar[maxID]]] 
-      $setUserVar[MUID;$getGlobalVar[maxID];$authorID]
-
-      $sendMessage[$getGlobalVar[channel];
-        $description[Log: added id \`$getUserVar[MUID]\`]
-        $color[2019b3]
-        $author[$nickname • MUID: $getUserVar[MUID];$userAvatar]
-        $if[$guildID!=;$footer[$guildName;$guildIcon]]     
+      $!editMessage[$channelID;$messageID;
+        $callFunction[rulesEmbeds;]
+        $color[$getGlobalVar[luckyColor]]
+        $footer[You have successfully accepted the rules! Enjoy using the bot.]
       ]
-    ]
-  `},{
-  type: "interactionCreate",
-  allowedInteractionTypes: [ "button" ],
-  code: `
-   
-    $onlyIf[$getUserVar[acceptedRules]==false]
-    $onlyIf[$customID==declinerules-$authorID]
 
-    $!editMessage[$channelID;$messageID;
-      $callFunction[rulesEmbeds;]
-      $color[$getGlobalVar[errorColor]]
-      $footer[You have declined the rules.]
-    ]
-  `
-}]
+      $setUserVar[acceptedRules;true]
+
+      $if[$getUserVar[MUID]==-1;
+        $setGlobalVar[maxID;$sum[1;$getGlobalVar[maxID]]] 
+        $setUserVar[MUID;$getGlobalVar[maxID]]
+
+        $callFunction[logSchema;$description[Added id \`$getUserVar[MUID]\`]]
+               
+        ]
+      ]
+    `
+  },
+  {
+    type: "interactionCreate",
+    allowedInteractionTypes: ["button"],
+    code: `
+      $onlyIf[$getUserVar[acceptedRules]==false]
+      $onlyIf[$customID==declinerules-$authorID]
+
+      $!editMessage[$channelID;$messageID;
+        $callFunction[rulesEmbeds;]
+        $color[$getGlobalVar[errorColor]]
+        $footer[You have chosen to decline the rules.]
+      ]
+    `
+  }
+];
