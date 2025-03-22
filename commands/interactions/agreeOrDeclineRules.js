@@ -18,7 +18,7 @@ module.exports = [
         $setGlobalVar[maxID;$sum[1;$getGlobalVar[maxID]]] 
         $setUserVar[MUID;$getGlobalVar[maxID]]
 
-        $callFunction[logSchema;$description[Added id \`$getUserVar[MUID]\`]]
+        $callFunction[logSchema;$description[Added id \`$getUserVar[MUID]\`]
                
         ]
       ]
