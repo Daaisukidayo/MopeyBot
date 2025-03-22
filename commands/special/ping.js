@@ -4,9 +4,9 @@ module.exports = ({
   code: `
     $reply
     
-    $onlyIf[$getGlobalVar[botEnabled]==true]
+    $onlyIf[$getGlobalVar[botEnabled]]
     $onlyIf[$getUserVar[isBanned]==false]
-    $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
+    $onlyIf[$getUserVar[acceptedRules];$callFunction[rulesSchema;]]
     $onlyIf[$getUserVar[onSlowmode]==false]
     
     $let[cdTime;5s]
