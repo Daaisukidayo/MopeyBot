@@ -16,19 +16,6 @@ module.exports = [{
   
     $jsonLoad[userPacks;$getUserVar[userPacks]]
 
-
-    $let[default_mc_10;1000000]
-    $let[default_mc_9;500000]
-    $let[default_mc_8;200000]
-    $let[default_mc_7;75000]
-    $let[default_mc_6;15000]
-    $let[default_mc_5;5000]
-    $let[default_mc_4;1500]
-    $let[default_mc_3;500]
-    $let[default_mc_2;0]
-    $let[default_mc_1;0]
-
-
     $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading data from json with all "rare" categories]
 
     $c[⬇️ Base variables if nothing catched]
@@ -41,7 +28,8 @@ module.exports = [{
     $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10]; $c[⬅️ Summon specific category by message]
         $let[p;$message[0]]
         $let[color;$env[raresGroup;category_$get[p];color]]
-        $let[MC;$eval[$env[raresGroup;category_$get[p];mc;$getUserVar[rtMode]];false]]
+        $let[MC;$floor[$eval[$env[raresGroup;category_$get[p];mc;$getUserVar[rtMode]];false]]]
+        $log[$get[MC]]
         $let[baseChance;$env[raresGroup;category_$get[p];chance;$getUserVar[rtMode]]]
     ;
         $let[i;10]
@@ -52,7 +40,7 @@ module.exports = [{
             $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we catched rare), getting coins and color from json and saving iteration as "p" variable]
                 $let[p;$get[i]]
                 $let[color;$env[raresGroup;category_$get[i];color]]
-                $let[MC;$eval[$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]];true]]
+                $let[MC;$floor[$eval[$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]];false]]]
                 $break
             ]
 

@@ -116,7 +116,28 @@ ForgeDB.variables({
   luckyColor: "#228B22",
   cooldownColor: "#7303b7",
   logColor: "#2019b3",
-  blank: "<:blank:898514292926713866>"
+  blank: "<:blank:898514292926713866>",
+
+  default_mc_1: 0,
+  default_mc_2: 0,
+  default_mc_3: 500,
+  default_mc_4: 1500,
+  default_mc_5: 4000,
+  default_mc_6: 10500,
+  default_mc_7: 55000,
+  default_mc_8: 165000,
+  default_mc_9: 275000,
+  default_mc_10: 550000,
+  default_mc_11: 1375000,
+  default_mc_12: 2750000,
+  default_mc_13: 5500000,
+  default_mc_14: 55000000,
+
+  multiplier_1: 1,
+  multiplier_2: 1.25,
+  multiplier_3: 1.5,
+  multiplier_4: 1.75,
+  multiplier_5: 2,
 });
 
 // ========== FUNCTIONS ==========

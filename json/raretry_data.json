@@ -16,11 +16,11 @@
 
     "mc": {
       "inferno": 140,
-      "default": "$math[$get[default_mc_10] * 1]",
-      "medium": "$math[$get[default_mc_10] * 2.5 * 1.5]",
-      "hard": "$math[$get[default_mc_10] * 8 * 2]",
-      "insane": "$math[$get[default_mc_10] * 13.5 * 3]",
-      "impossible": "$math[$get[default_mc_10] * 100 * 5]"
+      "default": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_1]]",
+      "medium": "$math[$getGlobalVar[default_mc_11] * $getGlobalVar[multiplier_2]]",
+      "hard": "$math[$getGlobalVar[default_mc_12] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_13] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_14] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
@@ -50,11 +50,11 @@
 
     "mc": {
       "inferno": 130,
-      "default": "$math[$get[default_mc_9] * 1]",
-      "medium": "$math[$get[default_mc_9] * 2.5 * 1.5]",
-      "hard": "$math[$get[default_mc_9] * 8 * 2]",
-      "insane": "$math[$get[default_mc_9] * 12.5 * 3]",
-      "impossible": "$math[$get[default_mc_9] * 25 * 5]"
+      "default": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_1]]",
+      "medium": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_2]]",
+      "hard": "$math[$getGlobalVar[default_mc_11] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_12] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_13] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
@@ -84,16 +84,16 @@
 
     "mc": {
       "inferno": 120,
-      "default": "$math[$get[default_mc_8] * 1]",
-      "medium": "$math[$get[default_mc_8] * 2.5 * 1.5]",
-      "hard": "$math[$get[default_mc_8] * 8 * 2]",
-      "insane": "$math[$get[default_mc_8] * 15 * 3]",
-      "impossible": "$math[$get[default_mc_8] * 30 * 5]"
+      "default": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_1]]",
+      "medium": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_2]]",
+      "hard": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_11] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_12] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
       "inferno": 20,
-      "default": 2000,
+      "default": 3000,
       "medium": 5000,
       "hard": 10000,
       "insane": 25000,
@@ -120,17 +120,17 @@
 
     "mc": {
       "inferno": 110,
-      "default": "$math[$get[default_mc_7] * 1]",
-      "medium": "$math[$get[default_mc_7] * 2 * 1.5]",
-      "hard": "$math[$get[default_mc_7] * 5 * 2]",
-      "insane": "$math[$get[default_mc_7] * 12.5 * 3]",
-      "impossible": "$math[$get[default_mc_7] * 25 * 5]"
+      "default": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_1]]",
+      "medium": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_2]]",
+      "hard": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_11] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
       "inferno": 15,
       "default": 1000,
-      "medium": 2000,
+      "medium": 3000,
       "hard": 5000,
       "insane": 10000,
       "impossible": 25000
@@ -158,18 +158,18 @@
 
     "mc": {
       "inferno": 100,
-      "default": "$math[$get[default_mc_6] * 1]",
-      "medium": "$math[$get[default_mc_6] * 5 * 1.5]",
-      "hard": "$math[$get[default_mc_6] * 10 * 2]",
-      "insane": "$math[$get[default_mc_6] * 25 * 3]",
-      "impossible": "$math[$get[default_mc_6] * 50 * 5]"
+      "default": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_1]]",
+      "medium": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_2]]",
+      "hard": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
       "inferno": 10,
       "default": 200,
       "medium": 1000,
-      "hard": 2000,
+      "hard": 3000,
       "insane": 5000,
       "impossible": 10000
     }
@@ -208,11 +208,11 @@
 
     "mc": {
       "inferno": 0,
-      "default": "$math[$get[default_mc_5] * 1]",
-      "medium": "$math[$get[default_mc_5] * 2.5 * 1.5]",
-      "hard": "$math[$get[default_mc_5] * 12.5 * 2]",
-      "insane": "$math[$get[default_mc_5] * 25 * 3]",
-      "impossible": "$math[$get[default_mc_5] * 60 * 5]"
+      "default": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_1]]",
+      "medium": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_2]]",
+      "hard": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
@@ -220,7 +220,7 @@
       "default": 75,
       "medium": 200,
       "hard": 1000,
-      "insane": 2000,
+      "insane": 3000,
       "impossible": 5000
     }
   },
@@ -250,11 +250,11 @@
 
     "mc": {
       "inferno": 0,
-      "default": "$math[$get[default_mc_4] * 1]",
-      "medium": "$math[$get[default_mc_4] * 3 * 1.5]",
-      "hard": "$math[$get[default_mc_4] * 5 * 2]",
-      "insane": "$math[$get[default_mc_4] * 25 * 3]",
-      "impossible": "$math[$get[default_mc_4] * 50 * 5]"
+      "default": "$math[$getGlobalVar[default_mc_4] * $getGlobalVar[multiplier_1]]",
+      "medium": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_2]]",
+      "hard": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
@@ -263,7 +263,7 @@
       "medium": 75,
       "hard": 200,
       "insane": 1000,
-      "impossible": 2000
+      "impossible": 3000
     }
   },
 
@@ -296,11 +296,11 @@
 
     "mc": {
       "inferno": 0,
-      "default": "$math[$get[default_mc_3] * 1]",
-      "medium": "$math[$get[default_mc_3] * 5 * 1.5]",
-      "hard": "$math[$get[default_mc_3] * 7 * 2]",
-      "insane": "$math[$get[default_mc_3] * 20 * 3]",
-      "impossible": "$math[$get[default_mc_3] * 100 * 5]"
+      "default": "$math[$getGlobalVar[default_mc_3] * $getGlobalVar[multiplier_1]]",
+      "medium": "$math[$getGlobalVar[default_mc_4] * $getGlobalVar[multiplier_2]]",
+      "hard": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
@@ -339,10 +339,10 @@
     "mc": {
       "inferno": 0,
       "default": 0,
-      "medium": "$math[$get[default_mc_3] * 2 * 1.5]",
-      "hard": "$math[$get[default_mc_4] * 2]",
-      "insane": "$math[$get[default_mc_5] / 2 * 3]",
-      "impossible": "$math[$get[default_mc_5] * 2 * 5]"
+      "medium": "$math[$getGlobalVar[default_mc_3] * $getGlobalVar[multiplier_2]]",
+      "hard": "$math[$getGlobalVar[default_mc_4] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
@@ -374,9 +374,9 @@
       "inferno": 0,
       "default": 0,
       "medium": 0,
-      "hard": "$math[$get[default_mc_3] * 2]",
-      "insane": "$math[$get[default_mc_4] / 2 * 3]",
-      "impossible": "$math[$get[default_mc_6] / 3.5 * 5]"
+      "hard": "$math[$getGlobalVar[default_mc_3] * $getGlobalVar[multiplier_3]]",
+      "insane": "$math[$getGlobalVar[default_mc_4] * $getGlobalVar[multiplier_4]]",
+      "impossible": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_5]]"
     },
 
     "chance": {
