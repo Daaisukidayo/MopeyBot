@@ -9,7 +9,7 @@
 ###### Bot downtime – If the bot is offline or under maintenance, be patient and avoid flooding support channels with complaints.
 ###### Have fun! – The bot is here to enhance your gaming experience, so enjoy it responsibly.
 
-##### Violating the rules above (yes, even if you don't have fun) will result in a permanent block from using the bot.
+#### Violating the rules above (yes, even if you don't have fun) will result in a permanent block from using the bot.
 
 ## Rules for Using the `m!report` Command
 
