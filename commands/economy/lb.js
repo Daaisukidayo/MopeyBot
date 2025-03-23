@@ -38,18 +38,18 @@ module.exports = [{
 
     ${vars()}
 
-    
+    $if[$getMessageVar[pages;$get[lbmsgID]]>1;
 
-    $setTimeout[ 
-        $addActionRow
-        $addButton[left-$authorID;;Primary;⬅️;true]
-        $addButton[right-$authorID;;Primary;➡️;true] 
-        $!editMessage[$channelID;$get[lbmsgID];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
-        $deleteMessageVar[page;$get[lbmsgID]]  
-        $deleteMessageVar[pages;$get[lbmsgID]]  
-        $deleteMessageVar[rowsPerPage;$get[lbmsgID]]  
-    ;${cdtime}s]
-
+      $setTimeout[ 
+          $addActionRow
+          $addButton[left-$authorID;;Primary;⬅️;true]
+          $addButton[right-$authorID;;Primary;➡️;true] 
+          $!editMessage[$channelID;$get[lbmsgID];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
+          $deleteMessageVar[page;$get[lbmsgID]]  
+          $deleteMessageVar[pages;$get[lbmsgID]]  
+          $deleteMessageVar[rowsPerPage;$get[lbmsgID]]  
+      ;${cdtime}s]
+    ]
   `
 }, {
   type: "interactionCreate",
@@ -88,24 +88,26 @@ module.exports = [{
 
 function vars() {
   return `
-    
+    $let[i;0]
     $let[lb;$userLeaderboard[MC;asc;$getMessageVar[rowsPerPage;$get[lbmsgID]];$getMessageVar[page;$get[lbmsgID]];\n;data;pos;
-
-        $let[emoji;$if[$env[pos]==1;🥇;$if[$env[pos]==2;🥈;$if[$env[pos]==3;🥉;⁘]]]]
-
-        $return[$get[emoji] $ordinal[$env[pos]] ➤ $userDisplayName[$env[data;id]]
-            $getGlobalVar[blank] Coins: \`$separateNumber[$getUserVar[MC;$env[data;id]];.]\`$getGlobalVar[emoji]
-            $getGlobalVar[blank] MUID: \`$getUserVar[MUID;$env[data;id]]\`
-        ]
+      $let[emoji;$if[$env[pos]==1;🥇;$if[$env[pos]==2;🥈;$if[$env[pos]==3;🥉;⁘]]]]
+      $let[i;$math[$get[i] + 1]]
+      $return[$get[emoji] $ordinal[$env[pos]] ➤ $userDisplayName[$env[data;id]]
+          $getGlobalVar[blank] Coins: \`$separateNumber[$getUserVar[MC;$env[data;id]];.]\`$getGlobalVar[emoji]
+          $getGlobalVar[blank] MUID: \`$getUserVar[MUID;$env[data;id]]\`
+      ]
     ]]
 
     $if[$get[lb]==;
             $let[lb;There is no one on this page!]
     ]
 
-    $addActionRow
-    $addButton[left-$authorID;;Primary;⬅️]
-    $addButton[right-$authorID;;Primary;➡️]
+    $if[$getMessageVar[pages;$get[lbmsgID]]>1;
+      $addActionRow
+      $addButton[left-$authorID;;Primary;⬅️]
+      $addButton[right-$authorID;;Primary;➡️]
+    ]
+
     $!editMessage[$channelID;$get[lbmsgID];${embed()}]
   `
 }
@@ -115,12 +117,10 @@ function embed() {
         $let[userPos;$getUserLeaderboardValue[MC;asc;$authorID]]
         $let[emoji;$if[$get[userPos]==1;🥇;$if[$get[userPos]==2;🥈;$if[$get[userPos]==3;🥉;⁘]]]]
 
-        $description[$get[lb]$if[$getMessageVar[rowsPerPage;$get[lbmsgID]]>=5;
+        $description[$get[lb]$if[$and[$getMessageVar[rowsPerPage;$get[lbmsgID]]>=5;$get[userPos]!=0;$get[userPos]>$get[i]];
         ⋘══════ ∘◦❁◦∘ ══════⋙
         
-        **$get[emoji] $ordinal[$get[userPos]] ➤ $userDisplayName
-        $getGlobalVar[blank] Coins: \`$separateNumber[$getUserVar[MC];.]\`$getGlobalVar[emoji]
-        $getGlobalVar[blank] MUID: \`$getUserVar[MUID]\`**]]
+        **$get[emoji] $ordinal[$get[userPos]] ➤ $userDisplayName\n$getGlobalVar[blank] Coins: \`$separateNumber[$getUserVar[MC];.]\`$getGlobalVar[emoji]\n$getGlobalVar[blank] MUID: \`$getUserVar[MUID]\`**]]
 
         $footer[Page: $getMessageVar[page;$get[lbmsgID]]/$getMessageVar[pages;$get[lbmsgID]]]
         $color[$getGlobalVar[defaultColor]]
