@@ -1499,5 +1499,315 @@
       "emoji": "<:MuskoxS2Winter:1338159518609182900>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1338160466278617218/Muskox-S2-Winter.png"
     }
+  },
+
+  "cobra": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "cobra",
+    "trig": "cobra",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "cobra",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "cobra",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "cobra",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
+  },
+
+  "giraffe": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "giraffe",
+    "trig": "giraffe",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "giraffe",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "giraffe",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "giraffe",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
+  },
+
+  "momaffie": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "momaffie",
+    "trig": "momaffie",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "momaffie",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "momaffie",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "momaffie",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
+  },
+
+  "momaffieFamily": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "momaffie family",
+    "trig": "momaffieFamily",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "momaffie family",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "momaffie family",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "momaffie family",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
+  },
+
+  "girabie": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "girabie",
+    "trig": "girabie",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "girabie",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "girabie",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "girabie",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
+  },
+
+  "camel": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "camel",
+    "trig": "camel",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "camel",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "camel",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "camel",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
+  },
+
+  "stingray": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "stingray",
+    "trig": "stingray",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "stingray",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "stingray",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "stingray",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
+  },
+
+  "snowyowl": {
+    "canFly": true,
+    "biome": "Arctic",
+    "fullName": "snowy owl",
+    "trig": "snowyowl",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "snowy owl",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "snowy owl",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "snowy owl",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
+  },
+
+  "walrus": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "walrus",
+    "trig": "walrus",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "walrus",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "walrus",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "walrus",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
+  },
+
+  "raven": {
+    "canFly": true,
+    "biome": "Forest",
+    "fullName": "raven",
+    "trig": "raven",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "raven",
+      "description": "Season 1",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "raven",
+      "description": "Season 2",
+      "emoji": "  ",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "raven",
+      "description": "Season 2 | Winter Version",
+      "emoji": "  ",
+      "img": "  "
+    }
   }
 }
