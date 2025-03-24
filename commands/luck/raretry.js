@@ -14,10 +14,22 @@ module.exports = [{
     $if[$getUserVar[dev]==false;  $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]  ]
   
     $jsonLoad[userPacks;$getUserVar[userPacks]]
-
+    $jsonLoad[coinsForRaretry;$getGlobalVar[coinsForRaretry]]
+    $arrayLoad[multipliersForRaretry;, ;$getGlobalVar[multipliersForRaretry]]
+    $jsonLoad[chancesForRaretry;$getGlobalVar[chancesForRaretry]]
     $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading data from json with all "rare" categories]
 
-    $loop[600;
+
+    $switch[$getUserVar[rtMode];
+        $case[inferno;$let[rtModeNum;0]]
+        $case[default;$let[rtModeNum;0]]
+        $case[medium;$let[rtModeNum;1]]
+        $case[hard;$let[rtModeNum;2]]
+        $case[insane;$let[rtModeNum;3]]
+        $case[impossible;$let[rtModeNum;4]]
+    ]
+
+    
 
     $c[⬇️ Base variables if nothing catched]
     $let[p;0]
@@ -28,20 +40,26 @@ module.exports = [{
 
     $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10]; $c[⬅️ Summon specific category by message]
         $let[p;$message[0]]
-        $let[color;$env[raresGroup;category_$get[p];color]]
-        $let[MC;$floor[$eval[$env[raresGroup;category_$get[p];mc;$getUserVar[rtMode]];false]]]
-        $log[$get[MC]]
-        $let[baseChance;$env[raresGroup;category_$get[p];chance;$getUserVar[rtMode]]]
+
+        ${colorAndCoins()}
+
+        $if[$getUserVar[rtMode]!=inferno;
+            $let[baseChance;$env[chancesForRares;other;$math[$get[p] + $get[rtModeNum] - 1]]]
+        ;
+            $let[baseChance;$env[chancesForRares;inferno;$math[$get[p] - 1]]]
+        ]
+
     ;
         $let[i;10]
 
         $loop[10;
-            $let[baseChance;$env[raresGroup;category_$get[i];chance;$getUserVar[rtMode]]] $c[⬅️ Chance to catch rare (from json)]
+            $let[baseChance;$env[chancesForRares;$getUserVar[rtMode];$sub[$get[i];1]]] $c[⬅️ Chance to catch rare (from json)]
             
             $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we catched rare), getting coins and color from json and saving iteration as "p" variable]
                 $let[p;$get[i]]
-                $let[color;$env[raresGroup;category_$get[i];color]]
-                $let[MC;$floor[$eval[$env[raresGroup;category_$get[i];mc;$getUserVar[rtMode]];false]]]
+                
+                ${colorAndCoins()}
+
                 $break
             ]
 
@@ -120,8 +138,17 @@ module.exports = [{
         $footer[$if[$get[p]>0;Rarity: 1/$get[baseChance] • ]Raretry mode: $getUserVar[rtMode]]
     ]
 
-    $wait[1s]]
-
     $callFunction[logSchema;$commandName] $c[⬅️ Custom function to log when someone used command]
     `
 }]
+
+function colorAndCoins() {
+    return `
+    $let[color;$env[raresGroup;category_$get[p];color]]
+
+    $if[$getUserVar[rtMode]!=inferno;
+        $let[MC;$math[$env[coinsForRaretry;other;$math[$get[p] + $get[rtModeNum] - 1]]] * $arrayAt[multipliersForRaretry;$math[$get[rtModeNum] - 1]]]
+    ;
+        $let[MC;$env[coinsForRaretry;inferno;$math[$get[p] - 1]]]
+    ]`
+}
