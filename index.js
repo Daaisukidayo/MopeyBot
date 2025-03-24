@@ -1,8 +1,8 @@
 // ========== ENVIRONMENT CONFIGURATION ==========
 // Load environment variables before anything else
 
-const dotenv = require("dotenv"); 
-dotenv.config(); 
+const dotenv = require("dotenv");
+dotenv.config();
 
 // ========== IMPORTS ==========
 // Bring in the essentials for our bot’s operations
@@ -22,46 +22,46 @@ const client = new ForgeClient({
     new ForgeDB(), // Adds database capabilities
   ],
   intents: [
-    "Guilds", 
-    "GuildMessages", 
-    "DirectMessages", 
-    "DirectMessageReactions", 
-    "MessageContent", 
+    "Guilds",
+    "GuildMessages",
+    "DirectMessages",
+    "DirectMessageReactions",
+    "MessageContent",
   ],
   events: [
-    "channelCreate", 
-    "channelDelete", 
-    "channelUpdate", 
-    "debug", 
-    "emojiCreate", 
-    "emojiDelete", 
-    "emojiUpdate", 
-    "error", 
-    "guildAuditLogEntryCreate", 
-    "guildCreate", 
-    "guildDelete", 
-    "guildMemberAdd", 
-    "guildMemberRemove", 
-    "guildMemberUpdate", 
-    "guildUpdate", 
-    "interactionCreate", 
-    "inviteCreate", 
-    "inviteDelete", 
-    "messageCreate", 
-    "messageDelete", 
-    "messageReactionAdd", 
-    "messageReactionRemove", 
-    "messageUpdate", 
-    "ready", 
-    "roleCreate", 
-    "roleDelete", 
-    "roleUpdate", 
-    "shardDisconnect", 
-    "shardError", 
-    "shardReady", 
-    "shardReconnecting", 
-    "shardResume", 
-    "userUpdate", 
+    "channelCreate",
+    "channelDelete",
+    "channelUpdate",
+    "debug",
+    "emojiCreate",
+    "emojiDelete",
+    "emojiUpdate",
+    "error",
+    "guildAuditLogEntryCreate",
+    "guildCreate",
+    "guildDelete",
+    "guildMemberAdd",
+    "guildMemberRemove",
+    "guildMemberUpdate",
+    "guildUpdate",
+    "interactionCreate",
+    "inviteCreate",
+    "inviteDelete",
+    "messageCreate",
+    "messageDelete",
+    "messageReactionAdd",
+    "messageReactionRemove",
+    "messageUpdate",
+    "ready",
+    "roleCreate",
+    "roleDelete",
+    "roleUpdate",
+    "shardDisconnect",
+    "shardError",
+    "shardReady",
+    "shardReconnecting",
+    "shardResume",
+    "userUpdate",
     "voiceStateUpdate"
   ],
   prefixes: ["$if[$guildID!=;$getGuildVar[prefix];.]"],
@@ -107,16 +107,16 @@ ForgeDB.variables({
   blank: "<:blank:898514292926713866>",
   l10n: "EN",
 
-  coinsForRaretry:{
-    inferno: [0,0,0,0,0,100,110,120,130,140],
-    other: [0,0,500,1500,4000,10500,55000,165000,275000,550000,1375000,2750000,5500000,55000000]
+  coinsForRaretry: {
+    inferno: [0, 0, 0, 0, 0, 100, 110, 120, 130, 140],
+    other: [0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000, 2750000, 5500000, 55000000]
   },
 
   multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
 
   chancesForRaretry: {
-    inferno: [1,2,3,4,5,10,15,20,25,30],
-    other: [3,5,10,30,75,200,1000,3000,5000,10000,25000,50000,100000,1000000],
+    inferno: [1, 2, 3, 4, 5, 10, 15, 20, 25, 30],
+    other: [3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000, 1000000],
   },
 
   userPacks: {
@@ -153,8 +153,8 @@ client.functions.add({
 
 client.functions.add({
   name: "rulesEmbeds",
-  code: 
-  `
+  code:
+    `
     $return[  
       $author[Hey, $userDisplayName!;$userAvatar]
       $title[It looks like you haven't accepted the rules yet!]
