@@ -117,6 +117,7 @@ ForgeDB.variables({
   cooldownColor: "#7303b7",
   logColor: "#2019b3",
   blank: "<:blank:898514292926713866>",
+  lang: "EN",
 
   default_mc_1: 0,
   default_mc_2: 0,
