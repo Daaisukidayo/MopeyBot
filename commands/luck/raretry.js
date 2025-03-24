@@ -15,7 +15,7 @@ module.exports = [{
   
     $jsonLoad[userPacks;$getUserVar[userPacks]]
     $jsonLoad[coinsForRaretry;$getGlobalVar[coinsForRaretry]]
-    $arrayLoad[multipliersForRaretry;, ;$getGlobalVar[multipliersForRaretry]]
+    $arrayLoad[multipliersForRaretry;,;$getGlobalVar[multipliersForRaretry]]
     $jsonLoad[chancesForRaretry;$getGlobalVar[chancesForRaretry]]
     $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading data from json with all "rare" categories]
 
@@ -29,8 +29,6 @@ module.exports = [{
         $case[impossible;$let[rtModeNum;4]]
     ]
 
-    
-
     $c[⬇️ Base variables if nothing catched]
     $let[p;0]
     $let[color;$getGlobalVar[errorColor]]
@@ -42,24 +40,16 @@ module.exports = [{
         $let[p;$message[0]]
 
         ${colorAndCoins()}
-
-        $if[$getUserVar[rtMode]!=inferno;
-            $let[baseChance;$env[chancesForRares;other;$math[$get[p] + $get[rtModeNum] - 1]]]
-        ;
-            $let[baseChance;$env[chancesForRares;inferno;$math[$get[p] - 1]]]
-        ]
-
+        ${baseChance(`p`)}
     ;
         $let[i;10]
 
         $loop[10;
-            $let[baseChance;$env[chancesForRares;$getUserVar[rtMode];$sub[$get[i];1]]] $c[⬅️ Chance to catch rare (from json)]
-            
+            ${baseChance(`i`)}
+
             $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we catched rare), getting coins and color from json and saving iteration as "p" variable]
                 $let[p;$get[i]]
-                
                 ${colorAndCoins()}
-
                 $break
             ]
 
@@ -147,8 +137,22 @@ function colorAndCoins() {
     $let[color;$env[raresGroup;category_$get[p];color]]
 
     $if[$getUserVar[rtMode]!=inferno;
-        $let[MC;$math[$env[coinsForRaretry;other;$math[$get[p] + $get[rtModeNum] - 1]]] * $arrayAt[multipliersForRaretry;$math[$get[rtModeNum] - 1]]]
+        $let[index;$math[$get[p] + $get[rtModeNum] - 1]]
+        $let[arrIndex;$get[rtModeNum]]
+        $let[MC;$math[$env[coinsForRaretry;other;$get[index]] * $advancedReplace[$arrayAt[multipliersForRaretry;$get[arrIndex]];\n;;";;\\];;\\[;]]]
     ;
-        $let[MC;$env[coinsForRaretry;inferno;$math[$get[p] - 1]]]
+        $let[index;$math[$get[p] - 1]]
+        $let[MC;$env[coinsForRaretry;inferno;$get[index]]]
+    ]`
+}
+
+function baseChance(par) {
+    return`
+    $if[$getUserVar[rtMode]!=inferno;
+        $let[index;$math[$get[${par}] + $get[rtModeNum] - 1]]
+        $let[baseChance;$env[chancesForRaretry;other;$get[index]]]
+    ;
+        $let[index;$math[$get[${par}] - 1]]
+        $let[baseChance;$env[chancesForRaretry;inferno;$get[index]]]
     ]`
 }
