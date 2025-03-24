@@ -88,6 +88,7 @@ client.commands.add({
 
 ForgeDB.variables({
   channel: "1350898919068139652",
+  tester: false,
   onSlowmode: false,
   botEnabled: true,
   isBanned: false,

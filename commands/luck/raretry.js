@@ -35,6 +35,7 @@ module.exports = [{
     $let[MC;0]
     $let[thumbnail;]
 
+    $loop[600;
 
     $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10]; $c[⬅️ Summon specific category by message]
         $let[p;$message[0]]
@@ -127,6 +128,8 @@ module.exports = [{
         $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
         $footer[$if[$get[p]>0;Rarity: 1/$get[baseChance] • ]Raretry mode: $getUserVar[rtMode]]
     ]
+
+    $wait[1s]]
 
     $callFunction[logSchema;$commandName] $c[⬅️ Custom function to log when someone used command]
     `
