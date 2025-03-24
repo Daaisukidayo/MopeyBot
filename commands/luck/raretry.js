@@ -154,6 +154,7 @@ function baseChance(par) {
     $if[$getUserVar[rtMode]!=inferno;
         $let[index;$math[$get[${par}] + $get[rtModeNum] - 1]]
         $let[baseChance;$env[chancesForRaretry;other;$get[index]]]
+        $log[$get[baseChance] | $get[index]]
     ;
         $let[index;$math[$get[${par}] - 1]]
         $let[baseChance;$env[chancesForRaretry;inferno;$get[index]]]
