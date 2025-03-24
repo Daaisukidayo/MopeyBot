@@ -12,25 +12,7 @@
       "https://media.discordapp.net/attachments/701793335941136464/1288064074789421077/USSR_Vulture-S2.png"
     ],
 
-    "color": "B80000",
-
-    "mc": {
-      "inferno": 140,
-      "default": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_1]]",
-      "medium": "$math[$getGlobalVar[default_mc_11] * $getGlobalVar[multiplier_2]]",
-      "hard": "$math[$getGlobalVar[default_mc_12] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_13] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_14] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 30,
-      "default": 10000,
-      "medium": 25000,
-      "hard": 50000,
-      "insane": 100000,
-      "impossible": 1000000
-    }
+    "color": "B80000"
   },
 
   "category_9": {
@@ -46,25 +28,7 @@
       "https://media.discordapp.net/attachments/701793335941136464/1286734456077680826/GoldenShahbaz.png"
     ],
 
-    "color": "50351E",
-
-    "mc": {
-      "inferno": 130,
-      "default": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_1]]",
-      "medium": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_2]]",
-      "hard": "$math[$getGlobalVar[default_mc_11] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_12] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_13] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 25,
-      "default": 5000,
-      "medium": 10000,
-      "hard": 25000,
-      "insane": 50000,
-      "impossible": 100000
-    }
+    "color": "50351E"
   },
 
   "category_8": {
@@ -80,25 +44,7 @@
       "https://media.discordapp.net/attachments/701793335941136464/1286734150849663066/PakistanVulture.png"
     ],
 
-    "color": "12713a",
-
-    "mc": {
-      "inferno": 120,
-      "default": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_1]]",
-      "medium": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_2]]",
-      "hard": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_11] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_12] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 20,
-      "default": 3000,
-      "medium": 5000,
-      "hard": 10000,
-      "insane": 25000,
-      "impossible": 50000
-    }
+    "color": "12713a"
   },
 
   "category_7": {
@@ -116,25 +62,7 @@
       "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png"
     ],
 
-    "color": "d61b4a",
-
-    "mc": {
-      "inferno": 110,
-      "default": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_1]]",
-      "medium": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_2]]",
-      "hard": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_11] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 15,
-      "default": 1000,
-      "medium": 3000,
-      "hard": 5000,
-      "insane": 10000,
-      "impossible": 25000
-    }
+    "color": "d61b4a"
   },
 
   "category_6": {
@@ -154,25 +82,7 @@
       "https://media.discordapp.net/attachments/701793335941136464/1286730609326297214/LavaToucan.png"
     ],
 
-    "color": "452591",
-
-    "mc": {
-      "inferno": 100,
-      "default": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_1]]",
-      "medium": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_2]]",
-      "hard": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_10] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 10,
-      "default": 200,
-      "medium": 1000,
-      "hard": 3000,
-      "insane": 5000,
-      "impossible": 10000
-    }
+    "color": "452591"
   },
 
   "category_5": {
@@ -204,25 +114,7 @@
       "https://media.discordapp.net/attachments/701793335941136464/1286733625928454275/StinkyPig-S2.png"
     ],
 
-    "color": "750e0e",
-
-    "mc": {
-      "inferno": 0,
-      "default": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_1]]",
-      "medium": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_2]]",
-      "hard": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_9] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 5,
-      "default": 75,
-      "medium": 200,
-      "hard": 1000,
-      "insane": 3000,
-      "impossible": 5000
-    }
+    "color": "750e0e"
   },
 
   "category_4": {
@@ -246,25 +138,7 @@
       "https://media.discordapp.net/attachments/701793335941136464/1286734059422093375/WhiteTiger.png"
     ],
 
-    "color": "ffffff",
-
-    "mc": {
-      "inferno": 0,
-      "default": "$math[$getGlobalVar[default_mc_4] * $getGlobalVar[multiplier_1]]",
-      "medium": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_2]]",
-      "hard": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_8] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 4,
-      "default": 30,
-      "medium": 75,
-      "hard": 200,
-      "insane": 1000,
-      "impossible": 3000
-    }
+    "color": "ffffff"
   },
 
   "category_3": {
@@ -292,25 +166,7 @@
       "https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png"
     ],
 
-    "color": "f3ab0f",
-
-    "mc": {
-      "inferno": 0,
-      "default": "$math[$getGlobalVar[default_mc_3] * $getGlobalVar[multiplier_1]]",
-      "medium": "$math[$getGlobalVar[default_mc_4] * $getGlobalVar[multiplier_2]]",
-      "hard": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_7] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 3,
-      "default": 10,
-      "medium": 30,
-      "hard": 75,
-      "insane": 200,
-      "impossible": 1000
-    }
+    "color": "f3ab0f"
   },
 
   "category_2": {
@@ -334,25 +190,7 @@
       "https://media.discordapp.net/attachments/701793335941136464/1286733627836600431/BlueMacaw.png"
     ],
 
-    "color": "ffff00",
-
-    "mc": {
-      "inferno": 0,
-      "default": 0,
-      "medium": "$math[$getGlobalVar[default_mc_3] * $getGlobalVar[multiplier_2]]",
-      "hard": "$math[$getGlobalVar[default_mc_4] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_6] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 2,
-      "default": 5,
-      "medium": 10,
-      "hard": 30,
-      "insane": 75,
-      "impossible": 200
-    }
+    "color": "ffff00"
   },
 
   "category_1": {
@@ -368,24 +206,6 @@
       "https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png"
     ],
 
-    "color": "c0c0c0",
-
-    "mc": {
-      "inferno": 0,
-      "default": 0,
-      "medium": 0,
-      "hard": "$math[$getGlobalVar[default_mc_3] * $getGlobalVar[multiplier_3]]",
-      "insane": "$math[$getGlobalVar[default_mc_4] * $getGlobalVar[multiplier_4]]",
-      "impossible": "$math[$getGlobalVar[default_mc_5] * $getGlobalVar[multiplier_5]]"
-    },
-
-    "chance": {
-      "inferno": 1,
-      "default": 3,
-      "medium": 5,
-      "hard": 10,
-      "insane": 30,
-      "impossible": 75
-    }
+    "color": "c0c0c0"
   }
 }
