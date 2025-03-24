@@ -88,18 +88,6 @@ client.commands.add({
 
 ForgeDB.variables({
   channel: "1350898919068139652",
-  userPacks: {
-    summerSP: false,
-    halloweenSP: false,
-    goldenSP: false,
-    lockedSP: false,
-    storefrontSP: false,
-    legacySP: false,
-    landGTSP: false,
-    desertGTSP: false,
-    arcticGTSP: false,
-    oceanGTSP: false,
-  },
   onSlowmode: false,
   botEnabled: true,
   isBanned: false,
@@ -119,26 +107,30 @@ ForgeDB.variables({
   blank: "<:blank:898514292926713866>",
   l10n: "EN",
 
-  default_mc_1: 0,
-  default_mc_2: 0,
-  default_mc_3: 500,
-  default_mc_4: 1500,
-  default_mc_5: 4000,
-  default_mc_6: 10500,
-  default_mc_7: 55000,
-  default_mc_8: 165000,
-  default_mc_9: 275000,
-  default_mc_10: 550000,
-  default_mc_11: 1375000,
-  default_mc_12: 2750000,
-  default_mc_13: 5500000,
-  default_mc_14: 55000000,
+  coinsForRaretry:{
+    inferno: [0,0,0,0,0,100,110,120,130,140],
+    other: [0,0,500,1500,4000,10500,55000,165000,275000,550000,1375000,2750000,5500000,55000000]
+  },
 
-  multiplier_1: 1,
-  multiplier_2: 1.25,
-  multiplier_3: 1.5,
-  multiplier_4: 1.75,
-  multiplier_5: 2,
+  multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
+
+  chancesForRaretry: {
+    inferno: [1,2,3,4,5,10,15,20,25,30],
+    other: [3,5,10,30,75,200,1000,3000,5000,10000,25000,50000,100000,1000000],
+  },
+
+  userPacks: {
+    summerSP: false,
+    halloweenSP: false,
+    goldenSP: false,
+    lockedSP: false,
+    storefrontSP: false,
+    legacySP: false,
+    landGTSP: false,
+    desertGTSP: false,
+    arcticGTSP: false,
+    oceanGTSP: false,
+  },
 });
 
 // ========== FUNCTIONS ==========
