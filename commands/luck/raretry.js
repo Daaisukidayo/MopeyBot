@@ -40,8 +40,8 @@ module.exports = [{
     $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=0;$message[0]<=10]; $c[⬅️ Summon specific category by message]
         $let[p;$message[0]]
 
-        ${colorAndCoins()}
         ${baseChance(`p`)}
+        ${colorAndCoins()}
     ;
         $let[i;10]
 
