@@ -19,17 +19,16 @@ module.exports = [{
     $jsonLoad[chancesForRaretry;$getGlobalVar[chancesForRaretry]]
     $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading data from json with all "rare" categories]
 
-
-    $switch[$getUserVar[rtMode];
-        $case[inferno;$let[rtModeNum;-1]]
-        $case[default;$let[rtModeNum;0]]
-        $case[medium;$let[rtModeNum;1]]
-        $case[hard;$let[rtModeNum;2]]
-        $case[insane;$let[rtModeNum;3]]
-        $case[impossible;$let[rtModeNum;4]]
-    ]
-
     $loop[600;
+
+        $switch[$getUserVar[rtMode];
+            $case[inferno;$let[rtModeNum;-1]]
+            $case[default;$let[rtModeNum;0]]
+            $case[medium;$let[rtModeNum;1]]
+            $case[hard;$let[rtModeNum;2]]
+            $case[insane;$let[rtModeNum;3]]
+            $case[impossible;$let[rtModeNum;4]]
+        ]
 
         $c[⬇️ Base variables if nothing catched]
         $let[p;-1]
