@@ -50,7 +50,7 @@ module.exports = [{
             $description[$get[content]]
             $thumbnail[$get[thumbnail]]
             $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-            $footer[$if[$get[p]>-1;Rarity: 1/$get[baseChance] • Category: $get[cat] • ]Raretry mode: $getUserVar[rtMode]]
+            $footer[$if[$get[p]>-1;Rarity: 1/$separateNumber[$get[baseChance];,] • Category: $get[cat] • ]Raretry mode: $toTitleCase[$getUserVar[rtMode]]]
         ]
     
     $wait[1s]]
