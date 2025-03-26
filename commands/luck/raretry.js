@@ -10,7 +10,7 @@ module.exports = [{
     $onlyIf[$getUserVar[acceptedRules];$callFunction[rulesSchema;]]
     $onlyIf[$getUserVar[onSlowmode]==false]
   
-    $let[cdTime;10s]
+    $let[cdTime;5m]
     $if[$getUserVar[dev]==false;  $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]  ]
   
     $jsonLoad[userPacks;$getUserVar[userPacks]]
@@ -20,7 +20,7 @@ module.exports = [{
 
     $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading data from json with all "rare" categories]
 
-    $loop[1;
+    $loop[300;
 
         $switch[$getUserVar[rtMode];
             $case[inferno;$let[rtModeNum;-1]]
