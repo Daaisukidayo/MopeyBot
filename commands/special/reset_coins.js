@@ -21,7 +21,7 @@ $if[$splitText[0]==confirm_deleting_coins;
     $!editMessage[$channelID;$messageID;Deleted all your \`$separateNumber[$getUserVar[MC];,]\`$getGlobalVar[emoji]!]
     $deleteUserVar[MC;$authorID]
 ;
-    $!editMessage[$channelID;$messageID;Delition declined!]
+    $!editMessage[$channelID;$messageID;Deletion canceled!]
 ]
 
 `}]
