@@ -87,37 +87,94 @@ client.commands.add({
 // ========== VARIABLES ==========
 
 ForgeDB.variables({
-  channel: "1350898919068139652",
-  tester: false,
+  isTester: false,
   onSlowmode: false,
-  botEnabled: true,
   isBanned: false,
   dev: false,
-  prefix: ".",
-  emoji: "🪙",
   acceptedRules: false,
   rtMode: "default",
   MC: 0,
   MUID: -1,
+  l10n: "EN",
+  
+  botEnabled: true,
+  channel: "1350898919068139652",
   maxID: 0,
+  prefix: ".",
+  emoji: "🪙",
   defaultColor: "#FFD700",
   errorColor: "#D0321D",
   luckyColor: "#228B22",
   cooldownColor: "#7303b7",
   logColor: "#2019b3",
   blank: "<:blank:898514292926713866>",
-  l10n: "EN",
 
-  coinsForRaretry: {
-    inferno: [0, 0, 0, 0, 0, 100, 110, 120, 130, 140],
-    other: [0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000, 2750000, 5500000, 55000000]
+  userAccount: {
+    MC: "0",
+    MUID: "-1",
+    l10n: "EN",
+    rtMode: "default",
+    isTester: false,
+    onSlowmode: false,
+    isBanned: false,
+    acceptedRules: false,
+
+    cooldowns: {
+      lastWeeklyWeek: -1,
+      lastWeeklyHour: -1,
+      lastDailyDay: -1,
+      lastDailyHour: -1,
+      lastHLUsed: -1,
+    },
+
+    contents: {
+      luckDesc: "",
+    },
+
+    userPacks: {
+      summerSP: false,
+      halloweenSP: false,
+      goldenSP: false,
+      lockedSP: false,
+      storefrontSP: false,
+      legacySP: false,
+      landGTSP: false,
+      desertGTSP: false,
+      arcticGTSP: false,
+      oceanGTSP: false,
+    },
+
+    catchedRareCategories: {
+      inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      medium: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      hard: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      insane: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      impossible: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
   },
 
-  multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
+  catchedRareCategories: {
+    inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    medium: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    hard: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    insane: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    impossible: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  },
 
-  chancesForRaretry: {
-    inferno: [1, 2, 3, 4, 5, 10, 15, 20, 25, 30],
-    other: [3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000, 1000000],
+  raretryVarData: {
+    coinsForRaretry: {
+      inferno: [0, 0, 0, 0, 0, 100, 110, 120, 130, 140],
+      other: [0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000, 2750000, 5500000, 55000000]
+    },
+
+    chancesForRaretry: {
+      inferno: [1, 2, 3, 4, 5, 10, 15, 20, 25, 30],
+      other: [3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000, 1000000],
+    },
+
+    multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
   },
 
   userPacks: {
