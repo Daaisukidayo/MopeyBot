@@ -54,7 +54,7 @@ module.exports = [{
             $footer[$if[$get[p]>-1;Rarity: 1/$separateNumber[$get[baseChance];,] • Category: $get[cat] • ]Raretry mode: $toTitleCase[$getUserVar[rtMode]]]
         ]
     
-    $wait[1s];msgi]
+    $wait[1s];msgi;desc]
 
     $callFunction[logSchema;$commandName] $c[⬅️ Custom function to log when someone used command]
     `
