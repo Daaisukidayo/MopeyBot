@@ -14,12 +14,13 @@ module.exports = [{
     $if[$getUserVar[dev]==false;  $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]  ]
   
     $jsonLoad[userPacks;$getUserVar[userPacks]]
-    $jsonLoad[coinsForRaretry;$getGlobalVar[coinsForRaretry]]
-    $arrayLoad[multipliersForRaretry;,;$getGlobalVar[multipliersForRaretry]]
-    $jsonLoad[chancesForRaretry;$getGlobalVar[chancesForRaretry]]
+    $jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
+    $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
+    $arrayLoad[categories;,;Common,Uncommon,Rare,Epic,Legendary,Extreme,Godly,Pakistani,Imposs,USSR]
+
     $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading data from json with all "rare" categories]
 
-    $loop[600;
+    $loop[1;
 
         $switch[$getUserVar[rtMode];
             $case[inferno;$let[rtModeNum;-1]]
@@ -49,7 +50,7 @@ module.exports = [{
             $description[$get[content]]
             $thumbnail[$get[thumbnail]]
             $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-            $footer[$if[$get[p]>-1;Rarity: 1/$get[baseChance] • ]Raretry mode: $getUserVar[rtMode]]
+            $footer[$if[$get[p]>-1;Rarity: 1/$get[baseChance] • Category: $get[cat] • ]Raretry mode: $getUserVar[rtMode]]
         ]
     
     $wait[1s]]
@@ -62,28 +63,28 @@ module.exports = [{
 
 function colorAndCoins() {
     return `
-    $if[$get[p]>=0;$let[color;$env[raresGroup;category_$get[p];color]]]
+    $if[$get[p]>-1;$let[color;$env[raresGroup;category_$get[p];color]]]
 
     $if[$getUserVar[rtMode]!=inferno;
         $let[index;$math[$get[p] + $get[rtModeNum]]]
-        $let[MC;$math[$env[coinsForRaretry;other;$get[index]] * $advancedReplace[$arrayAt[multipliersForRaretry;$get[rtModeNum]];\n;;";;\\];;\\[;]]]
+        $let[MC;$math[$env[raretryVarData;coinsForRaretry;other;$get[index]] * $advancedReplace[$env[raretryVarData;multipliersForRaretry;$get[rtModeNum]];\n;;";;\\];;\\[;]]]
     ;
-        $let[MC;$env[coinsForRaretry;inferno;$get[p]]]
+        $let[MC;$env[raretryVarData;coinsForRaretry;inferno;$get[p]]]
     ]`
 }
 
 function baseChance(par) {
     return`
     $if[$getUserVar[rtMode]!=inferno;
-        $let[baseChance;$env[chancesForRaretry;other;$math[$get[${par}] + $get[rtModeNum]]]]
+        $let[baseChance;$env[raretryVarData;chancesForRaretry;other;$math[$get[${par}] + $get[rtModeNum]]]]
     ;
-        $let[baseChance;$env[chancesForRaretry;inferno;$get[${par}]]]
+        $let[baseChance;$env[raretryVarData;chancesForRaretry;inferno;$get[${par}]]]
     ]`
 }
 
 function thumbnailAndArray() {
     return `
-    $if[$get[p]>=0;
+    $if[$get[p]>-1;
 
         $arrayLoad[thumbnails;,;$advancedReplace[$env[raresGroup;category_$get[p];thumbnail];\n;;";;\\];;\\[;]]   $c[⬅️ Making and fixing thumbnail array from json object]
         $arrayLoad[contents;,;$advancedReplace[$env[raresGroup;category_$get[p];content];\n;;";;\\];;\\[;]]       $c[⬅️ Making and fixing content array from json object]
@@ -152,6 +153,8 @@ function catchingRare() {
 
         ${baseChance(`p`)}
         ${colorAndCoins()}
+        $let[cat;$arrayAt[categories;$get[p]]]
+
     ;
         $let[i;9]
 
@@ -160,6 +163,9 @@ function catchingRare() {
 
             $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we catched rare), getting coins and color from json and saving iteration as "p" variable]
                 $let[p;$get[i]]
+                $jsonSet[catchedRareCategories;$getUserVar[rtMode];$get[p];$sum[$env[catchedRareCategories;$getUserVar[rtMode];$get[p]];1]]
+                $setUserVar[catchedRareCategories;$env[catchedRareCategories]]
+                $let[cat;$arrayAt[categories;$get[p]]]
                 ${colorAndCoins()}
                 $break
             ]
