@@ -116,7 +116,7 @@ $deferUpdate
 
 function embed() {
     return `
-    $title[TOTAL CATCHED RARES FOR "$toTitleCase[$get[rtMode]]":]
+    $title[Total catched rares in "$toTitleCase[$get[rtMode]]" mode:]
     $description[${loop()}]
     $color[$getGlobalVar[luckyColor]]
     $footer[Page: $getMessageVar[crpage;$get[msgid]]/6]`
