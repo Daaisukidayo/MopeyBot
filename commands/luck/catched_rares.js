@@ -64,10 +64,11 @@ $deferUpdate
 $textSplit[$customID;-]
 $onlyIf[$splitText[1]==$authorID;  $ephemeral $interactionReply[This button is not for you!]  ]
 $onlyIf[$or[$splitText[0]==left_cr;$splitText[0]==right_cr]]
+$let[msgid;$messageID]
+$onlyIf[$getMessageVar[crpage;$get[msgid]]!=;  $ephemeral $interactionReply[You can't interract with this message anymore!]  ]
 
 ${jsonAndArray()}
 
-$let[msgid;$messageID]
 
 $if[$splitText[0]==left_cr; 
     $setMessageVar[crpage;$sub[$getMessageVar[crpage;$get[msgid]];1];$get[msgid]]
