@@ -10,7 +10,7 @@ module.exports = [{
     $onlyIf[$getUserVar[acceptedRules];$callFunction[rulesSchema;]]
     $onlyIf[$getUserVar[onSlowmode]==false]
   
-    $let[cdTime;5m]
+    $let[cdTime;50m]
     $if[$getUserVar[dev]==false;  $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]  ]
   
     $jsonLoad[userPacks;$getUserVar[userPacks]]
@@ -20,7 +20,7 @@ module.exports = [{
 
     $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading data from json with all "rare" categories]
 
-    $loop[300;
+    $loop[3000;
 
         $switch[$getUserVar[rtMode];
             $case[inferno;$let[rtModeNum;-1]]
@@ -46,7 +46,7 @@ module.exports = [{
         $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
 
         $sendMessage[$channelID;
-            Attemp #$env[msgi]
+            Attempt #$env[msgi]
             $color[$get[color]]
             $description[$get[content]]
             $thumbnail[$get[thumbnail]]
@@ -55,6 +55,8 @@ module.exports = [{
         ]
     
     $wait[1s];msgi;desc]
+
+    $sendMessage[$channelID;<@$authorID> cathing loop is done!]
 
     $callFunction[logSchema;$commandName] $c[⬅️ Custom function to log when someone used command]
     `
