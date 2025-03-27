@@ -26,6 +26,18 @@ $switch[$get[rtMode];
     $case[impossible;   $setMessageVar[crpage;6;$get[msgid]]]
 ]
 
+$switch[$get[rtMode];
+    $case[inferno;      $let[rtModeNum;-1]]
+    $case[default;      $let[rtModeNum;0]]
+    $case[medium;       $let[rtModeNum;1]]
+    $case[hard;         $let[rtModeNum;2]]
+    $case[insane;       $let[rtModeNum;3]]
+    $case[impossible;   $let[rtModeNum;4]]
+]
+
+${baseChance()}
+
+
 
 $addActionRow
 $addButton[left_cr-$authorID;;Primary;⬅️]
@@ -53,6 +65,8 @@ $textSplit[$customID;-]
 $onlyIf[$splitText[1]==$authorID;  $ephemeral $interactionReply[This button is not for you!]  ]
 $onlyIf[$or[$splitText[0]==left_cr;$splitText[0]==right_cr]]
 
+${jsonAndArray()}
+
 $let[msgid;$messageID]
 
 $if[$splitText[0]==left_cr; 
@@ -67,7 +81,6 @@ $if[$splitText[0]==left_cr;
     ]
 ]
 
-${jsonAndArray()}
 
 
 $switch[$getMessageVar[crpage;$get[msgid]];
@@ -79,6 +92,15 @@ $switch[$getMessageVar[crpage;$get[msgid]];
     $case[5;$let[rtMode;insane]]
     $case[6;$let[rtMode;impossible]]
 
+]
+
+$switch[$get[rtMode];
+    $case[inferno;      $let[rtModeNum;-1]]
+    $case[default;      $let[rtModeNum;0]]
+    $case[medium;       $let[rtModeNum;1]]
+    $case[hard;         $let[rtModeNum;2]]
+    $case[insane;       $let[rtModeNum;3]]
+    $case[impossible;   $let[rtModeNum;4]]
 ]
 
 $addActionRow
@@ -103,11 +125,16 @@ function embed() {
 function loop() {
     return `
     $let[i;0]
-    $loop[10;$return[### $arrayAt[categories;$get[i]]: \`$env[catchedRareCategories;$get[rtMode];$get[i]]\`\n $let[i;$math[$get[i] + 1]]]]`
+    $loop[10;$return[**$arrayAt[categories;$get[i]]: \`$env[catchedRareCategories;$get[rtMode];$get[i]]\`\n Chance: ${baseChance()} 1/$separateNumber[$get[baseChance];,]**\n\n $let[i;$math[$get[i] + 1]]]]`
 }
 
 function jsonAndArray() {
     return `
+    $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
     $arrayLoad[categories;,;Common,Uncommon,Rare,Epic,Legendary,Extreme,Godly,Pakistani,Imposs,USSR]`
+}
+
+function baseChance() {
+    return `$if[$get[rtMode]!=inferno; $let[baseChance;$env[raretryVarData;chancesForRaretry;other;$math[$get[i] + $get[rtModeNum]]]] ; $let[baseChance;$env[raretryVarData;chancesForRaretry;inferno;$get[i]]] ]`
 }
