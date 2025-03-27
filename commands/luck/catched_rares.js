@@ -127,7 +127,7 @@ function embed() {
 function loop() {
     return `
     $let[i;0]
-    $loop[10;$return[**$arrayAt[categories;$get[i]]: \`$env[catchedRareCategories;$get[rtMode];$get[i]]\`\n Chance: 1/$separateNumber[${chance()};,]**\nCoins: $reparateNumber[${coins()};,]\n\n $let[i;$math[$get[i] + 1]]]]`
+    $loop[10;$return[**$arrayAt[categories;$get[i]]: \`$env[catchedRareCategories;$get[rtMode];$get[i]]\`\n Chance: 1/$separateNumber[${chance()};,]\nCoins: $separateNumber[${coins()};,]**\n\n $let[i;$math[$get[i] + 1]]]]`
 }
 
 function jsonAndArray() {
