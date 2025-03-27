@@ -22,23 +22,23 @@ module.exports = [{
 
         $loop[300;
 
-            switch[$getUserVar[rtMode];
-                   $case[inferno;$let[rtModeNum;-1]]
-                   $case[default;$let[rtModeNum;0]]
-                   $case[medium;$let[rtModeNum;1]]
-                   $case[hard;$let[rtModeNum;2]]
-                   $case[insane;$let[rtModeNum;3]]
-                   $case[impossible;$let[rtModeNum;4]]
-            
+            $switch[$getUserVar[rtMode];
+                    $case[inferno;$let[rtModeNum;-1]]
+                    $case[default;$let[rtModeNum;0]]
+                    $case[medium;$let[rtModeNum;1]]
+                    $case[hard;$let[rtModeNum;2]]
+                    $case[insane;$let[rtModeNum;3]]
+                    $case[impossible;$let[rtModeNum;4]]
+            ]
 
-            c[⬇️ Default variables for unsuccessful attempts]
-            let[p;-1]
-            let[color;$getGlobalVar[errorColor]]
-            let[MC;0]
-            let[catched;false]
-            let[content;## $randomText[You tried to get rares but got nothing;You tried to get rares but ended up empty-handed;You went rare hunting but found nothing;You tested your luck with rares but failed;You were farming rares but got nothing special;You attempted to evolve into a rare but failed].] 
+            $c[⬇️ Default variables for unsuccessful attempts]
+            $let[p;-1]
+            $let[color;$getGlobalVar[errorColor]]
+            $let[MC;0]
+            $let[catched;false]
+            $let[content;## $randomText[You tried to get rares but got nothing;You tried to get rares but ended up empty-handed;You went rare hunting but found nothing;You tested your luck with rares but failed;You were farming rares but got nothing special;You attempted to evolve into a rare but failed].] 
 
-            {catchingRare()}
+            ${catchingRare()}
                 
         
         $wait[1s];msgi;desc]
