@@ -142,5 +142,5 @@ function chance() {
 }
 
 function coins() {
-    return `$if[$get[rtMode]!=inferno;$math[$env[raretryVarData;coinsForRaretry;other;$math[$get[p] + $get[rtModeNum]]] * $advancedReplace[$env[raretryVarData;multipliersForRaretry;$get[rtModeNum]];\n;;";;\\];;\\[;]];$env[raretryVarData;coinsForRaretry;inferno;$get[i]] ]`
+    return `$if[$get[rtMode]!=inferno;$math[$env[raretryVarData;coinsForRaretry;other;$math[$get[i] + $get[rtModeNum]]] * $advancedReplace[$env[raretryVarData;multipliersForRaretry;$get[rtModeNum]];\n;;";;\\];;\\[;]];$env[raretryVarData;coinsForRaretry;inferno;$get[i]] ]`
 }
