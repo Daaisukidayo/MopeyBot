@@ -17,15 +17,14 @@ module.exports = [{
       ]
     ]
   `},{
-  name: "",
   type: "messageCreate",
   unprefixed: true,
   code: `
-    $onlyIf[$noMentionMessage==]
     $onlyIf[$mentioned[0]==$botID]
+    $onlyIf[$noMentionMessage==]
+    $onlyIf[$guildID!=]
 
     $reply
-    $onlyIf[$guildID!=;Disabled in DMs]
     My prefix in this server is \`$getGuildVar[prefix]\``
   }
 ]
