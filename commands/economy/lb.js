@@ -59,9 +59,8 @@ module.exports = [{
 
     $let[lbmsgID;$messageID]
 
-    $onlyIf[$getMessageVar[page;$get[lbmsgID]]!=]
-    $onlyIf[$getMessageVar[pages;$get[lbmsgID]]!=]
-    $onlyIf[$getMessageVar[rowsPerPage;$get[lbmsgID]]!=]
+    $onlyIf[$or[$getMessageVar[page;$get[lbmsgID]]!=;$getMessageVar[pages;$get[lbmsgID]]!=;$getMessageVar[rowsPerPage;$get[lbmsgID]]!=];   $ephemeral $interactionReply[You can't interract with this message anymore!]  ]
+
 
     $if[$customID==left-$authorID;
 
