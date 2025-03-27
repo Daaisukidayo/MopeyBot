@@ -179,7 +179,7 @@ function catchingRare() {
                 $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
 
                 $sendMessage[$channelID;
-                    Attempt: $env[msgid]
+                    Attempt: $env[msgi]
                     $color[$get[color]]
                     $description[$get[content]]
                     $thumbnail[$get[thumbnail]]
@@ -193,7 +193,7 @@ function catchingRare() {
 
         $if[$get[catched]==false;
             $sendMessage[$channelID;
-                Attempt: $env[msgid]
+                Attempt: $env[msgi]
                 $color[$get[color]]
                 $description[$get[content]]
                 $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
