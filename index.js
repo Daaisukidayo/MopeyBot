@@ -83,9 +83,10 @@ client.commands.add({
     $deletevars[crpage;;message]
     $deletevars[pages;;message]
     $deletevars[rowsPerPage;;message]
-    $log[Deleted unused message vars!]
-    $setStatus[online;Watching;over $guildCount servers]
-    $log[$username[$botID] is online!]
+    $log[Unused message variables have been cleared!]
+
+    $setStatus[online;Watching;$guildCount servers]
+    $log[$username[$botID] is now online!]
   `
 })
 
