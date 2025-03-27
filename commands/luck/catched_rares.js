@@ -35,7 +35,7 @@ $switch[$get[rtMode];
     $case[impossible;   $let[rtModeNum;4]]
 ]
 
-${baseChance()}
+${chance()}
 
 
 
@@ -127,7 +127,7 @@ function embed() {
 function loop() {
     return `
     $let[i;0]
-    $loop[10;$return[**$arrayAt[categories;$get[i]]: \`$env[catchedRareCategories;$get[rtMode];$get[i]]\`\n Chance: ${baseChance()} 1/$separateNumber[$get[baseChance];,]**\n\n $let[i;$math[$get[i] + 1]]]]`
+    $loop[10;$return[**$arrayAt[categories;$get[i]]: \`$env[catchedRareCategories;$get[rtMode];$get[i]]\`\n Chance: 1/$separateNumber[${chance()};,]**\nCoins: $reparateNumber[${coins()};,]\n\n $let[i;$math[$get[i] + 1]]]]`
 }
 
 function jsonAndArray() {
@@ -137,6 +137,10 @@ function jsonAndArray() {
     $arrayLoad[categories;,;Common,Uncommon,Rare,Epic,Legendary,Extreme,Godly,Pakistani,Imposs,USSR]`
 }
 
-function baseChance() {
-    return `$if[$get[rtMode]!=inferno; $let[baseChance;$env[raretryVarData;chancesForRaretry;other;$math[$get[i] + $get[rtModeNum]]]] ; $let[baseChance;$env[raretryVarData;chancesForRaretry;inferno;$get[i]]] ]`
+function chance() {
+    return `$if[$get[rtMode]!=inferno;$env[raretryVarData;chancesForRaretry;other;$math[$get[i] + $get[rtModeNum]]];$env[raretryVarData;chancesForRaretry;inferno;$get[i]]]`
+}
+
+function coins() {
+    return `$if[$get[rtMode]!=inferno;$math[$env[raretryVarData;coinsForRaretry;other;$math[$get[p] + $get[rtModeNum]]] * $advancedReplace[$env[raretryVarData;multipliersForRaretry;$get[rtModeNum]];\n;;";;\\];;\\[;]];$env[raretryVarData;coinsForRaretry;inferno;$get[i]] ]`
 }
