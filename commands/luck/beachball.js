@@ -3,16 +3,10 @@ module.exports = [{
   type: "messageCreate",
   aliases: ["bb"],
   code:`
-
     $reply
-
-    $onlyIf[$getGlobalVar[botEnabled]==true]
-    $onlyIf[$getUserVar[isBanned]==false]
-    $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
-    $onlyIf[$getUserVar[onSlowmode]==false]
-    
     $let[cdTime;20s]
-    $if[$getUserVar[dev]==false; $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]] ]
+    $callFunction[checking;]
+    $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[data;$readFile[json/beachballs.json]]
         

@@ -3,11 +3,8 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-  
-    $onlyIf[$getGlobalVar[botEnabled]==true]
-    $onlyIf[$getUserVar[isBanned]==false]
-    $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
-    $onlyIf[$getUserVar[onSlowmode]==false]
+    
+    $callFunction[checking;]
   
     $let[currentHour;$hour]
     $let[currentMinute;$minute]

@@ -1,6 +1,9 @@
 module.exports = [{ name: "reset-coins", aliases: ["rc", "rmc", "reset-my-coins"], type: "messageCreate", code: `
 
 $reply
+
+$callFunction[checking;]
+
 $onlyIf[$getUserVar[MC]>0;You don't have any $getGlobalVar[emoji] to delete!]
 
 Are you sure you want to delete all your \`$separateNumber[$getUserVar[MC];,]\`$getGlobalVar[emoji]? 

@@ -1,8 +1,9 @@
 module.exports = [{ name: "catchedrares", aliases: ["cr"], type: "messageCreate", code: `
 
-$callFunction[checking;]
+$reply
 
 $let[cdTime;2m]
+$callFunction[checking;]
 $callFunction[cooldown;$get[cdTime]]
 
 ${jsonAndArray()}

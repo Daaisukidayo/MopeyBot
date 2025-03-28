@@ -2,20 +2,31 @@ module.exports = [{
   name: "prefix",
   type: "messageCreate",
   code: `
-    $onlyIf[$guildID!=;Disabled in DMs]
     $reply
-    $if[$message==;
+    
+    $callFunction[checking;]
+
+    $onlyIf[$guildID!=;
+      $title[:x: Invalid server!]
+      $description[### Disabled in DMs]
+      $color[$getGlobalVar[errorColor]]
+    ]
+
+    $onlyIf[$message!=;
       $title[:x: Invalid arguments!]
       $description[### No message written]
-      $color[d0321d]
-    ;
-      $if[$hasPerms[$guildID;$authorID;Administrator;ManageGuild]==true;
-          $setGuildVar[prefix;$message]
-          ### Successfully changed my prefix in this server to \`$message\`
-      ;
-          ### You can't change my prefix because you missing following permissions: \`Manage Server\` or \`Administrator\`       
-      ]
+      $color[$getGlobalVar[errorColor]]
     ]
+      
+    $onlyIf[$hasPerms[$guildID;$authorID;Administrator;ManageGuild]==true;
+      $title[:x: Missing Permissions!]
+      $description[### You can't change my prefix because you missing following permissions: \`Manage Server\` or \`Administrator\`]
+      $color[$getGlobalVar[errorColor]]
+    ]
+
+    $setGuildVar[prefix;$message]
+    ### Successfully changed my prefix in this server to \`$message\`
+    
   `},{
   type: "messageCreate",
   unprefixed: true,
@@ -25,7 +36,7 @@ module.exports = [{
     $onlyIf[$guildID!=]
 
     $reply
-    My prefix in this server is \`$getGuildVar[prefix]\``
-  }
+    My prefix in this server is \`$getGuildVar[prefix]\`
+  `}
 ]
   

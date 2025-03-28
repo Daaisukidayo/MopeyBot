@@ -6,10 +6,7 @@ module.exports = ({
   `
     $reply
   
-    $onlyIf[$getGlobalVar[botEnabled]==true]
-    $onlyIf[$getUserVar[isBanned]==false]
-    $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
-    $onlyIf[$getUserVar[onSlowmode]==false]
+    $callFunction[checking;]
 
     $let[pos;$message[0]]
   

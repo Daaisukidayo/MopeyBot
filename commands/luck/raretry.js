@@ -1,52 +1,40 @@
-module.exports = [{
-    name: "raretry",
-    aliases: ["rt"],
-    type: "messageCreate",
-    code: `
-        $reply
+module.exports = [{ name: "raretry", aliases: ["rt"], type: "messageCreate", code: `
+$reply
 
-        $onlyIf[$getGlobalVar[botEnabled]]
-        $onlyIf[$getUserVar[isBanned]==false]
-        $onlyIf[$getUserVar[acceptedRules];$callFunction[rulesSchema;]]
-        $onlyIf[$getUserVar[onSlowmode]==false]
-    
-        $let[cdTime;5s]
-        $if[$getUserVar[dev]==false; $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]]
-    
-        $jsonLoad[userPacks;$getUserVar[userPacks]]
-        $jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
-        $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
-        $arrayLoad[categories;,;Common,Uncommon,Rare,Epic,Legendary,Extreme,Godly,Pakistani,Imposs,USSR]
+$let[cdTime;10s]
+$callFunction[checking;]
+$callFunction[cooldown;$get[cdTime]]
 
-        $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading rare categories data from JSON]
+$jsonLoad[userPacks;$getUserVar[userPacks]]
+$jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
+$jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
+$arrayLoad[categories;,;Common,Uncommon,Rare,Epic,Legendary,Extreme,Godly,Pakistani,Imposs,USSR]
+$jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading rare categories data from JSON]
 
-        $loop[300;
-
-            $switch[$getUserVar[rtMode];
-                    $case[inferno;$let[rtModeNum;-1]]
-                    $case[default;$let[rtModeNum;0]]
-                    $case[medium;$let[rtModeNum;1]]
-                    $case[hard;$let[rtModeNum;2]]
-                    $case[insane;$let[rtModeNum;3]]
-                    $case[impossible;$let[rtModeNum;4]]
-            ]
-
-            $c[⬇️ Default variables for unsuccessful attempts]
-            $let[p;-1]
-            $let[color;$getGlobalVar[errorColor]]
-            $let[MC;0]
-            $let[catched;false]
-            $let[content;## $randomText[You tried to get rares but got nothing;You tried to get rares but ended up empty-handed;You went rare hunting but found nothing;You tested your luck with rares but failed;You were farming rares but got nothing special;You attempted to evolve into a rare but failed].] 
-
-            ${catchingRare()}
-                
+$loop[300;
+    $switch[$getUserVar[rtMode];
+            $case[inferno;$let[rtModeNum;-1]]
+            $case[default;$let[rtModeNum;0]]
+            $case[medium;$let[rtModeNum;1]]
+            $case[hard;$let[rtModeNum;2]]
+            $case[insane;$let[rtModeNum;3]]
+            $case[impossible;$let[rtModeNum;4]]
+    ]
+    $c[⬇️ Default variables for unsuccessful attempts]
+    $let[p;-1]
+    $let[color;$getGlobalVar[errorColor]]
+    $let[MC;0]
+    $let[catched;false]
+    $let[content;## $randomText[You tried to get rares but got nothing;You tried to get rares but ended up empty-handed;You went rare hunting but found nothing;You tested your luck with rares but failed;You were farming rares but got nothing special;You attempted to evolve into a rare but failed].] 
+    ${catchingRare()}
         
-        $wait[1s];msgi;desc]
 
-        $sendMessage[$channelID;<@$authorID> The command loop has ended!]
+$wait[1s];msgi;desc]
 
-        $callFunction[logSchema;$commandName] $c[⬅️ Logging command usage]
-    `
+$sendMessage[$channelID;<@$authorID> The command loop has ended!]
+
+$callFunction[logSchema;$commandName] $c[⬅️ Logging command usage]
+`
 }]
 
 // Functions
