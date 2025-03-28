@@ -2,48 +2,53 @@ module.exports = [{
   name: "raretrymode",
   aliases: ["rtm", "rtmode"],
   type: "messageCreate",
-  code: `
+  code: `$let[cdTime;1m]
     $reply
   
-    $onlyIf[$getGlobalVar[botEnabled]==true]
-    $onlyIf[$getUserVar[isBanned]==false]
-    $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
-    $onlyIf[$getUserVar[onSlowmode]==false]
+    $callFunction[checking;]
+    $callFunction[cooldown;$get[cdTime]]
 
-    $let[cdTime;1m]
-    $if[$getUserVar[dev]==false;  $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]  ]
+    $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
+    $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]];\n;;";;\\];;\\[;]]
     
-    ${embed()}`
+    ${embed()}
+  `
 },{
   type: "interactionCreate",
   allowedInteractionTypes: [ "button" ],
   code: `
     $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;  $ephemeral $interactionReply[This button is not for you!]  ]
+
+    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
     $onlyIf[$or[$splitText[0]==inferno;$splitText[0]==default;$splitText[0]==medium;$splitText[0]==hard;$splitText[0]==insane;$splitText[0]==impossible]]
 
     $setUserVar[rtMode;$splitText[0]]
 
     ${embed()}
 
-    $deferUpdate`
+    $deferUpdate
+  `
 }]
 
 function embed() {
-    return `
-        $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-        $description[# Choose your raretry mode:]
-        $color[228b22]
+  return `
+    $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
+    $description[# Choose your raretry mode:]
+    $color[228b22]
 
-        $arrayLoad[modes;, ;inferno, default, medium, hard, insane, impossible]
+    $loop[$arrayLength[categories];
+      $let[i;$sub[$env[i];1]] 
+       
+      $if[$or[$get[i]==0;$get[i]==3];
+        $addActionRow
+      ] 
 
-        $loop[$arrayLength[modes];  $let[i;$sub[$env[i];1]]  $if[$or[$get[i]==0;$get[i]==3];$addActionRow] 
+      $if[$getUserVar[rtMode]==$toLowerCase[$arrayAt[categories;$get[i]]];
+        $addButton[$toLowerCase[$arrayAt[categories;$get[i]]]-$authorID;$arrayAt[categories;$get[i]];Secondary;;true]
+      ;
+        $addButton[$toLowerCase[$arrayAt[categories;$get[i]]]-$authorID;$arrayAt[categories;$get[i]];Success]
+      ]
 
-            $if[$getUserVar[rtMode]==$arrayAt[modes;$get[i]];
-                    $addButton[$arrayAt[modes;$get[i]]-$authorID;$toTitleCase[$arrayAt[modes;$get[i]]];Secondary;;true]
-            ;
-                    $addButton[$arrayAt[modes;$get[i]]-$authorID;$toTitleCase[$arrayAt[modes;$get[i]]];Success]
-            ]
-
-        ;i;desc] `
+    ;i;desc]
+  `
 }
