@@ -181,6 +181,7 @@ ForgeDB.variables({
     },
 
     categories: ["Common", "Uncommon", "Rare", "Epic", "Legendary", "Extreme", "Godly", "Pakistani", "Imposs", "USSR"],
+    raretryModes: ["Inferno", "Default", "Medium", "Hard", "Insane", "Impossible"],
 
     multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
   },
