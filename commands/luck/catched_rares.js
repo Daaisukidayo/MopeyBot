@@ -1,21 +1,16 @@
-module.exports = [{
-    name: "catchedrares", aliases: ["cr"], type: "messageCreate",
-    code: `
+module.exports = [{ name: "catchedrares", aliases: ["cr"], type: "messageCreate", code: `
 
-$onlyIf[$getGlobalVar[botEnabled]]
-$onlyIf[$getUserVar[isBanned]==false]
-$onlyIf[$getUserVar[acceptedRules];$callFunction[rulesSchema;]]
-$onlyIf[$getUserVar[onSlowmode]==false]
+$callFunction[checking;]
 
-$let[cdTime;1m]
-$if[$getUserVar[dev]==false;  $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]  ]
-  
+$let[cdTime;2m]
+$callFunction[cooldown;$get[cdTime]]
+
 ${jsonAndArray()}
 
 $let[rtMode;$getUserVar[rtMode]]
 
 $reply
-$let[msgid;$sendMessage[$channelID; ${embed()} $footer[] $description[Loading...];true]]
+$let[msgid;$sendMessage[$channelID; ${emptyEmbed()} $footer[] $description[Loading...];true]]
 
 $switch[$get[rtMode];
     $case[inferno;      $setMessageVar[crpage;1;$get[msgid]]]
@@ -35,14 +30,10 @@ $switch[$get[rtMode];
     $case[impossible;   $let[rtModeNum;4]]
 ]
 
-${chance()}
-
-
-
 $addActionRow
 $addButton[left_cr-$authorID;;Primary;⬅️]
 $addButton[right_cr-$authorID;;Primary;➡️]
-
+$addButton[setmode-$authorID-$get[rtMode];Set mode to $get[rtMode];Secondary;;true]
 
 $!editMessage[$channelID;$get[msgid];${embed()}]
 
@@ -50,22 +41,22 @@ $setTimeout[
     $addActionRow
     $addButton[left_cr-$authorID;;Primary;⬅️;true]
     $addButton[right_cr-$authorID;;Primary;➡️;true] 
+    $addButton[setmode-$authorID-$get[rtMode];Set mode to $get[rtMode];Secondary;;true]
     $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
     $deleteMessageVar[crpage;$get[msgid]]  
-;1m]
+;$get[cdTime]]
 
 $deferUpdate
 
 `},
-{
-    type: "interactionCreate", allowedInteractionTypes: ["button"],
-    code: `
+{ type: "interactionCreate", allowedInteractionTypes: ["button"], code: `
 
 $textSplit[$customID;-]
-$onlyIf[$splitText[1]==$authorID;  $ephemeral $interactionReply[This button is not for you!]  ]
+$onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
 $onlyIf[$or[$splitText[0]==left_cr;$splitText[0]==right_cr]]
+$onlyIf[$getMessageVar[crpage;$messageID]!=;  $callFunction[interFail;]  ]
+
 $let[msgid;$messageID]
-$onlyIf[$getMessageVar[crpage;$get[msgid]]!=;  $ephemeral $interactionReply[You can't interract with this message anymore!]  ]
 
 ${jsonAndArray()}
 
@@ -108,18 +99,66 @@ $addActionRow
 $addButton[left_cr-$authorID;;Primary;⬅️]
 $addButton[right_cr-$authorID;;Primary;➡️]
 
+$if[$getUserVar[rtMode]!=$get[rtMode];
+    $addButton[setmode-$authorID-$get[rtMode];Set mode to $get[rtMode];Success]
+;
+    $addButton[setmode-$authorID-$get[rtMode];Set mode to $get[rtMode];Secondary;;true]
+]
+
 $!editMessage[$channelID;$get[msgid];${embed()}]
 
 $deferUpdate
 
 
-`}]
+`},
+{ type: "interactionCreate", allowedInteractionTypes: ["button"], code: `
+$textSplit[$customID;-]
+
+$onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
+$onlyIf[$splitText[0]==setmode]
+
+$let[msgid;$messageID]
+${jsonAndArray()}
+
+$let[rtMode;$splitText[2]]
+
+
+$switch[$get[rtMode];
+    $case[inferno;      $let[rtModeNum;-1]]
+    $case[default;      $let[rtModeNum;0]]
+    $case[medium;       $let[rtModeNum;1]]
+    $case[hard;         $let[rtModeNum;2]]
+    $case[insane;       $let[rtModeNum;3]]
+    $case[impossible;   $let[rtModeNum;4]]
+]
+
+$setUserVar[rtMode;$get[rtMode]]
+
+
+$addActionRow
+$addButton[left_cr-$authorID;;Primary;⬅️]
+$addButton[right_cr-$authorID;;Primary;➡️]
+$addButton[setmode-$authorID-$get[rtMode];Set mode to $get[rtMode];Secondary;;true]
+
+$!editMessage[$channelID;$get[msgid];${embed()} Your raretry mode is set to \`$splitText[2]\`]
+
+$deferUpdate
+
+`
+}]
+
+function emptyEmbed() {
+    return `
+    $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
+    $color[$getGlobalVar[luckyColor]]
+    $description[Loading...]`
+}
 
 function embed() {
     return `
     $title[Total catched rares in "$toTitleCase[$get[rtMode]]" mode:]
     $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-    $description[${loop()}]
+    $!description[${loop()}]
     $color[$getGlobalVar[luckyColor]]
     $footer[Page: $getMessageVar[crpage;$get[msgid]]/6]`
 }
@@ -127,14 +166,14 @@ function embed() {
 function loop() {
     return `
     $let[i;0]
-    $loop[10;$return[**$arrayAt[categories;$get[i]]: \`$env[catchedRareCategories;$get[rtMode];$get[i]]\`\n Chance: 1/$separateNumber[${chance()};,]\nCoins: $separateNumber[${coins()};,]**\n\n $let[i;$math[$get[i] + 1]]]]`
+    $loop[$arrayLength[categories];$return[**\`\`\`$arrayAt[categories;$get[i]]: $separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]\nChance: 1/$separateNumber[${chance()};,]\nCoins: $separateNumber[${coins()};,]\`\`\`** $let[i;$math[$get[i] + 1]]]]`
 }
 
 function jsonAndArray() {
     return `
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
-    $arrayLoad[categories;,;Common,Uncommon,Rare,Epic,Legendary,Extreme,Godly,Pakistani,Imposs,USSR]`
+    $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]`
 }
 
 function chance() {
