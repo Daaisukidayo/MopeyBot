@@ -1,24 +1,14 @@
-const cdtime = 120
-
 module.exports = [{
   name: "leaderboard",
   aliases: ["lb", "top"],
   type: "messageCreate",
-  code: `
+  code: `$let[cdTime;2m]
     $reply
 
-    $onlyIf[$getGlobalVar[botEnabled]==true]
-    $onlyIf[$getUserVar[isBanned]==false]
-    $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
-    $onlyIf[$getUserVar[onSlowmode]==false]
-
-    $let[cdTime;${cdtime}]
-    $if[$getUserVar[dev]==false;
-            $userCooldown[$commandName;$get[cdTime];$callFunction[cooldownSchema;$commandName]]
-    ]
+    $callFunction[checking;]
+    $callFunction[cooldown;$get[cdTime]]
 
     $let[lbmsgID;$sendMessage[$channelID;${embed()};true]]
-
     $setMessageVar[page;$message[0];$get[lbmsgID]]
     $setMessageVar[rowsPerPage;$message[1];$get[lbmsgID]]
 
@@ -39,33 +29,34 @@ module.exports = [{
     ${vars()}
 
     $if[$getMessageVar[pages;$get[lbmsgID]]>1;
-
       $setTimeout[ 
         $addActionRow
         $addButton[left_lb-$authorID;;Primary;⬅️;true]
         $addButton[right_lb-$authorID;;Primary;➡️;true] 
         $!editMessage[$channelID;$get[lbmsgID];${lbgen()} $color[GRAY] This message is now inactive. Run the command again.] 
-      ;${cdtime}s]
+      ;$get[cdTime]s]
     ]
 
     $setTimeout[
       $deleteMessageVar[page;$get[lbmsgID]]  
       $deleteMessageVar[pages;$get[lbmsgID]]  
       $deleteMessageVar[rowsPerPage;$get[lbmsgID]]  
-    ;${cdtime}s]
+    ;$get[cdTime]s]
   `
 }, {
   type: "interactionCreate",
   allowedInteractionTypes: ["button"],
   code: `
     $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;  $ephemeral $interactionReply[This button is not for you!]  ]    
+
+    $onlyIf[$splitText[1]==$authorID; $callFunction[notYourBTN;] ]
     $onlyIf[$or[$splitText[0]==left_lb;$splitText[0]==right_lb]==true]
 
     $let[lbmsgID;$messageID]
 
-    $onlyIf[$or[$getMessageVar[page;$get[lbmsgID]]!=;$getMessageVar[pages;$get[lbmsgID]]!=;$getMessageVar[rowsPerPage;$get[lbmsgID]]!=];   $ephemeral $interactionReply[You can't interract with this message anymore!]  ]
-
+    $onlyIf[$or[$getMessageVar[page;$get[lbmsgID]]!=;$getMessageVar[pages;$get[lbmsgID]]!=;$getMessageVar[rowsPerPage;$get[lbmsgID]]!=];
+      $callFunction[interFail;]
+    ]
 
     $if[$customID==left_lb;
 
