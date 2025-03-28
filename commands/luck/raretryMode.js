@@ -7,9 +7,6 @@ module.exports = [{
   
     $callFunction[checking;]
     $callFunction[cooldown;$get[cdTime]]
-
-    $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
-    $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]];\n;;";;\\];;\\[;]]
     
     ${embed()}
   `
@@ -36,17 +33,20 @@ function embed() {
     $description[# Choose your raretry mode:]
     $color[228b22]
 
-    $loop[$arrayLength[categories];
+    $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
+    $arrayLoad[raretryModes;,;$advancedReplace[$env[raretryVarData;raretryModes]; ;;\n;;";;\\];;\\[;]]
+
+    $loop[$arrayLength[raretryModes];
       $let[i;$sub[$env[i];1]] 
        
       $if[$or[$get[i]==0;$get[i]==3];
         $addActionRow
       ] 
 
-      $if[$getUserVar[rtMode]==$toLowerCase[$arrayAt[categories;$get[i]]];
-        $addButton[$toLowerCase[$arrayAt[categories;$get[i]]]-$authorID;$arrayAt[categories;$get[i]];Secondary;;true]
+      $if[$getUserVar[rtMode]==$toLowerCase[$arrayAt[raretryModes;$get[i]]];
+        $addButton[$toLowerCase[$arrayAt[raretryModes;$get[i]]]-$authorID;$arrayAt[raretryModes;$get[i]];Secondary;;true]
       ;
-        $addButton[$toLowerCase[$arrayAt[categories;$get[i]]]-$authorID;$arrayAt[categories;$get[i]];Success]
+        $addButton[$toLowerCase[$arrayAt[raretryModes;$get[i]]]-$authorID;$arrayAt[raretryModes;$get[i]];Success]
       ]
 
     ;i;desc]
