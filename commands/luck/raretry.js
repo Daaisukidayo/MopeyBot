@@ -1,7 +1,7 @@
 module.exports = [{ name: "raretry", aliases: ["rt"], type: "messageCreate", code: `
 $reply
 
-$let[cdTime;10s]
+$let[cdTime;5m]
 $callFunction[checking;]
 $callFunction[cooldown;$get[cdTime]]
 
@@ -11,7 +11,7 @@ $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
 $arrayLoad[categories;,;Common,Uncommon,Rare,Epic,Legendary,Extreme,Godly,Pakistani,Imposs,USSR]
 $jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading rare categories data from JSON]
 
-$loop[300;
+$loop[30;
     $switch[$getUserVar[rtMode];
             $case[inferno;$let[rtModeNum;-1]]
             $case[default;$let[rtModeNum;0]]
@@ -29,7 +29,7 @@ $loop[300;
     ${catchingRare()}
         
 
-$wait[1s];msgi;desc]
+$wait[10s];msgi;desc]
 
 $sendMessage[$channelID;<@$authorID> The command loop has ended!]
 
