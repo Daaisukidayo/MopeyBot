@@ -34,14 +34,14 @@ module.exports = [{
         $addButton[left_lb-$authorID;;Primary;⬅️;true]
         $addButton[right_lb-$authorID;;Primary;➡️;true] 
         $!editMessage[$channelID;$get[lbmsgID];${lbgen()} $color[GRAY] This message is now inactive. Run the command again.] 
-      ;$get[cdTime]s]
+      ;$get[cdTime]]
     ]
 
     $setTimeout[
       $deleteMessageVar[page;$get[lbmsgID]]  
       $deleteMessageVar[pages;$get[lbmsgID]]  
       $deleteMessageVar[rowsPerPage;$get[lbmsgID]]  
-    ;$get[cdTime]s]
+    ;$get[cdTime]]
   `
 }, {
   type: "interactionCreate",
@@ -50,7 +50,7 @@ module.exports = [{
     $textSplit[$customID;-]
 
     $onlyIf[$splitText[1]==$authorID; $callFunction[notYourBTN;] ]
-    $onlyIf[$or[$splitText[0]==left_lb;$splitText[0]==right_lb]==true]
+    $onlyIf[$or[$splitText[0]==left_lb;$splitText[0]==right_lb]]
 
     $let[lbmsgID;$messageID]
 
@@ -73,7 +73,7 @@ module.exports = [{
       $if[$getMessageVar[page;$get[lbmsgID]]>$getMessageVar[pages;$get[lbmsgID]];
         $setMessageVar[page;1;$get[lbmsgID]]
       ]
-    ]]
+    ]
 
     ${vars()}
 
@@ -87,7 +87,7 @@ function vars() {
     $let[lb;$userLeaderboard[MC;asc;$getMessageVar[rowsPerPage;$get[lbmsgID]];$getMessageVar[page;$get[lbmsgID]];\n;data;pos;
       $let[emoji;$if[$env[pos]==1;🥇;$if[$env[pos]==2;🥈;$if[$env[pos]==3;🥉;⁘]]]]
       $let[i;$math[$get[i] + 1]]
-      $return[$get[emoji] $ordinal[$env[pos]] ➤ $userDisplayName[$env[data;id]]\n$getGlobalVar[blank] Coins: \`$separateNumber[$getUserVar[MC;$env[data;id]];.]\`$getGlobalVar[emoji]\n$getGlobalVar[blank] MUID: \`$getUserVar[MUID;$env[data;id]]\`]
+      $return[$get[emoji] $ordinal[$env[pos]] ➤ $userDisplayName[$env[data;id]]\n$getGlobalVar[blank] Coins: \`$separateNumber[$getUserVar[MC;$env[data;id]];.]\`$getGlobalVar[emoji]\n$getGlobalVar[blank] MUID: \`$getUserVar[MUID;$env[data;id]]\`\n]
     ]]
 
     $if[$get[lb]==;
