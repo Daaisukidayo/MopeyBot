@@ -282,3 +282,46 @@ client.functions.add({
   `
 })
 
+// standart checkings before executing command
+
+client.functions.add({
+  name: "checking",
+  code: `
+    $if[$getUserVar[dev]==false;
+      $onlyIf[$getGlobalVar[botEnabled]==true]
+    ]
+    $onlyIf[$getUserVar[isBanned]==false]
+    $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
+    $onlyIf[$getUserVar[onSlowmode]==false]
+  `
+})
+
+// adding cooldown
+
+client.functions.add({
+  name: "cooldown",
+  params: ["time"],
+  code: `
+    $if[$getUserVar[dev]==false;
+      $userCooldown[$commandName;$env[time];$callFunction[cooldownSchema;$commandName]]
+    ]
+  `
+})
+
+// when important variables for commands' functionality are deleted
+
+client.functions.add({
+  name: "interFail",
+  code: `
+  $ephemeral 
+  $interactionReply[You can't interract with this message anymore!]`
+})
+
+// when other people trying to interact with author's button
+
+client.functions.add({
+  name: "notYourBTN",
+  code: `
+  $ephemeral
+  $interactionReply[This button is not for you!]`
+})
