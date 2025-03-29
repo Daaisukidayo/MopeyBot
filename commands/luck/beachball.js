@@ -60,9 +60,6 @@ module.exports = [{
             $footer[Rarity: 1/$get[f]]
         ]
     ]
-    
-    $callFunction[logSchema;$commandName | Got: $get[desc]]
-
   `
 }]
 
