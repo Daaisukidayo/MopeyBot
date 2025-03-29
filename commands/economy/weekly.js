@@ -46,7 +46,5 @@ module.exports = [{
       $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
       $color[$getGlobalVar[defaultColor]] 
     ]
-
-    $callFunction[logSchema;$commandName]
   `
 }]

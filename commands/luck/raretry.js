@@ -32,8 +32,6 @@ $loop[30;
 $wait[10s];msgi;desc]
 
 $sendMessage[$channelID;<@$authorID> The command loop has ended!]
-
-$callFunction[logSchema;$commandName] $c[⬅️ Logging command usage]
 `
 }]
 

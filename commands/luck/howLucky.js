@@ -41,6 +41,5 @@ module.exports = ({
         $color[$getGlobalVar[luckyColor]]
         $footer[The % number resets every day at 0 AM UTC+0]
     ]
-        
-    $callFunction[logSchema;$commandName]
-`})
+  `
+})
