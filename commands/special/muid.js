@@ -2,10 +2,8 @@ module.exports = ({
   name: "muid",
   aliases: ["uid", "id"],
   type: "messageCreate",
-  code: 
-  `
+  code: `
     $reply
-  
     $callFunction[checking;]
 
     $let[pos;$message[0]]
