@@ -104,7 +104,6 @@ ForgeDB.variables({
   l10n: "EN",
   
   botEnabled: true,
-  channel: "1350898919068139652",
   maxID: 0,
   prefix: ".",
   emoji: "🪙",
@@ -263,24 +262,6 @@ client.functions.add({
   name: "sumMC",
   params: ["amount"],
   code: `$return[$setUserVar[MC;$sum[$getUserVar[MC];$env[amount]]]]`
-})
-
-// Logging
-
-client.functions.add({
-  name: "logSchema",
-  params: ["command"],
-  code: `
-  $return[
-    $sendMessage[$getGlobalVar[channel];
-      $description[Used: $env[command]]
-      $color[$getGlobalVar[logColor]]
-      $title[Log]
-      $author[$userDisplayName ($authorID) • MUID: $getUserVar[MUID];$userAvatar]
-      $if[$guildID!=;$footer[$guildName;$guildIcon]]     
-    ]
-  ]
-  `
 })
 
 // standart checkings before executing command
