@@ -1,4 +1,4 @@
-module.exports = [{ name: "catchedrares", aliases: ["cr"], type: "messageCreate", code: `
+module.exports = [{ name: "catchedrares", aliases: ["cr", "chances", "ch", "rares"], type: "messageCreate", code: `
 
 $reply
 
