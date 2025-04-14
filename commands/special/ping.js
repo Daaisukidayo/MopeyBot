@@ -10,14 +10,11 @@ module.exports = ({
 
     $let[l10n;$getUserVar[l10n]]
 
-    $let[desc1;$env[l10n;ping;pingDesc1;$get[l10n]]]
-    $let[desc2;$env[l10n;ping;pingDesc2;$get[l10n]]]
-    $let[descMS;$env[l10n;ping;pingMS;$get[l10n]]]
+    $loop[3; 
+        $let[desc$env[i];$env[l10n;ping;pingDesc$env[i];$get[l10n]]] 
+        $if[$get[desc$env[i]]==; $let[desc1;textNotFound | ID: $get[l10n]$env[i]]] 
+    ;i;desc]
 
-    $if[$get[desc1]==; $let[desc1;textNotFound]]
-    $if[$get[desc2]==; $let[desc2;textNotFound]]
-    $if[$get[descMS]==; $let[descMS;textNotFound]]
-
-    **$get[desc1]: \`$ping\`$get[descMS]**\n**$get[desc2]: \`$floor[$executionTime]\`$get[descMS]** 
+    **$get[desc1]: \`$ping\`$get[desc3]**\n**$get[desc2]: \`$floor[$executionTime]\`$get[desc3]** 
   `
 })

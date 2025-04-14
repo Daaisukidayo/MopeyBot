@@ -13,19 +13,10 @@ module.exports = [{
 
     $let[l10n;$getUserVar[l10n]]
 
-    $let[desc1;$env[l10n;credits;creditsDesc1;$get[l10n]]]
-    $let[desc2;$env[l10n;credits;creditsDesc2;$get[l10n]]]
-    $let[desc3;$env[l10n;credits;creditsDesc3;$get[l10n]]]
-    $let[desc4;$env[l10n;credits;creditsDesc4;$get[l10n]]]
-    $let[desc5;$env[l10n;credits;creditsDesc5;$get[l10n]]]
-    $let[desc6;$env[l10n;credits;creditsDesc6;$get[l10n]]]
-
-    $if[$get[desc1]==; $let[desc1;textNotFound]]
-    $if[$get[desc2]==; $let[desc2;textNotFound]]
-    $if[$get[desc3]==; $let[desc3;textNotFound]]
-    $if[$get[desc4]==; $let[desc4;textNotFound]]
-    $if[$get[desc5]==; $let[desc5;textNotFound]]
-    $if[$get[desc6]==; $let[desc6;textNotFound]]
+    $loop[6; 
+        $let[desc$env[i];$env[l10n;credits;creditsDesc$env[i];$get[l10n]]] 
+        $if[$get[desc$env[i]]==; $let[desc1;textNotFound | ID: $get[l10n]$env[i]]] 
+    ;i;desc]
 
 
     $title[__$get[desc6]__]
