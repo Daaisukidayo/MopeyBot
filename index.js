@@ -114,51 +114,6 @@ ForgeDB.variables({
   logColor: "#2019b3",
   blank: "<:blank:898514292926713866>",
 
-  userAccount: {
-    MC: "0",
-    MUID: "-1",
-    l10n: "EN",
-    rtMode: "default",
-    isTester: false,
-    onSlowmode: false,
-    isBanned: false,
-    acceptedRules: false,
-
-    cooldowns: {
-      lastWeeklyWeek: -1,
-      lastWeeklyHour: -1,
-      lastDailyDay: -1,
-      lastDailyHour: -1,
-      lastHLUsed: -1,
-    },
-
-    contents: {
-      luckDesc: "",
-    },
-
-    userPacks: {
-      summerSP: false,
-      halloweenSP: false,
-      goldenSP: false,
-      lockedSP: false,
-      storefrontSP: false,
-      legacySP: false,
-      landGTSP: false,
-      desertGTSP: false,
-      arcticGTSP: false,
-      oceanGTSP: false,
-    },
-
-    catchedRareCategories: {
-      inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      medium: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      hard: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      insane: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      impossible: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    },
-  },
-
   catchedRareCategories: {
     inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
