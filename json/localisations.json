@@ -1,0 +1,16 @@
+{
+    "ping": {
+        "pingDesc1": {
+            "EN": "The bot's current ping",
+            "RU": "Текущий пинг бота"
+        },
+        "pingDesc2": {
+            "EN": "Execution time",
+            "RU": "Время выполнения"
+        },
+        "pingMS": {
+            "EN": "ms",
+            "RU": "мс"
+        }
+    }
+}
