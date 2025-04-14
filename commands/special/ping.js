@@ -6,7 +6,7 @@ module.exports = ({
     
     $callFunction[checking;]
 
-    $jsonLoad[l10n;$readFile[json/localisations.json]]
+    $jsonLoad[l10n;$readFile[json/localizations.json]]
 
     $let[l10n;$getUserVar[l10n]]
 
