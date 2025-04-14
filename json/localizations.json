@@ -12,5 +12,32 @@
             "EN": "ms",
             "RU": "мс"
         }
+    },
+
+    "credits": {
+        "creditsDesc1": {
+            "EN": "Bot creator",
+            "RU": "Создатель бота"
+        },
+        "creditsDesc2": {
+            "EN": "Bot's profile picture by",
+            "RU": "Аватар бота от"
+        },
+        "creditsDesc3": {
+            "EN": "Artists",
+            "RU": "Художники"
+        },
+        "creditsDesc4": {
+            "EN": "Made with love 💖",
+            "RU": "Сделано с любовью 💖"
+        },
+        "creditsDesc5": {
+            "EN": "Developers",
+            "RU": "Разработчики"
+        },
+        "creditsDesc6": {
+            "EN": "Credits",
+            "RU": "Благодарности"
+        }
     }
 }
