@@ -10,9 +10,15 @@ module.exports = [{
     $let[cdTime;10s]
     $callFunction[cooldown;$get[cdTime]]
 
-    $arrayLoad[globalChances;,;100,250,250,300,300,100,10000,3000,3000,700,500,500,500,10000,3000,3000,3000,3000,3000,250,250,250,10000,10000,250,250,250,1000,1000,1000,1000,1000,1000,1000,1000,1000,4000,4000,10000,3000,700,700,1000,1000,5000,5000,5000,700,700,600,10,10,10,2000,2000,1000,1000]
-    $arrayLoad[animalsChances;,;]
 
+    $arrayLoad[animalsChances;,;  5,    1,    25,   5,    3,    60,   1,    10,   1,      1,    300,    10,   25,   50,   1,      1,    12,   300,  600,  900,  1,   4,   5,    16,    1650,   1,   15,  10,  1,    5,    14,   1,    5,    114,  1,    5,    54    1,    50,   1,     1,     15,  600, 2,    4,    1,    1,    28,   5,   20,  25,   1,    1,    1,  1,    1,    1,    1]
+    $arrayLoad[operators;,;       >=,   ==,   >=,   >=,   >=,   >=,   ==,   >=,   ==,     ==,   >=,     >=,   >=,   >=,   ==,     ==,   >=,   >=,   >=,   >=,   ==,  >=,  >=,   >=,    >=,     ==,  >=,  >=,  ==,   >=,   >=,   ==,   >=,   >=,   ==,   >=,   >=,   ==,   >=,   ==,    ==,    >=,  >=,  >=,   >=,   ==,   ==,   >=,   >=,  >=,  >=,   ==,   ==,   ==, ==,   ==,   ==,   ==]
+    $arrayLoad[globalChances;,;   100,  250,  250,  100,  300,  300,  300,  700,  10000,  3000, 3000,   500,  500,  500,  10000,  3000, 3000, 3000, 3000, 3000, 250, 250, 250,  10000, 10000,  250, 250, 250, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 4000, 4000, 10000, 3000,  700, 700, 1000, 1000, 5000, 5000, 5000, 700, 700, 600,  10,   10,   10, 1000, 2000, 2000, 1000]
+
+    $arrayLoad[animalsChances;,;5,1,25,5,3,60,1,10,1,1,300,10,25,50,1,1,12,300,600,900,1,4,5,16,1650,1,15,10,1,5,14,1,5,114,1,5,54,1,50,1,1,15,600,2,4,1,1,28,5,20,25,1,1,1,1,1,1,1];
+    $arrayLoad[operators;,;>=,==,>=,>=,>=,>=,==,>=,==,==,>=,>=,>=,>=,==,==,>=,>=,>=,>=,==,>=,>=,>=,>=,==,>=,>=,==,>=,>=,==,>=,>=,==,>=,>=,==,>=,==,==,>=,>=,>=,>=,==,==,>=,>=,>=,>=,==,==,==,==,==,==,==];
+    $arrayLoad[globalChances;,;100,250,250,100,300,300,300,700,10000,3000,3000,500,500,500,10000,3000,3000,3000,3000,3000,250,250,250,10000,10000,250,250,250,1000,1000,1000,1000,1000,1000,1000,1000,1000,4000,4000,10000,3000,700,700,1000,1000,5000,5000,5000,700,700,600,10,10,10,1000,2000,2000,1000];
+    $arrayLoad[animalsDesc;,;...]
 
 $optOff[
 
@@ -31,9 +37,12 @@ $optOff[
     $var[rlsman;1==$random[1;$sum[1;$var[smans]]]]
     $var[rarelsman;The Snowman by luck <:TheSnowman:1284570594075218014> 🍀🍀]
 
+
     $var[lbfoot;1000]
     $var[rlbfoot;1==$random[1;$sum[1;$var[lbfoot]]]]
     $var[rarelbfoot;The Big Foot by luck <:TheBigfoot:1285617256562425967> 🍀🍀]
+
+
 
     $var[shops;10]
     $var[rssgirl;1==$random[1;$sum[1;$var[shops]]]]
@@ -52,6 +61,7 @@ $optOff[
     $var[rayeti;25>=$random[1;$sum[1;$var[ayeti]]]]
     $var[rareayeti;Aqua Yeti <:AquaYeti:1284570581093711914> 🍀]
 
+
   $c[+    TIER 13    ]
 
     $var[wgirafs;700]
@@ -60,6 +70,9 @@ $optOff[
 
     $var[rwgiraf;20>=$random[1;$sum[1;$var[wgirafs]]]]
     $var[rarewgiraf;White Giraffe <:WhiteGiraffe:1284570509589352478> 🍀]
+
+                
+
 
 
   $c[+    TIER 12    ]
@@ -90,6 +103,8 @@ $optOff[
     $var[rmarkh;600>=$random[1;$sum[1;$var[goats]]]]
     $var[raremarkh;Markhor <:Markhor:1284568638170595459>]
 
+    
+
 
 
   $c[+    TIER 11    ]
@@ -109,6 +124,8 @@ $optOff[
 
     $var[rpredator;50>=$random[1;$sum[1;$var[falcs]]]]
     $var[rarepredator;Predator <:PredatorFalcon:1284568255599476786>]
+
+
 
 
     $var[lions;1000]
@@ -140,17 +157,28 @@ $optOff[
     $var[rarelc;Lion Cub <:LionCub:1284568208082341929>]
 
 
+
+
+
+    ]
+
+
   $c[+    TIER 10    ]
 
     $var[bearandtiger;250]
     $var[rbbear;10>=$random[1;$sum[1;$var[bearandtiger]]]]
     $var[rarebbear;Black Bear <:BlackBear:1288058731363569684>]
 
+
     $var[rbtiger;1==$random[1;$sum[1;$var[bearandtiger]]]]
     $var[rarebtiger;Black Tiger <:BlackTiger:1288058719082643526> 🍀]
 
     $var[rwtiger;15>=$random[1;$sum[1;$var[bearandtiger]]]]
     $var[rarewtiger;White Tiger <:WhiteTiger:1284568061474508810>]
+
+
+
+
 
   $c[+    TIER 9    ]
 
@@ -175,6 +203,8 @@ $optOff[
     $var[rarejag;Jaguar <:Jaguar:1284567739440300052>]
 
 
+
+
     $var[ussrtoucan;10000]
     $var[russrtouc;1==$random[1;$sum[1;$var[ussrtoucan]]]]
     $var[rareussrtouc;USSR Toucan <:USSR_ToucanS2:1288058651075940382> 🍀🍀🍀🍀🍀]
@@ -196,6 +226,10 @@ $optOff[
     $var[rarechtouc;Choco Toucan <:ChocoToucan:1284567662353059971>]
 
 
+
+
+
+
   $c[+    TIER 8    ]
 
     $var[girafs;500]
@@ -207,6 +241,9 @@ $optOff[
 
     $var[rmomaf;50>=$random[1;$sum[1;$var[girafs]]]]
     $var[raremomaf;Momaffie <:Momaffie:1284567606422147202>]
+
+    
+
 
 
   $c[+    TIER 7    ]
@@ -222,9 +259,13 @@ $optOff[
     $var[rbcaw;300>=$random[1;$sum[1;$var[caw]]]]
     $var[rarebcaw;Blue Macaw <:blue_macaw:1284540918648541287>]
 
+
     $var[jackass;700]
     $var[rjackass;10>=$random[1;$sum[1;$var[jackass]]]]
     $var[rarejackass;Jackass <:Jackass:1284567568299851918>]
+
+
+
 
 
   $c[+    TIER 5    ]  
@@ -233,11 +274,13 @@ $optOff[
     $var[rmuskdeer;1==$random[1;$sum[1;$var[deers]]]]
     $var[raremuskdeer;Musk Deer <:musk_deer:1284540790583984139> 🍀]
 
+
     $var[rmarshdeer;3>=$random[1;$sum[1;$var[deers]]]]
     $var[raremarshdeer;Marsh Deer <:marsh_deer:1284520894894702788>]
 
     $var[rdoe;60>=$random[1;$sum[1;$var[deers]]]]
     $var[raredoe;Doe <:doe:1284520854276804680>]
+
 
     $var[gph;100]
     $var[rgph;5>=$random[1;$sum[1;$var[gph]]]]
@@ -257,6 +300,7 @@ $optOff[
     $var[dove;100]
     $var[rdove;5>=$random[1;$sum[1;$var[dove]]]]
     $var[raredove;White Dove <:WhiteDove:1291258772492255263>]
+
 
   $c[+]
 
@@ -503,14 +547,14 @@ $if[$var[desc]==]
 $endif
 
 $var[clr;228b22]
-$var[text;$randomText[You attempted to obtain rares while upgrading from mouse to black dragon, and you received:;You aimed for rares during your evolution from mouse to black dragon, and you got:;You tried to acquire rares as you leveled up from mouse to black dragon, and you received:;While evolving from mouse to black dragon, you sought rares and obtained:;You were hoping for rares while upgrading from mouse to black dragon, and you received:;You attempted to get rares on your journey from mouse to black dragon, and you got:;While progressing from mouse to black dragon, you tried to select rares and got:;You went for rares while evolving from mouse to black dragon, and your result was:]]
+$var[text;$randomText[You attempted to obtain rares while upgrading from mouse to black dragon,and you received:;You aimed for rares during your evolution from mouse to black dragon,and you got:;You tried to acquire rares as you leveled up from mouse to black dragon,and you received:;While evolving from mouse to black dragon,you sought rares and obtained:;You were hoping for rares while upgrading from mouse to black dragon,and you received:;You attempted to get rares on your journey from mouse to black dragon,and you got:;While progressing from mouse to black dragon,you tried to select rares and got:;You went for rares while evolving from mouse to black dragon,and your result was:]]
 $var[msgdesc;# $var[text] $var[desc]]
 
 
 
 $color[$var[clr]]
 $description[$var[msgdesc]]
-$author[$nickname • MUID: $getVar[uid;$authorID]]$authorIcon[$authorAvatar]
+$author[$userDisplayName • MUID: $getVar[uid;$authorID];$userAvatar]
 
 `
 }]
