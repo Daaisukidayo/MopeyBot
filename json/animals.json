@@ -1687,7 +1687,7 @@
 
   "walrus": {
     "canFly": false,
-    "biome": "Arctic",
+    "biome": "Desert",
     "fullName": "Walrus",
     "trig": "walrus",
 
@@ -1736,6 +1736,437 @@
       "description": "Season 2",
       "emoji": "<:RavenS2:1292124940912562256>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1292384833518960683/Raven-S2.png"
+    }
+  },
+
+  "cheetah": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Cheetah",
+    "trig": "cheetah",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Cheetah",
+      "description": "Season 1",
+      "emoji": "<:CheetahS1:1361776155883212991>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310748164399/Cheetah-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Cheetah",
+      "description": "Season 2",
+      "emoji": "<:CheetahS2:1292125135683190804>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368368353280/Cheetah-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Cheetah",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:CheetahS2Winter:1361776168491155486>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310986973424/Cheetah-S2-Winter.png"
+    }
+  },
+
+  "jaguar": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Jaguar",
+    "trig": "jaguar",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Jaguar",
+      "description": "Season 1",
+      "emoji": "<:JaguarS1:1362129903771844638>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134313134592092/Jaguar-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Jaguar",
+      "description": "Season 2",
+      "emoji": "<:JaguarS2:1284567739440300052>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608680370289/Jaguar.png"
+    }
+  },
+
+  "leopard": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Leopard",
+    "trig": "leopard",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Leopard",
+      "description": "Season 1",
+      "emoji": "<:LeopardS1:1362130076342292710>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134548850147530/Leopard-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Leopard",
+      "description": "Season 2",
+      "emoji": "<:LeopardS2:1284567751641530579>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609888067654/Leopard.png"
+    }
+  },
+
+  "blackPanther": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Black Panther",
+    "trig": "blackPanther",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Black Panther",
+      "description": "Season 1",
+      "emoji": "<:BlackPantherS1:1362130496867270896>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310450233474/BlackPanther-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Black Panther",
+      "description": "Season 2",
+      "emoji": "<:BlackPantherS2:1284567767764177028>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png"
+    }
+  },
+
+  "gorilla": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Gorilla",
+    "trig": "gorilla",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Gorilla",
+      "description": "Season 1",
+      "emoji": "<:GorillaS1:1361776326591385670>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312123896001/Gorilla-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Gorilla",
+      "description": "Season 2",
+      "emoji": "<:GorillaS2:1294274658903920661>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368800497674/Gorilla-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Gorilla",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:GorillaS2Winter:1361776337634988224>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312417235205/Gorilla-S2-Winter.png"
+    }
+  },
+
+  "toucan": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Toucan",
+    "trig": "toucan",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Toucan",
+      "description": "Season 1",
+      "emoji": "<:ToucanS1:1361777009843372253>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134549458583723/Toucan-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Toucan",
+      "description": "Season 2",
+      "emoji": "<:ToucanS2:1292125146533990410>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368586322042/Toucan-S2.png"
+    }
+  },
+
+  "chocoToucan": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Choco Toucan",
+    "trig": "chocoToucan",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Choco Toucan",
+      "description": "Season 1",
+      "emoji": "<:ChocoToucanS1:1362133014095597811>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134311297482974/ChocoToucan-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Choco Toucan",
+      "description": "Season 2",
+      "emoji": "<:ChocoToucanS2:1284567662353059971>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png"
+    }
+  },
+
+  "keelbilledtoucan": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Keel-Billed Toucan",
+    "trig": "keelbilledtoucan",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Keel-Billed Toucan",
+      "description": "Season 1",
+      "emoji": "<:KeelBilledToucanS1:1362133045502808124>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134313407348766/KeelBilledToucan-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Keel-Billed Toucan",
+      "description": "Season 2",
+      "emoji": "<:KeelBilledToucanS2:1284567675212664964>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609045143632/KeelBilledToucan.png"
+    }
+  },
+
+  "fieryToucan": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Fiery Toucan",
+    "trig": "fieryToucan",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Fiery Toucan",
+      "description": "Season 1",
+      "emoji": "<:FieryToucanS1:1362133066943955074>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134311683227869/FieryToucan-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Fiery Toucan",
+      "description": "Season 2",
+      "emoji": "<:FieryToucanS2:1284567688781238323>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608390701066/FieryToucan.png"
+    }
+  },
+
+  "lavaToucan": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Lava Toucan",
+    "trig": "lavaToucan",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Lava Toucan",
+      "description": "Season 1",
+      "emoji": "<:LavaToucanS1:1362133087118430370>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134548384845955/LavaToucan-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Lava Toucan",
+      "description": "Season 2",
+      "emoji": "<:LavaToucanS2:1284567706171080725>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609326297214/LavaToucan.png"
+    }
+  },
+
+  "rareToucan": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Toucan",
+    "trig": "rareToucan",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Pakistan Toucan",
+      "description": "Season 1",
+      "emoji": "<:PakistanToucanS1:1362133109121749052>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134549085159515/PakistanToucan-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Pakistan Toucan",
+      "description": "Season 2",
+      "emoji": "<:PakistanToucanS2:1284567718351077386>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730610446041212/PakistanToucan.png"
+    },
+
+    "v2": {
+      "vCode": "legacy",
+      "name": "USSR Toucan",
+      "description": "Legacy Skinpack",
+      "emoji": "<:USSRToucanLegacy:1287125672342454406>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1287125928450855062/USSR_Toucan.png"
+    },
+
+    "v3": {
+      "vCode": "s2",
+      "name": "USSR Toucan",
+      "description": "Season 2",
+      "emoji": "<:USSRToucanS2:1288058651075940382>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1288064074365534208/USSR_Toucan-S2.png"
+    },
+
+    "v4": {
+      "vCode": "s1",
+      "name": "Hornbill Toucan",
+      "description": "Season 1",
+      "emoji": "<:HornbillToucan:1362133135894253818>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312715157504/HornbillToucan.png"
+    }
+  },
+
+  "rattleSnake": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Rattle Snake",
+    "trig": "rattleSnake",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Rattle Snake",
+      "description": "Season 1",
+      "emoji": "<:RattleSnakeS1:1361777470411378950>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134549819031813/Rattlesnake-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Rattle Snake",
+      "description": "Season 2",
+      "emoji": "<:RattleSnakeS2:1292125087201366067>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292385367885873182/Rattlesnake-S2.png"
+    }
+  },
+
+  "pufferfish": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Pufferfish",
+    "trig": "pufferfish",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Pufferfish",
+      "description": "Season 1",
+      "emoji": "<:PufferfishS1:1361777855507337516>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550381068409/Pufferfish-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Pufferfish",
+      "description": "Season 2",
+      "emoji": "<:PufferfishS2:1292125226083287090>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292385369022664764/Pufferfish-S2.png"
+    }
+  },
+
+  "yellowPufferfish": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Yellow Pufferfish",
+    "trig": "yellowPufferfish",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Yellow Pufferfish",
+      "description": "Season 1",
+      "emoji": "<:YellowPufferfishS1:1361777870434734090>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550637052164/YellowPufferfish-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Yellow Pufferfish",
+      "description": "Season 2",
+      "emoji": "<:YellowPufferfishS2:1284567779156168846>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730611494621268/YellowPufferfish.png"
+    }
+  },
+
+  "demonPufferfish": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Demon Pufferfish",
+    "trig": "demonPufferfish",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Demon Pufferfish",
+      "description": "Season 1",
+      "emoji": "<:DemonPufferfishS1:1361777884619870428>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550138065318/DemonPufferfish-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Demon Pufferfish",
+      "description": "Season 2",
+      "emoji": "<:DemonPufferfishS2:1284567803596116047>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608113881140/DemonPufferfish.png"
+    }
+  },
+
+  "snowLeopard": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Snow Leopard",
+    "trig": "snowLeopard",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Snow Leopard",
+      "description": "Season 1",
+      "emoji": "<:SnowLeopardS1:1361778282672029887>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550897234020/SnowLeopard-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Snow Leopard",
+      "description": "Season 2",
+      "emoji": "<:SnowLeopardS2:1292125039088504926>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292385367659515966/SnowLeopard-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Snow Leopard",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:SnowLeopardS2Winter:1361778296198533403>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362134551144435873/SnowLeopard-S2-Winter.png"
+    }
+  },
+
+  "turkey": {
+    "canFly": true,
+    "biome": "Forest",
+    "fullName": "Turkey",
+    "trig": "turkey",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Turkey",
+      "description": "Season 1",
+      "emoji": "<:Turkey:1292125105551573142>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368129409105/Turkey.png"
     }
   }
 }
