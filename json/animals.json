@@ -1413,6 +1413,14 @@
       "description": "Season 2",
       "emoji": "<:USSRMacawS2:1288058610655690804>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1288064073983987787/USSR_Macaw-S2.png"
+    },
+
+    "v4": {
+      "vCode": "s1",
+      "name": "Spix Macaw",
+      "description": "Season 1",
+      "emoji": "<:SpixMacaw:1362500826597298236>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501105761910924/spixMacaw.png"
     }
   },
 
@@ -2167,6 +2175,260 @@
       "description": "Season 1",
       "emoji": "<:Turkey:1292125105551573142>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368129409105/Turkey.png"
+    }
+  },
+
+  "bear": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Bear",
+    "trig": "bear",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Bear",
+      "description": "Season 1",
+      "emoji": "<:BearS1:1362498849704378550>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501500554838258/Bear-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Bear",
+      "description": "Season 2",
+      "emoji": "<:BearS2:1292125598411653120>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239932141660/Bear-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Bear",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:BearS2Winter:1362498863448985943>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501129588878/Bear-S2-Winter.png"
+    }
+  },
+
+  "blackBear": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Black Bear",
+    "trig": "blackBear",
+
+    "v0": {
+      "vCode": "s2",
+      "name": "Black Bear",
+      "description": "Season 2",
+      "emoji": "<:BlackBearS2:1288058731363569684>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1288064073321287711/BlackBear.png"
+    }
+  },
+
+  "tiger": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Tiger",
+    "trig": "tiger",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Tiger",
+      "description": "Season 1",
+      "emoji": "<:TigerS1:1362499086422511906>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501452419283/Tiger-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Tiger",
+      "description": "Season 2",
+      "emoji": "<:TigerS2:1292125609786609675>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239722553434/Tiger-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Tiger",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:TigerS2Winter:1362499098640388306>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501871718491/Tiger-S2-Winter.png"
+    }
+  },
+
+  "whiteTiger": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "White Tiger",
+    "trig": "whiteTiger",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "White Tiger",
+      "description": "Season 1",
+      "emoji": "<:WhiteTigerS1:1362499110745276598>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501502408851696/WhiteTiger-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "White Tiger",
+      "description": "Season 2",
+      "emoji": "<:WhiteTigerS2:1284568061474508810>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1286734059422093375/WhiteTiger.png"
+    }
+  },
+
+  "blackTiger": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Black Tiger",
+    "trig": "blackTiger",
+
+    "v0": {
+      "vCode": "s2",
+      "name": "Black Tiger",
+      "description": "Season 2",
+      "emoji": "<:BlackTigerS2:1288058719082643526>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1288064073644376095/BlackTiger.png"
+    }
+  },
+
+  "gobiBear": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Gobi Bear",
+    "trig": "gobiBear",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Gobi Bear",
+      "description": "Season 1",
+      "emoji": "<:GobiBearS1:1362499557564481596>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501968282521701/GobiBear-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Gobi Bear",
+      "description": "Season 2",
+      "emoji": "<:GobiBearS2:1292125557827305553>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239248466012/GobiBear-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Gobi Bear",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:GobiBearS2Winter:1362499574945550336>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501969314316328/GobiBear-S2-Winter.png"
+    }
+  },
+
+  "hyena": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Hyena",
+    "trig": "hyena",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Hyena",
+      "description": "Season 1",
+      "emoji": "<:HyenaS1:1362499585469186119>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501969905979402/Hyena-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Hyena",
+      "description": "Season 2",
+      "emoji": "<:HyenaS2:1292125566534684692>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239466573835/Hyena-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Hyena",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:HyenaS2Winter:1362499599226503319>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362501970773934220/Hyena-S2-Winter.png"
+    }
+  },
+
+  "pelican": {
+    "canFly": true,
+    "biome": "Ocean",
+    "fullName": "Pelican",
+    "trig": "pelican",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Pelican",
+      "description": "Season 1",
+      "emoji": "<:PelicanS1:1362500144670441594>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362502231487807698/Pelican-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Pelican",
+      "description": "Season 2",
+      "emoji": "<:PelicanS2:1292125644909580289>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386240171085834/Pelican-S2.png"
+    }
+  },
+
+  "swordfish": {
+    "canFly": false,
+    "biome": "BIOME",
+    "fullName": "Swordfish",
+    "trig": "swordfish",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Swordfish",
+      "description": "Season 1",
+      "emoji": "<:SwordfishS1:1362500257640087655>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362502231953244260/Swordfish-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Swordfish",
+      "description": "Season 2",
+      "emoji": "<:SwordfishS2:1292125632079069255>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386240401899550/Swordfish-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Swordfish",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:SwordfishS2Winter:1362500267492376766>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362502232251171036/Swordfish-S2-Winter.png"
+    }
+  },
+
+  "wolf": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Wolf",
+    "trig": "wolf",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Wolf",
+      "description": "Season 1",
+      "emoji": "<:WolfS1:1362500368507867487>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1362502536942190815/Wolf-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Wolf",
+      "description": "Season 2",
+      "emoji": "<:WolfS2:1292125538688696330>",
+      "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386238913056778/Wolf-S2.png"
     }
   }
 }
