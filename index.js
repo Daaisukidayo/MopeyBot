@@ -79,14 +79,19 @@ client.login(process.env.TOKEN);
 client.commands.add({
   type: "ready",
   code: `
-    $deletevars[page;;message]
-    $deletevars[crpage;;message]
-    $deletevars[pages;;message]
-    $deletevars[rowsPerPage;;message]
-    $log[Unused message variables have been cleared!]
+    
+    $async[
+      $deletevars[page;;message]
+      $deletevars[crpage;;message]
+      $deletevars[pages;;message]
+      $deletevars[rowsPerPage;;message]
+      $log[Unused message variables have been cleared!]
+    ]
 
-    $setStatus[online;Watching;$guildCount servers]
-    $log[$username[$botID] is now online!]
+    $async[
+      $setStatus[online;Watching;$guildCount servers]
+      $log[$username[$botID] is now online!]
+    ]
   `
 })
 
