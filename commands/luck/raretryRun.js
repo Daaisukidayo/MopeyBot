@@ -10,7 +10,6 @@ module.exports = [{
     $callFunction[cooldown;$get[cdTime]]
 
     $arrayLoad[animalsChances;,;5,1,25,5,3,60,1,10,1,1,300,10,25,50,1,1,12,300,600,900,1,4,5,16,1650,1,15,10,1,5,14,1,5,114,1,5,54,1,50,1,1,15,600,2,4,1,1,28,5,20,25,1,1,1,1,1,1,1]
-    $arrayLoad[operators;,;>=,==,>=,>=,>=,>=,==,>=,==,==,>=,>=,>=,>=,==,==,>=,>=,>=,>=,==,>=,>=,>=,>=,==,>=,>=,==,>=,>=,==,>=,>=,==,>=,>=,==,>=,==,==,>=,>=,>=,>=,==,==,>=,>=,>=,>=,==,==,==,==,==,==,==]
     $arrayLoad[globalChances;,;100,250,250,100,300,300,300,700,10000,3000,3000,500,500,500,10000,3000,3000,3000,3000,3000,250,250,250,10000,10000,250,250,250,1000,1000,1000,1000,1000,1000,1000,1000,1000,4000,4000,10000,3000,700,700,1000,1000,5000,5000,5000,700,700,600,10,10,10,1000,2000,2000,1000]
     $arrayLoad[MC;,;...]
     
@@ -89,28 +88,19 @@ module.exports = [{
     $let[desc;]
     $let[index;0]
 
-    $arrayForEach[operators;operator;
-
+    $arrayForEach[animalsDesc;animal;
       $let[anChance;$arrayAt[animalsChances;$get[index]]]
       $let[gChance;$arrayAt[globalChances;$get[index]]]
       $let[rChance;$randomNumber[1;$math[$get[gChance] + 1]]]
-
-      $if[$env[operator]====;
-        $if[$get[anChance]==$get[rChance];
-          $let[desc;$get[desc]\n## $arrayAt[animalsDesc;$get[index]]]
-        ]
-      ;
         $if[$get[anChance]>=$get[rChance];
-          $let[desc;$get[desc]\n## $arrayAt[animalsDesc;$get[index]]]
+          $let[desc;$get[desc]\n### $env[animal]]
         ]
-      ]
-
       $letSum[index;1]
     ]
 
   
     $if[$get[desc]==;
-      $let[desc;\n## no rares]
+      $let[desc;\n## nothing]
     ]
 
     $let[text;$arrayRandomValue[text]]
