@@ -22,14 +22,14 @@ module.exports = [{
         ${catched()}
     ;
         $loop[$get[al];
-            $let[r;$randomNumber[1;$math[$arrayAt[rarityValues;$get[i]] + 1]]]
+          $let[r;$randomNumber[1;$math[$arrayAt[rarityValues;$get[i]] + 1]]]
   
-            $if[1==$get[r];
-                ${catched()}
-                $break
-            ]
+          $if[1==$get[r];
+            ${catched()}
+            $break
+          ]
   
-            $letSub[i;1]
+          $letSub[i;1]
         ]
     ]
   
@@ -44,10 +44,12 @@ $let[thum;$env[data;ur$get[i];thum]]
 $let[MC;$randomNumber[$env[data;ur$get[i];mc;0];$env[data;ur$get[i];mc;1]]]
 $let[desc;__$env[data;ur$get[i];desc]__ $env[data;ur$get[i];emoji]]
 $let[clr;$env[data;ur$get[i];clr]]
+
+${contents()}
+
 $sendMessage[$channelID;
     $color[$get[clr]]
-    $description[### $randomText[You were walking across the ocean and saw $get[desc];You were wandering around the ocean and spotted $get[desc];You stumbled upon $get[desc] while exploring;You were gliding across the ocean when you found $get[desc];You discovered $get[desc] while roaming the ocean;You were cruising through the wild and noticed $get[desc];You found $get[desc] lying on the ocean;You were sliding through the ocean when you saw $get[desc];You noticed $get[desc] on your path]!
-      ### $randomText[You held it for some time and earned;You held it carefully and earned;You carried it for a while and earned;You held onto it and earned;You protected it and collected;You kept it safe and gained;You graured it and pocketed;You held it for some time and earned;You picked it up and earned;You kept it safe and scored;You held it carefully and earned] $separateNumber[$get[MC];.]$getGlobalVar[emoji]!]
+    $description[### $arrayRandomValue[content1]!\n### $arrayRandomValue[content2] $separateNumber[$get[MC];.]$getGlobalVar[emoji]!]
     $thumbnail[$get[thum]]
     $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
     $if[$arrayAt[rarityValues;$get[i]]!=1;
@@ -55,5 +57,37 @@ $sendMessage[$channelID;
     ]
 ]
 
+`
+}
+
+function contents() {
+return `
+
+$arrayLoad[content1;,\n;
+You were walking across the ocean and saw a $get[desc],
+You were wandering around the ocean and spotted a $get[desc],
+You stumbled upon $get[desc] while exploring,
+You were gliding across the ocean when you found a $get[desc],
+You discovered a $get[desc] while roaming the ocean,
+You were cruising through the wild and noticed a $get[desc],
+You found a $get[desc] lying on the ocean,
+You were sliding through the ocean when you saw a $get[desc],
+You noticed a $get[desc] on your path,
+You were gliding through the ocean and spotted a $get[desc],
+You were strolling across the ocean and noticed a $get[desc]]
+
+$arrayLoad[content2;,\n;
+You held it for some time and earned,
+You held it carefully and earned,
+You carried it for a while and earned,
+You held onto it and earned,
+You protected it and collected,
+You kept it safe and gained,
+You grabbed it and pocketed,
+You picked it up and earned,
+You kept it safe and scored,
+You held it carefully and earned,
+You kept it safe and collected,
+You protected it and pocketed]  
 `
 }

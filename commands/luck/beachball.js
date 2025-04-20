@@ -44,10 +44,12 @@ $let[thum;$env[data;bb$get[i];thum]]
 $let[MC;$randomNumber[$env[data;bb$get[i];mc;0];$env[data;bb$get[i];mc;1]]]
 $let[desc;__$env[data;bb$get[i];desc]__ $env[data;bb$get[i];emoji]]
 $let[clr;$env[data;bb$get[i];clr]]
+
+${contents()}
+
 $sendMessage[$channelID;
     $color[$get[clr]]
-    $description[### $randomText[You were walking across the ocean and saw a $get[desc];You were wandering around the ocean and spotted a $get[desc];You stumbled upon $get[desc] while exploring;You were gliding across the ocean when you found a $get[desc];You discovered a $get[desc] while roaming the ocean;You were cruising through the wild and noticed a $get[desc];You found a $get[desc] lying on the ocean;You were sliding through the ocean when you saw a $get[desc];You noticed a $get[desc] on your path]!
-    ### $randomText[You held it for some time, goaled it and earned;You held it carefully, goaled it, and earned;You carried it for a while, scored it, and earned;You held onto it, delivered it to the waterpull, and earned;You protected it, goaled it, and collected;You kept it safe, scored it, and gained;You grabbed it, goaled it, and pocketed;You carried it to the waterpull and earned;You picked it up, delivered it to the waterpull, and earned;You kept it safe, goaled it, and scored;You held it carefully, goaled it, and earned] $separateNumber[$get[MC];.]$getGlobalVar[emoji]!]
+    $description[### $arrayRandomValue[content1]!\n### $arrayRandomValue[content2] $separateNumber[$get[MC];.]$getGlobalVar[emoji]!]
     $thumbnail[$get[thum]]
     $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
     $if[$arrayAt[rarityValues;$get[i]]!=1;
@@ -57,4 +59,35 @@ $sendMessage[$channelID;
 
 `}
 
+function contents() {
+return `
 
+$arrayLoad[content1;,\n;
+You were walking across the ocean and saw a $get[desc],
+You were wandering around the ocean and spotted a $get[desc],
+You stumbled upon $get[desc] while exploring,
+You were gliding across the ocean when you found a $get[desc],
+You discovered a $get[desc] while roaming the ocean,
+You were cruising through the wild and noticed a $get[desc],
+You found a $get[desc] lying on the ocean,
+You were sliding through the ocean when you saw a $get[desc],
+You noticed a $get[desc] on your path,
+You were gliding through the ocean and spotted a $get[desc],
+You were strolling across the ocean and noticed a $get[desc]]
+
+$arrayLoad[content2;,\n;
+You held it for some time, goaled it and earned,
+You held it carefully, goaled it, and earned,
+You carried it for a while, scored it, and earned,
+You held onto it, delivered it to the waterpull, and earned,
+You protected it, goaled it, and collected,
+You kept it safe, scored it, and gained,
+You grabbed it, goaled it, and pocketed,
+You picked it up, delivered it to the waterpull, and earned,
+You kept it safe, goaled it, and scored,
+You held it carefully, goaled it, and earned,
+You kept it safe, goaled it, and collected,
+You protected it, goaled it, and pocketed,
+You carried it to the waterpull and earned]
+`
+}
