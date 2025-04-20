@@ -230,10 +230,10 @@ client.functions.add({
   name: "checking",
   code: `
     $if[$getUserVar[dev]==false;
-      $onlyIf[$getGlobalVar[botEnabled]==true]
+      $onlyIf[$getGlobalVar[botEnabled]]
     ]
     $onlyIf[$getUserVar[isBanned]==false]
-    $onlyIf[$getUserVar[acceptedRules]==true;$callFunction[rulesSchema;]]
+    $onlyIf[$getUserVar[acceptedRules];$callFunction[rulesSchema;]]
     $onlyIf[$getUserVar[onSlowmode]==false]
   `
 })
