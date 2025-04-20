@@ -130,7 +130,7 @@ function embed() {
 function loop() {
   return `
     $let[i;0]
-    $loop[$arrayLength[categories];$return[**\`\`\`$arrayAt[categories;$get[i]]: $separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]\nChance: 1/$separateNumber[${chance()};,]\nCoins: $separateNumber[${coins()};,]\`\`\`** $let[i;$math[$get[i] + 1]]]]
+    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`Count: $separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]\nChance: 1/$separateNumber[${chance()};,]\nCoins: $separateNumber[${coins()};,]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
   `;
 }
 
