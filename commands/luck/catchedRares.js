@@ -93,6 +93,8 @@ module.exports = [{
 
     $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
     $onlyIf[$splitText[0]==setmode]
+    $onlyIf[$getMessageVar[crpage;$messageID]!=;  $callFunction[interFail;]  ]
+
 
     $let[msgid;$messageID]
     ${jsonAndArray()}
@@ -130,7 +132,7 @@ function embed() {
 function loop() {
   return `
     $let[i;0]
-    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`Count: $separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]\nChance: 1/$separateNumber[${chance()};,]\nCoins: $separateNumber[${coins()};,]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
+    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`Quantity: $separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]\nChance: 1/$separateNumber[${chance()};,]\nCoins: $separateNumber[${coins()};,]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
   `;
 }
 
@@ -143,11 +145,11 @@ function jsonAndArray() {
 }
 
 function chance() {
-  return `$if[$get[rtMode]!=inferno;$env[raretryVarData;chancesForRaretry;other;$math[$get[i] + $get[rtModeNum]]];$env[raretryVarData;chancesForRaretry;inferno;$get[i]]]`;
+  return `$if[$get[rtMode]!=inferno;  $env[raretryVarData;chancesForRaretry;other;$math[$get[i] + $get[rtModeNum]]]   ;   $env[raretryVarData;chancesForRaretry;inferno;$get[i]]]`
 }
 
 function coins() {
-  return `$if[$get[rtMode]!=inferno;$math[$env[raretryVarData;coinsForRaretry;other;$math[$get[i] + $get[rtModeNum]]] * $advancedReplace[$env[raretryVarData;multipliersForRaretry;$get[rtModeNum]];\n;;";;\\];;\\[;]];$env[raretryVarData;coinsForRaretry;inferno;$get[i]] ]`;
+  return `$if[$get[rtMode]!=inferno;  $math[$env[raretryVarData;coinsForRaretry;other;$math[$get[i] + $get[rtModeNum]]] * $advancedReplace[$env[raretryVarData;multipliersForRaretry;$get[rtModeNum]];\n;;";;\\];;\\[;]]   ;   $env[raretryVarData;coinsForRaretry;inferno;$get[i]]]`
 }
 
 function rtModeNum() {
