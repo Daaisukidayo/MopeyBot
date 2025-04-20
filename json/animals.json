@@ -2285,6 +2285,14 @@
     "trig": "blackTiger",
 
     "v0": {
+      "vCode": "s1",
+      "name": "Black Tiger",
+      "description": "Season 1",
+      "emoji": "<:BlackTigerS1:1363515430978719797>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1363515303929319464/BlackTiger-S1.png"
+    },
+
+    "v1": {
       "vCode": "s2",
       "name": "Black Tiger",
       "description": "Season 2",

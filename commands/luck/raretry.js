@@ -1,38 +1,75 @@
-module.exports = [{ name: "raretry", aliases: ["rt"], type: "messageCreate", code: `
-$reply
+module.exports = [{ 
+  name: "raretry", 
+  aliases: ["rt"], 
+  type: "messageCreate", 
+  code: 
+  `
+    $reply
 
-$let[cdTime;5m]
-$callFunction[checking;]
-$callFunction[cooldown;$get[cdTime]]
+    $let[cdTime;5m]
+    $callFunction[checking;]
+    $callFunction[cooldown;$get[cdTime]]
 
-$jsonLoad[userPacks;$getUserVar[userPacks]]
-$jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
-$jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
-$arrayLoad[categories;,;Common,Uncommon,Rare,Epic,Legendary,Extreme,Godly,Pakistani,Imposs,USSR]
-$jsonLoad[raresGroup;$readFile[json/raretry_data.json]] $c[⬅️ Loading rare categories data from JSON]
+    $jsonLoad[userPacks;$getUserVar[userPacks]]
+    $jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
+    $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
+    $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
+    $jsonLoad[raresGroup;$readFile[json/raretry_data.json]]
 
-$loop[30;
-    $switch[$getUserVar[rtMode];
-            $case[inferno;$let[rtModeNum;-1]]
-            $case[default;$let[rtModeNum;0]]
-            $case[medium;$let[rtModeNum;1]]
-            $case[hard;$let[rtModeNum;2]]
-            $case[insane;$let[rtModeNum;3]]
-            $case[impossible;$let[rtModeNum;4]]
-    ]
-    $c[⬇️ Default variables for unsuccessful attempts]
-    $let[p;-1]
-    $let[color;$getGlobalVar[errorColor]]
-    $let[MC;0]
-    $let[catched;false]
-    $let[content;## $randomText[You tried to get rares but got nothing;You tried to get rares but ended up empty-handed;You went rare hunting but found nothing;You tested your luck with rares but failed;You were farming rares but got nothing special;You attempted to evolve into a rare but failed].] 
-    ${catchingRare()}
-        
+    $arrayLoad[content1;,\n      ;
+      You tried to get rares but got nothing,
+      You tried to get rares but ended up empty-handed,
+      You went rare hunting but found nothing,
+      You tested your luck with rares but failed,
+      You were farming rares but got nothing special,
+      You attempted to evolve into a rare but failed]
 
-$wait[10s];msgi;desc]
+    $arrayLoad[content2;,\n      ;
+      You tried to get rares and you got,
+      You tried to get rares and picked,
+      You tried your luck with rares and got,
+      You went after rares and got,
+      You tried evolving into a rare and succeeded with,
+      You went rare farming and you got]
 
-$sendMessage[$channelID;<@$authorID> The command loop has ended!]
-`
+    $arrayLoad[content3;,\n      ;
+      earning,
+      gaining,
+      collecting,
+      scoring,
+      and you got,
+      and you earned,
+      and you collected,
+      and you scored,
+      and you received,
+      and you obtained]
+
+    $let[al;$arrayLength[categories]]
+    $let[li;$math[$get[al] - 1]]
+
+    $loop[1;
+      $switch[$getUserVar[rtMode];
+        $case[inferno;$let[rtModeNum;-1]]
+        $case[default;$let[rtModeNum;0]]
+        $case[medium;$let[rtModeNum;1]]
+        $case[hard;$let[rtModeNum;2]]
+        $case[insane;$let[rtModeNum;3]]
+        $case[impossible;$let[rtModeNum;4]]
+      ]
+
+      $c[⬇️ Default variables for unsuccessful attempts]
+      $let[p;-1]
+      $let[color;$getGlobalVar[errorColor]]
+      $let[MC;0]
+      $let[catched;false]
+      $let[content;## $arrayRandomValue[content1].] 
+      ${catchingRare()}
+          
+
+    $wait[10s];msgi;desc]
+
+    $sendMessage[$channelID;<@$authorID> The command loop has ended!]
+  `
 }]
 
 // Functions
@@ -66,17 +103,17 @@ function thumbnailAndArray() {
 
     $let[thumbnailAndContentIndex;$arrayRandomIndex[thumbnails]]
     $let[thumbnail;$arrayAt[thumbnails;$get[thumbnailAndContentIndex]]]     $c[⬅️ Getting random thumbnail from saved array]
-    $let[content;$arrayAt[contents;$get[thumbnailAndContentIndex]]]         $c[⬅️ Getting random content from saved array]
+    $let[animal;$arrayAt[contents;$get[thumbnailAndContentIndex]]]         $c[⬅️ Getting random content from saved array]
 
     `
 }
 
 function content() {
     return `
-    $let[content;## $randomText[You tried to get rares and you got;You tried to get rares and picked;You tried your luck with rares and got;You went after rares and got;You tried evolving into a rare and succeeded with] __$get[content]__]
+    $let[content;## $arrayRandomValue[content2] __$get[animal]__]
 
     $if[$get[MC]!=0;
-        $let[content;$get[content] $randomText[earning;gaining;collecting;scoring] $separateNumber[$get[MC];.]$getGlobalVar[emoji]]
+        $let[content;$get[content] $arrayRandomValue[content3] $separateNumber[$get[MC];.]$getGlobalVar[emoji]]
     ]
 
     $let[content;$get[content]!]
@@ -119,7 +156,7 @@ function ifKDWithSkins() {
 
 function catchingRare() {
     return `
-    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=9]; $c[⬅️ Summon specific category by message]
+    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]]; $c[⬅️ Summon specific category by message]
         $let[p;$message[0]]
         $let[catched;true]
 
@@ -141,9 +178,9 @@ function catchingRare() {
         ]
 
     ;
-        $let[i;9]
+        $let[i;$get[li]]
 
-        $loop[10;
+        $loop[$get[al];     $c[⬅️ Looping through all categories]
             ${baseChance(`i`)}
 
             $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we catched rare), getting coins and color from json and saving iteration as "p" variable]

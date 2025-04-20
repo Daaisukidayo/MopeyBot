@@ -8,11 +8,17 @@ module.exports = [{
 
     $onlyIf[$getUserVar[MC]>0;You don't have any $getGlobalVar[emoji] to delete!]
 
-    Are you sure you want to delete all your \`$separateNumber[$getUserVar[MC];,]\`$getGlobalVar[emoji]? 
+    $let[msgid;$sendMessage[$channelID;Are you sure you want to delete all your \`$separateNumber[$getUserVar[MC];,]\`$getGlobalVar[emoji]?;true]]
 
     $addActionRow
     $addButton[confirm_deleting_coins-$authorID;Confirm;Success]
     $addButton[decline_deleting_coins-$authorID;Decline;Danger]
+
+    $!editMessage[$channelID;$get[msgid];Are you sure you want to delete all your \`$separateNumber[$getUserVar[MC];,]\`$getGlobalVar[emoji]?]
+
+    $setTimeout[
+      $!editMessage[$channelID;$get[msgid];This message is now inactive.]
+    ;1m]
   `
 },{ 
   type: "interactionCreate", 

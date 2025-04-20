@@ -5,7 +5,7 @@ module.exports = [{
   code: `
     $reply
 
-    $let[cdTime;2m]
+    $let[cdTime;1m]
     $callFunction[checking;]
     $callFunction[cooldown;$get[cdTime]]
 
@@ -31,10 +31,7 @@ module.exports = [{
     $!editMessage[$channelID;$get[msgid];${embed()}]
 
     $setTimeout[ 
-        $addActionRow
-        $addButton[left_cr-$authorID;;Primary;⬅️;true]
-        $addButton[right_cr-$authorID;;Primary;➡️;true] 
-        $addButton[setmode-$authorID-$get[rtMode];Set mode to $get[rtMode];Secondary;;true]
+        ${buttons(`true`)}
         $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
         $deleteMessageVar[crpage;$get[msgid]]  
     ;$get[cdTime]]
@@ -165,15 +162,15 @@ function rtModeNum() {
   `;
 }
 
-function buttons() {
+function buttons(disable = false) {
   return `
     $addActionRow
-    $addButton[left_cr-$authorID;;Primary;⬅️]
-    $addButton[right_cr-$authorID;;Primary;➡️]
+    $addButton[left_cr-$authorID;;Primary;⬅️;${disable}]
+    $addButton[right_cr-$authorID;;Primary;➡️;${disable}]
     $if[$getUserVar[rtMode]!=$get[rtMode];
-        $addButton[setmode-$authorID-$get[rtMode];Set mode to $get[rtMode];Success]
+        $addButton[setmode-$authorID-$get[rtMode];Set mode to $toTitleCase[$get[rtMode]];Success;;${disable}]
     ;
-        $addButton[setmode-$authorID-$get[rtMode];Set mode to $get[rtMode];Secondary;;true]
+        $addButton[setmode-$authorID-$get[rtMode];Set mode to $toTitleCase[$get[rtMode]];Secondary;;true]
     ]
   `;
 }
