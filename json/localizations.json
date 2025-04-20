@@ -1,4 +1,11 @@
 {
+    "special": {
+        "specialDesc1": {
+            "EN": "This message is now inactive. Run the command again.",
+            "RU": "Это сообщение больше не активно. Выполните команду снова."
+        }
+    },
+
     "ping": {
         "pingDesc1": {
             "EN": "Current ping",
@@ -38,6 +45,41 @@
         "creditsDesc6": {
             "EN": "Credits",
             "RU": "Благодарности"
+        }
+    },
+
+    "catchedRares": {
+        "catchedRaresDesc1": {
+            "EN": "Loading...",
+            "RU": "Загрузка..."
+        },
+        "catchedRaresDesc2": {
+            "EN": "Total catched rares in \"$toTitleCase[$get[rtMode]]\" mode",
+            "RU": "Всего поймано редких в режиме \"$toTitleCase[$get[rtMode]]\""
+        },
+        "catchedRaresDesc3": {
+            "EN": "Page",
+            "RU": "Страница:"
+        },
+        "catchedRaresDesc4": {
+            "EN": "Quantity",
+            "RU": "Количество"
+        },
+        "catchedRaresDesc5": {
+            "EN": "Chance",
+            "RU": "Вероятность"
+        },
+        "catchedRaresDesc6": {
+            "EN": "Reward",
+            "RU": "Награда"
+        },
+        "catchedRaresDesc7": {
+            "EN": "Set tryrare mode to",
+            "RU": "Установить режим редкой попытки на"
+        },
+        "catchedRaresDesc8": {
+            "EN": "Your raretry mode is set to",
+            "RU": "Ваш режим редкой попытки установлен на"
         }
     }
 }

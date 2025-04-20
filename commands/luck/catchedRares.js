@@ -14,7 +14,7 @@ module.exports = [{
     $let[rtMode;$getUserVar[rtMode]]
 
     $reply
-    $let[msgid;$sendMessage[$channelID; ${emptyEmbed()} $footer[] $description[Loading...];true]]
+    $let[msgid;$sendMessage[$channelID;${emptyEmbed()};true]]
 
     $switch[$get[rtMode];
         $case[inferno;      $setMessageVar[crpage;1;$get[msgid]]]
