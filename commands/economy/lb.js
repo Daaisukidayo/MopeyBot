@@ -115,6 +115,7 @@ function embed() {
 
 function lbgen() {
   return `
+    ${embed()}
     $let[userPos;$getUserLeaderboardValue[MC;asc;$authorID]]
     $let[emoji;$if[$get[userPos]==1;🥇;$if[$get[userPos]==2;🥈;$if[$get[userPos]==3;🥉;⁘]]]]
 
@@ -124,8 +125,5 @@ function lbgen() {
     **$get[emoji] $ordinal[$get[userPos]] ➤ $userDisplayName\n$getGlobalVar[blank] Coins: \`$separateNumber[$getUserVar[MC];.]\`$getGlobalVar[emoji]\n$getGlobalVar[blank] MUID: \`$getUserVar[MUID]\`**]]
 
     $footer[Page: $getMessageVar[page;$get[lbmsgID]]/$getMessageVar[pages;$get[lbmsgID]]]
-    $color[$getGlobalVar[defaultColor]]
-    $author[🔝 Leaderboard]
-    $thumbnail[https://cdn.discordapp.com/attachments/701793335941136464/1326901475464450100/Remove-bg.ai_1736428344912.png]
   `
 }

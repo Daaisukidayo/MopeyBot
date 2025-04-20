@@ -2430,5 +2430,67 @@
       "emoji": "<:WolfS2:1292125538688696330>",
       "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386238913056778/Wolf-S2.png"
     }
+  },
+
+  "crocodile": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Crocodile",
+    "trig": "crocodile",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Crocodile",
+      "description": "Season 1",
+      "emoji": "<:CrocodileS1:1363244989894627609>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1363245239883796490/Crocodile-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Crocodile",
+      "description": "Season 2",
+      "emoji": "<:CrocodileS2:1292125920039276677>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961021206628/Crocodile-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Crocodile",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:CrocodileS2Winter:1363245002247110757>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1363245240172941583/Crocodile-S2-Winter.png"
+    }
+  },
+
+  "lion": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Lion",
+    "trig": "lion",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Lion",
+      "description": "Season 1",
+      "emoji": "<:LionS1v2:1363245637826646309>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1363245816914903231/Lion-S1-v2.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Lion",
+      "description": "Season 2",
+      "emoji": "<:LionS2:1292125931691049010>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961469739018/Lion-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Lion",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:LionS2Winter:1363245655858086269>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1363245817149919443/Lion-S2-Winter.png"
+    }
   }
 }
