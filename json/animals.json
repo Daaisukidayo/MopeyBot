@@ -2216,6 +2216,14 @@
     "trig": "blackBear",
 
     "v0": {
+      "vCode": "s1",
+      "name": "Black Bear",
+      "description": "Season 1",
+      "emoji": "<:BlackBearS1:1363599773361508452>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1363600246269022359/BlackBear-S1.png"
+    },
+
+    "v1": {
       "vCode": "s2",
       "name": "Black Bear",
       "description": "Season 2",

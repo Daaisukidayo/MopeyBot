@@ -1,8 +1,8 @@
 {
     "ping": {
         "pingDesc1": {
-            "EN": "The bot's current ping",
-            "RU": "Текущий пинг бота"
+            "EN": "Current ping",
+            "RU": "Текущий пинг"
         },
         "pingDesc2": {
             "EN": "Execution time",
