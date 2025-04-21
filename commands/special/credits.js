@@ -10,9 +10,7 @@ module.exports = [{
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
-
     $let[l10n;$getUserVar[l10n]]
-
     $loop[6; 
         $let[desc$env[i];$env[l10n;credits;creditsDesc$env[i];$get[l10n]]] 
         $if[$get[desc$env[i]]==; $let[desc1;textNotFound | ID: $get[l10n]$env[i]]] 

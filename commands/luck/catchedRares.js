@@ -9,9 +9,9 @@ module.exports = [{
     $callFunction[checking;]
     $callFunction[cooldown;$get[cdTime]]
 
+    $let[rtMode;$getUserVar[rtMode]]
     ${jsonAndArray()}
 
-    $let[rtMode;$getUserVar[rtMode]]
 
     $reply
     $let[msgid;$sendMessage[$channelID;${emptyEmbed()};true]]
@@ -32,7 +32,7 @@ module.exports = [{
 
     $setTimeout[ 
         ${buttons(`true`)}
-        $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
+        $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] $get[specialDesc1]]
         $deleteMessageVar[crpage;$get[msgid]]  
     ;$get[cdTime]]
 
@@ -48,8 +48,6 @@ module.exports = [{
     $onlyIf[$getMessageVar[crpage;$messageID]!=;  $callFunction[interFail;]  ]
 
     $let[msgid;$messageID]
-
-    ${jsonAndArray()}
 
     $if[$splitText[0]==left_cr; 
         $setMessageVar[crpage;$sub[$getMessageVar[crpage;$get[msgid]];1];$get[msgid]]
@@ -73,6 +71,7 @@ module.exports = [{
         $case[6;$let[rtMode;impossible]]
 
     ]
+    ${jsonAndArray()}
 
     ${rtModeNum()}
     ${buttons()}
@@ -94,13 +93,13 @@ module.exports = [{
 
 
     $let[msgid;$messageID]
-    ${jsonAndArray()}
     $let[rtMode;$splitText[2]]
+    ${jsonAndArray()}
     ${rtModeNum()}
     $setUserVar[rtMode;$get[rtMode]]
     ${buttons()}
 
-    $!editMessage[$channelID;$get[msgid];${embed()} Your raretry mode is set to \`$splitText[2]\`]
+    $!editMessage[$channelID;$get[msgid];${embed()} $get[desc8] \`$splitText[2]\`]
 
     $deferUpdate
   `,
@@ -112,24 +111,24 @@ function emptyEmbed() {
   return `
     $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
     $color[$getGlobalVar[luckyColor]]
-    $description[Loading...]
+    $description[$get[desc1]]
   `;
 }
 
 function embed() {
   return `
-    $title[Total catched rares in "$toTitleCase[$get[rtMode]]" mode:]
+    $title[$get[desc2] "$toTitleCase[$get[rtMode]]":]
     $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
     $description[${loop()}]
     $color[$getGlobalVar[luckyColor]]
-    $footer[Page: $getMessageVar[crpage;$get[msgid]]/6]
+    $footer[$get[desc3]: $getMessageVar[crpage;$get[msgid]]/6]
   `;
 }
 
 function loop() {
   return `
     $let[i;0]
-    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`Quantity: $separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]\nChance: 1/$separateNumber[${chance()};,]\nCoins: $separateNumber[${coins()};,]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
+    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`$get[desc4]: $separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]\n$get[desc5]: 1/$separateNumber[${chance()};,]\n$get[desc6]: $separateNumber[${coins()};,]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
   `;
 }
 
@@ -138,6 +137,15 @@ function jsonAndArray() {
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
     $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
+
+    $jsonLoad[l10n;$readFile[json/localizations.json]]
+    $let[l10n;$getUserVar[l10n]]
+    $let[specialDesc1;$env[l10n;special;specialDesc1;$get[l10n]]] 
+
+    $loop[8; 
+        $let[desc$env[i];$env[l10n;catchedRares;catchedRaresDesc$env[i];$get[l10n]]]
+        $if[$get[desc$env[i]]==; $let[desc$env[i];textNotFound | ID: $get[l10n]$env[i]]] 
+    ;i;desc]
   `;
 }
 
@@ -168,9 +176,9 @@ function buttons(disable = false) {
     $addButton[left_cr-$authorID;;Primary;⬅️;${disable}]
     $addButton[right_cr-$authorID;;Primary;➡️;${disable}]
     $if[$getUserVar[rtMode]!=$get[rtMode];
-        $addButton[setmode-$authorID-$get[rtMode];Set mode to $toTitleCase[$get[rtMode]];Success;;${disable}]
+        $addButton[setmode-$authorID-$get[rtMode];$get[desc7] $toTitleCase[$get[rtMode]];Success;;${disable}]
     ;
-        $addButton[setmode-$authorID-$get[rtMode];Set mode to $toTitleCase[$get[rtMode]];Secondary;;true]
+        $addButton[setmode-$authorID-$get[rtMode];$get[desc7] $toTitleCase[$get[rtMode]];Secondary;;true]
     ]
   `;
 }

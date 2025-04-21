@@ -98,6 +98,7 @@ client.commands.add({
 // ========== VARIABLES ==========
 
 ForgeDB.variables({
+  author: "$author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]",
   isTester: false,
   onSlowmode: false,
   isBanned: false,
@@ -205,11 +206,16 @@ client.functions.add({
     $let[cooldownTime;$sum[$getTimestamp;$get[time]]]
     $let[longDateTime;$discordTimestamp[$get[cooldownTime];LongDateTime]]
     $let[relativeTimeLeft;$discordTimestamp[$get[cooldownTime];RelativeTime]]
+
+    $jsonLoad[l;$readFile[json/localizations.json]]
+    $let[l10n;$getUserVar[l10n]]
+    $let[cooldownDesc1;$env[l;cooldown;cooldownDesc1;$get[l10n]]] 
+    $let[cooldownDesc2;$env[l;cooldown;cooldownDesc2;$get[l10n]]] 
     
     $return[
-      $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-      $title[⏰ Cooldown!]
-      $description[Cooldown will end $get[relativeTimeLeft] $get[longDateTime]!]
+      $getGlobalVar[author]
+      $title[⏰ $get[cooldownDesc1]]
+      $description[$get[cooldownDesc2] $get[relativeTimeLeft] $get[longDateTime]!]
       $color[$getGlobalVar[cooldownColor]]    
       $deleteIn[$if[$or[$get[time]>30000;$get[time]==0];10s;$get[time]]]
     ]
@@ -255,8 +261,11 @@ client.functions.add({
 client.functions.add({
   name: "interFail",
   code: `
+  $jsonLoad[l;$readFile[json/localizations.json]]
+    $let[l10n;$getUserVar[l10n]]
+    $let[specialDesc2;$env[l;special;specialDesc2;$get[l10n]]] 
   $ephemeral 
-  $interactionReply[You can't interract with this message anymore!]`
+  $interactionReply[$get[specialDesc2]]`
 })
 
 // when other people trying to interact with author's button
@@ -264,6 +273,9 @@ client.functions.add({
 client.functions.add({
   name: "notYourBTN",
   code: `
+  $jsonLoad[l;$readFile[json/localizations.json]]
+    $let[l10n;$getUserVar[l10n]]
+    $let[specialDesc3;$env[l;special;specialDesc3;$get[l10n]]] 
   $ephemeral
-  $interactionReply[This button is not for you!]`
+  $interactionReply[$get[specialDesc3]]`
 })

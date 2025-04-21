@@ -3,6 +3,44 @@
         "specialDesc1": {
             "EN": "This message is now inactive. Run the command again.",
             "RU": "Это сообщение больше не активно. Выполните команду снова."
+        },
+        "specialDesc2": {
+            "EN": "You can't interract with this message anymore!",
+            "RU": "Вы больше не можете взаимодействовать с этим сообщением!"
+        },
+        "specialDesc3": {
+            "EN": "This button is not for you!",
+            "RU": "Эта кнопка не для вас!"
+        }
+    },
+
+    "cooldown": {
+        "cooldownDesc1": {
+            "EN": "You are on cooldown!",
+            "RU": "Вы находитесь на перезарядке!"
+        },
+        "cooldownDesc2": {
+            "EN": "Cooldown will end",
+            "RU": "Перезарядка закончится"
+        }
+    },
+
+    "errors": {
+        "errorsDesc1": {
+            "EN": "Invalid arguments!",
+            "RU": "Недопустимые аргументы!"
+        },
+        "errorsDesc2": {
+            "EN": "No argument written",
+            "RU": "Не указано ни одного аргумента"
+        },
+        "errorsDesc3": {
+            "EN": "Missing Permissions!",
+            "RU": "Недостаточно прав!"
+        },
+        "errorsDesc4": {
+            "EN": "Disabled in DMs",
+            "RU": "Отключено в ЛС"
         }
     },
 
@@ -54,12 +92,12 @@
             "RU": "Загрузка..."
         },
         "catchedRaresDesc2": {
-            "EN": "Total catched rares in \"$toTitleCase[$get[rtMode]]\" mode",
-            "RU": "Всего поймано редких в режиме \"$toTitleCase[$get[rtMode]]\""
+            "EN": "Total catched rares in mode",
+            "RU": "Всего поймано редких в режиме"
         },
         "catchedRaresDesc3": {
             "EN": "Page",
-            "RU": "Страница:"
+            "RU": "Страница"
         },
         "catchedRaresDesc4": {
             "EN": "Quantity",
@@ -74,12 +112,27 @@
             "RU": "Награда"
         },
         "catchedRaresDesc7": {
-            "EN": "Set tryrare mode to",
-            "RU": "Установить режим редкой попытки на"
+            "EN": "Set raretry mode to",
+            "RU": "Установить режим редкости на"
         },
         "catchedRaresDesc8": {
             "EN": "Your raretry mode is set to",
-            "RU": "Ваш режим редкой попытки установлен на"
+            "RU": "Ваш режим редкости установлен на"
+        }
+    },
+
+    "prefix": {
+        "prefixDesc1": {
+            "EN": "My prefix in this server is",
+            "RU": "Мой префикс на этом сервере"
+        },
+        "prefixDesc2": {
+            "EN": "Successfully changed my prefix in this server to",
+            "RU": "Мой префикс успешно установлен на этом сервере на"
+        },
+        "errorsDesc3": {
+            "EN": "You can't change my prefix because you missing following permissions: `Manage Server` or `Administrator`",
+            "RU": "Вы не можете изменить мой префикс, потому что у вас нет следующих прав: `Управление сервером` или `Администратор`"
         }
     }
 }

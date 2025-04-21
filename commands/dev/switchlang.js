@@ -1,5 +1,6 @@
 module.exports = [{
   name: "switchlang",
+  aliases: ["sl"],
   type: "messageCreate",
   code: `
     $reply
