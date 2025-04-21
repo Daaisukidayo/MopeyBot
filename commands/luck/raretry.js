@@ -47,7 +47,7 @@ module.exports = [{
     $let[al;$arrayLength[categories]]
     $let[li;$math[$get[al] - 1]]
 
-    $loop[1;
+    $loop[300;
       $switch[$getUserVar[rtMode];
         $case[inferno;$let[rtModeNum;-1]]
         $case[default;$let[rtModeNum;0]]
@@ -66,7 +66,7 @@ module.exports = [{
       ${catchingRare()}
           
 
-    $wait[10s];msgi;desc]
+    $wait[1s];msgi;desc]
 
     $sendMessage[$channelID;<@$authorID> The command loop has ended!]
   `
