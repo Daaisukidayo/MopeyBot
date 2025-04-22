@@ -32,7 +32,7 @@ module.exports = [{
       You tried evolving into a rare and succeeded with,
       You went rare farming and you got]
 
-    $arrayLoad[content3;,\n      ;
+    $arrayLoad[content3;,\n;
       earning,
       gaining,
       collecting,
@@ -110,13 +110,13 @@ function thumbnailAndArray() {
 
 function content() {
     return `
-    $let[content;## $arrayRandomValue[content2] __$get[animal]__]
+    $let[content;$arrayRandomValue[content2] __$get[animal]__]
 
     $if[$get[MC]!=0;
         $let[content;$get[content] $arrayRandomValue[content3] $separateNumber[$get[MC];.]$getGlobalVar[emoji]]
     ]
 
-    $let[content;$get[content]!]
+    $let[content;## $get[content]!]
     `
 }
 

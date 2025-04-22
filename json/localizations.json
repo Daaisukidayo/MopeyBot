@@ -20,8 +20,8 @@
             "RU": "Вы находитесь на перезарядке!"
         },
         "cooldownDesc2": {
-            "EN": "Cooldown will end",
-            "RU": "Перезарядка закончится"
+            "EN": "Cooldown will end {1} {2}",
+            "RU": "Перезарядка закончится {1} {2}"
         }
     },
 
@@ -133,6 +133,35 @@
         "errorsDesc3": {
             "EN": "You can't change my prefix because you missing following permissions: `Manage Server` or `Administrator`",
             "RU": "Вы не можете изменить мой префикс, потому что у вас нет следующих прав: `Управление сервером` или `Администратор`"
+        }
+    },
+
+    "raretry": {
+        "contents": {
+            "content3": {
+                "EN": [
+                    "earning", 
+                    "gaining", 
+                    "collecting", 
+                    "scoring",
+                    "and you got",
+                    "and you earned",
+                    "and you collected",
+                    "and you scored",
+                    "and you received"
+                ],
+                "RU": [
+                    "заработав",
+                    "получив",
+                    "собрав",
+                    "набрав",
+                    "и ты получил",
+                    "и ты заработал",
+                    "и ты собрал",
+                    "и ты набрал",
+                    "и ты получил"
+                ]
+            }
         }
     }
 }

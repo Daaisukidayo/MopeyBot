@@ -210,12 +210,12 @@ client.functions.add({
     $jsonLoad[l;$readFile[json/localizations.json]]
     $let[l10n;$getUserVar[l10n]]
     $let[cooldownDesc1;$env[l;cooldown;cooldownDesc1;$get[l10n]]] 
-    $let[cooldownDesc2;$env[l;cooldown;cooldownDesc2;$get[l10n]]] 
+    $let[cooldownDesc2;$advancedReplace[$env[l;cooldown;cooldownDesc2;$get[l10n]];{1};$get[relativeTimeLeft];{2};$get[longDateTime]]] 
     
     $return[
       $getGlobalVar[author]
       $title[⏰ $get[cooldownDesc1]]
-      $description[$get[cooldownDesc2] $get[relativeTimeLeft] $get[longDateTime]!]
+      $description[$get[cooldownDesc2]!]
       $color[$getGlobalVar[cooldownColor]]    
       $deleteIn[$if[$or[$get[time]>30000;$get[time]==0];10s;$get[time]]]
     ]
