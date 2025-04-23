@@ -16,38 +16,20 @@ module.exports = [{
     $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
     $jsonLoad[raresGroup;$readFile[json/raretry_data.json]]
 
-    $arrayLoad[content1;,\n      ;
-      You tried to get rares but got nothing,
-      You tried to get rares but ended up empty-handed,
-      You went rare hunting but found nothing,
-      You tested your luck with rares but failed,
-      You were farming rares but got nothing special,
-      You attempted to evolve into a rare but failed]
+    $jsonLoad[l10n;$readFile[json/localizations.json]]
+    $let[l10n;$getUserVar[l10n]]
 
-    $arrayLoad[content2;,\n      ;
-      You tried to get rares and you got,
-      You tried to get rares and picked,
-      You tried your luck with rares and got,
-      You went after rares and got,
-      You tried evolving into a rare and succeeded with,
-      You went rare farming and you got]
+    $loop[3;
+        $arrayLoad[content$env[i];--;$if[${rep()}==;textNotFound | ID: $get[l10n]$env[i];${rep()}]]
+        $let[raretryDesc$env[i];$env[l10n;raretry;raretryDesc$env[i];$get[l10n]]]
+        $if[$get[raretryDesc$env[i]]==;$let[raretryDesc$env[i];textNotFound | ID: $get[l10n]$env[i]]]
+    ;i;desc]
 
-    $arrayLoad[content3;,\n;
-      earning,
-      gaining,
-      collecting,
-      scoring,
-      and you got,
-      and you earned,
-      and you collected,
-      and you scored,
-      and you received,
-      and you obtained]
 
     $let[al;$arrayLength[categories]]
     $let[li;$math[$get[al] - 1]]
 
-    $loop[300;
+    $loop[5;
       $switch[$getUserVar[rtMode];
         $case[inferno;$let[rtModeNum;-1]]
         $case[default;$let[rtModeNum;0]]
@@ -62,7 +44,7 @@ module.exports = [{
       $let[color;$getGlobalVar[errorColor]]
       $let[MC;0]
       $let[catched;false]
-      $let[content;## $arrayRandomValue[content1].] 
+      $let[content;## $arrayRandomValue[content1]] 
       ${catchingRare()}
           
 
@@ -155,73 +137,70 @@ function ifKDWithSkins() {
 }
 
 function catchingRare() {
-    return `
-    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]]; $c[⬅️ Summon specific category by message]
-        $let[p;$message[0]]
-        $let[catched;true]
+return `
+$if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]]; $c[⬅️ Summon specific category by message]
+    $let[p;$message[0]]
+    $let[catched;true]
 
-        ${baseChance(`p`)}
-        ${colorAndCoins()}
-        $let[cat;$arrayAt[categories;$get[p]]]
-        ${thumbnailAndArray()}
-        ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
-        ${content()}          $c[⬅️ Content if something catched]
+    ${baseChance(`p`)}
+    ${colorAndCoins()}
+    $let[cat;$arrayAt[categories;$get[p]]]
+    ${thumbnailAndArray()}
+    ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
+    ${content()}          $c[⬅️ Content if something catched]
 
-        $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
+    $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
 
-        $sendMessage[$channelID;
-            $color[$get[color]]
-            $description[$get[content]]
-            $thumbnail[$get[thumbnail]]
-            $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-            $footer[$if[$get[p]>-1;Rarity: 1/$separateNumber[$get[baseChance];,] • Category: $get[cat] • ]Raretry mode: $toTitleCase[$getUserVar[rtMode]]]
+    ${sm()}
+
+;
+    $let[i;$get[li]]
+
+    $loop[$get[al];     $c[⬅️ Looping through all categories]
+        ${baseChance(`i`)}
+
+        $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we catched rare), getting coins and color from json and saving iteration as "p" variable]
+            $let[catched;true]
+            $let[p;$get[i]]
+
+            $jsonSet[catchedRareCategories;$getUserVar[rtMode];$get[p];$sum[$env[catchedRareCategories;$getUserVar[rtMode];$get[p]];1]]
+
+            $setUserVar[catchedRareCategories;$env[catchedRareCategories]]
+
+            $let[cat;$arrayAt[categories;$get[p]]]
+
+            ${colorAndCoins()}
+            ${thumbnailAndArray()}
+            ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
+            ${content()}          $c[⬅️ Content if something catched]
+
+
+            $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
+
+            ${sm()}
         ]
 
-    ;
-        $let[i;$get[li]]
+        $let[i;$math[$get[i] - 1]]
+    ]
 
-        $loop[$get[al];     $c[⬅️ Looping through all categories]
-            ${baseChance(`i`)}
+    $if[$get[catched]==false;
+        ${sm()}
+    ]
+]`
+}
 
-            $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we catched rare), getting coins and color from json and saving iteration as "p" variable]
-                $let[catched;true]
-                $let[p;$get[i]]
+function sm() {
+return `
+$sendMessage[$channelID;
+    Attempt: $env[msgi]
+    $color[$get[color]]
+    $description[$get[content]]
+    $thumbnail[$get[thumbnail]]
+    $getGlobalVar[author]
+    $footer[$if[$get[p]>-1;$get[raretryDesc1]: 1/$separateNumber[$get[baseChance];,] • $get[raretryDesc2]: $get[cat] • ]$get[raretryDesc3]: $toTitleCase[$getUserVar[rtMode]]]
+]`
+}
 
-                $jsonSet[catchedRareCategories;$getUserVar[rtMode];$get[p];$sum[$env[catchedRareCategories;$getUserVar[rtMode];$get[p]];1]]
-
-                $setUserVar[catchedRareCategories;$env[catchedRareCategories]]
-
-                $let[cat;$arrayAt[categories;$get[p]]]
-
-                ${colorAndCoins()}
-                ${thumbnailAndArray()}
-                ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
-                ${content()}          $c[⬅️ Content if something catched]
-
-
-                $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
-
-                $sendMessage[$channelID;
-                    Attempt: $env[msgi]
-                    $color[$get[color]]
-                    $description[$get[content]]
-                    $thumbnail[$get[thumbnail]]
-                    $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-                    $footer[$if[$get[p]>-1;Rarity: 1/$separateNumber[$get[baseChance];,] • Category: $get[cat] • ]Raretry mode: $toTitleCase[$getUserVar[rtMode]]]
-                ]
-            ]
-
-            $let[i;$math[$get[i] - 1]]
-        ]
-
-        $if[$get[catched]==false;
-            $sendMessage[$channelID;
-                Attempt: $env[msgi]
-                $color[$get[color]]
-                $description[$get[content]]
-                $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-                $footer[Raretry mode: $toTitleCase[$getUserVar[rtMode]]]
-            ]
-        ]
-    ]`
+function rep() {
+return `$advancedReplace[$env[l10n;raretry;contents;content$env[i];$get[l10n]];\n\\];;\\[\n;;\n;--;",;;";]`
 }

@@ -46,16 +46,12 @@
 
     "ping": {
         "pingDesc1": {
-            "EN": "Current ping",
-            "RU": "Текущий пинг"
+            "EN": "Current ping: `{0}`ms",
+            "RU": "Текущий пинг: `{0}`мс"
         },
         "pingDesc2": {
-            "EN": "Execution time",
-            "RU": "Время выполнения"
-        },
-        "pingDesc3": {
-            "EN": "ms",
-            "RU": "мс"
+            "EN": "Execution time: `{1}`ms",
+            "RU": "Время выполнения: `{1}`мс"
         }
     },
 
@@ -92,43 +88,43 @@
             "RU": "Загрузка..."
         },
         "catchedRaresDesc2": {
-            "EN": "Total catched rares in mode",
-            "RU": "Всего поймано редких в режиме"
+            "EN": "Total catched rares in \"{0}\" mode",
+            "RU": "Всего поймано редких в режиме \"{0}\""
         },
         "catchedRaresDesc3": {
-            "EN": "Page",
-            "RU": "Страница"
+            "EN": "Page: {1}",
+            "RU": "Страница: {1}"
         },
         "catchedRaresDesc4": {
-            "EN": "Quantity",
-            "RU": "Количество"
+            "EN": "Quantity: {2}",
+            "RU": "Количество: {2}"
         },
         "catchedRaresDesc5": {
-            "EN": "Chance",
-            "RU": "Вероятность"
+            "EN": "Chance: {3}",
+            "RU": "Вероятность: {3}"
         },
         "catchedRaresDesc6": {
-            "EN": "Reward",
-            "RU": "Награда"
+            "EN": "Reward: {4}",
+            "RU": "Награда: {4}"
         },
         "catchedRaresDesc7": {
-            "EN": "Set raretry mode to",
-            "RU": "Установить режим редкости на"
+            "EN": "Set raretry mode to {5}",
+            "RU": "Установить режим редкости на {5}"
         },
         "catchedRaresDesc8": {
-            "EN": "Your raretry mode is set to",
-            "RU": "Ваш режим редкости установлен на"
+            "EN": "Your raretry mode is set to {6}",
+            "RU": "Ваш режим редкости установлен на {6}"
         }
     },
 
     "prefix": {
         "prefixDesc1": {
-            "EN": "My prefix in this server is",
-            "RU": "Мой префикс на этом сервере"
+            "EN": "My prefix in this server is {0}",
+            "RU": "Мой префикс на этом сервере {0}"
         },
         "prefixDesc2": {
-            "EN": "Successfully changed my prefix in this server to",
-            "RU": "Мой префикс успешно установлен на этом сервере на"
+            "EN": "Successfully changed my prefix in this server to {1}",
+            "RU": "Мой префикс успешно установлен на этом сервере на {1}"
         },
         "errorsDesc3": {
             "EN": "You can't change my prefix because you missing following permissions: `Manage Server` or `Administrator`",
@@ -137,7 +133,56 @@
     },
 
     "raretry": {
+        "raretryDesc1": {
+            "EN": "Rarity",
+            "RU": "Редкость"
+        },
+        "raretryDesc2": {
+            "EN": "Category",
+            "RU": "Категория"
+        },
+        "raretryDesc3": {
+            "EN": "Raretry mode",
+            "RU": "Режим редкости"
+        },
+
         "contents": {
+            "content1": {
+                "EN": [
+                    "You tried to get rares but got nothing",
+                    "You tried to get rares but ended up empty-handed",
+                    "You went trying to get rare but found nothing",
+                    "You tested your luck with rares but failed",
+                    "You were farming rares but got nothing"
+                ],
+
+                "RU": [
+                    "Вы пытались выбить редких, но ничего не поймали",
+                    "Вы пытались выбить редких, но остались ни с чем",
+                    "Вы пошли выбивать редких, но ничего не выбили",
+                    "Вы проверяли свою удачу с редкими, но не повезло",
+                    "Вы фармили редких, но ничего не получили"
+                ]
+            },
+            "content2": {
+                "EN": [
+                    "You tried to get rares and you got",
+                    "You tried to get rares and picked",
+                    "You tried your luck with rares and got",
+                    "You went after rares and got",
+                    "You tried evolving into a rare and succeeded with",
+                    "You went rare farming and you got"
+                ],
+
+                "RU": [
+                    "Вы пытались выбить редких и в итоге получили",
+                    "Вы пытались выбить редких и  в итоге выбрали",
+                    "Вы пошли выбивать редких и в итоге выбили",
+                    "Вы проверяли свою удачу с редкими и выбили",
+                    "Вы фармили редких и получили",
+                    "Вы пошли фармить редких и выбили"
+                ]
+            },
             "content3": {
                 "EN": [
                     "earning", 
@@ -150,16 +195,17 @@
                     "and you scored",
                     "and you received"
                 ],
+
                 "RU": [
                     "заработав",
                     "получив",
                     "собрав",
                     "набрав",
-                    "и ты получил",
-                    "и ты заработал",
-                    "и ты собрал",
-                    "и ты набрал",
-                    "и ты получил"
+                    "и Вы получили",
+                    "и Вы заработали",
+                    "и Вы собрали",
+                    "и Вы набрали",
+                    "и Вы разбогатели на"
                 ]
             }
         }
