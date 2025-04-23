@@ -135,7 +135,7 @@
     "raretry": {
         "raretryDesc1": {
             "EN": "Rarity",
-            "RU": "Редкость"
+            "RU": "Вероятность"
         },
         "raretryDesc2": {
             "EN": "Category",
