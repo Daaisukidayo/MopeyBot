@@ -1,5 +1,5 @@
 module.exports = [{
-  name: "catchedrares",
+  name: "caughtrares",
   aliases: ["cr", "chances", "ch", "rares"],
   type: "messageCreate",
   code: `
@@ -175,10 +175,13 @@ function buttons(disable = false) {
     $addActionRow
     $addButton[left_cr-$authorID;;Primary;⬅️;${disable}]
     $addButton[right_cr-$authorID;;Primary;➡️;${disable}]
+
+    $let[label;$replace[$get[desc7];{5};$toTitleCase[$get[rtMode]]]]
+    
     $if[$getUserVar[rtMode]!=$get[rtMode];
-        $addButton[setmode-$authorID-$get[rtMode];$replace[$get[desc7];{5};$toTitleCase[$get[rtMode]]];Success;;${disable}]
+        $addButton[setmode-$authorID-$get[rtMode];$get[label];Success;;${disable}]
     ;
-        $addButton[setmode-$authorID-$get[rtMode];$replace[$get[desc7];{5};$toTitleCase[$get[rtMode]]];Secondary;;true]
+        $addButton[setmode-$authorID-$get[rtMode];$get[label];Secondary;;true]
     ]
   `;
 }

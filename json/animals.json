@@ -2924,5 +2924,313 @@
       "emoji": "<:PolarBearS2Winter:1363467203026096288>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1363470170923729097/PolarBear-S2-Winter.png"
     }
+  },
+
+  "rhino": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Rhino",
+    "trig": "rhino",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Rhino",
+      "description": "Season 1",
+      "emoji": "<:RhinoS1v2:1364670671531278377>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Rhino",
+      "description": "Season 2",
+      "emoji": "<:RhinoS2:1292126057599602820>",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Rhino",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:RhinoS2Winter:1364670704200581182>",
+      "img": "  "
+    }
+  },
+
+  "whiteRhino": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "White Rhino",
+    "trig": "whiteRhino",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "White Rhino",
+      "description": "Season 1",
+      "emoji": "<:WhiteRhinoS1v2:1364670719572578306>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "White Rhino",
+      "description": "Season 2",
+      "emoji": "<:WhiteRhinoS2:1284568524806684724>",
+      "img": "  "
+    }
+  },
+
+  "blackRhino": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Black Rhino",
+    "trig": "blackRhino",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Black Rhino",
+      "description": "Season 1",
+      "emoji": "<:BlackRhinoS1:1364670738182701186>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Black Rhino",
+      "description": "Season 2",
+      "emoji": "<:BlackRhinoS2:1284568536362127493>",
+      "img": "  "
+    }
+  },
+
+  "baldEagle": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Bald Eagle",
+    "trig": "baldEagle",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Bald Eagle",
+      "description": "Season 1",
+      "emoji": "<:BaldEagleS1:1364670804738048100>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Bald Eagle",
+      "description": "Season 2",
+      "emoji": "<:BaldEagleS2:1292126046283366440>",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Bald Eagle",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:BaldEagleS2Winter:1364670817975402547>",
+      "img": "  "
+    }
+  },
+
+  "goldenEagle": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Golden Eagle",
+    "trig": "goldenEagle",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Golden Eagle",
+      "description": "Season 1",
+      "emoji": "<:GoldenEagleS1:1364670840611930143>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Golden Eagle",
+      "description": "Season 2",
+      "emoji": "<:GoldenEagleS2:1284568352404279326>",
+      "img": "  "
+    }
+  },
+
+  "harpyEagle": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Harpy Eagle",
+    "trig": "harpyEagle",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Harpy Eagle",
+      "description": "Season 1",
+      "emoji": "<:HarpyEagleS1:1364670862191624294>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Shahbaz",
+      "description": "Season 2",
+      "emoji": "<:ShahbazS2:1284568371043635352>",
+      "img": "  "
+    }
+  },
+
+  "greaterSpottedEagle": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Greater-Spotted Eagle",
+    "trig": "greaterSpottedEagle",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Greater-Spotted Eagle",
+      "description": "Season 1",
+      "emoji": "<:GreaterSpottedEagleS1:1364670886967382119>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Greater-Spotted Eagle",
+      "description": "Season 2",
+      "emoji": "<:GoldenShahbazS2:1284568382850727997>",
+      "img": "  "
+    }
+  },
+
+  "bison": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Bison",
+    "trig": "bison",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Bison",
+      "description": "Season 1",
+      "emoji": "<:BisonS1:1364671181269237760>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Bison",
+      "description": "Season 2",
+      "emoji": "<:BisonS2:1292126024557002762>",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Bison",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:BisonS2Winter:1364671192187011112>",
+      "img": "  "
+    }
+  },
+
+  "shark": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Shark",
+    "trig": "shark",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Shark",
+      "description": "Season 1",
+      "emoji": "<:SharkS1v2:1364671232892473434>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Shark",
+      "description": "Season 2",
+      "emoji": "<:SharkS2:1292126307143909476>",
+      "img": "  "
+    }
+  },
+
+  "markhor": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Markhor",
+    "trig": "markhor",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Markhor",
+      "description": "Season 1",
+      "emoji": "<:MarkhorS1:1364671294544678962>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Markhor",
+      "description": "Season 2",
+      "emoji": "<:MarkhorS2:1284568638170595459>",
+      "img": "  "
+    }
+  },
+
+  "bigGoat": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Big Goat",
+    "trig": "bigGoat",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Big Goat",
+      "description": "Season 1",
+      "emoji": "<:BigGoatS1:1364671305760375005>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Big Goat",
+      "description": "Season 2",
+      "emoji": "<:BigGoatS2:1284568654092173404>",
+      "img": "  "
+    }
+  },
+
+  "wolverine": {
+    "canFly": false,
+    "biome": "BIOME",
+    "fullName": "Wolverine",
+    "trig": "wolverine",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Wolverine",
+      "description": "Season 1",
+      "emoji": "<:WolverineS1:1364671266744700948>",
+      "img": "  "
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Wolverine",
+      "description": "Season 2",
+      "emoji": "<:WolverineS2:1292126006571831358>",
+      "img": "  "
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Wolverine",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:WolverineS2Winter:1364671276957831178>",
+      "img": "  "
+    }
   }
 }
