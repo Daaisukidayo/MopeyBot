@@ -99,7 +99,7 @@ module.exports = [{
     $setUserVar[rtMode;$get[rtMode]]
     ${buttons()}
 
-    $!editMessage[$channelID;$get[msgid];${embed()} $get[desc8] \`$splitText[2]\`]
+    $!editMessage[$channelID;$get[msgid];${embed()} $replace[$get[desc8];{6};\`$splitText[2]\`]]
 
     $deferUpdate
   `,
@@ -109,7 +109,7 @@ module.exports = [{
 
 function emptyEmbed() {
   return `
-    $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
+    $getGlobalVar[author]
     $color[$getGlobalVar[luckyColor]]
     $description[$get[desc1]]
   `;
@@ -117,18 +117,18 @@ function emptyEmbed() {
 
 function embed() {
   return `
-    $title[$get[desc2] "$toTitleCase[$get[rtMode]]":]
-    $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
+    $title[$replace[$get[desc2];{0};$get[rtMode]]]
+    $getGlobalVar[author]
     $description[${loop()}]
     $color[$getGlobalVar[luckyColor]]
-    $footer[$get[desc3]: $getMessageVar[crpage;$get[msgid]]/6]
+    $footer[$replace[$get[desc3];{1};$getMessageVar[crpage;$get[msgid]]]/6]
   `;
 }
 
 function loop() {
   return `
     $let[i;0]
-    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`$get[desc4]: $separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]\n$get[desc5]: 1/$separateNumber[${chance()};,]\n$get[desc6]: $separateNumber[${coins()};,]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
+    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`$replace[$get[desc4];{2};$separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]]\n$replace[$get[desc5];{3};1/$separateNumber[${chance()};,]]\n$replace[$get[desc6];{4};$separateNumber[${coins()};,]]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
   `;
 }
 
@@ -176,9 +176,9 @@ function buttons(disable = false) {
     $addButton[left_cr-$authorID;;Primary;⬅️;${disable}]
     $addButton[right_cr-$authorID;;Primary;➡️;${disable}]
     $if[$getUserVar[rtMode]!=$get[rtMode];
-        $addButton[setmode-$authorID-$get[rtMode];$get[desc7] $toTitleCase[$get[rtMode]];Success;;${disable}]
+        $addButton[setmode-$authorID-$get[rtMode];$replace[$get[desc7];{5};$toTitleCase[$get[rtMode]]];Success;;${disable}]
     ;
-        $addButton[setmode-$authorID-$get[rtMode];$get[desc7] $toTitleCase[$get[rtMode]];Secondary;;true]
+        $addButton[setmode-$authorID-$get[rtMode];$replace[$get[desc7];{5};$toTitleCase[$get[rtMode]]];Secondary;;true]
     ]
   `;
 }
