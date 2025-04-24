@@ -29,7 +29,7 @@ module.exports = [{
     $let[al;$arrayLength[categories]]
     $let[li;$math[$get[al] - 1]]
 
-    $loop[5;
+    $loop[300;
       $switch[$getUserVar[rtMode];
         $case[inferno;$let[rtModeNum;-1]]
         $case[default;$let[rtModeNum;0]]
@@ -45,6 +45,7 @@ module.exports = [{
       $let[MC;0]
       $let[catched;false]
       $let[content;## $arrayRandomValue[content1]] 
+      $let[thumbnail;]
       ${catchingRare()}
           
 
