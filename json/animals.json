@@ -2937,7 +2937,7 @@
       "name": "Rhino",
       "description": "Season 1",
       "emoji": "<:RhinoS1v2:1364670671531278377>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330299576482/Rhino-S1-v2.png"
     },
 
     "v1": {
@@ -2945,7 +2945,7 @@
       "name": "Rhino",
       "description": "Season 2",
       "emoji": "<:RhinoS2:1292126057599602820>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584922779669/Rhino-S2.png"
     },
 
     "v2": {
@@ -2953,7 +2953,7 @@
       "name": "Rhino",
       "description": "Season 2 | Winter Version",
       "emoji": "<:RhinoS2Winter:1364670704200581182>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330542714960/Rhino-S2-Winter.png"
     }
   },
 
@@ -2968,7 +2968,7 @@
       "name": "White Rhino",
       "description": "Season 1",
       "emoji": "<:WhiteRhinoS1v2:1364670719572578306>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330769469492/WhiteRhino-S1-v2.png"
     },
 
     "v1": {
@@ -2976,7 +2976,7 @@
       "name": "White Rhino",
       "description": "Season 2",
       "emoji": "<:WhiteRhinoS2:1284568524806684724>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456954294352/WhiteRhino.png"
     }
   },
 
@@ -2991,7 +2991,7 @@
       "name": "Black Rhino",
       "description": "Season 1",
       "emoji": "<:BlackRhinoS1:1364670738182701186>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365352328781238372/BlackRhino-S1.png"
     },
 
     "v1": {
@@ -2999,7 +2999,7 @@
       "name": "Black Rhino",
       "description": "Season 2",
       "emoji": "<:BlackRhinoS2:1284568536362127493>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455423242424/BlackRhino.png"
     }
   },
 
@@ -3014,7 +3014,7 @@
       "name": "Bald Eagle",
       "description": "Season 1",
       "emoji": "<:BaldEagleS1:1364670804738048100>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329062125648/Eagle-S1.png"
     },
 
     "v1": {
@@ -3022,7 +3022,7 @@
       "name": "Bald Eagle",
       "description": "Season 2",
       "emoji": "<:BaldEagleS2:1292126046283366440>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292460585182695484/Eagle-S2.png"
     },
 
     "v2": {
@@ -3030,7 +3030,7 @@
       "name": "Bald Eagle",
       "description": "Season 2 | Winter Version",
       "emoji": "<:BaldEagleS2Winter:1364670817975402547>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329293074544/Eagle-S2-Winter.png"
     }
   },
 
@@ -3045,7 +3045,7 @@
       "name": "Golden Eagle",
       "description": "Season 1",
       "emoji": "<:GoldenEagleS1:1364670840611930143>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329540407296/GoldenEagle-S1.png"
     },
 
     "v1": {
@@ -3053,7 +3053,7 @@
       "name": "Golden Eagle",
       "description": "Season 2",
       "emoji": "<:GoldenEagleS2:1284568352404279326>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455754457088/GoldenEagle.png"
     }
   },
 
@@ -3068,7 +3068,7 @@
       "name": "Harpy Eagle",
       "description": "Season 1",
       "emoji": "<:HarpyEagleS1:1364670862191624294>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330052243536/HarpyEagle-S1.png"
     },
 
     "v1": {
@@ -3076,7 +3076,7 @@
       "name": "Shahbaz",
       "description": "Season 2",
       "emoji": "<:ShahbazS2:1284568371043635352>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456690049024/Shahbaz.png"
     }
   },
 
@@ -3091,15 +3091,15 @@
       "name": "Greater-Spotted Eagle",
       "description": "Season 1",
       "emoji": "<:GreaterSpottedEagleS1:1364670886967382119>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329804517527/Greater-SpottedEagle-S1.png"
     },
 
     "v1": {
       "vCode": "s2",
-      "name": "Greater-Spotted Eagle",
+      "name": "Golden Shahbaz",
       "description": "Season 2",
       "emoji": "<:GoldenShahbazS2:1284568382850727997>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456077680826/GoldenShahbaz.png"
     }
   },
 
@@ -3114,7 +3114,7 @@
       "name": "Bison",
       "description": "Season 1",
       "emoji": "<:BisonS1:1364671181269237760>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365353706328948889/Bison-S1.png"
     },
 
     "v1": {
@@ -3122,7 +3122,7 @@
       "name": "Bison",
       "description": "Season 2",
       "emoji": "<:BisonS2:1292126024557002762>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584696020992/Bison-S2.png"
     },
 
     "v2": {
@@ -3130,7 +3130,7 @@
       "name": "Bison",
       "description": "Season 2 | Winter Version",
       "emoji": "<:BisonS2Winter:1364671192187011112>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365353706597515294/Bison-S2-Winter.png"
     }
   },
 
@@ -3145,7 +3145,7 @@
       "name": "Shark",
       "description": "Season 1",
       "emoji": "<:SharkS1v2:1364671232892473434>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365353706886795324/Shark-S1-v2.png"
     },
 
     "v1": {
@@ -3153,7 +3153,7 @@
       "name": "Shark",
       "description": "Season 2",
       "emoji": "<:SharkS2:1292126307143909476>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292460585421897830/Shark-S2.png"
     }
   },
 
@@ -3168,7 +3168,7 @@
       "name": "Markhor",
       "description": "Season 1",
       "emoji": "<:MarkhorS1:1364671294544678962>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111304274093/Markhor-S1.png"
     },
 
     "v1": {
@@ -3176,7 +3176,7 @@
       "name": "Markhor",
       "description": "Season 2",
       "emoji": "<:MarkhorS2:1284568638170595459>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png"
     }
   },
 
@@ -3191,7 +3191,7 @@
       "name": "Big Goat",
       "description": "Season 1",
       "emoji": "<:BigGoatS1:1364671305760375005>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365353110926659716/BigGoat-S1.png"
     },
 
     "v1": {
@@ -3199,13 +3199,13 @@
       "name": "Big Goat",
       "description": "Season 2",
       "emoji": "<:BigGoatS2:1284568654092173404>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455092023296/BigGoat.png"
     }
   },
 
   "wolverine": {
     "canFly": false,
-    "biome": "BIOME",
+    "biome": "Arctic",
     "fullName": "Wolverine",
     "trig": "wolverine",
 
@@ -3214,7 +3214,7 @@
       "name": "Wolverine",
       "description": "Season 1",
       "emoji": "<:WolverineS1:1364671266744700948>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111568384141/Wolverine-S1.png"
     },
 
     "v1": {
@@ -3222,7 +3222,7 @@
       "name": "Wolverine",
       "description": "Season 2",
       "emoji": "<:WolverineS2:1292126006571831358>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584364675072/Wolverine-S2.png"
     },
 
     "v2": {
@@ -3230,7 +3230,7 @@
       "name": "Wolverine",
       "description": "Season 2 | Winter Version",
       "emoji": "<:WolverineS2Winter:1364671276957831178>",
-      "img": "  "
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111836688434/Wolverine-S2-Winter.png"
     }
   }
 }
