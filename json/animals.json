@@ -3432,5 +3432,167 @@
       "emoji": "<:WhiteGiraffeFamilyS1:1284570523786936450>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721174343740/Giraffe_family.png"
     }
+  },
+
+  "elephant": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Elephant",
+    "trig": "elephant",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Elephant",
+      "description": "Season 1",
+      "emoji": "<:ElephantS1:1365777144831016970>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365779716132569199/Elephant-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Elephant",
+      "description": "Season 2",
+      "emoji": "<:ElephantS2:1292127864971329646>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422183329966/Elephant-S2.png"
+    }
+  },
+
+  "cassowary": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Cassowary",
+    "trig": "cassowary",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Cassowary",
+      "description": "Season 1",
+      "emoji": "<:CassowaryS1:1365777216021205002>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365779715524137071/Cassowary-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Cassowary",
+      "description": "Season 2",
+      "emoji": "<:CassowaryS2:1292127854745882644>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421952385147/Cassowary-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Cassowary",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:CassowaryS2Winter:1365777226766880898>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365779715838840952/Cassowary-S2-Winter.png"
+    }
+  },
+
+  "giantSpider": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Giant Spider",
+    "trig": "giantSpider",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Giant Spider",
+      "description": "Season 1",
+      "emoji": "<:GiantSpiderS1:1365777460523962388>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365779716656730333/GiantSpider-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Giant Spider",
+      "description": "Season 2",
+      "emoji": "<:GiantSpiderS2:1292127876803596411>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422451507270/GiantSpider-S2.png"
+    }
+  },
+
+  "blackwidowSpider": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Blackwidow Spider",
+    "trig": "blackwidowSpider",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Blackwidow Spider",
+      "description": "Season 1",
+      "emoji": "<:BlackwidowSpiderS1:1365777705764651059>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365779717181145259/BlackwidowSpider-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Blackwidow Spider",
+      "description": "Season 2",
+      "emoji": "<:BlackwidowSpiderS2:1292127821673791599>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421734412421/BlackwidowSpider-S2.png"
+    }
+  },
+
+  "blueWhale": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Blue Whale",
+    "trig": "blueWhale",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Blue Whale",
+      "description": "Season 1",
+      "emoji": "<:BlueWhaleS1v2:1365777910761390120>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365779717705302146/BlueWhale-S1-v2.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Blue Whale",
+      "description": "Season 2",
+      "emoji": "<:BlueWhaleS2:1292128040142377071>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422724395111/BlueWhale-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Blue Whale",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:BlueWhaleS2Winter:1365777926796083260>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365779718305222727/BlueWhale-S2-Winter.png"
+    }
+  },
+
+  "mammoth": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Mammoth",
+    "trig": "mammoth",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Mammoth",
+      "description": "Season 1",
+      "emoji": "<:MammothS1:1365778098745905263>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365779718833701025/Mammoth-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Mammoth",
+      "description": "Season 2",
+      "emoji": "<:MammothS2:1292127799909289985>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421495205908/Mammoth-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Mammoth",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:MammothS2Winter:1365778107771916418>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365779719571767386/Mammoth-S2-Winter.png"
+    }
   }
 }
