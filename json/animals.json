@@ -1972,7 +1972,7 @@
 
   "lavaToucan": {
     "canFly": true,
-    "biome": "Land",
+    "biome": "Volcano",
     "fullName": "Lava Toucan",
     "trig": "lavaToucan",
 
@@ -3593,6 +3593,243 @@
       "description": "Season 2 | Winter Version",
       "emoji": "<:MammothS2Winter:1365778107771916418>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1365779719571767386/Mammoth-S2-Winter.png"
+    }
+  },
+
+  "dragon": {
+    "canFly": true,
+    "biome": "Land",
+    "fullName": "Dragon",
+    "trig": "dragon",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Dragon",
+      "description": "Season 1",
+      "emoji": "<:DragonS1:1327713041357213727>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365793814274510929/Dragon-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Dragon",
+      "description": "Season 2",
+      "emoji": "<:DragonS2:1292128309798244485>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474657936773245/Dragon-S2.png"
+    }
+  },
+
+  "trex": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "T-Rex",
+    "trig": "trex",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "T-Rex",
+      "description": "Season 1",
+      "emoji": "<:TRexS1:1327713055219515442>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365793814509519048/TRex-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "T-Rex",
+      "description": "Season 2",
+      "emoji": "<:TrexS2:1292128324801269880>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474658305867776/Trex-S2.png"
+    }
+  },
+
+  "phoenix": {
+    "canFly": true,
+    "biome": "Volcano",
+    "fullName": "Phoenix",
+    "trig": "phoenix",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Phoenix",
+      "description": "Season 1",
+      "emoji": "<:PhoenixS1:1327713584406335498>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365793817076432956/Phoenix-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Phoenix",
+      "description": "Season 2",
+      "emoji": "<:PhoenixS2:1292128384444530689>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474659291402251/Phoenix-S2.png"
+    }
+  },
+
+  "ptero": {
+    "canFly": true,
+    "biome": "Desert",
+    "fullName": "Pterodactyl",
+    "trig": "ptero",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Pterodactyl",
+      "description": "Season 1",
+      "emoji": "<:PterodactylS1:1327713012798193694>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815646175312/Pterodactyl-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Pterodactyl",
+      "description": "Season 2",
+      "emoji": "<:PterodactylS2:1292128266559426724>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474657680916582/Pterodactyl-S2.png"
+    }
+  },
+
+  "kraken": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Kraken",
+    "trig": "kraken",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Kraken",
+      "description": "Season 1",
+      "emoji": "<:KrakenS1:1327713559618125908>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365793816703012925/Kraken-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Kraken",
+      "description": "Season 2",
+      "emoji": "<:KrakenS2:1292128363690856541>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474658905522337/Kraken-S2.png"
+    }
+  },
+
+  "kingCrab": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "King Crab",
+    "trig": "kingCrab",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "King Crab",
+      "description": "Season 1",
+      "emoji": "<:KingCrabS1:1327713548046045319>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365793816413474937/KingCrab-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "King Crab",
+      "description": "Season 2",
+      "emoji": "<:KingCrabS2:1292128350961401897>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474658687422495/KingCrab-S2.png"
+    }
+  },
+
+  "yeti": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Yeti",
+    "trig": "yeti",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Yeti",
+      "description": "Season 1",
+      "emoji": "<:YetiS1:1327712991692455987>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815394390047/Yeti-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Yeti",
+      "description": "Season 2",
+      "emoji": "<:YetiS2:1292128236096065690>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474657370407063/The_Yeti-S2.png"
+    }
+  },
+
+  "aquaYeti": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Aqua Yeti",
+    "trig": "aquaYeti",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Aqua Yeti",
+      "description": "Season 1",
+      "emoji": "<:AquaYetiS1:1365791266989670511>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815075491992/AquaYeti-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Aqua Yeti",
+      "description": "Season 2",
+      "emoji": "<:AquaYetiS2:1284570581093711914>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721690112000/AquaYeti.png"
+    }
+  },
+
+  "bigFoot": {
+    "canFly": false,
+    "biome": "Forest",
+    "fullName": "Big Foot",
+    "trig": "bigFoot",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Big Foot",
+      "description": "Season 1",
+      "emoji": "<:BigfootS1:1365791609001611344>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815906226247/Bigfoot-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Big Foot",
+      "description": "Season 2",
+      "emoji": "<:BigfootS2:1285617256562425967>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png"
+    }
+  },
+
+  "snowman": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Snowman",
+    "trig": "snowman",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Snowman",
+      "description": "Season 1",
+      "emoji": "<:SnowmanS1:1284570594075218014>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png"
+    }
+  },
+
+  "snowgirl": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Snowgirl",
+    "trig": "snowgirl",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Snowgirl",
+      "description": "Season 1",
+      "emoji": "<:SnowgirlS1:1284570612018315346>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png"
     }
   }
 }
