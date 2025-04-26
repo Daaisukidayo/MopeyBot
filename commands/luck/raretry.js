@@ -11,7 +11,7 @@ module.exports = [{
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[userPacks;$getUserVar[userPacks]]
-    $jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
+    $jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
     $jsonLoad[raresGroup;$readFile[json/raretry_data.json]]
@@ -43,7 +43,7 @@ module.exports = [{
       $let[p;-1]
       $let[color;$getGlobalVar[errorColor]]
       $let[MC;0]
-      $let[catched;false]
+      $let[caught;false]
       $let[content;## $arrayRandomValue[content1]] 
       $let[thumbnail;]
       ${catchingRare()}
@@ -141,14 +141,14 @@ function catchingRare() {
 return `
 $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]]; $c[⬅️ Summon specific category by message]
     $let[p;$message[0]]
-    $let[catched;true]
+    $let[caught;true]
 
     ${baseChance(`p`)}
     ${colorAndCoins()}
     $let[cat;$arrayAt[categories;$get[p]]]
     ${thumbnailAndArray()}
     ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
-    ${content()}          $c[⬅️ Content if something catched]
+    ${content()}          $c[⬅️ Content if something caught]
 
     $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
 
@@ -160,20 +160,20 @@ $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0
     $loop[$get[al];     $c[⬅️ Looping through all categories]
         ${baseChance(`i`)}
 
-        $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we catched rare), getting coins and color from json and saving iteration as "p" variable]
-            $let[catched;true]
+        $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we caught rare), getting coins and color from json and saving iteration as "p" variable]
+            $let[caught;true]
             $let[p;$get[i]]
 
-            $jsonSet[catchedRareCategories;$getUserVar[rtMode];$get[p];$sum[$env[catchedRareCategories;$getUserVar[rtMode];$get[p]];1]]
+            $jsonSet[caughtRareCategories;$getUserVar[rtMode];$get[p];$sum[$env[caughtRareCategories;$getUserVar[rtMode];$get[p]];1]]
 
-            $setUserVar[catchedRareCategories;$env[catchedRareCategories]]
+            $setUserVar[caughtRareCategories;$env[caughtRareCategories]]
 
             $let[cat;$arrayAt[categories;$get[p]]]
 
             ${colorAndCoins()}
             ${thumbnailAndArray()}
             ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
-            ${content()}          $c[⬅️ Content if something catched]
+            ${content()}          $c[⬅️ Content if something caught]
 
 
             $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
@@ -184,7 +184,7 @@ $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0
         $let[i;$math[$get[i] - 1]]
     ]
 
-    $if[$get[catched]==false;
+    $if[$get[caught]==false;
         ${sm()}
     ]
 ]`
