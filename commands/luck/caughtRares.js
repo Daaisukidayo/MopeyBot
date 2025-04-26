@@ -117,7 +117,7 @@ function emptyEmbed() {
 
 function embed() {
   return `
-    $title[$replace[$get[desc2];{0};$get[rtMode]]]
+    $title[$replace[$get[desc2];{0};$toTitleCase[$get[rtMode]]]]
     $getGlobalVar[author]
     $description[${loop()}]
     $color[$getGlobalVar[luckyColor]]
@@ -128,14 +128,14 @@ function embed() {
 function loop() {
   return `
     $let[i;0]
-    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`$replace[$get[desc4];{2};$separateNumber[$env[catchedRareCategories;$get[rtMode];$get[i]];,]]\n$replace[$get[desc5];{3};1/$separateNumber[${chance()};,]]\n$replace[$get[desc6];{4};$separateNumber[${coins()};,]]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
+    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`$replace[$get[desc4];{2};$separateNumber[$env[caughtRareCategories;$get[rtMode];$get[i]];,]]\n$replace[$get[desc5];{3};1/$separateNumber[${chance()};,]]\n$replace[$get[desc6];{4};$separateNumber[${coins()};,]]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
   `;
 }
 
 function jsonAndArray() {
   return `
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
-    $jsonLoad[catchedRareCategories;$getUserVar[catchedRareCategories]]
+    $jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
     $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
@@ -143,7 +143,7 @@ function jsonAndArray() {
     $let[specialDesc1;$env[l10n;special;specialDesc1;$get[l10n]]] 
 
     $loop[8; 
-        $let[desc$env[i];$env[l10n;catchedRares;catchedRaresDesc$env[i];$get[l10n]]]
+        $let[desc$env[i];$env[l10n;caughtRares;caughtRaresDesc$env[i];$get[l10n]]]
         $if[$get[desc$env[i]]==; $let[desc$env[i];textNotFound | ID: $get[l10n]$env[i]]] 
     ;i;desc]
   `;

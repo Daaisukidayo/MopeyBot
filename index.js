@@ -120,7 +120,7 @@ ForgeDB.variables({
   logColor: "#2019b3",
   blank: "<:blank:898514292926713866>",
 
-  catchedRareCategories: {
+  caughtRareCategories: {
     inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     medium: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
