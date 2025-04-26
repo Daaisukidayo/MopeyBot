@@ -3232,5 +3232,205 @@
       "emoji": "<:WolverineS2Winter:1364671276957831178>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111836688434/Wolverine-S2-Winter.png"
     }
+  },
+
+  "hippo": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Hippo",
+    "trig": "hippo",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Hippo",
+      "description": "Season 1",
+      "emoji": "<:HippoS1:1365717641083486208>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365718979468857414/Hippo-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Hippo",
+      "description": "Season 2",
+      "emoji": "<:HippoS2:1292126402312798361>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269703475231/Hippo-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Hippo",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:HippoS2Winter:1365717652114247770>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365718979892478073/Hippo-S2-Winter.png"
+    }
+  },
+
+  "boaConstrictor": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Boa Constrictor",
+    "trig": "boaConstrictor",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Boa Constrictor",
+      "description": "Season 1",
+      "emoji": "<:BoaConstrictorS1:1365717742728249445>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365718978558693437/BoaConstrictor-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Boa Constrictor",
+      "description": "Season 2",
+      "emoji": "<:BoaConstrictorS2:1292126392569565365>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269414199399/BoaConstrictor-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Boa Constrictor",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:BoaConstrictorS2Winter:1365717752983060511>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365718979070660618/BoaConstrictor-S2-Winter.png"
+    }
+  },
+
+  "ostrich": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Ostrich",
+    "trig": "ostrich",
+  
+    "v0": {
+      "vCode": "s1",
+      "name": "Ostrich",
+      "description": "Season 1",
+      "emoji": "<:OstrichS1:1365717943664771144>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365718980509044848/Ostrich-S1.png"
+    },
+  
+    "v1": {
+      "vCode": "s2",
+      "name": "Ostrich",
+      "description": "Season 2",
+      "emoji": "<:OstrichS2:1292126412874055700>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269942681620/Ostrich-S2.png"
+    }
+  },
+
+  "komodoDragon": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Komodo Dragon",
+    "trig": "komodoDragon",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Komodo Dragon",
+      "description": "Season 1",
+      "emoji": "<:KomodoDragonS1:1365718023100567653>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365718980970676336/KomodoDragon-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Komodo Dragon",
+      "description": "Season 2",
+      "emoji": "<:KomodoDragonS2:1292126362756190279>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269187440653/KomodoDragon-S2.png"
+    }
+  },
+
+  "killerWhale": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Killer Whale",
+    "trig": "killerWhale",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Killer Whale",
+      "description": "Season 1",
+      "emoji": "<:KillerWhaleS1:1365718184228818965>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365718981670862879/KillerWhale-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Killer Whale",
+      "description": "Season 2",
+      "emoji": "<:KillerWhaleS2:1292126434298429450>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474270198530079/KillerWhale-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Killer Whale",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:KillerWhaleS2Winter:1365718194735812699>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365718982237098004/KillerWhale-S2-Winter.png"
+    }
+  },
+
+  "sabertoothTiger": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Sabertooth Tiger",
+    "trig": "sabertoothTiger",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Sabertooth Tiger",
+      "description": "Season 1",
+      "emoji": "<:SabertoothTigerS1:1365718474013282344>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365719019793023147/SabertoothTiger-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Sabertooth Tiger",
+      "description": "Season 2",
+      "emoji": "<:SabertoothTigerS2:1292126341713362954>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1292474268931854416/SabertoothTiger-S2.png"
+    },
+
+    "v2": {
+      "vCode": "s2-w",
+      "name": "Sabertooth Tiger",
+      "description": "Season 2 | Winter Version",
+      "emoji": "<:SabertoothTigerS2Winter:1365718485187166208>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365719020354932776/SabertoothTiger-S2-Winter.png"
+    }
+  },
+
+  "whiteGiraffe": {
+    "canFly": false,
+    "biome": "Forest",
+    "fullName": "White Giraffe",
+    "trig": "whiteGiraffe",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "White Giraffe",
+      "description": "Season 1",
+      "emoji": "<:WhiteGiraffeS1:1284570509589352478>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721425866884/WhiteGiraffe.png"
+    }
+  },
+
+  "whiteGiraffeFamily": {
+    "canFly": false,
+    "biome": "Forest",
+    "fullName": "White Giraffe Family",
+    "trig": "whiteGiraffeFamily",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "White Giraffe Family",
+      "description": "Season 1",
+      "emoji": "<:WhiteGiraffeFamilyS1:1284570523786936450>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721174343740/Giraffe_family.png"
+    }
   }
 }
