@@ -82,36 +82,36 @@
         }
     },
 
-    "catchedRares": {
-        "catchedRaresDesc1": {
+    "caughtRares": {
+        "caughtRaresDesc1": {
             "EN": "Loading...",
             "RU": "Загрузка..."
         },
-        "catchedRaresDesc2": {
+        "caughtRaresDesc2": {
             "EN": "Total caught rares in \"{0}\" mode",
             "RU": "Всего поймано редких в режиме \"{0}\""
         },
-        "catchedRaresDesc3": {
+        "caughtRaresDesc3": {
             "EN": "Page: {1}",
             "RU": "Страница: {1}"
         },
-        "catchedRaresDesc4": {
+        "caughtRaresDesc4": {
             "EN": "Quantity: {2}",
             "RU": "Количество: {2}"
         },
-        "catchedRaresDesc5": {
+        "caughtRaresDesc5": {
             "EN": "Chance: {3}",
             "RU": "Вероятность: {3}"
         },
-        "catchedRaresDesc6": {
+        "caughtRaresDesc6": {
             "EN": "Reward: {4}",
             "RU": "Награда: {4}"
         },
-        "catchedRaresDesc7": {
+        "caughtRaresDesc7": {
             "EN": "Set raretry mode to {5}",
             "RU": "Установить режим редкости на {5}"
         },
-        "catchedRaresDesc8": {
+        "caughtRaresDesc8": {
             "EN": "Your raretry mode is set to {6}",
             "RU": "Ваш режим редкости установлен на {6}"
         }
