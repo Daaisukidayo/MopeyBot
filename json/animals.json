@@ -3831,5 +3831,166 @@
       "emoji": "<:SnowgirlS1:1284570612018315346>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png"
     }
+  },
+
+  "dinoMonster": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Dino Monster",
+    "trig": "dinoMonster",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Dino Monster",
+      "description": "Season 1",
+      "emoji": "<:DinoMonsterS1:1327716246929543269>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365998974028218478/DinoMonster-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Dino Monster",
+      "description": "Season 2",
+      "emoji": "<:Dino_MonsterS2:1292128471501242368>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365998974502178889/DinoMonster-S2.png"
+    }
+  },
+
+  "landMonster": {
+    "canFly": true,
+    "biome": "Volcano",
+    "fullName": "Land Monster",
+    "trig": "landMonster",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Land Monster",
+      "description": "Season 1",
+      "emoji": "<:LandMonsterS1:1327716340701593723>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365998976171507733/LandMonster-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Land Monster",
+      "description": "Season 2",
+      "emoji": "<:LandMonsterS2:1292128532889075757>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365998976607981598/LandMonster-S2.png"
+    }
+  },
+
+  "giantScorpion": {
+    "canFly": false,
+    "biome": "Desert",
+    "fullName": "Giant Scorpion",
+    "trig": "giantScorpion",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Giant Scorpion",
+      "description": "Season 1",
+      "emoji": "<:GiantScorpionS1:1327716215262548051>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365998974779133952/GiantScorpion-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Giant Scorpion",
+      "description": "Season 2",
+      "emoji": "<:GiantScorpionS2:1292128439603560499>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365998975089381438/GiantScorpion-S2.png"
+    }
+  },
+
+  "seaMonster": {
+    "canFly": false,
+    "biome": "Ocean",
+    "fullName": "Sea Monster",
+    "trig": "seaMonster",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Sea Monster",
+      "description": "Season 1",
+      "emoji": "<:SeaMonsterS1:1327716267691479123>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365998975517196368/SeaMonster-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Sea Monster",
+      "description": "Season 2",
+      "emoji": "<:SeaMonsterS2:1292128514031616112>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365998975865454623/SeaMonster-S2.png"
+    }
+  },
+
+  "iceMonster": {
+    "canFly": false,
+    "biome": "Arctic",
+    "fullName": "Ice Monster",
+    "trig": "iceMonster",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Ice Monster",
+      "description": "Season 1",
+      "emoji": "<:IceMonsterS1:1327716198275747870>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366000551724191825/IceMonster-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Ice Monster",
+      "description": "Season 2",
+      "emoji": "<:IceMonsterS2:1292128414463037523>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366000552042954844/IceMonster-S2.png"
+    }
+  },
+
+  "blackDragon": {
+    "canFly": true,
+    "biome": "Volcano",
+    "fullName": "Black Dragon",
+    "trig": "blackDragon",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Black Dragon",
+      "description": "Season 1",
+      "emoji": "<:BlackDragonS1:1327342429736538152>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365989192051462255/BlackDragon-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Black Dragon",
+      "description": "Season 2",
+      "emoji": "<:BlackDragonS2:1287156849350807623>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191019794554/BlackDragon-S2.png"
+    }
+  },
+
+  "kingDragon": {
+    "canFly": true,
+    "biome": "Volcano",
+    "fullName": "King Dragon",
+    "trig": "kingDragon",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "King Dragon",
+      "description": "Season 1",
+      "emoji": "<:KingDragonS1:1284470623615189142>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191472648263/KingDragon-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "King Dragon",
+      "description": "Season 2",
+      "emoji": "<:KingDragonS2:1280238249360494825>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191737016360/KingDragon-S2.png"
+    }
   }
 }
