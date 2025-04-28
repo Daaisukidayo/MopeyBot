@@ -431,3 +431,28 @@ client.functions.add({
   $ephemeral
   $interactionReply[$get[specialDesc3]]`
 })
+
+client.functions.add({
+  name: "kdMenu",
+  params: ["cond"],
+  code: `
+    $addStringSelectMenu[$env[cond]kdmenu-$authorID;Choose an upgrade:]
+
+    $addOption[$env[animals;kingDragon;v0;name];;$env[cond]kds1-$authorID;$env[animals;kingDragon;v0;emoji]]
+    $addOption[$env[animals;kingDragon;v1;name];;$env[cond]kds2-$authorID;$env[animals;kingDragon;v1;emoji]]
+    
+    $if[$env[userPacks;lockedSP];
+      $addOption[$env[animals;kingDragon;v2;name];;$env[cond]ksh-$authorID;$env[animals;kingDragon;v2;emoji]]
+      $addOption[$env[animals;kingDragon;v3;name];;$env[cond]kst-$authorID;$env[animals;kingDragon;v3;emoji]]
+      $addOption[$env[animals;kingDragon;v4;name];;$env[cond]kr-$authorID;$env[animals;kingDragon;v4;emoji]]
+      $addOption[$env[animals;kingDragon;v5;name];;$env[cond]qc-$authorID;$env[animals;kingDragon;v5;emoji]]
+      $addOption[$env[animals;kingDragon;v6;name];;$env[cond]qs-$authorID;$env[animals;kingDragon;v6;emoji]]
+    ]
+    $if[$env[userPacks;goldenSP];
+      $addOption[$env[animals;kingDragon;v7;name];;$env[cond]gkd-$authorID;$env[animals;kingDragon;v7;emoji]]
+    ] 
+    $if[$env[userPacks;storefrontSP];
+      $addOption[$env[animals;kingDragon;v8;name];;$env[cond]qf-$authorID;$env[animals;kingDragon;v8;emoji]]
+    ]
+  `
+})
