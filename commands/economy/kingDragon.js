@@ -60,6 +60,9 @@ $textSplit[$customID;-]
 $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
 $onlyif[$or[$splitText[0]==oldbd;$splitText[0]==bd;$splitText[0]==gbd;$splitText[0]==ab]]
 
+$jsonLoad[animals;$readFile[json/animals.json]]
+$jsonLoad[userPacks;$getUserVar[userPacks]]
+
 $arrayLoad[KDS;,\n  ;
   $env[animals;kingDragon;v0;name] $env[animals;kingDragon;v0;emoji],
   $env[animals;kingDragon;v1;name] $env[animals;kingDragon;v1;emoji],
