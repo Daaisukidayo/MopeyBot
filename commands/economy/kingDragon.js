@@ -48,8 +48,8 @@ $if[$randomNumber[1;$sum[1;$get[r]]]==1;
     $description[$get[KDLuckDesc]]
     $color[d61b4a]
 ;
-    ${bdMenu()} 
-    $description[$get[normalBDDesc]]
+  ${bdMenu()} 
+  $description[$get[normalBDDesc]]
 ]
 `
 },{
@@ -58,7 +58,7 @@ allowedInteractionTypes: ["selectMenu"],
 code: `
 $textSplit[$customID;-]
 $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
-$onlyif[$or[$splitText[0]==oldbd;$splitText[0]==bd;$splitText[0]==gbd;$splitText[0]==ab]]
+$onlyif[$or[$splitText[0]==oldbd;$splitText[0]==bds1;$splitText[0]==bds2;$splitText[0]==gbd;$splitText[0]==ab]]
 
 $jsonLoad[animals;$readFile[json/animals.json]]
 $jsonLoad[userPacks;$getUserVar[userPacks]]
