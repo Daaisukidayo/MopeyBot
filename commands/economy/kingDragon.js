@@ -29,9 +29,9 @@ $getGlobalVar[author]
 $color[$getGlobalVar[defaultColor]]
 
 
-$let[KDLuckDesc;## Choose an upgrade:\n# $get[KDS1] $get[KDS2]$if[$get[gsp]; <:golden_kd:735483821050560583>]$if[$get[lsp]; <:king_ripper:735483931851227264> <:king_stan:735484001275609118> <:king_shah:735484059500806174> <:queen_celeste:735484190187061268> <:queen_scarlet:735484138949312582>]$if[$get[sfsp]; <:queen_flame:884030972629229568>]]
+$let[KDLuckDesc;## Choose an upgrade:\n# $env[animals;kingDragon;v0;emoji] $env[animals;kingDragon;v1;emoji]$if[$env[userPacks;lockedSP]; $env[animals;kingDragon;v2;emoji] $env[animals;kingDragon;v3;emoji] $env[animals;kingDragon;v4;emoji] $env[animals;kingDragon;v5;emoji] $env[animals;kingDragon;v6;emoji]]$if[$env[userPacks;storefrontSP]; $env[animals;kingDragon;v7;emoji]]$if[$env[userPacks;goldenSP]; $env[animals;kingDragon;v8;emoji]]]
 
-$let[normalBDDesc;## Choose an upgrade:\n# $get[BDS1] $get[BDS2]$if[$get[leg]; <:oldblackdragon:885562433316487179>]$if[$get[gsp]; <:golden_bd:750714155941625967>]$if[$get[lsp]; <:azure_bringer:750714153533964389>]]
+$let[normalBDDesc;## Choose an upgrade:\n# $get[BDS1] $get[BDS2]$if[$get[leg]; $env[animals;kingDragon;v4;emoji]]$if[$get[gsp]; $env[animals;kingDragon;v3;emoji]]$if[$get[lsp]; $env[animals;kingDragon;v2;emoji]]]
 
 
 
@@ -44,9 +44,9 @@ $if[$getUserVar[dev];
 $addActionRow
 
 $if[$randomNumber[1;$sum[1;$get[r]]]==1;
-    $callFunction[kdMenu;luck2]
-    $description[$get[KDLuckDesc]]
-    $color[d61b4a]
+  $callFunction[kdMenu;luck2]
+  $description[$get[KDLuckDesc]]
+  $color[d61b4a]
 ;
   ${bdMenu()} 
   $description[$get[normalBDDesc]]
@@ -56,9 +56,9 @@ $if[$randomNumber[1;$sum[1;$get[r]]]==1;
 type: "interactionCreate",
 allowedInteractionTypes: ["selectMenu"],
 code: `
-$textSplit[$customID;-]
+$textSplit[$selectMenuValues;-]
 $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
-$onlyif[$or[$splitText[0]==oldbd;$splitText[0]==bds1;$splitText[0]==bds2;$splitText[0]==gbd;$splitText[0]==ab]]
+$onlyIf[$or[$splitText[0]==legbd;$splitText[0]==bds1;$splitText[0]==bds2;$splitText[0]==gbd;$splitText[0]==ab]]
 
 $jsonLoad[animals;$readFile[json/animals.json]]
 $jsonLoad[userPacks;$getUserVar[userPacks]]
@@ -83,11 +83,12 @@ $arrayLoad[content1;,\n  ;
   But you died by low lava,
   but there was a $arrayRandomValue[KDS] in the server so you were killed by him]
 
+$!editMessage[$channelID;$messageID;
 $getGlobalVar[author]
 
-$if[$random[1;101]>=40]
+$if[$randomNumber[1;101]>=40;
 
-  $description[## Choose an upgrade:\n# <:KingDragonS2:1280238249360494825>$if[$getVar[ct;$authorID]==true] <:king_dragon:715588377650528398>]$if[$getVar[gsp;$authorID]==true] <:golden_kd:735483821050560583>]$if[$getVar[lsp;$authorID]==true] <:king_ripper:735483931851227264> <:king_stan:735484001275609118> <:king_shah:735484059500806174> <:queen_celeste:735484190187061268> <:queen_scarlet:735484138949312582>]$if[$getVar[sfsp;$authorID]==true] <:queen_flame:884030972629229568>]]
+  $description[## Choose an upgrade:\n# $env[animals;kingDragon;v0;emoji] $env[animals;kingDragon;v1;emoji]$if[$env[userPacks;lockedSP]; $env[animals;kingDragon;v2;emoji] $env[animals;kingDragon;v3;emoji] $env[animals;kingDragon;v4;emoji] $env[animals;kingDragon;v5;emoji] $env[animals;kingDragon;v6;emoji]]$if[$env[userPacks;storefrontSP]; $env[animals;kingDragon;v7;emoji]]$if[$env[userPacks;goldenSP]; $env[animals;kingDragon;v8;emoji]]]
   $color[$getGlobalVar[defaultColor]]
   $callFunction[kdMenu;normal]
 
@@ -103,14 +104,14 @@ $if[$random[1;101]>=40]
     $let[BD;$env[animals;blackDragon;v3;name] $env[animals;blackDragon;v3;emoji]]
   ;$if[$splitText[0]==legbd;
     $let[BD;$env[animals;blackDragon;v4;name] $env[animals;blackDragon;v4;emoji]]
-  ]]]]
+  ]]]]]
 
   $let[MC;$randomNumber[1000;1501]]
-  $callFunction[sumMC;$get[MC]
+  $callFunction[sumMC;$get[MC]]
   $description[## You tried to get King Dragon as __$get[BD]__ $arrayRandomValue[content1]... Atleast you got $separateNumber[$get[MC];.]$getGlobalVar[emoji] from this run!]
   $color[$getGlobalVar[errorColor]]
 ]
-
+]
 `
 }]
 
