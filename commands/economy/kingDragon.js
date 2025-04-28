@@ -111,6 +111,8 @@ $if[$randomNumber[1;101]>=40;
 ]
 $!editMessage[$channelID;$messageID]
 
+$deferUpdate
+
 `
 }]
 
