@@ -74,8 +74,7 @@ $arrayLoad[KDS;,\n  ;
   $env[animals;kingDragon;v7;name] $env[animals;kingDragon;v7;emoji],
   $env[animals;kingDragon;v8;name] $env[animals;kingDragon;v8;emoji]]
 
-$arrayLoad[content1;,\n  ;
-  but you got killed by teamers,
+$arrayLoad[content1;,\n  ;but you got killed by teamers,
   but you got disconnected with $randomNumber[1;12] apexes away,
   but Mistik made an event so you lost your BD,
   but rares bullied and killed you,
@@ -83,7 +82,6 @@ $arrayLoad[content1;,\n  ;
   But you died by low lava,
   but there was a $arrayRandomValue[KDS] in the server so you were killed by him]
 
-$!editMessage[$channelID;$messageID;
 $getGlobalVar[author]
 
 $if[$randomNumber[1;101]>=40;
@@ -111,7 +109,8 @@ $if[$randomNumber[1;101]>=40;
   $description[## You tried to get King Dragon as __$get[BD]__ $arrayRandomValue[content1]... Atleast you got $separateNumber[$get[MC];.]$getGlobalVar[emoji] from this run!]
   $color[$getGlobalVar[errorColor]]
 ]
-]
+$!editMessage[$channelID;$messageID]
+
 `
 }]
 

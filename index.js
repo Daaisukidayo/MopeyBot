@@ -436,6 +436,7 @@ client.functions.add({
   name: "kdMenu",
   params: ["cond"],
   code: `
+    $addActionRow
     $addStringSelectMenu[$env[cond]kdmenu-$authorID;Choose an upgrade:]
 
     $addOption[$env[animals;kingDragon;v0;name];;$env[cond]kds1-$authorID;$env[animals;kingDragon;v0;emoji]]
