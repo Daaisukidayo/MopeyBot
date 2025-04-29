@@ -457,3 +457,67 @@ client.functions.add({
     ]
   `
 })
+
+
+client.functions.add({
+  name: "kdAssets",
+  code: `
+  $jsonLoad[assets;{
+    "KD0": {
+      "name": "$env[animals;kingDragon;v0;name]",
+      "emoji": "$env[animals;kingDragon;v0;emoji]",
+      "img": "$env[animals;kingDragon;v0;img]",
+      "color": "24272b"
+    },
+    "KD1": {
+      "name": "$env[animals;kingDragon;v1;name]",
+      "emoji": "$env[animals;kingDragon;v1;emoji]",
+      "img": "$env[animals;kingDragon;v1;img]",
+      "color": "24272b"
+    },
+    "KD2": {
+      "name": "$env[animals;kingDragon;v2;name]",
+      "emoji": "$env[animals;kingDragon;v2;emoji]",
+      "img": "$env[animals;kingDragon;v2;img]",
+      "color": "731C1F"
+    },
+    "KD3": {
+      "name": "$env[animals;kingDragon;v3;name]",
+      "emoji": "$env[animals;kingDragon;v3;emoji]",
+      "img": "$env[animals;kingDragon;v3;img]",
+      "color": "9D3F0E"
+    },
+    "KD4": {
+      "name": "$env[animals;kingDragon;v4;name]",
+      "emoji": "$env[animals;kingDragon;v4;emoji]",
+      "img": "$env[animals;kingDragon;v4;img]",
+      "color": "6E141A"
+    },
+    "KD5": {
+      "name": "$env[animals;kingDragon;v5;name]",
+      "emoji": "$env[animals;kingDragon;v5;emoji]",
+      "img": "$env[animals;kingDragon;v5;img]",
+      "color": "5EB2FF"
+    },
+    "KD6": {
+      "name": "$env[animals;kingDragon;v6;name]",
+      "emoji": "$env[animals;kingDragon;v6;emoji]",
+      "img": "$env[animals;kingDragon;v6;img]",
+      "color": "B62323"
+    },
+    "KD7": {
+      "name": "$env[animals;kingDragon;v7;name]",
+      "emoji": "$env[animals;kingDragon;v7;emoji]",
+      "img": "$env[animals;kingDragon;v7;img]",
+      "color": "DDAF02"
+    },
+    "KD8": {
+      "name": "$env[animals;kingDragon;v8;name]",
+      "emoji": "$env[animals;kingDragon;v8;emoji]",
+      "img": "$env[animals;kingDragon;v8;img]",
+      "color": "f63413"
+    }
+  }]`
+})
+
+  

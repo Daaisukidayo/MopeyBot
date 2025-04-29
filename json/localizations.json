@@ -149,11 +149,11 @@
         "contents": {
             "content1": {
                 "EN": [
-                    "You tried to get rares but got nothing",
-                    "You tried to get rares but ended up empty-handed",
-                    "You went trying to get rare but found nothing",
+                    "You tried to get rares but you got nothing",
+                    "You tried to get rares but you ended up empty-handed",
+                    "You went trying to get rares but you found nothing",
                     "You tested your luck with rares but failed",
-                    "You were farming rares but got nothing"
+                    "You were farming rares but you got nothing"
                 ],
 
                 "RU": [
@@ -167,10 +167,10 @@
             "content2": {
                 "EN": [
                     "You tried to get rares and you got",
-                    "You tried to get rares and picked",
-                    "You tried your luck with rares and got",
-                    "You went after rares and got",
-                    "You tried evolving into a rare and succeeded with",
+                    "You tried to get rares and you picked",
+                    "You tried your luck with rares and you got",
+                    "You went after rares and you got",
+                    "You tried evolving into a rare and you succeeded with",
                     "You went rare farming and you got"
                 ],
 

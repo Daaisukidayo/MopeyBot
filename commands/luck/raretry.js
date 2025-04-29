@@ -1,58 +1,59 @@
 module.exports = [{ 
-  name: "raretry", 
-  aliases: ["rt"], 
-  type: "messageCreate", 
-  code: 
-  `
-    $reply
+name: "raretry", 
+aliases: ["rt"], 
+type: "messageCreate", 
+code: `
+    
+$reply
 
-    $let[cdTime;5m]
-    $callFunction[checking;]
-    $callFunction[cooldown;$get[cdTime]]
+$let[cdTime;5m]
+$callFunction[checking;]
+$callFunction[cooldown;$get[cdTime]]
 
-    $jsonLoad[userPacks;$getUserVar[userPacks]]
-    $jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
-    $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
-    $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
-    $jsonLoad[raresGroup;$readFile[json/raretry_data.json]]
+$jsonLoad[animals;$readFile[json/animals.json]]
+$jsonLoad[userPacks;$getUserVar[userPacks]]
+$jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
+$jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
+$arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
+$jsonLoad[raresGroup;$readFile[json/raretry_data.json]]
 
-    $jsonLoad[l10n;$readFile[json/localizations.json]]
-    $let[l10n;$getUserVar[l10n]]
+$jsonLoad[l10n;$readFile[json/localizations.json]]
+$let[l10n;$getUserVar[l10n]]
 
-    $loop[3;
-        $arrayLoad[content$env[i];--;$if[${rep()}==;textNotFound | ID: $get[l10n]$env[i];${rep()}]]
-        $let[raretryDesc$env[i];$env[l10n;raretry;raretryDesc$env[i];$get[l10n]]]
-        $if[$get[raretryDesc$env[i]]==;$let[raretryDesc$env[i];textNotFound | ID: $get[l10n]$env[i]]]
-    ;i;desc]
+$loop[3;
+    $arrayLoad[content$env[i];--;$if[${rep()}==;textNotFound | ID: $get[l10n]$env[i];${rep()}]]
+    $let[raretryDesc$env[i];$env[l10n;raretry;raretryDesc$env[i];$get[l10n]]]
+    $if[$get[raretryDesc$env[i]]==;$let[raretryDesc$env[i];textNotFound | ID: $get[l10n]$env[i]]]
+;i;desc]
 
 
-    $let[al;$arrayLength[categories]]
-    $let[li;$math[$get[al] - 1]]
+$let[al;$arrayLength[categories]]
+$let[li;$math[$get[al] - 1]]
 
-    $loop[300;
-      $switch[$getUserVar[rtMode];
-        $case[inferno;$let[rtModeNum;-1]]
-        $case[default;$let[rtModeNum;0]]
-        $case[medium;$let[rtModeNum;1]]
-        $case[hard;$let[rtModeNum;2]]
-        $case[insane;$let[rtModeNum;3]]
-        $case[impossible;$let[rtModeNum;4]]
-      ]
+$loop[300;
+  $switch[$getUserVar[rtMode];
+    $case[inferno;$let[rtModeNum;-1]]
+    $case[default;$let[rtModeNum;0]]
+    $case[medium;$let[rtModeNum;1]]
+    $case[hard;$let[rtModeNum;2]]
+    $case[insane;$let[rtModeNum;3]]
+    $case[impossible;$let[rtModeNum;4]]
+  ]
 
-      $c[⬇️ Default variables for unsuccessful attempts]
-      $let[p;-1]
-      $let[color;$getGlobalVar[errorColor]]
-      $let[MC;0]
-      $let[caught;false]
-      $let[content;## $arrayRandomValue[content1]] 
-      $let[thumbnail;]
-      ${catchingRare()}
-          
+  $c[⬇️ Default variables for unsuccessful attempts]
+  $let[p;-1]
+  $let[color;$getGlobalVar[errorColor]]
+  $let[MC;0]
+  $let[caught;false]
+  $let[content;## $arrayRandomValue[content1]] 
+  $let[thumbnail;]
+  ${catchingRare()}
+      
 
-    $wait[1s];msgi;desc]
+$wait[1s];msgi;desc]
 
-    $sendMessage[$channelID;<@$authorID> The command loop has ended!]
-  `
+$sendMessage[$channelID;<@$authorID> The command loop has ended!]
+`
 }]
 
 // Functions
@@ -105,35 +106,13 @@ function content() {
 
 function ifKDWithSkins() {
     return `
-    $if[$and[$get[p]==6;$get[thumbnailAndContentIndex]==0;$and[$env[userPacks;legacySP];$env[userPacks;goldenSP];$env[userPacks;lockedSP];$env[userPacks;storefrontSP]]];
+    $if[$and[$get[p]==6;$get[thumbnailAndContentIndex]==0;$or[$env[userPacks;legacySP];$env[userPacks;goldenSP];$env[userPacks;lockedSP];$env[userPacks;storefrontSP]]];
         
-        $addActionRow
-        $addStringSelectMenu[luckkdmenu-$authorID;Choose an upgrade:]
-        $addOption[King Dragon;;$getUserVar[rtMode]luckkd-$authorID;<:kingdragonseason2:1280238249360494825>]
-    
-        $if[$env[userPacks;legacySP];
-            $addOption[King Dragon;;$getUserVar[rtMode]luckoldkd-$authorID;<:king_dragon:715588377650528398>]
-        ]
-        
-        $if[$env[userPacks;goldenSP];
-            $addOption[Golden King Dragon;;$getUserVar[rtMode]luckgkd-$authorID;<:golden_kd:73548382105056053>;]
-        ]
-    
-        $if[$env[userPacks;lockedSP];
-            $addOption[King Ripper;;$getUserVar[rtMode]luckkr-$authorID;<:king_ripper:735483931851227264>]
-            $addOption[King Stan;;$getUserVar[rtMode]luckkst-$authorID;<:king_stan:735484001275609118>]
-            $addOption[King Shah;;$getUserVar[rtMode]luckksh-$authorID;<:king_shah:735484059500806174>]
-            $addOption[Queen Celeste;;$getUserVar[rtMode]luckqc-$authorID;<:queen_celeste:735484190187061268>]
-            $addOption[Queen Scarlet;;$getUserVar[rtMode]luckqs-$authorID;<:queen_scarlet:735484138949312582>]
-        ]
-    
-        $if[$env[userPacks;storefrontSP];
-            $addOption[Queen Flame;;$getUserVar[rtMode]luckqf-$authorID;<:queen_flame:884030972629229568>]
-        ]
+        $callFunction[kdMenu;luck]
     
         $let[MC;0]
         $let[thumbnail;]
-        $let[content;## Choose an upgrade:\n# <:kingdragonseason2:1280238249360494825> $if[$env[userPacks;legacySP];<:king_dragon:715588377650528398>] $if[$env[userPacks;goldenSP];<:golden_kd:735483821050560583>] $if[$env[userPacks;lockedSP];<:king_ripper:735483931851227264> <:king_stan:735484001275609118> <:king_shah:735484059500806174> <:queen_celeste:735484190187061268> <:queen_scarlet:735484138949312582>] $if[$env[userPacks;storefrontSP];<:queen_flame:884030972629229568>]]
+        $let[content;## Choose an upgrade:\n# $env[animals;kingDragon;v0;emoji] $env[animals;kingDragon;v1;emoji]$if[$env[userPacks;lockedSP]; $env[animals;kingDragon;v2;emoji] $env[animals;kingDragon;v3;emoji] $env[animals;kingDragon;v4;emoji] $env[animals;kingDragon;v5;emoji] $env[animals;kingDragon;v6;emoji]]$if[$env[userPacks;storefrontSP]; $env[animals;kingDragon;v7;emoji]]$if[$env[userPacks;goldenSP]; $env[animals;kingDragon;v8;emoji]]]
     ]`
 }
 
@@ -147,8 +126,8 @@ $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0
     ${colorAndCoins()}
     $let[cat;$arrayAt[categories;$get[p]]]
     ${thumbnailAndArray()}
-    ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
     ${content()}          $c[⬅️ Content if something caught]
+    ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
 
     $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
 
@@ -172,8 +151,8 @@ $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0
 
             ${colorAndCoins()}
             ${thumbnailAndArray()}
-            ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
             ${content()}          $c[⬅️ Content if something caught]
+            ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
 
 
             $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
