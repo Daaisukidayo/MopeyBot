@@ -112,7 +112,7 @@ ForgeDB.variables({
   botEnabled: true,
   maxID: 0,
   prefix: ".",
-  emoji: "🪙",
+  emoji: "<:MopeCoin:705856410940080232>",
   defaultColor: "#FFD700",
   errorColor: "#D0321D",
   luckyColor: "#228B22",

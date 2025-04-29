@@ -128,7 +128,7 @@ function embed() {
 function loop() {
   return `
     $let[i;0]
-    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**\`\`\`$replace[$get[desc4];{2};$separateNumber[$env[caughtRareCategories;$get[rtMode];$get[i]];,]]\n$replace[$get[desc5];{3};1/$separateNumber[${chance()};,]]\n$replace[$get[desc6];{4};$separateNumber[${coins()};,]]\`\`\`**] $let[i;$math[$get[i] + 1]]]]
+    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**$codeBlock[$replace[$get[desc4];{2};$separateNumber[$env[caughtRareCategories;$get[rtMode];$get[i]];,]]\n$replace[$get[desc5];{3};1/$separateNumber[${chance()};,]]\n$replace[$get[desc6];{4};$separateNumber[${coins()};,]];JS]**] $let[i;$math[$get[i] + 1]]]]
   `;
 }
 
