@@ -33,7 +33,7 @@ $loop[3;
 $let[al;$arrayLength[categories]]
 $let[li;$math[$get[al] - 1]]
 
-$loop[1;
+$loop[300;
   $switch[$getUserVar[rtMode];
     $case[inferno;$let[rtModeNum;-1]]
     $case[default;$let[rtModeNum;0]]
