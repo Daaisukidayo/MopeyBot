@@ -1331,6 +1331,29 @@
     }
   },
 
+  "jackass": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Jackass",
+    "trig": "jackass",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Jackass",
+      "description": "Season 1",
+      "emoji": "<:JackassS1:1291436237105664134>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1367219591503413420/Jackass-S1.png"
+    },
+
+    "v1": {
+      "vCode": "s2",
+      "name": "Jackass",
+      "description": "Season 2",
+      "emoji": "<:JackassS2:1284567568299851918>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1367219591931105401/Jackass-S2.png"
+    }
+  },
+
   "macaw": {
     "canFly": true,
     "biome": "Land",
@@ -1924,11 +1947,11 @@
     }
   },
 
-  "keelbilledtoucan": {
+  "keelBilledToucan": {
     "canFly": true,
     "biome": "Land",
     "fullName": "Keel-Billed Toucan",
-    "trig": "keelbilledtoucan",
+    "trig": "keelBilledToucan",
 
     "v0": {
       "vCode": "s1",
@@ -3780,11 +3803,11 @@
     }
   },
 
-  "bigFoot": {
+  "bigfoot": {
     "canFly": false,
     "biome": "Forest",
     "fullName": "Big Foot",
-    "trig": "bigFoot",
+    "trig": "bigfoot",
 
     "v0": {
       "vCode": "s1",

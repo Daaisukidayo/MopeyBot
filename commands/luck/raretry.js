@@ -14,8 +14,11 @@ $jsonLoad[animals;$readFile[json/animals.json]]
 $jsonLoad[userPacks;$getUserVar[userPacks]]
 $jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
 $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
+
+$jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
+$jsonLoad[raresGroup;$eval[$callFunction[raretryData;];false]]
+
 $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
-$jsonLoad[raresGroup;$readFile[json/raretry_data.json]]
 
 $jsonLoad[l10n;$readFile[json/localizations.json]]
 $let[l10n;$getUserVar[l10n]]
@@ -30,7 +33,7 @@ $loop[3;
 $let[al;$arrayLength[categories]]
 $let[li;$math[$get[al] - 1]]
 
-$loop[300;
+$loop[1;
   $switch[$getUserVar[rtMode];
     $case[inferno;$let[rtModeNum;-1]]
     $case[default;$let[rtModeNum;0]]
@@ -104,21 +107,9 @@ function content() {
     `
 }
 
-function ifKDWithSkins() {
-    return `
-    $if[$and[$get[p]==6;$get[thumbnailAndContentIndex]==0;$or[$env[userPacks;legacySP];$env[userPacks;goldenSP];$env[userPacks;lockedSP];$env[userPacks;storefrontSP]]];
-        
-        $callFunction[kdMenu;luck]
-    
-        $let[MC;0]
-        $let[thumbnail;]
-        $let[content;## Choose an upgrade:\n# $env[animals;kingDragon;v0;emoji] $env[animals;kingDragon;v1;emoji]$if[$env[userPacks;lockedSP]; $env[animals;kingDragon;v2;emoji] $env[animals;kingDragon;v3;emoji] $env[animals;kingDragon;v4;emoji] $env[animals;kingDragon;v5;emoji] $env[animals;kingDragon;v6;emoji]]$if[$env[userPacks;storefrontSP]; $env[animals;kingDragon;v7;emoji]]$if[$env[userPacks;goldenSP]; $env[animals;kingDragon;v8;emoji]]]
-    ]`
-}
-
 function catchingRare() {
 return `
-$if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]]; $c[⬅️ Summon specific category by message]
+$if[$and[$getUserVar[dev];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]]; $c[⬅️ Summon specific category by message]
     $let[p;$message[0]]
     $let[caught;true]
 
@@ -127,7 +118,6 @@ $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0
     $let[cat;$arrayAt[categories;$get[p]]]
     ${thumbnailAndArray()}
     ${content()}          $c[⬅️ Content if something caught]
-    ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
 
     $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
 
@@ -152,7 +142,6 @@ $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0
             ${colorAndCoins()}
             ${thumbnailAndArray()}
             ${content()}          $c[⬅️ Content if something caught]
-            ${ifKDWithSkins()}      $c[⬅️ If rare equals King Dragon and we have skin for it]
 
 
             $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
