@@ -8,7 +8,7 @@
     "v0": {
       "vCode": "s1-v2",
       "name": "Mouse",
-      "description": "Season 1 | Version 2",
+      "description": "Season 1 | Version 2 (Current)",
       "emoji": "<:MouseS1:1291425874700271788>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448472133745/MouseS1.png"
     },
@@ -768,6 +768,14 @@
     "fullName": "Woodpecker",
     "trig": "woodpecker",
 
+    "v0": {
+      "vCode": "s2",
+      "name": "Woodpecker",
+      "description": "Season 1",
+      "emoji": "<:WoodpeckerS1:1367569904634564701>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1367570366943330447/Woodpecker-S1.png"
+    },
+
     "v1": {
       "vCode": "s2",
       "name": "Woodpecker",
@@ -782,6 +790,14 @@
     "biome": "Desert",
     "fullName": "Armadillo",
     "trig": "armadillo",
+
+    "v0": {
+      "vCode": "s1",
+      "name": "Armadillo",
+      "description": "Season 1",
+      "emoji": "<:ArmadilloS1:1367569927074222200>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1367570372551118868/Armadillo-S1.png"
+    },
 
     "v1": {
       "vCode": "s2",
@@ -1685,11 +1701,11 @@
     }
   },
 
-  "snowyowl": {
+  "snowyOwl": {
     "canFly": true,
     "biome": "Arctic",
     "fullName": "Snowy Owl",
-    "trig": "snowyowl",
+    "trig": "snowyOwl",
 
     "v0": {
       "vCode": "s1",
