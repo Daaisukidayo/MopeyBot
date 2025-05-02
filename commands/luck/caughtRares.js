@@ -1,3 +1,5 @@
+const CD = "5s"
+
 module.exports = [{
   name: "caughtrares",
   aliases: ["cr", "chances", "ch", "rares"],
@@ -5,9 +7,8 @@ module.exports = [{
   code: `
     $reply
 
-    $let[cdTime;1m]
     $callFunction[checking;]
-    $callFunction[cooldown;$get[cdTime]]
+    $callFunction[cooldown;${CD}]
 
     $let[rtMode;$getUserVar[rtMode]]
     ${jsonAndArray()}
@@ -30,11 +31,7 @@ module.exports = [{
 
     $!editMessage[$channelID;$get[msgid];${embed()}]
 
-    $setTimeout[ 
-        ${buttons(`true`)}
-        $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] $get[specialDesc1]]
-        $deleteMessageVar[crpage;$get[msgid]]  
-    ;$get[cdTime]]
+    ${timeout()}
 
     $deferUpdate
   `,
@@ -79,6 +76,10 @@ module.exports = [{
 
     $!editMessage[$channelID;$get[msgid];${embed()}]
 
+    $!clearTimeout[CR]
+
+    ${timeout()}
+
     $deferUpdate
   `,
 },{
@@ -100,6 +101,10 @@ module.exports = [{
     ${buttons()}
 
     $!editMessage[$channelID;$get[msgid];${embed()} $replace[$get[desc8];{6};\`$splitText[2]\`]]
+
+    $!clearTimeout[CR]
+
+    ${timeout()}
 
     $deferUpdate
   `,
@@ -184,4 +189,13 @@ function buttons(disable = false) {
         $addButton[setmode-$authorID-$get[rtMode];$get[label];Secondary;;true]
     ]
   `;
+}
+
+function timeout() {
+return `
+$setTimeout[ 
+  ${buttons("true")}
+  $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] $get[specialDesc1]]
+  $deleteMessageVar[crpage;$get[msgid]]  
+;${CD};CR]`
 }

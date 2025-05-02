@@ -1,12 +1,14 @@
+const CD = "1m"
+
 module.exports = [{
   name: "leaderboard",
   aliases: ["lb", "top"],
   type: "messageCreate",
-  code: `$let[cdTime;2m]
+  code: `
     $reply
 
     $callFunction[checking;]
-    $callFunction[cooldown;$get[cdTime]]
+    $callFunction[cooldown;${CD}]
 
     $let[lbmsgID;$sendMessage[$channelID;${embed()};true]]
     $setMessageVar[page;$message[0];$get[lbmsgID]]
@@ -27,21 +29,6 @@ module.exports = [{
     ]
 
     ${vars()}
-
-    $if[$getMessageVar[pages;$get[lbmsgID]]>1;
-      $setTimeout[ 
-        $addActionRow
-        $addButton[left_lb-$authorID;;Primary;⬅️;true]
-        $addButton[right_lb-$authorID;;Primary;➡️;true] 
-        $!editMessage[$channelID;$get[lbmsgID];${lbgen()} $color[GRAY] This message is now inactive. Run the command again.] 
-      ;$get[cdTime]]
-    ]
-
-    $setTimeout[
-      $deleteMessageVar[page;$get[lbmsgID]]  
-      $deleteMessageVar[pages;$get[lbmsgID]]  
-      $deleteMessageVar[rowsPerPage;$get[lbmsgID]]  
-    ;$get[cdTime]]
   `
 }, {
   type: "interactionCreate",
@@ -58,7 +45,7 @@ module.exports = [{
       $callFunction[interFail;]
     ]
 
-    $if[$customID==left_lb;
+    $if[$splitText[0]==left_lb;
 
       $setMessageVar[page;$sub[$getMessageVar[page;$get[lbmsgID]];1];$get[lbmsgID]]
 
@@ -94,13 +81,19 @@ function vars() {
             $let[lb;There is no one on this page!]
     ]
 
+    $!stopTimeout[LB]
+    $!stopTimeout[LBV]
+
     $if[$getMessageVar[pages;$get[lbmsgID]]>1;
-      $addActionRow
-      $addButton[left_lb-$authorID;;Primary;⬅️]
-      $addButton[right_lb-$authorID;;Primary;➡️]
+      ${buttons()}
+      ${timeout()}
     ]
 
+    ${timeoutV()}
+
     $!editMessage[$channelID;$get[lbmsgID];${lbgen()}]
+
+    
   `
 }
 
@@ -126,4 +119,29 @@ function lbgen() {
 
     $footer[Page: $getMessageVar[page;$get[lbmsgID]]/$getMessageVar[pages;$get[lbmsgID]]]
   `
+}
+
+function buttons(disabled = false) {
+return `
+$addActionRow
+$addButton[left_lb-$authorID;;Primary;⬅️;${disabled}]
+$addButton[right_lb-$authorID;;Primary;➡️;${disabled}] `
+}
+
+
+function timeout() {
+return `
+$setTimeout[ 
+  ${buttons(true)}
+  $!editMessage[$channelID;$get[lbmsgID];${lbgen()} $color[GRAY] This message is now inactive. Run the command again.] 
+;${CD};LB]
+`}
+
+function timeoutV() {
+return `
+$setTimeout[
+  $deleteMessageVar[page;$get[lbmsgID]]  
+  $deleteMessageVar[pages;$get[lbmsgID]]  
+  $deleteMessageVar[rowsPerPage;$get[lbmsgID]]  
+;${CD}1s;LBV]`
 }

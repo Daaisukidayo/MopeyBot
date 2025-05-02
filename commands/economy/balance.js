@@ -1,19 +1,17 @@
+const CD = "1m"
+
 module.exports = [{
   name: "balance",
   aliases: ['bal', 'coins', 'cash', 'profile', 'prof', 'money'],
   type: "messageCreate",
-  code: `
-    
+  code: ` 
     $reply
-    $let[cdTime;1m]
     $callFunction[checking;]
-    $callFunction[cooldown;$get[cdTime]]
+    $callFunction[cooldown;${CD}]
 
     ${coinsBalance()}
 
-    $setTimeout[
-      $disableButtonsOf[$channelID;$get[msg]]
-    ;$get[cdTime]]
+    ${timeout()}
   `
 },{
   type: "interactionCreate",
@@ -24,6 +22,10 @@ module.exports = [{
     $onlyIf[$splitText[0]==coins]
 
     ${coinsBalance()} 
+
+    $stopTimeout[BAL]
+
+    ${timeout()}
     
     $deferUpdate
   `
@@ -62,6 +64,10 @@ module.exports = [{
       $color[ffd700]
     ]
 
+    $stopTimeout[BAL]
+
+    ${timeout()}
+
     $deferUpdate
   `
 }]
@@ -89,8 +95,15 @@ function embed() {
   return `
     $addField[💰 __Coins:__;**\`$separateNumber[$getUserVar[MC];.]\`$getGlobalVar[emoji]**]
     $title[__BALANCE__]
-    $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
+    $getGlobalVar[author]
     $thumbnail[$userAvatar]
     $color[ffd700]
   `
+}
+
+function timeout() {
+return `
+$setTimeout[
+  $disableButtonsOf[$channelID;$get[msg]]
+;${CD};BAL]` 
 }
