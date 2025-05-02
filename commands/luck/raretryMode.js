@@ -1,8 +1,10 @@
+const CD = "10s";
+
 module.exports = [{
   name: "raretrymode",
   aliases: ["rtm", "rtmode"],
   type: "messageCreate",
-  code: `$let[cdTime;1m]
+  code: `$let[cdTime;${CD}]
     $reply
   
     $callFunction[checking;]
@@ -32,10 +34,7 @@ module.exports = [{
     ${buttonsLoop()}
     $!editMessage[$channelID;$get[msgid];${embed()}]
 
-    $setTimeout[ 
-      ${buttonsLoop(`true`)}
-      $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
-    ;$get[cdTime]]
+    ${timeout()}
   `
 },{
   type: "interactionCreate",
@@ -54,6 +53,8 @@ module.exports = [{
     $!editMessage[$channelID;$get[msgid];${embed()}]
 
     $deferUpdate
+    $!clearTimeout[RT]
+    ${timeout()}
   `
 }]
 
@@ -91,4 +92,12 @@ $loop[$arrayLength[raretryModes];
 
 ;i;desc]
 `
+}
+
+function timeout() {
+return `
+$setTimeout[ 
+  ${buttonsLoop(`true`)}
+  $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
+;${CD};RT]`
 }

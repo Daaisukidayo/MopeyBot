@@ -3704,11 +3704,11 @@
     }
   },
 
-  "ptero": {
+  "pterodactyl": {
     "canFly": true,
     "biome": "Desert",
     "fullName": "Pterodactyl",
-    "trig": "ptero",
+    "trig": "pterodactyl",
 
     "v0": {
       "vCode": "s1",
