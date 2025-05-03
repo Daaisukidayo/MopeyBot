@@ -1,4 +1,4 @@
-const CD = "5s"
+const CD = "1m"
 
 module.exports = [{
   name: "caughtrares",

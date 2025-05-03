@@ -17,8 +17,8 @@ module.exports = [{
     $!editMessage[$channelID;$get[msgid];Are you sure you want to delete all your \`$separateNumber[$getUserVar[MC];,]\`$getGlobalVar[emoji]?]
 
     $setTimeout[
-      $!editMessage[$channelID;$get[msgid];This message is now inactive.]
-    ;1m]
+      $disableButtonsOf[$channelID;$get[msgid]]
+    ;5s;RC]
   `
 },{ 
   type: "interactionCreate", 
@@ -34,5 +34,7 @@ module.exports = [{
     ;
         $!editMessage[$channelID;$messageID;Deletion canceled!]
     ]
+
+    $!stopTimeout[RC]
   `
 }] 
