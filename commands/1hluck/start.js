@@ -4,12 +4,12 @@ type: "messageCreate",
 code: `
 $reply
 # Started at: \`$hour:$minute:$second\`!
-$setChannelVar[1htime;0]
+$setUserVar[1htime;0]
 $setInterval[
-    $setChannelVar[1htime;$sum[$getChannelVar[1htime];1]] 
-    $if[$getChannelVar[1htime]==300;
-        $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!] 
-        $deleteChannelVar[1htime]
+    $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
+    $if[$getUserVar[1htime]==300;
+        $sendMessage[$UserID;# <@$authorID> 1 Hour Luck Ended!] 
+        $deleteUserVar[1htime]
         $stopInterval[1HLUCK]
     ] 
 ;1s;1HLUCK]`}]
