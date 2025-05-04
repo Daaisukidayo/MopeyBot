@@ -144,7 +144,7 @@ module.exports = [{
     $if[$get[points]>0;
       $reply[$channelID;$messageID;true]
       $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
-      # +$get[points]\n -# Total: $getUserVar[1hpoints]]
+      # +$get[points]\n-# Total: $getUserVar[1hpoints]
     ]
   `
 },{
