@@ -9,6 +9,7 @@ module.exports = [{
     $setUserVar[1htime;0]
     $setUserVar[1hstarted;true]
     $setUserVar[1hpoints;0]
+    $setUserVar[paused;false]
     $setUserVar[kbt;0]
     $setUserVar[cht;0]
     $setUserVar[mh;0]
@@ -25,7 +26,7 @@ module.exports = [{
     ${vars()}
     
     ${time()}
-    $if[$getUserVar[paused;;false];# Status: Paused]
+    $if[$getUserVar[paused];# Status: Paused]
   `
 },{
 
@@ -93,27 +94,17 @@ module.exports = [{
     $arrayLoad[godly; ;sm hht arg shh he gpe]
 
     $arrayForEach[rares;an;
-
         $if[$arrayIncludes[common;$env[an]];
-
           $arrayForEach[common;com;
             $if[$env[an]==$env[com]; 
-
               $if[$getUserVar[$env[com]]<3; 
-
                 $letSum[points;$get[common]] 
                 $setUserVar[$env[com];$math[$getUserVar[$env[com]] + 1]]
-
               ;
-
                 $let[typo;true]
-
               ]
-
             ]
-
           ]
-
         ;
             $if[$arrayIncludes[uncommon;$env[an]];
                 $letSum[points;$get[uncommon]]
@@ -152,12 +143,9 @@ module.exports = [{
     
     $if[$get[points]>0;
       $reply[$channelID;$messageID;true]
-      -# +$get[points], total: $math[$getUserVar[1hpoints] + $get[points]]
+      $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
+      # +$get[points]\n -# Total: $getUserVar[1hpoints]]
     ]
-    $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
-
-
-
   `
 },{
   name: "end",
@@ -166,19 +154,17 @@ module.exports = [{
     $reply
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     # You ended your challenge!
-    # Points: \`$getUserVar[1hpoints]\`
-    # Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]
+    ${pts()}
     
     $setUserVar[1hstarted;false]
     $!stopInterval[1HLUCK]
 
     $deleteUserVar[1htime]
     $deleteUserVar[1hpoints]
+    $setUserVar[paused;false]
     $deleteUserVar[mh]
     $deleteUserVar[kbt]
     $deleteUserVar[cht]
-    
-    
   `
 },{
   name: "points",
@@ -187,8 +173,7 @@ module.exports = [{
   code: `
     $reply
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
-    # Points: \`$getUserVar[1hpoints]\`
-    # Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]
+    ${pts()}
   `
 }]
 
@@ -200,12 +185,14 @@ return `
 $setInterval[
     $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
     $if[$getUserVar[1htime]>=3600;
-        $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n# Points: \`$getUserVar[1hpoints]\`\n# Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]]
+        $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!
+        ${pts}]
         $setUserVar[1hstarted;false]
         $!stopInterval[1HLUCK]
 
         $deleteUserVar[1htime]
         $deleteUserVar[1hpoints]
+        $setUserVar[paused;false]
         $deleteUserVar[mh]
         $deleteUserVar[kbt]
         $deleteUserVar[cht]
@@ -225,4 +212,10 @@ function time () {
 return `
 # Time passed: \`$parseDigital[$getUserVar[1htime]000]\`
 # Time left: \`$get[hour]:$get[minute]:$get[second]\``
+}
+
+function pts () {
+return `
+# Points: \`$getUserVar[1hpoints]\`
+# Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]`
 }
