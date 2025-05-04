@@ -35,6 +35,10 @@ module.exports = [{
     $onlyIf[$noMentionMessage==]
     $onlyIf[$guildID!=]
 
+    $jsonLoad[msgdata;$messageRawData]
+
+    $onlyIf[$env[msgdata;mentions;repliedUser]==null]
+
     $reply
     My prefix in this server is \`$getGuildVar[prefix]\`
   `}

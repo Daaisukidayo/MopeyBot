@@ -98,7 +98,6 @@ client.commands.add({
 // ========== VARIABLES ==========
 
 ForgeDB.variables({
-  author: "$author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]",
   isTester: false,
   onSlowmode: false,
   isBanned: false,
@@ -108,6 +107,7 @@ ForgeDB.variables({
   MC: 0,
   MUID: -1,
   l10n: "EN",
+  paused: false,
   
   botEnabled: true,
   maxID: 0,
@@ -119,6 +119,7 @@ ForgeDB.variables({
   cooldownColor: "#7303b7",
   logColor: "#2019b3",
   blank: "<:blank:898514292926713866>",
+  author: "$author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]",
 
   caughtRareCategories: {
     inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
