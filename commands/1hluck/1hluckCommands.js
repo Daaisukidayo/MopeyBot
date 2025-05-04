@@ -62,10 +62,9 @@ module.exports = [{
   unprefixed: true,
   type: "messageCreate",
   code: `
-    $reply
     $onlyIf[$getUserVar[1hstarted]]
     $onlyIf[$startsWith[$messageContent;$getGuildVar[prefix]]==false]
-    $onlyIf[$getUserVar[paused]==false;# You paused the timer! Type \`$getGuildVar[prefix]resume\`]
+    $onlyIf[$getUserVar[paused]==false]
 
     $let[points;0]
     $let[typo;false]
@@ -152,8 +151,8 @@ module.exports = [{
 
     
     $if[$get[points]>0;
-      $reply
-      +$get[points]
+      $reply[$channelID;$messageID;true]
+      -# +$get[points], total: $math[$getUserVar[1hpoints] + $get[points]]
     ]
     $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
 
@@ -180,6 +179,16 @@ module.exports = [{
     $deleteUserVar[cht]
     
     
+  `
+},{
+  name: "points",
+  aliases: ["pts", "score", "scr"],
+  type: "messageCreate",
+  code: `
+    $reply
+    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
+    # Points: \`$getUserVar[1hpoints]\`
+    # Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]
   `
 }]
 
