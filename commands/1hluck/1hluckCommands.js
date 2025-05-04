@@ -190,7 +190,7 @@ function interval () {
 return `
 $setInterval[
     $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
-    $if[$getUserVar[1htime]>=10;
+    $if[$getUserVar[1htime]>=3600;
         $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n# Points: \`$getUserVar[1hpoints]\`\n# Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]]
         $setUserVar[1hstarted;false]
         $!stopInterval[1HLUCK]
