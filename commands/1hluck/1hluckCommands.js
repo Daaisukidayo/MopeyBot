@@ -86,12 +86,12 @@ module.exports = [{
     $arrayLoad[common; ;cht kbt mh]
     $arrayLoad[uncommon; ;doe bm jag leo ft yp ln]
     $arrayLoad[rare; ;wd pp mad gph mm mf bp lc bml]
-    $arrayLoad[epic; ;jass gir wt wl wln wlc bg sbf ssm ssg]
+    $arrayLoad[epic; ;ja gir wt wl wln wlc bg sbf ssm ssg]
     $arrayLoad[insane; ;sp md bl bln blc pr ge wr ay]
     $arrayLoad[legendary; ;lt dp br wg]
     $arrayLoad[extreme; ;wgf]
     $arrayLoad[mythic; ;lbf lsm lsg kd]
-    $arrayLoad[godly; ;sm hht arg shh he gpe]
+    $arrayLoad[godly; ;sm hht arg shh he gse]
 
     $arrayForEach[rares;an;
         $if[$arrayIncludes[common;$env[an]];
