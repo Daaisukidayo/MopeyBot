@@ -186,7 +186,7 @@ $setInterval[
     $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
     $if[$getUserVar[1htime]>=3600;
         $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!
-        ${pts}]
+        ${pts()}]
         $setUserVar[1hstarted;false]
         $!stopInterval[1HLUCK]
 
