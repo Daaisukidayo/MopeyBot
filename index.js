@@ -147,18 +147,7 @@ ForgeDB.variables({
     multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
   },
 
-  userPacks: {
-    summerSP: false,
-    halloweenSP: false,
-    goldenSP: false,
-    lockedSP: false,
-    storefrontSP: false,
-    legacySP: false,
-    landGTSP: false,
-    desertGTSP: false,
-    arcticGTSP: false,
-    oceanGTSP: false,
-  },
+  userPacks: {},
 
   userWardrobe: {   
     "mouse": "v0",   
@@ -376,12 +365,18 @@ client.functions.add({
   `
 });
 
-// Function for adding coins
+// Function for adding/removing coins
 
 client.functions.add({
   name: "sumMC",
   params: ["amount"],
   code: `$return[$setUserVar[MC;$sum[$getUserVar[MC];$env[amount]]]]`
+})
+
+client.functions.add({
+  name: "subMC",
+  params: ["amount"],
+  code: `$return[$setUserVar[MC;$sub[$getUserVar[MC];$env[amount]]]]`
 })
 
 // standart checkings before executing command
@@ -458,68 +453,6 @@ client.functions.add({
       $addOption[$env[animals;kingDragon;v8;name];;$env[cond]qf-$authorID;$env[animals;kingDragon;v8;emoji]]
     ]
   `
-})
-
-
-client.functions.add({
-  name: "kdAssets",
-  code: `
-  $jsonLoad[assets;{
-    "KD0": {
-      "name": "$env[animals;kingDragon;v0;name]",
-      "emoji": "$env[animals;kingDragon;v0;emoji]",
-      "img": "$env[animals;kingDragon;v0;img]",
-      "color": "24272b"
-    },
-    "KD1": {
-      "name": "$env[animals;kingDragon;v1;name]",
-      "emoji": "$env[animals;kingDragon;v1;emoji]",
-      "img": "$env[animals;kingDragon;v1;img]",
-      "color": "24272b"
-    },
-    "KD2": {
-      "name": "$env[animals;kingDragon;v2;name]",
-      "emoji": "$env[animals;kingDragon;v2;emoji]",
-      "img": "$env[animals;kingDragon;v2;img]",
-      "color": "731C1F"
-    },
-    "KD3": {
-      "name": "$env[animals;kingDragon;v3;name]",
-      "emoji": "$env[animals;kingDragon;v3;emoji]",
-      "img": "$env[animals;kingDragon;v3;img]",
-      "color": "9D3F0E"
-    },
-    "KD4": {
-      "name": "$env[animals;kingDragon;v4;name]",
-      "emoji": "$env[animals;kingDragon;v4;emoji]",
-      "img": "$env[animals;kingDragon;v4;img]",
-      "color": "6E141A"
-    },
-    "KD5": {
-      "name": "$env[animals;kingDragon;v5;name]",
-      "emoji": "$env[animals;kingDragon;v5;emoji]",
-      "img": "$env[animals;kingDragon;v5;img]",
-      "color": "5EB2FF"
-    },
-    "KD6": {
-      "name": "$env[animals;kingDragon;v6;name]",
-      "emoji": "$env[animals;kingDragon;v6;emoji]",
-      "img": "$env[animals;kingDragon;v6;img]",
-      "color": "B62323"
-    },
-    "KD7": {
-      "name": "$env[animals;kingDragon;v7;name]",
-      "emoji": "$env[animals;kingDragon;v7;emoji]",
-      "img": "$env[animals;kingDragon;v7;img]",
-      "color": "DDAF02"
-    },
-    "KD8": {
-      "name": "$env[animals;kingDragon;v8;name]",
-      "emoji": "$env[animals;kingDragon;v8;emoji]",
-      "img": "$env[animals;kingDragon;v8;img]",
-      "color": "f63413"
-    }
-  }]`
 })
 
 client.functions.add({

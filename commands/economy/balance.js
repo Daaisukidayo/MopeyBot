@@ -23,7 +23,7 @@ module.exports = [{
 
     ${coinsBalance()} 
 
-    $stopTimeout[BAL]
+    $!stopTimeout[BAL]
 
     ${timeout()}
     
@@ -54,17 +54,17 @@ module.exports = [{
     $let[ogt;$env[data;oceanGTSP]]
     $let[agt;$env[data;arcticGTSP]]
     $let[sfsp;$env[data;storefrontSP]]
-    $let[and;$and[$get[ssp]==false;$get[hsp]==false;$get[gsp]==false;$get[lsp]==false;$get[sfsp]==false;$get[lgt]==false;$get[lgt]==false;$get[ogt]==false;$get[agt]==false;$get[ct]==false]]
+    $let[and;$or[$get[ssp];$get[hsp];$get[gsp];$get[lsp];$get[sfsp];$get[lgt];$get[lgt];$get[ogt];$get[agt];$get[ct]]]
 
     $!editMessage[$channelID;$messageID;
-      $addField[🛒 __Bought packs:__;$if[$get[and];none;\`\`\`$toTitleCase[$if[$get[ssp];Summer skinpack]\n$if[$get[hsp];Halloween skinpack]\n$if[$get[gsp];Golden skinpack]\n$if[$get[lsp];Locked skinpack]\n$if[$get[sfsp];Storefront skinpack]\n$if[$get[ct];Legacy skinpack]\n$if[$get[lgt];Gold trim Land skinpack]\n$if[$get[lgt];Gold trim Desert skinpack]\n$if[$get[ogt];Gold trim Ocean skinpack]\n$if[$get[agt];Gold trim Arctic skinpack]]\`\`\`]]
+      $addField[🛒 __Purchased Skinpacks:__;$if[$get[and]==false;none;\`\`\`$if[$get[ssp];Summer Skinpack\n]$if[$get[hsp];Halloween Skinpack\n]$if[$get[gsp];Golden Skinpack\n]$if[$get[lsp];Locked Skinpack\n]$if[$get[sfsp];Storefront Skinpack\n]$if[$get[ct];Legacy Skinpack\n]$if[$get[lgt];Land Gold-Trim Skinpack\n]$if[$get[lgt];Desert Gold-Trim Skinpack\n]$if[$get[ogt];Ocean Gold-Trim Skinpack\n]$if[$get[agt];Arctic Gold-Trim Skinpack]\`\`\`]]
       $title[__BALANCE__]
-      $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
+      $getGlobalVar[author]
       $thumbnail[$userAvatar[$authorID]]
       $color[ffd700]
     ]
 
-    $stopTimeout[BAL]
+    $!stopTimeout[BAL]
 
     ${timeout()}
 
@@ -79,7 +79,7 @@ function coinsBalance() {
     $addButton[coins-$authorID;Coins;Primary;$getGlobalVar[emoji];true]
     $addButton[packs-$authorID;Packs;Primary;🛒]
     
-    $if[$isButton==false;
+    $if[$isButton!=true;
       ${sendMessage()}
     ;
       $!editMessage[$channelID;$messageID;${embed()}]

@@ -11,7 +11,6 @@ $callFunction[checking;]
 $callFunction[cooldown;$get[cdTime]]
 
 $jsonLoad[animals;$readFile[json/animals.json]]
-$jsonLoad[userPacks;$getUserVar[userPacks]]
 $jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
 $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
 

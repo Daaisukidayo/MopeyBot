@@ -121,7 +121,7 @@ $onlyIf[$or[$splitText[0]==$get[cond]kds1;$splitText[0]==$get[cond]kds2;$splitTe
 
 
 ${jsons()}
-$callFunction[kdAssets;]
+${kdAssets()}
 
 
 $switch[$splitText[0];
@@ -136,7 +136,9 @@ $switch[$splitText[0];
   $case[$get[cond]qf;$let[kd;8]]
 ]
 
-
+$log[$get[kd]]
+$log[$env[assets;KD$get[kd];name]]
+$log[$env[assets;KD0;name]]
     
 
 $let[MC;$randomNumber[3500;5001]]
@@ -161,7 +163,7 @@ $let[cond;luck2]
 $onlyIf[$or[$splitText[0]==$get[cond]kds1;$splitText[0]==$get[cond]kds2;$splitText[0]==$get[cond]gkd;$splitText[0]==$get[cond]kr;$splitText[0]==$get[cond]kst;$splitText[0]==$get[cond]ksh;$splitText[0]==$get[cond]qc;$splitText[0]==$get[cond]qs;$splitText[0]==$get[cond]qf]]
 
 ${jsons()}
-$callFunction[kdAssets;]
+${kdAssets()}
 
 $switch[$splitText[0];
   $case[$get[cond]kds1;$let[kd;0]]
@@ -215,4 +217,64 @@ function jsons() {
 return `
 $jsonLoad[animals;$readFile[json/animals.json]]
 $jsonLoad[userPacks;$getUserVar[userPacks]]`
+}
+
+function kdAssets() {
+return `
+$jsonLoad[assets;{
+    "KD0": {
+      "name": "$env[animals;kingDragon;v0;name]",
+      "emoji": "$env[animals;kingDragon;v0;emoji]",
+      "img": "$env[animals;kingDragon;v0;img]",
+      "color": "24272b"
+    },
+    "KD1": {
+      "name": "$env[animals;kingDragon;v1;name]",
+      "emoji": "$env[animals;kingDragon;v1;emoji]",
+      "img": "$env[animals;kingDragon;v1;img]",
+      "color": "24272b"
+    },
+    "KD2": {
+      "name": "$env[animals;kingDragon;v2;name]",
+      "emoji": "$env[animals;kingDragon;v2;emoji]",
+      "img": "$env[animals;kingDragon;v2;img]",
+      "color": "731C1F"
+    },
+    "KD3": {
+      "name": "$env[animals;kingDragon;v3;name]",
+      "emoji": "$env[animals;kingDragon;v3;emoji]",
+      "img": "$env[animals;kingDragon;v3;img]",
+      "color": "9D3F0E"
+    },
+    "KD4": {
+      "name": "$env[animals;kingDragon;v4;name]",
+      "emoji": "$env[animals;kingDragon;v4;emoji]",
+      "img": "$env[animals;kingDragon;v4;img]",
+      "color": "6E141A"
+    },
+    "KD5": {
+      "name": "$env[animals;kingDragon;v5;name]",
+      "emoji": "$env[animals;kingDragon;v5;emoji]",
+      "img": "$env[animals;kingDragon;v5;img]",
+      "color": "5EB2FF"
+    },
+    "KD6": {
+      "name": "$env[animals;kingDragon;v6;name]",
+      "emoji": "$env[animals;kingDragon;v6;emoji]",
+      "img": "$env[animals;kingDragon;v6;img]",
+      "color": "B62323"
+    },
+    "KD7": {
+      "name": "$env[animals;kingDragon;v7;name]",
+      "emoji": "$env[animals;kingDragon;v7;emoji]",
+      "img": "$env[animals;kingDragon;v7;img]",
+      "color": "DDAF02"
+    },
+    "KD8": {
+      "name": "$env[animals;kingDragon;v8;name]",
+      "emoji": "$env[animals;kingDragon;v8;emoji]",
+      "img": "$env[animals;kingDragon;v8;img]",
+      "color": "f63413"
+    }
+  }]`
 }

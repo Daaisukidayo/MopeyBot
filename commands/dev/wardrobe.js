@@ -45,14 +45,16 @@ $let[variant;$splitText[0]]
 $let[an;$splitText[1]]
 
 $jsonLoad[animals;$readFile[json/animals.json]]
+
+$arrayLoad[animalsNames;, ;$advancedReplace[$trimLines[$jsonKeys[animals]];\\[\n;;\n\\];;\n; ;";]]
+$onlyIf[$arrayIncludes[animalsNames;$get[an]]]
+
 $jsonLoad[userPacks;$getUserVar[userPacks]]
 $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
 $!jsonSet[userWardrobe;$get[an];$get[variant]]                   $c[setting new chosen skin] 
 $setUserVar[userWardrobe;$jsonStringify[userWardrobe;2]]        $c[making json object as string with new saved skins and replacing old data into new] 
 
-
-$arrayLoad[animalsNames;, ;$advancedReplace[$trimLines[$jsonKeys[animals]];\\[\n;;\n\\];;\n; ;";]]
 
 $let[i;$arrayIndexOf[animalsNames;$get[an]]] $c[--> finding animal code name by array index]
  
