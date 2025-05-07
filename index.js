@@ -300,7 +300,60 @@ ForgeDB.variables({
     "iceMonster": "v0",
     "blackDragon": "v0",
     "kingDragon": "v0"
-}
+  },
+
+  shopItems: `
+    {
+      "name": "legacySP",
+      "description": "Legacy Skinpack",
+      "cost": "2000000"
+    }, 
+    {
+      "name": "storefrontSP",
+      "description": "Storefront Skinpack",
+      "cost": "11000000"
+    }, 
+    {
+      "name": "summerSP",
+      "description": "Summer Skinpack",
+      "cost": "28499200"
+    }, 
+    {
+      "name": "goldenSP",
+      "description": "Golden Skinpack",
+      "cost": "10820000"
+    }, 
+    {
+      "name": "lockedSP",
+      "description": "Locked Skinpack",
+      "cost": "14229000"
+    }, 
+    {
+      "name": "halloweenSP",
+      "description": "Halloween Skinpack",
+      "cost": "80344400"
+    }, 
+    {
+      "name": "landGTSP",
+      "description": "Land Gold-Trim Skinpack",
+      "cost": "1250000"
+    }, 
+    {
+      "name": "desertGTSP",
+      "description": "Desert Gold-Trim Skinpack",
+      "cost": "1250000"
+    }, 
+    {
+      "name": "oceanGTSP",
+      "description": "Ocean Gold-Trim Skinpack",
+      "cost": "1250000"
+    }, 
+    {
+      "name": "arcticGTSP",
+      "description": "Arctic Gold-Trim Skinpack",
+      "cost": "1250000"
+    }
+  `
 });
 
 // ========== FUNCTIONS ==========

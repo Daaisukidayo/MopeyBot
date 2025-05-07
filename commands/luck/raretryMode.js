@@ -68,7 +68,7 @@ $arrayLoad[raretryModes;,;$advancedReplace[$env[raretryVarData;raretryModes]; ;;
 function embed() {
 return `
 
-$author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
+$getGlobalVar[author]
 $description[# Choose your raretry mode:]
 $color[228b22]
 `
