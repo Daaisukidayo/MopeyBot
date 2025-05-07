@@ -144,7 +144,7 @@ module.exports = [{
     $if[$get[points]>0;
       $reply[$channelID;$messageID;true]
       $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
-      # +$get[points]\n-# Total: $getUserVar[1hpoints]
+      # +$get[points]\n### Total: ||$getUserVar[1hpoints]||\n-# M: \`$getUserVar[mh]\`\n-# CHT: \`$getUserVar[cht]\`\n-# KBT: \`$getUserVar[kbt]\`
     ]
   `
 },{
@@ -175,6 +175,34 @@ module.exports = [{
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     ${pts()}
   `
+},{
+  name: "editpoints",
+  aliases: ["epts", "editscore", "escr"],
+  type: "messageCreate",
+  code: `
+    $reply
+    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
+    $onlyIf[$and[$isNumber[$message];$message>=0];## Only a number greater than or equal to 0 is allowed!]
+    $setUserVar[1hpoints;$message]
+    ${pts()}
+  `
+},{
+  name: "edittime",
+  aliases: ["etime", "et"],
+  type: "messageCreate",
+  code: `
+    $reply
+    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
+    $onlyIf[$or[$and[$isNumber[$message];$message>=0];$checkContains[$message;:]];## Only seconds greater than or equal to 0 or time format "HH:MM:SS" is allowed!]
+
+    $if[$checkContains[$message;:];
+      $setUserVar[1htime;$round[$math[$unparseDigital[$message] / 1000]]]
+    ;
+      $setUserVar[1htime;$message]
+    ]
+    ${vars()}
+    ${time()}
+  `
 }]
 
 
@@ -203,10 +231,12 @@ $setInterval[
 function vars () {
 return `
 $let[remaining;$math[3600 - $getUserVar[1htime]]]
-$let[hour;$floor[$math[$get[remaining] / 3600]]]
+$let[hour;0$floor[$math[$get[remaining] / 3600]]]
 $let[minute;$floor[$math[($get[remaining] % 3600) / 60]]]
-$let[second;$floor[$math[$get[remaining] % 60]]]`
-}
+$if[$charCount[$get[minute]]==1; $let[minute;0$get[minute]] ]
+$let[second;$floor[$math[$get[remaining] % 60]]]
+$if[$charCount[$get[second]]==1; $let[second;0$get[second]] ]
+`}
 
 function time () {
 return `
@@ -216,6 +246,6 @@ return `
 
 function pts () {
 return `
-# Points: \`$getUserVar[1hpoints]\`
+# Points: ||$getUserVar[1hpoints]||
 # Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]`
 }
