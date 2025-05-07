@@ -231,52 +231,66 @@ module.exports = [{
 
         $title[$get[comNameEmoji] Start]
         $description[## Starts your 1 hour luck challenge! \nWhile in progress, you must write names of rares from \`$getGuildVar[prefix]snora\` without prefix to earn points!]
-        $addField[$get[rel];\`pause\`, \`resume\`, \`time\`, \`end\`, \`snora\`, \`points\`]
+        $addField[$get[rel];\`pause\`, \`resume\`, \`time\`, \`snora\`, \`points\`, \`edittime\`, \`editpoints\`, \`end\`]
 
     ;$if[$get[arg]==snora;
 
         $title[$get[comNameEmoji] SNORA]
         $description[## Displays all "Shorter Names Of Rare Animals"! \n## Basically it's first 3 letters or first letter of each word]
-        $addField[$get[rel];\`pause\`, \`resume\`, \`time\`, \`end\`, \`start\`, \`points\`]
+        $addField[$get[rel];\`pause\`, \`resume\`, \`time\`, \`start\`, \`points\`, \`edittime\`, \`editpoints\`, \`end\`]
 
 
     ;$if[$get[arg]==pause;
 
         $title[$get[comNameEmoji] Pause]
         $description[## Pauses your 1 hour luck challenge! \nYou can continue it at any time!]
-        $addField[$get[rel];\`snora\`, \`resume\`, \`time\`, \`end\`, \`start\`, \`points\`]
+        $addField[$get[rel];\`snora\`, \`resume\`, \`time\`, \`start\`, \`points\`, \`edittime\`, \`editpoints\`, \`end\`]
 
     ;$if[$or[$get[arg]==resume;$get[arg]==res;$get[arg]==continue];
 
         $title[$get[comNameEmoji] Resume]
         $description[## Continues your 1 hour luck challenge!]
         $addField[$get[al];\`resume\`, \`res\`, \`continue\`]
-        $addField[$get[rel];\`snora\`, \`pause\`, \`time\`, \`end\`, \`start\`, \`points\`]
+        $addField[$get[rel];\`snora\`, \`pause\`, \`time\`, \`start\`, \`points\`, \`edittime\`, \`editpoints\`, \`end\`]
 
     ;$if[$get[arg]==time;
 
         $title[$get[comNameEmoji] Time]
         $description[## Displays the time until the end of the 1 hour luck challenge!]
-        $addField[$get[rel];\`snora\`, \`pause\`, \`resume\`, \`end\`, \`start\`, \`points\`]
+        $addField[$get[rel];\`snora\`, \`pause\`, \`resume\`, \`start\`, \`points\`, \`edittime\`, \`editpoints\`, \`end\`]
 
-    ;$if[$get[arg]==points;
+    ;$if[$or[$get[arg]==points;$get[arg]==pts;$get[arg]==score];
 
         $title[$get[comNameEmoji] Time]
         $description[## Displays the current points you have!]
-        $addField[$get[rel];\`snora\`, \`pause\`, \`resume\`, \`end\`, \`start\`, \`time\`]
+        $addField[$get[al];\`points\`, \`pts\`, \`score\`]
+        $addField[$get[rel];\`snora\`, \`pause\`, \`resume\`, \`start\`, \`time\`, \`edittime\`, \`editpoints\`, \`end\`]
 
     ;$if[$get[arg]==end;
 
         $title[$get[comNameEmoji] End]
         $description[## Immediately ends your 1 hour luck challenge! Also shows the points you got!]
-        $addField[$get[rel];\`snora\`, \`pause\`, \`resume\`, \`points\`, \`start\`, \`time\`]
+        $addField[$get[rel];\`snora\`, \`pause\`, \`resume\`, \`points\`, \`start\`, \`time\`, \`edittime\`, \`editpoints\`]
 
     ;$if[$get[arg]==count;
 
         $title[$get[comNameEmoji] Count]
         $description[## Counts points! \n### Does not require participation in a 1-hour luck challenge, instead requires writing the names of rare animals in one message after the command! \n### Example: \`$getGuildVar[prefix]count kbt cht mh...\`]
-        $addField[$get[rel];\`snora\`, \`pause\`, \`resume\`, \`points\`, \`start\`, \`time\`, \`end\`]
+        $addField[$get[rel];\`snora\`, \`start\`]
 
+    ;$if[$or[$get[arg]==edittime;$get[arg]==etime;$get[arg]==et];
+
+        $title[$get[comNameEmoji] Edit time]
+        $description[## Edits your time in 1 hour luck challenge! \n### Usage: \`$getGuildVar[prefix]edittime [HH:MM:SS | seconds\\]\`\n### Example: \`$getGuildVar[prefix]edittime [00:30:00 | 1800\\]\`$get[desc]]
+        $addField[$get[al];\`edittime\`, \`etime\`, \`et\`]
+        $addField[$get[rel];\`snora\`, \`start\`, \`pause\`, \`resume\`, \`points\`, \`time\`, \`editpoints\`, \`end\`]
+
+    ;$if[$or[$get[arg]==editpoints;$get[arg]==epoints;$get[arg]==epts];
+
+        $title[$get[comNameEmoji] Edit points]
+        $description[## Edits your points! \n### Usage: \`$getGuildVar[prefix]editpoints [number\\]\`\n### Example: \`$getGuildVar[prefix]editpoints 100\`]
+        $addField[$get[al];\`editpoints\`, \`epoints\`, \`epts\`]
+        $addField[$get[rel];\`snora\`, \`pause\`, \`resume\`, \`points\`, \`start\`, \`time\`, \`edittime\`, \`end\`]
 
     ;
 
@@ -286,9 +300,9 @@ module.exports = [{
         $addField[🔳 __Special__;**$codeBlock[balance  \nleaderboard  \nshop \ninvite  \nping  \nreport  \nannouncement  \ncredits  \nmuid  \nprefix  \nreset-my-coins  \nreset-my-packs;JSON]**]
         $addField[$getGlobalVar[emoji] __Earning:__;**$codeBlock[weekly \ndaily \narena \nkingdragon \ncoinflip;JSON]**]
         $addField[🍀 __Luck related__;**$codeBlock[raretry \npumpkin  \nbeachball  \numbrella  \ntornado  \nhowlucky  \nraretryrun  \nrrare \nchart  \nrtmode  \ncaughtrares;JSON]**]
-        $addField[🍀 __1 Hour Luck__;**$codeBlock[snora \nstart \npause \nresume \ntime \npoints \nend \ncount;JSON]**]
+        $addField[🍀 __1 Hour Luck__;**$codeBlock[snora \nstart \npause \nresume \ntime \npoints \nend \ncount \nedittime \neditpoints;JSON]**]
         $footer[Need assistance with a specific issue? Use the invite command to join our official Discord server!]
 
-    ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+    ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
   `
 }]
