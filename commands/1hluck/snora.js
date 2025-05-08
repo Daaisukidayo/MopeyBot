@@ -50,7 +50,7 @@ bln - Black Lioness
 bml - Black-Maned Lion
 wl - White Lion
 bl - Black Lion
-arg - Argentavis Vulture
+arg - Argentavis
 pr - Predator
 shh - Shaheen
 ===================Tier 12====================
