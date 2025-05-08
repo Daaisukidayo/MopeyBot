@@ -5,7 +5,7 @@ module.exports = [{
     $reply
     $onlyIf[$getUserVar[1hstarted;;false]==false;# You already have an active challenge!]
 
-    # Started at: \`$hour:$minute:$second\`!
+    # 1 hour luck challenge has begun! Started at: \`$hour:$minute:$second\`!
     $setUserVar[1htime;0]
     $setUserVar[1hstarted;true]
     $setUserVar[1hpoints;0]
@@ -93,42 +93,58 @@ module.exports = [{
     $arrayLoad[mythic; ;lbf lsm lsg kd]
     $arrayLoad[godly; ;sm hht arg shh he gse]
 
+    $arrayLoad[caught; ;]
+
     $arrayForEach[rares;an;
         $if[$arrayIncludes[common;$env[an]];
           $arrayForEach[common;com;
             $if[$env[an]==$env[com]; 
               $if[$getUserVar[$env[com]]<3; 
-                $letSum[points;$get[common]] 
+                $letSum[points;$get[common]]
+                $arrayPush[caught;+$get[common]]
                 $setUserVar[$env[com];$math[$getUserVar[$env[com]] + 1]]
+                $if[$getUserVar[$env[com]]==3;
+                  $sendMessage[$channelID;# <@$authorID> You got all $switch[$env[com];$case[mh;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
+                ]
               ;
-                $let[typo;true]
+                $arrayPush[caught;+0]
               ]
             ]
           ]
         ;
             $if[$arrayIncludes[uncommon;$env[an]];
                 $letSum[points;$get[uncommon]]
+                $arrayPush[caught;+$get[uncommon]]
             ;
                 $if[$arrayIncludes[rare;$env[an]];
                     $letSum[points;$get[rare]]
+                    $arrayPush[caught;+$get[rare]]
                 ;
                     $if[$arrayIncludes[epic;$env[an]];
                         $letSum[points;$get[epic]]
+                        $arrayPush[caught;+$get[epic]]
                     ;
                         $if[$arrayIncludes[insane;$env[an]];
                             $letSum[points;$get[insane]]
+                            $arrayPush[caught;+$get[insane]]
                         ;
                             $if[$arrayIncludes[legendary;$env[an]];
                                 $letSum[points;$get[legendary]]
+                                $arrayPush[caught;+$get[legendary]]
                             ;
                                 $if[$arrayIncludes[extreme;$env[an]];
                                     $letSum[points;$get[extreme]]
+                                    $arrayPush[caught;+$get[extreme]]
                                 ;
                                     $if[$arrayIncludes[mythic;$env[an]];
                                         $letSum[points;$get[mythic]]
+                                        $arrayPush[caught;+$get[mythic]]
                                     ;
                                         $if[$arrayIncludes[godly;$env[an]];
                                             $letSum[points;$get[godly]]
+                                            $arrayPush[caught;+$get[godly]]
+                                        ;
+                                            $arrayPush[caught;+0]
                                         ]
                                     ]
                                 ]
@@ -142,9 +158,11 @@ module.exports = [{
 
     
     $if[$get[points]>0;
+      $let[pts;]
+      $arrayForEach[caught;pts;$let[pts;$get[pts]$env[pts] ]]
       $reply[$channelID;$messageID;true]
       $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
-      # +$get[points]\n### Total: ||$getUserVar[1hpoints]||\n-# M: \`$getUserVar[mh]\`\n-# CHT: \`$getUserVar[cht]\`\n-# KBT: \`$getUserVar[kbt]\`
+      # $get[pts] = $get[points]\n### Total: ||$getUserVar[1hpoints]||$if[$getUserVar[mh]<3;\n-# M: \`$getUserVar[mh]\`]$if[$getUserVar[cht]<3;\n-# CHT: \`$getUserVar[cht]\`]$if[$getUserVar[kbt]<3;\n-# KBT: \`$getUserVar[kbt]\`]
     ]
   `
 },{
@@ -212,7 +230,39 @@ function interval () {
 return `
 $setInterval[
     $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
-    $if[$getUserVar[1htime]>=3600;
+
+    $if[$getUserVar[1htime]==1800;
+      $sendMessage[$channelID;# <@$authorID> 30 minutes left!]
+    ]
+    $if[$getUserVar[1htime]==3300;
+      $sendMessage[$channelID;# <@$authorID> 5 minutes left!]
+    ]
+    $if[$getUserVar[1htime]==3540;
+      $sendMessage[$channelID;# <@$authorID> 1 minute left!]
+    ]
+    $if[$getUserVar[1htime]==3570;
+      $sendMessage[$channelID;# <@$authorID> 30 seconds left!]
+    ]
+    $if[$getUserVar[1htime]==3585;
+      $sendMessage[$channelID;# <@$authorID> 15 seconds left!]
+    ]
+    $if[$getUserVar[1htime]==3595;
+      $sendMessage[$channelID;# <@$authorID> 5 seconds left!]
+    ]
+    $if[$getUserVar[1htime]==3596;
+      $sendMessage[$channelID;# <@$authorID> 4 seconds left!]
+    ]
+    $if[$getUserVar[1htime]==3597;
+      $sendMessage[$channelID;# <@$authorID> 3 seconds left!]
+    ]
+    $if[$getUserVar[1htime]==3598;
+      $sendMessage[$channelID;# <@$authorID> 2 seconds left!]
+    ]
+    $if[$getUserVar[1htime]==3599;
+      $sendMessage[$channelID;# <@$authorID> 1 second left!]
+    ] 
+
+    $if[$getUserVar[1htime]==3600;
         $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!
         ${pts()}]
         $setUserVar[1hstarted;false]
@@ -240,12 +290,12 @@ $if[$charCount[$get[second]]==1; $let[second;0$get[second]] ]
 
 function time () {
 return `
-# Time passed: \`$parseDigital[$getUserVar[1htime]000]\`
-# Time left: \`$get[hour]:$get[minute]:$get[second]\``
+## Time passed: \`$parseDigital[$getUserVar[1htime]000]\`
+## Time left: \`$get[hour]:$get[minute]:$get[second]\``
 }
 
 function pts () {
 return `
 # Points: ||$getUserVar[1hpoints]||
-# Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]`
+## Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]`
 }
