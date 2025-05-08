@@ -13,6 +13,8 @@ module.exports = [{
     $setUserVar[kbt;0]
     $setUserVar[cht;0]
     $setUserVar[mh;0]
+    $setUserVar[1htotalRares;0]
+    $setUserVar[1hallRaresList;{}]
 
     ${interval()}
   `
@@ -96,64 +98,55 @@ module.exports = [{
     $arrayLoad[caught; ;]
 
     $arrayForEach[rares;an;
-        $if[$arrayIncludes[common;$env[an]];
-          $arrayForEach[common;com;
-            $if[$env[an]==$env[com]; 
-              $if[$getUserVar[$env[com]]<3; 
-                $letSum[points;$get[common]]
-                $arrayPush[caught;+$get[common]]
-                $setUserVar[$env[com];$math[$getUserVar[$env[com]] + 1]]
-                $if[$getUserVar[$env[com]]==3;
-                  $sendMessage[$channelID;# <@$authorID> You got all $switch[$env[com];$case[mh;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
-                ]
+      $if[$arrayIncludes[common;$env[an]];
+        $arrayForEach[common;com;
+          $if[$env[an]==$env[com]; 
+            $if[$getUserVar[$env[com]]<3; 
+              ${rares("common")}
+              $setUserVar[$env[com];$math[$getUserVar[$env[com]] + 1]]
+              $if[$getUserVar[$env[com]]==3;
+                $sendMessage[$channelID;# <@$authorID> You got all $switch[$env[com];$case[mh;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
+              ]
+            ;
+              $arrayPush[caught;+0]
+            ]
+          ]
+        ]
+      ;
+        $if[$arrayIncludes[uncommon;$env[an]];
+          ${rares("uncommon")}
+        ;
+          $if[$arrayIncludes[rare;$env[an]];
+            ${rares("rare")}
+          ;
+            $if[$arrayIncludes[epic;$env[an]];
+              ${rares("epic")}
+            ;
+              $if[$arrayIncludes[insane;$env[an]];
+                ${rares("insane")}
               ;
-                $arrayPush[caught;+0]
+                $if[$arrayIncludes[legendary;$env[an]];
+                  ${rares("legendary")}
+                ;
+                  $if[$arrayIncludes[extreme;$env[an]];
+                    ${rares("extreme")}
+                  ;
+                    $if[$arrayIncludes[mythic;$env[an]];
+                      ${rares("mythic")}
+                    ;
+                      $if[$arrayIncludes[godly;$env[an]];
+                        ${rares("godly")}
+                      ;
+                        $arrayPush[caught;+0]
+                      ]
+                    ]
+                  ]
+                ]
               ]
             ]
           ]
-        ;
-            $if[$arrayIncludes[uncommon;$env[an]];
-                $letSum[points;$get[uncommon]]
-                $arrayPush[caught;+$get[uncommon]]
-            ;
-                $if[$arrayIncludes[rare;$env[an]];
-                    $letSum[points;$get[rare]]
-                    $arrayPush[caught;+$get[rare]]
-                ;
-                    $if[$arrayIncludes[epic;$env[an]];
-                        $letSum[points;$get[epic]]
-                        $arrayPush[caught;+$get[epic]]
-                    ;
-                        $if[$arrayIncludes[insane;$env[an]];
-                            $letSum[points;$get[insane]]
-                            $arrayPush[caught;+$get[insane]]
-                        ;
-                            $if[$arrayIncludes[legendary;$env[an]];
-                                $letSum[points;$get[legendary]]
-                                $arrayPush[caught;+$get[legendary]]
-                            ;
-                                $if[$arrayIncludes[extreme;$env[an]];
-                                    $letSum[points;$get[extreme]]
-                                    $arrayPush[caught;+$get[extreme]]
-                                ;
-                                    $if[$arrayIncludes[mythic;$env[an]];
-                                        $letSum[points;$get[mythic]]
-                                        $arrayPush[caught;+$get[mythic]]
-                                    ;
-                                        $if[$arrayIncludes[godly;$env[an]];
-                                            $letSum[points;$get[godly]]
-                                            $arrayPush[caught;+$get[godly]]
-                                        ;
-                                            $arrayPush[caught;+0]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
         ]
+      ]
     ]
 
     
@@ -255,17 +248,96 @@ return `
 function pts () {
 return `
 # Points: ||$getUserVar[1hpoints]||
-## Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]`
+## Total rares: ||$getUserVar[1htotalRares]||
+$c[## Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]]
+## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";];JSON]
+`
 }
 
 function reset() {
 return `
 $!stopInterval[1HLUCK]
 $deleteUserVar[1hstarted]
+$deleteUserVar[1hallRaresList]
 $deleteUserVar[1htime]
 $deleteUserVar[1hpoints]
 $deleteUserVar[1hpaused]
 $deleteUserVar[mh]
 $deleteUserVar[kbt]
 $deleteUserVar[cht]`
+}
+
+function rares(category) {
+return `
+$if[$isJson[$env[allRaresList]];;$jsonLoad[allRaresList;$getUserVar[1hallRaresList]]]
+$if[$isJson[$env[SNORA]];;$jsonLoad[SNORA;${SNORA()}]]
+$letSum[points;$get[${category}]]
+$arrayPush[caught;+$get[${category}]]
+$setUserVar[1htotalRares;$math[$getUserVar[1htotalRares] + 1]]
+
+$if[$env[allRaresList;$env[SNORA;$env[an]]]==;
+  $!jsonSet[allRaresList;$env[SNORA;$env[an]];1]
+;
+  $!jsonSet[allRaresList;$env[SNORA;$env[an]];$math[$env[allRaresList;$env[SNORA;$env[an]]] + 1]]
+]
+$setUserVar[1hallRaresList;$env[allRaresList]]`
+}
+
+function SNORA() {
+return `
+{
+  "wd": "White Dove",
+  "pp": "Pinky Pig",
+  "sp": "Stinky Pig",
+  "doe": "Doe",
+  "mad": "Marsh Deer",
+  "md": "Musk Deer",
+  "gph": "Golden Pheasant",
+  "bm": "Blue Macaw",
+  "sm": "Spix Macaw",
+  "ja": "Jackass",
+  "mm": "Momaffie",
+  "mf": "Momaffie Family",
+  "gir": "Girabie",
+  "jag": "Jaguar",
+  "leo": "Leopard",
+  "bp": "Black Panther",
+  "cht": "Choco Toucan",
+  "kbt": "Keel-Billed Toucan",
+  "ft": "Fiery Toucan",
+  "lt": "Lava Toucan",
+  "hht": "Helmeted Hornbill Toucan",
+  "yp": "Yellow Pufferfish",
+  "dp": "Demon Pufferfish",
+  "wt": "White Tiger",
+  "lc": "Lion Cub",
+  "wlc": "White Lion Cub",
+  "blc": "Black Lion Cub",
+  "ln": "Lioness",
+  "wln": "White Lioness",
+  "bln": "Black Lioness",
+  "bml": "Black-Maned Lion",
+  "wl": "White Lion",
+  "bl": "Black Lion",
+  "arg": "Argentavis",
+  "pr": "Predator",
+  "shh": "Shaheen",
+  "wr": "White Rhino",
+  "br": "Black Rhino",
+  "ge": "Golden Eagle",
+  "he": "Harpy Eagle",
+  "gse": "Greater-Spotted Eagle",
+  "mh": "Markhor",
+  "bg": "Big Goat",
+  "wg": "White Giraffe",
+  "wgf": "White Giraffe Family",
+  "ay": "Aqua Yeti",
+  "ssm": "Shop Snowman",
+  "lsm": "Luck Snowman",
+  "sbf": "Shop BigFoot",
+  "lbf": "Luck BigFoot",
+  "ssg": "Shop Snowgirl",
+  "lsg": "Luck Snowgirl",
+  "kd": "King Dragon"
+}`
 }
