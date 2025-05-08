@@ -231,36 +231,16 @@ return `
 $setInterval[
     $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
 
-    $if[$getUserVar[1htime]==1800;
-      $sendMessage[$channelID;# <@$authorID> 30 minutes left!]
-    ]
-    $if[$getUserVar[1htime]==3300;
-      $sendMessage[$channelID;# <@$authorID> 5 minutes left!]
-    ]
-    $if[$getUserVar[1htime]==3540;
-      $sendMessage[$channelID;# <@$authorID> 1 minute left!]
-    ]
-    $if[$getUserVar[1htime]==3570;
-      $sendMessage[$channelID;# <@$authorID> 30 seconds left!]
-    ]
-    $if[$getUserVar[1htime]==3585;
-      $sendMessage[$channelID;# <@$authorID> 15 seconds left!]
-    ]
-    $if[$getUserVar[1htime]==3595;
-      $sendMessage[$channelID;# <@$authorID> 5 seconds left!]
-    ]
-    $if[$getUserVar[1htime]==3596;
-      $sendMessage[$channelID;# <@$authorID> 4 seconds left!]
-    ]
-    $if[$getUserVar[1htime]==3597;
-      $sendMessage[$channelID;# <@$authorID> 3 seconds left!]
-    ]
-    $if[$getUserVar[1htime]==3598;
-      $sendMessage[$channelID;# <@$authorID> 2 seconds left!]
-    ]
-    $if[$getUserVar[1htime]==3599;
-      $sendMessage[$channelID;# <@$authorID> 1 second left!]
-    ] 
+    $if[$getUserVar[1htime]==1800;  $sendMessage[$channelID;# <@$authorID> 30 minutes left!]  ]
+    $if[$getUserVar[1htime]==3300;  $sendMessage[$channelID;# <@$authorID> 5 minutes left!]   ]
+    $if[$getUserVar[1htime]==3540;  $sendMessage[$channelID;# <@$authorID> 1 minute left!]    ]
+    $if[$getUserVar[1htime]==3570;  $sendMessage[$channelID;# <@$authorID> 30 seconds left!]  ]
+    $if[$getUserVar[1htime]==3585;  $sendMessage[$channelID;# <@$authorID> 15 seconds left!]  ]
+    $if[$getUserVar[1htime]==3595;  $sendMessage[$channelID;# <@$authorID> 5 seconds left!]   ]
+    $if[$getUserVar[1htime]==3596;  $sendMessage[$channelID;# <@$authorID> 4 seconds left!]   ]
+    $if[$getUserVar[1htime]==3597;  $sendMessage[$channelID;# <@$authorID> 3 seconds left!]   ]
+    $if[$getUserVar[1htime]==3598;  $sendMessage[$channelID;# <@$authorID> 2 seconds left!]   ]
+    $if[$getUserVar[1htime]==3599;  $sendMessage[$channelID;# <@$authorID> 1 second left!]    ] 
 
     $if[$getUserVar[1htime]==3600;
         $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!
