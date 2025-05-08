@@ -3,13 +3,13 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-    $onlyIf[$getUserVar[1hstarted;;false]==false;# You already have an active challenge!]
+    $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;# You already have an active challenge!]
 
-    # 1 hour luck challenge has begun! Started at: \`$hour:$minute:$second\`!
+    # 1 hour luck challenge has begun!
     $setUserVar[1htime;0]
     $setUserVar[1hstarted;true]
     $setUserVar[1hpoints;0]
-    $setUserVar[paused;false]
+    $setUserVar[1hpaused;false]
     $setUserVar[kbt;0]
     $setUserVar[cht;0]
     $setUserVar[mh;0]
@@ -26,7 +26,7 @@ module.exports = [{
     ${vars()}
     
     ${time()}
-    $if[$getUserVar[paused];# Status: Paused]
+    $if[$getUserVar[1hpaused];# Status: Paused]
   `
 },{
 
@@ -36,10 +36,10 @@ module.exports = [{
     $reply
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     $!stopInterval[1HLUCK]
-    $setUserVar[paused;true]
+    $setUserVar[1hpaused;true]
     ${vars()}
 
-    # Paused at: \`$hour:$minute:$second\`!
+    # Paused!
     ${time()}
   `
 },{
@@ -50,11 +50,11 @@ module.exports = [{
   code: `
     $reply
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
-    $setUserVar[paused;false]
+    $setUserVar[1hpaused;false]
 
     ${vars()}
 
-    # Continued at: \`$hour:$minute:$second\`!
+    # Continued!
     ${time()}
 
     ${interval()}
@@ -65,7 +65,7 @@ module.exports = [{
   code: `
     $onlyIf[$getUserVar[1hstarted]]
     $onlyIf[$startsWith[$messageContent;$getGuildVar[prefix]]==false]
-    $onlyIf[$getUserVar[paused]==false]
+    $onlyIf[$getUserVar[1hpaused]==false]
 
     $let[points;0]
     $let[typo;false]
@@ -173,16 +173,7 @@ module.exports = [{
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     # You ended your challenge!
     ${pts()}
-    
-    $setUserVar[1hstarted;false]
-    $!stopInterval[1HLUCK]
-
-    $deleteUserVar[1htime]
-    $deleteUserVar[1hpoints]
-    $setUserVar[paused;false]
-    $deleteUserVar[mh]
-    $deleteUserVar[kbt]
-    $deleteUserVar[cht]
+    ${reset()}
   `
 },{
   name: "points",
@@ -241,20 +232,7 @@ $setInterval[
     $if[$getUserVar[1htime]==3597;  $sendMessage[$channelID;# <@$authorID> 3 seconds left!]   ]
     $if[$getUserVar[1htime]==3598;  $sendMessage[$channelID;# <@$authorID> 2 seconds left!]   ]
     $if[$getUserVar[1htime]==3599;  $sendMessage[$channelID;# <@$authorID> 1 second left!]    ] 
-
-    $if[$getUserVar[1htime]==3600;
-        $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!
-        ${pts()}]
-        $setUserVar[1hstarted;false]
-        $!stopInterval[1HLUCK]
-
-        $deleteUserVar[1htime]
-        $deleteUserVar[1hpoints]
-        $setUserVar[paused;false]
-        $deleteUserVar[mh]
-        $deleteUserVar[kbt]
-        $deleteUserVar[cht]
-    ] 
+    $if[$getUserVar[1htime]==3600;  $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
 ;1s;1HLUCK]`
 }
 
@@ -278,4 +256,16 @@ function pts () {
 return `
 # Points: ||$getUserVar[1hpoints]||
 ## Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]`
+}
+
+function reset() {
+return `
+$!stopInterval[1HLUCK]
+$deleteUserVar[1hstarted]
+$deleteUserVar[1htime]
+$deleteUserVar[1hpoints]
+$deleteUserVar[1hpaused]
+$deleteUserVar[mh]
+$deleteUserVar[kbt]
+$deleteUserVar[cht]`
 }
