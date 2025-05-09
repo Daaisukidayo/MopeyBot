@@ -13,15 +13,18 @@ $let[kbt;0]
 $let[mh;0]
 $let[cht;0]
 
-$let[common;1]
-$let[uncommon;2]
-$let[rare;3]
-$let[epic;5]
-$let[insane;8]
-$let[legendary;15]
-$let[extreme;20]
-$let[mythic;30]
-$let[godly;50]
+$jsonLoad[pointsMap;{
+  "common": 1,
+  "uncommon": 2,
+  "rare": 3,
+  "epic": 5,
+  "insane": 8,
+  "legendary": 15,
+  "extreme": 20,
+  "mythic": 30,
+  "godly": 50
+}]
+
 
 $arrayLoad[rares; ;$toLowerCase[$message]]
 $arrayLoad[unknown]
@@ -95,7 +98,7 @@ function rares(category) {
 return `
 $if[$isJson[$env[allRaresList]];;$jsonLoad[allRaresList;{}]]
 $if[$isJson[$env[SNORA]];;$jsonLoad[SNORA;${SNORA()}]]
-$letSum[points;$get[${category}]]
+$letSum[points;$env[pointsMap;${category}]]
 $letSum[totalRares;1]
 
 $if[$env[allRaresList;$env[SNORA;$env[an]]]==;
