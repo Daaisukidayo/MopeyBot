@@ -1,10 +1,12 @@
 module.exports = [{ 
 name: "countpoints", 
-aliases: ["cp"], 
+aliases: ["count","cp"], 
 type: "messageCreate", 
 code: `
 $reply 
 $onlyIf[$message!=]
+
+$let[totalRares;0]
 $let[points;0]
 
 $let[kbt;0]
@@ -37,33 +39,38 @@ $arrayLoad[godly; ;sm hht arg shh he gse]
 $arrayForEach[rares;an;
 
     $if[$arrayIncludes[common;$env[an]];
-        $if[$and[$get[kbt]<3;$env[an]==kbt]; $letSum[points;$get[common]] $letSum[kbt;1] ]
-        $if[$and[$get[cht]<3;$env[an]==cht]; $letSum[points;$get[common]] $letSum[cht;1] ]
-        $if[$and[$get[mh]<3;$env[an]==mh];  $letSum[points;$get[common]] $letSum[mh;1] ] 
+      $if[$arrayIncludes[common;$env[an]];
+        $arrayForEach[common;com;
+          $if[$and[$env[an]==$env[com];$get[$env[com]]<3];
+              ${rares("common")}
+              $letSum[$env[com];1]
+            ]
+          ]
+        ]
     ;
         $if[$arrayIncludes[uncommon;$env[an]];
-            $letSum[points;$get[uncommon]]
+            ${rares("uncommon")}
         ;
             $if[$arrayIncludes[rare;$env[an]];
-                $letSum[points;$get[rare]]
+                ${rares("rare")}
             ;
                 $if[$arrayIncludes[epic;$env[an]];
-                    $letSum[points;$get[epic]]
+                    ${rares("epic")}
                 ;
                     $if[$arrayIncludes[insane;$env[an]];
-                        $letSum[points;$get[insane]]
+                        ${rares("insane")}
                     ;
                         $if[$arrayIncludes[legendary;$env[an]];
-                            $letSum[points;$get[legendary]]
+                            ${rares("legendary")}
                         ;
                             $if[$arrayIncludes[extreme;$env[an]];
-                                $letSum[points;$get[extreme]]
+                                ${rares("extreme")}
                             ;
                                 $if[$arrayIncludes[mythic;$env[an]];
-                                    $letSum[points;$get[mythic]]
+                                    ${rares("mythic")}
                                 ;
                                     $if[$arrayIncludes[godly;$env[an]];
-                                        $letSum[points;$get[godly]]
+                                        ${rares("godly")}
                                     ;
                                         $arrayPush[unknown;$env[an]]
                                     ]
@@ -77,11 +84,83 @@ $arrayForEach[rares;an;
     ]
 ]
 # Total points: \`$get[points]\`
-# Total rares: \`$arrayLength[rares]\`
-# Commons: 
-$codeBlock[Markhor: $get[mh]
-Choco: $get[cht]
-Keel-Billed: $get[kbt];JSON]
-$if[$arrayLength[unknown]!=0;# Unknown rares:\n$codeBlock[$env[unknown];JSON]]
+# Total rares: \`$get[totalRares]\`
+## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$env[allRaresList]];{;;};;";];JSON]
+$if[$arrayLength[unknown]!=0;# Unknown rares:\n$codeBlock[$advancedReplace[$trimLines[$env[unknown]];[;;\\];;";];JSON]]
 
 `}]
+
+
+function rares(category) {
+return `
+$if[$isJson[$env[allRaresList]];;$jsonLoad[allRaresList;{}]]
+$if[$isJson[$env[SNORA]];;$jsonLoad[SNORA;${SNORA()}]]
+$letSum[points;$get[${category}]]
+$letSum[totalRares;1]
+
+$if[$env[allRaresList;$env[SNORA;$env[an]]]==;
+  $!jsonSet[allRaresList;$env[SNORA;$env[an]];1]
+;
+  $!jsonSet[allRaresList;$env[SNORA;$env[an]];$math[$env[allRaresList;$env[SNORA;$env[an]]] + 1]]
+]
+`
+}
+
+function SNORA() {
+return `
+{
+  "wd": "White Dove",
+  "pp": "Pinky Pig",
+  "sp": "Stinky Pig",
+  "doe": "Doe",
+  "mad": "Marsh Deer",
+  "md": "Musk Deer",
+  "gph": "Golden Pheasant",
+  "bm": "Blue Macaw",
+  "sm": "Spix Macaw",
+  "ja": "Jackass",
+  "mm": "Momaffie",
+  "mf": "Momaffie Family",
+  "gir": "Girabie",
+  "jag": "Jaguar",
+  "leo": "Leopard",
+  "bp": "Black Panther",
+  "cht": "Choco Toucan",
+  "kbt": "Keel-Billed Toucan",
+  "ft": "Fiery Toucan",
+  "lt": "Lava Toucan",
+  "hht": "Helmeted Hornbill Toucan",
+  "yp": "Yellow Pufferfish",
+  "dp": "Demon Pufferfish",
+  "wt": "White Tiger",
+  "lc": "Lion Cub",
+  "wlc": "White Lion Cub",
+  "blc": "Black Lion Cub",
+  "ln": "Lioness",
+  "wln": "White Lioness",
+  "bln": "Black Lioness",
+  "bml": "Black-Maned Lion",
+  "wl": "White Lion",
+  "bl": "Black Lion",
+  "arg": "Argentavis",
+  "pr": "Predator",
+  "shh": "Shaheen",
+  "wr": "White Rhino",
+  "br": "Black Rhino",
+  "ge": "Golden Eagle",
+  "he": "Harpy Eagle",
+  "gse": "Greater-Spotted Eagle",
+  "mh": "Markhor",
+  "bg": "Big Goat",
+  "wg": "White Giraffe",
+  "wgf": "White Giraffe Family",
+  "ay": "Aqua Yeti",
+  "ssm": "Shop Snowman",
+  "lsm": "Luck Snowman",
+  "sbf": "Shop BigFoot",
+  "lbf": "Luck BigFoot",
+  "ssg": "Shop Snowgirl",
+  "lsg": "Luck Snowgirl",
+  "kd": "King Dragon"
+}`
+}
