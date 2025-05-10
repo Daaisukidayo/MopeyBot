@@ -8,70 +8,83 @@ $let[cdTime;10s]
 $callFunction[checking;]
 $callFunction[cooldown;$get[cdTime]]
 
+$arrayLoad[allRares]
+$arrayLoad[raresMap;, \n;$getGlobalVar[raresMap]]
+$arrayLoad[caughtRares; ;$toLowerCase[$message]]
+$jsonLoad[SNORA;$getGlobalVar[SNORA]]
+
+$arrayLoad[allRares;,;$advancedReplace[$trimSpace[$jsonKeys[SNORA]];\\[;;\\];;";;\n;]]
+$arrayLoad[allRaresNames;, ;$jsonValues[SNORA;, ]]
+
 $description[
 **===================Tier 2=====================
-wd - White Dove
+${allRareNames("White Dove")}
 ===================Tier 4=====================
-pp - Pinky Pig
-sp - Stinky Pig
+${allRareNames("Pinky Pig")}
+${allRareNames("White Dove")}
 ===================Tier 5=====================
-doe - Doe
-mad - Marsh Deer
-md - Musk Deer
-gph - Golden Pheasant
+${allRareNames("Doe")}
+${allRareNames("Marsh Deer")}
+${allRareNames("Musk Deer")}
+${allRareNames("Golden Pheasant")}
 ===================Tier 7=====================
-bm - Blue Macaw
-sm - Spix's Macaw
-ja - Jackass
+${allRareNames("Jackass")}
+${allRareNames("Blue Macaw")}
+${allRareNames("Spix Macaw")}
 ===================Tier 8=====================
-mm - Momaffie
-mf - Momaffie Family
-gir - Girabie
+${allRareNames("Momaffie")}
+${allRareNames("Momaffie Family")}
+${allRareNames("Girabie")}
 ===================Tier 9=====================
-jag - Jaguar
-leo - leopard
-bp - Black Panther
-cht - Choco Toucan
-kbt - Keel-Billed Toucan
-ft - Fiery Toucan
-lt - Lava Toucan
-hht - Helmeted Hornbill Toucan
-yp - Yellow Pufferfish
-dp - Demon Pufferfish
+${allRareNames("Jaguar")}
+${allRareNames("Leopard")}
+${allRareNames("Black Panther")}
+${allRareNames("Choco Toucan")}
+${allRareNames("Keel-Billed Toucan")}
+${allRareNames("Fiery Toucan")}
+${allRareNames("Lava Toucan")}
+${allRareNames("Helmeted Hornbill Toucan")}
+${allRareNames("Yellow Pufferfish")}
+${allRareNames("Demon Pufferfish")}
 ===================Tier 10====================
-wt - White Tiger
+${allRareNames("White Tiger")}
 ===================Tier 11====================
-lc - Lion Cub
-wlc - White Lion Cub
-blc - Black Lion Cub
-ln - Lioness
-wln - White Lioness
-bln - Black Lioness
-bml - Black-Maned Lion
-wl - White Lion
-bl - Black Lion
-arg - Argentavis
-pr - Predator
-shh - Shaheen
+${allRareNames("Lion Cub")}
+${allRareNames("White Lion Cub")}
+${allRareNames("Black Lion Cub")}
+${allRareNames("Lioness")}
+${allRareNames("White Lioness")}
+${allRareNames("Black Lioness")}
+${allRareNames("Black-Maned Lion")}
+${allRareNames("White Lion")}
+${allRareNames("Black Lion")}
+${allRareNames("Predator")}
+${allRareNames("Shaheen")}
+${allRareNames("Argentavis")}
 ===================Tier 12====================
-wr - White Rhino
-br - Black Rhino
-ge - Golden Eagle
-he - Harpy Eagle
-gse - Greater-Spotted Eagle
-mh - Markhor
-bg - Big Goat
+${allRareNames("White Rhino")}
+${allRareNames("Black Rhino")}
+${allRareNames("Golden Eagle")}
+${allRareNames("Harpy Eagle")}
+${allRareNames("Greater-Spotted Eagle")}
+${allRareNames("Markhor")}
+${allRareNames("Big Goat")}
 ===================Tier 13====================
-wg - White Giraffe
-wgf - White Giraffe Family
+${allRareNames("White Giraffe")}
+${allRareNames("White Giraffe Family")}
 ===================Tier 15====================
-ay - Aqua Yeti
-ssm - Shop Snowman 
-lsm - Luck Snowman 
-sbf - Shop Big Foot
-lbf - Luck Big Foot
-ssg - Shop Snowgirl
-lsg - Luck Snowgirl
+${allRareNames("Aqua Yeti")}
+${allRareNames("Shop Snowman")}
+${allRareNames("Luck Snowman")}
+${allRareNames("Shop Snowgirl")}
+${allRareNames("Luck Snowgirl")}
+${allRareNames("Shop BigFoot")}
+${allRareNames("Luck BigFoot")}
 ===================Tier 17====================
-kd - King Dragon**]
-$color[$getGlobalVar[luckyColor]]`}]
+${allRareNames("King Dragon")}**]
+$color[$getGlobalVar[luckyColor]]`
+}]
+
+function allRareNames(rare) {
+    return `$arrayAt[allRares;$arrayIndexOf[allRaresNames;${rare}]] - $arrayAt[allRaresNames;$arrayIndexOf[allRaresNames;${rare}]]`
+}

@@ -1,4 +1,5 @@
-module.exports = [{
+module.exports = [
+{
   name: "start",
   type: "messageCreate",
   code: `
@@ -72,80 +73,48 @@ module.exports = [{
     $let[points;0]
     $let[typo;false]
 
-    $let[common;1]
-    $let[uncommon;2]
-    $let[rare;3]
-    $let[epic;5]
-    $let[insane;8]
-    $let[legendary;15]
-    $let[extreme;20]
-    $let[mythic;30]
-    $let[godly;50]
-
-    $arrayLoad[rares; ;$toLowerCase[$message]]
-    $arrayLoad[unknown]
-
-    $arrayLoad[common; ;cht kbt mh]
-    $arrayLoad[uncommon; ;doe bm jag leo ft yp ln]
-    $arrayLoad[rare; ;wd pp mad gph mm mf bp lc bml]
-    $arrayLoad[epic; ;ja gir wt wl wln wlc bg sbf ssm ssg]
-    $arrayLoad[insane; ;sp md bl bln blc pr ge wr ay]
-    $arrayLoad[legendary; ;lt dp br wg]
-    $arrayLoad[extreme; ;wgf]
-    $arrayLoad[mythic; ;lbf lsm lsg kd]
-    $arrayLoad[godly; ;sm hht arg shh he gse]
-
     $arrayLoad[caught; ;]
+    $arrayLoad[allRares]
+    $arrayLoad[raresMap;, \n;$getGlobalVar[raresMap]]
+    $arrayLoad[caughtRares; ;$toLowerCase[$message]]
+    $jsonLoad[SNORA;$getGlobalVar[SNORA]]
+    $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
 
-    $arrayForEach[rares;an;
-      $if[$arrayIncludes[common;$env[an]];
-        $arrayForEach[common;com;
-          $if[$env[an]==$env[com]; 
-            $if[$getUserVar[$env[com]]<3; 
-              ${rares("common")}
-              $setUserVar[$env[com];$math[$getUserVar[$env[com]] + 1]]
-              $if[$getUserVar[$env[com]]==3;
-                $sendMessage[$channelID;# <@$authorID> You got all $switch[$env[com];$case[mh;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
-              ]
+    $arrayForEach[raresMap;rareMap;
+      $jsonLoad[rareOBJ;$env[rareMap]]
+      $arrayLoad[allRaresFromCat;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]]
+      $arrayConcat[allRares;allRares;allRaresFromCat]
+    ]
+
+
+    $arrayForEach[caughtRares;caughtRare;
+      $if[$arrayIncludes[allRares;$env[caughtRare]];
+        $arrayForEach[raresMap;rareMap;
+          $jsonLoad[rareOBJ;$env[rareMap]]
+          $arrayLoad[raresFromOBJ;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]]
+
+          $if[$arrayIncludes[raresFromOBJ;$env[caughtRare]];
+            $if[$env[rareOBJ;category]!=common;
+              ${rares()}
             ;
-              $arrayPush[caught;+0]
-            ]
-          ]
-        ]
-      ;
-        $if[$arrayIncludes[uncommon;$env[an]];
-          ${rares("uncommon")}
-        ;
-          $if[$arrayIncludes[rare;$env[an]];
-            ${rares("rare")}
-          ;
-            $if[$arrayIncludes[epic;$env[an]];
-              ${rares("epic")}
-            ;
-              $if[$arrayIncludes[insane;$env[an]];
-                ${rares("insane")}
-              ;
-                $if[$arrayIncludes[legendary;$env[an]];
-                  ${rares("legendary")}
-                ;
-                  $if[$arrayIncludes[extreme;$env[an]];
-                    ${rares("extreme")}
-                  ;
-                    $if[$arrayIncludes[mythic;$env[an]];
-                      ${rares("mythic")}
-                    ;
-                      $if[$arrayIncludes[godly;$env[an]];
-                        ${rares("godly")}
-                      ;
-                        $arrayPush[caught;+0]
-                      ]
+              $arrayForEach[raresFromOBJ;com;
+                $if[$env[caughtRare]==$env[com];
+                  $if[$getUserVar[$env[com]]<3;
+                    ${rares()}
+                    $setUserVar[$env[com];$math[$getUserVar[$env[com]] + 1]]
+                    $if[$getUserVar[$env[com]]==3;
+                      $sendMessage[$channelID;# <@$authorID> You got all $switch[$env[com];$case[mh;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
                     ]
+                  ;
+                    $arrayPush[caught;+0]
                   ]
                 ]
               ]
             ]
           ]
         ]
+      ;
+        $arrayPush[caught;+0]
       ]
     ]
 
@@ -267,77 +236,18 @@ $deleteUserVar[kbt]
 $deleteUserVar[cht]`
 }
 
-function rares(category) {
+function rares() {
 return `
-$if[$isJson[$env[allRaresList]];;$jsonLoad[allRaresList;$getUserVar[1hallRaresList]]]
-$if[$isJson[$env[SNORA]];;$jsonLoad[SNORA;${SNORA()}]]
-$letSum[points;$get[${category}]]
-$arrayPush[caught;+$get[${category}]]
+$letSum[points;$env[rareOBJ;points]]
+$arrayPush[caught;+$env[rareOBJ;points]]
 $setUserVar[1htotalRares;$math[$getUserVar[1htotalRares] + 1]]
 
-$if[$env[allRaresList;$env[SNORA;$env[an]]]==;
-  $!jsonSet[allRaresList;$env[SNORA;$env[an]];1]
+$if[$env[allRaresList;$env[SNORA;$env[caughtRare]]]==;
+  $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];1]
 ;
-  $!jsonSet[allRaresList;$env[SNORA;$env[an]];$math[$env[allRaresList;$env[SNORA;$env[an]]] + 1]]
+  $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];$math[$env[allRaresList;$env[SNORA;$env[caughtRare]]] + 1]]
 ]
-$setUserVar[1hallRaresList;$env[allRaresList]]`
-}
 
-function SNORA() {
-return `
-{
-  "wd": "White Dove",
-  "pp": "Pinky Pig",
-  "sp": "Stinky Pig",
-  "doe": "Doe",
-  "mad": "Marsh Deer",
-  "md": "Musk Deer",
-  "gph": "Golden Pheasant",
-  "bm": "Blue Macaw",
-  "sm": "Spix Macaw",
-  "ja": "Jackass",
-  "mm": "Momaffie",
-  "mf": "Momaffie Family",
-  "gir": "Girabie",
-  "jag": "Jaguar",
-  "leo": "Leopard",
-  "bp": "Black Panther",
-  "cht": "Choco Toucan",
-  "kbt": "Keel-Billed Toucan",
-  "ft": "Fiery Toucan",
-  "lt": "Lava Toucan",
-  "hht": "Helmeted Hornbill Toucan",
-  "yp": "Yellow Pufferfish",
-  "dp": "Demon Pufferfish",
-  "wt": "White Tiger",
-  "lc": "Lion Cub",
-  "wlc": "White Lion Cub",
-  "blc": "Black Lion Cub",
-  "ln": "Lioness",
-  "wln": "White Lioness",
-  "bln": "Black Lioness",
-  "bml": "Black-Maned Lion",
-  "wl": "White Lion",
-  "bl": "Black Lion",
-  "arg": "Argentavis",
-  "pr": "Predator",
-  "shh": "Shaheen",
-  "wr": "White Rhino",
-  "br": "Black Rhino",
-  "ge": "Golden Eagle",
-  "he": "Harpy Eagle",
-  "gse": "Greater-Spotted Eagle",
-  "mh": "Markhor",
-  "bg": "Big Goat",
-  "wg": "White Giraffe",
-  "wgf": "White Giraffe Family",
-  "ay": "Aqua Yeti",
-  "ssm": "Shop Snowman",
-  "lsm": "Luck Snowman",
-  "sbf": "Shop BigFoot",
-  "lbf": "Luck BigFoot",
-  "ssg": "Shop Snowgirl",
-  "lsg": "Luck Snowgirl",
-  "kd": "King Dragon"
-}`
+$setUserVar[1hallRaresList;$env[allRaresList]]
+`
 }

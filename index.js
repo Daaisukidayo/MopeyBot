@@ -353,7 +353,109 @@ ForgeDB.variables({
       "description": "Arctic Gold-Trim Skinpack",
       "cost": "1250000"
     }
-  `
+  `,
+  raresMap: `
+    {
+      "category": "common",
+      "rares": ["cht", "kbt", "mh"\],
+      "points": 1
+    }, 
+    {
+      "category": "uncommon",
+      "rares": ["doe", "bm", "jag", "leo", "ft", "yp", "ln"\],
+      "points": 2
+    }, 
+    {
+      "category": "rare",
+      "rares": ["wd", "pp", "mad", "gph", "mm", "mf", "bp", "lc", "bml"\],
+      "points": 3
+    }, 
+    {
+      "category": "epic",
+      "rares": ["ja", "gir", "wt", "wl", "wln", "wlc", "bg", "sbf", "ssm", "ssg"\],
+      "points": 5
+    }, 
+    {
+      "category": "insane",
+      "rares": ["sp", "md", "bl", "bln", "blc", "pr", "ge", "wr", "ay"\],
+      "points": 8
+    }, 
+    {
+      "category": "legendary",
+      "rares": ["lt", "dp", "br", "wg"\],
+      "points": 15
+    }, 
+    {
+      "category": "extreme",
+      "rares": ["wgf"\],
+      "points": 20
+    }, 
+    {
+      "category": "mythic",
+      "rares": ["lbf", "lsm", "lsg", "kd"\],
+      "points": 30
+    }, 
+    {
+      "category": "godly",
+      "rares": ["sm", "hht", "arg", "shh", "har", "gse"\],
+      "points": 50
+    }`,
+
+    SNORA: {
+      "wd": "White Dove",
+      "pp": "Pinky Pig",
+      "sp": "Stinky Pig",
+      "doe": "Doe",
+      "mad": "Marsh Deer",
+      "md": "Musk Deer",
+      "gph": "Golden Pheasant",
+      "bm": "Blue Macaw",
+      "sm": "Spix Macaw",
+      "ja": "Jackass",
+      "mm": "Momaffie",
+      "mf": "Momaffie Family",
+      "gir": "Girabie",
+      "jag": "Jaguar",
+      "leo": "Leopard",
+      "bp": "Black Panther",
+      "cht": "Choco Toucan",
+      "kbt": "Keel-Billed Toucan",
+      "ft": "Fiery Toucan",
+      "lt": "Lava Toucan",
+      "hht": "Helmeted Hornbill Toucan",
+      "yp": "Yellow Pufferfish",
+      "dp": "Demon Pufferfish",
+      "wt": "White Tiger",
+      "lc": "Lion Cub",
+      "wlc": "White Lion Cub",
+      "blc": "Black Lion Cub",
+      "ln": "Lioness",
+      "wln": "White Lioness",
+      "bln": "Black Lioness",
+      "bml": "Black-Maned Lion",
+      "wl": "White Lion",
+      "bl": "Black Lion",
+      "arg": "Argentavis",
+      "pr": "Predator",
+      "shh": "Shaheen",
+      "wr": "White Rhino",
+      "br": "Black Rhino",
+      "ge": "Golden Eagle",
+      "har": "Harpy Eagle",
+      "gse": "Greater-Spotted Eagle",
+      "mh": "Markhor",
+      "bg": "Big Goat",
+      "wg": "White Giraffe",
+      "wgf": "White Giraffe Family",
+      "ay": "Aqua Yeti",
+      "ssm": "Shop Snowman",
+      "lsm": "Luck Snowman",
+      "sbf": "Shop BigFoot",
+      "lbf": "Luck BigFoot",
+      "ssg": "Shop Snowgirl",
+      "lsg": "Luck Snowgirl",
+      "kd": "King Dragon"
+    }
 });
 
 // ========== FUNCTIONS ==========
