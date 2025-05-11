@@ -4,6 +4,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
+    $callFunction[checking;]
     $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;# You already have an active challenge!]
 
     # 1 hour luck challenge has begun!
@@ -24,6 +25,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
+    $callFunction[checking;]
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     
     ${vars()}
@@ -37,6 +39,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
+    $callFunction[checking;]
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     $!stopInterval[1HLUCK-$authorID]
     $setUserVar[1hpaused;true]
@@ -137,6 +140,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
+    $callFunction[checking;]
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     # You ended your challenge!
     ${pts()}
@@ -148,6 +152,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
+    $callFunction[checking;]
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     ${pts()}
   `
@@ -157,6 +162,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
+    $callFunction[checking;]
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     $onlyIf[$and[$isNumber[$message];$message>=0];## Only a number greater than or equal to 0 is allowed!]
     $setUserVar[1hpoints;$message]
@@ -168,6 +174,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
+    $callFunction[checking;]
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
     $onlyIf[$or[$and[$isNumber[$message];$message>=0];$checkContains[$message;:]];## Only seconds greater than or equal to 0 or time format "HH:MM:SS" is allowed!]
 
