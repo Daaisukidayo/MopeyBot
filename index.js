@@ -357,47 +357,47 @@ ForgeDB.variables({
   raresMap: `
     {
       "category": "common",
-      "rares": ["cht", "kbt", "mh"\],
+      "rares": ["cht", "kbt", "mh", "chocotoucan", "keelbilledtoucan", "markhor"\],
       "points": 1
     }, 
     {
       "category": "uncommon",
-      "rares": ["doe", "bm", "jag", "leo", "ft", "yp", "ln"\],
+      "rares": ["doe", "bm", "jag", "leo", "ft", "yp", "ln", "bluemacaw", "jaguar", "leopard", "fierytoucan", "yellowpufferfish", "lioness"\],
       "points": 2
     }, 
     {
       "category": "rare",
-      "rares": ["wd", "pp", "mad", "gph", "mm", "mf", "bp", "lc", "bml"\],
+      "rares": ["wd", "pp", "mad", "gph", "mm", "mf", "bp", "lc", "bml", "whitedove", "pinkypig", "marshdeer", "goldenpheasant", "momaffie", "momaffiefamily", "blackpanther", "lioncub", "blackmanedlion"\],
       "points": 3
     }, 
     {
       "category": "epic",
-      "rares": ["ja", "gir", "wt", "wl", "wln", "wlc", "bg", "sbf", "ssm", "ssg"\],
+      "rares": ["ja", "gir", "wt", "wl", "wln", "wlc", "bg", "sbf", "ssm", "ssg", "jackass", "girabie", "whitetiger", "whitelion", "whitelioness", "whitelioncub", "biggoat", "shopbigfoot", "shopsnowman", "shopsnowgirl"\],
       "points": 5
     }, 
     {
       "category": "insane",
-      "rares": ["sp", "md", "bl", "bln", "blc", "pr", "ge", "wr", "ay"\],
+      "rares": ["sp", "md", "bl", "bln", "blc", "pr", "ge", "wr", "ay", "stinkypig", "muskdeer", "blacklion", "blacklioness", "blacklioncub", "predator", "goldeneagle", "whiterhino", "aquayeti"\],
       "points": 8
     }, 
     {
       "category": "legendary",
-      "rares": ["lt", "dp", "br", "wg"\],
+      "rares": ["lt", "dp", "br", "wg", "lavatoucan", "demonpufferfish", "demonfish", "blackrhino", "whitegiraffe"\],
       "points": 15
     }, 
     {
       "category": "extreme",
-      "rares": ["wgf"\],
+      "rares": ["gf", "giraffefamily"\],
       "points": 20
     }, 
     {
       "category": "mythic",
-      "rares": ["lbf", "lsm", "lsg", "kd"\],
+      "rares": ["lbf", "lsm", "lsg", "kd", "luckbigfoot", "lucksnowman", "lucksnowgirl", "kingdragon"\],
       "points": 30
     }, 
     {
       "category": "godly",
-      "rares": ["sm", "hht", "arg", "shh", "har", "gse"\],
+      "rares": ["sm", "hht", "arg", "shh", "har", "gse", "spixmacaw", "helmetedhornbill", "argentavis", "shaheen", "harpyeagle", "greaterspottedeagle"\],
       "points": 50
     }`,
 
@@ -446,7 +446,7 @@ ForgeDB.variables({
       "mh": "Markhor",
       "bg": "Big Goat",
       "wg": "White Giraffe",
-      "wgf": "White Giraffe Family",
+      "gf": "White Giraffe Family",
       "ay": "Aqua Yeti",
       "ssm": "Shop Snowman",
       "lsm": "Luck Snowman",
@@ -454,7 +454,61 @@ ForgeDB.variables({
       "lbf": "Luck BigFoot",
       "ssg": "Shop Snowgirl",
       "lsg": "Luck Snowgirl",
-      "kd": "King Dragon"
+      "kd": "King Dragon",
+      "whitedove": "White Dove",
+      "pinkypig": "Pinky Pig",
+      "stinkypig": "Stinky Pig",
+      "doe": "Doe",
+      "marshdeer": "Marsh Deer",
+      "muskdeer": "Musk Deer",
+      "goldenpheasant": "Golden Pheasant",
+      "bluemacaw": "Blue Macaw",
+      "spixmacaw": "Spix Macaw",
+      "jackass": "Jackass",
+      "momaffie": "Momaffie",
+      "momaffiefamily": "Momaffie Family",
+      "girabie": "Girabie",
+      "jaguar": "Jaguar",
+      "leopard": "Leopard",
+      "blackpanther": "Black Panther",
+      "chocotoucan": "Choco Toucan",
+      "keelbilledtoucan": "Keel-Billed Toucan",
+      "fierytoucan": "Fiery Toucan",
+      "lavatoucan": "Lava Toucan",
+      "helmetedhornbill": "Helmeted Hornbill Toucan",
+      "yellowpufferfish": "Yellow Pufferfish",
+      "demonpufferfish": "Demon Pufferfish",
+      "demonfish": "Demon Pufferfish",
+      "whitetiger": "White Tiger",
+      "lioncub": "Lion Cub",
+      "whitelioncub": "White Lion Cub",
+      "blacklioncub": "Black Lion Cub",
+      "lioness": "Lioness",
+      "whitelioness": "White Lioness",
+      "blacklioness": "Black Lioness",
+      "blackmanedlion": "Black-Maned Lion",
+      "whitelion": "White Lion",
+      "blacklion": "Black Lion",
+      "argentavis": "Argentavis",
+      "predator": "Predator",
+      "shaheen": "Shaheen",
+      "whiterhino": "White Rhino",
+      "blackrhino": "Black Rhino",
+      "goldeneagle": "Golden Eagle",
+      "harpyeagle": "Harpy Eagle",
+      "greaterspottedeagle": "Greater-Spotted Eagle",
+      "markhor": "Markhor",
+      "biggoat": "Big Goat",
+      "whitegiraffe": "White Giraffe",
+      "giraffefamily": "Giraffe Family",
+      "aquayeti": "Aqua Yeti",
+      "shopsnowman": "Shop Snowman",
+      "lucksnowman": "Luck Snowman",
+      "shopbigfoot": "Shop BigFoot",
+      "luckbigfoot": "Luck BigFoot",
+      "shopsnowgirl": "Shop Snowgirl",
+      "lucksnowgirl": "Luck Snowgirl",
+      "kingdragon": "King Dragon"
     }
 });
 
