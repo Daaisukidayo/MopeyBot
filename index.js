@@ -107,7 +107,6 @@ ForgeDB.variables({
   MC: 0,
   MUID: -1,
   l10n: "EN",
-  paused: false,
   
   botEnabled: true,
   maxID: 0,
@@ -357,7 +356,7 @@ ForgeDB.variables({
   raresMap: `
     {
       "category": "common",
-      "rares": ["cht", "kbt", "mh", "chocotoucan", "keelbilledtoucan", "markhor"\],
+      "rares": ["cht", "kbt", "mar", "chocotoucan", "keelbilledtoucan", "markhor"\],
       "points": 1
     }, 
     {
@@ -367,17 +366,17 @@ ForgeDB.variables({
     }, 
     {
       "category": "rare",
-      "rares": ["wd", "pp", "mad", "gph", "mm", "mf", "bp", "lc", "bml", "whitedove", "pinkypig", "marshdeer", "goldenpheasant", "momaffie", "momaffiefamily", "blackpanther", "lioncub", "blackmanedlion"\],
+      "rares": ["wd", "pp", "mad", "gph", "mom", "mf", "bp", "lc", "bml", "whitedove", "pinkypig", "marshdeer", "goldenpheasant", "momaffie", "momaffiefamily", "blackpanther", "lioncub", "blackmanedlion"\],
       "points": 3
     }, 
     {
       "category": "epic",
-      "rares": ["ja", "gir", "wt", "wl", "wln", "wlc", "bg", "sbf", "ssm", "ssg", "jackass", "girabie", "whitetiger", "whitelion", "whitelioness", "whitelioncub", "biggoat", "shopbigfoot", "shopsnowman", "shopsnowgirl"\],
+      "rares": ["jack", "gir", "wt", "wl", "wln", "wlc", "bg", "sbf", "ssm", "ssg", "jackass", "girabie", "whitetiger", "whitelion", "whitelioness", "whitelioncub", "biggoat", "shopbigfoot", "shopsnowman", "shopsnowgirl"\],
       "points": 5
     }, 
     {
       "category": "insane",
-      "rares": ["sp", "md", "bl", "bln", "blc", "pr", "ge", "wr", "ay", "stinkypig", "muskdeer", "blacklion", "blacklioness", "blacklioncub", "predator", "goldeneagle", "whiterhino", "aquayeti"\],
+      "rares": ["sp", "md", "bl", "bln", "blc", "pre", "ge", "wr", "ay", "stinkypig", "muskdeer", "blacklion", "blacklioness", "blacklioncub", "predator", "goldeneagle", "whiterhino", "aquayeti"\],
       "points": 8
     }, 
     {

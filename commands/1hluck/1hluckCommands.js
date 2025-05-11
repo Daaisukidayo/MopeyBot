@@ -13,7 +13,7 @@ module.exports = [
     $setUserVar[1hpaused;false]
     $setUserVar[kbt;0]
     $setUserVar[cht;0]
-    $setUserVar[mh;0]
+    $setUserVar[mar;0]
     $setUserVar[1htotalRares;0]
     $setUserVar[1hallRaresList;{}]
 
@@ -38,7 +38,7 @@ module.exports = [
   code: `
     $reply
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
-    $!stopInterval[1HLUCK]
+    $!stopInterval[1HLUCK-$authorID]
     $setUserVar[1hpaused;true]
     ${vars()}
 
@@ -97,18 +97,23 @@ module.exports = [
             $if[$env[rareOBJ;category]!=common;
               ${rares()}
             ;
-              $arrayForEach[raresFromOBJ;com;
-                $if[$env[caughtRare]==$env[com];
-                  $if[$getUserVar[$env[com]]<3;
-                    ${rares()}
-                    $setUserVar[$env[com];$math[$getUserVar[$env[com]] + 1]]
-                    $if[$getUserVar[$env[com]]==3;
-                      $sendMessage[$channelID;# <@$authorID> You got all $switch[$env[com];$case[mh;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
-                    ]
-                  ;
-                    $arrayPush[caught;+0]
-                  ]
+              $switch[$env[caughtRare];
+                $case[markhor;$let[com;mar]]
+                $case[chocotoucan;$let[com;cht]]
+                $case[keelbilledtoucan;$let[com;kbt]]
+                $case[mar;$let[com;mar]]
+                $case[cht;$let[com;cht]]
+                $case[kbt;$let[com;kbt]]
+              ]
+                
+              $if[$getUserVar[$get[com]]<3;
+                ${rares()}
+                $setUserVar[$get[com];$math[$getUserVar[$get[com]] + 1]]
+                $if[$getUserVar[$get[com]]==3;
+                  $sendMessage[$channelID;# <@$authorID> You got all $switch[$get[com];$case[mar;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
                 ]
+              ;
+                $arrayPush[caught;+0]
               ]
             ]
           ]
@@ -124,7 +129,7 @@ module.exports = [
       $arrayForEach[caught;pts;$let[pts;$get[pts]$env[pts] ]]
       $reply[$channelID;$messageID;true]
       $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
-      # $get[pts] = $get[points]\n### Total: ||$getUserVar[1hpoints]||$if[$getUserVar[mh]<3;\n-# M: \`$getUserVar[mh]\`]$if[$getUserVar[cht]<3;\n-# CHT: \`$getUserVar[cht]\`]$if[$getUserVar[kbt]<3;\n-# KBT: \`$getUserVar[kbt]\`]
+      # $get[pts] = $get[points]\n### Total: ||$getUserVar[1hpoints]||$if[$getUserVar[mar]<3;\n-# M: \`$getUserVar[mar]\`]$if[$getUserVar[cht]<3;\n-# CHT: \`$getUserVar[cht]\`]$if[$getUserVar[kbt]<3;\n-# KBT: \`$getUserVar[kbt]\`]
     ]
   `
 },{
@@ -195,7 +200,7 @@ $setInterval[
     $if[$getUserVar[1htime]==3598;  $sendMessage[$channelID;# <@$authorID> 2 seconds left!]   ]
     $if[$getUserVar[1htime]==3599;  $sendMessage[$channelID;# <@$authorID> 1 second left!]    ] 
     $if[$getUserVar[1htime]==3600;  $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
-;1s;1HLUCK]`
+;1s;1HLUCK-$authorID]`
 }
 
 function vars () {
@@ -218,20 +223,20 @@ function pts () {
 return `
 # Points: ||$getUserVar[1hpoints]||
 ## Total rares: ||$getUserVar[1htotalRares]||
-$c[## Commons: \n$codeBlock[Markhor: $getuservar[mh]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]]
+$c[## Commons: \n$codeBlock[Markhor: $getuservar[mar]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]]
 ## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";];JSON]
 `
 }
 
 function reset() {
 return `
-$!stopInterval[1HLUCK]
+$!stopInterval[1HLUCK-$authorID]
 $deleteUserVar[1hstarted]
 $deleteUserVar[1hallRaresList]
 $deleteUserVar[1htime]
 $deleteUserVar[1hpoints]
 $deleteUserVar[1hpaused]
-$deleteUserVar[mh]
+$deleteUserVar[mar]
 $deleteUserVar[kbt]
 $deleteUserVar[cht]`
 }
