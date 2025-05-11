@@ -21,7 +21,7 @@ $description[
 ${allRareNames("White Dove")}
 ===================Tier 4=====================
 ${allRareNames("Pinky Pig")}
-${allRareNames("White Dove")}
+${allRareNames("Stinky Pig")}
 ===================Tier 5=====================
 ${allRareNames("Doe")}
 ${allRareNames("Marsh Deer")}
@@ -71,7 +71,7 @@ ${allRareNames("Markhor")}
 ${allRareNames("Big Goat")}
 ===================Tier 13====================
 ${allRareNames("White Giraffe")}
-${allRareNames("White Giraffe Family")}
+${allRareNames("Giraffe Family")}
 ===================Tier 15====================
 ${allRareNames("Aqua Yeti")}
 ${allRareNames("Shop Snowman")}
@@ -86,5 +86,5 @@ $color[$getGlobalVar[luckyColor]]`
 }]
 
 function allRareNames(rare) {
-    return `$arrayAt[allRares;$arrayIndexOf[allRaresNames;${rare}]] - $arrayAt[allRaresNames;$arrayIndexOf[allRaresNames;${rare}]]`
+    return `$codeBlock[$trimSpace[$arrayAt[allRares;$arrayIndexOf[allRaresNames;${rare}]]] | $trimSpace[$arrayAt[allRares;$arrayLastIndexOf[allRaresNames;${rare}]]] ➡️ $trimSpace[$arrayAt[allRaresNames;$arrayIndexOf[allRaresNames;${rare}]]]]`
 }

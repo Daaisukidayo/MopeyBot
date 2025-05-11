@@ -230,7 +230,7 @@ module.exports = [{
     ;$if[$get[arg]==start;
 
         $title[$get[comNameEmoji] Start]
-        $description[## Starts your 1 hour luck challenge! \nWhile in progress, you must write names of rares from \`$getGuildVar[prefix]snora\` without prefix to earn points!]
+        $description[## Starts your 1 hour luck challenge! \n### While in progress, you must write names of rares from \`$getGuildVar[prefix]snora\` without prefix to earn points!\n### Example: \`mar cht kbt pre mud...\`]
         $addField[$get[rel];\`pause\`, \`resume\`, \`time\`, \`snora\`, \`points\`, \`edittime\`, \`editpoints\`, \`end\`]
 
     ;$if[$get[arg]==snora;
@@ -243,7 +243,7 @@ module.exports = [{
     ;$if[$get[arg]==pause;
 
         $title[$get[comNameEmoji] Pause]
-        $description[## Pauses your 1 hour luck challenge! \nYou can continue it at any time!]
+        $description[## Pauses your 1 hour luck challenge! \n### You can continue it at any time!]
         $addField[$get[rel];\`snora\`, \`resume\`, \`time\`, \`start\`, \`points\`, \`edittime\`, \`editpoints\`, \`end\`]
 
     ;$if[$or[$get[arg]==resume;$get[arg]==res;$get[arg]==continue];
