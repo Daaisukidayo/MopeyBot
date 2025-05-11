@@ -16,6 +16,7 @@ $jsonLoad[SNORA;$getGlobalVar[SNORA]]
 $arrayLoad[allRares;,;$advancedReplace[$trimSpace[$jsonKeys[SNORA]];\\[;;\\];;";;\n;]]
 $arrayLoad[allRaresNames;, ;$jsonValues[SNORA;, ]]
 
+$footer["||" is "or". It means you need to write for example "cht" or "chocotoucan"]
 $description[
 **===================Tier 2=====================
 ${allRareNames("White Dove")}
