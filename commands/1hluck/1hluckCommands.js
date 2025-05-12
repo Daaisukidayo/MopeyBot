@@ -26,12 +26,9 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
-    
-    ${vars()}
-    
-    ${time()}
+    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]    
     $if[$getUserVar[1hpaused];# Status: Paused]
+    ${time()}
   `
 },{
 
@@ -41,10 +38,9 @@ module.exports = [
     $reply
     $callFunction[checking;]
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
+    $onlyIf[$getUserVar[1hpaused]==false;# You already have paused the challenge!]
     $!stopInterval[1HLUCK-$authorID]
     $setUserVar[1hpaused;true]
-    ${vars()}
-
     # Paused!
     ${time()}
   `
@@ -56,13 +52,10 @@ module.exports = [
   code: `
     $reply
     $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
+    $onlyIf[$getUserVar[1hpaused];# You haven't paused your challenge!]
     $setUserVar[1hpaused;false]
-
-    ${vars()}
-
     # Continued!
     ${time()}
-
     ${interval()}
   `
 },{
@@ -132,7 +125,10 @@ module.exports = [
       $arrayForEach[caught;pts;$let[pts;$get[pts]$env[pts] ]]
       $reply[$channelID;$messageID;true]
       $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
-      # $get[pts] = $get[points]\n### Total: ||$getUserVar[1hpoints]||$if[$getUserVar[mar]<3;\n-# M: \`$getUserVar[mar]\`]$if[$getUserVar[cht]<3;\n-# CHT: \`$getUserVar[cht]\`]$if[$getUserVar[kbt]<3;\n-# KBT: \`$getUserVar[kbt]\`]
+      $trimLines[# $get[pts] = $get[points]
+      ## Total: ||$getUserVar[1hpoints]||
+      ${commons("-#")}
+      ${time("-#")}]
     ]
   `
 },{
@@ -183,7 +179,6 @@ module.exports = [
     ;
       $setUserVar[1htime;$message]
     ]
-    ${vars()}
     ${time()}
   `
 }]
@@ -196,17 +191,19 @@ return `
 $setInterval[
     $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
 
-    $if[$getUserVar[1htime]==1800;  $sendMessage[$channelID;# <@$authorID> 30 minutes left!]  ]
-    $if[$getUserVar[1htime]==3300;  $sendMessage[$channelID;# <@$authorID> 5 minutes left!]   ]
-    $if[$getUserVar[1htime]==3540;  $sendMessage[$channelID;# <@$authorID> 1 minute left!]    ]
-    $if[$getUserVar[1htime]==3570;  $sendMessage[$channelID;# <@$authorID> 30 seconds left!]  ]
-    $if[$getUserVar[1htime]==3585;  $sendMessage[$channelID;# <@$authorID> 15 seconds left!]  ]
-    $if[$getUserVar[1htime]==3595;  $sendMessage[$channelID;# <@$authorID> 5 seconds left!]   ]
-    $if[$getUserVar[1htime]==3596;  $sendMessage[$channelID;# <@$authorID> 4 seconds left!]   ]
-    $if[$getUserVar[1htime]==3597;  $sendMessage[$channelID;# <@$authorID> 3 seconds left!]   ]
-    $if[$getUserVar[1htime]==3598;  $sendMessage[$channelID;# <@$authorID> 2 seconds left!]   ]
-    $if[$getUserVar[1htime]==3599;  $sendMessage[$channelID;# <@$authorID> 1 second left!]    ] 
-    $if[$getUserVar[1htime]==3600;  $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
+    $switch[$getUserVar[1htime];
+      $case[1800;   $sendMessage[$channelID;# <@$authorID> 30 minutes left!]  ]
+      $case[3300;   $sendMessage[$channelID;# <@$authorID> 5 minutes left!]   ]
+      $case[3540;   $sendMessage[$channelID;# <@$authorID> 1 minute left!]    ]
+      $case[3570;   $sendMessage[$channelID;# <@$authorID> 30 seconds left!]  ]
+      $case[3585;   $sendMessage[$channelID;# <@$authorID> 15 seconds left!]  ]
+      $case[3595;   $sendMessage[$channelID;# <@$authorID> 5 seconds left!]   ]
+      $case[3596;   $sendMessage[$channelID;# <@$authorID> 4 seconds left!]   ]
+      $case[3597;   $sendMessage[$channelID;# <@$authorID> 3 seconds left!]   ]
+      $case[3598;   $sendMessage[$channelID;# <@$authorID> 2 seconds left!]   ]
+      $case[3599;   $sendMessage[$channelID;# <@$authorID> 1 second left!]    ] 
+      $case[3600;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
+    ]
 ;1s;1HLUCK-$authorID]`
 }
 
@@ -220,17 +217,15 @@ $let[second;$floor[$math[$get[remaining] % 60]]]
 $if[$charCount[$get[second]]==1; $let[second;0$get[second]] ]
 `}
 
-function time () {
+function time (beginning = "##") {
 return `
-## Time passed: \`$parseDigital[$getUserVar[1htime]000]\`
-## Time left: \`$get[hour]:$get[minute]:$get[second]\``
+${beginning} Time passed: \`$parseDigital[$getUserVar[1htime]000]\`$c[\n${beginning} Time left: \`$get[hour]:$get[minute]:$get[second]\`]`
 }
 
 function pts () {
 return `
 # Points: ||$getUserVar[1hpoints]||
 ## Total rares: ||$getUserVar[1htotalRares]||
-$c[## Commons: \n$codeBlock[Markhor: $getuservar[mar]\nChoco: $getuservar[cht]\nKeel-Billed: $getuservar[kbt];JSON]]
 ## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";];JSON]
 `
 }
@@ -262,4 +257,9 @@ $if[$env[allRaresList;$env[SNORA;$env[caughtRare]]]==;
 
 $setUserVar[1hallRaresList;$env[allRaresList]]
 `
+}
+
+function commons (beginning = "##") {
+return `
+$if[$getUserVar[mar]<3;\n${beginning} MAR: \`$getUserVar[mar]\`]$if[$getUserVar[cht]<3;\n${beginning} CHT: \`$getUserVar[cht]\`]$if[$getUserVar[kbt]<3;\n${beginning} KBT: \`$getUserVar[kbt]\`]`
 }
