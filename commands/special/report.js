@@ -10,7 +10,7 @@ module.exports = [{
     
     $let[msgid;$sendMessage[## Click button below to open your report menu;true]]
     $addActionRow
-    $addButton[Click;report-$authorID;success;no;📢;$var[msg]]
+    $addButton[report-$authorID;Click;success;📢]
 
     $setTimeout[
       $disableButtonsOf[$channelID;$get[msgid]]
