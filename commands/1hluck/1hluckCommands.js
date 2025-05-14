@@ -201,7 +201,7 @@ $setInterval[
       $case[3598;   $sendMessage[$channelID;# <@$authorID> 2 seconds left!]   ]
       $case[3599;   $sendMessage[$channelID;# <@$authorID> 1 second left!]    ] 
       $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 5 SECONDS!!\n-# In case you didn't manage to finish writing]    ] 
-      $case[3604;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
+      $case[3605;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
     ]
 ;1s;1HLUCK-$authorID]`
 }
