@@ -218,7 +218,7 @@ $if[$charCount[$get[second]]==1; $let[second;0$get[second]] ]
 
 function time (beginning = "##") {
 return `
-${beginning} Time passed: $if[$getUserVar[1htime]>=3600;EXTRA 5 SECONDS;\`$parseDigital[$getUserVar[1htime]000]\`$c[\n${beginning} Time left: \`$get[hour]:$get[minute]:$get[second]]\`]`
+${beginning} Time passed: $if[$getUserVar[1htime]>=3600;EXTRA 5 SECONDS;\`$parseDigital[$getUserVar[1htime]000]\`]`
 }
 
 function pts () {
