@@ -192,14 +192,14 @@ $setInterval[
     $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
 
     $switch[$getUserVar[1htime];
-      $case[1800;   $sendMessage[$channelID;# <@$authorID> 30 minutes left!]  ]
-      $case[3300;   $sendMessage[$channelID;# <@$authorID> 5 minutes left!]   ]
-      $case[3540;   $sendMessage[$channelID;# <@$authorID> 1 minute left!]    ]
-      $case[3595;   $sendMessage[$channelID;# <@$authorID> 5 seconds left!]   ]
-      $case[3596;   $sendMessage[$channelID;# <@$authorID> 4 seconds left!]   ]
-      $case[3597;   $sendMessage[$channelID;# <@$authorID> 3 seconds left!]   ]
-      $case[3598;   $sendMessage[$channelID;# <@$authorID> 2 seconds left!]   ]
-      $case[3599;   $sendMessage[$channelID;# <@$authorID> 1 second left!]    ] 
+      $case[1800;   ${timeLeft(30, `minute`)}  ]
+      $case[3300;   ${timeLeft(5, `minute`)}   ]
+      $case[3540;   ${timeLeft(1, `minute`)}   ]
+      $case[3595;   ${timeLeft(5, `second`)}   ]
+      $case[3596;   ${timeLeft(4, `second`)}   ]
+      $case[3597;   ${timeLeft(3, `second`)}   ]
+      $case[3598;   ${timeLeft(2, `second`)}   ]
+      $case[3599;   ${timeLeft(1, `second`)}   ] 
       $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 5 SECONDS!!\n-# In case you didn't manage to finish writing]    ] 
       $case[3605;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
     ]
@@ -261,4 +261,8 @@ $setUserVar[1hallRaresList;$env[allRaresList]]
 function commons (beginning = "##") {
 return `
 $if[$getUserVar[mar]<3;\n${beginning} MAR: \`$getUserVar[mar]\`/3]$if[$getUserVar[cht]<3;\n${beginning} CHT: \`$getUserVar[cht]\`/3]$if[$getUserVar[kbt]<3;\n${beginning} KBT: \`$getUserVar[kbt]\`/3]`
+}
+
+function timeLeft (num, time) {
+  return `$sendMessage[$channelID;# <@$authorID> ${num} ${time}(s) left!]`
 }
