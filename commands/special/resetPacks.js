@@ -16,7 +16,7 @@ module.exports = [{
 
     $setTimeout[
       $disableButtonsOf[$channelID;$get[msgid]]
-    ;1m;RP]
+    ;1m;RP-$authorID]
   `
 },{ 
   type: "interactionCreate", 
@@ -33,6 +33,6 @@ module.exports = [{
         $!editMessage[$channelID;$messageID;Deletion canceled!]
     ]
 
-    $!stopTimeout[RP]
+    $!stopTimeout[RP-$authorID]
   `
 }] 

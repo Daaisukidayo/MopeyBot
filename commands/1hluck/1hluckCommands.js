@@ -195,14 +195,13 @@ $setInterval[
       $case[1800;   $sendMessage[$channelID;# <@$authorID> 30 minutes left!]  ]
       $case[3300;   $sendMessage[$channelID;# <@$authorID> 5 minutes left!]   ]
       $case[3540;   $sendMessage[$channelID;# <@$authorID> 1 minute left!]    ]
-      $case[3570;   $sendMessage[$channelID;# <@$authorID> 30 seconds left!]  ]
-      $case[3585;   $sendMessage[$channelID;# <@$authorID> 15 seconds left!]  ]
       $case[3595;   $sendMessage[$channelID;# <@$authorID> 5 seconds left!]   ]
       $case[3596;   $sendMessage[$channelID;# <@$authorID> 4 seconds left!]   ]
       $case[3597;   $sendMessage[$channelID;# <@$authorID> 3 seconds left!]   ]
       $case[3598;   $sendMessage[$channelID;# <@$authorID> 2 seconds left!]   ]
       $case[3599;   $sendMessage[$channelID;# <@$authorID> 1 second left!]    ] 
-      $case[3600;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
+      $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 5 SECONDS!!\n-# In case you didn't manage to finish writing]    ] 
+      $case[3604;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
     ]
 ;1s;1HLUCK-$authorID]`
 }
@@ -219,7 +218,7 @@ $if[$charCount[$get[second]]==1; $let[second;0$get[second]] ]
 
 function time (beginning = "##") {
 return `
-${beginning} Time passed: \`$parseDigital[$getUserVar[1htime]000]\`$c[\n${beginning} Time left: \`$get[hour]:$get[minute]:$get[second]\`]`
+${beginning} Time passed: $if[$getUserVar[1htime]>=3600;EXTRA 5 SECONDS;\`$parseDigital[$getUserVar[1htime]000]\`$c[\n${beginning} Time left: \`$get[hour]:$get[minute]:$get[second]]\`]`
 }
 
 function pts () {
@@ -261,5 +260,5 @@ $setUserVar[1hallRaresList;$env[allRaresList]]
 
 function commons (beginning = "##") {
 return `
-$if[$getUserVar[mar]<3;\n${beginning} MAR: \`$getUserVar[mar]\`]$if[$getUserVar[cht]<3;\n${beginning} CHT: \`$getUserVar[cht]\`]$if[$getUserVar[kbt]<3;\n${beginning} KBT: \`$getUserVar[kbt]\`]`
+$if[$getUserVar[mar]<3;\n${beginning} MAR: \`$getUserVar[mar]\`/3]$if[$getUserVar[cht]<3;\n${beginning} CHT: \`$getUserVar[cht]\`/3]$if[$getUserVar[kbt]<3;\n${beginning} KBT: \`$getUserVar[kbt]\`/3]`
 }

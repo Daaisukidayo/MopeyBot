@@ -76,7 +76,7 @@ module.exports = [{
 
     $!editMessage[$channelID;$get[msgid];${embed()}]
 
-    $!clearTimeout[CR]
+    $!clearTimeout[CR-$authorID]
 
     ${timeout()}
 
@@ -102,7 +102,7 @@ module.exports = [{
 
     $!editMessage[$channelID;$get[msgid];${embed()} $replace[$get[desc8];{6};\`$splitText[2]\`]]
 
-    $!clearTimeout[CR]
+    $!clearTimeout[CR-$authorID]
 
     ${timeout()}
 

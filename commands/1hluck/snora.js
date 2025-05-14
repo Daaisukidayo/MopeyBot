@@ -87,5 +87,5 @@ $color[$getGlobalVar[luckyColor]]`
 }]
 
 function allRareNames(rare) {
-    return `$codeBlock[$trimSpace[$arrayAt[allRares;$arrayIndexOf[allRaresNames;${rare}]]] || $trimSpace[$arrayAt[allRares;$arrayLastIndexOf[allRaresNames;${rare}]]] ➡️ $trimSpace[$arrayAt[allRaresNames;$arrayIndexOf[allRaresNames;${rare}]]]]`
+    return `### $trimSpace[$arrayAt[allRares;$arrayIndexOf[allRaresNames;${rare}]]] || $trimSpace[$arrayAt[allRares;$arrayLastIndexOf[allRaresNames;${rare}]]] ➡️ $trimSpace[$arrayAt[allRaresNames;$arrayIndexOf[allRaresNames;${rare}]]]`
 }

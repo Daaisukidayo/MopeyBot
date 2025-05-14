@@ -81,8 +81,8 @@ function vars() {
             $let[lb;There is no one on this page!]
     ]
 
-    $!stopTimeout[LB]
-    $!stopTimeout[LBV]
+    $!stopTimeout[LB-$authorID]
+    $!stopTimeout[LBV-$authorID]
 
     $if[$getMessageVar[pages;$get[lbmsgID]]>1;
       ${buttons()}
@@ -134,7 +134,7 @@ return `
 $setTimeout[ 
   ${buttons(true)}
   $!editMessage[$channelID;$get[lbmsgID];${lbgen()} $color[GRAY] This message is now inactive. Run the command again.] 
-;${CD};LB]
+;${CD};LB-$authorID]
 `}
 
 function timeoutV() {
@@ -143,5 +143,5 @@ $setTimeout[
   $deleteMessageVar[page;$get[lbmsgID]]  
   $deleteMessageVar[pages;$get[lbmsgID]]  
   $deleteMessageVar[rowsPerPage;$get[lbmsgID]]  
-;${CD}1s;LBV]`
+;${CD}1s;LBV-$authorID]`
 }

@@ -38,7 +38,7 @@ module.exports = [{
 
     $onlyIf[$arrayIncludes[trig;$splitText[0]]]
 
-    $!stopTimeout[SHOP]
+    $!stopTimeout[SHOP-$authorID]
 
     $jsonLoad[userPacks;$getUserVar[userPacks]]
 
@@ -134,5 +134,5 @@ $setTimeout[
     ${menu(true)}
     $addOption[.;;.]
     $!editMessage[$channelID;$get[msgid];${embedShop()}$color[GRAY] This message is now inactive]
-;1m;SHOP]
+;1m;SHOP-$authorID]
 `}

@@ -53,7 +53,7 @@ module.exports = [{
     $!editMessage[$channelID;$get[msgid];${embed()}]
 
     $deferUpdate
-    $!clearTimeout[RTM]
+    $!clearTimeout[RTM-$authorID]
     ${timeout()}
   `
 }]
@@ -99,5 +99,5 @@ return `
 $setTimeout[ 
   ${buttonsLoop(`true`)}
   $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
-;${CD};RTM]`
+;${CD};RTM-$authorID]`
 }
