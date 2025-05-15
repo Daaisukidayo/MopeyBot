@@ -8,7 +8,7 @@ module.exports = [{
     $callFunction[cooldown;$get[cdTime]]
 
     
-    $let[msgid;$sendMessage[## Click button below to open your report menu;true]]
+    $let[msgid;$sendMessage[$channelid;## Click button below to open your report menu;true]]
     $addActionRow
     $addButton[report-$authorID;Click;success;📢]
 
