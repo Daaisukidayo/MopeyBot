@@ -77,13 +77,13 @@ function baseChance(par) {
 
 function thumbnailAndArray() {
     return `
-    $arrayLoad[thumbnails;,;$advancedReplace[$env[raresGroup;category_$get[p];thumbnail];\n;;";;\\];;\\[;]]   $c[⬅️ Making and fixing thumbnail array from json object]
-    $arrayLoad[contents;,;$advancedReplace[$env[raresGroup;category_$get[p];content];\n;;";;\\];;\\[;]]       $c[⬅️ Making and fixing content array from json object]
+    $arrayLoad[thumbnails;,;$advancedReplace[$env[raresGroup;category_$get[p];thumbnail];\n;;";;\\];;\\[;]]
+    $arrayLoad[contents;,;$advancedReplace[$env[raresGroup;category_$get[p];content];\n;;";;\\];;\\[;]]
 
 
     $let[thumbnailAndContentIndex;$arrayRandomIndex[thumbnails]]
-    $let[thumbnail;$arrayAt[thumbnails;$get[thumbnailAndContentIndex]]]     $c[⬅️ Getting random thumbnail from saved array]
-    $let[animal;$arrayAt[contents;$get[thumbnailAndContentIndex]]]         $c[⬅️ Getting random content from saved array]
+    $let[thumbnail;$arrayAt[thumbnails;$get[thumbnailAndContentIndex]]]
+    $let[animal;$arrayAt[contents;$get[thumbnailAndContentIndex]]]
 
     `
 }
@@ -102,27 +102,27 @@ function content() {
 
 function catchingRare() {
 return `
-$if[$and[$getUserVar[dev];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]]; $c[⬅️ Summon specific category by message]
+$if[$and[$getUserVar[dev];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]];
     $let[p;$message[0]]
     $let[caught;true]
 
-    ${baseChance(`p`)}
+    ${baseChance("p")}
     ${colorAndCoins()}
     $let[cat;$arrayAt[categories;$get[p]]]
     ${thumbnailAndArray()}
-    ${content()}          $c[⬅️ Content if something caught]
+    ${content()}
 
-    $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
+    $callFunction[sumMC;$get[MC]]
 
     ${sm()}
 
 ;
     $let[i;$get[li]]
 
-    $loop[$get[al];     $c[⬅️ Looping through all categories]
-        ${baseChance(`i`)}
+    $loop[$get[al];
+        ${baseChance("i")}
 
-        $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; $c[⬅️ If random number from 1 to base chance (from json) = 1 (that means we caught rare), getting coins and color from json and saving iteration as "p" variable]
+        $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; 
             $let[caught;true]
             $let[p;$get[i]]
 
@@ -134,10 +134,10 @@ $if[$and[$getUserVar[dev];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$
 
             ${colorAndCoins()}
             ${thumbnailAndArray()}
-            ${content()}          $c[⬅️ Content if something caught]
+            ${content()}
 
 
-            $callFunction[sumMC;$get[MC]] $c[⬅️ Custom function to add coins to balance]
+            $callFunction[sumMC;$get[MC]]
 
             ${sm()}
         ]
