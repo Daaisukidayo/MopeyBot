@@ -90,10 +90,10 @@ function thumbnailAndArray() {
 
 function content() {
     return `
-    $let[content;$arrayRandomValue[content2] __$get[animal]__]
+    $let[content;$trimLines[$arrayRandomValue[content2]] __$get[animal]__]
 
     $if[$get[MC]!=0;
-        $let[content;$get[content] $arrayRandomValue[content3] $separateNumber[$get[MC];.]$getGlobalVar[emoji]]
+        $let[content;$get[content] $trimLines[$arrayRandomValue[content3]] $separateNumber[$get[MC];.]$getGlobalVar[emoji]]
     ]
 
     $let[content;## $get[content]!]
