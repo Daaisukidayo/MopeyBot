@@ -37,9 +37,7 @@ module.exports = [{
   code: `
     $textSplit[$customID;-]
     $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN;]]
-
-
-    $onlyIf[$customID==reportModal-$authorID]
+    $onlyIf[$splitText[1]==reportModal]
 
     $sendMessage[$getGlobalVar[reportChannelID];
       # New report
