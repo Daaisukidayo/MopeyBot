@@ -119,6 +119,7 @@ ForgeDB.variables({
   logColor: "#2019b3",
   blank: "<:blank:898514292926713866>",
   author: "$author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]",
+  reportChannelID: "1372645851159330947",
 
   caughtRareCategories: {
     inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
