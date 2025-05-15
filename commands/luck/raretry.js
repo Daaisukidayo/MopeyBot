@@ -1,60 +1,54 @@
 module.exports = [{ 
-name: "raretry", 
-aliases: ["rt"], 
-type: "messageCreate", 
-code: `
-    
-$reply
+  name: "raretry", 
+  aliases: ["rt"], 
+  type: "messageCreate", 
+  code: `
+        
+    $reply
 
-$let[cdTime;5m]
-$callFunction[checking;]
-$callFunction[cooldown;$get[cdTime]]
+    $let[cdTime;5m]
+    $callFunction[checking;]
+    $callFunction[cooldown;$get[cdTime]]
 
-$jsonLoad[animals;$readFile[json/animals.json]]
-$jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
-$jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
+    $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
 
-$jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
-$jsonLoad[raresGroup;$eval[$callFunction[raretryData;];false]]
+    $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
+    $jsonLoad[raresGroup;$eval[$callFunction[raretryData;];false]]
 
-$arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
+    $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
 
-$jsonLoad[l10n;$readFile[json/localizations.json]]
-$let[l10n;$getUserVar[l10n]]
+    $jsonLoad[l10n;$readFile[json/localizations.json]]
+    $let[l10n;$getUserVar[l10n]]
 
-$loop[3;
-    $arrayLoad[content$env[i];--;$if[${rep()}==;textNotFound | ID: $get[l10n]$env[i];${rep()}]]
-    $let[raretryDesc$env[i];$env[l10n;raretry;raretryDesc$env[i];$get[l10n]]]
-    $if[$get[raretryDesc$env[i]]==;$let[raretryDesc$env[i];textNotFound | ID: $get[l10n]$env[i]]]
-;i;desc]
+    $loop[3;
+        $arrayLoad[content$env[i];--;$if[${rep()}==;textNotFound | ID: $get[l10n]$env[i];${rep()}]]
+        $let[raretryDesc$env[i];$env[l10n;raretry;raretryDesc$env[i];$get[l10n]]]
+        $if[$get[raretryDesc$env[i]]==;$let[raretryDesc$env[i];textNotFound | ID: $get[l10n]$env[i]]]
+    ;i;desc]
 
 
-$let[al;$arrayLength[categories]]
-$let[li;$math[$get[al] - 1]]
+    $let[al;$arrayLength[categories]]
+    $let[li;$math[$get[al] - 1]]
 
-$loop[300;
-  $switch[$getUserVar[rtMode];
-    $case[inferno;$let[rtModeNum;-1]]
-    $case[default;$let[rtModeNum;0]]
-    $case[medium;$let[rtModeNum;1]]
-    $case[hard;$let[rtModeNum;2]]
-    $case[insane;$let[rtModeNum;3]]
-    $case[impossible;$let[rtModeNum;4]]
-  ]
+    $switch[$getUserVar[rtMode];
+        $case[inferno;$let[rtModeNum;-1]]
+        $case[default;$let[rtModeNum;0]]
+        $case[medium;$let[rtModeNum;1]]
+        $case[hard;$let[rtModeNum;2]]
+        $case[insane;$let[rtModeNum;3]]
+        $case[impossible;$let[rtModeNum;4]]
+    ]
 
-  $c[⬇️ Default variables for unsuccessful attempts]
-  $let[p;-1]
-  $let[color;$getGlobalVar[errorColor]]
-  $let[MC;0]
-  $let[caught;false]
-  $let[content;## $arrayRandomValue[content1]] 
-  $let[thumbnail;]
-  ${catchingRare()}
-      
+    $let[p;-1]
+    $let[color;$getGlobalVar[errorColor]]
+    $let[MC;0]
+    $let[caught;false]
+    $let[content;## $arrayRandomValue[content1]] 
+    $let[thumbnail;]
+    ${catchingRare()}
 
-$wait[1s];msgi;desc]
-
-$sendMessage[$channelID;<@$authorID> The command loop has ended!]
 `
 }]
 
@@ -160,7 +154,6 @@ $if[$and[$getUserVar[dev];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$
 function sm() {
 return `
 $sendMessage[$channelID;
-    Attempt: $env[msgi]
     $color[$get[color]]
     $description[$get[content]]
     $thumbnail[$get[thumbnail]]
