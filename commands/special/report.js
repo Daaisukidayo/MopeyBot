@@ -8,10 +8,10 @@ module.exports = [{
     $callFunction[checking;]
     $callFunction[cooldown;$get[cdTime]]
 
-    
-    $let[msgid;$sendMessage[$channelid;## Click button below to open your report menu;true]]
     $addActionRow
     $addButton[report-$authorID;Click;Success;📢]
+    
+    $let[msgid;$sendMessage[$channelid;## Click button below to open your report menu;true]]
 
     $setTimeout[
       $disableButtonsOf[$channelID;$get[msgid]]
