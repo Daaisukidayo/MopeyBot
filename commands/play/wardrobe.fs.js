@@ -89,8 +89,6 @@ module.exports = [{
                 $letSum[i;1]
             ]
         ]
-
-        $log[$env[userWardrobe]]
         
         $setUserVar[userWardrobe;$env[userWardrobe]]
 
