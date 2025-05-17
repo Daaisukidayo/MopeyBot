@@ -1,139 +1,149 @@
 module.exports = [{
-name: "wardrobe", 
-aliases: ["wr"], 
-type: "messageCreate", 
-code: `
+  name: "wardrobe", 
+  aliases: ["wr"], 
+  type: "messageCreate", 
+  code: `
+    $reply
+    $let[cdTime;10s]
 
-$reply
-$let[cdTime;10s]
+    $callFunction[checking;]
+    $callFunction[cooldown;$get[cdTime]]
 
-$callFunction[checking;]
-$callFunction[cooldown;$get[cdTime]]
+    $let[arg;$toLowerCase[$message]]
 
-$onlyIf[$message!=;## Usage: \`$getGuildVar[prefix]wardrobe {new || {TIER/all\\} [SKINPACK_ID\\]}\`!]
+    $onlyIf[$get[arg]!=;## Usage: \`$getGuildVar[prefix]wardrobe new\`\n## Usage: \`$getGuildVar[prefix]wardrobe {tier|all} [SKINPACK_ID\\]\`]
+
+    $let[arg1;$toLowerCase[$message[0]]]
+    $let[arg2;$toLowerCase[$message[1]]]
+
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[userPacks;$getUserVar[userPacks]]
+    $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
+    $arrayLoad[animalsNames;, ;$advancedReplace[$trimLines[$jsonKeys[animals]];\\[\n;;\n\\];;\n; ;";]] $c["]
+    $arrayLoad[skinpackNames;, ;$advancedReplace[$trimLines[$getGlobalVar[allVariants]];\\[\n;;\n\\];;\n; ;";]] $c["]
 
 
-$jsonLoad[animals;$readFile[json/animals.json]]
-$jsonLoad[userPacks;$getUserVar[userPacks]]
-$jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
-$arrayLoad[animalsNames;, ;$advancedReplace[$trimLines[$jsonKeys[animals]];\\[\n;;\n\\];;\n; ;";]]
-$arrayLoad[skinpackNames;, ;$advancedReplace[$trimLines[$getGlobalVar[allVariants]];\\[\n;;\n\\];;\n; ;";]]
+    $if[$get[arg]==new;
+        $let[animal;mouse]
+        $let[desc;]
 
+        $addActionRow
+        $addStringSelectMenu[skins-$authorID;Choose a skin:]
 
-$if[$message==new;
-    $let[animal;mouse]
-    $let[desc;]
+        ${loop()}
 
-    $addActionRow
-    $addStringSelectMenu[skins-$authorID;Choose a skin:]
+        ${embed()}
 
-    ${loop()}
+    ;$if[$isNumber[$get[arg1]];
 
-    ${embed()}
-;
-$if[$isNumber[$message[0]];
-    $onlyIf[$message[1]!=;## You must specify an skinpack id!]
-    $onlyIf[$arrayIncludes[skinpackNames;$message[1]];## This skinpack does not exist!]
+        $onlyIf[$get[arg2]!=;## You must specify an skinpack id!]
+        $onlyIf[$arrayIncludes[skinpackNames;$get[arg2]];## This skinpack does not exist!]
 
-    $let[desc;]
+        $let[desc;]
 
-    ${skinpacks()}
+        ${skinpacks()}
 
-    $arrayForEach[animalsNames;animal;
-        $if[$env[animals;$env[animal];tier]==$message[0];
+        $arrayForEach[animalsNames;animal;
+            $if[$env[animals;$env[animal];tier]==$get[arg1];
+
+                $let[i;0]
+                
+                $while[$get[i]<25;
+                    $if[$env[animals;$env[animal];v$get[i];vCode]==$get[arg2];
+                        $!jsonSet[userWardrobe;$env[animal];v$get[i]]
+                        $let[desc;$get[desc] $env[animals;$env[animal];v$get[i];emoji]]
+                    ]
+                    $letSum[i;1]
+                ]
+            ]
+        ]
+
+        $onlyIf[$get[desc]!=;$sendMessage[$channelid;# All Tier «\`$get[arg1]\`» animals don't have the «\`$get[skinpack]\`» Skinpack!]]
+
+        $setUserVar[userWardrobe;$env[userWardrobe]]
+
+        $sendMessage[$channelID;
+            $getGlobalVar[author]
+            $description[# $get[desc]]
+            $color[$getGlobalVar[defaultColor]]
+            $title[You have successfully equipped tier «$get[arg1]» animals with the «$get[skinpack]» Skinpack!]
+        ]
+
+    ;$if[$get[arg1]==all;
+
+        $onlyIf[$get[arg2]!=;## You must specify a skinpack!]
+        $onlyIf[$arrayIncludes[skinpackNames;$get[arg2]];## This skinpack does not exist!]
+
+        ${skinpacks()}
+
+        $arrayForEach[animalsNames;animal;
 
             $let[i;0]
             
+            
             $while[$get[i]<25;
-                $if[$env[animals;$env[animal];v$get[i];vCode]==$message[1];
+                $if[$env[animals;$env[animal];v$get[i];vCode]==$get[arg2];
                     $!jsonSet[userWardrobe;$env[animal];v$get[i]]
-                    $let[desc;$get[desc] $env[animals;$env[animal];v$get[i];emoji]]
+                    $break
                 ]
                 $letSum[i;1]
             ]
         ]
-    ]
 
-    $onlyIf[$get[desc]!=;$sendMessage[$channelid;# All Tier «\`$message[0]\`» animals don't have the «\`$get[skinpack]\`» Skinpack!]]
-
-    $setUserVar[userWardrobe;$env[userWardrobe]]
-
-    $sendMessage[$channelID;
-        $getGlobalVar[author]
-        $description[# $get[desc]]
-        $color[$getGlobalVar[defaultColor]]
-        $title[You have successfully equipped tier «$message[0]» animals with the «$get[skinpack]» Skinpack!]
-    ]
-;
-$if[$message[0]==all;
-    $onlyIf[$message[1]!=;## You must specify a skinpack!]
-    $onlyIf[$arrayIncludes[skinpackNames;$message[1]];## This skinpack does not exist!]
-
-    $arrayForEach[animalsNames;animal;
-
-        $let[i;0]
+        $log[$env[userWardrobe]]
         
-        
-        $while[$get[i]<25;
-            $if[$env[animals;$env[animal];v$get[i];vCode]==$message[1];
-                $!jsonSet[userWardrobe;$env[animal];v$get[i]]
-                $setUserVar[userWardrobe;$env[userWardrobe]]
-            ]
-            $letSum[i;1]
+        $setUserVar[userWardrobe;$env[userWardrobe]]
+
+        $sendMessage[$channelID;
+            $getGlobalVar[author]
+            $description[# You have successfully equipped all animals with the «\`$get[skinpack]\`» Skinpack!]
+            $color[$getGlobalVar[defaultColor]]
         ]
-    ]
-
-    $sendMessage[$channelID;
-        $getGlobalVar[author]
-        $description[# $get[desc]]
-        $color[$getGlobalVar[defaultColor]]
-        $title[You have successfully equipped all animals with the «$message[1]» Skinpack!]
-    ]
-]]]
-`
+    ]]]
+  `
 },{
-type: "interactionCreate", 
-allowedInteractionTypes: ["selectMenu"], 
-code: `
-$onlyIf[$includes[$selectMenuValues;+]]
+  type: "interactionCreate", 
+  allowedInteractionTypes: ["selectMenu"], 
+  code: `
+    $onlyIf[$includes[$selectMenuValues;+]]
 
-$textSplit[$selectMenuValues;-]
+    $textSplit[$selectMenuValues;-]
 
-$onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
+    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
 
-$let[1part;$splitText[0]]
-$textSplit[$get[1part];+]
+    $let[1part;$splitText[0]]
+    $textSplit[$get[1part];+]
 
- 
-$onlyIf[$and[$splitText[0]!=;$splitText[1]!=]]         $c[Only if id has 2 parts] 
+    
+    $onlyIf[$and[$splitText[0]!=;$splitText[1]!=]]         $c[Only if id has 2 parts] 
 
-$let[variant;$splitText[0]]  
-$let[an;$splitText[1]]
+    $let[variant;$splitText[0]]  
+    $let[an;$splitText[1]]
 
-$jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[animals;$readFile[json/animals.json]]
 
-$arrayLoad[animalsNames;, ;$advancedReplace[$trimLines[$jsonKeys[animals]];\\[\n;;\n\\];;\n; ;";]] $c["]
-$onlyIf[$arrayIncludes[animalsNames;$get[an]]]
+    $arrayLoad[animalsNames;, ;$advancedReplace[$trimLines[$jsonKeys[animals]];\\[\n;;\n\\];;\n; ;";]] $c["]
+    $onlyIf[$arrayIncludes[animalsNames;$get[an]]]
 
-$jsonLoad[userPacks;$getUserVar[userPacks]]
-$jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
+    $jsonLoad[userPacks;$getUserVar[userPacks]]
+    $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
-$!jsonSet[userWardrobe;$get[an];$get[variant]]                   $c[setting new chosen skin] 
-$setUserVar[userWardrobe;$jsonStringify[userWardrobe;2]]        $c[making json object as string with new saved skins and replacing old data with new] 
+    $!jsonSet[userWardrobe;$get[an];$get[variant]]                   $c[setting new chosen skin] 
+    $setUserVar[userWardrobe;$jsonStringify[userWardrobe;2]]        $c[making json object as string with new saved skins and replacing old data with new] 
 
 
-$let[i;$arrayIndexOf[animalsNames;$get[an]]] $c[--> finding animal code name by array index]
- 
-$let[animal;$arrayAt[animalsNames;$math[$get[i] + 1]]]
+    $let[i;$arrayIndexOf[animalsNames;$get[an]]] $c[--> finding animal code name by array index]
+    
+    $let[animal;$arrayAt[animalsNames;$math[$get[i] + 1]]]
 
-$onlyIf[$get[animal]!=;$!editMessage[$channelID;$messageID;You equipped all skins!]]
+    $onlyIf[$get[animal]!=;$!editMessage[$channelID;$messageID;You equipped all skins!]]
 
-$addActionRow
-$addStringSelectMenu[skins-$authorID;Choose a skin:]
-${loop()}
+    $addActionRow
+    $addStringSelectMenu[skins-$authorID;Choose a skin:]
+    ${loop()}
 
-$!editMessage[$channelID;$messageID;${embed()}]
-$deferUpdate
+    $!editMessage[$channelID;$messageID;${embed()}]
+    $deferUpdate
 `
 }]
 
@@ -206,6 +216,6 @@ $switch[$message[1];
     $case[$arrayAt[skinpackNames;18];$let[skinpack;Desert Gold-Trim]]
     $case[$arrayAt[skinpackNames;19];$let[skinpack;Ocean Gold-Trim]]
     $case[$arrayAt[skinpackNames;20];$let[skinpack;Arctic Gold-Trim]]
-    $case[$arrayAt[skinpackNames;20];$let[skinpack;Promo]]
+    $case[$arrayAt[skinpackNames;21];$let[skinpack;Promo]]
 ]
 `}
