@@ -28,7 +28,7 @@ module.exports = [{
 
     $modal[reportModal-$authorid;Report window]
     $addTextInput[modalInput1-$authorid;What's your report about?;Short;true;$getGuildVar[prefix]command || user (Discord ID or MUID)]
-    $addTextInput[modalInput2-$authorid;What's the issue?;Paragraph;true;$getGuildVar[prefix]command not working || I'm filing an appeal || typo || user spamming all/most of commands]
+    $addTextInput[modalInput2-$authorid;What's the issue?;Paragraph;true;$getGuildVar[prefix]command not working || I'm filing an appeal || typo || user spamming all or most of the commands]
     $showModal
   `
 },{

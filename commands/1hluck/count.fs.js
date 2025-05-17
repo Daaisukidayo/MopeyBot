@@ -21,7 +21,7 @@ $jsonLoad[allRaresList;{}]
 
 $arrayForEach[raresMap;rareMap;
   $jsonLoad[rareOBJ;$env[rareMap]]
-  $arrayLoad[allRaresFromCat;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]]
+  $arrayLoad[allRaresFromCat;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]] $c["]
   $arrayConcat[allRares;allRares;allRaresFromCat]
 ]
 
@@ -31,7 +31,7 @@ $arrayForEach[caughtRares;caughtRare;
   $if[$arrayIncludes[allRares;$env[caughtRare]];
     $arrayForEach[raresMap;rareMap;
       $jsonLoad[rareOBJ;$env[rareMap]]
-      $arrayLoad[raresFromOBJ;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]]
+      $arrayLoad[raresFromOBJ;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]] $c["]
 
       $if[$arrayIncludes[raresFromOBJ;$env[caughtRare]];
         $if[$env[rareOBJ;category]!=common;

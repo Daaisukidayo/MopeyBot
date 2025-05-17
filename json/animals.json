@@ -4,9 +4,10 @@
     "biome": "Land",
     "fullName": "Mouse",
     "trig": "mouse",
+    "tier": 1,
 
     "v0": {
-      "vCode": "s1-v2",
+      "vCode": "s1",
       "name": "Mouse",
       "description": "Season 1 | Version 2 (Current)",
       "emoji": "<:MouseS1:1291425874700271788>",
@@ -62,7 +63,7 @@
     },
 
     "v7": {
-      "vCode": "legacy-winter-v1",
+      "vCode": "legacy-w-v1",
       "name": "Mouse",
       "description": "Legacy Skinpack | Winter Version 1",
       "emoji": "<:LegacyMouseWinterV1:1331663395992113283>",
@@ -70,7 +71,7 @@
     },
 
     "v8": {
-      "vCode": "legacy-winter-v2",
+      "vCode": "legacy-w",
       "name": "Mouse",
       "description": "Legacy Skinpack | Winter Version 2",
       "emoji": "<:LegacyMouseWinterV2:1331663409212690534>",
@@ -78,7 +79,7 @@
     },
 
     "v9": {
-      "vCode": "goldtrim",
+      "vCode": "landgt",
       "name": "Mouse",
       "description": "Land Gold Trim Skinpack",
       "emoji": "<:MouseGoldTrim:1331664429053513780>",
@@ -110,7 +111,7 @@
     },
 
     "v13": {
-      "vCode": "hsp2021-1",
+      "vCode": "hsp2021",
       "name": "Light Plague Rat",
       "description": "Halloween Skinpack 2021",
       "emoji": "<:LightPlagueRat:1331670155217866962>",
@@ -118,7 +119,7 @@
     },
 
     "v14": {
-      "vCode": "hsp2021-2",
+      "vCode": "hsp2021",
       "name": "Dark Plague Rat",
       "description": "Halloween Skinpack 2021",
       "emoji": "<:DarkPlagueRat:1331670165120876574>",
@@ -131,6 +132,7 @@
     "biome": "Desert",
     "fullName": "Desert Rat",
     "trig": "desertRat",
+    "tier": 1,
 
     "v0": {
       "vCode": "s1",
@@ -157,7 +159,7 @@
     },
 
     "v3": {
-      "vCode": "goldtrim",
+      "vCode": "desertgt",
       "name": "Desert Rat",
       "description": "Desert Gold Trim Skinpack",
       "emoji": "<:DesertRatGoldTrim:1331696932803838034>",
@@ -178,21 +180,22 @@
     "biome": "Ocean",
     "fullName": "Shrimp",
     "trig": "shrimp",
-
+    "tier": 1,
+    
     "v0": {
+      "vCode": "s1",
+      "name": "Shrimp",
+      "description": "Season 1 | Version 2",
+      "emoji": "<:ShrimpS1:1291425951338467440>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448707145799/Shrimp-S1.png"
+    },
+
+    "v1": {
       "vCode": "s1-v1",
       "name": "Shrimp",
       "description": "Season 1 | Version 1",
       "emoji": "<:ShrimpS1V1:1332053552595599380>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1332059009947271168/Shrimp-S1V1.png"
-    },
-
-    "v1": {
-      "vCode": "s1-v2",
-      "name": "Shrimp",
-      "description": "Season 1 | Version 2",
-      "emoji": "<:ShrimpS1:1291425951338467440>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448707145799/Shrimp-S1.png"
     },
 
     "v2": {
@@ -228,7 +231,7 @@
     },
 
     "v6": {
-      "vCode": "goldtrim",
+      "vCode": "oceangt",
       "name": "Shrimp",
       "description": "Ocean Gold Trim Skinpack",
       "emoji": "<:ShrimpGoldTrim:1332054190351978666>",
@@ -257,6 +260,7 @@
     "biome": "Arctic",
     "fullName": "Arctic Chipmunk",
     "trig": "arcticChipmunk",
+    "tier": 1,
 
     "v0": {
       "vCode": "s1",
@@ -299,7 +303,7 @@
     },
 
     "v5": {
-      "vCode": "goldtrim",
+      "vCode": "arcticgt",
       "name": "Arctic Chipmunk",
       "description": "Arctic Gold Trim Skinpack",
       "emoji": "<:ArcticChipmunkGoldTrim:1332391843530408107>",
@@ -320,6 +324,7 @@
     "biome": "Forest",
     "fullName": "Tarsier",
     "trig": "tarsier",
+    "tier": 1,
 
     "v0": {
       "vCode": "s2",
@@ -335,6 +340,7 @@
     "biome": "Land",
     "fullName": "Rabbit",
     "trig": "rabbit",
+    "tier": 2,
 
     "v0": {
       "vCode": "s1",
@@ -366,6 +372,7 @@
     "biome": "Land",
     "fullName": "Pigeon",
     "trig": "pigeon",
+    "tier": 2,
 
     "v0": {
       "vCode": "s1",
@@ -397,6 +404,7 @@
     "biome": "Land",
     "fullName": "White Dove",
     "trig": "whiteDove",
+    "tier": 2,
 
     "v0": {
       "vCode": "s1",
@@ -420,6 +428,7 @@
     "biome": "Desert",
     "fullName": "Desert Chipmunk",
     "trig": "desertChipmunk",
+    "tier": 2,
 
     "v0": {
       "vCode": "s1",
@@ -451,6 +460,7 @@
     "biome": "Ocean",
     "fullName": "Trout",
     "trig": "trout",
+    "tier": 2,
 
     "v0": {
       "vCode": "s1",
@@ -482,6 +492,7 @@
     "biome": "Arctic",
     "fullName": "Arctic Hare",
     "trig": "arcticHare",
+    "tier": 2,
 
     "v0": {
       "vCode": "s1",
@@ -513,6 +524,7 @@
     "biome": "Forest",
     "fullName": "Chukar",
     "trig": "chukar",
+    "tier": 2,
 
     "v0": {
       "vCode": "s2",
@@ -528,6 +540,7 @@
     "biome": "Land",
     "fullName": "Rabbit",
     "trig": "mole",
+    "tier": 3,
 
     "v0": {
       "vCode": "s1",
@@ -559,6 +572,7 @@
     "biome": "Land",
     "fullName": "Chicken",
     "trig": "chicken",
+    "tier": 3,
 
     "v0": {
       "vCode": "s1",
@@ -582,6 +596,7 @@
     "biome": "Desert",
     "fullName": "Meerkat",
     "trig": "meerkat",
+    "tier": 3,
 
     "v0": {
       "vCode": "s1",
@@ -613,6 +628,7 @@
     "biome": "Ocean",
     "fullName": "Crab",
     "trig": "crab",
+    "tier": 3,
 
     "v0": {
       "vCode": "s1",
@@ -644,6 +660,7 @@
     "biome": "Arctic",
     "fullName": "Penguin",
     "trig": "penguin",
+    "tier": 3,
 
     "v0": {
       "vCode": "s1",
@@ -675,6 +692,7 @@
     "biome": "Forest",
     "fullName": "Flying Lizard",
     "trig": "flyingLizard",
+    "tier": 3,
 
     "v0": {
       "vCode": "s2",
@@ -690,9 +708,10 @@
     "biome": "Land",
     "fullName": "Pig",
     "trig": "pig",
+    "tier": 4,
 
     "v0": {
-      "vCode": "s1-v2",
+      "vCode": "s1",
       "name": "Pig",
       "description": "Season 1",
       "emoji": "<:PigS1v2:1333508176343203860>",
@@ -721,6 +740,7 @@
     "biome": "Land",
     "fullName": "Pinky Pig",
     "trig": "pinkyPig",
+    "tier": 4,
 
     "v0": {
       "vCode": "s1",
@@ -744,6 +764,7 @@
     "biome": "Land",
     "fullName": "Stinky Pig",
     "trig": "stinkyPig",
+    "tier": 4,
 
     "v0": {
       "vCode": "s1",
@@ -767,9 +788,10 @@
     "biome": "Land",
     "fullName": "Woodpecker",
     "trig": "woodpecker",
+    "tier": 4,
 
     "v0": {
-      "vCode": "s2",
+      "vCode": "s1",
       "name": "Woodpecker",
       "description": "Season 1",
       "emoji": "<:WoodpeckerS1:1367569904634564701>",
@@ -790,6 +812,7 @@
     "biome": "Desert",
     "fullName": "Armadillo",
     "trig": "armadillo",
+    "tier": 4,
 
     "v0": {
       "vCode": "s1",
@@ -813,6 +836,7 @@
     "biome": "Ocean",
     "fullName": "Sea Horse",
     "trig": "seaHorse",
+    "tier": 4,
 
     "v0": {
       "vCode": "s1",
@@ -844,6 +868,7 @@
     "biome": "Arctic",
     "fullName": "Seal",
     "trig": "seal",
+    "tier": 4,
 
     "v0": {
       "vCode": "s1",
@@ -875,6 +900,7 @@
     "biome": "Forest",
     "fullName": "Kakapo",
     "trig": "kakapo",
+    "tier": 4,
 
     "v0": {
       "vCode": "s2",
@@ -890,6 +916,7 @@
     "biome": "Land",
     "fullName": "Deer",
     "trig": "deer",
+    "tier": 5,
 
     "v0": {
       "vCode": "s1",
@@ -921,6 +948,7 @@
     "biome": "Land",
     "fullName": "Doe",
     "trig": "doe",
+    "tier": 5,
 
     "v0": {
       "vCode": "s1",
@@ -944,6 +972,7 @@
     "biome": "Land",
     "fullName": "Marsh Deer",
     "trig": "marshDeer",
+    "tier": 5,
 
     "v0": {
       "vCode": "s1",
@@ -967,6 +996,7 @@
     "biome": "Desert",
     "fullName": "Gazelle",
     "trig": "gazelle",
+    "tier": 5,
 
     "v0": {
       "vCode": "s1",
@@ -990,6 +1020,7 @@
     "biome": "Ocean",
     "fullName": "Squid",
     "trig": "squid",
+    "tier": 5,
 
     "v0": {
       "vCode": "s1",
@@ -1021,6 +1052,7 @@
     "biome": "Ocean",
     "fullName": "Flamingo",
     "trig": "flamingo",
+    "tier": 5,
 
     "v0": {
       "vCode": "s1",
@@ -1044,6 +1076,7 @@
     "biome": "Arctic",
     "fullName": "Reindeer",
     "trig": "reindeer",
+    "tier": 5,
 
     "v0": {
       "vCode": "s1",
@@ -1067,6 +1100,7 @@
     "biome": "Arctic",
     "fullName": "Musk Deer",
     "trig": "muskDeer",
+    "tier": 5,
 
     "v0": {
       "vCode": "s1",
@@ -1090,6 +1124,7 @@
     "biome": "Forest",
     "fullName": "Swinehoe",
     "trig": "swinehoe",
+    "tier": 5,
 
     "v0": {
       "vCode": "s2",
@@ -1105,6 +1140,7 @@
     "biome": "Forest",
     "fullName": "Golden Pheasant",
     "trig": "goldenPheasant",
+    "tier": 5,
 
     "v0": {
       "vCode": "s2",
@@ -1120,6 +1156,7 @@
     "biome": "Land",
     "fullName": "Fox",
     "trig": "fox",
+    "tier": 6,
 
     "v0": {
       "vCode": "s1",
@@ -1151,6 +1188,7 @@
     "biome": "Land",
     "fullName": "Hedgehog",
     "trig": "hedgehog",
+    "tier": 6,
 
     "v0": {
       "vCode": "s1",
@@ -1182,6 +1220,7 @@
     "biome": "Land",
     "fullName": "Peacock",
     "trig": "peacock",
+    "tier": 6,
 
     "v0": {
       "vCode": "s1",
@@ -1205,6 +1244,7 @@
     "biome": "Desert",
     "fullName": "Fennec Fox",
     "trig": "fennecFox",
+    "tier": 6,
 
     "v0": {
       "vCode": "s1",
@@ -1228,6 +1268,7 @@
     "biome": "Ocean",
     "fullName": "Jellyfish",
     "trig": "jellyfish",
+    "tier": 6,
 
     "v0": {
       "vCode": "s1",
@@ -1259,6 +1300,7 @@
     "biome": "Arctic",
     "fullName": "Arctic Fox",
     "trig": "arcticFox",
+    "tier": 6,
 
     "v0": {
       "vCode": "s1",
@@ -1290,6 +1332,7 @@
     "biome": "Land",
     "fullName": "Zebra",
     "trig": "zebra",
+    "tier": 7,
 
     "v0": {
       "vCode": "s1",
@@ -1321,6 +1364,7 @@
     "biome": "Land",
     "fullName": "Donkey",
     "trig": "donkey",
+    "tier": 7,
 
     "v0": {
       "vCode": "s1",
@@ -1352,6 +1396,7 @@
     "biome": "Land",
     "fullName": "Jackass",
     "trig": "jackass",
+    "tier": 7,
 
     "v0": {
       "vCode": "s1",
@@ -1375,6 +1420,7 @@
     "biome": "Land",
     "fullName": "Macaw",
     "trig": "macaw",
+    "tier": 7,
 
     "v0": {
       "vCode": "s1",
@@ -1398,6 +1444,7 @@
     "biome": "Land",
     "fullName": "Blue Macaw",
     "trig": "blueMacaw",
+    "tier": 7,
 
     "v0": {
       "vCode": "s1",
@@ -1421,6 +1468,7 @@
     "biome": "Land",
     "fullName": "Rare Macaw",
     "trig": "rareMacaw",
+    "tier": 7,
 
     "v0": {
       "vCode": "s1",
@@ -1468,6 +1516,7 @@
     "biome": "Desert",
     "fullName": "Warthog",
     "trig": "warthog",
+    "tier": 7,
 
     "v0": {
       "vCode": "s1",
@@ -1491,6 +1540,7 @@
     "biome": "Ocean",
     "fullName": "Turtle",
     "trig": "turtle",
+    "tier": 7,
 
     "v0": {
       "vCode": "s1",
@@ -1522,6 +1572,7 @@
     "biome": "Arctic",
     "fullName": "Muskox",
     "trig": "muskox",
+    "tier": 7,
 
     "v0": {
       "vCode": "s1",
@@ -1553,6 +1604,7 @@
     "biome": "Land",
     "fullName": "Cobra",
     "trig": "cobra",
+    "tier": 8,
 
     "v0": {
       "vCode": "s1",
@@ -1584,6 +1636,7 @@
     "biome": "Land",
     "fullName": "Giraffe",
     "trig": "giraffe",
+    "tier": 8,
 
     "v0": {
       "vCode": "s1",
@@ -1615,6 +1668,7 @@
     "biome": "Land",
     "fullName": "Momaffie",
     "trig": "momaffie",
+    "tier": 8,
 
     "v0": {
       "vCode": "s2",
@@ -1630,6 +1684,7 @@
     "biome": "Land",
     "fullName": "Momaffie Family",
     "trig": "momaffieFamily",
+    "tier": 8,
 
     "v0": {
       "vCode": "s2",
@@ -1645,6 +1700,7 @@
     "biome": "Land",
     "fullName": "Girabie",
     "trig": "girabie",
+    "tier": 8,
 
     "v0": {
       "vCode": "s2",
@@ -1660,6 +1716,7 @@
     "biome": "Desert",
     "fullName": "Camel",
     "trig": "camel",
+    "tier": 8,
 
     "v0": {
       "vCode": "s1",
@@ -1683,6 +1740,7 @@
     "biome": "Ocean",
     "fullName": "Stingray",
     "trig": "stingray",
+    "tier": 8,
 
     "v0": {
       "vCode": "s1",
@@ -1706,6 +1764,7 @@
     "biome": "Arctic",
     "fullName": "Snowy Owl",
     "trig": "snowyOwl",
+    "tier": 8,
 
     "v0": {
       "vCode": "s1",
@@ -1737,6 +1796,7 @@
     "biome": "Arctic",
     "fullName": "Walrus",
     "trig": "walrus",
+    "tier": 8,
 
     "v0": {
       "vCode": "s1",
@@ -1768,6 +1828,7 @@
     "biome": "Forest",
     "fullName": "Raven",
     "trig": "raven",
+    "tier": 8,
 
     "v0": {
       "vCode": "s1",
@@ -1791,6 +1852,7 @@
     "biome": "Land",
     "fullName": "Cheetah",
     "trig": "cheetah",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -1822,6 +1884,7 @@
     "biome": "Land",
     "fullName": "Jaguar",
     "trig": "jaguar",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -1845,6 +1908,7 @@
     "biome": "Land",
     "fullName": "Leopard",
     "trig": "leopard",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -1868,6 +1932,7 @@
     "biome": "Land",
     "fullName": "Black Panther",
     "trig": "blackPanther",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -1891,6 +1956,7 @@
     "biome": "Land",
     "fullName": "Gorilla",
     "trig": "gorilla",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -1922,6 +1988,7 @@
     "biome": "Land",
     "fullName": "Toucan",
     "trig": "toucan",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -1945,6 +2012,7 @@
     "biome": "Land",
     "fullName": "Choco Toucan",
     "trig": "chocoToucan",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -1968,6 +2036,7 @@
     "biome": "Land",
     "fullName": "Keel-Billed Toucan",
     "trig": "keelBilledToucan",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -1991,6 +2060,7 @@
     "biome": "Land",
     "fullName": "Fiery Toucan",
     "trig": "fieryToucan",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -2014,6 +2084,7 @@
     "biome": "Volcano",
     "fullName": "Lava Toucan",
     "trig": "lavaToucan",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -2037,7 +2108,8 @@
     "biome": "Land",
     "fullName": "Toucan",
     "trig": "rareToucan",
-    
+    "tier": 9,
+
     "v0": {
       "vCode": "s1",
       "name": "Helmeted Hornbill Toucan",
@@ -2084,6 +2156,7 @@
     "biome": "Desert",
     "fullName": "Rattle Snake",
     "trig": "rattleSnake",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -2107,6 +2180,7 @@
     "biome": "Ocean",
     "fullName": "Pufferfish",
     "trig": "pufferfish",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -2130,6 +2204,7 @@
     "biome": "Ocean",
     "fullName": "Yellow Pufferfish",
     "trig": "yellowPufferfish",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -2153,6 +2228,7 @@
     "biome": "Ocean",
     "fullName": "Demon Pufferfish",
     "trig": "demonPufferfish",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -2176,6 +2252,7 @@
     "biome": "Arctic",
     "fullName": "Snow Leopard",
     "trig": "snowLeopard",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -2207,6 +2284,7 @@
     "biome": "Forest",
     "fullName": "Turkey",
     "trig": "turkey",
+    "tier": 9,
 
     "v0": {
       "vCode": "s1",
@@ -2222,6 +2300,7 @@
     "biome": "Land",
     "fullName": "Bear",
     "trig": "bear",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2253,6 +2332,7 @@
     "biome": "Land",
     "fullName": "Black Bear",
     "trig": "blackBear",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2276,6 +2356,7 @@
     "biome": "Land",
     "fullName": "Tiger",
     "trig": "tiger",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2307,6 +2388,7 @@
     "biome": "Land",
     "fullName": "White Tiger",
     "trig": "whiteTiger",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2330,6 +2412,7 @@
     "biome": "Land",
     "fullName": "Black Tiger",
     "trig": "blackTiger",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2353,6 +2436,7 @@
     "biome": "Desert",
     "fullName": "Gobi Bear",
     "trig": "gobiBear",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2384,6 +2468,7 @@
     "biome": "Desert",
     "fullName": "Hyena",
     "trig": "hyena",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2415,6 +2500,7 @@
     "biome": "Ocean",
     "fullName": "Pelican",
     "trig": "pelican",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2438,6 +2524,7 @@
     "biome": "Ocean",
     "fullName": "Swordfish",
     "trig": "swordfish",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2469,6 +2556,7 @@
     "biome": "Arctic",
     "fullName": "Wolf",
     "trig": "wolf",
+    "tier": 10,
 
     "v0": {
       "vCode": "s1",
@@ -2492,6 +2580,7 @@
     "biome": "Land",
     "fullName": "Crocodile",
     "trig": "crocodile",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2523,6 +2612,7 @@
     "biome": "Land",
     "fullName": "Lion",
     "trig": "lion",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2554,6 +2644,7 @@
     "biome": "Land",
     "fullName": "Black-Maned Lion",
     "trig": "blackManedLion",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2577,6 +2668,7 @@
     "biome": "Land",
     "fullName": "White Lion",
     "trig": "whiteLion",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2600,6 +2692,7 @@
     "biome": "Land",
     "fullName": "Black Lion",
     "trig": "blackLion",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2623,6 +2716,7 @@
     "biome": "Land",
     "fullName": "Lioness",
     "trig": "lioness",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2646,6 +2740,7 @@
     "biome": "Land",
     "fullName": "White Lioness",
     "trig": "whiteLioness",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2669,6 +2764,7 @@
     "biome": "Land",
     "fullName": "Black Lioness",
     "trig": "blackLioness",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2692,6 +2788,7 @@
     "biome": "Land",
     "fullName": "Lion Cub",
     "trig": "lionCub",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2715,6 +2812,7 @@
     "biome": "Land",
     "fullName": "White Lion Cub",
     "trig": "whiteLionCub",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2738,6 +2836,7 @@
     "biome": "Land",
     "fullName": "Black Lion Cub",
     "trig": "blackLionCub",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2761,6 +2860,7 @@
     "biome": "Land",
     "fullName": "Predator",
     "trig": "falcon",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2784,6 +2884,7 @@
     "biome": "Land",
     "fullName": "Predator",
     "trig": "predator",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2807,6 +2908,7 @@
     "biome": "Land",
     "fullName": "Shaheen",
     "trig": "shaheen",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2830,6 +2932,7 @@
     "biome": "Desert",
     "fullName": "Vulture",
     "trig": "vulture",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2861,6 +2964,7 @@
     "biome": "Desert",
     "fullName": "Rare Vulture",
     "trig": "rareVulture",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2908,6 +3012,7 @@
     "biome": "Ocean",
     "fullName": "Octopus",
     "trig": "octopus",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2939,6 +3044,7 @@
     "biome": "Arctic",
     "fullName": "Polar Bear",
     "trig": "polarBear",
+    "tier": 11,
 
     "v0": {
       "vCode": "s1",
@@ -2970,6 +3076,7 @@
     "biome": "Land",
     "fullName": "Rhino",
     "trig": "rhino",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3001,6 +3108,7 @@
     "biome": "Land",
     "fullName": "White Rhino",
     "trig": "whiteRhino",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3024,6 +3132,7 @@
     "biome": "Land",
     "fullName": "Black Rhino",
     "trig": "blackRhino",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3047,6 +3156,7 @@
     "biome": "Land",
     "fullName": "Bald Eagle",
     "trig": "baldEagle",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3078,6 +3188,7 @@
     "biome": "Land",
     "fullName": "Golden Eagle",
     "trig": "goldenEagle",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3101,6 +3212,7 @@
     "biome": "Land",
     "fullName": "Harpy Eagle",
     "trig": "harpyEagle",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3124,6 +3236,7 @@
     "biome": "Land",
     "fullName": "Greater-Spotted Eagle",
     "trig": "greaterSpottedEagle",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3147,6 +3260,7 @@
     "biome": "Desert",
     "fullName": "Bison",
     "trig": "bison",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3178,6 +3292,7 @@
     "biome": "Ocean",
     "fullName": "Shark",
     "trig": "shark",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3201,6 +3316,7 @@
     "biome": "Arctic",
     "fullName": "Markhor",
     "trig": "markhor",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3224,6 +3340,7 @@
     "biome": "Arctic",
     "fullName": "Big Goat",
     "trig": "bigGoat",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3247,6 +3364,7 @@
     "biome": "Arctic",
     "fullName": "Wolverine",
     "trig": "wolverine",
+    "tier": 12,
 
     "v0": {
       "vCode": "s1",
@@ -3278,6 +3396,7 @@
     "biome": "Land",
     "fullName": "Hippo",
     "trig": "hippo",
+    "tier": 13,
 
     "v0": {
       "vCode": "s1",
@@ -3309,6 +3428,7 @@
     "biome": "Land",
     "fullName": "Boa Constrictor",
     "trig": "boaConstrictor",
+    "tier": 13,
 
     "v0": {
       "vCode": "s1",
@@ -3340,7 +3460,8 @@
     "biome": "Land",
     "fullName": "Ostrich",
     "trig": "ostrich",
-  
+    "tier": 13,
+
     "v0": {
       "vCode": "s1",
       "name": "Ostrich",
@@ -3363,6 +3484,7 @@
     "biome": "Desert",
     "fullName": "Komodo Dragon",
     "trig": "komodoDragon",
+    "tier": 13,
 
     "v0": {
       "vCode": "s1",
@@ -3386,6 +3508,7 @@
     "biome": "Ocean",
     "fullName": "Killer Whale",
     "trig": "killerWhale",
+    "tier": 13,
 
     "v0": {
       "vCode": "s1",
@@ -3417,6 +3540,7 @@
     "biome": "Arctic",
     "fullName": "Sabertooth Tiger",
     "trig": "sabertoothTiger",
+    "tier": 13,
 
     "v0": {
       "vCode": "s1",
@@ -3448,6 +3572,7 @@
     "biome": "Forest",
     "fullName": "White Giraffe",
     "trig": "whiteGiraffe",
+    "tier": 13,
 
     "v0": {
       "vCode": "s1",
@@ -3463,6 +3588,7 @@
     "biome": "Forest",
     "fullName": "White Giraffe Family",
     "trig": "whiteGiraffeFamily",
+    "tier": 13,
 
     "v0": {
       "vCode": "s1",
@@ -3478,6 +3604,7 @@
     "biome": "Land",
     "fullName": "Elephant",
     "trig": "elephant",
+    "tier": 14,
 
     "v0": {
       "vCode": "s1",
@@ -3501,6 +3628,7 @@
     "biome": "Land",
     "fullName": "Cassowary",
     "trig": "cassowary",
+    "tier": 14,
 
     "v0": {
       "vCode": "s1",
@@ -3532,6 +3660,7 @@
     "biome": "Land",
     "fullName": "Giant Spider",
     "trig": "giantSpider",
+    "tier": 14,
 
     "v0": {
       "vCode": "s1",
@@ -3555,6 +3684,7 @@
     "biome": "Desert",
     "fullName": "Blackwidow Spider",
     "trig": "blackwidowSpider",
+    "tier": 14,
 
     "v0": {
       "vCode": "s1",
@@ -3578,6 +3708,7 @@
     "biome": "Ocean",
     "fullName": "Blue Whale",
     "trig": "blueWhale",
+    "tier": 14,
 
     "v0": {
       "vCode": "s1",
@@ -3609,6 +3740,7 @@
     "biome": "Arctic",
     "fullName": "Mammoth",
     "trig": "mammoth",
+    "tier": 14,
 
     "v0": {
       "vCode": "s1",
@@ -3640,6 +3772,7 @@
     "biome": "Land",
     "fullName": "Dragon",
     "trig": "dragon",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3663,6 +3796,7 @@
     "biome": "Land",
     "fullName": "T-Rex",
     "trig": "trex",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3686,6 +3820,7 @@
     "biome": "Volcano",
     "fullName": "Phoenix",
     "trig": "phoenix",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3709,6 +3844,7 @@
     "biome": "Desert",
     "fullName": "Pterodactyl",
     "trig": "pterodactyl",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3732,6 +3868,7 @@
     "biome": "Ocean",
     "fullName": "Kraken",
     "trig": "kraken",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3755,6 +3892,7 @@
     "biome": "Ocean",
     "fullName": "King Crab",
     "trig": "kingCrab",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3778,6 +3916,7 @@
     "biome": "Arctic",
     "fullName": "Yeti",
     "trig": "yeti",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3801,6 +3940,7 @@
     "biome": "Arctic",
     "fullName": "Aqua Yeti",
     "trig": "aquaYeti",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3824,6 +3964,7 @@
     "biome": "Forest",
     "fullName": "Big Foot",
     "trig": "bigfoot",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3847,6 +3988,7 @@
     "biome": "Arctic",
     "fullName": "Snowman",
     "trig": "snowman",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3862,6 +4004,7 @@
     "biome": "Arctic",
     "fullName": "Snowgirl",
     "trig": "snowgirl",
+    "tier": 15,
 
     "v0": {
       "vCode": "s1",
@@ -3877,6 +4020,7 @@
     "biome": "Land",
     "fullName": "Dino Monster",
     "trig": "dinoMonster",
+    "tier": 16,
 
     "v0": {
       "vCode": "s1",
@@ -3900,6 +4044,7 @@
     "biome": "Volcano",
     "fullName": "Land Monster",
     "trig": "landMonster",
+    "tier": 16,
 
     "v0": {
       "vCode": "s1",
@@ -3923,6 +4068,7 @@
     "biome": "Desert",
     "fullName": "Giant Scorpion",
     "trig": "giantScorpion",
+    "tier": 16,
 
     "v0": {
       "vCode": "s1",
@@ -3946,6 +4092,7 @@
     "biome": "Ocean",
     "fullName": "Sea Monster",
     "trig": "seaMonster",
+    "tier": 16,
 
     "v0": {
       "vCode": "s1",
@@ -3969,6 +4116,7 @@
     "biome": "Arctic",
     "fullName": "Ice Monster",
     "trig": "iceMonster",
+    "tier": 16,
 
     "v0": {
       "vCode": "s1",
@@ -3992,6 +4140,7 @@
     "biome": "Volcano",
     "fullName": "Black Dragon",
     "trig": "blackDragon",
+    "tier": 17,
 
     "v0": {
       "vCode": "s1",
@@ -4039,6 +4188,7 @@
     "biome": "Volcano",
     "fullName": "King Dragon",
     "trig": "kingDragon",
+    "tier": 18,
 
     "v0": {
       "vCode": "s1",

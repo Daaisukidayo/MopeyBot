@@ -78,7 +78,7 @@ module.exports = [
 
     $arrayForEach[raresMap;rareMap;
       $jsonLoad[rareOBJ;$env[rareMap]]
-      $arrayLoad[allRaresFromCat;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]]
+      $arrayLoad[allRaresFromCat;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]] $c["]
       $arrayConcat[allRares;allRares;allRaresFromCat]
     ]
 
@@ -87,7 +87,7 @@ module.exports = [
       $if[$arrayIncludes[allRares;$env[caughtRare]];
         $arrayForEach[raresMap;rareMap;
           $jsonLoad[rareOBJ;$env[rareMap]]
-          $arrayLoad[raresFromOBJ;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]]
+          $arrayLoad[raresFromOBJ;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]] $c["]
 
           $if[$arrayIncludes[raresFromOBJ;$env[caughtRare]];
             $if[$env[rareOBJ;category]!=common;
@@ -225,7 +225,7 @@ function pts () {
 return `
 # Points: ||$getUserVar[1hpoints]||
 ## Total rares: ||$getUserVar[1htotalRares]||
-## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";];JSON]
+## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";];JSON] $c["]
 `
 }
 

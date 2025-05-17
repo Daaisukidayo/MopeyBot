@@ -110,7 +110,7 @@ ForgeDB.variables({
   
   botEnabled: true,
   maxID: 0,
-  prefix: ".",
+  prefix: "//",
   emoji: "<:MopeCoin:705856410940080232>",
   defaultColor: "#FFD700",
   errorColor: "#D0321D",
@@ -132,16 +132,16 @@ ForgeDB.variables({
 
   raretryVarData: {
     coinsForRaretry: {
-      inferno: [0, 0, 0, 0, 0, 100, 110, 120, 130, 140],
-      other: [0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000, 2750000, 5500000, 55000000]
+      inferno: [0, 0, 0, 0, 0, 100, 110, 120, 130],
+      other: [0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000, 2750000, 5500000]
     },
 
     chancesForRaretry: {
-      inferno: [1, 2, 3, 4, 5, 10, 15, 20, 25, 30],
-      other: [3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000, 1000000],
+      inferno: [1, 2, 3, 4, 5, 10, 15, 20, 25],
+      other: [3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000],
     },
 
-    categories: ["Common", "Uncommon", "Rare", "Epic", "Legendary", "Extreme", "Mythic", "Godly", "Ultra", "USSR"],
+    categories: ["Common", "Uncommon", "Rare", "Epic", "Legendary", "Extreme", "Mythic", "Godly", "Ultra"],
     raretryModes: ["Inferno", "Default", "Medium", "Hard", "Insane", "Impossible"],
 
     multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
@@ -399,9 +399,10 @@ ForgeDB.variables({
       "category": "godly",
       "rares": ["sm", "hht", "arg", "shh", "har", "gse", "spixmacaw", "helmetedhornbill", "argentavis", "shaheen", "harpyeagle", "greaterspottedeagle"\],
       "points": 50
-    }`,
+    }
+  `,
 
-    SNORA: {
+  SNORA: {
       "wd": "White Dove",
       "pp": "Pinky Pig",
       "sp": "Stinky Pig",
@@ -508,7 +509,8 @@ ForgeDB.variables({
       "shopsnowgirl": "Shop Snowgirl",
       "lucksnowgirl": "Luck Snowgirl",
       "kingdragon": "King Dragon"
-    }
+  },
+  allVariants: ["s1", "s2", "s2-w", "legacy", "legacy-w", "sfsp", "ssp2021", "ssp2022", "may2022", "christmas2022", "valentine2023", "gsp", "lsp", "hsp2020", "hsp2021", "hsp2022", "hsp2023", "landgt", "desertgt", "oceangt", "arcticgt", "promo"],
 });
 
 // ========== FUNCTIONS ==========
@@ -607,7 +609,7 @@ client.functions.add({
   name: "cooldown",
   params: ["time"],
   code: `
-    $if[$getUserVar[dev]==false;
+    $if[$getUserVar[dev];;
       $userCooldown[$commandName;$env[time];$callFunction[cooldownSchema;$commandName]]
     ]
   `
