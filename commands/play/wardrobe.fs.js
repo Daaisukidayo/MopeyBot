@@ -115,7 +115,7 @@ module.exports = [{
     $textSplit[$get[1part];+]
 
     
-    $onlyIf[$and[$splitText[0]!=;$splitText[1]!=]]         $c[Only if id has 2 parts] 
+    $onlyIf[$and[$splitText[0]!=;$splitText[1]!=]]                  $c[Only if id has 2 parts] 
 
     $let[variant;$splitText[0]]  
     $let[an;$splitText[1]]
@@ -128,15 +128,15 @@ module.exports = [{
     $jsonLoad[userPacks;$getUserVar[userPacks]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
-    $!jsonSet[userWardrobe;$get[an];$get[variant]]                   $c[setting new chosen skin] 
+    $!jsonSet[userWardrobe;$get[an];$get[variant]]                  $c[setting new chosen skin] 
     $setUserVar[userWardrobe;$jsonStringify[userWardrobe;2]]        $c[making json object as string with new saved skins and replacing old data with new] 
 
 
-    $let[i;$arrayIndexOf[animalsNames;$get[an]]] $c[--> finding animal code name by array index]
+    $let[i;$arrayIndexOf[animalsNames;$get[an]]]                    $c[finding animal code name inside array index]
     
     $let[animal;$arrayAt[animalsNames;$math[$get[i] + 1]]]
 
-    $onlyIf[$get[animal]!=;$!editMessage[$channelID;$messageID;You equipped all skins!]]
+    $onlyIf[$get[animal]!=;$!editMessage[$channelID;$messageID;# You equipped all skins!]]
 
     $addActionRow
     $addStringSelectMenu[skins-$authorID;Choose a skin:]
