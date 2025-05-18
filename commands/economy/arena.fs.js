@@ -64,20 +64,16 @@ module.exports = [{
 
 
 	$if[$get[r]>=20;
-
 		$callFunction[sumMC;$get[MC1]]
 		$let[desc;## You went into arena and you beat $arrayRandomValue[enemies] and you earned $get[MC1]$getGlobalVar[emoji]!]
 		$let[color;$getGlobalVar[defaultColor]]
-
 	;
-
 		$let[desc;## You went into arena but you lost to $arrayRandomValue[enemies].]
 		$let[color;$getGlobalVar[errorColor]]
-
     ]
 
     $getGlobalVar[author]
     $description[$get[desc]]
     $color[$get[color]]
-    `
-  }]
+  `
+}]

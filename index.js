@@ -306,22 +306,7 @@ ForgeDB.variables({
     {
       "name": "legacySP",
       "description": "Legacy Skinpack",
-      "cost": "2000000"
-    }, 
-    {
-      "name": "storefrontSP",
-      "description": "Storefront Skinpack",
-      "cost": "11000000"
-    }, 
-    {
-      "name": "summerSP",
-      "description": "Summer Skinpack",
-      "cost": "28499200"
-    }, 
-    {
-      "name": "goldenSP",
-      "description": "Golden Skinpack",
-      "cost": "10820000"
+      "cost": "200000"
     }, 
     {
       "name": "lockedSP",
@@ -329,29 +314,79 @@ ForgeDB.variables({
       "cost": "14229000"
     }, 
     {
-      "name": "halloweenSP",
-      "description": "Halloween Skinpack",
-      "cost": "80344400"
+      "name": "goldenSP",
+      "description": "Golden Skinpack",
+      "cost": "10820000"
+    }, 
+    {
+      "name": "storefrontSP",
+      "description": "Storefront Skinpack",
+      "cost": "1177000"
+    }, 
+    {
+      "name": "summer2021SP",
+      "description": "Summer 2021 Skinpack",
+      "cost": "2359000"
+    }, 
+    {
+      "name": "summer2022SP",
+      "description": "Summer 2022 Skinpack",
+      "cost": "485000"
+    }, 
+    {
+      "name": "halloween2020SP",
+      "description": "Halloween 2020 Skinpack",
+      "cost": "2105000"
+    }, 
+    {
+      "name": "halloween2021SP",
+      "description": "Halloween 2021 Skinpack",
+      "cost": "2545000"
+    }, 
+    {
+      "name": "halloween2022SP",
+      "description": "Halloween 2022 Skinpack",
+      "cost": "1770000"
+    }, 
+    {
+      "name": "halloween2023SP",
+      "description": "Halloween 2023 Skinpack",
+      "cost": "1570000"
+    }, 
+    {
+      "name": "may2022SP",
+      "description": "May 2022 Skinpack",
+      "cost": "749000"
+    }, 
+    {
+      "name": "christmas2022SP",
+      "description": "Christmas 2022 Skinpack",
+      "cost": "300000"
+    }, 
+    {
+      "name": "valentine2023SP",
+      "description": "Valentine 2023 Skinpack",
+      "cost": "1600000"
     }, 
     {
       "name": "landGTSP",
       "description": "Land Gold-Trim Skinpack",
-      "cost": "1250000"
+      "cost": "250000"
     }, 
     {
       "name": "desertGTSP",
       "description": "Desert Gold-Trim Skinpack",
-      "cost": "1250000"
+      "cost": "250000"
     }, 
     {
       "name": "oceanGTSP",
       "description": "Ocean Gold-Trim Skinpack",
-      "cost": "1250000"
+      "cost": "250000"
     }, 
     {
       "name": "arcticGTSP",
       "description": "Arctic Gold-Trim Skinpack",
-      "cost": "1250000"
+      "cost": "250000"
     }
   `,
   raresMap: `

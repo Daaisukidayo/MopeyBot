@@ -25,7 +25,11 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu"],
   code: `
     $textSplit[$selectMenuValues;-]
-    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
+    
+    $if[$splitText[1]!=$authorID;
+        $callFunction[notYourBTN;]
+        $stop
+    ]
 
     $textSplit[$splitText[0];+]
 
@@ -45,7 +49,7 @@ module.exports = [{
     $let[i;0]
     $let[msgid;$messageID]
 
-    $onlyIf[$env[userPacks;$splitText[0]]!=true;
+    $if[$env[userPacks;$splitText[0]];
         ${genMenu()}
         $interactionReply[
             $ephemeral 
@@ -53,8 +57,9 @@ module.exports = [{
             $getGlobalVar[author]
             $color[$getGlobalVar[defaultColor]]
         ]
+        $stop
     ]
-    $onlyIf[$getUserVar[MC]>=$splitText[1];
+    $if[$getUserVar[MC]<$splitText[1];
         ${genMenu()}
         $interactionReply[
             $ephemeral 
@@ -62,6 +67,7 @@ module.exports = [{
             $getGlobalVar[author]
             $color[$getGlobalVar[defaultColor]]
         ]
+        $stop
     ]
 
     $callFunction[subMC;$splitText[1]]
@@ -83,56 +89,57 @@ module.exports = [{
 
 
 function embedShop() {
-return `
-$getGlobalVar[author]
-$title[__Available Skinpacks__]
-$footer[Cash: $separateNumber[$getUserVar[MC];,];https://media.discordapp.net/attachments/701793335941136464/1369682764470681683/Mopecoin.png]
-$color[$getGlobalVar[defaultColor]]
-`}
+    return `
+        $getGlobalVar[author]
+        $title[__Available Skinpacks__]
+        $footer[Cash: $separateNumber[$getUserVar[MC];,];https://media.discordapp.net/attachments/701793335941136464/1369682764470681683/Mopecoin.png]
+        $color[$getGlobalVar[defaultColor]]
+    `
+}
 
 function shop() {
-return `
-$arrayLoad[allSkinPacks;, ;$getGlobalVar[shopItems]]
-`
+    return `
+        $arrayLoad[allSkinPacks;, ;$getGlobalVar[shopItems]]
+    `
 }
 
 function genMenu () {
-return `
-${menu()}
+    return `
+        ${menu()}
 
-$arrayForEach[allSkinPacks;obj;
-    $jsonLoad[pack;$env[obj]]
+        $arrayForEach[allSkinPacks;obj;
+            $jsonLoad[pack;$env[obj]]
 
-    $if[$env[userPacks;$env[pack;name]]!=true;
-        $letSum[i;1]
-        $addOption[$env[pack;description];$separateNumber[$env[pack;cost];,];$env[pack;name]+$env[pack;cost]-$authorID;$getGlobalVar[emoji]]
-    ]
-]
+            $if[$env[userPacks;$env[pack;name]];;
+                $letSum[i;1]
+                $addOption[$env[pack;description];$separateNumber[$env[pack;cost];,];$env[pack;name]+$env[pack;cost]-$authorID;$getGlobalVar[emoji]]
+            ]
+        ]
 
-$if[$get[i]==0;
-    $deleteComponent[shop-$authorID]
-    $description[# The shop is empty]
-;
-    ${timeout()}
-]
+        $if[$get[i]==0;
+            $deleteComponent[shop-$authorID]
+            $description[# The shop is empty]
+        ;
+            ${timeout()}
+        ]
 
-
-$!editMessage[$channelID;$get[msgid];${embedShop()}]
-
-
-`}
+        $!editMessage[$channelID;$get[msgid];${embedShop()}]
+    `
+}
 
 function menu(disabled = false) {
-return `
-$addActionRow
-$addStringSelectMenu[shop-$authorID;Choose a Skinpack!;${disabled}]`
+    return `
+        $addActionRow
+        $addStringSelectMenu[shop-$authorID;Choose a Skinpack!;${disabled}]
+    `
 }
 
 function timeout() {
-return `
-$setTimeout[
-    ${menu(true)}
-    $addOption[.;;.]
-    $!editMessage[$channelID;$get[msgid];${embedShop()}$color[GRAY] This message is now inactive]
-;1m;SHOP-$authorID]
-`}
+    return `
+        $setTimeout[
+            ${menu(true)}
+            $addOption[.;;.]
+            $!editMessage[$channelID;$get[msgid];${embedShop()}$color[GRAY] This message is now inactive]
+        ;1m;SHOP-$authorID]
+    `
+}
