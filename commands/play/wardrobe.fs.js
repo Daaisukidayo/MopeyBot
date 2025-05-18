@@ -38,11 +38,11 @@ module.exports = [{
 
         $onlyIf[$get[arg2]!=;## You must specify an skinpack id!]
         $onlyIf[$arrayIncludes[skinpackNames;$get[arg2]];## This skinpack does not exist!]
-
+        
         $let[desc;]
-
+        
         ${skinpacks()}
-
+        
         $arrayForEach[animalsNames;animal;
             $if[$env[animals;$env[animal];tier]==$get[arg1];
 
@@ -68,18 +68,17 @@ module.exports = [{
             $color[$getGlobalVar[defaultColor]]
             $title[You have successfully equipped tier «$get[arg1]» animals with the «$get[skinpack]» Skinpack!]
         ]
-
+            
     ;$if[$get[arg1]==all;
-
+            
         $onlyIf[$get[arg2]!=;## You must specify a skinpack!]
         $onlyIf[$arrayIncludes[skinpackNames;$get[arg2]];## This skinpack does not exist!]
-
+        
         ${skinpacks()}
-
+        
         $arrayForEach[animalsNames;animal;
-
+        
             $let[i;0]
-            
             
             $while[$get[i]<25;
                 $if[$env[animals;$env[animal];v$get[i];vCode]==$get[arg2];
@@ -91,7 +90,7 @@ module.exports = [{
         ]
         
         $setUserVar[userWardrobe;$env[userWardrobe]]
-
+        
         $sendMessage[$channelID;
             $getGlobalVar[author]
             $description[# You have successfully equipped all animals with the «\`$get[skinpack]\`» Skinpack!]
@@ -146,32 +145,35 @@ module.exports = [{
 }]
 
 
+// Functions
+
+
 function loop() {
 return `
 $loop[25;
 
-    $let[num;$math[$env[i] - 1]] 
+  $let[num;$math[$env[i] - 1]] 
 
-    $if[$env[animals;$get[animal];v$get[num]]!=;;
-        $break
-    ]
-
-
-    $let[animalVarCode;$env[animals;$get[animal];v$get[num];vCode]] 
+  $if[$env[animals;$get[animal];v$get[num]]!=;;
+    $break
+  ]
 
 
-    $if[$or[$and[$env[userPacks;goldenSP]==false;$get[animalVarCode]==gsp];$and[$env[userPacks;lockedSP]==false;$get[animalVarCode]==lsp];$and[$env[userPacks;halloweenSP]==false;$get[animalVarCode]==hsp2020]]==false;;
-        $continue
-    ]
+  $let[animalVarCode;$env[animals;$get[animal];v$get[num];vCode]] 
 
 
-    $let[animalName;$env[animals;$get[animal];v$get[num];name]] 
-    $let[animalTrig;v$get[num]+$env[animals;$get[animal];trig]] 
-    $let[animalDesc;$env[animals;$get[animal];v$get[num];description]] 
-    $let[animalEmoji;$env[animals;$get[animal];v$get[num];emoji]] 
-    $let[desc;$get[desc] $get[animalEmoji]] 
+  $if[$or[$and[$env[userPacks;goldenSP]==false;$get[animalVarCode]==gsp];$and[$env[userPacks;lockedSP]==false;$get[animalVarCode]==lsp];$and[$env[userPacks;halloweenSP]==false;$get[animalVarCode]==hsp2020]]==false;;
+    $continue
+  ]
 
-    $addOption[$get[animalName];$get[animalDesc];$get[animalTrig]-$authorID;$get[animalEmoji]] 
+
+  $let[animalName;$env[animals;$get[animal];v$get[num];name]] 
+  $let[animalTrig;v$get[num]+$env[animals;$get[animal];trig]] 
+  $let[animalDesc;$env[animals;$get[animal];v$get[num];description]] 
+  $let[animalEmoji;$env[animals;$get[animal];v$get[num];emoji]] 
+  $let[desc;$get[desc] $get[animalEmoji]] 
+
+  $addOption[$get[animalName];$get[animalDesc];$get[animalTrig]-$authorID;$get[animalEmoji]] 
 
 ;i;desc]`
 }
@@ -192,7 +194,7 @@ $description[# $get[currentAnimalEmoji];1]`
 
 function skinpacks() {
 return `
-$switch[$message[1];
+$switch[$get[arg2];
   $case[$arrayAt[skinpackNames;0];$let[skinpack;Seasonal 1]]
   $case[$arrayAt[skinpackNames;1];$let[skinpack;Seasonal 2]]
   $case[$arrayAt[skinpackNames;2];$let[skinpack;Seasonal 2 Winter]]

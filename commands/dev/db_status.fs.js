@@ -1,4 +1,8 @@
-module.exports = [{ name: "dbstat", type: "messageCreate", code: `
-$reply
-**Ping: \`$dbping\`ms**
-`}]
+module.exports = [{ 
+  name: "dbstat", 
+  type: "messageCreate", 
+  code: `
+    $reply
+    **Ping: \`$dbping\`ms**
+  `
+}]
