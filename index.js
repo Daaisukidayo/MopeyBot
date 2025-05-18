@@ -9,6 +9,7 @@ dotenv.config();
 
 const { ForgeClient, LogPriority } = require("@tryforge/forgescript");
 const { ForgeDB } = require("@tryforge/forge.db");
+const { ForgeJyros } = require('@econome/forge.jyros')
 
 
 // ========== CLIENT CONFIGURATION ==========
@@ -20,6 +21,7 @@ const client = new ForgeClient({
   allowBots: false,
   extensions: [
     new ForgeDB(), // Adds database capabilities
+    new ForgeJyros(), // Adds Jyros capabilities
   ],
   intents: [
     "Guilds",
