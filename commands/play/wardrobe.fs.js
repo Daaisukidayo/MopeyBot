@@ -142,7 +142,7 @@ module.exports = [{
 
     $!editMessage[$channelID;$messageID;${embed()}]
     $deferUpdate
-`
+  `
 }]
 
 
@@ -158,10 +158,10 @@ $loop[25;
 
 
     $let[animalVarCode;$env[animals;$get[animal];v$get[num];vCode]] 
- 
+
 
     $if[$or[$and[$env[userPacks;goldenSP]==false;$get[animalVarCode]==gsp];$and[$env[userPacks;lockedSP]==false;$get[animalVarCode]==lsp];$and[$env[userPacks;halloweenSP]==false;$get[animalVarCode]==hsp2020]]==false;;
-       $continue
+        $continue
     ]
 
 
@@ -193,27 +193,27 @@ $description[# $get[currentAnimalEmoji];1]`
 function skinpacks() {
 return `
 $switch[$message[1];
-    $case[$arrayAt[skinpackNames;0];$let[skinpack;Seasonal 1]]
-    $case[$arrayAt[skinpackNames;1];$let[skinpack;Seasonal 2]]
-    $case[$arrayAt[skinpackNames;2];$let[skinpack;Seasonal 2 Winter]]
-    $case[$arrayAt[skinpackNames;3];$let[skinpack;Legacy]]
-    $case[$arrayAt[skinpackNames;4];$let[skinpack;Legacy Winter]]
-    $case[$arrayAt[skinpackNames;5];$let[skinpack;Storefront]]
-    $case[$arrayAt[skinpackNames;6];$let[skinpack;Summer 2021]]
-    $case[$arrayAt[skinpackNames;7];$let[skinpack;Summer 2022]]
-    $case[$arrayAt[skinpackNames;8];$let[skinpack;May 2022]]
-    $case[$arrayAt[skinpackNames;9];$let[skinpack;Christmas 2022]]
-    $case[$arrayAt[skinpackNames;10];$let[skinpack;Valentine 2023]]
-    $case[$arrayAt[skinpackNames;11];$let[skinpack;Golden]]
-    $case[$arrayAt[skinpackNames;12];$let[skinpack;Locked]]
-    $case[$arrayAt[skinpackNames;13];$let[skinpack;Halloween 2020]]
-    $case[$arrayAt[skinpackNames;14];$let[skinpack;Halloween 2021]]
-    $case[$arrayAt[skinpackNames;15];$let[skinpack;Halloween 2022]]
-    $case[$arrayAt[skinpackNames;16];$let[skinpack;Halloween 2023]]
-    $case[$arrayAt[skinpackNames;17];$let[skinpack;Land Gold-Trim]]
-    $case[$arrayAt[skinpackNames;18];$let[skinpack;Desert Gold-Trim]]
-    $case[$arrayAt[skinpackNames;19];$let[skinpack;Ocean Gold-Trim]]
-    $case[$arrayAt[skinpackNames;20];$let[skinpack;Arctic Gold-Trim]]
-    $case[$arrayAt[skinpackNames;21];$let[skinpack;Promo]]
+  $case[$arrayAt[skinpackNames;0];$let[skinpack;Seasonal 1]]
+  $case[$arrayAt[skinpackNames;1];$let[skinpack;Seasonal 2]]
+  $case[$arrayAt[skinpackNames;2];$let[skinpack;Seasonal 2 Winter]]
+  $case[$arrayAt[skinpackNames;3];$let[skinpack;Legacy]]
+  $case[$arrayAt[skinpackNames;4];$let[skinpack;Legacy Winter]]
+  $case[$arrayAt[skinpackNames;5];$let[skinpack;Storefront]]
+  $case[$arrayAt[skinpackNames;6];$let[skinpack;Summer 2021]]
+  $case[$arrayAt[skinpackNames;7];$let[skinpack;Summer 2022]]
+  $case[$arrayAt[skinpackNames;8];$let[skinpack;May 2022]]
+  $case[$arrayAt[skinpackNames;9];$let[skinpack;Christmas 2022]]
+  $case[$arrayAt[skinpackNames;10];$let[skinpack;Valentine 2023]]
+  $case[$arrayAt[skinpackNames;11];$let[skinpack;Golden]]
+  $case[$arrayAt[skinpackNames;12];$let[skinpack;Locked]]
+  $case[$arrayAt[skinpackNames;13];$let[skinpack;Halloween 2020]]
+  $case[$arrayAt[skinpackNames;14];$let[skinpack;Halloween 2021]]
+  $case[$arrayAt[skinpackNames;15];$let[skinpack;Halloween 2022]]
+  $case[$arrayAt[skinpackNames;16];$let[skinpack;Halloween 2023]]
+  $case[$arrayAt[skinpackNames;17];$let[skinpack;Land Gold-Trim]]
+  $case[$arrayAt[skinpackNames;18];$let[skinpack;Desert Gold-Trim]]
+  $case[$arrayAt[skinpackNames;19];$let[skinpack;Ocean Gold-Trim]]
+  $case[$arrayAt[skinpackNames;20];$let[skinpack;Arctic Gold-Trim]]
+  $case[$arrayAt[skinpackNames;21];$let[skinpack;Promo]]
 ]
 `}
