@@ -78,7 +78,21 @@ client.login(process.env.TOKEN);
 // ========== READY EVENT ==========
 // Executes when the bot is ready
 
-
+client.commands.add({
+  type: "ready",
+  code: `
+    $async[
+      $deletevars[page;;message]
+      $deletevars[crpage;;message]
+      $deletevars[pages;;message]
+      $deletevars[rowsPerPage;;message]
+      $log[Unused message variables have been cleared!]
+    ]
+    $async[
+      $setStatus[online;Watching;$guildCount servers]
+    ]
+  `
+})
 
 // ========== VARIABLES ==========
 
