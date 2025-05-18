@@ -41,23 +41,30 @@ module.exports = [{
     $addButton[coins-$authorID;Coins;Primary;$getGlobalVar[emoji]]
     $addButton[packs-$authorID;Packs;Primary;🛒;true]
 
+    $arrayLoad[allSkinPacks;, ;$getGlobalVar[shopItems]]
 
-    $jsonLoad[data;$getUserVar[userPacks]]
+    $jsonLoad[userPacks;$getUserVar[userPacks]]
+    $arrayLoad[userPacksKeys;$advancedReplace[$trimLines[$jsonKeys[userPacks]];\\[\n;;\n\\];;\n; ;";]] $c["]]
     
-    $let[ct;$env[data;legacySP]]
-    $let[ssp;$env[data;summerSP]]
-    $let[hsp;$env[data;halloweenSP]]
-    $let[gsp;$env[data;goldenSP]]
-    $let[lsp;$env[data;lockedSP]]
-    $let[lgt;$env[data;landGTSP]]
-    $let[dgt;$env[data;desertGTSP]]
-    $let[ogt;$env[data;oceanGTSP]]
-    $let[agt;$env[data;arcticGTSP]]
-    $let[sfsp;$env[data;storefrontSP]]
-    $let[and;$or[$get[ssp];$get[hsp];$get[gsp];$get[lsp];$get[sfsp];$get[lgt];$get[lgt];$get[ogt];$get[agt];$get[ct]]]
+
+    $let[desc;]
+    
+    $if[$arrayLength[userPacksKeys]==0;
+      $let[desc;none]
+    ;
+      $arrayForEach[userPacksKeys;userPack;
+        $arrayForEach[allSkinPacks;skinpack;
+          $jsonLoad[pack;$env[skinpack]]
+          $if[$env[userPack]==$env[pack;name];
+            $let[desc;$get[desc]$env[pack;description]\n]
+          ]
+        ]
+      ]
+    ]
+
 
     $!editMessage[$channelID;$messageID;
-      $addField[🛒 __Purchased Skinpacks:__;$if[$get[and]==false;none;\`\`\`$if[$get[ssp];Summer Skinpack\n]$if[$get[hsp];Halloween Skinpack\n]$if[$get[gsp];Golden Skinpack\n]$if[$get[lsp];Locked Skinpack\n]$if[$get[sfsp];Storefront Skinpack\n]$if[$get[ct];Legacy Skinpack\n]$if[$get[lgt];Land Gold-Trim Skinpack\n]$if[$get[lgt];Desert Gold-Trim Skinpack\n]$if[$get[ogt];Ocean Gold-Trim Skinpack\n]$if[$get[agt];Arctic Gold-Trim Skinpack]\`\`\`]]
+      $addField[🛒 __Purchased Skinpacks:__;$codeBlock[$get[desc]]]
       $title[__BALANCE__]
       $getGlobalVar[author]
       $thumbnail[$userAvatar[$authorID]]
