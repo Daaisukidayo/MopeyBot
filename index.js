@@ -82,14 +82,15 @@ client.commands.add({
   type: "ready",
   code: `
     $async[
+      $setStatus[online;Watching;$guildCount servers]
+      $logger[Info;Ready on client $username[$clientID]]
+    ]
+    $async[
       $deletevars[page;;message]
       $deletevars[crpage;;message]
       $deletevars[pages;;message]
       $deletevars[rowsPerPage;;message]
-      $log[Unused message variables have been cleared!]
-    ]
-    $async[
-      $setStatus[online;Watching;$guildCount servers]
+      $logger[Info;Unused message variables have been cleared]
     ]
   `
 })
