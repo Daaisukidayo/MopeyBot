@@ -44,11 +44,11 @@ module.exports = [{
     $arrayLoad[allSkinPacks;, ;$getGlobalVar[shopItems]]
 
     $jsonLoad[userPacks;$getUserVar[userPacks]]
-    $arrayLoad[userPacksKeys;$advancedReplace[$trimLines[$jsonKeys[userPacks]];\\[\n;;\n\\];;\n; ;";]] $c["]]
+    $arrayLoad[userPacksKeys;$advancedReplace[$trimLines[$jsonKeys[userPacks]];\\[\n;;\n\\];;\n; ;";]] $c["]
     
 
     $let[desc;]
-    
+
     $if[$arrayLength[userPacksKeys]==0;
       $let[desc;none]
     ;
