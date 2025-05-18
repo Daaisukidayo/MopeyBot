@@ -78,7 +78,7 @@ client.login(process.env.TOKEN);
 // ========== READY EVENT ==========
 // Executes when the bot is ready
 
-client.commands.add({
+client.commands.add[{
   type: "ready",
   code: `
     $async[
@@ -93,7 +93,10 @@ client.commands.add({
       $logger[Info;Unused message variables have been cleared]
     ]
   `
-})
+},{
+  type: "error",
+  code: `$logger[Error;An error occurred: $error]`
+}]
 
 // ========== VARIABLES ==========
 
