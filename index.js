@@ -7,7 +7,7 @@ dotenv.config();
 // ========== IMPORTS ==========
 // Bring in the essentials for our bot’s operations
 
-const { ForgeClient, LogPriority } = require("@tryforge/forgescript");
+const { ForgeClient } = require("@tryforge/forgescript");
 const { ForgeDB } = require("@tryforge/forge.db");
 const { ForgeJyros } = require('@econome/forge.jyros')
 
