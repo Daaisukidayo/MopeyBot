@@ -956,18 +956,3 @@ client.functions.add({
     }]
   `
 })
-
-client.functions.add({
-  name: "errorMSG",
-  code: `
-    $return[
-      $sendMessage[$channelID;
-        $title[]
-        $description[]
-        $color[$getGlobalVar[errorColor]]
-        $footer[]
-        $getGlobalVar[author]
-      ]
-    ]
-  `
-})

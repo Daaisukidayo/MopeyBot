@@ -12,7 +12,8 @@ module.exports = [{
     $let[arg;$toLowerCase[$message]]
 
     $onlyIf[$get[arg]!=;
-      $callFunction[errorMSG]
+      $color[$getGlobalVar[errorColor]]
+      $getGlobalVar[author]
       $title[:x: Missing arguments!]
       $description[## Usage 1: \`$getGuildVar[prefix]wardrobe new\`\n## Usage 2: \`$getGuildVar[prefix]wardrobe {tier|all} [SKINPACK_ID\\]\`]
     ]
@@ -41,12 +42,14 @@ module.exports = [{
     ;$if[$isNumber[$get[arg1]];
 
         $onlyIf[$get[arg2]!=;
-          $callFunction[errorMSG]
+          $color[$getGlobalVar[errorColor]]
+          $getGlobalVar[author]
           $title[:x: Missing arguments!]
           $description[## You must specify an skinpack id!]
         ]
         $onlyIf[$arrayIncludes[skinpackNames;$get[arg2]];
-          $callFunction[errorMSG]
+          $color[$getGlobalVar[errorColor]]
+          $getGlobalVar[author]
           $title[:x: Invalid arguments!]
           $description[## This skinpack does not exist!]
         ]
@@ -70,7 +73,12 @@ module.exports = [{
             ]
         ]
 
-        $onlyIf[$get[desc]!=;$sendMessage[$channelid;# All Tier «\`$get[arg1]\`» animals don't have the «\`$get[skinpack]\`» Skinpack!]]
+        $onlyIf[$get[desc]!=;
+          $title[:x: Invalid arguments!]
+          $color[$getGlobalVar[errorColor]]
+          $getGlobalVar[author]
+          $description[# All Tier «\`$get[arg1]\`» animals don't have the «\`$get[skinpack]\`» Skinpack!]
+        ]
 
         $setUserVar[userWardrobe;$env[userWardrobe]]
 
@@ -83,8 +91,18 @@ module.exports = [{
             
     ;$if[$get[arg1]==all;
             
-        $onlyIf[$get[arg2]!=;## You must specify a skinpack!]
-        $onlyIf[$arrayIncludes[skinpackNames;$get[arg2]];## This skinpack does not exist!]
+        $onlyIf[$get[arg2]!=;
+          $title[:x: Invalid arguments!]
+          $color[$getGlobalVar[errorColor]]
+          $getGlobalVar[author]
+          $description[## You must specify a skinpack!]
+        ]
+        $onlyIf[$arrayIncludes[skinpackNames;$get[arg2]];
+          $title[:x: Invalid arguments!]
+          $color[$getGlobalVar[errorColor]]
+          $getGlobalVar[author]
+          $description[## This skinpack does not exist!]
+        ]
         
         ${skinpacks()}
         
