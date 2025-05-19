@@ -15,12 +15,14 @@ const { ForgeJyros } = require('@econome/forge.jyros')
 // ========== CLIENT CONFIGURATION ==========
 // Initialize the bot client with extensions, intents, and events
 
+const DB = new ForgeDB({
+  events: ["connect"] 
+})
+
 const client = new ForgeClient({
   mobile: true,
-  disableConsoleErrors: true,
-  allowBots: false,
   extensions: [
-    new ForgeDB(), // Adds database capabilities
+    DB, // Adds database capabilities
     new ForgeJyros(), // Adds Jyros capabilities
   ],
   intents: [
@@ -98,9 +100,16 @@ client.commands.add[{
   code: `$logger[Error;An error occurred: $error]`
 }]
 
+DB.commands.add({
+  type: "connect",
+  code: `
+    $async[$logger[Info;Connected to the database]]
+  `
+})
+
 // ========== VARIABLES ==========
 
-ForgeDB.variables({
+DB.variables({
   isTester: false,
   onSlowmode: false,
   isBanned: false,
@@ -557,7 +566,6 @@ ForgeDB.variables({
 client.functions.add({
   name: "rulesSchema",
   code: `
- 
     $return[
       $addActionRow
       $addButton[acceptrules-$authorID;Accept;Success;✅]
@@ -571,8 +579,7 @@ client.functions.add({
 
 client.functions.add({
   name: "rulesEmbeds",
-  code:
-    `
+  code:`
     $return[  
       $author[Hey, $userDisplayName!;$userAvatar]
       $title[It looks like you haven't accepted the rules yet!]
@@ -592,7 +599,6 @@ client.functions.add({
   name: "cooldownSchema",
   params: ["name"],
   code: `
-
     $let[time;$getUserCooldownTime[$env[name]]]
     $let[cooldownTime;$sum[$getTimestamp;$get[time]]]
     $let[longDateTime;$discordTimestamp[$get[cooldownTime];LongDateTime]]
@@ -618,13 +624,17 @@ client.functions.add({
 client.functions.add({
   name: "sumMC",
   params: ["amount"],
-  code: `$return[$setUserVar[MC;$sum[$getUserVar[MC];$env[amount]]]]`
+  code: `
+    $return[$setUserVar[MC;$sum[$getUserVar[MC];$env[amount]]]]
+  `
 })
 
 client.functions.add({
   name: "subMC",
   params: ["amount"],
-  code: `$return[$setUserVar[MC;$sub[$getUserVar[MC];$env[amount]]]]`
+  code: `
+    $return[$setUserVar[MC;$sub[$getUserVar[MC];$env[amount]]]]
+  `
 })
 
 // standart checkings before executing command
@@ -632,7 +642,7 @@ client.functions.add({
 client.functions.add({
   name: "checking",
   code: `
-    $if[$getUserVar[dev]==false;
+    $if[$getUserVar[dev];;
       $onlyIf[$getGlobalVar[botEnabled]]
     ]
     $onlyIf[$getUserVar[isBanned]==false]
