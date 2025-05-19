@@ -11,7 +11,11 @@ module.exports = [{
 
     $let[arg;$toLowerCase[$message]]
 
-    $onlyIf[$get[arg]!=;## Usage: \`$getGuildVar[prefix]wardrobe new\`\n## Usage: \`$getGuildVar[prefix]wardrobe {tier|all} [SKINPACK_ID\\]\`]
+    $onlyIf[$get[arg]!=;
+      $callFunction[errorMSG]
+      $title[:x: Missing arguments!]
+      $description[## Usage 1: \`$getGuildVar[prefix]wardrobe new\`\n## Usage 2: \`$getGuildVar[prefix]wardrobe {tier|all} [SKINPACK_ID\\]\`]
+    ]
 
     $let[arg1;$toLowerCase[$message[0]]]
     $let[arg2;$toLowerCase[$message[1]]]
@@ -19,8 +23,8 @@ module.exports = [{
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[userPacks;$getUserVar[userPacks]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
-    $arrayLoad[animalsNames;, ;$advancedReplace[$trimLines[$jsonKeys[animals]];\\[\n;;\n\\];;\n; ;";]] $c["]
-    $arrayLoad[skinpackNames;, ;$advancedReplace[$trimLines[$getGlobalVar[allVariants]];\\[\n;;\n\\];;\n; ;";]] $c["]
+    $arrayLoad[animalsNames;, ;$advancedReplace[$trimLines[$jsonKeys[animals]];\\[\n;;\n\\];;\n; ;";]]
+    $arrayLoad[skinpackNames;, ;$advancedReplace[$trimLines[$getGlobalVar[allVariants]];\\[\n;;\n\\];;\n; ;";]]
 
 
     $if[$get[arg]==new;
@@ -36,8 +40,16 @@ module.exports = [{
 
     ;$if[$isNumber[$get[arg1]];
 
-        $onlyIf[$get[arg2]!=;## You must specify an skinpack id!]
-        $onlyIf[$arrayIncludes[skinpackNames;$get[arg2]];## This skinpack does not exist!]
+        $onlyIf[$get[arg2]!=;
+          $callFunction[errorMSG]
+          $title[:x: Missing arguments!]
+          $description[## You must specify an skinpack id!]
+        ]
+        $onlyIf[$arrayIncludes[skinpackNames;$get[arg2]];
+          $callFunction[errorMSG]
+          $title[:x: Invalid arguments!]
+          $description[## This skinpack does not exist!]
+        ]
         
         $let[desc;]
         
@@ -45,7 +57,7 @@ module.exports = [{
         
         $arrayForEach[animalsNames;animal;
             $if[$env[animals;$env[animal];tier]==$get[arg1];
-
+                
                 $let[i;0]
                 
                 $while[$get[i]<25;
