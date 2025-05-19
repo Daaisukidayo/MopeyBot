@@ -53,16 +53,16 @@ module.exports = [{
           $title[:x: Invalid arguments!]
           $description[## This skinpack does not exist!]
         ]
-        
+
         $let[desc;]
-        
+
         ${skinpacks()}
-        
+
         $arrayForEach[animalsNames;animal;
             $if[$env[animals;$env[animal];tier]==$get[arg1];
-                
+
                 $let[i;0]
-                
+
                 $while[$get[i]<25;
                     $if[$env[animals;$env[animal];v$get[i];vCode]==$get[arg2];
                         $!jsonSet[userWardrobe;$env[animal];v$get[i]]
@@ -88,9 +88,9 @@ module.exports = [{
             $color[$getGlobalVar[defaultColor]]
             $title[You have successfully equipped tier «$get[arg1]» animals with the «$get[skinpack]» Skinpack!]
         ]
-            
+
     ;$if[$get[arg1]==all;
-            
+
         $onlyIf[$get[arg2]!=;
           $title[:x: Invalid arguments!]
           $color[$getGlobalVar[errorColor]]
@@ -103,24 +103,22 @@ module.exports = [{
           $getGlobalVar[author]
           $description[## This skinpack does not exist!]
         ]
-        
+
         ${skinpacks()}
-        
+
         $arrayForEach[animalsNames;animal;
-        
-            $let[i;0]
-            
-            $while[$get[i]<25;
-                $if[$env[animals;$env[animal];v$get[i];vCode]==$get[arg2];
-                    $!jsonSet[userWardrobe;$env[animal];v$get[i]]
-                    $break
-                ]
-                $letSum[i;1]
+          $let[i;0]
+          $while[$get[i]<25;
+            $if[$env[animals;$env[animal];v$get[i];vCode]==$get[arg2];
+              $!jsonSet[userWardrobe;$env[animal];v$get[i]]
+              $break
             ]
+            $letSum[i;1]
+          ]
         ]
-        
+
         $setUserVar[userWardrobe;$env[userWardrobe]]
-        
+
         $sendMessage[$channelID;
             $getGlobalVar[author]
             $description[# You have successfully equipped all animals with the «\`$get[skinpack]\`» Skinpack!]
