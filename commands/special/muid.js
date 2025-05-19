@@ -7,7 +7,7 @@ module.exports = ({
     $callFunction[checking;]
 
     $let[pos;$message[0]]
-  
+
     $onlyIf[$or[$get[pos]!=;$isNumber[$get[pos]]];
       $color[d0321d]
       $author[✖️ Invalid arguments!]

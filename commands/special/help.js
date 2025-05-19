@@ -2,7 +2,7 @@ module.exports = [{
   name: "help",
   type: "messageCreate",
   code: `
-  
+    $reply
     $let[cdTime;5s]
     $callFunction[checking;]
     $callFunction[cooldown;$get[cdTime]]

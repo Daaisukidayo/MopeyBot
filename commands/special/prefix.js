@@ -3,7 +3,6 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-    
     $callFunction[checking;]
 
     $onlyIf[$guildID!=;
@@ -26,8 +25,8 @@ module.exports = [{
 
     $setGuildVar[prefix;$message]
     ### Successfully changed my prefix in this server to \`$message\`
-    
-  `},{
+  `
+},{
   type: "messageCreate",
   unprefixed: true,
   code: `
@@ -41,6 +40,5 @@ module.exports = [{
 
     $reply
     My prefix in this server is \`$getGuildVar[prefix]\`
-  `}
-]
-  
+  `
+}]

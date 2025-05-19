@@ -1,15 +1,15 @@
 module.exports = [{
-  name: "beachball",
+  name: "umbrella",
   type: "messageCreate",
-  aliases: ["bb"],
-  code:`
+  aliases: ["ur"],
+  code: `
     $reply
     $let[cdTime;20s]
     $callFunction[checking;]
     $callFunction[cooldown;$get[cdTime]]
 
-    $jsonLoad[data;$readFile[json/beachballs.json]]
-        
+    $jsonLoad[data;$readFile[json/umbrellas.json]]
+
     $arrayLoad[rarityValues;, ;1, 20, 50, 100, 200, 500, 1000, 1500, 2000, 3500, 5000]
 
     $let[al;$arraylength[rarityValues]]
@@ -22,14 +22,14 @@ module.exports = [{
         ${catched()}
     ;
         $loop[$get[al];
-            $let[r;$randomNumber[1;$math[$arrayAt[rarityValues;$get[i]] + 1]]]
+          $let[r;$randomNumber[1;$math[$arrayAt[rarityValues;$get[i]] + 1]]]
 
-            $if[1==$get[r];
-                ${catched()}
-                $break
-            ]
+          $if[1==$get[r];
+            ${catched()}
+            $break
+          ]
 
-            $letSub[i;1]
+          $letSub[i;1]
         ]
     ]
 
@@ -37,13 +37,13 @@ module.exports = [{
   `
 }]
 
-function catched () {
+function catched() {
 return `
 
-$let[thum;$env[data;bb$get[i];thum]]
-$let[MC;$randomNumber[$env[data;bb$get[i];mc;0];$env[data;bb$get[i];mc;1]]]
-$let[desc;__$env[data;bb$get[i];desc]__ $env[data;bb$get[i];emoji]]
-$let[clr;$env[data;bb$get[i];clr]]
+$let[thum;$env[data;ur$get[i];thum]]
+$let[MC;$randomNumber[$env[data;ur$get[i];mc;0];$env[data;ur$get[i];mc;1]]]
+$let[desc;__$env[data;ur$get[i];desc]__ $env[data;ur$get[i];emoji]]
+$let[clr;$env[data;ur$get[i];clr]]
 
 ${contents()}
 
@@ -57,7 +57,8 @@ $sendMessage[$channelID;
     ]
 ]
 
-`}
+`
+}
 
 function contents() {
 return `
@@ -76,18 +77,17 @@ You were gliding through the ocean and spotted a $get[desc],
 You were strolling across the ocean and noticed a $get[desc]]
 
 $arrayLoad[content2;,\n;
-You held it for some time, goaled it and earned,
-You held it carefully, goaled it, and earned,
-You carried it for a while, scored it, and earned,
-You held onto it, delivered it to the waterpull, and earned,
-You protected it, goaled it, and collected,
-You kept it safe, scored it, and gained,
-You grabbed it, goaled it, and pocketed,
-You picked it up, delivered it to the waterpull, and earned,
-You kept it safe, goaled it, and scored,
-You held it carefully, goaled it, and earned,
-You kept it safe, goaled it, and collected,
-You protected it, goaled it, and pocketed,
-You carried it to the waterpull and earned]
+You held it for some time and earned,
+You held it carefully and earned,
+You carried it for a while and earned,
+You held onto it and earned,
+You protected it and collected,
+You kept it safe and gained,
+You grabbed it and pocketed,
+You picked it up and earned,
+You kept it safe and scored,
+You held it carefully and earned,
+You kept it safe and collected,
+You protected it and pocketed]  
 `
 }

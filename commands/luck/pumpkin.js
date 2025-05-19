@@ -7,36 +7,36 @@ module.exports = [{
     $let[cdTime;20s]
     $callFunction[checking;]
     $callFunction[cooldown;$get[cdTime]]
-  
+
     $jsonLoad[data;$readFile[json/pumpkins.json]]
         
     $arrayLoad[rarityValues;, ;1, 20, 50, 100, 200, 500, 1000, 1500, 2000, 3500, 5000]
-  
+
     $let[al;$arraylength[rarityValues]]
     $let[li;$math[$get[al] - 1]]
-  
+
     $let[i;$get[li]]
-  
+
     $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]]==true;$message[0]>-1;$message[0]<=$get[li]]==true;
         $let[i;$message[0]]
         ${catched()}
     ;
         $loop[$get[al];
             $let[r;$randomNumber[1;$math[$arrayAt[rarityValues;$get[i]] + 1]]]
-  
+
             $if[1==$get[r];
                 ${catched()}
                 $break
             ]
-  
+
             $letSub[i;1]
         ]
     ]
-  
+
     $callFunction[sumMC;$get[MC]]
   `
 }]
-  
+
 function catched() {
 return `
 

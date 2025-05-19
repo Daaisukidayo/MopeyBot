@@ -16,7 +16,6 @@ module.exports = [{
     $setTimeout[
       $disableButtonsOf[$channelID;$get[msgid]]
     ;1m]
-
   `
 },{
   type: "interactionCreate",
