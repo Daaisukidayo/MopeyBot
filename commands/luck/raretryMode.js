@@ -6,7 +6,7 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-  
+
     $callFunction[checking;]
     $callFunction[cooldown;${CD}]
 
@@ -61,7 +61,7 @@ module.exports = [{
 function jsonAndArray() {
 return `
 $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
-$arrayLoad[raretryModes;,;$advancedReplace[$env[raretryVarData;raretryModes]; ;;\n;;";;\\];;\\[;]]
+$jsonLoad[raretryModes;$env[raretryVarData;raretryModes]]
 `
 }
 
@@ -78,8 +78,7 @@ function buttonsLoop(disable = false){
 return `
 
 $loop[$arrayLength[raretryModes];
-  $let[i;$sub[$env[i];1]] 
-   
+  $let[i;$sub[$env[i];1]]
   $if[$or[$get[i]==0;$get[i]==3];
     $addActionRow
   ] 

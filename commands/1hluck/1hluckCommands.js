@@ -45,7 +45,6 @@ module.exports = [
     ${time()}
   `
 },{
-
   name: "resume",
   aliases: ["continue", "res"],
   type: "messageCreate",
@@ -71,14 +70,14 @@ module.exports = [
 
     $arrayLoad[caught; ;]
     $arrayLoad[allRares]
-    $arrayLoad[raresMap;, \n;$getGlobalVar[raresMap]]
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
     $jsonLoad[SNORA;$getGlobalVar[SNORA]]
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
 
     $arrayForEach[raresMap;rareMap;
       $jsonLoad[rareOBJ;$env[rareMap]]
-      $arrayLoad[allRaresFromCat;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]] $c["]
+      $jsonLoad[allRaresFromCat;$env[rareOBJ;rares]]
       $arrayConcat[allRares;allRares;allRaresFromCat]
     ]
 
@@ -87,7 +86,7 @@ module.exports = [
       $if[$arrayIncludes[allRares;$env[caughtRare]];
         $arrayForEach[raresMap;rareMap;
           $jsonLoad[rareOBJ;$env[rareMap]]
-          $arrayLoad[raresFromOBJ;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]] $c["]
+          $jsonLoad[raresFromOBJ;$env[rareOBJ;rares]]
 
           $if[$arrayIncludes[raresFromOBJ;$env[caughtRare]];
             $if[$env[rareOBJ;category]!=common;
@@ -225,7 +224,7 @@ function pts () {
 return `
 # Points: ||$getUserVar[1hpoints]||
 ## Total rares: ||$getUserVar[1htotalRares]||
-## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";];JSON] $c["]
+## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";;,;];JSON]
 `
 }
 

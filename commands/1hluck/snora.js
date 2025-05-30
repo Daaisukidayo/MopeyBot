@@ -9,11 +9,10 @@ $callFunction[checking;]
 $callFunction[cooldown;$get[cdTime]]
 
 $arrayLoad[allRares]
-$arrayLoad[raresMap;, \n;$getGlobalVar[raresMap]]
-$arrayLoad[caughtRares; ;$toLowerCase[$message]]
+$jsonLoad[raresMap;$getGlobalVar[raresMap]]
 $jsonLoad[SNORA;$getGlobalVar[SNORA]]
 
-$arrayLoad[allRares;,;$advancedReplace[$trimSpace[$jsonKeys[SNORA]];\\[;;\\];;";;\n;]]
+$jsonLoad[allRares;$jsonKeys[SNORA]]
 $arrayLoad[allRaresNames;, ;$jsonValues[SNORA;, ]]
 
 $footer["||" is "or". It means you need to write for example "cht" or "chocotoucan"]

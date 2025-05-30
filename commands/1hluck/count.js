@@ -14,14 +14,14 @@ $let[mh;0]
 $let[cht;0]
 $arrayLoad[unknown]
 $arrayLoad[allRares]
-$arrayLoad[raresMap;, \n;$getGlobalVar[raresMap]]
+$jsonLoad[raresMap;$getGlobalVar[raresMap]]
 $arrayLoad[caughtRares; ;$toLowerCase[$message]]
 $jsonLoad[SNORA;$getGlobalVar[SNORA]]
 $jsonLoad[allRaresList;{}]
 
 $arrayForEach[raresMap;rareMap;
   $jsonLoad[rareOBJ;$env[rareMap]]
-  $arrayLoad[allRaresFromCat;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]] $c["]
+  $jsonLoad[allRaresFromCat;$env[rareOBJ;rares]]
   $arrayConcat[allRares;allRares;allRaresFromCat]
 ]
 
@@ -31,7 +31,7 @@ $arrayForEach[caughtRares;caughtRare;
   $if[$arrayIncludes[allRares;$env[caughtRare]];
     $arrayForEach[raresMap;rareMap;
       $jsonLoad[rareOBJ;$env[rareMap]]
-      $arrayLoad[raresFromOBJ;,;$advancedReplace[$trimLines[$env[rareOBJ;rares]];";;\n;;\\[;;\\];]] $c["]
+      $jsonLoad[raresFromOBJ;$env[rareOBJ;rares]]
 
       $if[$arrayIncludes[raresFromOBJ;$env[caughtRare]];
         $if[$env[rareOBJ;category]!=common;
@@ -53,7 +53,7 @@ $arrayForEach[caughtRares;caughtRare;
 
 # Total points: \`$get[points]\`
 # Total rares: \`$get[totalRares]\`
-## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$env[allRaresList]];{;;};;";];JSON]
+## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$env[allRaresList]];{;;};;";;,;];JSON]
 $if[$arrayLength[unknown]!=0;# Unknown rares:\n$codeBlock[$advancedReplace[$trimLines[$env[unknown]];[;;\\];;";];JSON]]
 
 `}]

@@ -145,17 +145,12 @@ DB.variables({
   raretryVarData: {
     coinsForRaretry: {
       inferno: [0, 0, 0, 0, 0, 100, 110, 120, 130],
-      other: [
-        0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000,
-        2750000, 5500000,
-      ],
+      other: [0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000, 2750000, 5500000],
     },
 
     chancesForRaretry: {
       inferno: [1, 2, 3, 4, 5, 10, 15, 20, 25],
-      other: [
-        3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000,
-      ],
+      other: [3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000],
     },
 
     categories: [
@@ -336,7 +331,7 @@ DB.variables({
     kingDragon: "v0",
   },
 
-  shopItems: `
+  shopItems: [
     {
       "name": "legacySP",
       "description": "Legacy Skinpack",
@@ -422,54 +417,54 @@ DB.variables({
       "description": "Arctic Gold-Trim Skinpack",
       "cost": "250000"
     }
-  `,
-  raresMap: `
+  ],
+  raresMap: [
     {
       "category": "common",
-      "rares": ["cht", "kbt", "mar", "chocotoucan", "keelbilledtoucan", "markhor"\],
+      "rares": ["cht", "kbt", "mar", "chocotoucan", "keelbilledtoucan", "markhor"],
       "points": 1
     }, 
     {
       "category": "uncommon",
-      "rares": ["doe", "bm", "jag", "leo", "ft", "yp", "ln", "bluemacaw", "jaguar", "leopard", "fierytoucan", "yellowpufferfish", "lioness"\],
+      "rares": ["doe", "bm", "jag", "leo", "ft", "yp", "ln", "bluemacaw", "jaguar", "leopard", "fierytoucan", "yellowpufferfish", "lioness"],
       "points": 2
     }, 
     {
       "category": "rare",
-      "rares": ["wd", "pp", "mad", "gph", "mom", "mf", "bp", "lc", "bml", "whitedove", "pinkypig", "marshdeer", "goldenpheasant", "momaffie", "momaffiefamily", "blackpanther", "lioncub", "blackmanedlion"\],
+      "rares": ["wd", "pp", "mad", "gph", "mom", "mf", "bp", "lc", "bml", "whitedove", "pinkypig", "marshdeer", "goldenpheasant", "momaffie", "momaffiefamily", "blackpanther", "lioncub", "blackmanedlion"],
       "points": 3
     }, 
     {
       "category": "epic",
-      "rares": ["jac", "gir", "wt", "wl", "wln", "wlc", "bg", "sbf", "ssm", "ssg", "jackass", "girabie", "whitetiger", "whitelion", "whitelioness", "whitelioncub", "biggoat", "shopbigfoot", "shopsnowman", "shopsnowgirl"\],
+      "rares": ["jac", "gir", "wt", "wl", "wln", "wlc", "bg", "sbf", "ssm", "ssg", "jackass", "girabie", "whitetiger", "whitelion", "whitelioness", "whitelioncub", "biggoat", "shopbigfoot", "shopsnowman", "shopsnowgirl"],
       "points": 5
     }, 
     {
       "category": "insane",
-      "rares": ["sp", "mud", "bl", "bln", "blc", "pre", "ge", "wr", "ay", "stinkypig", "muskdeer", "blacklion", "blacklioness", "blacklioncub", "predator", "goldeneagle", "whiterhino", "aquayeti"\],
+      "rares": ["sp", "mud", "bl", "bln", "blc", "pre", "ge", "wr", "ay", "stinkypig", "muskdeer", "blacklion", "blacklioness", "blacklioncub", "predator", "goldeneagle", "whiterhino", "aquayeti"],
       "points": 8
     }, 
     {
       "category": "legendary",
-      "rares": ["lt", "dp", "br", "wg", "lavatoucan", "demonfish", "blackrhino", "whitegiraffe"\],
+      "rares": ["lt", "dp", "br", "wg", "lavatoucan", "demonfish", "blackrhino", "whitegiraffe"],
       "points": 15
     }, 
     {
       "category": "extreme",
-      "rares": ["gf", "giraffefamily"\],
+      "rares": ["gf", "giraffefamily"],
       "points": 20
     }, 
     {
       "category": "mythic",
-      "rares": ["lbf", "lsm", "lsg", "kd", "luckbigfoot", "lucksnowman", "lucksnowgirl", "kingdragon"\],
+      "rares": ["lbf", "lsm", "lsg", "kd", "luckbigfoot", "lucksnowman", "lucksnowgirl", "kingdragon"],
       "points": 30
     }, 
     {
       "category": "godly",
-      "rares": ["sm", "hht", "arg", "shh", "har", "gse", "spixmacaw", "helmetedhornbill", "argentavis", "shaheen", "harpyeagle", "greaterspottedeagle"\],
+      "rares": ["sm", "hht", "arg", "shh", "har", "gse", "spixmacaw", "helmetedhornbill", "argentavis", "shaheen", "harpyeagle", "greaterspottedeagle"],
       "points": 50
     }
-  `,
+  ],
 
   SNORA: {
     wd: "White Dove",

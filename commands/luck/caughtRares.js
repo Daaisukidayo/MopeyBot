@@ -141,7 +141,7 @@ function jsonAndArray() {
   return `
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
-    $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
+    $jsonLoad[categories;$env[raretryVarData;categories]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
     $let[l10n;$getUserVar[l10n]]

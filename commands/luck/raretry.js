@@ -13,11 +13,10 @@ module.exports = [{
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
-
+    $jsonLoad[multipliers;$env[raretryVarData;multipliersForRaretry]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     $jsonLoad[raresGroup;$eval[$callFunction[raretryData;];false]]
-
-    $arrayLoad[categories;,;$advancedReplace[$env[raretryVarData;categories]; ;;\n;;";;\\];;\\[;]]
+    $jsonLoad[categories;$env[raretryVarData;categories]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
     $let[l10n;$getUserVar[l10n]]
@@ -60,7 +59,7 @@ function colorAndCoins() {
 
     $if[$getUserVar[rtMode]!=inferno;
         $let[index;$math[$get[p] + $get[rtModeNum]]]
-        $let[MC;$math[$env[raretryVarData;coinsForRaretry;other;$get[index]] * $advancedReplace[$env[raretryVarData;multipliersForRaretry;$get[rtModeNum]];\n;;";;\\];;\\[;]]]
+        $let[MC;$math[$env[raretryVarData;coinsForRaretry;other;$get[index]] * $arrayAt[multipliers;$get[rtModeNum]]]]
     ;
         $let[MC;$env[raretryVarData;coinsForRaretry;inferno;$get[p]]]
     ]`
@@ -77,8 +76,8 @@ function baseChance(par) {
 
 function thumbnailAndArray() {
     return `
-    $arrayLoad[thumbnails;,;$advancedReplace[$env[raresGroup;category_$get[p];thumbnail];\n;;";;\\];;\\[;]]
-    $arrayLoad[contents;,;$advancedReplace[$env[raresGroup;category_$get[p];content];\n;;";;\\];;\\[;]]
+    $jsonLoad[thumbnails;$env[raresGroup;category_$get[p];thumbnail]]
+    $jsonLoad[contents;$env[raresGroup;category_$get[p];content]]
 
 
     $let[thumbnailAndContentIndex;$arrayRandomIndex[thumbnails]]

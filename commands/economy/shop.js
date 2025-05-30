@@ -99,7 +99,7 @@ function embedShop() {
 
 function shop() {
     return `
-        $arrayLoad[allSkinPacks;, ;$getGlobalVar[shopItems]]
+        $jsonLoad[allSkinPacks;$getGlobalVar[shopItems]]
     `
 }
 
