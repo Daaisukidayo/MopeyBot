@@ -24,8 +24,8 @@ module.exports = [{
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[userPacks;$getUserVar[userPacks]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
-    $arrayLoad[animalsNames;, ;$advancedReplace[$trimLines[$jsonKeys[animals]];\\[\n;;\n\\];;\n; ;";]]
-    $arrayLoad[skinpackNames;, ;$advancedReplace[$trimLines[$getGlobalVar[allVariants]];\\[\n;;\n\\];;\n; ;";]]
+    $jsonLoad[animalsNames;$jsonKeys[animals]]
+    $jsonLoad[skinpackNames;$getGlobalVar[allVariants]]
 
 
     $if[$get[arg]==new;
