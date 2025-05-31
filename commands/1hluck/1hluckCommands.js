@@ -5,9 +5,10 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;# You already have an active challenge!]
-
-    # 1 hour luck challenge has begun!
+    $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;${errorEmbed()} $description[# You already have an active challenge!]]
+    
+    ${normalEmbed()}
+    $description[# 1 hour luck challenge has begun!]
     $setUserVar[1htime;0]
     $setUserVar[1hstarted;true]
     $setUserVar[1hpoints;0]
@@ -17,7 +18,7 @@ module.exports = [
     $setUserVar[mar;0]
     $setUserVar[1htotalRares;0]
     $setUserVar[1hallRaresList;{}]
-
+    
     ${interval()}
   `
 },{
@@ -26,8 +27,9 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]    
-    $if[$getUserVar[1hpaused];# Status: Paused]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    ${normalEmbed()}  
+    $if[$getUserVar[1hpaused];$description[## Status: Paused]]
     ${time()}
   `
 },{
@@ -36,13 +38,14 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
-    $onlyIf[$getUserVar[1hpaused]==false;# You already have paused the challenge!]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hpaused]==false;${errorEmbed()} $description[## You already have paused the challenge!]]
     $!stopInterval[1HLUCK-$authorID]
     $setUserVar[1hpaused;true]
-    # Paused!
-    ${total("-#")}
-    ${time("-#")}
+    ${normalEmbed()}
+    $description[# Paused!]
+    ${total()} 
+    ${time()}
   `
 },{
   name: "resume",
@@ -50,12 +53,13 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
-    $onlyIf[$getUserVar[1hpaused];# You haven't paused your challenge!]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hpaused];${errorEmbed()} $description[## You haven't paused your challenge!]]
     $setUserVar[1hpaused;false]
-    # Continued!
-    ${total("-#")}
-    ${time("-#")}
+    ${normalEmbed()}
+    $description[# Continued!]
+    ${total()}
+    ${time()}
     ${interval()}
   `
 },{
@@ -65,23 +69,23 @@ module.exports = [
     $onlyIf[$getUserVar[1hstarted]]
     $onlyIf[$startsWith[$messageContent;$getGuildVar[prefix]]==false]
     $onlyIf[$getUserVar[1hpaused]==false]
-
+    
     $let[points;0]
-
+    
     $arrayLoad[caught; ;]
     $arrayLoad[allRares]
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
     $jsonLoad[SNORA;$getGlobalVar[SNORA]]
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
-
+    
     $arrayForEach[raresMap;rareMap;
       $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
       $arrayConcat[allRares;allRares;allRaresFromCat]
     ]
-
+    
     $c[scanning rares...]
-
+    
     $arrayForEach[caughtRares;caughtRare;
       $if[$arrayIncludes[allRares;$env[caughtRare]];
         $arrayForEach[raresMap;rareMap;
@@ -102,7 +106,7 @@ module.exports = [
                 ${rares()}
                 $setUserVar[$get[com];$math[$getUserVar[$get[com]] + 1]]
                 $if[$getUserVar[$get[com]]==3;
-                  $sendMessage[$channelID;# <@$authorID> You got all $switch[$get[com];$case[mar;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
+                  $let[cont;# <@$authorID> You got all $switch[$get[com];$case[mar;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
                 ]
               ;
                 $arrayPush[caught;+0]
@@ -114,18 +118,22 @@ module.exports = [
         $arrayPush[caught;+0]
       ]
     ]
-
+    
     $c[Message sending...]
-
+    
     $if[$get[points]>0;
       $let[pts;]
-      $arrayForEach[caught;pts;$let[pts;$get[pts]$env[pts] ]]
-      $reply[$channelID;$messageID;true]
+      $arrayForEach[caught;pts;$let[pts;$get[pts]$env[pts]]]
       $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
-      $trimLines[# $get[pts] = $get[points]
-      ${total("##")}
-      ${commons("-#")}
-      ${time("-#")}]
+      $reply
+      $sendMessage[$channelID;
+        $get[cont]
+        ${normalEmbed()}
+        $description[# $get[pts] = $get[points]]
+        ${commons()}
+        ${total()}
+        ${time()}
+      ]
     ]
   `
 },{
@@ -134,8 +142,9 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
     # You ended your challenge!
+    ${normalEmbed()}
     ${pts()}
     ${reset()}
   `
@@ -146,8 +155,10 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    ${normalEmbed()}
     ${pts()}
+    ${time()}
   `
 },{
   name: "editpoints",
@@ -156,9 +167,10 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
-    $onlyIf[$and[$isNumber[$message];$message>=0];## Only a number greater than or equal to 0 is allowed!]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    $onlyIf[$and[$isNumber[$message];$message>=0];${errorEmbed()} $description[## Only a number greater than or equal to 0 is allowed!]]
     $setUserVar[1hpoints;$message]
+    ${normalEmbed()}
     ${pts()}
   `
 },{
@@ -168,40 +180,97 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];# You dont have an active challenge!]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
     $onlyIf[$or[$and[$isNumber[$message];$message>=0];$checkContains[$message;:]];## Only seconds greater than or equal to 0 or time format "HH:MM:SS" is allowed!]
-
+    
     $if[$checkContains[$message;:];
       $setUserVar[1htime;$round[$math[$unparseDigital[$message] / 1000]]]
     ;
       $setUserVar[1htime;$message]
     ]
-    ${total("-#")}
-    ${time("-#")}
+    ${normalEmbed()}
+    ${total()}
+    ${time()}
+  `
+},{
+  name: "editlist",
+  aliases: ["elist", "el"],
+  type: "messageCreate",
+  code: `
+    $reply
+    $callFunction[checking;]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    
+    $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
+    $jsonLoad[snora;$getGlobalVar[SNORA]]
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    $arrayForEach[raresMap;rareMap;
+      $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
+      $arrayConcat[allRares;allRares;allRaresFromCat]
+    ]
+    
+    $let[arg1;$toLowerCase[$message[0]]]
+    $let[arg2;$advancedReplace[$toLowerCase[$message[1]];add;+;a;+;remove;-;r;-]]
+    $let[arg3;$toLowerCase[$message[2]]]
+    $let[usage;## Usage: \`$getGuildVar[prefix]editlist [rare\\] {add/a/+ || remove/r/-} <amount>\`]
+    
+    $onlyIf[$get[arg1]!=;${errorEmbed()} $description[$get[usage]]]
+    $onlyIf[$arrayIncludes[allRares;$get[arg1]];${errorEmbed()} $description[## The rare «\`$get[arg1]\`» does not exist!]]
+    $onlyIf[$or[$get[arg2]==+;$get[arg2]==-];${errorEmbed()} $description[$get[usage]]]
+    $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$isNumber[$get[arg3]];$get[arg3]>0];${errorEmbed()} $description[### Only a number greater than 0 or argument «\`all\`» (if removing) is allowed!]]
+    
+    $let[rareAn;$env[snora;$get[arg1]]]
+    
+    $if[$get[arg3]==all;
+      $!jsonDelete[allRaresList;$get[rareAn]]
+    ;
+      $if[$jsonHas[allRaresList;$get[rareAn]]==false;
+        $!jsonSet[allRaresList;$get[rareAn];0]
+      ]
+      
+      $!jsonSet[allRaresList;$get[rareAn];$math[$env[allRaresList;$get[rareAn]] $get[arg2] $get[arg3]]]
+      
+      $if[$env[allRaresList;$get[rareAn]]<=0;
+        $!jsonDelete[allRaresList;$get[rareAn]]
+      ]
+    ]
+    
+    $arrayLoad[allRaresListValues; ;$jsonValues[allRaresList; ]]
+
+    $setUserVar[1htotalRares;0]
+    $if[$arrayAt[allRaresListValues;0]==;;
+      $arrayForEach[allRaresListValues;value;
+        $setUserVar[1htotalRares;$math[$getUserVar[1htotalRares] + $env[value]]]
+      ]
+    ]
+    
+    $setUserVar[1hallRaresList;$env[allRaresList]]
+    ${normalEmbed()}
+    ${pts()}
+    ${time()}
   `
 }]
 
 
-
-
 function interval () {
-return `
-$setInterval[
-    $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
+  return `
+    $setInterval[
+      $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
 
-    $switch[$getUserVar[1htime];
-      $case[1800;   ${timeLeft(30, `m`)}  ]
-      $case[3300;   ${timeLeft(5, `m`)}   ]
-      $case[3540;   ${timeLeft(1, `m`)}   ]
-      $case[3595;   ${timeLeft(5, `s`)}   ]
-      $case[3596;   ${timeLeft(4, `s`)}   ]
-      $case[3597;   ${timeLeft(3, `s`)}   ]
-      $case[3598;   ${timeLeft(2, `s`)}   ]
-      $case[3599;   ${timeLeft(1, `s`)}   ] 
-      $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 5 SECONDS!\n-# In case you didn't manage to finish writing]    ] 
-      $case[3605;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
-    ]
-;1s;1HLUCK-$authorID]`
+      $switch[$getUserVar[1htime];
+        $case[1800;   ${timeLeft(30, `m`)}  ]
+        $case[3300;   ${timeLeft(5, `m`)}   ]
+        $case[3540;   ${timeLeft(1, `m`)}   ]
+        $case[3595;   ${timeLeft(5, `s`)}   ]
+        $case[3596;   ${timeLeft(4, `s`)}   ]
+        $case[3597;   ${timeLeft(3, `s`)}   ]
+        $case[3598;   ${timeLeft(2, `s`)}   ]
+        $case[3599;   ${timeLeft(1, `s`)}   ] 
+        $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 5 SECONDS!\n-# In case you didn't manage to finish writing]] 
+        $case[3605;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended! ${normalEmbed()} ${pts()}] ${reset()}] 
+      ]
+    ;1s;1HLUCK-$authorID]
+  `
 }
 
 // function vars () {
@@ -214,49 +283,83 @@ $setInterval[
 // $if[$charCount[$get[second]]==1; $let[second;0$get[second]] ]
 // `}
 
-function time (beginning = "##") { return ` ${beginning} Time passed: \`$if[$getUserVar[1htime]>=3600;EXTRA 5 SECONDS;$parseDigital[$getUserVar[1htime]000]]\`` }
+function time () {
+  return `
+    $addField[Time passed:;\`$if[$getUserVar[1htime]>=3600;EXTRA 5 SECONDS;$parseDigital[$getUserVar[1htime]000]]\`]
+  `
+}
 
 function pts () {
-return `
-${total("#")}
-## Total rares: ||$getUserVar[1htotalRares]||
-## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";;,;];JSON]
-`
+  return `
+    ${total()}
+    $addField[Total rares:;||$getUserVar[1htotalRares]||;true]
+    $addField[All received rares list:;\n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";;,;];JSON]]
+  `
 }
 
 function reset() {
-return `
-$!stopInterval[1HLUCK-$authorID]
-$deleteUserVar[1hstarted]
-$deleteUserVar[1hallRaresList]
-$deleteUserVar[1htime]
-$deleteUserVar[1hpoints]
-$deleteUserVar[1hpaused]
-$deleteUserVar[mar]
-$deleteUserVar[kbt]
-$deleteUserVar[cht]`
+  return `
+    $!stopInterval[1HLUCK-$authorID]
+    $deleteUserVar[1hstarted]
+    $deleteUserVar[1hallRaresList]
+    $deleteUserVar[1htime]
+    $deleteUserVar[1hpoints]
+    $deleteUserVar[1hpaused]
+    $deleteUserVar[mar]
+    $deleteUserVar[kbt]
+    $deleteUserVar[cht]
+  `
 }
 
 function rares() {
-return `
-$letSum[points;$env[rareMap;points]]
-$arrayPush[caught;+$env[rareMap;points]]
-$setUserVar[1htotalRares;$math[$getUserVar[1htotalRares] + 1]]
-
-$if[$env[allRaresList;$env[SNORA;$env[caughtRare]]]==;
-  $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];1]
-;
-  $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];$math[$env[allRaresList;$env[SNORA;$env[caughtRare]]] + 1]]
-]
-
-$setUserVar[1hallRaresList;$env[allRaresList]]
-`
+  return `
+    $letSum[points;$env[rareMap;points]]
+    $arrayPush[caught;+$env[rareMap;points]]
+    $setUserVar[1htotalRares;$math[$getUserVar[1htotalRares] + 1]]
+    
+    $if[$env[allRaresList;$env[SNORA;$env[caughtRare]]]==;
+      $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];1]
+    ;
+      $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];$math[$env[allRaresList;$env[SNORA;$env[caughtRare]]] + 1]]
+    ]
+    
+    $setUserVar[1hallRaresList;$env[allRaresList]]
+  `
 }
 
-function commons (beginning = "##") { return `
-$if[$getUserVar[mar]<3;\n${beginning} MAR: \`$getUserVar[mar]\`/3]$if[$getUserVar[cht]<3;\n${beginning} CHT: \`$getUserVar[cht]\`/3]$if[$getUserVar[kbt]<3;\n${beginning} KBT: \`$getUserVar[kbt]\`/3]`
+function commons () { 
+  return `
+    $if[$getUserVar[mar]<3;
+      $addField[MAR:;\`$getUserVar[mar]\`/3;true]
+    ]
+    $if[$getUserVar[cht]<3;
+      $addField[CHT:;\`$getUserVar[cht]\`/3;true]
+    ]
+    $if[$getUserVar[kbt]<3;
+      $addField[KBT:;\`$getUserVar[kbt]\`/3;true]
+    ]
+  `
 }
 
 function timeLeft (num, time) { return `$sendMessage[$channelID;# <@$authorID> ${num}${time} left!]` }
 
-function total (beginning = "##") { return `${beginning} Total points: ||$getUserVar[1hpoints]||` }
+function total () {
+  return `
+    $addField[Total points:;||$getUserVar[1hpoints]||]
+  `
+}
+
+function errorEmbed () {
+  return `
+    $getGlobalVar[author]
+    $title[Error!]
+    $color[$getGlobalVar[errorColor]]
+  `
+}
+
+function normalEmbed () {
+  return `
+    $getGlobalVar[author]
+    $color[$getGlobalVar[luckyColor]]
+  `
+}
