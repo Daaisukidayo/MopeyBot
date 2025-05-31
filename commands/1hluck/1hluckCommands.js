@@ -203,6 +203,8 @@ module.exports = [
     
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
     $jsonLoad[snora;$getGlobalVar[SNORA]]
+    $jsonLoad[snoraKeys;$jsonKeys[snora]]
+    $arrayLoad[allRaresNames;, ;$jsonValues[snora;, ]]
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $arrayForEach[raresMap;rareMap;
       $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
@@ -234,17 +236,26 @@ module.exports = [
         $!jsonDelete[allRaresList;$get[rareAn]]
       ]
     ]
+    $setUserVar[1hallRaresList;$env[allRaresList]]
     
-    $arrayLoad[allRaresListValues; ;$jsonValues[allRaresList; ]]
-
     $setUserVar[1htotalRares;0]
-    $if[$arrayAt[allRaresListValues;0]==;;
-      $arrayForEach[allRaresListValues;value;
-        $setUserVar[1htotalRares;$math[$getUserVar[1htotalRares] + $env[value]]]
+    $setUserVar[1hpoints;0]
+    
+    $jsonLoad[allRaresListEntries;$jsonEntries[allRaresList]]
+    
+    $if[$arrayAt[allRaresListEntries;0]==;;
+      $arrayForEach[allRaresListEntries;entry;
+        $setUserVar[1htotalRares;$math[$getUserVar[1htotalRares] + $env[entry;1]]]
+        
+        $arrayForEach[raresMap;rareMap;
+          $jsonLoad[rares;$env[rareMap;rares]]
+          $if[$arrayIncludes[rares;$arrayAt[snoraKeys;$arrayIndexOf[allRaresNames;$env[entry;0]]]];
+            $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $env[rareMap;points] * $env[entry;1]]]
+          ]
+        ]
       ]
     ]
-    
-    $setUserVar[1hallRaresList;$env[allRaresList]]
+
     ${normalEmbed()}
     ${pts()}
     ${time()}
