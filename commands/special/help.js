@@ -313,6 +313,6 @@ module.exports = [{
         $addField[🍀 __1 Hour Luck__;**$codeBlock[snora \nstart \npause \nresume \ntime \npoints \nend \ncount \nedittime \neditpoints \neditlist;JSON]**]
         $footer[Need assistance with a specific issue? Use the invite command to join our official Discord server!]
 
-    ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+    ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
   `
 }]
