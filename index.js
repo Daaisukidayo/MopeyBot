@@ -441,7 +441,7 @@ DB.variables({
     }, 
     {
       "category": "insane",
-      "rares": ["sp", "mud", "bl", "bln", "blc", "pre", "ge", "wr", "ay", "stinkypig", "muskdeer", "blacklion", "blacklioness", "blacklioncub", "predator", "goldeneagle", "whiterhino", "aquayeti"],
+      "rares": ["sp", "mud", "bl", "bln", "blc", "pf", "ge", "wr", "ay", "stinkypig", "muskdeer", "blacklion", "blacklioness", "blacklioncub", "predator", "goldeneagle", "whiterhino", "aquayeti"],
       "points": 8
     }, 
     {
@@ -461,7 +461,7 @@ DB.variables({
     }, 
     {
       "category": "godly",
-      "rares": ["sm", "hht", "arg", "shh", "har", "gse", "spixmacaw", "helmetedhornbill", "argentavis", "shaheen", "harpyeagle", "greaterspottedeagle"],
+      "rares": ["sm", "hht", "arg", "sf", "har", "gse", "spixmacaw", "helmetedhornbill", "argentavis", "shaheen", "harpyeagle", "greaterspottedeagle"],
       "points": 50
     }
   ],
