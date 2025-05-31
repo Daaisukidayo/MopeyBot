@@ -31,7 +31,6 @@ module.exports = [
     ${time()}
   `
 },{
-
   name: "pause",
   type: "messageCreate",
   code: `
@@ -42,7 +41,8 @@ module.exports = [
     $!stopInterval[1HLUCK-$authorID]
     $setUserVar[1hpaused;true]
     # Paused!
-    ${time()}
+    ${total("-#")}
+    ${time("-#")}
   `
 },{
   name: "resume",
@@ -54,7 +54,8 @@ module.exports = [
     $onlyIf[$getUserVar[1hpaused];# You haven't paused your challenge!]
     $setUserVar[1hpaused;false]
     # Continued!
-    ${time()}
+    ${total("-#")}
+    ${time("-#")}
     ${interval()}
   `
 },{
@@ -66,7 +67,6 @@ module.exports = [
     $onlyIf[$getUserVar[1hpaused]==false]
 
     $let[points;0]
-    $let[typo;false]
 
     $arrayLoad[caught; ;]
     $arrayLoad[allRares]
@@ -76,20 +76,18 @@ module.exports = [
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
 
     $arrayForEach[raresMap;rareMap;
-      $jsonLoad[rareOBJ;$env[rareMap]]
-      $jsonLoad[allRaresFromCat;$env[rareOBJ;rares]]
+      $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
       $arrayConcat[allRares;allRares;allRaresFromCat]
     ]
 
+    $c[scanning rares...]
 
     $arrayForEach[caughtRares;caughtRare;
       $if[$arrayIncludes[allRares;$env[caughtRare]];
         $arrayForEach[raresMap;rareMap;
-          $jsonLoad[rareOBJ;$env[rareMap]]
-          $jsonLoad[raresFromOBJ;$env[rareOBJ;rares]]
-
+          $jsonLoad[raresFromOBJ;$env[rareMap;rares]]
           $if[$arrayIncludes[raresFromOBJ;$env[caughtRare]];
-            $if[$env[rareOBJ;category]!=common;
+            $if[$env[rareMap;category]!=common;
               ${rares()}
             ;
               $switch[$env[caughtRare];
@@ -100,7 +98,6 @@ module.exports = [
                 $case[cht;$let[com;cht]]
                 $case[kbt;$let[com;kbt]]
               ]
-                
               $if[$getUserVar[$get[com]]<3;
                 ${rares()}
                 $setUserVar[$get[com];$math[$getUserVar[$get[com]] + 1]]
@@ -118,14 +115,15 @@ module.exports = [
       ]
     ]
 
-    
+    $c[Message sending...]
+
     $if[$get[points]>0;
       $let[pts;]
       $arrayForEach[caught;pts;$let[pts;$get[pts]$env[pts] ]]
       $reply[$channelID;$messageID;true]
       $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
       $trimLines[# $get[pts] = $get[points]
-      ## Total: ||$getUserVar[1hpoints]||
+      ${total("##")}
       ${commons("-#")}
       ${time("-#")}]
     ]
@@ -178,7 +176,8 @@ module.exports = [
     ;
       $setUserVar[1htime;$message]
     ]
-    ${time()}
+    ${total("-#")}
+    ${time("-#")}
   `
 }]
 
@@ -199,30 +198,27 @@ $setInterval[
       $case[3597;   ${timeLeft(3, `s`)}   ]
       $case[3598;   ${timeLeft(2, `s`)}   ]
       $case[3599;   ${timeLeft(1, `s`)}   ] 
-      $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 5 SECONDS!!\n-# In case you didn't manage to finish writing]    ] 
+      $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 5 SECONDS!\n-# In case you didn't manage to finish writing]    ] 
       $case[3605;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended!\n${pts()}]  ${reset()}] 
     ]
 ;1s;1HLUCK-$authorID]`
 }
 
-function vars () {
-return `
-$let[remaining;$math[3600 - $getUserVar[1htime]]]
-$let[hour;0$floor[$math[$get[remaining] / 3600]]]
-$let[minute;$floor[$math[($get[remaining] % 3600) / 60]]]
-$if[$charCount[$get[minute]]==1; $let[minute;0$get[minute]] ]
-$let[second;$floor[$math[$get[remaining] % 60]]]
-$if[$charCount[$get[second]]==1; $let[second;0$get[second]] ]
-`}
+// function vars () {
+// return `
+// $let[remaining;$math[3600 - $getUserVar[1htime]]]
+// $let[hour;0$floor[$math[$get[remaining] / 3600]]]
+// $let[minute;$floor[$math[($get[remaining] % 3600) / 60]]]
+// $if[$charCount[$get[minute]]==1; $let[minute;0$get[minute]] ]
+// $let[second;$floor[$math[$get[remaining] % 60]]]
+// $if[$charCount[$get[second]]==1; $let[second;0$get[second]] ]
+// `}
 
-function time (beginning = "##") {
-return `
-${beginning} Time passed: \`$if[$getUserVar[1htime]>=3600;EXTRA 5 SECONDS;$parseDigital[$getUserVar[1htime]000]]\``
-}
+function time (beginning = "##") { return ` ${beginning} Time passed: \`$if[$getUserVar[1htime]>=3600;EXTRA 5 SECONDS;$parseDigital[$getUserVar[1htime]000]]\`` }
 
 function pts () {
 return `
-# Points: ||$getUserVar[1hpoints]||
+${total("#")}
 ## Total rares: ||$getUserVar[1htotalRares]||
 ## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$getUserVar[1hallRaresList]];{;;};;";;,;];JSON]
 `
@@ -243,8 +239,8 @@ $deleteUserVar[cht]`
 
 function rares() {
 return `
-$letSum[points;$env[rareOBJ;points]]
-$arrayPush[caught;+$env[rareOBJ;points]]
+$letSum[points;$env[rareMap;points]]
+$arrayPush[caught;+$env[rareMap;points]]
 $setUserVar[1htotalRares;$math[$getUserVar[1htotalRares] + 1]]
 
 $if[$env[allRaresList;$env[SNORA;$env[caughtRare]]]==;
@@ -257,11 +253,10 @@ $setUserVar[1hallRaresList;$env[allRaresList]]
 `
 }
 
-function commons (beginning = "##") {
-return `
+function commons (beginning = "##") { return `
 $if[$getUserVar[mar]<3;\n${beginning} MAR: \`$getUserVar[mar]\`/3]$if[$getUserVar[cht]<3;\n${beginning} CHT: \`$getUserVar[cht]\`/3]$if[$getUserVar[kbt]<3;\n${beginning} KBT: \`$getUserVar[kbt]\`/3]`
 }
 
-function timeLeft (num, time) {
-  return `$sendMessage[$channelID;# <@$authorID> ${num}${time} left!]`
-}
+function timeLeft (num, time) { return `$sendMessage[$channelID;# <@$authorID> ${num}${time} left!]` }
+
+function total (beginning = "##") { return `${beginning} Total points: ||$getUserVar[1hpoints]||` }

@@ -15,8 +15,7 @@ module.exports = ({
     $let[remainingHours;$if[$get[currentHour]<$get[resetHour];$sub[$get[resetHour];$get[currentHour]];$sub[24;$get[currentHour]]]]
     $let[remainingMinutes;$sub[60;$get[currentMinute]]]
       
-    $if[$getUserVar[dev]==false;
-
+    $if[$getUserVar[dev];;
       $onlyIf[$and[$get[currentDay]!=$get[lastDay];$get[currentHour]>=0];
         $let[cd;$sum[$parseString[$get[remainingHours]h$get[remainingMinutes]m];$getTimestamp]]
         $callFunction[cooldownSchema;$commandName]
