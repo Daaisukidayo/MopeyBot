@@ -5,7 +5,7 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;${errorEmbed()} $description[# You already have an active challenge!]]
+    $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;${errorEmbed()} $description[# :x: Error!\n## You already have an active challenge!]]
     
     ${normalEmbed()}
     $description[# 1 hour luck challenge has begun!]
@@ -27,7 +27,7 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     ${normalEmbed()}  
     $if[$getUserVar[1hpaused];$description[## Status: Paused]]
     ${time()}
@@ -38,8 +38,8 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
-    $onlyIf[$getUserVar[1hpaused]==false;${errorEmbed()} $description[## You already have paused the challenge!]]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hpaused]==false;${errorEmbed()} $description[# :x: Error!\n## You already have paused the challenge!]]
     $!stopInterval[1HLUCK-$authorID]
     $setUserVar[1hpaused;true]
     ${normalEmbed()}
@@ -53,8 +53,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
-    $onlyIf[$getUserVar[1hpaused];${errorEmbed()} $description[## You haven't paused your challenge!]]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hpaused];${errorEmbed()} $description[# :x: Error!\n## You haven't paused your challenge!]]
     $setUserVar[1hpaused;false]
     ${normalEmbed()}
     $description[# Continued!]
@@ -142,7 +142,7 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     # You ended your challenge!
     ${normalEmbed()}
     ${pts()}
@@ -155,7 +155,7 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     ${normalEmbed()}
     ${pts()}
     ${time()}
@@ -167,8 +167,8 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
-    $onlyIf[$and[$isNumber[$message];$message>=0];${errorEmbed()} $description[## Only a number greater than or equal to 0 is allowed!]]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
+    $onlyIf[$and[$isNumber[$message];$message>=0];${errorEmbed()} $description[# :x: Error!\n## Only a number greater than or equal to 0 is allowed!]]
     $setUserVar[1hpoints;$message]
     ${normalEmbed()}
     ${pts()}
@@ -180,8 +180,8 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
-    $onlyIf[$or[$and[$isNumber[$message];$message>=0];$checkContains[$message;:]];## Only seconds greater than or equal to 0 or time format "HH:MM:SS" is allowed!]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
+    $onlyIf[$or[$and[$isNumber[$message];$message>=0];$checkContains[$message;:]];# :x: Error!\n## Only seconds greater than or equal to 0 or time format "HH:MM:SS" is allowed!]
     
     $if[$checkContains[$message;:];
       $setUserVar[1htime;$round[$math[$unparseDigital[$message] / 1000]]]
@@ -199,7 +199,7 @@ module.exports = [
   code: `
     $reply
     $callFunction[checking;]
-    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
     $jsonLoad[snora;$getGlobalVar[SNORA]]
@@ -212,12 +212,12 @@ module.exports = [
     $let[arg1;$toLowerCase[$message[0]]]
     $let[arg2;$advancedReplace[$toLowerCase[$message[1]];add;+;a;+;remove;-;r;-]]
     $let[arg3;$toLowerCase[$message[2]]]
-    $let[usage;## Usage: \`$getGuildVar[prefix]editlist [rare\\] {add/a/+ || remove/r/-} <amount>\`]
+    $let[usage;# :x: Error!\n## Usage: \`$getGuildVar[prefix]editlist [rare\\] {add/a/+ || remove/r/-} <amount>\`]
     
     $onlyIf[$get[arg1]!=;${errorEmbed()} $description[$get[usage]]]
-    $onlyIf[$arrayIncludes[allRares;$get[arg1]];${errorEmbed()} $description[## The rare «\`$get[arg1]\`» does not exist!]]
+    $onlyIf[$arrayIncludes[allRares;$get[arg1]];${errorEmbed()} $description[# :x: Error!\n## The rare «\`$get[arg1]\`» does not exist!]]
     $onlyIf[$or[$get[arg2]==+;$get[arg2]==-];${errorEmbed()} $description[$get[usage]]]
-    $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$isNumber[$get[arg3]];$get[arg3]>0];${errorEmbed()} $description[### Only a number greater than 0 or argument «\`all\`» (if removing) is allowed!]]
+    $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$isNumber[$get[arg3]];$get[arg3]>0];${errorEmbed()} $description[# :x: Error!\n### Only a number greater than 0 or argument «\`all\`» (if removing) is allowed!]]
     
     $let[rareAn;$env[snora;$get[arg1]]]
     
@@ -352,7 +352,6 @@ function total () {
 function errorEmbed () {
   return `
     $getGlobalVar[author]
-    $title[Error!]
     $color[$getGlobalVar[errorColor]]
   `
 }
