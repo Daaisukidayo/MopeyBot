@@ -214,12 +214,27 @@ module.exports = [
     $let[arg1;$toLowerCase[$message[0]]]
     $let[arg2;$advancedReplace[$toLowerCase[$message[1]];add;+;a;+;remove;-;r;-]]
     $let[arg3;$toLowerCase[$message[2]]]
-    $let[usage;# :x: Error!\n## Usage: \`$getGuildVar[prefix]editlist [rare\\] {add/a/+ || remove/r/-} <amount>\`]
+    $let[usage;# :x: Error!\n## Usage: \`$getGuildVar[prefix]editlist [rare\\] {add/a/+ || remove/r/-} <amount/all>\`]
     
-    $onlyIf[$get[arg1]!=;${errorEmbed()} $description[$get[usage]]]
-    $onlyIf[$arrayIncludes[allRares;$get[arg1]];${errorEmbed()} $description[# :x: Error!\n## The rare «\`$get[arg1]\`» does not exist!]]
-    $onlyIf[$or[$get[arg2]==+;$get[arg2]==-];${errorEmbed()} $description[$get[usage]]]
-    $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$isNumber[$get[arg3]];$get[arg3]>0];${errorEmbed()} $description[# :x: Error!\n### Only a number greater than 0 or argument «\`all\`» (if removing) is allowed!]]
+    $onlyIf[$get[arg1]!=;
+      ${errorEmbed()} 
+      $description[$get[usage]]
+    ]
+
+    $onlyIf[$arrayIncludes[allRares;$get[arg1]];
+      ${errorEmbed()} 
+      $description[# :x: Error!\n## The rare «\`$get[arg1]\`» does not exist!]
+    ]
+
+    $onlyIf[$or[$get[arg2]==+;$get[arg2]==-];
+      ${errorEmbed()} 
+      $description[$get[usage]]
+    ]
+
+    $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$isNumber[$get[arg3]];$get[arg3]>0];
+      ${errorEmbed()} 
+      $description[# :x: Error!\n### Only a number greater than 0 or argument «\`all\`» (if removing) is allowed!]
+    ]
     
     $let[rareAn;$env[snora;$get[arg1]]]
     
