@@ -58,8 +58,8 @@ ${allRareNames("Black Lioness")}
 ${allRareNames("Black-Maned Lion")}
 ${allRareNames("White Lion")}
 ${allRareNames("Black Lion")}
-${allRareNames("Predator")}
-${allRareNames("Shaheen")}
+${allRareNames("Predator Falcon")}
+${allRareNames("Shaheen Falcon")}
 ${allRareNames("Argentavis")}
 ===================Tier 12====================
 ${allRareNames("White Rhino")}
