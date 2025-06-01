@@ -35,9 +35,8 @@ module.exports = [{
 
     ${shop()}
     $arrayLoad[trig]
-    $arrayForEach[allSkinPacks;obj;
-        $jsonLoad[pack;$env[obj]]
-        $arrayPush[trig;$env[pack;name]]
+    $arrayForEach[allSkinPacks;pack;
+      $arrayPush[trig;$env[pack;name]]
     ]
 
     $onlyIf[$arrayIncludes[trig;$splitText[0]]]
@@ -50,24 +49,24 @@ module.exports = [{
     $let[msgid;$messageID]
 
     $if[$env[userPacks;$splitText[0]];
-        ${genMenu()}
-        $interactionReply[
-            $ephemeral 
-            $description[## You already own it!]
-            $getGlobalVar[author]
-            $color[$getGlobalVar[defaultColor]]
-        ]
-        $stop
+      ${genMenu()}
+      $interactionReply[
+          $ephemeral 
+          $description[## You already own it!]
+          $getGlobalVar[author]
+          $color[$getGlobalVar[defaultColor]]
+      ]
+      $stop
     ]
     $if[$getUserVar[MC]<$splitText[1];
-        ${genMenu()}
-        $interactionReply[
-            $ephemeral 
-            $description[## You don't have enough $getGlobalVar[emoji]!]
-            $getGlobalVar[author]
-            $color[$getGlobalVar[defaultColor]]
-        ]
-        $stop
+      ${genMenu()}
+      $interactionReply[
+        $ephemeral 
+        $description[## You don't have enough $getGlobalVar[emoji]!]
+        $getGlobalVar[author]
+        $color[$getGlobalVar[defaultColor]]
+      ]
+      $stop
     ]
 
     $callFunction[subMC;$splitText[1]]
@@ -76,14 +75,13 @@ module.exports = [{
     $setUserVar[userPacks;$env[userPacks]]
 
     $interactionReply[
-        $ephemeral
-        $getGlobalVar[author]
-        $description[## Successfully purchased!]
-        $color[$getGlobalVar[defaultColor]]
+      $ephemeral
+      $getGlobalVar[author]
+      $description[## Successfully purchased!]
+      $color[$getGlobalVar[defaultColor]]
     ]
-        
+
     ${genMenu()}
-    
   `
 }]
 
@@ -107,8 +105,7 @@ function genMenu () {
     return `
         ${menu()}
 
-        $arrayForEach[allSkinPacks;obj;
-            $jsonLoad[pack;$env[obj]]
+        $arrayForEach[allSkinPacks;pack;
 
             $if[$env[userPacks;$env[pack;name]];;
                 $letSum[i;1]

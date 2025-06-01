@@ -30,7 +30,7 @@ module.exports = [{
 
     ${vars()}
   `
-}, {
+},{
   type: "interactionCreate",
   allowedInteractionTypes: ["button"],
   code: `

@@ -110,7 +110,7 @@ DB.commands.add({
 // ========== VARIABLES ==========
 
 DB.variables({
-  isTester: false,
+  testerMode: false,
   onSlowmode: false,
   isBanned: false,
   dev: false,
@@ -122,7 +122,7 @@ DB.variables({
 
   botEnabled: true,
   maxID: 0,
-  prefix: "//",
+  prefix: ".",
   emoji: "<:MopeCoin:705856410940080232>",
   defaultColor: "#FFD700",
   errorColor: "#D0321D",

@@ -1,74 +1,74 @@
 module.exports = [{ 
-name: "countpoints", 
-aliases: ["count","cp"], 
-type: "messageCreate", 
-code: `
-$reply 
-$onlyIf[$message!=]
+  name: "countpoints", 
+  aliases: ["count","cp"], 
+  type: "messageCreate", 
+  code: `
+    $reply 
+    $onlyIf[$message!=]
 
-$let[totalRares;0]
-$let[points;0]
+    $let[totalRares;0]
+    $let[points;0]
 
-$let[kbt;0]
-$let[mh;0]
-$let[cht;0]
-$arrayLoad[unknown]
-$arrayLoad[allRares]
-$jsonLoad[raresMap;$getGlobalVar[raresMap]]
-$arrayLoad[caughtRares; ;$toLowerCase[$message]]
-$jsonLoad[SNORA;$getGlobalVar[SNORA]]
-$jsonLoad[allRaresList;{}]
+    $let[kbt;0]
+    $let[mh;0]
+    $let[cht;0]
+    $arrayLoad[unknown]
+    $arrayLoad[allRares]
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    $arrayLoad[caughtRares; ;$toLowerCase[$message]]
+    $jsonLoad[SNORA;$getGlobalVar[SNORA]]
+    $jsonLoad[allRaresList;{}]
 
-$arrayForEach[raresMap;rareMap;
-  $jsonLoad[rareOBJ;$env[rareMap]]
-  $jsonLoad[allRaresFromCat;$env[rareOBJ;rares]]
-  $arrayConcat[allRares;allRares;allRaresFromCat]
-]
-
-
-
-$arrayForEach[caughtRares;caughtRare;
-  $if[$arrayIncludes[allRares;$env[caughtRare]];
     $arrayForEach[raresMap;rareMap;
       $jsonLoad[rareOBJ;$env[rareMap]]
-      $jsonLoad[raresFromOBJ;$env[rareOBJ;rares]]
+      $jsonLoad[allRaresFromCat;$env[rareOBJ;rares]]
+      $arrayConcat[allRares;allRares;allRaresFromCat]
+    ]
 
-      $if[$arrayIncludes[raresFromOBJ;$env[caughtRare]];
-        $if[$env[rareOBJ;category]!=common;
-          ${rares()}
-        ;
-          $arrayForEach[raresFromOBJ;com;
-            $if[$and[$env[caughtRare]==$env[com];$get[$env[com]]<3];
+    $arrayForEach[caughtRares;caughtRare;
+      $if[$arrayIncludes[allRares;$env[caughtRare]];
+        $arrayForEach[raresMap;rareMap;
+          $jsonLoad[rareOBJ;$env[rareMap]]
+          $jsonLoad[raresFromOBJ;$env[rareOBJ;rares]]
+
+          $if[$arrayIncludes[raresFromOBJ;$env[caughtRare]];
+            $if[$env[rareOBJ;category]!=common;
               ${rares()}
-              $letSum[$env[com];1]
+            ;
+              $arrayForEach[raresFromOBJ;com;
+                $if[$and[$env[caughtRare]==$env[com];$get[$env[com]]<3];
+                  ${rares()}
+                  $letSum[$env[com];1]
+                ]
+              ]
             ]
           ]
         ]
+      ;
+        $arrayPush[unknown;$env[caughtRare]]
       ]
     ]
-  ;
-    $arrayPush[unknown;$env[caughtRare]]
-  ]
-]
 
-# Total points: \`$get[points]\`
-# Total rares: \`$get[totalRares]\`
-## All received rares list: \n$codeBlock[$advancedReplace[$trimLines[$env[allRaresList]];{;;};;";;,;];JSON]
-$if[$arrayLength[unknown]!=0;# Unknown rares:\n$codeBlock[$advancedReplace[$trimLines[$env[unknown]];[;;\\];;";];JSON]]
-
-`}]
+    $addField[Total points:; \`$get[points]\`]
+    $addField[Total rares:;\`$get[totalRares]\`]
+    $addField[All received rares list:;$codeBlock[$advancedReplace[$trimLines[$env[allRaresList]];{;;};;";;,;];JSON]]
+    $if[$arrayLength[unknown]!=0;$addField[# Unknown rares:;$codeBlock[$advancedReplace[$trimLines[$env[unknown]];[;;\\];;";];JSON]]]
+    $getGlobalVar[author]
+    $color[$getGlobalVar[luckyColor]]
+  `
+}]
 
 
 function rares() {
-return `
-$letSum[points;$env[rareOBJ;points]]
-$letSum[totalRares;1]
+  return `
+    $letSum[points;$env[rareOBJ;points]]
+    $letSum[totalRares;1]
 
-$if[$env[allRaresList;$env[SNORA;$env[caughtRare]]]==;
-  $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];1]
-;
-  $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];$math[$env[allRaresList;$env[SNORA;$env[caughtRare]]] + 1]]
-]
-`
+    $if[$env[allRaresList;$env[SNORA;$env[caughtRare]]]==;
+      $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];1]
+    ;
+      $!jsonSet[allRaresList;$env[SNORA;$env[caughtRare]];$math[$env[allRaresList;$env[SNORA;$env[caughtRare]]] + 1]]
+    ]
+  `
 }
 

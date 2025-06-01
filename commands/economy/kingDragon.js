@@ -94,7 +94,7 @@ module.exports = [{
 
       $let[MC;$randomNumber[1000;1501]]
       $callFunction[sumMC;$get[MC]]
-      $description[## You tried to get King Dragon as __$get[BD]__ $arrayRandomValue[content1]... Atleast you got $separateNumber[$get[MC];.]$getGlobalVar[emoji] from this run!]
+      $description[## You tried to get King Dragon as __$get[BD]__ $arrayRandomValue[content1]... Atleast you got $separateNumber[$get[MC];,]$getGlobalVar[emoji] from this run!]
       $color[$getGlobalVar[errorColor]]
     ]
     $!editMessage[$channelID;$messageID]
@@ -129,7 +129,7 @@ module.exports = [{
     $let[MC;$randomNumber[3500;5001]]
     $callFunction[sumMC;$get[MC]]
 
-    $description[## You upgraded to __$env[assets;KD$get[kd];name] $env[assets;KD$get[kd];emoji]__ and you earned $separateNumber[$get[MC];.]$getGlobalVar[emoji]!]
+    $description[## You upgraded to __$env[assets;KD$get[kd];name] $env[assets;KD$get[kd];emoji]__ and you earned $separateNumber[$get[MC];,]$getGlobalVar[emoji]!]
     $getGlobalVar[author]
     $color[$env[assets;KD$get[kd];color]]
     $thumbnail[$env[assets;KD$get[kd];img]]
@@ -168,7 +168,7 @@ module.exports = [{
 
     $thumbnail[$env[assets;KD$get[kd];img]]
     $footer[Rarity: 1/1000]
-    $description[## You were trying to upgrade to Black Dragon, but suddenly you saw a different animal, it was __$env[assets;KD$get[kd];name] $env[assets;KD$get[kd];emoji]__ by luck in your upgrade menu! You were surprised and happy! You also earned $separateNumber[$get[MC];.]$getGlobalVar[emoji] from playing!]
+    $description[## You were trying to upgrade to Black Dragon, but suddenly you saw a different animal, it was __$env[assets;KD$get[kd];name] $env[assets;KD$get[kd];emoji]__ by luck in your upgrade menu! You were surprised and happy! You also earned $separateNumber[$get[MC];,]$getGlobalVar[emoji] from playing!]
 
     $!editMessage[$channelID;$messageID]
   `
@@ -176,88 +176,91 @@ module.exports = [{
 
 
 function bdMenu() {
-return `  
-$addActionRow
-$addStringSelectMenu[bdmenu-$authorID;Choose an upgrade:]
+  return `  
+    $addActionRow
+    $addStringSelectMenu[bdmenu-$authorID;Choose an upgrade:]
 
-$addOption[$env[animals;blackDragon;v0;name];;bds1-$authorID;$get[BDS1]]
-$addOption[$env[animals;blackDragon;v1;name];;bds2-$authorID;$get[BDS2]]
+    $addOption[$env[animals;blackDragon;v0;name];;bds1-$authorID;$get[BDS1]]
+    $addOption[$env[animals;blackDragon;v1;name];;bds2-$authorID;$get[BDS2]]
 
-$if[$get[leg];
-  $addOption[$env[animals;blackDragon;v4;name];;legbd-$authorID;$env[animals;blackDragon;v4;emoji]]
-]
+    $if[$get[leg];
+      $addOption[$env[animals;blackDragon;v4;name];;legbd-$authorID;$env[animals;blackDragon;v4;emoji]]
+    ]
 
-$if[$get[gsp];
-  $addOption[$env[animals;blackDragon;v3;name];;gbd-$authorID;$env[animals;blackDragon;v3;emoji]]
-]
+    $if[$get[gsp];
+      $addOption[$env[animals;blackDragon;v3;name];;gbd-$authorID;$env[animals;blackDragon;v3;emoji]]
+    ]
 
-$if[$get[lsp];
-  $addOption[$env[animals;blackDragon;v2;name];;ab-$authorID;$env[animals;blackDragon;v2;emoji]]
-]`
+    $if[$get[lsp];
+      $addOption[$env[animals;blackDragon;v2;name];;ab-$authorID;$env[animals;blackDragon;v2;emoji]]
+    ]
+  `
 }
 
 function jsons() {
-return `
-$jsonLoad[animals;$readFile[json/animals.json]]
-$jsonLoad[userPacks;$getUserVar[userPacks]]`
+  return `
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[userPacks;$getUserVar[userPacks]]
+  `
 }
 
 function kdAssets() {
-return `
-$jsonLoad[assets;{
-    "KD0": {
-      "name": "$env[animals;kingDragon;v0;name]",
-      "emoji": "$env[animals;kingDragon;v0;emoji]",
-      "img": "$env[animals;kingDragon;v0;img]",
-      "color": "24272b"
-    },
-    "KD1": {
-      "name": "$env[animals;kingDragon;v1;name]",
-      "emoji": "$env[animals;kingDragon;v1;emoji]",
-      "img": "$env[animals;kingDragon;v1;img]",
-      "color": "24272b"
-    },
-    "KD2": {
-      "name": "$env[animals;kingDragon;v2;name]",
-      "emoji": "$env[animals;kingDragon;v2;emoji]",
-      "img": "$env[animals;kingDragon;v2;img]",
-      "color": "731C1F"
-    },
-    "KD3": {
-      "name": "$env[animals;kingDragon;v3;name]",
-      "emoji": "$env[animals;kingDragon;v3;emoji]",
-      "img": "$env[animals;kingDragon;v3;img]",
-      "color": "9D3F0E"
-    },
-    "KD4": {
-      "name": "$env[animals;kingDragon;v4;name]",
-      "emoji": "$env[animals;kingDragon;v4;emoji]",
-      "img": "$env[animals;kingDragon;v4;img]",
-      "color": "6E141A"
-    },
-    "KD5": {
-      "name": "$env[animals;kingDragon;v5;name]",
-      "emoji": "$env[animals;kingDragon;v5;emoji]",
-      "img": "$env[animals;kingDragon;v5;img]",
-      "color": "5EB2FF"
-    },
-    "KD6": {
-      "name": "$env[animals;kingDragon;v6;name]",
-      "emoji": "$env[animals;kingDragon;v6;emoji]",
-      "img": "$env[animals;kingDragon;v6;img]",
-      "color": "B62323"
-    },
-    "KD7": {
-      "name": "$env[animals;kingDragon;v7;name]",
-      "emoji": "$env[animals;kingDragon;v7;emoji]",
-      "img": "$env[animals;kingDragon;v7;img]",
-      "color": "DDAF02"
-    },
-    "KD8": {
-      "name": "$env[animals;kingDragon;v8;name]",
-      "emoji": "$env[animals;kingDragon;v8;emoji]",
-      "img": "$env[animals;kingDragon;v8;img]",
-      "color": "f63413"
-    }
-  }]`
+  return `
+    $jsonLoad[assets;{
+      "KD0": {
+        "name": "$env[animals;kingDragon;v0;name]",
+        "emoji": "$env[animals;kingDragon;v0;emoji]",
+        "img": "$env[animals;kingDragon;v0;img]",
+        "color": "24272b"
+      },
+      "KD1": {
+        "name": "$env[animals;kingDragon;v1;name]",
+        "emoji": "$env[animals;kingDragon;v1;emoji]",
+        "img": "$env[animals;kingDragon;v1;img]",
+        "color": "24272b"
+      },
+      "KD2": {
+        "name": "$env[animals;kingDragon;v2;name]",
+        "emoji": "$env[animals;kingDragon;v2;emoji]",
+        "img": "$env[animals;kingDragon;v2;img]",
+        "color": "731C1F"
+      },
+      "KD3": {
+        "name": "$env[animals;kingDragon;v3;name]",
+        "emoji": "$env[animals;kingDragon;v3;emoji]",
+        "img": "$env[animals;kingDragon;v3;img]",
+        "color": "9D3F0E"
+      },
+      "KD4": {
+        "name": "$env[animals;kingDragon;v4;name]",
+        "emoji": "$env[animals;kingDragon;v4;emoji]",
+        "img": "$env[animals;kingDragon;v4;img]",
+        "color": "6E141A"
+      },
+      "KD5": {
+        "name": "$env[animals;kingDragon;v5;name]",
+        "emoji": "$env[animals;kingDragon;v5;emoji]",
+        "img": "$env[animals;kingDragon;v5;img]",
+        "color": "5EB2FF"
+      },
+      "KD6": {
+        "name": "$env[animals;kingDragon;v6;name]",
+        "emoji": "$env[animals;kingDragon;v6;emoji]",
+        "img": "$env[animals;kingDragon;v6;img]",
+        "color": "B62323"
+      },
+      "KD7": {
+        "name": "$env[animals;kingDragon;v7;name]",
+        "emoji": "$env[animals;kingDragon;v7;emoji]",
+        "img": "$env[animals;kingDragon;v7;img]",
+        "color": "DDAF02"
+      },
+      "KD8": {
+        "name": "$env[animals;kingDragon;v8;name]",
+        "emoji": "$env[animals;kingDragon;v8;emoji]",
+        "img": "$env[animals;kingDragon;v8;img]",
+        "color": "f63413"
+      }
+    }]
+  `
 }

@@ -32,8 +32,8 @@ module.exports = ({
     $callFunction[sumMC;$get[r]]
 
     $sendMessage[$channelID;
-      $description[## Your daily reward is $get[r]$getGlobalVar[emoji]!]
-      $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
+      $description[## Your daily reward is $separateNumber[$get[r];,]$getGlobalVar[emoji]!]
+      $getGlobalVar[author]
       $color[$getGlobalVar[defaultColor]] 
     ]
   `

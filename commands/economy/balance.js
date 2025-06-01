@@ -41,8 +41,7 @@ module.exports = [{
     $addButton[coins-$authorID;Coins;Primary;$getGlobalVar[emoji]]
     $addButton[packs-$authorID;Packs;Primary;🛒;true]
 
-    $arrayLoad[allSkinPacks;, ;$getGlobalVar[shopItems]]
-
+    $jsonLoad[allSkinPacks;$getGlobalVar[shopItems]]
     $jsonLoad[userPacks;$getUserVar[userPacks]]
     $jsonLoad[userPacksKeys;$jsonKeys[userPacks]]
     
@@ -53,9 +52,8 @@ module.exports = [{
     ;
       $arrayForEach[userPacksKeys;userPack;
         $arrayForEach[allSkinPacks;skinpack;
-          $jsonLoad[pack;$env[skinpack]]
-          $if[$env[userPack]==$env[pack;name];
-            $let[desc;$get[desc]$env[pack;description]\n]
+          $if[$env[userPack]==$env[skinpack;name];
+            $let[desc;$get[desc]$env[skinpack;description]\n]
           ]
         ]
       ]
@@ -80,7 +78,6 @@ module.exports = [{
 
 function coinsBalance() {
   return `
-
     $addActionRow
     $addButton[coins-$authorID;Coins;Primary;$getGlobalVar[emoji];true]
     $addButton[packs-$authorID;Packs;Primary;🛒]
@@ -108,8 +105,9 @@ function embed() {
 }
 
 function timeout() {
-return `
-$setTimeout[
-  $disableButtonsOf[$channelID;$get[msg]]
-;${CD};BAL]` 
+  return `
+    $setTimeout[
+      $disableButtonsOf[$channelID;$get[msg]]
+    ;${CD};BAL]
+  ` 
 }
