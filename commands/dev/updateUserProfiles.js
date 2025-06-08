@@ -48,7 +48,7 @@ module.exports = {
         $!jsonSet[newUserProfile;MUID;$getUserVar[MUID;$get[id]]]
         $!jsonSet[newUserProfile;l10n;EN]
         $!jsonSet[newUserProfile;caughtRareCategories;$env[CR]]
-        $setUserVar[userProfile;$env[userProfile];$get[id]]
+        $setUserVar[userProfile;$env[newUserProfile];$get[id]]
         $if[$arrayIncludes[allUserIDs;$get[id]]==false;
           $arrayPush[allUserIDs;$get[id]]
         ]
