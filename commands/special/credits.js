@@ -4,9 +4,9 @@ module.exports = [{
   type: "messageCreate", 
   code: `
     $reply
-
     $let[cdTime;5s]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
@@ -21,7 +21,7 @@ module.exports = [{
     $get[desc5]: $username[485453670729646090]
     $get[desc2]: $username[588624194032500747]
     $get[desc3]: $username[502840819380912139], $username[254354531951837186]**]
-    $color[ffd700]
+    $color[$getGlobalVar[defaultColor]]
     $footer[$get[desc4]]
   `
 }]

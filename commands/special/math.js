@@ -3,6 +3,8 @@ module.exports = {
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
-    $math[$message]`
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
+    $math[$message]
+  `
 }

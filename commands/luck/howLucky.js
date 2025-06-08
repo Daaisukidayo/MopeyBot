@@ -4,40 +4,77 @@ module.exports = ({
   type: "messageCreate",
   code:` 
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
 
-    $let[lastHLUsed;$getUserVar[lastHLUsed;$authorID;-1]]
-    $let[currentDay;$day]
+    $let[lastHLUsed;$env[userProfile;limiters;lastHLUsed]]
 
-    $if[$get[lastHLUsed]!=$get[currentDay];
+    $if[$get[lastHLUsed]!=$day;
 
-      $setUserVar[lastHLUsed;$get[currentDay]]
-      $setUserVar[HLRandom;$randomNumber[0;101]]
+      $!jsonSet[userProfile;limiters;lastHLUsed;$day]
+      $!jsonSet[userProfile;limiters;HLRandom;$randomNumber[0;101]]
 
-      $if[$getUserVar[HLRandom]==100;
-              $setUserVar[luckDesc;legendary luck 🌟];
-      $if[$getUserVar[HLRandom]>=95;
-              $setUserVar[luckDesc;unbelievable fortune 🍀];
-      $if[$getUserVar[HLRandom]>=80;
-              $setUserVar[luckDesc;great luck 🎉];
-      $if[$getUserVar[HLRandom]>=60;
-              $setUserVar[luckDesc;decent luck 👍];
-      $if[$getUserVar[HLRandom]>=40;
-              $setUserVar[luckDesc;mediocre luck 🤔];
-      $if[$getUserVar[HLRandom]>=20;
-              $setUserVar[luckDesc;poor luck 😟];
-      $if[$getUserVar[HLRandom]>=5;
-              $setUserVar[luckDesc;terrible luck 😭];
-      $if[$getUserVar[HLRandom]>=0;
-              $setUserVar[luckDesc;abysmal luck 💀]
-      ]]]]]]]]
+      $jsonLoad[data;${data()}]
+
+      $arrayForEach[data;d;
+        $if[$get[stop];;
+          $log[loop]
+          $if[$get[r]>=$env[d;num];
+            $!jsonSet[userProfile;limiters;luckDesc;$env[d;desc]]
+            $let[stop;true]
+          ]
+        ]
+      ]
     ]
+
+    $let[r;$env[userProfile;limiters;HLRandom]]
+
     
     $sendMessage[$channelID;
-        $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-        $description[:four_leaf_clover: **Today your luck is $getUserVar[HLRandom]%, $getUserVar[luckDesc]**]
+        $getGlobalVar[author]
+        $description[## 🍀 Today your luck is $get[r]%, $env[userProfile;limiters;luckDesc]]
         $color[$getGlobalVar[luckyColor]]
-        $footer[The % number resets every day at 0 AM UTC+0]
+        $footer[The result updates every day at 0 AM UTC+0]
     ]
+    $setUserVar[userProfile;$env[userProfile]]
   `
 })
+
+function data () {
+  return `
+    [
+      {
+        "num": 100,
+        "desc": "legendary luck 🌟"
+      },
+      {
+        "num": 95,
+        "desc": "unbelievable fortune 🍀"
+      },
+      {
+        "num": 80,
+        "desc": "great luck 🎉"
+      },
+      {
+        "num": 60,
+        "desc": "decent luck 👍"
+      },
+      {
+        "num": 40,
+        "desc": "mediocre luck 🤔"
+      },
+      {
+        "num": 20,
+        "desc": "poor luck 😟"
+      },
+      {
+        "num": 5,
+        "desc": "terrible luck 😭"
+      },
+      {
+        "num": 0,
+        "desc": "abysmal luck 💀"
+      }
+  \\]
+  `
+}

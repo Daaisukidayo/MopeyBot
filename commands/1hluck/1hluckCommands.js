@@ -4,7 +4,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;${errorEmbed()} $description[# :x: Error!\n## You already have an active challenge!]]
     
     ${normalEmbed()}
@@ -26,7 +27,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     ${normalEmbed()}  
     $if[$getUserVar[1hpaused];$description[## Status: Paused]]
@@ -37,7 +39,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     $onlyIf[$getUserVar[1hpaused]==false;${errorEmbed()} $description[# :x: Error!\n## You already have paused the challenge!]]
     $!stopInterval[1HLUCK-$authorID]
@@ -53,6 +56,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     $onlyIf[$getUserVar[1hpaused];${errorEmbed()} $description[# :x: Error!\n## You haven't paused your challenge!]]
     $setUserVar[1hpaused;false]
@@ -69,6 +74,7 @@ module.exports = [
     $onlyIf[$getUserVar[1hstarted]]
     $onlyIf[$startsWith[$messageContent;$getGuildVar[prefix]]==false]
     $onlyIf[$getUserVar[1hpaused]==false]
+    
     
     $let[points;0]
     
@@ -89,8 +95,8 @@ module.exports = [
     $arrayForEach[caughtRares;caughtRare;
       $if[$arrayIncludes[allRares;$env[caughtRare]];
         $arrayForEach[raresMap;rareMap;
-          $jsonLoad[raresFromOBJ;$env[rareMap;rares]]
-          $if[$arrayIncludes[raresFromOBJ;$env[caughtRare]];
+          $jsonLoad[raresFromRareMap;$env[rareMap;rares]]
+          $if[$arrayIncludes[raresFromRareMap;$env[caughtRare]];
             $if[$env[rareMap;category]!=common;
               ${rares()}
             ;
@@ -106,16 +112,16 @@ module.exports = [
                 ${rares()}
                 $setUserVar[$get[com];$math[$getUserVar[$get[com]] + 1]]
                 $if[$getUserVar[$get[com]]==3;
-                  $let[cont;# <@$authorID> You got all $switch[$get[com];$case[mar;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
+                  $let[content;# <@$authorID> You got all $switch[$get[com];$case[mar;Markhor]$case[cht;Choco Toucan]$case[kbt;Keel-Billed Toucan]]s!]
                 ]
               ;
-                $arrayPush[caught;+0]
+                $arrayPush[caught;0]
               ]
             ]
           ]
         ]
       ;
-        $arrayPush[caught;+0]
+        $arrayPush[caught;0]
       ]
     ]
     
@@ -123,13 +129,19 @@ module.exports = [
     
     $if[$get[points]>0;
       $let[pts;]
-      $arrayForEach[caught;pts;$let[pts;$get[pts]$env[pts]]]
+      $arrayForEach[caught;pts;$let[pts;$if[$get[pts]==;$get[pts];$get[pts] + ]$env[pts]]]
       $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
+
+      $if[$arraylength[caughtRares]>1;
+        $let[desc;$get[pts] = $get[points]]
+      ;
+        $let[desc;+$get[pts]]
+      ]
       $reply
       $sendMessage[$channelID;
-        $get[cont]
+        $get[content]
         ${normalEmbed()}
-        $description[# $get[pts] = $get[points]]
+        $description[# $get[desc]]
         ${commons()}
         ${total()}
         ${time()}
@@ -141,7 +153,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     # You ended your challenge!
     ${normalEmbed()}
@@ -154,7 +167,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     ${normalEmbed()}
     ${pts()}
@@ -166,7 +180,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     $onlyIf[$and[$isNumber[$message];$message>=0];${errorEmbed()} $description[# :x: Error!\n## Only a number greater than or equal to 0 is allowed!]]
     $setUserVar[1hpoints;$message]
@@ -179,7 +194,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     $onlyIf[$or[$and[$isNumber[$message];$message>=0];$checkContains[$message;:]];# :x: Error!\n## Only seconds greater than or equal to 0 or time format "HH:MM:SS" is allowed!]
     
@@ -198,7 +214,8 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[# :x: Error!\n## You don't have an active challenge!]]
     
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
@@ -340,7 +357,7 @@ function reset() {
 function rares() {
   return `
     $letSum[points;$env[rareMap;points]]
-    $arrayPush[caught;+$env[rareMap;points]]
+    $arrayPush[caught;$env[rareMap;points]]
     $setUserVar[1htotalRares;$math[$getUserVar[1htotalRares] + 1]]
     
     $if[$env[allRaresList;$env[SNORA;$env[caughtRare]]]==;

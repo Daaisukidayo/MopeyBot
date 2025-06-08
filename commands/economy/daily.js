@@ -3,21 +3,16 @@ module.exports = ({
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
 
-    $let[currentMinute;$minute]
-    $let[currentHour;$hour]
-    $let[currentDay;$day]
-    $let[lastDay;$getUserVar[lastDailyDay;$authorID;0]]
-    $let[lastHour;$getUserVar[lastDailyHour;$authorID;0]]
-
-    $let[resetHour;0] 
-    $let[remainingHours;$if[$get[currentHour]<$get[resetHour];$sub[$get[resetHour];$get[currentHour]];$sub[24;$get[currentHour]]]]
-    $let[remainingMinutes;$sub[60;$get[currentMinute]]]
+    $let[lastDay;$env[userProfile;limiters;lastDailyDay]]
+    $let[remHours;$sub[24;$hour]]
+    $let[remMinutes;$sub[60;$minute]]
       
-    $if[$getUserVar[dev];;
-      $onlyIf[$and[$get[currentDay]!=$get[lastDay];$get[currentHour]>=0];
-        $let[cd;$sum[$parseString[$get[remainingHours]h$get[remainingMinutes]m];$getTimestamp]]
+    $if[$env[userProfile;devMode];;
+      $onlyIf[$day!=$get[lastDay];
+        $let[cd;$sum[$parseString[$get[remHours]h$get[remMinutes]m];$getTimestamp]]
         $callFunction[cooldownSchema;$commandName]
         $description[## You already claimed your daily reward! 
         ## Cooldown will reset at 00:00 AM (UTC+0) every day!
@@ -25,8 +20,7 @@ module.exports = ({
       ]
     ]
 
-    $setUserVar[lastDailyDay;$get[currentDay]]
-    $setUserVar[lastDailyHour;$get[currentHour]]
+    $!jsonSet[userProfile;limiters;lastDailyDay;$day]
   
     $let[r;$randomNumber[15000;20001]]
     $callFunction[sumMC;$get[r]]
@@ -36,5 +30,7 @@ module.exports = ({
       $getGlobalVar[author]
       $color[$getGlobalVar[defaultColor]] 
     ]
+    
+    $setUserVar[userProfile;$env[userProfile]]
   `
 })

@@ -3,11 +3,11 @@ module.exports = [{
   aliases: ["rt"], 
   type: "messageCreate", 
   code: `
-        
     $reply
 
     $let[cdTime;5m]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[animals;$readFile[json/animals.json]]
@@ -27,11 +27,12 @@ module.exports = [{
         $if[$get[raretryDesc$env[i]]==;$let[raretryDesc$env[i];textNotFound | ID: $get[l10n]$env[i]]]
     ;i;desc]
 
+    $let[rtMode;$env[userProfile;rtMode]]
 
     $let[al;$arrayLength[categories]]
     $let[li;$math[$get[al] - 1]]
 
-    $switch[$getUserVar[rtMode];
+    $switch[$get[rtMode];
         $case[inferno;$let[rtModeNum;-1]]
         $case[default;$let[rtModeNum;0]]
         $case[medium;$let[rtModeNum;1]]
@@ -47,8 +48,8 @@ module.exports = [{
     $let[content;## $arrayRandomValue[content1]] 
     $let[thumbnail;]
     ${catchingRare()}
-
-`
+    $setUserVar[userProfile;$env[userProfile]]
+  `
 }]
 
 // Functions
@@ -57,7 +58,7 @@ function colorAndCoins() {
     return `
     $let[color;$env[raresGroup;category_$get[p];color]]
 
-    $if[$getUserVar[rtMode]!=inferno;
+    $if[$get[rtMode]!=inferno;
         $let[index;$math[$get[p] + $get[rtModeNum]]]
         $let[MC;$math[$env[raretryVarData;coinsForRaretry;other;$get[index]] * $arrayAt[multipliers;$get[rtModeNum]]]]
     ;
@@ -67,7 +68,7 @@ function colorAndCoins() {
 
 function baseChance(par) {
     return`
-    $if[$getUserVar[rtMode]!=inferno;
+    $if[$get[rtMode]!=inferno;
         $let[baseChance;$env[raretryVarData;chancesForRaretry;other;$math[$get[${par}] + $get[rtModeNum]]]]
     ;
         $let[baseChance;$env[raretryVarData;chancesForRaretry;inferno;$get[${par}]]]
@@ -101,7 +102,7 @@ function content() {
 
 function catchingRare() {
 return `
-$if[$and[$getUserVar[dev];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]];
+$if[$and[$env[userProfile;dev];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]];
     $let[p;$message[0]]
     $let[caught;true]
 
@@ -125,9 +126,7 @@ $if[$and[$getUserVar[dev];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$
             $let[caught;true]
             $let[p;$get[i]]
 
-            $jsonSet[caughtRareCategories;$getUserVar[rtMode];$get[p];$sum[$env[caughtRareCategories;$getUserVar[rtMode];$get[p]];1]]
-
-            $setUserVar[caughtRareCategories;$env[caughtRareCategories]]
+            $jsonSet[userProfile;caughtRareCategories;$get[rtMode];$get[p];$sum[$env[userProfile;caughtRareCategories;$get[rtMode];$get[p]];1]]
 
             $let[cat;$arrayAt[categories;$get[p]]]
 
@@ -157,7 +156,7 @@ $sendMessage[$channelID;
     $description[$get[content]]
     $thumbnail[$get[thumbnail]]
     $getGlobalVar[author]
-    $footer[$if[$get[p]>-1;$get[raretryDesc1]: 1/$separateNumber[$get[baseChance];,] • $get[raretryDesc2]: $get[cat] • ]$get[raretryDesc3]: $toTitleCase[$getUserVar[rtMode]]]
+    $footer[$if[$get[p]>-1;$get[raretryDesc1]: 1/$separateNumber[$get[baseChance];,] • $get[raretryDesc2]: $get[cat] • ]$get[raretryDesc3]: $toTitleCase[$get[rtMode]]]
 ]`
 }
 

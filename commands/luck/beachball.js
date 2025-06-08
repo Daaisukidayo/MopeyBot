@@ -5,7 +5,8 @@ module.exports = [{
   code: `
     $reply
     $let[cdTime;20s]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
     
     $jsonLoad[beachballs;$readFile[json/beachballs.json]]
@@ -15,24 +16,31 @@ module.exports = [{
     $let[al;$arraylength[beachballs]]
     $let[li;$math[$get[al] - 1]]
         
-    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>-1;$message[0]<=$get[li]];
+    $if[$and[$env[userProfile;devMode]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>-1;$message[0]<=$get[li]];
       $let[id;$message[0]]
+
       $arrayForEach[beachballs;beachball;
-        $if[$get[id]==$env[beachball;ID];
-          ${catched()}
-          $sendMessage[$channelID]
-          $stop
+        $if[$get[stop];;
+          $if[$get[id]==$env[beachball;ID];
+            ${catched()}
+            $sendMessage[$channelID]
+            $let[stop;true]
+          ]
         ]
       ]
+
     ;
       $arrayForEach[beachballs;beachball;
-        $let[r;$randomNumber[1;$math[$env[beachball;rarity] + 1]]]
-        
-        $if[1==$get[r];
-          ${catched()}
-          $callFunction[sumMC;$get[MC]]
-          $sendMessage[$channelID]
-          $stop
+        $if[$get[stop];;
+          $let[r;$randomNumber[1;$math[$env[beachball;rarity] + 1]]]
+          
+          $if[1==$get[r];
+            ${catched()}
+            $callFunction[sumMC;$get[MC]]
+            $setUserVar[userProfile;$env[userProfile]]
+            $sendMessage[$channelID]
+            $let[stop;true]
+          ]
         ]
       ]
     ]

@@ -4,31 +4,42 @@ module.exports = ({
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
 
-    $let[pos;$message[0]]
+    $let[arg;$message[0]]
 
-    $onlyIf[$or[$get[pos]!=;$isNumber[$get[pos]]];
-      $color[d0321d]
+    $onlyIf[$or[$get[arg]!=;$isNumber[$get[arg]]];
+      $color[$getGlobalVar[errorColor]]
       $author[✖️ Invalid arguments!]
-      $description[No MUID were written or argument is not a number]
+      $description[## No MUID were written or argument is not a number]
     ]
 
-    $let[userID;$userLeaderboard[MUID;desc;10;1;\n;data;pos;$if[$env[pos]==$get[pos];$return[$env[data;id]]]]]
+    $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
 
-    $let[userMUID;$getUserVar[MUID;$get[userID]]]
+    $arrayForEach[allUserIDs;id;
+      $if[$get[break];;
+        $jsonLoad[otherUserProfile;$getUserVar[userProfile;$env[id]]]
+        $if[$env[otherUserProfile;MUID]==$get[arg];
+          $let[userID;$env[id]]
+          $let[userMUID;$env[otherUserProfile;MUID]]
+          $let[break;true]
+        ]
+      ]
+    ]
 
-    $onlyIf[$and[$get[pos]>0;$get[userMUID]!=;$get[userID]!=];
-      $color[d0321d]
+
+    $onlyIf[$and[$get[arg]>0;$get[userMUID]!=;$get[userID]!=];
+      $color[$getGlobalVar[errorColor]]
       $author[✖️ Invalid user!]
-      $description[User with this MUID does not exist]
+      $description[## User with «\`$get[arg]\`» MUID does not exist yet]
     ]
 
     $sendMessage[$channelID;
       $author[@$username[$get[userID]] • MUID: $get[userMUID]]
       $footer[Discord ID: $get[userID]]
       $thumbnail[$userAvatar[$get[userID]]]
-      $description[**Mopecoins**: \`$separateNumber[$getUserVar[MC;$get[userID]];.]\`$getGlobalVar[emoji]]
+      $description[# \`$separateNumber[$env[otherUserProfile;MC;];.]\`$getGlobalVar[emoji]]
       $color[ffd700]
     ]
   `

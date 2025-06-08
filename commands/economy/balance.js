@@ -6,7 +6,8 @@ module.exports = [{
   type: "messageCreate",
   code: ` 
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;${CD}]
 
     ${coinsBalance()}
@@ -20,6 +21,8 @@ module.exports = [{
     $textSplit[$customID;-]
     $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN;]]
     $onlyIf[$splitText[0]==coins]
+
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     ${coinsBalance()} 
 
@@ -41,8 +44,9 @@ module.exports = [{
     $addButton[coins-$authorID;Coins;Primary;$getGlobalVar[emoji]]
     $addButton[packs-$authorID;Packs;Primary;🛒;true]
 
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[allSkinPacks;$getGlobalVar[shopItems]]
-    $jsonLoad[userPacks;$getUserVar[userPacks]]
+    $jsonLoad[userPacks;$env[userProfile;userPacks]]
     $jsonLoad[userPacksKeys;$jsonKeys[userPacks]]
     
     $let[desc;]
@@ -96,7 +100,7 @@ function sendMessage() {
 
 function embed() {
   return `
-    $addField[💰 __Coins:__;**\`$separateNumber[$getUserVar[MC];.]\`$getGlobalVar[emoji]**]
+    $addField[💰 __Coins:__;**\`$separateNumber[$env[userProfile;MC];.]\`$getGlobalVar[emoji]**]
     $title[__BALANCE__]
     $getGlobalVar[author]
     $thumbnail[$userAvatar]

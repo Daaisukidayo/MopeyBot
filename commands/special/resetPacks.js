@@ -4,7 +4,8 @@ module.exports = [{
   type: "messageCreate", 
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
 
     $let[msgid;$sendMessage[$channelID;Are you sure you want to delete all your purchased skin packs?;true]]
 
@@ -26,9 +27,12 @@ module.exports = [{
     $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
     $onlyIf[$or[$splitText[0]==confirm_deleting_packs;$splitText[0]==decline_deleting_packs]]
 
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+
     $if[$splitText[0]==confirm_deleting_packs;
         $!editMessage[$channelID;$messageID;Deleted all your purchased skin packs!]
-        $setUserVar[userPacks;{}]
+        $!jsonSet[userProfile;userPacks;{}]
+        $setUserVar[userProfile;$env[userProfile]]
     ;
         $!editMessage[$channelID;$messageID;Deletion canceled!]
     ]

@@ -3,44 +3,33 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking;]
     
-    $let[currentHour;$hour]
-    $let[currentMinute;$minute]
-    $let[currentDay;$day]
-    $let[currentWeek;$week]
-    
-    $let[dayOfWeek;$switch[$day[Long];$case[Monday;1]$case[Tuesday;2]$case[Wednesday;3]$case[Thursday;4]$case[Friday;5]$case[Saturday;6]$case[Sunday;7]]]
-    
-    $if[$or[$get[dayOfWeek]==6;$get[dayOfWeek]==7];
-      $let[currentWeek;$math[$week - 1]] 
-    ]
-    
-    $let[lastWeek;$getUserVar[lastWeeklyWeek;$authorID;-1]]
-    
-    $let[remainingDays;$sub[7;$get[dayOfWeek]]]
-    $let[remainingHours;$sub[24;$get[currentHour]]]
-    $let[remainingMinutes;$sub[60;$get[currentMinute]]]
+    $let[lastWeek;$env[userProfile;limiters;lastWeeklyWeek]]
+    $let[remDays;$sub[7;$dayOfWeek]]
+    $let[remHours;$sub[24;$hour]]
+    $let[remMinutes;$sub[60;$minute]]
       
-    $let[cd;$sum[$parseString[$get[remainingDays]d$get[remainingHours]h$get[remainingMinutes]m];$getTimestamp]]
+    $let[cd;$sum[$parseString[$get[remDays]d$get[remHours]h$get[remMinutes]m];$getTimestamp]]
     
-    $onlyIf[$get[currentWeek]!=$get[lastWeek];
+    $onlyIf[$week!=$get[lastWeek];
       $callFunction[cooldownSchema;$commandName]
       $description[## You already claimed your weekly reward! 
       ## Cooldown will reset at 00:00 AM (UTC+0) every monday!
       ## Time left: $discordTimestamp[$get[cd];RelativeTime] $discordTimestamp[$get[cd];LongDateTime]]
     ]
     
-    $setUserVar[lastWeeklyWeek;$get[currentWeek]]
-    $setUserVar[lastWeeklyHour;0] 
+    $!jsonSet[userProfile;limiters;lastWeeklyWeek;$week]
     
     $let[r;$randomNumber[100000;150001]]
     $callFunction[sumMC;$get[r]]
     
     $sendMessage[$channelID;
       $description[## Your weekly reward is $get[r]$getGlobalVar[emoji]!]
-      $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
+      $getGlobalVar[author]
       $color[$getGlobalVar[defaultColor]] 
     ]
+    $setUserVar[userProfile;$env[userProfile]]
   `
 }]

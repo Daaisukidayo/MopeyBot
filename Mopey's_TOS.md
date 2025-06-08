@@ -61,6 +61,7 @@ Prefix: `m!` (modifiable by moderators)
 - `Mopecoins balance`
 - `Purchased packs`
 - `Raretry mode`
+- `Caught rares`
 
 ❌ No other personal information is collected.
 

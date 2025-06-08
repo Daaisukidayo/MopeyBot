@@ -1,73 +1,71 @@
 {
   "devil": {
     "devil_0": {
-        "name": "Rare Devil Twister",
-        "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/4/40/Deviltwisterface.png/revision/latest?cb=20200513000750",
-        "color": "D7342A"
+      "name": "Rare Devil Twister",
+      "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/4/40/Deviltwisterface.png/revision/latest?cb=20200513000750",
+      "color": "D7342A"
     },
 
     "devil_1": {
-        "name": "Rare Devil Dust Twister",
-        "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292397438975348747/image.png",
-        "color": "BFA74E"
+      "name": "Rare Devil Dust Twister",
+      "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292397438975348747/image.png",
+      "color": "BFA74E"
     },
 
     "devil_2": {
-        "name": "Rare Devil Tsunami",
-        "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292397101745176576/image.png",
-        "color": "2BB3CD"
+      "name": "Rare Devil Tsunami",
+      "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292397101745176576/image.png",
+      "color": "2BB3CD"
     },
 
     "devil_3": {
-        "name": "Rare Devil Fire Twister",
-        "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292397231013630003/image.png",
-        "color": "DD8F18"
+      "name": "Rare Devil Fire Twister",
+      "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292397231013630003/image.png",
+      "color": "DD8F18"
     },
 
     "devil_4": {
-        "name": "Rare Devil Arctic Whirl",
-        "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292397847529918564/image.png",
-        "color": "F8F8F8"
+      "name": "Rare Devil Arctic Whirl",
+      "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292397847529918564/image.png",
+      "color": "F8F8F8"
     },
 
     "devil_5": {
-        "name": "Rare Devil Tornado",
-        "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292408893309321309/image.png",
-        "color": "E8C853"
+      "name": "Rare Devil Tornado",
+      "thumbnail": "https://media.discordapp.net/attachments/623559052600803368/1292408893309321309/image.png",
+      "color": "E8C853"
     }
-
   },
-  
+
   "normal": {
     "normal_0": {
-        "name": "Dust Tornado",
-        "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/e/e6/Dustdevil.png/revision/latest?cb=20200512234642",
-        "color": "BFA74E"
+      "name": "Dust Tornado",
+      "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/e/e6/Dustdevil.png/revision/latest?cb=20200512234642",
+      "color": "BFA74E"
     },
 
     "normal_1": {
-        "name": "Tsunami",
-        "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/e/ed/Waterspout.png/revision/latest?cb=20200512235725",
-        "color": "2BB3CD"
+      "name": "Tsunami",
+      "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/e/ed/Waterspout.png/revision/latest?cb=20200512235725",
+      "color": "2BB3CD"
     },
 
     "normal_2": {
-        "name": "Fire Tornado",
-        "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/3/3c/Firedevil.png/revision/latest?cb=20200512234531",
-        "color": "DD8F18"
+      "name": "Fire Tornado",
+      "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/3/3c/Firedevil.png/revision/latest?cb=20200512234531",
+      "color": "DD8F18"
     },
 
     "normal_3": {
-        "name": "Arctic Whirl",
-        "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/9/9a/Arcticwhirl.png/revision/latest?cb=20200512234326",
-        "color": "F8F8F9"
+      "name": "Arctic Whirl",
+      "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/9/9a/Arcticwhirl.png/revision/latest?cb=20200512234326",
+      "color": "F8F8F9"
     },
 
     "normal_4": {
-        "name": "Tornado",
-        "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/4/40/Tornado.png/revision/latest?cb=20200512234334",
-        "color": "E8C853"
+      "name": "Tornado",
+      "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/4/40/Tornado.png/revision/latest?cb=20200512234334",
+      "color": "E8C853"
     }
-
   }
 }

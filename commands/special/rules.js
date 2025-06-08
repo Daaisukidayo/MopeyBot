@@ -3,9 +3,9 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-
     $let[cdTime;5s]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
     $getGlobalVar[author]

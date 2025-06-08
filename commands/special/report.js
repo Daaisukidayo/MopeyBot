@@ -5,7 +5,8 @@ module.exports = [{
   code: `
     $reply
     $let[cdTime;5m]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
     $addActionRow

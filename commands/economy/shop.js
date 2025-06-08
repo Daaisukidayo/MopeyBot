@@ -5,6 +5,7 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking;]
     $callFunction[cooldown;${CD}]
 
@@ -26,12 +27,14 @@ module.exports = [{
   code: `
     $textSplit[$selectMenuValues;-]
     
-    $if[$splitText[1]!=$authorID;
+    $onlyif[$splitText[1]==$authorID;
         $callFunction[notYourBTN;]
-        $stop
     ]
 
     $textSplit[$splitText[0];+]
+
+    $let[skinpack;$splitText[0]]
+    $let[cost;$splitText[1]]
 
     ${shop()}
     $arrayLoad[trig]
@@ -39,16 +42,16 @@ module.exports = [{
       $arrayPush[trig;$env[pack;name]]
     ]
 
-    $onlyIf[$arrayIncludes[trig;$splitText[0]]]
+    $onlyIf[$arrayIncludes[trig;$get[skinpack]]]
 
     $!stopTimeout[SHOP-$authorID]
 
-    $jsonLoad[userPacks;$getUserVar[userPacks]]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     $let[i;0]
     $let[msgid;$messageID]
 
-    $if[$env[userPacks;$splitText[0]];
+    $if[$env[userProfile;userPacks;$get[skinpack]];
       ${genMenu()}
       $interactionReply[
           $ephemeral 
@@ -58,7 +61,7 @@ module.exports = [{
       ]
       $stop
     ]
-    $if[$getUserVar[MC]<$splitText[1];
+    $if[$env[userProfile;MC]<$get[cost];
       ${genMenu()}
       $interactionReply[
         $ephemeral 
@@ -69,10 +72,10 @@ module.exports = [{
       $stop
     ]
 
-    $callFunction[subMC;$splitText[1]]
+    $callFunction[subMC;$get[cost]]
 
-    $!jsonSet[userPacks;$splitText[0];true]
-    $setUserVar[userPacks;$env[userPacks]]
+    $!jsonSet[userProfile;userPacks;$get[skinpack];true]
+    $setUserVar[userProfile;$env[userProfile]]
 
     $interactionReply[
       $ephemeral
@@ -90,7 +93,7 @@ function embedShop() {
     return `
         $getGlobalVar[author]
         $title[__Available Skinpacks__]
-        $footer[Cash: $separateNumber[$getUserVar[MC];,];https://media.discordapp.net/attachments/701793335941136464/1369682764470681683/Mopecoin.png]
+        $footer[Cash: $separateNumber[$env[userProfile;MC];,];https://media.discordapp.net/attachments/701793335941136464/1369682764470681683/Mopecoin.png]
         $color[$getGlobalVar[defaultColor]]
     `
 }
@@ -107,7 +110,7 @@ function genMenu () {
 
         $arrayForEach[allSkinPacks;pack;
 
-            $if[$env[userPacks;$env[pack;name]];;
+            $if[$env[userProfile;userPacks;$env[pack;name]];;
                 $letSum[i;1]
                 $addOption[$env[pack;description];$separateNumber[$env[pack;cost];,];$env[pack;name]+$env[pack;cost]-$authorID;$getGlobalVar[emoji]]
             ]

@@ -5,14 +5,14 @@ module.exports = [{
   code: `
     $reply
     $let[cdTime;30s]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
     $let[r;$randomNumber[0;101]]
     $let[MC;$randomNumber[1500;2001]]
 
     $jsonLoad[enemies;${enemiesArr()}]
-
 
     $if[$get[r]>=20;
       $callFunction[sumMC;$get[MC]]
@@ -26,6 +26,7 @@ module.exports = [{
     $getGlobalVar[author]
     $description[$get[desc]]
     $color[$get[color]]
+    $setUserVar[userProfile;$env[userProfile]]
   `
 }]
 

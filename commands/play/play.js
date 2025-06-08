@@ -3,9 +3,10 @@ module.exports = [{
   type: "messageCreate", 
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $onlyIf[$guildID!=;## You can't start the game in DMs!]
-    $onlyIf[$getUserVar[testerMode]]
+    $onlyIf[$env[userProfile;testerMode]]
 
     $disableConsoleErrors
     
@@ -26,7 +27,7 @@ module.exports = [{
 
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[animalsKeys;$jsonKeys[animals]]
-    $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
+    $jsonLoad[userWardrobe;$env[userProfile;userWardrobe]]
 
     $setUserVar[playTier;1]
     $let[buttonsQuantity;0]
@@ -55,7 +56,7 @@ module.exports = [{
 
     $description[## Choose which animal to spawn as:\n# $get[emojisInDescription]]
     $getGlobalVar[author]
-    $footer[Beta version: 1.0]
+    $footer[Beta version: 2.0]
 
     $let[msgID;$sendMessage[$channelID;;true]]
 
@@ -64,6 +65,7 @@ module.exports = [{
     $setUserVar[playGuildID;$guildID]
     $setUserVar[playStarted;true]
     $setUserVar[playCoins;0]
+    $setUserVar[userProfile;$env[userProfile]]
   `
 },{
   type: "interactionCreate",
@@ -107,6 +109,8 @@ module.exports = [{
       
       ${removeAllProgress()}
     ]
+
+    $setUserVar[userProfile;$env[userProfile]]
 `
 }]
 

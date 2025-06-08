@@ -3,9 +3,9 @@ module.exports = [{
   type: "messageCreate", 
   code: `
     $reply
-
     $let[cdTime;10s]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
@@ -85,5 +85,5 @@ module.exports = [{
 }]
 
 function allRareNames(rare) {
-  return `### $trimSpace[$arrayAt[allRares;$arrayIndexOf[allRaresNames;${rare}]]] || $trimSpace[$arrayAt[allRares;$arrayLastIndexOf[allRaresNames;${rare}]]] ➡️ $trimSpace[$arrayAt[allRaresNames;$arrayIndexOf[allRaresNames;${rare}]]]`
+  return `\`$trimSpace[$arrayAt[allRares;$arrayIndexOf[allRaresNames;${rare}]]] || $trimSpace[$arrayAt[allRares;$arrayLastIndexOf[allRaresNames;${rare}]]] ➡️ $trimSpace[$arrayAt[allRaresNames;$arrayIndexOf[allRaresNames;${rare}]]]\``
 }

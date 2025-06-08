@@ -6,31 +6,32 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;${CD}]
 
     $if[$message!=;
       $let[arg;$toLowerCase[$message[0]]]
 
       $if[$or[$get[arg]==inferno;$get[arg]==inf;$get[arg]==1];
-        $setUserVar[rtMode;inferno]
+        $!jsonSet[userProfile;rtMode;inferno]
       ;$if[$or[$get[arg]==default;$get[arg]==def;$get[arg]==2];
-        $setUserVar[rtMode;default]
+        $!jsonSet[userProfile;rtMode;default]
       ;$if[$or[$get[arg]==medium;$get[arg]==med;$get[arg]==3];
-        $setUserVar[rtMode;medium]
+        $!jsonSet[userProfile;rtMode;medium]
       ;$if[$or[$get[arg]==hard;$get[arg]==4];
-        $setUserVar[rtMode;hard]
+        $!jsonSet[userProfile;rtMode;hard]
       ;$if[$or[$get[arg]==insane;$get[arg]==ins;$get[arg]==5];
-        $setUserVar[rtMode;insane]
+        $!jsonSet[userProfile;rtMode;insane]
       ;$if[$or[$get[arg]==impossible;$get[arg]==imp;$get[arg]==6];
-        $setUserVar[rtMode;impossible]
+        $!jsonSet[userProfile;rtMode;impossible]
       ]]]]]]
     ]
 
 
     ${jsonAndArray()}
     $let[msgid;$sendMessage[$channelID;${embed()};true]]
+    $setUserVar[userProfile;$env[userProfile]]
     ${buttonsLoop()}
     $!editMessage[$channelID;$get[msgid];${embed()}]
 
@@ -44,11 +45,13 @@ module.exports = [{
 
     $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
     $onlyIf[$or[$splitText[0]==inferno;$splitText[0]==default;$splitText[0]==medium;$splitText[0]==hard;$splitText[0]==insane;$splitText[0]==impossible]]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
 
-    $setUserVar[rtMode;$splitText[0]]
+    $!jsonSet[userProfile;rtMode;$splitText[0]]
     $let[msgid;$messageID]
 
     ${jsonAndArray()}
+    $setUserVar[userProfile;$env[userProfile]]
     ${buttonsLoop()}
     $!editMessage[$channelID;$get[msgid];${embed()}]
 
@@ -59,44 +62,43 @@ module.exports = [{
 }]
 
 function jsonAndArray() {
-return `
-$jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
-$jsonLoad[raretryModes;$env[raretryVarData;raretryModes]]
-`
+  return `
+    $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
+    $jsonLoad[raretryModes;$env[raretryVarData;raretryModes]]
+  `
 }
 
 function embed() {
-return `
-
-$getGlobalVar[author]
-$description[# Choose your raretry mode:]
-$color[228b22]
+  return `
+    $getGlobalVar[author]
+    $description[# Choose your raretry mode:]
+    $color[228b22]
 `
 }
 
 function buttonsLoop(disable = false){
-return `
+  return `
+    $loop[$arrayLength[raretryModes];
+      $let[i;$sub[$env[i];1]]
+      $if[$or[$get[i]==0;$get[i]==3];
+        $addActionRow
+      ] 
 
-$loop[$arrayLength[raretryModes];
-  $let[i;$sub[$env[i];1]]
-  $if[$or[$get[i]==0;$get[i]==3];
-    $addActionRow
-  ] 
+      $if[$env[userProfile;rtMode]==$toLowerCase[$arrayAt[raretryModes;$get[i]]];
+        $addButton[$toLowerCase[$arrayAt[raretryModes;$get[i]]]-$authorID;$arrayAt[raretryModes;$get[i]];Secondary;;true]
+      ;
+        $addButton[$toLowerCase[$arrayAt[raretryModes;$get[i]]]-$authorID;$arrayAt[raretryModes;$get[i]];Success;;${disable}]
+      ]
 
-  $if[$getUserVar[rtMode]==$toLowerCase[$arrayAt[raretryModes;$get[i]]];
-    $addButton[$toLowerCase[$arrayAt[raretryModes;$get[i]]]-$authorID;$arrayAt[raretryModes;$get[i]];Secondary;;true]
-  ;
-    $addButton[$toLowerCase[$arrayAt[raretryModes;$get[i]]]-$authorID;$arrayAt[raretryModes;$get[i]];Success;;${disable}]
-  ]
-
-;i;desc]
-`
+    ;i;desc]
+  `
 }
 
 function timeout() {
-return `
-$setTimeout[ 
-  ${buttonsLoop(`true`)}
-  $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
-;${CD};RTM-$authorID]`
+  return `
+    $setTimeout[ 
+      ${buttonsLoop(`true`)}
+      $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] This message is now inactive. Run the command again.]
+    ;${CD};RTM-$authorID]
+  `
 }

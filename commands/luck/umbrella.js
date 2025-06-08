@@ -5,89 +5,82 @@ module.exports = [{
   code: `
     $reply
     $let[cdTime;20s]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
-    $jsonLoad[data;$readFile[json/umbrellas.json]]
+    $jsonLoad[umbrellas;$readFile[json/umbrellas.json]]
+    $jsonLoad[content1;${content1()}]
+    $jsonLoad[content2;${content2()}]
 
-    $arrayLoad[rarityValues;, ;1, 20, 50, 100, 200, 500, 1000, 1500, 2000, 3500, 5000]
+    $let[lastIndex;$math[$arraylength[umbrellas] - 1]]
 
-    $let[al;$arraylength[rarityValues]]
-    $let[li;$math[$get[al] - 1]]
+    $arrayForEach[umbrellas;umbrella;
+      $if[$and[$env[userProfile;devMode]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>-1;$message[0]<=$get[lastIndex]];
+        $let[rid;$message[0]]
+        $let[random;$env[umbrella;ID]]
+      ;
+        $let[rid;1]
+        $let[random;$randomNumber[1;$math[$env[umbrella;rarity] + 1]]]
+      ]
 
-    $let[i;$get[li]]
-
-    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]]==true;$message[0]>-1;$message[0]<=$get[li]]==true;
-        $let[i;$message[0]]
+      $if[$get[rid]==$get[random];
         ${catched()}
-    ;
-        $loop[$get[al];
-          $let[r;$randomNumber[1;$math[$arrayAt[rarityValues;$get[i]] + 1]]]
-
-          $if[1==$get[r];
-            ${catched()}
-            $break
-          ]
-
-          $letSub[i;1]
-        ]
+        $callFunction[sumMC;$get[MC]]
+        $setUserVar[userProfile;$env[userProfile]]
+        $sendMessage[$channelID]
+        $stop
+      ]
     ]
-
-    $callFunction[sumMC;$get[MC]]
   `
 }]
 
 function catched() {
-return `
+  return `
+    $let[thum;$env[umbrella;thum]]
+    $let[MC;$randomNumber[$env[umbrella;MC;0];$env[umbrella;MC;1]]]
+    $let[desc;__$env[umbrella;desc]__ $env[umbrella;emoji]]
+    $let[color;$env[umbrella;color]]
 
-$let[thum;$env[data;ur$get[i];thum]]
-$let[MC;$randomNumber[$env[data;ur$get[i];mc;0];$env[data;ur$get[i];mc;1]]]
-$let[desc;__$env[data;ur$get[i];desc]__ $env[data;ur$get[i];emoji]]
-$let[clr;$env[data;ur$get[i];clr]]
-
-${contents()}
-
-$sendMessage[$channelID;
-    $color[$get[clr]]
-    $description[### $arrayRandomValue[content1]!\n### $arrayRandomValue[content2] $separateNumber[$get[MC];.]$getGlobalVar[emoji]!]
+    $color[$get[color]]
+    $description[### $replace[$arrayRandomValue[content1];{UMBRELLA};$get[desc]]!\n### $arrayRandomValue[content2] $separateNumber[$get[MC];,]$getGlobalVar[emoji]!]
     $thumbnail[$get[thum]]
-    $author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]
-    $if[$arrayAt[rarityValues;$get[i]]!=1;
-        $footer[Rarity: 1/$arrayAt[rarityValues;$get[i]]]
+    $getGlobalVar[author]
+    $if[$env[umbrella;rarity]!=1;
+      $footer[Rarity: 1/$env[umbrella;rarity]]
     ]
-]
-
-`
+  `
 }
 
-function contents() {
-return `
+function content1() {
+  return `[
+    "You were walking across the ocean and saw a {UMBRELLA}",
+    "You were wandering around the ocean and spotted a {UMBRELLA}",
+    "You stumbled upon {UMBRELLA} while exploring",
+    "You were gliding across the ocean when you found a {UMBRELLA}",
+    "You discovered a {UMBRELLA} while roaming the ocean",
+    "You were cruising through the wild and noticed a {UMBRELLA}",
+    "You found a {UMBRELLA} lying on the ocean",
+    "You were sliding through the ocean when you saw a {UMBRELLA}",
+    "You noticed a {UMBRELLA} on your path",
+    "You were gliding through the ocean and spotted a {UMBRELLA}",
+    "You were strolling across the ocean and noticed a {UMBRELLA}"
+  \\]`
+}
 
-$arrayLoad[content1;,\n;
-You were walking across the ocean and saw a $get[desc],
-You were wandering around the ocean and spotted a $get[desc],
-You stumbled upon $get[desc] while exploring,
-You were gliding across the ocean when you found a $get[desc],
-You discovered a $get[desc] while roaming the ocean,
-You were cruising through the wild and noticed a $get[desc],
-You found a $get[desc] lying on the ocean,
-You were sliding through the ocean when you saw a $get[desc],
-You noticed a $get[desc] on your path,
-You were gliding through the ocean and spotted a $get[desc],
-You were strolling across the ocean and noticed a $get[desc]]
-
-$arrayLoad[content2;,\n;
-You held it for some time and earned,
-You held it carefully and earned,
-You carried it for a while and earned,
-You held onto it and earned,
-You protected it and collected,
-You kept it safe and gained,
-You grabbed it and pocketed,
-You picked it up and earned,
-You kept it safe and scored,
-You held it carefully and earned,
-You kept it safe and collected,
-You protected it and pocketed]  
-`
+function content2() {
+  return `[
+    "You held it for some time and earned",
+    "You held it carefully and earned",
+    "You carried it for a while and earned",
+    "You held onto it and earned",
+    "You protected it and collected",
+    "You kept it safe and gained",
+    "You grabbed it and pocketed",
+    "You picked it up and earned",
+    "You kept it safe and scored",
+    "You held it carefully and earned",
+    "You kept it safe and collected",
+    "You protected it and pocketed"
+  \\]`
 }

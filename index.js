@@ -7,9 +7,8 @@ dotenv.config();
 // ========== IMPORTS ==========
 // Bring in the essentials for our bot’s operations
 
-const { ForgeClient } = require("@tryforge/forgescript");
+const { ForgeClient, LogPriority } = require("@tryforge/forgescript");
 const { ForgeDB } = require("@tryforge/forge.db");
-const { ForgeJyros } = require('@econome/forge.jyros')
 
 
 // ========== CLIENT CONFIGURATION ==========
@@ -23,7 +22,6 @@ const client = new ForgeClient({
   mobile: true,
   extensions: [
     DB, // Adds database capabilities
-    new ForgeJyros(), // Adds Jyros capabilities
   ],
   intents: [
     "Guilds",
@@ -69,6 +67,7 @@ const client = new ForgeClient({
     "voiceStateUpdate"
   ],
   prefixes: ["$if[$guildID!=;$getGuildVar[prefix];.]"],
+  logLevel: LogPriority.Low
 });
 
 // ========== LOAD COMMANDS ==========
@@ -80,58 +79,215 @@ client.login(process.env.TOKEN);
 // ========== READY EVENT ==========
 // Executes when the bot is ready
 
-client.commands.add[{
-  type: "ready",
-  code: `
-    $async[
-      $setStatus[online;Watching;$guildCount servers]
-      $logger[Info;Ready on client $username[$clientID]]
-    ]
-    $async[
-      $deletevars[page;;message]
-      $deletevars[crpage;;message]
-      $deletevars[pages;;message]
-      $deletevars[rowsPerPage;;message]
-      $logger[Info;Unused message variables have been cleared]
-    ]
-  `
-},{
-  type: "error",
-  code: `$logger[Error;An error occurred: $error]`
-}]
-
 DB.commands.add({
   type: "connect",
   code: `
-    $async[$logger[Info;Connected to the database]]
+    $logger[Info;Connected to the database]
   `
 })
 
 // ========== VARIABLES ==========
 
 DB.variables({
+  //User variables
+
+  userProfile: {
+    ID: "",
+    MC: 0,
+    MUID: -1,
+    acceptedRules: false,
+    testerMode: false,
+    onSlowmode: false,
+    isBanned: false,
+    devMode: false,
+    hadAnn: false,
+    rtMode: "default",
+    l10n: "EN",
+    timezone: "Etc/UTC",
+
+    limiters: {
+      lastDailyDay: -1,
+      lastWeeklyWeek: -1,
+      lastHLUsed: -1,
+      HLRandom: -1,
+      luckDesc: "",
+    },
+
+    caughtRareCategories: {
+      inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      medium: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      hard: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      insane: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      impossible: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+
+    userPacks: {},
+
+    userWardrobe: {
+      mouse: 0,
+      desertRat: 0,
+      shrimp: 0,
+      arcticChipmunk: 0,
+      tarsier: 0,
+      rabbit: 0,
+      pigeon: 0,
+      whiteDove: 0,
+      desertChipmunk: 0,
+      trout: 0,
+      arcticHare: 0,
+      chukar: 0,
+      mole: 0,
+      chicken: 0,
+      meerkat: 0,
+      crab: 0,
+      penguin: 0,
+      flyingLizard: 0,
+      pig: 0,
+      pinkyPig: 0,
+      stinkyPig: 0,
+      woodpecker: 0,
+      armadillo: 0,
+      seaHorse: 0,
+      seal: 0,
+      kakapo: 0,
+      deer: 0,
+      doe: 0,
+      marshDeer: 0,
+      gazelle: 0,
+      squid: 0,
+      flamingo: 0,
+      reindeer: 0,
+      muskDeer: 0,
+      swinehoe: 0,
+      goldenPheasant: 0,
+      fox: 0,
+      hedgehog: 0,
+      peacock: 0,
+      fennecFox: 0,
+      jellyfish: 0,
+      arcticFox: 0,
+      zebra: 0,
+      donkey: 0,
+      jackass: 0,
+      macaw: 0,
+      blueMacaw: 0,
+      rareMacaw: 0,
+      warthog: 0,
+      turtle: 0,
+      muskox: 0,
+      cobra: 0,
+      giraffe: 0,
+      momaffie: 0,
+      momaffieFamily: 0,
+      girabie: 0,
+      camel: 0,
+      stingray: 0,
+      snowyOwl: 0,
+      walrus: 0,
+      raven: 0,
+      cheetah: 0,
+      jaguar: 0,
+      leopard: 0,
+      blackPanther: 0,
+      gorilla: 0,
+      toucan: 0,
+      chocoToucan: 0,
+      keelBilledToucan: 0,
+      fieryToucan: 0,
+      lavaToucan: 0,
+      rareToucan: 0,
+      rattleSnake: 0,
+      pufferfish: 0,
+      yellowPufferfish: 0,
+      demonPufferfish: 0,
+      snowLeopard: 0,
+      turkey: 0,
+      bear: 0,
+      blackBear: 0,
+      tiger: 0,
+      whiteTiger: 0,
+      blackTiger: 0,
+      gobiBear: 0,
+      hyena: 0,
+      pelican: 0,
+      swordfish: 0,
+      wolf: 0,
+      crocodile: 0,
+      lion: 0,
+      blackManedLion: 0,
+      whiteLion: 0,
+      blackLion: 0,
+      lioness: 0,
+      whiteLioness: 0,
+      blackLioness: 0,
+      lionCub: 0,
+      whiteLionCub: 0,
+      blackLionCub: 0,
+      falcon: 0,
+      predator: 0,
+      shaheen: 0,
+      vulture: 0,
+      rareVulture: 0,
+      octopus: 0,
+      polarBear: 0,
+      rhino: 0,
+      whiteRhino: 0,
+      blackRhino: 0,
+      baldEagle: 0,
+      goldenEagle: 0,
+      harpyEagle: 0,
+      greaterSpottedEagle: 0,
+      bison: 0,
+      shark: 0,
+      markhor: 0,
+      bigGoat: 0,
+      wolverine: 0,
+      hippo: 0,
+      boaConstrictor: 0,
+      ostrich: 0,
+      komodoDragon: 0,
+      killerWhale: 0,
+      sabertoothTiger: 0,
+      whiteGiraffe: 0,
+      whiteGiraffeFamily: 0,
+      elephant: 0,
+      cassowary: 0,
+      giantSpider: 0,
+      blackwidowSpider: 0,
+      blueWhale: 0,
+      mammoth: 0,
+      dragon: 0,
+      trex: 0,
+      phoenix: 0,
+      pterodactyl: 0,
+      kraken: 0,
+      kingCrab: 0,
+      yeti: 0,
+      aquaYeti: 0,
+      snowman: 0,
+      snowgirl: 0,
+      bigfoot: 0,
+      dinoMonster: 0,
+      landMonster: 0,
+      giantScorpion: 0,
+      seaMonster: 0,
+      iceMonster: 0,
+      blackDragon: 0,
+      kingDragon: 0,
+    },
+  },
+
+  MC: 0,
+  acceptedRules: false,
   testerMode: false,
   onSlowmode: false,
   isBanned: false,
+  hadAnn: false,
   dev: false,
-  acceptedRules: false,
   rtMode: "default",
-  MC: 0,
   MUID: -1,
   l10n: "EN",
-
-  botEnabled: true,
-  maxID: 0,
-  prefix: ".",
-  emoji: "<:MopeCoin:705856410940080232>",
-  defaultColor: "#FFD700",
-  errorColor: "#D0321D",
-  luckyColor: "#228B22",
-  cooldownColor: "#7303b7",
-  logColor: "#2019b3",
-  blank: "<:blank:898514292926713866>",
-  author: "$author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]",
-  reportChannelID: "1372645851159330947",
 
   caughtRareCategories: {
     inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -140,40 +296,6 @@ DB.variables({
     hard: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     insane: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     impossible: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  },
-
-  raretryVarData: {
-    coinsForRaretry: {
-      inferno: [0, 0, 0, 0, 0, 100, 110, 120, 130],
-      other: [0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000, 2750000, 5500000],
-    },
-
-    chancesForRaretry: {
-      inferno: [1, 2, 3, 4, 5, 10, 15, 20, 25],
-      other: [3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000],
-    },
-
-    categories: [
-      "Common",
-      "Uncommon",
-      "Rare",
-      "Epic",
-      "Legendary",
-      "Extreme",
-      "Mythic",
-      "Godly",
-      "Ultra",
-    ],
-    raretryModes: [
-      "Inferno",
-      "Default",
-      "Medium",
-      "Hard",
-      "Insane",
-      "Impossible",
-    ],
-
-    multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
   },
 
   userPacks: {},
@@ -331,139 +453,328 @@ DB.variables({
     kingDragon: "v0",
   },
 
+  // Guild variables
+
+  prefix: ".",
+
+  // For devs
+
+  allUserIDs: [],
+  allTesterIDs: [],
+
+  botEnabled: true,
+  maxID: 0,
+  emoji: "<:MopeCoin:705856410940080232>",
+  defaultColor: "#FFD700",
+  errorColor: "#D0321D",
+  luckyColor: "#228B22",
+  cooldownColor: "#7303b7",
+  logColor: "#2019b3",
+  blank: "<:blank:898514292926713866>",
+  author: "$author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]",
+  reportChannelID: "1372645851159330947",
+
+  raretryVarData: {
+    coinsForRaretry: {
+      inferno: [0, 0, 0, 0, 0, 100, 110, 120, 130],
+      other: [
+        0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000,
+        2750000, 5500000,
+      ],
+    },
+
+    chancesForRaretry: {
+      inferno: [1, 2, 3, 4, 5, 10, 15, 20, 25],
+      other: [
+        3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000,
+      ],
+    },
+
+    categories: [
+      "Common",
+      "Uncommon",
+      "Rare",
+      "Epic",
+      "Legendary",
+      "Extreme",
+      "Mythic",
+      "Godly",
+      "Ultra",
+    ],
+    raretryModes: [
+      "Inferno",
+      "Default",
+      "Medium",
+      "Hard",
+      "Insane",
+      "Impossible",
+    ],
+
+    multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
+  },
+
   shopItems: [
     {
-      "name": "legacySP",
-      "description": "Legacy Skinpack",
-      "cost": "200000"
-    }, 
+      name: "legacySP",
+      description: "Legacy Skinpack",
+      code: "legacy",
+      cost: "200000",
+    },
     {
-      "name": "lockedSP",
-      "description": "Locked Skinpack",
-      "cost": "14229000"
-    }, 
+      name: "lockedSP",
+      description: "Locked Skinpack",
+      code: "lsp",
+      cost: "14229000",
+    },
     {
-      "name": "goldenSP",
-      "description": "Golden Skinpack",
-      "cost": "10820000"
-    }, 
+      name: "goldenSP",
+      description: "Golden Skinpack",
+      code: "gsp",
+      cost: "10820000",
+    },
     {
-      "name": "storefrontSP",
-      "description": "Storefront Skinpack",
-      "cost": "1177000"
-    }, 
+      name: "storefrontSP",
+      description: "Storefront Skinpack",
+      code: "sfsp",
+      cost: "1177000",
+    },
     {
-      "name": "summer2021SP",
-      "description": "Summer 2021 Skinpack",
-      "cost": "2359000"
-    }, 
+      name: "summer2021SP",
+      description: "Summer 2021 Skinpack",
+      code: "ssp2021",
+      cost: "2359000",
+    },
     {
-      "name": "summer2022SP",
-      "description": "Summer 2022 Skinpack",
-      "cost": "485000"
-    }, 
+      name: "summer2022SP",
+      description: "Summer 2022 Skinpack",
+      code: "ssp2022",
+      cost: "485000",
+    },
     {
-      "name": "halloween2020SP",
-      "description": "Halloween 2020 Skinpack",
-      "cost": "2105000"
-    }, 
+      name: "halloween2020SP",
+      description: "Halloween 2020 Skinpack",
+      code: "hsp2020",
+      cost: "2105000",
+    },
     {
-      "name": "halloween2021SP",
-      "description": "Halloween 2021 Skinpack",
-      "cost": "2545000"
-    }, 
+      name: "halloween2021SP",
+      description: "Halloween 2021 Skinpack",
+      code: "hsp2021",
+      cost: "2545000",
+    },
     {
-      "name": "halloween2022SP",
-      "description": "Halloween 2022 Skinpack",
-      "cost": "1770000"
-    }, 
+      name: "halloween2022SP",
+      description: "Halloween 2022 Skinpack",
+      code: "hsp2022",
+      cost: "1770000",
+    },
     {
-      "name": "halloween2023SP",
-      "description": "Halloween 2023 Skinpack",
-      "cost": "1570000"
-    }, 
+      name: "halloween2023SP",
+      description: "Halloween 2023 Skinpack",
+      code: "hsp2023",
+      cost: "1570000",
+    },
     {
-      "name": "may2022SP",
-      "description": "May 2022 Skinpack",
-      "cost": "749000"
-    }, 
+      name: "may2022SP",
+      description: "May 2022 Skinpack",
+      code: "may2022",
+      cost: "749000",
+    },
     {
-      "name": "christmas2022SP",
-      "description": "Christmas 2022 Skinpack",
-      "cost": "300000"
-    }, 
+      name: "christmas2022SP",
+      description: "Christmas 2022 Skinpack",
+      code: "chsp2022",
+      cost: "300000",
+    },
     {
-      "name": "valentine2023SP",
-      "description": "Valentine 2023 Skinpack",
-      "cost": "1600000"
-    }, 
+      name: "valentine2023SP",
+      description: "Valentine 2023 Skinpack",
+      code: "vsp2023",
+      cost: "1600000",
+    },
     {
-      "name": "landGTSP",
-      "description": "Land Gold-Trim Skinpack",
-      "cost": "250000"
-    }, 
+      name: "landGTSP",
+      description: "Land Gold-Trim Skinpack",
+      code: "landgt",
+      cost: "250000",
+    },
     {
-      "name": "desertGTSP",
-      "description": "Desert Gold-Trim Skinpack",
-      "cost": "250000"
-    }, 
+      name: "desertGTSP",
+      description: "Desert Gold-Trim Skinpack",
+      code: "desertgt",
+      cost: "250000",
+    },
     {
-      "name": "oceanGTSP",
-      "description": "Ocean Gold-Trim Skinpack",
-      "cost": "250000"
-    }, 
+      name: "oceanGTSP",
+      description: "Ocean Gold-Trim Skinpack",
+      code: "oceangt",
+      cost: "250000",
+    },
     {
-      "name": "arcticGTSP",
-      "description": "Arctic Gold-Trim Skinpack",
-      "cost": "250000"
-    }
+      name: "arcticGTSP",
+      description: "Arctic Gold-Trim Skinpack",
+      code: "arcticgt",
+      cost: "250000",
+    },
   ],
+
   raresMap: [
     {
-      "category": "common",
-      "rares": ["cht", "kbt", "mar", "chocotoucan", "keelbilledtoucan", "markhor"],
-      "points": 1
-    }, 
+      category: "common",
+      rares: [
+        "cht",
+        "kbt",
+        "mar",
+        "chocotoucan",
+        "keelbilledtoucan",
+        "markhor",
+      ],
+      points: 1,
+    },
     {
-      "category": "uncommon",
-      "rares": ["doe", "bm", "jag", "leo", "ft", "yp", "ln", "bluemacaw", "jaguar", "leopard", "fierytoucan", "yellowpufferfish", "lioness"],
-      "points": 2
-    }, 
+      category: "uncommon",
+      rares: [
+        "doe",
+        "bm",
+        "jag",
+        "leo",
+        "ft",
+        "yp",
+        "ln",
+        "bluemacaw",
+        "jaguar",
+        "leopard",
+        "fierytoucan",
+        "yellowpufferfish",
+        "lioness",
+      ],
+      points: 2,
+    },
     {
-      "category": "rare",
-      "rares": ["wd", "pp", "mad", "gph", "mom", "mf", "bp", "lc", "bml", "whitedove", "pinkypig", "marshdeer", "goldenpheasant", "momaffie", "momaffiefamily", "blackpanther", "lioncub", "blackmanedlion"],
-      "points": 3
-    }, 
+      category: "rare",
+      rares: [
+        "wd",
+        "pp",
+        "mad",
+        "gph",
+        "mom",
+        "mf",
+        "bp",
+        "lc",
+        "bml",
+        "whitedove",
+        "pinkypig",
+        "marshdeer",
+        "goldenpheasant",
+        "momaffie",
+        "momaffiefamily",
+        "blackpanther",
+        "lioncub",
+        "blackmanedlion",
+      ],
+      points: 3,
+    },
     {
-      "category": "epic",
-      "rares": ["jac", "gir", "wt", "wl", "wln", "wlc", "bg", "sbf", "ssm", "ssg", "jackass", "girabie", "whitetiger", "whitelion", "whitelioness", "whitelioncub", "biggoat", "shopbigfoot", "shopsnowman", "shopsnowgirl"],
-      "points": 5
-    }, 
+      category: "epic",
+      rares: [
+        "jac",
+        "gir",
+        "wt",
+        "wl",
+        "wln",
+        "wlc",
+        "bg",
+        "sbf",
+        "ssm",
+        "ssg",
+        "jackass",
+        "girabie",
+        "whitetiger",
+        "whitelion",
+        "whitelioness",
+        "whitelioncub",
+        "biggoat",
+        "shopbigfoot",
+        "shopsnowman",
+        "shopsnowgirl",
+      ],
+      points: 5,
+    },
     {
-      "category": "insane",
-      "rares": ["sp", "mud", "bl", "bln", "blc", "pf", "ge", "wr", "ay", "stinkypig", "muskdeer", "blacklion", "blacklioness", "blacklioncub", "predator", "goldeneagle", "whiterhino", "aquayeti"],
-      "points": 8
-    }, 
+      category: "insane",
+      rares: [
+        "sp",
+        "mud",
+        "bl",
+        "bln",
+        "blc",
+        "pf",
+        "ge",
+        "wr",
+        "ay",
+        "stinkypig",
+        "muskdeer",
+        "blacklion",
+        "blacklioness",
+        "blacklioncub",
+        "predator",
+        "goldeneagle",
+        "whiterhino",
+        "aquayeti",
+      ],
+      points: 8,
+    },
     {
-      "category": "legendary",
-      "rares": ["lt", "dp", "br", "wg", "lavatoucan", "demonfish", "blackrhino", "whitegiraffe"],
-      "points": 15
-    }, 
+      category: "legendary",
+      rares: [
+        "lt",
+        "dp",
+        "br",
+        "wg",
+        "lavatoucan",
+        "demonfish",
+        "blackrhino",
+        "whitegiraffe",
+      ],
+      points: 15,
+    },
     {
-      "category": "extreme",
-      "rares": ["gf", "giraffefamily"],
-      "points": 20
-    }, 
+      category: "extreme",
+      rares: ["gf", "giraffefamily"],
+      points: 20,
+    },
     {
-      "category": "mythic",
-      "rares": ["lbf", "lsm", "lsg", "kd", "luckbigfoot", "lucksnowman", "lucksnowgirl", "kingdragon"],
-      "points": 30
-    }, 
+      category: "mythic",
+      rares: [
+        "lbf",
+        "lsm",
+        "lsg",
+        "kd",
+        "luckbigfoot",
+        "lucksnowman",
+        "lucksnowgirl",
+        "kingdragon",
+      ],
+      points: 30,
+    },
     {
-      "category": "godly",
-      "rares": ["sm", "hht", "arg", "sf", "har", "gse", "spixmacaw", "helmetedhornbill", "argentavis", "shaheen", "harpyeagle", "greaterspottedeagle"],
-      "points": 50
-    }
+      category: "godly",
+      rares: [
+        "sm",
+        "hht",
+        "arg",
+        "sf",
+        "har",
+        "gse",
+        "spixmacaw",
+        "helmetedhornbill",
+        "argentavis",
+        "shaheen",
+        "harpyeagle",
+        "greaterspottedeagle",
+      ],
+      points: 50,
+    },
   ],
 
   SNORA: {
@@ -574,29 +885,32 @@ DB.variables({
     lucksnowgirl: "Luck Snowgirl",
     kingdragon: "King Dragon",
   },
+
   allVariants: [
-    "s1",
-    "s2",
-    "s2-w",
-    "legacy",
-    "legacy-w",
-    "sfsp",
-    "ssp2021",
-    "ssp2022",
-    "may2022",
-    "christmas2022",
-    "valentine2023",
-    "gsp",
-    "lsp",
-    "hsp2020",
-    "hsp2021",
-    "hsp2022",
-    "hsp2023",
-    "landgt",
-    "desertgt",
-    "oceangt",
-    "arcticgt",
-    "promo",
+    { v: "s1", req: null, },
+    { v: "s1-v1", req: null, },
+    { v: "s2", req: null, },
+    { v: "s2-w", req: null, },
+    { v: "legacy", req: "legacySP", },
+    { v: "legacy-w", req: "legacySP", },
+    { v: "legacy-w-v1", req: "legacySP", },
+    { v: "sfsp", req: "storefrontSP", },
+    { v: "gsp", req: "goldenSP", },
+    { v: "lsp", req: "lockedSP", },
+    { v: "ssp2021", req: "summer2021SP", },
+    { v: "ssp2022", req: "summer2022SP", },
+    { v: "may2022", req: "may2022SP", },
+    { v: "christmas2022", req: "christmas2022SP", },
+    { v: "valentine2023", req: "valentine2023SP", },
+    { v: "hsp2020", req: "halloween2020SP", },
+    { v: "hsp2021", req: "halloween2021SP", },
+    { v: "hsp2022", req: "halloween2022SP", },
+    { v: "hsp2023", req: "halloween2023SP", },
+    { v: "landgt", req: "landGTSP", },
+    { v: "desertgt", req: "desertGTSP", },
+    { v: "oceangt", req: "oceanGTSP", },
+    { v: "arcticgt", req: "arcticGTSP", },
+    { v: "promo", req: null, },
   ],
 });
 
@@ -610,7 +924,7 @@ client.functions.add({
       $addActionRow
       $addButton[acceptrules-$authorID;Accept;Success;✅]
       $addButton[declinerules-$authorID;Decline;Danger;🛑]
-      $callFunction[rulesEmbeds;]    
+      $callFunction[rulesEmbeds]    
     ]
   `
 })
@@ -665,7 +979,7 @@ client.functions.add({
   name: "sumMC",
   params: ["amount"],
   code: `
-    $return[$setUserVar[MC;$sum[$getUserVar[MC];$env[amount]]]]
+    $return[$!jsonSet[userProfile;MC;$sum[$env[userProfile;MC];$env[amount]]]]
   `
 })
 
@@ -673,7 +987,7 @@ client.functions.add({
   name: "subMC",
   params: ["amount"],
   code: `
-    $return[$setUserVar[MC;$sub[$getUserVar[MC];$env[amount]]]]
+    $return[$!jsonSet[userProfile;MC;$sub[$env[userProfile;MC];$env[amount]]]]
   `
 })
 
@@ -682,12 +996,12 @@ client.functions.add({
 client.functions.add({
   name: "checking",
   code: `
-    $if[$getUserVar[dev];;
+    $if[$env[userProfile;devMode];;
       $onlyIf[$getGlobalVar[botEnabled]]
     ]
-    $onlyIf[$getUserVar[isBanned]==false]
-    $onlyIf[$getUserVar[acceptedRules];$callFunction[rulesSchema;]]
-    $onlyIf[$getUserVar[onSlowmode]==false]
+    $onlyIf[$env[userProfile;isBanned]!=true]
+    $onlyIf[$env[userProfile;acceptedRules];$callFunction[rulesSchema]]
+    $onlyIf[$env[userProfile;onSlowmode]!=true]
   `
 })
 
@@ -697,7 +1011,7 @@ client.functions.add({
   name: "cooldown",
   params: ["time"],
   code: `
-    $if[$getUserVar[dev];;
+    $if[$env[userProfile;devMode];;
       $userCooldown[$commandName;$env[time];$callFunction[cooldownSchema;$commandName]]
     ]
   `
@@ -734,21 +1048,21 @@ client.functions.add({
     $addActionRow
     $addStringSelectMenu[$env[cond]kdmenu-$authorID;Choose an upgrade:]
 
-    $addOption[$env[animals;kingDragon;v0;name];;$env[cond]kds1-$authorID;$env[animals;kingDragon;v0;emoji]]
-    $addOption[$env[animals;kingDragon;v1;name];;$env[cond]kds2-$authorID;$env[animals;kingDragon;v1;emoji]]
+    $addOption[$env[animals;kingDragon;variants;0;name];;$env[cond]kds1-$authorID;$env[animals;kingDragon;variants;0;emoji]]
+    $addOption[$env[animals;kingDragon;variants;1;name];;$env[cond]kds2-$authorID;$env[animals;kingDragon;variants;1;emoji]]
     
-    $if[$env[userPacks;lockedSP];
-      $addOption[$env[animals;kingDragon;v2;name];;$env[cond]ksh-$authorID;$env[animals;kingDragon;v2;emoji]]
-      $addOption[$env[animals;kingDragon;v3;name];;$env[cond]kst-$authorID;$env[animals;kingDragon;v3;emoji]]
-      $addOption[$env[animals;kingDragon;v4;name];;$env[cond]kr-$authorID;$env[animals;kingDragon;v4;emoji]]
-      $addOption[$env[animals;kingDragon;v5;name];;$env[cond]qc-$authorID;$env[animals;kingDragon;v5;emoji]]
-      $addOption[$env[animals;kingDragon;v6;name];;$env[cond]qs-$authorID;$env[animals;kingDragon;v6;emoji]]
+    $if[$env[userProfile;userPacks;lockedSP];
+      $addOption[$env[animals;kingDragon;variants;2;name];;$env[cond]ksh-$authorID;$env[animals;kingDragon;variants;2;emoji]]
+      $addOption[$env[animals;kingDragon;variants;3;name];;$env[cond]kst-$authorID;$env[animals;kingDragon;variants;3;emoji]]
+      $addOption[$env[animals;kingDragon;variants;4;name];;$env[cond]kr-$authorID;$env[animals;kingDragon;variants;4;emoji]]
+      $addOption[$env[animals;kingDragon;variants;5;name];;$env[cond]qc-$authorID;$env[animals;kingDragon;variants;5;emoji]]
+      $addOption[$env[animals;kingDragon;variants;6;name];;$env[cond]qs-$authorID;$env[animals;kingDragon;variants;6;emoji]]
     ]
-    $if[$env[userPacks;goldenSP];
-      $addOption[$env[animals;kingDragon;v7;name];;$env[cond]gkd-$authorID;$env[animals;kingDragon;v7;emoji]]
+    $if[$env[userProfile;userPacks;goldenSP];
+      $addOption[$env[animals;kingDragon;variants;7;name];;$env[cond]gkd-$authorID;$env[animals;kingDragon;variants;7;emoji]]
     ] 
-    $if[$env[userPacks;storefrontSP];
-      $addOption[$env[animals;kingDragon;v8;name];;$env[cond]qf-$authorID;$env[animals;kingDragon;v8;emoji]]
+    $if[$env[userProfile;userPacks;storefrontSP];
+      $addOption[$env[animals;kingDragon;variants;8;name];;$env[cond]qf-$authorID;$env[animals;kingDragon;variants;8;emoji]]
     ]
   `
 })
@@ -772,9 +1086,11 @@ client.functions.add({
       },
   
       "category_8": {
-        "content": ["$env[animals;shaheen;$env[userWardrobe;shaheen];name] $env[animals;shaheen;$env[userWardrobe;shaheen];emoji]",
+        "content": [
+          "$env[animals;shaheen;$env[userWardrobe;shaheen];name] $env[animals;shaheen;$env[userWardrobe;shaheen];emoji]",
           "$env[animals;harpyEagle;$env[userWardrobe;harpyEagle];name] $env[animals;harpyEagle;$env[userWardrobe;harpyEagle];emoji]",
-          "$env[animals;greaterSpottedEagle;$env[userWardrobe;greaterSpottedEagle];name] $env[animals;greaterSpottedEagle;$env[userWardrobe;greaterSpottedEagle];emoji]"\\],
+          "$env[animals;greaterSpottedEagle;$env[userWardrobe;greaterSpottedEagle];name] $env[animals;greaterSpottedEagle;$env[userWardrobe;greaterSpottedEagle];emoji]"
+        \\],
     
         "thumbnail": [
           "$env[animals;shaheen;$env[userWardrobe;shaheen];img]",
@@ -786,9 +1102,11 @@ client.functions.add({
       },
   
       "category_7": {
-        "content": ["$env[animals;rareMacaw;$env[userWardrobe;rareMacaw];name] $env[animals;rareMacaw;$env[userWardrobe;rareMacaw];emoji]",
+        "content": [
+          "$env[animals;rareMacaw;$env[userWardrobe;rareMacaw];name] $env[animals;rareMacaw;$env[userWardrobe;rareMacaw];emoji]",
           "$env[animals;rareToucan;$env[userWardrobe;rareToucan];name] $env[animals;rareToucan;$env[userWardrobe;rareToucan];emoji]",
-          "$env[animals;rareVulture;$env[userWardrobe;rareVulture];name] $env[animals;rareVulture;$env[userWardrobe;rareVulture];emoji]"\\],
+          "$env[animals;rareVulture;$env[userWardrobe;rareVulture];name] $env[animals;rareVulture;$env[userWardrobe;rareVulture];emoji]"
+        \\],
     
         "thumbnail": [
           "$env[animals;rareMacaw;$env[userWardrobe;rareMacaw];img]",
@@ -800,13 +1118,15 @@ client.functions.add({
       },
   
       "category_6": {
-        "content": ["$env[animals;kingDragon;$env[userWardrobe;kingDragon];name] $env[animals;kingDragon;$env[userWardrobe;kingDragon];emoji]",
+        "content": [
+          "$env[animals;kingDragon;variants;env[userWardrobe;kingDragon];name] $env[animals;kingDragon;variants;env[userWardrobe;kingDragon];emoji]",
           "$env[animals;bigfoot;$env[userWardrobe;bigfoot];name] $env[animals;bigfoot;$env[userWardrobe;bigfoot];emoji]",
           "$env[animals;snowman;$env[userWardrobe;snowman];name] $env[animals;snowman;$env[userWardrobe;snowman];emoji]",
-          "$env[animals;snowgirl;$env[userWardrobe;snowgirl];name] $env[animals;snowgirl;$env[userWardrobe;snowgirl];emoji]"\\],
+          "$env[animals;snowgirl;$env[userWardrobe;snowgirl];name] $env[animals;snowgirl;$env[userWardrobe;snowgirl];emoji]"
+        \\],
     
         "thumbnail": [
-          "$env[animals;kingDragon;$env[userWardrobe;kingDragon];img]",
+          "$env[animals;kingDragon;variants;env[userWardrobe;kingDragon];img]",
           "$env[animals;bigfoot;$env[userWardrobe;bigfoot];img]",
           "$env[animals;snowman;$env[userWardrobe;snowman];img]",
           "$env[animals;snowgirl;$env[userWardrobe;snowgirl];img]"
@@ -816,11 +1136,13 @@ client.functions.add({
       },
   
       "category_5": {
-        "content": ["$env[animals;whiteGiraffeFamily;$env[userWardrobe;whiteGiraffeFamily];name] $env[animals;whiteGiraffeFamily;$env[userWardrobe;whiteGiraffeFamily];emoji]",
+        "content": [
+          "$env[animals;whiteGiraffeFamily;$env[userWardrobe;whiteGiraffeFamily];name] $env[animals;whiteGiraffeFamily;$env[userWardrobe;whiteGiraffeFamily];emoji]",
           "$env[animals;whiteGiraffe;$env[userWardrobe;whiteGiraffe];name] $env[animals;whiteGiraffe;$env[userWardrobe;whiteGiraffe];emoji]",
           "$env[animals;blackRhino;$env[userWardrobe;blackRhino];name] $env[animals;blackRhino;$env[userWardrobe;blackRhino];emoji]",
           "$env[animals;demonPufferfish;$env[userWardrobe;demonPufferfish];name] $env[animals;demonPufferfish;$env[userWardrobe;demonPufferfish];emoji]",
-          "$env[animals;lavaToucan;$env[userWardrobe;lavaToucan];name] $env[animals;lavaToucan;$env[userWardrobe;lavaToucan];emoji]"\\],
+          "$env[animals;lavaToucan;$env[userWardrobe;lavaToucan];name] $env[animals;lavaToucan;$env[userWardrobe;lavaToucan];emoji]"
+        \\],
     
         "thumbnail": [
           "$env[animals;whiteGiraffeFamily;$env[userWardrobe;whiteGiraffeFamily];img]",

@@ -5,7 +5,8 @@ module.exports = [{
   code: `
     $reply
     $let[cdTime;20s]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
     
     $jsonLoad[pumpkins;$readFile[json/pumpkins.json]]
@@ -15,11 +16,12 @@ module.exports = [{
     $let[al;$arraylength[pumpkins]]
     $let[li;$math[$get[al] - 1]]
         
-    $if[$and[$getUserVar[dev]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>-1;$message[0]<=$get[li]];
+    $if[$and[$env[userProfile;devMode];$message[0]!=;$isNumber[$message[0]];$message[0]>-1;$message[0]<=$get[li]];
       $let[id;$message[0]]
       $arrayForEach[pumpkins;pumpkin;
         $if[$get[id]==$env[pumpkin;ID];
           ${catched()}
+          $setUserVar[userProfile;$env[userProfile]]
           $sendMessage[$channelID]
           $stop
         ]
@@ -31,6 +33,7 @@ module.exports = [{
         $if[1==$get[r];
           ${catched()}
           $callFunction[sumMC;$get[MC]]
+          $setUserVar[userProfile;$env[userProfile]]
           $sendMessage[$channelID]
           $stop
         ]

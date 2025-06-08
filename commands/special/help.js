@@ -4,11 +4,11 @@ module.exports = [{
   code: `
     $reply
     $let[cdTime;5s]
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
     $let[arg;$toLowerCase[$message]]
-
 
     $let[desc;$codeBlock[[\\] - required argument(s) \n{} - required option \n() - optional argument(s) or option]]
     
@@ -324,6 +324,7 @@ module.exports = [{
         $addField[🔳 __Special__;**$codeBlock[balance  \nleaderboard  \nshop \ninvite  \nping  \nreport  \nannouncement  \ncredits  \nmuid  \nprefix  \nreset-my-coins  \nreset-my-packs;JSON]**]
         $addField[$getGlobalVar[emoji] __Economy:__;**$codeBlock[weekly \ndaily \narena \nkingdragon \ncoinflip;JSON]**]
         $addField[✨ __Fun__;**$codeBlock[raretry \npumpkin  \nbeachball  \numbrella  \ntornado  \nhowlucky  \nraretryrun  \nrrare  \nraretrymode  \ncaughtrares;JSON]**]
+        $addField[🎮 __Play__;**$codeBlock[wardrobe \nplay;JSON]**]
         $addField[🍀 __1 Hour Luck__;**$codeBlock[snora \nchart \nstart \npause \nresume \ntime \npoints \nend \ncount \nedittime \neditpoints \neditlist;JSON]**]
         $footer[Need assistance with a specific issue? Use the invite command to join our official Discord server!]
 

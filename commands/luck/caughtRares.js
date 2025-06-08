@@ -6,11 +6,11 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking;]
     $callFunction[cooldown;${CD}]
 
-    $let[rtMode;$getUserVar[rtMode]]
+    $let[rtMode;$env[userProfile;rtMode]]
     ${jsonAndArray()}
 
 
@@ -45,6 +45,7 @@ module.exports = [{
     $onlyIf[$getMessageVar[crpage;$messageID]!=;  $callFunction[interFail;]  ]
 
     $let[msgid;$messageID]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     $if[$splitText[0]==left_cr; 
         $setMessageVar[crpage;$sub[$getMessageVar[crpage;$get[msgid]];1];$get[msgid]]
@@ -92,15 +93,17 @@ module.exports = [{
     $onlyIf[$splitText[0]==setmode]
     $onlyIf[$getMessageVar[crpage;$messageID]!=;  $callFunction[interFail;]  ]
 
-
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
     $let[msgid;$messageID]
     $let[rtMode;$splitText[2]]
     ${jsonAndArray()}
     ${rtModeNum()}
-    $setUserVar[rtMode;$get[rtMode]]
+    $!jsonSet[userProfile;rtMode;$get[rtMode]]
     ${buttons()}
 
     $!editMessage[$channelID;$get[msgid];${embed()} $replace[$get[desc8];{6};\`$splitText[2]\`]]
+
+    $setUserVar[userProfile;$env[userProfile]]
 
     $!clearTimeout[CR-$authorID]
 
@@ -140,7 +143,7 @@ function loop() {
 function jsonAndArray() {
   return `
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
-    $jsonLoad[caughtRareCategories;$getUserVar[caughtRareCategories]]
+    $jsonLoad[caughtRareCategories;$env[userProfile;caughtRareCategories]]
     $jsonLoad[categories;$env[raretryVarData;categories]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
@@ -159,7 +162,7 @@ function chance() {
 }
 
 function coins() {
-  return `$if[$get[rtMode]!=inferno;  $math[$env[raretryVarData;coinsForRaretry;other;$math[$get[i] + $get[rtModeNum]]] * $advancedReplace[$env[raretryVarData;multipliersForRaretry;$get[rtModeNum]];\n;;";;\\];;\\[;]]   ;   $env[raretryVarData;coinsForRaretry;inferno;$get[i]]]`
+  return `$if[$get[rtMode]!=inferno;  $math[$env[raretryVarData;coinsForRaretry;other;$math[$get[i] + $get[rtModeNum]]] * $env[raretryVarData;multipliersForRaretry;$get[rtModeNum]]]   ;   $env[raretryVarData;coinsForRaretry;inferno;$get[i]]]`
 }
 
 function rtModeNum() {
@@ -183,7 +186,7 @@ function buttons(disable = false) {
 
     $let[label;$replace[$get[desc7];{5};$toTitleCase[$get[rtMode]]]]
     
-    $if[$getUserVar[rtMode]!=$get[rtMode];
+    $if[$env[userProfile;rtMode]!=$get[rtMode];
         $addButton[setmode-$authorID-$get[rtMode];$get[label];Success;;${disable}]
     ;
         $addButton[setmode-$authorID-$get[rtMode];$get[label];Secondary;;true]
@@ -197,5 +200,5 @@ $setTimeout[
   ${buttons("true")}
   $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] $get[specialDesc1]]
   $deleteMessageVar[crpage;$get[msgid]]  
-;${CD};CR]`
+;${CD};CR-$authorID]`
 }

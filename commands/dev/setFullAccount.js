@@ -3,15 +3,15 @@ module.exports = {
   aliases: ["sfa"],
   type: "messageCreate",
   code: `
-    $onlyIf[$getUserVar[dev]]
-    $jsonLoad[userPacks;$getUserVar[userPacks]]
-    $jsonLoad[shopItems;$getUserVar[shopItems]]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$env[userProfile;devMode]]
+    $jsonLoad[shopItems;$getGlobalVar[shopItems]]
 
     $arrayForEach[shopItems;item;
-      $!jsonSet[userPacks;$env[item;name];true]
+      $!jsonSet[userProfile;userPacks;$env[item;name];true]
     ]
     
-    $setUserVar[userPacks;$env[userPacks]]
+    $setUserVar[userProfile;$env[userProfile]]
     # ✅ Successfully gave you all packs!
   `
 }

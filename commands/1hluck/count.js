@@ -3,7 +3,12 @@ module.exports = [{
   aliases: ["count","cp"], 
   type: "messageCreate", 
   code: `
-    $reply 
+    $reply
+    $let[cdTime;5s]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
+    $callFunction[cooldown;$get[cdTime]]
+    
     $onlyIf[$message!=]
 
     $let[totalRares;0]

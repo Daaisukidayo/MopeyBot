@@ -3,22 +3,24 @@ module.exports=({
   type: "messageCreate",
   code: `
     $reply
-    $onlyIf[$authorID==$botOwnerID]
+    $onlyForUsers[;$botOwnerID]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
     $let[msg;$toLowerCase[$message]]
     
     $if[$get[msg]==semi;
-      $setUserVar[dev;semi]
+      $!jsonSet[userProfile;devMode;semi]
       $sendMessage[$channelID;## ✅ Successfully __enabled__ semi dev mode!]
     ;
       $if[$get[msg]==on;
-        $setUserVar[dev;true]
+        $!jsonSet[userProfile;devMode;true]
         $sendMessage[$channelID;## ✅ Successfully __enabled__ full dev mode!]
       ;
         $if[$get[msg]==off;
-          $setUserVar[dev;false]
+          $!jsonSet[userProfile;devMode;false]
           $sendMessage[$channelID;## ✅ Successfully __disabled__ dev mode!]
         ]
       ]
     ]
+    $setUserVar[userProfile;$env[userProfile]]
   `
 })

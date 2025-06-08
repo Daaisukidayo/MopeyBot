@@ -2,7 +2,8 @@ module.exports = [{
   type: "interactionCreate",
   allowedInteractionTypes: ["button"],
   code: `
-    $onlyIf[$getUserVar[acceptedRules]==false]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$env[userProfile;acceptedRules]==false]
 
     $textSplit[$customID;-]
     $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
@@ -14,18 +15,24 @@ module.exports = [{
       $footer[You have successfully accepted the rules! Enjoy using the bot!]
     ]
 
-    $setUserVar[acceptedRules;true]
+    $if[$env[userProfile;MUID]==-1;
+      $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
+      $arrayPush[allUserIDs;$authorID]
 
-    $if[$getUserVar[MUID]==-1;
-      $setGlobalVar[maxID;$sum[1;$getGlobalVar[maxID]]] 
-      $setUserVar[MUID;$getGlobalVar[maxID]]               
-    ]
+      $setGlobalVar[maxID;$sum[1;$getGlobalVar[maxID]]]
+      $setGlobalVar[allUserIDs;$trimLines[$env[allUserIDs]]]
+      $!jsonSet[userProfile;acceptedRules;true]
+      $!jsonSet[userProfile;MUID;$getGlobalVar[maxID]]  
+      $!jsonSet[userProfile;ID;$authorID]  
+      $setUserVar[userProfile;$env[userProfile]]
+    ]       
   `
 },{
   type: "interactionCreate",
   allowedInteractionTypes: ["button"],
   code: `
-    $onlyIf[$getUserVar[acceptedRules]==false]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$env[userProfile;acceptedRules]==false]
 
     $textSplit[$customID;-]
     $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]

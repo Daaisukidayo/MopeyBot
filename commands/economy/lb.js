@@ -6,7 +6,7 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking;]
     $callFunction[cooldown;${CD}]
 
@@ -40,6 +40,8 @@ module.exports = [{
     $onlyIf[$or[$splitText[0]==left_lb;$splitText[0]==right_lb]]
 
     $let[lbmsgID;$messageID]
+
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     $onlyIf[$or[$getMessageVar[page;$get[lbmsgID]]!=;$getMessageVar[pages;$get[lbmsgID]]!=;$getMessageVar[rowsPerPage;$get[lbmsgID]]!=];
       $callFunction[interFail;]

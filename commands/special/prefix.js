@@ -3,7 +3,8 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-    $callFunction[checking;]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
 
     $onlyIf[$guildID!=;
       $title[:x: Invalid server!]
