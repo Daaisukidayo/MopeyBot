@@ -14,6 +14,7 @@ module.exports = [{
       $getEmbeds[$getUserVar[playChannelID];$getUserVar[playMessageID]]
     ;
       ${removeAllProgress()}
+      $setUserVar[userProfile;$env[userProfile]]
     ]
     
     $onlyIf[$getUserVar[playStarted;$authorID;false]==false;
@@ -27,7 +28,6 @@ module.exports = [{
 
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[animalsKeys;$jsonKeys[animals]]
-    $jsonLoad[userWardrobe;$env[userProfile;userWardrobe]]
 
     $setUserVar[playTier;1]
     $let[buttonsQuantity;0]
@@ -37,16 +37,14 @@ module.exports = [{
     $arrayForEach[animalsKeys;animal;
       $if[$env[animals;$env[animal];tier]==$getUserVar[playTier];
           
-        $let[emoji;$env[animals;$env[animal];variants;$env[userWardrobe;$env[animal]];emoji]]
-        $let[animalName;$env[animals;$env[animal];variants;$env[userWardrobe;$env[animal]];name]]
+        $let[emoji;$env[animals;$env[animal];variants;$env[userProfile;userWardrobe;$env[animal]];emoji]]
+        $let[animalName;$env[animals;$env[animal];variants;$env[userProfile;userWardrobe;$env[animal]];name]]
         $let[trig;$env[animals;$env[animal];trig]-$authorID-+++]
-
         $let[emojisInDescription;$get[emojisInDescription]$get[emoji]]
         
         $if[$or[$get[buttonsQuantity]==0;$get[buttonsQuantity]==5];
             $addActionRow
         ]
-
         $addButton[$get[trig];$get[animalName];Secondary;$get[emoji]]
         $letSum[buttonsQuantity;1]
       ]
