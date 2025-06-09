@@ -4,7 +4,7 @@ module.exports = ({
   type: "messageCreate",
   code: `
     $reply
-    $onlyIf[$authorID==$botOwnerID]
+    $onlyForUsers[;$botOwnerID]
     $eval[$message]
   `
 })

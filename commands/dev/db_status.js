@@ -3,6 +3,6 @@ module.exports = [{
   type: "messageCreate", 
   code: `
     $reply
-    **Ping: \`$dbping\`ms**
+    **Ping: \`$dbPing\`ms**
   `
 }]

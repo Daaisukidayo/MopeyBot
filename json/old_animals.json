@@ -6,7 +6,6 @@
     "trig": "mouse",
     "tier": 1,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -76,7 +75,7 @@
       {
         "vCode": "legacy-w",
         "name": "Mouse",
-        "description": "Legacy Skinpack | Winter Version 2 (Current)",
+        "description": "Legacy Skinpack | Winter Version 2",
         "emoji": "<:LegacyMouseWinterV2:1331663409212690534>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1331663923426103326/LegacyMouseWinterV2.png",
         "v": 8
@@ -138,7 +137,6 @@
     "trig": "desertRat",
     "tier": 1,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -190,13 +188,12 @@
     "trig": "shrimp",
     "tier": 1,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
         "vCode": "s1",
         "name": "Shrimp",
-        "description": "Season 1 | Version 2 (Current)",
+        "description": "Season 1 | Version 2",
         "emoji": "<:ShrimpS1:1291425951338467440>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448707145799/Shrimp-S1.png",
         "v": 0
@@ -274,7 +271,6 @@
     "trig": "arcticChipmunk",
     "tier": 1,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -342,7 +338,6 @@
     "trig": "tarsier",
     "tier": 1,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -362,7 +357,6 @@
     "trig": "rabbit",
     "tier": 2,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -398,7 +392,6 @@
     "trig": "pigeon",
     "tier": 2,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "whiteDove"
     ],
@@ -464,7 +457,6 @@
     "trig": "desertChipmunk",
     "tier": 2,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -500,7 +492,6 @@
     "trig": "trout",
     "tier": 2,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -536,7 +527,6 @@
     "trig": "arcticHare",
     "tier": 2,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -572,7 +562,6 @@
     "trig": "chukar",
     "tier": 2,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -592,7 +581,6 @@
     "trig": "mole",
     "tier": 3,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -628,7 +616,6 @@
     "trig": "chicken",
     "tier": 3,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -656,7 +643,6 @@
     "trig": "meerkat",
     "tier": 3,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -692,7 +678,6 @@
     "trig": "crab",
     "tier": 3,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -728,7 +713,6 @@
     "trig": "penguin",
     "tier": 3,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -764,7 +748,6 @@
     "trig": "flyingLizard",
     "tier": 3,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -784,7 +767,6 @@
     "trig": "pig",
     "tier": 4,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "stinkyPig",
       "pinkyPig"
@@ -879,7 +861,6 @@
     "trig": "woodpecker",
     "tier": 4,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -907,7 +888,6 @@
     "trig": "armadillo",
     "tier": 4,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -935,7 +915,6 @@
     "trig": "seaHorse",
     "tier": 4,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -971,7 +950,6 @@
     "trig": "seal",
     "tier": 4,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1007,7 +985,6 @@
     "trig": "kakapo",
     "tier": 4,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1027,7 +1004,6 @@
     "trig": "deer",
     "tier": 5,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "marshDeer",
       "doe"
@@ -1066,7 +1042,6 @@
     "trig": "doe",
     "tier": 5,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1094,7 +1069,6 @@
     "trig": "marshDeer",
     "tier": 5,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1122,7 +1096,6 @@
     "trig": "gazelle",
     "tier": 5,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1150,7 +1123,6 @@
     "trig": "squid",
     "tier": 5,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1186,7 +1158,6 @@
     "trig": "flamingo",
     "tier": 5,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1214,7 +1185,6 @@
     "trig": "reindeer",
     "tier": 5,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "muskDeer"
     ],
@@ -1244,7 +1214,6 @@
     "trig": "muskDeer",
     "tier": 5,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1272,7 +1241,6 @@
     "trig": "swinehoe",
     "tier": 5,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "goldenPheasant"
     ],
@@ -1294,7 +1262,6 @@
     "trig": "goldenPheasant",
     "tier": 5,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1314,7 +1281,6 @@
     "trig": "fox",
     "tier": 6,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1350,7 +1316,6 @@
     "trig": "hedgehog",
     "tier": 6,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1386,7 +1351,6 @@
     "trig": "peacock",
     "tier": 6,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1414,7 +1378,6 @@
     "trig": "fennecFox",
     "tier": 6,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1442,7 +1405,6 @@
     "trig": "jellyfish",
     "tier": 6,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1478,7 +1440,6 @@
     "trig": "arcticFox",
     "tier": 6,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1514,7 +1475,6 @@
     "trig": "zebra",
     "tier": 7,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1550,7 +1510,6 @@
     "trig": "donkey",
     "tier": 7,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "jackass"
     ],
@@ -1588,7 +1547,6 @@
     "trig": "jackass",
     "tier": 7,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1616,7 +1574,6 @@
     "trig": "macaw",
     "tier": 7,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "rareMacaw",
       "blueMacaw"
@@ -1647,7 +1604,6 @@
     "trig": "blueMacaw",
     "tier": 7,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1675,7 +1631,6 @@
     "trig": "rareMacaw",
     "tier": 7,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1727,7 +1682,6 @@
     "trig": "warthog",
     "tier": 7,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1755,7 +1709,6 @@
     "trig": "turtle",
     "tier": 7,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1791,7 +1744,6 @@
     "trig": "muskox",
     "tier": 7,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1827,7 +1779,6 @@
     "trig": "cobra",
     "tier": 8,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1863,7 +1814,6 @@
     "trig": "giraffe",
     "tier": 8,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "girabie",
       "momaffieFamily",
@@ -1903,7 +1853,6 @@
     "trig": "momaffie",
     "tier": 8,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1923,7 +1872,6 @@
     "trig": "momaffieFamily",
     "tier": 8,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1943,7 +1891,6 @@
     "trig": "girabie",
     "tier": 8,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -1963,7 +1910,6 @@
     "trig": "camel",
     "tier": 8,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -1991,7 +1937,6 @@
     "trig": "stingray",
     "tier": 8,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2019,7 +1964,6 @@
     "trig": "snowyOwl",
     "tier": 8,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2055,7 +1999,6 @@
     "trig": "walrus",
     "tier": 8,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2091,7 +2034,6 @@
     "trig": "raven",
     "tier": 8,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2119,7 +2061,6 @@
     "trig": "cheetah",
     "tier": 9,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "blackPanther",
       "leopard",
@@ -2159,7 +2100,6 @@
     "trig": "jaguar",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2187,7 +2127,6 @@
     "trig": "leopard",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2215,7 +2154,6 @@
     "trig": "blackPanther",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2243,7 +2181,6 @@
     "trig": "gorilla",
     "tier": 9,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2279,7 +2216,6 @@
     "trig": "toucan",
     "tier": 9,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "rareToucan",
       "lavaToucan",
@@ -2313,7 +2249,6 @@
     "trig": "chocoToucan",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2341,7 +2276,6 @@
     "trig": "keelBilledToucan",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2369,7 +2303,6 @@
     "trig": "fieryToucan",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2397,7 +2330,6 @@
     "trig": "lavaToucan",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2425,7 +2357,6 @@
     "trig": "rareToucan",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2477,7 +2408,6 @@
     "trig": "rattleSnake",
     "tier": 9,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2505,7 +2435,6 @@
     "trig": "pufferfish",
     "tier": 9,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "demonPufferfish",
       "yellowPufferfish"
@@ -2536,7 +2465,6 @@
     "trig": "yellowPufferfish",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2564,7 +2492,6 @@
     "trig": "demonPufferfish",
     "tier": 9,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2592,7 +2519,6 @@
     "trig": "snowLeopard",
     "tier": 9,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2628,7 +2554,6 @@
     "trig": "turkey",
     "tier": 9,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2648,7 +2573,6 @@
     "trig": "bear",
     "tier": 10,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "blackBear"
     ],
@@ -2686,7 +2610,6 @@
     "trig": "blackBear",
     "tier": 10,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2714,7 +2637,6 @@
     "trig": "tiger",
     "tier": 10,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "blackTiger",
       "whiteTiger"
@@ -2753,7 +2675,6 @@
     "trig": "whiteTiger",
     "tier": 10,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2781,7 +2702,6 @@
     "trig": "blackTiger",
     "tier": 10,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -2809,7 +2729,6 @@
     "trig": "gobiBear",
     "tier": 10,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2845,7 +2764,6 @@
     "trig": "hyena",
     "tier": 10,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2881,7 +2799,6 @@
     "trig": "pelican",
     "tier": 10,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2909,7 +2826,6 @@
     "trig": "swordfish",
     "tier": 10,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2945,7 +2861,6 @@
     "trig": "wolf",
     "tier": 10,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -2973,7 +2888,6 @@
     "trig": "crocodile",
     "tier": 11,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -3009,7 +2923,6 @@
     "trig": "lion",
     "tier": 11,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "blackLion",
       "blackLioness",
@@ -3055,7 +2968,6 @@
     "trig": "blackManedLion",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3083,7 +2995,6 @@
     "trig": "whiteLion",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3111,7 +3022,6 @@
     "trig": "blackLion",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3139,7 +3049,6 @@
     "trig": "lioness",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3167,7 +3076,6 @@
     "trig": "whiteLioness",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3195,7 +3103,6 @@
     "trig": "blackLioness",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3223,7 +3130,6 @@
     "trig": "lionCub",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3251,7 +3157,6 @@
     "trig": "whiteLionCub",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3279,7 +3184,6 @@
     "trig": "blackLionCub",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3307,7 +3211,6 @@
     "trig": "falcon",
     "tier": 11,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "shaheen",
       "predator"
@@ -3338,7 +3241,6 @@
     "trig": "predator",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3366,7 +3268,6 @@
     "trig": "shaheen",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3394,7 +3295,6 @@
     "trig": "vulture",
     "tier": 11,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "rareVulture"
     ],
@@ -3432,7 +3332,6 @@
     "trig": "rareVulture",
     "tier": 11,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3484,7 +3383,6 @@
     "trig": "octopus",
     "tier": 11,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -3520,7 +3418,6 @@
     "trig": "polarBear",
     "tier": 11,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -3556,7 +3453,6 @@
     "trig": "rhino",
     "tier": 12,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "blackRhino",
       "whiteRhino"
@@ -3595,7 +3491,6 @@
     "trig": "whiteRhino",
     "tier": 12,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3623,7 +3518,6 @@
     "trig": "blackRhino",
     "tier": 12,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3651,7 +3545,6 @@
     "trig": "baldEagle",
     "tier": 12,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "greaterSpottedEagle",
       "harpyEagle",
@@ -3691,7 +3584,6 @@
     "trig": "goldenEagle",
     "tier": 12,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3719,7 +3611,6 @@
     "trig": "harpyEagle",
     "tier": 12,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3747,7 +3638,6 @@
     "trig": "greaterSpottedEagle",
     "tier": 12,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -3775,7 +3665,6 @@
     "trig": "bison",
     "tier": 12,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -3811,7 +3700,6 @@
     "trig": "shark",
     "tier": 12,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -3839,7 +3727,6 @@
     "trig": "markhor",
     "tier": 12,
     "isRare": true,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -3867,7 +3754,6 @@
     "trig": "bigGoat",
     "tier": 12,
     "isRare": true,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -3895,7 +3781,6 @@
     "trig": "wolverine",
     "tier": 12,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -3931,7 +3816,6 @@
     "trig": "hippo",
     "tier": 13,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -3967,7 +3851,6 @@
     "trig": "boaConstrictor",
     "tier": 13,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4003,7 +3886,6 @@
     "trig": "ostrich",
     "tier": 13,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4031,7 +3913,6 @@
     "trig": "komodoDragon",
     "tier": 13,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4059,7 +3940,6 @@
     "trig": "killerWhale",
     "tier": 13,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4095,7 +3975,6 @@
     "trig": "sabertoothTiger",
     "tier": 13,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4131,7 +4010,6 @@
     "trig": "whiteGiraffe",
     "tier": 13,
     "isRare": true,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4151,7 +4029,6 @@
     "trig": "whiteGiraffeFamily",
     "tier": 13,
     "isRare": true,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4171,7 +4048,6 @@
     "trig": "elephant",
     "tier": 14,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4199,7 +4075,6 @@
     "trig": "cassowary",
     "tier": 14,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4235,7 +4110,6 @@
     "trig": "giantSpider",
     "tier": 14,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4263,7 +4137,6 @@
     "trig": "blackwidowSpider",
     "tier": 14,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4291,7 +4164,6 @@
     "trig": "blueWhale",
     "tier": 14,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4327,7 +4199,6 @@
     "trig": "mammoth",
     "tier": 14,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4363,7 +4234,6 @@
     "trig": "dragon",
     "tier": 15,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4391,7 +4261,6 @@
     "trig": "trex",
     "tier": 15,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4419,7 +4288,6 @@
     "trig": "phoenix",
     "tier": 15,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4447,7 +4315,6 @@
     "trig": "pterodactyl",
     "tier": 15,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4475,7 +4342,6 @@
     "trig": "kraken",
     "tier": 15,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4503,7 +4369,6 @@
     "trig": "kingCrab",
     "tier": 15,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4531,7 +4396,6 @@
     "trig": "yeti",
     "tier": 15,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "aquaYeti"
     ],
@@ -4561,7 +4425,6 @@
     "trig": "aquaYeti",
     "tier": 15,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
@@ -4582,14 +4445,13 @@
       }
     ]
   },
-  "shopBigfoot": {
+  "bigfoot": {
     "canFly": false,
     "biome": "Forest",
     "fullName": "Big Foot",
-    "trig": "shopBigfoot",
+    "trig": "bigfoot",
     "tier": 15,
     "isRare": true,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4610,42 +4472,13 @@
       }
     ]
   },
-  "luckBigfoot": {
-    "canFly": false,
-    "biome": "Forest",
-    "fullName": "Big Foot",
-    "trig": "luckBigfoot",
-    "tier": 15,
-    "isRare": true,
-    "hasNonRareVariant": false,
-    "rares": [],
-    "variants": [
-      {
-        "vCode": "s1",
-        "name": "Big Foot",
-        "description": "Season 1",
-        "emoji": "<:BigfootS1:1365791609001611344>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815906226247/Bigfoot-S1.png",
-        "v": 0
-      },
-      {
-        "vCode": "s2",
-        "name": "Big Foot",
-        "description": "Season 2",
-        "emoji": "<:BigfootS2:1285617256562425967>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png",
-        "v": 1
-      }
-    ]
-  },
-  "shopSnowman": {
+  "snowman": {
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Snowman",
-    "trig": "shopSnowman",
+    "trig": "snowman",
     "tier": 15,
     "isRare": true,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4658,54 +4491,13 @@
       }
     ]
   },
-  "luckSnowman": {
-    "canFly": false,
-    "biome": "Arctic",
-    "fullName": "Snowman",
-    "trig": "luckSnowman",
-    "tier": 15,
-    "isRare": true,
-    "hasNonRareVariant": false,
-    "rares": [],
-    "variants": [
-      {
-        "vCode": "s1",
-        "name": "Snowman",
-        "description": "Season 1",
-        "emoji": "<:SnowmanS1:1284570594075218014>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png",
-        "v": 0
-      }
-    ]
-  },
-  "shopSnowgirl": {
+  "snowgirl": {
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Snowgirl",
-    "trig": "shopSnowgirl",
+    "trig": "snowgirl",
     "tier": 15,
     "isRare": true,
-    "hasNonRareVariant": false,
-    "rares": [],
-    "variants": [
-      {
-        "vCode": "s1",
-        "name": "Snowgirl",
-        "description": "Season 1",
-        "emoji": "<:SnowgirlS1:1284570612018315346>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png",
-        "v": 0
-      }
-    ]
-  },
-  "luckSnowgirl": {
-    "canFly": false,
-    "biome": "Arctic",
-    "fullName": "Snowgirl",
-    "trig": "luckSnowgirl",
-    "tier": 15,
-    "isRare": true,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4725,7 +4517,6 @@
     "trig": "dinoMonster",
     "tier": 16,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4753,7 +4544,6 @@
     "trig": "landMonster",
     "tier": 16,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4781,7 +4571,6 @@
     "trig": "giantScorpion",
     "tier": 16,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4809,7 +4598,6 @@
     "trig": "seaMonster",
     "tier": 16,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4837,7 +4625,6 @@
     "trig": "iceMonster",
     "tier": 16,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [],
     "variants": [
       {
@@ -4865,7 +4652,6 @@
     "trig": "blackDragon",
     "tier": 17,
     "isRare": false,
-    "hasNonRareVariant": false,
     "rares": [
       "kingDragon"
     ],
@@ -4919,7 +4705,6 @@
     "trig": "kingDragon",
     "tier": 18,
     "isRare": true,
-    "hasNonRareVariant": true,
     "rares": [],
     "variants": [
       {
