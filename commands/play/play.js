@@ -62,7 +62,62 @@ module.exports = [{
     $setUserVar[playChannelID;$channelID]
     $setUserVar[playGuildID;$guildID]
     $setUserVar[playStarted;true]
-    $setUserVar[playCoins;0]
+    $setUserVar[playMC;0]
+  `
+},{
+  type: "interactionCreate",
+  allowedInteractionTypes: ["button"],
+  description: "upgrade",
+  code: `
+    $textSplit[$customID;-]
+    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
+    $onlyIf[$splitText[2]==+++]
+    $onlyIf[$and[$getUserVar[playStarted];$getUserVar[playMessageID]==$messageID;$getUserVar[playChannelID]==$channelID]]
+
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[animalsKeys;$jsonKeys[animals]]
+    $jsonLoad[biomeColors;$getGlobalVar[biomeColors]]
+
+    $let[animal;$splitText[0]]
+    $onlyIf[$arrayIncludes[animalsKeys;$get[animal]]]
+
+    $let[failUpgChance;5]
+
+    $let[wardrobeIndex;$env[userProfile;userWardrobe;$get[animal]]]
+    $let[color;$env[biomeColors;$toLowerCase[$env[animals;$get[animal];biome]]]]
+    $let[thumbnail;$env[animals;$get[animal];variants;$get[wardrobeIndex];img]]
+    $let[animalName;$env[animals;$get[animal];variants;$get[wardrobeIndex];name]]
+
+    $thumbnail[$get[thumbnail]]
+    $color[$get[color]]
+    $description[## You upgraded to __$get[animalName]__!
+    -# $var[desc2]]
+    $getGlobalVar[author]
+
+    $setUserVar[playMC;$get[totalEarnedCoins];$authorID]
+
+    $addActionRow
+    $addStringSelectMenu[actions-$authorID;Choose an action:]  	
+    $if[$getUserVar[playTier]<15;
+      $if[$randomNumber[1;101]>=$get[failUpgradeChance];
+        $addOption[Upgrade yourself;Upgrade;upgrade-$authorID;⬆️]
+      ;  		
+        $addOption[Fake Upgrade yourself;Upgrade;fupgrade-$authorID;⬆️]
+      ]
+    ]	
+    $if[$and[$getUserVar[playTier]==17;$checkContains[$get[animalName];King;Queen]==false]; 		
+      $addOption[Hunt everyone;Hunt;hunt-$authorID;🗡️]
+    ]
+    $if[$getUserVar[playTier]>=15;
+      $addOption[Go to arena;Arena;arena-$authorID;⚔️]
+    ]    
+    $if[$getUserVar[playTier]>=12;
+      $addOption[Hunt rares;Rarehunt;rarehunt-$authorID;🔪]
+    ] 
+    $if[$getUserVar[playTier]!=1;
+      $addOption[Downgrade yourself;Downgrade;downgrade-$authorID;⬇️]
+    ] 	
   `
 },{
   type: "interactionCreate",
@@ -84,7 +139,7 @@ module.exports = [{
     $if[$splitText[0]==messagemissing;
 
       $!editMessage[$channelID;$messageID;
-        $description[## You have been successfully disconnected from the game!\n-# Earned: $separatenumber[$getUserVar[playCoins];,]$getGlobalVar[emoji]]
+        $description[## You have been successfully disconnected from the game!\n-# Earned: $separatenumber[$getUserVar[playMC];,]$getGlobalVar[emoji]]
         $getGlobalVar[author]
         $color[$getGlobalVar[defaultColor]]
       ]
@@ -99,7 +154,7 @@ module.exports = [{
     $if[$and[$getUserVar[playMessageID]==$messageID;$splitText[0]==quit];
 
       $!editMessage[$channelID;$messageID;
-        $description[## You have been successfully exited the game!\n-# Earned: $separatenumber[$getUserVar[playCoins];,]$getGlobalVar[emoji]]
+        $description[## You have been successfully exited the game!\n-# Earned: $separatenumber[$getUserVar[playMC];,]$getGlobalVar[emoji]]
         $getGlobalVar[author]
         $color[$getGlobalVar[defaultColor]]
       ]
@@ -115,13 +170,13 @@ module.exports = [{
 
 function removeAllProgress() {
   return `
-    $callFunction[sumMC;$getUserVar[playCoins]]
+    $callFunction[sumMC;$getUserVar[playMC]]
     $deleteUserVar[playColor]
     $deleteUserVar[playArenaTurn]
     $deleteUserVar[playXP]
     $deleteUserVar[playBitesInArena]
     $deleteUserVar[playOpponentBitesInArena]
-    $deleteUserVar[playCoins]
+    $deleteUserVar[playMC]
     $deleteUserVar[playStarted]
     $deleteUserVar[playTier]
     $deleteUserVar[playMessageID]

@@ -473,6 +473,14 @@ DB.variables({
   blank: "<:blank:898514292926713866>",
   author: "$author[$userDisplayName • MUID: $getUserVar[MUID];$userAvatar]",
   reportChannelID: "1372645851159330947",
+  biomeColors: {
+    land: "#00ff3c",
+    desert: "#ffcc00",
+    volcano: "#ff0000",
+    ocean: "#0000ff",
+    arctic: "#ffffff",
+    forest: "#006400"
+  },
 
   raretryVarData: {
     coinsForRaretry: {
