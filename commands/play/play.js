@@ -17,12 +17,12 @@ module.exports = [{
     ]
     
     $onlyIf[$getUserVar[playStarted;$authorID;false]==false;
-        $description[## You already have an active game session!
-        ### $hyperlink[Please end your previous game!;https://discord.com/channels/$getUserVar[playGuildID]/$getUserVar[playChannelID]/$getUserVar[playMessageID]]]
-        $getGlobalVar[author]
-        $color[$getGlobalVar[errorColor]]
-        $addActionRow
-        $addButton[messagemissing-$authorID;Can't find the game;Danger]
+      $description[## You already have an active game session!
+      ### $hyperlink[Please end your previous game!;https://discord.com/channels/$getUserVar[playGuildID]/$getUserVar[playChannelID]/$getUserVar[playMessageID]]]
+      $getGlobalVar[author]
+      $color[$getGlobalVar[errorColor]]
+      $addActionRow
+      $addButton[messagemissing-$authorID;Can't find the game;Danger]
     ]
 
     $jsonLoad[animals;$readFile[json/animals.json]]
@@ -37,8 +37,8 @@ module.exports = [{
     $arrayForEach[animalsKeys;animal;
       $if[$env[animals;$env[animal];tier]==$getUserVar[playTier];
           
-        $let[emoji;$env[animals;$env[animal];$env[userWardrobe;$env[animal]];emoji]]
-        $let[animalName;$env[animals;$env[animal];$env[userWardrobe;$env[animal]];name]]
+        $let[emoji;$env[animals;$env[animal];variants;$env[userWardrobe;$env[animal]];emoji]]
+        $let[animalName;$env[animals;$env[animal];variants;$env[userWardrobe;$env[animal]];name]]
         $let[trig;$env[animals;$env[animal];trig]-$authorID-+++]
 
         $let[emojisInDescription;$get[emojisInDescription]$get[emoji]]
@@ -65,7 +65,6 @@ module.exports = [{
     $setUserVar[playGuildID;$guildID]
     $setUserVar[playStarted;true]
     $setUserVar[playCoins;0]
-    $setUserVar[userProfile;$env[userProfile]]
   `
 },{
   type: "interactionCreate",
