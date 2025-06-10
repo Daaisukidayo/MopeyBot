@@ -40,7 +40,7 @@ module.exports = ({
       $footer[Discord ID: $get[userID]]
       $thumbnail[$userAvatar[$get[userID]]]
       $description[# \`$separateNumber[$env[otherUserProfile;MC;];.]\`$getGlobalVar[emoji]]
-      $color[ffd700]
+      $color[$getGlobalVar[defaultColor]]
     ]
   `
 })
