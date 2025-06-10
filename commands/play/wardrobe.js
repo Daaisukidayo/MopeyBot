@@ -33,11 +33,16 @@ module.exports = [{
       ${embed()}
 
     ;$if[$isNumber[$get[arg]];
-
+      $getGlobalVar[author]
+      $color[$getGlobalVar[defaultColor]]
+      $title[Select a skinpack]
       ${menu()}
 
     ;$if[$get[arg]==all;
 
+      $getGlobalVar[author]
+      $color[$getGlobalVar[defaultColor]]
+      $title[Choose a skinpack]
       ${menu()}
 
     ;$onlyIf[$arrayIncludes[animalsNames;$get[arg]];
@@ -95,10 +100,10 @@ module.exports = [{
     $onlyIf[$get[animal]!=;$!editMessage[$channelID;$messageID;# You equipped all skins!]]
 
     $addActionRow
-    $addStringSelectMenu[skins-$authorID;Choose a skin:]
+    $addStringSelectMenu[new-$authorID;Choose a skin:]
     ${loop()}
-
-    $!editMessage[$channelID;$messageID;${embed()}]
+    ${embed()}
+    $!editMessage[$channelID;$messageID]
     $deferUpdate
   `
 },{
@@ -181,8 +186,11 @@ module.exports = [{
         $letSum[i;1]
       ]
     ]
+    $setUserVar[userProfile;$env[userProfile]]
 
-    ${embed()}
+    $color[$getGlobalVar[defaultColor]]
+    $title[You have successfully equipped \`all\` animals with the «$get[skinpack]»!]
+    $getGlobalVar[author]
     $!editMessage[$channelID;$messageID]
   `
 },{
@@ -290,29 +298,28 @@ function json() {
 }
 
 function menu () {
-return `
+  return `
+    $addActionRow
+    $addStringSelectMenu[$get[arg]-$authorID;Choose a skinpack:]
 
-$addActionRow
-      $addStringSelectMenu[$get[arg]-$authorID;Choose a skinpack:]
+    $addOption[Seasonal 1 Skinpack;;$get[arg]+s1+Seasonal_1_Skinpack-$authorID]
+    $addOption[Seasonal 2 Skinpack;;$get[arg]+s2+Seasonal_2_Skinpack-$authorID]
+    $addOption[Winter Skinpack;;$get[arg]+s2_w+Winter_Skinpack-$authorID]
 
-      $addOption[Seasonal 1 Skinpack;;$get[arg]+s1+Seasonal_1_Skinpack-$authorID]
-      $addOption[Seasonal 2 Skinpack;;$get[arg]+s2+Seasonal_2_Skinpack-$authorID]
-      $addOption[Winter Skinpack;;$get[arg]+s2_w+Winter_Skinpack-$authorID]
-
-      $if[$arrayAt[userSPsKeys;0]!=;
-      
-        $arrayForEach[userSPsKeys;key;
-          $arrayForEach[shopItems;item;
-            $if[$env[item;name]==$env[key];
-              $let[desc;$env[item;description]]
-              $let[spcode;$env[item;code]]
-            ]
+    $if[$arrayAt[userSPsKeys;0]!=;
+    
+      $arrayForEach[userSPsKeys;key;
+        $arrayForEach[shopItems;item;
+          $if[$env[item;name]==$env[key];
+            $let[desc;$env[item;description]]
+            $let[spcode;$env[item;code]]
           ]
-          $addOption[$get[desc];;$get[arg]+$get[spcode]+$replace[$get[desc]; ;_]-$authorID]
         ]
+        $addOption[$get[desc];;$get[arg]+$get[spcode]+$replace[$get[desc]; ;_]-$authorID]
       ]
-
-`}
+    ]
+  `
+}
 
 /*
 $arrayForEach[animalsNames;animal;
