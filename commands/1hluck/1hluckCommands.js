@@ -73,7 +73,7 @@ module.exports = [
   code: `
     $onlyIf[$getUserVar[1hstarted]]
     $onlyIf[$startsWith[$messageContent;$getGuildVar[prefix]]==false]
-    $onlyIf[$getUserVar[1hpaused]==false]
+    $onlyIf[$getUserVar[1hpaused]==false;${errorEmbed()} $description[## Cannot count, you are on pause!]]
     
     
     $let[points;0]
@@ -354,6 +354,7 @@ function reset() {
     $deleteUserVar[1hallRaresList]
     $deleteUserVar[1htime]
     $deleteUserVar[1hpoints]
+    $deleteUserVar[1htotalRares]
     $deleteUserVar[1hpaused]
     $deleteUserVar[mar]
     $deleteUserVar[kbt]
