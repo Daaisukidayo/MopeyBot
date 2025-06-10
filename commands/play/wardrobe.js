@@ -17,7 +17,7 @@ module.exports = [{
       $color[$getGlobalVar[errorColor]]
       $getGlobalVar[author]
       $title[:x: Missing arguments!]
-      $description[## Usage: \`$getGuildVar[prefix]wardrobe {new|<tier>|all|<animal>}\`]
+      $description[## Usage: \`$getGuildVar[prefix]wardrobe {new|all|<tier>|<animal>}\`]
     ]
 
     ${json()}
