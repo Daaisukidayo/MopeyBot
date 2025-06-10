@@ -103,7 +103,7 @@ function content() {
 
 function catchingRare() {
 return `
-$if[$and[$env[userProfile;dev];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]];
+$if[$and[$env[userProfile;devMode];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]];
     $let[p;$message[0]]
     $let[caught;true]
 
@@ -165,209 +165,184 @@ function rep() {
 return `$advancedReplace[$env[l10n;raretry;contents;content$env[i];$get[l10n]];\n\\];;\\[\n;;\n;--;",;;";]`
 }
 
-function raretryData () {
-  return `{
-      "category_9": {
-        "content": [
-          "USSR Macaw <:USSRMacawS2:1288058610655690804>",
-          "USSR Toucan <:USSRToucanS2:1288058651075940382>",
-          "USSR Vulture <:USSRVultureS2:1288058686241243157>"
-        \\],
-    
-        "thumbnail": [
-          "https://media.discordapp.net/attachments/701793335941136464/1288064073983987787/USSR_Macaw-S2.png",
-          "https://media.discordapp.net/attachments/701793335941136464/1288064074365534208/USSR_Toucan-S2.png",
-          "https://media.discordapp.net/attachments/701793335941136464/1288064074789421077/USSR_Vulture-S2.png"
-        \\],
-    
-        "color": "B80000"
-      },
-  
+function raretryData() {
+  return `
+    {
       "category_8": {
         "content": [
-          "$env[animals;shaheen;variants;$env[userWardrobe;shaheen];emoji]",
-          "$env[animals;harpyEagle;variants;$env[userWardrobe;harpyEagle];emoji]",
-          "$env[animals;greaterSpottedEagle;variants;$env[userWardrobe;greaterSpottedEagle];emoji]"
+          "${addEmoji("shaheen")}",
+          "${addEmoji("harpyEagle")}",
+          "${addEmoji("greaterSpottedEagle")}"
         \\],
-    
         "thumbnail": [
-          "$env[animals;shaheen;variants;$env[userWardrobe;shaheen];img]",
-          "$env[animals;harpyEagle;variants;$env[userWardrobe;harpyEagle];img]",
-          "$env[animals;greaterSpottedEagle;variants;$env[userWardrobe;greaterSpottedEagle];img]"
+          "${addImg("shaheen")}",
+          "${addImg("harpyEagle")}",
+          "${addImg("greaterSpottedEagle")}"
         \\],
-    
         "color": "50351E"
       },
-  
       "category_7": {
         "content": [
-          "$env[animals;rareMacaw;variants;$env[userWardrobe;rareMacaw];emoji]",
-          "$env[animals;rareToucan;variants;$env[userWardrobe;rareToucan];emoji]",
-          "$env[animals;rareVulture;variants;$env[userWardrobe;rareVulture];emoji]"
+          "${addEmoji("rareMacaw")}",
+          "${addEmoji("rareToucan")}",
+          "${addEmoji("rareVulture")}"
         \\],
-    
         "thumbnail": [
-          "$env[animals;rareMacaw;variants;$env[userWardrobe;rareMacaw];img]",
-          "$env[animals;rareToucan;variants;$env[userWardrobe;rareToucan];img]",
-          "$env[animals;rareVulture;variants;$env[userWardrobe;rareVulture];img]"
+          "${addImg("rareMacaw")}",
+          "${addImg("rareToucan")}",
+          "${addImg("rareVulture")}"
         \\],
-    
         "color": "677caf"
       },
-  
       "category_6": {
         "content": [
-          "$env[animals;kingDragon;variants;$env[userWardrobe;kingDragon];emoji]",
-          "$env[animals;bigfoot;variants;$env[userWardrobe;bigfoot];emoji]",
-          "$env[animals;snowman;variants;$env[userWardrobe;snowman];emoji]",
-          "$env[animals;snowgirl;variants;$env[userWardrobe;snowgirl];emoji]"
+          "${addEmoji("kingDragon")}",
+          "${addEmoji("luckBigfoot")}",
+          "${addEmoji("luckSnowman")}",
+          "${addEmoji("luckSnowgirl")}"
         \\],
-    
         "thumbnail": [
-          "$env[animals;kingDragon;variants;$env[userWardrobe;kingDragon];img]",
-          "$env[animals;bigfoot;variants;$env[userWardrobe;bigfoot];img]",
-          "$env[animals;snowman;variants;$env[userWardrobe;snowman];img]",
-          "$env[animals;snowgirl;variants;$env[userWardrobe;snowgirl];img]"
+          "${addImg("kingDragon")}",
+          "${addImg("luckBigfoot")}",
+          "${addImg("luckSnowman")}",
+          "${addImg("luckSnowgirl")}"
         \\],
-    
         "color": "d61b4a"
       },
-  
       "category_5": {
         "content": [
-          "$env[animals;whiteGiraffeFamily;variants;$env[userWardrobe;whiteGiraffeFamily];emoji]",
-          "$env[animals;whiteGiraffe;variants;$env[userWardrobe;whiteGiraffe];emoji]",
-          "$env[animals;blackRhino;variants;$env[userWardrobe;blackRhino];emoji]",
-          "$env[animals;demonPufferfish;variants;$env[userWardrobe;demonPufferfish];emoji]",
-          "$env[animals;lavaToucan;variants;$env[userWardrobe;lavaToucan];emoji]"
+          "${addEmoji("whiteGiraffeFamily")}",
+          "${addEmoji("whiteGiraffe")}",
+          "${addEmoji("blackRhino")}",
+          "${addEmoji("demonPufferfish")}",
+          "${addEmoji("lavaToucan")}"
         \\],
-    
         "thumbnail": [
-          "$env[animals;whiteGiraffeFamily;variants;$env[userWardrobe;whiteGiraffeFamily];img]",
-          "$env[animals;whiteGiraffe;variants;$env[userWardrobe;whiteGiraffe];img]",
-          "$env[animals;blackRhino;variants;$env[userWardrobe;blackRhino];img]",
-          "$env[animals;demonPufferfish;variants;$env[userWardrobe;demonPufferfish];img]",
-          "$env[animals;lavaToucan;variants;$env[userWardrobe;lavaToucan];img]"
+          "${addImg("whiteGiraffeFamily")}",
+          "${addImg("whiteGiraffe")}",
+          "${addImg("blackRhino")}",
+          "${addImg("demonPufferfish")}",
+          "${addImg("lavaToucan")}"
         \\],
-    
         "color": "452591"
       },
-  
       "category_4": {
         "content": [
-          "$env[animals;blackTiger;variants;$env[userWardrobe;blackTiger];emoji]",
-          "$env[animals;blackBear;variants;$env[userWardrobe;blackBear];emoji]",
-          "$env[animals;aquaYeti;variants;$env[userWardrobe;aquaYeti];emoji]",
-          "$env[animals;predator;variants;$env[userWardrobe;predator];emoji]",
-          "$env[animals;goldenEagle;variants;$env[userWardrobe;goldenEagle];emoji]",
-          "$env[animals;whiteRhino;variants;$env[userWardrobe;whiteRhino];emoji]",
-          "$env[animals;blackLionCub;variants;$env[userWardrobe;blackLionCub];emoji]",
-          "$env[animals;blackLioness;variants;$env[userWardrobe;blackLioness];emoji]",
-          "$env[animals;blackLion;variants;$env[userWardrobe;blackLion];emoji]",
-          "$env[animals;muskDeer;variants;$env[userWardrobe;muskDeer];emoji]",
-          "$env[animals;stinkyPig;variants;$env[userWardrobe;stinkyPig];emoji]"
+          "${addEmoji("blackTiger")}",
+          "${addEmoji("blackBear")}",
+          "${addEmoji("aquaYeti")}",
+          "${addEmoji("predator")}",
+          "${addEmoji("goldenEagle")}",
+          "${addEmoji("whiteRhino")}",
+          "${addEmoji("blackLionCub")}",
+          "${addEmoji("blackLioness")}",
+          "${addEmoji("blackLion")}",
+          "${addEmoji("muskDeer")}",
+          "${addEmoji("stinkyPig")}"
         \\],
-  
         "thumbnail": [
-          "$env[animals;blackTiger;variants;$env[userWardrobe;blackTiger];img]",
-          "$env[animals;blackBear;variants;$env[userWardrobe;blackBear];img]",
-          "$env[animals;aquaYeti;variants;$env[userWardrobe;aquaYeti];img]",
-          "$env[animals;predator;variants;$env[userWardrobe;predator];img]",
-          "$env[animals;goldenEagle;variants;$env[userWardrobe;goldenEagle];img]",
-          "$env[animals;whiteRhino;variants;$env[userWardrobe;whiteRhino];img]",
-          "$env[animals;blackLionCub;variants;$env[userWardrobe;blackLionCub];img]",
-          "$env[animals;blackLioness;variants;$env[userWardrobe;blackLioness];img]",
-          "$env[animals;blackLion;variants;$env[userWardrobe;blackLion];img]",
-          "$env[animals;muskDeer;variants;$env[userWardrobe;muskDeer];img]",
-          "$env[animals;stinkyPig;variants;$env[userWardrobe;stinkyPig];img]"
+          "${addImg("blackTiger")}",
+          "${addImg("blackBear")}",
+          "${addImg("aquaYeti")}",
+          "${addImg("predator")}",
+          "${addImg("goldenEagle")}",
+          "${addImg("whiteRhino")}",
+          "${addImg("blackLionCub")}",
+          "${addImg("blackLioness")}",
+          "${addImg("blackLion")}",
+          "${addImg("muskDeer")}",
+          "${addImg("stinkyPig")}"
         \\],
-  
         "color": "750e0e"
       },
-  
       "category_3": {
         "content": [
-          "$env[animals;girabie;variants;$env[userWardrobe;girabie];emoji]",
-          "$env[animals;jackass;variants;$env[userWardrobe;jackass];emoji]",
-          "$env[animals;bigGoat;variants;$env[userWardrobe;bigGoat];emoji]",
-          "$env[animals;whiteLionCub;variants;$env[userWardrobe;whiteLionCub];emoji]",
-          "$env[animals;whiteLioness;variants;$env[userWardrobe;whiteLioness];emoji]",
-          "$env[animals;whiteLion;variants;$env[userWardrobe;whiteLion];emoji]",
-          "$env[animals;whiteTiger;variants;$env[userWardrobe;whiteTiger];emoji]"
+          "${addEmoji("girabie")}",
+          "${addEmoji("jackass")}",
+          "${addEmoji("bigGoat")}",
+          "${addEmoji("whiteLionCub")}",
+          "${addEmoji("whiteLioness")}",
+          "${addEmoji("whiteLion")}",
+          "${addEmoji("whiteTiger")}"
         \\],
         "thumbnail": [
-          "$env[animals;girabie;variants;$env[userWardrobe;girabie];img]",
-          "$env[animals;jackass;variants;$env[userWardrobe;jackass];img]",
-          "$env[animals;bigGoat;variants;$env[userWardrobe;bigGoat];img]",
-          "$env[animals;whiteLionCub;variants;$env[userWardrobe;whiteLionCub];img]",
-          "$env[animals;whiteLioness;variants;$env[userWardrobe;whiteLioness];img]",
-          "$env[animals;whiteLion;variants;$env[userWardrobe;whiteLion];img]",
-          "$env[animals;whiteTiger;variants;$env[userWardrobe;whiteTiger];img]"
+          "${addImg("girabie")}",
+          "${addImg("jackass")}",
+          "${addImg("bigGoat")}",
+          "${addImg("whiteLionCub")}",
+          "${addImg("whiteLioness")}",
+          "${addImg("whiteLion")}",
+          "${addImg("whiteTiger")}"
         \\],
         "color": "ffffff"
       },
-
       "category_2": {
         "content": [
-          "$env[animals;goldenPheasant;variants;$env[userWardrobe;goldenPheasant];emoji]",
-          "$env[animals;momaffieFamily;variants;$env[userWardrobe;momaffieFamily];emoji]",
-          "$env[animals;momaffie;variants;$env[userWardrobe;momaffie];emoji]",
-          "$env[animals;marshDeer;variants;$env[userWardrobe;marshDeer];emoji]",
-          "$env[animals;pinkyPig;variants;$env[userWardrobe;pinkyPig];emoji]",
-          "$env[animals;whiteDove;variants;$env[userWardrobe;whiteDove];emoji]",
-          "$env[animals;blackManedLion;variants;$env[userWardrobe;blackManedLion];emoji]",
-          "$env[animals;lionCub;variants;$env[userWardrobe;lionCub];emoji]",
-          "$env[animals;blackPanther;variants;$env[userWardrobe;blackPanther];emoji]"
+          "${addEmoji("goldenPheasant")}",
+          "${addEmoji("momaffieFamily")}",
+          "${addEmoji("momaffie")}",
+          "${addEmoji("marshDeer")}",
+          "${addEmoji("pinkyPig")}",
+          "${addEmoji("whiteDove")}",
+          "${addEmoji("blackManedLion")}",
+          "${addEmoji("lionCub")}",
+          "${addEmoji("blackPanther")}"
         \\],
         "thumbnail": [
-          "$env[animals;goldenPheasant;variants;$env[userWardrobe;goldenPheasant];img]",
-          "$env[animals;momaffieFamily;variants;$env[userWardrobe;momaffieFamily];img]",
-          "$env[animals;momaffie;variants;$env[userWardrobe;momaffie];img]",
-          "$env[animals;marshDeer;variants;$env[userWardrobe;marshDeer];img]",
-          "$env[animals;pinkyPig;variants;$env[userWardrobe;pinkyPig];img]",
-          "$env[animals;whiteDove;variants;$env[userWardrobe;whiteDove];img]",
-          "$env[animals;blackManedLion;variants;$env[userWardrobe;blackManedLion];img]",
-          "$env[animals;lionCub;variants;$env[userWardrobe;lionCub];img]",
-          "$env[animals;blackPanther;variants;$env[userWardrobe;blackPanther];img]"
+          "${addImg("goldenPheasant")}",
+          "${addImg("momaffieFamily")}",
+          "${addImg("momaffie")}",
+          "${addImg("marshDeer")}",
+          "${addImg("pinkyPig")}",
+          "${addImg("whiteDove")}",
+          "${addImg("blackManedLion")}",
+          "${addImg("lionCub")}",
+          "${addImg("blackPanther")}"
         \\],
         "color": "f3ab0f"
       },
-
       "category_1": {
         "content": [
-          "$env[animals;fieryToucan;variants;$env[userWardrobe;fieryToucan];emoji]",
-          "$env[animals;leopard;variants;$env[userWardrobe;leopard];emoji]",
-          "$env[animals;jaguar;variants;$env[userWardrobe;jaguar];emoji]",
-          "$env[animals;doe;variants;$env[userWardrobe;doe];emoji]",
-          "$env[animals;lioness;variants;$env[userWardrobe;lioness];emoji]",
-          "$env[animals;yellowPufferfish;variants;$env[userWardrobe;yellowPufferfish];emoji]",
-          "$env[animals;blueMacaw;variants;$env[userWardrobe;blueMacaw];emoji]"
+          "${addEmoji("fieryToucan")}",
+          "${addEmoji("leopard")}",
+          "${addEmoji("jaguar")}",
+          "${addEmoji("doe")}",
+          "${addEmoji("lioness")}",
+          "${addEmoji("yellowPufferfish")}",
+          "${addEmoji("blueMacaw")}"
         \\],
         "thumbnail": [
-          "$env[animals;fieryToucan;variants;$env[userWardrobe;fieryToucan];img]",
-          "$env[animals;leopard;variants;$env[userWardrobe;leopard];img]",
-          "$env[animals;jaguar;variants;$env[userWardrobe;jaguar];img]",
-          "$env[animals;doe;variants;$env[userWardrobe;doe];img]",
-          "$env[animals;lioness;variants;$env[userWardrobe;lioness];img]",
-          "$env[animals;yellowPufferfish;variants;$env[userWardrobe;yellowPufferfish];img]",
-          "$env[animals;blueMacaw;variants;$env[userWardrobe;blueMacaw];img]"
+          "${addImg("fieryToucan")}",
+          "${addImg("leopard")}",
+          "${addImg("jaguar")}",
+          "${addImg("doe")}",
+          "${addImg("lioness")}",
+          "${addImg("yellowPufferfish")}",
+          "${addImg("blueMacaw")}"
         \\],
         "color": "ffff00"
       },
-
       "category_0": {
         "content": [
-          "$env[animals;chocoToucan;variants;$env[userWardrobe;chocoToucan];emoji]",
-          "$env[animals;keelBilledToucan;variants;$env[userWardrobe;keelBilledToucan];emoji]",
-          "$env[animals;markhor;variants;$env[userWardrobe;markhor];emoji]"
+          "${addEmoji("chocoToucan")}",
+          "${addEmoji("keelBilledToucan")}",
+          "${addEmoji("markhor")}"
         \\],
         "thumbnail": [
-          "$env[animals;chocoToucan;variants;$env[userWardrobe;chocoToucan];img]",
-          "$env[animals;keelBilledToucan;variants;$env[userWardrobe;keelBilledToucan];img]",
-          "$env[animals;markhor;variants;$env[userWardrobe;markhor];img]"
+          "${addImg("chocoToucan")}",
+          "${addImg("keelBilledToucan")}",
+          "${addImg("markhor")}"
         \\],
         "color": "c0c0c0"
       }
     }
   `
+}
+
+function addEmoji (name) {
+  return `$env[animals;${name};variants;$env[userWardrobe;${name}];emoji]`
+}
+
+function addImg (name) {
+  return `$env[animals;${name};variants;$env[userWardrobe;${name}];img]`
 }
