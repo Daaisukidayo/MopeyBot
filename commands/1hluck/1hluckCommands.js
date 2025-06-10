@@ -71,19 +71,30 @@ module.exports = [
   unprefixed: true,
   type: "messageCreate",
   code: `
+    $reply 
     $onlyIf[$getUserVar[1hstarted]]
     $onlyIf[$startsWith[$messageContent;$getGuildVar[prefix]]==false]
-    $onlyIf[$getUserVar[1hpaused]==false;${errorEmbed()} $description[## Cannot count, you are on pause!]]
-    
-    
-    $let[points;0]
-    
-    $arrayLoad[caught; ;]
+
     $arrayLoad[allRares]
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
     $jsonLoad[SNORA;$getGlobalVar[SNORA]]
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
+    
+    $arrayForEach[raresMap;rareMap;
+      $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
+      $arrayConcat[allRares;allRares;allRaresFromCat]
+    ]
+        
+    $arrayForEach[caughtRares;caughtRare;
+      $if[$arrayIncludes[allRares;$env[caughtRare]];
+        $onlyIf[$getUserVar[1hpaused]==false;${errorEmbed()} $description[## You are on pause!]]
+      ]
+    ]
+    
+    $let[points;0]
+    
+    $arrayLoad[caught; ;]
     
     $arrayForEach[raresMap;rareMap;
       $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
@@ -137,7 +148,6 @@ module.exports = [
       ;
         $let[desc;+$get[pts]]
       ]
-      $reply
       $sendMessage[$channelID;
         $get[content]
         ${normalEmbed()}
