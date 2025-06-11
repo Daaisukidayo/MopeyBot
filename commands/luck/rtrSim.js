@@ -22,11 +22,11 @@ module.exports = [{
         $let[rChance;$randomNumber[1;$math[$get[att] + 1]]]
 
         $if[$get[anChance]>=$get[rChance];
-          $let[content;$env[rare;content]]
-          $if[$env[total;$get[content]]==;
-            $!jsonSet[total;$get[content];1]
+          $let[emoji;$env[rare;emoji]]
+          $if[$env[total;$get[emoji]]==;
+            $!jsonSet[total;$get[emoji];1]
           ;
-            $!jsonSet[total;$get[content];$math[$env[total;$get[content]] + 1]]
+            $!jsonSet[total;$get[emoji];$math[$env[total;$get[emoji]] + 1]]
           ]
         ]
       ]
