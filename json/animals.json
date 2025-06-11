@@ -2421,7 +2421,7 @@
   "rareToucan": {
     "canFly": true,
     "biome": "Land",
-    "fullName": "Toucan",
+    "fullName": "Rare Toucan",
     "trig": "rareToucan",
     "tier": 9,
     "isRare": true,
