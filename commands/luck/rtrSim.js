@@ -10,32 +10,55 @@ module.exports = [{
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[animalsKeys;$jsonKeys[animals]]
     $jsonLoad[raresData;${raresData()}]
     $jsonLoad[snora;$getGlobalVar[SNORA]]
+    $jsonLoad[snoraKeys;$jsonKeys[snora]]
+    $arrayLoad[snoraValues;, ;$jsonValues[snora;, ]]
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $jsonLoad[total;{}]
 
-    $loop[75;
+    $loop[140;
       $arrayForEach[raresData;rare;
         $let[anChance;$env[rare;chance]]
         $let[att;$env[rare;atts]]
         $let[rChance;$randomNumber[1;$math[$get[att] + 1]]]
 
         $if[$get[anChance]>=$get[rChance];
-          $let[emoji;$env[rare;emoji]]
-          $if[$env[total;$get[emoji]]==;
-            $!jsonSet[total;$get[emoji];1]
+          $let[name;$env[rare;name]]
+          $if[$env[total;$get[name]]==;
+            $!jsonSet[total;$get[name];1]
           ;
-            $!jsonSet[total;$get[emoji];$math[$env[total;$get[emoji]] + 1]]
+            $!jsonSet[total;$get[name];$math[$env[total;$get[name]] + 1]]
+            $if[$env[total;Markhor]>3;             $!jsonSet[total;Markhor;3]             ]
+            $if[$env[total;Keel-Billed Toucan]>3;  $!jsonSet[total;Keel-Billed Toucan;3]  ]
+            $if[$env[total;Choco Toucan]>3;        $!jsonSet[total;Choco Toucan;3]        ]
           ]
         ]
       ]
     ]
-
+    $let[totalRares;0]
+    $let[totalPoints;0]
     $let[msgdesc;]
+
     $jsonLoad[totalEntr;$jsonEntries[total]]
     $arrayForEach[totalEntr;entry;
-      $let[msgdesc;$get[msgdesc] $env[entry;0]\`$env[entry;1]\`]
+      $arrayForEach[animalsKeys;animal;
+        $let[rareName;${addName(`$env[animal]`)}]
+        $let[rareEmoji;${addEmoji(`$env[animal]`)}]
+
+        $if[$get[rareName]==$env[entry;0];
+          $let[msgdesc;$get[msgdesc] $get[rareEmoji]\`$env[entry;1]\`]
+          $letSum[totalRares;$env[entry;1]]
+        ]
+      ]
+
+      $arrayForEach[raresMap;obj;
+        $jsonLoad[raresInCategory;$env[obj;rares]]
+        $if[$arrayIncludes[raresInCategory;$arrayAt[snoraKeys;$arrayIndexOf[snoraValues;$env[entry;0]]]];
+          $letSum[totalPoints;$math[$env[obj;points] * $env[entry;1]]]
+        ]
+      ]
     ]
 
 
@@ -43,6 +66,7 @@ module.exports = [{
 
     $color[$getGlobalVar[luckyColor]]
     $description[# $get[msgdesc]]
+    $footer[Total Points: $get[totalPoints] • TotalRares: $get[totalRares]]
     $getGlobalVar[author]
 
 `
@@ -55,217 +79,253 @@ function raresData () {
         "chance": "10",
         "atts": "700",
         "emoji": "${addEmoji("jackass")}",
-        "name": "${addName("jackass")}"
+        "name": "${addName("jackass")}",
+        "trig": "${addTrig("jackass")}"
       },
       {
         "chance": "1",
         "atts": "3000",
         "emoji": "${addEmoji("rareMacaw")}",
-        "name": "${addName("rareMacaw")}"
+        "name": "${addName("rareMacaw")}",
+        "trig": "${addTrig("rareMacaw")}"
       },
       {
-        "chance": "900",
+        "chance": "300",
         "atts": "3000",
         "emoji": "${addEmoji("blueMacaw")}",
-        "name": "${addName("blueMacaw")}"
+        "name": "${addName("blueMacaw")}",
+        "trig": "${addTrig("blueMacaw")}"
       },
       {
         "chance": "10",
         "atts": "500",
         "emoji": "${addEmoji("girabie")}",
-        "name": "${addName("girabie")}"
+        "name": "${addName("girabie")}",
+        "trig": "${addTrig("girabie")}"
       },
       {
         "chance": "25",
         "atts": "500",
         "emoji": "${addEmoji("momaffieFamily")}",
-        "name": "${addName("momaffieFamily")}"
+        "name": "${addName("momaffieFamily")}",
+        "trig": "${addTrig("momaffieFamily")}"
       },
       {
         "chance": "50",
         "atts": "500",
         "emoji": "${addEmoji("momaffie")}",
-        "name": "${addName("momaffie")}"
+        "name": "${addName("momaffie")}",
+        "trig": "${addTrig("momaffie")}"
       },
       {
         "chance": "1",
         "atts": "3000",
         "emoji": "${addEmoji("rareToucan")}",
-        "name": "${addName("rareToucan")}"
+        "name": "${addName("rareToucan")}",
+        "trig": "${addTrig("rareToucan")}"
       },
       {
         "chance": "12",
         "atts": "3000",
         "emoji": "${addEmoji("lavaToucan")}",
-        "name": "${addName("lavaToucan")}"
+        "name": "${addName("lavaToucan")}",
+        "trig": "${addTrig("lavaToucan")}"
+      },
+      {
+        "chance": "300",
+        "atts": "3000",
+        "emoji": "${addEmoji("fieryToucan")}",
+        "name": "${addName("fieryToucan")}",
+        "trig": "${addTrig("fieryToucan")}"
       },
       {
         "chance": "600",
         "atts": "3000",
-        "emoji": "${addEmoji("fieryToucan")}",
-        "name": "${addName("fieryToucan")}"
+        "emoji": "${addEmoji("keelBilledToucan")}",
+        "name": "${addName("keelBilledToucan")}",
+        "trig": "${addTrig("keelBilledToucan")}"
       },
       {
         "chance": "900",
         "atts": "3000",
-        "emoji": "${addEmoji("keelBilledToucan")}",
-        "name": "${addName("keelBilledToucan")}"
+        "emoji": "${addEmoji("chocoToucan")}",
+        "name": "${addName("chocoToucan")}",
+        "trig": "${addTrig("chocoToucan")}"
       },
       {
-        "chance": "1200",
-        "atts": "3000",
-        "emoji": "${addEmoji("chocoToucan")}",
-        "name": "${addName("chocoToucan")}"
+        "chance": "1",
+        "atts": "250",
+        "emoji": "${addEmoji("blackPanther")}",
+        "name": "${addName("blackPanther")}",
+        "trig": "${addTrig("blackPanther")}"
+      },
+      {
+        "chance": "4",
+        "atts": "250",
+        "emoji": "${addEmoji("leopard")}",
+        "name": "${addName("leopard")}",
+        "trig": "${addTrig("leopard")}"
       },
       {
         "chance": "5",
         "atts": "250",
-        "emoji": "${addEmoji("blackPanther")}",
-        "name": "${addName("blackPanther")}"
-      },
-      {
-        "chance": "10",
-        "atts": "250",
-        "emoji": "${addEmoji("leopard")}",
-        "name": "${addName("leopard")}"
-      },
-      {
-        "chance": "25",
-        "atts": "250",
         "emoji": "${addEmoji("jaguar")}",
-        "name": "${addName("jaguar")}"
+        "name": "${addName("jaguar")}",
+        "trig": "${addTrig("jaguar")}"
       },
       {
         "chance": "5",
         "atts": "1000",
         "emoji": "${addEmoji("demonPufferfish")}",
-        "name": "${addName("demonPufferfish")}"
+        "name": "${addName("demonPufferfish")}",
+        "trig": "${addTrig("demonPufferfish")}"
       },
       {
-        "chance": "330",
+        "chance": "165",
         "atts": "1000",
         "emoji": "${addEmoji("yellowPufferfish")}",
-        "name": "${addName("yellowPufferfish")}"
+        "name": "${addName("yellowPufferfish")}",
+        "trig": "${addTrig("yellowPufferfish")}"
       },
       {
         "chance": "15",
         "atts": "250",
         "emoji": "${addEmoji("whiteTiger")}",
-        "name": "${addName("whiteTiger")}"
+        "name": "${addName("whiteTiger")}",
+        "trig": "${addTrig("whiteTiger")}"
       },
       {
         "chance": "1",
         "atts": "1000",
         "emoji": "${addEmoji("blackLion")}",
-        "name": "${addName("blackLion")}"
+        "name": "${addName("blackLion")}",
+        "trig": "${addTrig("blackLion")}"
       },
       {
         "chance": "5",
         "atts": "1000",
         "emoji": "${addEmoji("whiteLion")}",
-        "name": "${addName("whiteLion")}"
+        "name": "${addName("whiteLion")}",
+        "trig": "${addTrig("whiteLion")}"
       },
       {
         "chance": "14",
         "atts": "1000",
         "emoji": "${addEmoji("blackManedLion")}",
-        "name": "${addName("blackManedLion")}"
+        "name": "${addName("blackManedLion")}",
+        "trig": "${addTrig("blackManedLion")}"
       },
       {
         "chance": "1",
         "atts": "1000",
         "emoji": "${addEmoji("blackLioness")}",
-        "name": "${addName("blackLioness")}"
+        "name": "${addName("blackLioness")}",
+        "trig": "${addTrig("blackLioness")}"
       },
       {
         "chance": "5",
         "atts": "1000",
         "emoji": "${addEmoji("whiteLioness")}",
-        "name": "${addName("whiteLioness")}"
+        "name": "${addName("whiteLioness")}",
+        "trig": "${addTrig("whiteLioness")}"
       },
       {
         "chance": "114",
         "atts": "1000",
         "emoji": "${addEmoji("lioness")}",
-        "name": "${addName("lioness")}"
+        "name": "${addName("lioness")}",
+        "trig": "${addTrig("lioness")}"
       },
       {
         "chance": "1",
         "atts": "1000",
         "emoji": "${addEmoji("blackLionCub")}",
-        "name": "${addName("blackLionCub")}"
+        "name": "${addName("blackLionCub")}",
+        "trig": "${addTrig("blackLionCub")}"
       },
       {
         "chance": "5",
         "atts": "1000",
         "emoji": "${addEmoji("whiteLionCub")}",
-        "name": "${addName("whiteLionCub")}"
+        "name": "${addName("whiteLionCub")}",
+        "trig": "${addTrig("whiteLionCub")}"
       },
       {
         "chance": "54",
         "atts": "1000",
         "emoji": "${addEmoji("lionCub")}",
-        "name": "${addName("lionCub")}"
+        "name": "${addName("lionCub")}",
+        "trig": "${addTrig("lionCub")}"
       },
       {
         "chance": "1",
         "atts": "4000",
         "emoji": "${addEmoji("shaheen")}",
-        "name": "${addName("shaheen")}"
+        "name": "${addName("shaheen")}",
+        "trig": "${addTrig("shaheen")}"
       },
       {
         "chance": "50",
         "atts": "4000",
         "emoji": "${addEmoji("predator")}",
-        "name": "${addName("predator")}"
+        "name": "${addName("predator")}",
+        "trig": "${addTrig("predator")}"
       },
       {
         "chance": "1",
         "atts": "3000",
         "emoji": "${addEmoji("rareVulture")}",
-        "name": "${addName("rareVulture")}"
+        "name": "${addName("rareVulture")}",
+        "trig": "${addTrig("rareVulture")}"
       },
       {
         "chance": "15",
         "atts": "700",
         "emoji": "${addEmoji("bigGoat")}",
-        "name": "${addName("bigGoat")}"
+        "name": "${addName("bigGoat")}",
+        "trig": "${addTrig("bigGoat")}"
       },
       {
         "chance": "600",
         "atts": "700",
         "emoji": "${addEmoji("markhor")}",
-        "name": "${addName("markhor")}"
+        "name": "${addName("markhor")}",
+        "trig": "${addTrig("markhor")}"
       },
       {
         "chance": "2",
         "atts": "1000",
         "emoji": "${addEmoji("blackRhino")}",
-        "name": "${addName("blackRhino")}"
+        "name": "${addName("blackRhino")}",
+        "trig": "${addTrig("blackRhino")}"
       },
       {
         "chance": "4",
         "atts": "1000",
         "emoji": "${addEmoji("whiteRhino")}",
-        "name": "${addName("whiteRhino")}"
+        "name": "${addName("whiteRhino")}",
+        "trig": "${addTrig("whiteRhino")}"
       },
       {
         "chance": "1",
         "atts": "5000",
         "emoji": "${addEmoji("greaterSpottedEagle")}",
-        "name": "${addName("greaterSpottedEagle")}"
+        "name": "${addName("greaterSpottedEagle")}",
+        "trig": "${addTrig("greaterSpottedEagle")}"
       },
       {
         "chance": "1",
         "atts": "5000",
         "emoji": "${addEmoji("harpyEagle")}",
-        "name": "${addName("harpyEagle")}"
+        "name": "${addName("harpyEagle")}",
+        "trig": "${addTrig("harpyEagle")}"
       },
       {
         "chance": "28",
         "atts": "5000",
         "emoji": "${addEmoji("goldenEagle")}",
-        "name": "${addName("goldenEagle")}"
+        "name": "${addName("goldenEagle")}",
+        "trig": "${addTrig("goldenEagle")}"
       }
   \\]
   `
@@ -276,5 +336,9 @@ function addEmoji (name) {
 }
 
 function addName (name) {
-  return `$env[animals;${name};variants;$env[userProfile;userWardrobe;${name}];name]`
+  return `$env[animals;${name};fullName]`
+}
+
+function addTrig (name) {
+  return `$env[animals;${name};trig]`
 }

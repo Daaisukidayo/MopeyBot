@@ -8,7 +8,6 @@ module.exports = [{
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $jsonLoad[SNORA;$getGlobalVar[SNORA]]
     $jsonLoad[allRares;$jsonKeys[SNORA]]
     $arrayLoad[allRaresNames;, ;$jsonValues[SNORA;, ]]
@@ -43,7 +42,7 @@ module.exports = [{
     ${allRareNames("Lava Toucan")}
     ${allRareNames("Helmeted Hornbill Toucan")}
     ${allRareNames("Yellow Pufferfish")}
-    ${allRareNames("Demon Pufferfish")}
+    ${allRareNames("Demonfish")}
     ==================Tier 10====================
     ${allRareNames("White Tiger")}
     ==================Tier 11====================
@@ -56,8 +55,8 @@ module.exports = [{
     ${allRareNames("Black-Maned Lion")}
     ${allRareNames("White Lion")}
     ${allRareNames("Black Lion")}
-    ${allRareNames("Predator Falcon")}
-    ${allRareNames("Shaheen Falcon")}
+    ${allRareNames("Predator")}
+    ${allRareNames("Shaheen")}
     ${allRareNames("Argentavis")}
     ==================Tier 12====================
     ${allRareNames("White Rhino")}

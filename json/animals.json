@@ -3303,7 +3303,7 @@
   "falcon": {
     "canFly": true,
     "biome": "Land",
-    "fullName": "Predator",
+    "fullName": "Falcon",
     "trig": "falcon",
     "tier": 11,
     "isRare": false,
@@ -3315,7 +3315,7 @@
     "variants": [
       {
         "vCode": "s1",
-        "name": "Predator",
+        "name": "Falcon",
         "description": "Season 1",
         "emoji": "<:FalconS1:1363453109900279839>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1363453435017691157/Falcon-S1.png",
@@ -3323,7 +3323,7 @@
       },
       {
         "vCode": "s2",
-        "name": "Predator",
+        "name": "Falcon",
         "description": "Season 2",
         "emoji": "<:FalconS2:1292125951127457802>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961255956490/Falcon-S2.png",
@@ -3437,7 +3437,7 @@
     "variants": [
       {
         "vCode": "s1",
-        "name": "Argentavis Vulture",
+        "name": "Argentavis",
         "description": "Season 1",
         "emoji": "<:ArgentavisVulture:1363455043273097276>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1363456124342243528/ArgentavisVulture.png",
