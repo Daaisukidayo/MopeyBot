@@ -1,6 +1,6 @@
 module.exports = [{ 
-  name: "reset-coins", 
-  aliases: ["rc", "rmc", "reset-my-coins"], 
+  name: "resetcoins", 
+  aliases: ["rc"], 
   type: "messageCreate", 
   code: `
     $reply

@@ -9,7 +9,7 @@ module.exports = {
     $jsonLoad[newUserProfile;$getGlobalVar[userProfile]]
     $jsonLoad[profileKeys;$jsonKeys[newUserProfile]]
     
-    $if[1==2;
+    $if[1==1;
     $arrayForEach[allUserIDs;uID;
       $jsonLoad[oldUserProfile;$getUserVar[userProfile;$env[uID]]]
       
@@ -25,13 +25,6 @@ module.exports = {
     $sendMessage[$channelID;## ✅ Successfully updated all profiles!]
 
     ;
-      $jsonLoad[limiters;{
-        "lastDailyDay": -1,
-        "lastWeeklyWeek": -1,
-        "lastHLUsed": -1,
-        "HLRandom": -1,
-        "luckDesc": ""
-      }]
 
       $userLeaderboard[MUID;desc;6;1;\n;data;pos;
         $let[id;$env[data;id]]

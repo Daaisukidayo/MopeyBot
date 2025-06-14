@@ -1,6 +1,6 @@
 module.exports = [{ 
-  name: "reset-packs", 
-  aliases: ["rp", "rmp", "reset-my-packs"], 
+  name: "resetpacks", 
+  aliases: ["rp"], 
   type: "messageCreate", 
   code: `
     $reply

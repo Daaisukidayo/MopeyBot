@@ -1,6 +1,6 @@
 module.exports = [{
   name: '1hlsimulator',
-  aliases: ['1hls', '1hlsim'],
+  aliases: ['1hlsim'],
   type: 'messageCreate',
   code: `
     $reply

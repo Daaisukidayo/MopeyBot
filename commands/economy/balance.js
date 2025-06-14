@@ -26,7 +26,7 @@ module.exports = [{
 
     ${coinsBalance()} 
 
-    $!stopTimeout[BAL]
+    $!stopTimeout[BAL-$authorID]
 
     ${timeout()}
     
@@ -72,7 +72,7 @@ module.exports = [{
       $color[ffd700]
     ]
 
-    $!stopTimeout[BAL]
+    $!stopTimeout[BAL-$authorID]
 
     ${timeout()}
 
@@ -112,6 +112,6 @@ function timeout() {
   return `
     $setTimeout[
       $disableButtonsOf[$channelID;$get[msg]]
-    ;${CD};BAL]
+    ;${CD};BAL-$authorID]
   ` 
 }
