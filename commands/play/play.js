@@ -100,6 +100,7 @@ module.exports = [{
     $description[## You ate some food and gained \`$env[userProfile;play;XP]\`XP]
     $color[$env[userProfile;play;color]]
     ${actionMenu()}
+    $!editMessage[$channelID;$messageID]
     $setUserVar[userProfile;$env[userProfile]]
     $deferUpdate
   `
