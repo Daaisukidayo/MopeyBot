@@ -12,15 +12,15 @@ module.exports = [{
     $disableConsoleErrors
     
     $try[
-      $getEmbeds[$env[userProfile;play;playChannelID];$env[userProfile;play;playMessageID]]
+      $getEmbeds[$env[userProfile;play;ChannelID];$env[userProfile;play;MessageID]]
     ;
       ${removeAllProgress()}
       $setUserVar[userProfile;$env[userProfile]]
     ]
     
-    $onlyIf[$env[userProfile;play;playStarted]==false;
+    $onlyIf[$env[userProfile;play;started]==false;
       $description[## You already have an active game session!
-      ### $hyperlink[Please end your previous game!;https://discord.com/channels/$env[userProfile;play;playGuildID]/$env[userProfile;play;playChannelID]/$env[userProfile;play;playMessageID]]]
+      ### $hyperlink[Please end your previous game!;https://discord.com/channels/$env[userProfile;play;GuildID]/$env[userProfile;play;ChannelID]/$env[userProfile;play;MessageID]]]
       $getGlobalVar[author]
       $color[$getGlobalVar[errorColor]]
       $addActionRow
@@ -29,7 +29,7 @@ module.exports = [{
 
 
     ${jsonLoader()}
-    $!jsonSet[userProfile;play;playTier;1]
+    $!jsonSet[userProfile;play;tier;1]
     ${animalsButtonsGenerator()}
     ${exitButton()}
 
@@ -39,10 +39,10 @@ module.exports = [{
 
     $let[msgID;$sendMessage[$channelID;;true]]
 
-    $!jsonSet[userProfile;play;playMessageID;$get[msgID]]
-    $!jsonSet[userProfile;play;playChannelID;$channelID]
-    $!jsonSet[userProfile;play;playGuildID;$guildID]
-    $!jsonSet[userProfile;play;playStarted;true]
+    $!jsonSet[userProfile;play;MessageID;$get[msgID]]
+    $!jsonSet[userProfile;play;ChannelID;$channelID]
+    $!jsonSet[userProfile;play;GuildID;$guildID]
+    $!jsonSet[userProfile;play;started;true]
     $setUserVar[userProfile;$env[userProfile]]
   `
 },{
@@ -65,15 +65,19 @@ module.exports = [{
     $let[wardrobeIndex;$env[userProfile;userWardrobe;$get[animal]]]
     $let[color;$env[biomeColors;$env[animals;$get[animal];biome]]]
     $let[thumbnail;$env[animals;$get[animal];variants;$get[wardrobeIndex];img]]
+    $let[emoji;$env[animals;$get[animal];variants;$get[wardrobeIndex];emoji]]
     $let[animalName;$env[animals;$get[animal];variants;$get[wardrobeIndex];name]]
+    $let[biome;$env[animals;$get[animal];biome]]
 
-    $!jsonSet[userProfile;play;playMC;$math[$get[bonus] + $env[userProfile;play;playMC]]]
+    $!jsonSet[userProfile;play;MC;$math[$get[bonus] + $env[userProfile;play;MC]]]
+    $!jsonSet[userProfile;play;currentAnimal;$get[emoji] $get[animalName]]
+    $!jsonSet[userProfile;play;color;$get[color]]
+    $!jsonSet[userProfile;play;biome;$get[biome]]
 
     $thumbnail[$get[thumbnail]]
     $color[$get[color]]
-    $description[## You upgraded to __$get[animalName]__!\n-# $env[userProfile;play;playMC]]
+    $description[## You upgraded to __$get[emoji] $get[animalName]__!\n-# $env[userProfile;play;MC]]
     $getGlobalVar[author]
-
 
     $setUserVar[userProfile;$env[userProfile]]
 
@@ -88,9 +92,15 @@ module.exports = [{
   code: `
     $textSplit[$selectMenuValues;-]
     $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
-    $onlyIf[$splitText[2]==upgrade]
+    $onlyIf[$splitText[2]==searchFood]
     ${jsonLoader()}
     ${hasStarted()}
+
+    $!jsonSet[userProfile;play;XP;$math[$env[userProfile;play;XP] + $env[XPreq;$env[userProfile;play;tier]] / $randomNumber[2;4;true]]]
+    $description[## You ate some food and gained \`$env[userProfile;play;XP]\`XP]
+    $color[$env[userProfile;play;color]]
+    ${actionMenu()}
+    $deferUpdate
   `
 },{
   type: "interactionCreate",
@@ -103,7 +113,7 @@ module.exports = [{
 
     ${jsonLoader()}
 
-    $onlyif[$env[userProfile;play;playStarted];
+    $onlyif[$env[userProfile;play;started];
       $description[## You don't have an active game session!]
       $getGlobalVar[author]
       $color[$getGlobalVar[errorColor]]
@@ -115,22 +125,22 @@ module.exports = [{
     $if[$splitText[0]==messagemissing;
 
       $!editMessage[$channelID;$messageID;
-        $description[## You have been successfully disconnected from the game!\n-# Earned: $separatenumber[$env[userProfile;play;playMC];,]$getGlobalVar[emoji]]
+        $description[## You have been successfully disconnected from the game!\n-# Earned: $separatenumber[$env[userProfile;play;MC];,]$getGlobalVar[emoji]]
         $getGlobalVar[author]
         $color[$getGlobalVar[defaultColor]]
       ]
 
       $try[
-        $!disableButtonsOf[$env[userProfile;play;playChannelID];$env[userProfile;play;playMessageID]]
+        $!disableButtonsOf[$env[userProfile;play;ChannelID];$env[userProfile;play;MessageID]]
       ]
 
       ${removeAllProgress()}
     ]
     
-    $if[$and[$env[userProfile;play;playMessageID]==$messageID;$splitText[0]==quit];
+    $if[$and[$env[userProfile;play;MessageID]==$messageID;$splitText[0]==quit];
 
       $!editMessage[$channelID;$messageID;
-        $description[## You have been successfully exited the game!\n-# Earned: $separatenumber[$env[userProfile;play;playMC];,]$getGlobalVar[emoji]]
+        $description[## You have been successfully exited the game!\n-# Earned: $separatenumber[$env[userProfile;play;MC];,]$getGlobalVar[emoji]]
         $getGlobalVar[author]
         $color[$getGlobalVar[defaultColor]]
       ]
@@ -146,46 +156,46 @@ module.exports = [{
 
 function hasStarted () {
   return `
-    $onlyIf[$and[$env[userProfile;play;playStarted];$env[userProfile;play;playMessageID]==$messageID;$env[userProfile;play;playChannelID]==$channelID]]
+    $onlyIf[$and[$env[userProfile;play;started];$env[userProfile;play;MessageID]==$messageID;$env[userProfile;play;ChannelID]==$channelID]]
   `
 }
 
 function removeAllProgress() {
   return `
-    $callFunction[sumMC;$env[userProfile;play;playMC]]
-    $!jsonSet[userProfile;play;playColor; ]
-    $!jsonSet[userProfile;play;playArenaTurn;0]
-    $!jsonSet[userProfile;play;playXP;0]
-    $!jsonSet[userProfile;play;playBitesInArena;0]
-    $!jsonSet[userProfile;play;playOpponentBitesInArena;0]
-    $!jsonSet[userProfile;play;playMC;0]
-    $!jsonSet[userProfile;play;playStarted;false]
-    $!jsonSet[userProfile;play;playTier;0]
-    $!jsonSet[userProfile;play;playMessageID; ]
-    $!jsonSet[userProfile;play;playChannelID; ]
-    $!jsonSet[userProfile;play;playGuildID; ]
-    $!jsonSet[userProfile;play;playOpponentAnimal; ]
-    $!jsonSet[userProfile;play;playCurrentAnimal; ]
-    $!jsonSet[userProfile;play;playIsDead;false]
+    $callFunction[sumMC;$env[userProfile;play;MC]]
+    $!jsonSet[userProfile;play;color; ]
+    $!jsonSet[userProfile;play;arenaTurn;0]
+    $!jsonSet[userProfile;play;XP;0]
+    $!jsonSet[userProfile;play;bitesInArena;0]
+    $!jsonSet[userProfile;play;OpponentBitesInArena;0]
+    $!jsonSet[userProfile;play;MC;0]
+    $!jsonSet[userProfile;play;started;false]
+    $!jsonSet[userProfile;play;tier;0]
+    $!jsonSet[userProfile;play;MessageID;]
+    $!jsonSet[userProfile;play;ChannelID;]
+    $!jsonSet[userProfile;play;GuildID;]
+    $!jsonSet[userProfile;play;opponentAnimal;]
+    $!jsonSet[userProfile;play;currentAnimal;]
+    $!jsonSet[userProfile;play;isDead;false]
     ${removeAllApex()}
   `
 }
 
 function removeAllApex () {
   return `
-    $!jsonSet[userProfile;play;apexes;hasDragApex;false]
-    $!jsonSet[userProfile;play;apexes;hasTrexApex;false]
-    $!jsonSet[userProfile;play;apexes;hasPhixApex;false]
-    $!jsonSet[userProfile;play;apexes;hasPteroApex;false]
-    $!jsonSet[userProfile;play;apexes;hasKrakApex;false]
-    $!jsonSet[userProfile;play;apexes;hasKcrabApex;false]
-    $!jsonSet[userProfile;play;apexes;hasYetiApex;false]
-    $!jsonSet[userProfile;play;apexes;hasLandApex;false]
-    $!jsonSet[userProfile;play;apexes;hasDinoApex;false]
-    $!jsonSet[userProfile;play;apexes;hasScorpApex;false]
-    $!jsonSet[userProfile;play;apexes;hasSeaApex;false]
-    $!jsonSet[userProfile;play;apexes;hasIceApex;false]
-    $!jsonSet[userProfile;play;apexes;hasBDApex;false]
+    $!jsonSet[userProfile;play;apexes;dragon;false]
+    $!jsonSet[userProfile;play;apexes;trex;false]
+    $!jsonSet[userProfile;play;apexes;phoenix;false]
+    $!jsonSet[userProfile;play;apexes;pterodactyl;false]
+    $!jsonSet[userProfile;play;apexes;kraken;false]
+    $!jsonSet[userProfile;play;apexes;kingCrab;false]
+    $!jsonSet[userProfile;play;apexes;yeti;false]
+    $!jsonSet[userProfile;play;apexes;land;false]
+    $!jsonSet[userProfile;play;apexes;dino;false]
+    $!jsonSet[userProfile;play;apexes;scorpion;false]
+    $!jsonSet[userProfile;play;apexes;sea;false]
+    $!jsonSet[userProfile;play;apexes;ice;false]
+    $!jsonSet[userProfile;play;apexes;blackDragon;false]
   `
 }
 
@@ -196,12 +206,9 @@ function exitButton() {
 
     $if[$env[userProfile;testerMode];
       $addActionRow
-      $addButton[up-$authorID;;Success;🔼]
-      $addButton[update-$authorID;;Success;🔃]
-      $addButton[down-$authorID;;Success;🔽]
-
-      $addActionRow
-      $addButton[rarehack-$authorID;Rarehack: $advancedReplace[$env[userProfile;play;rarehackEnabled];true;on;false;off];Secondary]
+      $addButton[up-$authorID-play;;Success;🔼]
+      $addButton[update-$authorID-play;;Success;🔃]
+      $addButton[down-$authorID-play;;Success;🔽]
     ]
   `
 }
@@ -212,7 +219,7 @@ function animalsButtonsGenerator() {
     $let[emojisInDescription;]
 
     $arrayForEach[animalsKeys;animal;
-      $if[$env[animals;$env[animal];tier]==$env[userProfile;play;playTier];
+      $if[$env[animals;$env[animal];tier]==$env[userProfile;play;tier];
           
         $let[emoji;$env[animals;$env[animal];variants;$env[userProfile;userWardrobe;$env[animal]];emoji]]
         $let[animalName;$env[animals;$env[animal];variants;$env[userProfile;userWardrobe;$env[animal]];name]]
@@ -267,16 +274,16 @@ function actionMenu () {
   return `
     $addActionRow
     $addStringSelectMenu[actions-$authorID-play;Choose an action:]
-    $if[$env[userProfile;play;playXP]>=$env[XPreq;$env[userProfile;play;playTier];1];
+    $if[$env[userProfile;play;XP]>=$env[XPreq;$env[userProfile;play;tier];1];
       $addOption[Upgrade yourself;Upgrade;upgrade-$authorID-play;⬆️]
     ]
-    $if[$env[userProfile;play;playTier]>=17; 		
+    $if[$env[userProfile;play;tier]>=17; 		
       $addOption[Hunt everyone;Hunt;hunt-$authorID-play;🗡️]
     ]
-    $if[$env[userProfile;play;playTier]>=15;
+    $if[$env[userProfile;play;tier]>=15;
       $addOption[Go to arena;Arena;arena-$authorID-play;⚔️]
     ]
-    $if[$env[userProfile;play;playTier]>=12;
+    $if[$env[userProfile;play;tier]>=12;
       $addOption[Hunt rares;Rarehunt;rarehunt-$authorID-play;🔪]
     ]
     $addOption[Search for food;Search food;searchFood-$authorID-play;🍴]
