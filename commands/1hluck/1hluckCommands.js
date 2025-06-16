@@ -52,8 +52,8 @@ module.exports = [
     $description[# Continued!]
     ${total()}
     ${time()}
-    ${interval()}
     $setUserVar[userProfile;$env[userProfile]]
+    ${interval()}
   `
 },{
   unprefixed: true,
@@ -155,7 +155,7 @@ module.exports = [
   code: `
     $reply
     ${checkChall()}
-    # You ended your challenge!
+    $description[# 1 Hour Luck Ended!]
     ${normalEmbed()}
     ${pts()}
     ${reset()}
@@ -315,14 +315,15 @@ module.exports = [
   code: `
     $textSplit[$customID;-]
     $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
-    $onlyIf[$includes[$splitText[0];hidePoints;hideRares;infiniteCommons]]
+    $let[btnid;$splitText[0]]
+    $onlyIf[$includes[$get[btnid];hidePoints;hideRares;infiniteCommons]]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 
-    $let[sett;$env[userProfile;1hl;settings;$splitText[0]]]
+    $let[sett;$env[userProfile;1hl;settings;$get[btnid]]]
     $if[$get[sett];
-      $!jsonSet[userProfile;1hl;settings;$splitText[0];false]
+      $!jsonSet[userProfile;1hl;settings;$get[btnid];false]
     ;
-      $!jsonSet[userProfile;1hl;settings;$splitText[0];true]
+      $!jsonSet[userProfile;1hl;settings;$get[btnid];true]
     ]
 
     $!stopTimeout[SETT-$authorID]
@@ -371,7 +372,7 @@ module.exports = [
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
     $jsonLoad[history;$arrayReverse[history]]
-
+    $let[msg;$messageID]
 
     $if[$get[butid]==historyPageLeft;
       $letSub[page;1]
@@ -388,7 +389,7 @@ module.exports = [
     $!stopTimeout[1HLHISTORY-$authorID]
 
     ${historyEmbed()}
-    $!editMessage[$channelID;$messageID]
+    $!editMessage[$channelID;$get[msg]]
 
     $deferUpdate
     ${historyTimeout()}
@@ -465,33 +466,34 @@ function checkChall () {
 
 function interval () {
   return `
-    $jsonLoad[history;$env[userProfile;1hl;history]]
-    $setInterval[
+  $setInterval[
       $jsonLoad[userProfile;$getUserVar[userProfile]]
+      $jsonLoad[history;$env[userProfile;1hl;history]]
       $!jsonSet[userProfile;1hl;1htime;$math[$env[userProfile;1hl;1htime] + 1]]
+
       $switch[$env[userProfile;1hl;1htime];
         $case[1800;   ${timeLeft(30, `m`)}  ]
         $case[3300;   ${timeLeft(5, `m`)}   ]
         $case[3540;   ${timeLeft(1, `m`)}   ]
-        $case[3595;   ${timeLeft(5, `s`)}   ]
-        $case[3596;   ${timeLeft(4, `s`)}   ]
         $case[3597;   ${timeLeft(3, `s`)}   ]
         $case[3598;   ${timeLeft(2, `s`)}   ]
         $case[3599;   ${timeLeft(1, `s`)}   ] 
-        $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 10 SECONDS!\n-# In case you didn't manage to finish writing]] 
-        $case[3610;   $sendMessage[$channelID;# <@$authorID> 1 Hour Luck Ended! ${normalEmbed()} ${pts()}]
-          $timezone[$env[userProfile;timezone]]
-          $arrayPushJSON[history;{
-            "points": $env[userProfile;1hl;1hpoints],
-            "rares": $env[userProfile;1hl;1htotalRares],
-            "time": "$parseDate[$getTimestamp;Locale]",
-            "raresList": $env[userProfile;1hl;1hraresList]
-          }]
-          $!jsonSet[userProfile;1hl;history;$env[history]]
-          ${reset()}
-        ] 
+        $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 10 SECONDS!\n-# In case you didn't manage to finish writing.\n-# DO NOT CONTINUE FARMING RARES]] 
+        $case[3610;   $sendMessage[$channelID;<@$authorID> $description[# 1 Hour Luck Ended!] ${normalEmbed()} ${pts()}] $let[end;true]] 
+      ]
+      $if[$get[end];
+        $timezone[$env[userProfile;timezone]]
+        $arrayPushJSON[history;{
+          "points": $env[userProfile;1hl;1hpoints],
+          "rares": $env[userProfile;1hl;1htotalRares],
+          "time": "$parseDate[$getTimestamp;Locale]",
+          "raresList": $env[userProfile;1hl;1hraresList]
+        }]
+        $!jsonSet[userProfile;1hl;history;$env[history]]
+        ${reset()}
       ]
       $setUserVar[userProfile;$env[userProfile]]
+
     ;1s;1HLUCK-$authorID]
   `
 }
