@@ -323,8 +323,8 @@ module.exports = [{
 		$if[$or[$get[arg]==edittime;$get[arg]==etime;$get[arg]==et];
         $title[$get[comNameEmoji] Edit time]
         $description[## Edits your time in 1 hour luck challenge! 
-        ### Usage: \`$getGuildVar[prefix]edittime {HH:MM:SS (has to be "time passed") | seconds}\`
-        ### Example: \`$getGuildVar[prefix]edittime 00:30:00\`
+        ### Usage: \`$getGuildVar[prefix]edittime {MM:SS (has to be "time passed") | seconds}\`
+        ### Example: \`$getGuildVar[prefix]edittime 30:00\`
         ### Example: \`$getGuildVar[prefix]edittime 1800\`\n$get[desc]]
         $addField[$get[al];\`edittime\`, \`etime\`, \`et\`]
         $addField[$get[rel];\`snora\`, \`start\`, \`pause\`, \`resume\`, \`points\`, \`time\`, \`editpoints\`, \`editlist\`, \`end\`]
