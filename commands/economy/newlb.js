@@ -9,7 +9,7 @@ module.exports = [{
       $return[$env[userProfile]]
     ;profiles]
     $arrayAdvancedSort[profiles;A;B;
-      $math[$env[A;MC] - $env[B;MC]]
+      $math[$env[B;MC] - $env[A;MC]]
     ;result]
     $log[$env[result]]
   `
