@@ -4,7 +4,9 @@ module.exports = [{
   name: "leaderboard",
   aliases: ["lb", "top"],
   type: "messageCreate",
+  description: "disabled",
   code: `
+    $stop
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking;]
