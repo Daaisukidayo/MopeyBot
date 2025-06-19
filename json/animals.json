@@ -438,6 +438,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,10],
     "variants": [
       {
         "vCode": "s1",
@@ -825,6 +826,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [25,250],
     "variants": [
       {
         "vCode": "s1",
@@ -853,6 +855,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,250],
     "variants": [
       {
         "vCode": "s1",
@@ -1068,6 +1071,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [60,300],
     "variants": [
       {
         "vCode": "s1",
@@ -1096,6 +1100,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [3,300],
     "variants": [
       {
         "vCode": "s1",
@@ -1246,6 +1251,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,300],
     "variants": [
       {
         "vCode": "s1",
@@ -1296,6 +1302,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [5,100],
     "variants": [
       {
         "vCode": "s2",
@@ -1590,6 +1597,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [10,700],
     "variants": [
       {
         "vCode": "s1",
@@ -1649,6 +1657,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [300,3000],
     "variants": [
       {
         "vCode": "s1",
@@ -1677,6 +1686,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,3000],
     "variants": [
       {
         "vCode": "s1",
@@ -1905,6 +1915,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [50,500],
     "variants": [
       {
         "vCode": "s2",
@@ -1925,6 +1936,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [25,500],
     "variants": [
       {
         "vCode": "s2",
@@ -1945,6 +1957,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [10,500],
     "variants": [
       {
         "vCode": "s2",
@@ -2161,6 +2174,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [5,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2189,6 +2203,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [4,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2217,6 +2232,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2315,6 +2331,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [900,3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2343,6 +2360,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [600,3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2371,6 +2389,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [300,3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2399,6 +2418,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [12,3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2427,6 +2447,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2538,6 +2559,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [165,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2566,6 +2588,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [5,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2688,6 +2711,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [10,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2755,6 +2779,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [15,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2783,6 +2808,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,250],
     "variants": [
       {
         "vCode": "s1",
@@ -3048,90 +3074,6 @@
       }
     ]
   },
-  "blackManedLion": {
-    "canFly": false,
-    "biome": "Land",
-    "fullName": "Black-Maned Lion",
-    "trig": "blackManedLion",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "variants": [
-      {
-        "vCode": "s1",
-        "name": "Black-Maned Lion",
-        "description": "Season 1",
-        "emoji": "<:BlackManedLionS1v2:1363446321700274236>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145123606618/BlackManedLion-S1-v2.png",
-        "v": 0
-      },
-      {
-        "vCode": "s2",
-        "name": "Black-Maned Lion",
-        "description": "Season 2",
-        "emoji": "<:BlackManedLionS2:1284568114562076903>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png",
-        "v": 1
-      }
-    ]
-  },
-  "whiteLion": {
-    "canFly": false,
-    "biome": "Land",
-    "fullName": "White Lion",
-    "trig": "whiteLion",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "variants": [
-      {
-        "vCode": "s1",
-        "name": "White Lion",
-        "description": "Season 1",
-        "emoji": "<:WhiteLionS1v2:1363446370538754329>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146667245729/WhiteLion-S1-v2.png",
-        "v": 0
-      },
-      {
-        "vCode": "s2",
-        "name": "White Lion",
-        "description": "Season 2",
-        "emoji": "<:WhiteLionS2:1284568130668199966>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png",
-        "v": 1
-      }
-    ]
-  },
-  "blackLion": {
-    "canFly": false,
-    "biome": "Land",
-    "fullName": "Black Lion",
-    "trig": "blackLion",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "variants": [
-      {
-        "vCode": "s1",
-        "name": "Black Lion",
-        "description": "Season 1",
-        "emoji": "<:BlackLionS1v2:1363446394693750885>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144901181571/BlackLion-S1-v2.png",
-        "v": 0
-      },
-      {
-        "vCode": "s2",
-        "name": "Black Lion",
-        "description": "Season 2",
-        "emoji": "<:BlackLionS2:1284568143435661374>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png",
-        "v": 1
-      }
-    ]
-  },
   "lioness": {
     "canFly": false,
     "biome": "Land",
@@ -3141,6 +3083,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [114,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3160,62 +3103,6 @@
       }
     ]
   },
-  "whiteLioness": {
-    "canFly": false,
-    "biome": "Land",
-    "fullName": "White Lioness",
-    "trig": "whiteLioness",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "variants": [
-      {
-        "vCode": "s1",
-        "name": "White Lioness",
-        "description": "Season 1",
-        "emoji": "<:WhiteLionessS1:1363446595898839150>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146406932540/WhiteLioness-S1.png",
-        "v": 0
-      },
-      {
-        "vCode": "s2",
-        "name": "White Lioness",
-        "description": "Season 2",
-        "emoji": "<:WhiteLionessS2:1284568171931766927>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png",
-        "v": 1
-      }
-    ]
-  },
-  "blackLioness": {
-    "canFly": false,
-    "biome": "Land",
-    "fullName": "Black Lioness",
-    "trig": "blackLioness",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "variants": [
-      {
-        "vCode": "s1",
-        "name": "Black Lioness",
-        "description": "Season 1",
-        "emoji": "<:BlackLionessS1:1363446620968194058>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144632873031/BlackLioness-S1.png",
-        "v": 0
-      },
-      {
-        "vCode": "s2",
-        "name": "Black Lioness",
-        "description": "Season 2",
-        "emoji": "<:BlackLionessS2:1284568191569235999>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png",
-        "v": 1
-      }
-    ]
-  },
   "lionCub": {
     "canFly": false,
     "biome": "Land",
@@ -3225,6 +3112,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [54,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3244,6 +3132,35 @@
       }
     ]
   },
+  "blackManedLion": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Black-Maned Lion",
+    "trig": "blackManedLion",
+    "tier": 11,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [14,1000],
+    "variants": [
+      {
+        "vCode": "s1",
+        "name": "Black-Maned Lion",
+        "description": "Season 1",
+        "emoji": "<:BlackManedLionS1v2:1363446321700274236>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145123606618/BlackManedLion-S1-v2.png",
+        "v": 0
+      },
+      {
+        "vCode": "s2",
+        "name": "Black-Maned Lion",
+        "description": "Season 2",
+        "emoji": "<:BlackManedLionS2:1284568114562076903>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png",
+        "v": 1
+      }
+    ]
+  },
   "whiteLionCub": {
     "canFly": false,
     "biome": "Land",
@@ -3253,6 +3170,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [5,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3272,6 +3190,64 @@
       }
     ]
   },
+  "whiteLioness": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "White Lioness",
+    "trig": "whiteLioness",
+    "tier": 11,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [5,1000],
+    "variants": [
+      {
+        "vCode": "s1",
+        "name": "White Lioness",
+        "description": "Season 1",
+        "emoji": "<:WhiteLionessS1:1363446595898839150>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146406932540/WhiteLioness-S1.png",
+        "v": 0
+      },
+      {
+        "vCode": "s2",
+        "name": "White Lioness",
+        "description": "Season 2",
+        "emoji": "<:WhiteLionessS2:1284568171931766927>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png",
+        "v": 1
+      }
+    ]
+  },
+  "whiteLion": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "White Lion",
+    "trig": "whiteLion",
+    "tier": 11,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [5,1000],
+    "variants": [
+      {
+        "vCode": "s1",
+        "name": "White Lion",
+        "description": "Season 1",
+        "emoji": "<:WhiteLionS1v2:1363446370538754329>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146667245729/WhiteLion-S1-v2.png",
+        "v": 0
+      },
+      {
+        "vCode": "s2",
+        "name": "White Lion",
+        "description": "Season 2",
+        "emoji": "<:WhiteLionS2:1284568130668199966>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png",
+        "v": 1
+      }
+    ]
+  },
   "blackLionCub": {
     "canFly": false,
     "biome": "Land",
@@ -3281,6 +3257,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3296,6 +3273,64 @@
         "description": "Season 2",
         "emoji": "<:BlackLionCubS2:1284568232950366290>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150342148148/BlackLionCub.png",
+        "v": 1
+      }
+    ]
+  },
+  "blackLioness": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Black Lioness",
+    "trig": "blackLioness",
+    "tier": 11,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [1,1000],
+    "variants": [
+      {
+        "vCode": "s1",
+        "name": "Black Lioness",
+        "description": "Season 1",
+        "emoji": "<:BlackLionessS1:1363446620968194058>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144632873031/BlackLioness-S1.png",
+        "v": 0
+      },
+      {
+        "vCode": "s2",
+        "name": "Black Lioness",
+        "description": "Season 2",
+        "emoji": "<:BlackLionessS2:1284568191569235999>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png",
+        "v": 1
+      }
+    ]
+  },
+  "blackLion": {
+    "canFly": false,
+    "biome": "Land",
+    "fullName": "Black Lion",
+    "trig": "blackLion",
+    "tier": 11,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [1,1000],
+    "variants": [
+      {
+        "vCode": "s1",
+        "name": "Black Lion",
+        "description": "Season 1",
+        "emoji": "<:BlackLionS1v2:1363446394693750885>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144901181571/BlackLion-S1-v2.png",
+        "v": 0
+      },
+      {
+        "vCode": "s2",
+        "name": "Black Lion",
+        "description": "Season 2",
+        "emoji": "<:BlackLionS2:1284568143435661374>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png",
         "v": 1
       }
     ]
@@ -3340,6 +3375,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [50,4000],
     "variants": [
       {
         "vCode": "s1",
@@ -3368,6 +3404,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,4000],
     "variants": [
       {
         "vCode": "s1",
@@ -3434,6 +3471,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,3000],
     "variants": [
       {
         "vCode": "s1",
@@ -3597,6 +3635,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [4,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3625,6 +3664,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [2,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3693,6 +3733,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [28,5000],
     "variants": [
       {
         "vCode": "s1",
@@ -3721,6 +3762,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,5000],
     "variants": [
       {
         "vCode": "s1",
@@ -3749,6 +3791,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,5000],
     "variants": [
       {
         "vCode": "s1",
@@ -3841,6 +3884,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [600,700],
     "variants": [
       {
         "vCode": "s1",
@@ -3869,6 +3913,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [15,700],
     "variants": [
       {
         "vCode": "s1",
@@ -4133,6 +4178,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [20,700],
     "variants": [
       {
         "vCode": "s1",
@@ -4153,6 +4199,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [5,700],
     "variants": [
       {
         "vCode": "s1",
@@ -4563,6 +4610,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [25,600],
     "variants": [
       {
         "vCode": "s1",
@@ -4591,6 +4639,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [1,10],
     "variants": [
       {
         "vCode": "s1",
@@ -4619,6 +4668,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [1,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -4647,6 +4697,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [1,10],
     "variants": [
       {
         "vCode": "s1",
@@ -4667,6 +4718,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [1,1000],
     "variants": [
       {
         "vCode": "s1",
@@ -4687,6 +4739,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [1,10],
     "variants": [
       {
         "vCode": "s1",
@@ -4707,6 +4760,7 @@
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
+    "rarity": [1,2000],
     "variants": [
       {
         "vCode": "s1",
@@ -4917,10 +4971,11 @@
     "biome": "Volcano",
     "fullName": "King Dragon",
     "trig": "kingDragon",
-    "tier": 18,
+    "tier": 17,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
+    "rarity": [1,1000],
     "variants": [
       {
         "vCode": "s1",

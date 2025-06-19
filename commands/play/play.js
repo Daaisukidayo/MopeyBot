@@ -35,7 +35,6 @@ module.exports = [{
 
     $description[## Choose which animal to spawn as:\n# $get[emojisInDescription]]
     $getGlobalVar[author]
-    $footer[Beta version: 2.0]
 
     $let[msgID;$sendMessage[$channelID;;true]]
 
@@ -76,7 +75,7 @@ module.exports = [{
 
     $thumbnail[$get[thumbnail]]
     $color[$get[color]]
-    $description[## You upgraded to __$get[emoji] $get[animalName]__!\n-# $env[userProfile;play;MC]]
+    $description[## You upgraded to __$get[emoji] $get[animalName]__!\n-# $separateNumber[$env[userProfile;play;MC];,]$getGlobalVar[emoji]]
     $getGlobalVar[author]
 
     $setUserVar[userProfile;$env[userProfile]]
@@ -87,19 +86,61 @@ module.exports = [{
   `
 },{
   type: "interactionCreate",
+  allowedInteractionTypes: ["selectMenu", "button"],
+  description: "choose upgrade",
+  code: `
+    $let[IDS;$if[$isButton;$customID;$selectMenuValues]]
+    $onlyIf[$includes[$get[IDS];up-;down-;update-;upgrade-;downgrade-]]
+    $onlyIf[$includes[$get[IDS];$authorID];$callFunction[notYourBTN]]
+    $deferUpdate
+
+    ${jsonLoader()}
+    
+    $if[$includes[$get[IDS];upgrade-;up-];
+      $!jsonSet[userProfile;play;tier;$math[$env[userProfile;play;tier] + 1]]
+      $if[$env[userProfile;play;tier]>17;
+        $!jsonSet[userProfile;play;tier;1]
+      ]
+    ]
+    $if[$includes[$get[IDS];downgrade-;down-];
+      $!jsonSet[userProfile;play;tier;$math[$env[userProfile;play;tier] - 1]]
+      $if[$env[userProfile;play;tier]<1;
+        $!jsonSet[userProfile;play;tier;17]
+      ]
+    ]
+    $if[$includes[$get[IDS];up-;down-];
+      $!jsonSet[userProfile;play;XP;$env[XPreq;$env[userProfile;play;tier];0]]
+    ]
+
+    ${animalsButtonsGenerator()}
+    ${exitButton()}
+
+    $description[## Choose which animal to spawn as:\n# $get[emojisInDescription]]
+    $getGlobalVar[author]
+    $color[$env[userProfile;play;color]]
+    $!editMessage[$channelID;$messageID]
+    $setUserVar[userProfile;$env[userProfile]]
+    
+  `
+},{
+  type: "interactionCreate",
   allowedInteractionTypes: ["selectMenu"],
-  description: "ssearch food",
+  description: "search food",
   code: `
     $textSplit[$selectMenuValues;-]
     $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
-    $onlyIf[$splitText[2]==searchFood]
+    $onlyIf[$splitText[0]==searchFood]
     ${jsonLoader()}
     ${hasStarted()}
 
-    $!jsonSet[userProfile;play;XP;$math[$env[userProfile;play;XP] + $env[XPreq;$env[userProfile;play;tier]] / $randomNumber[2;4;true]]]
-    $description[## You ate some food and gained \`$env[userProfile;play;XP]\`XP]
+    $let[xp;$round[$math[$env[XPreq;$env[userProfile;play;tier];1] / $randomNumber[3;6;true]]]]
+
+    $!jsonSet[userProfile;play;XP;$math[$env[userProfile;play;XP] + $get[xp]]]
+    $description[## You ate some food and gained \`$separateNumber[$get[xp];,]\`XP \n-# $env[userProfile;play;currentAnimal] • $separateNumber[$env[userProfile;play;XP];,]XP • $env[userProfile;play;MC]$getGlobalVar[emoji]]
+    $getGlobalVar[author]
     $color[$env[userProfile;play;color]]
     ${actionMenu()}
+    ${exitButton()}
     $!editMessage[$channelID;$messageID]
     $setUserVar[userProfile;$env[userProfile]]
     $deferUpdate
@@ -111,7 +152,7 @@ module.exports = [{
   code: `
     $textSplit[$customID;-]
     $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
-    $onlyIf[$or[$splitText[0]==messagemissing;$splitText[0]==quit]]
+    $onlyIf[$includes[$splitText[0];messagemissing;quit]]
 
     ${jsonLoader()}
 
@@ -221,20 +262,66 @@ function animalsButtonsGenerator() {
     $let[emojisInDescription;]
 
     $arrayForEach[animalsKeys;animal;
-      $if[$env[animals;$env[animal];tier]==$env[userProfile;play;tier];
-          
-        $let[emoji;$env[animals;$env[animal];variants;$env[userProfile;userWardrobe;$env[animal]];emoji]]
-        $let[animalName;$env[animals;$env[animal];variants;$env[userProfile;userWardrobe;$env[animal]];name]]
-        $let[trig;$env[animals;$env[animal];trig]-$authorID-upgrade]
-        $let[emojisInDescription;$get[emojisInDescription]$get[emoji]]
-        
-        $if[$or[$get[buttonsQuantity]==0;$get[buttonsQuantity]==5;$get[buttonsQuantity]==10];
-            $addActionRow
+      $let[animal;$env[animal]]
+      $if[$env[animals;$get[animal];tier]==$env[userProfile;play;tier];
+
+        $let[israre;$env[animals;$get[animal];isRare]]
+        $let[hasNonRareVariant;$env[animals;$get[animal];hasNonRareVariant]]
+        $let[butStyle;Secondary]
+
+        $jsonLoad[rares;$env[animals;$get[animal];rares]]
+        $jsonLoad[rares;$arrayReverse[rares]]
+
+        $if[$arrayAt[rares;0]==;;
+          $let[raresQ;0]
+          $arrayForEach[rares;rare;
+            $letSum[raresQ;1]
+            $let[i;$sum[$get[raresQ];$arrayIndexOf[animalsKeys;$get[animal]]]]
+            $let[rareName;$arrayAt[animalsKeys;$get[i]]]
+            $if[$includes[$arrayJoin[rares; ];$get[rareName]];
+
+              $jsonLoad[rarity;$env[animals;$get[rareName];rarity]]
+
+              $let[r;$randomNumber[1;$math[1 + $env[rarity;1]]]]
+              $if[$env[rarity;0]>=$get[r];
+                $let[animal;$get[rareName]]
+                $let[butStyle;Success]
+              ]
+            ]
+          ]
         ]
-        $addButton[$get[trig];$get[animalName];Secondary;$get[emoji]]
-        $letSum[buttonsQuantity;1]
+
+        $if[$get[israre];
+          $if[$get[hasNonRareVariant];;
+            $jsonLoad[rarity;$env[animals;$get[animal];rarity]]
+            $let[r;$randomNumber[1;$math[1 + $env[rarity;1]]]]
+            $if[$env[rarity;0]>=$get[r];
+              $let[butStyle;Success]
+              $let[animal;$env[animal]]
+              ${varsForButtonGen()}
+            ]
+          ]
+        
+        ;
+          ${varsForButtonGen()}
+        ]
       ]
     ]
+  `
+}
+
+function varsForButtonGen () {
+  return `
+    $let[emoji;$env[animals;$get[animal];variants;$env[userProfile;userWardrobe;$get[animal]];emoji]]
+    $let[animalName;$env[animals;$get[animal];variants;$env[userProfile;userWardrobe;$get[animal]];name]]
+    $let[trig;$env[animals;$get[animal];trig]-$authorID-upgrade]
+    $let[emojisInDescription;$get[emojisInDescription]$get[emoji]]
+    
+    $if[$math[$get[buttonsQuantity]%5]==0;
+        $addActionRow
+    ]
+    $addButton[$get[trig];$get[animalName];$get[butStyle];$get[emoji]]
+    $letSum[buttonsQuantity;1]
   `
 }
 
@@ -251,23 +338,23 @@ function jsonLoader() {
 function XPReqForUpg () {
   return `
     {
-      1: [0, 150\\],
-      2: [150, 400\\],
-      3: [400, 1000\\],
-      4: [1000, 2000\\],
-      5: [2000, 5000\\],
-      6: [5000, 12000\\],
-      7: [12000, 25000\\],
-      8: [25000, 40000\\],
-      9: [40000, 60000\\],
-      10: [60000, 90000\\],
-      11: [90000, 145000\\],
-      12: [145000, 350000\\],
-      13: [350000, 650000\\],
-      14: [650000, 1000000\\],
-      15: [1000000, 5000000\\],
-      16: [5000000, 10000000\\],
-      17: [10000000, 40000000\\]
+      "1": [0, 150\\],
+      "2": [150, 400\\],
+      "3": [400, 1000\\],
+      "4": [1000, 2000\\],
+      "5": [2000, 5000\\],
+      "6": [5000, 12000\\],
+      "7": [12000, 25000\\],
+      "8": [25000, 40000\\],
+      "9": [40000, 60000\\],
+      "10": [60000, 90000\\],
+      "11": [90000, 145000\\],
+      "12": [145000, 350000\\],
+      "13": [350000, 650000\\],
+      "14": [650000, 1000000\\],
+      "15": [1000000, 5000000\\],
+      "16": [5000000, 10000000\\],
+      "17": [10000000, 40000000\\]
     }
   `
 }
@@ -278,6 +365,10 @@ function actionMenu () {
     $addStringSelectMenu[actions-$authorID-play;Choose an action:]
     $if[$env[userProfile;play;XP]>=$env[XPreq;$env[userProfile;play;tier];1];
       $addOption[Upgrade yourself;Upgrade;upgrade-$authorID-play;⬆️]
+    ;
+      $if[$env[userProfile;play;tier]<15;
+        $addOption[Search for food;Search food;searchFood-$authorID-play;🍴]
+      ]
     ]
     $if[$env[userProfile;play;tier]>=17; 		
       $addOption[Hunt everyone;Hunt;hunt-$authorID-play;🗡️]
@@ -288,7 +379,6 @@ function actionMenu () {
     $if[$env[userProfile;play;tier]>=12;
       $addOption[Hunt rares;Rarehunt;rarehunt-$authorID-play;🔪]
     ]
-    $addOption[Search for food;Search food;searchFood-$authorID-play;🍴]
     $addOption[Downgrade yourself;Downgrade;downgrade-$authorID-play;⬇️]
     
   `
