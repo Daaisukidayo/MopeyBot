@@ -74,9 +74,7 @@ client.commands.add({
       $setStatus[online;Watching;$guildCount servers]
     ;12s]
 
-    $async[
-      $logger[Bot $username[$botID] is ready!]
-    ]
+    $logger[Bot $username[$botID] is ready!]
   `
 })
 
