@@ -1,6 +1,6 @@
 module.exports = [{
-  name: "leaderboard",
-  aliases: ["lb", "top"],
+  name: "newleaderboard",
+  aliases: ["nlb", "ntop"],
   type: "messageCreate",
   code: `
     $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
