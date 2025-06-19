@@ -59,25 +59,6 @@ DB.commands.add({
   `
 })
 
-client.commands.add({
-  type: "ready",
-  code: `
-    $async[
-      $deletevars[page;;message]
-      $deletevars[crpage;;message]
-      $deletevars[pages;;message]
-      $deletevars[rowsPerPage;;message]
-      $logger[Unused message variables have been cleared!]
-    ]
-
-    $setInterval[
-      $setStatus[online;Watching;$guildCount servers]
-    ;12s]
-
-    $logger[Bot $username[$botID] is ready!]
-  `
-})
-
 // ========== VARIABLES ==========
 
 DB.variables({
