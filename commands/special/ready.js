@@ -11,6 +11,5 @@ module.exports = {
     $setInterval[
       $setStatus[online;Watching;$guildCount servers]
     ;12s]
-    
   `
 }
