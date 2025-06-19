@@ -59,6 +59,27 @@ DB.commands.add({
   `
 })
 
+client.commands.add({
+  type: "ready",
+  code: `
+    $async[
+      $deletevars[page;;message]
+      $deletevars[crpage;;message]
+      $deletevars[pages;;message]
+      $deletevars[rowsPerPage;;message]
+      $logger[Unused message variables have been cleared!]
+    ]
+
+    $setInterval[
+      $setStatus[online;Watching;$guildCount servers]
+    ;12s]
+
+    $async[
+      $logger[Bot $username[$botID] is ready!]
+    ]
+  `
+})
+
 // ========== VARIABLES ==========
 
 DB.variables({
@@ -88,17 +109,6 @@ DB.variables({
 
     "1hl": {
       "history": [],
-      "1hstarted": false,
-      "1hpoints": 0,
-      "1hraresList": {},
-      "1htime": 0,
-      "1htotalRares": 0,
-      "1hpaused": false,
-      "commons": {
-        "markhor": 0,
-        "choco": 0,
-        "keelBilled": 0
-      },
       "settings": {
         "hidePoints": false,
         "hideRares": false,
