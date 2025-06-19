@@ -10,7 +10,7 @@ module.exports = [{
 
     $let[arg;$toLowerCase[$message]]
 
-    $let[desc;$codeBlock[[\\] - required argument(s) \n{} - required option \n() - optional argument(s) or option \n <> — input data type, must differ from example]]
+    $let[desc;$codeBlock[[\\] - required argument(s) \n{} - required option \n() - optional argument(s) or option \n<> — input data type, must differ from example]]
     
     $let[al;📚 Aliases:]
     $let[rel;📖 Related:]
