@@ -11,6 +11,6 @@ module.exports = [{
     $arrayAdvancedSort[profiles;A;B;
       $return[$math[$env[A;MC] - $env[B;MC]]]
     ;result]
-    $log[result]
+    $log[$env[result]]
   `
 }]
