@@ -342,7 +342,6 @@ module.exports = [
     $jsonLoad[history;$env[userProfile;1hl;history]]
     $jsonLoad[history;$arrayReverse[history]]
 
-
     $let[page;1]
     $if[$arrayAt[history;0]==;
       $description[# No history]
@@ -394,7 +393,16 @@ module.exports = [
       ]
     ]
     $if[$get[butid]==customPage;
-      $let[page;$input[page-$authorid]]
+      $let[input;$input[page-$authorid]]
+      $onlyIf[$isNumber[$get[input]];
+        $interactionReply[
+          $ephemeral
+          $title[✖️ Invalid Arguments!]
+          $description[## Argument is not a number!]
+          $color[$getGlobalVar[errorColor]]
+        ]
+      ]
+      $let[page;$get[input]]
       $if[$get[page]>$arrayLength[history];
         $let[page;1]
       ]
