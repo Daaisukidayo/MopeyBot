@@ -174,10 +174,12 @@ module.exports = [
     $if[$mentioned[0]!=;
       $let[id;$mentioned[0]]
     ]
+    $jsonLoad[userProfile;$getUserVar[userProfile;$get[id]]]
     $onlyIf[$getuservar[1hstarted;$get[id]];${errorEmbed()} $description[## $if[$get[id]!=$authorID;__$username[$get[id]]__ doesn't;You don't] have an active challenge!]]
     ${normalEmbed()}
-    ${pts()}
-    ${time()}
+    $author[$userDisplayName[$get[id]] • MUID: $env[userProfile;MUID];$userAvatar]
+    ${pts("$get[id]")}
+    ${time("$get[id]")}
   `
 },{
   name: "editpoints",
@@ -526,23 +528,23 @@ function interval () {
   `
 }
 
-function time () {
+function time (id = "$authorID") {
   return `
-    $let[time;$getuservar[1htime]]
+    $let[time;$getuservar[1htime;${id}]]
     $addField[Time passed:;\`$if[$get[time]>=3600;EXTRA 10 SECONDS;$parseDigital[$get[time]000]]\`]
   `
 }
 
-function pts () {
+function pts (id = "$authorID") {
   return `
     ${total()}
-    $let[totalRares;$getuservar[1htotalRares]]
+    $let[totalRares;$getuservar[1htotalRares;${id}]]
     $if[$env[userProfile;1hl;settings;hideRares];
       $addField[Total rares:;||$get[totalRares]||;true]
     ;
       $addField[Total rares:;$get[totalRares];true]
     ]
-    $let[list;$advancedReplace[$trimLines[$getuservar[1hallRaresList]];{;;};;";;,;]]
+    $let[list;$advancedReplace[$trimLines[$getuservar[1hallRaresList;${id}]];{;;};;";;,;]]
     $if[$get[list]==;$let[list;none]]
     $addField[All received rares list:;\n$codeBlock[$get[list];JSON]]
   `
@@ -600,9 +602,9 @@ function commons () {
 
 function timeLeft (num, time) { return `$sendMessage[$channelID;# <@$authorID> ${num}${time} left!]` }
 
-function total () {
+function total (id = "$authorID") {
   return `
-    $let[1hlp;$getuservar[1hpoints]]
+    $let[1hlp;$getuservar[1hpoints;${id}]]
     $if[$env[userProfile;1hl;settings;hidePoints];
       $addField[Total points:;||$get[1hlp]||]
     ;
