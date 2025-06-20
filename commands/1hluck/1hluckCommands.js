@@ -397,7 +397,7 @@ module.exports = [
       $onlyIf[$isNumber[$get[input]];
         $interactionReply[
           $ephemeral
-          $title[✖️ Invalid Arguments!]
+          $author[✖️ Invalid Arguments!]
           $description[## Argument is not a number!]
           $color[$getGlobalVar[errorColor]]
         ]
