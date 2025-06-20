@@ -11,7 +11,7 @@ module.exports = [
       $description[## You must mention user(s)!]
       $color[$getGlobalVar[errorColor]]
     ]
-    $arrayLoad[users; ;$messageContent]
+    $arrayLoad[users; ;$message]
     $log[$env[users]]
   `
 }]
