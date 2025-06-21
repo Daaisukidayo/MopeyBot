@@ -27,7 +27,7 @@ module.exports = [{
         ### 1. Press the 'Join' button to enter the room.
         ### 2. Press the 'Exit' button to leave the room.
         ### 3. Press the 'Start' button (for hosts only) to begin the 1 Hour Luck Challenge Together! A minimum of 2 participants is required.
-        ### 4. Press the 'Finish' button (for hosts only) to close the room and cancel participation in 1 Hour Luck Challenge Together.
+        ### 4. Press the 'End' button (for hosts only) to close the room and cancel participation in 1 Hour Luck Challenge Together.
         ### The room will be automatically closed in 10 minutes if it has not been started yet. 
         ### After pressing the 'Start' button, a countdown will appear, and then you will be able to start trying to get rares in Mope.io.
         ### After all participants have completed their challenge either forcibly or after 1 hour, a message about the winner and the leaderboard will appear.]
