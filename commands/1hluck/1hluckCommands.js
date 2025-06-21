@@ -448,6 +448,13 @@ module.exports = [
       $description[## You're already participating somewhere else]
       $color[$getGlobalVar[errorColor]]
     ]
+
+    $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;
+      $author[✖️ Error]
+      $description[## You have an active challenge! End it before creating a room!]
+      $color[$getGlobalVar[errorColor]]
+    ]
+    
     
     $arrayLoad[participants; ;$authorID]
     
