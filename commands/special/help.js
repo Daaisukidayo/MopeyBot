@@ -21,6 +21,19 @@ module.exports = [{
     $color[$getGlobalVar[defaultColor]]
 
 
+		$if[$or[$get[arg]==ctr;$get[arg]==createtogetherroom];
+        $title[$get[comNameEmoji] 1 Hour Luck Challenge Together]
+        $description[## Creates a new room, and anyone who wishes can join your room and participate! A maximum of 6 participants.
+        ### 1. Press the 'Join' button to enter the room.
+        ### 2. Press the 'Exit' button to leave the room.
+        ### 3. Press the 'Start' button (for hosts only) to begin the 1 Hour Luck Challenge Together! A minimum of 2 participants is required.
+        ### 4. Press the 'Finish' button (for hosts only) to close the room and cancel participation in 1 Hour Luck Challenge Together.
+        ### The room will be automatically closed in 10 minutes if it has not been started yet. 
+        ### After pressing the 'Start' button, a countdown will appear, and then you will be able to start trying to get rares in Mope.io.
+        ### After all participants have completed their challenge either forcibly or after 1 hour, a message about the winner and the leaderboard will appear.]
+				$addField[$get[al];\`createtogetherroom\`, \`ctr\`]
+		]
+
 		$if[$or[$get[arg]==tz;$get[arg]==timezone];
         $title[$get[comNameEmoji] 1 Hour Luck Settings]
         $description[## Shows and edits your current timezone! Required for the proper functioning of time functions!
@@ -316,7 +329,7 @@ module.exports = [{
         $title[$get[comNameEmoji] Count]
         $description[## Counts points! 
         ### Does not require participation in a 1-hour luck challenge, instead requires writing the names of rare animals in one message after the command! 
-        ### Example: \`$getGuildVar[prefix]count kbt cht mh...\`]
+        ### Example: \`$getGuildVar[prefix]count kbt cht mar...\`]
         $addField[$get[rel];\`snora\`, \`start\`]
 		]
 
@@ -357,7 +370,7 @@ module.exports = [{
         $addField[$getGlobalVar[emoji] __Economy:__;**$codeBlock[weekly \ndaily \narena \nkingdragon \ncoinflip;JSON]**]
         $addField[✨ __Fun__;**$codeBlock[raretry \npumpkin  \nbeachball  \numbrella  \ntornado  \nhowlucky  \nraretryrun  \nrrare  \nraretrymode  \ncaughtrares \n1hlsimulator;JSON]**]
         $addField[🎮 __Play__;**$codeBlock[wardrobe \nplay;JSON]**]
-        $addField[🍀 __1 Hour Luck__;**$codeBlock[snora \nchart \nstart \npause \nresume \ntime \npoints \nend \ncount \nedittime \neditpoints \neditlist \n1hlsettings \n1hlhistory;JSON]**]
+        $addField[🍀 __1 Hour Luck__;**$codeBlock[snora \nchart \ncreatetogetherroom \nstart \npause \nresume \ntime \npoints \nend \ncount \nedittime \neditpoints \neditlist \n1hlsettings \n1hlhistory;JSON]**]
         $footer[Need assistance with a specific issue? Use the invite command to join our official Discord server!]
     ]
 		$sendMessage[$channelID]

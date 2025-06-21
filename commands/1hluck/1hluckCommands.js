@@ -7,6 +7,7 @@ module.exports = [
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;${errorEmbed()} $description[## You already have an active challenge!]]
+    $onlyIf[$getUserVar[participating;$authorID;false]==false;${errorEmbed()} $description[## You are a participator!]]
     
     ${normalEmbed()}
     $description[# 1 hour luck challenge has begun!]
@@ -58,7 +59,7 @@ module.exports = [
     $description[# Continued!]
     ${total()}
     ${time()}
-    ${interval()}
+    $if[$getUserVar[participating];${intervalt()};${interval()}]
   `
 },{
   unprefixed: true,
@@ -133,6 +134,11 @@ module.exports = [
       $let[pts;]
       $arrayForEach[caught;pts;$let[pts;$if[$get[pts]==;$get[pts];$get[pts] + ]$env[pts]]]
       $setUserVar[1hpoints;$math[$getUserVar[1hpoints] + $get[points]]]
+      $if[$getUserVar[participating];
+        $jsonLoad[progress;$getUserVar[progress]]
+        $!jsonSet[progress;points;$getUserVar[1hpoints]]
+        $setUserVar[progress;$env[progress]]
+      ]
 
       $if[$arraylength[caughtRares]>1;
         $let[desc;$get[pts] = $get[points]]
@@ -159,7 +165,9 @@ module.exports = [
     $description[# 1 Hour Luck Ended!]
     ${normalEmbed()}
     ${pts()}
+    $sendMessage[$channelID]
     ${reset()}
+    ${togetherEnd()}
   `
 },{
   name: "points",
@@ -421,7 +429,383 @@ module.exports = [
     $deferUpdate
     ${historyTimeout()}
   `
+},{
+  name: "createtogetherroom",
+  aliases: ["ctr"],
+  type: "messageCreate",
+  code: `
+    $reply
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
+    $onlyIf[$getChannelVar[participants]==;
+      $author[✖️ Error]
+      $description[## Room already exist! Use another channel]
+      $color[$getGlobalVar[errorColor]]
+    ]
+
+    $onlyIf[$getUserVar[participating;$authorID;false]==false;
+      $author[✖️ Failed to create room]
+      $description[## You're already participating somewhere else]
+      $color[$getGlobalVar[errorColor]]
+    ]
+    
+    $arrayLoad[participants; ;$authorID]
+    
+    ${particEmbed()}
+    $setUserVar[participating;true]
+    $let[msgid;$sendMessage[$channelID;;true]]
+
+    ${timeout()}
+  `
+},{
+  type: "interactionCreate",
+  description: "When pressing Participate",
+  allowedInteractionTypes: ["button"],
+  code: `
+    $onlyIf[$includes[$customID;join1hl]]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
+
+    $jsonLoad[participants;$getChannelVar[participants]]
+
+    ${roomExist()}
+
+    $onlyIf[$arrayIncludes[participants;$authorID]==false;
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## You're already participating]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+    $onlyIf[$getUserVar[participating;$authorID;false]==false;
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## You're already participating somewhere else]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+    $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## You have an active challenge! End it before participating!]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+    $onlyIf[$arrayLength[participants]<=6;
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## Room is full]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+
+    $!stopTimeout[MULTI1HL-$channelID]
+    $let[msgid;$messageID]
+    $setUserVar[participating;true]
+    $arrayPush[participants;$authorID]
+    ${particEmbed()}
+    $!editMessage[$channelID;$get[msgid]]
+    ${timeout()}
+    $deferUpdate
+  `
+},{
+  type: "interactionCreate",
+  description: "When pressing Quit",
+  allowedInteractionTypes: ["button"],
+  code: `
+    $onlyIf[$includes[$customID;quit1hl]]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
+
+    $jsonLoad[participants;$getChannelVar[participants]]
+
+    ${roomExist()}
+
+    $onlyIf[$and[$arrayIncludes[participants;$authorID];$getUserVar[participating;$authorID;false]];
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## You're not a participant]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+
+    $onlyIf[$authorID!=$env[participants;0];
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## Host can't quit room]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+
+    $!stopTimeout[MULTI1HL-$channelID]
+    $let[msgid;$messageID]
+
+    $!arraySplice[participants;$arrayIndexOf[participants;$authorID];1]
+    $deleteUserVar[participating]
+    
+    ${particEmbed()}
+    $!editMessage[$channelid;$get[msgid]]
+    ${timeout()}
+    $deferUpdate
+  `
+},{
+  type: "interactionCreate",
+  description: "When pressing End",
+  allowedInteractionTypes: ["button"],
+  code: `
+    $onlyIf[$includes[$customID;end1hl]]
+    $onlyIf[$includes[$customID;$authorID];
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## Only host can end this room]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
+
+    $jsonLoad[participants;$getChannelVar[participants]]
+
+    ${roomExist()}
+
+    $onlyIf[$and[$arrayIncludes[participants;$authorID];$getUserVar[participating;$authorID;false]];
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## You're not a participant]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+
+    $arrayForEach[participants;user;
+      $deleteUserVar[participating;$env[user]]
+    ]
+    $deleteChannelVar[participants]
+
+    $!stopTimeout[MULTI1HL-$channelID]
+    $let[msgid;$messageID]
+
+    $description[# ✅ Successfully closed the room!]
+    $color[$getGlobalVar[luckyColor]]
+    $!editMessage[$channelid;$get[msgid]]
+    $deferUpdate
+  `
+},{
+  type: "interactionCreate",
+  description: "When pressing Start",
+  allowedInteractionTypes: ["button"],
+  code: `
+    $onlyIf[$includes[$customID;start1hl]]
+    $onlyIf[$includes[$customID;$authorID];
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## Only host can start the challenge]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
+
+    $jsonLoad[participants;$getChannelVar[participants]]
+
+    ${roomExist()}
+    
+    $onlyIf[$and[$arrayIncludes[participants;$authorID];$getUserVar[participating;$authorID;false]];
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## You're not a participant]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+
+    $onlyIf[$env[participants;1]!=;
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## You can't start alone!]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+    $let[s;10]
+    $let[msgid;$messageID]
+
+    $!stopTimeout[MULTI1HL-$channelID]
+    
+    $!deleteMessage[$channelID;$get[msgid]]
+
+    $arrayForEach[participants;user;
+      $let[parts;$get[parts]$userDisplayName[$env[user]]\n]
+    ]
+
+    $let[msgid;$sendMessage[$channelID;${startingEmbed()};true]]
+    
+    $setInterval[
+      $letSub[s;1]
+      $if[$get[s]<=0;
+        $let[parts;]
+        $!stopInterval[COUNTDOWN-$channelID]
+          $arrayForEach[participants;user;
+            $let[i;$arrayIndexOf[participants;$env[user]]]
+            $let[parts;$get[parts]$userDisplayName[$env[user]]\n]
+            $jsonLoad[userProfile;$getUserVar[userProfile;$env[user]]]
+            $setUserVar[1htime;0;$env[user]]
+            $setUserVar[1hstarted;true;$env[user]]
+            $setUserVar[1hpoints;0;$env[user]]
+            $setUserVar[1hpaused;false;$env[user]]
+            $setUserVar[1hkbt;0;$env[user]]
+            $setUserVar[1hcht;0;$env[user]]
+            $setUserVar[1hmar;0;$env[user]]
+            $setUserVar[1htotalRares;0;$env[user]]
+            $setUserVar[1hallRaresList;{};$env[user]]
+            $jsonLoad[progress;{"points": 0, "user": "$env[user]"}]
+            $setUserVar[progress;$env[progress];$env[user]]
+          ]
+            ${intervalt('$env[participants;0]')}
+            ${intervalt('$env[participants;1]')}
+            $if[$env[participants;2]!=;${intervalt('$env[participants;2]')}]
+            $if[$env[participants;3]!=;${intervalt('$env[participants;3]')}]
+            $if[$env[participants;4]!=;${intervalt('$env[participants;4]')}]
+            $if[$env[participants;5]!=;${intervalt('$env[participants;5]')}]
+          
+          $!editMessage[$channelID;$get[msgid];
+            ${startingEmbed()}
+            $description[# 1 hour luck challenge has begun!]
+          ]
+        
+        
+        $stop
+      ]
+      $!editMessage[$channelID;$get[msgid];${startingEmbed()}]
+    ;1s;COUNTDOWN-$channelID]
+    
+  `
 }]
+
+function startingEmbed() {
+  return `
+    $description[# Get ready! Starting in $get[s] seconds!]
+    $addField[Participants:;$codeBlock[$get[parts]]]
+    $color[$getGlobalVar[luckyColor]]
+  `
+}
+
+function intervalt (userid = "$authorID") {
+  return `
+    $setInterval[
+      $setUserVar[1htime;$sum[$getUserVar[1htime;${userid}];1];${userid}] 
+
+      $switch[$getUserVar[1htime;${userid}];
+        $case[1800;   ${timeLeft(30,  `m`, userid)}   ]
+        $case[3570;   ${timeLeft(30,  `s`, userid)}   ]
+        $case[3597;   ${timeLeft(3,   `s`, userid)}   ]
+        $case[3598;   ${timeLeft(2,   `s`, userid)}   ]
+        $case[3599;   ${timeLeft(1,   `s`, userid)}   ] 
+        $case[3600;   $sendMessage[$channelID;# <@${userid}> EXTRA 10 SECONDS IN CASE YOU DIDN'T MANAGE TO FINISH WRITING. STOP FARMING RARES!]]
+        $case[3610;   $sendMessage[$channelID;<@${userid}> $description[# Your 1 Hour Luck Ended!] ${normalEmbed()} ${pts(userid)}] $let[end_${userid};true]] 
+      ]
+      $if[$get[end_${userid}];
+        $jsonLoad[userProfile;$getUserVar[userProfile;${userid}]]
+        $jsonLoad[history;$env[userProfile;1hl;history]]
+        $timezone[$env[userProfile;timezone]]
+        $arrayPushJSON[history;{
+          "points": $getuservar[1hpoints;${userid}],
+          "rares": $getuservar[1htotalRares;${userid}],
+          "time": "$parseDate[$getTimestamp;Locale]",
+          "raresList": $getuservar[1hallRaresList;${userid}]
+        }]
+        $!jsonSet[userProfile;1hl;history;$env[history]]
+
+        ${reset(userid)}
+        $setUserVar[userProfile;$env[userProfile];${userid}]
+
+        ${togetherEnd()}
+
+      ]
+    ;1s;1HLUCK-${userid}]
+  `
+}
+
+function interval () {
+  return `
+  $setInterval[
+      $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
+
+      $switch[$getuservar[1htime];
+        $case[1800;   ${timeLeft(30,  `m`)}   ]
+        $case[1800;   ${timeLeft(15,  `m`)}   ]
+        $case[3300;   ${timeLeft(5,   `m`)}   ]
+        $case[3540;   ${timeLeft(1,   `m`)}   ]
+        $case[3570;   ${timeLeft(30,  `s`)}   ]
+        $case[3597;   ${timeLeft(3,   `s`)}   ]
+        $case[3598;   ${timeLeft(2,   `s`)}   ]
+        $case[3599;   ${timeLeft(1,   `s`)}   ] 
+        $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 10 SECONDS IN CASE YOU DIDN'T MANAGE TO FINISH WRITING. STOP FARMING RARES!]] 
+        $case[3610;   $sendMessage[$channelID;<@$authorID> $description[# 1 Hour Luck Ended!] ${normalEmbed()} ${pts()}] $let[end;true]] 
+      ]
+      $if[$get[end];
+        $jsonLoad[userProfile;$getUserVar[userProfile]]
+        $jsonLoad[history;$env[userProfile;1hl;history]]
+        $timezone[$env[userProfile;timezone]]
+        $arrayPushJSON[history;{
+          "points": $getuservar[1hpoints],
+          "rares": $getuservar[1htotalRares],
+          "time": "$parseDate[$getTimestamp;Locale]",
+          "raresList": $getuservar[1hallRaresList]
+        }]
+        $!jsonSet[userProfile;1hl;history;$env[history]]
+        ${reset()}
+        $setUserVar[userProfile;$env[userProfile]]
+      ]
+      
+
+    ;1s;1HLUCK-$authorID]
+  `
+}
+
+function togetherEnd () {
+  return `
+    $if[$getUserVar[participating];
+      $jsonLoad[participants;$getChannelVar[participants]]
+      $let[allFinished;$arrayEvery[participants;user;$return[$checkCondition[$getUserVar[1hstarted;$env[user]]!=true]]]]
+
+      $if[$get[allFinished];
+        $arrayLoad[result]
+        $arrayForEach[participants;user;
+          $jsonLoad[progress;$getUserVar[progress;$env[user]]]
+          $arrayPushJSON[result;$env[progress]]
+          $deleteUserVar[participating;$env[user]]
+          $deleteUserVar[progress;$env[user]]
+        ]
+        $arrayAdvancedSort[result;A;B;$math[$env[B;points] - $env[A;points]];result]
+
+        $let[position;0]
+        
+        $arrayForEach[result;res;
+          $letSum[position;1]
+          $let[emoji;$if[$get[position]==1;🥇;$if[$get[position]==2;🥈;$if[$get[position]==3;🥉;⁘]]]]
+          $let[parts;$get[parts]$get[emoji] $ordinal[$get[position]] ➤ $userDisplayName[$env[res;user]] \n$getGlobalVar[blank] Points: \`$env[res;points]\`\n\n]
+        ]
+
+        $sendMessage[$channelID;
+          $author[1 Hour Luck Together ended!]
+          $description[# 🎉 Winner - $userDisplayName[$env[result;0;user]] 🎉\n**$trimEnd[$get[parts]]**]
+          $color[$getglobalvar[luckyColor]]
+        ]
+        $deleteChannelVar[participants]
+      ]
+    ]
+  `
+}
+
 
 function historyTimeout () {
   return `
@@ -448,6 +832,55 @@ function historyEmbed() {
       $addButton[historyPages-$authorID;Page $get[page]/$arrayLength[history];Primary;🔎]
       $addButton[historyPageRight-$authorID-$get[page];;Primary;➡️]
     ]
+  `
+}
+
+function roomExist() {
+  return `
+    $onlyIf[$getChannelVar[participants]!=;
+      $ephemeral
+      $author[✖️ Error]
+      $description[## Room does not exist anymore]
+      $color[$getGlobalVar[errorColor]]
+    ]
+  `
+}
+
+function timeout () {
+  return `
+    $setTimeout[
+      $!disableButtonsOf[$channelID;$get[msgid]]
+      $sendMessage[$channelID;
+        $description[## Room created by <@$env[participants;0]> was closed due to inactivity]
+        $color[Orange]
+      ]
+      $arrayForEach[participants;user;
+        $deleteUserVar[participating;$env[user]]
+      ]
+      $deleteChannelVar[participants]
+    ;10m;MULTI1HL-$channelID]
+  `
+}
+
+function particEmbed () {
+  return `
+    $setChannelVar[participants;$env[participants]]
+
+    $arrayForEach[participants;participant;
+      $let[parts;$get[parts]$userDisplayName[$env[participant]]\n]
+    ]
+    
+    $author[✅ Successfully created new room!]
+    $description[# Host: $userDisplayName[$env[participants;0]]]
+    $addField[Participants:;$codeBlock[$get[parts]]]
+    $color[$getGlobalVar[luckyColor]]
+    $footer[Room will be closed automatically in 10m due to inactivity]
+    $addActionRow
+    $addButton[join1hl;Participate;Success]
+    $addButton[quit1hl;Quit;Danger]
+    $addActionRow
+    $addButton[start1hl-$env[participants;0];Start;Success]
+    $addButton[end1hl-$env[participants;0];End;Danger]
   `
 }
 
@@ -491,77 +924,40 @@ function checkChall () {
   `
 }
 
-function interval () {
+function time (idtime = "$authorID") {
   return `
-  $setInterval[
-      $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
-
-      $switch[$getuservar[1htime];
-        $case[1800;   ${timeLeft(30,  `m`)}   ]
-        $case[1800;   ${timeLeft(15,  `m`)}   ]
-        $case[3300;   ${timeLeft(5,   `m`)}   ]
-        $case[3540;   ${timeLeft(1,   `m`)}   ]
-        $case[3570;   ${timeLeft(30,  `s`)}   ]
-        $case[3597;   ${timeLeft(3,   `s`)}   ]
-        $case[3598;   ${timeLeft(2,   `s`)}   ]
-        $case[3599;   ${timeLeft(1,   `s`)}   ] 
-        $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 10 SECONDS IN CASE YOU DIDN'T MANAGE TO FINISH WRITING. STOP FARMING RARES!]] 
-        $case[3610;   $sendMessage[$channelID;<@$authorID> $description[# 1 Hour Luck Ended!] ${normalEmbed()} ${pts()}] $let[end;true]] 
-      ]
-      $if[$get[end];
-        $jsonLoad[userProfile;$getUserVar[userProfile]]
-        $jsonLoad[history;$env[userProfile;1hl;history]]
-        $timezone[$env[userProfile;timezone]]
-        $arrayPushJSON[history;{
-          "points": $getuservar[1hpoints],
-          "rares": $getuservar[1htotalRares],
-          "time": "$parseDate[$getTimestamp;Locale]",
-          "raresList": $getuservar[1hallRaresList]
-        }]
-        $!jsonSet[userProfile;1hl;history;$env[history]]
-        ${reset()}
-        $setUserVar[userProfile;$env[userProfile]]
-      ]
-      
-
-    ;1s;1HLUCK-$authorID]
-  `
-}
-
-function time (id = "$authorID") {
-  return `
-    $let[time;$getuservar[1htime;${id}]]
+    $let[time;$getuservar[1htime;${idtime}]]
     $addField[Time passed:;\`$if[$get[time]>=3600;EXTRA 10 SECONDS;$parseDigital[$get[time]000]]\`]
   `
 }
 
-function pts (id = "$authorID") {
+function pts (idpts = "$authorID") {
   return `
-    ${total()}
-    $let[totalRares;$getuservar[1htotalRares;${id}]]
+    ${total(idpts)}
+    $let[totalRares;$getuservar[1htotalRares;${idpts}]]
     $if[$env[userProfile;1hl;settings;hideRares];
       $addField[Total rares:;||$get[totalRares]||;true]
     ;
       $addField[Total rares:;$get[totalRares];true]
     ]
-    $let[list;$advancedReplace[$trimLines[$getuservar[1hallRaresList;${id}]];{;;};;";;,;]]
+    $let[list;$advancedReplace[$trimLines[$getuservar[1hallRaresList;${idpts}]];{;;};;";;,;]]
     $if[$get[list]==;$let[list;none]]
     $addField[All received rares list:;\n$codeBlock[$get[list];JSON]]
   `
 }
 
-function reset() {
+function reset(idreset = "$authorID") {
   return `
-    $!stopInterval[1HLUCK-$authorID]
-    $deleteUserVar[1hstarted]
-    $deleteUserVar[1hallRaresList]
-    $deleteUserVar[1htime]
-    $deleteUserVar[1hpoints]
-    $deleteUserVar[1htotalRares]
-    $deleteUserVar[1hpaused]
-    $deleteUserVar[1hmar]
-    $deleteUserVar[1hkbt]
-    $deleteUserVar[1hcht]
+    $!stopInterval[1HLUCK-${idreset}]
+    $deleteUserVar[1hstarted;${idreset}]
+    $deleteUserVar[1hallRaresList;${idreset}]
+    $deleteUserVar[1htime;${idreset}]
+    $deleteUserVar[1hpoints;${idreset}]
+    $deleteUserVar[1htotalRares;${idreset}]
+    $deleteUserVar[1hpaused;${idreset}]
+    $deleteUserVar[1hmar;${idreset}]
+    $deleteUserVar[1hkbt;${idreset}]
+    $deleteUserVar[1hcht;${idreset}]
   `
 }
 
@@ -600,11 +996,11 @@ function commons () {
   `
 }
 
-function timeLeft (num, time) { return `$sendMessage[$channelID;# <@$authorID> ${num}${time} left!]` }
+function timeLeft (num, time, idtimeleft = "$authorID") { return `$sendMessage[$channelID;# <@${idtimeleft}> ${num}${time} left!]` }
 
-function total (id = "$authorID") {
+function total (idtotal = "$authorID") {
   return `
-    $let[1hlp;$getuservar[1hpoints;${id}]]
+    $let[1hlp;$getuservar[1hpoints;${idtotal}]]
     $if[$env[userProfile;1hl;settings;hidePoints];
       $addField[Total points:;||$get[1hlp]||]
     ;
