@@ -25,7 +25,7 @@ const client = new ForgeClient({
   mobile: true,
   extensions: [
     DB, // Adds database capabilities
-    FC // Adds Forge Canvas
+    FC, // Adds Forge Canvas
   ],
   intents: [
     "Guilds",
