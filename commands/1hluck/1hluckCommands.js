@@ -455,7 +455,6 @@ module.exports = [
       $color[$getGlobalVar[errorColor]]
     ]
     
-    
     $arrayLoad[participants; ;$authorID]
     
     ${particEmbed()}
@@ -658,37 +657,34 @@ module.exports = [
     $setInterval[
       $letSub[s;1]
       $if[$get[s]<=0;
-        $let[parts;]
         $!stopInterval[COUNTDOWN-$channelID]
-          $arrayForEach[participants;user;
-            $let[i;$arrayIndexOf[participants;$env[user]]]
-            $let[parts;$get[parts]$userDisplayName[$env[user]]\n]
-            $jsonLoad[userProfile;$getUserVar[userProfile;$env[user]]]
-            $setUserVar[1htime;0;$env[user]]
-            $setUserVar[1hstarted;true;$env[user]]
-            $setUserVar[1hpoints;0;$env[user]]
-            $setUserVar[1hpaused;false;$env[user]]
-            $setUserVar[1hkbt;0;$env[user]]
-            $setUserVar[1hcht;0;$env[user]]
-            $setUserVar[1hmar;0;$env[user]]
-            $setUserVar[1htotalRares;0;$env[user]]
-            $setUserVar[1hallRaresList;{};$env[user]]
-            $jsonLoad[progress;{"points": 0, "user": "$env[user]"}]
-            $setUserVar[progress;$env[progress];$env[user]]
-          ]
-            ${intervalt('$env[participants;0]')}
-            ${intervalt('$env[participants;1]')}
-            $if[$env[participants;2]!=;${intervalt('$env[participants;2]')}]
-            $if[$env[participants;3]!=;${intervalt('$env[participants;3]')}]
-            $if[$env[participants;4]!=;${intervalt('$env[participants;4]')}]
-            $if[$env[participants;5]!=;${intervalt('$env[participants;5]')}]
-          
-          $!editMessage[$channelID;$get[msgid];
-            ${startingEmbed()}
-            $description[# 1 hour luck challenge has begun!]
-          ]
+        $arrayForEach[participants;user;
+          $let[i;$arrayIndexOf[participants;$env[user]]]
+          $jsonLoad[userProfile;$getUserVar[userProfile;$env[user]]]
+          $setUserVar[1htime;0;$env[user]]
+          $setUserVar[1hstarted;true;$env[user]]
+          $setUserVar[1hpoints;0;$env[user]]
+          $setUserVar[1hpaused;false;$env[user]]
+          $setUserVar[1hkbt;0;$env[user]]
+          $setUserVar[1hcht;0;$env[user]]
+          $setUserVar[1hmar;0;$env[user]]
+          $setUserVar[1htotalRares;0;$env[user]]
+          $setUserVar[1hallRaresList;{};$env[user]]
+          $jsonLoad[progress;{"points": 0, "user": "$env[user]"}]
+          $setUserVar[progress;$env[progress];$env[user]]
+        ]
+          ${intervalt('$env[participants;0]')}
+          ${intervalt('$env[participants;1]')}
+          $if[$env[participants;2]!=;${intervalt('$env[participants;2]')}]
+          $if[$env[participants;3]!=;${intervalt('$env[participants;3]')}]
+          $if[$env[participants;4]!=;${intervalt('$env[participants;4]')}]
+          $if[$env[participants;5]!=;${intervalt('$env[participants;5]')}]
         
-        
+        $!deleteMessage[$channelID;$get[msgid]]
+        $sendMessage[$channelID;
+          ${startingEmbed()}
+          $description[# 1 hour luck challenge has begun!]
+        ]
         $stop
       ]
       $!editMessage[$channelID;$get[msgid];${startingEmbed()}]
@@ -799,12 +795,12 @@ function togetherEnd () {
         $arrayForEach[result;res;
           $letSum[position;1]
           $let[emoji;$if[$get[position]==1;🥇;$if[$get[position]==2;🥈;$if[$get[position]==3;🥉;⁘]]]]
-          $let[parts;$get[parts]$get[emoji] $ordinal[$get[position]] ➤ $userDisplayName[$env[res;user]] \n$getGlobalVar[blank] Points: \`$env[res;points]\`\n\n]
+          $let[parts;$get[parts]### $get[emoji] $ordinal[$get[position]] ➤ $userDisplayName[$env[res;user]] \n**$getGlobalVar[blank] Points: \`$env[res;points]\`**\n]
         ]
 
         $sendMessage[$channelID;
           $author[1 Hour Luck Together ended!]
-          $description[# 🎉 Winner - $userDisplayName[$env[result;0;user]] 🎉\n**$trimEnd[$get[parts]]**]
+          $description[# 🎉 Winner - $userDisplayName[$env[result;0;user]] 🎉\n$trimEnd[$get[parts]]]
           $color[$getglobalvar[luckyColor]]
         ]
         $deleteChannelVar[participants]
