@@ -147,7 +147,7 @@ function jsonAndArray() {
     $jsonLoad[categories;$env[raretryVarData;categories]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
-    $let[l10n;$getUserVar[l10n]]
+    $let[l10n;$env[userProfile;l10n]]
     $let[specialDesc1;$env[l10n;special;specialDesc1;$get[l10n]]] 
 
     $loop[8; 
