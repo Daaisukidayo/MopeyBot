@@ -7,29 +7,26 @@ module.exports = [{
   code: `
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $callFunction[checking;]
+    $callFunction[checking]
     $callFunction[cooldown;${CD}]
 
     $let[rtMode;$env[userProfile;rtMode]]
     ${jsonAndArray()}
 
-
-    $reply
-    $let[msgid;$sendMessage[$channelID;${emptyEmbed()};true]]
-
     $switch[$get[rtMode];
-        $case[inferno;      $setMessageVar[crpage;1;$get[msgid]]]
-        $case[default;      $setMessageVar[crpage;2;$get[msgid]]]
-        $case[medium;       $setMessageVar[crpage;3;$get[msgid]]]
-        $case[hard;         $setMessageVar[crpage;4;$get[msgid]]]
-        $case[insane;       $setMessageVar[crpage;5;$get[msgid]]]
-        $case[impossible;   $setMessageVar[crpage;6;$get[msgid]]]
+        $case[inferno;      $let[page;1]]
+        $case[default;      $let[page;2]]
+        $case[medium;       $let[page;3]]
+        $case[hard;         $let[page;4]]
+        $case[insane;       $let[page;5]]
+        $case[impossible;   $let[page;6]]
     ]
 
     ${rtModeNum()}
     ${buttons()}
+    ${embed()}
 
-    $!editMessage[$channelID;$get[msgid];${embed()}]
+    $let[msgid;$sendMessage[$channelID;;true]]
 
     ${timeout()}
 
@@ -39,46 +36,43 @@ module.exports = [{
   type: "interactionCreate",
   allowedInteractionTypes: ["button"],
   code: `
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
-    $onlyIf[$or[$splitText[0]==left_cr;$splitText[0]==right_cr]]
-    $onlyIf[$getMessageVar[crpage;$messageID]!=;  $callFunction[interFail;]  ]
+    $arrayLoad[btn;-;$customID]
+    $onlyIf[$includes[$env[btn;0];leftCR;rightCR]]
+    $onlyIf[$includes[$env[btn;1];$authorID];  $callFunction[notYourBTN;]  ]
 
     $let[msgid;$messageID]
+    $let[page;$env[btn;2]]
+    
     $jsonLoad[userProfile;$getUserVar[userProfile]]
+    ${jsonAndArray()}
 
-    $if[$splitText[0]==left_cr; 
-        $setMessageVar[crpage;$sub[$getMessageVar[crpage;$get[msgid]];1];$get[msgid]]
-        $if[$getMessageVar[crpage;$get[msgid]]<1;
-            $setMessageVar[crpage;6;$get[msgid]]
-        ]
+    $if[$includes[$env[btn;0];leftCR];
+      $letSub[page;1]
+      $if[$get[page]<=0;
+        $let[page;$arrayLength[raretryModes]]
+      ]
     ;
-        $setMessageVar[crpage;$sum[$getMessageVar[crpage;$get[msgid]];1];$get[msgid]]
-        $if[$getMessageVar[crpage;$get[msgid]]>6;
-            $setMessageVar[crpage;1;$get[msgid]]
-        ]
+      $letSum[page;1]
+      $if[$get[page]>$arrayLength[raretryModes];
+        $let[page;1]
+      ]
     ]
 
-    $switch[$getMessageVar[crpage;$get[msgid]];
-
+    $switch[$get[page];
         $case[1;$let[rtMode;inferno]]
         $case[2;$let[rtMode;default]]
         $case[3;$let[rtMode;medium]]
         $case[4;$let[rtMode;hard]]
         $case[5;$let[rtMode;insane]]
         $case[6;$let[rtMode;impossible]]
-
     ]
-    ${jsonAndArray()}
-
     ${rtModeNum()}
+
+    ${embed()}
     ${buttons()}
-
-
-    $!editMessage[$channelID;$get[msgid];${embed()}]
+    $!editMessage[$channelID;$get[msgid]]
 
     $!clearTimeout[CR-$authorID]
-
     ${timeout()}
 
     $deferUpdate
@@ -87,26 +81,29 @@ module.exports = [{
   type: "interactionCreate",
   allowedInteractionTypes: ["button"],
   code: `
-    $textSplit[$customID;-]
-
-    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
-    $onlyIf[$splitText[0]==setmode]
-    $onlyIf[$getMessageVar[crpage;$messageID]!=;  $callFunction[interFail;]  ]
+    $arrayLoad[btn;-;$customID]
+    $onlyIf[$includes[$env[btn;0];setmode]]
+    $onlyIf[$includes[$env[btn;1];$authorID];  $callFunction[notYourBTN;]  ]
+    
+    $let[msgid;$messageID]
+    $let[rtMode;$env[btn;2]]
+    $let[page;$env[btn;3]]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $let[msgid;$messageID]
-    $let[rtMode;$splitText[2]]
     ${jsonAndArray()}
     ${rtModeNum()}
+
     $!jsonSet[userProfile;rtMode;$get[rtMode]]
-    ${buttons()}
-
-    $!editMessage[$channelID;$get[msgid];${embed()} $replace[$get[desc8];{6};\`$splitText[2]\`]]
-
     $setUserVar[userProfile;$env[userProfile]]
 
-    $!clearTimeout[CR-$authorID]
+    
+    $!editMessage[$channelID;$get[msgid];
+      ${buttons()}
+      ${embed()} 
+      $replace[$get[desc8];{6};\`$toTitleCase[$get[rtMode]]\`]
+    ]
 
+    $!clearTimeout[CR-$authorID]
     ${timeout()}
 
     $deferUpdate
@@ -115,28 +112,39 @@ module.exports = [{
 
 // functions
 
-function emptyEmbed() {
-  return `
-    $getGlobalVar[author]
-    $color[$getGlobalVar[luckyColor]]
-    $description[$get[desc1]]
-  `;
-}
 
 function embed() {
   return `
     $title[$replace[$get[desc2];{0};$toTitleCase[$get[rtMode]]]]
     $getGlobalVar[author]
-    $description[${loop()}]
+    ${loop()}
     $color[$getGlobalVar[luckyColor]]
-    $footer[$replace[$get[desc3];{1};$getMessageVar[crpage;$get[msgid]]]/6]
+    $footer[$replace[$get[desc3];{1};$get[page]]/$arrayLength[raretryModes]]
   `;
 }
 
 function loop() {
   return `
-    $let[i;0]
-    $loop[$arrayLength[categories];$return[$addField[$arrayAt[categories;$get[i]];**$codeBlock[$replace[$get[desc4];{2};$separateNumber[$env[caughtRareCategories;$get[rtMode];$get[i]];,]]\n$replace[$get[desc5];{3};1/$separateNumber[${chance()};,]]\n$replace[$get[desc6];{4};$separateNumber[${coins()};,]];JS]**] $let[i;$math[$get[i] + 1]]]]
+    $arrayForEach[categories;category;
+      $let[i;$arrayIndexOf[categories;$env[category]]]
+      $let[quantity;$separateNumber[$env[caughtRareCategories;$get[rtMode];$get[i]];,]]
+      $let[quantity;$replace[$get[desc4];{2};$get[quantity]]]
+
+      $if[$get[rtMode]!=inferno;  
+        $let[rarity;$env[raretryVarData;chancesForRaretry;other;$math[$get[i] + $get[rtModeNum]]]]
+        $let[reward;$math[$env[raretryVarData;coinsForRaretry;other;$math[$get[i] + $get[rtModeNum]]] * $env[raretryVarData;multipliersForRaretry;$get[rtModeNum]]]]
+      ;
+        $let[rarity;$env[raretryVarData;chancesForRaretry;inferno;$get[i]]]
+        $let[reward;$env[raretryVarData;coinsForRaretry;inferno;$get[i]]]
+      ]
+
+      $let[rarity;$replace[$get[desc5];{3};1/$separateNumber[$get[rarity];,]]]
+      $let[reward;$replace[$get[desc6];{4};$separateNumber[$get[reward];,]]]
+
+      $let[fieldValue;$codeBlock[$get[quantity]\n$get[rarity]\n$get[reward];JS]]
+
+      $addField[$env[category];**$get[fieldValue]**]
+    ]
   `;
 }
 
@@ -145,6 +153,7 @@ function jsonAndArray() {
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $jsonLoad[caughtRareCategories;$env[userProfile;caughtRareCategories]]
     $jsonLoad[categories;$env[raretryVarData;categories]]
+    $jsonLoad[raretryModes;$env[raretryVarData;raretryModes]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
     $let[l10n;$env[userProfile;l10n]]
@@ -152,18 +161,11 @@ function jsonAndArray() {
 
     $loop[8; 
         $let[desc$env[i];$env[l10n;caughtRares;caughtRaresDesc$env[i];$get[l10n]]]
-        $if[$get[desc$env[i]]==; $let[desc$env[i];textNotFound | ID: $get[l10n]$env[i]]] 
+        $if[$get[desc$env[i]]==; $let[desc$env[i];???]] 
     ;i;desc]
   `;
 }
 
-function chance() {
-  return `$if[$get[rtMode]!=inferno;  $env[raretryVarData;chancesForRaretry;other;$math[$get[i] + $get[rtModeNum]]]   ;   $env[raretryVarData;chancesForRaretry;inferno;$get[i]]]`
-}
-
-function coins() {
-  return `$if[$get[rtMode]!=inferno;  $math[$env[raretryVarData;coinsForRaretry;other;$math[$get[i] + $get[rtModeNum]]] * $env[raretryVarData;multipliersForRaretry;$get[rtModeNum]]]   ;   $env[raretryVarData;coinsForRaretry;inferno;$get[i]]]`
-}
 
 function rtModeNum() {
   return `
@@ -178,27 +180,29 @@ function rtModeNum() {
   `;
 }
 
-function buttons(disable = false) {
+function buttons() {
   return `
     $addActionRow
-    $addButton[left_cr-$authorID;;Primary;⬅️;${disable}]
-    $addButton[right_cr-$authorID;;Primary;➡️;${disable}]
+    $addButton[leftCR-$authorID-$get[page];;Primary;⬅️]
+    $addButton[rightCR-$authorID-$get[page];;Primary;➡️]
 
     $let[label;$replace[$get[desc7];{5};$toTitleCase[$get[rtMode]]]]
     
     $if[$env[userProfile;rtMode]!=$get[rtMode];
-        $addButton[setmode-$authorID-$get[rtMode];$get[label];Success;;${disable}]
-    ;
-        $addButton[setmode-$authorID-$get[rtMode];$get[label];Secondary;;true]
+      $let[dis;false]
+      $let[style;Success]
+      ;
+      $let[dis;true]
+      $let[style;Secondary]
     ]
+    
+    $addButton[setmode-$authorID-$get[rtMode]-$get[page];$get[label];$get[style];;$get[dis]]
   `;
 }
 
 function timeout() {
 return `
-$setTimeout[ 
-  ${buttons("true")}
-  $!editMessage[$channelID;$get[msgid];${embed()} $color[GRAY] $get[specialDesc1]]
-  $deleteMessageVar[crpage;$get[msgid]]  
+$setTimeout[
+  $!disableButtonsOf[$channelID;$get[msgid]]
 ;${CD};CR-$authorID]`
 }
