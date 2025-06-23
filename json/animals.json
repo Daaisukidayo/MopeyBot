@@ -4633,7 +4633,7 @@
   "shopBigfoot": {
     "canFly": false,
     "biome": "Forest",
-    "fullName": "Big Foot",
+    "fullName": "Shop Big Foot",
     "trig": "shopBigfoot",
     "tier": 15,
     "isRare": true,
@@ -4643,7 +4643,7 @@
     "variants": [
       {
         "vCode": "s1",
-        "name": "Big Foot",
+        "name": "Shop Big Foot",
         "description": "Season 1",
         "emoji": "<:BigfootS1:1365791609001611344>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815906226247/Bigfoot-S1.png",
@@ -4651,7 +4651,7 @@
       },
       {
         "vCode": "s2",
-        "name": "Big Foot",
+        "name": "Shop Big Foot",
         "description": "Season 2",
         "emoji": "<:BigfootS2:1285617256562425967>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png",
@@ -4662,7 +4662,7 @@
   "luckBigfoot": {
     "canFly": false,
     "biome": "Forest",
-    "fullName": "Big Foot",
+    "fullName": "Luck Big Foot",
     "trig": "luckBigfoot",
     "tier": 15,
     "isRare": true,
@@ -4672,7 +4672,7 @@
     "variants": [
       {
         "vCode": "s1",
-        "name": "Big Foot",
+        "name": "Luck Big Foot",
         "description": "Season 1",
         "emoji": "<:BigfootS1:1365791609001611344>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815906226247/Bigfoot-S1.png",
@@ -4680,7 +4680,7 @@
       },
       {
         "vCode": "s2",
-        "name": "Big Foot",
+        "name": "Luck Big Foot",
         "description": "Season 2",
         "emoji": "<:BigfootS2:1285617256562425967>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png",
@@ -4691,7 +4691,7 @@
   "shopSnowman": {
     "canFly": false,
     "biome": "Arctic",
-    "fullName": "Snowman",
+    "fullName": "Shop Snowman",
     "trig": "shopSnowman",
     "tier": 15,
     "isRare": true,
@@ -4701,7 +4701,7 @@
     "variants": [
       {
         "vCode": "s1",
-        "name": "Snowman",
+        "name": "Shop Snowman",
         "description": "Season 1",
         "emoji": "<:SnowmanS1:1284570594075218014>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png",
@@ -4712,7 +4712,7 @@
   "luckSnowman": {
     "canFly": false,
     "biome": "Arctic",
-    "fullName": "Snowman",
+    "fullName": "Luck Snowman",
     "trig": "luckSnowman",
     "tier": 15,
     "isRare": true,
@@ -4722,7 +4722,7 @@
     "variants": [
       {
         "vCode": "s1",
-        "name": "Snowman",
+        "name": "Luck Snowman",
         "description": "Season 1",
         "emoji": "<:SnowmanS1:1284570594075218014>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png",
@@ -4733,7 +4733,7 @@
   "shopSnowgirl": {
     "canFly": false,
     "biome": "Arctic",
-    "fullName": "Snowgirl",
+    "fullName": "Shop Snowgirl",
     "trig": "shopSnowgirl",
     "tier": 15,
     "isRare": true,
@@ -4743,7 +4743,7 @@
     "variants": [
       {
         "vCode": "s1",
-        "name": "Snowgirl",
+        "name": "Shop Snowgirl",
         "description": "Season 1",
         "emoji": "<:SnowgirlS1:1284570612018315346>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png",
@@ -4754,7 +4754,7 @@
   "luckSnowgirl": {
     "canFly": false,
     "biome": "Arctic",
-    "fullName": "Snowgirl",
+    "fullName": "Luck Snowgirl",
     "trig": "luckSnowgirl",
     "tier": 15,
     "isRare": true,
@@ -4764,7 +4764,7 @@
     "variants": [
       {
         "vCode": "s1",
-        "name": "Snowgirl",
+        "name": "Luck Snowgirl",
         "description": "Season 1",
         "emoji": "<:SnowgirlS1:1284570612018315346>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png",

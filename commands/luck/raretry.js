@@ -102,63 +102,63 @@ function content() {
 }
 
 function catchingRare() {
-return `
-$if[$and[$env[userProfile;devMode];$message[0]!=;$isNumber[$message[0]];$message[0]>=-1;$message[0]<=$get[li]];
-    $let[p;$message[0]]
-    $let[caught;true]
+  return `
+    $if[$and[$env[userProfile;devMode];$message[0]!=;$isNumber[$message[0]];$message[0]>-1;$message[0]<=$get[li]];
+      $let[p;$message[0]]
+      $let[caught;true]
 
-    ${baseChance("p")}
-    ${colorAndCoins()}
-    $let[cat;$arrayAt[categories;$get[p]]]
-    ${thumbnailAndArray()}
-    ${content()}
+      ${baseChance("p")}
+      ${colorAndCoins()}
+      $let[cat;$arrayAt[categories;$get[p]]]
+      ${thumbnailAndArray()}
+      ${content()}
 
-    $callFunction[sumMC;$get[MC]]
+      $callFunction[sumMC;$get[MC]]
 
-    ${sm()}
+      ${sm()}
 
-;
-    $let[i;$get[li]]
+    ;
+      $let[i;$get[li]]
 
-    $loop[$get[al];
+      $loop[$get[al];
         ${baseChance("i")}
 
         $if[1==$randomNumber[1;$sum[1;$get[baseChance]]]; 
-            $let[caught;true]
-            $let[p;$get[i]]
+          $let[caught;true]
+          $let[p;$get[i]]
 
-            $jsonSet[userProfile;caughtRareCategories;$get[rtMode];$get[p];$sum[$env[userProfile;caughtRareCategories;$get[rtMode];$get[p]];1]]
+          $jsonSet[userProfile;caughtRareCategories;$get[rtMode];$get[p];$sum[$env[userProfile;caughtRareCategories;$get[rtMode];$get[p]];1]]
 
-            $let[cat;$arrayAt[categories;$get[p]]]
+          $let[cat;$arrayAt[categories;$get[p]]]
 
-            ${colorAndCoins()}
-            ${thumbnailAndArray()}
-            ${content()}
+          ${colorAndCoins()}
+          ${thumbnailAndArray()}
+          ${content()}
 
+          $callFunction[sumMC;$get[MC]]
 
-            $callFunction[sumMC;$get[MC]]
-
-            ${sm()}
+          ${sm()}
         ]
-
         $let[i;$math[$get[i] - 1]]
-    ]
+      ]
 
-    $if[$get[caught]==false;
+      $if[$get[caught]==false;
         ${sm()}
+      ]
     ]
-]`
+  `
 }
 
 function sm() {
-return `
-$sendMessage[$channelID;
-    $color[$get[color]]
-    $description[$get[content]]
-    $thumbnail[$get[thumbnail]]
-    $getGlobalVar[author]
-    $footer[$if[$get[p]>-1;$get[raretryDesc1]: 1/$separateNumber[$get[baseChance];,] • $get[raretryDesc2]: $get[cat] • ]$get[raretryDesc3]: $toTitleCase[$get[rtMode]]]
-]`
+  return `
+    $sendMessage[$channelID;
+      $color[$get[color]]
+      $description[$get[content]]
+      $thumbnail[$get[thumbnail]]
+      $getGlobalVar[author]
+      $footer[$if[$get[p]>-1;$get[raretryDesc1]: 1/$separateNumber[$get[baseChance];,] • $get[raretryDesc2]: $get[cat] • ]$get[raretryDesc3]: $toTitleCase[$get[rtMode]]]
+    ]
+  `
 }
 
 function rep() {
