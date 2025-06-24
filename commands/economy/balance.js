@@ -11,11 +11,11 @@ module.exports = [{
     $callFunction[cooldown;${CD}]
 
     $if[$includes[$messageContent;packs];
-      $let[choice;packs]
+      ${balEmbed("packs")}
     ;
-      $let[choice;coins]
+      ${balEmbed("coins")}
     ]
-    ${balEmbed("$get[choice]")}
+    
     $let[msgid;$sendMessage[$channelID;;true]]
 
     ${timeout()}
@@ -88,7 +88,7 @@ function buttonCheck (buttonID) {
 
 function balEmbed(choice) {
   return `
-    $if[${choice == "coins"};
+    $if[${choice === "coins"};
       $addField[💰 __Coins:__;**\`$separateNumber[$env[userProfile;MC];.]\`$getGlobalVar[emoji]**]
     ;
       ${userPacks()}

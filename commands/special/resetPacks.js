@@ -6,14 +6,17 @@ module.exports = [{
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
+    $callFunction[cooldown;1m]
 
-    $let[msgid;$sendMessage[$channelID;Are you sure you want to delete all your purchased skin packs?;true]]
+    $getGlobalVar[author]
+    $description[### Are you sure you want to delete all your Skin Packs?]
+    $color[Orange]
 
     $addActionRow
-    $addButton[confirm_deleting_packs-$authorID;Confirm;Success]
-    $addButton[decline_deleting_packs-$authorID;Decline;Danger]
+    $addButton[confirmDeletingPacks-$authorID;Confirm;Success]
+    $addButton[declineDeletingPacks-$authorID;Decline;Danger]
 
-    $!editMessage[$channelID;$get[msgid];Are you sure you want to delete all your purchased skin packs?]
+    $let[msgid;$sendMessage[$channelID;;true]]
 
     $setTimeout[
       $disableButtonsOf[$channelID;$get[msgid]]
@@ -23,19 +26,22 @@ module.exports = [{
   type: "interactionCreate", 
   allowedInteractionTypes: [ "button" ], 
   code:`
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
-    $onlyIf[$or[$splitText[0]==confirm_deleting_packs;$splitText[0]==decline_deleting_packs]]
+    $arrayLoad[btn;-;$customID]
+    $onlyIf[$and[$includes[$env[btn;0];declineDeletingPacks;confirmDeletingPacks];$includes[$env[btn;1];$authorID]];$callFunction[notYourBTN]]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 
-    $if[$splitText[0]==confirm_deleting_packs;
-        $!editMessage[$channelID;$messageID;Deleted all your purchased skin packs!]
-        $!jsonSet[userProfile;userPacks;{}]
-        $setUserVar[userProfile;$env[userProfile]]
+    $if[$includes[$env[btn;0];confirmDeletingPacks];
+      $description[### Deleted all your Skin Packs]
+      $!jsonSet[userProfile;userPacks;{}]
+      $setUserVar[userProfile;$env[userProfile]]
     ;
-        $!editMessage[$channelID;$messageID;Deletion canceled!]
+      $description[### Deletion canceled!]
     ]
+    $color[$getGlobalVar[defaultColor]]
+    $getGlobalVar[author]
+
+    $!editMessage[$channelID;$messageID]
 
     $!stopTimeout[RP-$authorID]
   `
