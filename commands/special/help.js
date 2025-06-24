@@ -15,7 +15,6 @@ module.exports = [{
     $let[rel;📖 Related:]
     $let[comNameEmoji;📜]
 		$jsonLoad[arg;["-$toLowerCase[$message]-"\\]]
-		$log[$env[arg]]
 
 		$description[## Unknown command!]
     $color[$getGlobalVar[defaultColor]]
