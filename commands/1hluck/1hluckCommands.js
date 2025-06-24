@@ -304,8 +304,8 @@ module.exports = [
     ${time()}
   `
 },{
-  name: "1hlsettings",
-  aliases: ["1hlset"],
+  name: "settings",
+  aliases: ["set"],
   type: "messageCreate",
   description: "settings",
   code: `
@@ -340,8 +340,8 @@ module.exports = [
     $setUserVar[userProfile;$env[userProfile]]
   `
 },{
-  name: "1hlhistory",
-  aliases: ["1hlhis"],
+  name: "history",
+  aliases: ["his"],
   type: "messageCreate",
   description: "history",
   code: `
