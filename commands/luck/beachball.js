@@ -13,35 +13,26 @@ module.exports = [{
     $jsonLoad[content1;${content1()}]
     $jsonLoad[content2;${content2()}]
     
-    $let[al;$arraylength[beachballs]]
-    $let[li;$math[$get[al] - 1]]
+    $let[length;$arraylength[beachballs]]
+    $let[lastI;$math[$get[length] - 1]]
+    $let[arg;$message]
         
-    $if[$and[$env[userProfile;devMode]!=false;$message[0]!=;$isNumber[$message[0]];$message[0]>-1;$message[0]<=$get[li]];
-      $let[id;$message[0]]
-
-      $arrayForEach[beachballs;beachball;
-        $if[$get[stop];;
-          $if[$get[id]==$env[beachball;ID];
-            ${catched()}
-            $sendMessage[$channelID]
-            $let[stop;true]
-          ]
-        ]
-      ]
-
+    $if[$and[$env[userProfile;devMode];$get[arg]!=;$isNumber[$get[arg]];$get[arg]>-1;$get[arg]<=$get[lastI]];
+      $let[targetID;$get[arg]]
     ;
-      $arrayForEach[beachballs;beachball;
-        $if[$get[stop];;
-          $let[r;$randomNumber[1;$math[$env[beachball;rarity] + 1]]]
-          
-          $if[1==$get[r];
-            ${catched()}
-            $callFunction[sumMC;$get[MC]]
-            $setUserVar[userProfile;$env[userProfile]]
-            $sendMessage[$channelID]
-            $let[stop;true]
-          ]
-        ]
+      $let[targetID;-1]
+    ]
+
+    $arrayForEach[beachballs;beachball;
+      $let[cond1;$and[$get[targetID]!=-1;$env[beachball;ID]==$get[targetID]]]
+      $let[cond2;$and[$get[targetID]==-1;$randomNumber[1;$math[$env[beachball;rarity] + 1]]==1]]
+
+      $if[$or[$get[cond1];$get[cond2]];
+        ${catched()}
+        $callFunction[sumMC;$get[MC]]
+        $setUserVar[userProfile;$env[userProfile]]
+        $sendMessage[$channelID]
+        $stop
       ]
     ]
   `
@@ -66,17 +57,17 @@ function catched() {
 
 function content1() {
   return `[
-    "You were walking across the ocean and saw a {BEACHBALL}",
-    "You were wandering around the ocean and spotted a {BEACHBALL}",
-    "You stumbled upon {BEACHBALL} while exploring",
-    "You were gliding across the ocean when you found a {BEACHBALL}",
-    "You discovered a {BEACHBALL} while roaming the ocean",
-    "You were cruising through the wild and noticed a {BEACHBALL}",
-    "You found a {BEACHBALL} lying on the ocean",
-    "You were sliding through the ocean when you saw a {BEACHBALL}",
-    "You noticed a {BEACHBALL} on your path",
-    "You were gliding through the ocean and spotted a {BEACHBALL}",
-    "You were strolling across the ocean and noticed a {BEACHBALL}"
+    "You were walking across the ocean and saw a(n) {BEACHBALL}",
+    "You were wandering around the ocean and spotted a(n) {BEACHBALL}",
+    "You stumbled upon a(n) {BEACHBALL} while exploring",
+    "You were gliding across the ocean when you found a(n) {BEACHBALL}",
+    "You discovered a(n) {BEACHBALL} while roaming the ocean",
+    "You were cruising through the wild and noticed a(n) {BEACHBALL}",
+    "You found a(n) {BEACHBALL} lying on the ocean",
+    "You were sliding through the ocean when you saw a(n) {BEACHBALL}",
+    "You noticed a(n) {BEACHBALL} on your path",
+    "You were gliding through the ocean and spotted a(n) {BEACHBALL}",
+    "You were strolling across the ocean and noticed a(n) {BEACHBALL}"
   \\]`
 }
 

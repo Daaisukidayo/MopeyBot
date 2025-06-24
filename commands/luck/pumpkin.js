@@ -13,30 +13,26 @@ module.exports = [{
     $jsonLoad[content1;${content1()}]
     $jsonLoad[content2;${content2()}]
     
-    $let[al;$arraylength[pumpkins]]
-    $let[li;$math[$get[al] - 1]]
+    $let[length;$arraylength[pumpkins]]
+    $let[lastI;$math[$get[length] - 1]]
+    $let[arg;$message]
         
-    $if[$and[$env[userProfile;devMode];$message[0]!=;$isNumber[$message[0]];$message[0]>-1;$message[0]<=$get[li]];
-      $let[id;$message[0]]
-      $arrayForEach[pumpkins;pumpkin;
-        $if[$get[id]==$env[pumpkin;ID];
-          ${catched()}
-          $setUserVar[userProfile;$env[userProfile]]
-          $sendMessage[$channelID]
-          $stop
-        ]
-      ]
+    $if[$and[$env[userProfile;devMode];$get[arg]!=;$isNumber[$get[arg]];$get[arg]>-1;$get[arg]<=$get[lastI]];
+      $let[targetID;$get[arg]]
     ;
-      $arrayForEach[pumpkins;pumpkin;
-        $let[r;$randomNumber[1;$math[$env[pumpkin;rarity] + 1]]]
-        
-        $if[1==$get[r];
-          ${catched()}
-          $callFunction[sumMC;$get[MC]]
-          $setUserVar[userProfile;$env[userProfile]]
-          $sendMessage[$channelID]
-          $stop
-        ]
+      $let[targetID;-1]
+    ]
+
+    $arrayForEach[pumpkins;pumpkin;
+      $let[cond1;$and[$get[targetID]!=-1;$env[pumpkin;ID]==$get[targetID]]]
+      $let[cond2;$and[$get[targetID]==-1;$randomNumber[1;$math[$env[pumpkin;rarity] + 1]]==1]]
+
+      $if[$or[$get[cond1];$get[cond2]];
+        ${catched()}
+        $callFunction[sumMC;$get[MC]]
+        $setUserVar[userProfile;$env[userProfile]]
+        $sendMessage[$channelID]
+        $stop
       ]
     ]
   `
@@ -62,17 +58,17 @@ function catched() {
 
 function content1() {
   return `[
-    "You were walking across the map and saw a {PUMPKIN}",
-    "You were wandering around the map and spotted a {PUMPKIN}",
-    "You stumbled upon {PUMPKIN} while exploring",
-    "You were gliding across the map when you found a {PUMPKIN}",
-    "You discovered a {PUMPKIN} while roaming the map",
-    "You were cruising through the wild and noticed a {PUMPKIN}",
-    "You found a {PUMPKIN} lying on the ground",
-    "You were sliding through the map when you saw a {PUMPKIN}",
-    "You noticed a {PUMPKIN} on your path",
-    "You were gliding through the map and spotted a {PUMPKIN}",
-    "You were strolling across the map and noticed a {PUMPKIN}"
+    "You were walking across the map and saw a(n) {PUMPKIN}",
+    "You were wandering around the map and spotted a(n) {PUMPKIN}",
+    "You stumbled upon a(n) {PUMPKIN} while exploring",
+    "You were gliding across the map when you found a(n) {PUMPKIN}",
+    "You discovered a(n) {PUMPKIN} while roaming the map",
+    "You were cruising through the wild and noticed a(n) {PUMPKIN}",
+    "You found a(n) {PUMPKIN} lying on the ground",
+    "You were sliding through the map when you saw a(n) {PUMPKIN}",
+    "You noticed a(n) {PUMPKIN} on your path",
+    "You were gliding through the map and spotted a(n) {PUMPKIN}",
+    "You were strolling across the map and noticed a(n) {PUMPKIN}"
   \\]`
 }
 

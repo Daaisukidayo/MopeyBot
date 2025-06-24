@@ -2,15 +2,21 @@ const CD = "1m"
 
 module.exports = [{
   name: "balance",
-  aliases: ['bal', 'coins', 'cash', 'profile', 'prof', 'money'],
+  aliases: ['bal', 'coins', 'cash', 'profile', 'prof', 'money', 'packs'],
   type: "messageCreate",
   code: ` 
     $reply
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    ${json()}
     $callFunction[checking]
     $callFunction[cooldown;${CD}]
 
-    ${coinsBalance()}
+    $if[$includes[$messageContent;packs];
+      $let[choice;packs]
+    ;
+      $let[choice;coins]
+    ]
+    ${balEmbed("$get[choice]")}
+    $let[msgid;$sendMessage[$channelID;;true]]
 
     ${timeout()}
   `
@@ -18,39 +24,38 @@ module.exports = [{
   type: "interactionCreate",
   allowedInteractionTypes: [ "button" ],
   code: `
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN;]]
-    $onlyIf[$splitText[0]==coins]
+    ${buttonCheck("coins")}
+    ${json()}
 
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $let[msgid;$messageID]
 
-    ${coinsBalance()} 
+    ${balEmbed("coins")}
+    $!editMessage[$channelID;$get[msgid]]
 
     $!stopTimeout[BAL-$authorID]
-
     ${timeout()}
-    
     $deferUpdate
   `
 },{
   type: "interactionCreate",
   allowedInteractionTypes: [ "button" ],
   code:`
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN;]]
-    $onlyIf[$splitText[0]==packs]
-
-    $addActionRow
-    $addButton[coins-$authorID;Coins;Primary;$getGlobalVar[emoji]]
-    $addButton[packs-$authorID;Packs;Primary;🛒;true]
-
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $jsonLoad[allSkinPacks;$getGlobalVar[shopItems]]
-    $jsonLoad[userPacks;$env[userProfile;userPacks]]
-    $jsonLoad[userPacksKeys;$jsonKeys[userPacks]]
+    ${buttonCheck("packs")}
+    ${json()}
     
-    $let[desc;]
+    $let[msgid;$messageID]
 
+    ${balEmbed("packs")}
+    $!editMessage[$channelID;$get[msgid]]
+
+    $!stopTimeout[BAL-$authorID]
+    ${timeout()}
+    $deferUpdate
+  `
+}]
+
+function userPacks () {
+  return `
     $if[$arrayAt[userPacksKeys;0]==;
       $let[desc;none]
     ;
@@ -62,56 +67,50 @@ module.exports = [{
         ]
       ]
     ]
-
-
-    $!editMessage[$channelID;$messageID;
-      $addField[🛒 __Purchased Skinpacks:__;$codeBlock[$get[desc]]]
-      $title[__BALANCE__]
-      $getGlobalVar[author]
-      $thumbnail[$userAvatar[$authorID]]
-      $color[ffd700]
-    ]
-
-    $!stopTimeout[BAL-$authorID]
-
-    ${timeout()}
-
-    $deferUpdate
   `
-}]
+}
 
-function coinsBalance() {
+function json () {
   return `
-    $addActionRow
-    $addButton[coins-$authorID;Coins;Primary;$getGlobalVar[emoji];true]
-    $addButton[packs-$authorID;Packs;Primary;🛒]
-    
-    $if[$isButton!=true;
-      ${sendMessage()}
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $jsonLoad[allSkinPacks;$getGlobalVar[shopItems]]
+    $jsonLoad[userPacks;$env[userProfile;userPacks]]
+    $jsonLoad[userPacksKeys;$jsonKeys[userPacks]]
+  `
+}
+
+function buttonCheck (buttonID) {
+  return `
+    $arrayLoad[btn;-;$customID]
+    $onlyIf[$and[$includes[$env[btn;0];${buttonID}];$includes[$env[btn;1];$authorID]];$callFunction[notYourBTN]]
+  `
+}
+
+function balEmbed(choice) {
+  return `
+    $if[${choice == "coins"};
+      $addField[💰 __Coins:__;**\`$separateNumber[$env[userProfile;MC];.]\`$getGlobalVar[emoji]**]
     ;
-      $!editMessage[$channelID;$messageID;${embed()}]
+      ${userPacks()}
+      $addField[🛒 __Purchased Skinpacks:__;$codeBlock[$get[desc]]]
     ]
-  `
-}
 
-function sendMessage() {
-  return `$let[msg;$sendMessage[$channelID;${embed()};true]]`
-}
-
-function embed() {
-  return `
-    $addField[💰 __Coins:__;**\`$separateNumber[$env[userProfile;MC];.]\`$getGlobalVar[emoji]**]
     $title[__BALANCE__]
     $getGlobalVar[author]
     $thumbnail[$userAvatar]
     $color[ffd700]
+
+    $addActionRow
+    $addButton[coins-$authorID;Coins;Primary;$getGlobalVar[emoji];${choice == "coins"}]
+    $addButton[packs-$authorID;Packs;Primary;🛒;${choice == "packs"}]
   `
 }
+
 
 function timeout() {
   return `
     $setTimeout[
-      $disableButtonsOf[$channelID;$get[msg]]
+      $disableButtonsOf[$channelID;$get[msgid]]
     ;${CD};BAL-$authorID]
   ` 
 }

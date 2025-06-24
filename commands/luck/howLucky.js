@@ -18,7 +18,6 @@ module.exports = ({
 
       $arrayForEach[data;d;
         $if[$get[stop];;
-          $log[loop]
           $if[$get[r]>=$env[d;num];
             $!jsonSet[userProfile;limiters;luckDesc;$env[d;desc]]
             $let[stop;true]

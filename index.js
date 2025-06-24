@@ -922,7 +922,7 @@ client.functions.add({
   name: "cooldown",
   params: ["time"],
   code: `
-    $if[$env[userProfile;devMode];;
+    $if[$env[userProfile;devMode]!=false;;
       $userCooldown[$commandName;$env[time];$callFunction[cooldownSchema;$commandName]]
     ]
   `
