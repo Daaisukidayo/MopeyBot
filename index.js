@@ -587,7 +587,7 @@ DB.variables({
         "br",
         "wg",
         "lavatoucan",
-        "demonfish",
+        "demonpufferfish",
         "blackrhino",
         "whitegiraffe",
       ],

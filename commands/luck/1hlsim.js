@@ -17,6 +17,7 @@ module.exports = [{
     $arrayLoad[snoraValues;, ;$jsonValues[snora;, ]]
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $jsonLoad[total;{}]
+    $arrayLoad[limitAnimals;,;Markhor,Keel-Billed Toucan,Choco Toucan]
 
     $loop[140;
       $arrayForEach[raresData;rare;
@@ -30,9 +31,11 @@ module.exports = [{
             $!jsonSet[total;$get[name];1]
           ;
             $!jsonSet[total;$get[name];$math[$env[total;$get[name]] + 1]]
-            $if[$env[total;Markhor]>3;             $!jsonSet[total;Markhor;3]             ]
-            $if[$env[total;Keel-Billed Toucan]>3;  $!jsonSet[total;Keel-Billed Toucan;3]  ]
-            $if[$env[total;Choco Toucan]>3;        $!jsonSet[total;Choco Toucan;3]        ]
+            $arrayForEach[limitAnimals;animal;
+              $if[$env[total;$env[animal]]>3;
+                $!jsonSet[total;$env[animal];3]
+              ]
+            ]
           ]
         ]
       ]
@@ -41,28 +44,26 @@ module.exports = [{
     $let[totalPoints;0]
     $let[msgdesc;]
 
-    $jsonLoad[totalEntr;$jsonEntries[total]]
-    $arrayForEach[totalEntr;entry;
-      $arrayForEach[animalsKeys;animal;
-        $let[rareName;${addName(`$env[animal]`)}]
-        $let[rareEmoji;${addEmoji(`$env[animal]`)}]
+    $jsonLoad[fullNameMap;{}]
+    $arrayForEach[animalsKeys;animal;
+      $jsonSet[fullNameMap;$env[animals;$env[animal];fullName];$env[animal]]
+    ]
 
-        $if[$get[rareName]==$env[entry;0];
-          $let[msgdesc;$get[msgdesc] $get[rareEmoji]\`$env[entry;1]\`]
-          $letSum[totalRares;$env[entry;1]]
-        ]
-      ]
+    $jsonLoad[totalEntr;$jsonEntries[total]]
+
+    $arrayForEach[totalEntr;entry;
+      $let[animal;$env[fullNameMap;$env[entry;0]]]
+      $let[rareEmoji;${addEmoji(`$get[animal]`)}]
+      $let[msgdesc;$get[msgdesc] $get[rareEmoji]\`$env[entry;1]\`]
+      $letSum[totalRares;$env[entry;1]]
 
       $arrayForEach[raresMap;obj;
         $jsonLoad[raresInCategory;$env[obj;rares]]
-        $if[$arrayIncludes[raresInCategory;$arrayAt[snoraKeys;$arrayIndexOf[snoraValues;$env[entry;0]]]];
+        $if[$arrayIncludes[raresInCategory;$tolowercase[$get[animal]]];
           $letSum[totalPoints;$math[$env[obj;points] * $env[entry;1]]]
         ]
       ]
     ]
-
-
-
 
     $color[$getGlobalVar[luckyColor]]
     $description[# $get[msgdesc]]
