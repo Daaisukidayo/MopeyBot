@@ -55,6 +55,18 @@ module.exports = [{
 
 // Functions
 
+function onCatchSuccess() {
+  return `
+    $let[cat;$arrayAt[categories;$get[p]]]
+    ${colorAndCoins()}
+    ${thumbnailAndArray()}
+    ${content()}
+    $callFunction[sumMC;$get[MC]]
+    ${embed()}
+  `
+}
+
+
 function colorAndCoins() {
     return `
     $let[color;$env[raresGroup;category_$get[p];color]]
@@ -108,15 +120,7 @@ function catchingRare() {
       $let[caught;true]
 
       ${baseChance("p")}
-      ${colorAndCoins()}
-      $let[cat;$arrayAt[categories;$get[p]]]
-      ${thumbnailAndArray()}
-      ${content()}
-
-      $callFunction[sumMC;$get[MC]]
-
-      ${sm()}
-
+      ${onCatchSuccess()}
     ;
       $let[i;$get[li]]
 
@@ -129,27 +133,19 @@ function catchingRare() {
 
           $jsonSet[userProfile;caughtRareCategories;$get[rtMode];$get[p];$sum[$env[userProfile;caughtRareCategories;$get[rtMode];$get[p]];1]]
 
-          $let[cat;$arrayAt[categories;$get[p]]]
-
-          ${colorAndCoins()}
-          ${thumbnailAndArray()}
-          ${content()}
-
-          $callFunction[sumMC;$get[MC]]
-
-          ${sm()}
+          ${onCatchSuccess()}
         ]
         $let[i;$math[$get[i] - 1]]
       ]
 
       $if[$get[caught]==false;
-        ${sm()}
+        ${embed()}
       ]
     ]
   `
 }
 
-function sm() {
+function embed() {
   return `
     $sendMessage[$channelID;
       $color[$get[color]]
@@ -162,7 +158,7 @@ function sm() {
 }
 
 function rep() {
-return `$advancedReplace[$env[l10n;raretry;contents;content$env[i];$get[l10n]];\n\\];;\\[\n;;\n;--;",;;";]`
+  return `$advancedReplace[$env[l10n;raretry;contents;content$env[i];$get[l10n]];\n\\];;\\[\n;;\n;--;",;;";]`
 }
 
 function raretryData() {
