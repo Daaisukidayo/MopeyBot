@@ -17,25 +17,19 @@ module.exports = ({
       $jsonLoad[data;${data()}]
 
       $arrayForEach[data;d;
-        $if[$get[stop];;
-          $if[$get[r]>=$env[d;num];
-            $!jsonSet[userProfile;limiters;luckDesc;$env[d;desc]]
-            $let[stop;true]
-          ]
+        $if[$get[r]>=$env[d;num];
+          $!jsonSet[userProfile;limiters;luckDesc;$env[d;desc]]
+          
+          $let[r;$env[userProfile;limiters;HLRandom]]
+          $getGlobalVar[author]
+          $description[## 🍀 Today your luck is $get[r]%, $env[userProfile;limiters;luckDesc]]
+          $color[$getGlobalVar[luckyColor]]
+          $footer[The result updates every day at 0 AM UTC+0]
+          $sendMessage[$channelID]
+          $setUserVar[userProfile;$env[userProfile]]
         ]
       ]
     ]
-
-    $let[r;$env[userProfile;limiters;HLRandom]]
-
-    
-    $sendMessage[$channelID;
-        $getGlobalVar[author]
-        $description[## 🍀 Today your luck is $get[r]%, $env[userProfile;limiters;luckDesc]]
-        $color[$getGlobalVar[luckyColor]]
-        $footer[The result updates every day at 0 AM UTC+0]
-    ]
-    $setUserVar[userProfile;$env[userProfile]]
   `
 })
 

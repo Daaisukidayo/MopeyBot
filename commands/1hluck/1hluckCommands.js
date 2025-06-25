@@ -72,8 +72,10 @@ module.exports = [
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $arrayLoad[allRares]
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    $arrayLoad[caught]
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
+
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $jsonLoad[SNORA;$getGlobalVar[SNORA]]
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
     
@@ -84,7 +86,6 @@ module.exports = [
     
     $let[points;0]
     
-    $arrayLoad[caught; ;]
     
     $arrayForEach[raresMap;rareMap;
       $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
@@ -99,21 +100,29 @@ module.exports = [
         $arrayForEach[raresMap;rareMap;
           $jsonLoad[raresFromRareMap;$env[rareMap;rares]]
           $if[$arrayIncludes[raresFromRareMap;$env[caughtRare]];
-            $if[$or[$env[userProfile;1hl;settings;infiniteCommons];$env[rareMap;category]!=common];
+
+            $let[skipCommonCheck;$or[$env[userProfile;1hl;settings;infiniteCommons];$env[rareMap;category]!=common]]
+
+            $if[$get[skipCommonCheck];
               ${rares()}
             ;
-              $switch[$env[caughtRare];
-                $case[markhor;          $let[com;mar]     $let[rareName;Markhor]            ]
-                $case[mar;              $let[com;mar]     $let[rareName;Markhor]            ]
-                $case[chocotoucan;      $let[com;cht]     $let[rareName;Choco Toucan]       ]
-                $case[cht;              $let[com;cht]     $let[rareName;Choco Toucan]       ]
-                $case[keelbilledtoucan; $let[com;kbt]     $let[rareName;Keel-Billed Toucan] ]
-                $case[kbt;              $let[com;kbt]     $let[rareName;Keel-Billed Toucan] ]
-              ]
-              $let[common;$getuservar[1h$get[com]]]
-              $if[$get[common]<3;
+              $if[$includes[-$env[caughtRare]-;-markhor-;-mar-];
+                $let[com;mar]
+                $let[rareName;Markhor]
+              ;
+              $if[$includes[-$env[caughtRare]-;-chocotoucan-;-cht-];
+                $let[com;cht]
+                $let[rareName;Choco Toucan]
+              ;
+              $if[$includes[-$env[caughtRare]-;-keelbilledtoucan-;-kbt-];
+                $let[com;kbt]
+                $let[rareName;Keel-Billed Toucan]
+              ]]]
+
+              $let[commonCount;$getuservar[1h$get[com]]]
+              $if[$get[commonCount]<3;
                 ${rares()}
-                $setuservar[1h$get[com];$math[$get[common] + 1]]
+                $setuservar[1h$get[com];$math[$get[commonCount] + 1]]
                 $if[$getuservar[1h$get[com]]==3;
                   $let[content;# You got all $get[rareName]s!]
                 ]
@@ -370,25 +379,22 @@ module.exports = [
   allowedInteractionTypes: ["button", "modal"],
   description: "history buttons",
   code: `
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
-    $let[butid;$splitText[0]]
+    $arrayLoad[btn;-;$customID]
+    $let[butid;$env[btn;0]]
 
-    $if[$get[butid]==historyPages;
+    $if[$includes[$env[btn;0];historyPages];
       $modal[customPage-$authorid;Custom page]
       $addTextInput[page-$authorid;Enter page;Short;true;;;1;5]
       $showModal
       $stop
     ]
-
-    $onlyIf[$includes[$get[butid];historyPageLeft;historyPageRight;customPage]]
+    $onlyIf[$and[$includes[$get[butid];historyPageLeft;historyPageRight;customPage;deleteHistoryPage];$includes[$env[btn;1];$authorID]];$callFunction[notYourBTN]]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
-    $jsonLoad[history;$arrayReverse[history]]
 
     $let[msg;$messageID]
-    $let[page;$splitText[2]]
+    $let[page;$env[btn;2]]
 
     $if[$get[butid]==historyPageLeft;
       $letSub[page;1]
@@ -420,8 +426,25 @@ module.exports = [
         $let[page;$arrayLength[history]]
       ]
     ]
+    $if[$get[butid]==deleteHistoryPage;
+      $!arraySplice[history;$math[$arrayLength[history] - $get[page]];1]
+      $!jsonSet[userProfile;1hl;history;$env[history]]
+      $setUserVar[userProfile;$env[userProfile]]
+      $if[$get[page]>$arrayLength[history];
+        $let[page;$arrayLength[history]]
+      ]
+    ]
 
     $!stopTimeout[1HLHISTORY-$authorID]
+    $jsonLoad[history;$arrayReverse[history]]
+
+    $if[$arrayAt[history;0]==;
+      $description[# No history]
+      $getGlobalVar[author]
+      $color[$getGlobalVar[luckyColor]]
+      $!editMessage[$channelID;$get[msg]]
+      $stop
+    ]
 
     ${historyEmbed()}
     $!editMessage[$channelID;$get[msg]]
@@ -809,7 +832,6 @@ function togetherEnd () {
   `
 }
 
-
 function historyTimeout () {
   return `
     $setTimeout[
@@ -834,6 +856,10 @@ function historyEmbed() {
       $addButton[historyPageLeft-$authorID-$get[page];;Primary;⬅️]
       $addButton[historyPages-$authorID;Page $get[page]/$arrayLength[history];Primary;🔎]
       $addButton[historyPageRight-$authorID-$get[page];;Primary;➡️]
+    ]
+    $if[$env[history;0]!=;
+      $addActionRow
+      $addButton[deleteHistoryPage-$authorID-$get[page];Delete This Page;Danger;🗑️]
     ]
   `
 }
