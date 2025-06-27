@@ -8,7 +8,7 @@ module.exports = [{
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
-    $let[desc;$codeBlock[[\\] - required argument(s) \n{} - required option \n() - optional argument(s) or option \n<> — input data type, must differ from example]]
+    $let[desc;$codeBlock[[\\] - required argument(s) \n{} - required option \n() - optional argument(s) or option \n<> — optional data type]]
     
     $let[al;📚 Aliases:]
     $let[rel;📖 Related:]

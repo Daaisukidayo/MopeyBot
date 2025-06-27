@@ -22,7 +22,7 @@ module.exports = [{
       $let[rChance;$randomNumber[1;$math[$get[att] + 1]]]
 
         $if[$get[anChance]>=$get[rChance];
-          $let[desc;$get[desc]\n### $env[rare;content] | \`$get[anChance]/$get[att] ($round[$math[$get[anChance] / $get[att] * 100];1]%)\` | +$env[rare;MC]$getGlobalVar[emoji]]
+          $let[desc;$get[desc]\n### $env[rare;content] | \`$get[anChance]/$get[att] ($round[$math[$get[anChance] / $get[att] * 100];2]%)\` | +$env[rare;MC]$getGlobalVar[emoji]]
           $letSum[total;$env[rare;MC]]
         ]
     ]

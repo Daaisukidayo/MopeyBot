@@ -27,7 +27,7 @@ module.exports = [{
       $let[desc;]
 
       $addActionRow
-      $addStringSelectMenu[new-$authorID;Choose a skin:]
+      $addStringSelectMenu[new-$authorID;Select a skin:]
 
       ${loop()}
       ${embed()}
@@ -42,7 +42,7 @@ module.exports = [{
 
       $getGlobalVar[author]
       $color[$getGlobalVar[defaultColor]]
-      $title[Choose a skinpack]
+      $title[Select a skinpack]
       ${menu()}
 
     ;$onlyIf[$arrayIncludes[animalsNames;$get[arg]];
@@ -56,7 +56,7 @@ module.exports = [{
       $let[desc;]
 
       $addActionRow
-      $addStringSelectMenu[animal-$authorID;Choose a skin:]
+      $addStringSelectMenu[animal-$authorID;Select a skin:]
 
       ${loop()}
       ${embed()}
@@ -246,15 +246,8 @@ function loop() {
       $let[animalVarCode;$env[animals;$get[animal];variants;$get[num];vCode]] 
 
       $arrayForEach[allVariants;variant;
-        $if[$env[variant;req]==null;
-          $let[hasPack;true]
-        ;
-          $if[$env[userProfile;userPacks;$env[variant;req]]==;
-            $let[hasPack;false]
-          ;
-            $let[hasPack;true]
-          ]
-        ]
+        $let[hasPack;$or[$env[variant;req]==null;$env[userProfile;userPacks;$env[variant;req]]!=]]
+
         $if[$and[$env[variant;v]==$get[animalVarCode];$get[hasPack]];
           $let[animalName;$env[animals;$get[animal];variants;$get[num];name]]
           $let[animalTrig;$get[num]+$env[animals;$get[animal];trig]]
@@ -273,7 +266,7 @@ function embed() {
   return `
     $description[# $get[desc];0]
     $getGlobalVar[author]
-    $footer[Choose a skin for the animal you want to equip!]
+    $footer[Select a skin for the animal you want to equip!]
     $title[All available skins for \`$env[animals;$get[animal];fullName]\`:;;0]
     $color[$getGlobalVar[defaultColor];0]
     
