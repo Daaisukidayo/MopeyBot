@@ -8,8 +8,6 @@ module.exports = [{
     $callFunction[checking]
     $onlyIf[$guildID!=;## You can't start the game in DMs!]
     $onlyIf[$env[userProfile;testerMode]]
-
-    $disableConsoleErrors
     
     $try[
       $getEmbeds[$env[userProfile;play;ChannelID];$env[userProfile;play;MessageID]]
@@ -49,14 +47,13 @@ module.exports = [{
   allowedInteractionTypes: ["button"],
   description: "upgraded",
   code: `
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
-    $onlyIf[$splitText[2]==upgrade]
+    $arrayLoad[btn;-;$customID]
+    $onlyIf[$includes[$env[btn;2];upgrade]]
+    $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
+
+    $let[animal;$env[btn;0]]
     ${jsonLoader()}
     ${hasStarted()}
-
-
-    $let[animal;$splitText[0]]
     $onlyIf[$arrayIncludes[animalsKeys;$get[animal]]]
 
     $let[bonus;50]
@@ -71,7 +68,8 @@ module.exports = [{
     $!jsonSet[userProfile;play;MC;$math[$get[bonus] + $env[userProfile;play;MC]]]
     $!jsonSet[userProfile;play;currentAnimal;$get[emoji] $get[animalName]]
     $!jsonSet[userProfile;play;color;$get[color]]
-    $!jsonSet[userProfile;play;biome;$get[biome]]
+    $!jsonSet[userProfile;play;currentBiome;$get[biome]]
+    $!jsonSet[userProfile;play;animalBiome;$get[biome]]
 
     $thumbnail[$get[thumbnail]]
     $color[$get[color]]
@@ -82,6 +80,7 @@ module.exports = [{
 
     ${actionMenu()}
     ${exitButton()}
+    $!editMessage[$channelID;$messageID]
     $deferUpdate
   `
 },{
@@ -89,26 +88,27 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu", "button"],
   description: "choose upgrade",
   code: `
-    $let[IDS;$if[$isButton;$customID;$selectMenuValues]]
-    $onlyIf[$includes[$get[IDS];up-;down-;update-;upgrade-;downgrade-]]
-    $onlyIf[$includes[$get[IDS];$authorID];$callFunction[notYourBTN]]
-    $deferUpdate
+    $arrayLoad[btn;-;$if[$isButton;$customID;$selectMenuValues]]
+    $onlyIf[$includes["$env[btn;0]";"up";"down";"update";"upgrade";"respawn"]]
+    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
+
+    $!jsonSet[userProfile;play;isDead;false]
     
-    $if[$includes[$get[IDS];upgrade-;up-];
+    $if[$includes["$env[btn;0]";"upgrade";"up"];
       $!jsonSet[userProfile;play;tier;$math[$env[userProfile;play;tier] + 1]]
       $if[$env[userProfile;play;tier]>17;
         $!jsonSet[userProfile;play;tier;1]
       ]
     ]
-    $if[$includes[$get[IDS];downgrade-;down-];
+    $if[$includes["$env[btn;0]";"down"];
       $!jsonSet[userProfile;play;tier;$math[$env[userProfile;play;tier] - 1]]
       $if[$env[userProfile;play;tier]<1;
         $!jsonSet[userProfile;play;tier;17]
       ]
     ]
-    $if[$includes[$get[IDS];up-;down-];
+    $if[$includes["$env[btn;0]";"up";"down"];
       $!jsonSet[userProfile;play;XP;$env[XPreq;$env[userProfile;play;tier];0]]
     ]
 
@@ -120,23 +120,152 @@ module.exports = [{
     $color[$env[userProfile;play;color]]
     $!editMessage[$channelID;$messageID]
     $setUserVar[userProfile;$env[userProfile]]
-    
+    $deferUpdate
   `
 },{
   type: "interactionCreate",
   allowedInteractionTypes: ["selectMenu"],
   description: "search food",
   code: `
-    $textSplit[$selectMenuValues;-]
-    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
-    $onlyIf[$splitText[0]==searchFood]
+    $arrayLoad[btn;-;$selectMenuValues]
+    $onlyIf[$includes["$env[btn;0]";"searchFood"]]
+    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
     ${jsonLoader()}
     ${hasStarted()}
 
     $let[xp;$round[$math[$env[XPreq;$env[userProfile;play;tier];1] / $randomNumber[3;6;true]]]]
 
     $!jsonSet[userProfile;play;XP;$math[$env[userProfile;play;XP] + $get[xp]]]
-    $description[## You ate some food and gained \`$separateNumber[$get[xp];,]\`XP \n-# $env[userProfile;play;currentAnimal] • $separateNumber[$env[userProfile;play;XP];,]XP • $env[userProfile;play;MC]$getGlobalVar[emoji]]
+    $description[## You ate some food and gained \`$separateNumber[$get[xp];,]\`XP \n${animalStats()}]
+    $getGlobalVar[author]
+    $color[$env[userProfile;play;color]]
+    ${actionMenu()}
+    ${exitButton()}
+    $!editMessage[$channelID;$messageID]
+    $setUserVar[userProfile;$env[userProfile]]
+    $deferUpdate
+  `
+},{
+  type: 'interactionCreate',
+  allowedInteractionTypes: ['selectMenu'],
+  description: 'downgrading',
+  code: `
+    $arrayLoad[btn;-;$selectMenuValues]
+    $onlyIf[$includes["$env[btn;0]";"downgrade";"fsearchFood"]]
+    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
+
+    ${jsonLoader()}
+    $!jsonSet[playData;$env[userProfile;play]]
+
+    $let[currentBiome;$env[playData;currentBiome]]
+    $let[animalBiome;$env[playData;animalBiome]]
+
+    $let[animLandBiome;$checkCondition[$get[animalBiome]==Land]]
+    $let[animDesertBiome;$checkCondition[$get[animalBiome]==Desert]]
+    $let[animVolcanoBiome;$checkCondition[$get[animalBiome]==Volcano]]
+    $let[animOceanBiome;$checkCondition[$get[animalBiome]==Ocean]]
+    $let[animArcticBiome;$checkCondition[$get[animalBiome]==Arctic]]
+    $let[animForestBiome;$checkCondition[$get[animalBiome]==Forest]]
+
+    $let[isCurrLandBiome;$checkCondition[$get[currentBiome]==Land]]
+    $let[isCurrDesertBiome;$checkCondition[$get[currentBiome]==Desert]]
+    $let[isCurrVolcanoBiome;$checkCondition[$get[currentBiome]==Volcano]]
+    $let[isCurrOceanBiome;$checkCondition[$get[currentBiome]==Ocean]]
+    $let[isCurrArcticBiome;$checkCondition[$get[currentBiome]==Arctic]]
+    $let[isCurrForestBiome;$checkCondition[$get[currentBiome]==Forest]]
+
+    $if[$env[btn;0]==downgrade;
+      $if[$and[$or[$get[animLandBiome];$get[animDesertBiome];$get[animArcticBiome];$get[animForestBiome];$get[animOceanBiome]];$or[$get[isCurrVolcanoBiome];$get[isCurrDesertBiome]]];
+        
+        $c[? If animal belongs to Land, Desert, Forest or Arctic and current biome is Volcano or Desert]
+        $let[desc;## You chose to downgrade by diving into lava!]
+
+      ;$if[$and[$or[$get[animLandBiome];$get[animDesertBiome];$get[animArcticBiome];$get[animForestBiome];$get[animVolcanoBiome]];$get[isCurrOceanBiome]];
+        
+        $c[? If animal belongs to Land, Desert, Arctic, Forest or Volcano and current biome is Ocean]
+        $let[desc;## You chose to downgrade by surrendering to the deep ocean predators!]
+
+      ;$if[$and[$get[animOceanBiome];$or[$get[isCurrLandBiome];$get[isCurrVolcanoBiome];$get[isCurrOceanBiome];$get[isCurrForestBiome];$get[isCurrArcticBiome];$get[isCurrDesertBiome]]];
+        
+        $c[? If animal belongs to Ocean and current biome is Land, Ocean, Forest, Arctic or Desert]
+        $let[desc;## You chose to downgrade by suffocating on land!]
+
+      ;$if[$and[$get[animVolcanoBiome];$or[$get[isCurrLandBiome];$get[isCurrOceanBiome];$get[isCurrForestBiome];$get[isCurrArcticBiome];$get[isCurrDesertBiome]]];
+        
+        $c[? If animal belongs to Volcano and current biome is Land, Ocean, Forest, Arctic or Desert]
+        $let[desc;## You chose to downgrade by running out of lava!]
+
+      ;$if[$and[$get[animVolcanoBiome];$get[isCurrVolcanoBiome]];
+        
+        $c[? If animal belongs to Volcano and current biome is Volcano]
+        $let[desc;## You chose to downgrade by $randomText[giving yourself to a predator;giving everyone bites]!]
+
+      ;$if[$and[$or[$get[animLandBiome];$get[animArcticBiome];$get[animForestBiome]];$or[$get[isCurrLandBiome];$get[isCurrArcticBiome];$get[isCurrForestBiome]]];
+        
+        $c[? If animal belongs to Land, Arctic or Forest and current biome is Land, Arctic or Forest]
+        $let[desc;## You chose to downgrade by $randomText[giving yourself to a predator;running out of water]!]
+
+      ; 
+        $let[desc;## ???]
+      ]]]]]]
+
+    ]
+
+    $if[$env[btn;0]==fsearchFood;
+      $let[desc;## ???]
+    ]
+
+    $!jsonSet[playData;isDead;true]
+    $!jsonSet[playData;XP;$floor[$math[$env[playData;XP] / 3]]]
+
+    $jsonLoad[xpReq;${XPReqForUpg()}]
+    $let[XP;$env[playData;XP]]
+
+    $loop[17;
+      $let[value1;$env[xpReq;$env[i];0]]
+      $let[value2;$env[xpReq;$env[i];1]]
+
+      $if[$and[$get[XP]>=$get[value1];$get[XP]<$get[value2]];
+        $!jsonSet[playData;tier;$env[i]]
+        $break
+      ]
+    ;i;desc]
+
+    $!jsonSet[userProfile;play;$env[playData]]
+    $setUserVar[userProfile;$env[userProfile]]
+
+    $color[$getGlobalVar[errorColor]]
+    $getGlobalVar[author]
+    $description[$get[desc]]
+    
+    $addActionRow
+    $addButton[respawn-$authorID;Respawn;Success]
+    ${exitButton()}
+
+    $!editMessage[$channelID;$messageID]
+    $deferUpdate
+  `
+},{
+  type: 'interactionCreate',
+  allowedInteractionTypes: ['selectMenu'],
+  code: `
+    $arrayLoad[btn;-;$selectMenuValues]
+    $onlyIf[$includes[$env[btn];moveto_]]
+    $onlyIf[$includes[$env[btn];play]]
+    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
+
+    ${jsonLoader()}
+    ${hasStarted()}
+
+    $arrayLoad[btn;_;$env[btn;0]]
+
+    $let[biome;$env[btn;1]]
+    $let[color;$env[biomeColors;$get[biome]]]
+
+    $!jsonSet[userProfile;play;currentBiome;$get[biome]]
+    $!jsonSet[userProfile;play;color;$get[color]]
+
+    $description[## Successfully moved to __$get[biome]__!\n${animalStats()}]
     $getGlobalVar[author]
     $color[$env[userProfile;play;color]]
     ${actionMenu()}
@@ -150,9 +279,9 @@ module.exports = [{
   allowedInteractionTypes: ["button"],
   description: "exit",
   code: `
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
-    $onlyIf[$includes[$splitText[0];messagemissing;quit]]
+    $arrayLoad[btn;-;$customid]
+    $onlyIf[$includes[$env[btn];messagemissing;quit]]
+    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
 
@@ -163,9 +292,7 @@ module.exports = [{
       $!editMessage[$channelID;$messageID]
     ]
 
-    $disableConsoleErrors
-
-    $if[$splitText[0]==messagemissing;
+    $if[$env[btn;0]==messagemissing;
 
       $!editMessage[$channelID;$messageID;
         $description[## You have been successfully disconnected from the game!\n-# Earned: $separatenumber[$env[userProfile;play;MC];,]$getGlobalVar[emoji]]
@@ -180,7 +307,7 @@ module.exports = [{
       ${removeAllProgress()}
     ]
     
-    $if[$and[$env[userProfile;play;MessageID]==$messageID;$splitText[0]==quit];
+    $if[$and[$env[userProfile;play;MessageID]==$messageID;$env[btn;0]==quit];
 
       $!editMessage[$channelID;$messageID;
         $description[## You have been successfully exited the game!\n-# Earned: $separatenumber[$env[userProfile;play;MC];,]$getGlobalVar[emoji]]
@@ -197,6 +324,17 @@ module.exports = [{
 
 // Functions 
 
+function animalStats() {
+  return `-# $env[userProfile;play;currentAnimal] • $separateNumber[$env[userProfile;play;XP];,]XP • $env[userProfile;play;MC]$getGlobalVar[emoji]`
+}
+
+function hasAllApex () {
+  return `
+    $jsonLoad[apex;$env[userProfile;play;apexes]]
+    $let[hasAllApex;$and[$env[apex;dragon];$env[apex;trex];$env[apex;phoenix];$env[apex;pterodactyl];$env[apex;kingCrab];$env[apex;yeti];$env[apex;land];$env[apex;dino];$env[apex;scorpion];$env[apex;sea];$env[apex;ice];$env[apex;blackDragon]]]
+  `
+}
+
 function hasStarted () {
   return `
     $onlyIf[$and[$env[userProfile;play;started];$env[userProfile;play;MessageID]==$messageID;$env[userProfile;play;ChannelID]==$channelID]]
@@ -206,11 +344,11 @@ function hasStarted () {
 function removeAllProgress() {
   return `
     $callFunction[sumMC;$env[userProfile;play;MC]]
-    $!jsonSet[userProfile;play;color; ]
+    $!jsonSet[userProfile;play;color;]
     $!jsonSet[userProfile;play;arenaTurn;0]
     $!jsonSet[userProfile;play;XP;0]
     $!jsonSet[userProfile;play;bitesInArena;0]
-    $!jsonSet[userProfile;play;OpponentBitesInArena;0]
+    $!jsonSet[userProfile;play;opponentBitesInArena;0]
     $!jsonSet[userProfile;play;MC;0]
     $!jsonSet[userProfile;play;started;false]
     $!jsonSet[userProfile;play;tier;0]
@@ -219,6 +357,8 @@ function removeAllProgress() {
     $!jsonSet[userProfile;play;GuildID;]
     $!jsonSet[userProfile;play;opponentAnimal;]
     $!jsonSet[userProfile;play;currentAnimal;]
+    $!jsonSet[userProfile;play;currentBiome;]
+    $!jsonSet[userProfile;play;animalBiome;]
     $!jsonSet[userProfile;play;isDead;false]
     ${removeAllApex()}
   `
@@ -247,7 +387,7 @@ function exitButton() {
     $addActionRow
     $addButton[quit-$authorID;Quit game;Danger;🔚]
 
-    $if[$env[userProfile;testerMode];
+    $if[$and[$env[userProfile;play;isDead]!=true;$env[userProfile;testerMode]];
       $addActionRow
       $addButton[up-$authorID-play;;Success;🔼]
       $addButton[update-$authorID-play;;Success;🔃]
@@ -361,25 +501,54 @@ function XPReqForUpg () {
 
 function actionMenu () {
   return `
+    $jsonLoad[playData;$env[userProfile;play]]
+    $let[curBiome;$env[playData;currentBiome]]
+    $let[failSFChance;50]
+    $let[RN;$randomNumber[1;101]]
+
     $addActionRow
     $addStringSelectMenu[actions-$authorID-play;Choose an action:]
-    $if[$env[userProfile;play;XP]>=$env[XPreq;$env[userProfile;play;tier];1];
-      $addOption[Upgrade yourself;Upgrade;upgrade-$authorID-play;⬆️]
+
+    $if[$env[playData;XP]>=$env[XPreq;$env[playData;tier];1];
+      $addOption[Upgrade;;upgrade-$authorID-play;⬆️]
     ;
-      $if[$env[userProfile;play;tier]<15;
-        $addOption[Search for food;Search food;searchFood-$authorID-play;🍴]
+      $if[$env[playData;tier]<15;
+        $if[$get[failSFChance]>$get[RN];
+          $addOption[Search for food;;fsearchFood-$authorID-play;🍴]
+        ;
+          $addOption[Search for food;;searchFood-$authorID-play;🍴]
+        ]
       ]
     ]
-    $if[$env[userProfile;play;tier]>=17; 		
-      $addOption[Hunt everyone;Hunt;hunt-$authorID-play;🗡️]
+    $if[$env[playData;tier]>=17; 		
+      $addOption[Hunt everyone;;hunt-$authorID-play;🗡️]
     ]
-    $if[$env[userProfile;play;tier]>=15;
-      $addOption[Go to arena;Arena;arena-$authorID-play;⚔️]
+    $if[$env[playData;tier]>=15;
+      $addOption[Arena;;arena-$authorID-play;⚔️]
     ]
-    $if[$env[userProfile;play;tier]>=12;
-      $addOption[Hunt rares;Rarehunt;rarehunt-$authorID-play;🔪]
+    $addOption[Downgrade;;downgrade-$authorID-play;⬇️]
+
+    $addActionRow
+    $addStringSelectMenu[moveto-$authorID-play;Switch biome]
+
+    $if[$get[curBiome]!=Land;
+      $addOption[Land;;moveto_Land-$authorID-play;⛰️]
     ]
-    $addOption[Downgrade yourself;Downgrade;downgrade-$authorID-play;⬇️]
-    
+    $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
+      $addOption[Desert;;moveto_Desert-$authorID-play;🏜️]
+    ]
+    $if[$and[$get[curBiome]!=Volcano;$get[curBiome]!=Ocean;$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Forest];
+      $addOption[Volcano;;moveto_Volcano-$authorID-play;🌋]
+    ]
+    $if[$and[$get[curBiome]!=Ocean;$get[curBiome]!=Volcano];
+      $addOption[Ocean;;moveto_Ocean-$authorID-play;🌊]
+    ]
+    $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
+      $addOption[Arctic;;moveto_Arctic-$authorID-play;❄️]
+    ]
+    $if[$and[$get[curBiome]!=Forest;$get[curBiome]!=Volcano];
+      $addOption[Forest;;moveto_Forest-$authorID-play;🌲]
+    ]
+
   `
 }
