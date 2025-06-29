@@ -133,7 +133,7 @@ module.exports = [{
     ${jsonLoader()}
     ${hasStarted()}
 
-    $let[xp;$round[$math[$env[XPreq;$env[userProfile;play;tier];1] / $randomNumber[3;6;true]]]]
+    $let[xp;$round[$math[$env[XPreq;$env[userProfile;play;tier];1] / $randomNumber[4;9;true]]]]
 
     $!jsonSet[userProfile;play;XP;$math[$env[userProfile;play;XP] + $get[xp]]]
     $description[## You ate some food and gained \`$separateNumber[$get[xp];,]\`XP \n${animalStats()}]
@@ -218,12 +218,11 @@ module.exports = [{
     $!jsonSet[playData;isDead;true]
     $!jsonSet[playData;XP;$floor[$math[$env[playData;XP] / 3]]]
 
-    $jsonLoad[xpReq;${XPReqForUpg()}]
     $let[XP;$env[playData;XP]]
 
     $loop[17;
-      $let[value1;$env[xpReq;$env[i];0]]
-      $let[value2;$env[xpReq;$env[i];1]]
+      $let[value1;$env[XPreq;$env[i];0]]
+      $let[value2;$env[XPreq;$env[i];1]]
 
       $if[$and[$get[XP]>=$get[value1];$get[XP]<$get[value2]];
         $!jsonSet[playData;tier;$env[i]]
