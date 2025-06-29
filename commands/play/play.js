@@ -73,7 +73,7 @@ module.exports = [{
 
     $thumbnail[$get[thumbnail]]
     $color[$get[color]]
-    $description[## You upgraded to __$get[emoji] $get[animalName]__!\n-# ${animalStats()}]
+    $description[## You upgraded to __$get[emoji] $get[animalName]__!\n${animalStats()}]
     $getGlobalVar[author]
 
     $setUserVar[userProfile;$env[userProfile]]
