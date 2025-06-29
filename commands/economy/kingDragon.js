@@ -19,38 +19,40 @@ module.exports = [{
 
     $c[King Dragons]
 
-    $let[luckKDs;$env[KDvariants;0;emoji] $env[KDvariants;1;emoji]]
+    $let[luckKDs;$env[KDvar;0;emoji] $env[KDvar;1;emoji]]
 
     $if[$env[userPacks;lockedSP]; 
-      $let[luckKDs;$get[luckKDs] $env[KDvariants;2;emoji] $env[KDvariants;3;emoji] $env[KDvariants;4;emoji] $env[KDvariants;5;emoji] $env[KDvariants;6;emoji]]
+      $let[luckKDs;$get[luckKDs] $env[KDvar;2;emoji] $env[KDvar;3;emoji] $env[KDvar;4;emoji] $env[KDvar;5;emoji] $env[KDvar;6;emoji]]
     ]
     
     $if[$env[userPacks;storefrontSP]; 
-      $let[luckKDs;$get[luckKDs] $env[KDvariants;7;emoji]]
+      $let[luckKDs;$get[luckKDs] $env[KDvar;7;emoji]]
     ]
 
     $if[$env[userPacks;goldenSP]; 
-      $let[luckKDs;$get[luckKDs] $env[KDvariants;8;emoji]]
+      $let[luckKDs;$get[luckKDs] $env[KDvar;8;emoji]]
     ]
 
     $c[Black Dragons]
 
-    $let[normalBDs;$env[BDvariants;0;emoji] $env[BDvariants;1;emoji]]
+    $let[normalBDs;$env[BDvar;0;emoji] $env[BDvar;1;emoji]]
     
     $if[$get[lsp];
-      $let[normalBDs;$get[normalBDs] $env[BDvariants;2;emoji]]
+      $let[normalBDs;$get[normalBDs] $env[BDvar;2;emoji]]
     ]
     $if[$get[gsp];
-      $let[normalBDs;$get[normalBDs] $env[BDvariants;3;emoji]]
+      $let[normalBDs;$get[normalBDs] $env[BDvar;3;emoji]]
     ]
     $if[$get[leg]; 
-      $let[normalBDs;$get[normalBDs] $env[BDvariants;4;emoji]]
+      $let[normalBDs;$get[normalBDs] $env[BDvar;4;emoji]]
     ]
 
     $let[r;1000]
     $if[$env[userProfile;devMode];
       $let[r;5]
     ]
+
+
 
     $c[Embed]
 
@@ -86,18 +88,18 @@ module.exports = [{
 
     $if[$randomNumber[1;101]>=40;
 
-      $let[normalKDs;$env[KDvariants;0;emoji] $env[KDvariants;1;emoji]]
+      $let[normalKDs;$env[KDvar;0;emoji] $env[KDvar;1;emoji]]
 
       $if[$env[userPacks;lockedSP]; 
-        $let[normalKDs;$get[normalKDs] $env[KDvariants;2;emoji] $env[KDvariants;3;emoji] $env[KDvariants;4;emoji] $env[KDvariants;5;emoji] $env[KDvariants;6;emoji]]
+        $let[normalKDs;$get[normalKDs] $env[KDvar;2;emoji] $env[KDvar;3;emoji] $env[KDvar;4;emoji] $env[KDvar;5;emoji] $env[KDvar;6;emoji]]
       ]
       
       $if[$env[userPacks;storefrontSP]; 
-        $let[normalKDs;$get[normalKDs] $env[KDvariants;7;emoji]]
+        $let[normalKDs;$get[normalKDs] $env[KDvar;7;emoji]]
       ]
 
       $if[$env[userPacks;goldenSP]; 
-        $let[normalKDs;$get[normalKDs] $env[KDvariants;8;emoji]]
+        $let[normalKDs;$get[normalKDs] $env[KDvar;8;emoji]]
       ]
 
       $description[## Choose an upgrade:
@@ -106,13 +108,13 @@ module.exports = [{
       $callFunction[kdMenu;normal]
 
     ; 
-        
+
       $switch[$splitText[0];
-        $case[bds1; $let[BD;$env[BDvariants;0;name] $env[BDvariants;0;emoji]]]
-        $case[bds2; $let[BD;$env[BDvariants;1;name] $env[BDvariants;1;emoji]]]
-        $case[ab;   $let[BD;$env[BDvariants;2;name] $env[BDvariants;2;emoji]]]
-        $case[gbd;  $let[BD;$env[BDvariants;3;name] $env[BDvariants;3;emoji]]]
-        $case[legbd;$let[BD;$env[BDvariants;4;name] $env[BDvariants;4;emoji]]]
+        $case[bds1; $let[BD;$env[BDvar;0;name] $env[BDvar;0;emoji]]]
+        $case[bds2; $let[BD;$env[BDvar;1;name] $env[BDvar;1;emoji]]]
+        $case[ab;   $let[BD;$env[BDvar;2;name] $env[BDvar;2;emoji]]]
+        $case[gbd;  $let[BD;$env[BDvar;3;name] $env[BDvar;3;emoji]]]
+        $case[legbd;$let[BD;$env[BDvar;4;name] $env[BDvar;4;emoji]]]
       ]
 
       $let[content;$advancedReplace[$arrayRandomValue[content];{0};$randomNumber[1;12];{1};$arrayRandomValue[KDS]]]
@@ -146,10 +148,10 @@ module.exports = [{
     $let[MC;$randomNumber[3500;5001]]
     $callFunction[sumMC;$get[MC]]
 
-    $description[## You upgraded to __$env[KDvariants;$get[kd];name] $env[KDvariants;$get[kd];emoji]__ and you earned $separateNumber[$get[MC];,]$getGlobalVar[emoji]!]
+    $description[## You upgraded to __$env[KDvar;$get[kd];name] $env[KDvar;$get[kd];emoji]__ and you earned $separateNumber[$get[MC];,]$getGlobalVar[emoji]!]
     $getGlobalVar[author]
     $color[$env[colors;$get[kd]]]
-    $thumbnail[$env[KDvariants;$get[kd];img]]
+    $thumbnail[$env[KDvar;$get[kd];img]]
     $!editMessage[$channelID;$messageID]
 
     $setUserVar[userProfile;$env[userProfile]]
@@ -175,9 +177,9 @@ module.exports = [{
     $color[d61b4a]
     $getGlobalVar[author]
 
-    $thumbnail[$env[KDvariants;$get[kd];img]]
+    $thumbnail[$env[KDvar;$get[kd];img]]
     $footer[Rarity: 1/1000]
-    $description[## You were trying to upgrade to Black Dragon, but suddenly you saw a different animal, it was __$env[KDvariants;$get[kd];name] $env[KDvariants;$get[kd];emoji]__ by luck in your upgrade menu! You were surprised and happy! You also earned $separateNumber[$get[MC];,]$getGlobalVar[emoji] from playing!]
+    $description[## You were trying to upgrade to Black Dragon, but suddenly you saw a different animal, it was __$env[KDvar;$get[kd];name] $env[KDvar;$get[kd];emoji]__ by luck in your upgrade menu! You were surprised and happy! You also earned $separateNumber[$get[MC];,]$getGlobalVar[emoji] from playing!]
     $!editMessage[$channelID;$messageID]
 
     $setUserVar[userProfile;$env[userProfile]]
@@ -190,19 +192,19 @@ function bdMenu() {
     $addActionRow
     $addStringSelectMenu[bdmenu-$authorID;Choose an upgrade:]
 
-    $addOption[$env[BDvariants;0;name];;bds1-$authorID;$env[BDvariants;0;emoji]]
-    $addOption[$env[BDvariants;1;name];;bds2-$authorID;$env[BDvariants;1;emoji]]
+    $addOption[$env[BDvar;0;name];;bds1-$authorID;$env[BDvar;0;emoji]]
+    $addOption[$env[BDvar;1;name];;bds2-$authorID;$env[BDvar;1;emoji]]
     
     $if[$get[lsp];
-      $addOption[$env[BDvariants;2;name];;ab-$authorID;$env[BDvariants;2;emoji]]
+      $addOption[$env[BDvar;2;name];;ab-$authorID;$env[BDvar;2;emoji]]
     ]
     
     $if[$get[gsp];
-      $addOption[$env[BDvariants;3;name];;gbd-$authorID;$env[BDvariants;3;emoji]]
+      $addOption[$env[BDvar;3;name];;gbd-$authorID;$env[BDvar;3;emoji]]
     ]
 
     $if[$get[leg];
-      $addOption[$env[BDvariants;4;name];;legbd-$authorID;$env[BDvariants;4;emoji]]
+      $addOption[$env[BDvar;4;name];;legbd-$authorID;$env[BDvar;4;emoji]]
     ]
   `
 }
@@ -211,8 +213,8 @@ function jsons() {
   return `
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[userPacks;$env[userProfile;userPacks]]
-    $jsonLoad[BDvariants;$env[animals;blackDragon;variants]]
-    $jsonLoad[KDvariants;$env[animals;kingDragon;variants]]
+    $jsonLoad[BDvar;$env[animals;blackDragon;variants]]
+    $jsonLoad[KDvar;$env[animals;kingDragon;variants]]
     $arrayLoad[colors;  ;24272b 24272b 731C1F 9D3F0E 6E141A 5EB2FF B62323 DDAF02 f63413]
   `
 }

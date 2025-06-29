@@ -841,7 +841,7 @@ client.functions.add({
   `
 })
 
-// Embedds for rules
+// Embeds for rules
 
 client.functions.add({
   name: "rulesEmbeds",
@@ -934,11 +934,12 @@ client.functions.add({
 client.functions.add({
   name: "interFail",
   code: `
-  $jsonLoad[l;$readFile[json/localizations.json]]
-    $let[l10n;$getUserVar[l10n]]
-    $let[specialDesc2;$env[l;special;specialDesc2;$get[l10n]]] 
-  $ephemeral 
-  $interactionReply[$get[specialDesc2]]`
+    $jsonLoad[l;$readFile[json/localizations.json]]
+      $let[l10n;$getUserVar[l10n]]
+      $let[specialDesc2;$env[l;special;specialDesc2;$get[l10n]]] 
+    $ephemeral 
+    $interactionReply[$get[specialDesc2]]
+  `
 })
 
 // when other people trying to interact with author's button
@@ -946,11 +947,12 @@ client.functions.add({
 client.functions.add({
   name: "notYourBTN",
   code: `
-  $jsonLoad[l;$readFile[json/localizations.json]]
-    $let[l10n;$getUserVar[l10n]]
-    $let[specialDesc3;$env[l;special;specialDesc3;$get[l10n]]] 
-  $ephemeral
-  $interactionReply[$get[specialDesc3]]`
+    $jsonLoad[l;$readFile[json/localizations.json]]
+      $let[l10n;$getUserVar[l10n]]
+      $let[specialDesc3;$env[l;special;specialDesc3;$get[l10n]]] 
+    $ephemeral
+    $interactionReply[$get[specialDesc3]]
+  `
 })
 
 client.functions.add({
@@ -960,21 +962,21 @@ client.functions.add({
     $addActionRow
     $addStringSelectMenu[$env[cond]kdmenu-$authorID;Choose an upgrade:]
 
-    $addOption[$env[animals;kingDragon;variants;0;name];;$env[cond]kds1-$authorID;$env[animals;kingDragon;variants;0;emoji]]
-    $addOption[$env[animals;kingDragon;variants;1;name];;$env[cond]kds2-$authorID;$env[animals;kingDragon;variants;1;emoji]]
+    $addOption[$env[KDvar;0;name];;$env[cond]kds1-$authorID;$env[KDvar;0;emoji]]
+    $addOption[$env[KDvar;1;name];;$env[cond]kds2-$authorID;$env[KDvar;1;emoji]]
     
     $if[$env[userProfile;userPacks;lockedSP];
-      $addOption[$env[animals;kingDragon;variants;2;name];;$env[cond]ksh-$authorID;$env[animals;kingDragon;variants;2;emoji]]
-      $addOption[$env[animals;kingDragon;variants;3;name];;$env[cond]kst-$authorID;$env[animals;kingDragon;variants;3;emoji]]
-      $addOption[$env[animals;kingDragon;variants;4;name];;$env[cond]kr-$authorID;$env[animals;kingDragon;variants;4;emoji]]
-      $addOption[$env[animals;kingDragon;variants;5;name];;$env[cond]qc-$authorID;$env[animals;kingDragon;variants;5;emoji]]
-      $addOption[$env[animals;kingDragon;variants;6;name];;$env[cond]qs-$authorID;$env[animals;kingDragon;variants;6;emoji]]
+      $addOption[$env[KDvar;2;name];;$env[cond]ksh-$authorID;$env[KDvar;2;emoji]]
+      $addOption[$env[KDvar;3;name];;$env[cond]kst-$authorID;$env[KDvar;3;emoji]]
+      $addOption[$env[KDvar;4;name];;$env[cond]kr-$authorID;$env[KDvar;4;emoji]]
+      $addOption[$env[KDvar;5;name];;$env[cond]qc-$authorID;$env[KDvar;5;emoji]]
+      $addOption[$env[KDvar;6;name];;$env[cond]qs-$authorID;$env[KDvar;6;emoji]]
     ]
     $if[$env[userProfile;userPacks;goldenSP];
-      $addOption[$env[animals;kingDragon;variants;7;name];;$env[cond]gkd-$authorID;$env[animals;kingDragon;variants;7;emoji]]
+      $addOption[$env[KDvar;7;name];;$env[cond]gkd-$authorID;$env[KDvar;7;emoji]]
     ] 
     $if[$env[userProfile;userPacks;storefrontSP];
-      $addOption[$env[animals;kingDragon;variants;8;name];;$env[cond]qf-$authorID;$env[animals;kingDragon;variants;8;emoji]]
+      $addOption[$env[KDvar;8;name];;$env[cond]qf-$authorID;$env[KDvar;8;emoji]]
     ]
   `
 })
