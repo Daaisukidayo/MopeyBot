@@ -102,6 +102,7 @@ DB.variables({
       "XP": 0,
       "color": "",
       "currentBiome": "",
+      "animalBiome": "",
       "arenaTurn": 0,
       "bitesInArena": 0,
       "opponentBitesInArena": 0,
