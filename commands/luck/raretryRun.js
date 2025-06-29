@@ -71,7 +71,7 @@ function raresData () {
         "chance": "1",
         "atts": "250",
         "content": "${addContent("stinkyPig")} 🍀",
-        "MC": 3281
+        "MC": 3280
       },
       {
         "chance": "25",
@@ -328,7 +328,7 @@ function raresData () {
       {
         "chance": "28",
         "atts": "5000",
-        "content": "${addContent("goldenEagle")}",
+        "content": "${addContent("goldenEagle")} 🍀",
         "MC": 2360
       },
       {
