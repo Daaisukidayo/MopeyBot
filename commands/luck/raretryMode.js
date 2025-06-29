@@ -34,7 +34,7 @@ module.exports = [{
   type: "interactionCreate",
   allowedInteractionTypes: [ "button" ],
   code: `
-    $arrayLoad[btn;-;$selectMenuValues]
+    $arrayLoad[btn;-;$customID]
     $onlyIf[$includes[$env[btn;0];inferno;default;medium;hard;insane;impossible]]
     $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
 
