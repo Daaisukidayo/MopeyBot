@@ -81,7 +81,7 @@ function buttonsLoop(){
 
       $addButton[$toLowerCase[$env[mode]]-$authorID;$env[mode];Success;;$get[dis]]
       $letSum[q;1]
-    ;i;desc]
+    ]
   `
 }
 
