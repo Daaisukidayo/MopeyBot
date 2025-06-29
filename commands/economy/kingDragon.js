@@ -82,7 +82,7 @@ module.exports = [{
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     ${jsons()}
-    $arrayLoad[content;${content1()}]
+    $jsonLoad[content;${content1()}]
 
     $getGlobalVar[author]
 
@@ -221,15 +221,15 @@ function jsons() {
 
 function content1 () {
   return `
-  [
-    "but you got killed by teamers",
-    "but your internet fell off and you disconnected with {0} apexes away",
-    "but Mistik made an event so you lost your BD",
-    "but rares bullied and killed you",
-    "but you died by another BD",
-    "But you died by low lava",
-    "but there was a {1} in the server so you were killed"
-  \\]
+    [
+      "but you got killed by teamers",
+      "but your internet fell off and you disconnected with {0} apexes away",
+      "but Mistik made an event so you lost your BD",
+      "but rares bullied and killed you",
+      "but you died by another BD",
+      "But you died by low lava",
+      "but there was a {1} in the server so you were killed"
+    \\]
   `
 }
 
