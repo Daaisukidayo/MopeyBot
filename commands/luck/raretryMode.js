@@ -71,7 +71,7 @@ function embed() {
 
 function buttonsLoop(){
   return `
-    $let[q;0]
+    $let[q;0] 
     $arrayForEach[raretryModes;mode;
       $if[$math[$get[q] % 3]==0;
         $addActionRow
