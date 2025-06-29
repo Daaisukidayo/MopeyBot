@@ -325,7 +325,7 @@ DB.variables({
     Land: "#00ff3c",
     Desert: "#ffcc00",
     Volcano: "#ff0000",
-    Ocean: "#0000ff",
+    Ocean: "##3498db",
     Arctic: "#ffffff",
     Forest: "#006400"
   },
