@@ -314,7 +314,7 @@ module.exports = [
   `
 },{
   name: "settings",
-  aliases: ["set"],
+  aliases: ["sts"],
   type: "messageCreate",
   description: "settings",
   code: `
@@ -453,8 +453,7 @@ module.exports = [
     ${historyTimeout()}
   `
 },{
-  name: "createtogetherroom",
-  aliases: ["ctr"],
+  name: "party",
   type: "messageCreate",
   code: `
     $reply
@@ -462,19 +461,19 @@ module.exports = [
     $callFunction[checking]
     $onlyIf[$getChannelVar[participants]==;
       $author[✖️ Error]
-      $description[## Room already exist! Use another channel]
+      $description[## Party already exist! Use another channel]
       $color[$getGlobalVar[errorColor]]
     ]
 
     $onlyIf[$getUserVar[participating;$authorID;false]==false;
-      $author[✖️ Failed to create room]
+      $author[✖️ Failed to create Party]
       $description[## You're already participating somewhere else]
       $color[$getGlobalVar[errorColor]]
     ]
 
     $onlyIf[$getUserVar[1hstarted;$authorID;false]==false;
       $author[✖️ Error]
-      $description[## You have an active challenge! End it before creating a room!]
+      $description[## You have an active challenge! End it before creating a Party!]
       $color[$getGlobalVar[errorColor]]
     ]
     
@@ -497,7 +496,7 @@ module.exports = [
 
     $jsonLoad[participants;$getChannelVar[participants]]
 
-    ${roomExist()}
+    ${partyExist()}
 
     $onlyIf[$arrayIncludes[participants;$authorID]==false;
       $interactionReply[
@@ -511,7 +510,7 @@ module.exports = [
       $interactionReply[
         $ephemeral
         $author[✖️ Error]
-        $description[## You're already participating somewhere else]
+        $description[## You're participating somewhere else]
         $color[$getGlobalVar[errorColor]]
       ]
     ]
@@ -523,11 +522,11 @@ module.exports = [
         $color[$getGlobalVar[errorColor]]
       ]
     ]
-    $onlyIf[$arrayLength[participants]<=6;
+    $onlyIf[$math[$arrayLength[participants] + 1]<=6;
       $interactionReply[
         $ephemeral
         $author[✖️ Error]
-        $description[## Room is full]
+        $description[## Party is full]
         $color[$getGlobalVar[errorColor]]
       ]
     ]
@@ -552,7 +551,7 @@ module.exports = [
 
     $jsonLoad[participants;$getChannelVar[participants]]
 
-    ${roomExist()}
+    ${partyExist()}
 
     $onlyIf[$and[$arrayIncludes[participants;$authorID];$getUserVar[participating;$authorID;false]];
       $interactionReply[
@@ -567,7 +566,7 @@ module.exports = [
       $interactionReply[
         $ephemeral
         $author[✖️ Error]
-        $description[## Host can't quit room]
+        $description[## Host can't quit the Party]
         $color[$getGlobalVar[errorColor]]
       ]
     ]
@@ -593,7 +592,7 @@ module.exports = [
       $interactionReply[
         $ephemeral
         $author[✖️ Error]
-        $description[## Only host can end this room]
+        $description[## Only host can end the Party]
         $color[$getGlobalVar[errorColor]]
       ]
     ]
@@ -602,7 +601,7 @@ module.exports = [
 
     $jsonLoad[participants;$getChannelVar[participants]]
 
-    ${roomExist()}
+    ${partyExist()}
 
     $onlyIf[$and[$arrayIncludes[participants;$authorID];$getUserVar[participating;$authorID;false]];
       $interactionReply[
@@ -621,7 +620,7 @@ module.exports = [
     $!stopTimeout[MULTI1HL-$channelID]
     $let[msgid;$messageID]
 
-    $description[# ✅ Successfully closed the room!]
+    $description[# ✅ Successfully closed the Party!]
     $color[$getGlobalVar[luckyColor]]
     $!editMessage[$channelid;$get[msgid]]
     $deferUpdate
@@ -645,7 +644,7 @@ module.exports = [
 
     $jsonLoad[participants;$getChannelVar[participants]]
 
-    ${roomExist()}
+    ${partyExist()}
     
     $onlyIf[$and[$arrayIncludes[participants;$authorID];$getUserVar[participating;$authorID;false]];
       $interactionReply[
@@ -672,7 +671,7 @@ module.exports = [
     $!deleteMessage[$channelID;$get[msgid]]
 
     $arrayForEach[participants;user;
-      $let[parts;$get[parts]$userDisplayName[$env[user]]\n]
+      $let[parts;$get[parts]$username[$env[user]]\n]
     ]
 
     $let[msgid;$sendMessage[$channelID;${startingEmbed()};true]]
@@ -818,12 +817,12 @@ function togetherEnd () {
         $arrayForEach[result;res;
           $letSum[position;1]
           $let[emoji;$if[$get[position]==1;🥇;$if[$get[position]==2;🥈;$if[$get[position]==3;🥉;⁘]]]]
-          $let[parts;$get[parts]### $get[emoji] $ordinal[$get[position]] ➤ $userDisplayName[$env[res;user]] \n**$getGlobalVar[blank] Points: \`$env[res;points]\`**\n]
+          $let[parts;$get[parts]### $get[emoji] $ordinal[$get[position]] ➤ $username[$env[res;user]] \n**$getGlobalVar[blank] Points: \`$env[res;points]\`**\n]
         ]
 
         $sendMessage[$channelID;
           $author[1 Hour Luck Together ended!]
-          $description[# 🎉 Winner - $userDisplayName[$env[result;0;user]] 🎉\n$trimEnd[$get[parts]]]
+          $description[# 🎉 Winner - $username[$env[result;0;user]] 🎉\n$trimEnd[$get[parts]]]
           $color[$getglobalvar[luckyColor]]
         ]
         $deleteChannelVar[participants]
@@ -864,12 +863,12 @@ function historyEmbed() {
   `
 }
 
-function roomExist() {
+function partyExist() {
   return `
     $onlyIf[$getChannelVar[participants]!=;
       $ephemeral
       $author[✖️ Error]
-      $description[## Room does not exist anymore]
+      $description[## Party does not exist anymore]
       $color[$getGlobalVar[errorColor]]
     ]
   `
@@ -880,7 +879,7 @@ function timeout () {
     $setTimeout[
       $!disableButtonsOf[$channelID;$get[msgid]]
       $sendMessage[$channelID;
-        $description[## Room created by <@$env[participants;0]> was closed due to inactivity]
+        $description[## Party created by <@$env[participants;0]> was closed due to inactivity]
         $color[Orange]
       ]
       $arrayForEach[participants;user;
@@ -896,14 +895,14 @@ function particEmbed () {
     $setChannelVar[participants;$env[participants]]
 
     $arrayForEach[participants;participant;
-      $let[parts;$get[parts]$userDisplayName[$env[participant]]\n]
+      $let[parts;$get[parts]$username[$env[participant]]\n]
     ]
     
-    $author[✅ Successfully created new room!]
-    $description[# Host: $userDisplayName[$env[participants;0]]]
+    $author[✅ Successfully created new Party!]
+    $description[# Host: $username[$env[participants;0]]]
     $addField[Participants:;$codeBlock[$get[parts]]]
     $color[$getGlobalVar[luckyColor]]
-    $footer[Room will be closed automatically in 10m due to inactivity]
+    $footer[Party will be closed automatically in 10m due to inactivity]
     $addActionRow
     $addButton[join1hl;Participate;Success]
     $addButton[quit1hl;Quit;Danger]

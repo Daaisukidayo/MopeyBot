@@ -66,7 +66,7 @@ module.exports = [{
     $let[biome;$env[animals;$get[animal];biome]]
 
     $!jsonSet[userProfile;play;MC;$math[$get[bonus] + $env[userProfile;play;MC]]]
-    $!jsonSet[userProfile;play;currentAnimal;$get[emoji] $get[animalName]]
+    $!jsonSet[userProfile;play;currentAnimal;$get[emoji]]
     $!jsonSet[userProfile;play;color;$get[color]]
     $!jsonSet[userProfile;play;currentBiome;$get[biome]]
     $!jsonSet[userProfile;play;animalBiome;$get[biome]]
@@ -247,6 +247,7 @@ module.exports = [{
 },{
   type: 'interactionCreate',
   allowedInteractionTypes: ['selectMenu'],
+  description: 'move to biome',
   code: `
     $arrayLoad[btn;-;$selectMenuValues]
     $onlyIf[$includes[$env[btn];moveto_]]
