@@ -59,7 +59,7 @@ module.exports = [
     $description[# Continued!]
     ${total()}
     ${time()}
-    $if[$getUserVar[participating];${intervalt()};${interval()}]
+    $if[$getUserVar[participating];${partyInterval()};${interval()}]
   `
 },{
   unprefixed: true,
@@ -176,7 +176,7 @@ module.exports = [
     ${pts()}
     $sendMessage[$channelID]
     ${reset()}
-    ${togetherEnd()}
+    ${partyEnd()}
   `
 },{
   name: "points",
@@ -362,6 +362,7 @@ module.exports = [
     $jsonLoad[history;$arrayReverse[history]]
 
     $let[page;1]
+    $let[sortType;d]
     $if[$arrayAt[history;0]==;
       $description[# No history]
       $getGlobalVar[author]
@@ -369,6 +370,7 @@ module.exports = [
       $sendMessage[$channelID]
       $stop
     ]
+    ${hisSortType()}
     ${historyEmbed()}
     $let[msg;$sendMessage[$channelID;;true]]
 
@@ -376,64 +378,29 @@ module.exports = [
   `
 },{
   type: "interactionCreate",
-  allowedInteractionTypes: ["button", "modal"],
+  allowedInteractionTypes: ["button", "modal", "selectMenu"],
   description: "history buttons",
   code: `
-    $arrayLoad[btn;-;$customID]
+    $arrayLoad[btn;-;$if[$or[$isModal;$isButton];$customID;$selectMenuValues]]
     $let[butid;$env[btn;0]]
 
     $if[$includes[$env[btn;0];historyPages];
-      $modal[customPage-$authorid;Custom page]
+      $let[sortType;$env[btn;3]]
+      $modal[customPage-$authorid-NaN-$get[sortType];Custom page]
       $addTextInput[page-$authorid;Enter page;Short;true;;;1;5]
       $showModal
       $stop
     ]
-    $onlyIf[$and[$includes[$get[butid];historyPageLeft;historyPageRight;customPage;deleteHistoryPage];$includes[$env[btn;1];$authorID]];$callFunction[notYourBTN]]
+    $onlyIf[$and[$includes[$get[butid];sortHis;historyPageLeft;historyPageRight;customPage;deleteHistoryPage];$includes[$env[btn;1];$authorID]];$callFunction[notYourBTN]]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
 
     $let[msg;$messageID]
     $let[page;$env[btn;2]]
+    $let[sortType;$env[btn;3]]
 
-    $if[$get[butid]==historyPageLeft;
-      $letSub[page;1]
-      $if[$get[page]<=0;
-        $let[page;$arrayLength[history]]
-      ]
-    ]
-    $if[$get[butid]==historyPageRight;
-      $letSum[page;1]
-      $if[$get[page]>$arrayLength[history];
-        $let[page;1]
-      ]
-    ]
-    $if[$get[butid]==customPage;
-      $let[input;$input[page-$authorid]]
-      $onlyIf[$isNumber[$get[input]];
-        $interactionReply[
-          $ephemeral
-          $author[✖️ Invalid Arguments!]
-          $description[## Argument is not a number!]
-          $color[$getGlobalVar[errorColor]]
-        ]
-      ]
-      $let[page;$get[input]]
-      $if[$get[page]>$arrayLength[history];
-        $let[page;1]
-      ]
-      $if[$get[page]<=0;
-        $let[page;$arrayLength[history]]
-      ]
-    ]
-    $if[$get[butid]==deleteHistoryPage;
-      $!arraySplice[history;$math[$arrayLength[history] - $get[page]];1]
-      $!jsonSet[userProfile;1hl;history;$env[history]]
-      $setUserVar[userProfile;$env[userProfile]]
-      $if[$get[page]>$arrayLength[history];
-        $let[page;$arrayLength[history]]
-      ]
-    ]
+    ${sortBtnLogic()}
 
     $!stopTimeout[1HLHISTORY-$authorID]
     $jsonLoad[history;$arrayReverse[history]]
@@ -445,6 +412,8 @@ module.exports = [
       $!editMessage[$channelID;$get[msg]]
       $stop
     ]
+    
+    ${hisSortType()}
 
     ${historyEmbed()}
     $!editMessage[$channelID;$get[msg]]
@@ -695,12 +664,12 @@ module.exports = [
           $jsonLoad[progress;{"points": 0, "user": "$env[user]"}]
           $setUserVar[progress;$env[progress];$env[user]]
         ]
-          ${intervalt('$env[participants;0]')}
-          ${intervalt('$env[participants;1]')}
-          $if[$env[participants;2]!=;${intervalt('$env[participants;2]')}]
-          $if[$env[participants;3]!=;${intervalt('$env[participants;3]')}]
-          $if[$env[participants;4]!=;${intervalt('$env[participants;4]')}]
-          $if[$env[participants;5]!=;${intervalt('$env[participants;5]')}]
+          ${partyInterval('$env[participants;0]')}
+          ${partyInterval('$env[participants;1]')}
+          $if[$env[participants;2]!=;${partyInterval('$env[participants;2]')}]
+          $if[$env[participants;3]!=;${partyInterval('$env[participants;3]')}]
+          $if[$env[participants;4]!=;${partyInterval('$env[participants;4]')}]
+          $if[$env[participants;5]!=;${partyInterval('$env[participants;5]')}]
         
         $!deleteMessage[$channelID;$get[msgid]]
         $sendMessage[$channelID;
@@ -723,7 +692,7 @@ function startingEmbed() {
   `
 }
 
-function intervalt (userid = "$authorID") {
+function partyInterval (userid = "$authorID") {
   return `
     $setInterval[
       $setUserVar[1htime;$sum[$getUserVar[1htime;${userid}];1];${userid}] 
@@ -752,7 +721,7 @@ function intervalt (userid = "$authorID") {
         ${reset(userid)}
         $setUserVar[userProfile;$env[userProfile];${userid}]
 
-        ${togetherEnd()}
+        ${partyEnd()}
 
       ]
     ;1s;1HLUCK-${userid}]
@@ -796,7 +765,7 @@ function interval () {
   `
 }
 
-function togetherEnd () {
+function partyEnd () {
   return `
     $if[$getUserVar[participating];
       $jsonLoad[participants;$getChannelVar[participants]]
@@ -834,31 +803,98 @@ function togetherEnd () {
 function historyTimeout () {
   return `
     $setTimeout[
-      $!disableButtonsOf[$channelID;$get[msg]]
+      $!disableComponentsOf[$channelID;$get[msg]]
     ;1m;1HLHISTORY-$authorID]`
+}
+
+function hisSortType() {
+  return `
+    $switch[$get[sortType];
+      $case[d;$let[sort;Date]]
+      $case[p;$let[sort;Points]]
+      $case[r;$let[sort;Rares]]
+    ]
+  `
+}
+
+function sortBtnLogic () {
+  return `
+    $if[$get[butid]==historyPageLeft;
+      $letSub[page;1]
+      $if[$get[page]<=0;
+        $let[page;$arrayLength[history]]
+      ]
+    ]
+    $if[$get[butid]==historyPageRight;
+      $letSum[page;1]
+      $if[$get[page]>$arrayLength[history];
+        $let[page;1]
+      ]
+    ]
+    $if[$get[butid]==customPage;
+      $let[input;$input[page-$authorid]]
+      $onlyIf[$isNumber[$get[input]];
+        $interactionReply[
+          $ephemeral
+          $author[✖️ Invalid Arguments!]
+          $description[## Argument is not a number!]
+          $color[$getGlobalVar[errorColor]]
+        ]
+      ]
+      $let[page;$get[input]]
+      $if[$get[page]>$arrayLength[history];
+        $let[page;1]
+      ]
+      $if[$get[page]<=0;
+        $let[page;$arrayLength[history]]
+      ]
+    ]
+    $if[$get[butid]==deleteHistoryPage;
+      $!arraySplice[history;$math[$arrayLength[history] - $get[page]];1]
+      $!jsonSet[userProfile;1hl;history;$env[history]]
+      $setUserVar[userProfile;$env[userProfile]]
+      $if[$get[page]>$arrayLength[history];
+        $let[page;$arrayLength[history]]
+      ]
+    ]
+    $if[$get[sortType]==p;
+      $arrayAdvancedSort[history;elem1;elem2;
+        $math[$env[elem1;points] - $env[elem2;points]]
+      ;history]
+    ]
+    $if[$get[sortType]==r;
+      $arrayAdvancedSort[history;elem1;elem2;
+        $math[$env[elem1;rares] - $env[elem2;rares]]
+      ;history]
+    ]
+  `
 }
 
 function historyEmbed() {
   return `
     $let[index;$math[$get[page] - 1]]
 
-    $getGlobalVar[author]
-    $color[$getGlobalVar[luckyColor]]
-    
-    $addField[Total Points:;\`$env[history;$get[index];points]\`]
-    $addField[Total Rares:;\`$env[history;$get[index];rares]\`]
-    $addField[Received rares list:;$codeBlock[$advancedReplace[$trimLines[$env[history;$get[index];raresList]];{;;};;";;,;];JSON]]
+    ${normalEmbed()}
+    $addField[Sort Type:;\`$get[sort]\`]
+    $addField[Points:;\`$env[history;$get[index];points]\`]
+    $addField[Rares:;\`$env[history;$get[index];rares]\`]
+    $addField[List:;$codeBlock[$advancedReplace[$trimLines[$env[history;$get[index];raresList]];{;;};;";;,;];JSON]]
     $footer[$env[history;$get[index];time]]
 
     $if[$arrayLength[history]>1;
       $addActionRow
-      $addButton[historyPageLeft-$authorID-$get[page];;Primary;⬅️]
-      $addButton[historyPages-$authorID;Page $get[page]/$arrayLength[history];Primary;🔎]
-      $addButton[historyPageRight-$authorID-$get[page];;Primary;➡️]
+      $addButton[historyPageLeft-$authorID-$get[page]-$get[sortType];;Primary;⬅️]
+      $addButton[historyPages-$authorID-NaN-$get[sortType];Page $get[page]/$arrayLength[history];Primary;🔎]
+      $addButton[historyPageRight-$authorID-$get[page]-$get[sortType];;Primary;➡️]
+      $addActionRow
+      $addStringSelectMenu[sortHis-$authorID;Sorty by]
+      $addOption[Date;;sortHis-$authorID-$get[page]-d]
+      $addOption[Points;;sortHis-$authorID-$get[page]-p]
+      $addOption[Rares;;sortHis-$authorID-$get[page]-r]
     ]
     $if[$env[history;0]!=;
       $addActionRow
-      $addButton[deleteHistoryPage-$authorID-$get[page];Delete This Page;Danger;🗑️]
+      $addButton[deleteHistoryPage-$authorID-$get[page]-$get[sortType];Delete This Page;Danger;🗑️]
     ]
   `
 }
