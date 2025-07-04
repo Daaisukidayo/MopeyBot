@@ -114,7 +114,7 @@ DB.variables({
       "isDead": false,
       "rarehackEnabled": false,
 
-      "apexes": {
+      "apex": {
         "dragon": false,
         "trex": false,
         "phoenix": false,
@@ -122,11 +122,11 @@ DB.variables({
         "kraken": false,
         "kingCrab": false,
         "yeti": false,
-        "land": false,
-        "dino": false,
-        "scorpion": false,
-        "sea": false,
-        "ice": false,
+        "landMonster": false,
+        "dinoMonster": false,
+        "giantScorpion": false,
+        "seaMonster": false,
+        "iceMonster": false,
         "blackDragon": false
       }
     },
@@ -318,6 +318,7 @@ DB.variables({
   luckyColor: "#228B22",
   cooldownColor: "#7303b7",
   logColor: "#2019b3",
+  apexEmbedColor: "#000000",
   blank: "<:blank:898514292926713866>",
   author: "$author[$userDisplayName • MUID: $env[userProfile;MUID];$userAvatar]",
   reportChannelID: "1372645851159330947",
@@ -325,7 +326,7 @@ DB.variables({
     Land: "#00ff3c",
     Desert: "#ffcc00",
     Volcano: "#ff0000",
-    Ocean: "##3498db",
+    Ocean: "#3498db",
     Arctic: "#ffffff",
     Forest: "#006400"
   },
