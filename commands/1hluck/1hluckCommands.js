@@ -68,7 +68,6 @@ module.exports = [
     $reply 
     $onlyIf[$getUserVar[1hstarted]]
     $onlyIf[$startsWith[$messageContent;$getGuildVar[prefix]]==false]
-    $onlyIf[$getUserVar[1hpaused]==false]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $arrayLoad[allRares]
@@ -96,7 +95,7 @@ module.exports = [
     
     $arrayForEach[caughtRares;caughtRare;
       $if[$arrayIncludes[allRares;$env[caughtRare]];
-        $onlyIf[$getuservar[1hpaused]==false;${errorEmbed()} $description[## You are on pause!]]
+        $onlyIf[$getuservar[1hpaused]!=true;${errorEmbed()} $description[## You are on pause!] $sendMessage[$channelID]]
         $arrayForEach[raresMap;rareMap;
           $jsonLoad[raresFromRareMap;$env[rareMap;rares]]
           $if[$arrayIncludes[raresFromRareMap;$env[caughtRare]];

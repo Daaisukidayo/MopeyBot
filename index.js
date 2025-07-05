@@ -40,7 +40,7 @@ const client = new ForgeClient({
     "ready"
   ],
   prefixes: ["$if[$guildID!=;$getGuildVar[prefix];.]"],
-  logLevel: LogPriority.Low
+  logLevel: LogPriority.VeryLow
 });
 
 // ========== LOAD COMMANDS ==========
