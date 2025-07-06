@@ -8,7 +8,7 @@ module.exports = [{
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
-    $let[desc;$codeBlock[[\\] - required argument(s) \n{} - required option \n() - optional argument(s) or option \n<> — optional data type]]
+    $let[desc;$codeBlock[[\\] - required argument(s) \n{} - required option \n() - optional argument(s) or option \n<> — required data]]
     
     $let[al;📚 Aliases:]
     $let[rel;📖 Related:]
@@ -19,6 +19,11 @@ module.exports = [{
     $color[$getGlobalVar[defaultColor]]
     
     $if[$includes[$env[arg;0];-party-];
+      $author[$get[comNameEmoji] Backup]
+      $description[## Restores your most recent backup!\n### No need to add it manually — it's automatically updated every 12 hours for everyone!]
+    ]
+    
+    $if[$includes[$env[arg;0];-party-];
       $author[$get[comNameEmoji] 1 Hour Luck Party]
       $description[## Creates a new party, and anyone who wishes can join your party and participate in the Cooperative 1 Hour Luck Challenge! A maximum of 6 participants.
       ### \`1.\` Press the 'Join' button to enter the party.
@@ -26,7 +31,7 @@ module.exports = [{
       ### \`3\`. Press the 'Start' button (for hosts only) to begin the Challenge! A minimum of 2 participants is required.
       ### \`4\`. Press the 'End' button (for hosts only) to close the party and cancel participation in the Challenge.
       ## __Notes:__
-      ### The party will be automatically closed in 10 minutes if it has not been started yet. 
+      ### The party will be automatically closed in 30 minutes if it has not been started yet. 
       ### After pressing the 'Start' button, a countdown will appear, and then you will be able to start trying to get rares in Mope.io.
       ### Each participant will have their own timer, so you can pause at any time.
       ### After all participants have completed their challenge either forcibly or after 1 hour, the participant with the highest number of points will win.]
