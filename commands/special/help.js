@@ -20,7 +20,8 @@ module.exports = [{
     
     $if[$includes[$env[arg;0];-party-];
       $author[$get[comNameEmoji] Backup]
-      $description[## Restores your most recent backup!\n### No need to add it manually — it's automatically updated every 12 hours for everyone!]
+      $description[## Restores your most recent backup!
+      ### No need to add it manually — it's automatically updated every 12 hours for everyone!]
     ]
     
     $if[$includes[$env[arg;0];-party-];
@@ -107,7 +108,7 @@ module.exports = [{
     $if[$includes[$env[arg;0];-leaderboard-;-lb-;-top-];
       $author[$get[comNameEmoji] Leaderboard]
       $description[## Displays the current leaderboard!
-      ### Use the command followed by a number to navigate through pages!]
+      ### Leaderboard updates every 5 minutes!]
       $addField[$get[al];${inl('leaderboard')}, ${inl('lb')}, ${inl('top')}]
       $addField[$get[rel];${inl('balance')}]
     ]
