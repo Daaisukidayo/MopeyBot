@@ -77,11 +77,7 @@ module.exports = [
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $jsonLoad[SNORA;$getGlobalVar[SNORA]]
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
-    
-    $arrayForEach[raresMap;rareMap;
-      $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
-      $arrayConcat[allRares;allRares;allRaresFromCat]
-    ]
+    $jsonLoad[allRares;$getGlobalVar[allRares]]
     
     $let[points;0]
     
@@ -193,7 +189,7 @@ module.exports = [
     $jsonLoad[userProfile;$getUserVar[userProfile;$get[id]]]
     $onlyIf[$getuservar[1hstarted;$get[id]];${errorEmbed()} $description[## $if[$get[id]!=$authorID;__$username[$get[id]]__ doesn't;You don't] have an active challenge!]]
     ${normalEmbed()}
-    $author[$userDisplayName[$get[id]] • MUID: $env[userProfile;MUID];$userAvatar]
+    $author[$userDisplayName[$get[id]] • MUID: $env[userProfile;MUID];$userAvatar[$get[id]]]
     ${pts("$get[id]")}
     ${time("$get[id]")}
   `
