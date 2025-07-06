@@ -40,7 +40,7 @@ const client = new ForgeClient({
     "ready"
   ],
   prefixes: ["$if[$guildID!=;$getGuildVar[prefix];.]"],
-  logLevel: LogPriority.VeryLow
+  logLevel: LogPriority.Low
 });
 
 // ========== LOAD COMMANDS ==========
@@ -92,42 +92,6 @@ DB.variables({
         "hidePoints": false,
         "hideRares": false,
         "infiniteCommons": false
-      }
-    },
-
-    "play": {
-      "started": false,
-      "tier": 0,
-      "MC": 0,
-      "XP": 0,
-      "color": "",
-      "currentBiome": "",
-      "animalBiome": "",
-      "arenaTurn": 0,
-      "bitesInArena": 0,
-      "opponentBitesInArena": 0,
-      "MessageID": "",
-      "ChannelID": "",
-      "GuildID": "",
-      "opponentAnimal": "",
-      "currentAnimal": "",
-      "isDead": false,
-      "rarehackEnabled": false,
-
-      "apex": {
-        "dragon": false,
-        "trex": false,
-        "phoenix": false,
-        "pterodactyl": false,
-        "kraken": false,
-        "kingCrab": false,
-        "yeti": false,
-        "landMonster": false,
-        "dinoMonster": false,
-        "giantScorpion": false,
-        "seaMonster": false,
-        "iceMonster": false,
-        "blackDragon": false
       }
     },
     
@@ -299,6 +263,42 @@ DB.variables({
     }
   },
 
+  userPlayData: {
+    "started": false,
+    "isDead": false,
+    "tier": 0,
+    "MC": 0,
+    "XP": 0,
+    "color": "",
+    "currentBiome": "",
+    "currentAnimal": "",
+    "animalBiome": "",
+    "bitesInArena": 0,
+    "arenaTurn": 0,
+    "opponentBitesInArena": 0,
+    "opponentAnimal": "",
+    "opponentAction": "",
+    "MessageID": "",
+    "ChannelID": "",
+    "GuildID": "",
+
+    "apex": {
+      "dragon": false,
+      "trex": false,
+      "phoenix": false,
+      "pterodactyl": false,
+      "kraken": false,
+      "kingCrab": false,
+      "yeti": false,
+      "landMonster": false,
+      "dinoMonster": false,
+      "giantScorpion": false,
+      "seaMonster": false,
+      "iceMonster": false,
+      "blackDragon": false
+    }
+  },
+
   userBackup: {},
 
   // Guild variables
@@ -322,6 +322,8 @@ DB.variables({
   blank: "<:blank:898514292926713866>",
   author: "$author[$userDisplayName • MUID: $env[userProfile;MUID];$userAvatar]",
   reportChannelID: "1372645851159330947",
+  logChannelID: "1391387203871047731",
+  backupLogCount: 0,
   biomeColors: {
     Land: "#00ff3c",
     Desert: "#ffcc00",
