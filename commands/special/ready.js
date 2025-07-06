@@ -33,7 +33,7 @@ module.exports = {
       $arrayForEach[allUserIDs;ID;
         $jsonLoad[userProfile;$getUserVar[userProfile;$env[ID]]]
         $jsonLoad[userBackup;$getUserVar[userBackup;$env[ID]]]
-        $if[$or[$trimLines[$env[userProfile]]==;$trimLines[$env[userProfile]]=={}];
+        $if[$env[userProfile;MUID]==;
           $let[logText;$get[logText]\n$parseDate[$getTimestamp;Locale] ❌ Failed to add backup for $username[$env[ID]] ($env[ID]). Has saved backup: $checkCondition[$env[userBackup]!={}]]
         ;
           $!jsonSet[userBackup;$env[userProfile]]
