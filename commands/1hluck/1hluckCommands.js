@@ -917,7 +917,7 @@ function timeout () {
         $deleteUserVar[participating;$env[user]]
       ]
       $deleteChannelVar[participants]
-    ;10m;MULTI1HL-$channelID]
+    ;30m;MULTI1HL-$channelID]
   `
 }
 
@@ -933,7 +933,7 @@ function particEmbed () {
     $description[# Host: $username[$env[participants;0]]]
     $addField[Participants:;$codeBlock[$get[parts]]]
     $color[$getGlobalVar[luckyColor]]
-    $footer[Party will be closed automatically in 10m due to inactivity]
+    $footer[Party will be closed automatically in 30m due to inactivity]
     $addActionRow
     $addButton[join1hl;Participate;Success]
     $addButton[quit1hl;Quit;Danger]
