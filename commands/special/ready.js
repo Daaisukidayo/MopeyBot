@@ -18,7 +18,7 @@ module.exports = {
       $logger[Info;Successfully loaded and cached «allRares» from «raresMap»]
     ]
 
-    $loop[-1; $c[Adding backups]
+    $async[$loop[-1; $c[Adding backups]
       $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
 
       $let[logCount;$getGlobalVar[backupLogCount]]
@@ -47,9 +47,9 @@ module.exports = {
       $attachment[$get[path];backupLog№$get[logCount].log;false]
       $sendMessage[$getGlobalVar[logChannelID]]
       $wait[12h]
-    ]
+    ]]
 
-    $loop[-1;
+    $async[$loop[-1;
       $deleteGlobalVar[cachedLB]
       $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
     
@@ -82,6 +82,6 @@ module.exports = {
 
       $setGlobalVar[cachedLB;$get[lbplace]]
       $wait[5m]
-    ]
+    ]]
   `
 }
