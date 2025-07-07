@@ -40,8 +40,65 @@ module.exports = [{
     $!jsonSet[playData;ChannelID;$channelID]
     $!jsonSet[playData;GuildID;$guildID]
     $!jsonSet[playData;started;true]
-    
     $setUserVar[userPlayData;$env[playData]]
+
+    $async[
+      $jsonLoad[allRareAttemptsInfo;{}]
+
+      $c[PIGEON]
+      $let[totalPigeonAttempts;$env[animals;whiteDove;rarity;1]]
+      $let[totalDoves;$env[animals;whiteDove;rarity;0]]
+      $arrayCreate[totalDoves;$get[totalDoves]]
+      $arrayCreate[totalPigeons;$math[$get[totalPigeonAttempts] - $get[totalDoves]]]
+      $arrayFill[totalDoves;whiteDove]
+      $arrayFill[totalPigeons;pigeon]
+      $arrayConcat[pigeonRares;totalDoves;totalPigeons]
+      $arrayShuffle[pigeonRares]
+      $jsonSet[allRareAttemptsInfo;pigeon;{
+          "attempts": $env[pigeonRares],
+          "index": 0,
+          "maxIndex": $get[totalPigeonAttempts]
+      }]
+
+      $c[PIG]
+      $let[totalPigAttempts;$env[animals;pinkyPig;rarity;1]]
+      $let[totalPinkies;$env[animals;pinkyPig;rarity;0]]
+      $let[totalStinkies;$env[animals;stinkyPig;rarity;0]]
+      $arrayCreate[totalPigs;$math[$get[totalPigAttempts] - $get[totalPinkies] - $get[totalStinkies]]]
+      $arrayCreate[totalPinkies;$get[totalPinkies]]
+      $arrayCreate[totalStinkies;$get[totalStinkies]]
+      $arrayFill[totalStinkies;stinkyPig]
+      $arrayFill[totalPinkies;pinkyPig]
+      $arrayFill[totalPigs;pig]
+      $arrayConcat[pigRares;totalPigs;totalPinkies;totalStinkies]
+      $arrayShuffle[pigRares]
+      $jsonSet[allRareAttemptsInfo;pig;{
+          "attempts": $env[pigRares],
+          "index": 0,
+          "maxIndex": $get[totalPigAttempts]
+      }]
+
+      $c[DEER]
+      $let[totalDeerAttempts;$env[animals;doe;rarity;1]]
+      $let[totalDoes;$env[animals;doe;rarity;0]]
+      $let[totalMarshDeers;$env[animals;marshDeer;rarity;0]]
+      $arrayCreate[totalDeers;$math[$get[totalDeerAttempts] - $get[totalDoes] - $get[totalMarshDeers]]]
+      $arrayCreate[totalDoes;$get[totalDoes]]
+      $arrayCreate[totalMarshDeers;$get[totalMarshDeers]]
+      $arrayFill[totalMarshDeers;marshDeer]
+      $arrayFill[totalDoes;doe]
+      $arrayFill[totalDeers;deer]
+      $arrayConcat[deerRares;totalDeers;totalDoes;totalMarshDeers]
+      $arrayShuffle[deerRares]
+      $jsonSet[allRareAttemptsInfo;deer;{
+          "attempts": $env[deerRares],
+          "index": 0,
+          "maxIndex": $get[totalDeerAttempts]
+      }]
+
+
+      $if[false;$log[$env[allRareAttemptsInfo]]]
+    ]
   `
 },{
   type: "interactionCreate",
