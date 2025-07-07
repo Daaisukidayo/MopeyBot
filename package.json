@@ -16,6 +16,7 @@
     "@tryforge/forge.db": "github:tryforge/forgedb",
     "@tryforge/forgescript": "^2.3.0",
     "dotenv": "^16.4.7",
+    "forgepages": "github:xloxn69/ForgePages",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
