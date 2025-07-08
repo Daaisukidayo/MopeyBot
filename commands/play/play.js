@@ -28,6 +28,7 @@ module.exports = [{
     ]
 
     $!jsonSet[playData;tier;1]
+    ${luckGenerator()}
     ${animalsButtonsGenerator()}
     ${exitButton()}
 
@@ -41,64 +42,6 @@ module.exports = [{
     $!jsonSet[playData;GuildID;$guildID]
     $!jsonSet[playData;started;true]
     $setUserVar[userPlayData;$env[playData]]
-
-    $async[
-      $jsonLoad[allRareAttemptsInfo;{}]
-
-      $c[PIGEON]
-      $let[totalPigeonAttempts;$env[animals;whiteDove;rarity;1]]
-      $let[totalDoves;$env[animals;whiteDove;rarity;0]]
-      $arrayCreate[totalDoves;$get[totalDoves]]
-      $arrayCreate[totalPigeons;$math[$get[totalPigeonAttempts] - $get[totalDoves]]]
-      $arrayFill[totalDoves;whiteDove]
-      $arrayFill[totalPigeons;pigeon]
-      $arrayConcat[pigeonRares;totalDoves;totalPigeons]
-      $arrayShuffle[pigeonRares]
-      $jsonSet[allRareAttemptsInfo;pigeon;{
-          "attempts": $env[pigeonRares],
-          "index": 0,
-          "maxIndex": $get[totalPigeonAttempts]
-      }]
-
-      $c[PIG]
-      $let[totalPigAttempts;$env[animals;pinkyPig;rarity;1]]
-      $let[totalPinkies;$env[animals;pinkyPig;rarity;0]]
-      $let[totalStinkies;$env[animals;stinkyPig;rarity;0]]
-      $arrayCreate[totalPigs;$math[$get[totalPigAttempts] - $get[totalPinkies] - $get[totalStinkies]]]
-      $arrayCreate[totalPinkies;$get[totalPinkies]]
-      $arrayCreate[totalStinkies;$get[totalStinkies]]
-      $arrayFill[totalStinkies;stinkyPig]
-      $arrayFill[totalPinkies;pinkyPig]
-      $arrayFill[totalPigs;pig]
-      $arrayConcat[pigRares;totalPigs;totalPinkies;totalStinkies]
-      $arrayShuffle[pigRares]
-      $jsonSet[allRareAttemptsInfo;pig;{
-          "attempts": $env[pigRares],
-          "index": 0,
-          "maxIndex": $get[totalPigAttempts]
-      }]
-
-      $c[DEER]
-      $let[totalDeerAttempts;$env[animals;doe;rarity;1]]
-      $let[totalDoes;$env[animals;doe;rarity;0]]
-      $let[totalMarshDeers;$env[animals;marshDeer;rarity;0]]
-      $arrayCreate[totalDeers;$math[$get[totalDeerAttempts] - $get[totalDoes] - $get[totalMarshDeers]]]
-      $arrayCreate[totalDoes;$get[totalDoes]]
-      $arrayCreate[totalMarshDeers;$get[totalMarshDeers]]
-      $arrayFill[totalMarshDeers;marshDeer]
-      $arrayFill[totalDoes;doe]
-      $arrayFill[totalDeers;deer]
-      $arrayConcat[deerRares;totalDeers;totalDoes;totalMarshDeers]
-      $arrayShuffle[deerRares]
-      $jsonSet[allRareAttemptsInfo;deer;{
-          "attempts": $env[deerRares],
-          "index": 0,
-          "maxIndex": $get[totalDeerAttempts]
-      }]
-
-
-      $if[false;$log[$env[allRareAttemptsInfo]]]
-    ]
   `
 },{
   type: "interactionCreate",
@@ -609,6 +552,82 @@ module.exports = [{
 
 // System functions
 
+function luckGenerator () {
+  return `
+    $jsonLoad[allRareAttemptsInfo;{}]
+    $jsonLoad[rareGroups;
+      [
+        "pigeon|pigeon|whiteDove", 
+        "pig|pig|pinkyPig|stinkyPig",
+        "deer|deer|doe|marshDeer",
+        "reindeer|reindeer|muskDeer",
+        "swinehoe|swinehoe|goldenPheasant",
+        "donkey|donkey|jackass",
+        "macaw|macaw|blueMacaw|rareMacaw",
+        "giraffe|giraffe|momaffie|momaffieFamily|girabie",
+        "cheetah|cheetah|jaguar|leopard|blackPanther",
+        "toucan|toucan|chocoToucan|keelBilledToucan|fieryToucan|lavaToucan|rareToucan",
+        "pufferfish|pufferfish|yellowPufferfish|demonPufferfish",
+        "bear|bear|blackBear",
+        "tiger|tiger|whiteTiger|blackTiger",
+        "lion|lion|lioness|lionCub|blackManedLion|whiteLionCub|whiteLioness|whiteLion|blackLionCub|blackLioness|blackLion",
+        "falcon|falcon|predator|shaheen",
+        "vulture|vulture|rareVulture",
+        "rhino|rhino|whiteRhino|blackRhino",
+        "baldEagle|baldEagle|goldenEagle|harpyEagle|greaterSpottedEagle",
+        "markhor|undefined|markhor|bigGoat",
+        "whiteGiraffe|undefined|whiteGiraffe|whiteGiraffeFamily",
+        "yeti|yeti|aquaYeti",
+        "shopBigfoot|undefined|shopBigfoot",
+        "luckBigfoot|undefined|luckBigfoot",
+        "shopSnowman|undefined|shopSnowman",
+        "luckSnowman|undefined|luckSnowman",
+        "shopSnowgirl|undefined|shopSnowgirl",
+        "luckSnowgirl|undefined|luckSnowgirl",
+        "blackDragon|blackDragon|kingDragon"
+      \\]
+    ]
+
+    $arrayForEach[rareGroups;groupConfig;
+      $arrayLoad[groupParts;|;$env[groupConfig]]
+      $let[keyName;$env[groupParts;0]]
+      $let[commonAnimal;$env[groupParts;1]]
+      $let[tier;$env[animals;$get[keyName];tier]]
+      $let[totalAttempts;$env[animals;$env[groupParts;2];rarity;1]]
+
+      $let[totalRare;0]
+      $arrayCreate[rarePool;0]
+
+      $loop[$math[$arrayLength[groupParts] - 2];
+        $let[ri;$math[$env[ri] + 1]]
+        $let[rareAnimal;$env[groupParts;$get[ri]]]
+        $let[countRare;$env[animals;$get[rareAnimal];rarity;0]]
+
+        $if[$get[countRare]!=;
+          $arrayCreate[oneRareArr;$get[countRare]]
+          $arrayFill[oneRareArr;$get[rareAnimal]]
+          $arrayConcat[rarePool;rarePool;oneRareArr]
+          $letSum[totalRare;$get[countRare]]
+        ]
+      ;ri;desc]
+
+      $let[totalCommons;$math[$get[totalAttempts] - $get[totalRare]]]
+      $arrayCreate[commonArr;$get[totalCommons]]
+      $arrayFill[commonArr;$get[commonAnimal]]
+
+      $arrayConcat[fullAttemptArr;rarePool;commonArr]
+      $arrayShuffle[fullAttemptArr]
+
+      $!jsonSet[allRareAttemptsInfo;$get[keyName];{
+        "index": 0,
+        "maxIndex": $arrayLength[fullAttemptArr],
+        "attempts": $env[fullAttemptArr]
+      }]
+    ]
+    $setUserVar[allRareAttemptsInfo;$env[allRareAttemptsInfo]]
+  `
+}
+
 function setNewXPOnDeath () {
   return `$!jsonSet[playData;XP;$floor[$math[$env[playData;XP] / 3.5]]]`
 }
@@ -872,179 +891,65 @@ function exitButton(showCheat = true) {
   `
 }
 
-function animalsButtonsGeneratorOLD() {
-  return `
-    $let[buttonsQ;0]
-    $let[emojisInDescription;]
-
-    $loop[$arrayLength[animalsKeys];
-      $let[i;$math[$env[i] - 1]]
-      $let[animal;$env[animalsKeys;$get[i]]]
-      
-      $let[isRare;$env[animals;$get[animal];isRare]]
-      $let[hasNonRareVariant;$env[animals;$get[animal];hasNonRareVariant]]
-      
-      $if[$env[animals;$get[animal];tier]!=$env[playData;tier];
-        $continue
-      ]
-
-      $if[$and[$env[animals;$get[animal];isRare];$env[animals;$get[animal];hasNonRareVariant]];
-        $continue
-      ]
-
-      $let[butStyle;Secondary]
-
-      $jsonLoad[rares;$env[animals;$get[animal];rares]]
-      $jsonLoad[rares;$arrayReverse[rares]]
-
-      $if[$arrayLength[rares]>0; $c[if animal has rare species]
-        $loop[$arrayLength[rares];
-
-          $let[rareName;$arrayAt[rares;$get[j]]]
-          $if[$includes[$arrayJoin[rares;,];$get[rareName]];;
-            $break
-          ]
-
-          $jsonLoad[rarity;$env[animals;$get[rareName];rarity]]
-          $let[r;$randomNumber[1;$math[1 + $env[rarity;1]]]]
-          $if[$env[rarity;0]>=$get[r];
-            $let[animal;$get[rareName]]
-            $let[butStyle;Success]
-            $break
-          ]
-        ;j;desc]
-      ]
-
-      $if[$get[isRare];
-        $jsonLoad[rarity;$env[animals;$get[animal];rarity]]
-        $let[r;$randomNumber[1;$math[1 + $env[rarity;1]]]]
-        $if[$env[rarity;0]>=$get[r];
-          $let[butStyle;Success]
-          ${varsForButtonGen()}
-        ]
-      ;
-        ${varsForButtonGen()}
-      ]
-    ;i;desc]
-  `
-}
-
 function animalsButtonsGenerator() {
   return `
     $let[buttonsQ;0]
     $let[emojisInDescription;]
-    $arrayLoad[skipIndexes;,]
-    $let[turnLogs;false] $c[SWITCH THIS TO "true" IF YOU WANT TO SEE THE LOGS]
 
     $loop[$arrayLength[animalsKeys];
+      $jsonLoad[allRareAttemptsInfo;$getUserVar[allRareAttemptsInfo]]
+      $jsonLoad[ARAIkeys;$jsonKeys[allRareAttemptsInfo]]
+
       $let[i;$math[$env[i] - 1]]
       $let[animal;$env[animalsKeys;$get[i]]]
-
-      $if[$includes[$arrayJoin[skipIndexes;,];$get[i]];
-        $if[$get[turnLogs];$log[⏭️ Skipping already checked index $get[i] → $get[animal]]]
-        $continue
-      ]
-
-
-      $let[isRare;$env[animals;$get[animal];isRare]]
-      $let[hasNonRareVariant;$env[animals;$get[animal];hasNonRareVariant]]
-
-      $if[$env[animals;$get[animal];tier]!=$env[playData;tier];
-        $continue
-      ]
-
-      $if[$and[$get[isRare];$get[hasNonRareVariant]];
-        $continue
-      ]
-
-      $if[$get[turnLogs];$log[🐾 Animal Index: $get[i], Animal: $get[animal]]]
-
+      $let[animalTier;$env[animals;$get[animal];tier]]
       $let[butStyle;Secondary]
-      $let[originalIndex;$get[i]]
 
-      $if[$and[$get[isRare];$get[hasNonRareVariant]!=true;$env[playData;tier]<15;$env[playData;tier]>=12];
-        $if[$get[turnLogs];$log[🚨 Starting rare chain without rare variant from index $get[i]]]
-        $let[cloneIndex;$get[i]]
-
-        $loop[999;
-          $let[nextAnimal;$env[animalsKeys;$get[cloneIndex]]]
-          $if[$get[turnLogs];$log[➡ Moving forward: index $get[cloneIndex] → $get[nextAnimal]]]
-
-          $if[$or[$env[animals;$get[nextAnimal];isRare]!=true;$env[animals;$get[nextAnimal];hasNonRareVariant]];
-            $if[$get[turnLogs];$log[🛑 Found non-rare or with rare variation on index $get[cloneIndex] → $get[nextAnimal]]]
-            $break
-          ]
-
-          $arrayPush[skipIndexes;$get[cloneIndex]]
-          $let[cloneIndex;$math[$get[cloneIndex] + 1]]
-        ]
-
-        $let[cloneIndex;$math[$get[cloneIndex] - 1]]
-        $loop[999;
-          $arrayPush[skipIndexes;$get[cloneIndex]]
-
-          $let[checkAnimal;$env[animalsKeys;$get[cloneIndex]]]
-          $if[$get[turnLogs];$log[⬅ Checking previous: $get[cloneIndex] → $get[checkAnimal]]]
-
-          $jsonLoad[rarity;$env[animals;$get[checkAnimal];rarity]]
-          $let[r;$randomNumber[1;$math[1 + $env[rarity;1]]]]
-          $if[$env[rarity;0]>=$get[r];
-            $if[$get[turnLogs];$log[✅ Successfull chance: $get[checkAnimal], breaking loop]]
-            $let[animal;$get[checkAnimal]]
-            $let[butStyle;Success]
-            ${varsForButtonGen()}
-            $break
-          ;
-            $if[$get[turnLogs];$log[❌ Unuccessfull chance: $get[checkAnimal]]]
-          ]
-
-          $if[$get[cloneIndex]==$get[originalIndex];
-            $if[$get[turnLogs];$log[🔚 Reached original ($get[checkAnimal]), breaking loop]]
-            $break
-          ]
-
-          $let[cloneIndex;$math[$get[cloneIndex] - 1]]
-        ]
+      $if[$get[animalTier]!=$env[playData;tier];
         $continue
       ]
-
-      $jsonLoad[rares;$env[animals;$get[animal];rares]]
-
-      $if[$arrayLength[rares]>0;
-        $if[$get[turnLogs];$log[🔁 Searching for rare variation in $get[animal]]]
-
-        $loop[$arrayLength[rares];
-          $let[j;$math[$env[j] - 1]]
-          $let[rareName;$arrayAt[rares;$get[j]]]
-          $if[$get[turnLogs];$log[🔍 Trying rare: $get[rareName]]]
-
-          $jsonLoad[rarity;$env[animals;$get[rareName];rarity]]
-          $let[r;$randomNumber[1;$math[1 + $env[rarity;1]]]]
-          $if[$env[rarity;0]>=$get[r];
-            $if[$get[turnLogs];$log[✅ Successfull chance: $get[rareName], breaking loop]]
-            $let[animal;$get[rareName]]
-            $let[butStyle;Success]
-            $break
-          ;
-            $if[$get[turnLogs];$log[❌ Unsuccessfull chance: $get[rareName]]]
-          ]
-        ;j;desc]
+      $if[$get[animalTier]>$env[playData;tier];
+        $break
       ]
 
-      $if[$get[isRare];
-        $jsonLoad[rarity;$env[animals;$get[animal];rarity]]
-        $let[r;$randomNumber[1;$math[1 + $env[rarity;1]]]]
-        $if[$env[rarity;0]>=$get[r];
-          $let[butStyle;Success]
-          ${varsForButtonGen()}
+      $if[$arrayIncludes[ARAIkeys;$get[animal]];
+        $jsonLoad[attemptsArr;$env[allRareAttemptsInfo;$get[animal];attempts]]
+        $let[index;$env[allRareAttemptsInfo;$get[animal];index]]
+        $let[maxIndex;$env[allRareAttemptsInfo;$get[animal];maxIndex]]
+
+        $if[$get[index]==$get[maxIndex];
+          $log[pass]
+          $arrayShuffle[attemptsArr]
+          $!jsonSet[allRareAttemptsInfo;$get[animal];attempts;$env[attemptsArr]]
+          $!jsonSet[allRareAttemptsInfo;$get[animal];index;0]
+          $let[index;$env[allRareAttemptsInfo;$get[animal];index]]
         ]
+
+        $let[chosenAnimal;$env[attemptsArr;$get[index]]]
+
+        $letSum[index;1]
+        $!jsonSet[allRareAttemptsInfo;$get[animal];index;$get[index]]
+
+        $setUserVar[allRareAttemptsInfo;$env[allRareAttemptsInfo]]
+        
+        $if[$get[chosenAnimal]==undefined;
+          $continue
+        ]
+
+        $if[$or[$includes[$get[animal];markhor;Bigfoot;Snowman;Snowgirl];$get[animal]!=$get[chosenAnimal]];
+          $let[butStyle;Success]
+        ]
+        $let[animal;$get[chosenAnimal]]
       ;
-        ${varsForButtonGen()}
+        $if[$env[animals;$get[animal];isRare];
+          $continue
+        ]
       ]
-      
+      ${varsForButtonGen()}
     ;i;desc]
   `
 }
+
 
 
 function varsForButtonGen () {
