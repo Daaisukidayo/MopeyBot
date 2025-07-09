@@ -713,7 +713,7 @@ function partyInterval (userid = "$authorID") {
 
       $switch[$getUserVar[1htime;${userid}];
         $case[1800;   ${timeLeft(30,  `m`, userid)}   ]
-        $case[3570;   ${timeLeft(30,  `s`, userid)}   ]
+        $case[3540;   ${timeLeft(1,  `m`, userid)}   ]
         $case[3597;   ${timeLeft(3,   `s`, userid)}   ]
         $case[3598;   ${timeLeft(2,   `s`, userid)}   ]
         $case[3599;   ${timeLeft(1,   `s`, userid)}   ] 
