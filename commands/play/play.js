@@ -555,6 +555,7 @@ module.exports = [{
 function luckGenerator () {
   return `
     $jsonLoad[allRareAttemptsInfo;{}]
+    $jsonLoad[allAttemptsList;{}]
     $jsonLoad[rareGroups;
       [
         "pigeon|pigeon|whiteDove", 
@@ -895,7 +896,7 @@ function animalsButtonsGenerator() {
   return `
     $let[buttonsQ;0]
     $let[emojisInDescription;]
-    $let[ping;$executionTime]
+
     $loop[$arrayLength[animalsKeys];
       $jsonLoad[allRareAttemptsInfo;$getUserVar[allRareAttemptsInfo]]
       $jsonLoad[ARAIkeys;$jsonKeys[allRareAttemptsInfo]]
@@ -947,8 +948,6 @@ function animalsButtonsGenerator() {
       ]
       ${varsForButtonGen()}
     ;i;desc]
-    $letSub[ping;$executionTime]
-    $log[$round[$get[ping]]MS]
   `
 }
 

@@ -324,6 +324,7 @@ DB.variables({
   reportChannelID: "1372645851159330947",
   logChannelID: "1391387203871047731",
   backupLogCount: 0,
+  makeBackups: false,
   biomeColors: {
     Land: "#00ff3c",
     Desert: "#ffcc00",
