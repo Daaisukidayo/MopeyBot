@@ -874,14 +874,6 @@ function sortBtnLogic () {
         $let[page;$arrayLength[history]]
       ]
     ]
-    $if[$get[butid]==deleteHistoryPage;
-      $!arraySplice[history;$math[$arrayLength[history] - $get[page]];1]
-      $!jsonSet[userProfile;1hl;history;$env[history]]
-      $setUserVar[userProfile;$env[userProfile]]
-      $if[$get[page]>$arrayLength[history];
-        $let[page;$arrayLength[history]]
-      ]
-    ]
     $if[$get[sortType]==p;
       $arrayAdvancedSort[history;elem1;elem2;
         $math[$env[elem1;points] - $env[elem2;points]]
@@ -891,6 +883,14 @@ function sortBtnLogic () {
       $arrayAdvancedSort[history;elem1;elem2;
         $math[$env[elem1;rares] - $env[elem2;rares]]
       ;history]
+    ]
+    $if[$get[butid]==deleteHistoryPage;
+      $!arraySplice[history;$math[$arrayLength[history] - $get[page]];1]
+      $!jsonSet[userProfile;1hl;history;$env[history]]
+      $setUserVar[userProfile;$env[userProfile]]
+      $if[$get[page]>$arrayLength[history];
+        $let[page;$arrayLength[history]]
+      ]
     ]
   `
 }
