@@ -895,7 +895,7 @@ function animalsButtonsGenerator() {
   return `
     $let[buttonsQ;0]
     $let[emojisInDescription;]
-
+    $let[ping;$executionTime]
     $loop[$arrayLength[animalsKeys];
       $jsonLoad[allRareAttemptsInfo;$getUserVar[allRareAttemptsInfo]]
       $jsonLoad[ARAIkeys;$jsonKeys[allRareAttemptsInfo]]
@@ -936,7 +936,7 @@ function animalsButtonsGenerator() {
           $continue
         ]
 
-        $if[$or[$includes[$get[animal];markhor;Bigfoot;Snowman;Snowgirl];$get[animal]!=$get[chosenAnimal]];
+        $if[$or[$includes[$get[animal];markhor;whiteGiraffe;Bigfoot;Snowman;Snowgirl];$get[animal]!=$get[chosenAnimal]];
           $let[butStyle;Success]
         ]
         $let[animal;$get[chosenAnimal]]
@@ -947,6 +947,8 @@ function animalsButtonsGenerator() {
       ]
       ${varsForButtonGen()}
     ;i;desc]
+    $letSub[ping;$executionTime]
+    $log[$round[$get[ping]]]
   `
 }
 
