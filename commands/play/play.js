@@ -948,7 +948,7 @@ function animalsButtonsGenerator() {
       ${varsForButtonGen()}
     ;i;desc]
     $letSub[ping;$executionTime]
-    $log[$round[$get[ping]]]
+    $log[$round[$get[ping]]MS]
   `
 }
 
