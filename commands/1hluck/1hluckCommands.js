@@ -27,7 +27,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    ${checkChall()}
+    ${isActiveChallenge()}
     ${normalEmbed()}  
     $if[$getUserVar[1hpaused];$description[## Status: Paused]]
     ${time()}
@@ -37,7 +37,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    ${checkChall()}
+    ${isActiveChallenge()}
     $onlyIf[$getUserVar[1hpaused]==false;${errorEmbed()} $description[## You already have paused the challenge!]]
     $!stopInterval[1HLUCK-$authorID]
     $setUserVar[1hpaused;true]
@@ -52,7 +52,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    ${checkChall()}
+    ${isActiveChallenge()}
     $onlyIf[$getUserVar[1hpaused];${errorEmbed()} $description[## You haven't paused your challenge!]]
     $setUserVar[1hpaused;false]
     ${normalEmbed()}
@@ -165,7 +165,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    ${checkChall()}
+    ${isActiveChallenge()}
     $description[# 1 Hour Luck Ended!]
     ${normalEmbed()}
     ${pts()}
@@ -201,7 +201,7 @@ module.exports = [
   code: `
     $stop
     $reply
-    ${checkChall()}
+    ${isActiveChallenge()}
     $onlyIf[$and[$isNumber[$message];$message>=0];${errorEmbed()} $description[## Only a number greater than or equal to 0 is allowed!]]
     $setUserVar[1hpoints;$message]
     ${normalEmbed()}
@@ -213,7 +213,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    ${checkChall()}
+    ${isActiveChallenge()}
     $onlyIf[$or[$and[$isNumber[$message];$message>=0;$message<3600];$checkContains[$message;:]];${errorEmbed()} $description[## Your time must be:\n### Bigger than 0\n### Lower than 3600\n### Or in format «\`MM:SS\`»]]
     
     $if[$checkContains[$message;:];
@@ -231,7 +231,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    ${checkChall()}
+    ${isActiveChallenge()}
     
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList]]
     $jsonLoad[snora;$getGlobalVar[SNORA]]
@@ -379,14 +379,16 @@ module.exports = [
     $arrayLoad[btn;-;$if[$or[$isModal;$isButton];$customID;$selectMenuValues]]
     $let[butid;$env[btn;0]]
 
-    $if[$includes[$env[btn;0];historyPages];
+    $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
+
+    $if[$includes[$get[butid];historyPages];
       $let[sortType;$env[btn;3]]
       $modal[customPage-$authorid-NaN-$get[sortType];Custom page]
       $addTextInput[page-$authorid;Enter page;Short;true;;;1;5]
       $showModal
       $stop
     ]
-    $onlyIf[$and[$includes[$get[butid];sortHis;historyPageLeft;historyPageRight;customPage;deleteHistoryPage];$includes[$env[btn;1];$authorID]];$callFunction[notYourBTN]]
+    $onlyIf[$includes[$get[butid];sortHis;historyPageLeft;historyPageRight;customPage;deleteHistoryPage]]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
@@ -677,6 +679,23 @@ module.exports = [
     ;1s;COUNTDOWN-$channelID]
     
   `
+},{
+  type: 'interactionCreate',
+  allowedInteractionTypes: ['button'],
+  description: "confirmation of edning challenge",
+  code: `
+    $arrayLoad[btn;-;$customID]
+
+    $onlyIf[$includes[$env[btn;0];confirmEndingChallenge]]
+    $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
+    ${isActiveChallenge()}
+    $description[# 1 Hour Luck Ended!]
+    ${normalEmbed()}
+    ${pts()}
+    $!editMessage[$channelID;$messageID]
+    ${challengeEnded()}
+    ${partyEnd()}
+  `
 }]
 
 function startingEmbed() {
@@ -725,38 +744,49 @@ function partyInterval (userid = "$authorID") {
 
 function interval () {
   return `
-  $setInterval[
+    $setInterval[
       $setUserVar[1htime;$sum[$getUserVar[1htime];1]] 
 
-      $switch[$getuservar[1htime];
+      $switch[$getUserVar[1htime];
         $case[1800;   ${timeLeft(30,  `m`)}   ]
         $case[1800;   ${timeLeft(15,  `m`)}   ]
-        $case[3300;   ${timeLeft(5,   `m`)}   ]
         $case[3540;   ${timeLeft(1,   `m`)}   ]
-        $case[3570;   ${timeLeft(30,  `s`)}   ]
         $case[3597;   ${timeLeft(3,   `s`)}   ]
         $case[3598;   ${timeLeft(2,   `s`)}   ]
         $case[3599;   ${timeLeft(1,   `s`)}   ] 
-        $case[3600;   $sendMessage[$channelID;# <@$authorID> EXTRA 10 SECONDS IN CASE YOU DIDN'T MANAGE TO FINISH WRITING. STOP FARMING RARES!]] 
-        $case[3610;   $sendMessage[$channelID;<@$authorID> $description[# 1 Hour Luck Ended!] ${normalEmbed()} ${pts()}] $let[end;true]] 
-      ]
-      $if[$get[end];
-        $jsonLoad[userProfile;$getUserVar[userProfile]]
-        $jsonLoad[history;$env[userProfile;1hl;history]]
-        $timezone[$env[userProfile;timezone]]
-        $arrayPushJSON[history;{
-          "points": $getuservar[1hpoints],
-          "rares": $getuservar[1htotalRares],
-          "time": "$parseDate[$getTimestamp;Locale]",
-          "raresList": $getuservar[1hallRaresList]
-        }]
-        $!jsonSet[userProfile;1hl;history;$env[history]]
-        ${reset()}
-        $setUserVar[userProfile;$env[userProfile]]
-      ]
-      
+        $case[3600;
+          $!stopInterval[1HLUCK-$authorID]
+          $sendMessage[$channelID;
+            <@$authorID> 
+            $getGlobalVar[author] 
+            $color[$getGlobalVar[luckyColor]]
+            $description[# 1 Hour Luck Ended!\n## You can still write rares if you didn't manage to finish.\n### Press button to confirm ending your challenge whenever you want.]
 
+            $addActionRow
+            $addButton[confirmEndingChallenge-$authorID;Confirm;Success;✅]
+          ]
+        ] 
+      ]
     ;1s;1HLUCK-$authorID]
+  `
+}
+
+function challengeEnded (confirm = true) {
+  return `
+    $if[${confirm};
+      $jsonLoad[userProfile;$getUserVar[userProfile]]
+      $jsonLoad[history;$env[userProfile;1hl;history]]
+      $timezone[$env[userProfile;timezone]]
+      $arrayPushJSON[history;{
+        "points": $getuservar[1hpoints],
+        "rares": $getuservar[1htotalRares],
+        "time": "$parseDate[$getTimestamp;Locale]",
+        "raresList": $getuservar[1hallRaresList]
+      }]
+      $!jsonSet[userProfile;1hl;history;$env[history]]
+      ${reset()}
+      $setUserVar[userProfile;$env[userProfile]]
+    ]  
   `
 }
 
@@ -975,18 +1005,18 @@ function settingsEmbed() {
   `
 }
 
-function checkChall () {
+function isActiveChallenge () {
   return `
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
-    $onlyIf[$getuservar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hstarted];${errorEmbed()} $description[## You don't have an active challenge!]]
   `
 }
 
 function time (idtime = "$authorID") {
   return `
     $let[time;$getuservar[1htime;${idtime}]]
-    $addField[Time passed:;\`$if[$get[time]>=3600;EXTRA 10 SECONDS;$parseDigital[$get[time]000]]\`]
+    $addField[Time passed:;\`$parseDigital[$get[time]000]\`]
   `
 }
 
@@ -1001,7 +1031,7 @@ function pts (idpts = "$authorID") {
     ]
     $let[list;$advancedReplace[$trimLines[$getuservar[1hallRaresList;${idpts}]];{;;};;";;,;]]
     $if[$get[list]==;$let[list;none]]
-    $addField[All received rares list:;\n$codeBlock[$get[list];JSON]]
+    $addField[All Rares List:;\n$codeBlock[$get[list];JSON]]
   `
 }
 
