@@ -531,21 +531,19 @@ module.exports = [{
       $try[
         $!disableButtonsOf[$env[playData;ChannelID];$env[playData;MessageID]]
       ]
-
-      ${removeAllProgress()}
     ]
     
     $if[$and[$env[playData;MessageID]==$messageID;$env[btn;0]==quit];
 
       $!editMessage[$channelID;$messageID;
-        $description[## You have been successfully exited the game!\n-# Earned: $separatenumber[$env[playData;MC];,]$getGlobalVar[emoji]]
+        $description[## You have successfully exited the game!\n-# Earned: $separatenumber[$env[playData;MC];,]$getGlobalVar[emoji]]
         $getGlobalVar[author]
         $color[$getGlobalVar[defaultColor]]
       ]
       
-      ${removeAllProgress()}
     ]
-
+    $deleteUserVar[allRareAttemptsInfo]
+    ${removeAllProgress()}
     $setUserVar[userPlayData;$env[playData]]
   `
 }]
