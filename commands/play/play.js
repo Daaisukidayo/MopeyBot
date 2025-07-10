@@ -116,8 +116,6 @@ module.exports = [{
       $!jsonSet[playData;XP;$env[XPreq;$env[playData;tier];0]]
     ]
 
-    $deferUpdate
-
     $if[$includes["$env[btn;0]";"kingDragonUpg"]!=true;
       ${animalsButtonsGenerator()}
     ;
@@ -136,7 +134,7 @@ module.exports = [{
     $getGlobalVar[author]
     $color[$env[playData;color]]
     $!editMessage[$channelID;$messageID]
-    
+    $deferUpdate
     $setUserVar[userPlayData;$env[playData]]
   `
 },{
