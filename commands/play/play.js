@@ -121,7 +121,7 @@ module.exports = [{
     ;
       $jsonLoad[KD;$env[animals;kingDragon]]
       $let[KDtrig;$env[KD;trig]-$authorID-upgrade]
-      $let[KDw;$env[userProfile;userWardrobe;kingDragon]]
+      $let[KDwr;$env[userProfile;userWardrobe;kingDragon]]
       $let[KDname;$env[KD;variants;$get[KDwr];name]]
       $let[KDemoji;$env[KD;variants;$get[KDwr];emoji]]
       $let[emojisInDescription;$get[KDemoji]]
