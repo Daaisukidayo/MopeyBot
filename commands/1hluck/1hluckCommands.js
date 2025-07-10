@@ -34,7 +34,6 @@ module.exports = [
     $setUserVar[1hpaused;true]
     ${normalEmbed()}
     $description[# Paused!]
-    ${total()} 
     ${time()}
   `
 },{
@@ -48,7 +47,6 @@ module.exports = [
     $setUserVar[1hpaused;false]
     ${normalEmbed()}
     $description[# Continued!]
-    ${total()}
     ${time()}
     ${interval()}
   `
@@ -229,10 +227,7 @@ module.exports = [
     $jsonLoad[snoraKeys;$jsonKeys[snora]]
     $arrayLoad[allRaresNames;, ;$jsonValues[snora;, ]]
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
-    $arrayForEach[raresMap;rareMap;
-      $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
-      $arrayConcat[allRares;allRares;allRaresFromCat]
-    ]
+    $jsonLoad[allRares;$getGlobalVar[allRares]]
     
     $let[arg1;$toLowerCase[$message[0]]]
     $let[arg2;$advancedReplace[$toLowerCase[$message[1]];add;+;a;+;remove;-;r;-]]
@@ -383,6 +378,14 @@ module.exports = [
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
+    
+    $if[$arrayAt[history;0]==;
+      $description[# No history]
+      $getGlobalVar[author]
+      $color[$getGlobalVar[luckyColor]]
+      $!editMessage[$channelID;$get[msg]]
+      $stop
+    ]
 
     $let[msg;$messageID]
     $let[page;$env[btn;2]]
@@ -392,14 +395,6 @@ module.exports = [
 
     $!stopTimeout[1HLHISTORY-$authorID]
     $jsonLoad[history;$arrayReverse[history]]
-
-    $if[$arrayAt[history;0]==;
-      $description[# No history]
-      $getGlobalVar[author]
-      $color[$getGlobalVar[luckyColor]]
-      $!editMessage[$channelID;$get[msg]]
-      $stop
-    ]
     
     ${hisSortType()}
 
@@ -932,7 +927,7 @@ function historyEmbed() {
     ]
     $if[$env[history;0]!=;
       $addActionRow
-      $addButton[deleteHistoryPage-$authorID-$get[page]-$get[sortType];Delete This Page;Danger;🗑️]
+      $addButton[deleteHistoryPage-$authorID-$get[page]-$get[sortType];Delete This Page (GLITCH);Danger;🗑️;true]
     ]
   `
 }
