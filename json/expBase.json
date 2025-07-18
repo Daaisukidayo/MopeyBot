@@ -1,0 +1,816 @@
+{
+  "b": ["Land", "Desert", "Ocean", "Arctic", "Forest"],
+  "f": [
+    {
+      "name": "Small Meat",
+      "XP": [100, 300],
+      "ID": 0
+    },
+    {
+      "name": "Medium Meat",
+      "XP": [1000, 4000],
+      "ID": 1
+    },
+    {
+      "name": "Big Meat",
+      "XP": [33000, 44000],
+      "ID": 2
+    },
+    {
+      "name": "Berry",
+      "XP": [1, 6],
+      "ID": 3
+    },
+    {
+      "name": "Honeycomb",
+      "XP": [20, 300],
+      "ID": 4
+    },
+    {
+      "name": "Date",
+      "XP": [5, 20],
+      "ID": 5
+    },
+    {
+      "name": "Plankton",
+      "XP": [1, 6],
+      "ID": 6
+    },
+    {
+      "name": "ArcticBerry",
+      "XP": [1, 6],
+      "ID": 7
+    },
+    {
+      "name": "Carrot",
+      "XP": [48, 48],
+      "ID": 8
+    },
+    {
+      "name": "Brown Mushrom",
+      "XP": [10, 15],
+      "ID": 9
+    },
+    {
+      "name": "Red Mushrom",
+      "XP": [150, 300],
+      "ID": 10
+    },
+    {
+      "name": "Mushrom Bush",
+      "XP": [3400, 12000],
+      "ID": 11
+    },
+    {
+      "name": "Raspberry",
+      "XP": [50, 150],
+      "ID": 12
+    },
+    {
+      "name": "Seaweed",
+      "XP": [12, 20],
+      "ID": 13
+    },
+    {
+      "name": "Kelp",
+      "XP": [500, 3000],
+      "ID": 14
+    },
+    {
+      "name": "Cloudberry",
+      "XP": [150, 450],
+      "ID": 15
+    },
+    {
+      "name": "Lillypad",
+      "XP": [75, 1000],
+      "ID": 16
+    },
+    {
+      "name": "Starfish",
+      "XP": [70, 300],
+      "ID": 17
+    },
+    {
+      "name": "Arctic Nut",
+      "XP": [500, 2000],
+      "ID": 18
+    },
+    {
+      "name": "Pear",
+      "XP": [400, 2500],
+      "ID": 19
+    },
+    {
+      "name": "Banana",
+      "XP": [100, 800],
+      "ID": 20
+    },
+    {
+      "name": "Watermelon Slice",
+      "XP": [1000, 2500],
+      "ID": 21
+    },
+    {
+      "name": "Watermelon",
+      "XP": [4800, 10000],
+      "ID": 22
+    },
+    {
+      "name": "Coconut",
+      "XP": [1000, 1000],
+      "ID": 23
+    },
+    {
+      "name": "Clam",
+      "XP": [250, 1000],
+      "ID": 24
+    },
+    {
+      "name": "Conch",
+      "XP": [3400, 12000],
+      "ID": 25
+    },
+    {
+      "name": "Snail",
+      "XP": [4000, 12000],
+      "ID": 26
+    },
+    {
+      "name": "Lemming",
+      "XP": [200, 500],
+      "ID": 27
+    },
+    {
+      "name": "Egg",
+      "XP": [30, 100],
+      "ID": 28
+    },
+    {
+      "name": "Golden Egg",
+      "XP": [325, 1000],
+      "ID": 29
+    },
+    {
+      "name": "Duckling",
+      "XP": [73, 73],
+      "ID": 30
+    },
+    {
+      "name": "Duck",
+      "XP": [5000, 15000],
+      "ID": 31
+    },
+    {
+      "name": "Arctic Duck",
+      "XP": [5000, 15000],
+      "ID": 32
+    },
+    {
+      "name": "Mango",
+      "XP": [300, 1000],
+      "ID": 33
+    },
+    {
+      "name": "Orange",
+      "XP": [500, 1000],
+      "ID": 34
+    },
+    {
+      "name": "Cactus Pear",
+      "XP": [45, 120],
+      "ID": 35
+    },
+    {
+      "name": "Melon",
+      "XP": [1000, 3000],
+      "ID": 36
+    },
+    {
+      "name": "Melon Slice",
+      "XP": [660, 660],
+      "ID": 37
+    },
+    {
+      "name": "Aloevera",
+      "XP": [18000, 36000],
+      "ID": 38
+    },
+    {
+      "name": "Aloevera Leaf",
+      "XP": [1, 450],
+      "ID": 39
+    },
+    {
+      "name": "Cactus",
+      "XP": [20000, 60000],
+      "ID": 40
+    }
+  ],
+  "p": [
+    {
+      "name": "mouse",
+      "ID": 0
+    },
+    {
+      "name": "desertRat",
+      "ID": 1
+    },
+    {
+      "name": "shrimp",
+      "ID": 2
+    },
+    {
+      "name": "arcticChipmunk",
+      "ID": 3
+    },
+    {
+      "name": "tarsier",
+      "ID": 4
+    },
+    {
+      "name": "rabbit",
+      "ID": 5
+    },
+    {
+      "name": "pigeon",
+      "ID": 6
+    },
+    {
+      "name": "whiteDove",
+      "ID": 7
+    },
+    {
+      "name": "desertChipmunk",
+      "ID": 8
+    },
+    {
+      "name": "trout",
+      "ID": 9
+    },
+    {
+      "name": "arcticHare",
+      "ID": 10
+    },
+    {
+      "name": "chukar",
+      "ID": 11
+    },
+    {
+      "name": "mole",
+      "ID": 12
+    },
+    {
+      "name": "chicken",
+      "ID": 13
+    },
+    {
+      "name": "meerkat",
+      "ID": 14
+    },
+    {
+      "name": "crab",
+      "ID": 15
+    },
+    {
+      "name": "penguin",
+      "ID": 16
+    },
+    {
+      "name": "flyingLizard",
+      "ID": 17
+    },
+    {
+      "name": "pig",
+      "ID": 18
+    },
+    {
+      "name": "pinkyPig",
+      "ID": 19
+    },
+    {
+      "name": "stinkyPig",
+      "ID": 20
+    },
+    {
+      "name": "woodpecker",
+      "ID": 21
+    },
+    {
+      "name": "armadillo",
+      "ID": 22
+    },
+    {
+      "name": "seaHorse",
+      "ID": 23
+    },
+    {
+      "name": "seal",
+      "ID": 24
+    },
+    {
+      "name": "kakapo",
+      "ID": 25
+    },
+    {
+      "name": "deer",
+      "ID": 26
+    },
+    {
+      "name": "doe",
+      "ID": 27
+    },
+    {
+      "name": "marshDeer",
+      "ID": 28
+    },
+    {
+      "name": "gazelle",
+      "ID": 29
+    },
+    {
+      "name": "squid",
+      "ID": 30
+    },
+    {
+      "name": "flamingo",
+      "ID": 31
+    },
+    {
+      "name": "reindeer",
+      "ID": 32
+    },
+    {
+      "name": "muskDeer",
+      "ID": 33
+    },
+    {
+      "name": "swinehoe",
+      "ID": 34
+    },
+    {
+      "name": "goldenPheasant",
+      "ID": 35
+    },
+    {
+      "name": "fox",
+      "ID": 36
+    },
+    {
+      "name": "hedgehog",
+      "ID": 37
+    },
+    {
+      "name": "peacock",
+      "ID": 38
+    },
+    {
+      "name": "fennecFox",
+      "ID": 39
+    },
+    {
+      "name": "jellyfish",
+      "ID": 40
+    },
+    {
+      "name": "arcticFox",
+      "ID": 41
+    },
+    {
+      "name": "zebra",
+      "ID": 42
+    },
+    {
+      "name": "donkey",
+      "ID": 43
+    },
+    {
+      "name": "jackass",
+      "ID": 44
+    },
+    {
+      "name": "macaw",
+      "ID": 45
+    },
+    {
+      "name": "blueMacaw",
+      "ID": 46
+    },
+    {
+      "name": "rareMacaw",
+      "ID": 47
+    },
+    {
+      "name": "warthog",
+      "ID": 48
+    },
+    {
+      "name": "turtle",
+      "ID": 49
+    },
+    {
+      "name": "muskox",
+      "ID": 50
+    },
+    {
+      "name": "cobra",
+      "ID": 51
+    },
+    {
+      "name": "giraffe",
+      "ID": 52
+    },
+    {
+      "name": "momaffie",
+      "ID": 53
+    },
+    {
+      "name": "momaffieFamily",
+      "ID": 54
+    },
+    {
+      "name": "girabie",
+      "ID": 55
+    },
+    {
+      "name": "camel",
+      "ID": 56
+    },
+    {
+      "name": "stingray",
+      "ID": 57
+    },
+    {
+      "name": "snowyOwl",
+      "ID": 58
+    },
+    {
+      "name": "walrus",
+      "ID": 59
+    },
+    {
+      "name": "raven",
+      "ID": 60
+    },
+    {
+      "name": "cheetah",
+      "ID": 61
+    },
+    {
+      "name": "jaguar",
+      "ID": 62
+    },
+    {
+      "name": "leopard",
+      "ID": 63
+    },
+    {
+      "name": "blackPanther",
+      "ID": 64
+    },
+    {
+      "name": "gorilla",
+      "ID": 65
+    },
+    {
+      "name": "toucan",
+      "ID": 66
+    },
+    {
+      "name": "chocoToucan",
+      "ID": 67
+    },
+    {
+      "name": "keelBilledToucan",
+      "ID": 68
+    },
+    {
+      "name": "fieryToucan",
+      "ID": 69
+    },
+    {
+      "name": "lavaToucan",
+      "ID": 70
+    },
+    {
+      "name": "rareToucan",
+      "ID": 71
+    },
+    {
+      "name": "rattleSnake",
+      "ID": 72
+    },
+    {
+      "name": "pufferfish",
+      "ID": 73
+    },
+    {
+      "name": "yellowPufferfish",
+      "ID": 74
+    },
+    {
+      "name": "demonPufferfish",
+      "ID": 75
+    },
+    {
+      "name": "snowLeopard",
+      "ID": 76
+    },
+    {
+      "name": "turkey",
+      "ID": 77
+    },
+    {
+      "name": "bear",
+      "ID": 78
+    },
+    {
+      "name": "blackBear",
+      "ID": 79
+    },
+    {
+      "name": "tiger",
+      "ID": 80
+    },
+    {
+      "name": "whiteTiger",
+      "ID": 81
+    },
+    {
+      "name": "blackTiger",
+      "ID": 82
+    },
+    {
+      "name": "gobiBear",
+      "ID": 83
+    },
+    {
+      "name": "hyena",
+      "ID": 84
+    },
+    {
+      "name": "pelican",
+      "ID": 85
+    },
+    {
+      "name": "swordfish",
+      "ID": 86
+    },
+    {
+      "name": "wolf",
+      "ID": 87
+    },
+    {
+      "name": "crocodile",
+      "ID": 88
+    },
+    {
+      "name": "lion",
+      "ID": 89
+    },
+    {
+      "name": "lioness",
+      "ID": 90
+    },
+    {
+      "name": "lionCub",
+      "ID": 91
+    },
+    {
+      "name": "blackManedLion",
+      "ID": 92
+    },
+    {
+      "name": "whiteLionCub",
+      "ID": 93
+    },
+    {
+      "name": "whiteLioness",
+      "ID": 94
+    },
+    {
+      "name": "whiteLion",
+      "ID": 95
+    },
+    {
+      "name": "blackLionCub",
+      "ID": 96
+    },
+    {
+      "name": "blackLioness",
+      "ID": 97
+    },
+    {
+      "name": "blackLion",
+      "ID": 98
+    },
+    {
+      "name": "falcon",
+      "ID": 99
+    },
+    {
+      "name": "predator",
+      "ID": 100
+    },
+    {
+      "name": "shaheen",
+      "ID": 101
+    },
+    {
+      "name": "vulture",
+      "ID": 102
+    },
+    {
+      "name": "rareVulture",
+      "ID": 103
+    },
+    {
+      "name": "octopus",
+      "ID": 104
+    },
+    {
+      "name": "polarBear",
+      "ID": 105
+    },
+    {
+      "name": "rhino",
+      "ID": 106
+    },
+    {
+      "name": "whiteRhino",
+      "ID": 107
+    },
+    {
+      "name": "blackRhino",
+      "ID": 108
+    },
+    {
+      "name": "baldEagle",
+      "ID": 109
+    },
+    {
+      "name": "goldenEagle",
+      "ID": 110
+    },
+    {
+      "name": "harpyEagle",
+      "ID": 111
+    },
+    {
+      "name": "greaterSpottedEagle",
+      "ID": 112
+    },
+    {
+      "name": "bison",
+      "ID": 113
+    },
+    {
+      "name": "shark",
+      "ID": 114
+    },
+    {
+      "name": "markhor",
+      "ID": 115
+    },
+    {
+      "name": "bigGoat",
+      "ID": 116
+    },
+    {
+      "name": "wolverine",
+      "ID": 117
+    },
+    {
+      "name": "hippo",
+      "ID": 118
+    },
+    {
+      "name": "boaConstrictor",
+      "ID": 119
+    },
+    {
+      "name": "ostrich",
+      "ID": 120
+    },
+    {
+      "name": "komodoDragon",
+      "ID": 121
+    },
+    {
+      "name": "killerWhale",
+      "ID": 122
+    },
+    {
+      "name": "sabertoothTiger",
+      "ID": 123
+    },
+    {
+      "name": "whiteGiraffe",
+      "ID": 124
+    },
+    {
+      "name": "whiteGiraffeFamily",
+      "ID": 125
+    },
+    {
+      "name": "elephant",
+      "ID": 126
+    },
+    {
+      "name": "cassowary",
+      "ID": 127
+    },
+    {
+      "name": "giantSpider",
+      "ID": 128
+    },
+    {
+      "name": "blackwidowSpider",
+      "ID": 129
+    },
+    {
+      "name": "blueWhale",
+      "ID": 130
+    },
+    {
+      "name": "mammoth",
+      "ID": 131
+    },
+    {
+      "name": "dragon",
+      "ID": 132
+    },
+    {
+      "name": "trex",
+      "ID": 133
+    },
+    {
+      "name": "phoenix",
+      "ID": 134
+    },
+    {
+      "name": "pterodactyl",
+      "ID": 135
+    },
+    {
+      "name": "kraken",
+      "ID": 136
+    },
+    {
+      "name": "kingCrab",
+      "ID": 137
+    },
+    {
+      "name": "yeti",
+      "ID": 138
+    },
+    {
+      "name": "aquaYeti",
+      "ID": 139
+    },
+    {
+      "name": "shopBigfoot",
+      "ID": 140
+    },
+    {
+      "name": "luckBigfoot",
+      "ID": 141
+    },
+    {
+      "name": "shopSnowman",
+      "ID": 142
+    },
+    {
+      "name": "luckSnowman",
+      "ID": 143
+    },
+    {
+      "name": "shopSnowgirl",
+      "ID": 144
+    },
+    {
+      "name": "luckSnowgirl",
+      "ID": 145
+    },
+    {
+      "name": "dinoMonster",
+      "ID": 146
+    },
+    {
+      "name": "landMonster",
+      "ID": 147
+    },
+    {
+      "name": "giantScorpion",
+      "ID": 148
+    },
+    {
+      "name": "seaMonster",
+      "ID": 149
+    },
+    {
+      "name": "iceMonster",
+      "ID": 150
+    }
+  ]
+}

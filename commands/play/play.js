@@ -58,7 +58,13 @@ module.exports = [{
     $let[animal;$env[btn;0]]
     $onlyIf[$arrayIncludes[animalsKeys;$get[animal]]]
 
-    $let[bonus;50]
+    $jsonLoad[rareReward;${rareReward()}]
+    $let[bonusPerUpgrade;50]
+
+    $let[bonusPerRare;$env[rareReward;$get[animal]]]
+    $if[$get[bonusPerRare]==;
+      $let[bonusPerRare;0]
+    ]
 
     $let[wardrobeIndex;$env[userProfile;userWardrobe;$get[animal]]]
     $let[color;$env[biomeColors;$env[animals;$get[animal];biome]]]
@@ -67,7 +73,7 @@ module.exports = [{
     $let[animalName;$env[animals;$get[animal];variants;$get[wardrobeIndex];name]]
     $let[biome;$env[animals;$get[animal];biome]]
 
-    $!jsonSet[playData;MC;$math[$get[bonus] + $env[playData;MC]]]
+    $!jsonSet[playData;MC;$math[$get[bonusPerUpgrade] + $env[playData;MC] + $get[bonusPerRare]]]
     $!jsonSet[playData;currentAnimal;$get[emoji]]
     $!jsonSet[playData;color;$get[color]]
     $!jsonSet[playData;currentBiome;$get[biome]]
@@ -548,10 +554,66 @@ module.exports = [{
 
 // System functions
 
+function rareReward () {
+  return `{
+    "whiteDove": 500,
+    "pinkyPig": 200,
+    "stinkyPig": 200,
+    "doe": 200,
+    "marshDeer": 200,
+    "muskDeer": 200,
+    "goldenPheasant": 200,
+    "jackass": 200,
+    "blueMacaw": 200,
+    "rareMacaw": 200,
+    "momaffie": 200,
+    "momaffieFamily": 200,
+    "girabie": 200,
+    "jaguar": 200,
+    "leopard": 200,
+    "blackPanther": 200,
+    "chocoToucan": 50,
+    "keelBilledToucan": 200,
+    "fieryToucan": 200,
+    "lavaToucan": 200,
+    "rareToucan": 200,
+    "yellowPufferfish": 200,
+    "demonPufferfish": 200,
+    "blackBear": 200,
+    "whiteTiger": 200,
+    "blackTiger": 200,
+    "blackManedLion": 200,
+    "lionCub": 200,
+    "whiteLionCub": 200,
+    "blackLionCub": 200,
+    "lioness": 200,
+    "WhiteLioness": 200,
+    "blackLioness": 200,
+    "predator": 200,
+    "shaheen": 200,
+    "goldenEagle": 200,
+    "harpyEagle": 200,
+    "greaterSpottedEagle": 200,
+    "whiteRhino": 200,
+    "blackRhino": 200,
+    "markhor": 200,
+    "bigGoat": 200,
+    "whiteGiraffe": 200,
+    "whiteGiraffeFamily": 200,
+    "aquaYeti": 200,
+    "shopSnowman": 200,
+    "luckSnowman": 200,
+    "shopSnowgirl": 200,
+    "luckSnowgirl": 200,
+    "shopBigfoot": 200,
+    "luckBigfoot": 200,
+    "kingDragon": 200
+  }`
+}
+
 function luckGenerator () {
   return `
     $jsonLoad[allRareAttemptsInfo;{}]
-    $jsonLoad[allAttemptsList;{}]
     $jsonLoad[rareGroups;
       [
         "pigeon|pigeon|whiteDove", 
@@ -916,7 +978,6 @@ function animalsButtonsGenerator() {
         $let[maxIndex;$env[allRareAttemptsInfo;$get[animal];maxIndex]]
 
         $if[$get[index]==$get[maxIndex];
-          $log[pass]
           $arrayShuffle[attemptsArr]
           $!jsonSet[allRareAttemptsInfo;$get[animal];attempts;$env[attemptsArr]]
           $!jsonSet[allRareAttemptsInfo;$get[animal];index;0]
@@ -927,7 +988,6 @@ function animalsButtonsGenerator() {
 
         $letSum[index;1]
         $!jsonSet[allRareAttemptsInfo;$get[animal];index;$get[index]]
-
         $setUserVar[allRareAttemptsInfo;$env[allRareAttemptsInfo]]
         
         $if[$get[chosenAnimal]==undefined;
@@ -948,8 +1008,6 @@ function animalsButtonsGenerator() {
   `
 }
 
-
-
 function varsForButtonGen () {
   return `
     $let[emoji;$env[animals;$get[animal];variants;$env[userProfile;userWardrobe;$get[animal]];emoji]]
@@ -958,7 +1016,7 @@ function varsForButtonGen () {
     $let[emojisInDescription;$get[emojisInDescription]$get[emoji]]
     
     $if[$math[$get[buttonsQ]%5]==0;
-        $addActionRow
+      $addActionRow
     ]
     $addButton[$get[trig];$get[animalName];$get[butStyle];$get[emoji]]
     $letSum[buttonsQ;1]

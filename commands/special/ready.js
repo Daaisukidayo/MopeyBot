@@ -9,13 +9,33 @@ module.exports = {
 
     $async[ $c[CACHING allRares]
       $deleteGlobalVar[allRares]
-      $jsonLoad[raresMap;$getGlobalVar[raresMap]]
-      $arrayForEach[raresMap;rareMap;
-        $jsonLoad[allRaresFromCat;$env[rareMap;rares]]
-        $arrayConcat[allRares;allRares;allRaresFromCat]
+      $deleteGlobalVar[snoraElements]
+      $deleteGlobalVar[SNORA]
+      $jsonLoad[SNORA;$getGlobalVar[allRaresArr]]
+      $jsonLoad[animals;$readFile[json/animals.json]]
+
+      $arrayMap[SNORA;elem;
+        $let[emoji;$env[animals;$env[elem;0];variants;0;emoji]]
+        $!jsonSet[elem;3;$get[emoji]]
+        $return[$env[elem]]
+      ;SNORA]
+
+      $logger[Info;Successfully mapped «SNORA»]
+
+      $jsonLoad[allRaresFromSnora;{}]
+      $jsonLoad[snoraElements;{}]
+      
+      $arrayForEach[SNORA;elem;
+        $!jsonSet[snoraElements;$env[elem;1];$env[elem;2]]
+        $jsonLoad[rares;$env[elem;2]]
+        $arrayForEach[rares;rare;
+          $!jsonSet[allRaresFromSnora;$env[rare];$env[elem;1]]
+        ]
       ]
-      $setGlobalVar[allRares;$env[allRares]]
-      $logger[Info;Successfully loaded and cached «allRares» from «raresMap»]
+      $setGlobalVar[allRares;$env[allRaresFromSnora]]
+      $setGlobalVar[snoraElements;$env[snoraElements]]
+      $setGlobalVar[SNORA;$env[SNORA]]
+      $logger[Info;Successfully loaded and cached «allRares» & «snoraElements» from «SNORA»]
     ]
 
     $if[$getGlobalVar[makeBackups];
