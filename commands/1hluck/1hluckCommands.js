@@ -262,7 +262,7 @@ module.exports = [
     $let[caughtRare;$get[arg1]]
     ${findingRareInSnoraBase()}
     $let[rareAn;$get[animalName]]
-    $let[deleteCount;$get[arg3]]
+    $let[count;$get[arg3]]
 
     $onlyIf[$jsonHas[allRaresList;$get[rareAn]];
       ${errorEmbed()} 
@@ -270,7 +270,7 @@ module.exports = [
     ]
     
     $if[$get[arg3]==all;
-      $let[deleteCount;$env[allRaresList;$get[rareAn];0]]
+      $let[count;$env[allRaresList;$get[rareAn];0]]
       $!jsonDelete[allRaresList;$get[rareAn]]
     ;
       $!jsonSet[allRaresList;$get[rareAn];0;$math[$env[allRaresList;$get[rareAn];0] $get[arg2] $get[arg3]]]
@@ -297,7 +297,13 @@ module.exports = [
 
     ${settingParticProgress()}
 
-    ## ✅ Removed \`$get[deleteCount]\` $get[rareAn]
+    $if[$get[arg2]==-;
+      $let[state;Removed]
+    ;
+      $let[state;Added]
+    ]
+
+    ## ✅ $get[state] \`$get[count]\` $get[rareAn]
     ${normalEmbed()}
     $description[$trimLines[${pts()}]]
     ${time()}
