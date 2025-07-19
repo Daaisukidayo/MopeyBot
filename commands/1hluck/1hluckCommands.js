@@ -137,11 +137,7 @@ module.exports = [
       $arrayForEach[caught;pts;$let[pts;$if[$get[pts]==;$get[pts];$get[pts] + ]$env[pts]]]
       $setUserVar[1hpoints|$channelID;$math[$getUserVar[1hpoints|$channelID] + $get[points]]]
 
-      $if[$getUserVar[participating|$channelID];
-        $jsonLoad[progress;$getUserVar[progress|$channelID]]
-        $!jsonSet[progress;points;$getUserVar[1hpoints|$channelID]]
-        $setUserVar[progress|$channelID;$env[progress]]
-      ]
+      ${settingParticProgress()}
 
       $if[$arraylength[caughtRares]>1;
         $let[desc;$get[pts] = $get[points]]
@@ -297,6 +293,8 @@ module.exports = [
     $setUserVar[1hallRaresList|$channelID;$env[allRaresList]]
     $setUserVar[1htotalRares|$channelID;$get[totalRares]]
     $setUserVar[1hpoints|$channelID;$get[points]]
+
+    ${settingParticProgress()}
 
     ## ✅ Removed \`$get[deleteCount]\` $get[rareAn]
     ${normalEmbed()}
@@ -716,6 +714,16 @@ module.exports = [
 }]
 
 // 1 hour luck functions
+
+function settingParticProgress() {
+  return `
+    $if[$getUserVar[participating|$channelID];
+      $jsonLoad[progress;$getUserVar[progress|$channelID]]
+      $!jsonSet[progress;points;$getUserVar[1hpoints|$channelID]]
+      $setUserVar[progress|$channelID;$env[progress]]
+    ]
+  `
+}
 
 function findingRareInRaresMapBase () {
   return `
