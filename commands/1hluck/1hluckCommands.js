@@ -261,41 +261,11 @@ module.exports = [
     
     $let[caughtRare;$get[arg1]]
     ${findingRareInSnoraBase()}
-    $let[rareAn;$get[animalName]]
+    $let[animal;$get[animalName]]
     $let[count;$get[arg3]]
-
-    $onlyIf[$jsonHas[allRaresList;$get[rareAn]];
-      ${errorEmbed()} 
-      $description[### Animal «$get[rareAn]» is not in the rares list!]
-    ]
-    
-    $if[$get[arg3]==all;
-      $let[count;$env[allRaresList;$get[rareAn];0]]
-      $!jsonDelete[allRaresList;$get[rareAn]]
-    ;
-      $!jsonSet[allRaresList;$get[rareAn];0;$math[$env[allRaresList;$get[rareAn];0] $get[arg2] $get[arg3]]]
-      $if[$env[allRaresList;$get[rareAn];0]<=0;
-        $!jsonDelete[allRaresList;$get[rareAn]]
-      ]
-    ]
-
-    $let[totalRares;0]
+    $let[quantity;$env[allRaresList;$get[animal];0]]
+    $let[rares;0]
     $let[points;0]
-    
-    $jsonLoad[allRaresListEntries;$jsonEntries[allRaresList]]
-    
-    $if[$arrayAt[allRaresListEntries;0]==;;
-      $arrayForEach[allRaresListEntries;entry;
-        $letSum[totalRares;$env[entry;1;0]]
-        $letSum[points;$math[$env[entry;1;0] * $env[entry;1;1]]]
-      ]
-    ]
-
-    $setUserVar[1hallRaresList|$channelID;$env[allRaresList]]
-    $setUserVar[1htotalRares|$channelID;$get[totalRares]]
-    $setUserVar[1hpoints|$channelID;$get[points]]
-
-    ${settingParticProgress()}
 
     $if[$get[arg2]==-;
       $let[state;Removed]
@@ -303,7 +273,40 @@ module.exports = [
       $let[state;Added]
     ]
 
-    ## ✅ $get[state] \`$get[count]\` $get[rareAn]
+    $onlyIf[$jsonHas[allRaresList;$get[animal]];
+      ${errorEmbed()} 
+      $description[### Animal «$get[animal]» is not in the rares list!]
+    ]
+    
+    $if[$get[arg3]==all;
+      $let[count;$get[quantity]]
+      $!jsonDelete[allRaresList;$get[animal]]
+    ;
+      $let[quantity;$math[$get[quantity] $get[arg2] $get[count]]]
+
+      $if[$get[quantity]<=0;
+        $!jsonDelete[allRaresList;$get[animal]]
+      ;
+        $!jsonSet[allRaresList;$get[animal];0;$get[quantity]]
+      ]
+    ]
+    
+    $jsonLoad[allRaresListEntries;$jsonEntries[allRaresList]]
+    
+    $if[$arrayAt[allRaresListEntries;0]==;;
+      $arrayForEach[allRaresListEntries;entry;
+        $letSum[rares;$env[entry;1;0]]
+        $letSum[points;$math[$env[entry;1;0] * $env[entry;1;1]]]
+      ]
+    ]
+
+    $setUserVar[1hallRaresList|$channelID;$env[allRaresList]]
+    $setUserVar[1htotalRares|$channelID;$get[rares]]
+    $setUserVar[1hpoints|$channelID;$get[points]]
+
+    ${settingParticProgress()}
+
+    ## ✅ $get[state] \`$get[count]\` $get[animal]
     ${normalEmbed()}
     $description[$trimLines[${pts()}]]
     ${time()}
