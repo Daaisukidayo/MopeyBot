@@ -14,120 +14,105 @@
         "name": "Mouse",
         "description": "Season 1 | Version 2 (Current)",
         "emoji": "<:MouseS1:1291425874700271788>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448472133745/MouseS1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448472133745/MouseS1.png"
       },
       {
         "vCode": "s1-v1",
         "name": "Mouse",
         "description": "Season 1 | Version 1",
         "emoji": "<:MouseS1v1:1331659474183655474>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331659774806331412/Mouse-S1-v1.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331659774806331412/Mouse-S1-v1.png"
       },
       {
         "vCode": "s2",
         "name": "Mouse",
         "description": "Season 2",
         "emoji": "<:MouseS2:1290349331895029852>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348739596128308/MouseS2.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348739596128308/MouseS2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Mouse",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MouseS2Winter:1331658994326044722>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291456445795008542/Mouse-S2-Winter.png",
-        "v": 3
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291456445795008542/Mouse-S2-Winter.png"
       },
       {
         "vCode": "lsp",
         "name": "Purple Mouse",
         "description": "Locked Skinpack",
         "emoji": "<:PurpleMouse:1290701105243754531>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1290704801134547201/PurpleMouse.png",
-        "v": 4
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1290704801134547201/PurpleMouse.png"
       },
       {
         "vCode": "gsp",
         "name": "Golden Mouse",
         "description": "Golden Skinpack",
         "emoji": "<:GoldenMouse:1290701057143472238>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1290704801453183060/GoldenMouse.png",
-        "v": 5
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1290704801453183060/GoldenMouse.png"
       },
       {
         "vCode": "legacy",
         "name": "Mouse",
         "description": "Legacy Skinpack",
         "emoji": "<:ClassicMouse:1331661370864963725>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331660918039248948/ClassicMouse.png",
-        "v": 6
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331660918039248948/ClassicMouse.png"
       },
       {
         "vCode": "legacy-w-v1",
         "name": "Mouse",
         "description": "Legacy Skinpack | Winter Version 1",
         "emoji": "<:LegacyMouseWinterV1:1331663395992113283>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331663922784112640/LegacyMouseWinterV1.png",
-        "v": 7
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331663922784112640/LegacyMouseWinterV1.png"
       },
       {
         "vCode": "legacy-w",
         "name": "Mouse",
         "description": "Legacy Skinpack | Winter Version 2 (Current)",
         "emoji": "<:LegacyMouseWinterV2:1331663409212690534>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331663923426103326/LegacyMouseWinterV2.png",
-        "v": 8
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331663923426103326/LegacyMouseWinterV2.png"
       },
       {
         "vCode": "landgt",
         "name": "Mouse",
         "description": "Land Gold Trim Skinpack",
         "emoji": "<:MouseGoldTrim:1331664429053513780>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331665088339382292/Mouse-GoldTrim.png",
-        "v": 9
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331665088339382292/Mouse-GoldTrim.png"
       },
       {
         "vCode": "hsp2020",
         "name": "Robo Mouse",
         "description": "Halloween Skinpack 2020",
         "emoji": "<:RoboMouse:1331666011967193138>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331666345942843422/RoboMouse.png",
-        "v": 10
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331666345942843422/RoboMouse.png"
       },
       {
         "vCode": "ssp2021",
         "name": "Bubbly Mouse",
         "description": "Summer Skinpack 2021",
         "emoji": "<:BubblyMouse:1331666787753787423>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331668462376063016/BubblyMouse.png",
-        "v": 11
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331668462376063016/BubblyMouse.png"
       },
       {
         "vCode": "ssp2022",
         "name": "Super Mouse",
         "description": "Summer Skinpack 2022",
         "emoji": "<:SuperMouse:1331675123236864001>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331674554442977310/SuperMouse.png",
-        "v": 12
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331674554442977310/SuperMouse.png"
       },
       {
         "vCode": "hsp2021",
         "name": "Light Plague Rat",
         "description": "Halloween Skinpack 2021",
         "emoji": "<:LightPlagueRat:1331670155217866962>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331668975360147466/LightPlagueRat.png",
-        "v": 13
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331668975360147466/LightPlagueRat.png"
       },
       {
         "vCode": "hsp2021",
         "name": "Dark Plague Rat",
         "description": "Halloween Skinpack 2021",
         "emoji": "<:DarkPlagueRat:1331670165120876574>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331668975683240032/DarkPlagueRat.png",
-        "v": 14
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331668975683240032/DarkPlagueRat.png"
       }
     ]
   },
@@ -146,40 +131,35 @@
         "name": "Desert Rat",
         "description": "Season 1",
         "emoji": "<:DesertRatS1:1291425991587270676>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448224800860/DesertRat-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448224800860/DesertRat-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Desert Rat",
         "description": "Season 2",
         "emoji": "<:DesertRatS2:1290350508627722301>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348740548497481/DesertRat-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348740548497481/DesertRat-S2.png"
       },
       {
         "vCode": "legacy",
         "name": "Desert Rat",
         "description": "Legacy Skinpack",
         "emoji": "<:DesertRatClassic:1331696156560068649>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331697554148163706/DesertRatClassic.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331697554148163706/DesertRatClassic.png"
       },
       {
         "vCode": "desertgt",
         "name": "Desert Rat",
         "description": "Desert Gold Trim Skinpack",
         "emoji": "<:DesertRatGoldTrim:1331696932803838034>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331697419783503992/DesertRat-GoldTrim.png",
-        "v": 3
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331697419783503992/DesertRat-GoldTrim.png"
       },
       {
         "vCode": "hsp2020",
         "name": "Cacti Rat",
         "description": "Halloween Skinpack 2020",
         "emoji": "<:CactiRat:1331697830229966882>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331697419372597309/CactiRat.png",
-        "v": 4
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331697419372597309/CactiRat.png"
       }
     ]
   },
@@ -198,72 +178,63 @@
         "name": "Shrimp",
         "description": "Season 1 | Version 2 (Current)",
         "emoji": "<:ShrimpS1:1291425951338467440>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448707145799/Shrimp-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331654448707145799/Shrimp-S1.png"
       },
       {
         "vCode": "s1-v1",
         "name": "Shrimp",
         "description": "Season 1 | Version 1",
         "emoji": "<:ShrimpS1V1:1332053552595599380>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059009947271168/Shrimp-S1V1.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059009947271168/Shrimp-S1V1.png"
       },
       {
         "vCode": "s2",
         "name": "Shrimp",
         "description": "Season 2",
         "emoji": "<:ShrimpS2:1290350647459450972>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348741143826462/Shrimp-S2.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348741143826462/Shrimp-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Shrimp",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ShrimpS2Winter:1291425929322823758>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059009645285467/Shrimp-S2-Winter.png",
-        "v": 3
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059009645285467/Shrimp-S2-Winter.png"
       },
       {
         "vCode": "legacy",
         "name": "Shrimp",
         "description": "Legacy Skinpack",
         "emoji": "<:ShrimpClassic:1332053833316306945>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059010521759875/ShrimpClassic.png",
-        "v": 4
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059010521759875/ShrimpClassic.png"
       },
       {
         "vCode": "legacy-w",
         "name": "Shrimp",
         "description": "Legacy Skinpack | Winter Version",
         "emoji": "<:ShrimpClassicWinter:1332053845190246480>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059010836336711/ShrimpClassicWinter.png",
-        "v": 5
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059010836336711/ShrimpClassicWinter.png"
       },
       {
         "vCode": "oceangt",
         "name": "Shrimp",
         "description": "Ocean Gold Trim Skinpack",
         "emoji": "<:ShrimpGoldTrim:1332054190351978666>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059438005227560/Shrimp-GoldTrim.png",
-        "v": 6
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059438005227560/Shrimp-GoldTrim.png"
       },
       {
         "vCode": "may2021",
         "name": "Deluxe Shrimp",
         "description": "May 2021 Skinpack",
         "emoji": "<:DeluxeShrimp:1332054246866292888>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059011633254470/DeluxeShrimp.png",
-        "v": 7
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059011633254470/DeluxeShrimp.png"
       },
       {
         "vCode": "ssp2021",
         "name": "Chef Shrimp",
         "description": "Summer Skinpack 2021",
         "emoji": "<:ChefShrimp:1332054266487246898>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059011260092446/ChefShrimp.png",
-        "v": 8
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332059011260092446/ChefShrimp.png"
       }
     ]
   },
@@ -282,56 +253,49 @@
         "name": "Arctic Chipmunk",
         "description": "Season 1",
         "emoji": "<:ChipmunkS1:1291426701351583754>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1331654447943651358/Chipmunk-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1331654447943651358/Chipmunk-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Arctic Chipmunk",
         "description": "Season 2",
         "emoji": "<:ChipmunkS2:1290350695698137118>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348740049109106/Chipmunk-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348740049109106/Chipmunk-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Arctic Chipmunk",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ChipmunkS2Winter:1291426691142520872>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392310788587531/Chipmunk-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392310788587531/Chipmunk-S2-Winter.png"
       },
       {
         "vCode": "legacy",
         "name": "Arctic Chipmunk",
         "description": "Legacy Skinpack",
         "emoji": "<:ArcticChipmunkClassic:1332390003870924840>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392307718099025/ArcticChipmunkClassic.png",
-        "v": 3
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392307718099025/ArcticChipmunkClassic.png"
       },
       {
         "vCode": "legacy-w",
         "name": "Arctic Chipmunk",
         "description": "Legacy Skinpack | Winter Version",
         "emoji": "<:ArcticChipmunkClassicWinter:1332390685566828575>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392308733382727/ArcticChipmunkClassicWinter.png",
-        "v": 4
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392308733382727/ArcticChipmunkClassicWinter.png"
       },
       {
         "vCode": "arcticgt",
         "name": "Arctic Chipmunk",
         "description": "Arctic Gold Trim Skinpack",
         "emoji": "<:ArcticChipmunkGoldTrim:1332391843530408107>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392309723103293/ArcticChipmunkGoldTrim.png",
-        "v": 5
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392309723103293/ArcticChipmunkGoldTrim.png"
       },
       {
         "vCode": "ssp2021",
         "name": "Playful Munk",
         "description": "Summer Skinpack 2021",
         "emoji": "<:PlayfulMunk:1332391870776479764>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392310222094456/PlayfulMunk.png",
-        "v": 6
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332392310222094456/PlayfulMunk.png"
       }
     ]
   },
@@ -350,8 +314,7 @@
         "name": "Tarsier",
         "description": "Season 2",
         "emoji": "<:Tarsier:1290351366119620708>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348740875518056/Tarsier.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1290348740875518056/Tarsier.png"
       }
     ]
   },
@@ -370,24 +333,21 @@
         "name": "Rabbit",
         "description": "Season 1",
         "emoji": "<:RabbitS1:1291427677558931572>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457736697057310/Rabbit-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457736697057310/Rabbit-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Rabbit",
         "description": "Season 2",
         "emoji": "<:RabbitS2:1291427653055807530>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457736906903622/Rabbit-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457736906903622/Rabbit-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Rabbit",
         "description": "Season 2 | Winter Version",
         "emoji": "<:RabbitS2Winter:1291427664296415297>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457737154236469/Rabbit-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457737154236469/Rabbit-S2-Winter.png"
       }
     ]
   },
@@ -408,24 +368,21 @@
         "name": "Pigeon",
         "description": "Season 1",
         "emoji": "<:PigeonS1:1332411742273273856>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332411454439292929/Pigeon-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332411454439292929/Pigeon-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Pigeon",
         "description": "Season 2",
         "emoji": "<:PigeonS2:1291427610860978237>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332412600570351707/Pigeon-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332412600570351707/Pigeon-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Pigeon",
         "description": "Season 2 | Winter Version",
         "emoji": "<:PigeonS2Winter:1291427628632379423>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457737707884666/Pigeon-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457737707884666/Pigeon-S2-Winter.png"
       }
     ]
   },
@@ -445,16 +402,14 @@
         "name": "White Dove",
         "description": "Season 1",
         "emoji": "<:WhiteDoveS1:1332414122146402346>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1332414732874809397/WhiteDove-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1332414732874809397/WhiteDove-S1.png"
       },
       {
         "vCode": "s2",
         "name": "White Dove",
         "description": "Season 2",
         "emoji": "<:WhiteDoveS2:1291258772492255263>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733625265623082/white_dove.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733625265623082/white_dove.png"
       }
     ]
   },
@@ -473,24 +428,21 @@
         "name": "Desert Chipmunk",
         "description": "Season 1",
         "emoji": "<:DesertChipmunkS1:1291427348473839666>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457592375115797/DesertChipmunk-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457592375115797/DesertChipmunk-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Desert Chipmunk",
         "description": "Season 2",
         "emoji": "<:DesertChipmunkS2:1291427318970974238>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591737581679/DesertChipmunk-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591737581679/DesertChipmunk-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Desert Chipmunk",
         "description": "Season 2 | Winter Version",
         "emoji": "<:DesertChipmunkS2Winter:1291427332396941352>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591985176637/DesertChipmunk-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591985176637/DesertChipmunk-S2-Winter.png"
       }
     ]
   },
@@ -509,24 +461,21 @@
         "name": "Trout",
         "description": "Season 1",
         "emoji": "<:TroutS1:1291427844194439284>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457593742721117/Trout-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457593742721117/Trout-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Trout",
         "description": "Season 2",
         "emoji": "<:TroutS2:1291427823273381959>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457593046204496/Trout-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457593046204496/Trout-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Trout",
         "description": "Season 2 | Winter Version",
         "emoji": "<:TroutS2Winter:1291427833402363975>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457593469833346/Trout-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457593469833346/Trout-S2-Winter.png"
       }
     ]
   },
@@ -545,24 +494,21 @@
         "name": "Arctic Hare",
         "description": "Season 1",
         "emoji": "<:ArcticHareS1:1291427235751788675>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591427334255/ArcticHare-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591427334255/ArcticHare-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Arctic Hare",
         "description": "Season 2",
         "emoji": "<:ArcticHareS2:1291427190692380783>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457590789931172/ArcticHare-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457590789931172/ArcticHare-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Arctic Hare",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ArcticHareS2Winter:1291427205989011527>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591121154068/ArcticHare-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457591121154068/ArcticHare-S2-Winter.png"
       }
     ]
   },
@@ -581,8 +527,7 @@
         "name": "Chukar",
         "description": "Season 2",
         "emoji": "<:ChukarS2:1291427563578589204>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457592731897909/Chukar-S2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457592731897909/Chukar-S2.png"
       }
     ]
   },
@@ -601,24 +546,21 @@
         "name": "Mole",
         "description": "Season 1",
         "emoji": "<:MoleS1:1291428307308511273>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457970198020187/Mole-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457970198020187/Mole-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Mole",
         "description": "Season 2",
         "emoji": "<:MoleS2:1291428285221437472>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457970546278480/Mole-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457970546278480/Mole-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Mole",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MoleS2Winter:1291428295325388926>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457970835558420/Mole-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457970835558420/Mole-S2-Winter.png"
       }
     ]
   },
@@ -637,16 +579,14 @@
         "name": "Chicken",
         "description": "Season 1",
         "emoji": "<:ChickenS1:1333092004820942860>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1333092292159995994/Chicken-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1333092292159995994/Chicken-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Chicken",
         "description": "Season 2",
         "emoji": "<:ChickenS2:1291428272915218442>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457971339006075/Chicken-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457971339006075/Chicken-S2.png"
       }
     ]
   },
@@ -665,24 +605,21 @@
         "name": "Meerkat",
         "description": "Season 1",
         "emoji": "<:MeerkatS1:1291428108465082409>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457933896319078/Meerkat-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457933896319078/Meerkat-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Meerkat",
         "description": "Season 2",
         "emoji": "<:MeerkatS2:1291428085971030057>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457933149995048/Meerkat-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457933149995048/Meerkat-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Meerkat",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MeerkatS2Winter:1291428095777177705>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457933447663790/Meerkat-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457933447663790/Meerkat-S2-Winter.png"
       }
     ]
   },
@@ -701,24 +638,21 @@
         "name": "Crab",
         "description": "Season 1",
         "emoji": "<:CrabS1:1291428698939068446>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457935226044487/Crab-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457935226044487/Crab-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Crab",
         "description": "Season 2",
         "emoji": "<:CrabS2:1291428674649718964>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457934416412764/Crab-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457934416412764/Crab-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Crab",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CrabS2Winter:1291428685815087137>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457934882242581/Crab-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457934882242581/Crab-S2-Winter.png"
       }
     ]
   },
@@ -737,24 +671,21 @@
         "name": "Penguin",
         "description": "Season 1",
         "emoji": "<:PenguinS1:1291428028395814932>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457932810125382/Penguin-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457932810125382/Penguin-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Penguin",
         "description": "Season 2",
         "emoji": "<:PenguinS2:1291427995134722099>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457932193566831/Penguin-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457932193566831/Penguin-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Penguin",
         "description": "Season 2 | Winter Version",
         "emoji": "<:PenguinS2Winter:1291428006002429994>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457932508266537/Penguin-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457932508266537/Penguin-S2-Winter.png"
       }
     ]
   },
@@ -773,8 +704,7 @@
         "name": "Flying Lizard",
         "description": "Season 2",
         "emoji": "<:FlyingLizard:1291428239239020687>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457934177599558/FlyingLizard.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291457934177599558/FlyingLizard.png"
       }
     ]
   },
@@ -796,24 +726,21 @@
         "name": "Pig",
         "description": "Season 1",
         "emoji": "<:PigS1v2:1333508176343203860>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1333508715201953854/Pig-S1-v2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1333508715201953854/Pig-S1-v2.png"
       },
       {
         "vCode": "s2",
         "name": "Pig",
         "description": "Season 2",
         "emoji": "<:PigS2:1291429320211955844>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276589764638/Pig-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276589764638/Pig-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Pig",
         "description": "Season 2 | Winter Version",
         "emoji": "<:PigS2Winter:1291429334774452386>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276337975326/Pig-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276337975326/Pig-S2-Winter.png"
       }
     ]
   },
@@ -833,16 +760,14 @@
         "name": "Pinky Pig",
         "description": "Season 1",
         "emoji": "<:PinkyPigS1:1333508206428815360>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1335299481146757201/PinkyPig-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1335299481146757201/PinkyPig-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Pinky Pig",
         "description": "Season 2",
         "emoji": "<:PinkyPigS2:1284520701541351454>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733625592905891/pinkypig-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733625592905891/pinkypig-S2.png"
       }
     ]
   },
@@ -862,16 +787,14 @@
         "name": "Stinky Pig",
         "description": "Season 1",
         "emoji": "<:StinkyPigS1:1333508221968584714>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1335299481545084938/StinkyPig-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1335299481545084938/StinkyPig-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Stinky Pig",
         "description": "Season 2",
         "emoji": "<:StinkyPigS2:1284520753793863831>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733625928454275/StinkyPig-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733625928454275/StinkyPig-S2.png"
       }
     ]
   },
@@ -890,16 +813,14 @@
         "name": "Woodpecker",
         "description": "Season 1",
         "emoji": "<:WoodpeckerS1:1367569904634564701>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1367570366943330447/Woodpecker-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1367570366943330447/Woodpecker-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Woodpecker",
         "description": "Season 2",
         "emoji": "<:WoodpeckerS2:1291429347466412072>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276883361843/Woodpecker-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276883361843/Woodpecker-S2.png"
       }
     ]
   },
@@ -918,16 +839,14 @@
         "name": "Armadillo",
         "description": "Season 1",
         "emoji": "<:ArmadilloS1:1367569927074222200>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1367570372551118868/Armadillo-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1367570372551118868/Armadillo-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Armadillo",
         "description": "Season 2",
         "emoji": "<:ArmadilloS2:1291429055748640870>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459275788652595/Armadillo-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459275788652595/Armadillo-S2.png"
       }
     ]
   },
@@ -946,24 +865,21 @@
         "name": "Sea Horse",
         "description": "Season 1",
         "emoji": "<:SeahorseS1:1291429464949133364>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297879789719/Seahorse-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297879789719/Seahorse-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Sea Horse",
         "description": "Season 2",
         "emoji": "<:SeahorseS2:1291429430584938597>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297338724384/Seahorse-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297338724384/Seahorse-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Sea Horse",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SeahorseS2Winter:1291429453645484082>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297582256198/Seahorse-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297582256198/Seahorse-S2-Winter.png"
       }
     ]
   },
@@ -982,24 +898,21 @@
         "name": "Seal",
         "description": "Season 1",
         "emoji": "<:SealS1:1291429019262128189>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459275524149348/Seal-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459275524149348/Seal-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Seal",
         "description": "Season 2",
         "emoji": "<:SealS2:1291428996134731837>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459274836283402/Seal-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459274836283402/Seal-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Seal",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SealS2Winter:1291429006503182358>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459275150983250/Seal-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459275150983250/Seal-S2-Winter.png"
       }
     ]
   },
@@ -1018,8 +931,7 @@
         "name": "Kakapo",
         "description": "Season 2",
         "emoji": "<:KakapoS2:1291429273349132410>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276027461662/Kakapo-S2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276027461662/Kakapo-S2.png"
       }
     ]
   },
@@ -1041,24 +953,21 @@
         "name": "Deer",
         "description": "Season 1",
         "emoji": "<:DeerS1:1291430265889099849>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076994744381/Deer-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076994744381/Deer-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Deer",
         "description": "Season 2",
         "emoji": "<:DeerS2:1291430215456919693>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480077338542172/Deer-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480077338542172/Deer-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Deer",
         "description": "Season 2 | Winter Version",
         "emoji": "<:DeerS2Winter:1291430228677103677>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076327714877/Deer-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076327714877/Deer-S2-Winter.png"
       }
     ]
   },
@@ -1078,16 +987,14 @@
         "name": "Doe",
         "description": "Season 1",
         "emoji": "<:DoeS1:1291430288529952911>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076583571457/Doe-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076583571457/Doe-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Doe",
         "description": "Season 2",
         "emoji": "<:DoeS2:1284520854276804680>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733626133708861/Doe-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733626133708861/Doe-S2.png"
       }
     ]
   },
@@ -1107,16 +1014,14 @@
         "name": "Marsh Deer",
         "description": "Season 1",
         "emoji": "<:MarshDeerS1:1291430302895444070>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480204962693141/Marsh_Deer-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480204962693141/Marsh_Deer-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Marsh Deer",
         "description": "Season 2",
         "emoji": "<:MarshDeerS2:1284520894894702788>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733626905464942/MarshDeer-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733626905464942/MarshDeer-S2.png"
       }
     ]
   },
@@ -1135,16 +1040,14 @@
         "name": "Gazelle",
         "description": "Season 1",
         "emoji": "<:GazelleS1:1291429668528066702>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480075669078057/Gazelle-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480075669078057/Gazelle-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Gazelle",
         "description": "Season 2",
         "emoji": "<:GazelleS2:1291429655978446920>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480075455172638/Gazelle-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480075455172638/Gazelle-S2.png"
       }
     ]
   },
@@ -1163,24 +1066,21 @@
         "name": "Squid",
         "description": "Season 1",
         "emoji": "<:SquidS1:1291430540213489714>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205319340155/Squid-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205319340155/Squid-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Squid",
         "description": "Season 2",
         "emoji": "<:SquidS2:1291430517186760865>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205600489513/Squid-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205600489513/Squid-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Squid",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SquidS2Winter:1291430528313987104>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205847691294/Squid-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205847691294/Squid-S2-Winter.png"
       }
     ]
   },
@@ -1199,16 +1099,14 @@
         "name": "Flamingo",
         "description": "Season 1",
         "emoji": "<:FlamingoS1:1336376893267775528>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1336377666684588032/Flamingo-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1336377666684588032/Flamingo-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Flamingo",
         "description": "Season 2",
         "emoji": "<:FlamingoS2:1291430551206629447>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480206313521295/Flamingo-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480206313521295/Flamingo-S2.png"
       }
     ]
   },
@@ -1229,16 +1127,14 @@
         "name": "Reindeer",
         "description": "Season 1",
         "emoji": "<:ReindeerS1:1291429583500873839>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480074788540470/Reindeer-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480074788540470/Reindeer-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Reindeer",
         "description": "Season 2",
         "emoji": "<:ReindeerS2:1291429559337484422>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480074545135768/Reindeer-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480074545135768/Reindeer-S2.png"
       }
     ]
   },
@@ -1258,16 +1154,14 @@
         "name": "Musk Deer",
         "description": "Season 1",
         "emoji": "<:MuskDeerS1:1291429595744047165>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480075031674952/MuskDeer-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480075031674952/MuskDeer-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Musk Deer",
         "description": "Season 2",
         "emoji": "<:MuskDeerS2:1284540790583984139>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733627601977477/MuskDeer-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733627601977477/MuskDeer-S2.png"
       }
     ]
   },
@@ -1288,8 +1182,7 @@
         "name": "Swinehoe",
         "description": "Season 2",
         "emoji": "<:SwinehoeS2:1291430007545139333>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076080123934/Swinehoe.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480076080123934/Swinehoe.png"
       }
     ]
   },
@@ -1309,8 +1202,7 @@
         "name": "Golden Pheasant",
         "description": "Season 2",
         "emoji": "<:GoldenPheasantS2:1285692782765408360>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733626628767816/GoldenPheasant.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733626628767816/GoldenPheasant.png"
       }
     ]
   },
@@ -1329,24 +1221,21 @@
         "name": "Fox",
         "description": "Season 1",
         "emoji": "<:FoxS1:1291430809231953952>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614393872416/Fox-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614393872416/Fox-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Fox",
         "description": "Season 2",
         "emoji": "<:FoxS2:1291430732522192896>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614608044132/Fox-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614608044132/Fox-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Fox",
         "description": "Season 2 | Winter Version",
         "emoji": "<:FoxS2Winter:1291430796791648368>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613458804878/Fox-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613458804878/Fox-S2-Winter.png"
       }
     ]
   },
@@ -1365,24 +1254,21 @@
         "name": "Hedgehog",
         "description": "Season 1",
         "emoji": "<:HedgehogS1:1291430861086134332>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613735366656/Hedgehog-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613735366656/Hedgehog-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Hedgehog",
         "description": "Season 2",
         "emoji": "<:HedgehogS2:1291430829087789066>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613962121348/Hedgehog-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613962121348/Hedgehog-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Hedgehog",
         "description": "Season 2 | Winter Version",
         "emoji": "<:HedgehogS2Winter:1291430839787458681>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614184288380/Hedgehog-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614184288380/Hedgehog-S2-Winter.png"
       }
     ]
   },
@@ -1401,16 +1287,14 @@
         "name": "Peacock",
         "description": "Season 1",
         "emoji": "<:PeacockS1:1337028604881670226>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1337037604952080495/Peacock-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1337037604952080495/Peacock-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Peacock",
         "description": "Season 2",
         "emoji": "<:PeacockS2:1291430902898888704>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480686569459785/Peacock-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480686569459785/Peacock-S2.png"
       }
     ]
   },
@@ -1429,16 +1313,14 @@
         "name": "Fennec Fox",
         "description": "Season 1",
         "emoji": "<:FennecFoxS1:1291430678730248334>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613102030989/FennecFox-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613102030989/FennecFox-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Fennec Fox",
         "description": "Season 2",
         "emoji": "<:FennecFoxS2:1291430668667981834>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612754034690/FennecFox-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612754034690/FennecFox-S2.png"
       }
     ]
   },
@@ -1457,24 +1339,21 @@
         "name": "Jellyfish",
         "description": "Season 1",
         "emoji": "<:JellyfishS1:1291430997157744770>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480687131492382/Jellyfish-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480687131492382/Jellyfish-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Jellyfish",
         "description": "Season 2",
         "emoji": "<:JellyfishS2:1291430985438859356>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480686846545930/Jellyfish-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480686846545930/Jellyfish-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Jellyfish",
         "description": "Season 2 | Winter Version",
         "emoji": "<:JellyfishS2Winter:1337044388056137819>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1337047419933818960/Jellyfish-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1337047419933818960/Jellyfish-S2-Winter.png"
       }
     ]
   },
@@ -1493,24 +1372,21 @@
         "name": "Arctic Fox",
         "description": "Season 1",
         "emoji": "<:ArcticFoxS1:1291430637932122194>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612502241321/ArcticFox-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612502241321/ArcticFox-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Arctic Fox",
         "description": "Season 2",
         "emoji": "<:ArcticFoxS2:1291430623306711060>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612200386590/ArcticFox-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612200386590/ArcticFox-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Arctic Fox",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ArcticFoxS2Winter:1337048370576883742>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1337048791282614412/ArcticFox-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1337048791282614412/ArcticFox-S2-Winter.png"
       }
     ]
   },
@@ -1529,24 +1405,21 @@
         "name": "Zebra",
         "description": "Season 1",
         "emoji": "<:ZebraS1:1291436281485725797>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113658658960/Zebra-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113658658960/Zebra-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Zebra",
         "description": "Season 2",
         "emoji": "<:ZebraS2:1291436256647053382>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112995958886/Zebra-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112995958886/Zebra-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Zebra",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ZebraS2Winter:1291436268487704726>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113230970890/Zebra-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113230970890/Zebra-S2-Winter.png"
       }
     ]
   },
@@ -1567,24 +1440,21 @@
         "name": "Donkey",
         "description": "Season 1",
         "emoji": "<:DonkeyS1:1291436063059087451>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480909391855697/Donkey-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480909391855697/Donkey-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Donkey",
         "description": "Season 2",
         "emoji": "<:DonkeyS2:1291436028732899449>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908016386048/Donkey-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908016386048/Donkey-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Donkey",
         "description": "Season 2 | Winter Version",
         "emoji": "<:DonkeyS2Winter:1291436049758814280>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908423106560/Donkey-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908423106560/Donkey-S2-Winter.png"
       }
     ]
   },
@@ -1604,16 +1474,14 @@
         "name": "Jackass",
         "description": "Season 1",
         "emoji": "<:JackassS1:1291436237105664134>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1367219591503413420/Jackass-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1367219591503413420/Jackass-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Jackass",
         "description": "Season 2",
         "emoji": "<:JackassS2:1284567568299851918>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1367219591931105401/Jackass-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1367219591931105401/Jackass-S2.png"
       }
     ]
   },
@@ -1635,16 +1503,14 @@
         "name": "Macaw",
         "description": "Season 1",
         "emoji": "<:MacawS1:1291435943429013565>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480909945638912/Macaw-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480909945638912/Macaw-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Macaw",
         "description": "Season 2",
         "emoji": "<:MacawS2:1291435930338459658>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112660672625/Macaw-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112660672625/Macaw-S2.png"
       }
     ]
   },
@@ -1664,16 +1530,14 @@
         "name": "Blue Macaw",
         "description": "Season 1",
         "emoji": "<:BlueMacawS1:1291435973057445888>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908683018321/BlueMacaw-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908683018321/BlueMacaw-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Blue Macaw",
         "description": "Season 2",
         "emoji": "<:BlueMacawS2:1284540918648541287>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733627836600431/BlueMacaw.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733627836600431/BlueMacaw.png"
       }
     ]
   },
@@ -1693,40 +1557,35 @@
         "name": "Spix Macaw",
         "description": "Season 1",
         "emoji": "<:SpixMacaw:1362500826597298236>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501105761910924/spixMacaw.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501105761910924/spixMacaw.png"
       },
       {
         "vCode": "s1",
         "name": "Pakistan Macaw",
         "description": "Season 1",
         "emoji": "<:PakistanMacawS1:1291435993710198868>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112211750994/PakistanMacaw-S1.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112211750994/PakistanMacaw-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Pakistan Macaw",
         "description": "Season 2",
         "emoji": "<:PakistanMacawS2:1284540970876145704>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733633834713222/PakistanMacaw.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286733633834713222/PakistanMacaw.png"
       },
       {
         "vCode": "s1",
         "name": "USSR Macaw",
         "description": "Season 1",
         "emoji": "<:USSRMacawS1:1287125634539323463>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1287125928056717355/USSR_Macaw.png",
-        "v": 3
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1287125928056717355/USSR_Macaw.png"
       },
       {
         "vCode": "s2",
         "name": "USSR Macaw",
         "description": "Season 2",
         "emoji": "<:USSRMacawS2:1288058610655690804>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1288064073983987787/USSR_Macaw-S2.png",
-        "v": 4
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1288064073983987787/USSR_Macaw-S2.png"
       }
     ]
   },
@@ -1745,16 +1604,14 @@
         "name": "Warthog",
         "description": "Season 1",
         "emoji": "<:WarthogS1:1291435873455575153>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480907588436189/Warthog-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480907588436189/Warthog-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Warthog",
         "description": "Season 2",
         "emoji": "<:WarthogS2:1291435861593952318>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480907320135732/Warthog-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480907320135732/Warthog-S2.png"
       }
     ]
   },
@@ -1773,24 +1630,21 @@
         "name": "Turtle",
         "description": "Season 1",
         "emoji": "<:TurtleS1:1291436332626874378>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481114279542836/Turtle-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481114279542836/Turtle-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Turtle",
         "description": "Season 2",
         "emoji": "<:TurtleS2:1291436319808946286>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113994461196/Turtle-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113994461196/Turtle-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Turtle",
         "description": "Season 2 | Winter Version",
         "emoji": "<:TurtleS2Winter:1338158405579182203>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1338158779002261624/Turtle-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1338158779002261624/Turtle-S2-Winter.png"
       }
     ]
   },
@@ -1809,24 +1663,21 @@
         "name": "Muskox",
         "description": "Season 1",
         "emoji": "<:MuskoxS1:1291435721181106258>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480906950906009/Muskox-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480906950906009/Muskox-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Muskox",
         "description": "Season 2",
         "emoji": "<:MuskoxS2:1291435711123165295>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480906669752442/Muskox-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1291480906669752442/Muskox-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Muskox",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MuskoxS2Winter:1338159518609182900>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1338160466278617218/Muskox-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1338160466278617218/Muskox-S2-Winter.png"
       }
     ]
   },
@@ -1845,24 +1696,21 @@
         "name": "Cobra",
         "description": "Season 1",
         "emoji": "<:CobraS1:1361400186424918217>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158171521115/Cobra-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158171521115/Cobra-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Cobra",
         "description": "Season 2",
         "emoji": "<:CobraS2:1292124983421567029>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384833850572933/Cobra-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384833850572933/Cobra-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Cobra",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CobraS2Winter:1361400218435977416>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158385426482/Cobra-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158385426482/Cobra-S2-Winter.png"
       }
     ]
   },
@@ -1885,24 +1733,21 @@
         "name": "Giraffe",
         "description": "Season 1",
         "emoji": "<:GiraffeS1:1361400386161742087>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158599467110/Giraffe-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158599467110/Giraffe-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Giraffe",
         "description": "Season 2",
         "emoji": "<:GiraffeS2:1292124965663146045>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384834114818069/Giraffe-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384834114818069/Giraffe-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Giraffe",
         "description": "Season 2 | Winter Version",
         "emoji": "<:GiraffeS2Winter:1361400397939347511>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158901330001/Giraffe-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158901330001/Giraffe-S2-Winter.png"
       }
     ]
   },
@@ -1922,8 +1767,7 @@
         "name": "Momaffie",
         "description": "Season 2",
         "emoji": "<:MomaffieS2:1284567606422147202>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734058642210939/Momaffie.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734058642210939/Momaffie.png"
       }
     ]
   },
@@ -1943,8 +1787,7 @@
         "name": "Momaffie Family",
         "description": "Season 2",
         "emoji": "<:MomaffieFamilyS2:1284567618627571896>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734059053256737/Momaffie_family.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734059053256737/Momaffie_family.png"
       }
     ]
   },
@@ -1964,8 +1807,7 @@
         "name": "Girabie",
         "description": "Season 2",
         "emoji": "<:GirabieS2:1284567631956807701>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734058289762485/Girabie.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734058289762485/Girabie.png"
       }
     ]
   },
@@ -1984,16 +1826,14 @@
         "name": "Camel",
         "description": "Season 1",
         "emoji": "<:CamelS1:1361401207964303432>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395157710143709/Camel-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395157710143709/Camel-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Camel",
         "description": "Season 2",
         "emoji": "<:CamelS2:1292124920658264086>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384833229557772/Camel-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384833229557772/Camel-S2.png"
       }
     ]
   },
@@ -2012,16 +1852,14 @@
         "name": "Stingray",
         "description": "Season 1",
         "emoji": "<:StingrayS1:1361401336536633545>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395280519364688/Stingray-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395280519364688/Stingray-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Stingray",
         "description": "Season 2",
         "emoji": "<:StingrayS2:1292125010886004854>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384834446036994/Stingray-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384834446036994/Stingray-S2.png"
       }
     ]
   },
@@ -2040,24 +1878,21 @@
         "name": "Snowy Owl",
         "description": "Season 1",
         "emoji": "<:SnowyOwlS1:1361401655798792392>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395156473086062/SnowyOwl-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395156473086062/SnowyOwl-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Snowy Owl",
         "description": "Season 2",
         "emoji": "<:SnowyOwlS2:1292124886252388372>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384832592281640/SnowyOwl-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384832592281640/SnowyOwl-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Snowy Owl",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SnowyOwlS2Winter:1361401644373377174>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395156984529097/SnowyOwl-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395156984529097/SnowyOwl-S2-Winter.png"
       }
     ]
   },
@@ -2076,24 +1911,21 @@
         "name": "Walrus",
         "description": "Season 1",
         "emoji": "<:WalrusS1:1361401443843571863>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395157211152454/Walrus-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395157211152454/Walrus-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Walrus",
         "description": "Season 2",
         "emoji": "<:WalrusS2:1292124896779960492>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384832927694929/Walrus-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384832927694929/Walrus-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Walrus",
         "description": "Season 2 | Winter Version",
         "emoji": "<:WalrusS2Winter:1361401453838598407>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395157445906727/Walrus-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395157445906727/Walrus-S2-Winter.png"
       }
     ]
   },
@@ -2112,16 +1944,14 @@
         "name": "Raven",
         "description": "Season 1",
         "emoji": "<:RavenS1:1361402329215143946>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395157949349988/Raven-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395157949349988/Raven-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Raven",
         "description": "Season 2",
         "emoji": "<:RavenS2:1292124940912562256>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384833518960683/Raven-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384833518960683/Raven-S2.png"
       }
     ]
   },
@@ -2144,24 +1974,21 @@
         "name": "Cheetah",
         "description": "Season 1",
         "emoji": "<:CheetahS1:1361776155883212991>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310748164399/Cheetah-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310748164399/Cheetah-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Cheetah",
         "description": "Season 2",
         "emoji": "<:CheetahS2:1292125135683190804>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368368353280/Cheetah-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368368353280/Cheetah-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Cheetah",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CheetahS2Winter:1361776168491155486>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310986973424/Cheetah-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310986973424/Cheetah-S2-Winter.png"
       }
     ]
   },
@@ -2181,16 +2008,14 @@
         "name": "Jaguar",
         "description": "Season 1",
         "emoji": "<:JaguarS1:1362129903771844638>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134313134592092/Jaguar-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134313134592092/Jaguar-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Jaguar",
         "description": "Season 2",
         "emoji": "<:JaguarS2:1284567739440300052>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608680370289/Jaguar.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608680370289/Jaguar.png"
       }
     ]
   },
@@ -2210,16 +2035,14 @@
         "name": "Leopard",
         "description": "Season 1",
         "emoji": "<:LeopardS1:1362130076342292710>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134548850147530/Leopard-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134548850147530/Leopard-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Leopard",
         "description": "Season 2",
         "emoji": "<:LeopardS2:1284567751641530579>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609888067654/Leopard.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609888067654/Leopard.png"
       }
     ]
   },
@@ -2239,16 +2062,14 @@
         "name": "Black Panther",
         "description": "Season 1",
         "emoji": "<:BlackPantherS1:1362130496867270896>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310450233474/BlackPanther-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310450233474/BlackPanther-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Black Panther",
         "description": "Season 2",
         "emoji": "<:BlackPantherS2:1284567767764177028>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png"
       }
     ]
   },
@@ -2267,24 +2088,21 @@
         "name": "Gorilla",
         "description": "Season 1",
         "emoji": "<:GorillaS1:1361776326591385670>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312123896001/Gorilla-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312123896001/Gorilla-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Gorilla",
         "description": "Season 2",
         "emoji": "<:GorillaS2:1294274658903920661>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368800497674/Gorilla-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368800497674/Gorilla-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Gorilla",
         "description": "Season 2 | Winter Version",
         "emoji": "<:GorillaS2Winter:1361776337634988224>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312417235205/Gorilla-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312417235205/Gorilla-S2-Winter.png"
       }
     ]
   },
@@ -2309,16 +2127,14 @@
         "name": "Toucan",
         "description": "Season 1",
         "emoji": "<:ToucanS1:1361777009843372253>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134549458583723/Toucan-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134549458583723/Toucan-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Toucan",
         "description": "Season 2",
         "emoji": "<:ToucanS2:1292125146533990410>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368586322042/Toucan-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368586322042/Toucan-S2.png"
       }
     ]
   },
@@ -2338,16 +2154,14 @@
         "name": "Choco Toucan",
         "description": "Season 1",
         "emoji": "<:ChocoToucanS1:1362133014095597811>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134311297482974/ChocoToucan-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134311297482974/ChocoToucan-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Choco Toucan",
         "description": "Season 2",
         "emoji": "<:ChocoToucanS2:1284567662353059971>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730607816343573/ChocoToucan.png"
       }
     ]
   },
@@ -2367,16 +2181,14 @@
         "name": "Keel-Billed Toucan",
         "description": "Season 1",
         "emoji": "<:KeelBilledToucanS1:1362133045502808124>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134313407348766/KeelBilledToucan-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134313407348766/KeelBilledToucan-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Keel-Billed Toucan",
         "description": "Season 2",
         "emoji": "<:KeelBilledToucanS2:1284567675212664964>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609045143632/KeelBilledToucan.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609045143632/KeelBilledToucan.png"
       }
     ]
   },
@@ -2396,16 +2208,14 @@
         "name": "Fiery Toucan",
         "description": "Season 1",
         "emoji": "<:FieryToucanS1:1362133066943955074>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134311683227869/FieryToucan-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134311683227869/FieryToucan-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Fiery Toucan",
         "description": "Season 2",
         "emoji": "<:FieryToucanS2:1284567688781238323>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608390701066/FieryToucan.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608390701066/FieryToucan.png"
       }
     ]
   },
@@ -2425,16 +2235,14 @@
         "name": "Lava Toucan",
         "description": "Season 1",
         "emoji": "<:LavaToucanS1:1362133087118430370>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134548384845955/LavaToucan-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134548384845955/LavaToucan-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Lava Toucan",
         "description": "Season 2",
         "emoji": "<:LavaToucanS2:1284567706171080725>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609326297214/LavaToucan.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609326297214/LavaToucan.png"
       }
     ]
   },
@@ -2454,40 +2262,35 @@
         "name": "Helmeted Hornbill Toucan",
         "description": "Season 1",
         "emoji": "<:HornbillToucan:1362133135894253818>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312715157504/HornbillToucan.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312715157504/HornbillToucan.png"
       },
       {
         "vCode": "s1",
         "name": "Pakistan Toucan",
         "description": "Season 1",
         "emoji": "<:PakistanToucanS1:1362133109121749052>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134549085159515/PakistanToucan-S1.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134549085159515/PakistanToucan-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Pakistan Toucan",
         "description": "Season 2",
         "emoji": "<:PakistanToucanS2:1284567718351077386>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730610446041212/PakistanToucan.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730610446041212/PakistanToucan.png"
       },
       {
         "vCode": "legacy",
         "name": "USSR Toucan",
         "description": "Legacy Skinpack",
         "emoji": "<:USSRToucanLegacy:1287125672342454406>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1287125928450855062/USSR_Toucan.png",
-        "v": 3
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1287125928450855062/USSR_Toucan.png"
       },
       {
         "vCode": "s2",
         "name": "USSR Toucan",
         "description": "Season 2",
         "emoji": "<:USSRToucanS2:1288058651075940382>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1288064074365534208/USSR_Toucan-S2.png",
-        "v": 4
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1288064074365534208/USSR_Toucan-S2.png"
       }
     ]
   },
@@ -2506,16 +2309,14 @@
         "name": "Rattle Snake",
         "description": "Season 1",
         "emoji": "<:RattleSnakeS1:1361777470411378950>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134549819031813/Rattlesnake-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134549819031813/Rattlesnake-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Rattle Snake",
         "description": "Season 2",
         "emoji": "<:RattleSnakeS2:1292125087201366067>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385367885873182/Rattlesnake-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385367885873182/Rattlesnake-S2.png"
       }
     ]
   },
@@ -2537,16 +2338,14 @@
         "name": "Pufferfish",
         "description": "Season 1",
         "emoji": "<:PufferfishS1:1361777855507337516>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550381068409/Pufferfish-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550381068409/Pufferfish-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Pufferfish",
         "description": "Season 2",
         "emoji": "<:PufferfishS2:1292125226083287090>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385369022664764/Pufferfish-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385369022664764/Pufferfish-S2.png"
       }
     ]
   },
@@ -2566,16 +2365,14 @@
         "name": "Yellow Pufferfish",
         "description": "Season 1",
         "emoji": "<:YellowPufferfishS1:1361777870434734090>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550637052164/YellowPufferfish-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550637052164/YellowPufferfish-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Yellow Pufferfish",
         "description": "Season 2",
         "emoji": "<:YellowPufferfishS2:1284567779156168846>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730611494621268/YellowPufferfish.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730611494621268/YellowPufferfish.png"
       }
     ]
   },
@@ -2595,16 +2392,14 @@
         "name": "Demonfish",
         "description": "Season 1",
         "emoji": "<:DemonPufferfishS1:1361777884619870428>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550138065318/DemonPufferfish-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550138065318/DemonPufferfish-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Demonfish",
         "description": "Season 2",
         "emoji": "<:DemonPufferfishS2:1284567803596116047>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608113881140/DemonPufferfish.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608113881140/DemonPufferfish.png"
       }
     ]
   },
@@ -2623,24 +2418,21 @@
         "name": "Snow Leopard",
         "description": "Season 1",
         "emoji": "<:SnowLeopardS1:1361778282672029887>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550897234020/SnowLeopard-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134550897234020/SnowLeopard-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Snow Leopard",
         "description": "Season 2",
         "emoji": "<:SnowLeopardS2:1292125039088504926>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385367659515966/SnowLeopard-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385367659515966/SnowLeopard-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Snow Leopard",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SnowLeopardS2Winter:1361778296198533403>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134551144435873/SnowLeopard-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134551144435873/SnowLeopard-S2-Winter.png"
       }
     ]
   },
@@ -2659,8 +2451,7 @@
         "name": "Turkey",
         "description": "Season 1",
         "emoji": "<:Turkey:1292125105551573142>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368129409105/Turkey.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368129409105/Turkey.png"
       }
     ]
   },
@@ -2681,24 +2472,21 @@
         "name": "Bear",
         "description": "Season 1",
         "emoji": "<:BearS1:1362498849704378550>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501500554838258/Bear-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501500554838258/Bear-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Bear",
         "description": "Season 2",
         "emoji": "<:BearS2:1292125598411653120>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239932141660/Bear-S2.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239932141660/Bear-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Bear",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BearS2Winter:1362498863448985943>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501129588878/Bear-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501129588878/Bear-S2-Winter.png"
       }
     ]
   },
@@ -2718,16 +2506,14 @@
         "name": "Black Bear",
         "description": "Season 1",
         "emoji": "<:BlackBearS1:1363599773361508452>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363600246269022359/BlackBear-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363600246269022359/BlackBear-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Black Bear",
         "description": "Season 2",
         "emoji": "<:BlackBearS2:1288058731363569684>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1288064073321287711/BlackBear.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1288064073321287711/BlackBear.png"
       }
     ]
   },
@@ -2749,24 +2535,21 @@
         "name": "Tiger",
         "description": "Season 1",
         "emoji": "<:TigerS1:1362499086422511906>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501452419283/Tiger-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501452419283/Tiger-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Tiger",
         "description": "Season 2",
         "emoji": "<:TigerS2:1292125609786609675>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239722553434/Tiger-S2.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239722553434/Tiger-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Tiger",
         "description": "Season 2 | Winter Version",
         "emoji": "<:TigerS2Winter:1362499098640388306>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501871718491/Tiger-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501871718491/Tiger-S2-Winter.png"
       }
     ]
   },
@@ -2786,16 +2569,14 @@
         "name": "White Tiger",
         "description": "Season 1",
         "emoji": "<:WhiteTigerS1:1362499110745276598>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501502408851696/WhiteTiger-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501502408851696/WhiteTiger-S1.png"
       },
       {
         "vCode": "s2",
         "name": "White Tiger",
         "description": "Season 2",
         "emoji": "<:WhiteTigerS2:1284568061474508810>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1286734059422093375/WhiteTiger.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1286734059422093375/WhiteTiger.png"
       }
     ]
   },
@@ -2815,16 +2596,14 @@
         "name": "Black Tiger",
         "description": "Season 1",
         "emoji": "<:BlackTigerS1:1363515430978719797>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363515303929319464/BlackTiger-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363515303929319464/BlackTiger-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Black Tiger",
         "description": "Season 2",
         "emoji": "<:BlackTigerS2:1288058719082643526>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1288064073644376095/BlackTiger.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1288064073644376095/BlackTiger.png"
       }
     ]
   },
@@ -2843,24 +2622,21 @@
         "name": "Gobi Bear",
         "description": "Season 1",
         "emoji": "<:GobiBearS1:1362499557564481596>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501968282521701/GobiBear-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501968282521701/GobiBear-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Gobi Bear",
         "description": "Season 2",
         "emoji": "<:GobiBearS2:1292125557827305553>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239248466012/GobiBear-S2.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239248466012/GobiBear-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Gobi Bear",
         "description": "Season 2 | Winter Version",
         "emoji": "<:GobiBearS2Winter:1362499574945550336>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501969314316328/GobiBear-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501969314316328/GobiBear-S2-Winter.png"
       }
     ]
   },
@@ -2879,24 +2655,21 @@
         "name": "Hyena",
         "description": "Season 1",
         "emoji": "<:HyenaS1:1362499585469186119>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501969905979402/Hyena-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501969905979402/Hyena-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Hyena",
         "description": "Season 2",
         "emoji": "<:HyenaS2:1292125566534684692>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239466573835/Hyena-S2.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239466573835/Hyena-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Hyena",
         "description": "Season 2 | Winter Version",
         "emoji": "<:HyenaS2Winter:1362499599226503319>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501970773934220/Hyena-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501970773934220/Hyena-S2-Winter.png"
       }
     ]
   },
@@ -2915,16 +2688,14 @@
         "name": "Pelican",
         "description": "Season 1",
         "emoji": "<:PelicanS1:1362500144670441594>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362502231487807698/Pelican-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362502231487807698/Pelican-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Pelican",
         "description": "Season 2",
         "emoji": "<:PelicanS2:1292125644909580289>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386240171085834/Pelican-S2.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386240171085834/Pelican-S2.png"
       }
     ]
   },
@@ -2943,24 +2714,21 @@
         "name": "Swordfish",
         "description": "Season 1",
         "emoji": "<:SwordfishS1:1362500257640087655>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362502231953244260/Swordfish-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362502231953244260/Swordfish-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Swordfish",
         "description": "Season 2",
         "emoji": "<:SwordfishS2:1292125632079069255>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386240401899550/Swordfish-S2.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386240401899550/Swordfish-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Swordfish",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SwordfishS2Winter:1362500267492376766>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362502232251171036/Swordfish-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362502232251171036/Swordfish-S2-Winter.png"
       }
     ]
   },
@@ -2979,16 +2747,14 @@
         "name": "Wolf",
         "description": "Season 1",
         "emoji": "<:WolfS1:1362500368507867487>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362502536942190815/Wolf-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362502536942190815/Wolf-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Wolf",
         "description": "Season 2",
         "emoji": "<:WolfS2:1292125538688696330>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386238913056778/Wolf-S2.png",
-        "v": 1
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386238913056778/Wolf-S2.png"
       }
     ]
   },
@@ -3007,24 +2773,21 @@
         "name": "Crocodile",
         "description": "Season 1",
         "emoji": "<:CrocodileS1:1363244989894627609>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245239883796490/Crocodile-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245239883796490/Crocodile-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Crocodile",
         "description": "Season 2",
         "emoji": "<:CrocodileS2:1292125920039276677>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961021206628/Crocodile-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961021206628/Crocodile-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Crocodile",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CrocodileS2Winter:1363245002247110757>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245240172941583/Crocodile-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245240172941583/Crocodile-S2-Winter.png"
       }
     ]
   },
@@ -3053,24 +2816,21 @@
         "name": "Lion",
         "description": "Season 1",
         "emoji": "<:LionS1v2:1363245637826646309>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245816914903231/Lion-S1-v2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245816914903231/Lion-S1-v2.png"
       },
       {
         "vCode": "s2",
         "name": "Lion",
         "description": "Season 2",
         "emoji": "<:LionS2:1292125931691049010>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961469739018/Lion-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961469739018/Lion-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Lion",
         "description": "Season 2 | Winter Version",
         "emoji": "<:LionS2Winter:1363245655858086269>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245817149919443/Lion-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245817149919443/Lion-S2-Winter.png"
       }
     ]
   },
@@ -3090,16 +2850,14 @@
         "name": "Lioness",
         "description": "Season 1",
         "emoji": "<:LionessS1:1363446577687166986>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145840832512/Lioness-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145840832512/Lioness-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Lioness",
         "description": "Season 2",
         "emoji": "<:LionessS2:1284568161206800505>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060651286589/Lioness.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060651286589/Lioness.png"
       }
     ]
   },
@@ -3119,16 +2877,14 @@
         "name": "Lion Cub",
         "description": "Season 1",
         "emoji": "<:LionCubS1:1363446651758579743>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145367011389/LionCub-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145367011389/LionCub-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Lion Cub",
         "description": "Season 2",
         "emoji": "<:LionCubS2:1284568208082341929>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060387041394/LionCub.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060387041394/LionCub.png"
       }
     ]
   },
@@ -3148,16 +2904,14 @@
         "name": "Black-Maned Lion",
         "description": "Season 1",
         "emoji": "<:BlackManedLionS1v2:1363446321700274236>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145123606618/BlackManedLion-S1-v2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145123606618/BlackManedLion-S1-v2.png"
       },
       {
         "vCode": "s2",
         "name": "Black-Maned Lion",
         "description": "Season 2",
         "emoji": "<:BlackManedLionS2:1284568114562076903>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png"
       }
     ]
   },
@@ -3177,16 +2931,14 @@
         "name": "White Lion Cub",
         "description": "Season 1",
         "emoji": "<:WhiteLionCubS1:1363446677859598356>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146117787689/WhiteLionCub-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146117787689/WhiteLionCub-S1.png"
       },
       {
         "vCode": "s2",
         "name": "White Lion Cub",
         "description": "Season 2",
         "emoji": "<:WhiteLionCubS2:1284568220644409386>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061607452752/WhiteLionCub.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061607452752/WhiteLionCub.png"
       }
     ]
   },
@@ -3206,16 +2958,14 @@
         "name": "White Lioness",
         "description": "Season 1",
         "emoji": "<:WhiteLionessS1:1363446595898839150>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146406932540/WhiteLioness-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146406932540/WhiteLioness-S1.png"
       },
       {
         "vCode": "s2",
         "name": "White Lioness",
         "description": "Season 2",
         "emoji": "<:WhiteLionessS2:1284568171931766927>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png"
       }
     ]
   },
@@ -3235,16 +2985,14 @@
         "name": "White Lion",
         "description": "Season 1",
         "emoji": "<:WhiteLionS1v2:1363446370538754329>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146667245729/WhiteLion-S1-v2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146667245729/WhiteLion-S1-v2.png"
       },
       {
         "vCode": "s2",
         "name": "White Lion",
         "description": "Season 2",
         "emoji": "<:WhiteLionS2:1284568130668199966>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png"
       }
     ]
   },
@@ -3264,16 +3012,14 @@
         "name": "Black Lion Cub",
         "description": "Season 1",
         "emoji": "<:BlackLionCubS1:1363446693508419605>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144356184234/BlackLionCub-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144356184234/BlackLionCub-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Black Lion Cub",
         "description": "Season 2",
         "emoji": "<:BlackLionCubS2:1284568232950366290>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150342148148/BlackLionCub.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150342148148/BlackLionCub.png"
       }
     ]
   },
@@ -3293,16 +3039,14 @@
         "name": "Black Lioness",
         "description": "Season 1",
         "emoji": "<:BlackLionessS1:1363446620968194058>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144632873031/BlackLioness-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144632873031/BlackLioness-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Black Lioness",
         "description": "Season 2",
         "emoji": "<:BlackLionessS2:1284568191569235999>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png"
       }
     ]
   },
@@ -3322,16 +3066,14 @@
         "name": "Black Lion",
         "description": "Season 1",
         "emoji": "<:BlackLionS1v2:1363446394693750885>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144901181571/BlackLion-S1-v2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144901181571/BlackLion-S1-v2.png"
       },
       {
         "vCode": "s2",
         "name": "Black Lion",
         "description": "Season 2",
         "emoji": "<:BlackLionS2:1284568143435661374>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png"
       }
     ]
   },
@@ -3353,16 +3095,14 @@
         "name": "Falcon",
         "description": "Season 1",
         "emoji": "<:FalconS1:1363453109900279839>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363453435017691157/Falcon-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363453435017691157/Falcon-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Falcon",
         "description": "Season 2",
         "emoji": "<:FalconS2:1292125951127457802>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961255956490/Falcon-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961255956490/Falcon-S2.png"
       }
     ]
   },
@@ -3382,16 +3122,14 @@
         "name": "Predator",
         "description": "Season 1",
         "emoji": "<:PredatorFalconS1:1363453135053656144>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363453435407503433/PredatorFalcon-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363453435407503433/PredatorFalcon-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Predator",
         "description": "Season 2",
         "emoji": "<:PredatorFalconS2:1284568255599476786>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734151109705748/PredatorFalcon.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734151109705748/PredatorFalcon.png"
       }
     ]
   },
@@ -3411,16 +3149,14 @@
         "name": "Shaheen",
         "description": "Season 1",
         "emoji": "<:ShaheenFalconS1:1363453153550270554>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363453435701366875/ShaheenFalcon-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363453435701366875/ShaheenFalcon-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Shaheen",
         "description": "Season 2",
         "emoji": "<:ShaheenFalconS2:1284568268493033533>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734151457968222/ShaheenFalcon.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734151457968222/ShaheenFalcon.png"
       }
     ]
   },
@@ -3441,24 +3177,21 @@
         "name": "Vulture",
         "description": "Season 1",
         "emoji": "<:VultureS1:1363454971319816304>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363456124925378570/Vulture-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363456124925378570/Vulture-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Vulture",
         "description": "Season 2",
         "emoji": "<:VultureS2:1292125734005112985>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386960819621999/Vulture-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386960819621999/Vulture-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Vulture",
         "description": "Season 2 | Winter Version",
         "emoji": "<:VultureS2Winter:1363454984011907092>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363456125152006355/Vulture-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363456125152006355/Vulture-S2-Winter.png"
       }
     ]
   },
@@ -3478,40 +3211,35 @@
         "name": "Argentavis",
         "description": "Season 1",
         "emoji": "<:ArgentavisVulture:1363455043273097276>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363456124342243528/ArgentavisVulture.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363456124342243528/ArgentavisVulture.png"
       },
       {
         "vCode": "s1",
         "name": "Pakistan Vulture",
         "description": "Season 1",
         "emoji": "<:PakistanVultureS1:1292135264470437919>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363456124707405965/Pakistan_Vulture-S1.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363456124707405965/Pakistan_Vulture-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Pakistan Vulture",
         "description": "Season 2",
         "emoji": "<:PakistanVultureS2:1284568287971377233>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150849663066/PakistanVulture.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150849663066/PakistanVulture.png"
       },
       {
         "vCode": "s1",
         "name": "USSR Vulture",
         "description": "Season 1",
         "emoji": "<:USSRVultureS1:1287125751207952455>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1287125928773685340/USSR_Vulture.png",
-        "v": 3
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1287125928773685340/USSR_Vulture.png"
       },
       {
         "vCode": "s2",
         "name": "USSR Vulture",
         "description": "Season 2",
         "emoji": "<:USSRVultureS2:1288058686241243157>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1288064074789421077/USSR_Vulture-S2.png",
-        "v": 4
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1288064074789421077/USSR_Vulture-S2.png"
       }
     ]
   },
@@ -3530,24 +3258,21 @@
         "name": "Octopus",
         "description": "Season 1",
         "emoji": "<:OctopusS1:1363467028236865657>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470171188105306/Octopus-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470171188105306/Octopus-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Octopus",
         "description": "Season 2",
         "emoji": "<:OctopusS2:1292125973269053541>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386962065592370/Octopus-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386962065592370/Octopus-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Octopus",
         "description": "Season 2 | Winter Version",
         "emoji": "<:OctopusS2Winter:1363467038823153807>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470171477508136/Octopus-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470171477508136/Octopus-S2-Winter.png"
       }
     ]
   },
@@ -3566,24 +3291,21 @@
         "name": "Polar Bear",
         "description": "Season 1",
         "emoji": "<:PolarBearS1:1363467191915385022>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470170634453262/PolarBear-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470170634453262/PolarBear-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Polar Bear",
         "description": "Season 2",
         "emoji": "<:PolarBearS2:1292125689109286923>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386960622751765/PolarBear-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386960622751765/PolarBear-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Polar Bear",
         "description": "Season 2 | Winter Version",
         "emoji": "<:PolarBearS2Winter:1363467203026096288>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470170923729097/PolarBear-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470170923729097/PolarBear-S2-Winter.png"
       }
     ]
   },
@@ -3605,24 +3327,21 @@
         "name": "Rhino",
         "description": "Season 1",
         "emoji": "<:RhinoS1v2:1364670671531278377>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330299576482/Rhino-S1-v2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330299576482/Rhino-S1-v2.png"
       },
       {
         "vCode": "s2",
         "name": "Rhino",
         "description": "Season 2",
         "emoji": "<:RhinoS2:1292126057599602820>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584922779669/Rhino-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584922779669/Rhino-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Rhino",
         "description": "Season 2 | Winter Version",
         "emoji": "<:RhinoS2Winter:1364670704200581182>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330542714960/Rhino-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330542714960/Rhino-S2-Winter.png"
       }
     ]
   },
@@ -3642,16 +3361,14 @@
         "name": "White Rhino",
         "description": "Season 1",
         "emoji": "<:WhiteRhinoS1v2:1364670719572578306>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330769469492/WhiteRhino-S1-v2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330769469492/WhiteRhino-S1-v2.png"
       },
       {
         "vCode": "s2",
         "name": "White Rhino",
         "description": "Season 2",
         "emoji": "<:WhiteRhinoS2:1284568524806684724>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456954294352/WhiteRhino.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456954294352/WhiteRhino.png"
       }
     ]
   },
@@ -3671,16 +3388,14 @@
         "name": "Black Rhino",
         "description": "Season 1",
         "emoji": "<:BlackRhinoS1:1364670738182701186>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352328781238372/BlackRhino-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352328781238372/BlackRhino-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Black Rhino",
         "description": "Season 2",
         "emoji": "<:BlackRhinoS2:1284568536362127493>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455423242424/BlackRhino.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455423242424/BlackRhino.png"
       }
     ]
   },
@@ -3703,24 +3418,21 @@
         "name": "Bald Eagle",
         "description": "Season 1",
         "emoji": "<:BaldEagleS1:1364670804738048100>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329062125648/Eagle-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329062125648/Eagle-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Bald Eagle",
         "description": "Season 2",
         "emoji": "<:BaldEagleS2:1292126046283366440>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460585182695484/Eagle-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460585182695484/Eagle-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Bald Eagle",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BaldEagleS2Winter:1364670817975402547>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329293074544/Eagle-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329293074544/Eagle-S2-Winter.png"
       }
     ]
   },
@@ -3740,16 +3452,14 @@
         "name": "Golden Eagle",
         "description": "Season 1",
         "emoji": "<:GoldenEagleS1:1364670840611930143>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329540407296/GoldenEagle-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329540407296/GoldenEagle-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Golden Eagle",
         "description": "Season 2",
         "emoji": "<:GoldenEagleS2:1284568352404279326>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455754457088/GoldenEagle.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455754457088/GoldenEagle.png"
       }
     ]
   },
@@ -3769,16 +3479,14 @@
         "name": "Harpy Eagle",
         "description": "Season 1",
         "emoji": "<:HarpyEagleS1:1364670862191624294>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330052243536/HarpyEagle-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352330052243536/HarpyEagle-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Shahbaz",
         "description": "Season 2",
         "emoji": "<:ShahbazS2:1284568371043635352>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456690049024/Shahbaz.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456690049024/Shahbaz.png"
       }
     ]
   },
@@ -3798,16 +3506,14 @@
         "name": "Greater-Spotted Eagle",
         "description": "Season 1",
         "emoji": "<:GreaterSpottedEagleS1:1364670886967382119>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329804517527/Greater-SpottedEagle-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365352329804517527/Greater-SpottedEagle-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Golden Shahbaz",
         "description": "Season 2",
         "emoji": "<:GoldenShahbazS2:1284568382850727997>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456077680826/GoldenShahbaz.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456077680826/GoldenShahbaz.png"
       }
     ]
   },
@@ -3826,24 +3532,21 @@
         "name": "Bison",
         "description": "Season 1",
         "emoji": "<:BisonS1:1364671181269237760>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353706328948889/Bison-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353706328948889/Bison-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Bison",
         "description": "Season 2",
         "emoji": "<:BisonS2:1292126024557002762>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584696020992/Bison-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584696020992/Bison-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Bison",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BisonS2Winter:1364671192187011112>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353706597515294/Bison-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353706597515294/Bison-S2-Winter.png"
       }
     ]
   },
@@ -3862,16 +3565,14 @@
         "name": "Shark",
         "description": "Season 1",
         "emoji": "<:SharkS1v2:1364671232892473434>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353706886795324/Shark-S1-v2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353706886795324/Shark-S1-v2.png"
       },
       {
         "vCode": "s2",
         "name": "Shark",
         "description": "Season 2",
         "emoji": "<:SharkS2:1292126307143909476>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460585421897830/Shark-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460585421897830/Shark-S2.png"
       }
     ]
   },
@@ -3891,16 +3592,14 @@
         "name": "Markhor",
         "description": "Season 1",
         "emoji": "<:MarkhorS1:1364671294544678962>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111304274093/Markhor-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111304274093/Markhor-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Markhor",
         "description": "Season 2",
         "emoji": "<:MarkhorS2:1284568638170595459>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png"
       }
     ]
   },
@@ -3920,16 +3619,14 @@
         "name": "Big Goat",
         "description": "Season 1",
         "emoji": "<:BigGoatS1:1364671305760375005>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353110926659716/BigGoat-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353110926659716/BigGoat-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Big Goat",
         "description": "Season 2",
         "emoji": "<:BigGoatS2:1284568654092173404>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455092023296/BigGoat.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455092023296/BigGoat.png"
       }
     ]
   },
@@ -3948,24 +3645,21 @@
         "name": "Wolverine",
         "description": "Season 1",
         "emoji": "<:WolverineS1:1364671266744700948>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111568384141/Wolverine-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111568384141/Wolverine-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Wolverine",
         "description": "Season 2",
         "emoji": "<:WolverineS2:1292126006571831358>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584364675072/Wolverine-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584364675072/Wolverine-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Wolverine",
         "description": "Season 2 | Winter Version",
         "emoji": "<:WolverineS2Winter:1364671276957831178>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111836688434/Wolverine-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111836688434/Wolverine-S2-Winter.png"
       }
     ]
   },
@@ -3984,24 +3678,21 @@
         "name": "Hippo",
         "description": "Season 1",
         "emoji": "<:HippoS1:1365717641083486208>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718979468857414/Hippo-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718979468857414/Hippo-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Hippo",
         "description": "Season 2",
         "emoji": "<:HippoS2:1292126402312798361>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269703475231/Hippo-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269703475231/Hippo-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Hippo",
         "description": "Season 2 | Winter Version",
         "emoji": "<:HippoS2Winter:1365717652114247770>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718979892478073/Hippo-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718979892478073/Hippo-S2-Winter.png"
       }
     ]
   },
@@ -4020,24 +3711,21 @@
         "name": "Boa Constrictor",
         "description": "Season 1",
         "emoji": "<:BoaConstrictorS1:1365717742728249445>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718978558693437/BoaConstrictor-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718978558693437/BoaConstrictor-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Boa Constrictor",
         "description": "Season 2",
         "emoji": "<:BoaConstrictorS2:1292126392569565365>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269414199399/BoaConstrictor-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269414199399/BoaConstrictor-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Boa Constrictor",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BoaConstrictorS2Winter:1365717752983060511>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718979070660618/BoaConstrictor-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718979070660618/BoaConstrictor-S2-Winter.png"
       }
     ]
   },
@@ -4056,16 +3744,14 @@
         "name": "Ostrich",
         "description": "Season 1",
         "emoji": "<:OstrichS1:1365717943664771144>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718980509044848/Ostrich-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718980509044848/Ostrich-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Ostrich",
         "description": "Season 2",
         "emoji": "<:OstrichS2:1292126412874055700>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269942681620/Ostrich-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269942681620/Ostrich-S2.png"
       }
     ]
   },
@@ -4084,16 +3770,14 @@
         "name": "Komodo Dragon",
         "description": "Season 1",
         "emoji": "<:KomodoDragonS1:1365718023100567653>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718980970676336/KomodoDragon-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718980970676336/KomodoDragon-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Komodo Dragon",
         "description": "Season 2",
         "emoji": "<:KomodoDragonS2:1292126362756190279>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269187440653/KomodoDragon-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269187440653/KomodoDragon-S2.png"
       }
     ]
   },
@@ -4112,24 +3796,21 @@
         "name": "Killer Whale",
         "description": "Season 1",
         "emoji": "<:KillerWhaleS1:1365718184228818965>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718981670862879/KillerWhale-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718981670862879/KillerWhale-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Killer Whale",
         "description": "Season 2",
         "emoji": "<:KillerWhaleS2:1292126434298429450>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474270198530079/KillerWhale-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474270198530079/KillerWhale-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Killer Whale",
         "description": "Season 2 | Winter Version",
         "emoji": "<:KillerWhaleS2Winter:1365718194735812699>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718982237098004/KillerWhale-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365718982237098004/KillerWhale-S2-Winter.png"
       }
     ]
   },
@@ -4148,24 +3829,21 @@
         "name": "Sabertooth Tiger",
         "description": "Season 1",
         "emoji": "<:SabertoothTigerS1:1365718474013282344>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365719019793023147/SabertoothTiger-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365719019793023147/SabertoothTiger-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Sabertooth Tiger",
         "description": "Season 2",
         "emoji": "<:SabertoothTigerS2:1292126341713362954>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474268931854416/SabertoothTiger-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474268931854416/SabertoothTiger-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Sabertooth Tiger",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SabertoothTigerS2Winter:1365718485187166208>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365719020354932776/SabertoothTiger-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365719020354932776/SabertoothTiger-S2-Winter.png"
       }
     ]
   },
@@ -4185,8 +3863,7 @@
         "name": "White Giraffe",
         "description": "Season 1",
         "emoji": "<:WhiteGiraffeS1:1284570509589352478>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721425866884/WhiteGiraffe.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721425866884/WhiteGiraffe.png"
       }
     ]
   },
@@ -4206,8 +3883,7 @@
         "name": "White Giraffe Family",
         "description": "Season 1",
         "emoji": "<:WhiteGiraffeFamilyS1:1284570523786936450>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721174343740/Giraffe_family.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721174343740/Giraffe_family.png"
       }
     ]
   },
@@ -4226,16 +3902,14 @@
         "name": "Elephant",
         "description": "Season 1",
         "emoji": "<:ElephantS1:1365777144831016970>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779716132569199/Elephant-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779716132569199/Elephant-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Elephant",
         "description": "Season 2",
         "emoji": "<:ElephantS2:1292127864971329646>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422183329966/Elephant-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422183329966/Elephant-S2.png"
       }
     ]
   },
@@ -4254,24 +3928,21 @@
         "name": "Cassowary",
         "description": "Season 1",
         "emoji": "<:CassowaryS1:1365777216021205002>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779715524137071/Cassowary-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779715524137071/Cassowary-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Cassowary",
         "description": "Season 2",
         "emoji": "<:CassowaryS2:1292127854745882644>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421952385147/Cassowary-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421952385147/Cassowary-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Cassowary",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CassowaryS2Winter:1365777226766880898>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779715838840952/Cassowary-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779715838840952/Cassowary-S2-Winter.png"
       }
     ]
   },
@@ -4290,16 +3961,14 @@
         "name": "Giant Spider",
         "description": "Season 1",
         "emoji": "<:GiantSpiderS1:1365777460523962388>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779716656730333/GiantSpider-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779716656730333/GiantSpider-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Giant Spider",
         "description": "Season 2",
         "emoji": "<:GiantSpiderS2:1292127876803596411>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422451507270/GiantSpider-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422451507270/GiantSpider-S2.png"
       }
     ]
   },
@@ -4318,16 +3987,14 @@
         "name": "Blackwidow Spider",
         "description": "Season 1",
         "emoji": "<:BlackwidowSpiderS1:1365777705764651059>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779717181145259/BlackwidowSpider-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779717181145259/BlackwidowSpider-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Blackwidow Spider",
         "description": "Season 2",
         "emoji": "<:BlackwidowSpiderS2:1292127821673791599>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421734412421/BlackwidowSpider-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421734412421/BlackwidowSpider-S2.png"
       }
     ]
   },
@@ -4346,24 +4013,21 @@
         "name": "Blue Whale",
         "description": "Season 1",
         "emoji": "<:BlueWhaleS1v2:1365777910761390120>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779717705302146/BlueWhale-S1-v2.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779717705302146/BlueWhale-S1-v2.png"
       },
       {
         "vCode": "s2",
         "name": "Blue Whale",
         "description": "Season 2",
         "emoji": "<:BlueWhaleS2:1292128040142377071>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422724395111/BlueWhale-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422724395111/BlueWhale-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Blue Whale",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BlueWhaleS2Winter:1365777926796083260>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779718305222727/BlueWhale-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779718305222727/BlueWhale-S2-Winter.png"
       }
     ]
   },
@@ -4382,24 +4046,21 @@
         "name": "Mammoth",
         "description": "Season 1",
         "emoji": "<:MammothS1:1365778098745905263>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779718833701025/Mammoth-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779718833701025/Mammoth-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Mammoth",
         "description": "Season 2",
         "emoji": "<:MammothS2:1292127799909289985>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421495205908/Mammoth-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421495205908/Mammoth-S2.png"
       },
       {
         "vCode": "s2-w",
         "name": "Mammoth",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MammothS2Winter:1365778107771916418>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779719571767386/Mammoth-S2-Winter.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365779719571767386/Mammoth-S2-Winter.png"
       }
     ]
   },
@@ -4418,16 +4079,14 @@
         "name": "Dragon",
         "description": "Season 1",
         "emoji": "<:DragonS1:1327713041357213727>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793814274510929/Dragon-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793814274510929/Dragon-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Dragon",
         "description": "Season 2",
         "emoji": "<:DragonS2:1292128309798244485>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474657936773245/Dragon-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474657936773245/Dragon-S2.png"
       }
     ]
   },
@@ -4446,16 +4105,14 @@
         "name": "T-Rex",
         "description": "Season 1",
         "emoji": "<:TRexS1:1327713055219515442>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793814509519048/TRex-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793814509519048/TRex-S1.png"
       },
       {
         "vCode": "s2",
         "name": "T-Rex",
         "description": "Season 2",
         "emoji": "<:TrexS2:1292128324801269880>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474658305867776/Trex-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474658305867776/Trex-S2.png"
       }
     ]
   },
@@ -4474,16 +4131,14 @@
         "name": "Phoenix",
         "description": "Season 1",
         "emoji": "<:PhoenixS1:1327713584406335498>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793817076432956/Phoenix-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793817076432956/Phoenix-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Phoenix",
         "description": "Season 2",
         "emoji": "<:PhoenixS2:1292128384444530689>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474659291402251/Phoenix-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474659291402251/Phoenix-S2.png"
       }
     ]
   },
@@ -4502,16 +4157,14 @@
         "name": "Pterodactyl",
         "description": "Season 1",
         "emoji": "<:PterodactylS1:1327713012798193694>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815646175312/Pterodactyl-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815646175312/Pterodactyl-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Pterodactyl",
         "description": "Season 2",
         "emoji": "<:PterodactylS2:1292128266559426724>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474657680916582/Pterodactyl-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474657680916582/Pterodactyl-S2.png"
       }
     ]
   },
@@ -4530,16 +4183,14 @@
         "name": "Kraken",
         "description": "Season 1",
         "emoji": "<:KrakenS1:1327713559618125908>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793816703012925/Kraken-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793816703012925/Kraken-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Kraken",
         "description": "Season 2",
         "emoji": "<:KrakenS2:1292128363690856541>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474658905522337/Kraken-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474658905522337/Kraken-S2.png"
       }
     ]
   },
@@ -4558,16 +4209,14 @@
         "name": "King Crab",
         "description": "Season 1",
         "emoji": "<:KingCrabS1:1327713548046045319>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793816413474937/KingCrab-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793816413474937/KingCrab-S1.png"
       },
       {
         "vCode": "s2",
         "name": "King Crab",
         "description": "Season 2",
         "emoji": "<:KingCrabS2:1292128350961401897>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474658687422495/KingCrab-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474658687422495/KingCrab-S2.png"
       }
     ]
   },
@@ -4588,16 +4237,14 @@
         "name": "Yeti",
         "description": "Season 1",
         "emoji": "<:YetiS1:1327712991692455987>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815394390047/Yeti-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815394390047/Yeti-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Yeti",
         "description": "Season 2",
         "emoji": "<:YetiS2:1292128236096065690>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474657370407063/The_Yeti-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292474657370407063/The_Yeti-S2.png"
       }
     ]
   },
@@ -4617,16 +4264,14 @@
         "name": "Aqua Yeti",
         "description": "Season 1",
         "emoji": "<:AquaYetiS1:1365791266989670511>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815075491992/AquaYeti-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815075491992/AquaYeti-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Aqua Yeti",
         "description": "Season 2",
         "emoji": "<:AquaYetiS2:1284570581093711914>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721690112000/AquaYeti.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721690112000/AquaYeti.png"
       }
     ]
   },
@@ -4646,16 +4291,14 @@
         "name": "Shop Big Foot",
         "description": "Season 1",
         "emoji": "<:BigfootS1:1365791609001611344>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815906226247/Bigfoot-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815906226247/Bigfoot-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Shop Big Foot",
         "description": "Season 2",
         "emoji": "<:BigfootS2:1285617256562425967>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png"
       }
     ]
   },
@@ -4675,16 +4318,14 @@
         "name": "Luck Big Foot",
         "description": "Season 1",
         "emoji": "<:LuckBigfootS1:1365791609001611344>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815906226247/Bigfoot-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815906226247/Bigfoot-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Luck Big Foot",
         "description": "Season 2",
         "emoji": "<:LuckBigfootS2:1285617256562425967>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png"
       }
     ]
   },
@@ -4704,8 +4345,7 @@
         "name": "Shop Snowman",
         "description": "Season 1",
         "emoji": "<:SnowmanS1:1284570594075218014>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png"
       }
     ]
   },
@@ -4725,8 +4365,7 @@
         "name": "Luck Snowman",
         "description": "Season 1",
         "emoji": "<:LuckSnowmanS1:1284570594075218014>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png"
       }
     ]
   },
@@ -4746,8 +4385,7 @@
         "name": "Shop Snowgirl",
         "description": "Season 1",
         "emoji": "<:SnowgirlS1:1284570612018315346>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png"
       }
     ]
   },
@@ -4767,8 +4405,7 @@
         "name": "Luck Snowgirl",
         "description": "Season 1",
         "emoji": "<:LuckSnowgirlS1:1284570612018315346>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png"
       }
     ]
   },
@@ -4787,16 +4424,14 @@
         "name": "Dino Monster",
         "description": "Season 1",
         "emoji": "<:DinoMonsterS1:1327716246929543269>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998974028218478/DinoMonster-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998974028218478/DinoMonster-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Dino Monster",
         "description": "Season 2",
         "emoji": "<:Dino_MonsterS2:1292128471501242368>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998974502178889/DinoMonster-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998974502178889/DinoMonster-S2.png"
       }
     ]
   },
@@ -4815,16 +4450,14 @@
         "name": "Land Monster",
         "description": "Season 1",
         "emoji": "<:LandMonsterS1:1327716340701593723>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998976171507733/LandMonster-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998976171507733/LandMonster-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Land Monster",
         "description": "Season 2",
         "emoji": "<:LandMonsterS2:1292128532889075757>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998976607981598/LandMonster-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998976607981598/LandMonster-S2.png"
       }
     ]
   },
@@ -4843,16 +4476,14 @@
         "name": "Giant Scorpion",
         "description": "Season 1",
         "emoji": "<:GiantScorpionS1:1327716215262548051>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998974779133952/GiantScorpion-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998974779133952/GiantScorpion-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Giant Scorpion",
         "description": "Season 2",
         "emoji": "<:GiantScorpionS2:1292128439603560499>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998975089381438/GiantScorpion-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998975089381438/GiantScorpion-S2.png"
       }
     ]
   },
@@ -4871,16 +4502,14 @@
         "name": "Sea Monster",
         "description": "Season 1",
         "emoji": "<:SeaMonsterS1:1327716267691479123>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998975517196368/SeaMonster-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998975517196368/SeaMonster-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Sea Monster",
         "description": "Season 2",
         "emoji": "<:SeaMonsterS2:1292128514031616112>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998975865454623/SeaMonster-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365998975865454623/SeaMonster-S2.png"
       }
     ]
   },
@@ -4899,16 +4528,14 @@
         "name": "Ice Monster",
         "description": "Season 1",
         "emoji": "<:IceMonsterS1:1327716198275747870>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366000551724191825/IceMonster-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366000551724191825/IceMonster-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Ice Monster",
         "description": "Season 2",
         "emoji": "<:IceMonsterS2:1292128414463037523>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366000552042954844/IceMonster-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366000552042954844/IceMonster-S2.png"
       }
     ]
   },
@@ -4929,40 +4556,35 @@
         "name": "Black Dragon",
         "description": "Season 1",
         "emoji": "<:BlackDragonS1:1327342429736538152>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365989192051462255/BlackDragon-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365989192051462255/BlackDragon-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Black Dragon",
         "description": "Season 2",
         "emoji": "<:BlackDragonS2:1287156849350807623>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191019794554/BlackDragon-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191019794554/BlackDragon-S2.png"
       },
       {
         "vCode": "lsp",
         "name": "Azure Bringer",
         "description": "Locked Skinpack",
         "emoji": "<:AzureBringer:1327342827360751627>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366447268915580968/AzureBringer.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366447268915580968/AzureBringer.png"
       },
       {
         "vCode": "gsp",
         "name": "Golden Black Dragon",
         "description": "Golden Skinpack",
         "emoji": "<:GoldenBlackDragon:1327342318818295848>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634510319676/GoldenBlackDragon.png",
-        "v": 3
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634510319676/GoldenBlackDragon.png"
       },
       {
         "vCode": "legacy",
         "name": "Black Dragon",
         "description": "Legacy Skinpack",
         "emoji": "<:BlackDragonLegacy:1337845295794622587>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366447269192138893/BlackDragon-Legacy.png",
-        "v": 4
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366447269192138893/BlackDragon-Legacy.png"
       }
     ]
   },
@@ -4982,72 +4604,63 @@
         "name": "King Dragon",
         "description": "Season 1",
         "emoji": "<:KingDragonS1:1284470623615189142>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191472648263/KingDragon-S1.png",
-        "v": 0
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191472648263/KingDragon-S1.png"
       },
       {
         "vCode": "s2",
         "name": "King Dragon",
         "description": "Season 2",
         "emoji": "<:KingDragonS2:1280238249360494825>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191737016360/KingDragon-S2.png",
-        "v": 1
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191737016360/KingDragon-S2.png"
       },
       {
         "vCode": "lsp",
         "name": "King Shah",
         "description": "Locked Skinpack",
         "emoji": "<:KingShah:1327340413685596170>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452034777108/KingShah.png",
-        "v": 2
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452034777108/KingShah.png"
       },
       {
         "vCode": "lsp",
         "name": "King Stan",
         "description": "Locked Skinpack",
         "emoji": "<:KingStan:1327340402897977496>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452416331786/KingStan.png",
-        "v": 3
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452416331786/KingStan.png"
       },
       {
         "vCode": "lsp",
         "name": "King Ripper",
         "description": "Locked Skinpack",
         "emoji": "<:KingRipper:1327340388566040669>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459451707494440/KingRipper.png",
-        "v": 4
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459451707494440/KingRipper.png"
       },
       {
         "vCode": "lsp",
         "name": "Queen Celeste",
         "description": "Locked Skinpack",
         "emoji": "<:QueenCeleste:1327340428265259068>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452898803786/QueenCeleste.png",
-        "v": 5
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452898803786/QueenCeleste.png"
       },
       {
         "vCode": "lsp",
         "name": "Queen Scarlet",
         "description": "Locked Skinpack",
         "emoji": "<:QueenScarlet:1327340439132442796>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453242609695/QueenScarlet.png",
-        "v": 6
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453242609695/QueenScarlet.png"
       },
       {
         "vCode": "gsp",
         "name": "Golden King Dragon",
         "description": "Golden Skinpack",
         "emoji": "<:GoldenKingDragon:1327340203173744651>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634254471304/GoldenKingDragon.png",
-        "v": 7
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634254471304/GoldenKingDragon.png"
       },
       {
         "vCode": "sfsp",
         "name": "Queen Flame",
         "description": "Storefront Skinpack",
         "emoji": "<:QueenFlame:1327340465166614559>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453657841755/QueenFlame.png",
-        "v": 8
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453657841755/QueenFlame.png"
       }
     ]
   }
