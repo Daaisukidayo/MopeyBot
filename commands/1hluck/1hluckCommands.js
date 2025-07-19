@@ -261,9 +261,11 @@ module.exports = [
     
     $let[caughtRare;$get[arg1]]
     ${findingRareInSnoraBase()}
+    ${findingRareInRaresMapBase()}
     $let[animal;$get[animalName]]
     $let[count;$get[arg3]]
     $let[quantity;$env[allRaresList;$get[animal];0]]
+    $if[$get[quantity]==;$let[quantity;0]]
     $let[rares;0]
     $let[points;0]
 
@@ -273,9 +275,11 @@ module.exports = [
       $let[state;Added]
     ]
 
-    $onlyIf[$and[$jsonHas[allRaresList;$get[animal]];$get[arg2]==-];
+    $if[$and[$jsonHas[allRaresList;$get[animal]]==false;$get[arg2]==-];
       ${errorEmbed()} 
       $description[### Animal «$get[animal]» is not in the rares list!]
+      $sendMessage[$channelID]
+      $stop
     ]
     
     $if[$get[arg3]==all;
@@ -287,7 +291,8 @@ module.exports = [
       $if[$get[quantity]<=0;
         $!jsonDelete[allRaresList;$get[animal]]
       ;
-        $!jsonSet[allRaresList;$get[animal];0;$get[quantity]]
+        $arrayLoad[arr;, ;$get[quantity], $env[rareMap;points]]
+        $!jsonSet[allRaresList;$get[animal];$env[arr]]
       ]
     ]
     
