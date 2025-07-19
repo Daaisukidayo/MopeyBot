@@ -612,7 +612,11 @@ module.exports = [
         $color[$getGlobalVar[errorColor]]
       ]
     ]
+
     $let[allRdy;$arrayEvery[participants;user;$return[$getUserVar[ready|$channelID;$env[user]]]]]
+    $let[s;10]
+    $let[msgid;$messageID]
+    $let[members;]
 
     $onlyIf[$get[allRdy];
       $interactionReply[
@@ -623,17 +627,9 @@ module.exports = [
       ]
     ]
 
-
-    $let[s;10]
-    $let[msgid;$messageID]
-    $let[members;]
-
+    ${participants(true)}
     $!stopTimeout[MULTI1HL-$channelID]
-    
     $!deleteMessage[$channelID;$get[msgid]]
-
-    ${participants()}
-
     $let[msgid;$sendMessage[$channelID;${startingEmbed()};true]]
     
     $setInterval[
@@ -641,7 +637,6 @@ module.exports = [
       $if[$get[s]<=0;
         $!stopInterval[COUNTDOWN-$channelID]
         $arrayForEach[participants;user;
-          $jsonLoad[userProfile;$getUserVar[userProfile;$env[user]]]
           $deleteUserVar[ready|$channelID;$env[user]]
           ${loadVarsForChallenge('$env[user]')}
           $jsonLoad[progress;{"points": 0, "user": "$env[user]"}]
@@ -759,13 +754,15 @@ function findingRareInSnoraBase () {
   `
 }
 
-function participants() {
+function participants(hideReady = false) {
   return `
     $arrayForEach[participants;participant;
-      $if[$getUserVar[ready|$channelID;$env[participant]];
-        $let[rdy;✅]
-      ;
-        $let[rdy;❌]
+      $if[${hideReady};;
+        $if[$getUserVar[ready|$channelID;$env[participant]];
+          $let[rdy;✅]
+        ;
+          $let[rdy;❌]
+        ]
       ]
       $let[parts;$get[parts]$get[rdy]$username[$env[participant]]\n]
     ]  
@@ -916,13 +913,7 @@ function time (id = "$authorID") {
 function pts (id = "$authorID") {
   return `
     $let[totalRares;$getuservar[1htotalRares|$channelID;${id}]]
-    $jsonLoad[raresList;$getUserVar[1hallRaresList|$channelID;${id}]]
-    $jsonLoad[listEntries;$jsonEntries[raresList]]
-    $arrayForEach[listEntries;entry;
-      $let[list;$get[list]║ $bold[$env[entry;0] x$env[entry;1;0] × $env[entry;1;1] | +$math[$env[entry;1;0] * $env[entry;1;1]]]\n]
-    ]
-    $if[$get[list]==;$let[list;║ none]]
-
+    ${raresListGenerator()}
     ${total(id)}
     $if[$env[userProfile;1hl;settings;hideRares];
       **Total rares:**\n||$get[totalRares]||
@@ -945,6 +936,21 @@ function reset (id = "$authorID") {
     $deleteUserVar[1hmar|$channelID;${id}]
     $deleteUserVar[1hkbt|$channelID;${id}]
     $deleteUserVar[1hcht|$channelID;${id}]
+  `
+}
+
+function raresListGenerator(forHistory = false, id = '$authorID') {
+  return `
+    $if[${forHistory};
+      $jsonLoad[raresList;$env[history;$get[index];raresList]]
+    ;
+      $jsonLoad[raresList;$getUserVar[1hallRaresList|$channelID;${id}]]
+    ]
+    $jsonLoad[listEntries;$jsonEntries[raresList]]
+    $arrayForEach[listEntries;entry;
+      $let[list;$get[list]║ $bold[$env[entry;0] x$env[entry;1;0]$if[${forHistory};; × $env[entry;1;1] | +$math[$env[entry;1;0] * $env[entry;1;1]]]]\n]
+    ]
+    $if[$get[list]==;$let[list;║ none]]
   `
 }
 
@@ -999,13 +1005,13 @@ function total (id = "$authorID") {
 function historyEmbed() {
   return `
     $let[index;$math[$get[page] - 1]]
-
     ${normalEmbed()}
+    ${raresListGenerator(true)}
     $footer[Sort Type: $get[sort]]
     $addField[Points:;\`$env[history;$get[index];points]\`]
     $addField[Rares:;\`$env[history;$get[index];rares]\`]
     $addField[When ended:;\`$env[history;$get[index];time]\`]
-    $addField[All Rares List:;$codeBlock[$advancedReplace[$trimLines[$env[history;$get[index];raresList]];{;;};;";;,;];JSON]]
+    $addField[All Rares List:;╔══════════\n$trimEnd[$get[list]]\n╚══════════]
 
     $if[$arrayLength[history]>1;
       $addActionRow
