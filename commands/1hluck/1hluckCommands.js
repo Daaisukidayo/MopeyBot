@@ -64,6 +64,7 @@ module.exports = [
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
 
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[SNORA;$getGlobalVar[SNORA]]
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList|$channelID]]
     $jsonLoad[allRares;$getGlobalVar[allRares]]
@@ -106,19 +107,16 @@ module.exports = [
       ]
 
       $if[$includes[-$get[caughtRare]-;-markhor-;-mar-;-mg-];
-        $let[com;mar]
         $let[rareName;Markhor]
       ]
       $if[$includes[-$get[caughtRare]-;-chocotoucan-;-cht-];
-        $let[com;cht]
         $let[rareName;Choco Toucan]
       ]
       $if[$includes[-$get[caughtRare]-;-keelbilledtoucan-;-kbt-];
-        $let[com;kbt]
         $let[rareName;Keel-Billed Toucan]
       ]
 
-      $let[commonCount;$getUserVar[1h$get[com]|$channelID]]
+      $let[commonCount;$env[allRaresList;$get[animalName];0]]
 
       $if[$get[commonCount]<3;
         ${rares()}
@@ -127,7 +125,6 @@ module.exports = [
         $if[$get[commonCount]==3;
           $let[content;$get[content]# You got all $get[rareName]s!\n]
         ]
-        $setUserVar[1h$get[com]|$channelID;$get[commonCount]]
       ;
         $arrayPush[caught;0]
       ]
@@ -151,7 +148,7 @@ module.exports = [
       $sendMessage[$channelID;
         $get[content]
         ${normalEmbed()}
-        $description[# $get[desc]\n${total()}]
+        $description[# $get[desc]\n$trim[${total()}]]
         ${commons()}
         ${time()}
       ]
@@ -484,17 +481,16 @@ module.exports = [
         $color[$getGlobalVar[errorColor]]
       ]
     ]
-    $let[userSets;$env[userProfile;1hl;settings;infiniteCommons]]
-    $let[hostSets;$env[hostProfile;1hl;settings;infiniteCommons]]
-    
 
-    $!stopTimeout[MULTI1HL-$channelID]
-    $let[msgid;$messageID]
+    $arrayPush[participants;$authorID]
     $setUserVar[ready|$channelID;false]
     $setUserVar[participating|$channelID;true]
-    $arrayPush[participants;$authorID]
+
+    $let[msgid;$messageID]
     ${particEmbed()}
     $!editMessage[$channelID;$get[msgid]]
+
+    $!stopTimeout[MULTI1HL-$channelID]
     ${partyTimeout()}
     $deferUpdate
   `
@@ -527,15 +523,15 @@ module.exports = [
       ]
     ]
 
-    $!stopTimeout[MULTI1HL-$channelID]
-    $let[msgid;$messageID]
-
     $!arraySplice[participants;$arrayIndexOf[participants;$authorID];1]
     $deleteUserVar[participating|$channelID]
     $deleteUserVar[ready|$channelID]
     
+    $let[msgid;$messageID]
     ${particEmbed()}
     $!editMessage[$channelid;$get[msgid]]
+
+    $!stopTimeout[MULTI1HL-$channelID]
     ${partyTimeout()}
     $deferUpdate
   `
@@ -553,18 +549,19 @@ module.exports = [
 
     $arrayForEach[participants;user;
       $deleteUserVar[participating|$channelID;$env[user]]
-      $deleteUserVar[infiniteCommons|$channelID;$env[user]]
       $deleteUserVar[ready|$channelID;$env[user]]
     ]
-    $deleteChannelVar[participants]
 
-    $!stopTimeout[MULTI1HL-$channelID]
-    $let[msgid;$messageID]
+    $deleteChannelVar[participants]
+    $deleteChannelVar[infiniteCommons]
 
     $getGlobalVar[author]
     $description[# ✅ The Party was successfully closed!]
     $color[$getGlobalVar[luckyColor]]
+    $let[msgid;$messageID]
     $!editMessage[$channelid;$get[msgid]]
+
+    $!stopTimeout[MULTI1HL-$channelID]
     $deferUpdate
   `
 },{
@@ -695,6 +692,7 @@ module.exports = [
     ${particEmbed()}
     $let[msgid;$messageID]
     $!editMessage[$channelid;$get[msgid]]
+
     $!stopTimeout[MULTI1HL-$channelID]
     ${partyTimeout()}
     $deferUpdate
@@ -788,9 +786,6 @@ function loadVarsForChallenge (id = "$authorID") {
     $setUserVar[1hstarted|$channelID;true;${id}]
     $setUserVar[1hpoints|$channelID;0;${id}]
     $setUserVar[1hpaused|$channelID;false;${id}]
-    $setUserVar[1hkbt|$channelID;0;${id}]
-    $setUserVar[1hcht|$channelID;0;${id}]
-    $setUserVar[1hmar|$channelID;0;${id}]
     $setUserVar[1htotalRares|$channelID;0;${id}]
     $setUserVar[1hallRaresList|$channelID;{};${id}]
   `
@@ -946,9 +941,6 @@ function reset (id = "$authorID") {
     $deleteUserVar[1hpoints|$channelID;${id}]
     $deleteUserVar[1htotalRares|$channelID;${id}]
     $deleteUserVar[1hpaused|$channelID;${id}]
-    $deleteUserVar[1hmar|$channelID;${id}]
-    $deleteUserVar[1hkbt|$channelID;${id}]
-    $deleteUserVar[1hcht|$channelID;${id}]
   `
 }
 
@@ -978,20 +970,26 @@ function rares() {
   `
 }
 
-function commons () { 
+function commons () {
   return `
-    $if[$env[userProfile;1hl;settings;infiniteCommons];;
-      $let[mar;$getuservar[1hmar|$channelID]]
-      $let[cht;$getuservar[1hcht|$channelID]]
-      $let[kbt;$getuservar[1hkbt|$channelID]]
-      $if[$get[mar]<3;
-        $addField[MAR:;\`$get[mar]/3\`;true]
-      ]
-      $if[$get[cht]<3;
-        $addField[CHT:;\`$get[cht]/3\`;true]
-      ]
-      $if[$get[kbt]<3;
-        $addField[KBT:;\`$get[kbt]/3\`;true]
+    $if[$get[infiniteCommons];;
+      $arrayLoad[coms;,;chocoToucan|CHT,keelBilledToucan|KBT,markhor|MAR]
+      $arrayForEach[coms;com;
+        $arrayLoad[com;|;$env[com]]
+        $let[emoji;$env[animals;$env[com;0];variants;0;emoji]]
+        $let[name;$env[animals;$env[com;0];variants;0;name]]
+
+        $if[$env[allRaresList;$get[emoji]]!=;
+          $let[key;$get[emoji]]
+        ;
+          $let[key;$get[name]]
+        ]
+
+        $let[quantity;$env[allRaresList;$get[key];0]]
+        $if[$get[quantity]==;$let[quantity;0]]
+        $if[$get[quantity]<3;
+          $addField[$env[com;1]:;\`$get[quantity]|3\`;true]
+        ]
       ]
     ]
   `
