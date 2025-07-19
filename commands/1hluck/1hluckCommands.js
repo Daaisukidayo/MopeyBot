@@ -273,7 +273,7 @@ module.exports = [
       $let[state;Added]
     ]
 
-    $onlyIf[$jsonHas[allRaresList;$get[animal]];
+    $onlyIf[$and[$jsonHas[allRaresList;$get[animal]];$get[arg2]==-];
       ${errorEmbed()} 
       $description[### Animal «$get[animal]» is not in the rares list!]
     ]
