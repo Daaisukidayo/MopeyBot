@@ -120,7 +120,7 @@ module.exports = [
         ${rares()}
         $letSum[commonCount;1]
 
-        $if[$getUserVar[1h$get[com]|$channelID]==3;
+        $if[$get[commonCount]==3;
           $let[content;$get[content]# You got all $get[rareName]s!\n]
         ]
         $setUserVar[1h$get[com]|$channelID;$get[commonCount]]
