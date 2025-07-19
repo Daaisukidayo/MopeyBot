@@ -96,6 +96,10 @@ module.exports = [
       $let[notCommon;$checkCondition[$env[rareMap;category]!=common]]
       $let[infiniteCommons;$env[userProfile;1hl;settings;infiniteCommons]]
 
+      $if[$getUserVar[participating|$channelID]];
+        $let[infiniteCommons;$getChannelVar[infiniteCommons]]
+      ]
+
       $if[$or[$get[infiniteCommons];$get[notCommon]];
         ${rares()}
         $continue
@@ -305,7 +309,6 @@ module.exports = [
   name: "settings",
   aliases: ["sts"],
   type: "messageCreate",
-  description: "settings",
   code: `
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
@@ -422,18 +425,13 @@ module.exports = [
 
     $onlyIf[$getChannelVar[participants]==;
       $jsonLoad[participants;$getChannelVar[participants]]
-      ${participants()}
+      ${participants(true)}
       $author[✖️ Failed to create Party]
       $description[## Party already exist in this channel!]
       $addField[Participants:;$codeBlock[$get[parts]]]
       $color[$getGlobalVar[errorColor]]
     ]
-    $onlyIf[$getUserVar[participating|$channelID;$authorID;false]==false;
-      $author[✖️ Failed to create Party]
-      $description[## You're already participating somewhere else]
-      $color[$getGlobalVar[errorColor]]
-    ]
-    $onlyIf[$getUserVar[1hstarted|$channelID;$authorID;false]==false;
+    $onlyIf[$getUserVar[1hstarted|$channelID]!=true;
       $author[✖️ Failed to create Party]
       $description[## You have an active challenge! End it before creating a Party!]
       $color[$getGlobalVar[errorColor]]
@@ -442,11 +440,10 @@ module.exports = [
     $arrayLoad[participants; ;$authorID]
     $setUserVar[participating|$channelID;true]
     $setUserVar[ready|$channelID;false]
+    $setChannelVar[infiniteCommons;false]
     
     ${particEmbed()}
-
     $let[msgid;$sendMessage[$channelID;;true]]
-
     ${partyTimeout()}
   `
 },{
@@ -471,7 +468,7 @@ module.exports = [
         $color[$getGlobalVar[errorColor]]
       ]
     ]
-    $onlyIf[$getUserVar[1hstarted|$channelID;$authorID;false]==false;
+    $onlyIf[$getUserVar[1hstarted|$channelID;$authorID;false]!=true;
       $interactionReply[
         $ephemeral
         $author[✖️ Error]
@@ -489,15 +486,7 @@ module.exports = [
     ]
     $let[userSets;$env[userProfile;1hl;settings;infiniteCommons]]
     $let[hostSets;$env[hostProfile;1hl;settings;infiniteCommons]]
-    $let[onoff;$advancedreplace[$get[hostSets];true;on;false;off]]
-    $onlyIf[$get[userSets]==$get[hostSets];
-      $interactionReply[
-        $ephemeral
-        $author[✖️ Error]
-        $description[## The Host has turned __$get[onoff]__ Infinite Commons, but you did not! Change your settings!]
-        $color[$getGlobalVar[errorColor]]
-      ]
-    ]
+    
 
     $!stopTimeout[MULTI1HL-$channelID]
     $let[msgid;$messageID]
@@ -516,8 +505,6 @@ module.exports = [
   code: `
     $onlyIf[$includes[$customID;quit1hl]]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $callFunction[checking]
-
     $jsonLoad[participants;$getChannelVar[participants]]
 
     ${partyExist()}
@@ -558,20 +545,15 @@ module.exports = [
   allowedInteractionTypes: ["button"],
   code: `
     $onlyIf[$includes[$customID;end1hl]]
-    $onlyIf[$includes[$customID;$authorID];
-      $interactionReply[
-        $ephemeral
-        $author[✖️ Error]
-        $description[## Only host can end the Party]
-        $color[$getGlobalVar[errorColor]]
-      ]
-    ]
+    $onlyIf[$includes[$customID;$authorID]]
     $jsonLoad[participants;$getChannelVar[participants]]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     ${partyExist()}
 
     $arrayForEach[participants;user;
       $deleteUserVar[participating|$channelID;$env[user]]
+      $deleteUserVar[infiniteCommons|$channelID;$env[user]]
       $deleteUserVar[ready|$channelID;$env[user]]
     ]
     $deleteChannelVar[participants]
@@ -579,6 +561,7 @@ module.exports = [
     $!stopTimeout[MULTI1HL-$channelID]
     $let[msgid;$messageID]
 
+    $getGlobalVar[author]
     $description[# ✅ The Party was successfully closed!]
     $color[$getGlobalVar[luckyColor]]
     $!editMessage[$channelid;$get[msgid]]
@@ -590,14 +573,7 @@ module.exports = [
   allowedInteractionTypes: ["button"],
   code: `
     $onlyIf[$includes[$customID;start1hl]]
-    $onlyIf[$includes[$customID;$authorID];
-      $interactionReply[
-        $ephemeral
-        $author[✖️ Error]
-        $description[## Only host can start the challenge]
-        $color[$getGlobalVar[errorColor]]
-      ]
-    ]
+    $onlyIf[$includes[$customID;$authorID]]
     $jsonLoad[participants;$getChannelVar[participants]]
 
     ${partyExist()}
@@ -619,7 +595,7 @@ module.exports = [
     $onlyIf[$get[allRdy];
       $interactionReply[
         $ephemeral
-        $author[✖️ Error]
+        $author[✖️ Failed to start]
         $description[## Someone is not ready!]
         $color[$getGlobalVar[errorColor]]
       ]
@@ -665,9 +641,6 @@ module.exports = [
   description: 'when pressing Ready',
   code: `
     $onlyIf[$includes[$customID;ready1hl]]
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $callFunction[checking]
-
     $jsonLoad[participants;$getChannelVar[participants]]
 
     ${partyExist()}
@@ -687,6 +660,38 @@ module.exports = [
       $setUserVar[ready|$channelID;true]
     ]
     
+    ${particEmbed()}
+    $let[msgid;$messageID]
+    $!editMessage[$channelid;$get[msgid]]
+    $!stopTimeout[MULTI1HL-$channelID]
+    ${partyTimeout()}
+    $deferUpdate
+  `
+},{
+  type: 'interactionCreate',
+  allowedInteractionTypes: ['selectMenu'],
+  description: "when selecting Tags",
+  code: `
+    $onlyIf[$includes[$customID;addTags]]
+    $onlyIf[$includes[$customID;$authorID]]
+    $onlyIf[$includes[$selectMenuValues;infiniteCommons]]
+
+    $jsonLoad[participants;$getChannelVar[participants]]
+    ${partyExist()}
+
+    $onlyIf[$arrayIncludes[participants;$authorID];
+      $interactionReply[
+        $ephemeral
+        $author[✖️ Error]
+        $description[## You're not a participant]
+        $color[$getGlobalVar[errorColor]]
+      ]
+    ]
+
+    $let[hostSets;$getChannelVar[infiniteCommons]]
+    $if[$get[hostSets];  $let[hostSets;false]  ;  $let[hostSets;true]  ]
+    $setChannelVar[infiniteCommons;$get[hostSets]]
+
     ${particEmbed()}
     $let[msgid;$messageID]
     $!editMessage[$channelid;$get[msgid]]
@@ -1042,13 +1047,22 @@ function historyEmbed() {
 function particEmbed () {
   return `
     $setChannelVar[participants;$env[participants]]
-
+    $let[host;$env[participants;0]]
     ${participants()}
+    $let[hostSets;$getChannelVar[infiniteCommons]]
+    $let[tags;none]
+    $let[cond;Enable]
+
+    $if[$get[hostSets];
+      $let[tags;Infinite Commons]
+      $let[cond;Disable]
+    ]
     
-    $author[✅ New Party!]
-    $description[# Host: $username[$env[participants;0]]]
+    $author[$username[$get[host]]'s Party;$userAvatar[$get[host]]]
     $addField[Participants:;$codeBlock[$get[parts]]]
     $addField[Mode:;**\`FFA\`**]
+    $addField[Tags:;$codeBlock[$get[tags]]]
+
     $color[$getGlobalVar[luckyColor]]
     $footer[Party will be closed automatically in 30m due to inactivity]
     $addActionRow
@@ -1058,7 +1072,12 @@ function particEmbed () {
     $addActionRow
     $addButton[start1hl-$env[participants;0];Start;Success;✔️]
     $addButton[end1hl-$env[participants;0];End;Danger;🔚]
-    $addButton[switchMode1hl-$env[participants;0];Switch Mode;Primary;🔃;true]
+    $addActionRow
+    $addStringSelectMenu[addTags-$env[participants;0];Tags]
+    $addOption[Infinite Commons;$get[cond] unlimited common rares;infiniteCommons]
+    $addActionRow
+    $addStringSelectMenu[switchMode-$env[participants;0];Mode;true]
+    $addOption[.;.;.]
   `
 }
 
@@ -1067,6 +1086,7 @@ function settingsEmbed() {
     $let[hidePoints;$env[userProfile;1hl;settings;hidePoints]]
     $let[hideRares;$env[userProfile;1hl;settings;hideRares]]
     $let[infiniteCommons;$env[userProfile;1hl;settings;infiniteCommons]]
+    $let[disableBut;false]
 
     $title[Settings:]
     $color[$getGlobalVar[luckyColor]]
