@@ -96,7 +96,7 @@ module.exports = [
       $let[notCommon;$checkCondition[$env[rareMap;category]!=common]]
       $let[infiniteCommons;$env[userProfile;1hl;settings;infiniteCommons]]
 
-      $if[$getUserVar[participating|$channelID]];
+      $if[$getUserVar[participating|$channelID];
         $let[infiniteCommons;$getChannelVar[infiniteCommons]]
       ]
 
