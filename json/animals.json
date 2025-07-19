@@ -2174,7 +2174,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [5,250],
+    "rarity": [20,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2203,7 +2203,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [4,250],
+    "rarity": [16,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2232,7 +2232,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,250],
+    "rarity": [4,250],
     "variants": [
       {
         "vCode": "s1",
