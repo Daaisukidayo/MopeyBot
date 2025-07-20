@@ -29,11 +29,17 @@ module.exports = [
   code: `
     $reply
     ${isActiveChallenge()}
-    $onlyIf[$getUserVar[1hpaused|$channelID]==false;${errorEmbed()} $description[## You already have paused the challenge!]]
+
+    $onlyIf[$getUserVar[1hpaused|$channelID]==false;
+      ${errorEmbed()}
+      $description[## You already have paused the challenge!]
+    ]
+
     $!stopInterval[1HLUCK-$authorID|$channelID]
     $setUserVar[1hpaused|$channelID;true]
+
     ${normalEmbed()}
-    $description[# Paused!\n${total()}]
+    $description[# Paused!\n$trimLines[${total()}]]
     ${time()}
   `
 },{
@@ -43,10 +49,16 @@ module.exports = [
   code: `
     $reply
     ${isActiveChallenge()}
-    $onlyIf[$getUserVar[1hpaused|$channelID];${errorEmbed()} $description[## You haven't paused your challenge!]]
+
+    $onlyIf[$getUserVar[1hpaused|$channelID];
+      ${errorEmbed()} 
+      $description[## You haven't paused your challenge!]
+    ]
+
     $setUserVar[1hpaused|$channelID;false]
+
     ${normalEmbed()}
-    $description[# Continued!\n${total()}]
+    $description[# Continued!\n$trimLines[${total()}]]
     ${time()}
     ${interval()}
   `
@@ -89,7 +101,11 @@ module.exports = [
         $continue
       ]
 
-      $onlyIf[$getUserVar[1hpaused|$channelID]!=true;${errorEmbed()} $description[## You are on pause!] $sendMessage[$channelID]]
+      $onlyIf[$getUserVar[1hpaused|$channelID]!=true;
+        ${errorEmbed()} 
+        $description[## You are on pause!] 
+        $sendMessage[$channelID]
+      ]
 
       ${findingRareInSnoraBase()}
       ${findingRareInRaresMapBase()}
@@ -123,7 +139,7 @@ module.exports = [
         $letSum[commonCount;1]
 
         $if[$get[commonCount]==3;
-          $let[content;$get[content]# You got all $get[rareName]s!\n]
+          $let[content;$get[content]## You got all $get[rareName]s!\n]
         ]
       ;
         $arrayPush[caught;0]
@@ -148,7 +164,7 @@ module.exports = [
       $sendMessage[$channelID;
         $get[content]
         ${normalEmbed()}
-        $description[# $get[desc]\n$trim[${total()}]]
+        $description[# $get[desc]\n$trimLines[${total()}]]
         ${commons()}
         ${time()}
       ]
@@ -528,26 +544,30 @@ module.exports = [
       ]
     ]
 
-    $onlyIf[$authorID!=$env[participants;0];
-      $interactionReply[
-        $ephemeral
-        $author[✖️ Error]
-        $description[## Host can't quit the Party]
-        $color[$getGlobalVar[errorColor]]
-      ]
-    ]
+    $let[msgid;$messageID]
+    $let[host;$env[participants;0]]
+
+    $!stopTimeout[MULTI1HL-$channelID]
+    $deferUpdate
 
     $!arraySplice[participants;$arrayIndexOf[participants;$authorID];1]
     $deleteUserVar[participating|$channelID]
     $deleteUserVar[ready|$channelID]
+
+    $if[$env[participants;0]==;
+      $deleteChannelVar[participants]
+      $deleteChannelVar[infiniteCommons]
+
+      $author[$username[$get[host]]'s Party;$userAvatar[$get[host]]]
+      $description[# The Party was closed due to a lack of participants]
+      $color[$getGlobalVar[luckyColor]]
+      $!editMessage[$channelid;$get[msgid]]
+      $stop
+    ]
     
-    $let[msgid;$messageID]
     ${particEmbed()}
     $!editMessage[$channelid;$get[msgid]]
-
-    $!stopTimeout[MULTI1HL-$channelID]
     ${partyTimeout()}
-    $deferUpdate
   `
 },{
   type: "interactionCreate",
@@ -560,6 +580,7 @@ module.exports = [
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     ${partyExist()}
+    $let[host;$env[participants;0]]
 
     $arrayForEach[participants;user;
       $deleteUserVar[participating|$channelID;$env[user]]
@@ -569,8 +590,8 @@ module.exports = [
     $deleteChannelVar[participants]
     $deleteChannelVar[infiniteCommons]
 
-    $getGlobalVar[author]
-    $description[# ✅ The Party was successfully closed!]
+    $author[$username[$get[host]]'s Party;$userAvatar[$get[host]]]
+    $description[# The Party was closed by the Host]
     $color[$getGlobalVar[luckyColor]]
     $let[msgid;$messageID]
     $!editMessage[$channelid;$get[msgid]]
