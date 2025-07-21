@@ -2,7 +2,6 @@
 forge.db
 node_modules
 allies.json
-devcmds
 locCopy.json
 logs
 animals_transformed.json
