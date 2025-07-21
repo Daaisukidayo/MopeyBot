@@ -12,13 +12,6 @@ module.exports = {
       $deleteGlobalVar[snoraElements]
       $jsonLoad[SNORA;$getGlobalVar[allRaresArr]]
       $jsonLoad[animals;$readFile[json/animals.json]]
-
-      $arrayMap[SNORA;elem;
-        $return[$env[elem]]
-      ;SNORA]
-
-      $logger[Info;Successfully mapped «SNORA»]
-
       $jsonLoad[allRaresFromSnora;{}]
       $jsonLoad[snoraElements;{}]
       
