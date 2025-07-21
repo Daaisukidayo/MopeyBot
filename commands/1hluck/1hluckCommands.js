@@ -993,7 +993,7 @@ function raresListGenerator(forHistory = false, id = '$authorID') {
 
     $arrayForEach[listEntries;entry;
 
-      $let[type;emoji] $c[<- Changeable between "name" and "emoji"]
+      $let[type;name] $c[<- Changeable between "name" and "emoji"]
       $let[animalID;$env[entry;0]]
       $let[quantity;$env[entry;1]]
       $let[animalDisplay;$env[animals;$get[animalID];variants;0;$get[type]]]
