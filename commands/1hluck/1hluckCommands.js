@@ -132,7 +132,7 @@ module.exports = [
         $let[rareName;Keel-Billed Toucan]
       ]
 
-      $let[commonCount;$env[allRaresList;$get[animalName];0]]
+      $let[commonCount;$env[allRaresList;$get[animalID];0]]
 
       $if[$get[commonCount]<3;
         ${rares()}
@@ -177,6 +177,8 @@ module.exports = [
   code: `
     $reply
     ${isActiveChallenge()}
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $description[# 1 Hour Luck Ended!\n$trimLines[${pts()}]]
     ${normalEmbed()}
     $sendMessage[$channelID]
@@ -190,6 +192,8 @@ module.exports = [
   code: `
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $callFunction[checking]
 
     $let[id;$authorID]
@@ -247,6 +251,7 @@ module.exports = [
     $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     $jsonLoad[SNORA;$getGlobalVar[SNORA]]
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList|$channelID]]
+    $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[allRares;$getGlobalVar[allRares]]
     $jsonLoad[allRares;$jsonKeys[allRares]]
     
@@ -278,9 +283,9 @@ module.exports = [
     $let[caughtRare;$get[arg1]]
     ${findingRareInSnoraBase()}
     ${findingRareInRaresMapBase()}
-    $let[animal;$get[animalName]]
+    $let[animal;$get[animalID]]
     $let[count;$get[arg3]]
-    $let[quantity;$env[allRaresList;$get[animal];0]]
+    $let[quantity;$env[allRaresList;$get[animal]]]
     $if[$get[quantity]==;$let[quantity;0]]
     $let[rares;0]
     $let[points;0]
@@ -303,12 +308,10 @@ module.exports = [
       $!jsonDelete[allRaresList;$get[animal]]
     ;
       $let[quantity;$math[$get[quantity] $get[arg2] $get[count]]]
+      $!jsonSet[allRaresList;$get[animal];$get[quantity]]
 
       $if[$get[quantity]<=0;
         $!jsonDelete[allRaresList;$get[animal]]
-      ;
-        $arrayLoad[arr;, ;$get[quantity], $env[rareMap;points]]
-        $!jsonSet[allRaresList;$get[animal];$env[arr]]
       ]
     ]
     
@@ -379,6 +382,8 @@ module.exports = [
     $callFunction[cooldown;1m]
     $jsonLoad[history;$env[userProfile;1hl;history]]
     $jsonLoad[history;$arrayReverse[history]]
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
 
     $let[page;1]
     $let[sortType;d]
@@ -416,7 +421,9 @@ module.exports = [
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
-    
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+
     $if[$arrayAt[history;0]==;
       $description[# No history]
       $getGlobalVar[author]
@@ -742,6 +749,8 @@ module.exports = [
     $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
 
     ${isActiveChallenge()}
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
     
     $description[# 1 Hour Luck Ended!\n$trimLines[${pts()}]]
     ${normalEmbed()}
@@ -788,10 +797,6 @@ function findingRareInSnoraBase () {
       $let[animalName;$env[arr;1]]
       $jsonLoad[arrAliases;$env[arr;2]]
       $let[animalEmoji;$env[arr;3]]
-
-      $if[false; $c[Replacing Animal Name with Animal Emoji]
-        $let[animalName;$get[animalEmoji]]
-      ]
 
       $if[$arrayIncludes[arrAliases;$get[caughtRare]];
         $break
@@ -987,8 +992,19 @@ function raresListGenerator(forHistory = false, id = '$authorID') {
       $jsonLoad[raresList;$getUserVar[1hallRaresList|$channelID;${id}]]
     ]
     $jsonLoad[listEntries;$jsonEntries[raresList]]
+
     $arrayForEach[listEntries;entry;
-      $let[list;$get[list]║ $bold[$env[entry;0] x$env[entry;1;0]$if[${forHistory};; × $env[entry;1;1] | +$math[$env[entry;1;0] * $env[entry;1;1]]]]\n]
+
+      $let[type;emoji] $c[<- Changeable between "name" and "emoji"]
+      $let[animalID;$env[entry;0]]
+      $let[quantity;$env[entry;1]]
+      $let[animalDisplay;$env[animals;$get[animalID];variants;0;$get[type]]]
+      ${findingRareInRaresMapBase()}
+      $let[points;$env[rareMap;points]]
+      $let[totalPointsInList;$math[$get[quantity] * $get[points]]]
+      $let[listContent;$get[animalDisplay] x$get[quantity] × $get[points] | +$get[totalPointsInList]]
+
+      $let[list;$get[list]║ $bold[$get[listContent]]\n]
     ]
     $if[$get[list]==;$let[list;║ none]]
   `
@@ -999,8 +1015,10 @@ function rares() {
     $letSum[points;$env[rareMap;points]]
     $arrayPush[caught;$env[rareMap;points]]
     $setUserVar[1htotalRares|$channelID;$math[$getUserVar[1htotalRares|$channelID] + 1]]
-    $arrayLoad[arr;,;$math[$env[allRaresList;$get[animalName];0] + 1],$env[rareMap;points]]
-    $!jsonSet[allRaresList;$get[animalName];$env[arr]]
+
+    $let[newQuantity;$math[$env[allRaresList;$get[animalID]] + 1]]
+    $!jsonSet[allRaresList;$get[animalID];$get[newQuantity]]
+
     $setUserVar[1hallRaresList|$channelID;$env[allRaresList]]
   `
 }
@@ -1011,19 +1029,14 @@ function commons () {
       $arrayLoad[coms;,;chocoToucan|CHT,keelBilledToucan|KBT,markhor|MAR]
       $arrayForEach[coms;com;
         $arrayLoad[com;|;$env[com]]
-        $let[emoji;$env[animals;$env[com;0];variants;0;emoji]]
-        $let[name;$env[animals;$env[com;0];variants;0;name]]
 
-        $if[$env[allRaresList;$get[emoji]]!=;
-          $let[key;$get[emoji]]
-        ;
-          $let[key;$get[name]]
-        ]
+        $let[key;$env[com;0]]
+        $let[name;$env[com;1]]
 
         $let[quantity;$env[allRaresList;$get[key];0]]
         $if[$get[quantity]==;$let[quantity;0]]
         $if[$get[quantity]<3;
-          $addField[$env[com;1]:;\`$get[quantity]|3\`;true]
+          $addField[$get[name]:;\`$get[quantity]|3\`;true]
         ]
       ]
     ]
@@ -1054,10 +1067,12 @@ function historyEmbed() {
     ${normalEmbed()}
     ${raresListGenerator(true)}
     $footer[Sort Type: $get[sort]]
-    $addField[Points:;\`$env[history;$get[index];points]\`]
-    $addField[Rares:;\`$env[history;$get[index];rares]\`]
-    $addField[When ended:;\`$env[history;$get[index];time]\`]
-    $addField[All Rares List:;╔══════════\n$trimEnd[$get[list]]\n╚══════════]
+    $description[$trimLines[
+      ## Points:\`$env[history;$get[index];points]\`
+      ## Rares:\`$env[history;$get[index];rares]\`
+      ## Ended at:\`$env[history;$get[index];time]\`
+      ## All Rares List:\n╔══════════\n$get[list]\n╚══════════
+    ]]
 
     $if[$arrayLength[history]>1;
       $addActionRow

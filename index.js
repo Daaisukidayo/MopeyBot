@@ -9,17 +9,16 @@ dotenv.config();
 
 const { ForgeClient, LogPriority } = require("@tryforge/forgescript");
 const { ForgeDB } = require("@tryforge/forge.db");
-const { ForgeCanvas } = require("@tryforge/forge.canvas")
-
+const { ForgeCanvas } = require("@tryforge/forge.canvas");
 
 // ========== CLIENT CONFIGURATION ==========
 // Initialize the bot client with extensions, intents, and events
 
 const DB = new ForgeDB({
-  events: ["connect"] 
-})
+  events: ["connect"],
+});
 
-const FC = new ForgeCanvas()
+const FC = new ForgeCanvas();
 
 const client = new ForgeClient({
   mobile: true,
@@ -34,13 +33,9 @@ const client = new ForgeClient({
     "DirectMessageReactions",
     "MessageContent",
   ],
-  events: [
-    "interactionCreate",
-    "messageCreate",
-    "ready"
-  ],
+  events: ["interactionCreate", "messageCreate", "ready"],
   prefixes: ["$if[$guildID!=;$getGuildVar[prefix];$getGlobalVar[prefix]]"],
-  logLevel: LogPriority.Low
+  logLevel: LogPriority.Low,
 });
 
 // ========== LOAD COMMANDS ==========
@@ -56,8 +51,8 @@ DB.commands.add({
   type: "connect",
   code: `
     $logger[Info;Connected to the database]
-  `
-})
+  `,
+});
 
 // ========== VARIABLES ==========
 
@@ -65,238 +60,238 @@ DB.variables({
   //User variables
 
   userProfile: {
-    "ID": "",
-    "MC": 0,
-    "MUID": -1,
-    "acceptedRules": false,
-    "testerMode": false,
-    "onSlowmode": false,
-    "isBanned": false,
-    "devMode": false,
-    "hadAnn": false,
-    "rtMode": "default",
-    "l10n": "EN",
-    "timezone": "Etc/UTC",
+    ID: "",
+    MC: 0,
+    MUID: -1,
+    acceptedRules: false,
+    testerMode: false,
+    onSlowmode: false,
+    isBanned: false,
+    devMode: false,
+    hadAnn: false,
+    rtMode: "default",
+    l10n: "EN",
+    timezone: "Etc/UTC",
 
-    "limiters": {
-      "lastDailyDay": -1,
-      "lastWeeklyWeek": -1,
-      "lastHLUsed": -1,
-      "HLRandom": -1,
-      "luckDesc": ""
+    limiters: {
+      lastDailyDay: -1,
+      lastWeeklyWeek: -1,
+      lastHLUsed: -1,
+      HLRandom: -1,
+      luckDesc: "",
     },
 
     "1hl": {
-      "history": [],
-      "settings": {
-        "hidePoints": false,
-        "hideRares": false,
-        "infiniteCommons": false
-      }
-    },
-    
-    "userPacks": {},
-
-    "caughtRareCategories": {
-      "inferno": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      "default": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      "medium": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      "hard": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      "insane": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      "impossible": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      history: [],
+      settings: {
+        hidePoints: false,
+        hideRares: false,
+        infiniteCommons: false,
+      },
     },
 
-    "userWardrobe": {
-      "mouse": 0,
-      "desertRat": 0,
-      "shrimp": 0,
-      "arcticChipmunk": 0,
-      "tarsier": 0,
-      "rabbit": 0,
-      "pigeon": 0,
-      "whiteDove": 0,
-      "desertChipmunk": 0,
-      "trout": 0,
-      "arcticHare": 0,
-      "chukar": 0,
-      "mole": 0,
-      "chicken": 0,
-      "meerkat": 0,
-      "crab": 0,
-      "penguin": 0,
-      "flyingLizard": 0,
-      "pig": 0,
-      "pinkyPig": 0,
-      "stinkyPig": 0,
-      "woodpecker": 0,
-      "armadillo": 0,
-      "seaHorse": 0,
-      "seal": 0,
-      "kakapo": 0,
-      "deer": 0,
-      "doe": 0,
-      "marshDeer": 0,
-      "gazelle": 0,
-      "squid": 0,
-      "flamingo": 0,
-      "reindeer": 0,
-      "muskDeer": 0,
-      "swinehoe": 0,
-      "goldenPheasant": 0,
-      "fox": 0,
-      "hedgehog": 0,
-      "peacock": 0,
-      "fennecFox": 0,
-      "jellyfish": 0,
-      "arcticFox": 0,
-      "zebra": 0,
-      "donkey": 0,
-      "jackass": 0,
-      "macaw": 0,
-      "blueMacaw": 0,
-      "rareMacaw": 0,
-      "warthog": 0,
-      "turtle": 0,
-      "muskox": 0,
-      "cobra": 0,
-      "giraffe": 0,
-      "momaffie": 0,
-      "momaffieFamily": 0,
-      "girabie": 0,
-      "camel": 0,
-      "stingray": 0,
-      "snowyOwl": 0,
-      "walrus": 0,
-      "raven": 0,
-      "cheetah": 0,
-      "jaguar": 0,
-      "leopard": 0,
-      "blackPanther": 0,
-      "gorilla": 0,
-      "toucan": 0,
-      "chocoToucan": 0,
-      "keelBilledToucan": 0,
-      "fieryToucan": 0,
-      "lavaToucan": 0,
-      "rareToucan": 0,
-      "rattleSnake": 0,
-      "pufferfish": 0,
-      "yellowPufferfish": 0,
-      "demonPufferfish": 0,
-      "snowLeopard": 0,
-      "turkey": 0,
-      "bear": 0,
-      "blackBear": 0,
-      "tiger": 0,
-      "whiteTiger": 0,
-      "blackTiger": 0,
-      "gobiBear": 0,
-      "hyena": 0,
-      "pelican": 0,
-      "swordfish": 0,
-      "wolf": 0,
-      "crocodile": 0,
-      "lion": 0,
-      "blackManedLion": 0,
-      "whiteLion": 0,
-      "blackLion": 0,
-      "lioness": 0,
-      "whiteLioness": 0,
-      "blackLioness": 0,
-      "lionCub": 0,
-      "whiteLionCub": 0,
-      "blackLionCub": 0,
-      "falcon": 0,
-      "predator": 0,
-      "shaheen": 0,
-      "vulture": 0,
-      "rareVulture": 0,
-      "octopus": 0,
-      "polarBear": 0,
-      "rhino": 0,
-      "whiteRhino": 0,
-      "blackRhino": 0,
-      "baldEagle": 0,
-      "goldenEagle": 0,
-      "harpyEagle": 0,
-      "greaterSpottedEagle": 0,
-      "bison": 0,
-      "shark": 0,
-      "markhor": 0,
-      "bigGoat": 0,
-      "wolverine": 0,
-      "hippo": 0,
-      "boaConstrictor": 0,
-      "ostrich": 0,
-      "komodoDragon": 0,
-      "killerWhale": 0,
-      "sabertoothTiger": 0,
-      "whiteGiraffe": 0,
-      "giraffeFamily": 0,
-      "elephant": 0,
-      "cassowary": 0,
-      "giantSpider": 0,
-      "blackwidowSpider": 0,
-      "blueWhale": 0,
-      "mammoth": 0,
-      "dragon": 0,
-      "trex": 0,
-      "phoenix": 0,
-      "pterodactyl": 0,
-      "kraken": 0,
-      "kingCrab": 0,
-      "yeti": 0,
-      "aquaYeti": 0,
-      "shopSnowman": 0,
-      "shopSnowgirl": 0,
-      "shopBigfoot": 0,
-      "luckSnowman": 0,
-      "luckSnowgirl": 0,
-      "luckBigfoot": 0,
-      "dinoMonster": 0,
-      "landMonster": 0,
-      "giantScorpion": 0,
-      "seaMonster": 0,
-      "iceMonster": 0,
-      "blackDragon": 0,
-      "kingDragon": 0
-    }
+    userPacks: {},
+
+    caughtRareCategories: {
+      inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      medium: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      hard: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      insane: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      impossible: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+
+    userWardrobe: {
+      mouse: 0,
+      desertRat: 0,
+      shrimp: 0,
+      arcticChipmunk: 0,
+      tarsier: 0,
+      rabbit: 0,
+      pigeon: 0,
+      whiteDove: 0,
+      desertChipmunk: 0,
+      trout: 0,
+      arcticHare: 0,
+      chukar: 0,
+      mole: 0,
+      chicken: 0,
+      meerkat: 0,
+      crab: 0,
+      penguin: 0,
+      flyingLizard: 0,
+      pig: 0,
+      pinkyPig: 0,
+      stinkyPig: 0,
+      woodpecker: 0,
+      armadillo: 0,
+      seaHorse: 0,
+      seal: 0,
+      kakapo: 0,
+      deer: 0,
+      doe: 0,
+      marshDeer: 0,
+      gazelle: 0,
+      squid: 0,
+      flamingo: 0,
+      reindeer: 0,
+      muskDeer: 0,
+      swinehoe: 0,
+      goldenPheasant: 0,
+      fox: 0,
+      hedgehog: 0,
+      peacock: 0,
+      fennecFox: 0,
+      jellyfish: 0,
+      arcticFox: 0,
+      zebra: 0,
+      donkey: 0,
+      jackass: 0,
+      macaw: 0,
+      blueMacaw: 0,
+      rareMacaw: 0,
+      warthog: 0,
+      turtle: 0,
+      muskox: 0,
+      cobra: 0,
+      giraffe: 0,
+      momaffie: 0,
+      momaffieFamily: 0,
+      girabie: 0,
+      camel: 0,
+      stingray: 0,
+      snowyOwl: 0,
+      walrus: 0,
+      raven: 0,
+      cheetah: 0,
+      jaguar: 0,
+      leopard: 0,
+      blackPanther: 0,
+      gorilla: 0,
+      toucan: 0,
+      chocoToucan: 0,
+      keelBilledToucan: 0,
+      fieryToucan: 0,
+      lavaToucan: 0,
+      rareToucan: 0,
+      rattleSnake: 0,
+      pufferfish: 0,
+      yellowPufferfish: 0,
+      demonPufferfish: 0,
+      snowLeopard: 0,
+      turkey: 0,
+      bear: 0,
+      blackBear: 0,
+      tiger: 0,
+      whiteTiger: 0,
+      blackTiger: 0,
+      gobiBear: 0,
+      hyena: 0,
+      pelican: 0,
+      swordfish: 0,
+      wolf: 0,
+      crocodile: 0,
+      lion: 0,
+      blackManedLion: 0,
+      whiteLion: 0,
+      blackLion: 0,
+      lioness: 0,
+      whiteLioness: 0,
+      blackLioness: 0,
+      lionCub: 0,
+      whiteLionCub: 0,
+      blackLionCub: 0,
+      falcon: 0,
+      predator: 0,
+      shaheen: 0,
+      vulture: 0,
+      rareVulture: 0,
+      octopus: 0,
+      polarBear: 0,
+      rhino: 0,
+      whiteRhino: 0,
+      blackRhino: 0,
+      baldEagle: 0,
+      goldenEagle: 0,
+      harpyEagle: 0,
+      greaterSpottedEagle: 0,
+      bison: 0,
+      shark: 0,
+      markhor: 0,
+      bigGoat: 0,
+      wolverine: 0,
+      hippo: 0,
+      boaConstrictor: 0,
+      ostrich: 0,
+      komodoDragon: 0,
+      killerWhale: 0,
+      sabertoothTiger: 0,
+      whiteGiraffe: 0,
+      giraffeFamily: 0,
+      elephant: 0,
+      cassowary: 0,
+      giantSpider: 0,
+      blackwidowSpider: 0,
+      blueWhale: 0,
+      mammoth: 0,
+      dragon: 0,
+      trex: 0,
+      phoenix: 0,
+      pterodactyl: 0,
+      kraken: 0,
+      kingCrab: 0,
+      yeti: 0,
+      aquaYeti: 0,
+      shopSnowman: 0,
+      shopSnowgirl: 0,
+      shopBigfoot: 0,
+      luckSnowman: 0,
+      luckSnowgirl: 0,
+      luckBigfoot: 0,
+      dinoMonster: 0,
+      landMonster: 0,
+      giantScorpion: 0,
+      seaMonster: 0,
+      iceMonster: 0,
+      blackDragon: 0,
+      kingDragon: 0,
+    },
   },
 
   userPlayData: {
-    "started": false,
-    "isDead": false,
-    "tier": 0,
-    "MC": 0,
-    "XP": 0,
-    "color": "",
-    "currentBiome": "",
-    "currentAnimal": "",
-    "animalBiome": "",
-    "bitesInArena": 0,
-    "arenaTurn": 0,
-    "opponentBitesInArena": 0,
-    "opponentAnimal": "",
-    "opponentAction": "",
-    "MessageID": "",
-    "ChannelID": "",
-    "GuildID": "",
+    started: false,
+    isDead: false,
+    tier: 0,
+    MC: 0,
+    XP: 0,
+    color: "",
+    currentBiome: "",
+    currentAnimal: "",
+    animalBiome: "",
+    bitesInArena: 0,
+    arenaTurn: 0,
+    opponentBitesInArena: 0,
+    opponentAnimal: "",
+    opponentAction: "",
+    MessageID: "",
+    ChannelID: "",
+    GuildID: "",
 
-    "apex": {
-      "dragon": false,
-      "trex": false,
-      "phoenix": false,
-      "pterodactyl": false,
-      "kraken": false,
-      "kingCrab": false,
-      "yeti": false,
-      "landMonster": false,
-      "dinoMonster": false,
-      "giantScorpion": false,
-      "seaMonster": false,
-      "iceMonster": false,
-      "blackDragon": false
-    }
+    apex: {
+      dragon: false,
+      trex: false,
+      phoenix: false,
+      pterodactyl: false,
+      kraken: false,
+      kingCrab: false,
+      yeti: false,
+      landMonster: false,
+      dinoMonster: false,
+      giantScorpion: false,
+      seaMonster: false,
+      iceMonster: false,
+      blackDragon: false,
+    },
   },
 
   userBackup: {},
@@ -320,7 +315,8 @@ DB.variables({
   logColor: "#2019b3",
   apexEmbedColor: "#000000",
   blank: "<:blank:898514292926713866>",
-  author: "$author[$userDisplayName • MUID: $env[userProfile;MUID];$userAvatar]",
+  author:
+    "$author[$userDisplayName • MUID: $env[userProfile;MUID];$userAvatar]",
   reportChannelID: "1372645851159330947",
   logChannelID: "1391387203871047731",
   backupLogCount: 0,
@@ -331,7 +327,7 @@ DB.variables({
     Volcano: "#ff0000",
     Ocean: "#3498db",
     Arctic: "#ffffff",
-    Forest: "#006400"
+    Forest: "#006400",
   },
 
   raretryVarData: {
@@ -481,11 +477,7 @@ DB.variables({
   raresMap: [
     {
       category: "common",
-      rares: [
-        "chocoToucan",
-        "keelBilledToucan",
-        "markhor",
-      ],
+      rares: ["chocoToucan", "keelBilledToucan", "markhor"],
       points: 1,
     },
     {
@@ -549,12 +541,7 @@ DB.variables({
     },
     {
       category: "legendary",
-      rares: [
-        "lavaToucan",
-        "demonPufferfish",
-        "blackRhino",
-        "whiteGiraffe",
-      ],
+      rares: ["lavaToucan", "demonPufferfish", "blackRhino", "whiteGiraffe"],
       points: 15,
     },
     {
@@ -564,12 +551,7 @@ DB.variables({
     },
     {
       category: "mythic",
-      rares: [
-        "luckBigfoot",
-        "luckSnowman",
-        "luckSnowgirl",
-        "kingDragon",
-      ],
+      rares: ["luckBigfoot", "luckSnowman", "luckSnowgirl", "kingDragon"],
       points: 30,
     },
     {
@@ -583,160 +565,212 @@ DB.variables({
         "greaterSpottedEagle",
       ],
       points: 50,
-    }
+    },
   ],
 
   allRaresArr: [
-    ["whiteDove", "White Dove", ["wd", "whitedove"]],
-    ["pinkyPig", "Pinky Pig", ["pp", "pinkypig"]],
-    ["stinkyPig", "Stinky Pig", ["sp", "stinkypig"]],
-    ["doe", "Doe", ["doe"]],
-    ["marshDeer", "Marsh Deer", ["mad", "marshdeer"]],
-    ["muskDeer", "Musk Deer", ["mud", "muskdeer"]],
-    ["goldenPheasant", "Golden Pheasant", ["gph", "goldenpheasant"]],
-    ["blueMacaw", "Blue Macaw", ["bm", "bluemacaw"]],
-    ["rareMacaw", "Spix Macaw", ["sm", "spixmacaw"]],
-    ["jackass", "Jackass", ["jac", "jackass"]],
-    ["momaffie", "Momaffie", ["mom", "momaffie"]],
-    ["momaffieFamily", "Momaffie Family", ["mf", "momaffiefamily"]],
-    ["girabie", "Girabie", ["gir", "girabie"]],
-    ["jaguar", "Jaguar", ["jag", "jaguar"]],
-    ["leopard", "Leopard", ["leo", "leopard"]],
-    ["blackPanther", "Black Panther", ["bp", "blackpanther"]],
-    ["chocoToucan", "Choco Toucan", ["cht", "chocotoucan"]],
-    ["keelBilledToucan", "Keel-Billed Toucan", ["kbt", "keelbilledtoucan"]],
-    ["fieryToucan", "Fiery Toucan", ["ft", "fierytoucan"]],
-    ["lavaToucan", "Lava Toucan", ["lt", "lavatoucan"]],
-    ["rareToucan", "Helmeted Hornbill Toucan", ["hht", "helmetedhornbill"]],
-    ["yellowPufferfish", "Yellow Pufferfish", ["yp", "yellowpufferfish"]],
-    ["demonPufferfish", "Demonfish", ["dp", "df", "demonfish", "demonpufferfish"]],
-    ["whiteTiger", "White Tiger", ["wt", "whitetiger"]],
-    ["lionCub", "Lion Cub", ["lc", "lioncub"]],
-    ["whiteLionCub", "White Lion Cub", ["wlc", "whitelioncub"]],
-    ["blackLionCub", "Black Lion Cub", ["blc", "blacklioncub"]],
-    ["lioness", "Lioness", ["ln", "lioness"]],
-    ["whiteLioness", "White Lioness", ["wln", "whitelioness"]],
-    ["blackLioness", "Black Lioness", ["bln", "blacklioness"]],
-    ["blackManedLion", "Black-Maned Lion", ["bml", "blackmanedlion"]],
-    ["whiteLion", "White Lion", ["wl", "whitelion"]],
-    ["blackLion", "Black Lion", ["bl", "blacklion"]],
-    ["rareVulture", "Argentavis", ["arg", "av", "argentavis"]],
-    ["predator", "Predator", ["pf", "pre", "predator"]],
-    ["shaheen", "Shaheen", ["sf", "sha", "shaheen"]],
-    ["whiteRhino", "White Rhino", ["wr", "whiterhino"]],
-    ["blackRhino", "Black Rhino", ["br", "blackrhino"]],
-    ["goldenEagle", "Golden Eagle", ["ge", "gol", "goldeneagle"]],
-    ["harpyEagle", "Harpy Eagle", ["har", "harpyeagle"]],
-    ["greaterSpottedEagle", "Greater-Spotted Eagle", ["gse", "greaterspottedeagle"]],
-    ["markhor", "Markhor", ["mg", "mar", "markhor"]],
-    ["bigGoat", "Big Goat", ["bg", "biggoat"]],
-    ["whiteGiraffe", "White Giraffe", ["wg", "whitegiraffe"]],
-    ["giraffeFamily", "Giraffe Family", ["gf", "giraffefamily"]],
-    ["aquaYeti", "Aqua Yeti", ["ay", "aquayeti"]],
-    ["shopSnowman", "Shop Snowman", ["ssm", "shopsnowman"]],
-    ["luckSnowman", "Luck Snowman", ["lsm", "lucksnowman"]],
-    ["shopBigfoot", "Shop Bigfoot", ["sbf", "shopbigfoot"]],
-    ["luckBigfoot", "Luck Bigfoot", ["lbf", "luckbigfoot"]],
-    ["shopSnowgirl", "Shop Snowgirl", ["ssg", "shopsnowgirl"]],
-    ["luckSnowgirl", "Luck Snowgirl", ["lsg", "lucksnowgirl"]],
-    ["kingDragon", "King Dragon", ["kd", "kingdragon"]],
+    ["whiteDove", ["wd", "whitedove"]],
+    ["pinkyPig", ["pp", "pinkypig"]],
+    ["stinkyPig", ["sp", "stinkypig"]],
+    ["doe", ["doe"]],
+    ["marshDeer", ["mad", "marshdeer"]],
+    ["muskDeer", ["mud", "muskdeer"]],
+    ["goldenPheasant", ["gph", "goldenpheasant"]],
+    ["blueMacaw", ["bm", "bluemacaw"]],
+    ["rareMacaw", ["sm", "spixmacaw"]],
+    ["jackass", ["jac", "jackass"]],
+    ["momaffie", ["mom", "momaffie"]],
+    ["momaffieFamily", ["mf", "momaffiefamily"]],
+    ["girabie", ["gir", "girabie"]],
+    ["jaguar", ["jag", "jaguar"]],
+    ["leopard", ["leo", "leopard"]],
+    ["blackPanther", ["bp", "blackpanther"]],
+    ["chocoToucan", ["cht", "chocotoucan"]],
+    ["keelBilledToucan", ["kbt", "keelbilledtoucan"]],
+    ["fieryToucan", ["ft", "fierytoucan"]],
+    ["lavaToucan", ["lt", "lavatoucan"]],
+    ["rareToucan", ["hht", "helmetedhornbill"]],
+    ["yellowPufferfish", ["yp", "yellowpufferfish"]],
+    ["demonPufferfish", ["dp", "df", "demonfish", "demonpufferfish"]],
+    ["whiteTiger", ["wt", "whitetiger"]],
+    ["lionCub", ["lc", "lioncub"]],
+    ["whiteLionCub", ["wlc", "whitelioncub"]],
+    ["blackLionCub", ["blc", "blacklioncub"]],
+    ["lioness", ["ln", "lioness"]],
+    ["whiteLioness", ["wln", "whitelioness"]],
+    ["blackLioness", ["bln", "blacklioness"]],
+    ["blackManedLion", ["bml", "blackmanedlion"]],
+    ["whiteLion", ["wl", "whitelion"]],
+    ["blackLion", ["bl", "blacklion"]],
+    ["rareVulture", ["arg", "argentavis"]],
+    ["predator", ["pf", "pre", "predator"]],
+    ["shaheen", ["sf", "sha", "shaheen"]],
+    ["whiteRhino", ["wr", "whiterhino"]],
+    ["blackRhino", ["br", "blackrhino"]],
+    ["goldenEagle", ["ge", "goldeneagle"]],
+    ["harpyEagle", ["har", "harpyeagle"]],
+    ["greaterSpottedEagle", ["gse", "greaterspottedeagle"]],
+    ["markhor", ["mg", "mar", "markhor"]],
+    ["bigGoat", ["bg", "biggoat"]],
+    ["whiteGiraffe", ["wg", "whitegiraffe"]],
+    ["giraffeFamily", ["gf", "wgf", "giraffefamily"]],
+    ["aquaYeti", ["ay", "aquayeti"]],
+    ["shopSnowman", ["ssm", "shopsnowman"]],
+    ["luckSnowman", ["lsm", "lucksnowman"]],
+    ["shopBigfoot", ["sbf", "shopbigfoot"]],
+    ["luckBigfoot", ["lbf", "luckbigfoot"]],
+    ["shopSnowgirl", ["ssg", "shopsnowgirl"]],
+    ["luckSnowgirl", ["lsg", "lucksnowgirl"]],
+    ["kingDragon", ["kd", "kingdragon"]],
   ],
 
   tierRareAnimals: [
-    {"tier":2,"names":["White Dove"]},
-    {"tier":4,"names":["Pinky Pig","Stinky Pig"]},
-    {"tier":5,"names":["Doe","Marsh Deer","Musk Deer","Golden Pheasant"]},
-    {"tier":7,"names":["Jackass","Blue Macaw","Spix Macaw"]},
-    {"tier":8,"names":["Momaffie","Momaffie Family","Girabie"]},
-    {"tier":9,"names":["Jaguar","Leopard","Black Panther","Choco Toucan","Keel-Billed Toucan","Fiery Toucan","Lava Toucan","Helmeted Hornbill Toucan","Yellow Pufferfish","Demonfish"]},
-    {"tier":10,"names":["White Tiger"]},
-    {"tier":11,"names":["Lion Cub","White Lion Cub","Black Lion Cub","Lioness","White Lioness","Black Lioness","Black-Maned Lion","White Lion","Black Lion","Predator","Shaheen","Argentavis"]},
-    {"tier":12,"names":["White Rhino","Black Rhino","Golden Eagle","Harpy Eagle","Greater-Spotted Eagle","Markhor","Big Goat"]},
-    {"tier":13,"names":["White Giraffe","Giraffe Family"]},
-    {"tier":15,"names":["Aqua Yeti","Shop Snowman","Luck Snowman","Shop Snowgirl","Luck Snowgirl","Shop Bigfoot","Luck Bigfoot"]},
-    {"tier":17,"names":["King Dragon"]}
+    { tier: 2, names: ["White Dove"] },
+    { tier: 4, names: ["Pinky Pig", "Stinky Pig"] },
+    { tier: 5, names: ["Doe", "Marsh Deer", "Musk Deer", "Golden Pheasant"] },
+    { tier: 7, names: ["Jackass", "Blue Macaw", "Spix Macaw"] },
+    { tier: 8, names: ["Momaffie", "Momaffie Family", "Girabie"] },
+    {
+      tier: 9,
+      names: [
+        "Jaguar",
+        "Leopard",
+        "Black Panther",
+        "Choco Toucan",
+        "Keel-Billed Toucan",
+        "Fiery Toucan",
+        "Lava Toucan",
+        "Helmeted Hornbill Toucan",
+        "Yellow Pufferfish",
+        "Demonfish",
+      ],
+    },
+    { tier: 10, names: ["White Tiger"] },
+    {
+      tier: 11,
+      names: [
+        "Lion Cub",
+        "White Lion Cub",
+        "Black Lion Cub",
+        "Lioness",
+        "White Lioness",
+        "Black Lioness",
+        "Black-Maned Lion",
+        "White Lion",
+        "Black Lion",
+        "Predator",
+        "Shaheen",
+        "Argentavis",
+      ],
+    },
+    {
+      tier: 12,
+      names: [
+        "White Rhino",
+        "Black Rhino",
+        "Golden Eagle",
+        "Harpy Eagle",
+        "Greater-Spotted Eagle",
+        "Markhor",
+        "Big Goat",
+      ],
+    },
+    { tier: 13, names: ["White Giraffe", "Giraffe Family"] },
+    {
+      tier: 15,
+      names: [
+        "Aqua Yeti",
+        "Shop Snowman",
+        "Luck Snowman",
+        "Shop Snowgirl",
+        "Luck Snowgirl",
+        "Shop Bigfoot",
+        "Luck Bigfoot",
+      ],
+    },
+    { tier: 17, names: ["King Dragon"] },
   ],
 
   allVariants: [
-    { v: "s1", req: null, },
-    { v: "s1-v1", req: null, },
-    { v: "s2", req: null, },
-    { v: "s2-w", req: null, },
-    { v: "legacy", req: "legacySP", },
-    { v: "legacy-w", req: "legacySP", },
-    { v: "legacy-w-v1", req: "legacySP", },
-    { v: "sfsp", req: "storefrontSP", },
-    { v: "gsp", req: "goldenSP", },
-    { v: "lsp", req: "lockedSP", },
-    { v: "ssp2021", req: "summer2021SP", },
-    { v: "ssp2022", req: "summer2022SP", },
-    { v: "may2022", req: "may2022SP", },
-    { v: "christmas2022", req: "christmas2022SP", },
-    { v: "valentine2023", req: "valentine2023SP", },
-    { v: "hsp2020", req: "halloween2020SP", },
-    { v: "hsp2021", req: "halloween2021SP", },
-    { v: "hsp2022", req: "halloween2022SP", },
-    { v: "hsp2023", req: "halloween2023SP", },
-    { v: "landgt", req: "landGTSP", },
-    { v: "desertgt", req: "desertGTSP", },
-    { v: "oceangt", req: "oceanGTSP", },
-    { v: "arcticgt", req: "arcticGTSP", },
-    { v: "promo", req: null, },
+    { v: "s1", req: null },
+    { v: "s1-v1", req: null },
+    { v: "s2", req: null },
+    { v: "s2-w", req: null },
+    { v: "legacy", req: "legacySP" },
+    { v: "legacy-w", req: "legacySP" },
+    { v: "legacy-w-v1", req: "legacySP" },
+    { v: "sfsp", req: "storefrontSP" },
+    { v: "gsp", req: "goldenSP" },
+    { v: "lsp", req: "lockedSP" },
+    { v: "ssp2021", req: "summer2021SP" },
+    { v: "ssp2022", req: "summer2022SP" },
+    { v: "may2022", req: "may2022SP" },
+    { v: "christmas2022", req: "christmas2022SP" },
+    { v: "valentine2023", req: "valentine2023SP" },
+    { v: "hsp2020", req: "halloween2020SP" },
+    { v: "hsp2021", req: "halloween2021SP" },
+    { v: "hsp2022", req: "halloween2022SP" },
+    { v: "hsp2023", req: "halloween2023SP" },
+    { v: "landgt", req: "landGTSP" },
+    { v: "desertgt", req: "desertGTSP" },
+    { v: "oceangt", req: "oceanGTSP" },
+    { v: "arcticgt", req: "arcticGTSP" },
+    { v: "promo", req: null },
   ],
 
   // future content
   teams: [
     {
-      name: "Team 1", 
+      name: "Team 1",
       allies: [
         {
           name: "",
-          image: ""
+          image: "",
         },
         {
           name: "",
-          image: ""
+          image: "",
         },
         {
           name: "",
-          image: ""
+          image: "",
         },
-      ]
+      ],
     },
     {
-      name: "Team 2", 
+      name: "Team 2",
       allies: [
         {
           name: "",
-          image: ""
+          image: "",
         },
         {
           name: "",
-          image: ""
+          image: "",
         },
         {
           name: "",
-          image: ""
+          image: "",
         },
-      ]
+      ],
     },
     {
-      name: "Team 3", 
+      name: "Team 3",
       allies: [
         {
           name: "",
-          image: ""
+          image: "",
         },
         {
           name: "",
-          image: ""
+          image: "",
         },
         {
           name: "",
-          image: ""
+          image: "",
         },
-      ]
-    }
+      ],
+    },
   ],
 });
 
@@ -753,14 +787,14 @@ client.functions.add({
       $addButton[declinerules-$authorID;Decline;Danger;🛑]
       $callFunction[rulesEmbeds]    
     ]
-  `
-})
+  `,
+});
 
 // Embeds for rules
 
 client.functions.add({
   name: "rulesEmbeds",
-  code:`
+  code: `
     $return[  
       $author[Hey, $userDisplayName!;$userAvatar]
       $title[It looks like you haven't accepted the rules yet!]
@@ -771,8 +805,8 @@ client.functions.add({
       # $hyperlink[Rules;https://github.com/Daaisukidayo/MopeyBot/blob/main/Rules.md]]
       $color[$getGlobalVar[cooldownColor]]
     ]
-  `
-})
+  `,
+});
 
 // Executes when on cooldown
 
@@ -797,7 +831,7 @@ client.functions.add({
       $color[$getGlobalVar[cooldownColor]]    
       $deleteIn[$if[$or[$get[time]>30000;$get[time]==0];10s;$get[time]]]
     ]
-  `
+  `,
 });
 
 // Function for adding/removing coins
@@ -807,16 +841,16 @@ client.functions.add({
   params: ["amount"],
   code: `
     $return[$!jsonSet[userProfile;MC;$sum[$env[userProfile;MC];$env[amount]]]]
-  `
-})
+  `,
+});
 
 client.functions.add({
   name: "subMC",
   params: ["amount"],
   code: `
     $return[$!jsonSet[userProfile;MC;$sub[$env[userProfile;MC];$env[amount]]]]
-  `
-})
+  `,
+});
 
 // standart checkings before executing command
 
@@ -829,8 +863,8 @@ client.functions.add({
     $onlyIf[$env[userProfile;isBanned]!=true]
     $onlyIf[$env[userProfile;acceptedRules];$callFunction[rulesSchema]]
     $onlyIf[$env[userProfile;onSlowmode]!=true]
-  `
-})
+  `,
+});
 
 // adding cooldown
 
@@ -841,8 +875,8 @@ client.functions.add({
     $if[$env[userProfile;devMode]!=false;;
       $userCooldown[$commandName;$env[time];$callFunction[cooldownSchema;$commandName]]
     ]
-  `
-})
+  `,
+});
 
 // when important variables for commands' functionality are deleted
 
@@ -854,8 +888,8 @@ client.functions.add({
       $let[specialDesc2;$env[l;special;specialDesc2;$get[l10n]]] 
     $ephemeral 
     $interactionReply[$get[specialDesc2]]
-  `
-})
+  `,
+});
 
 // when other people trying to interact with author's button
 
@@ -867,8 +901,8 @@ client.functions.add({
       $let[specialDesc3;$env[l;special;specialDesc3;$get[l10n]]] 
     $ephemeral
     $interactionReply[$get[specialDesc3]]
-  `
-})
+  `,
+});
 
 client.functions.add({
   name: "kdMenu",
@@ -893,5 +927,5 @@ client.functions.add({
     $if[$env[userProfile;userPacks;storefrontSP];
       $addOption[$env[KDvar;8;name];;$env[cond]qf-$authorID;$env[KDvar;8;emoji]]
     ]
-  `
-})
+  `,
+});

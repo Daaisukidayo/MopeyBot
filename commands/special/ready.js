@@ -10,13 +10,10 @@ module.exports = {
     $async[ $c[CACHING allRares]
       $deleteGlobalVar[allRares]
       $deleteGlobalVar[snoraElements]
-      $deleteGlobalVar[SNORA]
       $jsonLoad[SNORA;$getGlobalVar[allRaresArr]]
       $jsonLoad[animals;$readFile[json/animals.json]]
 
       $arrayMap[SNORA;elem;
-        $let[emoji;$env[animals;$env[elem;0];variants;0;emoji]]
-        $!jsonSet[elem;3;$get[emoji]]
         $return[$env[elem]]
       ;SNORA]
 
@@ -26,15 +23,15 @@ module.exports = {
       $jsonLoad[snoraElements;{}]
       
       $arrayForEach[SNORA;elem;
-        $!jsonSet[snoraElements;$env[elem;1];$env[elem;2]]
-        $jsonLoad[rares;$env[elem;2]]
+        $let[animalName;$env[animals;$env[elem;0];variants;0;name]]
+        $!jsonSet[snoraElements;$get[animalName];$env[elem;1]]
+        $jsonLoad[rares;$env[elem;1]]
         $arrayForEach[rares;rare;
-          $!jsonSet[allRaresFromSnora;$env[rare];$env[elem;1]]
+          $!jsonSet[allRaresFromSnora;$env[rare];$get[animalName]]
         ]
       ]
       $setGlobalVar[allRares;$env[allRaresFromSnora]]
       $setGlobalVar[snoraElements;$env[snoraElements]]
-      $setGlobalVar[SNORA;$env[SNORA]]
       $logger[Info;Successfully loaded and cached «allRares» & «snoraElements» from «SNORA»]
     ]
 
