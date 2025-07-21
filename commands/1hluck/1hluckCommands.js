@@ -1,3 +1,4 @@
+const type = 'name' // editable between 'name' and 'emoji'
 module.exports = [
 {
   name: "start",
@@ -275,7 +276,7 @@ module.exports = [
       $description[$get[usage]]
     ]
 
-    $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$isNumber[$get[arg3]];$get[arg3]>0];
+    $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$and[$isNumber[$get[arg3]];$get[arg3]>0]];
       ${errorEmbed()} 
       $description[### Only a number greater than 0 or argument «\`all\`» (if removing) is allowed!]
     ]
@@ -329,6 +330,8 @@ module.exports = [
     $setUserVar[1hpoints|$channelID;$get[points]]
 
     ${settingParticProgress()}
+
+    $let[animal;$env[animals;$get[animal];variants;0;${type}]]
 
     ## ✅ $get[state] \`$get[count]\` $get[animal]
     ${normalEmbed()}
@@ -758,6 +761,80 @@ module.exports = [
     ${challengeEnded()}
     ${partyEnd()}
   `
+},{
+  name: 'count',
+  type: 'messageCreate',
+  code: `
+    $reply
+    $let[cdTime;5s]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
+    $callFunction[cooldown;$get[cdTime]]
+    
+    $onlyIf[$message!=]
+
+    $let[totalRares;0]
+    $let[totalPoints;0]
+
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    $jsonLoad[SNORA;$getGlobalVar[SNORA]]
+    $jsonLoad[allRares;$getGlobalVar[allRares]]
+    $jsonLoad[allRares;$jsonKeys[allRares]]
+    $arrayLoad[caughtRares; ;$toLowerCase[$message]]
+    $jsonLoad[allRaresList;{}]
+    $arrayLoad[unknown]
+
+    $loop[$arrayLength[caughtRares];
+      $let[i;$math[$env[i] - 1]]
+      $let[caughtRare;$arrayAt[caughtRares;$get[i]]]
+
+      $if[$arrayIncludes[allRares;$get[caughtRare]];;
+        $arrayPush[unknown;$get[caughtRare]]
+        $continue
+      ]
+
+      ${findingRareInSnoraBase()}
+      ${findingRareInRaresMapBase()}
+      
+      $let[newQuantity;$math[$env[allRaresList;$get[animalID]] + 1]]
+      $!jsonSet[allRaresList;$get[animalID];$get[newQuantity]]    
+    ;i;desc]
+
+    $jsonLoad[listEntries;$jsonEntries[allRaresList]]
+
+    $arrayForEach[listEntries;entry;
+
+      $let[type;name] $c[<- Changeable between "name" and "emoji"]
+      $let[animalID;$env[entry;0]]
+      $let[quantity;$env[entry;1]]
+
+      $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
+
+      ${findingRareInRaresMapBase()}
+
+      $let[listPoints;$env[rareMap;points]]
+      $let[totalPointsInList;$math[$get[quantity] * $get[listPoints]]]
+      $letSum[totalPoints;$get[totalPointsInList]]
+      $letSum[totalRares;$get[quantity]]
+
+      $let[listContent;$get[animalDisplay] x$get[quantity] × $get[listPoints] | +$get[totalPointsInList]]
+      $let[list;$get[list]║ $bold[$get[listContent]]\n]
+    ]
+    $if[$get[list]==;$let[list;║ none]]
+
+    $addField[Total points:; \`$get[totalPoints]\`]
+    $addField[Total rares:;\`$get[totalRares]\`]
+    $addField[All Rares List:;╔══════════\n$trimLines[$get[list]]\n╚══════════]
+    $if[$arrayLength[unknown]!=0;
+      $arrayForEach[unknown;elem;
+        $let[unkList;$get[unkList]║ $bold[$env[elem]]\n]
+      ]
+      $addField[Unknown rares:;╔══════════\n$trimLines[$get[unkList]]\n╚══════════]
+    ]
+    $getGlobalVar[author]
+    $color[$getGlobalVar[luckyColor]]
+  `
 }]
 
 // 1 hour luck functions
@@ -836,7 +913,6 @@ function interval (id = "$authorID") {
 
       $switch[$getUserVar[1htime|$channelID];
         $case[1800;   ${timeLeft(30,  `m`)}   ]
-        $case[1800;   ${timeLeft(15,  `m`)}   ]
         $case[3540;   ${timeLeft(1,   `m`)}   ]
         $case[3597;   ${timeLeft(3,   `s`)}   ]
         $case[3598;   ${timeLeft(2,   `s`)}   ]
@@ -959,7 +1035,7 @@ function time (id = "$authorID") {
 function pts (id = "$authorID") {
   return `
     $let[totalRares;$getuservar[1htotalRares|$channelID;${id}]]
-    ${raresListGenerator()}
+    ${raresListGenerator(false, id)}
     ${total(id)}
     $if[$env[userProfile;1hl;settings;hideRares];
       **Total rares:**\n||$get[totalRares]||
@@ -993,10 +1069,9 @@ function raresListGenerator(forHistory = false, id = '$authorID') {
 
     $arrayForEach[listEntries;entry;
 
-      $let[type;name] $c[<- Changeable between "name" and "emoji"]
       $let[animalID;$env[entry;0]]
       $let[quantity;$env[entry;1]]
-      $let[animalDisplay;$env[animals;$get[animalID];variants;0;$get[type]]]
+      $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
       ${findingRareInRaresMapBase()}
       $let[points;$env[rareMap;points]]
       $let[totalPointsInList;$math[$get[quantity] * $get[points]]]
