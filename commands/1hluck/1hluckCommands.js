@@ -794,9 +794,7 @@ function findingRareInSnoraBase () {
       $jsonLoad[arr;$arrayAt[SNORA;$get[k]]]
 
       $let[animalID;$env[arr;0]]
-      $let[animalName;$env[arr;1]]
-      $jsonLoad[arrAliases;$env[arr;2]]
-      $let[animalEmoji;$env[arr;3]]
+      $jsonLoad[arrAliases;$env[arr;1]]
 
       $if[$arrayIncludes[arrAliases;$get[caughtRare]];
         $break
