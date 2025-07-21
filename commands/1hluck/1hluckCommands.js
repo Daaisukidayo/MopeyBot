@@ -317,11 +317,17 @@ module.exports = [
     ]
     
     $jsonLoad[allRaresListEntries;$jsonEntries[allRaresList]]
+    $log[$env[allRaresListEntries]]
     
     $if[$arrayAt[allRaresListEntries;0]==;;
       $arrayForEach[allRaresListEntries;entry;
-        $letSum[rares;$env[entry;1;0]]
-        $letSum[points;$math[$env[entry;1;0] * $env[entry;1;1]]]
+        $let[quantity;$env[entry;1]]
+        $let[animalID;$env[entry;0]]
+        ${findingRareInRaresMapBase()}
+        $let[rareMapPoints;$env[rareMap;points]]
+        
+        $letSum[rares;$get[quantity]]
+        $letSum[points;$math[$get[quantity] * $get[rareMapPoints]]]
       ]
     ]
 
