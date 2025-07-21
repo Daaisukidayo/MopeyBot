@@ -1066,9 +1066,9 @@ function historyEmbed() {
     ${raresListGenerator(true)}
     $footer[Sort Type: $get[sort]]
     $description[$trimLines[
-      ## Points:\`$env[history;$get[index];points]\`
-      ## Rares:\`$env[history;$get[index];rares]\`
-      ## Ended at:\`$env[history;$get[index];time]\`
+      ## Points: \`$env[history;$get[index];points]\`
+      ## Rares: \`$env[history;$get[index];rares]\`
+      ## Ended at: \`$env[history;$get[index];time]\`
       ## All Rares List:\n╔══════════\n$get[list]\n╚══════════
     ]]
 
