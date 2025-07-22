@@ -317,7 +317,6 @@ module.exports = [
     ]
     
     $jsonLoad[allRaresListEntries;$jsonEntries[allRaresList]]
-    $log[$env[allRaresListEntries]]
     
     $if[$arrayAt[allRaresListEntries;0]==;;
       $arrayForEach[allRaresListEntries;entry;
