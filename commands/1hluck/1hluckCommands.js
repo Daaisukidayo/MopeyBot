@@ -1189,7 +1189,7 @@ function particEmbed () {
       $let[cond;Disable]
     ]
     
-    $author[$username[$get[host]]'s Party;$userAvatar[$get[host]]]
+    $author[$username[$get[host]]'s Lobby;$userAvatar[$get[host]]]
     $addField[Participants:;$codeBlock[$get[parts]]]
     $addField[Mode:;**\`FFA\`**]
     $addField[Tags:;$codeBlock[$get[tags]]]

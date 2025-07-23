@@ -897,8 +897,8 @@ client.functions.add({
   name: "notYourBTN",
   code: `
     $jsonLoad[l;$readFile[json/localizations.json]]
-      $let[l10n;$getUserVar[l10n]]
-      $let[specialDesc3;$env[l;special;specialDesc3;$get[l10n]]] 
+    $let[l10n;$env[userProfile;l10n]]
+    $let[specialDesc3;$env[l;special;specialDesc3;$get[l10n]]] 
     $ephemeral
     $interactionReply[$get[specialDesc3]]
   `,
