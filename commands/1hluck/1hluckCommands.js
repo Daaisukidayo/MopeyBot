@@ -36,6 +36,11 @@ module.exports = [
       $description[## You already have paused the challenge!]
     ]
 
+    $onlyIf[$getUserVar[1htime|$channelID]<3600;
+      ${errorEmbed()}
+      $description[## Time's up!]
+    ]
+
     $!stopInterval[1HLUCK-$authorID|$channelID]
     $setUserVar[1hpaused|$channelID;true]
 
