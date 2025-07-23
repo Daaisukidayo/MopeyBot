@@ -16,7 +16,7 @@ module.exports = [{
     $let[desc;]
     $let[total;0]
 
-    $arrayForEach[raresData;rare;
+    $arrayForEach[raresData;rare; $c[OLD RARE SYSTEM]
       $let[anChance;$env[rare;chance]]
       $let[att;$env[rare;atts]]
       $let[rChance;$randomNumber[1;$math[$get[att] + 1]]]
@@ -170,19 +170,19 @@ function raresData () {
         "MC": 0
       },
       {
-        "chance": "1",
+        "chance": "4",
         "atts": "250",
         "content": "${addContent("blackPanther")} 🍀",
         "MC": 3280
       },
       {
-        "chance": "4",
+        "chance": "16",
         "atts": "250",
         "content": "${addContent("leopard")}",
         "MC": 800
       },
       {
-        "chance": "5",
+        "chance": "20",
         "atts": "250",
         "content": "${addContent("jaguar")}",
         "MC": 660
@@ -334,7 +334,7 @@ function raresData () {
       {
         "chance": "5",
         "atts": "700",
-        "content": "${addContent("whiteGiraffeFamily")}",
+        "content": "${addContent("giraffeFamily")}",
         "MC": 1840
       },
       {
