@@ -26,75 +26,63 @@ module.exports = [{
       $let[animal;mouse]
       $let[desc;]
 
-      $addActionRow
-      $addStringSelectMenu[new-$authorID;Select a skin:]
-
+      ${newMenu("new")}
       ${loop()}
       ${embed()}
 
-    ;$if[$isNumber[$get[arg]];
-      $getGlobalVar[author]
-      $color[$getGlobalVar[defaultColor]]
-      $title[Select a skinpack]
-      ${menu()}
-
-    ;$if[$get[arg]==all;
-
-      $getGlobalVar[author]
-      $color[$getGlobalVar[defaultColor]]
-      $title[Select a skinpack]
-      ${menu()}
-
-    ;$onlyIf[$arrayIncludes[animalsNames;$get[arg]];
-        $color[$getGlobalVar[errorColor]]
+    ;
+      $if[$get[arg]==all;
         $getGlobalVar[author]
-        $title[:x: Invalid arguments!]
-        $description[## Animal not found]
+        $color[$getGlobalVar[defaultColor]]
+        $description[# Choose a skinpack]
+        ${menu("all")}
+      ;
+        $if[$isNumber[$get[arg]];
+          $getGlobalVar[author]
+          $color[$getGlobalVar[defaultColor]]
+          $description[# Choose a skinpack]
+          ${menu("num")}
+        ;
+          $onlyIf[$arrayIncludes[animalsNames;$get[arg]];
+            $color[$getGlobalVar[errorColor]]
+            $getGlobalVar[author]
+            $title[:x: Invalid arguments!]
+            $description[## Animal not found]
+          ]
+
+          $let[animal;$get[arg]]
+          $let[desc;]
+
+          ${newMenu()}
+          ${loop()}
+          ${embed()}
+        ]
       ]
-
-      $let[animal;$get[arg]]
-      $let[desc;]
-
-      $addActionRow
-      $addStringSelectMenu[animal-$authorID;Select a skin:]
-
-      ${loop()}
-      ${embed()}
-      
-    ]]]
-
-    $setUserVar[userProfile;$env[userProfile]]
+    ]
   `
 },{
   type: "interactionCreate", 
   allowedInteractionTypes: ["selectMenu"],
   description: "if user's argument is new",
   code: `
-    $onlyIf[$includes[$selectMenuValues;+]]
-    $textSplit[$selectMenuValues;-]
-    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
+    $arrayLoad[val;-;$selectMenuValues]
+    $arrayLoad[cid;-;$customID]
+    $onlyIf[$env[cid;0]==new]
+    $onlyIf[$arrayIncludes[val;$authorID];$callFunction[notYourBTN]]
 
-    $let[1part;$splitText[0]]
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[0]==new]
-    $textSplit[$get[1part];+]
-
-    $let[variant;$splitText[0]]  
-    $let[an;$splitText[1]]
+    $let[variant;$env[val;0]]  
+    $let[animal;$env[val;1]]
     
-    $onlyIf[$and[$get[variant]!=;$get[an]!=]]
+    $onlyIf[$and[$get[variant]!=;$get[animal]!=]]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[animalsNames;$jsonKeys[animals]]
-    $jsonLoad[allVariants;$getGlobalVar[allVariants]]
-    $jsonLoad[shopItems;$getGlobalVar[shopItems]]
-    $onlyIf[$arrayIncludes[animalsNames;$get[an]]]
+    ${json()}
+    $onlyIf[$arrayIncludes[animalsNames;$get[animal]]]
 
-    $!jsonSet[userProfile;userWardrobe;$get[an];$get[variant]]
+    $!jsonSet[userProfile;userWardrobe;$get[animal];$get[variant]]
     $setUserVar[userProfile;$env[userProfile]]        
 
-    $let[i;$arrayIndexOf[animalsNames;$get[an]]]
+    $let[i;$arrayIndexOf[animalsNames;$get[animal]]]
     $let[animal;$arrayAt[animalsNames;$math[$get[i] + 1]]]
 
     $onlyIf[$get[animal]!=;$!editMessage[$channelID;$messageID;# You equipped all skins!]]
@@ -111,37 +99,41 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu"],
   description: "if user choses skinpack providing number as an argument",
   code: `
-    $textSplit[$selectMenuValues;-]
-    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
+    $arrayLoad[val;-;$selectMenuValues]
+    $arrayLoad[cid;-;$customID]
+    $onlyIf[$env[cid;0]==num]
+    $onlyIf[$arrayIncludes[val;$authorID];$callFunction[notYourBTN]]
 
-    $textSplit[$splitText[0];+]
-    $let[tier;$splitText[0]]
-    $let[spcode;$replace[$splitText[1];_;-]]
-    $let[skinpack;$replace[$splitText[2];_; ]]
-    $onlyIf[$isNumber[$get[tier]]]
-
-    $textSplit[$customID;-]
-    $onlyIf[$isNumber[$splitText[0]]]
+    $let[tier;$env[val;0]]
+    $let[spcode;$replace[$env[val;1];_;-]]
+    $let[skinpack;$replace[$env[val;2];_; ]]
+    $let[desc;]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     ${json()}
 
-    $let[desc;]
+    $loop[$arrayLength[animalsNames];
+      $let[i;$math[$env[i] - 1]]
+      $let[animal;$arrayAt[animalsNames;$get[i]]]
+      $let[animalTier;$env[animals;$get[animal];tier]]
 
-    $arrayForEach[animalsNames;animal;
-      $if[$env[animals;$env[animal];tier]==$get[tier];
+      $if[$get[animalTier]>$get[tier];$break]
+      $if[$get[animalTier]!=$get[tier];$continue]
 
-        $let[i;0]
+      $jsonLoad[allVariants;$env[animals;$get[animal];variants]]
 
-        $while[$get[i]<25;
-          $if[$env[animals;$env[animal];variants;$get[i];vCode]==$get[spcode];
-              $!jsonSet[userProfile;userWardrobe;$env[animal];$get[i]]
-              $let[desc;$get[desc] $env[animals;$env[animal];variants;$get[i];emoji]]
-          ]
-          $letSum[i;1]
-        ]
-      ]
-    ]
+      $loop[$arrayLength[allVariants];
+        $let[j;$math[$env[j] - 1]]
+        $jsonLoad[v;$arrayAt[allVariants;$get[j]]]
+
+        $if[$env[v;vCode]==$get[spcode];;$continue]
+
+        $!jsonSet[userProfile;userWardrobe;$get[animal];$get[j]]
+        $let[desc;$get[desc] $env[v;emoji]]
+        $break
+
+      ;j;desc]
+    ;i;desc]
 
     $setUserVar[userProfile;$env[userProfile]]
 
@@ -149,10 +141,10 @@ module.exports = [{
     $if[$get[desc]!=;
       $color[$getGlobalVar[defaultColor]]
       $description[# $get[desc]]
-      $title[You have successfully equipped tier \`$get[tier]\` animals with the «$get[skinpack]»!]
+      $title[You have successfully equipped every tier \`$get[tier]\` animal with the «$get[skinpack]»!]
     ;
       $color[Orange]
-      $title[Tier \`$get[tier]\` don't have any skins from «$get[skinpack]»]
+      $title[Every tier \`$get[tier]\` animal don't have any skins in the «$get[skinpack]»]
     ]
     $!editMessage[$channelID;$messageID]
   `
@@ -161,17 +153,12 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu"],
   description: "if user choses skinpack providing all as an argument",
   code: `
-    $textSplit[$selectMenuValues;-]
-    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
+    $arrayLoad[val;-;$selectMenuValues]
+    $onlyIf[$env[val;0]==all]
+    $onlyIf[$arrayIncludes[val;$authorID];$callFunction[notYourBTN]]
 
-    $textSplit[$splitText[0];+]
-    $let[key;$splitText[0]]
-    $let[spcode;$replace[$splitText[1];_;-]]
-    $let[skinpack;$replace[$splitText[2];_; ]]
-    $onlyIf[$get[key]==all]
-
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[0]==all]
+    $let[spcode;$replace[$env[val;1];_;-]]
+    $let[skinpack;$replace[$env[val;2];_; ]]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     ${json()}
@@ -189,7 +176,7 @@ module.exports = [{
     $setUserVar[userProfile;$env[userProfile]]
 
     $color[$getGlobalVar[defaultColor]]
-    $title[You have successfully equipped \`all\` animals with the «$get[skinpack]»!]
+    $title[You have successfully equipped every animal with the «$get[skinpack]»!]
     $getGlobalVar[author]
     $!editMessage[$channelID;$messageID]
   `
@@ -198,39 +185,49 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu"],
   description: "if user choses skinpack providing animal as an argument",
   code: `
-    $onlyIf[$includes[$selectMenuValues;+]]
-    $textSplit[$selectMenuValues;-]
-    $onlyIf[$splitText[1]==$authorID;  $callFunction[notYourBTN;]  ]
+    $arrayLoad[val;-;$selectMenuValues]
+    $arrayLoad[cid;-;$customID]
+    $onlyIf[$env[cid;0]==animal]
+    $onlyIf[$arrayIncludes[val;$authorID];$callFunction[notYourBTN]]
 
-    $let[1part;$splitText[0]]
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[0]==animal]
-    $textSplit[$get[1part];+]
-
-    $let[variant;$splitText[0]]  
-    $let[animal;$splitText[1]]
+    $let[variant;$env[val;0]]  
+    $let[animal;$env[val;1]]
+    $let[msg;$messageID]
     
-    $onlyIf[$and[$get[variant]!=;$get[animal]!=]]
-
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[animalsNames;$jsonKeys[animals]]
-    $jsonLoad[allVariants;$getGlobalVar[allVariants]]
-    $jsonLoad[shopItems;$getGlobalVar[shopItems]]
+    ${json()}
     $onlyIf[$arrayIncludes[animalsNames;$get[animal]]]
 
     $!jsonSet[userProfile;userWardrobe;$get[animal];$get[variant]]
     $setUserVar[userProfile;$env[userProfile]]
-    $addActionRow
-    $addStringSelectMenu[animal-$authorID;Choose a skin:]
+
+    ${newMenu()}
     ${loop()}
     ${embed()}
-    $!editMessage[$channelID;$messageID]
+    $!editMessage[$channelID;$get[msg]]
     $deferUpdate
-`}]
+    $!clearTimeout[WARDROBE-$authorID]
+    ${timeout()}
+  `
+}]
 
 
 // Functions
+
+function timeout() {
+  return `
+    $setTimeout[
+      $!disableComponentsOf[$channelID;$get[msg]]
+    ;1m;WARDROBE-$authorID]
+  `
+}
+
+function newMenu(id = "animal") {
+  return `
+    $addActionRow
+    $addStringSelectMenu[${id}-$authorID;Choose a skin:]
+  `
+}
 
 
 function loop() {
@@ -250,7 +247,7 @@ function loop() {
 
         $if[$and[$env[variant;v]==$get[animalVarCode];$get[hasPack]];
           $let[animalName;$env[animals;$get[animal];variants;$get[num];name]]
-          $let[animalTrig;$get[num]+$env[animals;$get[animal];trig]]
+          $let[animalTrig;$get[num]-$env[animals;$get[animal];trig]]
           $let[animalDesc;$env[animals;$get[animal];variants;$get[num];description]]
           $let[animalEmoji;$env[animals;$get[animal];variants;$get[num];emoji]]
           $let[desc;$get[desc] $get[animalEmoji]]
@@ -264,18 +261,12 @@ function loop() {
 
 function embed() {
   return `
-    $description[# $get[desc];0]
-    $getGlobalVar[author]
-    $footer[Select a skin for the animal you want to equip!]
-    $title[All available skins for \`$env[animals;$get[animal];fullName]\`:;;0]
-    $color[$getGlobalVar[defaultColor];0]
-    
     $let[currentAnimalVariant;$env[userProfile;userWardrobe;$get[animal]]]
     $let[currentAnimalEmoji;$env[animals;$get[animal];variants;$get[currentAnimalVariant];emoji]]
-    
-    $color[$getGlobalVar[defaultColor];1]
-    $title[Current equipped skin:;;1]
-    $description[# $get[currentAnimalEmoji];1]
+
+    $description[## All available skins for \`$env[animals;$get[animal];fullName]\`:\n# $get[desc]\n## Equipped skin:\n# $get[currentAnimalEmoji]]
+    $getGlobalVar[author]
+    $color[$getGlobalVar[defaultColor]]
   `
 }
 
@@ -290,14 +281,14 @@ function json() {
   `
 }
 
-function menu () {
+function menu (id = "$get[arg]") {
   return `
     $addActionRow
-    $addStringSelectMenu[$get[arg]-$authorID;Choose a skinpack:]
+    $addStringSelectMenu[${id}-$authorID;Choose a skinpack:]
 
-    $addOption[Seasonal 1 Skinpack;;$get[arg]+s1+Seasonal_1_Skinpack-$authorID]
-    $addOption[Seasonal 2 Skinpack;;$get[arg]+s2+Seasonal_2_Skinpack-$authorID]
-    $addOption[Winter Skinpack;;$get[arg]+s2_w+Winter_Skinpack-$authorID]
+    $addOption[Seasonal 1 Skinpack;;$get[arg]-s1-Seasonal_1_Skinpack-$authorID]
+    $addOption[Seasonal 2 Skinpack;;$get[arg]-s2-Seasonal_2_Skinpack-$authorID]
+    $addOption[Winter Skinpack;;$get[arg]-s2_w-Winter_Skinpack-$authorID]
 
     $if[$arrayAt[userSPsKeys;0]!=;
     
