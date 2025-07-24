@@ -263,8 +263,9 @@ function embed() {
   return `
     $let[currentAnimalVariant;$env[userProfile;userWardrobe;$get[animal]]]
     $let[currentAnimalEmoji;$env[animals;$get[animal];variants;$get[currentAnimalVariant];emoji]]
+    $let[fullName;$env[animals;$get[animal];fullName]]
 
-    $description[## All available skins for \`$env[animals;$get[animal];fullName]\`:\n# $get[desc]\n## Equipped skin:\n# $get[currentAnimalEmoji]]
+    $description[## All available skins for \`$get[fullName]\`:\n# $get[desc]\n## Equipped skin:\n# $get[currentAnimalEmoji]]
     $getGlobalVar[author]
     $color[$getGlobalVar[defaultColor]]
   `
