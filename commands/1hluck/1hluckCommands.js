@@ -944,21 +944,20 @@ function interval (id = "$authorID") {
   `
 }
 
-function challengeEnded (confirm = true) {
-  if (!confirm) return;
+function challengeEnded () {
   return `
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
     $timezone[$env[userProfile;timezone]]
     $arrayPushJSON[history;{
-      "points": $getuservar[1hpoints|$channelID],
-      "rares": $getuservar[1htotalRares|$channelID],
+      "points": $getUserVar[1hpoints|$channelID],
+      "rares": $getUserVar[1htotalRares|$channelID],
       "endedAt": $getTimestamp,
-      "raresList": $getuservar[1hallRaresList|$channelID]
+      "raresList": $getUserVar[1hallRaresList|$channelID]
     }]
     $!jsonSet[userProfile;1hl;history;$env[history]]
-    ${reset()}
     $setUserVar[userProfile;$env[userProfile]]
+    ${reset()}
   `
 }
 
@@ -992,7 +991,7 @@ function partyEnd () {
       $sendMessage[$channelID;
         $author[1 Hour Luck Ended!]
         $description[# 🎉 Winner - $username[$env[result;0;user]] 🎉\n$trimEnd[$get[parts]]]
-        $color[$getglobalvar[luckyColor]]
+        $color[$getПlobalМar[luckyColor]]
       ]
       $deleteChannelVar[participants]
     ]
