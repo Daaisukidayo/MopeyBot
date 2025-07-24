@@ -5,7 +5,6 @@ module.exports = {
   code: `
     $reply
     $onlyForUsers[;$botOwnerID]
-    $stop $c[already used once]
     $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
     $jsonLoad[newUserProfile;$getGlobalVar[userProfile]]
     $jsonLoad[profileKeys;$jsonKeys[newUserProfile]]
@@ -21,29 +20,15 @@ module.exports = {
       $if[$env[history;0]==;;
 
         $arrayForEach[history;obj;
-          $jsonLoad[newRaresList;{}]
           $jsonLoad[raresList;$env[obj;raresList]]
-          $jsonLoad[raresListEntries;$jsonEntries[raresList]]
-          $arrayForEach[raresListEntries;entry;
-            $loop[$arrayLength[animalsKeys];
-              $let[j;$math[$env[j] - 1]]
-              $let[animal;$arrayAt[animalsKeys;$get[j]]]
-              $let[name;$env[animals;$get[animal];variants;0;name]]
-
-              $if[$get[name]==$env[entry;0];
-                $!jsonSet[newRaresList;$get[animal];$env[entry;1;0]]
-                $break
-              ]
-            ;j;desc]
-
-          ]
+          $let[newTime;$unparseDate[$env[obj;time]]]        
 
           $jsonLoad[stats;
             {
               "points": $env[obj;points],
               "rares": $env[obj;rares],
-              "time": "$env[obj;time]",
-              "raresList": $env[newRaresList]
+              "endedAt": $get[newTime],
+              "raresList": $env[obj;raresList]
             }
           ]
 
@@ -61,6 +46,50 @@ module.exports = {
   `
 }
 
+// Changes history json keys of all users (from "Animal Name" to "animalID")
+// $arrayForEach[allUserIDs;ID;
+
+//  $jsonLoad[userProfile;$getUserVar[userProfile;$env[ID]]]
+//  $jsonLoad[history;$env[userProfile;1hl;history]]
+//  $arrayLoad[newHistory]
+
+//  $if[$env[history;0]==;;
+
+//    $arrayForEach[history;obj;
+//      $jsonLoad[newRaresList;{}]
+//      $jsonLoad[raresList;$env[obj;raresList]]
+//      $jsonLoad[raresListEntries;$jsonEntries[raresList]]
+//      $arrayForEach[raresListEntries;entry;
+//        $loop[$arrayLength[animalsKeys];
+//          $let[j;$math[$env[j] - 1]]
+//          $let[animal;$arrayAt[animalsKeys;$get[j]]]
+//          $let[name;$env[animals;$get[animal];variants;0;name]]
+
+//          $if[$get[name]==$env[entry;0];
+//            $!jsonSet[newRaresList;$get[animal];$env[entry;1;0]]
+//            $break
+//          ]
+//        ;j;desc]
+
+//      ]
+
+//      $jsonLoad[stats;
+//        {
+//          "points": $env[obj;points],
+//          "rares": $env[obj;rares],
+//          "time": "$env[obj;time]",
+//          "raresList": $env[newRaresList]
+//        }
+//      ]
+
+//      $arrayPushJSON[newHistory;$env[stats]]
+
+//    ]
+
+//    $!jsonSet[userProfile;1hl;history;$env[newHistory]]
+//    $setUserVar[userProfile;$env[userProfile];$env[ID]]
+//  ]
+//]
 
 
 // adding/updating profile with new keys

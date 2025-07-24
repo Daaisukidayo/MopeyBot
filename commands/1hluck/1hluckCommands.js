@@ -1,4 +1,4 @@
-const type = 'name' // editable between 'name' and 'emoji'
+const type = 'name' // editable between 'name' and 'emoji' to show name or emoji in rares list
 module.exports = [
 {
   name: "start",
@@ -1153,7 +1153,7 @@ function historyEmbed() {
     $description[$trimLines[
       ## Points: \`$env[history;$get[index];points]\`
       ## Rares: \`$env[history;$get[index];rares]\`
-      ## Ended at: \`$env[history;$get[index];time]\`
+      ## Ended at: $discordTimestamp[$env[history;$get[index];endedAt];LongDateTime]
       ## All Rares List:\n╔══════════\n$get[list]\n╚══════════
     ]]
 

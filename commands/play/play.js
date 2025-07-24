@@ -146,7 +146,7 @@ module.exports = [{
 },{
   type: "interactionCreate",
   allowedInteractionTypes: ["selectMenu"],
-  description: "search food",
+  description: "search XP",
   code: `
     $arrayLoad[btn;-;$selectMenuValues]
     $onlyIf[$includes["$env[btn;0]";"searchXP"]]
@@ -154,11 +154,64 @@ module.exports = [{
 
     ${jsonLoader()}
     ${hasStarted()}
+    $jsonLoad[expBase;$readFile[json/expBase.json]]
+    $jsonLoad[expData;$readFile[json/expData.json]]
 
-    $let[xp;${setXP()}]
+    $let[biome;$env[playData;currentBiome]]
+    $let[tier;$env[playData;tier]]
+
+    $let[multiplier;$env[expData;$get[tier];m]]
+    $jsonLoad[data;$env[expData;$get[tier];d]]
+    $jsonLoad[biomeArray;$env[expBase;b]]
+    $jsonLoad[foodArray;$env[expBase;f]]
+    $jsonLoad[preyArray;$env[expBase;p]]
+
+    $let[biomeIndex;$arrayIndexOf[biomeArray;$get[biome]]]
+    $let[dataIndex;$arrayFindIndex[data;obj;$env[obj;b]==$get[biomeIndex]]]
+    $jsonLoad[data;$env[data;$get[dataIndex]]]
+
+    $jsonLoad[food;$env[data;f]]
+    $jsonLoad[prey;$env[data;p]]
+
+    $let[foodIndex;$arrayRandomValue[food]]
+    $jsonLoad[food;$env[foodArray;$get[foodIndex]]]
+
+    $jsonLoad[foodXPArr;$env[food;XP]]
+    $let[minXP;$env[foodXPArr;0]]
+    $let[maxXP;$env[foodXPArr;1]]
+    $let[foodXP;$randomNumber[$get[minXP];$math[$get[maxXP] + 1]]]
+    $let[foodXP;$round[$math[$get[foodXP] * $get[multiplier]]]]
+    $let[foodName;$env[food;name]]
+
+    $if[$get[foodName]==;$let[foodName;undefined]]
+
+    $let[xp;$get[foodXP]]
+    $let[content;You ate a $get[foodName] and gained \`$separateNumber[$get[xp];,]\`XP!]
+
+    $if[$env[prey;0]==;;
+      $let[r;$randomNumber[1;101]]
+
+      $if[$get[r]<=45;
+        $let[preyIndex;$arrayRandomValue[prey]]
+        $let[preyID;$env[preyArray;$get[preyIndex];name]]
+        $let[preyName;$env[animals;$get[preyID];variants;0;name]]
+        $let[preyEmoji;$env[animals;$get[preyID];variants;0;emoji]]
+        $let[preyTier;$env[animals;$get[preyID];tier]]
+
+        $jsonLoad[XPreq;${XPReqForUpg()}]
+        $jsonLoad[XParr;$env[XPreq;$get[preyTier]]]
+
+        $let[minXP;$env[XParr;0]]
+        $let[maxXP;$env[XParr;1]]
+        $let[xp;$randomNumber[$get[minXP];$math[$get[maxXP] + 1]]]
+        $let[xp;$round[$math[$get[xp] * $get[multiplier]]]]
+
+        $let[content;You ate a __$get[preyName]__ $get[preyEmoji] and gained \`$separateNumber[$get[xp];,]\`XP!]
+      ]
+    ]
 
     $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xp]]]
-    $description[## You ate some food and gained \`$separateNumber[$get[xp];,]\`XP \n${animalStats()}]
+    $description[## $get[content]\n${animalStats()}]
     $getGlobalVar[author]
     $color[$env[playData;color]]
     ${actionMenu()}
