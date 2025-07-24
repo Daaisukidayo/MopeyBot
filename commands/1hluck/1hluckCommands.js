@@ -945,21 +945,20 @@ function interval (id = "$authorID") {
 }
 
 function challengeEnded (confirm = true) {
+  if (!confirm) return;
   return `
-    $if[${confirm};
-      $jsonLoad[userProfile;$getUserVar[userProfile]]
-      $jsonLoad[history;$env[userProfile;1hl;history]]
-      $timezone[$env[userProfile;timezone]]
-      $arrayPushJSON[history;{
-        "points": $getuservar[1hpoints|$channelID],
-        "rares": $getuservar[1htotalRares|$channelID],
-        "time": "$parseDate[$getTimestamp;Locale]",
-        "raresList": $getuservar[1hallRaresList|$channelID]
-      }]
-      $!jsonSet[userProfile;1hl;history;$env[history]]
-      ${reset()}
-      $setUserVar[userProfile;$env[userProfile]]
-    ]  
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $jsonLoad[history;$env[userProfile;1hl;history]]
+    $timezone[$env[userProfile;timezone]]
+    $arrayPushJSON[history;{
+      "points": $getuservar[1hpoints|$channelID],
+      "rares": $getuservar[1htotalRares|$channelID],
+      "endedAt": $getTimestamp,
+      "raresList": $getuservar[1hallRaresList|$channelID]
+    }]
+    $!jsonSet[userProfile;1hl;history;$env[history]]
+    ${reset()}
+    $setUserVar[userProfile;$env[userProfile]]
   `
 }
 
