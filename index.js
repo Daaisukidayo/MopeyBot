@@ -476,6 +476,102 @@ DB.variables({
 
   raresMap: [
     {
+      category: "trash",
+      rares: ["chocoToucan", "keelBilledToucan", "markhor", "yellowPufferfish"],
+      points: 1,
+    },
+    {
+      category: "common",
+      rares: [
+        "doe",
+        "blueMacaw",
+        "jaguar",
+        "leopard",
+        "fieryToucan",
+        "lionCub",
+        "lioness",
+      ],
+      points: 2,
+    },
+    {
+      category: "uncommon",
+      rares: [
+        "whiteDove",
+        "pinkyPig",
+        "marshDeer",
+        "goldenPheasant",
+        "momaffie",
+        "momaffieFamily",
+        "blackPanther",
+        "whiteTiger",
+        "blackManedLion",
+      ],
+      points: 3,
+    },
+    {
+      category: "rare",
+      rares: [
+        "jackass",
+        "whiteLion",
+        "whiteLioness",
+        "whiteLionCub",
+        "bigGoat",
+      ],
+      points: 5,
+    },
+    {
+      category: "epic",
+      rares: [
+        "girabie",
+        "stinkyPig",
+        "muskDeer",
+        "predator",
+        "goldenEagle",
+      ],
+      points: 10,
+    },
+    {
+      category: "legendary",
+      rares: [
+        "blackLion",
+        "blackLioness",
+        "blackLionCub",
+        "whiteRhino",
+        "aquaYeti",
+      ],
+      points: 15,
+    },
+    {
+      category: "mythic",
+      rares: [
+        "lavaToucan", 
+        "demonPufferfish", 
+        "blackRhino", 
+        "whiteGiraffe", 
+        "giraffeFamily"
+      ],
+      points: 25,
+    },
+    {
+      category: "godlike",
+      rares: [
+        "rareMacaw",
+        "rareToucan",
+        "rareVulture",
+        "shaheen",
+        "harpyEagle",
+        "luckBigfoot", 
+        "luckSnowman", 
+        "luckSnowgirl", 
+        "kingDragon",
+        "greaterSpottedEagle",
+      ],
+      points: 50,
+    },
+  ],
+
+  raresMapOld: [
+    {
       category: "common",
       rares: ["chocoToucan", "keelBilledToucan", "markhor"],
       points: 1,

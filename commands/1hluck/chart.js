@@ -7,8 +7,8 @@ module.exports = [{
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
-    $image[https://media.discordapp.net/attachments/701793335941136464/1368264792485134479/image.png]
+    $image[https://media.discordapp.net/attachments/701793335941136464/1398029031198163055/luckchart.png]
     $color[$getglobalvar[luckyColor]]
-    $timestamp[1745180100000]
+    $timestamp[1753385040000]
   `
 }]

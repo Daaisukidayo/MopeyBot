@@ -116,7 +116,7 @@ module.exports = [
       ${findingRareInSnoraBase()}
       ${findingRareInRaresMapBase()}
 
-      $let[notCommon;$checkCondition[$env[rareMap;category]!=common]]
+      $let[notCommon;$checkCondition[$env[rareMap;category]!=trash]]
       $let[infiniteCommons;$env[userProfile;1hl;settings;infiniteCommons]]
 
       $if[$getUserVar[participating|$channelID];
@@ -137,6 +137,9 @@ module.exports = [
       $if[$includes[-$get[caughtRare]-;-keelbilledtoucan-;-kbt-];
         $let[rareName;Keel-Billed Toucan]
       ]
+      $if[$includes[-$get[caughtRare]-;-yellowpufferfish-;-yp-];
+        $let[rareName;Yellow Pufferfish]
+      ]
 
       $let[commonCount;$env[allRaresList;$get[animalID];0]]
 
@@ -145,7 +148,7 @@ module.exports = [
         $letSum[commonCount;1]
 
         $if[$get[commonCount]==3;
-          $let[content;$get[content]## You got all $get[rareName]s!\n]
+          $let[content;$get[content]## The maximum of «\`$get[rareName]\`» reached\n]
         ]
       ;
         $arrayPush[caught;0]
@@ -1107,7 +1110,7 @@ function rares() {
 function commons () {
   return `
     $if[$get[infiniteCommons];;
-      $arrayLoad[coms;,;chocoToucan|CHT,keelBilledToucan|KBT,markhor|MAR]
+      $arrayLoad[coms;,;chocoToucan|CHT,keelBilledToucan|KBT,markhor|MAR,yellowPufferfish|YPF]
       $arrayForEach[coms;com;
         $arrayLoad[com;|;$env[com]]
 
