@@ -956,8 +956,8 @@ function challengeEnded () {
       "raresList": $getUserVar[1hallRaresList|$channelID]
     }]
     $!jsonSet[userProfile;1hl;history;$env[history]]
-    $setUserVar[userProfile;$env[userProfile]]
     ${reset()}
+    $setUserVar[userProfile;$env[userProfile]]
   `
 }
 
