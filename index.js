@@ -773,11 +773,8 @@ DB.variables({
       tier: 15,
       names: [
         "Aqua Yeti",
-        "Shop Snowman",
         "Luck Snowman",
-        "Shop Snowgirl",
         "Luck Snowgirl",
-        "Shop Bigfoot",
         "Luck Bigfoot",
       ],
     },
