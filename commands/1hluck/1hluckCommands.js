@@ -956,8 +956,8 @@ function challengeEnded () {
       "raresList": $getUserVar[1hallRaresList|$channelID]
     }]
     $!jsonSet[userProfile;1hl;history;$env[history]]
-    ${reset()}
     $setUserVar[userProfile;$env[userProfile]]
+    ${reset()}
   `
 }
 
@@ -991,7 +991,7 @@ function partyEnd () {
       $sendMessage[$channelID;
         $author[1 Hour Luck Ended!]
         $description[# 🎉 Winner - $username[$env[result;0;user]] 🎉\n$trimEnd[$get[parts]]]
-        $color[$getПlobalМar[luckyColor]]
+        $color[$getGlobalVar[luckyColor]]
       ]
       $deleteChannelVar[participants]
     ]
