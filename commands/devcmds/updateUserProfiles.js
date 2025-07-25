@@ -11,40 +11,44 @@ module.exports = {
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[animalsKeys;$jsonKeys[animals]]
 
-    $arrayForEach[allUserIDs;ID; $c[Changes history json keys of all users (from "Animal Name" to "animalID")]
-
+    $arrayForEach[allUserIDs;ID;
       $jsonLoad[userProfile;$getUserVar[userProfile;$env[ID]]]
-      $jsonLoad[history;$env[userProfile;1hl;history]]
-      $arrayLoad[newHistory]
-
-      $if[$env[history;0]==;;
-
-        $arrayForEach[history;obj;
-          $jsonLoad[raresList;$env[obj;raresList]]
-          $let[newTime;$unparseDate[$env[obj;time]]]        
-
-          $jsonLoad[stats;
-            {
-              "points": $env[obj;points],
-              "rares": $env[obj;rares],
-              "endedAt": $get[newTime],
-              "raresList": $env[obj;raresList]
-            }
-          ]
-
-          $arrayPushJSON[newHistory;$env[stats]]
-
-        ]
-
-        $!jsonSet[userProfile;1hl;history;$env[newHistory]]
-        $setUserVar[userProfile;$env[userProfile];$env[ID]]
-      ]
+      $!jsonDelete[userProfile;1hl;settings;infiniteCommons]
+      $!jsonSet[userProfile;1hl;settings;unlimitedRares;false]
+      $setUserVar[userProfile;$env[userProfile];$env[ID]]
     ]
 
     $sendMessage[$channelID;## ✅ Successfully updated all profiles!]
 
   `
 }
+
+// changes time format
+// $jsonLoad[history;$env[userProfile;1hl;history]]
+//   $arrayLoad[newHistory]
+
+//   $if[$env[history;0]==;;
+
+//     $arrayForEach[history;obj;
+//       $jsonLoad[raresList;$env[obj;raresList]]
+//       $let[newTime;$unparseDate[$env[obj;time]]]        
+
+//       $jsonLoad[stats;
+//         {
+//           "points": $env[obj;points],
+//           "rares": $env[obj;rares],
+//           "endedAt": $get[newTime],
+//           "raresList": $env[obj;raresList]
+//         }
+//       ]
+
+//       $arrayPushJSON[newHistory;$env[stats]]
+
+//     ]
+
+//     $!jsonSet[userProfile;1hl;history;$env[newHistory]]
+//     $setUserVar[userProfile;$env[userProfile];$env[ID]]
+//   ]
 
 // Changes history json keys of all users (from "Animal Name" to "animalID")
 // $arrayForEach[allUserIDs;ID;

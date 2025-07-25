@@ -76,84 +76,18 @@ module.exports = [
     $onlyIf[$getUserVar[1hstarted|$channelID]]
     $onlyIf[$startsWith[$messageContent;$getGuildVar[prefix]]==false]
 
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $arrayLoad[allRares]
     $arrayLoad[caught]
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
-
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[SNORA;$getGlobalVar[SNORA]]
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList|$channelID]]
-    $jsonLoad[allRares;$getGlobalVar[allRares]]
-    $jsonLoad[allRares;$jsonKeys[allRares]]
+    $jsonLoad[chartLimits;$getGlobalVar[chartLimits]]
+    ${json()}
     
     $let[points;0]
     $let[content;]
     
     $c[Looping through every rare]
 
-    $loop[$arrayLength[caughtRares];
-      $let[i;$math[$env[i] - 1]]
-      $let[caughtRare;$arrayAt[caughtRares;$get[i]]]
-
-      $if[$arrayIncludes[allRares;$get[caughtRare]];;
-
-        $if[$get[i]==0;
-          $break $c[breaking the loop if the first message is invalid, so it will not affect normal messages]
-        ]
-
-        $arrayPush[caught;0]
-        $continue
-      ]
-
-      $onlyIf[$getUserVar[1hpaused|$channelID]!=true;
-        ${errorEmbed()} 
-        $description[## You are on pause!] 
-        $sendMessage[$channelID]
-      ]
-
-      ${findingRareInSnoraBase()}
-      ${findingRareInRaresMapBase()}
-
-      $let[notCommon;$checkCondition[$env[rareMap;category]!=trash]]
-      $let[infiniteCommons;$env[userProfile;1hl;settings;infiniteCommons]]
-
-      $if[$getUserVar[participating|$channelID];
-        $let[infiniteCommons;$getChannelVar[infiniteCommons]]
-      ]
-
-      $if[$or[$get[infiniteCommons];$get[notCommon]];
-        ${rares()}
-        $continue
-      ]
-
-      $if[$includes[-$get[caughtRare]-;-markhor-;-mar-;-mg-];
-        $let[rareName;Markhor]
-      ]
-      $if[$includes[-$get[caughtRare]-;-chocotoucan-;-cht-];
-        $let[rareName;Choco Toucan]
-      ]
-      $if[$includes[-$get[caughtRare]-;-keelbilledtoucan-;-kbt-];
-        $let[rareName;Keel-Billed Toucan]
-      ]
-      $if[$includes[-$get[caughtRare]-;-yellowpufferfish-;-yp-];
-        $let[rareName;Yellow Pufferfish]
-      ]
-
-      $let[commonCount;$env[allRaresList;$get[animalID];0]]
-
-      $if[$get[commonCount]<3;
-        ${rares()}
-        $letSum[commonCount;1]
-
-        $if[$get[commonCount]==3;
-          $let[content;$get[content]## The maximum of «\`$get[rareName]\`» reached\n]
-        ]
-      ;
-        $arrayPush[caught;0]
-      ]
-    ;i;desc]
+    ${catchingRare()}
     
     $c[Message sending]
     
@@ -174,7 +108,7 @@ module.exports = [
         $get[content]
         ${normalEmbed()}
         $description[# $get[desc]\n$trimLines[${total()}]]
-        ${commons()}
+        ${limitedCategory()}
         ${time()}
       ]
     ]
@@ -186,8 +120,7 @@ module.exports = [
   code: `
     $reply
     ${isActiveChallenge()}
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    ${json()}
     $description[# 1 Hour Luck Ended!\n$trimLines[${pts()}]]
     ${normalEmbed()}
     $sendMessage[$channelID]
@@ -200,9 +133,7 @@ module.exports = [
   type: "messageCreate",
   code: `
     $reply
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    ${json()}
     $callFunction[checking]
 
     $let[id;$authorID]
@@ -256,13 +187,8 @@ module.exports = [
   code: `
     $reply
     ${isActiveChallenge()}
-    
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
-    $jsonLoad[SNORA;$getGlobalVar[SNORA]]
+    ${json()}
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList|$channelID]]
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[allRares;$getGlobalVar[allRares]]
-    $jsonLoad[allRares;$jsonKeys[allRares]]
     
     $let[arg1;$toLowerCase[$message[0]]]
     $let[arg2;$message[1]]
@@ -290,8 +216,8 @@ module.exports = [
     ]
     
     $let[caughtRare;$get[arg1]]
-    ${findingRareInSnoraBase()}
-    ${findingRareInRaresMapBase()}
+    ${findingAnimalID()}
+    ${findingRareInChallengeDataBase()}
     $let[animal;$get[animalID]]
     $let[count;$get[arg3]]
     $let[quantity;$env[allRaresList;$get[animal]]]
@@ -328,13 +254,12 @@ module.exports = [
     
     $if[$arrayAt[allRaresListEntries;0]==;;
       $arrayForEach[allRaresListEntries;entry;
-        $let[quantity;$env[entry;1]]
         $let[animalID;$env[entry;0]]
-        ${findingRareInRaresMapBase()}
-        $let[rareMapPoints;$env[rareMap;points]]
+        $let[quantity;$env[entry;1]]
+        ${findingRareInChallengeDataBase()}
         
         $letSum[rares;$get[quantity]]
-        $letSum[points;$math[$get[quantity] * $get[rareMapPoints]]]
+        $letSum[points;$math[$get[quantity] * $get[challengeDataPoints]]]
       ]
     ]
 
@@ -370,7 +295,7 @@ module.exports = [
     $textSplit[$customID;-]
     $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
     $let[btnid;$splitText[0]]
-    $onlyIf[$includes[$get[btnid];hidePoints;hideRares;infiniteCommons]]
+    $onlyIf[$includes[$get[btnid];hidePoints;hideRares;unlimitedRares]]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     $let[sett;$env[userProfile;1hl;settings;$get[btnid]]]
@@ -393,13 +318,11 @@ module.exports = [
   description: "history",
   code: `
     $reply
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    ${json()}
     $callFunction[checking]
     $callFunction[cooldown;1m]
-    $jsonLoad[history;$env[userProfile;1hl;history]]
     $jsonLoad[history;$arrayReverse[history]]
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    $jsonLoad[history;$env[userProfile;1hl;history]]
 
     $let[page;1]
     $let[sortType;d]
@@ -435,10 +358,8 @@ module.exports = [
     ]
     $onlyIf[$includes[$get[butid];sortHis;historyPageLeft;historyPageRight;customPage;deleteHistoryPage]]
 
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    ${json()}
 
     $if[$arrayAt[history;0]==;
       $description[# No history]
@@ -467,6 +388,7 @@ module.exports = [
   `
 },{
   name: "party",
+  aliases: "lobby",
   type: "messageCreate",
   code: `
     $reply
@@ -476,21 +398,21 @@ module.exports = [
     $onlyIf[$getChannelVar[participants]==;
       $jsonLoad[participants;$getChannelVar[participants]]
       ${participants(true)}
-      $author[✖️ Failed to create Party]
+      $author[✖️ Failed to create a Lobby]
       $description[## Party already exist in this channel!]
       $addField[Participants:;$codeBlock[$get[parts]]]
       $color[$getGlobalVar[errorColor]]
     ]
     $onlyIf[$getUserVar[1hstarted|$channelID]!=true;
-      $author[✖️ Failed to create Party]
-      $description[## You have an active challenge! End it before creating a Party!]
+      $author[✖️ Failed to create a Lobby]
+      $description[## You have an active challenge! End it before creating a Lobby!]
       $color[$getGlobalVar[errorColor]]
     ]
     
     $arrayLoad[participants; ;$authorID]
     $setUserVar[participating|$channelID;true]
     $setUserVar[ready|$channelID;false]
-    $setChannelVar[infiniteCommons;false]
+    $setChannelVar[unlimitedRares;false]
     
     ${particEmbed()}
     $let[msgid;$sendMessage[$channelID;;true]]
@@ -506,7 +428,6 @@ module.exports = [
     $callFunction[checking]
 
     $jsonLoad[participants;$getChannelVar[participants]]
-    $jsonLoad[hostProfile;$getUserVar[userProfile;$env[participants;0]]]
 
     ${partyExist()}
 
@@ -530,7 +451,7 @@ module.exports = [
       $interactionReply[
         $ephemeral
         $author[✖️ Error]
-        $description[## The Party is full]
+        $description[## The Lobby is full]
         $color[$getGlobalVar[errorColor]]
       ]
     ]
@@ -579,11 +500,11 @@ module.exports = [
 
     $if[$env[participants;0]==;
       $deleteChannelVar[participants]
-      $deleteChannelVar[infiniteCommons]
+      $deleteChannelVar[unlimitedRares]
 
-      $author[$username[$get[host]]'s Party;$userAvatar[$get[host]]]
-      $description[# The Party was closed due to a lack of participants]
-      $color[$getGlobalVar[luckyColor]]
+      $author[$username[$get[host]]'s Lobby;$userAvatar[$get[host]]]
+      $description[# The Lobby was closed due to a lack of participants]
+      $color[Orange]
       $!editMessage[$channelid;$get[msgid]]
       $stop
     ]
@@ -611,11 +532,11 @@ module.exports = [
     ]
 
     $deleteChannelVar[participants]
-    $deleteChannelVar[infiniteCommons]
+    $deleteChannelVar[unlimitedRares]
 
-    $author[$username[$get[host]]'s Party;$userAvatar[$get[host]]]
-    $description[# The Party was closed by the Host]
-    $color[$getGlobalVar[luckyColor]]
+    $author[$username[$get[host]]'s Lobby;$userAvatar[$get[host]]]
+    $description[# The Lobby was closed by the Host]
+    $color[Orange]
     $let[msgid;$messageID]
     $!editMessage[$channelid;$get[msgid]]
 
@@ -729,7 +650,7 @@ module.exports = [
   code: `
     $onlyIf[$includes[$customID;addTags]]
     $onlyIf[$includes[$customID;$authorID]]
-    $onlyIf[$includes[$selectMenuValues;infiniteCommons]]
+    $onlyIf[$includes[$selectMenuValues;unlimitedRares]]
 
     $jsonLoad[participants;$getChannelVar[participants]]
     ${partyExist()}
@@ -743,9 +664,8 @@ module.exports = [
       ]
     ]
 
-    $let[hostSets;$getChannelVar[infiniteCommons]]
-    $if[$get[hostSets];  $let[hostSets;false]  ;  $let[hostSets;true]  ]
-    $setChannelVar[infiniteCommons;$get[hostSets]]
+    $let[hostSets;$checkCondition[$getChannelVar[unlimitedRares]==false]]
+    $setChannelVar[unlimitedRares;$get[hostSets]]
 
     ${particEmbed()}
     $let[msgid;$messageID]
@@ -765,8 +685,7 @@ module.exports = [
     $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
 
     ${isActiveChallenge()}
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    ${json()}
     
     $description[# 1 Hour Luck Ended!\n$trimLines[${pts()}]]
     ${normalEmbed()}
@@ -780,7 +699,7 @@ module.exports = [
   code: `
     $reply
     $let[cdTime;5s]
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    ${json()}
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
     
@@ -789,11 +708,6 @@ module.exports = [
     $let[totalRares;0]
     $let[totalPoints;0]
 
-    $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
-    $jsonLoad[SNORA;$getGlobalVar[SNORA]]
-    $jsonLoad[allRares;$getGlobalVar[allRares]]
-    $jsonLoad[allRares;$jsonKeys[allRares]]
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
     $jsonLoad[allRaresList;{}]
     $arrayLoad[unknown]
@@ -807,8 +721,8 @@ module.exports = [
         $continue
       ]
 
-      ${findingRareInSnoraBase()}
-      ${findingRareInRaresMapBase()}
+      ${findingAnimalID()}
+      ${findingRareInChallengeDataBase()}
       
       $let[newQuantity;$math[$env[allRaresList;$get[animalID]] + 1]]
       $!jsonSet[allRaresList;$get[animalID];$get[newQuantity]]    
@@ -824,9 +738,9 @@ module.exports = [
 
       $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
 
-      ${findingRareInRaresMapBase()}
+      ${findingRareInChallengeDataBase()}
 
-      $let[listPoints;$env[rareMap;points]]
+      $let[listPoints;$get[challengeDataPoints]]
       $let[totalPointsInList;$math[$get[quantity] * $get[listPoints]]]
       $letSum[totalPoints;$get[totalPointsInList]]
       $letSum[totalRares;$get[quantity]]
@@ -850,7 +764,78 @@ module.exports = [
   `
 }]
 
+// data
+
+function json () {
+  return `
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $jsonLoad[challengeData;$getGlobalVar[challengeData]]
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
+    $jsonLoad[allRaresData;$jsonEntries[allRaresData]]
+    $jsonLoad[allRares;$getGlobalVar[allRares]]
+  `
+}
+
 // 1 hour luck functions
+
+function catchingRare() {
+  return `
+    $loop[$arrayLength[caughtRares];
+      $let[i;$math[$env[i] - 1]]
+      $let[caughtRare;$arrayAt[caughtRares;$get[i]]]
+
+      $if[$arrayIncludes[allRares;$get[caughtRare]];;
+
+        $if[$get[i]==0;
+          $break $c[breaking the loop if the first message is invalid, so it will not affect normal messages]
+        ]
+
+        $arrayPush[caught;0]
+        $continue
+      ]
+
+      $onlyIf[$getUserVar[1hpaused|$channelID]!=true;
+        ${errorEmbed()} 
+        $description[## You are on pause!] 
+        $sendMessage[$channelID]
+      ]
+
+      ${findingAnimalID()}
+      ${findingRareInChallengeDataBase()}
+
+      $let[hasLimitCategory;$arraySome[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
+      
+      $let[unlimitedRares;$env[userProfile;1hl;settings;unlimitedRares]]
+
+      $if[$getUserVar[participating|$channelID];
+        $let[unlimitedRares;$getChannelVar[unlimitedRares]]
+      ]
+
+      $if[$or[$get[unlimitedRares];$get[hasLimitCategory]==false];
+        ${rares()}
+        $continue
+      ]
+
+      $let[limitAnimalName;$env[animals;$get[animalID];variants;0;name]]
+      $let[chartlimitIndex;$arrayFindIndex[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
+      $jsonLoad[limitChartObj;$env[chartLimits;$get[chartlimitIndex]]]
+      $let[limit;$env[limitChartObj;limit]]
+      $let[limitAnimalCount;$env[allRaresList;$get[animalID];0]]
+
+      $if[$get[limitAnimalCount]<$get[limit];
+        ${rares()}
+        $letSum[limitAnimalCount;1]
+
+        $if[$get[limitAnimalCount]==$get[limit];
+          $let[content;$get[content]## The maximum of «\`$get[limitAnimalName]\`» reached\n]
+        ]
+      ;
+        $arrayPush[caught;0]
+      ]
+    ;i;desc]
+  `
+}
 
 function settingParticProgress() {
   return `
@@ -862,26 +847,28 @@ function settingParticProgress() {
   `
 }
 
-function findingRareInRaresMapBase () {
+function findingRareInChallengeDataBase () {
   return `
-    $loop[$arrayLength[raresMap];
+    $loop[$arrayLength[challengeData];
       $let[j;$math[$env[j] - 1]]
 
-      $jsonLoad[rareMap;$arrayAt[raresMap;$get[j]]]
-      $jsonLoad[raresList;$env[rareMap;rares]]
+      $jsonLoad[challengeDataObj;$arrayAt[challengeData;$get[j]]]
+      $jsonLoad[challengeDataRaresList;$env[challengeDataObj;rares]]
+      $let[challengeDataPoints;$env[challengeDataObj;points]]
+      $let[challengeDataCategory;$env[challengeDataObj;category]]
 
-      $if[$arrayIncludes[raresList;$get[animalID]];
+      $if[$arrayIncludes[challengeDataRaresList;$get[animalID]];
         $break
       ]
     ;j;desc]
   `
 }
 
-function findingRareInSnoraBase () {
+function findingAnimalID () {
   return `
-    $loop[$arrayLength[SNORA];
+    $loop[$arrayLength[allRaresData];
       $let[k;$math[$env[k] - 1]]
-      $jsonLoad[arr;$arrayAt[SNORA;$get[k]]]
+      $jsonLoad[arr;$arrayAt[allRaresData;$get[k]]]
 
       $let[animalID;$env[arr;0]]
       $jsonLoad[arrAliases;$env[arr;1]]
@@ -1083,10 +1070,8 @@ function raresListGenerator(forHistory = false, id = '$authorID') {
       $let[animalID;$env[entry;0]]
       $let[quantity;$env[entry;1]]
       $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
-      ${findingRareInRaresMapBase()}
-      $let[points;$env[rareMap;points]]
-      $let[totalPointsInList;$math[$get[quantity] * $get[points]]]
-      $let[listContent;$get[animalDisplay] x$get[quantity] × $get[points] | +$get[totalPointsInList]]
+      ${findingRareInChallengeDataBase()}
+      $let[listContent;$get[animalDisplay] x$get[quantity]]
 
       $let[list;$get[list]║ $bold[$get[listContent]]\n]
     ]
@@ -1096,8 +1081,8 @@ function raresListGenerator(forHistory = false, id = '$authorID') {
 
 function rares() {
   return `
-    $letSum[points;$env[rareMap;points]]
-    $arrayPush[caught;$env[rareMap;points]]
+    $letSum[points;$get[challengeDataPoints]]
+    $arrayPush[caught;$get[challengeDataPoints]]
     $setUserVar[1htotalRares|$channelID;$math[$getUserVar[1htotalRares|$channelID] + 1]]
 
     $let[newQuantity;$math[$env[allRaresList;$get[animalID]] + 1]]
@@ -1107,28 +1092,41 @@ function rares() {
   `
 }
 
-function commons () {
+function limitedCategory() {
   return `
-    $if[$get[infiniteCommons];;
-      $arrayLoad[coms;,;chocoToucan|CHT,keelBilledToucan|KBT,markhor|MAR,yellowPufferfish|YPF]
-      $arrayForEach[coms;com;
-        $arrayLoad[com;|;$env[com]]
+    $if[$get[unlimitedRares];;
+      $arrayForEach[chartLimits;obj;
+        $loop[$arrayLength[challengeData];
+          $let[i;$math[$env[i] - 1]]
+          $jsonLoad[data;$arrayAt[challengeData;$get[i]]]
 
-        $let[key;$env[com;0]]
-        $let[name;$env[com;1]]
+          $let[dataCategory;$env[data;category]]
+          $let[objCategory;$env[obj;category]]
 
-        $let[quantity;$env[allRaresList;$get[key];0]]
-        $if[$get[quantity]==;$let[quantity;0]]
-        $if[$get[quantity]<3;
-          $addField[$get[name]:;\`$get[quantity]|3\`;true]
-        ]
+          $if[$get[dataCategory]==$get[objCategory];;$continue]
+
+          $let[limit;$env[obj;limit]]
+          $jsonLoad[challengeRares;$env[data;rares]]
+
+          $arrayForEach[challengeRares;rare;
+            $jsonLoad[allRaresDataObj;$getGlobalVar[allRaresData]]
+            $let[name;$toUpperCase[$env[allRaresDataObj;$env[rare];0]]]
+            $let[quantity;$env[allRaresList;$env[rare]]]
+            $if[$get[quantity]==;$let[quantity;0]]
+            $if[$get[quantity]<$get[limit];
+              $addField[$get[name]:;\`$get[quantity]|$get[limit]\`;true]
+            ]
+          ]
+          $break
+
+        ;i;desc]
       ]
     ]
   `
 }
 
 function timeLeft (num, time, id = "$authorID") {
-  return `$sendMessage[$channelID;# <@${id}> ${num}${time} left!]` 
+  return `$sendMessage[$channelID;# <@${id}> You have ${num}${time} left!]` 
 }
 
 function total (id = "$authorID") {
@@ -1181,12 +1179,12 @@ function particEmbed () {
     $setChannelVar[participants;$env[participants]]
     $let[host;$env[participants;0]]
     ${participants()}
-    $let[hostSets;$getChannelVar[infiniteCommons]]
+    $let[hostSets;$getChannelVar[unlimitedRares]]
     $let[tags;none]
     $let[cond;Enable]
 
     $if[$get[hostSets];
-      $let[tags;Infinite Commons]
+      $let[tags;Unlimited Rares]
       $let[cond;Disable]
     ]
     
@@ -1206,7 +1204,7 @@ function particEmbed () {
     $addButton[end1hl-$env[participants;0];End;Danger;🔚]
     $addActionRow
     $addStringSelectMenu[addTags-$env[participants;0];Tags]
-    $addOption[Infinite Commons;$get[cond] unlimited common rares;infiniteCommons]
+    $addOption[Infinite Commons;$get[cond] unlimited rares;unlimitedRares]
     $addActionRow
     $addStringSelectMenu[switchMode-$env[participants;0];Mode;true]
     $addOption[.;.;.]
@@ -1217,21 +1215,21 @@ function settingsEmbed() {
   return `
     $let[hidePoints;$env[userProfile;1hl;settings;hidePoints]]
     $let[hideRares;$env[userProfile;1hl;settings;hideRares]]
-    $let[infiniteCommons;$env[userProfile;1hl;settings;infiniteCommons]]
+    $let[unlimitedRares;$env[userProfile;1hl;settings;unlimitedRares]]
     $let[disableBut;false]
 
     $title[Settings:]
-    $color[$getGlobalVar[luckyColor]]
+    ${normalEmbed()}
     $description[### Hide Total Points: \`$get[hidePoints]\`
     ### Hide Total Rares: \`$get[hideRares]\`
-    ### Infinite Commons: \`$get[infiniteCommons]\`]
+    ### Unlimited Rares: \`$get[unlimitedRares]\`]
     
     $addActionRow
     $addButton[hidePoints-$authorID;$if[$get[hidePoints];Disable;Enable] «Hide Total Points»;Success]
     $addActionRow
     $addButton[hideRares-$authorID;$if[$get[hideRares];Disable;Enable] «Hide Total Rares»;Success]
     $addActionRow
-    $addButton[infiniteCommons-$authorID;$if[$get[infiniteCommons];Disable;Enable] «Infinite Commons»;Success]
+    $addButton[unlimitedRares-$authorID;$if[$get[unlimitedRares];Disable;Enable] «Unlimited Rares»;Success]
     $if[$isButton;
       $!editMessage[$channelID;$messageID]
       $deferUpdate
@@ -1249,7 +1247,6 @@ function settingsEmbed() {
 function startingEmbed() {
   return `
     $description[# Get ready! Starting in $get[s] seconds!]
-    $addField[Participants:;$codeBlock[$get[parts]]]
     $color[$getGlobalVar[luckyColor]]
   `
 }

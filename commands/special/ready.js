@@ -9,23 +9,21 @@ module.exports = {
 
     $async[ $c[CACHING allRares]
       $deleteGlobalVar[allRares]
-      $deleteGlobalVar[snoraElements]
-      $jsonLoad[SNORA;$getGlobalVar[allRaresArr]]
+      $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
+      $jsonLoad[allRaresData;$jsonEntries[allRaresData]]
       $jsonLoad[animals;$readFile[json/animals.json]]
-      $jsonLoad[allRaresFromSnora;{}]
-      $jsonLoad[snoraElements;{}]
+      $arrayLoad[allRaresFromSnora]
       
-      $arrayForEach[SNORA;elem;
-        $let[animalName;$env[animals;$env[elem;0];variants;0;name]]
-        $!jsonSet[snoraElements;$get[animalName];$env[elem;1]]
+      $arrayForEach[allRaresData;elem;
+        $let[animalID;$env[elem;0]]
+        $let[animalName;$env[animals;$get[animalID];variants;0;name]]
         $jsonLoad[rares;$env[elem;1]]
         $arrayForEach[rares;rare;
-          $!jsonSet[allRaresFromSnora;$env[rare];$get[animalName]]
+          $arrayPush[allRaresFromSnora;$env[rare]]
         ]
       ]
       $setGlobalVar[allRares;$env[allRaresFromSnora]]
-      $setGlobalVar[snoraElements;$env[snoraElements]]
-      $logger[Info;Successfully loaded and cached «allRares» & «snoraElements» from «SNORA»]
+      $logger[Info;Cached «allRares» from «allRaresData»]
     ]
 
     $if[$getGlobalVar[makeBackups];
@@ -50,7 +48,7 @@ module.exports = {
             ;
               $!jsonSet[userBackup;$env[userProfile]]
               $setUserVar[userBackup;$env[userBackup];$env[ID]]
-              $let[logText;$get[logText]\n$parseDate[$getTimestamp;Locale] ✅ Successfully added backup for $username[$env[ID]] ($env[ID])]
+              $let[logText;$get[logText]\n$parseDate[$getTimestamp;Locale] ✅ Added backup for $username[$env[ID]] ($env[ID])]
             ]
           ]
 

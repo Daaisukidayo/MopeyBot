@@ -8,18 +8,20 @@ module.exports = [{
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
-    $jsonLoad[snoraElements;$getGlobalVar[snoraElements]]
+    $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
     $jsonLoad[tierRareAnimals;$getGlobalVar[tierRareAnimals]]
+    $jsonLoad[animals;$readFile[json/animals.json]]
     
     $arrayForEach[tierRareAnimals;arr;
       $let[tier;$env[arr;tier]]
       $let[fieldContent;]
 
-      $jsonLoad[names;$env[arr;names]]
+      $jsonLoad[animalIDs;$env[arr;animalIDs]]
 
-      $arrayForEach[names;name;
-        $jsonLoad[rares;$env[snoraElements;$env[name]]]
-        $let[rareInfo;\`$arrayJoin[rares; || ] ➡️ $env[name]\`]
+      $arrayForEach[animalIDs;animalID;
+        $jsonLoad[rares;$env[allRaresData;$env[animalID]]]
+        $let[animalName;$env[animals;$env[animalID];variants;0;name]] $c[S1]
+        $let[rareInfo;\`$arrayJoin[rares; || ] ➡️ $get[animalName]\`]
         $let[fieldContent;$get[fieldContent]\n$get[rareInfo]]
       ]
 
