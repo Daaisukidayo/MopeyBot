@@ -626,7 +626,7 @@ DB.variables({
     goldenPheasant: ["gph", "goldenpheasant"],
     blueMacaw: ["bm", "bluemacaw"],
     rareMacaw: ["sm", "spixmacaw"],
-    jackass: ["jac", "jackass"],
+    jackass: ["jac", "jack", "jackass"],
     momaffie: ["mom", "momaffie"],
     momaffieFamily: ["mf", "momaffiefamily"],
     girabie: ["gir", "girabie"],
