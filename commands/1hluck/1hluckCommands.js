@@ -397,7 +397,7 @@ module.exports = [
   `
 },{
   name: "party",
-  aliases: "lobby",
+  aliases: ["lobby"],
   type: "messageCreate",
   code: `
     $reply
