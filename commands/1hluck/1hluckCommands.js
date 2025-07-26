@@ -108,6 +108,7 @@ module.exports = [
       $setUserVar[1hpoints|$channelID;$math[$getUserVar[1hpoints|$channelID] + $get[points]]]
 
       ${settingParticProgress()}
+      ${limitedCategory()}
 
       $if[$arraylength[caughtRares]>1;
         $let[desc;$get[pts] = $get[points]]
@@ -115,10 +116,14 @@ module.exports = [
         $let[desc;+$get[pts]]
       ]
       $sendMessage[$channelID;
-        $get[content]
         ${normalEmbed()}
-        $description[# $get[desc]\n$trimLines[${total()}]]
-        ${limitedCategory()}
+        $description[$trimLines[
+        # $get[desc]
+        ${total()}
+        $get[content]
+        $if[$get[displayRaresLimit];
+        ## Limited Rares:
+        $get[limiters]]]]
         ${time()}
       ]
     ]
@@ -850,7 +855,7 @@ function catchingRare() {
         $letSum[limitAnimalCount;1]
 
         $if[$get[limitAnimalCount]==$get[limit];
-          $let[content;$get[content]## The maximum of «\`$get[limitAnimalName]\`» reached\n]
+          $let[content;$get[content]### Reached limit of «\`$get[limitAnimalName]\`»\n]
         ]
       ;
         $arrayPush[caught;0]
@@ -1117,7 +1122,7 @@ function rares() {
 
 function limitedCategory() {
   return `
-    $if[$or[$get[unlimitedRares];$get[displayRaresLimit]==false];;
+    $if[$get[unlimitedRares];;
       $arrayForEach[chartLimits;obj;
         $loop[$arrayLength[challengeData];
           $let[i;$math[$env[i] - 1]]
@@ -1133,12 +1138,10 @@ function limitedCategory() {
 
           $arrayForEach[challengeRares;rare;
             $jsonLoad[allRaresDataObj;$getGlobalVar[allRaresData]]
-            $let[name;$toUpperCase[$env[allRaresDataObj;$env[rare];0]]]
+            $let[displayRare;$env[animals;$env[rare];variants;0;${type}]]
             $let[quantity;$env[allRaresList;$env[rare]]]
             $if[$get[quantity]==;$let[quantity;0]]
-            $if[$get[quantity]<$get[limit];
-              $addField[$get[name]:;\`$get[quantity]|$get[limit]\`;true]
-            ]
+            $let[limiters;$get[limiters]**$get[displayRare] \`$get[quantity]|$get[limit]\`**\n]
           ]
           $break
 
@@ -1156,9 +1159,9 @@ function total (id = "$authorID") {
   return `
     $let[1hlp;$getUserVar[1hpoints|$channelID;${id}]]
     $if[$env[userProfile;1hl;settings;hidePoints];
-      **Total points:**\n||$get[1hlp]||
+      ## Total points: ||$get[1hlp]||
     ;
-      **Total points:**\n\`$get[1hlp]\`
+      ## Total points: \`$get[1hlp]\`
     ]
   `
 }
