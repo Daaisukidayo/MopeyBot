@@ -121,7 +121,7 @@ module.exports = [
         # $get[desc]
         ${total()}
         $get[content]
-        $if[$get[displayRaresLimit];
+        $if[$and[$get[displayRaresLimit];$get[limiters]!=];
         ## Limited Rares:
         $get[limiters]]]]
         ${time()}
@@ -1141,7 +1141,9 @@ function limitedCategory() {
             $let[displayRare;$env[animals;$env[rare];variants;0;${type}]]
             $let[quantity;$env[allRaresList;$env[rare]]]
             $if[$get[quantity]==;$let[quantity;0]]
-            $let[limiters;$get[limiters]**$get[displayRare] \`$get[quantity]|$get[limit]\`**\n]
+            $if[$get[quantity]<$get[limit];
+              $let[limiters;$get[limiters]**$get[displayRare] \`$get[quantity]|$get[limit]\`**\n]
+            ]
           ]
           $break
 
