@@ -93,6 +93,7 @@ module.exports = [
     
     $let[points;0]
     $let[content;]
+    $let[displayRaresLimit;$env[userProfile;1hl;settings;displayRaresLimit]]
     
     $c[Looping through every rare]
 
@@ -295,30 +296,35 @@ module.exports = [
     $callFunction[checking]
 
     ${settingsEmbed()}
+    $let[msg;$sendMessage[$channelID;;true]]
+    ${settingsTimeout()}
   `
 },{
   type: "interactionCreate",
-  allowedInteractionTypes: ["button"],
+  allowedInteractionTypes: ["selectMenu"],
   description: "settings buttons",
   code: `
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN]]
-    $let[btnid;$splitText[0]]
-    $onlyIf[$includes[$get[btnid];hidePoints;hideRares;unlimitedRares]]
+    $arrayLoad[menu;-;$customID]
+    $let[value;$selectMenuValues]
+
+    $onlyIf[$arrayIncludes[menu;$authorID];$callFunction[notYourBTN]]
+    $onlyIf[$includes["$get[value]";"hidePoints";"hideRares";"unlimitedRares";"displayRaresLimit"]]
+
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 
-    $let[sett;$env[userProfile;1hl;settings;$get[btnid]]]
-    $if[$get[sett];
-      $!jsonSet[userProfile;1hl;settings;$get[btnid];false]
-    ;
-      $!jsonSet[userProfile;1hl;settings;$get[btnid];true]
-    ]
+    $let[sett;$env[userProfile;1hl;settings;$get[value]]]
+    $let[newSett;$checkCondition[$get[sett]==false]]
 
-    $!stopTimeout[SETT-$authorID]
+    $!jsonSet[userProfile;1hl;settings;$get[value];$get[newSett]]
 
     ${settingsEmbed()}
-    
+
     $setUserVar[userProfile;$env[userProfile]]
+    $!stopTimeout[SETT-$authorID]
+    $!editMessage[$channelID;$messageID]
+    $deferUpdate
+    $let[msg;$messageID]
+    ${settingsTimeout()}
   `
 },{
   name: "history",
@@ -1111,7 +1117,7 @@ function rares() {
 
 function limitedCategory() {
   return `
-    $if[$get[unlimitedRares];;
+    $if[$or[$get[unlimitedRares];$get[displayRaresLimit]==false];;
       $arrayForEach[chartLimits;obj;
         $loop[$arrayLength[challengeData];
           $let[i;$math[$env[i] - 1]]
@@ -1233,31 +1239,23 @@ function settingsEmbed() {
     $let[hidePoints;$env[userProfile;1hl;settings;hidePoints]]
     $let[hideRares;$env[userProfile;1hl;settings;hideRares]]
     $let[unlimitedRares;$env[userProfile;1hl;settings;unlimitedRares]]
+    $let[displayRaresLimit;$env[userProfile;1hl;settings;displayRaresLimit]]
     $let[disableBut;false]
 
     $title[Settings:]
     ${normalEmbed()}
     $description[### Hide Total Points: \`$get[hidePoints]\`
     ### Hide Total Rares: \`$get[hideRares]\`
-    ### Unlimited Rares: \`$get[unlimitedRares]\`]
-    
-    $addActionRow
-    $addButton[hidePoints-$authorID;$if[$get[hidePoints];Disable;Enable] «Hide Total Points»;Success]
-    $addActionRow
-    $addButton[hideRares-$authorID;$if[$get[hideRares];Disable;Enable] «Hide Total Rares»;Success]
-    $addActionRow
-    $addButton[unlimitedRares-$authorID;$if[$get[unlimitedRares];Disable;Enable] «Unlimited Rares»;Success]
-    $if[$isButton;
-      $!editMessage[$channelID;$messageID]
-      $deferUpdate
-      $let[msg;$messageID]
-    ;
-      $let[msg;$sendMessage[$channelID;;true]]
+    ### Unlimited Rares: \`$get[unlimitedRares]\`
+    ### Display Rares Limit: \`$get[displayRaresLimit]\`
     ]
     
-    $setTimeout[
-      $disableButtonsOf[$channelID;$get[msg]]
-    ;1m;SETT-$authorID]
+    $addActionRow
+    $addStringSelectMenu[challengeSettings-$authorID;Open settings]
+    $addOption[$if[$get[hidePoints];Disable;Enable] «Hide Total Points»;;hidePoints]
+    $addOption[$if[$get[hideRares];Disable;Enable] «Hide Total Rares»;;hideRares]
+    $addOption[$if[$get[unlimitedRares];Disable;Enable] «Unlimited Rares»;;unlimitedRares]
+    $addOption[$if[$get[displayRaresLimit];Disable;Enable] «Display Rares Limit»;;displayRaresLimit]
   `
 }
 
@@ -1284,6 +1282,13 @@ function normalEmbed () {
 
 // other
 
+function settingsTimeout() {
+  return `
+    $setTimeout[
+      $disableComponentsOf[$channelID;$get[msg]]
+    ;1m;SETT-$authorID]
+  `
+}
 
 function historyTimeout () {
   return `

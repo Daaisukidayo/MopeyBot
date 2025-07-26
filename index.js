@@ -86,7 +86,8 @@ DB.variables({
       settings: {
         hidePoints: false,
         hideRares: false,
-        infiniteCommons: false,
+        unlimitedRares: false,
+        displayRaresLimit: true,
       },
     },
 

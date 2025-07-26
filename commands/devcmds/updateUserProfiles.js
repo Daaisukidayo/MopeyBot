@@ -13,8 +13,7 @@ module.exports = {
 
     $arrayForEach[allUserIDs;ID;
       $jsonLoad[userProfile;$getUserVar[userProfile;$env[ID]]]
-      $!jsonDelete[userProfile;1hl;settings;infiniteCommons]
-      $!jsonSet[userProfile;1hl;settings;unlimitedRares;false]
+      $!jsonSet[userProfile;1hl;settings;displayRaresLimit;true]
       $setUserVar[userProfile;$env[userProfile];$env[ID]]
     ]
 
