@@ -8,9 +8,9 @@ module.exports = [
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
     $onlyIf[$getUserVar[1hstarted|$channelID;$authorID;false]==false;${errorEmbed()} $description[## You already have an active challenge!]]
-    
+    $if[$message[0]==event;$setUserVar[event1hstarted|$channelID;true] $let[extraDesc;Event ]]
     ${normalEmbed()}
-    $description[# 1 Hour Luck Challenge has begun!\n## Don't forget to turn on notification!]
+    $description[# $get[extraDesc]1 Hour Luck Challenge has begun!\n## Don't forget to turn on notification!]
     ${loadVarsForChallenge()}
     ${interval()}
   `
@@ -39,6 +39,11 @@ module.exports = [
     $onlyIf[$getUserVar[1htime|$channelID]<3600;
       ${errorEmbed()}
       $description[## Time's up!]
+    ]
+
+    $onlyIf[$getUserVar[event1hstarted|$channelID]!=true;
+      ${errorEmbed()}
+      $description[## Pause is disabled while in event mode!]
     ]
 
     $!stopInterval[1HLUCK-$authorID|$channelID]
@@ -81,6 +86,10 @@ module.exports = [
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList|$channelID]]
     $jsonLoad[chartLimits;$getGlobalVar[chartLimits]]
     ${json()}
+
+    $if[$getUserVar[event1hstarted|$channelID];
+      $jsonLoad[chartLimits;$getGlobalVar[eventChartLimits]]
+    ]
     
     $let[points;0]
     $let[content;]
@@ -193,7 +202,7 @@ module.exports = [
     $let[arg1;$toLowerCase[$message[0]]]
     $let[arg2;$message[1]]
     $let[arg3;$toLowerCase[$message[2]]]
-    $let[usage;## Usage: \`$getGuildVar[prefix]editlist <rare> {+ || -} {amount || all}\`]
+    $let[usage;## Usage: \`$getGuildVar[prefix]editlist <rare> [+ || -\\] <amount>\`]
     
     $onlyIf[$get[arg1]!=;
       ${errorEmbed()} 
@@ -774,6 +783,9 @@ function json () {
     $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
     $jsonLoad[allRaresData;$jsonEntries[allRaresData]]
     $jsonLoad[allRares;$getGlobalVar[allRares]]
+    $if[$getUserVar[event1hstarted|$channelID];
+      $jsonLoad[challengeData;$getGlobalVar[eventChallengeData]]
+    ]
   `
 }
 
@@ -810,6 +822,10 @@ function catchingRare() {
 
       $if[$getUserVar[participating|$channelID];
         $let[unlimitedRares;$getChannelVar[unlimitedRares]]
+      ]
+
+      $if[$getUserVar[event1hstarted|$channelID];
+        $let[unlimitedRares;false]
       ]
 
       $if[$or[$get[unlimitedRares];$get[hasLimitCategory]==false];
@@ -1053,6 +1069,7 @@ function reset (id = "$authorID") {
     $deleteUserVar[1hpoints|$channelID;${id}]
     $deleteUserVar[1htotalRares|$channelID;${id}]
     $deleteUserVar[1hpaused|$channelID;${id}]
+    $deleteUserVar[event1hstarted|$channelID]
   `
 }
 

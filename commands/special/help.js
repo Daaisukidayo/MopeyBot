@@ -283,7 +283,9 @@ module.exports = [{
       $author[$get[comNameEmoji] Start]
       $description[## Starts your 1 hour luck challenge! 
       ### While in progress, you must write names of rares from ${inl('$getGuildVar[prefix]snora')} without prefix to earn points!
-      ### Example: ${inl('mar cht kbt pf mud...')} ]
+      ### Example: ${inl('mar cht kbt pf mud ...')}
+      ### Use ${inl("$getGuildVar[prefix]start event")} to enter in event mode.
+      ### In event mode. the chart is different, and pause is disabled.]
       $addField[$get[rel];${inl('pause')}, ${inl('resume')}, ${inl('time')}, ${inl('snora')}, ${inl('points')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 

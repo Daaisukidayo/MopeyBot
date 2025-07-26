@@ -479,6 +479,65 @@ DB.variables({
     }
   ],
 
+  eventChartLimits: [
+    {
+      category: "trash",
+      limit: 5
+    },
+    {
+      category: "common",
+      limit: 3
+    }
+  ],
+
+  eventChallengeData: [
+    {
+      category: "trash",
+      rares: [ "chocoToucan", "keelBilledToucan", "markhor", "yellowPufferfish" ],
+      points: 1,
+    },
+    {
+      category: "common",
+      rares: [ "doe", "blueMacaw", "jaguar", "leopard", "fieryToucan", "lionCub", "lioness" ],
+      points: 2,
+    },
+    {
+      category: "uncommon",
+      rares: [ "whiteDove", "pinkyPig", "marshDeer", "goldenPheasant", "momaffie", "momaffieFamily", "blackPanther", "whiteTiger", "blackManedLion" ],
+      points: 3,
+    },
+    {
+      category: "rare",
+      rares: [ "predator", "whiteLion", "whiteLioness", "whiteLionCub", "bigGoat" ],
+      points: 5,
+    },
+    {
+      category: "epic",
+      rares: [ "girabie", "stinkyPig", "muskDeer", "jackass", "goldenEagle" ],
+      points: 8,
+    },
+    {
+      category: "legendary",
+      rares: [ "blackLion", "blackLioness", "blackLionCub", "whiteRhino", "aquaYeti" ],
+      points: 12,
+    },
+    {
+      category: "mythic",
+      rares: [ "lavaToucan",  "demonPufferfish",  "blackRhino",  "whiteGiraffe",  "giraffeFamily" ],
+      points: 20,
+    },
+    {
+      category: "godlike",
+      rares: [ "luckBigfoot",  "luckSnowman",  "luckSnowgirl",  "kingDragon" ],
+      points: 40,
+    },
+    {
+      category: "gamechange",
+      rares: [ "rareMacaw", "rareToucan", "rareVulture", "shaheen", "harpyEagle", "greaterSpottedEagle" ],
+      points: 75,
+    },
+  ],
+
   challengeData: [
     {
       category: "trash",
@@ -518,100 +577,6 @@ DB.variables({
     {
       category: "godlike",
       rares: [ "rareMacaw", "rareToucan", "rareVulture", "shaheen", "harpyEagle", "greaterSpottedEagle", "luckBigfoot",  "luckSnowman",  "luckSnowgirl",  "kingDragon" ],
-      points: 50,
-    },
-  ],
-
-  raresMapOld: [
-    {
-      category: "common",
-      rares: ["chocoToucan", "keelBilledToucan", "markhor"],
-      points: 1,
-    },
-    {
-      category: "uncommon",
-      rares: [
-        "doe",
-        "blueMacaw",
-        "jaguar",
-        "leopard",
-        "fieryToucan",
-        "yellowPufferfish",
-        "lioness",
-      ],
-      points: 2,
-    },
-    {
-      category: "rare",
-      rares: [
-        "whiteDove",
-        "pinkyPig",
-        "marshDeer",
-        "goldenPheasant",
-        "momaffie",
-        "momaffieFamily",
-        "blackPanther",
-        "lionCub",
-        "blackManedLion",
-      ],
-      points: 3,
-    },
-    {
-      category: "epic",
-      rares: [
-        "jackass",
-        "girabie",
-        "whiteTiger",
-        "whiteLion",
-        "whiteLioness",
-        "whiteLionCub",
-        "bigGoat",
-        "shopBigfoot",
-        "shopSnowman",
-        "shopSnowgirl",
-      ],
-      points: 5,
-    },
-    {
-      category: "insane",
-      rares: [
-        "stinkyPig",
-        "muskDeer",
-        "blackLion",
-        "blackLioness",
-        "blackLionCub",
-        "predator",
-        "goldenEagle",
-        "whiteRhino",
-        "aquaYeti",
-      ],
-      points: 8,
-    },
-    {
-      category: "legendary",
-      rares: ["lavaToucan", "demonPufferfish", "blackRhino", "whiteGiraffe"],
-      points: 15,
-    },
-    {
-      category: "extreme",
-      rares: ["giraffeFamily"],
-      points: 20,
-    },
-    {
-      category: "mythic",
-      rares: ["luckBigfoot", "luckSnowman", "luckSnowgirl", "kingDragon"],
-      points: 30,
-    },
-    {
-      category: "godly",
-      rares: [
-        "rareMacaw",
-        "rareToucan",
-        "rareVulture",
-        "shaheen",
-        "harpyEagle",
-        "greaterSpottedEagle",
-      ],
       points: 50,
     },
   ],
