@@ -116,15 +116,20 @@ module.exports = [
         $let[desc;+$get[pts]]
       ]
       $sendMessage[$channelID;
+        $get[content]
         ${normalEmbed()}
         $description[$trimLines[
-        # $get[desc]
-        ${total()}
-        $get[content]
-        $if[$and[$get[displayRaresLimit];$get[limiters]!=];
-        ## Limited Rares:
-        $get[limiters]]]]
+          # $get[desc]
+          ${total()}
+        ]]
         ${time()}
+        $if[$and[$get[displayRaresLimit];$get[limiters]!=];
+          $description[$trimLines[
+            ## Limited Rares:
+            $get[limiters]
+          ];1]
+          $color[$getGlobalVar[luckyColor];1]
+        ]
       ]
     ]
     $setUserVar[userProfile;$env[userProfile]]
@@ -315,6 +320,8 @@ module.exports = [
     $onlyIf[$arrayIncludes[menu;$authorID];$callFunction[notYourBTN]]
     $onlyIf[$includes["$get[value]";"hidePoints";"hideRares";"unlimitedRares";"displayRaresLimit"]]
 
+    $!stopTimeout[SETT-$authorID]
+
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     $let[sett;$env[userProfile;1hl;settings;$get[value]]]
@@ -325,8 +332,8 @@ module.exports = [
     ${settingsEmbed()}
 
     $setUserVar[userProfile;$env[userProfile]]
-    $!stopTimeout[SETT-$authorID]
     $!editMessage[$channelID;$messageID]
+    
     $deferUpdate
     $let[msg;$messageID]
     ${settingsTimeout()}
@@ -855,7 +862,7 @@ function catchingRare() {
         $letSum[limitAnimalCount;1]
 
         $if[$get[limitAnimalCount]==$get[limit];
-          $let[content;$get[content]### Reached limit of «\`$get[limitAnimalName]\`»\n]
+          $let[content;$get[content]## Reached limit of «\`$get[limitAnimalName]\`»\n]
         ]
       ;
         $arrayPush[caught;0]
