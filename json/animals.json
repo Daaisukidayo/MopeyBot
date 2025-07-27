@@ -1147,7 +1147,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,300],
+    "rarity": [5,200],
     "variants": [
       {
         "vCode": "s1",
@@ -2001,7 +2001,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [20,250],
+    "rarity": [5,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2028,7 +2028,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [16,250],
+    "rarity": [4,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2055,7 +2055,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [4,250],
+    "rarity": [1,250],
     "variants": [
       {
         "vCode": "s1",
@@ -2499,7 +2499,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [10,250],
+    "rarity": [10,200],
     "variants": [
       {
         "vCode": "s1",
@@ -2562,7 +2562,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [15,250],
+    "rarity": [5,200],
     "variants": [
       {
         "vCode": "s1",
@@ -2589,7 +2589,7 @@
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,250],
+    "rarity": [1,200],
     "variants": [
       {
         "vCode": "s1",

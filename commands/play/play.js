@@ -186,12 +186,12 @@ module.exports = [{
     $if[$get[foodName]==;$let[foodName;undefined]]
 
     $let[xp;$get[foodXP]]
-    $let[content;You ate a $get[foodName] and gained \`$separateNumber[$get[xp];,]\`XP!]
+    $let[content;You ate a(n) $get[foodName] and gained \`$separateNumber[$get[xp];,]\`XP!]
 
     $if[$env[prey;0]==;;
       $let[r;$randomNumber[1;101]]
 
-      $if[$get[r]<=45;
+      $if[$get[r]<=20;
         $let[preyIndex;$arrayRandomValue[prey]]
         $let[preyID;$env[preyArray;$get[preyIndex];name]]
         $let[preyName;$env[animals;$get[preyID];variants;0;name]]
@@ -203,10 +203,10 @@ module.exports = [{
 
         $let[minXP;$env[XParr;0]]
         $let[maxXP;$env[XParr;1]]
-        $let[xp;$randomNumber[$get[minXP];$math[$get[maxXP] + 1]]]
+        $let[xp;$randomNumber[$get[minXP];$math[$get[maxXP] * 1.5 + 1]]]
         $let[xp;$round[$math[$get[xp] * $get[multiplier]]]]
 
-        $let[content;You ate a __$get[preyName]__ $get[preyEmoji] and gained \`$separateNumber[$get[xp];,]\`XP!]
+        $let[content;You ate a(n) __$get[preyName]__ $get[preyEmoji] and gained \`$separateNumber[$get[xp];,]\`XP!]
       ]
     ]
 
@@ -652,7 +652,7 @@ function rareReward () {
     "markhor": 200,
     "bigGoat": 200,
     "whiteGiraffe": 200,
-    "whiteGiraffeFamily": 200,
+    "giraffeFamily": 200,
     "aquaYeti": 200,
     "shopSnowman": 200,
     "luckSnowman": 200,
@@ -688,14 +688,11 @@ function luckGenerator () {
         "rhino|rhino|whiteRhino|blackRhino",
         "baldEagle|baldEagle|goldenEagle|harpyEagle|greaterSpottedEagle",
         "markhor|undefined|markhor|bigGoat",
-        "whiteGiraffe|undefined|whiteGiraffe|whiteGiraffeFamily",
+        "whiteGiraffe|undefined|whiteGiraffe|giraffeFamily",
         "yeti|yeti|aquaYeti",
-        "shopBigfoot|undefined|shopBigfoot",
-        "luckBigfoot|undefined|luckBigfoot",
-        "shopSnowman|undefined|shopSnowman",
-        "luckSnowman|undefined|luckSnowman",
-        "shopSnowgirl|undefined|shopSnowgirl",
-        "luckSnowgirl|undefined|luckSnowgirl",
+        "luckBigfoot|undefined|shopBigfoot|luckBigfoot",
+        "luckSnowman|undefined|shopSnowman|luckSnowman",
+        "luckSnowgirl|undefined|shopSnowgirl|luckSnowgirl",
         "blackDragon|blackDragon|kingDragon"
       \\]
     ]
@@ -744,7 +741,7 @@ function setNewXPOnDeath () {
   return `$!jsonSet[playData;XP;$floor[$math[$env[playData;XP] / 3.5]]]`
 }
 
-function setXP () {
+function setXP () { // deprecated
   return `$round[$math[($env[XPreq;$env[playData;tier];0] + $env[XPreq;$env[playData;tier];1] / $env[playData;tier]) / $randomNumber[10;16;true]]]`
 }
 
@@ -1007,6 +1004,7 @@ function animalsButtonsGenerator() {
   return `
     $let[buttonsQ;0]
     $let[emojisInDescription;]
+    $jsonLoad[buttonStyle;$getGlobalVar[buttonStyle]]
 
     $loop[$arrayLength[animalsKeys];
 
@@ -1023,23 +1021,21 @@ function animalsButtonsGenerator() {
 
       $jsonLoad[allRareAttemptsInfo;$getUserVar[allRareAttemptsInfo]]
       $jsonLoad[ARAIkeys;$jsonKeys[allRareAttemptsInfo]]
-      $let[butStyle;Secondary]
 
       $if[$arrayIncludes[ARAIkeys;$get[animal]];
         $jsonLoad[attemptsArr;$env[allRareAttemptsInfo;$get[animal];attempts]]
         $let[index;$env[allRareAttemptsInfo;$get[animal];index]]
-        $let[maxIndex;$env[allRareAttemptsInfo;$get[animal];maxIndex]]
 
-        $if[$get[index]==$get[maxIndex];
+        $let[chosenAnimal;$env[attemptsArr;$get[index]]]
+        $letSum[index;1]
+
+        $if[$env[animals;$get[chosenAnimal];isRare];
           $arrayShuffle[attemptsArr]
           $!jsonSet[allRareAttemptsInfo;$get[animal];attempts;$env[attemptsArr]]
           $!jsonSet[allRareAttemptsInfo;$get[animal];index;0]
-          $let[index;$env[allRareAttemptsInfo;$get[animal];index]]
+          $let[index;0]
         ]
 
-        $let[chosenAnimal;$env[attemptsArr;$get[index]]]
-
-        $letSum[index;1]
         $!jsonSet[allRareAttemptsInfo;$get[animal];index;$get[index]]
         $setUserVar[allRareAttemptsInfo;$env[allRareAttemptsInfo]]
         
@@ -1047,15 +1043,20 @@ function animalsButtonsGenerator() {
           $continue
         ]
 
-        $if[$or[$includes[$get[animal];markhor;whiteGiraffe;Bigfoot;Snowman;Snowgirl];$get[animal]!=$get[chosenAnimal]];
-          $let[butStyle;Success]
-        ]
         $let[animal;$get[chosenAnimal]]
+
       ;
         $if[$env[animals;$get[animal];isRare];
           $continue
         ]
       ]
+
+      $let[buttonIndex;$arrayFindIndex[buttonStyle;arr;$jsonLoad[list;$env[arr;1]]$arrayincludes[list;$get[animal]]]]
+      $let[butStyle;$env[buttonStyle;$get[buttonIndex];0]]
+      $if[$get[butStyle]==;
+        $let[butStyle;Secondary]
+      ]
+
       ${varsForButtonGen()}
     ;i;desc]
   `
@@ -1063,8 +1064,9 @@ function animalsButtonsGenerator() {
 
 function varsForButtonGen () {
   return `
-    $let[emoji;$env[animals;$get[animal];variants;$env[userProfile;userWardrobe;$get[animal]];emoji]]
-    $let[animalName;$env[animals;$get[animal];variants;$env[userProfile;userWardrobe;$get[animal]];name]]
+    $let[wr;$env[userProfile;userWardrobe;$get[animal]]]
+    $let[emoji;$env[animals;$get[animal];variants;$get[wr];emoji]]
+    $let[animalName;$env[animals;$get[animal];variants;$get[wr];name]]
     $let[trig;$env[animals;$get[animal];trig]-$authorID-upgrade]
     $let[emojisInDescription;$get[emojisInDescription]$get[emoji]]
     

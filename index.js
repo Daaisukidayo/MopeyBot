@@ -650,6 +650,11 @@ DB.variables({
     { tier: 17, animalIDs: [ "kingDragon" ] }
   ],
 
+  buttonStyle: [
+    ["Success", ["demonPufferfish","rareToucan","rareMacaw","rareVulture","blackLion","blackLioness","blackLionCub","blackRhino","harpyEagle","greaterSpottedEagle","shaheen","luckSnowman","luckSnowgirl","luckBigfoot","kingDragon"]],
+    ["Danger", ["marshDeer","stinkyPig","muskDeer","jackass","girabie","blackPanther","lavaToucan","whiteGiraffe","giraffeFamily","aquaYeti","bigGoat","predator","goldenEagle","whiteRhino","whiteLion","whiteLioness","whiteLionCub","whiteTiger","blackTiger","blackBear"]],
+    ["Primary", ["whiteDove","doe","pinkyPig","goldenPheasant","blueMacaw","momaffie","momaffieFamily","chocoToucan","keelBilledToucan","fieryToucan","jaguar","yellowPufferfish","blackManedLion","lioness","lionCub","markhor","blackBear"]],
+  ],
 
   allVariants: [
     { v: "s1", req: null },

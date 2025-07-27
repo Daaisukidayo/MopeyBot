@@ -37,7 +37,7 @@
       "ID": 6
     },
     {
-      "name": "ArcticBerry",
+      "name": "Arctic Berry",
       "XP": [20, 50],
       "ID": 7
     },
@@ -198,7 +198,7 @@
     },
     {
       "name": "Aloevera Leaf",
-      "XP": [1, 450],
+      "XP": [200, 450],
       "ID": 39
     },
     {
