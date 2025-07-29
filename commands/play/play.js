@@ -189,7 +189,7 @@ module.exports = [{
     $switch[$get[tier];
       $case[15;$letSub[deathChance;10]]
       $case[16;$letSub[deathChance;15]]
-      $case[17;$letSub[deathChance;25] $let[deathDesc;You were killed by teamers!]]
+      $case[17;$let[deathChance;5] $let[deathDesc;You were killed by teamers!]]
     ]
 
     $let[multiplier;$env[expData;$get[tier];m]]
