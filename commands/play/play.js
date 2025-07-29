@@ -178,11 +178,11 @@ module.exports = [{
       $letSum[deathChance;20]
       $if[$get[animalBiome]==Ocean;
         $let[deathChance;1000]
-        $let[deathDesc;You were killed by a lack of water!]
+        $let[deathDesc;You died by a lack of water!]
       ]
       $if[$and[$get[animalBiome]==Volcano;$or[$get[biome]==Arctic;$get[biome]==Ocean]];
         $let[deathChance;800]
-        $let[deathDesc;You were killed by a lack of lava!]
+        $let[deathDesc;You died by a lack of lava!]
       ]
     ]
 
@@ -208,7 +208,7 @@ module.exports = [{
 
     $if[$arrayLength[food]==0;
       $let[deathChance;1000]
-      $let[deathDesc;You were killed by a predator!]
+      $let[deathDesc;You died by staying on lava!]
     ;
 
       $let[foodIndex;$arrayRandomValue[food]]
