@@ -74,7 +74,7 @@ module.exports = [{
     $let[biome;$env[animals;$get[animal];biome]]
 
     $!jsonSet[playData;MC;$math[$get[bonusPerUpgrade] + $env[playData;MC] + $get[bonusPerRare]]]
-    $!jsonSet[playData;currentAnimal;$get[emoji]]
+    $!jsonSet[playData;currentAnimal;$get[animal]]
     $!jsonSet[playData;color;$get[color]]
     $!jsonSet[playData;currentBiome;$get[biome]]
     $!jsonSet[playData;animalBiome;$get[biome]]
@@ -156,7 +156,7 @@ module.exports = [{
     ${hasStarted()}
 
     $let[deathRarity;$randomNumber[1;1001]]
-    $let[deathChance;10]
+    $let[deathChance;30] $c[3%]
     $let[deathDesc;You were killed by a predator!]
 
     $let[findPrayRarity;$randomNumber[1;101]]
@@ -167,24 +167,34 @@ module.exports = [{
 
     $let[biome;$env[playData;currentBiome]]
     $let[animalBiome;$env[playData;animalBiome]]
+    $let[animal;$env[playData;currentAnimal]]
     $let[tier;$env[playData;tier]]
 
+    $if[$env[animals;$get[animal];isRare];
+      $letSub[deathChance;20]
+    ]
+
     $if[$get[animalBiome]!=$get[biome];
-      $let[deathChance;40]
+      $letSum[deathChance;20]
       $if[$get[animalBiome]==Ocean;
         $let[deathChance;1000]
+        $let[deathDesc;You were killed by a lack of water!]
+      ]
+      $if[$and[$get[animalBiome]==Volcano;$or[$get[biome]==Arctic;$get[biome]==Ocean]];
+        $let[deathChance;800]
+        $let[deathDesc;You were killed by a lack of lava!]
       ]
     ]
 
-
     $switch[$get[tier];
-      $case[15;$letSub[deathChance;5]]
-      $case[16;$letSub[deathChance;7]]
-      $case[17;$letSub[deathChance;9] $let[deathDesc;You were killed by teamers!]]
+      $case[15;$letSub[deathChance;10]]
+      $case[16;$letSub[deathChance;15]]
+      $case[17;$letSub[deathChance;25] $let[deathDesc;You were killed by teamers!]]
     ]
 
     $let[multiplier;$env[expData;$get[tier];m]]
     $let[extraMultiplier;1.5]
+
     $jsonLoad[data;$env[expData;$get[tier];d]]
     $jsonLoad[biomeArray;$env[expBase;b]]
     $jsonLoad[foodArray;$env[expBase;f]]
@@ -399,7 +409,9 @@ module.exports = [{
 
     $c[? Embeds]
 
-    $let[desc;$trimSpace[# __$env[playData;currentAnimal] $userDisplayName__\n### Bites: \`$env[playData;bitesInArena]\`\n# \`VS\`\n# __$env[playData;opponentAnimal]__\n### Bites: \`$env[playData;opponentBitesInArena]\`\n━━━━━━━━━━━━━━━\n## You chose: \`$toTitleCase[$get[playerAction]]\`\n## Opponent chose: \`$toTitleCase[$get[opponentAction]]\`\n━━━━━━━━━━━━━━━\n## $get[actionDesc]\n━━━━━━━━━━━━━━━]]
+    $let[currentAnimal;$env[animals;$env[playData;currentAnimal];variants;$env[userProfile;userWardrobe;$env[playData;currentAnimal]];emoji]]
+
+    $let[desc;$trimSpace[# __$get[currentAnimal] $userDisplayName__\n### Bites: \`$env[playData;bitesInArena]\`\n# \`VS\`\n# __$env[playData;opponentAnimal]__\n### Bites: \`$env[playData;opponentBitesInArena]\`\n━━━━━━━━━━━━━━━\n## You chose: \`$toTitleCase[$get[playerAction]]\`\n## Opponent chose: \`$toTitleCase[$get[opponentAction]]\`\n━━━━━━━━━━━━━━━\n## $get[actionDesc]\n━━━━━━━━━━━━━━━]]
 
     $if[$env[playData;arenaTurn]==0; $c[If user's turn, then setting random opponent's action]
       $let[opponentAction;$randomText[attack;defend;deceive]]
@@ -1166,7 +1178,7 @@ function actionMenu () {
 // Helper functions
 
 function animalStats() {
-  return `-# $env[playData;currentAnimal] • $abbreviateNumber[$env[playData;XP]]XP • $env[playData;MC]$getGlobalVar[emoji]`
+  return `-# $env[animals;$env[playData;currentAnimal];variants;$env[userProfile;userWardrobe;$env[playData;currentAnimal]];emoji] • $abbreviateNumber[$env[playData;XP]]XP • $env[playData;MC]$getGlobalVar[emoji]`
 }
 
 function animalEmoji (animal, v = 0) {
@@ -1176,19 +1188,19 @@ function animalEmoji (animal, v = 0) {
 function currentApexes () {
   return `
     $let[currentApexes;# $trimLines[Apexes:\n# $replace[
-        $if[$env[playData;apex;dragon];         ${animalEmoji('dragon')};         <:DragonS1Dark:1327711395860451461>]
-        $if[$env[playData;apex;trex];           ${animalEmoji('trex')};           <:TRexS1Dark:1327711207414566962>]
-        $if[$env[playData;apex;phoenix];        ${animalEmoji('phoenix')};        <:PhoenixS1Dark:1327711260560851134>]
-        $if[$env[playData;apex;pterodactyl];    ${animalEmoji('pterodactyl')};    <:PteroS1Dark:1327711247055065098>]
-        $if[$env[playData;apex;kraken];         ${animalEmoji('kraken')};         <:KrakenS1Dark:1327711355024703540>]
-        $if[$env[playData;apex;kingCrab];       ${animalEmoji('kingCrab')};       <:KingCrabS1Dark:1327711368316583976>]
-        $if[$env[playData;apex;yeti];           ${animalEmoji('yeti')};           <:YetiS1Dark:1327711197025407088>]
-        $if[$env[playData;apex;landMonster];    ${animalEmoji('landMonster')};    <:LandS1Dark:1327711335944945735>]
-        $if[$env[playData;apex;dinoMonster];    ${animalEmoji('dinoMonster')};    <:DinoS1Dark:1327711412411170876>]
-        $if[$env[playData;apex;giantScorpion];  ${animalEmoji('giantScorpion')};  <:ScorpS1Dark:1327711231737466981>]
-        $if[$env[playData;apex;seaMonster];     ${animalEmoji('seaMonster')};     <:SeaS1Dark:1327711219318001674>]
-        $if[$env[playData;apex;iceMonster];     ${animalEmoji('iceMonster')};     <:IceS1Dark:1327711379964297316>]
-        $if[$env[playData;apex;blackDragon];    ${animalEmoji('blackDragon')};    <:BDragS1Dark:1327711428324364461>]
+        $if[$env[playData;apex;dragon];${animalEmoji('dragon')};<:DragonS1Dark:1327711395860451461>]
+        $if[$env[playData;apex;trex];${animalEmoji('trex')};<:TRexS1Dark:1327711207414566962>]
+        $if[$env[playData;apex;phoenix];${animalEmoji('phoenix')};<:PhoenixS1Dark:1327711260560851134>]
+        $if[$env[playData;apex;pterodactyl];${animalEmoji('pterodactyl')};<:PteroS1Dark:1327711247055065098>]
+        $if[$env[playData;apex;kraken];${animalEmoji('kraken')};<:KrakenS1Dark:1327711355024703540>]
+        $if[$env[playData;apex;kingCrab];${animalEmoji('kingCrab')};<:KingCrabS1Dark:1327711368316583976>]
+        $if[$env[playData;apex;yeti];${animalEmoji('yeti')};<:YetiS1Dark:1327711197025407088>]
+        $if[$env[playData;apex;landMonster];${animalEmoji('landMonster')};<:LandS1Dark:1327711335944945735>]
+        $if[$env[playData;apex;dinoMonster];${animalEmoji('dinoMonster')};<:DinoS1Dark:1327711412411170876>]
+        $if[$env[playData;apex;giantScorpion];${animalEmoji('giantScorpion')};<:ScorpS1Dark:1327711231737466981>]
+        $if[$env[playData;apex;seaMonster];${animalEmoji('seaMonster')};<:SeaS1Dark:1327711219318001674>]
+        $if[$env[playData;apex;iceMonster];${animalEmoji('iceMonster')};<:IceS1Dark:1327711379964297316>]
+        $if[$env[playData;apex;blackDragon];${animalEmoji('blackDragon')};<:BDragS1Dark:1327711428324364461>]
       ;\n;]
     ]]
   `
