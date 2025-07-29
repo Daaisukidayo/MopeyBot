@@ -130,6 +130,10 @@ module.exports = [
           ];1]
           $color[$getGlobalVar[luckyColor];1]
         ]
+        $if[$get[unlimitedRares];
+          $title[Unlimited Rares;1]
+          $color[$getGlobalVar[luckyColor];1]
+        ]
       ]
     ]
     $setUserVar[userProfile;$env[userProfile]]
