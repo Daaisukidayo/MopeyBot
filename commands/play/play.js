@@ -154,68 +154,106 @@ module.exports = [{
 
     ${jsonLoader()}
     ${hasStarted()}
+
+    $let[deathRarity;$randomNumber[1;1001]]
+    $let[deathChance;10]
+    $let[deathDesc;You were killed by a predator!]
+
+    $let[findPrayRarity;$randomNumber[1;101]]
+    $let[findPrayChance;20]
+
     $jsonLoad[expBase;$readFile[json/expBase.json]]
     $jsonLoad[expData;$readFile[json/expData.json]]
 
     $let[biome;$env[playData;currentBiome]]
+    $let[animalBiome;$env[playData;animalBiome]]
     $let[tier;$env[playData;tier]]
 
+    $if[$get[animalBiome]!=$get[biome];
+      $let[deathChance;40]
+      $if[$get[animalBiome]==Ocean;
+        $let[deathChance;1000]
+      ]
+    ]
+
+
+    $switch[$get[tier];
+      $case[15;$letSub[deathChance;5]]
+      $case[16;$letSub[deathChance;7]]
+      $case[17;$letSub[deathChance;9] $let[deathDesc;You were killed by teamers!]]
+    ]
+
     $let[multiplier;$env[expData;$get[tier];m]]
+    $let[extraMultiplier;1.5]
     $jsonLoad[data;$env[expData;$get[tier];d]]
     $jsonLoad[biomeArray;$env[expBase;b]]
     $jsonLoad[foodArray;$env[expBase;f]]
     $jsonLoad[preyArray;$env[expBase;p]]
 
     $let[biomeIndex;$arrayIndexOf[biomeArray;$get[biome]]]
-    $let[dataIndex;$arrayFindIndex[data;obj;$env[obj;b]==$get[biomeIndex]]]
-    $jsonLoad[data;$env[data;$get[dataIndex]]]
+    $jsonLoad[data;$env[data;$get[biomeIndex]]]
 
     $jsonLoad[food;$env[data;f]]
     $jsonLoad[prey;$env[data;p]]
 
-    $let[foodIndex;$arrayRandomValue[food]]
-    $jsonLoad[food;$env[foodArray;$get[foodIndex]]]
+    $if[$arrayLength[food]==0;
+      $let[deathChance;1000]
+      $let[deathDesc;You were killed by a predator!]
+    ;
 
-    $jsonLoad[foodXPArr;$env[food;XP]]
-    $let[minXP;$env[foodXPArr;0]]
-    $let[maxXP;$env[foodXPArr;1]]
-    $let[foodXP;$randomNumber[$get[minXP];$math[$get[maxXP] + 1]]]
-    $let[foodXP;$round[$math[$get[foodXP] * $get[multiplier]]]]
-    $let[foodName;$env[food;name]]
+      $let[foodIndex;$arrayRandomValue[food]]
+      $jsonLoad[food;$env[foodArray;$get[foodIndex]]]
 
-    $if[$get[foodName]==;$let[foodName;undefined]]
+      $jsonLoad[foodXPArr;$env[food;XP]]
+      $let[minXP;$math[$env[foodXPArr;0] * $get[multiplier]]]
+      $let[maxXP;$math[$env[foodXPArr;1] * $get[multiplier]]]
+      $let[foodXP;$randomNumber[$get[minXP];$math[$get[maxXP] + 1]]]
+      $let[foodXP;$round[$math[$get[foodXP] * $get[extraMultiplier]]]]
+      $let[foodName;$env[food;name]]
 
-    $let[xp;$get[foodXP]]
-    $let[content;You ate a(n) $get[foodName] and gained \`$separateNumber[$get[xp];,]\`XP!]
+      $if[$get[foodName]==;$let[foodName;undefined]]
 
-    $if[$env[prey;0]==;;
-      $let[r;$randomNumber[1;101]]
+      $let[xp;$get[foodXP]]
+      $let[content;You ate a(n) $get[foodName] and gained \`$separateNumber[$get[xp];,]\`XP!]
 
-      $if[$get[r]<=20;
-        $let[preyIndex;$arrayRandomValue[prey]]
-        $let[preyID;$env[preyArray;$get[preyIndex];name]]
-        $let[preyName;$env[animals;$get[preyID];variants;0;name]]
-        $let[preyEmoji;$env[animals;$get[preyID];variants;0;emoji]]
-        $let[preyTier;$env[animals;$get[preyID];tier]]
+      $if[$arrayLength[prey]==0;;
 
-        $jsonLoad[XPreq;${XPReqForUpg()}]
-        $jsonLoad[XParr;$env[XPreq;$get[preyTier]]]
+        $if[$get[findPrayChance]>=$get[findPrayRarity];
+          $let[preyIndex;$arrayRandomValue[prey]]
+          $let[preyID;$env[preyArray;$get[preyIndex];name]]
+          $let[preyName;$env[animals;$get[preyID];variants;0;name]]
+          $let[preyEmoji;$env[animals;$get[preyID];variants;0;emoji]]
+          $let[preyTier;$env[animals;$get[preyID];tier]]
 
-        $let[minXP;$env[XParr;0]]
-        $let[maxXP;$env[XParr;1]]
-        $let[xp;$randomNumber[$get[minXP];$math[$get[maxXP] * 1.5 + 1]]]
-        $let[xp;$round[$math[$get[xp] * $get[multiplier]]]]
+          $jsonLoad[XPreq;${XPReqForUpg()}]
+          $jsonLoad[XParr;$env[XPreq;$get[preyTier]]]
 
-        $let[content;You ate a(n) __$get[preyName]__ $get[preyEmoji] and gained \`$separateNumber[$get[xp];,]\`XP!]
+          $let[minXP;$env[XParr;0]]
+          $let[maxXP;$math[$env[XParr;1] / 1.5]]
+          $let[xp;$randomNumber[$get[minXP];$math[$get[maxXP] + 1]]]
+
+          $let[content;You ate a(n) __$get[preyName]__ $get[preyEmoji] and gained \`$separateNumber[$get[xp];,]\`XP!]
+        ]
       ]
     ]
 
-    $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xp]]]
-    $description[## $get[content]\n${animalStats()}]
-    $getGlobalVar[author]
     $color[$env[playData;color]]
-    ${actionMenu()}
-    ${exitButton()}
+
+    $if[$get[deathChance]>=$get[deathRarity];
+      ${setNewXPOnDeath()}
+      ${setNewTier()}
+      $description[## $get[deathDesc]]
+      $color[$getGlobalVar[errorColor]]
+      ${respawnButton()}
+      $let[showCheats;false]
+    ;
+      $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xp]]]
+      $description[## $get[content]\n${animalStats()}]
+      ${actionMenu()}
+      $let[showCheats;true]
+    ]
+    ${exitButton('$get[showCheats]')}
+    $getGlobalVar[author]
     $!editMessage[$channelID;$messageID]
     
     $setUserVar[userPlayData;$env[playData]]
@@ -450,7 +488,7 @@ module.exports = [{
   description: 'downgrading',
   code: `
     $arrayLoad[btn;-;$selectMenuValues]
-    $onlyIf[$includes["$env[btn;0]";"downgrade";"failSearchXP"]]
+    $onlyIf[$includes["$env[btn;0]";"downgrade"]]
     $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
@@ -508,10 +546,6 @@ module.exports = [{
         $let[desc;## textNotFound|playUnknownDeathDowngradeContent]
       ]]]]]]
 
-    ]
-
-    $if[$env[btn;0]==failSearchXP;
-      $let[desc;## textNotFound|playSuddenDeathContent]
     ]
 
     $!jsonSet[playData;isDead;true]
@@ -738,7 +772,7 @@ function luckGenerator () {
 }
 
 function setNewXPOnDeath () {
-  return `$!jsonSet[playData;XP;$floor[$math[$env[playData;XP] / 3.5]]]`
+  return `$!jsonSet[playData;XP;$floor[$math[$env[playData;XP] / 2]]]`
 }
 
 function setXP () { // deprecated
@@ -868,14 +902,14 @@ function arenaOpponentsActionLogic () {
       ]
 
       $case[defend_defend;
-        $let[actionDesc;Nobody bites]
+        $let[actionDesc;No one get a bite]
       ]
 
       $case[defend_deceive;
-        $if[$get[actionR]>=40;
+        $if[$get[actionR]>=30;
           $let[actionDesc;You unsuccessfully defended yourself and opponent bit you]
           $let[oppBitesToAdd;1]
-        ;$if[$get[actionR]>=25;
+        ;$if[$get[actionR]>=15;
           $let[actionDesc;You successfully defended yourself from his deceive and you bit him]
           $let[bitesToAdd;1]
         ;
@@ -884,10 +918,10 @@ function arenaOpponentsActionLogic () {
       ]
 
       $case[deceive_attack;
-        $if[$get[actionR]>=40;
+        $if[$get[actionR]>=30;
           $let[actionDesc;You unsuccessfully deceived your opponent and he bit you]
           $let[oppBitesToAdd;1]
-        ;$if[$get[actionR]>=25;
+        ;$if[$get[actionR]>=15;
           $let[actionDesc;You successfully deceived your opponent and bit him]
           $let[bitesToAdd;1]
         ;
@@ -1081,11 +1115,9 @@ function varsForButtonGen () {
 function actionMenu () {
   return `
     $let[curBiome;$env[playData;currentBiome]]
-    $let[failSearchFoodChance;3]
-    $let[searchFoodR;$randomNumber[1;101]]
 
     $addActionRow
-    $addStringSelectMenu[actions-$authorID-play;Choose an action:]
+    $addStringSelectMenu[actions-$authorID-play;Actions]
 
     $if[$and[$env[playData;tier]==17;$get[hasAllApex]];
       $addOption[Upgrade;;kingDragonUpg-$authorID-play;⬆️]
@@ -1093,39 +1125,39 @@ function actionMenu () {
 
     $if[$and[$env[playData;XP]>=$env[XPreq;$env[playData;tier];1];$env[playData;tier]!=17];
       $addOption[Upgrade;;upgrade-$authorID-play;⬆️]
+      $let[hideSwitchBiome;true]
     ;
-      $if[$get[failSearchFoodChance]>$get[searchFoodR];
-        $addOption[Search for XP;;failSearchXP-$authorID-play;🍴]
-      ;
-        $addOption[Search for XP;;searchXP-$authorID-play;🍴]
+      $addOption[Search for XP;;searchXP-$authorID-play;🍴]
+      $if[$env[playData;tier]>=15;
+        $addOption[Arena;;arena-$authorID-play;⚔️]
       ]
     ]
 
-    $if[$env[playData;tier]>=15;
-      $addOption[Arena;;arena-$authorID-play;⚔️]
-    ]
     $addOption[Downgrade;;downgrade-$authorID-play;⬇️]
 
-    $addActionRow
-    $addStringSelectMenu[moveto-$authorID-play;Switch biome]
+    $if[$get[hideSwitchBiome];;
 
-    $if[$get[curBiome]!=Land;
-      $addOption[Land;;moveto_Land-$authorID-play;⛰️]
-    ]
-    $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
-      $addOption[Desert;;moveto_Desert-$authorID-play;🏜️]
-    ]
-    $if[$and[$get[curBiome]!=Volcano;$get[curBiome]!=Ocean;$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Forest];
-      $addOption[Volcano;;moveto_Volcano-$authorID-play;🌋]
-    ]
-    $if[$and[$get[curBiome]!=Ocean;$get[curBiome]!=Volcano];
-      $addOption[Ocean;;moveto_Ocean-$authorID-play;🌊]
-    ]
-    $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
-      $addOption[Arctic;;moveto_Arctic-$authorID-play;❄️]
-    ]
-    $if[$and[$get[curBiome]!=Forest;$get[curBiome]!=Volcano];
-      $addOption[Forest;;moveto_Forest-$authorID-play;🌲]
+      $addActionRow
+      $addStringSelectMenu[moveto-$authorID-play;Switch biome]
+
+      $if[$get[curBiome]!=Land;
+        $addOption[Land;;moveto_Land-$authorID-play;⛰️]
+      ]
+      $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
+        $addOption[Desert;;moveto_Desert-$authorID-play;🏜️]
+      ]
+      $if[$and[$get[curBiome]!=Volcano;$get[curBiome]!=Ocean;$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Forest];
+        $addOption[Volcano;;moveto_Volcano-$authorID-play;🌋]
+      ]
+      $if[$and[$get[curBiome]!=Ocean;$get[curBiome]!=Volcano];
+        $addOption[Ocean;;moveto_Ocean-$authorID-play;🌊]
+      ]
+      $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
+        $addOption[Arctic;;moveto_Arctic-$authorID-play;❄️]
+      ]
+      $if[$and[$get[curBiome]!=Forest;$get[curBiome]!=Volcano];
+        $addOption[Forest;;moveto_Forest-$authorID-play;🌲]
+      ]
     ]
 
   `

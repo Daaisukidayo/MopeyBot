@@ -1,5 +1,5 @@
 {
-  "b": ["Land", "Desert", "Ocean", "Arctic", "Forest"],
+  "b": ["Land", "Desert", "Ocean", "Arctic", "Forest", "Volcano"],
   "f": [
     {
       "name": "Small Meat",
@@ -58,7 +58,7 @@
     },
     {
       "name": "Mushrom Bush",
-      "XP": [3400, 12000],
+      "XP": [1200, 6000],
       "ID": 11
     },
     {
@@ -83,7 +83,7 @@
     },
     {
       "name": "Lillypad",
-      "XP": [75, 1000],
+      "XP": [300, 1000],
       "ID": 16
     },
     {
@@ -205,6 +205,16 @@
       "name": "Cactus",
       "XP": [20000, 60000],
       "ID": 40
+    },
+    {
+      "name": "Goose",
+      "XP": [5000, 15000],
+      "ID": 41
+    },
+    {
+      "name": "Chili Peper",
+      "XP": [1200, 3400],
+      "ID": 42
     }
   ],
   "p": [
@@ -709,7 +719,7 @@
       "ID": 124
     },
     {
-      "name": "whiteGiraffeFamily",
+      "name": "giraffeFamily",
       "ID": 125
     },
     {
@@ -811,6 +821,10 @@
     {
       "name": "iceMonster",
       "ID": 150
+    },
+    {
+      "name": "blackDragon",
+      "ID": 151
     }
   ]
 }
