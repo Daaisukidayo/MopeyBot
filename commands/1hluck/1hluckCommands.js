@@ -131,7 +131,7 @@ module.exports = [
           $color[$getGlobalVar[luckyColor];1]
         ]
         $if[$get[unlimitedRares];
-          $title[Unlimited Rares;1]
+          $title[Unlimited Rares;;1]
           $color[$getGlobalVar[luckyColor];1]
         ]
       ]
