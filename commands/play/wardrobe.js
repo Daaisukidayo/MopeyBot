@@ -14,9 +14,7 @@ module.exports = [{
     $c[Only if argument is provided]
 
     $onlyIf[$get[arg]!=;
-      $color[$getGlobalVar[errorColor]]
-      $getGlobalVar[author]
-      $title[:x: Missing arguments!]
+      $callFunction[embed;error]
       $description[## Usage: \`$getGuildVar[prefix]wardrobe {new|all|<tier>|<animal>}\`]
     ]
 
@@ -32,21 +30,17 @@ module.exports = [{
 
     ;
       $if[$get[arg]==all;
-        $getGlobalVar[author]
-        $color[$getGlobalVar[defaultColor]]
+        $callFunction[embed;default]
         $description[# Choose a skinpack]
         ${menu("all")}
       ;
         $if[$isNumber[$get[arg]];
-          $getGlobalVar[author]
-          $color[$getGlobalVar[defaultColor]]
+          $callFunction[embed;default]
           $description[# Choose a skinpack]
           ${menu("num")}
         ;
           $onlyIf[$arrayIncludes[animalsNames;$get[arg]];
-            $color[$getGlobalVar[errorColor]]
-            $getGlobalVar[author]
-            $title[:x: Invalid arguments!]
+            $callFunction[embed;error]
             $description[## Animal not found]
           ]
 
@@ -243,7 +237,8 @@ function loop() {
       $let[animalVarCode;$env[animals;$get[animal];variants;$get[num];vCode]] 
 
       $arrayForEach[allVariants;variant;
-        $let[hasPack;$or[$env[variant;req]==null;$env[userProfile;userPacks;$env[variant;req]]!=]]
+        $let[req;$env[variant;req]]
+        $let[hasPack;$or[$get[req]==null;$env[userProfile;userPacks;$get[req]]!=]]
 
         $if[$and[$env[variant;v]==$get[animalVarCode];$get[hasPack]];
           $let[animalName;$env[animals;$get[animal];variants;$get[num];name]]
