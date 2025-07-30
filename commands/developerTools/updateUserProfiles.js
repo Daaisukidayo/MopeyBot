@@ -7,20 +7,45 @@ module.exports = {
     $onlyForUsers[;$botOwnerID]
     $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
     $jsonLoad[newUserProfile;$getGlobalVar[userProfile]]
-    $jsonLoad[profileKeys;$jsonKeys[newUserProfile]]
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[animalsKeys;$jsonKeys[animals]]
 
     $arrayForEach[allUserIDs;ID;
       $jsonLoad[userProfile;$getUserVar[userProfile;$env[ID]]]
-      $!jsonSet[userProfile;1hl;settings;displayRaresLimit;true]
+      $jsonLoad[userWardrobe;$env[userProfile;userWardrobe]]
+      $jsonLoad[finalWardrobe;{}]
+
+      $let[WGvalue;$env[userWardrobe;whiteGiraffeFamily]]
+      $jsonLoad[wardrobeKeys;$jsonKeys[userWardrobe]]
+
+      $let[index;$arrayIndexOf[wardrobeKeys;whiteGiraffeFamily]]
+      $!jsonSet[wardrobeKeys;$get[index];giraffeFamily]
+
+      $arrayForEach[wardrobeKeys;key;
+        $!jsonSet[finalWardrobe;$env[key];$default[$env[wardrobeKeys;$env[key]];$get[WGvalue]]]
+      ]
+      $!jsonSet[userProfile;userWardrobe;$env[finalWardrobe]]
+
       $setUserVar[userProfile;$env[userProfile];$env[ID]]
     ]
 
-    $sendMessage[$channelID;## ✅ Successfully updated all profiles!]
-
+    $callFunction[embed;default]
+    $description[## ✅ Successfully updated all profiles!]
+    $sendMessage[$channelID]
   `
 }
+
+// renames "l10n" to "language"
+// $jsonLoad[finalProfile;{}]
+// $jsonLoad[profileKeys;$jsonKeys[userProfile]]
+
+// $let[lang;$env[userProfile;l10n]]
+// $let[index;$arrayIndexOf[profileKeys;l10n]]
+// $!jsonSet[profileKeys;$get[index];language]
+
+// $arrayForEach[profileKeys;key;
+//   $!jsonSet[finalProfile;$env[key];$default[$env[userProfile;$env[key]];$get[lang]]]
+// ]
 
 // changes time format
 // $jsonLoad[history;$env[userProfile;1hl;history]]

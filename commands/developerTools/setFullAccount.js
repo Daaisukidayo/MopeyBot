@@ -11,7 +11,8 @@ module.exports = {
       $!jsonSet[userProfile;userPacks;$env[item;name];true]
     ]
     
+    $callFunction[embed;default]
+    $description[## ✅ Successfully maxed your account!]
     $setUserVar[userProfile;$env[userProfile]]
-    # ✅ Successfully gave you all packs!
   `
 }

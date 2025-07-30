@@ -849,7 +849,7 @@ client.functions.add({
   name: "interFail",
   code: `
     $jsonLoad[l;$readFile[json/localizations.json]]
-      $let[l10n;$getUserVar[l10n]]
+      $let[l10n;$env[userProfile;l10n]]
       $let[specialDesc2;$env[l;special;specialDesc2;$get[l10n]]] 
     $ephemeral 
     $interactionReply[$get[specialDesc2]]
@@ -894,3 +894,16 @@ client.functions.add({
     ]
   `,
 });
+
+client.functions.add({
+  name: "embed",
+  params: ["colorType"],
+  code: `
+    $if[$env[colorType]==error;
+      $author[✖️ Error!]
+    ;
+      $getGlobalVar[author]
+    ]
+    $color[$getGlobalVar[$env[colorType]Color]]
+  `
+})

@@ -1,3 +1,5 @@
+const type = "name"
+
 module.exports = [{
   name: 'simulator',
   aliases: ['sim'],
@@ -10,7 +12,7 @@ module.exports = [{
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[raresMap;$getGlobalVar[raresMap]]
+    $jsonLoad[challengeData;$getGlobalVar[challengeData]]
     $jsonLoad[result;{}]
     ${luckGenerator()}
 
@@ -38,16 +40,15 @@ module.exports = [{
     $arrayForEach[result;arr;
       $let[animalID;$env[arr;0]]
       $let[quantity;$env[arr;1]]
-      $let[type;name] $c[Change this to "emoji"]
-      $let[animal;$env[animals;$get[animalID];variants;0;$get[type]]]
+      $let[animal;$env[animals;$get[animalID];variants;0;${type}]]
 
       $if[$and[${isCommon("$get[animalID]")};$get[quantity]>3];
         $let[quantity;3]
       ]
 
       $let[msgdesc;$get[msgdesc]# $get[animal]\`$get[quantity]\`\n]
-      ${findingRareInRaresMapBase()}
-      $letsum[totalPoints;$math[$get[quantity] * $env[rareMap;points]]]
+      ${findingRareInChallengeDataBase()}
+      $letsum[totalPoints;$math[$get[quantity] * $get[challengeDataPoints]]]
     ]
 
     $color[$getGlobalVar[luckyColor]]
@@ -56,6 +57,25 @@ module.exports = [{
     $getGlobalVar[author]
   `
 }]
+
+
+function findingRareInChallengeDataBase () {
+  return `
+    $loop[$arrayLength[challengeData];
+      $let[j;$math[$env[j] - 1]]
+
+      $jsonLoad[challengeDataObj;$arrayAt[challengeData;$get[j]]]
+      $jsonLoad[challengeDataRaresList;$env[challengeDataObj;rares]]
+      $let[challengeDataPoints;$env[challengeDataObj;points]]
+      $let[challengeDataCategory;$env[challengeDataObj;category]]
+
+      $if[$arrayIncludes[challengeDataRaresList;$get[animalID]];
+        $break
+      ]
+    ;j;desc]
+  `
+}
+
 
 function isCommon (rare) {
   return `$includes[${rare};chocoToucan;keelBilledToucan;markhor]`
