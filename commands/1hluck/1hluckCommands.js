@@ -855,7 +855,7 @@ function catchingRare() {
         $continue
       ]
 
-      $let[limitAnimalName;$env[animals;$get[animalID];variants;0;name]]
+      $let[limitAnimalName;$env[animals;$get[animalID];variants;0;${type}]]
       $let[chartlimitIndex;$arrayFindIndex[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
       $jsonLoad[limitChartObj;$env[chartLimits;$get[chartlimitIndex]]]
       $let[limit;$env[limitChartObj;limit]]

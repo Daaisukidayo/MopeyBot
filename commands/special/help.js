@@ -62,7 +62,8 @@ module.exports = [{
 
     $if[$includes[$env[arg;0];-sim-;-simulator-];
       $author[$get[comNameEmoji] 1 Hour Luck Simulator]
-      $description[## Shows how much rares you would get in real 1 Hour Luck Challenge!]
+      $description[## Shows how much rares you'd get in real 1 Hour Luck Challenge!
+      ### Use ${inl('$getGuildVar[prefix]simulator event')} to simulate in event mode!]
       $addField[$get[al];${inl('simulator')}, ${inl('sim')}]
       $addField[$get[rel];${inl('raretry')}, ${inl('raretryrun')}]
     ]
@@ -190,7 +191,8 @@ module.exports = [{
       $description[## Displays the current rare chart for the 1-hour luck challenge!
       ### What is the 1-hour luck challenge? Its a game where you have to get rares in <https://mope.io>! Start from a mouse and try getting rares for 1 hour!
       ### For better experience, use the bot to track your progress! The bot will count your points from every rare you caught and wrote!
-      ### More information is in the ${inl('$getGuildVar[prefix]help start')} command!]
+      ### More information is in the ${inl('$getGuildVar[prefix]help start')} command!
+      ### Use ${inl('$getGuildVar[prefix]chart event')} to see the event chart!]
       $addField[$get[rel];${inl('snora')}, ${inl('start')}, ${inl('pause')}, ${inl('resume')}, ${inl('time')}, ${inl('points')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 

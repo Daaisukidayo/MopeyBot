@@ -11,9 +11,15 @@ module.exports = [{
     $let[cdTime;10s]
     $callFunction[cooldown;$get[cdTime]]
 
+    $let[arg;$toLowercase[$message]]
+
+    $onlyif[$or[$get[arg]==event;$get[arg]==]]
+
     $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[challengeData;$getGlobalVar[challengeData]]
+    $jsonLoad[challengeData;$getGlobalVar[$toCamelCase[$get[arg] challenge data]]]
+    $jsonLoad[chartLimits;$getGlobalVar[$toCamelCase[$get[arg] chart limits]]]
     $jsonLoad[result;{}]
+    $jsonLoad[totalAttempts;${totalAttempts()}]
     ${luckGenerator()}
 
     $let[totalRares;0]
@@ -24,15 +30,26 @@ module.exports = [{
 
     $arrayForEach[allRareAttemptsInfoEntries;entry;
       $jsonLoad[raresArr;$env[entry;1;attempts]]
-      $arrayForEach[raresArr;rare;
-        $if[$env[animals;$env[rare];isRare];
-          $let[quantity;$env[result;$env[rare]]]
-          $!jsonSet[result;$env[rare];$math[$get[quantity] + 1]]
-          $if[$and[${isCommon("$env[rare]")};$get[quantity]>3];;
-            $letsum[totalRares;1]
-          ]
-        ]
-      ]
+      $let[keyID;$env[entry;0]]
+      $let[attemptsIndex;$arrayFindIndex[totalAttempts;att;$jsonLoad[animArr;$env[att;0]]$arrayIncludes[animArr;$get[keyID]]]]
+      $let[attempts;$env[totalAttempts;$get[attemptsIndex];1]]
+
+      $let[i;0]
+
+      $loop[$get[attempts];
+        $let[animalID;$arrayAt[raresArr;$get[i]]]
+        $let[isRare;$env[animals;$get[animalID];isRare]]
+
+        $letSum[i;1]
+
+        $if[$get[isRare];;$continue]
+
+        $let[quantity;$env[result;$get[animalID]]]
+        $!jsonSet[result;$get[animalID];$math[$get[quantity] + 1]]
+
+        $arrayShuffle[raresArr]
+        $let[i;0]
+      ;]
     ]
 
     $jsonLoad[result;$jsonEntries[result]]
@@ -40,21 +57,29 @@ module.exports = [{
     $arrayForEach[result;arr;
       $let[animalID;$env[arr;0]]
       $let[quantity;$env[arr;1]]
-      $let[animal;$env[animals;$get[animalID];variants;0;${type}]]
+      $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
 
-      $if[$and[${isCommon("$get[animalID]")};$get[quantity]>3];
-        $let[quantity;3]
+      ${findingRareInChallengeDataBase()}
+
+      $let[hasLimitCategory;$arraySome[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
+      $let[chartlimitIndex;$arrayFindIndex[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
+      $jsonLoad[limitChartObj;$env[chartLimits;$get[chartlimitIndex]]]
+      $let[limit;$env[limitChartObj;limit]]      
+      
+      $if[$and[$get[hasLimitCategory];$get[quantity]>$get[limit]];
+        $let[quantity;$get[limit]]
       ]
 
-      $let[msgdesc;$get[msgdesc]# $get[animal]\`$get[quantity]\`\n]
-      ${findingRareInChallengeDataBase()}
-      $letsum[totalPoints;$math[$get[quantity] * $get[challengeDataPoints]]]
+      $let[mathResult;$math[$get[quantity] * $get[challengeDataPoints]]]
+      $letSum[totalPoints;$get[mathResult]]
+      $letSum[totalRares;$get[quantity]]
+
+      $let[msgdesc;$get[msgdesc]$get[animalDisplay]\`$get[quantity]\` * $get[challengeDataPoints] = $get[mathResult]\n]
     ]
 
-    $color[$getGlobalVar[luckyColor]]
-    $description[$trim[$get[msgdesc]]]
+    $callFunction[embed;lucky]
+    $description[$trim[**$get[msgdesc]**]]
     $footer[Points: $get[totalPoints] • Rares: $get[totalRares]]
-    $getGlobalVar[author]
   `
 }]
 
@@ -77,8 +102,17 @@ function findingRareInChallengeDataBase () {
 }
 
 
-function isCommon (rare) {
-  return `$includes[${rare};chocoToucan;keelBilledToucan;markhor]`
+function totalAttempts() {
+  return `
+    [
+      [["pigeon", "pig", "deer", "reindeer", "swinehoe"\\], 1\\],
+      [["donkey", "macaw", "giraffe", "cheetah", "toucan", "pufferfish"\\], 120\\],
+      [["tiger"\\], 100\\],
+      [["lion", "falcon", "vulture"\\], 60\\],
+      [["rhino", "baldEagle", "markhor"\\], 30\\],
+      [["whiteGiraffe"\\], 5\\]
+    \\]
+  `
 }
 
 function luckGenerator () {
@@ -138,43 +172,9 @@ function luckGenerator () {
       $arrayConcat[fullAttemptArr;rarePool;commonArr]
       $arrayShuffle[fullAttemptArr]
 
-      $if[$includes[-$get[keyName]-;-pigeon-;-pig-;-deer-;-reindeer-;-swinehoe-];
-        $jsonLoad[fullAttemptArr;$arraySplice[fullAttemptArr;0;1]]
-      ]
-      $if[$includes[-$get[keyName]-;-donkey-;-macaw-;-giraffe-;-cheetah-;-toucan-;-pufferfish-];
-        $jsonLoad[fullAttemptArr;$arraySplice[fullAttemptArr;0;120]]
-      ]
-      $if[$includes[-$get[keyName]-;-tiger-];
-        $jsonLoad[fullAttemptArr;$arraySplice[fullAttemptArr;0;60]]
-      ]
-      $if[$includes[-$get[keyName]-;-lion-;-falcon-;-vulture-];
-        $jsonLoad[fullAttemptArr;$arraySplice[fullAttemptArr;0;75]]
-      ]
-      $if[$includes[-$get[keyName]-;-rhino-;-baldEagle-;-markhor-];
-        $jsonLoad[fullAttemptArr;$arraySplice[fullAttemptArr;0;30]]
-      ]
-      $if[$includes[-$get[keyName]-;-whiteGiraffe-];
-        $jsonLoad[fullAttemptArr;$arraySplice[fullAttemptArr;0;5]]
-      ]
-
       $!jsonSet[allRareAttemptsInfo;$get[keyName];{
         "attempts": $env[fullAttemptArr]
       }]
     ]
-  `
-}
-
-function findingRareInRaresMapBase () {
-  return `
-    $loop[$arrayLength[raresMap];
-      $let[j;$math[$env[j] - 1]]
-
-      $jsonLoad[rareMap;$arrayAt[raresMap;$get[j]]]
-      $jsonLoad[raresList;$env[rareMap;rares]]
-
-      $if[$arrayIncludes[raresList;$get[animalID]];
-        $break
-      ]
-    ;j;desc]
   `
 }
