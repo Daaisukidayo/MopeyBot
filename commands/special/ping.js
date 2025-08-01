@@ -15,7 +15,7 @@ module.exports = ({
     $loop[2; 
         $let[desc$env[i];$advancedReplace[$env[l10n;ping;pingDesc$env[i];$get[l10n]];{0};$get[replace0];{1};$get[replace1]]]
         $if[$get[desc$env[i]]==; $let[desc$env[i];textNotFound | ID: $get[l10n]$env[i]]] 
-    ;i;desc]
+    ;i;true]
 
     **$get[desc1]**\n**$get[desc2]** 
   `

@@ -7,9 +7,9 @@ module.exports = [
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
-    $onlyIf[$getUserVar[1hstarted|$channelID;$authorID;false]==false;${errorEmbed()} $description[## You already have an active challenge!]]
-    $if[$message[0]==event;$setUserVar[event1hstarted|$channelID;true] $let[extraDesc;Event ]]
-    ${normalEmbed()}
+    $onlyIf[$getUserVar[1hstarted|$channelID;$authorID;false]==false;$callFunction[embed;error] $description[## You already have an active challenge!]]
+    
+    $callFunction[embed;lucky]
     $description[# $get[extraDesc]1 Hour Luck Challenge has begun!\n## Don't forget to turn on notification!]
     ${loadVarsForChallenge()}
     ${interval()}
@@ -20,7 +20,7 @@ module.exports = [
   code: `
     $reply
     ${isActiveChallenge()}
-    ${normalEmbed()}  
+    $callFunction[embed;lucky]  
     $if[$getUserVar[1hpaused];$description[## Status: Paused]]
     ${time()}
   `
@@ -32,24 +32,19 @@ module.exports = [
     ${isActiveChallenge()}
 
     $onlyIf[$getUserVar[1hpaused|$channelID]==false;
-      ${errorEmbed()}
+      $callFunction[embed;error]
       $description[## You already have paused the challenge!]
     ]
 
     $onlyIf[$getUserVar[1htime|$channelID]<3600;
-      ${errorEmbed()}
+      $callFunction[embed;error]
       $description[## Time's up!]
-    ]
-
-    $onlyIf[$getUserVar[event1hstarted|$channelID]!=true;
-      ${errorEmbed()}
-      $description[## Pause is disabled while in event mode!]
     ]
 
     $!stopInterval[1HLUCK-$authorID|$channelID]
     $setUserVar[1hpaused|$channelID;true]
 
-    ${normalEmbed()}
+    $callFunction[embed;lucky]
     $description[# Paused!\n$trimLines[${total()}]]
     ${time()}
   `
@@ -62,13 +57,13 @@ module.exports = [
     ${isActiveChallenge()}
 
     $onlyIf[$getUserVar[1hpaused|$channelID];
-      ${errorEmbed()} 
+      $callFunction[embed;error] 
       $description[## You haven't paused your challenge!]
     ]
 
     $setUserVar[1hpaused|$channelID;false]
 
-    ${normalEmbed()}
+    $callFunction[embed;lucky]
     $description[# Continued!\n$trimLines[${total()}]]
     ${time()}
     ${interval()}
@@ -117,7 +112,7 @@ module.exports = [
       ]
       $sendMessage[$channelID;
         $get[content]
-        ${normalEmbed()}
+        $callFunction[embed;lucky]
         $description[$trimLines[
           # $get[desc]
           ${total()}
@@ -146,7 +141,7 @@ module.exports = [
     ${isActiveChallenge()}
     ${json()}
     $description[# 1 Hour Luck Ended!\n$trimLines[${pts()}]]
-    ${normalEmbed()}
+    $callFunction[embed;lucky]
     $sendMessage[$channelID]
     ${reset()}
     ${partyEnd()}
@@ -165,25 +160,14 @@ module.exports = [
       $let[id;$mentioned[0]]
     ]
     $jsonLoad[userProfile;$getUserVar[userProfile;$get[id]]]
-    $onlyIf[$getuservar[1hstarted|$channelID;$get[id]];${errorEmbed()} $description[## $if[$get[id]!=$authorID;__$username[$get[id]]__ doesn't;You don't] have an active challenge!]]
-    ${normalEmbed()}
+    $onlyIf[$getuservar[1hstarted|$channelID;$get[id]];
+      $callFunction[embed;error] 
+      $description[## $if[$get[id]!=$authorID;__$username[$get[id]]__ doesn't;You don't] have an active challenge!]
+    ]
+    $callFunction[embed;lucky]
     $author[$userDisplayName[$get[id]] • MUID: $env[userProfile;MUID];$userAvatar[$get[id]]]
     $description[$trimLines[${pts("$get[id]")}]]
     ${time("$get[id]")}
-  `
-},{
-  name: "editpoints",
-  aliases: ["epts", "editscore", "escr"],
-  type: "messageCreate",
-  description: "disabled",
-  code: `
-    $stop
-    $reply
-    ${isActiveChallenge()}
-    $onlyIf[$and[$isNumber[$message];$message>=0];${errorEmbed()} $description[## Only a number greater than or equal to 0 is allowed!]]
-    $setUserVar[1hpoints;$message]
-    ${normalEmbed()}
-    ${pts()}
   `
 },{
   name: "edittime",
@@ -192,7 +176,10 @@ module.exports = [
   code: `
     $reply
     ${isActiveChallenge()}
-    $onlyIf[$or[$and[$isNumber[$message];$message>=0;$message<3600];$checkContains[$message;:]];${errorEmbed()} $description[## Your time must be:\n### Bigger than or equal to 0\n### Lower than 3600\n# Or\n### In format «\`MM:SS\`»]]
+    $onlyIf[$or[$and[$isNumber[$message];$message>=0;$message<3600];$checkContains[$message;:]];
+      $callFunction[embed;error] 
+      $description[## Your time must be:\n### Bigger than or equal to 0\n### Lower than 3600\n# Or\n### In format «\`MM:SS\`»]
+    ]
     
     $if[$checkContains[$message;:];
       $let[res;$round[$math[$unparseDigital[00:$message] / 1000]]]
@@ -200,7 +187,7 @@ module.exports = [
       $let[res;$message]
     ]
     $setUserVar[1htime|$channelID;$get[res]]
-    ${normalEmbed()}
+    $callFunction[embed;lucky]
     $description[$trimLines[${total()}]]
     ${time()}
   `
@@ -220,22 +207,22 @@ module.exports = [
     $let[usage;## Usage: \`$getGuildVar[prefix]editlist <rare> [+ || -\\] <amount>\`]
     
     $onlyIf[$get[arg1]!=;
-      ${errorEmbed()} 
+      $callFunction[embed;error] 
       $description[$get[usage]]
     ]
 
     $onlyIf[$arrayIncludes[allRares;$get[arg1]];
-      ${errorEmbed()} 
+      $callFunction[embed;error] 
       $description[## The rare «\`$get[arg1]\`» does not exist!]
     ]
 
     $onlyIf[$or[$get[arg2]==+;$get[arg2]==-];
-      ${errorEmbed()} 
+      $callFunction[embed;error] 
       $description[$get[usage]]
     ]
 
     $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$and[$isNumber[$get[arg3]];$get[arg3]>0]];
-      ${errorEmbed()} 
+      $callFunction[embed;error] 
       $description[### Only a number greater than 0 or argument «\`all\`» (if removing) is allowed!]
     ]
     
@@ -256,7 +243,7 @@ module.exports = [
     ]
 
     $if[$and[$jsonHas[allRaresList;$get[animal]]==false;$get[arg2]==-];
-      ${errorEmbed()} 
+      $callFunction[embed;error] 
       $description[### Animal «$get[animal]» is not in the rares list!]
       $sendMessage[$channelID]
       $stop
@@ -296,7 +283,7 @@ module.exports = [
     $let[animal;$env[animals;$get[animal];variants;0;${type}]]
 
     ## ✅ $get[state] \`$get[count]\` $get[animal]
-    ${normalEmbed()}
+    $callFunction[embed;lucky]
     $description[$trimLines[${pts()}]]
     ${time()}
   `
@@ -315,20 +302,22 @@ module.exports = [
   `
 },{
   type: "interactionCreate",
-  allowedInteractionTypes: ["selectMenu"],
+  allowedInteractionTypes: ["button"],
   description: "settings buttons",
   code: `
     $arrayLoad[menu;-;$customID]
-    $let[value;$selectMenuValues]
+    $let[value;$env[menu;0]]
+    ${loadGlobalJSON()}
 
     $onlyIf[$arrayIncludes[menu;$authorID];$callFunction[notYourBTN]]
-    $onlyIf[$includes["$get[value]";"hidePoints";"hideRares";"unlimitedRares";"displayRaresLimit"]]
+    $onlyIf[$arraySome[globalSettingsKeys;key;$arrayIncludes[menu;$env[key]]]]
 
     $!stopTimeout[SETT-$authorID]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 
     $let[sett;$env[userProfile;1hl;settings;$get[value]]]
+    $let[sett;$default[$get[sett];false]]
     $let[newSett;$checkCondition[$get[sett]==false]]
 
     $!jsonSet[userProfile;1hl;settings;$get[value];$get[newSett]]
@@ -429,15 +418,13 @@ module.exports = [
     $onlyIf[$getChannelVar[participants]==;
       $jsonLoad[participants;$getChannelVar[participants]]
       ${participants(true)}
-      $author[✖️ Failed to create a Lobby]
+      $callFunction[embed;error]
       $description[## Party already exist in this channel!]
       $addField[Participants:;$codeBlock[$get[parts]]]
-      $color[$getGlobalVar[errorColor]]
     ]
     $onlyIf[$getUserVar[1hstarted|$channelID]!=true;
-      $author[✖️ Failed to create a Lobby]
+      $callFunction[embed;error]
       $description[## You have an active challenge! End it before creating a Lobby!]
-      $color[$getGlobalVar[errorColor]]
     ]
     
     $arrayLoad[participants; ;$authorID]
@@ -465,25 +452,22 @@ module.exports = [
     $onlyIf[$arrayIncludes[participants;$authorID]==false;
       $interactionReply[
         $ephemeral
-        $author[✖️ Error]
+        $callFunction[embed;error]
         $description[## You're already participating]
-        $color[$getGlobalVar[errorColor]]
       ]
     ]
     $onlyIf[$getUserVar[1hstarted|$channelID;$authorID;false]!=true;
       $interactionReply[
         $ephemeral
-        $author[✖️ Error]
+        $callFunction[embed;error]
         $description[## You have an active challenge! Complete it before participating]
-        $color[$getGlobalVar[errorColor]]
       ]
     ]
     $onlyIf[$arrayLength[participants]<6;
       $interactionReply[
         $ephemeral
-        $author[✖️ Error]
+        $callFunction[embed;error]
         $description[## The Lobby is full]
-        $color[$getGlobalVar[errorColor]]
       ]
     ]
 
@@ -513,9 +497,8 @@ module.exports = [
     $onlyIf[$arrayIncludes[participants;$authorID];
       $interactionReply[
         $ephemeral
-        $author[✖️ Error]
+        $callFunction[embed;error]
         $description[## You're not a participant]
-        $color[$getGlobalVar[errorColor]]
       ]
     ]
 
@@ -588,9 +571,8 @@ module.exports = [
     $onlyIf[$env[participants;1]!=;
       $interactionReply[
         $ephemeral
-        $author[✖️ Error]
+        $callFunction[embed;error]
         $description[## You can't start alone!]
-        $color[$getGlobalVar[errorColor]]
       ]
     ]
 
@@ -602,9 +584,8 @@ module.exports = [
     $onlyIf[$get[allRdy];
       $interactionReply[
         $ephemeral
-        $author[✖️ Failed to start]
+        $callFunction[embed;error]
         $description[## Someone is not ready!]
-        $color[$getGlobalVar[errorColor]]
       ]
     ]
 
@@ -655,9 +636,8 @@ module.exports = [
     $onlyIf[$arrayIncludes[participants;$authorID];
       $interactionReply[
         $ephemeral
-        $author[✖️ Error]
+        $callFunction[embed;error]
         $description[## You're not a participant]
-        $color[$getGlobalVar[errorColor]]
       ]
     ]
 
@@ -689,9 +669,8 @@ module.exports = [
     $onlyIf[$arrayIncludes[participants;$authorID];
       $interactionReply[
         $ephemeral
-        $author[✖️ Error]
+        $callFunction[embed;error]
         $description[## You're not a participant]
-        $color[$getGlobalVar[errorColor]]
       ]
     ]
 
@@ -719,7 +698,7 @@ module.exports = [
     ${json()}
     
     $description[# 1 Hour Luck Ended!\n$trimLines[${pts()}]]
-    ${normalEmbed()}
+    $callFunction[embed;lucky]
     $!editMessage[$channelID;$messageID]
     ${challengeEnded()}
     ${partyEnd()}
@@ -757,7 +736,7 @@ module.exports = [
       
       $let[newQuantity;$math[$env[allRaresList;$get[animalID]] + 1]]
       $!jsonSet[allRaresList;$get[animalID];$get[newQuantity]]    
-    ;i;desc]
+    ;i;true]
 
     $jsonLoad[listEntries;$jsonEntries[allRaresList]]
 
@@ -830,7 +809,7 @@ function catchingRare() {
       ]
 
       $onlyIf[$getUserVar[1hpaused|$channelID]!=true;
-        ${errorEmbed()} 
+        $callFunction[embed;error] 
         $description[## You are on pause!] 
         $sendMessage[$channelID]
       ]
@@ -871,7 +850,7 @@ function catchingRare() {
       ;
         $arrayPush[caught;0]
       ]
-    ;i;desc]
+    ;i;true]
   `
 }
 
@@ -898,7 +877,7 @@ function findingRareInChallengeDataBase () {
       $if[$arrayIncludes[challengeDataRaresList;$get[animalID]];
         $break
       ]
-    ;j;desc]
+    ;j;true]
   `
 }
 
@@ -914,7 +893,7 @@ function findingAnimalID () {
       $if[$arrayIncludes[arrAliases;$get[caughtRare]];
         $break
       ]
-    ;k;desc]
+    ;k;true]
   `
 }
 
@@ -1030,9 +1009,8 @@ function partyExist() {
   return `
     $onlyIf[$getChannelVar[participants]!=;
       $ephemeral
-      $author[✖️ Error]
+      $callFunction[embed;error]
       $description[## Party does not exist anymore]
-      $color[$getGlobalVar[errorColor]]
     ]
   `
 }
@@ -1057,7 +1035,7 @@ function isActiveChallenge () {
   return `
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
-    $onlyIf[$getUserVar[1hstarted|$channelID];${errorEmbed()} $description[## You don't have an active challenge!]]
+    $onlyIf[$getUserVar[1hstarted|$channelID];$callFunction[embed;error] $description[## You don't have an active challenge!]]
   `
 }
 
@@ -1158,7 +1136,7 @@ function limitedCategory() {
           ]
           $break
 
-        ;i;desc]
+        ;i;true]
       ]
     ]
   `
@@ -1185,7 +1163,7 @@ function total (id = "$authorID") {
 function historyEmbed() {
   return `
     $let[index;$math[$get[page] - 1]]
-    ${normalEmbed()}
+    $callFunction[embed;lucky]
     ${raresListGenerator(true)}
     $footer[Sort Type: $get[sort]]
     $description[$trimLines[
@@ -1252,26 +1230,52 @@ function particEmbed () {
 
 function settingsEmbed() {
   return `
-    $let[hidePoints;$env[userProfile;1hl;settings;hidePoints]]
-    $let[hideRares;$env[userProfile;1hl;settings;hideRares]]
-    $let[unlimitedRares;$env[userProfile;1hl;settings;unlimitedRares]]
-    $let[displayRaresLimit;$env[userProfile;1hl;settings;displayRaresLimit]]
-    $let[disableBut;false]
+    $jsonLoad[userSettings;$env[userProfile;1hl;settings]]
 
-    $title[Settings:]
-    ${normalEmbed()}
-    $description[### Hide Total Points: \`$get[hidePoints]\`
-    ### Hide Total Rares: \`$get[hideRares]\`
-    ### Unlimited Rares: \`$get[unlimitedRares]\`
-    ### Display Rares Limit: \`$get[displayRaresLimit]\`
+    ${loadGlobalJSON()}
+
+    $let[disableBut;false]
+    $let[desc;]
+
+    $jsonLoad[contents;
+      [
+        "Hide Points",
+        "Hide Rares",
+        "Unlimited Rares",
+        "Display Rares Limit",
+        "Difficulties"
+      \\]
     ]
-    
-    $addActionRow
-    $addStringSelectMenu[challengeSettings-$authorID;Open settings]
-    $addOption[$if[$get[hidePoints];Disable;Enable] «Hide Total Points»;;hidePoints]
-    $addOption[$if[$get[hideRares];Disable;Enable] «Hide Total Rares»;;hideRares]
-    $addOption[$if[$get[unlimitedRares];Disable;Enable] «Unlimited Rares»;;unlimitedRares]
-    $addOption[$if[$get[displayRaresLimit];Disable;Enable] «Display Rares Limit»;;displayRaresLimit]
+
+    $let[i;0]
+
+    $addContainer[
+      $addSection[
+        $addTextDisplay[**$userDisplayName • MUID: $env[userProfile;MUID]**]
+        $addThumbnail[$userAvatar]
+      ]
+      $addSeparator
+      $addTextDisplay[# Settings:]
+
+      $arrayForEach[globalSettingsEntries;setting;
+        $let[key;$env[setting;0]]
+        $let[value;$env[setting;1]]
+        $let[value;$default[$env[userSettings;$get[key]];$get[value]]]
+
+        $let[content;$arrayAt[contents;$get[i]]]
+        $if[$get[value];  $let[state;Enabled] $let[style;Success] ;  $let[state;Disabled] $let[style;Danger] ]
+
+        $addSection[
+          $addTextDisplay[### $get[content]]
+          $addButton[$get[key]-$authorID;$get[state];$get[style]]
+        ]
+
+        $letSum[i;1]
+      ]
+
+      $addSeparator[Large]
+        $addTextDisplay[### Difficulty: null]
+    ;$getGlobalVar[luckyColor]]
   `
 }
 
@@ -1282,23 +1286,19 @@ function startingEmbed() {
   `
 }
 
-function errorEmbed () {
-  return `
-    $author[✖️ Error!]
-    $color[$getGlobalVar[errorColor]]
-  `
-}
-
-function normalEmbed () {
-  return `
-    $getGlobalVar[author]
-    $color[$getGlobalVar[luckyColor]]
-  `
-}
-
 // other
 
+function loadGlobalJSON() {
+  return `
+    $jsonLoad[globalProfile;$getGlobalVar[userProfile]]
+    $jsonLoad[globalSettings;$env[globalProfile;1hl;settings]]
+    $jsonLoad[globalSettingsKeys;$jsonKeys[globalSettings]]
+    $jsonLoad[globalSettingsEntries;$jsonEntries[globalSettings]]
+  `
+}
+
 function settingsTimeout() {
+  return ``
   return `
     $setTimeout[
       $disableComponentsOf[$channelID;$get[msg]]
@@ -1342,9 +1342,8 @@ function sortBtnLogic () {
       $onlyIf[$isNumber[$get[input]];
         $interactionReply[
           $ephemeral
-          $author[✖️ Invalid Arguments!]
+          $callFunction[embed;error]
           $description[## Argument is not a number!]
-          $color[$getGlobalVar[errorColor]]
         ]
       ]
       $let[page;$get[input]]

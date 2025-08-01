@@ -156,13 +156,13 @@ function jsonAndArray() {
     $jsonLoad[raretryModes;$env[raretryVarData;raretryModes]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
-    $let[l10n;$env[userProfile;l10n]]
+    $let[l10n;$env[userProfile;language]]
     $let[specialDesc1;$env[l10n;special;specialDesc1;$get[l10n]]] 
 
     $loop[8; 
         $let[desc$env[i];$env[l10n;caughtRares;caughtRaresDesc$env[i];$get[l10n]]]
         $if[$get[desc$env[i]]==; $let[desc$env[i];???]] 
-    ;i;desc]
+    ;i;true]
   `;
 }
 

@@ -49,7 +49,7 @@ module.exports = [{
 
         $arrayShuffle[raresArr]
         $let[i;0]
-      ;]
+      ]
     ]
 
     $jsonLoad[result;$jsonEntries[result]]
@@ -74,7 +74,9 @@ module.exports = [{
       $letSum[totalPoints;$get[mathResult]]
       $letSum[totalRares;$get[quantity]]
 
-      $let[msgdesc;$get[msgdesc]$get[animalDisplay]\`$get[quantity]\` * $get[challengeDataPoints] = $get[mathResult]\n]
+      $if[false;$let[rest; * $get[challengeDataPoints] = $get[mathResult]]]
+
+      $let[msgdesc;$get[msgdesc]$get[animalDisplay]\`$get[quantity]\`$get[rest]\n]
     ]
 
     $callFunction[embed;lucky]
@@ -97,7 +99,7 @@ function findingRareInChallengeDataBase () {
       $if[$arrayIncludes[challengeDataRaresList;$get[animalID]];
         $break
       ]
-    ;j;desc]
+    ;j;true]
   `
 }
 
@@ -106,11 +108,11 @@ function totalAttempts() {
   return `
     [
       [["pigeon", "pig", "deer", "reindeer", "swinehoe"\\], 1\\],
-      [["donkey", "macaw", "giraffe", "cheetah", "toucan", "pufferfish"\\], 120\\],
-      [["tiger"\\], 100\\],
-      [["lion", "falcon", "vulture"\\], 60\\],
-      [["rhino", "baldEagle", "markhor"\\], 30\\],
-      [["whiteGiraffe"\\], 5\\]
+      [["donkey", "macaw", "giraffe", "cheetah", "toucan", "pufferfish"\\], 150\\],
+      [["tiger"\\], 150\\],
+      [["lion", "falcon", "vulture"\\], 150\\],
+      [["rhino", "baldEagle", "markhor"\\], 50\\],
+      [["whiteGiraffe"\\], 10\\]
     \\]
   `
 }
@@ -163,7 +165,7 @@ function luckGenerator () {
           $arrayConcat[rarePool;rarePool;oneRareArr]
           $letSum[totalRare;$get[countRare]]
         ]
-      ;ri;desc]
+      ;ri;true]
 
       $let[totalCommons;$math[$get[totalAttempts] - $get[totalRare]]]
       $arrayCreate[commonArr;$get[totalCommons]]

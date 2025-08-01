@@ -26,7 +26,7 @@ module.exports = [{
         $arrayLoad[content$env[i];--;$if[${rep()}==;textNotFound | ID: $get[l10n]$env[i];${rep()}]]
         $let[raretryDesc$env[i];$env[l10n;raretry;raretryDesc$env[i];$get[l10n]]]
         $if[$get[raretryDesc$env[i]]==;$let[raretryDesc$env[i];textNotFound | ID: $get[l10n]$env[i]]]
-    ;i;desc]
+    ;i;true]
 
     $let[rtMode;$env[userProfile;rtMode]]
 

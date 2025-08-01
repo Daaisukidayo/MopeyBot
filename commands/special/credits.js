@@ -14,7 +14,7 @@ module.exports = [{
     $loop[6; 
         $let[desc$env[i];$env[l10n;credits;creditsDesc$env[i];$get[l10n]]] 
         $if[$get[desc$env[i]]==; $let[desc1;textNotFound | ID: $get[l10n]$env[i]]] 
-    ;i;desc]
+    ;i;true]
 
     $title[__$get[desc6]__]
     $description[**$get[desc1]: $username[485453670729646090]

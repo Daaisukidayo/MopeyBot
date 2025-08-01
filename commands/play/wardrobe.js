@@ -126,8 +126,8 @@ module.exports = [{
         $let[desc;$get[desc] $env[v;emoji]]
         $break
 
-      ;j;desc]
-    ;i;desc]
+      ;j;true]
+    ;i;true]
 
     $setUserVar[userProfile;$env[userProfile]]
 
@@ -250,7 +250,7 @@ function loop() {
           $addOption[$get[animalName];$get[animalDesc];$get[animalTrig]-$authorID;$get[animalEmoji]]
         ]
       ]
-    ;i;desc]
+    ;i;true]
   `
 }
 

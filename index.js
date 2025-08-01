@@ -35,7 +35,7 @@ const client = new ForgeClient({
   ],
   events: ["interactionCreate", "messageCreate", "ready"],
   prefixes: ["$if[$guildID!=;$getGuildVar[prefix];$getGlobalVar[prefix]]"],
-  logLevel: LogPriority.VeryLow,
+  logLevel: LogPriority.Low,
 });
 
 // ========== LOAD COMMANDS ==========
@@ -88,6 +88,7 @@ DB.variables({
         hideRares: false,
         unlimitedRares: false,
         displayRaresLimit: true,
+        difficulties: false,
       },
     },
 
@@ -480,6 +481,39 @@ DB.variables({
     }
   ],
 
+  normalChartLimits: [
+    {
+      category: "trash",
+      limit: 5
+    }
+  ],
+
+  mediumChartLimits: [
+    {
+      category: "trash",
+      limit: 5
+    },
+    {
+      category: "common",
+      limit: 3
+    }
+  ],
+
+  hardChartLimits: [
+    {
+      category: "trash",
+      limit: 5
+    },
+    {
+      category: "common",
+      limit: 3
+    },
+    {
+      category: "uncommon",
+      limit: 2
+    }
+  ],
+
   eventChartLimits: [
     {
       category: "trash",
@@ -785,7 +819,7 @@ client.functions.add({
     $let[relativeTimeLeft;$discordTimestamp[$get[cooldownTime];RelativeTime]]
 
     $jsonLoad[l;$readFile[json/localizations.json]]
-    $let[l10n;$env[userProfile;l10n]]
+    $let[l10n;$env[userProfile;language]]
     $let[cooldownDesc1;$env[l;cooldown;cooldownDesc1;$get[l10n]]] 
     $let[cooldownDesc2;$advancedReplace[$env[l;cooldown;cooldownDesc2;$get[l10n]];{1};$get[relativeTimeLeft];{2};$get[longDateTime]]] 
     
@@ -849,7 +883,7 @@ client.functions.add({
   name: "interFail",
   code: `
     $jsonLoad[l;$readFile[json/localizations.json]]
-      $let[l10n;$env[userProfile;l10n]]
+      $let[l10n;$env[userProfile;language]]
       $let[specialDesc2;$env[l;special;specialDesc2;$get[l10n]]] 
     $ephemeral 
     $interactionReply[$get[specialDesc2]]
@@ -862,7 +896,7 @@ client.functions.add({
   name: "notYourBTN",
   code: `
     $jsonLoad[l;$readFile[json/localizations.json]]
-    $let[l10n;$env[userProfile;l10n]]
+    $let[l10n;$env[userProfile;language]]
     $let[specialDesc3;$env[l;special;specialDesc3;$get[l10n]]] 
     $ephemeral
     $interactionReply[$get[specialDesc3]]

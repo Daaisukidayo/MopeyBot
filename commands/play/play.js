@@ -764,7 +764,7 @@ function luckGenerator () {
           $arrayConcat[rarePool;rarePool;oneRareArr]
           $letSum[totalRare;$get[countRare]]
         ]
-      ;ri;desc]
+      ;ri;true]
 
       $let[totalCommons;$math[$get[totalAttempts] - $get[totalRare]]]
       $arrayCreate[commonArr;$get[totalCommons]]
@@ -802,7 +802,7 @@ function setNewTier () {
         $!jsonSet[playData;tier;$env[i]]
         $break
       ]
-    ;i;desc]
+    ;i;true]
   `
 }
 
@@ -1104,7 +1104,7 @@ function animalsButtonsGenerator() {
       ]
 
       ${varsForButtonGen()}
-    ;i;desc]
+    ;i;true]
   `
 }
 
