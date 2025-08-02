@@ -8,7 +8,7 @@ module.exports = [{
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
-    $let[cdTime;10s]
+    $let[cdTime;5s]
     $callFunction[cooldown;$get[cdTime]]
 
     $let[arg;$toLowercase[$message]]
