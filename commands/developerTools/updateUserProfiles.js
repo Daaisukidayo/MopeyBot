@@ -6,21 +6,16 @@ module.exports = {
     $reply
     $onlyForUsers[;$botOwnerID]
     $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
-    $jsonLoad[newUserProfile;$getGlobalVar[userProfile]]
+    $jsonLoad[globalProfile;$getGlobalVar[userProfile]]
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[animalsKeys;$jsonKeys[animals]]
 
     $arrayForEach[allUserIDs;ID;
       $jsonLoad[userProfile;$getUserVar[userProfile;$env[ID]]]
-      $jsonLoad[finalProfile;{}]
-      $jsonLoad[profileKeys;$jsonKeys[userProfile]]
-      $let[lang;$env[userProfile;l10n]]
-      $let[index;$arrayIndexOf[profileKeys;l10n]]
-      $!jsonSet[profileKeys;$get[index];language]
-      $arrayForEach[profileKeys;key;
-        $!jsonSet[finalProfile;$env[key];$default[$env[userProfile;$env[key]];$get[lang]]]
-      ]
+      $!jsonSet[userProfile;1hl;settings;$env[globalProfile;1hl;settings]]
+      $!jsonSet[userProfile;1hl;difficulty;$env[globalProfile;1hl;difficulty]]
       $setUserVar[userProfile;$env[userProfile];$env[ID]]
+      
     ]
 
     $callFunction[embed;default]

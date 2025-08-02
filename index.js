@@ -86,10 +86,11 @@ DB.variables({
       settings: {
         hidePoints: false,
         hideRares: false,
+        hideRaresLimit: false,
         unlimitedRares: false,
-        displayRaresLimit: true,
         difficulties: false,
       },
+      difficulty: "normal"
     },
 
     userPacks: {},
@@ -331,6 +332,8 @@ DB.variables({
     Forest: "#006400",
   },
 
+  difficulties: ["normal", "medium", "hard"],
+
   raretryVarData: {
     coinsForRaretry: {
       inferno: [0, 0, 0, 0, 190, 375, 560, 750, 940],
@@ -510,7 +513,7 @@ DB.variables({
     },
     {
       category: "uncommon",
-      limit: 2
+      limit: 1
     }
   ],
 

@@ -1,4 +1,4 @@
-const type = 'name' // editable between 'name' and 'emoji' to show name or emoji in rares list
+const type = 'name' // editable between 'name' and 'emoji'. Shows animal's name or emoji in "all rares list"
 module.exports = [
 {
   name: "start",
@@ -7,8 +7,15 @@ module.exports = [
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
-    $onlyIf[$getUserVar[1hstarted|$channelID;$authorID;false]==false;$callFunction[embed;error] $description[## You already have an active challenge!]]
-    
+    $onlyIf[$getUserVar[1hstarted|$channelID;$authorID;false]==false;
+      $callFunction[embed;error] 
+      $description[## You already have an active challenge!]
+    ]
+
+    $c[
+      $if[$message[0]==event;$setUserVar[event1hstarted|$channelID;true] $let[extraDesc;Event ]]
+    ]
+
     $callFunction[embed;lucky]
     $description[# $get[extraDesc]1 Hour Luck Challenge has begun!\n## Don't forget to turn on notification!]
     ${loadVarsForChallenge()}
@@ -21,7 +28,7 @@ module.exports = [
     $reply
     ${isActiveChallenge()}
     $callFunction[embed;lucky]  
-    $if[$getUserVar[1hpaused];$description[## Status: Paused]]
+    $if[$getUserVar[1hpaused|$channelID];$description[## Status: Paused]]
     ${time()}
   `
 },{
@@ -82,13 +89,18 @@ module.exports = [
     $jsonLoad[chartLimits;$getGlobalVar[chartLimits]]
     ${json()}
 
-    $if[$getUserVar[event1hstarted|$channelID];
-      $jsonLoad[chartLimits;$getGlobalVar[eventChartLimits]]
-    ]
+    $let[hasDifficulty;$env[userProfile;1hl;settings;difficulties]]
+    $let[difficulty;$env[userProfile;1hl;difficulty]]
+
+    $if[$getUserVar[event1hstarted|$channelID];  $jsonLoad[chartLimits;$getGlobalVar[eventChartLimits]]  ]
+
+    $if[$get[hasDifficulty];  $jsonLoad[chartLimits;$getGlobalVar[$get[difficulty]ChartLimits]]  ]
+
+    
     
     $let[points;0]
     $let[content;]
-    $let[displayRaresLimit;$env[userProfile;1hl;settings;displayRaresLimit]]
+    $let[hideRaresLimit;$env[userProfile;1hl;settings;hideRaresLimit]]
     
     $c[Looping through every rare]
 
@@ -118,7 +130,7 @@ module.exports = [
           ${total()}
         ]]
         ${time()}
-        $if[$and[$get[displayRaresLimit];$get[limiters]!=];
+        $if[$and[$get[hideRaresLimit]==false;$get[limiters]!=];
           $description[$trimLines[
             ## Limited Rares:
             $get[limiters]
@@ -309,22 +321,31 @@ module.exports = [
     $let[value;$env[menu;0]]
     ${loadGlobalJSON()}
 
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
     $onlyIf[$arrayIncludes[menu;$authorID];$callFunction[notYourBTN]]
-    $onlyIf[$arraySome[globalSettingsKeys;key;$arrayIncludes[menu;$env[key]]]]
+
+    $let[hasSettKey;$arraySome[globalSettingsKeys;key;$arrayIncludes[menu;$env[key]]]]
+    $let[hasDiffKey;$arraySome[difficulties;elem;$arrayIncludes[menu;$env[elem]]]]
+    $onlyIf[$or[$get[hasSettKey];$get[hasDiffKey]]]
 
     $!stopTimeout[SETT-$authorID]
 
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $if[$get[hasSettKey];
 
-    $let[sett;$env[userProfile;1hl;settings;$get[value]]]
-    $let[sett;$default[$get[sett];false]]
-    $let[newSett;$checkCondition[$get[sett]==false]]
+      $let[sett;$env[userProfile;1hl;settings;$get[value]]]
+      $let[sett;$default[$get[sett];false]]
+      $let[newSett;$checkCondition[$get[sett]==false]]
+      $!jsonSet[userProfile;1hl;settings;$get[value];$get[newSett]]
 
-    $!jsonSet[userProfile;1hl;settings;$get[value];$get[newSett]]
-
-    ${settingsEmbed()}
+    ;
+      $if[$get[hasDiffKey];
+        $!jsonSet[userProfile;1hl;difficulty;$get[value]]
+      ]
+    ]
 
     $setUserVar[userProfile;$env[userProfile]]
+    ${settingsEmbed()}
+
     $!editMessage[$channelID;$messageID]
     
     $deferUpdate
@@ -1230,19 +1251,20 @@ function particEmbed () {
 
 function settingsEmbed() {
   return `
-    $jsonLoad[userSettings;$env[userProfile;1hl;settings]]
-
+    $jsonLoad[user1hlData;$env[userProfile;1hl]]
+    $jsonLoad[userSettings;$env[user1hlData;settings]]
     ${loadGlobalJSON()}
+    $let[difficulty;$default[$env[user1hlData;difficulty];$arrayAt[difficulties;0]]]
 
-    $let[disableBut;false]
+    $let[disabled;false]
     $let[desc;]
 
     $jsonLoad[contents;
       [
         "Hide Points",
         "Hide Rares",
+        "Hide Rares Limit",
         "Unlimited Rares",
-        "Display Rares Limit",
         "Difficulties"
       \\]
     ]
@@ -1267,14 +1289,26 @@ function settingsEmbed() {
 
         $addSection[
           $addTextDisplay[### $get[content]]
-          $addButton[$get[key]-$authorID;$get[state];$get[style]]
+          $addButton[$get[key]-$authorID;$get[state];$get[style];;$get[disabled]]
         ]
 
         $letSum[i;1]
       ]
 
-      $addSeparator[Large]
-        $addTextDisplay[### Difficulty: null]
+      $if[$env[userSettings;difficulties];
+
+        $addSeparator[Large]
+        $addTextDisplay[### Difficulty]
+        $addActionRow
+        $arrayForEach[difficulties;elem;
+          $let[i;$arrayIndexOf[difficulties;$env[elem]]]
+          $let[disabled;$checkCondition[$get[difficulty]==$env[elem]]]
+          
+          $let[style;$arrayAt[styles;$get[i]]]
+          $addButton[$env[elem]-difficulty-$authorID;$toTitleCase[$env[elem]];$get[style];;$get[disabled]]
+        ]
+
+      ]
     ;$getGlobalVar[luckyColor]]
   `
 }
@@ -1294,6 +1328,8 @@ function loadGlobalJSON() {
     $jsonLoad[globalSettings;$env[globalProfile;1hl;settings]]
     $jsonLoad[globalSettingsKeys;$jsonKeys[globalSettings]]
     $jsonLoad[globalSettingsEntries;$jsonEntries[globalSettings]]
+    $jsonLoad[difficulties;$getGlobalVar[difficulties]]
+    $arrayLoad[styles;,;Success,Primary,Danger]
   `
 }
 
