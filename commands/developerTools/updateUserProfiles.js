@@ -12,10 +12,16 @@ module.exports = {
 
     $arrayForEach[allUserIDs;ID;
       $jsonLoad[userProfile;$getUserVar[userProfile;$env[ID]]]
-      $!jsonSet[userProfile;1hl;settings;$env[globalProfile;1hl;settings]]
-      $!jsonSet[userProfile;1hl;difficulty;$env[globalProfile;1hl;difficulty]]
-      $setUserVar[userProfile;$env[userProfile];$env[ID]]
-      
+      $jsonLoad[finalProfile;{}]
+      $jsonLoad[profileKeys;$jsonKeys[userProfile]]
+      $let[lang;$env[userProfile;l10n]]
+      $let[index;$arrayIndexOf[profileKeys;l10n]]
+      $!jsonSet[profileKeys;$get[index];language]
+      $arrayForEach[profileKeys;key;
+        $!jsonSet[finalProfile;$env[key];$default[$env[userProfile;$env[key]];$get[lang]]]
+      ]
+
+      $setUserVar[userProfile;$env[userProfile];$env[ID]]      
     ]
 
     $callFunction[embed;default]
