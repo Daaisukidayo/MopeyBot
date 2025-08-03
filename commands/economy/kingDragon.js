@@ -18,7 +18,7 @@ module.exports = [{
     ]
 
     $addContainer[
-      $callFunction[author]
+      $callFunction[newAuthor]
       $addSeparator
       $if[$get[luckRarity]==1;
         ${kdMenu('luck')}
@@ -54,7 +54,7 @@ module.exports = [{
     $jsonLoad[content;${deathContent()}]
 
     $addContainer[
-      $callFunction[author]
+      $callFunction[newAuthor]
       $addSeparator
 
       $if[$get[successChance]>=$get[successRarity];
@@ -101,7 +101,7 @@ module.exports = [{
     $callFunction[sumMC;$get[MC]]
 
     $addContainer[
-      $callFunction[author]
+      $callFunction[newAuthor]
       $addSeparator
       $addSection[
         $addTextDisplay[## You upgraded to __$get[KD]__ and you earned $separateNumber[$get[MC];,]$getGlobalVar[emoji]!]
@@ -139,7 +139,7 @@ module.exports = [{
     $callFunction[sumMC;$get[MC]]
 
     $addContainer[
-      $callFunction[author]
+      $callFunction[newAuthor]
       $addSeparator
       $addSection[
         $addTextDisplay[## You were trying to upgrade to Black Dragon, but suddenly you saw a different animal, it was __$get[KD]__ by luck in your upgrade menu! You were surprised and happy! You also earned $separateNumber[$get[MC];,]$getGlobalVar[emoji] from playing!]
