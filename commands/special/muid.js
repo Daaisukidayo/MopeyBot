@@ -17,17 +17,18 @@ module.exports = ({
 
     $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
 
-    $arrayForEach[allUserIDs;id;
-      $if[$get[break];;
-        $jsonLoad[otherUserProfile;$getUserVar[userProfile;$env[id]]]
-        $if[$env[otherUserProfile;MUID]==$get[arg];
-          $let[userID;$env[id]]
-          $let[userMUID;$env[otherUserProfile;MUID]]
-          $let[break;true]
-        ]
-      ]
-    ]
+    $loop[$arrayLength[allUserIDs];
+      $let[i;$math[$env[i] - 1]]
+      $let[id;$arrayAt[allUserIDs;$get[i]]]
 
+      $jsonLoad[otherUserProfile;$getUserVar[userProfile;$env[id]]]
+      $if[$env[otherUserProfile;MUID]==$get[arg];;$continue]
+
+      $let[userID;$env[id]]
+      $let[userMUID;$env[otherUserProfile;MUID]]
+
+      $break
+    ;i;true]
 
     $onlyIf[$and[$get[arg]>0;$get[userMUID]!=;$get[userID]!=];
       $color[$getGlobalVar[errorColor]]
@@ -39,7 +40,7 @@ module.exports = ({
       $author[@$username[$get[userID]] • MUID: $get[userMUID]]
       $footer[Discord ID: $get[userID]]
       $thumbnail[$userAvatar[$get[userID]]]
-      $description[# \`$separateNumber[$env[otherUserProfile;MC;];.]\`$getGlobalVar[emoji]]
+      $description[# \`$separateNumber[$env[otherUserProfile;MC;];,]\`$getGlobalVar[emoji]]
       $color[$getGlobalVar[defaultColor]]
     ]
   `

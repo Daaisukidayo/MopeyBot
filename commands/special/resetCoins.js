@@ -32,20 +32,27 @@ module.exports = [{
   allowedInteractionTypes: [ "button" ], 
   code:`
     $arrayLoad[btn;-;$customID]
-    $onlyIf[$and[$includes[$env[btn;0];confirmDeletingCoins;declineDeletingCoins];$includes[$env[btn;1];$authorID]];$callFunction[notYourBTN]]
-
+    $arrayLoad[passKeys;,;confirmDeletingCoins,declineDeletingCoins]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$arrayIncludes[btn;$authorID];$callFunction[notYourBTN]]
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[btn;$env[key]]]]
 
-    $if[$includes[$env[btn;0];confirmDeletingCoins];
-      $description[### Deleted all your \`$separateNumber[$env[userProfile;MC];,]\`$getGlobalVar[emoji]]
-      $!jsonSet[userProfile;MC;0]
-      $setUserVar[userProfile;$env[userProfile]]
-    ;
-      $description[### Deletion canceled!]
+    $switch[$env[btn;0];
+
+      $case[$env[passKeys;0];
+        $description[### Deleted all your \`$separateNumber[$env[userProfile;MC];,]\`$getGlobalVar[emoji]]
+        $!jsonSet[userProfile;MC;0]
+        $setUserVar[userProfile;$env[userProfile]]
+      ]
+
+      $case[$env[passKeys;1];
+        $description[### Deletion canceled!]
+      ]
+
     ]
+
     $color[$getGlobalVar[defaultColor]]
     $getGlobalVar[author]
-
     $!editMessage[$channelID;$messageID]
 
     $!stopTimeout[RC-$authorID]

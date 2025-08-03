@@ -25,11 +25,12 @@ module.exports = [{
     $let[r;$randomNumber[100000;150001]]
     $callFunction[sumMC;$get[r]]
     
-    $sendMessage[$channelID;
-      $description[## Your weekly reward is $get[r]$getGlobalVar[emoji]!]
-      $getGlobalVar[author]
-      $color[$getGlobalVar[defaultColor]] 
-    ]
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator
+      $addTextDisplay[## Your weekly reward is $get[r]$getGlobalVar[emoji]!]
+    ;$getGlobalVar[defaultColor]]
+    
     $setUserVar[userProfile;$env[userProfile]]
   `
 }]

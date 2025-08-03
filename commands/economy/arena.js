@@ -24,7 +24,7 @@ module.exports = [{
     ]
 
     $addContainer[
-      $callFunction[author]
+      $callFunction[newAuthor]
       $addSeparator
       $addTextDisplay[## $get[desc]]
     ;$get[color]]

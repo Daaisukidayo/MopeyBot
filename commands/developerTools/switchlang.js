@@ -21,7 +21,7 @@ module.exports = [{
       $description[## Unknown language!]
     ]
 
-    $if[$env[userProfile;l10n]==EN;
+    $if[$env[userProfile;language]==EN;
       $let[desc;Язык бота был изменен на \`$env[lang;RU]\`!]
     ;
       $let[desc;Switched Bot's language to \`$env[lang;EN]\`!]

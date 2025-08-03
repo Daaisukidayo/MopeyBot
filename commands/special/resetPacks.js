@@ -27,20 +27,27 @@ module.exports = [{
   allowedInteractionTypes: [ "button" ], 
   code:`
     $arrayLoad[btn;-;$customID]
-    $onlyIf[$and[$includes[$env[btn;0];declineDeletingPacks;confirmDeletingPacks];$includes[$env[btn;1];$authorID]];$callFunction[notYourBTN]]
-
+    $arrayLoad[passKeys;,;confirmDeletingPacks,declineDeletingPacks]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$arrayIncludes[btn;$authorID];$callFunction[notYourBTN]]
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[btn;$env[key]]]]
 
-    $if[$includes[$env[btn;0];confirmDeletingPacks];
-      $description[### Deleted all your Skin Packs]
-      $!jsonSet[userProfile;userPacks;{}]
-      $setUserVar[userProfile;$env[userProfile]]
-    ;
-      $description[### Deletion canceled!]
+    $switch[$env[btn;0];
+
+      $case[$env[passKeys;0];
+        $description[### Deleted all your Skin Packs]
+        $!jsonSet[userProfile;userPacks;{}]
+        $setUserVar[userProfile;$env[userProfile]]
+      ]
+
+      $case[$env[passKeys;1];
+        $description[### Deletion canceled!]
+      ]
+
     ]
+
     $color[$getGlobalVar[defaultColor]]
     $getGlobalVar[author]
-
     $!editMessage[$channelID;$messageID]
 
     $!stopTimeout[RP-$authorID]

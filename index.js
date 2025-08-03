@@ -332,6 +332,22 @@ DB.variables({
     Forest: "#006400",
   },
 
+  darkApexEmojis: {
+    dragon: '<:DragonS1Dark:1327711395860451461>',
+    trex: '<:TRexS1Dark:1327711207414566962>',
+    phoenix: '<:PhoenixS1Dark:1327711260560851134>',
+    pterodactyl: '<:PteroS1Dark:1327711247055065098>',
+    kraken: '<:KrakenS1Dark:1327711355024703540>',
+    kingCrab: '<:KingCrabS1Dark:1327711368316583976>',
+    yeti: '<:YetiS1Dark:1327711197025407088>',
+    landMonster: '<:LandS1Dark:1327711335944945735>',
+    dinoMonster: '<:DinoS1Dark:1327711412411170876>',
+    giantScorpion: '<:ScorpS1Dark:1327711231737466981>',
+    seaMonster: '<:SeaS1Dark:1327711219318001674>',
+    iceMonster: '<:IceS1Dark:1327711379964297316>',
+    blackDragon: '<:BDragS1Dark:1327711428324364461>',
+  },
+
   difficulties: ["normal", "medium", "hard"],
 
   raretryVarData: {
@@ -910,17 +926,14 @@ client.functions.add({
   name: "embed",
   params: ["colorType"],
   code: `
-    $if[$env[colorType]==error;
-      $author[✖️ Error!]
-    ;
-      $getGlobalVar[author]
-    ]
+    $author[✖️ Error!]
+    $if[$env[colorType]!=error;$getGlobalVar[author]]
     $color[$getGlobalVar[$env[colorType]Color]]
   `
 })
 
 client.functions.add({
-  name: "author",
+  name: "newAuthor",
   code: `
     $return[
       $addSection[

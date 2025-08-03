@@ -1272,7 +1272,7 @@ function settingsEmbed() {
     $let[i;0]
 
     $addContainer[
-      $callFunction[author]
+      $callFunction[newAuthor]
       $addSeparator
       $addTextDisplay[# Settings:]
 

@@ -31,7 +31,7 @@ module.exports = [{
   type: "messageCreate",
   unprefixed: true,
   code: `
-    $onlyIf[$mentioned[0]==$botID]
+    $onlyIf[$mentioned==$botID]
     $onlyIf[$noMentionMessage==]
     $onlyIf[$guildID!=]
 

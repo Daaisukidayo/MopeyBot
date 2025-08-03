@@ -20,6 +20,7 @@ module.exports = [{
     $jsonLoad[chartLimits;$getGlobalVar[$toCamelCase[$get[arg] chart limits]]]
     $jsonLoad[result;{}]
     $jsonLoad[totalAttempts;${totalAttempts()}]
+    $arrayLoad[msgdesc]
     ${luckGenerator()}
 
     $let[totalRares;0]
@@ -76,11 +77,11 @@ module.exports = [{
 
       $if[false;$let[rest; * $get[challengeDataPoints] = $get[mathResult]]]
 
-      $let[msgdesc;$get[msgdesc]$get[animalDisplay]\`$get[quantity]\`$get[rest]\n]
+      $arrayPush[msgdesc;$get[animalDisplay]\`$get[quantity]\`$get[rest]]
     ]
 
     $callFunction[embed;lucky]
-    $description[$trim[**$get[msgdesc]**]]
+    $description[$trim[**$arrayJoin[msgdesc;\n]**]]
     $footer[Points: $get[totalPoints] • Rares: $get[totalRares]]
   `
 }]
@@ -109,8 +110,8 @@ function totalAttempts() {
     [
       [["pigeon", "pig", "deer", "reindeer", "swinehoe"\\], 1\\],
       [["donkey", "macaw", "giraffe", "cheetah", "toucan", "pufferfish"\\], 150\\],
-      [["tiger"\\], 150\\],
-      [["lion", "falcon", "vulture"\\], 150\\],
+      [["tiger"\\], 125\\],
+      [["lion", "falcon", "vulture"\\], 100\\],
       [["rhino", "baldEagle", "markhor"\\], 50\\],
       [["whiteGiraffe"\\], 10\\]
     \\]

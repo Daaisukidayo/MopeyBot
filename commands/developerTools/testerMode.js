@@ -7,34 +7,27 @@ module.exports = [{
     $jsonLoad[testers;$getGlobalVar[allTesterIDs]]
     $onlyIf[$or[$arrayIncludes[testers;$authorID];$authorID==$botOwnerID]]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-
     $let[arg;$toLowerCase[$message]]
 
     $onlyIf[$includes["$get[arg]";"on";"off"]]
 
-    $let[hasTesterMode;$env[userProfile;testerMode]]
-    $let[state;$advancedReplace[$get[arg];on;enabled;off;disabled]]
+    $switch[$get[arg];
+      $case[on;
+        $!jsonSet[userProfile;testerMode;true]
+        $let[state;Enabled]
+      ]
 
-    $if[$and[$get[hasTesterMode]==true;$get[arg]==on];
-      $let[desc;❌ You already have enabled tester mode!]
-      $let[color;$getGlobalVar[errorColor]]
-    ;
-      $if[$and[$get[hasTesterMode]==false;$get[arg]==off];
-        $let[desc;❌ You already have disabled tester mode!]
-        $let[color;$getGlobalVar[errorColor]]
-      ;
-        $!jsonSet[userProfile;testerMode;$get[arg]]
-        $setUserVar[userProfile;$env[userProfile]]
-        $let[desc;✅ Successfully __$get[state]__ tester mode!]
-        $let[color;$getGlobalVar[luckyColor]]
+      $case[off;
+        $!jsonSet[userProfile;testerMode;false]
+        $let[state;Disabled]
       ]
     ]
 
     $addContainer[
-      $callFunction[author]
+      $callFunction[newAuthor]
       $addSeparator
-      $addTextDisplay[## $get[desc]]
-    ;$get[color]]
-
+      $addTextDisplay[## ✅ Successfully __$get[state]__ tester mode!]
+    ;$getGlobalVar[defaultColor]]
+    $setUserVar[userProfile;$env[userProfile]]
   `
 }]

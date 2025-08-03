@@ -22,9 +22,10 @@ module.exports = [{
   type: "interactionCreate",
   allowedInteractionTypes: [ "button" ],
   code: `
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN;]]
-    $onlyIf[$splitText[0]==report]
+    $arrayLoad[CID;-;$customID]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$arrayIncludes[CID;$authorID];$callFunction[notYourBTN]]
+    $onlyIf[$arrayIncludes[CID;report]]
 
     $modal[reportModal-$authorid;Report window]
     $addTextInput[modalInput1-$authorid;What's your report about?;Short;true;$getGuildVar[prefix]command || user (Discord ID or MUID)]
@@ -35,9 +36,10 @@ module.exports = [{
   type: "interactionCreate",
   allowedInteractionTypes: [ "modal" ],
   code: `
-    $textSplit[$customID;-]
-    $onlyIf[$splitText[1]==$authorID;$callFunction[notYourBTN;]]
-    $onlyIf[$splitText[0]==reportModal]
+    $arrayLoad[CID;-;$customID]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$arrayIncludes[CID;$authorID];$callFunction[notYourBTN]]
+    $onlyIf[$arrayIncludes[CID;reportModal]]
 
     $sendMessage[$getGlobalVar[reportChannelID];
       # New report

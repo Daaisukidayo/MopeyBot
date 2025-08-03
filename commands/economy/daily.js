@@ -26,7 +26,7 @@ module.exports = ({
     $callFunction[sumMC;$get[r]]
 
     $addContainer[
-      $callFunction[author]
+      $callFunction[newAuthor]
       $addSeparator
       $addTextDisplay[## Your daily reward is $separateNumber[$get[r];,]$getGlobalVar[emoji]!]
     ;$getGlobalVar[defaultColor]]

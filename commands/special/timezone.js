@@ -10,39 +10,26 @@ module.exports = {
 
 		$let[arg;$toLowerCase[$message]]
 		$if[$get[arg]!=;
-			$let[hasTZ;$arraySome[timezones;tz;
-				$if[$toLowerCase[$env[tz;zoneName]]==$get[arg];
-					$return[true]
-				;
-					$return[false]
-				]
-			]]
+			$let[hasTZ;$arraySome[timezones;tz;$toLowerCase[$env[tz;zoneName]]==$get[arg]]]
 
 			$if[$get[hasTZ];
         $callFunction[cooldown;1w]
 				$!jsonSet[userProfile;timezone;$get[arg]]
 				${embed()}
 				$setUserVar[userProfile;$env[userProfile]]
-				$sendMessage[$channelID]
 			;
-				$author[✖️ Error!]
-				$color[$getGlobalVar[errorColor]]
+				$callFunction[embed;error]
 				$description[## Invalid timezone!]
-				$sendMessage[$channelID]
 			]
-
 		;
-
-		${embed()}
-
+      ${embed()}
     ]
-
 	`
 }
 
 function embed() {
 	return `
+    $callFunction[embed;default]
 		$description[### Your current timezone: \`$env[userProfile;timezone]\`]
-		$getGlobalVar[author]
-		$color[$getGlobalVar[defaultColor]]`
+  `
 }

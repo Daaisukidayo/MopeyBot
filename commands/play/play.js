@@ -6,7 +6,6 @@ module.exports = [{
     $reply
     ${jsonLoader()}
     $callFunction[checking]
-
     $onlyIf[$guildID!=;## You can't start the game in DMs!]
     $onlyIf[$env[userProfile;testerMode]]
     
@@ -439,7 +438,6 @@ module.exports = [{
           $!jsonSet[playData;apex;$get[apex];true] $c[setting apex based on opponent's animal]
         ]
         ${hasAllApex()}
-        ${currentApexes()}
 
         $description[$get[currentApexes];1]
         $color[$getGlobalVar[apexEmbedColor];1]
@@ -1185,31 +1183,18 @@ function animalEmoji (animal, v = 0) {
   return `$env[animals;${animal};variants;${v};emoji]`
 }
 
-function currentApexes () {
+function hasAllApex() {
   return `
-    $let[currentApexes;# $trimLines[Apexes:\n# $replace[
-        $if[$env[playData;apex;dragon];${animalEmoji('dragon')};<:DragonS1Dark:1327711395860451461>]
-        $if[$env[playData;apex;trex];${animalEmoji('trex')};<:TRexS1Dark:1327711207414566962>]
-        $if[$env[playData;apex;phoenix];${animalEmoji('phoenix')};<:PhoenixS1Dark:1327711260560851134>]
-        $if[$env[playData;apex;pterodactyl];${animalEmoji('pterodactyl')};<:PteroS1Dark:1327711247055065098>]
-        $if[$env[playData;apex;kraken];${animalEmoji('kraken')};<:KrakenS1Dark:1327711355024703540>]
-        $if[$env[playData;apex;kingCrab];${animalEmoji('kingCrab')};<:KingCrabS1Dark:1327711368316583976>]
-        $if[$env[playData;apex;yeti];${animalEmoji('yeti')};<:YetiS1Dark:1327711197025407088>]
-        $if[$env[playData;apex;landMonster];${animalEmoji('landMonster')};<:LandS1Dark:1327711335944945735>]
-        $if[$env[playData;apex;dinoMonster];${animalEmoji('dinoMonster')};<:DinoS1Dark:1327711412411170876>]
-        $if[$env[playData;apex;giantScorpion];${animalEmoji('giantScorpion')};<:ScorpS1Dark:1327711231737466981>]
-        $if[$env[playData;apex;seaMonster];${animalEmoji('seaMonster')};<:SeaS1Dark:1327711219318001674>]
-        $if[$env[playData;apex;iceMonster];${animalEmoji('iceMonster')};<:IceS1Dark:1327711379964297316>]
-        $if[$env[playData;apex;blackDragon];${animalEmoji('blackDragon')};<:BDragS1Dark:1327711428324364461>]
-      ;\n;]
-    ]]
-  `
-}
+    $arrayLoad[allApex;,;dragon,trex,phoenix,pterodactyl,kingCrab,yeti,landMonster,dinoMonster,giantScorpion,seaMonster,iceMonster,blackDragon]
+    $arrayLoad[totalApex]
+    $jsonLoad[darkApexEmojis;$getGlobalVar[darkApexEmojis]]
+    $let[hasAllApex;$arrayEvery[allApex;apex;$env[playData;apex;$env[apex]]]]
 
-function hasAllApex () {
-  return `
-    $jsonLoad[apex;$env[playData;apex]]
-    $let[hasAllApex;$and[$env[apex;dragon];$env[apex;trex];$env[apex;phoenix];$env[apex;pterodactyl];$env[apex;kingCrab];$env[apex;yeti];$env[apex;landMonster];$env[apex;dinoMonster];$env[apex;giantScorpion];$env[apex;seaMonster];$env[apex;iceMonster];$env[apex;blackDragon]]]
+    $arrayForEach[allApex;apex;
+      $arrayPush[totalApex;$if[$env[playData;apex;$env[apex]];${animalEmoji('$env[apex]')};$env[darkApexEmojis;$env[apex]]]]
+    ]
+
+    $let[currentApexes;# $arrayJoin[totalApex; ]]
   `
 }
 

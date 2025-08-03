@@ -7,7 +7,7 @@ module.exports = ({
     $callFunction[checking]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
-    $let[l10n;$env[userProfile;l10n]]
+    $let[l10n;$env[userProfile;language]]
 
     $let[replace0;$ping]
     $let[replace1;$floor[$executionTime]]

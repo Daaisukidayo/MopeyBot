@@ -21,8 +21,11 @@ module.exports=({
       ]
     ]
 
-    $callFunction[embed;default]
-    $description[## ✅ Successfully __$get[state]__ developer mode!]    
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator
+      $addTextDisplay[## ✅ Successfully __$get[state]__ developer mode!]
+    ;$getGlobalVar[defaultColor]]   
     $setUserVar[userProfile;$env[userProfile]]
   `
 })
