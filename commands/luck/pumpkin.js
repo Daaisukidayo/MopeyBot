@@ -77,15 +77,15 @@ function content2() {
     "You held it for some time, goaled it and earned",
     "You held it carefully, goaled it, and earned",
     "You carried it for a while, scored it, and earned",
-    "You held onto it, delivered it to the waterpull, and earned",
+    "You held onto it, delivered it to the hole, and earned",
     "You protected it, goaled it, and collected",
     "You kept it safe, scored it, and gained",
     "You grabbed it, goaled it, and pocketed",
-    "You picked it up, delivered it to the waterpull, and earned",
+    "You picked it up, delivered it to the hole, and earned",
     "You kept it safe, goaled it, and scored",
     "You held it carefully, goaled it, and earned",
     "You kept it safe, goaled it, and collected",
     "You protected it, goaled it, and pocketed",
-    "You carried it to the waterpull and earned"
+    "You carried it to the hole and earned"
   \\]`
 }

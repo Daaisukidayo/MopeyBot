@@ -907,32 +907,6 @@ client.functions.add({
 });
 
 client.functions.add({
-  name: "kdMenu",
-  params: ["cond"],
-  code: `
-    $addActionRow
-    $addStringSelectMenu[$env[cond]kdmenu-$authorID;Choose an upgrade:]
-
-    $addOption[$env[KDvar;0;name];;$env[cond]kds1-$authorID;$env[KDvar;0;emoji]]
-    $addOption[$env[KDvar;1;name];;$env[cond]kds2-$authorID;$env[KDvar;1;emoji]]
-    
-    $if[$env[userProfile;userPacks;lockedSP];
-      $addOption[$env[KDvar;2;name];;$env[cond]ksh-$authorID;$env[KDvar;2;emoji]]
-      $addOption[$env[KDvar;3;name];;$env[cond]kst-$authorID;$env[KDvar;3;emoji]]
-      $addOption[$env[KDvar;4;name];;$env[cond]kr-$authorID;$env[KDvar;4;emoji]]
-      $addOption[$env[KDvar;5;name];;$env[cond]qc-$authorID;$env[KDvar;5;emoji]]
-      $addOption[$env[KDvar;6;name];;$env[cond]qs-$authorID;$env[KDvar;6;emoji]]
-    ]
-    $if[$env[userProfile;userPacks;goldenSP];
-      $addOption[$env[KDvar;7;name];;$env[cond]gkd-$authorID;$env[KDvar;7;emoji]]
-    ] 
-    $if[$env[userProfile;userPacks;storefrontSP];
-      $addOption[$env[KDvar;8;name];;$env[cond]qf-$authorID;$env[KDvar;8;emoji]]
-    ]
-  `,
-});
-
-client.functions.add({
   name: "embed",
   params: ["colorType"],
   code: `
@@ -942,5 +916,17 @@ client.functions.add({
       $getGlobalVar[author]
     ]
     $color[$getGlobalVar[$env[colorType]Color]]
+  `
+})
+
+client.functions.add({
+  name: "author",
+  code: `
+    $return[
+      $addSection[
+        $addTextDisplay[## $username • MUID: \`$env[userProfile;MUID]\`]
+        $addThumbnail[$userAvatar]
+      ]
+    ]
   `
 })

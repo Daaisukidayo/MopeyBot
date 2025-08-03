@@ -1272,10 +1272,7 @@ function settingsEmbed() {
     $let[i;0]
 
     $addContainer[
-      $addSection[
-        $addTextDisplay[**$userDisplayName • MUID: $env[userProfile;MUID]**]
-        $addThumbnail[$userAvatar]
-      ]
+      $callFunction[author]
       $addSeparator
       $addTextDisplay[# Settings:]
 

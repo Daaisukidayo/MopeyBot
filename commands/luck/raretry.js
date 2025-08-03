@@ -20,7 +20,7 @@ module.exports = [{
     $jsonLoad[categories;$env[raretryVarData;categories]]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
-    $let[l10n;$env[userProfile;l10n]]
+    $let[l10n;$env[userProfile;language]]
 
     $loop[3;
         $arrayLoad[content$env[i];--;$if[${rep()}==;textNotFound | ID: $get[l10n]$env[i];${rep()}]]

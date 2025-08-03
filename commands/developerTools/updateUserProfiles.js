@@ -21,7 +21,7 @@ module.exports = {
         $!jsonSet[finalProfile;$env[key];$default[$env[userProfile;$env[key]];$get[lang]]]
       ]
 
-      $setUserVar[userProfile;$env[userProfile];$env[ID]]      
+      $setUserVar[userProfile;$env[finalProfile];$env[ID]]      
     ]
 
     $callFunction[embed;default]
