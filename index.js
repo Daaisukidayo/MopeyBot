@@ -298,7 +298,7 @@ DB.variables({
   kingDragonByLuckColor: "#d61b4a",
   emoji: "<:MopeCoin:705856410940080232>",
   blank: "<:blank:898514292926713866>",
-  author: "$author[$userDisplayName • MUID: $env[userProfile;MUID];$userAvatar]",
+  author: "$author[$username • MUID: $env[userProfile;MUID];$userAvatar]",
   reportChannelID: "1372645851159330947",
   logChannelID: "1391387203871047731",
   lobbyInactiveTime: "30m",

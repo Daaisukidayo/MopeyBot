@@ -182,8 +182,10 @@ module.exports = [
       $addTextDisplay[# 1 Hour Luck Ended!]
       $addTextDisplay[## ${total()}]
     ;$getGlobalVar[luckyColor]]
+    $sendMessage[$channelID]
     ${reset()}
-    ${partyEnd()}
+    ${lobbyEnd()}
+    
   `
 },{
   name: "points",
@@ -358,7 +360,9 @@ module.exports = [
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
     ${challengeEnded()}
-    ${partyEnd()}
+    ${reset()}
+    ${lobbyEnd()}
+    
   `
 },
 
@@ -543,7 +547,7 @@ module.exports = [
 
     $jsonLoad[participants;$getChannelVar[participants]]
 
-    ${partyExist()}
+    ${lobbyExist()}
 
     $onlyIf[$arrayIncludes[participants;$authorID]==false;
       $interactionReply[
@@ -587,7 +591,7 @@ module.exports = [
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[participants;$getChannelVar[participants]]
 
-    ${partyExist()}
+    ${lobbyExist()}
 
     $onlyIf[$arrayIncludes[participants;$authorID];
       $interactionReply[
@@ -637,7 +641,7 @@ module.exports = [
     $jsonLoad[participants;$getChannelVar[participants]]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 
-    ${partyExist()}
+    ${lobbyExist()}
     $let[host;$env[participants;0]]
     $let[msgid;$messageID]
 
@@ -667,7 +671,7 @@ module.exports = [
     $onlyIf[$arrayIncludes[interactionID;$authorID]]
     $jsonLoad[participants;$getChannelVar[participants]]
 
-    ${partyExist()}
+    ${lobbyExist()}
 
     $onlyIf[$env[participants;1]!=;
       $interactionReply[
@@ -724,7 +728,7 @@ module.exports = [
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[participants;$getChannelVar[participants]]
 
-    ${partyExist()}
+    ${lobbyExist()}
 
     $onlyIf[$arrayIncludes[participants;$authorID];
       $interactionReply[
@@ -756,7 +760,7 @@ module.exports = [
 
     $jsonLoad[participants;$getChannelVar[participants]]
     $jsonLoad[lobbyTags;$getChannelVar[lobbyTags]]
-    ${partyExist()}
+    ${lobbyExist()}
 
     $switch[$arrayAt[interactionID;0];
       $case[$arrayAt[passKeys;0];
@@ -992,19 +996,19 @@ function loadVarsForChallenge (id = "$authorID") {
 function interval (id = "$authorID") {
   return `
     $setInterval[
-      $setUserVar[1htime|$channelID;$sum[$getUserVar[1htime|$channelID;${id}];1];${id}] 
+      $setUserVar[1htime|$channelID;$math[$getUserVar[1htime|$channelID;${id}] + 1];${id}] 
 
-      $switch[$getUserVar[1htime|$channelID];
-        $case[1800;   ${timeLeft(30,  `m`)}   ]
-        $case[3540;   ${timeLeft(1,   `m`)}   ]
-        $case[3597;   ${timeLeft(3,   `s`)}   ]
-        $case[3598;   ${timeLeft(2,   `s`)}   ]
-        $case[3599;   ${timeLeft(1,   `s`)}   ] 
+      $switch[$getUserVar[1htime|$channelID;${id}];
+        $case[1800;   ${timeLeft(30,  `m`, id)}   ]
+        $case[3540;   ${timeLeft(1,   `m`, id)}   ]
+        $case[3597;   ${timeLeft(3,   `s`, id)}   ]
+        $case[3598;   ${timeLeft(2,   `s`, id)}   ]
+        $case[3599;   ${timeLeft(1,   `s`, id)}   ] 
         $case[3600;
           $!stopInterval[1HLUCK-${id}|$channelID]
           $sendMessage[$channelID;
-            <@${id}> 
-            $getGlobalVar[author] 
+            $jsonLoad[userProfile;$getUserVar[userProfile;${id}]]
+            $author[$username[${id}] • MUID: $env[userProfile;MUID];$userAvatar[${id}]]
             $color[$getGlobalVar[luckyColor]]
             $description[# 1 Hour Luck Ended!\n## You can still write rares if you didn't manage to finish.\n### Press «Confirm» button to end your challenge whenever you want.]
 
@@ -1018,7 +1022,7 @@ function interval (id = "$authorID") {
 }
 
 function challengeEnded () {
-  return `
+  code: `
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[userSettings;$env[userProfile;1hl;settings]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
@@ -1034,7 +1038,7 @@ function challengeEnded () {
       $if[$getChannelVar[lobbyDifficulty]!=;
         $let[difficulty;$getChannelVar[lobbyDifficulty]]
       ]
-      $if[$arrayIncludes[lobbyTags;unlimitedRares]];
+      $if[$arrayIncludes[lobbyTags;unlimitedRares];
         $arrayPush[tags;unlimitedRares]
       ]
 
@@ -1051,7 +1055,7 @@ function challengeEnded () {
     ]
 
 
-    $if[$arrayLength[tags]==0;
+    $if[$arrayAt[tags;0]==;
       $arrayPush[tags;none]
     ]
 
@@ -1060,49 +1064,57 @@ function challengeEnded () {
       "rares": $getUserVar[1htotalRares|$channelID],
       "endedAt": $getTimestamp,
       "playType": "$get[playType]",
-      "tags": $default[$getChannelVar[lobbyTags];$env[tags]],
+      "tags": $env[tags],
       "difficulty": "$get[difficulty]",
       "raresList": $getUserVar[1hallRaresList|$channelID]
     }]
     $!jsonSet[userProfile;1hl;history;$env[history]]
     $setUserVar[userProfile;$env[userProfile]]
-    ${reset()}
   `
 }
 
-function partyEnd () {
+function lobbyEnd() {
   return `
     $if[$getUserVar[participating|$channelID];
       $jsonLoad[participants;$getChannelVar[participants]]
-      $let[allFinished;$arrayEvery[participants;user;$return[$checkCondition[$getUserVar[1hstarted|$channelID;$env[user]]!=true]]]]
+      $let[allFinished;$arrayEvery[participants;ID;$checkCondition[$getUserVar[1hstarted|$channelID;$env[ID];false]==false]]]
 
-      $if[$get[allFinished];;
-        $stop
-      ]
+      $if[$get[allFinished];
 
-      $arrayLoad[result]
-      $arrayForEach[participants;user;
-        $jsonLoad[progress;$getUserVar[progress|$channelID;$env[user]]]
-        $arrayPushJSON[result;$env[progress]]
-        $deleteUserVar[participating|$channelID;$env[user]]
-        $deleteUserVar[progress|$channelID;$env[user]]
-      ]
-      $arrayAdvancedSort[result;A;B;$math[$env[B;points] - $env[A;points]];result]
+        $arrayLoad[result]
+        $arrayForEach[participants;user;
+          $jsonLoad[progress;$getUserVar[progress|$channelID;$env[user]]]
+          $arrayPushJSON[result;$env[progress]]
+          $deleteUserVar[participating|$channelID;$env[user]]
+          $deleteUserVar[progress|$channelID;$env[user]]
+        ]
+        $arrayAdvancedSort[result;A;B;$math[$env[B;points] - $env[A;points]];result]
 
-      $let[position;0]
-      
-      $arrayForEach[result;res;
-        $letSum[position;1]
-        $let[emoji;$if[$get[position]==1;🥇;$if[$get[position]==2;🥈;$if[$get[position]==3;🥉;⁘]]]]
-        $let[parts;$get[parts]### $get[emoji] $ordinal[$get[position]] ➤ $username[$env[res;user]] \n**$getGlobalVar[blank] Points: \`$env[res;points]\`**\n]
-      ]
+        $let[position;0]
+        
+        $arrayForEach[result;res;
+          $letSum[position;1]
+          $let[emoji;$if[$get[position]==1;🥇;$if[$get[position]==2;🥈;$if[$get[position]==3;🥉;⁘]]]]
+          $let[parts;$get[parts]### $get[emoji] $ordinal[$get[position]] ➤ $username[$env[res;user]] \n**$getGlobalVar[blank] Points: \`$env[res;points]\`**\n]
+        ]
 
-      $sendMessage[$channelID;
-        $author[1 Hour Luck Ended!]
-        $description[# 🎉 Winner - $username[$env[result;0;user]] 🎉\n$trimEnd[$get[parts]]]
-        $color[$getGlobalVar[luckyColor]]
+        $sendMessage[$channelID;
+          $author[1 Hour Luck Ended!]
+          $description[# 🎉 Winner - $username[$env[result;0;user]] 🎉\n$trimEnd[$get[parts]]]
+          $color[$getGlobalVar[luckyColor]]
+        ]
+        ${deleteLobbyVars()}
       ]
-      ${deleteLobbyVars()}
+    ]
+  `
+}
+
+function lobbyExist() {
+  return `
+    $onlyIf[$getChannelVar[participants]!=;
+      $ephemeral
+      $callFunction[embed;error]
+      $description[## Party does not exist anymore]
     ]
   `
 }
@@ -1220,16 +1232,6 @@ function timeLeft(num, time, id = "$authorID") {
   return `$sendMessage[$channelID;# <@${id}> You have ${num}${time} left!]` 
 }
 
-function partyExist() {
-  return `
-    $onlyIf[$getChannelVar[participants]!=;
-      $ephemeral
-      $callFunction[embed;error]
-      $description[## Party does not exist anymore]
-    ]
-  `
-}
-
 function deleteLobbyVars() {
   return `
     $deleteChannelVar[participants]
@@ -1244,24 +1246,25 @@ function historyEmbed() {
   return `
     $let[index;$math[$get[page] - 1]]
     $callFunction[embed;lucky]
+    $jsonLoad[allLobbyTags;$getGlobalVar[allLobbyTags]]
     $jsonLoad[raresList;$env[history;$get[index];raresList]]
-    $jsonLoad[allLobbyTags;$env[history;$get[index];raresList]]
     $jsonLoad[tags;$env[history;$get[index];tags]]
     $if[$arrayIncludes[tags;none];;
-      $!arrayMap[tags;tag;$return[$env[allLobbyTags;$env[tag]]]]
+      $arrayMap[tags;tag;$return[$env[allLobbyTags;$env[tag]]];tags]
     ]
+    $if[$arrayAt[tags;0]==;$arrayPush[tags;none]]
     $arrayLoad[content]
     
     ${raresListGenerator()}
     $footer[Sort Type: $get[sort]]
     $description[$trimLines[
+      ## Play Type: \`$toTitleCase[$env[history;$get[index];playType]]\`
       ## Points: \`$env[history;$get[index];points]\`
       ## Rares: \`$env[history;$get[index];rares]\`
-      ## Ended at: $discordTimestamp[$env[history;$get[index];endedAt];LongDateTime]
-      ## Play Type: $toTitleCase[$env[history;$get[index];playType]]
-      ## Difficulty: $toTitleCase[$env[history;$get[index];difficulty]]
+      ## Difficulty: \`$toTitleCase[$env[history;$get[index];difficulty]]\`
       ## Tags:\n$codeBlock[$arrayJoin[tags;\n]]
       ## All Rares List:\n╔══════════\n$arrayJoin[content;\n]\n╚══════════
+      ## Ended at: $discordTimestamp[$env[history;$get[index];endedAt];LongDateTime]
     ]]
 
     $if[$arrayLength[history]>1;
