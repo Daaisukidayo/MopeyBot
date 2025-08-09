@@ -1218,7 +1218,7 @@ function limitedCategory() {
             $let[quantity;$default[$env[allRaresList;$env[rare]];0]]
 
             $if[$get[quantity]<$get[limit];
-              $arrayPush[limitsContent;# $get[displayRare] \`$get[quantity]|$get[limit]\`]
+              $arrayPush[limitsContent;$get[displayRare]\`$get[quantity]|$get[limit]\`]
             ]
           ]
           $break
