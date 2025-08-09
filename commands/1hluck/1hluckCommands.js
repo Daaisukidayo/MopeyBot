@@ -160,7 +160,7 @@ module.exports = [
       
       $if[$and[$get[hideRaresLimit]==false;$arrayLength[limitsContent]!=0];
         $addSeparator
-        $addTextDisplay[# Limited Rares:\n$arrayJoin[limitsContent;\n]]
+        $addTextDisplay[# Limited Rares:\n$arrayJoin[limitsContent; ]]
       ]
       $if[$get[unlimitedRares];
         $addSeparator
