@@ -12,31 +12,13 @@ module.exports = {
 
     $arrayForEach[allUserIDs;ID;
       $jsonLoad[userProfile;$getUserVar[userProfile;$env[ID]]]
-      $jsonLoad[history;$env[userProfile;1hl;history]]
-      $arrayLoad[newHistory]
-      $if[$env[history;0]==;;
-        $arrayForEach[history;obj;
-          $jsonLoad[stats;
-            {
-              "points": $env[obj;points],
-              "rares": $env[obj;rares],
-              "endedAt": $env[obj;endedAt],
-              "playType": "solo",
-              "tags": ["none"\\],
-              "difficulty": "none",
-              "raresList": $env[obj;raresList]
-            }
-          ]
-          $arrayPushJSON[newHistory;$env[stats]]
-        ]
-        $!jsonSet[userProfile;1hl;history;$env[newHistory]]
-        $setUserVar[userProfile;$env[userProfile];$env[ID]]
-      ]  
+      $!jsonSet[userProfile;userPacks;[\\]]
+      $!jsonSet[userProfile;1hl;settings;[\\]]
+      $setUserVar[userProfile;$env[userProfile];$env[ID]]
     ]
 
     $callFunction[embed;default]
     $description[## ✅ Successfully updated all profiles!]
-    $sendMessage[$channelID]
   `
 }
 
