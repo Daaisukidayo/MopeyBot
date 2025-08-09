@@ -1150,7 +1150,7 @@ function total(id = "$authorID") {
     ;
       ## Total rares: \`$get[totalRares]\`
     ]
-    ## All Rares List:\n# ╔═════༺❀༻༺❀༻═════╗\n# $arrayJoin[content; ]\n# ╚═════༺❀༻༺❀༻═════╝
+    ## All Rares List:\n# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[content; ]\n# ╚══════༺❀༻༺❀༻══════╝
   `
 }
 
@@ -1263,7 +1263,7 @@ function historyEmbed() {
       ## Rares: \`$env[history;$get[index];rares]\`
       ## Difficulty: \`$toTitleCase[$env[history;$get[index];difficulty]]\`
       ## Tags:\n$codeBlock[$arrayJoin[tags;\n]]
-      ## All Rares List:\n# ╔═════༺❀༻༺❀༻═════╗\n# $arrayJoin[content; ]\n# ╚═════༺❀༻༺❀༻═════╝
+      ## All Rares List:\n# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[content; ]\n# ╚══════༺❀༻༺❀༻══════╝
       ## Ended at: $discordTimestamp[$env[history;$get[index];endedAt];LongDateTime]
     ]]
 
