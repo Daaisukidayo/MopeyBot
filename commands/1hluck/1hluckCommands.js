@@ -1022,7 +1022,7 @@ function interval (id = "$authorID") {
 }
 
 function challengeEnded () {
-  code: `
+  return `
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[userSettings;$env[userProfile;1hl;settings]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
