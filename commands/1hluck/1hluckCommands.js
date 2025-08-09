@@ -1187,7 +1187,7 @@ function raresListGenerator() {
       $let[quantity;$env[entry;1]]
 
       $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
-      $let[listContent;$get[animalDisplay]⁕\`$get[quantity]\`]
+      $let[listContent;$get[animalDisplay]\`$get[quantity]\`]
 
       $arrayPush[content;$get[listContent]]
     ]
