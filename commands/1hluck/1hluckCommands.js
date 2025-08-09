@@ -1022,31 +1022,38 @@ function challengeEnded () {
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $jsonLoad[userSettings;$env[userProfile;1hl;settings]]
     $jsonLoad[history;$env[userProfile;1hl;history]]
+    $jsonLoad[lobbyTags;$getChannelVar[lobbyTags]]
     $timezone[$env[userProfile;timezone]]
     $arrayLoad[tags]
 
-    $if[$getChannelVar[lobbyDifficulty]!=;
-      $let[difficulty;$getChannelVar[lobbyDifficulty]]
-    ;
-      $if[$arrayIncludes[userSettings;difficulties];
-        $let[difficulty;$env[userProfile;1hl;difficulty]]
-      ;
-        $let[difficulty;none]
-      ]
-    ]
+    $let[difficulty;none]
 
     $if[$getUserVar[participating|$channelID];
+
       $let[playType;Party]
+      $if[$getChannelVar[lobbyDifficulty]!=;
+        $let[difficulty;$getChannelVar[lobbyDifficulty]]
+      ]
+      $if[$arrayIncludes[lobbyTags;unlimitedRares]];
+        $arrayPush[tags;unlimitedRares]
+      ]
+
     ;
+
       $let[playType;Solo]
+      $if[$arrayIncludes[userSettings;difficulties];
+        $let[difficulty;$env[userProfile;1hl;difficulty]]
+      ]
+      $if[$arrayIncludes[userSettings;unlimitedRares];
+        $arrayPush[tags;unlimitedRares]
+      ]
+
     ]
 
-    $if[$arrayIncludes[userSettings;unlimitedRares];
-      $arrayPush[tags;unlimitedRares]
-    ;
+
+    $if[$arrayLength[tags]==0;
       $arrayPush[tags;none]
     ]
-
 
     $arrayPushJSON[history;{
       "points": $getUserVar[1hpoints|$channelID],
@@ -1095,7 +1102,7 @@ function partyEnd () {
         $description[# 🎉 Winner - $username[$env[result;0;user]] 🎉\n$trimEnd[$get[parts]]]
         $color[$getGlobalVar[luckyColor]]
       ]
-      $deleteChannelVar[participants]
+      ${deleteLobbyVars()}
     ]
   `
 }
