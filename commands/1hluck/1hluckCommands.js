@@ -1150,7 +1150,7 @@ function total(id = "$authorID") {
     ;
       ## Total rares: \`$get[totalRares]\`
     ]
-    ## All Rares List:\n╔══════════\n$arrayJoin[content;\n]\n╚══════════
+    ## All Rares List:\n# ╔═════༺❀༻༺❀༻═════╗\n# $arrayJoin[content; ]\n# ╚═════༺❀༻༺❀༻═════╝
   `
 }
 
@@ -1187,11 +1187,11 @@ function raresListGenerator() {
       $let[quantity;$env[entry;1]]
 
       $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
-      $let[listContent;$get[animalDisplay]⁕$get[quantity]]
+      $let[listContent;$get[animalDisplay]⁕\`$get[quantity]\`]
 
-      $arrayPush[content;║ $bold[$get[listContent]]]
+      $arrayPush[content;$get[listContent]]
     ]
-    $if[$arrayLength[content]==0;$arrayPush[content;║ none]]
+    $if[$arrayLength[content]==0;$arrayPush[content;none]]
   `
 }
 
@@ -1263,7 +1263,7 @@ function historyEmbed() {
       ## Rares: \`$env[history;$get[index];rares]\`
       ## Difficulty: \`$toTitleCase[$env[history;$get[index];difficulty]]\`
       ## Tags:\n$codeBlock[$arrayJoin[tags;\n]]
-      ## All Rares List:\n╔══════════\n$arrayJoin[content;\n]\n╚══════════
+      ## All Rares List:\n# ╔═════༺❀༻༺❀༻═════╗\n# $arrayJoin[content; ]\n# ╚═════༺❀༻༺❀༻═════╝
       ## Ended at: $discordTimestamp[$env[history;$get[index];endedAt];LongDateTime]
     ]]
 
