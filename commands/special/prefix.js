@@ -7,25 +7,24 @@ module.exports = [{
     $callFunction[checking]
 
     $onlyIf[$guildID!=;
-      $title[:x: Invalid server!]
-      $description[### Disabled in DMs]
-      $color[$getGlobalVar[errorColor]]
+      $callFunction[embed;error]
+      $description[## Disabled in DMs]
     ]
 
     $onlyIf[$message!=;
-      $title[:x: Invalid arguments!]
-      $description[### No message written]
-      $color[$getGlobalVar[errorColor]]
+      $callFunction[embed;error]
+      $description[## No message written]
     ]
       
     $onlyIf[$hasPerms[$guildID;$authorID;Administrator;ManageGuild]==true;
-      $title[:x: Missing Permissions!]
-      $description[### You can't change my prefix because you missing following permissions: \`Manage Server\` or \`Administrator\`]
-      $color[$getGlobalVar[errorColor]]
+      $callFunction[embed;error]
+      $description[## You're missing the following permissions: \`Manage Server\` or \`Administrator\`]
     ]
 
     $setGuildVar[prefix;$message]
-    ### Successfully changed my prefix in this server to \`$message\`
+    $color[$getGlobalVar[defaultColor]]
+    $author[$guildName;$guildIcon]
+    $description[## Successfully changed prefix to \`$message\`]
   `
 },{
   type: "messageCreate",
@@ -40,6 +39,6 @@ module.exports = [{
     $onlyIf[$env[msgdata;mentions;repliedUser]==null]
 
     $reply
-    My prefix in this server is \`$getGuildVar[prefix]\`
+    ## My prefix in this server is \`$getGuildVar[prefix]\`
   `
 }]

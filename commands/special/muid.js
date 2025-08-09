@@ -10,8 +10,7 @@ module.exports = ({
     $let[arg;$message[0]]
 
     $onlyIf[$or[$get[arg]!=;$isNumber[$get[arg]]];
-      $color[$getGlobalVar[errorColor]]
-      $author[✖️ Invalid arguments!]
+      $callFunction[embed;error]
       $description[## No MUID were written or argument is not a number]
     ]
 
@@ -21,11 +20,12 @@ module.exports = ({
       $let[i;$math[$env[i] - 1]]
       $let[id;$arrayAt[allUserIDs;$get[i]]]
 
-      $jsonLoad[otherUserProfile;$getUserVar[userProfile;$env[id]]]
-      $if[$env[otherUserProfile;MUID]==$get[arg];;$continue]
-
-      $let[userID;$env[id]]
+      $jsonLoad[otherUserProfile;$getUserVar[userProfile;$get[id]]]
       $let[userMUID;$env[otherUserProfile;MUID]]
+
+      $if[$get[userMUID]==$get[arg];;$continue]
+
+      $let[userID;$get[id]]
 
       $break
     ;i;true]
@@ -36,12 +36,10 @@ module.exports = ({
       $description[## User with «\`$get[arg]\`» MUID does not exist yet]
     ]
 
-    $sendMessage[$channelID;
-      $author[@$username[$get[userID]] • MUID: $get[userMUID]]
-      $footer[Discord ID: $get[userID]]
-      $thumbnail[$userAvatar[$get[userID]]]
-      $description[# \`$separateNumber[$env[otherUserProfile;MC;];,]\`$getGlobalVar[emoji]]
-      $color[$getGlobalVar[defaultColor]]
-    ]
+    $author[@$username[$get[userID]] • MUID: $get[userMUID]]
+    $footer[Discord ID: $get[userID]]
+    $thumbnail[$userAvatar[$get[userID]]]
+    $description[# \`$separateNumber[$env[otherUserProfile;MC;];,]\`$getGlobalVar[emoji]]
+    $color[$getGlobalVar[defaultColor]]
   `
 })

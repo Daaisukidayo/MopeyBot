@@ -157,11 +157,11 @@ function embed() {
   `
 }
 
-function rep() {
+function rep() { // NEED REWRITE
   return `$advancedReplace[$env[l10n;raretry;contents;content$env[i];$get[l10n]];\n\\];;\\[\n;;\n;--;",;;";]`
 }
 
-function raretryData() {
+function raretryData() { // NEED REWRITE
   return `
     {
       "category_8": {
@@ -207,14 +207,14 @@ function raretryData() {
       },
       "category_5": {
         "content": [
-          "${addEmoji("whiteGiraffeFamily")}",
+          "${addEmoji("giraffeFamily")}",
           "${addEmoji("whiteGiraffe")}",
           "${addEmoji("blackRhino")}",
           "${addEmoji("demonPufferfish")}",
           "${addEmoji("lavaToucan")}"
         \\],
         "thumbnail": [
-          "${addImg("whiteGiraffeFamily")}",
+          "${addImg("giraffeFamily")}",
           "${addImg("whiteGiraffe")}",
           "${addImg("blackRhino")}",
           "${addImg("demonPufferfish")}",

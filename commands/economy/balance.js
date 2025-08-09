@@ -11,20 +11,20 @@ module.exports = [{
     $callFunction[cooldown;${CD}]
 
     $arrayLoad[packs]
-    $jsonLoad[allSkinPacks;$getGlobalVar[shopItems]]
+    $jsonLoad[shopItems;$getGlobalVar[shopItems]]
     $jsonLoad[userPacks;$env[userProfile;userPacks]]
-    $jsonLoad[userPacksKeys;$jsonKeys[userPacks]]
 
-    $if[$arrayAt[userPacksKeys;0]==;
-      $arrayPush[packs;none]
-    ;
-      $arrayForEach[userPacksKeys;userPack;
-        $arrayForEach[allSkinPacks;skinpack;
-          $if[$env[userPack]==$env[skinpack;name];
-            $arrayPush[packs;$env[skinpack;description]]
-          ]
-        ]
+    $if[$arrayAt[userPacks;0]!=;
+      $arrayForEach[userPacks;userPack;
+        $loop[$arrayLength[shopItems];
+          $jsonLoad[item;$arrayAt[shopItems;$sub[$env[i];1]]]
+          $if[$env[userPack]==$env[item;code];;$continue]
+          $arrayPush[packs;$env[item;name]]
+          $break
+        ;i;true]
       ]
+    ;
+      $arrayPush[packs;none]
     ]
 
     $addContainer[
@@ -32,7 +32,7 @@ module.exports = [{
       $addSeparator[Large]
       $addTextDisplay[# __BALANCE__]
       $addSeparator[Large]
-      $addTextDisplay[## \`$separateNumber[$env[userProfile;MC];,]\`$getGlobalVar[emoji]]
+      $addTextDisplay[## $getGlobalVar[emoji] Balance: \`$separateNumber[$env[userProfile;MC];,]\`]
       $addTextDisplay[## 🛒 __Purchased Skinpacks:__\n$codeBlock[$arrayJoin[packs;\n]]]
     ;$getGlobalVar[defaultColor]]
   `

@@ -14,7 +14,8 @@ module.exports = [{
     ;
       ${removeAllProgress()}
       
-      $setUserVar[userPlayData;$env[playData]]
+      $setUserVar[userPlayData;$getGlobalVar[userplayData]]
+      $jsonLoad[playData;$getUserVar[userPlayData]]
     ]
     
     $onlyIf[$env[playData;started]==false;
@@ -23,7 +24,7 @@ module.exports = [{
       $getGlobalVar[author]
       $color[$getGlobalVar[errorColor]]
       $addActionRow
-      $addButton[messagemissing-$authorID;Can't find the game;Danger]
+      $addButton[messagemissing-$authorID;Can't find the message;Danger]
     ]
 
     $!jsonSet[playData;tier;1]
@@ -47,23 +48,20 @@ module.exports = [{
   allowedInteractionTypes: ["button"],
   description: "upgraded",
   code: `
-    $arrayLoad[btn;-;$customID]
-    $onlyIf[$includes[$env[btn;2];upgrade]]
-    $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
+    $arrayLoad[IID;-;$customID]
+    $onlyIf[$arrayIncludes[IID;upgrade]]
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
     ${hasStarted()}
 
-    $let[animal;$env[btn;0]]
+    $let[animal;$env[IID;0]]
     $onlyIf[$arrayIncludes[animalsKeys;$get[animal]]]
 
     $jsonLoad[rareReward;${rareReward()}]
     $let[bonusPerUpgrade;50]
 
-    $let[bonusPerRare;$env[rareReward;$get[animal]]]
-    $if[$get[bonusPerRare]==;
-      $let[bonusPerRare;0]
-    ]
+    $let[bonusPerRare;$default[$env[rareReward;$get[animal]];0]]
 
     $let[wardrobeIndex;$env[userProfile;userWardrobe;$get[animal]]]
     $let[color;$env[biomeColors;$env[animals;$get[animal];biome]]]
@@ -85,61 +83,64 @@ module.exports = [{
 
     ${actionMenu()}
     ${exitButton()}
-    $!editMessage[$channelID;$messageID]
+    $interactionUpdate
     
     $setUserVar[userPlayData;$env[playData]]
-    $deferUpdate
   `
 },{
   type: "interactionCreate",
   allowedInteractionTypes: ["selectMenu", "button"],
   description: "choose upgrade",
   code: `
-    $arrayLoad[btn;-;$if[$isButton;$customID;$selectMenuValues]]
-    $onlyIf[$includes["$env[btn;0]";"up";"down";"update";"upgrade";"respawn";"kingDragonUpg"]]
-    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
+    $arrayLoad[IID;-;$customID]
+    $arrayLoad[values;-;$selectMenuValues]
+    $arrayLoad[passKeys;,;devUpArrow,devDownArrow,devUpdateArrow,upgrade,respawn,kingDragonUpg]
+
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
     ${hasStarted()}
     ${resetArena()}
 
     $!jsonSet[playData;isDead;false]
+
+    $let[id;$default[$env[values;0];$env[IID;0]]]
     
-    $if[$includes["$env[btn;0]";"upgrade";"up"];
+    $if[$includes[$get[id];upgrade;devUpArrow];
       $!jsonSet[playData;tier;$math[$env[playData;tier] + 1]]
       $if[$env[playData;tier]>17;
         $!jsonSet[playData;tier;1]
       ]
     ]
-    $if[$includes["$env[btn;0]";"down"];
+    $if[$includes[$get[id];devDownArrow];
       $!jsonSet[playData;tier;$math[$env[playData;tier] - 1]]
       $if[$env[playData;tier]<1;
         $!jsonSet[playData;tier;17]
       ]
     ]
-    $if[$includes["$env[btn;0]";"up";"down"];
+    $if[$includes[$get[id];devUpArrow;devDownArrow];
       $!jsonSet[playData;XP;$env[XPreq;$env[playData;tier];0]]
     ]
 
-    $if[$includes["$env[btn;0]";"kingDragonUpg"]!=true;
-      ${animalsButtonsGenerator()}
-    ;
+    $if[$includes[$get[id];kingDragonUpg];
       $jsonLoad[KD;$env[animals;kingDragon]]
-      $let[KDtrig;$env[KD;trig]-$authorID-upgrade]
+      $let[KDtrig;$env[KD;trig]-upgrade-$authorID]
       $let[KDwr;$env[userProfile;userWardrobe;kingDragon]]
       $let[KDname;$env[KD;variants;$get[KDwr];name]]
       $let[KDemoji;$env[KD;variants;$get[KDwr];emoji]]
       $let[emojisInDescription;$get[KDemoji]]
       $addActionRow
       $addButton[$get[KDtrig];$get[KDname];Secondary;$get[KDemoji]]
+    ;
+      ${animalsButtonsGenerator()}
     ]
     ${exitButton()}
 
     $description[## Choose which animal to spawn as:\n# $get[emojisInDescription]]
     $getGlobalVar[author]
     $color[$env[playData;color]]
-    $!editMessage[$channelID;$messageID]
-    $deferUpdate
+    $interactionUpdate
     $setUserVar[userPlayData;$env[playData]]
   `
 },{
@@ -147,8 +148,8 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu"],
   description: "search XP",
   code: `
-    $arrayLoad[btn;-;$selectMenuValues]
-    $onlyIf[$includes["$env[btn;0]";"searchXP"]]
+    $arrayLoad[IID;-;$selectMenuValues]
+    $onlyIf[$includes["$env[IID;0]";"searchXP"]]
     $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
@@ -263,20 +264,19 @@ module.exports = [{
     ]
     ${exitButton('$get[showCheats]')}
     $getGlobalVar[author]
-    $!editMessage[$channelID;$messageID]
+    $interactionUpdate
     
     $setUserVar[userPlayData;$env[playData]]
-    $deferUpdate
   `
 },{
   type: 'interactionCreate',
   allowedInteractionTypes: ['selectMenu'],
   description: 'first time arena',
   code: `
-    $arrayLoad[btn;-;$selectMenuValues]
-    $onlyIf[$includes[$env[btn;0];arena]]
-    $onlyIf[$includes[$env[btn;2];play]]
-    $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
+    $arrayLoad[IID;-;$selectMenuValues]
+    $onlyIf[$includes[$env[IID;0];arena]]
+    $onlyIf[$includes[$env[IID;2];play]]
+    $onlyIf[$includes[$env[IID;1];$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
     ${hasStarted()}
@@ -357,31 +357,29 @@ module.exports = [{
     $description[$get[desc]\n${animalStats()}]
     $thumbnail[$get[thumb]]
     $color[$env[playData;color]]
-    $!editMessage[$channelID;$messageID]
+    $interactionUpdate
     
     $setUserVar[userPlayData;$env[playData]]
-    $deferUpdate
   `
 },{
   type: 'interactionCreate',
   allowedInteractionTypes: ['button'],
   description: 'arena actions',
   code: `
-    $arrayLoad[btn;-;$customID]
-    $onlyIf[$includes[$env[btn;0];attack;defend;deceive]]
-    $onlyIf[$includes[$env[btn;2];play]]
-    $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
+    $arrayLoad[IID;-;$customID]
+    $onlyIf[$includes[$env[IID;0];attack;defend;deceive]]
+    $onlyIf[$includes[$env[IID;2];play]]
+    $onlyIf[$includes[$env[IID;1];$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
     ${hasStarted()}
 
-    $let[playerAction;$env[btn;0]]
+    $let[playerAction;$env[IID;0]]
     $let[opponentAction;$getUserVar[opponentAction]]
-    $let[opponentTier;$env[btn;3]]
-    $let[apex;$env[btn;4]]
+    $let[opponentTier;$env[IID;3]]
+    $let[apex;$env[IID;4]]
     $let[actionR;$randomNumber[1;101]]
 
-    $deferUpdate
 
     $if[$env[playData;arenaTurn]==0;
       $let[opponentAction;$trimLines[
@@ -421,14 +419,15 @@ module.exports = [{
     $if[$env[playData;bitesInArena]>=10; $c[If user won]
 
       $c[Giving XP based on opponent's tier]
-
-      $let[xpReward;$trimLines[
-        $switch[$get[opponentTier];
-          $case[15;$randomNumber[1000000;4000001]]
-          $case[16;$randomNumber[4000000;7000001]]
-          $case[17;$randomNumber[7000000;15000001]]
-        ]
-      ]]
+      $jsonLoad[xpReward;{
+        "15": [1000000,4000000],
+        "16": [4000000,7000000],
+        "17": [7000000,15000000]
+      }]
+      $let[min;$env[xpReward;$get[opponentTier];0]]
+      $let[max;$math[$env[xpReward;$get[opponentTier];1] + 1]]
+      $let[xpReward;$randomNumber[$get[min];$get[max]]]
+      
       $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xpReward]]]
 
       ${resetArena()}
@@ -488,7 +487,7 @@ module.exports = [{
     
     $description[$get[desc]]
     $getGlobalVar[author]
-    $!editMessage[$channelID;$messageID]
+    $interactionUpdate
     
     $setUserVar[userPlayData;$env[playData]]
   `
@@ -497,8 +496,8 @@ module.exports = [{
   allowedInteractionTypes: ['selectMenu'],
   description: 'downgrading',
   code: `
-    $arrayLoad[btn;-;$selectMenuValues]
-    $onlyIf[$includes["$env[btn;0]";"downgrade"]]
+    $arrayLoad[IID;-;$selectMenuValues]
+    $onlyIf[$includes["$env[IID;0]";"downgrade"]]
     $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
@@ -521,7 +520,7 @@ module.exports = [{
     $let[isCurrArcticBiome;$checkCondition[$get[currentBiome]==Arctic]]
     $let[isCurrForestBiome;$checkCondition[$get[currentBiome]==Forest]]
 
-    $if[$env[btn;0]==downgrade;
+    $if[$env[IID;0]==downgrade;
       $if[$and[$or[$get[animLandBiome];$get[animDesertBiome];$get[animArcticBiome];$get[animForestBiome];$get[animOceanBiome]];$or[$get[isCurrVolcanoBiome];$get[isCurrDesertBiome]]];
         
         $c[? If animal belongs to Land, Desert, Forest or Arctic and current biome is Volcano or Desert]
@@ -569,27 +568,26 @@ module.exports = [{
     ${respawnButton()}
     ${exitButton(false)}
 
-    $!editMessage[$channelID;$messageID]
+    $interactionUpdate
     
     $setUserVar[userPlayData;$env[playData]]
-    $deferUpdate
   `
 },{
   type: 'interactionCreate',
   allowedInteractionTypes: ['selectMenu'],
   description: 'move to biome',
   code: `
-    $arrayLoad[btn;-;$selectMenuValues]
-    $onlyIf[$includes[$env[btn];moveto_]]
-    $onlyIf[$includes[$env[btn];play]]
-    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
+    $arrayLoad[IID;-;$customID]
+    $arrayLoad[values;-;$selectMenuValues]
+    $arrayLoad[passKeys;,;moveTo,play]
+
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
     ${hasStarted()}
 
-    $arrayLoad[btn;_;$env[btn;0]]
-
-    $let[biome;$env[btn;1]]
+    $let[biome;$env[IID;1]]
     $let[color;$env[biomeColors;$get[biome]]]
 
     $!jsonSet[playData;currentBiome;$get[biome]]
@@ -600,52 +598,46 @@ module.exports = [{
     $color[$env[playData;color]]
     ${actionMenu()}
     ${exitButton()}
-    $!editMessage[$channelID;$messageID]
+    $interactionUpdate
     
     $setUserVar[userPlayData;$env[playData]]
-    $deferUpdate
   `
 },{
   type: "interactionCreate",
   allowedInteractionTypes: ["button"],
   description: "exit",
   code: `
-    $arrayLoad[btn;-;$customid]
-    $onlyIf[$includes[$env[btn];messagemissing;quit]]
-    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
+    $arrayLoad[IID;-;$customID]
+    $arrayLoad[passKeys;,;messagemissing,quit]
+
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
     ${jsonLoader()}
 
     $onlyif[$env[playData;started];
       $description[## You don't have an active game session!]
-      $getGlobalVar[author]
-      $color[$getGlobalVar[errorColor]]
-      $!editMessage[$channelID;$messageID]
+      $callFunction[embed;error]
+      $interactionUpdate
     ]
-    $if[$env[btn;0]==messagemissing;
-      $!editMessage[$channelID;$messageID;
+
+    $switch[$env[IID;0];
+
+      $case[messagemissing;
         $description[## You have been successfully disconnected from the game!\n-# Earned: $separatenumber[$env[playData;MC];,]$getGlobalVar[emoji]]
-        $getGlobalVar[author]
-        $color[$getGlobalVar[defaultColor]]
+        $callFunction[embed;default]
+        $try[$!disableComponentsOf[$env[playData;ChannelID];$env[playData;MessageID]]]
       ]
-
-      $try[
-        $!disableButtonsOf[$env[playData;ChannelID];$env[playData;MessageID]]
-      ]
-    ]
     
-    $if[$and[$env[playData;MessageID]==$messageID;$env[btn;0]==quit];
-
-      $!editMessage[$channelID;$messageID;
+      $case[quit;
+        $onlyIf[$env[playData;MessageID]==$messageID]
         $description[## You have successfully exited the game!\n-# Earned: $separatenumber[$env[playData;MC];,]$getGlobalVar[emoji]]
-        $getGlobalVar[author]
-        $color[$getGlobalVar[defaultColor]]
+        $callFunction[embed;default]
       ]
-      
+
     ]
-    $deleteUserVar[allRareAttemptsInfo]
+    $interactionUpdate
     ${removeAllProgress()}
-    $setUserVar[userPlayData;$env[playData]]
   `
 }]
 
@@ -809,9 +801,8 @@ function removeAllProgress() {
     $callFunction[sumMC;$env[playData;MC]]
     $setUserVar[userProfile;$env[userProfile]]
 
-    $jsonLoad[resetPlayData;$getGlobalVar[userPlayData]]
-    $!jsonSet[playData;$env[resetPlayData]]
-    $deleteUserVar[opponentAction]
+    $deleteUserVar[allRareAttemptsInfo]
+    $deleteUserVar[userPlayData]
   `
 }
 
@@ -1015,17 +1006,17 @@ function arenaRejectContent () {
 function respawnButton () {
   return `
     $addActionRow
-    $addButton[respawn-$authorID-play;Respawn;Success]
+    $addButton[respawn-play-$authorID;Respawn;Success]
   `
 }
 
 function arenaActionButtons (showDeceiveButton = false) {
   return `
     $addActionRow
-    $addButton[attack-$authorID-play-$get[opponentTier]-$get[apex];Attack;Success;🗡️]
-    $addButton[defend-$authorID-play-$get[opponentTier]-$get[apex];Defend;Success;🛡️]
+    $addButton[attack-play-$authorID-$get[opponentTier]-$get[apex];Attack;Success;🗡️]
+    $addButton[defend-play-$authorID-$get[opponentTier]-$get[apex];Defend;Success;🛡️]
     $if[${showDeceiveButton};
-      $addButton[deceive-$authorID-play-$get[opponentTier]-$get[apex];Deceive;Success;🎭]
+      $addButton[deceive-play-$authorID-$get[opponentTier]-$get[apex];Deceive;Success;🎭]
     ]
   `
 }
@@ -1037,9 +1028,9 @@ function exitButton(showCheat = true) {
 
     $if[$and[${showCheat};$env[playData;isDead]!=true;$env[userProfile;testerMode]];
       $addActionRow
-      $addButton[up-$authorID-play;;Success;🔼]
-      $addButton[update-$authorID-play;;Success;🔃]
-      $addButton[down-$authorID-play;;Success;🔽]
+      $addButton[devUpArrow-play-$authorID;;Success;🔼]
+      $addButton[devUpdateArrow-play-$authorID;;Success;🔃]
+      $addButton[devDownArrow-play-$authorID;;Success;🔽]
     ]
   `
 }
@@ -1127,46 +1118,46 @@ function actionMenu () {
     $let[curBiome;$env[playData;currentBiome]]
 
     $addActionRow
-    $addStringSelectMenu[actions-$authorID-play;Actions]
+    $addStringSelectMenu[actions-play-$authorID;Actions]
 
     $if[$and[$env[playData;tier]==17;$get[hasAllApex]];
-      $addOption[Upgrade;;kingDragonUpg-$authorID-play;⬆️]
+      $addOption[Upgrade;;kingDragonUpg;⬆️]
     ]
 
     $if[$and[$env[playData;XP]>=$env[XPreq;$env[playData;tier];1];$env[playData;tier]!=17];
-      $addOption[Upgrade;;upgrade-$authorID-play;⬆️]
+      $addOption[Upgrade;;upgrade;⬆️]
       $let[hideSwitchBiome;true]
     ;
-      $addOption[Search for XP;;searchXP-$authorID-play;🍴]
+      $addOption[Search for XP;;searchXP;🍴]
       $if[$env[playData;tier]>=15;
-        $addOption[Arena;;arena-$authorID-play;⚔️]
+        $addOption[Arena;;arena;⚔️]
       ]
     ]
 
-    $addOption[Downgrade;;downgrade-$authorID-play;⬇️]
+    $addOption[Downgrade;;downgrade;⬇️]
 
     $if[$get[hideSwitchBiome];;
 
       $addActionRow
-      $addStringSelectMenu[moveto-$authorID-play;Switch biome]
+      $addStringSelectMenu[moveTo-play-$authorID;Switch biome]
 
       $if[$get[curBiome]!=Land;
-        $addOption[Land;;moveto_Land-$authorID-play;⛰️]
+        $addOption[Land;;moveto_Land;⛰️]
       ]
       $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
-        $addOption[Desert;;moveto_Desert-$authorID-play;🏜️]
+        $addOption[Desert;;moveto_Desert;🏜️]
       ]
       $if[$and[$get[curBiome]!=Volcano;$get[curBiome]!=Ocean;$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Forest];
-        $addOption[Volcano;;moveto_Volcano-$authorID-play;🌋]
+        $addOption[Volcano;;moveto_Volcano;🌋]
       ]
       $if[$and[$get[curBiome]!=Ocean;$get[curBiome]!=Volcano];
-        $addOption[Ocean;;moveto_Ocean-$authorID-play;🌊]
+        $addOption[Ocean;;moveto_Ocean;🌊]
       ]
       $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
-        $addOption[Arctic;;moveto_Arctic-$authorID-play;❄️]
+        $addOption[Arctic;;moveto_Arctic;❄️]
       ]
       $if[$and[$get[curBiome]!=Forest;$get[curBiome]!=Volcano];
-        $addOption[Forest;;moveto_Forest-$authorID-play;🌲]
+        $addOption[Forest;;moveto_Forest;🌲]
       ]
     ]
 

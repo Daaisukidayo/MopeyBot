@@ -14,12 +14,12 @@ module.exports = [{
     ${jsonAndArray()}
 
     $switch[$get[rtMode];
-        $case[inferno;      $let[page;1]]
-        $case[default;      $let[page;2]]
-        $case[medium;       $let[page;3]]
-        $case[hard;         $let[page;4]]
-        $case[insane;       $let[page;5]]
-        $case[impossible;   $let[page;6]]
+      $case[inferno;      $let[page;1]]
+      $case[default;      $let[page;2]]
+      $case[medium;       $let[page;3]]
+      $case[hard;         $let[page;4]]
+      $case[insane;       $let[page;5]]
+      $case[impossible;   $let[page;6]]
     ]
 
     ${rtModeNum()}
@@ -29,24 +29,23 @@ module.exports = [{
     $let[msgid;$sendMessage[$channelID;;true]]
 
     ${timeout()}
-
-    $deferUpdate
   `,
 },{
   type: "interactionCreate",
   allowedInteractionTypes: ["button"],
   code: `
-    $arrayLoad[btn;-;$customID]
-    $onlyIf[$includes[$env[btn;0];leftCR;rightCR]]
-    $onlyIf[$includes[$env[btn;1];$authorID];  $callFunction[notYourBTN;]  ]
-
-    $let[msgid;$messageID]
-    $let[page;$env[btn;2]]
-    
+    $arrayLoad[interactionID;-;$customID]
+    $arrayLoad[passKeys;,;leftCR,rightCR]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
+
+    $let[page;$env[interactionID;0]]
+    $let[msgid;$messageID]
+    
     ${jsonAndArray()}
 
-    $if[$includes[$env[btn;0];leftCR];
+    $if[$arrayIncludes[interactionID;leftCR];
       $letSub[page;1]
       $if[$get[page]<=0;
         $let[page;$arrayLength[raretryModes]]
@@ -59,54 +58,21 @@ module.exports = [{
     ]
 
     $switch[$get[page];
-        $case[1;$let[rtMode;inferno]]
-        $case[2;$let[rtMode;default]]
-        $case[3;$let[rtMode;medium]]
-        $case[4;$let[rtMode;hard]]
-        $case[5;$let[rtMode;insane]]
-        $case[6;$let[rtMode;impossible]]
+      $case[1;$let[rtMode;inferno]]
+      $case[2;$let[rtMode;default]]
+      $case[3;$let[rtMode;medium]]
+      $case[4;$let[rtMode;hard]]
+      $case[5;$let[rtMode;insane]]
+      $case[6;$let[rtMode;impossible]]
     ]
     ${rtModeNum()}
 
     ${embed()}
     ${buttons()}
-    $!editMessage[$channelID;$get[msgid]]
+    $interactionUpdate
 
     $!clearTimeout[CR-$authorID]
     ${timeout()}
-
-    $deferUpdate
-  `,
-},{
-  type: "interactionCreate",
-  allowedInteractionTypes: ["button"],
-  code: `
-    $arrayLoad[btn;-;$customID]
-    $onlyIf[$includes[$env[btn;0];setmode]]
-    $onlyIf[$includes[$env[btn;1];$authorID];  $callFunction[notYourBTN;]  ]
-    
-    $let[msgid;$messageID]
-    $let[rtMode;$env[btn;2]]
-    $let[page;$env[btn;3]]
-
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
-    ${jsonAndArray()}
-    ${rtModeNum()}
-
-    $!jsonSet[userProfile;rtMode;$get[rtMode]]
-    $setUserVar[userProfile;$env[userProfile]]
-
-    
-    $!editMessage[$channelID;$get[msgid];
-      ${buttons()}
-      ${embed()} 
-      $replace[$get[desc8];{6};\`$toTitleCase[$get[rtMode]]\`]
-    ]
-
-    $!clearTimeout[CR-$authorID]
-    ${timeout()}
-
-    $deferUpdate
   `,
 }];
 
@@ -170,12 +136,12 @@ function jsonAndArray() {
 function rtModeNum() {
   return `
     $switch[$get[rtMode];
-        $case[inferno;      $let[rtModeNum;-1]]
-        $case[default;      $let[rtModeNum;0]]
-        $case[medium;       $let[rtModeNum;1]]
-        $case[hard;         $let[rtModeNum;2]]
-        $case[insane;       $let[rtModeNum;3]]
-        $case[impossible;   $let[rtModeNum;4]]
+      $case[inferno;      $let[rtModeNum;-1]]
+      $case[default;      $let[rtModeNum;0]]
+      $case[medium;       $let[rtModeNum;1]]
+      $case[hard;         $let[rtModeNum;2]]
+      $case[insane;       $let[rtModeNum;3]]
+      $case[impossible;   $let[rtModeNum;4]]
     ]
   `;
 }
@@ -183,21 +149,9 @@ function rtModeNum() {
 function buttons() {
   return `
     $addActionRow
-    $addButton[leftCR-$authorID-$get[page];;Primary;⬅️]
-    $addButton[rightCR-$authorID-$get[page];;Primary;➡️]
-
-    $let[label;$replace[$get[desc7];{5};$toTitleCase[$get[rtMode]]]]
-    
-    $if[$env[userProfile;rtMode]!=$get[rtMode];
-      $let[dis;false]
-      $let[style;Success]
-      ;
-      $let[dis;true]
-      $let[style;Secondary]
-    ]
-    
-    $addButton[setmode-$authorID-$get[rtMode]-$get[page];$get[label];$get[style];;$get[dis]]
-  `;
+    $addButton[$get[page]-leftCR-$authorID;;Primary;⬅️]
+    $addButton[$get[page]-rightCR-$authorID;;Primary;➡️]
+  `
 }
 
 function timeout() {

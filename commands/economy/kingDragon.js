@@ -14,17 +14,17 @@ module.exports = [{
 
     $let[luckRarity;$randomNumber[1;1001]]
     $if[$env[userProfile;devMode];
-      $let[luckRarity;$randomNumber[1;5]]
+      $let[luckRarity;$default[$message;$get[luckRarity]]]
     ]
 
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator
       $if[$get[luckRarity]==1;
-        ${kdMenu('luck')}
-        $let[color;d61b4a]
+        ${addSelectMenu('kingDragon','-luck')}
+        $let[color;$getGlobalVar[kingDragonByLuckColor]]
       ;
-        ${bdMenu()}
+        ${addSelectMenu('blackDragon')}
         $let[color;$getGlobalVar[defaultColor]]
       ]
     ;$get[color]]
@@ -34,43 +34,40 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu"],
   description: "showing king dragon upgrade menu",
   code: `
-    $arrayLoad[menuIDs;-;$customID]
-    $let[index;$selectMenuValues]
-
-    $let[MC;$randomNumber[1000;1501]]
-    $let[successRarity;$randomNumber[1;101]]
-    $let[successChance;60]
-
-    $arrayLoad[passKeys;,;bdmenu]
+    $arrayLoad[interactionID;-;$customID]
+    $arrayLoad[passKeys;,;blackDragonMenu]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     ${jsons()}
 
-    $onlyIf[$arrayIncludes[menuIDs;$authorID];$callFunction[notYourBTN]]
-    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[menuIDs;$env[key]]]]
-
-    $deferUpdate
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
     $jsonLoad[content;${deathContent()}]
+
+    $let[index;$selectMenuValues]
+    $let[MC;$randomNumber[1000;1501]]
+    $let[successRarity;$randomNumber[1;101]]
+    $let[successChance;60]
 
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator
 
       $if[$get[successChance]>=$get[successRarity];
-        ${kdMenu('normal')}
+        ${addSelectMenu('kingDragon','-normal')}
         $let[color;$getGlobalVar[defaultColor]]
       ; 
         $callFunction[sumMC;$get[MC]]
 
-        $let[BD;$env[BDvar;$get[index];name] $env[BDvar;$get[index];emoji]]
+        $let[BD;$env[blackDragonVars;$get[index];name] $env[blackDragonVars;$get[index];emoji]]
         $let[content;$replace[$arrayRandomValue[content];{0};$randomNumber[1;12]]]
 
         $addTextDisplay[## You tried to get King Dragon as __$get[BD]__ $get[content]... Atleast you got $separateNumber[$get[MC];,]$getGlobalVar[emoji] from this run!]
         $let[color;$getGlobalVar[errorColor]]
       ]
     ;$get[color]]
-    $!editMessage[$channelID;$messageID]
+    $interactionUpdate
 
     $setUserVar[userProfile;$env[userProfile]]
 
@@ -80,23 +77,19 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu"],
   description: "showing kingdragon final message",
   code: `
-    $arrayLoad[menuIDs;-;$customID]
+    $arrayLoad[interactionID;-;$customID]
     $let[index;$selectMenuValues]
 
     $let[MC;$randomNumber[3500;5001]]
-    $arrayLoad[passKeys;,;normal,kdmenu]
+    $arrayLoad[passKeys;,;normal,kingDragonMenu]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     ${jsons()}
 
-    $onlyIf[$arrayIncludes[menuIDs;$authorID];$callFunction[notYourBTN]]
-    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[menuIDs;$env[key]]]]
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
-    $deferUpdate
-
-    $let[KD;$env[KDvar;$get[index];name] $env[KDvar;$get[index];emoji]]
-    $let[color;$env[colors;$get[index]]]
-    $let[thumbnail;$env[KDvar;$get[index];img]]
+    ${kdVariables()}
 
     $callFunction[sumMC;$get[MC]]
 
@@ -108,7 +101,7 @@ module.exports = [{
         $addThumbnail[$get[thumbnail]]
       ]
     ;$get[color]]
-    $!editMessage[$channelID;$messageID]
+    $interactionUpdate
 
     $setUserVar[userProfile;$env[userProfile]]
   `
@@ -117,24 +110,20 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu"],
   description: "showing kingdragon by luck final message",
   code: `
-    $arrayLoad[menuIDs;-;$customID]
+    $arrayLoad[interactionID;-;$customID]
 
     $let[index;$selectMenuValues]
     $let[MC;250000]
-    $let[color;d61b4a]
 
-    $arrayLoad[passKeys;,;luck,kdmenu]
+    $arrayLoad[passKeys;,;luck,kingDragonMenu]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     ${jsons()}
 
-    $onlyIf[$arrayIncludes[menuIDs;$authorID];$callFunction[notYourBTN]]
-    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[menuIDs;$env[key]]]]
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
-    $deferUpdate
-
-    $let[KD;$env[KDvar;$get[index];name] $env[KDvar;$get[index];emoji]]
-    $let[color;$env[colors;$get[index]]]
-    $let[thumbnail;$env[KDvar;$get[index];img]]
+    ${kdVariables()}
+    $let[color;$getGlobalVar[kingDragonByLuckColor]]
 
     $callFunction[sumMC;$get[MC]]
 
@@ -147,68 +136,36 @@ module.exports = [{
       ]
       $addTextDisplay[-# Rarity: 1/1000]
     ;$get[color]]
-    $!editMessage[$channelID;$messageID]
+    $interactionUpdate
 
     $setUserVar[userProfile;$env[userProfile]]
   `
 }]
 
-function kdMenu(passKey) {
+function kdVariables() {
   return `
-    $arrayLoad[kds]
-
-    $addActionRow
-    $addStringSelectMenu[kdmenu-${passKey}-$authorID;Choose an upgrade:]
-
-    $loop[$arrayLength[KDvar];
-      $let[i;$math[$env[i] - 1]]
-      $jsonLoad[variant;$arrayAt[KDvar;$get[i]]]
-
-      $let[vCode;$env[variant;vCode]]
-      $let[name;$env[variant;name]]
-      $let[emoji;$env[variant;emoji]]
-
-      $let[showSeasonal;$includes["$get[vCode]";"s1";"s2"]]
-      $let[showLocked;$and[$env[userProfile;userPacks;lockedSP];$get[vCode]==lsp]]
-      $let[showStorefront;$and[$env[userProfile;userPacks;storefrontSP];$get[vCode]==sfsp]]
-      $let[showGolden;$and[$env[userProfile;userPacks;goldenSP];$get[vCode]==gsp]]
-
-      $let[showOption;$or[$get[showSeasonal];$get[showLocked];$get[showStorefront];$get[showGolden]]]
-
-      $if[$get[showOption];
-        $arrayPush[kds;$get[emoji]]
-        $addOption[$get[name];;$get[i];$get[emoji]]
-      ]
-    ;i;true]
+    $let[KD;$env[kingDragonVars;$get[index];name] $env[kingDragonVars;$get[index];emoji]]
+    $let[color;$env[colors;$get[index]]]
+    $let[thumbnail;$env[kingDragonVars;$get[index];img]]
   `
 }
 
-function bdMenu() {
+function addSelectMenu(animalID, passKey = '') {
   return `
-    $arrayLoad[bds]
-
     $addActionRow
-    $addStringSelectMenu[bdmenu-$authorID;Choose an upgrade:]
+    $addStringSelectMenu[${animalID}Menu${passKey}-$authorID;Choose an upgrade:]
 
-    $loop[$arrayLength[BDvar];
+    $loop[$arrayLength[${animalID}Vars];
       $let[i;$math[$env[i] - 1]]
-      $jsonLoad[variant;$arrayAt[BDvar;$get[i]]]
+      $jsonLoad[variant;$arrayAt[${animalID}Vars;$get[i]]]
 
       $let[vCode;$env[variant;vCode]]
       $let[name;$env[variant;name]]
       $let[emoji;$env[variant;emoji]]
 
-      $let[showSeasonal;$includes["$get[vCode]";"s1";"s2"]]
-      $let[showLocked;$and[$env[userProfile;userPacks;lockedSP];$get[vCode]==lsp]]
-      $let[showGolden;$and[$env[userProfile;userPacks;goldenSP];$get[vCode]==gsp]]
-      $let[showLegacy;$and[$env[userProfile;userPacks;legacySP];$get[vCode]==legacy]]
+      $if[$arrayIncludes[userPacksKeys;$get[vCode]];;$continue]
 
-      $let[showOption;$or[$get[showSeasonal];$get[showLocked];$get[showGolden];$get[showLegacy]]]
-
-      $if[$get[showOption];
-        $arrayPush[bds;$get[emoji]]
-        $addOption[$get[name];;$get[i];$get[emoji]]
-      ]
+      $addOption[$get[name];;$get[i];$get[emoji]]
     ;i;true]
   `
 }
@@ -217,8 +174,10 @@ function jsons() {
   return `
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[userPacks;$env[userProfile;userPacks]]
-    $jsonLoad[BDvar;$env[animals;blackDragon;variants]]
-    $jsonLoad[KDvar;$env[animals;kingDragon;variants]]
+    $jsonLoad[userPacksKeys;$jsonKeys[userPacks]]
+    $arrayPush[userPacksKeys;s1;s2]
+    $jsonLoad[blackDragonVars;$env[animals;blackDragon;variants]]
+    $jsonLoad[kingDragonVars;$env[animals;kingDragon;variants]]
     $arrayLoad[colors; ;24272b 24272b 731C1F 9D3F0E 6E141A 5EB2FF B62323 DDAF02 f63413]
   `
 }

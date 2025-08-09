@@ -14,7 +14,7 @@ module.exports = [{
     ]
 
     $getGlobalVar[author]
-    $description[### Are you sure you want to delete all your \`$separateNumber[$env[userProfile;MC];,]\`$getGlobalVar[emoji]?]
+    $description[## Are you sure you want to delete all your \`$separateNumber[$env[userProfile;MC];,]\`$getGlobalVar[emoji]?]
     $color[Orange]
 
     $addActionRow
@@ -31,30 +31,28 @@ module.exports = [{
   type: "interactionCreate", 
   allowedInteractionTypes: [ "button" ], 
   code:`
-    $arrayLoad[btn;-;$customID]
+    $arrayLoad[interactionID;-;$customID]
     $arrayLoad[passKeys;,;confirmDeletingCoins,declineDeletingCoins]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $onlyIf[$arrayIncludes[btn;$authorID];$callFunction[notYourBTN]]
-    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[btn;$env[key]]]]
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
-    $switch[$env[btn;0];
+    $switch[$env[interactionID;0];
 
       $case[$env[passKeys;0];
-        $description[### Deleted all your \`$separateNumber[$env[userProfile;MC];,]\`$getGlobalVar[emoji]]
+        $description[## Deleted all your \`$separateNumber[$env[userProfile;MC];,]\`$getGlobalVar[emoji]]
         $!jsonSet[userProfile;MC;0]
         $setUserVar[userProfile;$env[userProfile]]
       ]
 
       $case[$env[passKeys;1];
-        $description[### Deletion canceled!]
+        $description[## Deletion canceled!]
       ]
 
     ]
 
-    $color[$getGlobalVar[defaultColor]]
-    $getGlobalVar[author]
-    $!editMessage[$channelID;$messageID]
-
+    $callFunction[embed;default]
+    $interactionUpdate
     $!stopTimeout[RC-$authorID]
   `
 }] 

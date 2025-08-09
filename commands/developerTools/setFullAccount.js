@@ -6,10 +6,13 @@ module.exports = {
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $onlyIf[$env[userProfile;devMode]]
     $jsonLoad[shopItems;$getGlobalVar[shopItems]]
+    $arrayLoad[newPacks]
 
     $arrayForEach[shopItems;item;
-      $!jsonSet[userProfile;userPacks;$env[item;name];true]
+      $arrayPush[newPacks;$env[item;code]]
     ]
+
+    $!jsonSet[userProfile;userPacks;$env[newPacks]]
     
     $callFunction[embed;default]
     $description[## ✅ Successfully maxed your account!]

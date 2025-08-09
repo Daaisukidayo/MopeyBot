@@ -57,7 +57,7 @@ DB.commands.add({
 // ========== VARIABLES ==========
 
 DB.variables({
-  //User variables
+  // User variables
 
   userProfile: {
     ID: "",
@@ -70,30 +70,18 @@ DB.variables({
     devMode: false,
     hadAnn: false,
     rtMode: "default",
-    l10n: "EN",
+    language: "EN",
     timezone: "Etc/UTC",
 
-    limiters: {
-      lastDailyDay: -1,
-      lastWeeklyWeek: -1,
-      lastHLUsed: -1,
-      HLRandom: -1,
-      luckDesc: "",
-    },
+    limiters: {},
 
     "1hl": {
-      history: [],
-      settings: {
-        hidePoints: false,
-        hideRares: false,
-        hideRaresLimit: false,
-        unlimitedRares: false,
-        difficulties: false,
-      },
+      history: [], // expected: {"points": number, "rares": number, "endedAt": number, "raresList": object}
+      settings: [], // expected: array with names inside
       difficulty: "normal"
     },
 
-    userPacks: {},
+    userPacks: [], // expected: array with names inside
 
     caughtRareCategories: {
       inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -280,21 +268,7 @@ DB.variables({
     ChannelID: "",
     GuildID: "",
 
-    apex: {
-      dragon: false,
-      trex: false,
-      phoenix: false,
-      pterodactyl: false,
-      kraken: false,
-      kingCrab: false,
-      yeti: false,
-      landMonster: false,
-      dinoMonster: false,
-      giantScorpion: false,
-      seaMonster: false,
-      iceMonster: false,
-      blackDragon: false,
-    },
+    apex: [], // expected: array with names inside
   },
 
   userBackup: {},
@@ -303,26 +277,34 @@ DB.variables({
 
   prefix: ".",
 
-  // For devs
+  // special
 
   allUserIDs: [],
   allTesterIDs: [],
 
-  botEnabled: true,
   maxID: 0,
-  emoji: "<:MopeCoin:705856410940080232>",
+  backupLogCount: 0,
+
+  // config
+
+  botEnabled: true,
+  makeBackups: false,
   defaultColor: "#FFD700",
   errorColor: "#D0321D",
   luckyColor: "#228B22",
   cooldownColor: "#7303b7",
   logColor: "#2019b3",
   apexEmbedColor: "#000000",
+  kingDragonByLuckColor: "#d61b4a",
+  emoji: "<:MopeCoin:705856410940080232>",
   blank: "<:blank:898514292926713866>",
   author: "$author[$userDisplayName • MUID: $env[userProfile;MUID];$userAvatar]",
   reportChannelID: "1372645851159330947",
   logChannelID: "1391387203871047731",
-  backupLogCount: 0,
-  makeBackups: false,
+  lobbyInactiveTime: "30m",
+
+  // play
+
   biomeColors: {
     Land: "#00ff3c",
     Desert: "#ffcc00",
@@ -348,7 +330,24 @@ DB.variables({
     blackDragon: '<:BDragS1Dark:1327711428324364461>',
   },
 
+  buttonStyle: [
+    ["Success", ["demonPufferfish","rareToucan","rareMacaw","rareVulture","blackLion","blackLioness","blackLionCub","blackRhino","harpyEagle","greaterSpottedEagle","shaheen","luckSnowman","luckSnowgirl","luckBigfoot","kingDragon"]],
+    ["Danger", ["marshDeer","stinkyPig","muskDeer","jackass","girabie","blackPanther","lavaToucan","whiteGiraffe","giraffeFamily","aquaYeti","bigGoat","predator","goldenEagle","whiteRhino","whiteLion","whiteLioness","whiteLionCub","whiteTiger","blackTiger","blackBear"]],
+    ["Primary", ["whiteDove","doe","pinkyPig","goldenPheasant","blueMacaw","momaffie","momaffieFamily","chocoToucan","keelBilledToucan","fieryToucan","jaguar","yellowPufferfish","blackManedLion","lioness","lionCub","markhor","blackBear"]],
+  ],
+
+  // lobby
+
+  allLobbyTags: {
+    unlimitedRares: "Unlimited Rares",
+    normalDifficulty: "Normal Difficulty",
+    mediumDifficulty: "Medium Difficulty",
+    hardDifficulty: "Hard Difficulty",
+  },
+
   difficulties: ["normal", "medium", "hard"],
+
+  // raretry
 
   raretryVarData: {
     coinsForRaretry: {
@@ -388,110 +387,97 @@ DB.variables({
     multipliersForRaretry: [1, 1.25, 1.5, 1.75, 2],
   },
 
+  // shop
+
   shopItems: [
     {
-      name: "legacySP",
-      description: "Legacy Skinpack",
-      code: "legacy",
+      name: "Legacy Skinpack",
+      code: "legacySP",
       cost: "200000",
     },
     {
-      name: "lockedSP",
-      description: "Locked Skinpack",
-      code: "lsp",
+      name: "Locked Skinpack",
+      code: "lockedSP",
       cost: "14229000",
     },
     {
-      name: "goldenSP",
-      description: "Golden Skinpack",
-      code: "gsp",
+      name: "Golden Skinpack",
+      code: "goldenSP",
       cost: "10820000",
     },
     {
-      name: "storefrontSP",
-      description: "Storefront Skinpack",
-      code: "sfsp",
+      name: "Storefront Skinpack",
+      code: "storefrontSP",
       cost: "1177000",
     },
     {
-      name: "summer2021SP",
-      description: "Summer 2021 Skinpack",
-      code: "ssp2021",
+      name: "Summer Skinpack 2021",
+      code: "summer2021SP",
       cost: "2359000",
     },
     {
-      name: "summer2022SP",
-      description: "Summer 2022 Skinpack",
-      code: "ssp2022",
+      name: "Summer Skinpack 2022",
+      code: "summer2022SP",
       cost: "485000",
     },
     {
-      name: "halloween2020SP",
-      description: "Halloween 2020 Skinpack",
-      code: "hsp2020",
+      name: "Halloween Skinpack 2020",
+      code: "halloween2020SP",
       cost: "2105000",
     },
     {
-      name: "halloween2021SP",
-      description: "Halloween 2021 Skinpack",
-      code: "hsp2021",
+      name: "Halloween Skinpack 2021",
+      code: "halloween2021SP",
       cost: "2545000",
     },
     {
-      name: "halloween2022SP",
-      description: "Halloween 2022 Skinpack",
-      code: "hsp2022",
+      name: "Halloween Skinpack 2022",
+      code: "halloween2022SP",
       cost: "1770000",
     },
     {
-      name: "halloween2023SP",
-      description: "Halloween 2023 Skinpack",
-      code: "hsp2023",
+      name: "Halloween Skinpack 2023",
+      code: "halloween2023SP",
       cost: "1570000",
     },
     {
-      name: "may2022SP",
-      description: "May 2022 Skinpack",
-      code: "may2022",
+      name: "May Skinpack 2022",
+      code: "may2022SP",
       cost: "749000",
     },
     {
-      name: "christmas2022SP",
-      description: "Christmas 2022 Skinpack",
-      code: "chsp2022",
+      name: "Christmas Skinpack 2022",
+      code: "christmas2022SP",
       cost: "300000",
     },
     {
-      name: "valentine2023SP",
-      description: "Valentine 2023 Skinpack",
-      code: "vsp2023",
+      name: "Valentine Skinpack 2023",
+      code: "valentine2023SP",
       cost: "1600000",
     },
     {
-      name: "landGTSP",
-      description: "Gold Trim Land Skinpack",
-      code: "landgt",
+      name: "Land Gold Trim Skinpack",
+      code: "landGTSP",
       cost: "250000",
     },
     {
-      name: "desertGTSP",
-      description: "Gold Trim Desert Skinpack",
-      code: "desertgt",
+      name: "Desert Gold Trim Skinpack",
+      code: "desertGTSP",
       cost: "250000",
     },
     {
-      name: "oceanGTSP",
-      description: "Gold Trim Ocean Skinpack",
-      code: "oceangt",
+      name: "Ocean Gold Trim Skinpack",
+      code: "oceanGTSP",
       cost: "250000",
     },
     {
-      name: "arcticGTSP",
-      description: "Gold Trim Arctic Skinpack",
-      code: "arcticgt",
+      name: "Arctic Gold Trim Skinpack",
+      code: "arcticGTSP",
       cost: "250000",
     },
   ],
+
+  // 1 hour luck
 
   chartLimits: [
     {
@@ -586,7 +572,7 @@ DB.variables({
       points: 40,
     },
     {
-      category: "gamechange",
+      category: "divine",
       rares: [ "rareMacaw", "rareToucan", "rareVulture", "shaheen", "harpyEagle", "greaterSpottedEagle" ],
       points: 75,
     },
@@ -629,9 +615,9 @@ DB.variables({
       points: 25,
     },
     {
-      category: "godlike",
+      category: "divine",
       rares: [ "rareMacaw", "rareToucan", "rareVulture", "shaheen", "harpyEagle", "greaterSpottedEagle", "luckBigfoot",  "luckSnowman",  "luckSnowgirl",  "kingDragon" ],
-      points: 50,
+      points: 75,
     },
   ],
 
@@ -688,6 +674,8 @@ DB.variables({
     kingDragon: ["kd", "kingdragon"]
   },
 
+  // snora 
+
   tierRareAnimals: [
     { tier: 2, animalIDs: [ "whiteDove" ] },
     { tier: 4, animalIDs: [ "pinkyPig", "stinkyPig" ] },
@@ -702,99 +690,11 @@ DB.variables({
     { tier: 15, animalIDs: [ "aquaYeti", "luckSnowman", "luckSnowgirl", "luckBigfoot" ] },
     { tier: 17, animalIDs: [ "kingDragon" ] }
   ],
-
-  buttonStyle: [
-    ["Success", ["demonPufferfish","rareToucan","rareMacaw","rareVulture","blackLion","blackLioness","blackLionCub","blackRhino","harpyEagle","greaterSpottedEagle","shaheen","luckSnowman","luckSnowgirl","luckBigfoot","kingDragon"]],
-    ["Danger", ["marshDeer","stinkyPig","muskDeer","jackass","girabie","blackPanther","lavaToucan","whiteGiraffe","giraffeFamily","aquaYeti","bigGoat","predator","goldenEagle","whiteRhino","whiteLion","whiteLioness","whiteLionCub","whiteTiger","blackTiger","blackBear"]],
-    ["Primary", ["whiteDove","doe","pinkyPig","goldenPheasant","blueMacaw","momaffie","momaffieFamily","chocoToucan","keelBilledToucan","fieryToucan","jaguar","yellowPufferfish","blackManedLion","lioness","lionCub","markhor","blackBear"]],
-  ],
-
-  allVariants: [
-    { v: "s1", req: null },
-    { v: "s1-v1", req: null },
-    { v: "s2", req: null },
-    { v: "s2-w", req: null },
-    { v: "legacy", req: "legacySP" },
-    { v: "legacy-w", req: "legacySP" },
-    { v: "legacy-w-v1", req: "legacySP" },
-    { v: "sfsp", req: "storefrontSP" },
-    { v: "gsp", req: "goldenSP" },
-    { v: "lsp", req: "lockedSP" },
-    { v: "ssp2021", req: "summer2021SP" },
-    { v: "ssp2022", req: "summer2022SP" },
-    { v: "may2022", req: "may2022SP" },
-    { v: "christmas2022", req: "christmas2022SP" },
-    { v: "valentine2023", req: "valentine2023SP" },
-    { v: "hsp2020", req: "halloween2020SP" },
-    { v: "hsp2021", req: "halloween2021SP" },
-    { v: "hsp2022", req: "halloween2022SP" },
-    { v: "hsp2023", req: "halloween2023SP" },
-    { v: "landgt", req: "landGTSP" },
-    { v: "desertgt", req: "desertGTSP" },
-    { v: "oceangt", req: "oceanGTSP" },
-    { v: "arcticgt", req: "arcticGTSP" },
-    { v: "promo", req: null },
-  ],
-
-  // future content
-  teams: [
-    {
-      name: "Team 1",
-      allies: [
-        {
-          name: "",
-          image: "",
-        },
-        {
-          name: "",
-          image: "",
-        },
-        {
-          name: "",
-          image: "",
-        },
-      ],
-    },
-    {
-      name: "Team 2",
-      allies: [
-        {
-          name: "",
-          image: "",
-        },
-        {
-          name: "",
-          image: "",
-        },
-        {
-          name: "",
-          image: "",
-        },
-      ],
-    },
-    {
-      name: "Team 3",
-      allies: [
-        {
-          name: "",
-          image: "",
-        },
-        {
-          name: "",
-          image: "",
-        },
-        {
-          name: "",
-          image: "",
-        },
-      ],
-    },
-  ],
 });
 
 // ========== FUNCTIONS ==========
-// Executes when a user doesn't accept the rules
 
+// Executes when a user doesn't accept the rules
 client.functions.add({
   name: "rulesSchema",
   code: `
@@ -809,7 +709,6 @@ client.functions.add({
 });
 
 // Embeds for rules
-
 client.functions.add({
   name: "rulesEmbeds",
   code: `
@@ -827,7 +726,6 @@ client.functions.add({
 });
 
 // Executes when on cooldown
-
 client.functions.add({
   name: "cooldownSchema",
   params: ["name"],
@@ -853,7 +751,6 @@ client.functions.add({
 });
 
 // Function for adding/removing coins
-
 client.functions.add({
   name: "sumMC",
   params: ["amount"],
@@ -871,7 +768,6 @@ client.functions.add({
 });
 
 // standart checkings before executing command
-
 client.functions.add({
   name: "checking",
   code: `
@@ -885,7 +781,6 @@ client.functions.add({
 });
 
 // adding cooldown
-
 client.functions.add({
   name: "cooldown",
   params: ["time"],
@@ -897,7 +792,6 @@ client.functions.add({
 });
 
 // when important variables for commands' functionality are deleted
-
 client.functions.add({
   name: "interFail",
   code: `
@@ -910,7 +804,6 @@ client.functions.add({
 });
 
 // when other people trying to interact with author's button
-
 client.functions.add({
   name: "notYourBTN",
   code: `
@@ -922,7 +815,8 @@ client.functions.add({
   `,
 });
 
-client.functions.add({
+// embed with old author & custom color
+client.functions.add({ 
   name: "embed",
   params: ["colorType"],
   code: `
@@ -932,7 +826,8 @@ client.functions.add({
   `
 })
 
-client.functions.add({
+// New author with components v2
+client.functions.add({ 
   name: "newAuthor",
   code: `
     $return[
@@ -941,5 +836,51 @@ client.functions.add({
         $addThumbnail[$userAvatar]
       ]
     ]
+  `
+})
+
+// finds and returns animalID by it's aliases ('wd' etc.)
+client.functions.add({ 
+  name: 'findingAnimalID',
+  params: ["alias"],
+  code: `
+    $loop[$arrayLength[allRaresData];
+      $let[findingAnimalIDIndex;$math[$env[findingAnimalIDLoop] - 1]]
+
+      $jsonLoad[arr;$arrayAt[allRaresData;$get[findingAnimalIDIndex]]]
+      $jsonLoad[arrAliases;$env[arr;1]]
+
+      $if[$arrayIncludes[arrAliases;$env[alias]];;$continue]
+
+      $let[animalID;$env[arr;0]]
+
+      $break
+    ;findingAnimalIDLoop;true]
+    $return[$default[$get[animalID];undefined]]
+  `
+})
+
+// finds animalID's points and category and return an object
+client.functions.add({
+  name: 'findingRareInChallengeDataBase',
+  params: ["animalID"],
+  code: `
+    $loop[$arrayLength[challengeData];
+      $let[findingRareInChallengeDataBaseIndex;$math[$env[findingRareInChallengeDataBaseLoop] - 1]]
+
+      $jsonLoad[challengeDataObj;$arrayAt[challengeData;$get[findingRareInChallengeDataBaseIndex]]]
+      $jsonLoad[challengeDataRaresList;$env[challengeDataObj;rares]]
+
+      $if[$arrayIncludes[challengeDataRaresList;$env[animalID]];;$continue]
+
+        $jsonLoad[output;{
+          "points": $env[challengeDataObj;points],
+          "category": "$env[challengeDataObj;category]"
+        }]
+
+      $break
+    ;findingRareInChallengeDataBaseLoop;true]
+    $if[$isJSON[$env[output]];;$jsonLoad[output;{"points": 0, "category": "undefined"}]]
+    $return[$env[output]]
   `
 })

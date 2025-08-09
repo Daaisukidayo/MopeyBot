@@ -12,16 +12,9 @@
       {
         "vCode": "s1",
         "name": "Mouse",
-        "description": "Season 1 | Version 2 (Current)",
+        "description": "Season 1",
         "emoji": "<:MouseS1:1291425874700271788>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/2/21/Mouse-S1-v2.png"
-      },
-      {
-        "vCode": "s1-v1",
-        "name": "Mouse",
-        "description": "Season 1 | Version 1",
-        "emoji": "<:MouseS1v1:1331659474183655474>",
-        "img": "https://static.wikia.nocookie.net/mopeio/images/b/be/Mouse-S1-v1.png"
       },
       {
         "vCode": "s2",
@@ -31,84 +24,77 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/d/d7/Mouse-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Mouse",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MouseS2Winter:1331658994326044722>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/4/4e/Mouse-S2-Winter.png"
       },
       {
-        "vCode": "lsp",
+        "vCode": "lockedSP",
         "name": "Purple Mouse",
         "description": "Locked Skinpack",
         "emoji": "<:PurpleMouse:1290701105243754531>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/3/3c/PurpleMouse.png"
       },
       {
-        "vCode": "gsp",
+        "vCode": "goldenSP",
         "name": "Golden Mouse",
         "description": "Golden Skinpack",
         "emoji": "<:GoldenMouse:1290701057143472238>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/0/02/GoldenMouse.png"
       },
       {
-        "vCode": "legacy",
+        "vCode": "legacySP",
         "name": "Mouse",
         "description": "Legacy Skinpack",
         "emoji": "<:ClassicMouse:1331661370864963725>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/7/79/Mouse-Classic.png"
       },
       {
-        "vCode": "legacy-w-v1",
+        "vCode": "legacySP",
         "name": "Mouse",
-        "description": "Legacy Skinpack | Winter Version 1",
-        "emoji": "<:LegacyMouseWinterV1:1331663395992113283>",
-        "img": "https://static.wikia.nocookie.net/mopeio/images/7/72/Mouse-Classic-Winter-v1.png"
-      },
-      {
-        "vCode": "legacy-w",
-        "name": "Mouse",
-        "description": "Legacy Skinpack | Winter Version 2",
+        "description": "Legacy Skinpack | Winter Version",
         "emoji": "<:LegacyMouseWinterV2:1331663409212690534>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/c/c0/Mouse-Classic-Winter-v2.png"
       },
       {
-        "vCode": "landgt",
+        "vCode": "landGTSP",
         "name": "Mouse",
         "description": "Land Gold Trim Skinpack",
         "emoji": "<:MouseGoldTrim:1331664429053513780>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/4/4f/Mouse-GoldTrim.png"
       },
       {
-        "vCode": "hsp2020",
+        "vCode": "halloween2020SP",
         "name": "Robo Mouse",
         "description": "Halloween Skinpack 2020",
         "emoji": "<:RoboMouse:1331666011967193138>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/5/51/RoboMouse.png"
       },
       {
-        "vCode": "ssp2021",
+        "vCode": "summer2021SP",
         "name": "Bubbly Mouse",
         "description": "Summer Skinpack 2021",
         "emoji": "<:BubblyMouse:1331666787753787423>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/8/8b/BubblyMouse.png"
       },
       {
-        "vCode": "ssp2022",
+        "vCode": "summer2022SP",
         "name": "Super Mouse",
         "description": "Summer Skinpack 2022",
         "emoji": "<:SuperMouse:1331675123236864001>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/2/24/SuperMouse.png"
       },
       {
-        "vCode": "hsp2021",
+        "vCode": "halloween2021SP",
         "name": "Light Plague Rat",
         "description": "Halloween Skinpack 2021",
         "emoji": "<:LightPlagueRat:1331670155217866962>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/1/19/LightPlagueRat.png"
       },
       {
-        "vCode": "hsp2021",
+        "vCode": "halloween2021SP",
         "name": "Dark Plague Rat",
         "description": "Halloween Skinpack 2021",
         "emoji": "<:DarkPlagueRat:1331670165120876574>",
@@ -141,21 +127,21 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/2/28/DesertRat-S2.png"
       },
       {
-        "vCode": "legacy",
+        "vCode": "legacySP",
         "name": "Desert Rat",
         "description": "Legacy Skinpack",
         "emoji": "<:DesertRatClassic:1331696156560068649>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/b/b2/DesertRat-Classic.png"
       },
       {
-        "vCode": "desertgt",
+        "vCode": "desertGTSP",
         "name": "Desert Rat",
         "description": "Desert Gold Trim Skinpack",
         "emoji": "<:DesertRatGoldTrim:1331696932803838034>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/2/26/DesertRat-GoldTrim.png"
       },
       {
-        "vCode": "hsp2020",
+        "vCode": "halloween2020SP",
         "name": "Cacti Rat",
         "description": "Halloween Skinpack 2020",
         "emoji": "<:CactiRat:1331697830229966882>",
@@ -176,16 +162,9 @@
       {
         "vCode": "s1",
         "name": "Shrimp",
-        "description": "Season 1 | Version 2 (Current)",
+        "description": "Season 1",
         "emoji": "<:ShrimpS1:1291425951338467440>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/c/c5/Shrimp-S1-v2.png"
-      },
-      {
-        "vCode": "s1-v1",
-        "name": "Shrimp",
-        "description": "Season 1 | Version 1",
-        "emoji": "<:ShrimpS1V1:1332053552595599380>",
-        "img": "https://static.wikia.nocookie.net/mopeio/images/c/ca/Shrimp-S1-v1.png"
       },
       {
         "vCode": "s2",
@@ -195,42 +174,42 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/c/c0/Shrimp-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Shrimp",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ShrimpS2Winter:1291425929322823758>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/5/54/Shrimp-S2-Winter.png"
       },
       {
-        "vCode": "legacy",
+        "vCode": "legacySP",
         "name": "Shrimp",
         "description": "Legacy Skinpack",
         "emoji": "<:ShrimpClassic:1332053833316306945>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/d/dc/Shrimp-Classic.png"
       },
       {
-        "vCode": "legacy-w",
+        "vCode": "legacySP",
         "name": "Shrimp",
         "description": "Legacy Skinpack | Winter Version",
         "emoji": "<:ShrimpClassicWinter:1332053845190246480>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/a/a6/Shrimp-Classic-Winter.png"
       },
       {
-        "vCode": "oceangt",
+        "vCode": "oceanGTSP",
         "name": "Shrimp",
         "description": "Ocean Gold Trim Skinpack",
         "emoji": "<:ShrimpGoldTrim:1332054190351978666>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/4/41/Shrimp-GoldTrim.png"
       },
       {
-        "vCode": "may2021",
+        "vCode": "storefrontSP",
         "name": "Deluxe Shrimp",
-        "description": "May 2021 Skinpack",
+        "description": "Storefront Skinpack",
         "emoji": "<:DeluxeShrimp:1332054246866292888>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/0/00/DeluxeShrimp.png"
       },
       {
-        "vCode": "ssp2021",
+        "vCode": "summer2021SP",
         "name": "Chef Shrimp",
         "description": "Summer Skinpack 2021",
         "emoji": "<:ChefShrimp:1332054266487246898>",
@@ -263,35 +242,35 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/5/58/ArcticChipmunk-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Arctic Chipmunk",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ChipmunkS2Winter:1291426691142520872>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/2/20/ArcticChipmunk-S2-Winter.png"
       },
       {
-        "vCode": "legacy",
+        "vCode": "legacySP",
         "name": "Arctic Chipmunk",
         "description": "Legacy Skinpack",
         "emoji": "<:ArcticChipmunkClassic:1332390003870924840>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/7/76/ArcticChipmunk-Classic.png"
       },
       {
-        "vCode": "legacy-w",
+        "vCode": "legacySP",
         "name": "Arctic Chipmunk",
         "description": "Legacy Skinpack | Winter Version",
         "emoji": "<:ArcticChipmunkClassicWinter:1332390685566828575>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/d/d1/ArcticChipmunk-Classic-Winter.png"
       },
       {
-        "vCode": "arcticgt",
+        "vCode": "arcticGTSP",
         "name": "Arctic Chipmunk",
         "description": "Arctic Gold Trim Skinpack",
         "emoji": "<:ArcticChipmunkGoldTrim:1332391843530408107>",
         "img": "https://static.wikia.nocookie.net/mopeio/images/9/95/ArcticChipmunk-GoldTrim.png"
       },
       {
-        "vCode": "ssp2021",
+        "vCode": "summer2021SP",
         "name": "Playful Munk",
         "description": "Summer Skinpack 2021",
         "emoji": "<:PlayfulMunk:1332391870776479764>",
@@ -343,7 +322,7 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/e/e8/Rabbit-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Rabbit",
         "description": "Season 2 | Winter Version",
         "emoji": "<:RabbitS2Winter:1291427664296415297>",
@@ -378,7 +357,7 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/c/ca/Pigeon-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Pigeon",
         "description": "Season 2 | Winter Version",
         "emoji": "<:PigeonS2Winter:1291427628632379423>",
@@ -438,7 +417,7 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/9/91/DesertChipmunk-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Desert Chipmunk",
         "description": "Season 2 | Winter Version",
         "emoji": "<:DesertChipmunkS2Winter:1291427332396941352>",
@@ -471,7 +450,7 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/5/58/Trout-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Trout",
         "description": "Season 2 | Winter Version",
         "emoji": "<:TroutS2Winter:1291427833402363975>",
@@ -504,7 +483,7 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/b/bb/ArcticHare-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Arctic Hare",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ArcticHareS2Winter:1291427205989011527>",
@@ -556,7 +535,7 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/4/4f/Mole-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Mole",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MoleS2Winter:1291428295325388926>",
@@ -615,7 +594,7 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/4/40/Meerkat-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Meerkat",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MeerkatS2Winter:1291428095777177705>",
@@ -648,7 +627,7 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/7/7b/Crab-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Crab",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CrabS2Winter:1291428685815087137>",
@@ -681,7 +660,7 @@
         "img": "https://static.wikia.nocookie.net/mopeio/images/7/70/Penguin-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Penguin",
         "description": "Season 2 | Winter Version",
         "emoji": "<:PenguinS2Winter:1291428006002429994>",
@@ -736,7 +715,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291459276589764638/Pig-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Pig",
         "description": "Season 2 | Winter Version",
         "emoji": "<:PigS2Winter:1291429334774452386>",
@@ -875,7 +854,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291459297338724384/Seahorse-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Sea Horse",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SeahorseS2Winter:1291429453645484082>",
@@ -908,7 +887,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291459274836283402/Seal-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Seal",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SealS2Winter:1291429006503182358>",
@@ -963,7 +942,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291480077338542172/Deer-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Deer",
         "description": "Season 2 | Winter Version",
         "emoji": "<:DeerS2Winter:1291430228677103677>",
@@ -1076,7 +1055,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291480205600489513/Squid-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Squid",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SquidS2Winter:1291430528313987104>",
@@ -1231,7 +1210,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291480614608044132/Fox-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Fox",
         "description": "Season 2 | Winter Version",
         "emoji": "<:FoxS2Winter:1291430796791648368>",
@@ -1264,7 +1243,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291480613962121348/Hedgehog-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Hedgehog",
         "description": "Season 2 | Winter Version",
         "emoji": "<:HedgehogS2Winter:1291430839787458681>",
@@ -1349,7 +1328,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291480686846545930/Jellyfish-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Jellyfish",
         "description": "Season 2 | Winter Version",
         "emoji": "<:JellyfishS2Winter:1337044388056137819>",
@@ -1382,7 +1361,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291480612200386590/ArcticFox-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Arctic Fox",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ArcticFoxS2Winter:1337048370576883742>",
@@ -1415,7 +1394,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291481112995958886/Zebra-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Zebra",
         "description": "Season 2 | Winter Version",
         "emoji": "<:ZebraS2Winter:1291436268487704726>",
@@ -1450,7 +1429,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291480908016386048/Donkey-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Donkey",
         "description": "Season 2 | Winter Version",
         "emoji": "<:DonkeyS2Winter:1291436049758814280>",
@@ -1640,7 +1619,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291481113994461196/Turtle-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Turtle",
         "description": "Season 2 | Winter Version",
         "emoji": "<:TurtleS2Winter:1338158405579182203>",
@@ -1673,7 +1652,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1291480906669752442/Muskox-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Muskox",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MuskoxS2Winter:1338159518609182900>",
@@ -1706,7 +1685,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292384833850572933/Cobra-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Cobra",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CobraS2Winter:1361400218435977416>",
@@ -1743,7 +1722,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292384834114818069/Giraffe-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Giraffe",
         "description": "Season 2 | Winter Version",
         "emoji": "<:GiraffeS2Winter:1361400397939347511>",
@@ -1888,7 +1867,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292384832592281640/SnowyOwl-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Snowy Owl",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SnowyOwlS2Winter:1361401644373377174>",
@@ -1921,7 +1900,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292384832927694929/Walrus-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Walrus",
         "description": "Season 2 | Winter Version",
         "emoji": "<:WalrusS2Winter:1361401453838598407>",
@@ -1984,7 +1963,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368368353280/Cheetah-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Cheetah",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CheetahS2Winter:1361776168491155486>",
@@ -2098,7 +2077,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368800497674/Gorilla-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Gorilla",
         "description": "Season 2 | Winter Version",
         "emoji": "<:GorillaS2Winter:1361776337634988224>",
@@ -2279,7 +2258,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286730610446041212/PakistanToucan.png"
       },
       {
-        "vCode": "legacy",
+        "vCode": "legacySP",
         "name": "USSR Toucan",
         "description": "Legacy Skinpack",
         "emoji": "<:USSRToucanLegacy:1287125672342454406>",
@@ -2428,7 +2407,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292385367659515966/SnowLeopard-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Snow Leopard",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SnowLeopardS2Winter:1361778296198533403>",
@@ -2482,7 +2461,7 @@
         "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239932141660/Bear-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Bear",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BearS2Winter:1362498863448985943>",
@@ -2545,7 +2524,7 @@
         "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239722553434/Tiger-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Tiger",
         "description": "Season 2 | Winter Version",
         "emoji": "<:TigerS2Winter:1362499098640388306>",
@@ -2632,7 +2611,7 @@
         "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239248466012/GobiBear-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Gobi Bear",
         "description": "Season 2 | Winter Version",
         "emoji": "<:GobiBearS2Winter:1362499574945550336>",
@@ -2665,7 +2644,7 @@
         "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239466573835/Hyena-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Hyena",
         "description": "Season 2 | Winter Version",
         "emoji": "<:HyenaS2Winter:1362499599226503319>",
@@ -2724,7 +2703,7 @@
         "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386240401899550/Swordfish-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Swordfish",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SwordfishS2Winter:1362500267492376766>",
@@ -2783,7 +2762,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961021206628/Crocodile-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Crocodile",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CrocodileS2Winter:1363245002247110757>",
@@ -2826,7 +2805,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961469739018/Lion-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Lion",
         "description": "Season 2 | Winter Version",
         "emoji": "<:LionS2Winter:1363245655858086269>",
@@ -3187,7 +3166,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292386960819621999/Vulture-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Vulture",
         "description": "Season 2 | Winter Version",
         "emoji": "<:VultureS2Winter:1363454984011907092>",
@@ -3268,7 +3247,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292386962065592370/Octopus-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Octopus",
         "description": "Season 2 | Winter Version",
         "emoji": "<:OctopusS2Winter:1363467038823153807>",
@@ -3301,7 +3280,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292386960622751765/PolarBear-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Polar Bear",
         "description": "Season 2 | Winter Version",
         "emoji": "<:PolarBearS2Winter:1363467203026096288>",
@@ -3337,7 +3316,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584922779669/Rhino-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Rhino",
         "description": "Season 2 | Winter Version",
         "emoji": "<:RhinoS2Winter:1364670704200581182>",
@@ -3428,7 +3407,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292460585182695484/Eagle-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Bald Eagle",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BaldEagleS2Winter:1364670817975402547>",
@@ -3542,7 +3521,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584696020992/Bison-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Bison",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BisonS2Winter:1364671192187011112>",
@@ -3655,7 +3634,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584364675072/Wolverine-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Wolverine",
         "description": "Season 2 | Winter Version",
         "emoji": "<:WolverineS2Winter:1364671276957831178>",
@@ -3688,7 +3667,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269703475231/Hippo-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Hippo",
         "description": "Season 2 | Winter Version",
         "emoji": "<:HippoS2Winter:1365717652114247770>",
@@ -3721,7 +3700,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292474269414199399/BoaConstrictor-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Boa Constrictor",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BoaConstrictorS2Winter:1365717752983060511>",
@@ -3806,7 +3785,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292474270198530079/KillerWhale-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Killer Whale",
         "description": "Season 2 | Winter Version",
         "emoji": "<:KillerWhaleS2Winter:1365718194735812699>",
@@ -3839,7 +3818,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292474268931854416/SabertoothTiger-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Sabertooth Tiger",
         "description": "Season 2 | Winter Version",
         "emoji": "<:SabertoothTigerS2Winter:1365718485187166208>",
@@ -3938,7 +3917,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421952385147/Cassowary-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Cassowary",
         "description": "Season 2 | Winter Version",
         "emoji": "<:CassowaryS2Winter:1365777226766880898>",
@@ -4023,7 +4002,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292474422724395111/BlueWhale-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Blue Whale",
         "description": "Season 2 | Winter Version",
         "emoji": "<:BlueWhaleS2Winter:1365777926796083260>",
@@ -4056,7 +4035,7 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292474421495205908/Mammoth-S2.png"
       },
       {
-        "vCode": "s2-w",
+        "vCode": "s2",
         "name": "Mammoth",
         "description": "Season 2 | Winter Version",
         "emoji": "<:MammothS2Winter:1365778107771916418>",
@@ -4566,21 +4545,21 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191019794554/BlackDragon-S2.png"
       },
       {
-        "vCode": "lsp",
+        "vCode": "lockedSP",
         "name": "Azure Bringer",
         "description": "Locked Skinpack",
         "emoji": "<:AzureBringer:1327342827360751627>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366447268915580968/AzureBringer.png"
       },
       {
-        "vCode": "gsp",
+        "vCode": "goldenSP",
         "name": "Golden Black Dragon",
         "description": "Golden Skinpack",
         "emoji": "<:GoldenBlackDragon:1327342318818295848>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634510319676/GoldenBlackDragon.png"
       },
       {
-        "vCode": "legacy",
+        "vCode": "legacySP",
         "name": "Black Dragon",
         "description": "Legacy Skinpack",
         "emoji": "<:BlackDragonLegacy:1337845295794622587>",
@@ -4614,49 +4593,49 @@
         "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191737016360/KingDragon-S2.png"
       },
       {
-        "vCode": "lsp",
+        "vCode": "lockedSP",
         "name": "King Shah",
         "description": "Locked Skinpack",
         "emoji": "<:KingShah:1327340413685596170>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452034777108/KingShah.png"
       },
       {
-        "vCode": "lsp",
+        "vCode": "lockedSP",
         "name": "King Stan",
         "description": "Locked Skinpack",
         "emoji": "<:KingStan:1327340402897977496>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452416331786/KingStan.png"
       },
       {
-        "vCode": "lsp",
+        "vCode": "lockedSP",
         "name": "King Ripper",
         "description": "Locked Skinpack",
         "emoji": "<:KingRipper:1327340388566040669>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459451707494440/KingRipper.png"
       },
       {
-        "vCode": "lsp",
+        "vCode": "lockedSP",
         "name": "Queen Celeste",
         "description": "Locked Skinpack",
         "emoji": "<:QueenCeleste:1327340428265259068>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452898803786/QueenCeleste.png"
       },
       {
-        "vCode": "lsp",
+        "vCode": "lockedSP",
         "name": "Queen Scarlet",
         "description": "Locked Skinpack",
         "emoji": "<:QueenScarlet:1327340439132442796>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453242609695/QueenScarlet.png"
       },
       {
-        "vCode": "gsp",
+        "vCode": "goldenSP",
         "name": "Golden King Dragon",
         "description": "Golden Skinpack",
         "emoji": "<:GoldenKingDragon:1327340203173744651>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634254471304/GoldenKingDragon.png"
       },
       {
-        "vCode": "sfsp",
+        "vCode": "storefrontSP",
         "name": "Queen Flame",
         "description": "Storefront Skinpack",
         "emoji": "<:QueenFlame:1327340465166614559>",

@@ -1,4 +1,5 @@
-const type = "name"
+const type = 'emoji'
+const separator = ' '
 
 module.exports = [{
   name: 'simulator',
@@ -60,28 +61,26 @@ module.exports = [{
       $let[quantity;$env[arr;1]]
       $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
 
-      ${findingRareInChallengeDataBase()}
+      $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]
+      $let[challengeDataCategory;$env[output;category]]
+      $let[challengeDataPoints;$env[output;points]]
 
       $let[hasLimitCategory;$arraySome[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
       $let[chartlimitIndex;$arrayFindIndex[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
       $jsonLoad[limitChartObj;$env[chartLimits;$get[chartlimitIndex]]]
       $let[limit;$env[limitChartObj;limit]]      
       
-      $if[$and[$get[hasLimitCategory];$get[quantity]>$get[limit]];
-        $let[quantity;$get[limit]]
-      ]
+      $if[$and[$get[hasLimitCategory];$get[quantity]>$get[limit]];  $let[quantity;$get[limit]]  ]
 
       $let[mathResult;$math[$get[quantity] * $get[challengeDataPoints]]]
       $letSum[totalPoints;$get[mathResult]]
       $letSum[totalRares;$get[quantity]]
 
-      $if[false;$let[rest; * $get[challengeDataPoints] = $get[mathResult]]]
-
-      $arrayPush[msgdesc;$get[animalDisplay]\`$get[quantity]\`$get[rest]]
+      $arrayPush[msgdesc;$get[animalDisplay]\`$get[quantity]\`]
     ]
 
     $callFunction[embed;lucky]
-    $description[$trim[**$arrayJoin[msgdesc;\n]**]]
+    $description[$trim[# $arrayJoin[msgdesc;${separator}]]]
     $footer[Points: $get[totalPoints] • Rares: $get[totalRares]]
   `
 }]

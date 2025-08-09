@@ -5,141 +5,128 @@ module.exports = [{
   type: "messageCreate",
   code: `
     $reply
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $callFunction[checking;]
+    ${json()}
+    $callFunction[checking]
     $callFunction[cooldown;${CD}]
 
-    $jsonLoad[userPacks;$getUserVar[userPacks]]
-
-    $let[msgid;$sendMessage[$channelID;${embedShop()};true]]
-
-    ${shop()}
-
-    $let[desc;]
-    $let[i;0]
-
-    
-    ${genMenu()}
+    ${embedShop()}
+    $let[msgid;$sendMessage[$channelID;;true]]
+    ${timeout()}
   `
 },{
   type: "interactionCreate",
   allowedInteractionTypes: ["selectMenu"],
   code: `
-    $textSplit[$selectMenuValues;-]
+    $arrayLoad[interIDs;-;$customID]
+    $arrayLoad[values;-;$selectMenuValues]
     
-    $onlyif[$splitText[1]==$authorID;
-        $callFunction[notYourBTN;]
-    ]
+    ${json()}
 
-    $textSplit[$splitText[0];+]
+    $onlyIf[$arrayIncludes[interIDs;purchasingSkinpacks]]
+    $onlyIf[$arrayIncludes[interIDs;$authorID];$callFunction[notYourBTN]]
 
-    $let[skinpack;$splitText[0]]
-    $let[cost;$splitText[1]]
-
-    ${shop()}
-    $arrayLoad[trig]
-    $arrayForEach[allSkinPacks;pack;
-      $arrayPush[trig;$env[pack;name]]
-    ]
-
-    $onlyIf[$arrayIncludes[trig;$get[skinpack]]]
-
-    $!stopTimeout[SHOP-$authorID]
-
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
-
-    $let[i;0]
+    $let[skinpack;$env[values;0]]
+    $let[cost;$env[values;1]]
     $let[msgid;$messageID]
+    $let[itemIndex;$arrayFindIndex[shopItems;item;$env[item;code]==$get[skinpack]]]
+    $let[skinpackName;$env[shopItems;$get[itemIndex];name]]
 
-    $if[$env[userProfile;userPacks;$get[skinpack]];
-      ${genMenu()}
+    $onlyIf[$get[itemIndex]!=-1;
       $interactionReply[
-          $ephemeral 
-          $description[## You already own it!]
-          $getGlobalVar[author]
-          $color[$getGlobalVar[defaultColor]]
+        $ephemeral 
+        $description[## Unknown Skin Pack]
+        $callFunction[embed;error]
+      ]
+      $stop
+    ]
+
+    $if[$arrayIncludes[userPacks;$get[skinpack]];
+      $interactionReply[
+        $ephemeral 
+        $description[## You already purchased it!]
+        $callFunction[embed;error]
       ]
       $stop
     ]
     $if[$env[userProfile;MC]<$get[cost];
-      ${genMenu()}
       $interactionReply[
         $ephemeral 
         $description[## You don't have enough $getGlobalVar[emoji]!]
-        $getGlobalVar[author]
-        $color[$getGlobalVar[defaultColor]]
+        $callFunction[embed;error]
       ]
       $stop
     ]
 
+    $!stopTimeout[SHOP-$authorID]
     $callFunction[subMC;$get[cost]]
-
-    $!jsonSet[userProfile;userPacks;$get[skinpack];true]
+    $arrayPush[userPacks;$get[skinpack]]
+    $!jsonSet[userProfile;userPacks;$env[userPacks]]
     $setUserVar[userProfile;$env[userProfile]]
 
-    $interactionReply[
-      $ephemeral
-      $getGlobalVar[author]
-      $description[## Successfully purchased!]
-      $color[$getGlobalVar[defaultColor]]
-    ]
+    ${embedShop()}
+    $interactionUpdate
+    ${timeout()}
 
-    ${genMenu()}
+    $interactionFollowUp[
+      $ephemeral
+      $callFunction[embed;default]
+      $description[## Successfully purchased «\`$get[skinpackName]\`»!]
+    ]
   `
 }]
 
 
 function embedShop() {
-    return `
-        $getGlobalVar[author]
-        $title[__Available Skinpacks__]
-        $footer[Cash: $separateNumber[$env[userProfile;MC];,];https://media.discordapp.net/attachments/701793335941136464/1369682764470681683/Mopecoin.png]
-        $color[$getGlobalVar[defaultColor]]
+  return `
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator
+      $addTextDisplay[# __Available Skin Packs__]
+      ${genMenu()}
+      $addSeparator
+      $addTextDisplay[-# Cash: $separateNumber[$env[userProfile;MC];,]$getGlobalVar[emoji]]
+    ;$getGlobalVar[defaultColor]]
     `
 }
 
-function shop() {
-    return `
-        $jsonLoad[allSkinPacks;$getGlobalVar[shopItems]]
-    `
+function json() {
+  return `
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $jsonLoad[userPacks;$env[userProfile;userPacks]]
+    $jsonLoad[shopItems;$getGlobalVar[shopItems]]
+  `
 }
 
 function genMenu () {
-    return `
-        ${menu()}
+  return `
+    $if[$arrayLength[userPacks]==$arrayLength[shopItems];
+      $description[# The shop is empty]
+    ;
+      $addActionRow
+      $addStringSelectMenu[purchasingSkinpacks-$authorID;Choose a Skinpack]
 
-        $arrayForEach[allSkinPacks;pack;
+      $loop[$arrayLength[shopItems];
+        $let[i;$math[$env[i] - 1]]
+        $jsonLoad[skinpack;$arrayAt[shopItems;$get[i]]]
+        $let[code;$env[skinpack;code]]
 
-            $if[$env[userProfile;userPacks;$env[pack;name]];;
-                $letSum[i;1]
-                $addOption[$env[pack;description];$separateNumber[$env[pack;cost];,];$env[pack;name]+$env[pack;cost]-$authorID;$getGlobalVar[emoji]]
-            ]
-        ]
+        $if[$arrayIncludes[userPacks;$get[code]];$continue]
 
-        $if[$get[i]==0;
-            $deleteComponent[shop-$authorID]
-            $description[# The shop is empty]
-        ;
-            ${timeout()}
-        ]
+        $let[cost;$env[skinpack;cost]]
+        $let[optionName;$env[skinpack;name]]
+        $let[optionDesc;$separateNumber[$get[cost];,]]
+        $let[optionValue;$get[code]-$get[cost]]
 
-        $!editMessage[$channelID;$get[msgid];${embedShop()}]
-    `
-}
-
-function menu(disabled = false) {
-    return `
-        $addActionRow
-        $addStringSelectMenu[shop-$authorID;Choose a Skinpack!;${disabled}]
-    `
+        $addOption[$get[optionName];$get[optionDesc];$get[optionValue];$getGlobalVar[emoji]]
+      ;i;true]
+    ]
+  `
 }
 
 function timeout() {
-    return `
-        $setTimeout[
-            ${menu(true)}
-            $addOption[.;;.]
-            $!editMessage[$channelID;$get[msgid];${embedShop()}$color[GRAY] This message is now inactive]
-        ;1m;SHOP-$authorID]
-    `
+  return `
+    $setTimeout[
+      $deleteComponentFrom[$channelID;$get[msgid];purchasingSkinpacks-$authorID]
+    ;${CD};SHOP-$authorID]
+  `
 }

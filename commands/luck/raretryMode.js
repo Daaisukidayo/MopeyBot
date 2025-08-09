@@ -34,20 +34,20 @@ module.exports = [{
   type: "interactionCreate",
   allowedInteractionTypes: [ "button" ],
   code: `
-    $arrayLoad[btn;-;$customID]
-    $onlyIf[$includes[$env[btn;0];inferno;default;medium;hard;insane;impossible]]
-    $onlyIf[$includes[$env[btn;1];$authorID];$callFunction[notYourBTN]]
-
+    $arrayLoad[interactionID;-;$customID]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $!jsonSet[userProfile;rtMode;$env[btn;0]]
+    ${jsonAndArray()}
+    $onlyIf[$arrayIncludes[interactionID;rtMode]]
+    $onlyIf[$arraySome[raretryModes;mode;$arrayIncludes[interactionID;$toLowercase[$env[mode]]]]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
+    
+    $!jsonSet[userProfile;rtMode;$env[interactionID;0]]
     $setUserVar[userProfile;$env[userProfile]]
     $let[msgid;$messageID]
 
-    ${jsonAndArray()}
+    ${embed()}
     ${buttonsLoop()}
-    $!editMessage[$channelID;$get[msgid];${embed()}]
-
-    $deferUpdate
+    $interactionUpdate
 
     $!clearTimeout[RTM-$authorID]
     ${timeout()}
@@ -63,25 +63,22 @@ function jsonAndArray() {
 
 function embed() {
   return `
-    $getGlobalVar[author]
+    $callFunction[embed;lucky]
     $description[# Choose your raretry mode:]
-    $color[228b22]
-`
+  `
 }
 
 function buttonsLoop(){
   return `
-    $let[q;0] 
-    $arrayForEach[raretryModes;mode;
-      $if[$math[$get[q] % 3]==0;
+    $loop[$arrayLength[raretryModes];
+      $let[i;$math[$env[i] - 1]]
+      $let[mode;$arrayAt[raretryModes;$get[i]]]
+      $if[$math[$get[i] % 3]==0;
         $addActionRow
       ]
 
-      $let[dis;$checkCondition[$env[userProfile;rtMode]==$toLowerCase[$env[mode]]]]
-
-      $addButton[$toLowerCase[$env[mode]]-$authorID;$env[mode];Success;;$get[dis]]
-      $letSum[q;1]
-    ]
+      $addButton[$toLowerCase[$get[mode]]-rtMode-$authorID;$get[mode];Success;;$checkCondition[$env[userProfile;rtMode]==$toLowerCase[$get[mode]]]]
+    ;i;true]
   `
 }
 
