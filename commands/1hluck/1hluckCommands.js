@@ -158,7 +158,7 @@ module.exports = [
       $addTextDisplay[## ${points()}]
       $addTextDisplay[## ${time()}]
       
-      $if[$and[$get[hideRaresLimit]==false;$get[limiters]!=];
+      $if[$and[$get[hideRaresLimit]==false;$arrayLength[limitsContent]!=0];
         $addSeparator
         $addTextDisplay[# Limited Rares:\n$arrayJoin[limitsContent;\n]]
       ]
