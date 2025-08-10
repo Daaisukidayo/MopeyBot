@@ -10,11 +10,9 @@ module.exports = [{
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
     $let[cdTime;5s]
-    $callFunction[cooldown;$get[cdTime]]
-
     $let[arg;$toLowercase[$message]]
-
     $onlyif[$or[$get[arg]==event;$get[arg]==]]
+    $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[challengeData;$getGlobalVar[$toCamelCase[$get[arg] challenge data]]]
@@ -39,18 +37,19 @@ module.exports = [{
       $let[i;0]
 
       $loop[$get[attempts];
-        $let[animalID;$arrayAt[raresArr;$get[i]]]
+        $let[animalID;$arrayRandomValue[raresArr]]
+        $c[ 
+          $let[animalID;$arrayAt[raresArr;$get[i]]]
+        ]
         $let[isRare;$env[animals;$get[animalID];isRare]]
-
         $letSum[i;1]
 
         $if[$get[isRare];;$continue]
+        $let[i;0]
 
         $let[quantity;$env[result;$get[animalID]]]
         $!jsonSet[result;$get[animalID];$math[$get[quantity] + 1]]
-
         $arrayShuffle[raresArr]
-        $let[i;0]
       ]
     ]
 
@@ -85,34 +84,15 @@ module.exports = [{
   `
 }]
 
-
-function findingRareInChallengeDataBase () {
-  return `
-    $loop[$arrayLength[challengeData];
-      $let[j;$math[$env[j] - 1]]
-
-      $jsonLoad[challengeDataObj;$arrayAt[challengeData;$get[j]]]
-      $jsonLoad[challengeDataRaresList;$env[challengeDataObj;rares]]
-      $let[challengeDataPoints;$env[challengeDataObj;points]]
-      $let[challengeDataCategory;$env[challengeDataObj;category]]
-
-      $if[$arrayIncludes[challengeDataRaresList;$get[animalID]];
-        $break
-      ]
-    ;j;true]
-  `
-}
-
-
 function totalAttempts() {
   return `
     [
       [["pigeon", "pig", "deer", "reindeer", "swinehoe"\\], 1\\],
-      [["donkey", "macaw", "giraffe", "cheetah", "toucan", "pufferfish"\\], 150\\],
-      [["tiger"\\], 125\\],
-      [["lion", "falcon", "vulture"\\], 100\\],
-      [["rhino", "baldEagle", "markhor"\\], 50\\],
-      [["whiteGiraffe"\\], 10\\]
+      [["donkey", "macaw", "giraffe", "cheetah", "toucan", "pufferfish"\\], $randomNumber[100;201]\\],
+      [["tiger"\\], $randomNumber[75;151]\\],
+      [["lion", "falcon", "vulture"\\], $randomNumber[75;151]\\],
+      [["rhino", "baldEagle", "markhor"\\], $randomNumber[25;76]\\],
+      [["whiteGiraffe"\\], $randomNumber[5;16]\\]
     \\]
   `
 }

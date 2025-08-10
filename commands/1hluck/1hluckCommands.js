@@ -27,6 +27,8 @@ module.exports = [
   code: `
     $reply
     ${isActiveChallenge()}
+    ${time()}
+
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator[Large]  
@@ -34,7 +36,7 @@ module.exports = [
         $addTextDisplay[## Status: Paused]
         $addSeparator[Large]
       ]
-      $addTextDisplay[## ${time()}]
+      $addTextDisplay[## $get[time]]
     ;$getGlobalVar[luckyColor]]
   `
 },{
@@ -56,14 +58,17 @@ module.exports = [
 
     $!stopInterval[1HLUCK-$authorID|$channelID]
     $setUserVar[1hpaused|$channelID;true]
+    ${totalPoints()}
+    ${time()}
 
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator[Large]  
       $addTextDisplay[# Paused!]
-      $addTextDisplay[## ${points()}]
       $addSeparator[Large]
-      $addTextDisplay[## ${time()}]
+      $addTextDisplay[## $get[totalPoints]]
+      $addSeparator
+      $addTextDisplay[## $get[time]]
     ;$getGlobalVar[luckyColor]]
   `
 },{
@@ -80,14 +85,17 @@ module.exports = [
     ]
 
     $setUserVar[1hpaused|$channelID;false]
+    ${totalPoints()}
+    ${time()}
 
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator[Large]  
       $addTextDisplay[# Continued!]
-      $addTextDisplay[## ${points()}]
       $addSeparator[Large]
-      $addTextDisplay[## ${time()}]
+      $addTextDisplay[## $get[totalPoints]]
+      $addSeparator
+      $addTextDisplay[## $get[time]]
     ;$getGlobalVar[luckyColor]]
     ${interval()}
   `
@@ -114,7 +122,7 @@ module.exports = [
 
     $let[points;0]
     $let[hasDifficulty;$arrayIncludes[userSettings;difficulties]]
-    $let[hideRaresLimit;$arrayIncludes[userSettings;hideRaresLimit]]
+    $let[hideRaresLimit;$arrayIncludes[userSettings;hideLimit]]
     $let[unlimitedRares;$arrayIncludes[userSettings;unlimitedRares]]
     $let[difficulty;$env[userProfile;1hl;difficulty]]
 
@@ -126,23 +134,72 @@ module.exports = [
     
     $c[Looping through every rare]
 
-    ${catchingRare()}
+    $loop[$arrayLength[caughtRares];
+      $let[i;$math[$env[i] - 1]]
+      $let[caughtRare;$arrayAt[caughtRares;$get[i]]]
+
+      $if[$arrayIncludes[allRares;$get[caughtRare]];;
+
+        $if[$get[i]==0;
+          $break $c[breaking the loop if the first message is invalid, so it will not affect normal messages]
+        ]
+
+        $arrayPush[caught;0]
+        $continue
+      ]
+
+      $onlyIf[$getUserVar[1hpaused|$channelID;$authorID;false]!=true;
+        $callFunction[embed;error] 
+        $description[## You are on pause!] 
+        $sendMessage[$channelID]
+      ]
+
+      $let[animalID;$callFunction[findingAnimalID;$get[caughtRare]]]
+      $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]
+      
+      $let[challengeDataPoints;$env[output;points]]
+      $let[challengeDataCategory;$env[output;category]]
+
+      $let[hasLimitCategory;$arraySome[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
+
+      $if[$or[$get[unlimitedRares];$get[hasLimitCategory]==false];
+        ${rares()}
+        $continue
+      ]
+
+      $let[limitAnimalName;$env[animals;$get[animalID];variants;0;${type}]]
+      $let[chartlimitIndex;$arrayFindIndex[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
+      $jsonLoad[limitChartObj;$env[chartLimits;$get[chartlimitIndex]]]
+      $let[limit;$env[limitChartObj;limit]]
+      $let[limitAnimalCount;$env[allRaresList;$get[animalID]]]
+
+      $if[$get[limitAnimalCount]<$get[limit];
+        ${rares()}
+        $letSum[limitAnimalCount;1]
+
+        $if[$get[limitAnimalCount]==$get[limit];
+          $arrayPush[reachedLimitContent;# Reached limit of $get[limitAnimalName]]
+        ]
+      ;
+        $arrayPush[caught;0]
+      ]
+    ;i;true]
     
     $c[Message sending]
     
     $if[$get[points]>0;;$stop]
 
-    $let[pts;]
-    $arrayForEach[caught;pts;$let[pts;$if[$get[pts]==;$get[pts];$get[pts] + ]$env[pts]]]
     $setUserVar[1hpoints|$channelID;$math[$getUserVar[1hpoints|$channelID] + $get[points]]]
 
     ${settingParticProgress()}
     ${limitedCategory()}
+    ${totalPoints()}
+    ${time()}
 
-    $if[$arraylength[caughtRares]>1;
-      $let[desc;$get[pts] = $get[points]]
+    $if[$arraylength[caught]>1;
+      $let[pointsContent;⁘ $arrayJoin[caught; + ] = $get[points]]
     ;
-      $let[desc;+$get[pts]]
+      $let[pointsContent;⁘ +$env[caught;0]]
     ]
 
     $addContainer[
@@ -152,19 +209,20 @@ module.exports = [
         $addTextDisplay[$arrayJoin[reachedLimitContent;\n]]
         $addSeparator[Large]
       ]
+      $if[$get[unlimitedRares];
+        $addTextDisplay[# ※ Unlimited Rares]
+        $addSeparator[Large]
+      ]
       
-      $addTextDisplay[## $get[desc]]
+      $addTextDisplay[## $get[pointsContent]]
       $addSeparator
-      $addTextDisplay[## ${points()}]
-      $addTextDisplay[## ${time()}]
+      $addTextDisplay[## $get[totalPoints]]
+      $addSeparator
+      $addTextDisplay[## $get[time]]
       
       $if[$and[$get[hideRaresLimit]==false;$arrayLength[limitsContent]!=0];
-        $addSeparator
-        $addTextDisplay[# Limited Rares:\n# $arrayJoin[limitsContent; ]]
-      ]
-      $if[$get[unlimitedRares];
-        $addSeparator
-        $addTextDisplay[# Unlimited Rares]
+        $addSeparator[Large]
+        $addTextDisplay[# $arrayJoin[limitsContent; ]]
       ]
     ;$getGlobalVar[luckyColor]]
     $setUserVar[userProfile;$env[userProfile]]
@@ -176,16 +234,23 @@ module.exports = [
     $reply
     ${isActiveChallenge()}
     ${json()}
+    ${allRaresList()}
+    ${totalPoints()}
+    ${totalRares()}
+
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator[Large]  
       $addTextDisplay[# 1 Hour Luck Ended!]
-      $addTextDisplay[## ${total()}]
+      $addSeparator[Large]
+      $addTextDisplay[## $get[totalPoints]]
+      $addTextDisplay[## $get[totalRares]]
+      $addSeparator[Large]
+      $addTextDisplay[$get[allRaresList]]
     ;$getGlobalVar[luckyColor]]
     $sendMessage[$channelID]
     ${reset()}
     ${lobbyEnd()}
-    
   `
 },{
   name: "points",
@@ -197,23 +262,38 @@ module.exports = [
     $callFunction[checking]
 
     $let[id;$authorID]
-    $if[$mentioned[0]!=;
-      $let[id;$mentioned[0]]
+    $if[$default[$mentioned[0];$message[0]]!=;
+      $let[id;$default[$mentioned[0];$message[0]]]
     ]
+
+    $onlyIf[$userExists[$get[id]];
+      $callFunction[embed;error]
+      $description[## Invalid User ID]
+    ]
+
     $jsonLoad[userProfile;$getUserVar[userProfile;$get[id]]]
-    $onlyIf[$getuservar[1hstarted|$channelID;$get[id]];
+    $onlyIf[$getUserVar[1hstarted|$channelID;$get[id]];
       $callFunction[embed;error] 
-      $description[## $if[$get[id]!=$authorID;__$username[$get[id]]__ doesn't;You don't] have an active challenge!]
+      $description[## $if[$get[id]!=$authorID;__$username[$get[id]]__ doesn't;You don't] have an active challenge]
     ]
+
+    ${totalPoints("$get[id]")}
+    ${totalRares("$get[id]")}
+    ${allRaresList("$get[id]")}
+    ${time("$get[id]")}
+
     $addContainer[
       $addSection[
         $addTextDisplay[## $username[$get[id]] • MUID: $env[userProfile;MUID]]
         $addThumbnail[$userAvatar[$get[id]]]
       ]
-      $addSeparator[Large]  
-      $addTextDisplay[## ${total("$get[id]")}]
       $addSeparator[Large]
-      $addTextDisplay[## ${time("$get[id]")}]
+      $addTextDisplay[## $get[totalPoints]]
+      $addTextDisplay[## $get[totalRares]]
+      $addSeparator[Large]
+      $addTextDisplay[$get[allRaresList]]
+      $addSeparator[Large]
+      $addTextDisplay[## $get[time]]
     ;$getGlobalVar[luckyColor]]
   `
 },{
@@ -234,11 +314,12 @@ module.exports = [
       $let[res;$message]
     ]
     $setUserVar[1htime|$channelID;$get[res]]
+    ${time()}
 
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator[Large]  
-      $addTextDisplay[## ${time()}]
+      $addTextDisplay[## $get[time]]
     ;$getGlobalVar[luckyColor]]
   `
 },{
@@ -278,6 +359,7 @@ module.exports = [
     
     $let[caughtRare;$get[arg1]]
     $let[animalID;$callFunction[findingAnimalID;$get[caughtRare]]]
+    $let[animal;$env[animals;$get[animalID];variants;0;${type}]]
     $let[count;$get[arg3]]
     $let[quantity;$default[$env[allRaresList;$get[animalID]];0]]
     $let[rares;0]
@@ -327,17 +409,17 @@ module.exports = [
     $setUserVar[1hpoints|$channelID;$get[points]]
 
     ${settingParticProgress()}
-
-    $let[animal;$env[animals;$get[animalID];variants;0;${type}]]
+    ${allRaresList()}
+    ${time()}
 
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator[Large]
       $addTextDisplay[## ✅ $get[state] \`$get[count]\` $get[animal]]
       $addSeparator[Large]
-      $addTextDisplay[## ${total()}]
+      $addTextDisplay[$get[allRaresList]]
       $addSeparator[Large]
-      $addTextDisplay[## ${time()}]
+      $addTextDisplay[## $get[time]]
     ;$getGlobalVar[luckyColor]]
   `
 },{
@@ -351,18 +433,24 @@ module.exports = [
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
     ${isActiveChallenge()}
+    ${allRaresList()}
+    ${totalPoints()}
+    ${totalRares()}
 
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator[Large]  
       $addTextDisplay[# 1 Hour Luck Ended!]
-      $addTextDisplay[## ${total()}]
+      $addSeparator[Large]
+      $addTextDisplay[## $get[totalPoints]]
+      $addTextDisplay[## $get[totalRares]]
+      $addSeparator[Large]
+      $addTextDisplay[$get[allRaresList]]
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
     ${challengeEnded()}
     ${reset()}
     ${lobbyEnd()}
-    
   `
 },
 
@@ -893,61 +981,6 @@ function loadGlobalJSON() {
 
 // 1 hour luck functions
 
-function catchingRare() {
-  return `
-    $loop[$arrayLength[caughtRares];
-      $let[i;$math[$env[i] - 1]]
-      $let[caughtRare;$arrayAt[caughtRares;$get[i]]]
-
-      $if[$arrayIncludes[allRares;$get[caughtRare]];;
-
-        $if[$get[i]==0;
-          $break $c[breaking the loop if the first message is invalid, so it will not affect normal messages]
-        ]
-
-        $arrayPush[caught;0]
-        $continue
-      ]
-
-      $onlyIf[$getUserVar[1hpaused|$channelID]!=true;
-        $callFunction[embed;error] 
-        $description[## You are on pause!] 
-        $sendMessage[$channelID]
-      ]
-
-      $let[animalID;$callFunction[findingAnimalID;$get[caughtRare]]]
-      $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]
-      
-      $let[challengeDataPoints;$env[output;points]]
-      $let[challengeDataCategory;$env[output;category]]
-
-      $let[hasLimitCategory;$arraySome[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
-
-      $if[$or[$get[unlimitedRares];$get[hasLimitCategory]==false];
-        ${rares()}
-        $continue
-      ]
-
-      $let[limitAnimalName;$env[animals;$get[animalID];variants;0;${type}]]
-      $let[chartlimitIndex;$arrayFindIndex[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
-      $jsonLoad[limitChartObj;$env[chartLimits;$get[chartlimitIndex]]]
-      $let[limit;$env[limitChartObj;limit]]
-      $let[limitAnimalCount;$env[allRaresList;$get[animalID];0]]
-
-      $if[$get[limitAnimalCount]<$get[limit];
-        ${rares()}
-        $letSum[limitAnimalCount;1]
-
-        $if[$get[limitAnimalCount]==$get[limit];
-          $arrayPush[reachedLimitContent;## Reached limit of $get[limitAnimalName]]
-        ]
-      ;
-        $arrayPush[caught;0]
-      ]
-    ;i;true]
-  `
-}
-
 function rares() {
   return `
     $letSum[points;$get[challengeDataPoints]]
@@ -1132,36 +1165,40 @@ function isActiveChallenge () {
 
 function time(id = "$authorID") {
   return `
-    $let[time;$getuservar[1htime|$channelID;${id}]]
-    Time passed: \`$parseDigital[$get[time]000]\`
+    $let[T;$getuservar[1htime|$channelID;${id}]]
+    $let[time;⁘ Time passed: \`$parseDigital[$get[T]000]\`]
   `
 }
 
-function total(id = "$authorID") {
+function allRaresList(id = "$authorID") {
   return `
-    $let[totalRares;$getuservar[1htotalRares|$channelID;${id}]]
     $jsonLoad[raresList;$getUserVar[1hallRaresList|$channelID;${id}]]
-    $arrayLoad[content]
-    
     ${raresListGenerator()}
-    ${points(id)}
-    $if[$arrayIncludes[userSettings;hideRares];
-      ## Total rares: ||$get[totalRares]||
-    ;
-      ## Total rares: \`$get[totalRares]\`
-    ]
-    ## All Rares List:\n# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[content; ]\n# ╚══════༺❀༻༺❀༻══════╝
+    $let[allRaresList;${listDesign()}]
   `
 }
 
-function points(id = "$authorID") {
+function totalPoints(id = "$authorID") {
   return `
-    $let[1hlp;$getUserVar[1hpoints|$channelID;${id}]]
+    $let[TP;$getUserVar[1hpoints|$channelID;${id}]]
     $if[$arrayIncludes[userSettings;hidePoints];
-      Total points: ||$get[1hlp]||
-    ;
-      Total points: \`$get[1hlp]\`
+    $let[styled;||$get[TP]||] 
+    ; 
+      $let[styled;\`$get[TP]\`]
     ]
+    $let[totalPoints;⁘ Total points: $get[styled]]
+  `
+}
+
+function totalRares(id = "$authorID") {
+  return `
+    $let[TR;$getUserVar[1htotalRares|$channelID;${id}]]
+    $if[$arrayIncludes[userSettings;hideRares]; 
+      $let[styled;||$get[TR]||] 
+    ; 
+      $let[styled;\`$get[TR]\`]
+    ]
+    $let[totalRares;⁘ Total rares: $get[styled]]
   `
 }
 
@@ -1181,6 +1218,7 @@ function reset(id = "$authorID") {
 function raresListGenerator() {
   return `
     $jsonLoad[listEntries;$jsonEntries[raresList]]
+    $arrayLoad[content]
 
     $arrayForEach[listEntries;entry;
       $let[animalID;$env[entry;0]]
@@ -1242,6 +1280,7 @@ function deleteLobbyVars() {
 
 // embed functions
 
+
 function historyEmbed() {
   return `
     $let[index;$math[$get[page] - 1]]
@@ -1253,7 +1292,6 @@ function historyEmbed() {
       $arrayMap[tags;tag;$return[$env[allLobbyTags;$env[tag]]];tags]
     ]
     $if[$arrayAt[tags;0]==;$arrayPush[tags;none]]
-    $arrayLoad[content]
     
     ${raresListGenerator()}
     $footer[Sort Type: $get[sort]]
@@ -1263,7 +1301,7 @@ function historyEmbed() {
       ## Rares: \`$env[history;$get[index];rares]\`
       ## Difficulty: \`$toTitleCase[$env[history;$get[index];difficulty]]\`
       ## Tags:\n$codeBlock[$arrayJoin[tags;\n]]
-      ## All Rares List:\n# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[content; ]\n# ╚══════༺❀༻༺❀༻══════╝
+      ## All Rares List:\n${listDesign()}
       ## Ended at: $discordTimestamp[$env[history;$get[index];endedAt];LongDateTime]
     ]]
 
@@ -1526,3 +1564,5 @@ function lobbyTimeout () {
     ;$getGlobalVar[lobbyInactiveTime];LOBBYTIMEOUT-$channelID]
   `
 }
+
+function listDesign() { return `# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[content; ]\n# ╚══════༺❀༻༺❀༻══════╝` }
