@@ -411,11 +411,16 @@ module.exports = [
     ${settingParticProgress()}
     ${allRaresList()}
     ${time()}
+    ${totalPoints()}
+    ${totalRares()}
 
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator[Large]
       $addTextDisplay[## ✅ $get[state] \`$get[count]\` $get[animal]]
+      $addSeparator[Large]
+      $addTextDisplay[## $get[totalPoints]]
+      $addTextDisplay[## $get[totalRares]]
       $addSeparator[Large]
       $addTextDisplay[$get[allRaresList]]
       $addSeparator[Large]

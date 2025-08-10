@@ -264,6 +264,8 @@ DB.variables({
     opponentBitesInArena: 0,
     opponentAnimal: "",
     opponentAction: "",
+    opponentTier: "",
+    opponentApex: "",
     MessageID: "",
     ChannelID: "",
     GuildID: "",
