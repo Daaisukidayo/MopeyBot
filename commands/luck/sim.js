@@ -24,7 +24,6 @@ module.exports = [{
 
     $let[totalRares;0]
     $let[totalPoints;0]
-    $let[msgdesc;]
 
     $jsonLoad[allRareAttemptsInfoEntries;$jsonEntries[allRareAttemptsInfo]]
 
