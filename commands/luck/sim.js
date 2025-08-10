@@ -88,11 +88,11 @@ function totalAttempts() {
   return `
     [
       [["pigeon", "pig", "deer", "reindeer", "swinehoe"\\], 1\\],
-      [["donkey", "macaw", "giraffe", "cheetah", "toucan", "pufferfish"\\], $randomNumber[100;201]\\],
-      [["tiger"\\], $randomNumber[75;151]\\],
-      [["lion", "falcon", "vulture"\\], $randomNumber[75;151]\\],
-      [["rhino", "baldEagle", "markhor"\\], $randomNumber[25;76]\\],
-      [["whiteGiraffe"\\], $randomNumber[5;16]\\]
+      [["donkey", "macaw", "giraffe", "cheetah", "toucan", "pufferfish"\\], $randomNumber[100;301]\\],
+      [["tiger"\\], $randomNumber[50;151]\\],
+      [["lion", "falcon", "vulture"\\], $randomNumber[75;226]\\],
+      [["rhino", "baldEagle", "markhor"\\], $randomNumber[25;101]\\],
+      [["whiteGiraffe"\\], $randomNumber[5;21]\\]
     \\]
   `
 }
