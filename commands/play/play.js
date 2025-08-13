@@ -399,7 +399,7 @@ module.exports = [{
         ]
       ;
         $if[$get[actionR]<90; 
-          $get[playerAction]  $c[Same action]
+          $let[opponentAction;$get[playerAction]]  $c[Same action]
         ;
           $if[$get[playerAction]==attack;
             $let[opponentAction;deceive]
@@ -549,8 +549,8 @@ module.exports = [{
       ${resetArena()}
 
       $if[$env[playData;tier]==17; $c[If user is not a KD]
-        $if[$env[playData;apex;$get[apex]];;
-          $!jsonSet[playData;apex;$get[apex];true] $c[setting apex based on opponent's animal]
+        $if[$arrayIncludes[currentApex;$get[apex]];;
+          $arrayPush[currentApex;$get[apex]] $c[setting apex based on opponent's animal]
         ]
         ${hasAllApex()}
 
@@ -1178,19 +1178,20 @@ function animalStats() {
   return `-# $env[animals;$env[playData;currentAnimal];variants;$env[userProfile;userWardrobe;$env[playData;currentAnimal]];emoji] • $abbreviateNumber[$env[playData;XP]]XP • $env[playData;MC]$getGlobalVar[emoji]`
 }
 
-function animalEmoji (animal, v = 0) {
-  return `$env[animals;${animal};variants;${v};emoji]`
-}
-
 function hasAllApex() {
   return `
     $arrayLoad[allApex;,;dragon,trex,phoenix,pterodactyl,kingCrab,yeti,landMonster,dinoMonster,giantScorpion,seaMonster,iceMonster,blackDragon]
     $arrayLoad[totalApex]
     $jsonLoad[darkApexEmojis;$getGlobalVar[darkApexEmojis]]
-    $let[hasAllApex;$arrayEvery[allApex;apex;$env[playData;apex;$env[apex]]]]
+    $let[hasAllApex;$arrayEvery[allApex;apex;$arrayIncludes[currentApex;$env[apex]]]]
 
     $arrayForEach[allApex;apex;
-      $arrayPush[totalApex;$if[$env[playData;apex;$env[apex]];${animalEmoji('$env[apex]')};$env[darkApexEmojis;$env[apex]]]]
+      $if[$arrayIncludes[currentApex;$env[apex]];
+        $let[emoji;$env[animals;$env[apex];variants;0;emoji]]
+      ;
+        $let[emoji;$env[darkApexEmojis;$env[apex]]]
+      ]
+      $arrayPush[totalApex;$get[emoji]]
     ]
 
     $let[currentApexes;# $arrayJoin[totalApex; ]]
