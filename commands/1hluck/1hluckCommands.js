@@ -11,10 +11,12 @@ module.exports = [
       $callFunction[embed;error] 
       $description[## You already have an active challenge!]
     ]
-
-    $c[
-      $if[$message[0]==event;$setUserVar[event1hstarted|$channelID;true] $let[extraDesc;Event ]]
+    $onlyIf[$getChannelVar[participants]==;
+      $callFunction[embed;error] 
+      $description[## You can't start the challenge in channel with active Lobby!]
     ]
+
+    $if[$message[0]==event;$setUserVar[event1hstarted|$channelID;true] $let[extraDesc;Event ]]
 
     $callFunction[embed;lucky]
     $description[# $get[extraDesc]1 Hour Luck Challenge has begun!\n## Don't forget to turn on notification!]
@@ -112,11 +114,8 @@ module.exports = [
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
     $jsonLoad[allRaresList;$getUserVar[1hallRaresList|$channelID]]
     $jsonLoad[chartLimits;$getGlobalVar[chartLimits]]
-    $if[$getChannelVar[lobbyDifficulty]!=;
-      $if[$getChannelVar[lobbyDifficulty]!=none;
-        $jsonLoad[chartLimits;$getGlobalVar[$getChannelVar[lobbyDifficulty]ChartLimits]]
-      ]
-    ]
+    $jsonLoad[lobbyTags;$getChannelVar[lobbyTags]]
+
     $arrayLoad[limitsContent]
     $arrayLoad[reachedLimitContent]
 
@@ -126,11 +125,21 @@ module.exports = [
     $let[unlimitedRares;$arrayIncludes[userSettings;unlimitedRares]]
     $let[difficulty;$env[userProfile;1hl;difficulty]]
 
-    $if[$getUserVar[participating|$channelID];    $let[unlimitedRares;$getChannelVar[unlimitedRares]]  ]
-    $if[$getUserVar[event1hstarted|$channelID];   $let[unlimitedRares;false]  ]
+    $if[$getUserVar[participating|$channelID];
+      $let[unlimitedRares;$arrayIncludes[lobbyTags;unlimitedRares]]
+      $if[$and[$getChannelVar[lobbyDifficulty]!=none;$getChannelVar[lobbyDifficulty]!=];
+        $jsonLoad[chartLimits;$getGlobalVar[$getChannelVar[lobbyDifficulty]ChartLimits]]
+      ]
+    ;
+      $if[$get[hasDifficulty];
+        $jsonLoad[chartLimits;$getGlobalVar[$get[difficulty]ChartLimits]]
+      ]
+    ]
 
-    $if[$get[hasDifficulty];                      $jsonLoad[chartLimits;$getGlobalVar[$get[difficulty]ChartLimits]]  ]
-    $if[$getUserVar[event1hstarted|$channelID];   $jsonLoad[chartLimits;$getGlobalVar[eventChartLimits]]  ]
+    $if[$getUserVar[event1hstarted|$channelID];
+      $jsonLoad[chartLimits;$getGlobalVar[eventChartLimits]]
+      $let[unlimitedRares;false]
+    ]
     
     $c[Looping through every rare]
 
@@ -534,8 +543,11 @@ module.exports = [
     $let[page;1]
     $let[sortType;d]
     $if[$arrayAt[history;0]==;
-      $description[# No history]
-      $callFunction[embed;lucky]
+      $addContainer[
+        $callFunction[newAuthor]
+        $addSeparator[Large]
+        $addTextDisplay[## You haven't completed any challenge!]
+      ]
       $sendMessage[$channelID]
       $stop
     ]
@@ -1120,6 +1132,7 @@ function lobbyEnd() {
       $if[$get[allFinished];
 
         $arrayLoad[result]
+        $arrayLoad[parts]
         $arrayForEach[participants;user;
           $jsonLoad[progress;$getUserVar[progress|$channelID;$env[user]]]
           $arrayPushJSON[result;$env[progress]]
@@ -1133,13 +1146,17 @@ function lobbyEnd() {
         $arrayForEach[result;res;
           $letSum[position;1]
           $let[emoji;$if[$get[position]==1;🥇;$if[$get[position]==2;🥈;$if[$get[position]==3;🥉;⁘]]]]
-          $let[parts;$get[parts]### $get[emoji] $ordinal[$get[position]] ➤ $username[$env[res;user]] \n**$getGlobalVar[blank] Points: \`$env[res;points]\`**\n]
+          $arrayPush[parts;### $get[emoji] $ordinal[$get[position]] ➤ $username[$env[res;user]] \n**$getGlobalVar[blank] Points: \`$env[res;points]\`**]
         ]
 
         $sendMessage[$channelID;
-          $author[1 Hour Luck Ended!]
-          $description[# 🎉 Winner - $username[$env[result;0;user]] 🎉\n$trimEnd[$get[parts]]]
-          $color[$getGlobalVar[luckyColor]]
+          $addContainer[
+            $addTextDisplay[# 🎉 1 Hour Luck Ended! 🎉]
+            $addSeparator
+            $addTextDisplay[# 🌟 Winner: $username[$env[result;0;user]] 🌟]
+            $addSeparator
+            $addTextDisplay[$arrayJoin[parts;\n]]
+          ;$getGlobalVar[luckyColor]]
         ]
         ${deleteLobbyVars()}
       ]
@@ -1230,9 +1247,8 @@ function raresListGenerator() {
       $let[quantity;$env[entry;1]]
 
       $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
-      $let[listContent;$get[animalDisplay]\`$get[quantity]\`]
+      $arrayPush[content;$get[animalDisplay]\`$get[quantity]\`]
 
-      $arrayPush[content;$get[listContent]]
     ]
     $if[$arrayLength[content]==0;$arrayPush[content;none]]
   `
@@ -1289,7 +1305,6 @@ function deleteLobbyVars() {
 function historyEmbed() {
   return `
     $let[index;$math[$get[page] - 1]]
-    $callFunction[embed;lucky]
     $jsonLoad[allLobbyTags;$getGlobalVar[allLobbyTags]]
     $jsonLoad[raresList;$env[history;$get[index];raresList]]
     $jsonLoad[tags;$env[history;$get[index];tags]]
@@ -1299,32 +1314,41 @@ function historyEmbed() {
     $if[$arrayAt[tags;0]==;$arrayPush[tags;none]]
     
     ${raresListGenerator()}
-    $footer[Sort Type: $get[sort]]
-    $description[$trimLines[
-      ## Play Type: \`$toTitleCase[$env[history;$get[index];playType]]\`
-      ## Points: \`$env[history;$get[index];points]\`
-      ## Rares: \`$env[history;$get[index];rares]\`
-      ## Difficulty: \`$toTitleCase[$env[history;$get[index];difficulty]]\`
-      ## Tags:\n$codeBlock[$arrayJoin[tags;\n]]
-      ## All Rares List:\n${listDesign()}
-      ## Ended at: $discordTimestamp[$env[history;$get[index];endedAt];LongDateTime]
-    ]]
 
-    $if[$arrayLength[history]>1;
-      $addActionRow
-      $addButton[$get[page]-$get[sortType]-historyPageLeft-$authorID;;Primary;⬅️]
-      $addButton[$get[page]-$get[sortType]-historyPageCustom-$authorID;Page $get[page]/$arrayLength[history];Primary;🔎]
-      $addButton[$get[page]-$get[sortType]-historyPageRight-$authorID;;Primary;➡️]
-      $addActionRow
-      $addStringSelectMenu[sortHis-$authorID;Sort by]
-      $addOption[Date;;$get[page]-d;;$checkCondition[$get[sortType]==d]]
-      $addOption[Points;;$get[page]-p;;$checkCondition[$get[sortType]==p]]
-      $addOption[Rares;;$get[page]-r;;$checkCondition[$get[sortType]==r]]
-    ]
-    $if[$env[history;0]!=;
-      $addActionRow
-      $addButton[$get[page]-$get[sortType]-deleteHistoryPage-$authorID;Delete This Page;Danger;🗑️]
-    ]
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addTextDisplay[### Points: \`$env[history;$get[index];points]\`]
+      $addSeparator
+      $addTextDisplay[### Rares: \`$env[history;$get[index];rares]\`]
+      $addSeparator
+      $addTextDisplay[### Play Type: \`$toTitleCase[$env[history;$get[index];playType]]\`]
+      $addSeparator
+      $addTextDisplay[### Difficulty: \`$toTitleCase[$env[history;$get[index];difficulty]]\`]
+      $addSeparator
+      $addTextDisplay[### Ended at: $discordTimestamp[$env[history;$get[index];endedAt];LongDateTime]]
+      $addSeparator
+      $addTextDisplay[## Tags]
+      $addTextDisplay[$codeBlock[$arrayJoin[tags;\n]]]
+      $addSeparator[Large]
+      $addTextDisplay[${listDesign()}]
+
+      $if[$arrayLength[history]>1;
+        $addActionRow
+        $addButton[$get[page]-$get[sortType]-historyPageLeft-$authorID;;Primary;⬅️]
+        $addButton[$get[page]-$get[sortType]-historyPageCustom-$authorID;Page $get[page]/$arrayLength[history];Primary;🔎]
+        $addButton[$get[page]-$get[sortType]-historyPageRight-$authorID;;Primary;➡️]
+        $addActionRow
+        $addStringSelectMenu[sortHis-$authorID;Sort by]
+        $addOption[Sort Type: Date;;$get[page]-d;;$checkCondition[$get[sortType]==d]]
+        $addOption[Sort Type: Points;;$get[page]-p;;$checkCondition[$get[sortType]==p]]
+        $addOption[Sort Type: Rares;;$get[page]-r;;$checkCondition[$get[sortType]==r]]
+      ]
+      $if[$env[history;0]!=;
+        $addActionRow
+        $addButton[$get[page]-$get[sortType]-deleteHistoryPage-$authorID;Delete This Page;Danger;🗑️]
+      ]
+    ;$getGlobalVar[luckyColor]]
   `
 }
 
@@ -1462,6 +1486,7 @@ function settingsTimeout() {
 }
 
 function historyTimeout () {
+  return ``
   return `
     $setTimeout[
       $!disableComponentsOf[$channelID;$get[msg]]
