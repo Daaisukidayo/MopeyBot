@@ -173,8 +173,7 @@ function addSelectMenu(animalID, passKey = '') {
 function jsons() {
   return `
     $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[userPacks;$env[userProfile;userPacks]]
-    $jsonLoad[userPacksKeys;$jsonKeys[userPacks]]
+    $jsonLoad[userPacksKeys;$env[userProfile;userPacks]]
     $arrayPush[userPacksKeys;s1;s2]
     $jsonLoad[blackDragonVars;$env[animals;blackDragon;variants]]
     $jsonLoad[kingDragonVars;$env[animals;kingDragon;variants]]
