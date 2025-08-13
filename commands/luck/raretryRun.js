@@ -10,40 +10,78 @@ module.exports = [{
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[raresData;${raresData()}]
-    $jsonLoad[text;${text()}]
+    ${luckGenerator()}
+    $jsonLoad[addClover;${addClover()}]
+    $jsonLoad[content;${content()}]
+    $jsonLoad[rareReward;${raresReward()}]
+    $jsonLoad[allRareAttemptsInfoEntries;$jsonEntries[allRareAttemptsInfo]]
 
-    $let[desc;]
+    $arrayLoad[desc]
     $let[total;0]
 
-    $arrayForEach[raresData;rare; $c[OLD RARE SYSTEM]
-      $let[anChance;$env[rare;chance]]
-      $let[att;$env[rare;atts]]
-      $let[rChance;$randomNumber[1;$math[$get[att] + 1]]]
+    $arrayForEach[allRareAttemptsInfoEntries;entry;
+      $let[animalID;$env[entry;1;attempts;0]]
+      $let[animalName;$env[animals;$get[animalID];variants;0;name]]
+      $let[animalEmoji;$env[animals;$get[animalID];variants;0;emoji]]
+      $let[isRare;$env[animals;$get[animalID];isRare]]
+      $let[rareQuantity;$env[animals;$get[animalID];rarity;0]]
+      $let[totalAttempts;$env[animals;$get[animalID];rarity;1]]
+      $let[animalContent;$get[animalEmoji]]
+      $let[percent;$round[$math[$get[rareQuantity] / $get[totalAttempts] * 100];3]]
+      $let[CL;]
 
-        $if[$get[anChance]>=$get[rChance];
-          $let[desc;$get[desc]\n### $env[rare;content] | \`$get[anChance]/$get[att] ($round[$math[$get[anChance] / $get[att] * 100];2]%)\` | +$env[rare;MC]$getGlobalVar[emoji]]
-          $letSum[total;$env[rare;MC]]
-        ]
+
+      $if[$and[$get[animalID]!=undefined;$get[isRare]];
+        ${addingClover()}
+
+        $let[rewardArrayIndex;$arrayFindIndex[rareReward;obj;$env[obj;animalID]==$get[animalID]]]
+        $let[MC;$env[rareReward;$get[rewardArrayIndex];MC]]
+
+        $arrayPush[desc;## $get[animalContent]$get[CL] | \`$get[rareQuantity]/$get[totalAttempts]\` | +\`$get[MC]\`$getGlobalVar[emoji]]
+        $letSum[total;$get[MC]]
+      ]
     ]
   
-    $if[$get[desc]==;
-      $let[desc;\n## nothing]
+    $if[$arrayLength[desc]==0;
+      $arrayPush[desc;## nothing]
     ]
 
-    $let[text;$arrayRandomValue[text]]
-    $let[msgdesc;# $get[text] $get[desc]]
+    $let[content;$arrayRandomValue[content]]
+    $let[msgdesc;# $get[content]\n**$arrayJoin[desc;\n]**]
 
-    $color[$getGlobalVar[luckyColor]]
+    $callFunction[embed;lucky]
     $description[$get[msgdesc]\n-# Total: +$get[total]$getGlobalVar[emoji]]
-    $getGlobalVar[author]
+    
     $callFunction[sumMC;$get[total]]
     $setUserVar[userProfile;$env[userProfile]]
-
-`
+  `
 }]
 
-function text () {
+function addingClover() {
+  return `
+    $loop[$arrayLength[addClover];
+      $let[i;$math[$env[i] - 1]]
+      $let[chance;$env[addClover;$get[i];0]]
+      $if[$get[chance]>=$get[percent];;$continue]
+      $let[CL;$env[addClover;$get[i];1]]
+      $break
+    ;i;true]
+  `
+}
+
+function addClover() {
+  return `
+    [
+      [0.025, "🍀🍀🍀🍀🍀"\\],
+      [0.035, "🍀🍀🍀🍀"\\],
+      [0.1, "🍀🍀🍀"\\],
+      [0.5, "🍀🍀"\\],
+      [3, "🍀"\\]
+    \\]
+  `
+}
+
+function content() {
   return `
     [
       "You attempted to obtain rares while upgrading from mouse to black dragon, and you received:",
@@ -58,343 +96,298 @@ function text () {
   `
 }
 
-function raresData () {
+function luckGenerator () {
   return `
-    [
-      {
-        "chance": "10",
-        "atts": "100",
-        "content": "${addContent("whiteDove")}",
-        "MC": 125
-      },
-      {
-        "chance": "1",
-        "atts": "250",
-        "content": "${addContent("stinkyPig")} 🍀",
-        "MC": 3280
-      },
-      {
-        "chance": "25",
-        "atts": "250",
-        "content": "${addContent("pinkyPig")}",
-        "MC": 125
-      },
-      {
-        "chance": "5",
-        "atts": "100",
-        "content": "${addContent("goldenPheasant")}",
-        "MC": 250
-      },
-      {
-        "chance": "3",
-        "atts": "300",
-        "content": "${addContent("marshDeer")}",
-        "MC": 1250
-      },
-      {
-        "chance": "60",
-        "atts": "300",
-        "content": "${addContent("doe")}",
-        "MC": 60
-      },
-      {
-        "chance": "1",
-        "atts": "300",
-        "content": "${addContent("muskDeer")} 🍀",
-        "MC": 3935
-      },
-      {
-        "chance": "10",
-        "atts": "700",
-        "content": "${addContent("jackass")}",
-        "MC": 930
-      },
-      {
-        "chance": "1",
-        "atts": "3000",
-        "content": "${addContent("rareMacaw")} 🍀🍀🍀",
-        "MC": 41250
-      },
-      {
-        "chance": "300",
-        "atts": "3000",
-        "content": "${addContent("blueMacaw")}",
-        "MC": 125
-      },
-      {
-        "chance": "10",
-        "atts": "500",
-        "content": "${addContent("girabie")}",
-        "MC": 660
-      },
-      {
-        "chance": "25",
-        "atts": "500",
-        "content": "${addContent("momaffieFamily")}",
-        "MC": 250
-      },
-      {
-        "chance": "50",
-        "atts": "500",
-        "content": "${addContent("momaffie")}",
-        "MC": 125
-      },
-      {
-        "chance": "1",
-        "atts": "3000",
-        "content": "${addContent("rareToucan")} 🍀🍀🍀",
-        "MC": 41250
-      },
-      {
-        "chance": "12",
-        "atts": "3000",
-        "content": "${addContent("lavaToucan")} 🍀",
-        "MC": 3280
-      },
-      {
-        "chance": "300",
-        "atts": "3000",
-        "content": "${addContent("fieryToucan")}",
-        "MC": 125
-      },
-      {
-        "chance": "600",
-        "atts": "3000",
-        "content": "${addContent("keelBilledToucan")}",
-        "MC": 60
-      },
-      {
-        "chance": "900",
-        "atts": "3000",
-        "content": "${addContent("chocoToucan")}",
-        "MC": 0
-      },
-      {
-        "chance": "4",
-        "atts": "250",
-        "content": "${addContent("blackPanther")} 🍀",
-        "MC": 3280
-      },
-      {
-        "chance": "16",
-        "atts": "250",
-        "content": "${addContent("leopard")}",
-        "MC": 800
-      },
-      {
-        "chance": "20",
-        "atts": "250",
-        "content": "${addContent("jaguar")}",
-        "MC": 660
-      },
-      {
-        "chance": "5",
-        "atts": "1000",
-        "content": "${addContent("demonPufferfish")} 🍀",
-        "MC": 2625
-      },
-      {
-        "chance": "165",
-        "atts": "1000",
-        "content": "${addContent("yellowPufferfish")}",
-        "MC": 75
-      },
-      {
-        "chance": "1",
-        "atts": "250",
-        "content": "${addContent("blackTiger")} 🍀",
-        "MC": 3280
-      },
-      {
-        "chance": "15",
-        "atts": "250",
-        "content": "${addContent("whiteTiger")}",
-        "MC": 185
-      },
-      {
-        "chance": "10",
-        "atts": "250",
-        "content": "${addContent("blackBear")}",
-        "MC": 310
-      },
-      {
-        "chance": "1",
-        "atts": "1000",
-        "content": "${addContent("blackLion")} 🍀🍀",
-        "MC": 13750
-      },
-      {
-        "chance": "5",
-        "atts": "1000",
-        "content": "${addContent("whiteLion")} 🍀",
-        "MC": 2625
-      },
-      {
-        "chance": "14",
-        "atts": "1000",
-        "content": "${addContent("blackManedLion")}",
-        "MC": 930
-      },
-      {
-        "chance": "1",
-        "atts": "1000",
-        "content": "${addContent("blackLioness")} 🍀🍀",
-        "MC": 13750
-      },
-      {
-        "chance": "5",
-        "atts": "1000",
-        "content": "${addContent("whiteLioness")} 🍀",
-        "MC": 2625
-      },
-      {
-        "chance": "114",
-        "atts": "1000",
-        "content": "${addContent("lioness")}",
-        "MC": 125
-      },
-      {
-        "chance": "1",
-        "atts": "1000",
-        "content": "${addContent("blackLionCub")} 🍀🍀",
-        "MC": 13750
-      },
-      {
-        "chance": "5",
-        "atts": "1000",
-        "content": "${addContent("whiteLionCub")} 🍀",
-        "MC": 2625
-      },
-      {
-        "chance": "54",
-        "atts": "1000",
-        "content": "${addContent("lionCub")}",
-        "MC": 250
-      },
-      {
-        "chance": "1",
-        "atts": "4000",
-        "content": "${addContent("shaheen")} 🍀🍀🍀🍀",
-        "MC": 55000
-      },
-      {
-        "chance": "50",
-        "atts": "4000",
-        "content": "${addContent("predator")}",
-        "MC": 1065
-      },
-      {
-        "chance": "1",
-        "atts": "3000",
-        "content": "${addContent("rareVulture")} 🍀🍀🍀",
-        "MC": 41250
-      },
-      {
-        "chance": "15",
-        "atts": "700",
-        "content": "${addContent("bigGoat")}",
-        "MC": 666
-      },
-      {
-        "chance": "600",
-        "atts": "700",
-        "content": "${addContent("markhor")}",
-        "MC": 0
-      },
-      {
-        "chance": "2",
-        "atts": "1000",
-        "content": "${addContent("blackRhino")} 🍀",
-        "MC": 6875
-      },
-      {
-        "chance": "4",
-        "atts": "1000",
-        "content": "${addContent("whiteRhino")} 🍀",
-        "MC": 3280
-      },
-      {
-        "chance": "1",
-        "atts": "5000",
-        "content": "${addContent("greaterSpottedEagle")} 🍀🍀🍀🍀",
-        "MC": 68750
-      },
-      {
-        "chance": "1",
-        "atts": "5000",
-        "content": "${addContent("harpyEagle")} 🍀🍀🍀🍀",
-        "MC": 68750
-      },
-      {
-        "chance": "28",
-        "atts": "5000",
-        "content": "${addContent("goldenEagle")} 🍀",
-        "MC": 2360
-      },
-      {
-        "chance": "5",
-        "atts": "700",
-        "content": "${addContent("giraffeFamily")}",
-        "MC": 1840
-      },
-      {
-        "chance": "20",
-        "atts": "700",
-        "content": "${addContent("whiteGiraffe")}",
-        "MC": 440
-      },
-      {
-        "chance": "25",
-        "atts": "600",
-        "content": "${addContent("aquaYeti")}",
-        "MC": 300
-      },
-      {
-        "chance": "1",
-        "atts": "10",
-        "content": "${addContent("shopBigfoot")}",
-        "MC": 125
-      },
-      {
-        "chance": "1",
-        "atts": "10",
-        "content": "${addContent("shopSnowman")}",
-        "MC": 125
-      },
-      {
-        "chance": "1",
-        "atts": "10",
-        "content": "${addContent("shopSnowgirl")}",
-        "MC": 125
-      },
-      {
-        "chance": "1",
-        "atts": "1000",
-        "content": "${addContent("luckBigfoot")} 🍀🍀",
-        "MC": 13750
-      },
-      {
-        "chance": "1",
-        "atts": "2000",
-        "content": "${addContent("luckSnowman")} 🍀🍀",
-        "MC": 27500
-      },
-      {
-        "chance": "1",
-        "atts": "2000",
-        "content": "${addContent("luckSnowgirl")} 🍀🍀",
-        "MC": 27500
-      },
-      {
-        "chance": "1",
-        "atts": "1000",
-        "content": "${addContent("kingDragon")} 🍀🍀",
-        "MC": 13750
-      }
-  \\]
+    $jsonLoad[allRareAttemptsInfo;{}]
+    $jsonLoad[rareGroups;
+      [
+        "pigeon|pigeon|whiteDove", 
+        "pig|pig|pinkyPig|stinkyPig",
+        "deer|deer|doe|marshDeer",
+        "reindeer|reindeer|muskDeer",
+        "swinehoe|swinehoe|goldenPheasant",
+        "donkey|donkey|jackass",
+        "macaw|macaw|blueMacaw|rareMacaw",
+        "giraffe|giraffe|momaffie|momaffieFamily|girabie",
+        "cheetah|cheetah|jaguar|leopard|blackPanther",
+        "toucan|toucan|chocoToucan|keelBilledToucan|fieryToucan|lavaToucan|rareToucan",
+        "pufferfish|pufferfish|yellowPufferfish|demonPufferfish",
+        "tiger|tiger|whiteTiger",
+        "lion|lion|lioness|lionCub|blackManedLion|whiteLionCub|whiteLioness|whiteLion|blackLionCub|blackLioness|blackLion",
+        "falcon|falcon|predator|shaheen",
+        "vulture|vulture|rareVulture",
+        "rhino|rhino|whiteRhino|blackRhino",
+        "baldEagle|baldEagle|goldenEagle|harpyEagle|greaterSpottedEagle",
+        "markhor|undefined|markhor|bigGoat",
+        "whiteGiraffe|undefined|whiteGiraffe|giraffeFamily",
+        "yeti|yeti|aquaYeti",
+        "luckBigfoot|undefined|shopBigfoot|luckBigfoot",
+        "luckSnowman|undefined|shopSnowman|luckSnowman",
+        "luckSnowgirl|undefined|shopSnowgirl|luckSnowgirl",
+        "blackDragon|blackDragon|kingDragon"
+      \\]
+    ]
+
+    $arrayForEach[rareGroups;groupConfig;
+      $arrayLoad[groupParts;|;$env[groupConfig]]
+      $let[keyName;$env[groupParts;0]]
+      $let[commonAnimal;$env[groupParts;1]]
+      $let[tier;$env[animals;$get[keyName];tier]]
+      $let[totalAttempts;$env[animals;$env[groupParts;2];rarity;1]]
+
+      $let[totalRare;0]
+      $arrayCreate[rarePool;0]
+
+      $loop[$math[$arrayLength[groupParts] - 2];
+        $let[ri;$math[$env[ri] + 1]]
+        $let[rareAnimal;$env[groupParts;$get[ri]]]
+        $let[countRare;$env[animals;$get[rareAnimal];rarity;0]]
+
+        $if[$get[countRare]!=;
+          $arrayCreate[oneRareArr;$get[countRare]]
+          $arrayFill[oneRareArr;$get[rareAnimal]]
+          $arrayConcat[rarePool;rarePool;oneRareArr]
+          $letSum[totalRare;$get[countRare]]
+        ]
+      ;ri;true]
+
+      $let[totalCommons;$math[$get[totalAttempts] - $get[totalRare]]]
+      $arrayCreate[commonArr;$get[totalCommons]]
+      $arrayFill[commonArr;$get[commonAnimal]]
+
+      $arrayConcat[fullAttemptArr;rarePool;commonArr]
+      $arrayShuffle[fullAttemptArr]
+
+      $!jsonSet[allRareAttemptsInfo;$get[keyName];{
+        "attempts": $env[fullAttemptArr]
+      }]
+    ]
   `
 }
 
-function addContent (name) {
-  return `$env[animals;${name};variants;$env[userProfile;userWardrobe;${name}];name] $env[animals;${name};variants;$env[userProfile;userWardrobe;${name}];emoji]`
+function raresReward() {
+  return `
+    [
+      {
+        "animalID": "whiteDove",
+        "MC": 125
+      },
+      {
+        "animalID": "stinkyPig",
+        "MC": 3280
+      },
+      {
+        "animalID": "pinkyPig",
+        "MC": 125
+      },
+      {
+        "animalID": "goldenPheasant",
+        "MC": 250
+      },
+      {
+        "animalID": "marshDeer",
+        "MC": 1250
+      },
+      {
+        "animalID": "doe",
+        "MC": 60
+      },
+      {
+        "animalID": "muskDeer",
+        "MC": 3935
+      },
+      {
+        "animalID": "jackass",
+        "MC": 930
+      },
+      {
+        "animalID": "rareMacaw",
+        "MC": 41250
+      },
+      {
+        "animalID": "blueMacaw",
+        "MC": 125
+      },
+      {
+        "animalID": "girabie",
+        "MC": 660
+      },
+      {
+        "animalID": "momaffieFamily",
+        "MC": 250
+      },
+      {
+        "animalID": "momaffie",
+        "MC": 125
+      },
+      {
+        "animalID": "rareToucan",
+        "MC": 41250
+      },
+      {
+        "animalID": "lavaToucan",
+        "MC": 3280
+      },
+      {
+        "animalID": "fieryToucan",
+        "MC": 125
+      },
+      {
+        "animalID": "keelBilledToucan",
+        "MC": 60
+      },
+      {
+        "animalID": "chocoToucan",
+        "MC": 0
+      },
+      {
+        "animalID": "blackPanther",
+        "MC": 3280
+      },
+      {
+        "animalID": "leopard",
+        "MC": 800
+      },
+      {
+        "animalID": "jaguar",
+        "MC": 660
+      },
+      {
+        "animalID": "demonPufferfish",
+        "MC": 2625
+      },
+      {
+        "animalID": "yellowPufferfish",
+        "MC": 75
+      },
+      {
+        "animalID": "blackTiger",
+        "MC": 3280
+      },
+      {
+        "animalID": "whiteTiger",
+        "MC": 185
+      },
+      {
+        "animalID": "blackBear",
+        "MC": 310
+      },
+      {
+        "animalID": "blackLion",
+        "MC": 13750
+      },
+      {
+        "animalID": "whiteLion",
+        "MC": 2625
+      },
+      {
+        "animalID": "blackManedLion",
+        "MC": 930
+      },
+      {
+        "animalID": "blackLioness",
+        "MC": 13750
+      },
+      {
+        "animalID": "whiteLioness",
+        "MC": 2625
+      },
+      {
+        "animalID": "lioness",
+        "MC": 125
+      },
+      {
+        "animalID": "blackLionCub",
+        "MC": 13750
+      },
+      {
+        "animalID": "whiteLionCub",
+        "MC": 2625
+      },
+      {
+        "animalID": "lionCub",
+        "MC": 250
+      },
+      {
+        "animalID": "shaheen",
+        "MC": 55000
+      },
+      {
+        "animalID": "predator",
+        "MC": 1065
+      },
+      {
+        "animalID": "rareVulture",
+        "MC": 41250
+      },
+      {
+        "animalID": "bigGoat",
+        "MC": 666
+      },
+      {
+        "animalID": "markhor",
+        "MC": 0
+      },
+      {
+        "animalID": "blackRhino",
+        "MC": 6875
+      },
+      {
+        "animalID": "whiteRhino",
+        "MC": 3280
+      },
+      {
+        "animalID": "greaterSpottedEagle",
+        "MC": 68750
+      },
+      {
+        "animalID": "harpyEagle",
+        "MC": 68750
+      },
+      {
+        "animalID": "goldenEagle",
+        "MC": 2360
+      },
+      {
+        "animalID": "giraffeFamily",
+        "MC": 1840
+      },
+      {
+        "animalID": "whiteGiraffe",
+        "MC": 440
+      },
+      {
+        "animalID": "aquaYeti",
+        "MC": 300
+      },
+      {
+        "animalID": "shopBigfoot",
+        "MC": 125
+      },
+      {
+        "animalID": "shopSnowman",
+        "MC": 125
+      },
+      {
+        "animalID": "shopSnowgirl",
+        "MC": 125
+      },
+      {
+        "animalID": "luckBigfoot",
+        "MC": 13750
+      },
+      {
+        "animalID": "luckSnowman",
+        "MC": 13750
+      },
+      {
+        "animalID": "luckSnowgirl",
+        "MC": 27500
+      },
+      {
+        "animalID": "kingDragon",
+        "MC": 13750
+      }
+    \\]
+  `
 }

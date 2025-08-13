@@ -1,4 +1,4 @@
-const CD = "30s"
+const CD = "10s"
 
 module.exports = [{
   name: "balance",
