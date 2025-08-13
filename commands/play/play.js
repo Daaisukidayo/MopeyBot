@@ -8,23 +8,22 @@ module.exports = [{
     $callFunction[checking]
     $onlyIf[$guildID!=;## You can't start the game in DMs!]
     $onlyIf[$env[userProfile;testerMode]]
+
+    $onlyIf[$env[playData;started]==false;
+      $description[## You already have an active game session!
+      ### $hyperlink[Please end your previous game!;https://discord.com/channels/$env[playData;GuildID]/$env[playData;ChannelID]/$env[playData;MessageID]]]
+      $callFunction[embed;error]
+      $addActionRow
+      $addButton[messagemissing-play-$authorID;Can't find the message;Danger]
+    ]
     
     $try[
       $getEmbeds[$env[playData;ChannelID];$env[playData;MessageID]]
     ;
       ${removeAllProgress()}
       
-      $setUserVar[userPlayData;$getGlobalVar[userplayData]]
-      $jsonLoad[playData;$getUserVar[userPlayData]]
-    ]
-    
-    $onlyIf[$env[playData;started]==false;
-      $description[## You already have an active game session!
-      ### $hyperlink[Please end your previous game!;https://discord.com/channels/$env[playData;GuildID]/$env[playData;ChannelID]/$env[playData;MessageID]]]
-      $getGlobalVar[author]
-      $color[$getGlobalVar[errorColor]]
-      $addActionRow
-      $addButton[messagemissing-$authorID;Can't find the message;Danger]
+      $jsonLoad[playData;$getGlobalVar[userPlayData]]
+      $!jsonSet[playData;started;true]
     ]
 
     $!jsonSet[playData;tier;1]
@@ -49,10 +48,11 @@ module.exports = [{
   description: "upgraded",
   code: `
     $arrayLoad[IID;-;$customID]
-    $onlyIf[$arrayIncludes[IID;upgrade]]
+    $arrayLoad[passKeys;,;upgrade,play,animal]
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    ${jsonLoader()}
     $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
-    ${jsonLoader()}
     ${hasStarted()}
 
     $let[animal;$env[IID;0]]
@@ -83,9 +83,8 @@ module.exports = [{
 
     ${actionMenu()}
     ${exitButton()}
-    $interactionUpdate
-    
     $setUserVar[userPlayData;$env[playData]]
+    $interactionUpdate
   `
 },{
   type: "interactionCreate",
@@ -94,12 +93,12 @@ module.exports = [{
   code: `
     $arrayLoad[IID;-;$customID]
     $arrayLoad[values;-;$selectMenuValues]
-    $arrayLoad[passKeys;,;devUpArrow,devDownArrow,devUpdateArrow,upgrade,respawn,kingDragonUpg]
+    $arrayLoad[passKeys;,;devUpArrow,devDownArrow,devUpdateArrow,respawn,kingDragonUpg]
 
-    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$or[$arrayIncludes[values;upgrade];$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]]
+    ${jsonLoader()}
     $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
-    ${jsonLoader()}
     ${hasStarted()}
     ${resetArena()}
 
@@ -148,15 +147,17 @@ module.exports = [{
   allowedInteractionTypes: ["selectMenu"],
   description: "search XP",
   code: `
-    $arrayLoad[IID;-;$selectMenuValues]
-    $onlyIf[$includes["$env[IID;0]";"searchXP"]]
-    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
-
+    $arrayLoad[IID;-;$customID]
+    $arrayLoad[passKeys;,;actions,play]
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$selectMenuValues==searchXP]
     ${jsonLoader()}
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
+
     ${hasStarted()}
 
     $let[deathRarity;$randomNumber[1;1001]]
-    $let[deathChance;30] $c[3%]
+    $let[deathChance;30]
     $let[deathDesc;You were killed by a predator!]
 
     $let[findPrayRarity;$randomNumber[1;101]]
@@ -273,12 +274,14 @@ module.exports = [{
   allowedInteractionTypes: ['selectMenu'],
   description: 'first time arena',
   code: `
-    $arrayLoad[IID;-;$selectMenuValues]
-    $onlyIf[$includes[$env[IID;0];arena]]
-    $onlyIf[$includes[$env[IID;2];play]]
-    $onlyIf[$includes[$env[IID;1];$authorID];$callFunction[notYourBTN]]
-
+    $arrayLoad[IID;-;$customID]
+    $arrayLoad[passKeys;,;actions,play]
+    $let[value;$selectMenuValues]
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$get[value]==arena]
     ${jsonLoader()}
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
+
     ${hasStarted()}
 
     $let[arenaR;$randomNumber[1;101]]
@@ -341,7 +344,8 @@ module.exports = [{
       $let[thumb;$env[opp;2]]
 
       $!jsonSet[playData;opponentAnimal;$get[opponent]]
-      $let[apex;$env[opp;3]]
+      $!jsonSet[playData;opponentApex;$env[opp;3]]
+      $!jsonSet[playData;opponentTier;$get[opponentTier]]
 
       ${arenaActionButtons()}
 
@@ -367,42 +371,154 @@ module.exports = [{
   description: 'arena actions',
   code: `
     $arrayLoad[IID;-;$customID]
-    $onlyIf[$includes[$env[IID;0];attack;defend;deceive]]
-    $onlyIf[$includes[$env[IID;2];play]]
-    $onlyIf[$includes[$env[IID;1];$authorID];$callFunction[notYourBTN]]
-
+    $arrayLoad[passKeys;,;attack,defend,deceive]
+    $onlyIf[$arrayIncludes[IID;arenaAction]]
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
     ${jsonLoader()}
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
+
     ${hasStarted()}
 
     $let[playerAction;$env[IID;0]]
-    $let[opponentAction;$getUserVar[opponentAction]]
-    $let[opponentTier;$env[IID;3]]
-    $let[apex;$env[IID;4]]
+    $let[opponentAction;$env[playData;opponentAction]]
+    $let[opponentTier;$env[playData;opponentTier]]
+    $let[opponentApex;$env[playData;opponentApex]]
+    $jsonLoad[currentApex;$env[playData;apex]]
     $let[actionR;$randomNumber[1;101]]
 
-
     $if[$env[playData;arenaTurn]==0;
-      $let[opponentAction;$trimLines[
-        $if[$get[actionR]<=65;
-          $if[$get[playerAction]==attack;defend;$if[$get[playerAction]==defend;deceive;attack]] $c[Counter action]
+      $if[$get[actionR]<=65;
+        $if[$get[playerAction]==attack;
+          $let[opponentAction;defend]
         ;
-          $if[$get[actionR]<90; 
-            $get[playerAction]  $c[Same action]
+          $if[$get[playerAction]==defend;
+            $let[opponentAction;deceive]
           ;
-            $if[$get[playerAction]==attack;deceive;$if[$get[playerAction]==defend;attack;defend]] $c[Tie]
+            $let[opponentAction;attack]
+          ] $c[Counter action]
+        ]
+      ;
+        $if[$get[actionR]<90; 
+          $get[playerAction]  $c[Same action]
+        ;
+          $if[$get[playerAction]==attack;
+            $let[opponentAction;deceive]
+          ;
+            $if[$get[playerAction]==defend;
+              $let[opponentAction;attack]
+            ;
+              $let[opponentAction;defend]
+            ] $c[Tie]
           ]
-        ]  
-      ]]
+        ]
+      ]
     ]
 
-    ${arenaOpponentsActionLogic()}
+    $switch[$get[playerAction]_$get[opponentAction];
 
-    $if[$get[bitesToAdd]>0;
-      $!jsonSet[playData;bitesInArena;$math[$env[playData;bitesInArena] + $get[bitesToAdd]]]
+      $case[attack_attack;
+        $if[$get[actionR]>=67;
+          $let[actionDesc;No one get a bite]
+        ;$if[$get[actionR]>=33;
+          $let[actionDesc;You bit your opponent]
+          $let[bitesToAdd;1]
+        ;
+          $let[actionDesc;Your opponent bit you]
+          $let[oppBitesToAdd;1]
+        ]]
+      ]
+
+      $case[attack_defend;
+        $if[$get[actionR]>=40;
+          $let[actionDesc;Your opponent defended himself and bit you]
+          $let[oppBitesToAdd;1]
+        ;$if[$get[actionR]>=25;
+          $let[actionDesc;Your opponent defended himself, but nobody bites]
+        ;
+          $let[actionDesc;Your opponent failed to defend himself and you bit him]
+          $let[bitesToAdd;1]
+        ]]
+      ]
+
+      $case[attack_deceive;
+        $if[$get[actionR]>=40;
+          $let[actionDesc;You successfully counterattacked his deceive and bit him!]
+          $let[bitesToAdd;1]
+        ;$if[$get[actionR]>=25;
+          $let[actionDesc;Your opponent successfully deceived you, but nobody bites]
+        ;
+          $let[actionDesc;Your opponent successfully deceived and bit you]
+          $let[oppBitesToAdd;1]
+        ]]
+      ]
+
+      $case[defend_attack;
+        $if[$get[actionR]>=40;
+          $let[actionDesc;You successfully defended yourself and bit your opponent]
+          $let[bitesToAdd;1]
+        ;$if[$get[actionR]>=25;
+          $let[actionDesc;You successfully defended yourself, but nobody bites]
+        ;
+          $let[actionDesc;You unsuccessfully defended yourself and your opponent bit you]
+          $let[oppBitesToAdd;1]
+        ]]
+      ]
+
+      $case[defend_defend;
+        $let[actionDesc;No one get a bite]
+      ]
+
+      $case[defend_deceive;
+        $if[$get[actionR]>=30;
+          $let[actionDesc;You unsuccessfully defended yourself and opponent bit you]
+          $let[oppBitesToAdd;1]
+        ;$if[$get[actionR]>=15;
+          $let[actionDesc;You successfully defended yourself from his deceive and you bit him]
+          $let[bitesToAdd;1]
+        ;
+          $let[actionDesc;You successfully defended yourself from his deceive, but nobody bites]
+        ]]
+      ]
+
+      $case[deceive_attack;
+        $if[$get[actionR]>=30;
+          $let[actionDesc;You unsuccessfully deceived your opponent and he bit you]
+          $let[oppBitesToAdd;1]
+        ;$if[$get[actionR]>=15;
+          $let[actionDesc;You successfully deceived your opponent and bit him]
+          $let[bitesToAdd;1]
+        ;
+          $let[actionDesc;You successfully deceived your opponent, but nobody bites]
+        ]]
+      ]
+
+      $case[deceive_defend;
+        $if[$get[actionR]>=40;
+          $let[actionDesc;You successfully deceived your opponent and bit him]
+          $let[bitesToAdd;1]
+        ;$if[$get[actionR]>=25;
+          $let[actionDesc;You successfully deceived your opponent, but nobody bites]
+        ;
+          $let[actionDesc;You unsuccessfully deceived your opponent and he bit you]
+          $let[oppBitesToAdd;1]
+        ]]
+      ]
+
+      $case[deceive_deceive;
+        $if[$get[actionR]>=67;
+          $let[actionDesc;No one get a bite]
+        ;$if[$get[actionR]>=33;
+          $let[actionDesc;You successfully deceived your opponent and bit him]
+          $let[bitesToAdd;1]
+        ;
+          $let[actionDesc;You unsuccessfully deceived your opponent and he bit you]
+          $let[oppBitesToAdd;1]
+        ]]
+      ]
     ]
-    $if[$get[oppBitesToAdd]>0;
-      $!jsonSet[playData;opponentBitesInArena;$math[$env[playData;opponentBitesInArena] + $get[oppBitesToAdd]]]
-    ]
+
+    $!jsonSet[playData;bitesInArena;$math[$env[playData;bitesInArena] + $default[$get[bitesToAdd];0]]]
+    $!jsonSet[playData;opponentBitesInArena;$math[$env[playData;opponentBitesInArena] + $default[$get[oppBitesToAdd];0]]]
 
     $c[? Embeds]
 
@@ -412,17 +528,17 @@ module.exports = [{
 
     $if[$env[playData;arenaTurn]==0; $c[If user's turn, then setting random opponent's action]
       $let[opponentAction;$randomText[attack;defend;deceive]]
+      $!jsonSet[playData;opponentAction;$get[opponentAction]]
     ]
 
-    $setUserVar[opponentAction;$get[opponentAction]]
 
     $if[$env[playData;bitesInArena]>=10; $c[If user won]
 
       $c[Giving XP based on opponent's tier]
       $jsonLoad[xpReward;{
-        "15": [1000000,4000000],
-        "16": [4000000,7000000],
-        "17": [7000000,15000000]
+        "15": [1000000,4000000\\],
+        "16": [4000000,7000000\\],
+        "17": [7000000,15000000\\]
       }]
       $let[min;$env[xpReward;$get[opponentTier];0]]
       $let[max;$math[$env[xpReward;$get[opponentTier];1] + 1]]
@@ -476,7 +592,7 @@ module.exports = [{
           $let[desc;$get[desc]\n## Your turn!\n### Choose:]
         ; 
           $!jsonSet[playData;arenaTurn;1]
-          $let[desc;$get[desc]\n## Opponent's turn!\n### He chose: \`$toTitleCase[$getUserVar[opponentAction]]\`]
+          $let[desc;$get[desc]\n## Opponent's turn!\n### He chose: \`$toTitleCase[$env[playData;opponentAction]]\`]
         ]
 
         ${arenaActionButtons(true)}
@@ -496,11 +612,13 @@ module.exports = [{
   allowedInteractionTypes: ['selectMenu'],
   description: 'downgrading',
   code: `
-    $arrayLoad[IID;-;$selectMenuValues]
-    $onlyIf[$includes["$env[IID;0]";"downgrade"]]
-    $onlyIf[$includes[$env[btn];$authorID];$callFunction[notYourBTN]]
-
+    $arrayLoad[IID;-;$customID]
+    $arrayLoad[passKeys;,;actions,play]
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$selectMenuValues==downgrade]
     ${jsonLoader()}
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
+
     ${hasStarted()}
 
     $let[currentBiome;$env[playData;currentBiome]]
@@ -520,42 +638,39 @@ module.exports = [{
     $let[isCurrArcticBiome;$checkCondition[$get[currentBiome]==Arctic]]
     $let[isCurrForestBiome;$checkCondition[$get[currentBiome]==Forest]]
 
-    $if[$env[IID;0]==downgrade;
-      $if[$and[$or[$get[animLandBiome];$get[animDesertBiome];$get[animArcticBiome];$get[animForestBiome];$get[animOceanBiome]];$or[$get[isCurrVolcanoBiome];$get[isCurrDesertBiome]]];
-        
-        $c[? If animal belongs to Land, Desert, Forest or Arctic and current biome is Volcano or Desert]
-        $let[desc;## You chose to downgrade by diving into lava!]
+    $if[$and[$or[$get[animLandBiome];$get[animDesertBiome];$get[animArcticBiome];$get[animForestBiome];$get[animOceanBiome]];$or[$get[isCurrVolcanoBiome];$get[isCurrDesertBiome]]];
+      
+      $c[? If animal belongs to Land, Desert, Forest or Arctic and current biome is Volcano or Desert]
+      $let[desc;## You chose to downgrade by diving into lava!]
 
-      ;$if[$and[$or[$get[animLandBiome];$get[animDesertBiome];$get[animArcticBiome];$get[animForestBiome];$get[animVolcanoBiome]];$get[isCurrOceanBiome]];
-        
-        $c[? If animal belongs to Land, Desert, Arctic, Forest or Volcano and current biome is Ocean]
-        $let[desc;## You chose to downgrade by surrendering to the deep ocean predators!]
+    ;$if[$and[$or[$get[animLandBiome];$get[animDesertBiome];$get[animArcticBiome];$get[animForestBiome];$get[animVolcanoBiome]];$get[isCurrOceanBiome]];
+      
+      $c[? If animal belongs to Land, Desert, Arctic, Forest or Volcano and current biome is Ocean]
+      $let[desc;## You chose to downgrade by surrendering to the deep ocean predators!]
 
-      ;$if[$and[$get[animOceanBiome];$or[$get[isCurrLandBiome];$get[isCurrVolcanoBiome];$get[isCurrOceanBiome];$get[isCurrForestBiome];$get[isCurrArcticBiome];$get[isCurrDesertBiome]]];
-        
-        $c[? If animal belongs to Ocean and current biome is Land, Ocean, Forest, Arctic or Desert]
-        $let[desc;## You chose to downgrade by suffocating on land!]
+    ;$if[$and[$get[animOceanBiome];$or[$get[isCurrLandBiome];$get[isCurrVolcanoBiome];$get[isCurrOceanBiome];$get[isCurrForestBiome];$get[isCurrArcticBiome];$get[isCurrDesertBiome]]];
+      
+      $c[? If animal belongs to Ocean and current biome is Land, Ocean, Forest, Arctic or Desert]
+      $let[desc;## You chose to downgrade by suffocating on land!]
 
-      ;$if[$and[$get[animVolcanoBiome];$or[$get[isCurrLandBiome];$get[isCurrOceanBiome];$get[isCurrForestBiome];$get[isCurrArcticBiome];$get[isCurrDesertBiome]]];
-        
-        $c[? If animal belongs to Volcano and current biome is Land, Ocean, Forest, Arctic or Desert]
-        $let[desc;## You chose to downgrade by running out of lava!]
+    ;$if[$and[$get[animVolcanoBiome];$or[$get[isCurrLandBiome];$get[isCurrOceanBiome];$get[isCurrForestBiome];$get[isCurrArcticBiome];$get[isCurrDesertBiome]]];
+      
+      $c[? If animal belongs to Volcano and current biome is Land, Ocean, Forest, Arctic or Desert]
+      $let[desc;## You chose to downgrade by running out of lava!]
 
-      ;$if[$and[$get[animVolcanoBiome];$get[isCurrVolcanoBiome]];
-        
-        $c[? If animal belongs to Volcano and current biome is Volcano]
-        $let[desc;## You chose to downgrade by $if[$env[playData;tier]<17;giving yourself to a predator;giving everyone bites]!]
+    ;$if[$and[$get[animVolcanoBiome];$get[isCurrVolcanoBiome]];
+      
+      $c[? If animal belongs to Volcano and current biome is Volcano]
+      $let[desc;## You chose to downgrade by $if[$env[playData;tier]<17;giving yourself to a predator;giving everyone bites]!]
 
-      ;$if[$and[$or[$get[animLandBiome];$get[animArcticBiome];$get[animForestBiome]];$or[$get[isCurrLandBiome];$get[isCurrArcticBiome];$get[isCurrForestBiome]]];
-        
-        $c[? If animal belongs to Land, Arctic or Forest and current biome is Land, Arctic or Forest]
-        $let[desc;## You chose to downgrade by $randomText[giving yourself to a predator;running out of water]!]
+    ;$if[$and[$or[$get[animLandBiome];$get[animArcticBiome];$get[animForestBiome]];$or[$get[isCurrLandBiome];$get[isCurrArcticBiome];$get[isCurrForestBiome]]];
+      
+      $c[? If animal belongs to Land, Arctic or Forest and current biome is Land, Arctic or Forest]
+      $let[desc;## You chose to downgrade by $randomText[giving yourself to a predator;running out of water]!]
 
-      ; 
-        $let[desc;## textNotFound|playUnknownDeathDowngradeContent]
-      ]]]]]]
-
-    ]
+    ; 
+      $let[desc;## ???]
+    ]]]]]]
 
     $!jsonSet[playData;isDead;true]
     ${setNewXPOnDeath()}
@@ -578,16 +693,16 @@ module.exports = [{
   description: 'move to biome',
   code: `
     $arrayLoad[IID;-;$customID]
-    $arrayLoad[values;-;$selectMenuValues]
+    $let[value;$selectMenuValues]
     $arrayLoad[passKeys;,;moveTo,play]
 
-    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    ${jsonLoader()}
     $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
-    ${jsonLoader()}
     ${hasStarted()}
 
-    $let[biome;$env[IID;1]]
+    $let[biome;$get[value]]
     $let[color;$env[biomeColors;$get[biome]]]
 
     $!jsonSet[playData;currentBiome;$get[biome]]
@@ -611,9 +726,9 @@ module.exports = [{
     $arrayLoad[passKeys;,;messagemissing,quit]
 
     $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
-    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
-
+    $onlyIf[$arrayIncludes[IID;play]]
     ${jsonLoader()}
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
     $onlyif[$env[playData;started];
       $description[## You don't have an active game session!]
@@ -625,17 +740,17 @@ module.exports = [{
 
       $case[messagemissing;
         $description[## You have been successfully disconnected from the game!\n-# Earned: $separatenumber[$env[playData;MC];,]$getGlobalVar[emoji]]
-        $callFunction[embed;default]
         $try[$!disableComponentsOf[$env[playData;ChannelID];$env[playData;MessageID]]]
       ]
     
       $case[quit;
         $onlyIf[$env[playData;MessageID]==$messageID]
         $description[## You have successfully exited the game!\n-# Earned: $separatenumber[$env[playData;MC];,]$getGlobalVar[emoji]]
-        $callFunction[embed;default]
+        
       ]
 
     ]
+    $callFunction[embed;default]
     $interactionUpdate
     ${removeAllProgress()}
   `
@@ -850,120 +965,13 @@ function jsonLoader() {
 
 // Arena functions
 
-function arenaOpponentsActionLogic () {
-  return `
-    $switch[$get[playerAction]_$get[opponentAction];
-
-      $case[attack_attack;
-        $if[$get[actionR]>=67;
-          $let[actionDesc;No one get a bite]
-        ;$if[$get[actionR]>=33;
-          $let[actionDesc;You bit your opponent]
-          $let[bitesToAdd;1]
-        ;
-          $let[actionDesc;Your opponent bit you]
-          $let[oppBitesToAdd;1]
-        ]]
-      ]
-
-      $case[attack_defend;
-        $if[$get[actionR]>=40;
-          $let[actionDesc;Your opponent defended himself and bit you]
-          $let[oppBitesToAdd;1]
-        ;$if[$get[actionR]>=25;
-          $let[actionDesc;Your opponent defended himself, but nobody bites]
-        ;
-          $let[actionDesc;Your opponent failed to defend himself and you bit him]
-          $let[bitesToAdd;1]
-        ]]
-      ]
-
-      $case[attack_deceive;
-        $if[$get[actionR]>=40;
-          $let[actionDesc;You successfully counterattacked his deceive and bit him!]
-          $let[bitesToAdd;1]
-        ;$if[$get[actionR]>=25;
-          $let[actionDesc;Your opponent successfully deceived you, but nobody bites]
-        ;
-          $let[actionDesc;Your opponent successfully deceived and bit you]
-          $let[oppBitesToAdd;1]
-        ]]
-      ]
-
-      $case[defend_attack;
-        $if[$get[actionR]>=30;
-          $let[actionDesc;You successfully defended yourself and bit your opponent]
-          $let[bitesToAdd;1]
-        ;$if[$get[actionR]>=15;
-          $let[actionDesc;You successfully defended yourself, but nobody bites]
-        ;
-          $let[actionDesc;You unsuccessfully defended yourself and your opponent bit you]
-          $let[oppBitesToAdd;1]
-        ]]
-      ]
-
-      $case[defend_defend;
-        $let[actionDesc;No one get a bite]
-      ]
-
-      $case[defend_deceive;
-        $if[$get[actionR]>=30;
-          $let[actionDesc;You unsuccessfully defended yourself and opponent bit you]
-          $let[oppBitesToAdd;1]
-        ;$if[$get[actionR]>=15;
-          $let[actionDesc;You successfully defended yourself from his deceive and you bit him]
-          $let[bitesToAdd;1]
-        ;
-          $let[actionDesc;You successfully defended yourself from his deceive, but nobody bites]
-        ]]
-      ]
-
-      $case[deceive_attack;
-        $if[$get[actionR]>=30;
-          $let[actionDesc;You unsuccessfully deceived your opponent and he bit you]
-          $let[oppBitesToAdd;1]
-        ;$if[$get[actionR]>=15;
-          $let[actionDesc;You successfully deceived your opponent and bit him]
-          $let[bitesToAdd;1]
-        ;
-          $let[actionDesc;You successfully deceived your opponent, but nobody bites]
-        ]]
-      ]
-
-      $case[deceive_defend;
-        $if[$get[actionR]>=30;
-          $let[actionDesc;You successfully deceived your opponent and bit him]
-          $let[bitesToAdd;1]
-        ;$if[$get[actionR]>=15;
-          $let[actionDesc;You successfully deceived your opponent, but nobody bites]
-        ;
-          $let[actionDesc;You unsuccessfully deceived your opponent and he bit you]
-          $let[oppBitesToAdd;1]
-        ]]
-      ]
-
-      $case[deceive_deceive;
-        $if[$get[actionR]>=67;
-          $let[actionDesc;No one get a bite]
-        ;$if[$get[actionR]>=33;
-          $let[actionDesc;You successfully deceived your opponent and bit him]
-          $let[bitesToAdd;1]
-        ;
-          $let[actionDesc;You unsuccessfully deceived your opponent and he bit you]
-          $let[oppBitesToAdd;1]
-        ]]
-      ]
-    ]
-  `
-}
-
 function resetArena () {
   return `
     $!jsonSet[playData;arenaTurn;0]
     $!jsonSet[playData;opponentAnimal;]
     $!jsonSet[playData;bitesInArena;0]
     $!jsonSet[playData;opponentBitesInArena;0]
-    $deleteUserVar[opponentAction]
+    $!jsonSet[playData;opponentAction;]
   `
 }
 
@@ -1013,10 +1021,10 @@ function respawnButton () {
 function arenaActionButtons (showDeceiveButton = false) {
   return `
     $addActionRow
-    $addButton[attack-play-$authorID-$get[opponentTier]-$get[apex];Attack;Success;🗡️]
-    $addButton[defend-play-$authorID-$get[opponentTier]-$get[apex];Defend;Success;🛡️]
+    $addButton[attack-arenaAction-$authorID;Attack;Success;🗡️]
+    $addButton[defend-arenaAction-$authorID;Defend;Success;🛡️]
     $if[${showDeceiveButton};
-      $addButton[deceive-play-$authorID-$get[opponentTier]-$get[apex];Deceive;Success;🎭]
+      $addButton[deceive-arenaAction-$authorID;Deceive;Success;🎭]
     ]
   `
 }
@@ -1024,7 +1032,7 @@ function arenaActionButtons (showDeceiveButton = false) {
 function exitButton(showCheat = true) {
   return `
     $addActionRow
-    $addButton[quit-$authorID;Quit game;Danger;🔚]
+    $addButton[quit-play-$authorID;Quit game;Danger;🔚]
 
     $if[$and[${showCheat};$env[playData;isDead]!=true;$env[userProfile;testerMode]];
       $addActionRow
@@ -1102,7 +1110,7 @@ function varsForButtonGen () {
     $let[wr;$env[userProfile;userWardrobe;$get[animal]]]
     $let[emoji;$env[animals;$get[animal];variants;$get[wr];emoji]]
     $let[animalName;$env[animals;$get[animal];variants;$get[wr];name]]
-    $let[trig;$env[animals;$get[animal];trig]-$authorID-upgrade]
+    $let[trig;$env[animals;$get[animal];trig]-upgrade-animal-play-$authorID]
     $let[emojisInDescription;$get[emojisInDescription]$get[emoji]]
     
     $if[$math[$get[buttonsQ]%5]==0;
@@ -1142,22 +1150,22 @@ function actionMenu () {
       $addStringSelectMenu[moveTo-play-$authorID;Switch biome]
 
       $if[$get[curBiome]!=Land;
-        $addOption[Land;;moveto_Land;⛰️]
+        $addOption[Land;;Land;⛰️]
       ]
       $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
-        $addOption[Desert;;moveto_Desert;🏜️]
+        $addOption[Desert;;Desert;🏜️]
       ]
       $if[$and[$get[curBiome]!=Volcano;$get[curBiome]!=Ocean;$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Forest];
-        $addOption[Volcano;;moveto_Volcano;🌋]
+        $addOption[Volcano;;Volcano;🌋]
       ]
       $if[$and[$get[curBiome]!=Ocean;$get[curBiome]!=Volcano];
-        $addOption[Ocean;;moveto_Ocean;🌊]
+        $addOption[Ocean;;Ocean;🌊]
       ]
       $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
-        $addOption[Arctic;;moveto_Arctic;❄️]
+        $addOption[Arctic;;Arctic;❄️]
       ]
       $if[$and[$get[curBiome]!=Forest;$get[curBiome]!=Volcano];
-        $addOption[Forest;;moveto_Forest;🌲]
+        $addOption[Forest;;Forest;🌲]
       ]
     ]
 
