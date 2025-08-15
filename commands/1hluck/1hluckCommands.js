@@ -447,6 +447,13 @@ module.exports = [
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
     ${isActiveChallenge()}
+    $jsonLoad[history;$env[userProfile;1hl;history]]
+    $jsonLoad[lobbyTags;$getChannelVar[lobbyTags]]
+    $timezone[$env[userProfile;timezone]]
+    $arrayLoad[tags]
+
+    $let[difficulty;none]
+
     ${allRaresList()}
     ${totalPoints()}
     ${totalRares()}
@@ -462,7 +469,39 @@ module.exports = [
       $addTextDisplay[$get[allRaresList]]
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
-    ${challengeEnded()}
+
+
+    $if[$getUserVar[participating|$channelID];
+      $let[playType;Party]
+      $if[$getChannelVar[lobbyDifficulty]!=;
+        $let[difficulty;$getChannelVar[lobbyDifficulty]]
+      ]
+      $if[$arrayIncludes[lobbyTags;unlimitedRares];
+        $arrayPush[tags;unlimitedRares]
+      ]
+    ;
+      $let[playType;Solo]
+      $if[$arrayIncludes[userSettings;difficulties];
+        $let[difficulty;$env[userProfile;1hl;difficulty]]
+      ]
+      $if[$arrayIncludes[userSettings;unlimitedRares];
+        $arrayPush[tags;unlimitedRares]
+      ]
+    ]
+
+
+    $arrayPushJSON[history;{
+      "points": $getUserVar[1hpoints|$channelID],
+      "rares": $getUserVar[1htotalRares|$channelID],
+      "endedAt": $getTimestamp,
+      "playType": "$get[playType]",
+      "tags": $env[tags],
+      "difficulty": "$get[difficulty]",
+      "raresList": $getUserVar[1hallRaresList|$channelID]
+    }]
+    $!jsonSet[userProfile;1hl;history;$env[history]]
+    $setUserVar[userProfile;$env[userProfile]]
+
     ${reset()}
     ${lobbyEnd()}
   `
@@ -601,6 +640,116 @@ module.exports = [
     ${historyEmbed()}
     $interactionUpdate
     ${historyTimeout()}
+  `
+},
+
+//  EDIT HISTORY
+
+{
+  type: 'interactionCreate',
+  allowedInteractionTypes: ['button'],
+  code: `
+    $arrayLoad[interactionID;-;$customID]
+    $arrayLoad[passKeys;,;editHistoryPage]
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
+
+    $let[page;$env[interactionID;0]]
+    $let[sortType;$env[interactionID;1]]
+
+    ${editHistoryEmbed()}
+    $ephemeral
+    $interactionReply
+  `
+},{
+  type: 'interactionCreate',
+  allowedInteractionTypes: ['selectMenu'],
+  code: `
+    $arrayLoad[interactionID;-;$customID]
+    $arrayLoad[passKeys;,;historyChooseEdit]
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
+
+    $let[option;$selectMenuValues]
+    $let[page;$env[interactionID;0]]
+    $let[sortType;$env[interactionID;1]]
+    $let[pageIndex;$math[$get[page] - 1]]
+
+    $jsonLoad[history;$env[userProfile;1hl;history]]
+    $jsonLoad[difficulties;$getGlobalVar[difficulties]]
+
+    ${historySorting()}
+
+    $jsonLoad[tagsInHistory;$env[history;$get[pageIndex];tags]]
+    $jsonLoad[raresListInHistory;$env[history;$get[pageIndex];raresList]]
+    $let[pointsInHistory;$env[history;$get[pageIndex];points]]
+    $let[rareInHistory;$env[history;$get[pageIndex];rares]]
+    $let[endingDateInHistory;$env[history;$get[pageIndex];endedAt]]
+    $let[difficultyInHistory;$env[history;$get[pageIndex];difficulty]]
+
+    $if[$arrayLength[tagsInHistory]==0;$arrayPush[tagsInHistory;none]]
+
+    $switch[$get[option];
+
+      $case[points;
+        $modal[$get[page]-$get[sortType]-editHistoryCustomPoints-$authorID;Editing Points]
+        $addTextInput[editedPoints;Edit your points;Short;true;Current quantity: $get[pointsInHistory];;1;3]
+        $showModal
+      ]
+
+      $case[rares;
+        $modal[$get[page]-$get[sortType]-editHistoryCustomRares-$authorID;Editing Rares Quantity]
+        $addTextInput[editedRaresQuantity;Edit your rares quantity;Short;true;Current quantity: $get[rareInHistory];;1;3]
+        $showModal
+      ]
+
+      $case[playType;
+        $addContainer[
+          $callFunction[newAuthor]
+          $addSeparator[Large]
+          $addActionRow
+          $addStringSelectMenu[$get[page]-$get[sortType]-editHistoryCustomPlayType-$authorID;Choose play type]
+          $addOption[Party;;party]
+          $addOption[Solo;;solo]
+          $addTextDisplay[-# Current play type: $get[playTypeInHistory]]
+        ]
+        $interactionUpdate
+      ]
+
+      $case[difficulty;
+        $addContainer[
+          $callFunction[newAuthor]
+          $addSeparator[Large]
+          $addActionRow
+          $addStringSelectMenu[$get[page]-$get[sortType]-editHistoryCustomDifficulty-$authorID;Choose difficulty]
+          $addOption[None;;none]
+          $arrayForEach[difficulties;dif;
+            $addOption[$toTitleCase[$env[dif]];;$env[dif]]
+          ]
+          $addTextDisplay[-# Current difficulty: $get[difficultyInHistory]]
+        ]
+        $interactionUpdate
+      ]
+      $case[endedAt;
+        $modal[$get[page]-$get[sortType]-editHistoryCustomRares-$authorID;Editing Ending Date]
+        $addTextInput[editedEndedAt;Edit your ending date;Short;true;Current ending date: $parseDate[$get[endingDateInHistory];Locale] (Use it as an example)]
+        $showModal
+      ]
+      $case[tags;
+        $addContainer[
+          $callFunction[newAuthor]
+          $addSeparator[Large]
+          $addActionRow
+          $addStringSelectMenu[$get[page]-$get[sortType]-editHistoryCustomTags-$authorID;Choose Tags]
+          $addOption[Unlimited Rares;;unlimitedRares]
+          $addTextDisplay[-# Current tags: $arrayJoin[tagsInHistory;, ]]
+        ]
+        $interactionUpdate
+      ]
+      $case[raresList;]
+    ]
   `
 },
 
@@ -1071,58 +1220,6 @@ function interval (id = "$authorID") {
   `
 }
 
-function challengeEnded () {
-  return `
-    $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $jsonLoad[userSettings;$env[userProfile;1hl;settings]]
-    $jsonLoad[history;$env[userProfile;1hl;history]]
-    $jsonLoad[lobbyTags;$getChannelVar[lobbyTags]]
-    $timezone[$env[userProfile;timezone]]
-    $arrayLoad[tags]
-
-    $let[difficulty;none]
-
-    $if[$getUserVar[participating|$channelID];
-
-      $let[playType;Party]
-      $if[$getChannelVar[lobbyDifficulty]!=;
-        $let[difficulty;$getChannelVar[lobbyDifficulty]]
-      ]
-      $if[$arrayIncludes[lobbyTags;unlimitedRares];
-        $arrayPush[tags;unlimitedRares]
-      ]
-
-    ;
-
-      $let[playType;Solo]
-      $if[$arrayIncludes[userSettings;difficulties];
-        $let[difficulty;$env[userProfile;1hl;difficulty]]
-      ]
-      $if[$arrayIncludes[userSettings;unlimitedRares];
-        $arrayPush[tags;unlimitedRares]
-      ]
-
-    ]
-
-
-    $if[$arrayAt[tags;0]==;
-      $arrayPush[tags;none]
-    ]
-
-    $arrayPushJSON[history;{
-      "points": $getUserVar[1hpoints|$channelID],
-      "rares": $getUserVar[1htotalRares|$channelID],
-      "endedAt": $getTimestamp,
-      "playType": "$get[playType]",
-      "tags": $env[tags],
-      "difficulty": "$get[difficulty]",
-      "raresList": $getUserVar[1hallRaresList|$channelID]
-    }]
-    $!jsonSet[userProfile;1hl;history;$env[history]]
-    $setUserVar[userProfile;$env[userProfile]]
-  `
-}
-
 function lobbyEnd() {
   return `
     $if[$getUserVar[participating|$channelID];
@@ -1301,6 +1398,26 @@ function deleteLobbyVars() {
 
 // embed functions
 
+function editHistoryEmbed() {
+  return `
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addTextDisplay[## Choose what you want to edit]
+      $addSeparator
+      $addActionRow
+      $addStringSelectMenu[$get[page]-$get[sortType]-historyChooseEdit-$authorID;Options]
+      $addOption[Points;;points]
+      $addOption[Rares;;rares]
+      $addOption[Play Type;;playType]
+      $addOption[Difficulty;;difficulty]
+      $addOption[Ended at;;endedAt]
+      $addOption[Tags;;tags]
+      $addOption[Rares List;;raresList]
+    ;$getGlobalVar[luckyColor]]
+  `
+}
+
 
 function historyEmbed() {
   return `
@@ -1308,10 +1425,12 @@ function historyEmbed() {
     $jsonLoad[allLobbyTags;$getGlobalVar[allLobbyTags]]
     $jsonLoad[raresList;$env[history;$get[index];raresList]]
     $jsonLoad[tags;$env[history;$get[index];tags]]
-    $if[$arrayIncludes[tags;none];;
+
+    $if[$arrayLength[tags]==0;
+      $arrayPush[tags;none]
+    ;
       $arrayMap[tags;tag;$return[$env[allLobbyTags;$env[tag]]];tags]
     ]
-    $if[$arrayAt[tags;0]==;$arrayPush[tags;none]]
     
     ${raresListGenerator()}
 
@@ -1347,6 +1466,7 @@ function historyEmbed() {
       $if[$env[history;0]!=;
         $addActionRow
         $addButton[$get[page]-$get[sortType]-deleteHistoryPage-$authorID;Delete This Page;Danger;🗑️]
+        $addButton[$get[page]-$get[sortType]-editHistoryPage-$authorID;Edit This Page;Success;✏️;true]
       ]
     ;$getGlobalVar[luckyColor]]
   `
