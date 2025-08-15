@@ -10,6 +10,7 @@ dotenv.config();
 const { ForgeClient, LogPriority } = require("@tryforge/forgescript");
 const { ForgeDB } = require("@tryforge/forge.db");
 const { ForgeCanvas } = require("@tryforge/forge.canvas");
+const setupShutdown = require('./functions/setupShutdown');
 
 // ========== CLIENT CONFIGURATION ==========
 // Initialize the bot client with extensions, intents, and events
@@ -34,7 +35,7 @@ const client = new ForgeClient({
     "MessageContent",
   ],
   events: ["interactionCreate", "messageCreate", "ready"],
-  prefixes: ["$if[$guildID!=;$getGuildVar[prefix];$getGlobalVar[prefix]]"],
+  prefixes: ["$default[$getGuildVar[prefix];$getGlobalVar[prefix]]"],
   logLevel: LogPriority.Low,
 });
 
@@ -44,8 +45,13 @@ client.commands.load("./commands");
 // ========== LOGIN ==========
 client.login(process.env.TOKEN);
 
-// ========== READY EVENT ==========
-// Executes when the bot is ready
+// ======== SIGNALS HANDLE ========
+// function for proper shutdown
+
+setupShutdown(client);
+
+// ========== DB CONNECT EVENT ==========
+// Executes when the DB is ready
 
 DB.commands.add({
   type: "connect",
