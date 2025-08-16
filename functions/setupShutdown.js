@@ -2,9 +2,11 @@ export default async function setupShutdown(client) {
   async function shutdown(signal) {
 		console.log(`Received signal ${signal}, shutting down the bot...`);
 		try {
+      setTimeout(() => {
 			client.destroy()
       console.log("Bot disconnected from Discord.");
-      setTimeout(() => process.exit(0), 1000);
+      process.exit(0);
+		}, 1000);
 		} catch (err) {
       console.error("Error while disconnecting bot:", err);
 		}
