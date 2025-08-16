@@ -36,7 +36,7 @@ const client = new ForgeClient({
   ],
   events: ["interactionCreate", "messageCreate", "ready"],
   prefixes: ["$default[$getGuildVar[prefix];$getGlobalVar[prefix]]"],
-  logLevel: LogPriority.High,
+  logLevel: LogPriority.Low,
 });
 
 // ========== LOAD COMMANDS ==========
@@ -847,6 +847,8 @@ client.functions.add({
   name: 'findingAnimalID',
   params: ["alias"],
   code: `
+    $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
+    $jsonLoad[allRaresData;$jsonEntries[allRaresData]]
     $loop[$arrayLength[allRaresData];
       $let[findingAnimalIDIndex;$math[$env[findingAnimalIDLoop] - 1]]
 
@@ -887,3 +889,16 @@ client.functions.add({
     $return[$env[output]]
   `
 })
+
+// components V2 new custom error
+client.functions.add({ 
+  name: "newError",
+  params: ["description"],
+  code: `
+    $addContainer[
+      $addTextDisplay[**✖️ Error**]
+      $addSeparator
+      $addTextDisplay[## $env[description]]
+    ;$getGlobalVar[errorColor]]
+  `
+}) 
