@@ -42,13 +42,13 @@ const client = new ForgeClient({
 // ========== LOAD COMMANDS ==========
 client.commands.load("./commands");
 
-// ========== LOGIN ==========
-client.login(process.env.TOKEN);
-
 // ======== SIGNALS HANDLE ========
 // function for proper shutdown
 
 setupShutdown(client);
+
+// ========== LOGIN ==========
+client.login(process.env.TOKEN);
 
 // ========== DB CONNECT EVENT ==========
 // Executes when the DB is ready

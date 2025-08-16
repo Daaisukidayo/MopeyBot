@@ -1,18 +1,21 @@
-export default async function setupShutdown(client) {
-  async function shutdown(signal) {
-		console.log(`Received signal ${signal}, shutting down the bot...`);
-		try {
-      setTimeout(() => {
-			client.destroy()
-      console.log("Bot disconnected from Discord.");
-      process.exit(0);
-		}, 1000);
-		} catch (err) {
-      console.error("Error while disconnecting bot:", err);
-		}
-	}
+export default function setupShutdown(client) {
+  let shuttingDown = false;
 
-	// Catch SIGINT (Stop) and SIGTERM (Restart)
-	process.on('SIGINT', () => shutdown('STOP'));
-	process.on('SIGTERM', () => shutdown('RESTART'));
-};
+  const shutdown = async (signal) => {
+    if (shuttingDown) return;
+    shuttingDown = true;
+
+    console.log(`Received ${signal}, shutting down the bot...`);
+    try {
+      await client.destroy();
+      console.log("Bot disconnected from Discord.");
+    } catch (err) {
+      console.error("Error while disconnecting bot:", err);
+    } finally {
+      setImmediate(() => process.exit(0));
+    }
+  };
+
+  process.once('SIGINT',  () => { void shutdown('SIGINT');  });
+  process.once('SIGTERM', () => { void shutdown('SIGTERM'); });
+}
