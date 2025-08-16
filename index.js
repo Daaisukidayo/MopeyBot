@@ -43,18 +43,23 @@ const client = new ForgeClient({
 client.commands.load("./commands");
 
 // ========== SIGINT handler ==========
-const info = chalk.cyan.bold // chalk.hex('#72CCF7');
-const warn = chalk.yellow.bold // chalk.hex('#FFC26E');
-const time = chalk.green.bold // chalk.hex('#6CD999')
+const info = chalk.cyan.bold
+const warn = chalk.yellow.bold
+const debug = chalk.green.bold
+const err = chalk.red.bold
 
 const now = new Date();
 const timestamp = `[${now.toLocaleString().replace(/,/g, '')}]`;
 
 process.on('SIGINT', () => {
-  console.log(time(timestamp) + warn(` [WARN] Received signal STOP, shutting down the Bot...`) );
-  client.destroy();
-  console.log(time(timestamp) + info(` [INFO] Bot has been shut down successfully`) );
-  process.exit(0);
+  console.log(debug(timestamp) + warn(` [WARN] Received signal STOP, shutting down the Bot...`) );
+  try {
+    client.destroy();
+    console.log(debug(timestamp) + info(` [INFO] Bot has been shut down successfully`) );
+    process.exit(0);
+  } catch (error) {
+    console.error(debug(timestamp) + err(` [ERROR] Failed to shut down the Bot: ${error.message}`));
+  }
 })
 
 
