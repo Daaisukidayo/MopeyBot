@@ -10,7 +10,6 @@ dotenv.config()
 import { ForgeClient, LogPriority } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
 import { ForgeCanvas } from "@tryforge/forge.canvas"
-import setupShutdown from './functions/setupShutdown.js'
 
 // ========== CLIENT CONFIGURATION ==========
 // Initialize the bot client with extensions, intents, and events
@@ -42,10 +41,13 @@ const client = new ForgeClient({
 // ========== LOAD COMMANDS ==========
 client.commands.load("./commands");
 
-// ======== SIGNALS HANDLE ========
-// function for proper shutdown
+// SIGINT handler
 
-setupShutdown(client);
+process.on('SIGINT', () => {
+  console.log("SIGINT received, shutting down the bot");
+  client.destroy();
+  process.exit(0);
+});
 
 // ========== LOGIN ==========
 client.login(process.env.TOKEN);
