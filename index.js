@@ -41,13 +41,15 @@ const client = new ForgeClient({
 // ========== LOAD COMMANDS ==========
 client.commands.load("./commands");
 
-// SIGINT handler
+// ========== SIGINT handler ==========
 
-process.on('SIGINT', () => {
-  console.log("SIGINT received, shutting down the bot");
-  client.destroy();
-  process.exit(0);
-});
+["SIGINT", "SIGTERM"].forEach(signal =>
+  process.on(signal, () => {
+    console.log(`${signal} received, shutting down`);
+    client.destroy();
+    process.exit(0);
+  })
+);
 
 // ========== LOGIN ==========
 client.login(process.env.TOKEN);
