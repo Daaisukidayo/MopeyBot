@@ -16,6 +16,13 @@ export default function setupShutdown(client) {
     }
   };
 
-  process.once('SIGINT',  () => { void shutdown('SIGINT');  });
-  process.once('SIGTERM', () => { void shutdown('SIGTERM'); });
+  process.on('SIGINT', () => {
+    console.log("SIGINT received");
+    shutdown('SIGINT');
+  });
+  process.on('SIGTERM', () => {
+    console.log("SIGTERM received");
+    shutdown('SIGTERM');
+  });
+
 }
