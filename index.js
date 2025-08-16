@@ -7,6 +7,7 @@ dotenv.config()
 // ========== IMPORTS ==========
 // Bring in the essentials for our bot’s operations
 
+import chalk from "chalk"
 import { ForgeClient, LogPriority } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
 import { ForgeCanvas } from "@tryforge/forge.canvas"
@@ -35,21 +36,37 @@ const client = new ForgeClient({
   ],
   events: ["interactionCreate", "messageCreate", "ready"],
   prefixes: ["$default[$getGuildVar[prefix];$getGlobalVar[prefix]]"],
-  logLevel: LogPriority.Low,
+  logLevel: LogPriority.High,
 });
 
 // ========== LOAD COMMANDS ==========
 client.commands.load("./commands");
 
 // ========== SIGINT handler ==========
+const info = chalk.cyan.bold // chalk.hex('#72CCF7');
+const warn = chalk.yellow.bold // chalk.hex('#FFC26E');
+const time = chalk.green.bold // chalk.hex('#6CD999')
 
-["SIGINT", "SIGTERM"].forEach(signal =>
-  process.on(signal, () => {
-    console.log(`${signal} received, shutting down`);
-    client.destroy();
-    process.exit(0);
-  })
-);
+const now = new Date();
+
+const day = String(now.getDate()).padStart(2, '0');
+const month = String(now.getMonth() + 1).padStart(2, '0');
+const year = now.getFullYear();
+const hours = String(now.getHours()).padStart(2, '0');
+const minutes = String(now.getMinutes()).padStart(2, '0');
+const seconds = String(now.getSeconds()).padStart(2, '0');
+
+// Custom HEX color for timestamp
+const timestamp = `[${day}.${month}.${year} ${hours}:${minutes}:${seconds}]`.replace(/,/g, '')
+
+
+process.on('SIGINT', () => {
+  console.log(time(timestamp) + warn(` [WARN] Received signal STOP, shutting down the Bot...`) );
+  client.destroy();
+  console.log(time(timestamp) + info(` [INFO] Bot has been shut down successfully`) );
+  process.exit(0);
+})
+
 
 // ========== LOGIN ==========
 client.login(process.env.TOKEN);

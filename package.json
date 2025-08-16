@@ -15,7 +15,7 @@
     "@tryforge/forge.canvas": "^1.2.3",
     "@tryforge/forge.db": "github:tryforge/forgedb",
     "@tryforge/forgescript": "github:tryforge/ForgeScript#dev",
-    "chalk": "^4.1.2",
+    "chalk": "^5.5.0",
     "dotenv": "^16.4.7",
     "forgepages": "github:xloxn69/ForgePages",
     "sqlite3": "^5.1.7"
