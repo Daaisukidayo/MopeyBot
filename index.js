@@ -7,10 +7,10 @@ dotenv.config()
 // ========== IMPORTS ==========
 // Bring in the essentials for our bot’s operations
 
-import chalk from "chalk"
 import { ForgeClient, LogPriority } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
 import { ForgeCanvas } from "@tryforge/forge.canvas"
+import shutdownSetup from "./scripts/shutdownSetup.js"
 
 // ========== CLIENT CONFIGURATION ==========
 // Initialize the bot client with extensions, intents, and events
@@ -43,25 +43,8 @@ const client = new ForgeClient({
 client.commands.load("./commands");
 
 // ========== SIGINT handler ==========
-const info = chalk.cyan.bold
-const warn = chalk.yellow.bold
-const debug = chalk.green.bold
-const err = chalk.red.bold
 
-const now = new Date();
-const timestamp = `[${now.toLocaleString().replace(/,/g, '')}]`;
-
-process.on('SIGINT', () => {
-  console.log(debug(timestamp) + warn(` [WARN] Received signal STOP, shutting down the Bot...`) );
-  try {
-    client.destroy();
-    console.log(debug(timestamp) + info(` [INFO] Bot has been shut down successfully`) );
-    process.exit(0);
-  } catch (error) {
-    console.error(debug(timestamp) + err(` [ERROR] Failed to shut down the Bot: ${error.message}`));
-  }
-})
-
+shutdownSetup(client)
 
 // ========== LOGIN ==========
 client.login(process.env.TOKEN);
