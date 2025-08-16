@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   name: "report",
   aliases: ["rep"],
   type: "messageCreate",

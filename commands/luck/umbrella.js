@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: "umbrella",
   type: "messageCreate",
   aliases: ["ur"],
@@ -36,7 +36,7 @@ module.exports = [{
       ]
     ]
   `
-}]
+}
 
 function catched() {
   return `

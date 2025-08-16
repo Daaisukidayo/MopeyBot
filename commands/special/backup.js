@@ -1,8 +1,9 @@
-module.exports = [{
+export default {
   name: "backup", 
   type: "messageCreate",
   code: `
 		$reply
+    $stop
     $jsonLoad[userProfile;$getUserVar[userProfile]]
 		$jsonLoad[userBackup;$getUserVar[userBackup]]
 		$let[arg;$toLowerCase[$message]]
@@ -24,4 +25,4 @@ module.exports = [{
 		$getGlobalVar[author]
 		$description[## Successfully loaded last backup!]
   `
-}]
+}

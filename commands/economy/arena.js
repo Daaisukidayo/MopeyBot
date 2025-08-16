@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: "arena",
   aliases: ["pvp"],
   type: "messageCreate",
@@ -30,7 +30,7 @@ module.exports = [{
     ;$get[color]]
     $setUserVar[userProfile;$env[userProfile]]
   `
-}]
+}
 
 function enemiesArr() {
   return `[

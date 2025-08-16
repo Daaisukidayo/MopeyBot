@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: "pumpkin",
   type: "messageCreate",
   aliases: ["pk"],
@@ -36,7 +36,7 @@ module.exports = [{
       ]
     ]
   `
-}]
+}
 
 
 function catched() {

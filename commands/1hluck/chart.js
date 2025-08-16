@@ -1,4 +1,4 @@
-module.exports = [{ 
+export default [{ 
   name: "chart", 
   type: "messageCreate", 
   code: `

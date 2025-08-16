@@ -1,4 +1,4 @@
-module.exports=({
+export default {
   name: "dev",
   type: "messageCreate",
   code: `
@@ -28,4 +28,4 @@ module.exports=({
     ;$getGlobalVar[defaultColor]]   
     $setUserVar[userProfile;$env[userProfile]]
   `
-})
+}

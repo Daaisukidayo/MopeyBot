@@ -1,11 +1,11 @@
-module.exports = [{
+export default {
   name: "leaderboard",
   aliases: ["lb", "top"],
   type: "messageCreate",
   code: `
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $callFunction[checking;]
+    $callFunction[checking]
     $callFunction[cooldown;1m]
 
     $let[lbplace;$getGlobalVar[cachedLB]]
@@ -16,6 +16,5 @@ module.exports = [{
     $color[$getGlobalVar[defaultColor]]
     $author[🔝 Leaderboard]
     $thumbnail[https://cdn.discordapp.com/attachments/701793335941136464/1326901475464450100/Remove-bg.ai_1736428344912.png]
-
   `
-}]
+}

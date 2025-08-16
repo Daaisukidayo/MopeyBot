@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: "switchlang",
   aliases: ["sl"],
   type: "messageCreate",
@@ -32,4 +32,4 @@ module.exports = [{
     $!jsonSet[userProfile;l10n;$get[arg]]
     $setUserVar[userProfile;$env[userProfile]]
   `
-}];
+}

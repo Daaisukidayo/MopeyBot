@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   type: "interactionCreate",
   allowedInteractionTypes: ["button"],
   code: `

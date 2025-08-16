@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   type: "ready",
   code: `
     $logger[Info;Bot $username[$botID] is ready]
@@ -28,7 +28,7 @@ module.exports = {
 
     $if[$getGlobalVar[makeBackups];
       $async[
-        $loop[-1; $c[Adding backups]
+        $loop[-1;
           $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
 
           $let[logCount;$getGlobalVar[backupLogCount]]

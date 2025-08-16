@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   name: "play", 
   type: "messageCreate",
   description: "first time playing",

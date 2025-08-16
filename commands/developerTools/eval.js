@@ -1,4 +1,4 @@
-module.exports = ({
+export default {
   name: "eval",
   aliases: ["e"],
   type: "messageCreate",
@@ -7,4 +7,4 @@ module.exports = ({
     $onlyForUsers[;$botOwnerID]
     $eval[$message]
   `
-})
+}

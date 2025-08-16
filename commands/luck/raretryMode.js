@@ -1,6 +1,6 @@
 const CD = "1m"
 
-module.exports = [{
+export default [{
   name: "raretrymode",
   aliases: ["rtm", "rtmode"],
   type: "messageCreate",
@@ -11,20 +11,25 @@ module.exports = [{
     $callFunction[cooldown;${CD}]
 
     $if[$message!=;
-      $let[arg;"$toLowerCase[$message[0]]"]
+      $let[arg;$toLowerCase[$message[0]]]
 
-      $if[$includes[$get[arg];"inferno";"inf";1];         $!jsonSet[userProfile;rtMode;inferno]
-      ;$if[$includes[$get[arg];"default";"def";2];        $!jsonSet[userProfile;rtMode;default]
-      ;$if[$includes[$get[arg];"medium";"med";3];         $!jsonSet[userProfile;rtMode;medium]
-      ;$if[$includes[$get[arg];"hard";4];                 $!jsonSet[userProfile;rtMode;hard]
-      ;$if[$includes[$get[arg];"insane";"ins";5];         $!jsonSet[userProfile;rtMode;insane]
-      ;$if[$includes[$get[arg];"impossible";"imp";6];     $!jsonSet[userProfile;rtMode;impossible]
-      ]]]]]]
+      $jsonLoad[allowedArgs;[
+        ["default", "def", "1"\\],
+        ["medium", "med", "2"\\],
+        ["hard", "3"\\],
+        ["insane", "ins", "4"\\],
+        ["impossible", "imp", "5"\\]
+      \\]]
+
+      $arrayForEach[allowedArgs;args;
+        $if[$arrayIncludes[args;$get[arg]]; 
+          $!jsonSet[userProfile;rtMode;$env[args;0]]
+        ]
+      ]
     ]
 
-    ${jsonAndArray()}
+    ${JSON()}
     ${embed()}
-    ${buttonsLoop()}
     $let[msgid;$sendMessage[$channelID;;true]]
     $setUserVar[userProfile;$env[userProfile]]
 
@@ -36,8 +41,8 @@ module.exports = [{
   code: `
     $arrayLoad[interactionID;-;$customID]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    ${jsonAndArray()}
     $onlyIf[$arrayIncludes[interactionID;rtMode]]
+    ${JSON()}
     $onlyIf[$arraySome[raretryModes;mode;$arrayIncludes[interactionID;$toLowercase[$env[mode]]]]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
     
@@ -46,7 +51,6 @@ module.exports = [{
     $let[msgid;$messageID]
 
     ${embed()}
-    ${buttonsLoop()}
     $interactionUpdate
 
     $!clearTimeout[RTM-$authorID]
@@ -54,7 +58,7 @@ module.exports = [{
   `
 }]
 
-function jsonAndArray() {
+function JSON() {
   return `
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $jsonLoad[raretryModes;$env[raretryVarData;raretryModes]]
@@ -65,11 +69,6 @@ function embed() {
   return `
     $callFunction[embed;lucky]
     $description[# Choose your raretry mode:]
-  `
-}
-
-function buttonsLoop(){
-  return `
     $loop[$arrayLength[raretryModes];
       $let[i;$math[$env[i] - 1]]
       $let[mode;$arrayAt[raretryModes;$get[i]]]
@@ -81,6 +80,7 @@ function buttonsLoop(){
     ;i;true]
   `
 }
+
 
 function timeout() {
   return `

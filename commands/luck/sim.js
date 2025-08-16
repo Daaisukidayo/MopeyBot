@@ -1,7 +1,7 @@
 const type = 'emoji'
 const separator = ' '
 
-module.exports = [{
+export default {
   name: 'simulator',
   aliases: ['sim'],
   type: 'messageCreate',
@@ -81,7 +81,7 @@ module.exports = [{
     $description[$trim[# $arrayJoin[msgdesc;${separator}]]]
     $footer[Points: $get[totalPoints] • Rares: $get[totalRares]]
   `
-}]
+}
 
 function totalAttempts() {
   return `
@@ -89,7 +89,7 @@ function totalAttempts() {
       [["pigeon", "pig", "deer", "reindeer", "swinehoe"\\], 1\\],
       [["donkey", "macaw"\\], 150\\],
       [["giraffe"\\], 75\\],
-      [["cheetah", "toucan", "pufferfish"\\], 175\\],
+      [["cheetah", "toucan", "pufferfish"\\], 200\\],
       [["tiger"\\], 250\\],
       [["lion", "falcon", "vulture"\\], 120\\],
       [["rhino", "baldEagle", "markhor"\\], 30\\],

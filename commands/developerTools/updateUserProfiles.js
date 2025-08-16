@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: "updateprofiles",
   aliases: ["uup"],
   type: "messageCreate",

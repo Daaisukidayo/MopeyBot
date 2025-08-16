@@ -1,4 +1,4 @@
-module.exports = ({
+export default {
   name: "howlucky",
   aliases: ['hl'],
   type: "messageCreate",
@@ -31,7 +31,7 @@ module.exports = ({
       ]
     ]
   `
-})
+}
 
 function data () {
   return `

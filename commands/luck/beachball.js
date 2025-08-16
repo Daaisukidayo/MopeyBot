@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: "beachball",
   type: "messageCreate",
   aliases: ["bb"],
@@ -36,7 +36,7 @@ module.exports = [{
       ]
     ]
   `
-}]
+}
 
 function catched() {
   return `

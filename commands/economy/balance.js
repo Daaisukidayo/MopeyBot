@@ -1,6 +1,6 @@
 const CD = "10s"
 
-module.exports = [{
+export default [{
   name: "balance",
   aliases: ['bal', 'coins', 'cash', 'profile', 'prof', 'money', 'packs'],
   type: "messageCreate",

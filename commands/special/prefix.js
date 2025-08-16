@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   name: "prefix",
   type: "messageCreate",
   code: `

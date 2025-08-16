@@ -1,4 +1,4 @@
-module.exports = ({
+export default {
   name: "muid",
   aliases: ["uid", "id"],
   type: "messageCreate",
@@ -42,4 +42,4 @@ module.exports = ({
     $description[# \`$separateNumber[$env[otherUserProfile;MC;];,]\`$getGlobalVar[emoji]]
     $color[$getGlobalVar[defaultColor]]
   `
-})
+}

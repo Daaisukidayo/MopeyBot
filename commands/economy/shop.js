@@ -1,6 +1,6 @@
 const CD = "1m"
 
-module.exports = [{
+export default [{
   name: "shop",
   type: "messageCreate",
   code: `
@@ -124,6 +124,7 @@ function genMenu () {
 }
 
 function timeout() {
+  return ``
   return `
     $setTimeout[
       $deleteComponentFrom[$channelID;$get[msgid];purchasingSkinpacks-$authorID]

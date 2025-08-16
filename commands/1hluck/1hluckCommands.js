@@ -1,5 +1,5 @@
 const type = 'emoji' // editable between 'name' and 'emoji'. Shows animal's name or emoji in "all rares list"
-module.exports = [
+export default [
 {
   name: "start",
   type: "messageCreate",

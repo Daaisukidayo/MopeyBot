@@ -1,4 +1,4 @@
-module.exports = ({
+export default {
   name: "daily",
   type: "messageCreate",
   code: `
@@ -33,4 +33,4 @@ module.exports = ({
 
     $setUserVar[userProfile;$env[userProfile]]
   `
-})
+}

@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: "invite",
   aliases: ["inv"],
   type: "messageCreate",
@@ -16,4 +16,4 @@ module.exports = [{
     $color[$getGlobalVar[defaultColor]]
     $getGlobalVar[author]
   `
-}];
+}

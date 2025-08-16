@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: "tornado",
   aliases: ["td"],
   type: "messageCreate",
@@ -35,4 +35,4 @@ module.exports = [{
     $thumbnail[$get[thum]]
     $color[$get[clr]]
   `
-}]
+}

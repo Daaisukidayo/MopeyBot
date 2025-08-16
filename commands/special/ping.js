@@ -1,4 +1,4 @@
-module.exports = ({
+export default {
   name: "ping",
   type: "messageCreate",
   code: `
@@ -7,16 +7,11 @@ module.exports = ({
     $callFunction[checking]
 
     $jsonLoad[l10n;$readFile[json/localizations.json]]
-    $let[l10n;$env[userProfile;language]]
+    $let[language;$env[userProfile;language]]
 
-    $let[replace0;$ping]
-    $let[replace1;$floor[$executionTime]]
+    $let[ping;$default[$replace[$env[l10n;ping;0;$get[language]];{0};$ping];No text found at $get[language]-0]]
+    $let[execTime;$default[$replace[$env[l10n;ping;1;$get[language]];{0};$floor[$executionTime]];No text found at $get[language]-1]]
 
-    $loop[2; 
-        $let[desc$env[i];$advancedReplace[$env[l10n;ping;pingDesc$env[i];$get[l10n]];{0};$get[replace0];{1};$get[replace1]]]
-        $if[$get[desc$env[i]]==; $let[desc$env[i];textNotFound | ID: $get[l10n]$env[i]]] 
-    ;i;true]
-
-    **$get[desc1]**\n**$get[desc2]** 
+    **$get[ping]**\n**$get[execTime]** 
   `
-})
+}

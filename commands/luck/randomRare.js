@@ -1,4 +1,4 @@
-module.exports = [{ 
+export default { 
   name: "randomrare", 
   aliases: ["rrare"], 
   type: "messageCreate", 
@@ -8,67 +8,15 @@ module.exports = [{
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
-    $jsonLoad[rares;${rares()}]
+    $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[animals;$jsonEntries[animals]]
+    $arrayLoad[rares]
+    $arrayForEach[animals;animal;
+      $if[$env[animal;1;isRare];
+        $arrayPush[rares;$env[animal;1;variants;0;name] $env[animal;1;variants;0;emoji]]
+      ]
+    ]
 
-    Your random rare: $arrayRandomValue[rares]
-  `
-}]
-
-function rares () {
-  return `
-    [
-      "Black Lion",
-      "Black Tiger",
-      "White Dove",
-      "Pinky",
-      "Stinky",
-      "Doe",
-      "Marsh Deer",
-      "Musk Deer",
-      "Jackass",
-      "Blue Macaw",
-      "Spix's Macaw",
-      "Momaffie",
-      "Momaffie Family",
-      "Girabie",
-      "Jaguar",
-      "Leopard",
-      "Black Panther",
-      "Keel-Billed Toucan",
-      "Choco Toucan",
-      "Fiery Toucan",
-      "Lava Toucan",
-      "Helmeted Hornbill Toucan",
-      "Yellow Pufferfish",
-      "Demonfish",
-      "White Tiger",
-      "Lioness",
-      "White Lioness",
-      "Black Lioness",
-      "Lion Cub",
-      "White Lion Cub",
-      "Black Lion Cub",
-      "Black-Maned Lion",
-      "White Lion",
-      "Black Lion",
-      "Predator",
-      "Shaheen",
-      "Argentavis Vulture",
-      "White Rhino",
-      "Black Rhino",
-      "Golden Eagle",
-      "Harpy Eagle",
-      "Greater-Spotted Eagle",
-      "Markhor",
-      "Big Goat",
-      "Aqua Yeti",
-      "Snowman",
-      "Snowgirl",
-      "Big Foot",
-      "Snowgirl by luck",
-      "Snowman by luck",
-      "Big Foot by luck",
-      "King Dragon by luck"
-  \\]
+    $sendMessage[$channelID;# $arrayRandomValue[rares]]
   `
 }

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: "math",
   type: "messageCreate",
   code: `

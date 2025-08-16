@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: "weekly",
   type: "messageCreate",
   code: `
@@ -28,9 +28,9 @@ module.exports = [{
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator
-      $addTextDisplay[## Your weekly reward is $get[r]$getGlobalVar[emoji]!]
+      $addTextDisplay[## Your weekly reward is \`$get[r]\`$getGlobalVar[emoji]!]
     ;$getGlobalVar[defaultColor]]
     
     $setUserVar[userProfile;$env[userProfile]]
   `
-}]
+}

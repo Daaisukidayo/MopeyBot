@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: 'raretryrun',
   aliases: ['rtr'],
   type: 'messageCreate',
@@ -34,8 +34,8 @@ module.exports = [{
       $if[$and[$get[animalID]!=undefined;$get[isRare]];
         ${addingClover()}
 
-        $let[rewardArrayIndex;$arrayFindIndex[rareReward;obj;$env[obj;animalID]==$get[animalID]]]
-        $let[MC;$env[rareReward;$get[rewardArrayIndex];MC]]
+        $let[rewardIndex;$arrayFindIndex[rareReward;obj;$env[obj;animalID]==$get[animalID]]]
+        $let[MC;$env[rareReward;$get[rewardIndex];MC]]
 
         $arrayPush[desc;## $get[animalContent]$get[CL] | \`$get[rareQuantity]/$get[totalAttempts]\` | +\`$get[MC]\`$getGlobalVar[emoji]]
         $letSum[total;$get[MC]]
@@ -55,7 +55,7 @@ module.exports = [{
     $callFunction[sumMC;$get[total]]
     $setUserVar[userProfile;$env[userProfile]]
   `
-}]
+}
 
 function addingClover() {
   return `

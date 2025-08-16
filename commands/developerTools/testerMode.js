@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
 	name: "testermode",
   aliases: ["tmode", "tm"],
 	type: "messageCreate",
@@ -30,4 +30,4 @@ module.exports = [{
     ;$getGlobalVar[defaultColor]]
     $setUserVar[userProfile;$env[userProfile]]
   `
-}]
+}

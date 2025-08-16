@@ -1,4 +1,4 @@
-module.exports = [{ 
+export default [{ 
   name: "resetcoins", 
   aliases: ["rc"], 
   type: "messageCreate", 

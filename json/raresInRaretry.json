@@ -1,0 +1,108 @@
+[
+  {
+    "ID": 8,
+    "animalIDs": [
+      "shaheen",
+      "harpyEagle",
+      "greaterSpottedEagle"
+    ],
+    "color": "50351E"
+  },
+  {
+    "ID": 7,
+    "animalIDs": [
+      "rareMacaw",
+      "rareToucan",
+      "rareVulture"
+    ],
+    "color": "677caf"
+  },
+  {
+    "ID": 6,
+    "animalIDs": [
+      "kingDragon",
+      "luckBigfoot",
+      "luckSnowman",
+      "luckSnowgirl"
+    ],
+    "color": "d61b4a"
+  },
+  {
+    "ID": 5,
+    "animalIDs": [
+      "giraffeFamily",
+      "whiteGiraffe",
+      "blackRhino",
+      "demonPufferfish",
+      "lavaToucan"
+    ],
+    "color": "452591"
+  },
+  {
+    "ID": 4,
+    "animalIDs": [
+      "blackTiger",
+      "blackBear",
+      "aquaYeti",
+      "predator",
+      "goldenEagle",
+      "whiteRhino",
+      "blackLionCub",
+      "blackLioness",
+      "blackLion",
+      "muskDeer",
+      "stinkyPig"
+    ],
+    "color": "750e0e"
+  },
+  {
+    "ID": 3,
+    "animalIDs": [
+      "girabie",
+      "jackass",
+      "bigGoat",
+      "whiteLionCub",
+      "whiteLioness",
+      "whiteLion",
+      "whiteTiger"
+    ],
+    "color": "ffffff"
+  },
+  {
+    "ID": 2,
+    "animalIDs": [
+      "goldenPheasant",
+      "momaffieFamily",
+      "momaffie",
+      "marshDeer",
+      "pinkyPig",
+      "whiteDove",
+      "blackManedLion",
+      "lionCub",
+      "blackPanther"
+    ],
+    "color": "f3ab0f"
+  },
+  {
+    "ID": 1,
+    "animalIDs": [
+      "fieryToucan",
+      "leopard",
+      "jaguar",
+      "doe",
+      "lioness",
+      "yellowPufferfish",
+      "blueMacaw"
+    ],
+    "color": "ffff00"
+  },
+  {
+    "ID": 0,
+    "animalIDs": [
+      "chocoToucan",
+      "keelBilledToucan",
+      "markhor"
+    ],
+    "color": "c0c0c0"
+  }
+]

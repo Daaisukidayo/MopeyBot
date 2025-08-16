@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: "setfullaccount",
   aliases: ["sfa"],
   type: "messageCreate",

@@ -1,0 +1,56 @@
+[
+  {
+    "commandAliases": ["wardrobe", "wr"],
+    "commandName": "Wardrobe",
+    "commandDescriptions": [
+      "## Let's you equip any animal with purchased skin!",
+      "## Usage: {PREFIX}wardrobe {new|all|<tier>|<animal>}",
+      "### [new] - Starts new equiping animals with chosen skin for mouse to king dragon",
+      "### `[all]` - Equips every animal with chosen skin pack",
+      "### `[tier]` - Equips every chosen tier animal with chosen skin pack",
+      "### `[animal]` - Equips chosen animal with chosen skin"
+    ],
+    "commandRelated": ["play", "shop"]
+  },
+  {
+    "commandAliases": ["party", "lobby"],
+    "commandName": "1 Hour Luck Challenge Lobby",
+    "commandDescriptions": [
+      "## Creates a new Lobby, and anyone who wishes can join your Lobby and participate in the Co-op 1 Hour Luck Challenge! A maximum of 6 participants.",
+      "### `1`. Press the 'Join' button to enter the Lobby.",
+      "### `2`. Press the 'Exit' button to leave the Lobby.",
+      "### `3`. Press the 'Start' button (for hosts only) to begin the Challenge! A minimum of 2 participants is required.",
+      "### `4`. Press the 'End' button (for hosts only) to close the Lobby and cancel participation in the Challenge.",
+      "## __Notes:__",
+      "### After pressing the 'Start' button, a countdown will appear, and then you will be able to start trying to get rares in Mope.io.",
+      "### Each participant will have their own timer, so you can pause at any time.",
+      "### After all participants have completed their challenge either forcibly or after timer's end, the participant with the highest number of points will win."
+    ],
+    "commandRelated": ["start", "chart", "settings"]
+  },
+  {
+    "commandAliases": ["backup"],
+    "commandName": "Backup",
+    "commandDescriptions": [
+      "## Restores your most recent backup!",
+      "### No need to add it manually — it's automatically updated every 12 hours for everyone!"
+    ],
+    "commandRelated": ["balance"]
+  },
+  {
+    "commandAliases": ["timezone", "tz"],
+    "commandName": "Timezone",
+    "commandDescription": [
+      "## Shows and edits your current timezone! Required for the proper functioning of time functions!",
+      "### Example: {PREFIX}timezone <Timezone ID>",
+      "### {HYPERLINK_TIMEZONES}"
+    ],
+    "commandRelated": []
+  },
+  {
+    "commandAliases": [],
+    "commandName": "",
+    "commandDescription": [],
+    "commandRelated": []
+  }
+]

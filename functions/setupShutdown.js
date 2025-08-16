@@ -1,11 +1,11 @@
-module.exports = function setupShutdown(client) {
-    async function shutdown(signal) {
+export default function setupShutdown(client) {
+  async function shutdown(signal) {
 		console.log(`Received signal ${signal}, shutting down the bot...`);
 		try {
-				console.log("Bot disconnected from Discord.");
-				await client.destroy(); // Close the connection to Discord
+      setTimeout(() => client.destroy(), 1000); // Close the connection to Discord
+      console.log("Bot disconnected from Discord.");
 		} catch (err) {
-				console.error("Error while disconnecting bot:", err);
+      console.error("Error while disconnecting bot:", err);
 		}
 		process.exit(0);
 	}

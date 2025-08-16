@@ -1,4 +1,4 @@
-module.exports = [{
+export default {
   name: "help",
   type: "messageCreate",
   code: `
@@ -8,23 +8,28 @@ module.exports = [{
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
-    $let[desc;$codeBlock[[\\] - required argument(s) \n{} - required option \n() - optional argument(s) or option \n<> — required data]]
+    $let[desc;$codeBlock[[\\] - required argument(s) \n{} - required option \n() - optional argument(s) or option \n<> — data input]]
     
     $let[al;📚 Aliases:]
     $let[rel;📖 Related:]
     $let[comNameEmoji;📜]
+
+    $let[prefix;$getGuildVar[prefix]]
+    $let[timezonesHyperlink;$hyperlink[List of all timezones;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones]]
+
     $jsonLoad[arg;["-$toLowerCase[$message]-"\\]]
+    $let[arg;$env[arg;0]]
 
     $description[## Unknown command!]
     $color[$getGlobalVar[defaultColor]]
     
-    $if[$includes[$env[arg;0];-party-];
+    $if[$includes[$get[arg];-backup-];
       $author[$get[comNameEmoji] Backup]
       $description[## Restores your most recent backup!
       ### No need to add it manually — it's automatically updated every 12 hours for everyone!]
     ]
     
-    $if[$includes[$env[arg;0];-party-];
+    $if[$includes[$get[arg];-party-];
       $author[$get[comNameEmoji] 1 Hour Luck Party]
       $description[## Creates a new party, and anyone who wishes can join your party and participate in the Cooperative 1 Hour Luck Challenge! A maximum of 6 participants.
       ### \`1.\` Press the 'Join' button to enter the party.
@@ -38,29 +43,40 @@ module.exports = [{
       ### After all participants have completed their challenge either forcibly or after 1 hour, the participant with the highest number of points will win.]
     ]
 
-    $if[$includes[$env[arg;0];-tz-;-timezone-];
-      $author[$get[comNameEmoji] 1 Hour Luck Settings]
+    $if[$includes[$get[arg];-wr-;-wardrobe-];
+      $author[$get[comNameEmoji] Wardrobe]
+      $description[## Let's you equip any animal with purchased skin!
+      ## Usage: ${inl('$getGuildVar[prefix]wardrobe {new|all|<tier>|<animal>}')}
+      ### \`[new\\]\` - Starts new equiping animals with chosen skin for mouse to king dragon
+      ### \`[all\\]\` - Equips every animal with chosen skin pack
+      ### \`[tier\\]\` - Equips every chosen tier animal with chosen skin pack
+      ### \`[animal\\]\` - Equips chosen animal with chosen skin]
+      $addField[$get[al];${inl('wardrobe')}, ${inl('wr')}]
+    ]
+
+    $if[$includes[$get[arg];-tz-;-timezone-];
+      $author[$get[comNameEmoji] Timezone]
       $description[## Shows and edits your current timezone! Required for the proper functioning of time functions!
       ### Example: ${inl('$getGuildVar[prefix]timezone <Timezone ID>')}
       ### $hyperlink[List of all timezones;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones]]
       $addField[$get[al];${inl('timezone')}, ${inl('tz')}]
     ]
 
-    $if[$includes[$env[arg;0];-sts-;-settings-];
+    $if[$includes[$get[arg];-sts-;-settings-];
       $author[$get[comNameEmoji] 1 Hour Luck Settings]
       $description[## Shows your settings related to 1 Hour Luck Challenge which you can edit!]
       $addField[$get[al];${inl('settings')}, ${inl('sts')}]
       $addField[$get[rel];${inl('start')}]
     ]
 
-    $if[$includes[$env[arg;0];-his-;-history-];
+    $if[$includes[$get[arg];-his-;-history-];
       $author[$get[comNameEmoji] 1 Hour Luck History]
       $description[## Shows your history of all ended 1 Hour Luck Challenges!]
       $addField[$get[al];${inl('history')}, ${inl('his')}]
       $addField[$get[rel];${inl('start')}]
     ]
 
-    $if[$includes[$env[arg;0];-sim-;-simulator-];
+    $if[$includes[$get[arg];-sim-;-simulator-];
       $author[$get[comNameEmoji] 1 Hour Luck Simulator]
       $description[## Shows how much rares you'd get in real 1 Hour Luck Challenge!
       ### Use ${inl('$getGuildVar[prefix]simulator event')} to simulate in event mode!]
@@ -68,37 +84,37 @@ module.exports = [{
       $addField[$get[rel];${inl('raretry')}, ${inl('raretryrun')}]
     ]
 
-    $if[$includes[$env[arg;0];-weekly-];
+    $if[$includes[$get[arg];-weekly-];
       $author[$get[comNameEmoji] Weekly]
       $description[## Claim your weekly reward once a week!]
       $addField[$get[rel];${inl('daily')}]
     ]
 
-    $if[$includes[$env[arg;0];-rules-];
+    $if[$includes[$get[arg];-rules-];
       $author[$get[comNameEmoji] Rules]
       $description[## Shows the rules you agreed with!]
     ]
 
-    $if[$includes[$env[arg;0];-daily-];
+    $if[$includes[$get[arg];-daily-];
       $author[$get[comNameEmoji] Daily]
       $description[## Claim your daily reward once a day!]
       $addField[$get[rel];${inl('weekly')}]
     ]
 
-    $if[$includes[$env[arg;0];-arena-;-pvp-;-battle-];
+    $if[$includes[$get[arg];-arena-;-pvp-;-battle-];
       $author[$get[comNameEmoji] Arena]
       $description[## Enter the PvP arena to claim your reward!]
       $addField[$get[al];${inl('arena')}, ${inl('pvp')}, ${inl('battle')}]
     ]
 
-    $if[$includes[$env[arg;0];-balance-;-bal-;-profile-;-prof-;-coins-;-packs-];
+    $if[$includes[$get[arg];-balance-;-bal-;-profile-;-prof-;-coins-;-packs-];
       $author[$get[comNameEmoji] Balance]
       $description[## Displays your current balance and purchased packs!]
       $addField[$get[al];${inl('balance')}, ${inl('bal')}, ${inl('profile')}, ${inl('prof')}, ${inl('coins')}, ${inl('cash')}, ${inl('packs')}]
       $addField[$get[rel];${inl('shop')}]
     ]
 
-    $if[$includes[$env[arg;0];-kd-;-kingdragon-];
+    $if[$includes[$get[arg];-kd-;-kingdragon-];
       $author[$get[comNameEmoji] Kingdragon]
       $description[## Attempt to transform into a mighty King Dragon and claim your reward!
       ### Additionally, there is a 1/1000 chance of becoming a King Dragon by sheer luck!]
@@ -106,7 +122,7 @@ module.exports = [{
       $addField[$get[rel];${inl('arena')}]
     ]
 
-    $if[$includes[$env[arg;0];-leaderboard-;-lb-;-top-];
+    $if[$includes[$get[arg];-leaderboard-;-lb-;-top-];
       $author[$get[comNameEmoji] Leaderboard]
       $description[## Displays the current leaderboard!
       ### Leaderboard updates every 5 minutes!]
@@ -114,71 +130,71 @@ module.exports = [{
       $addField[$get[rel];${inl('balance')}]
     ]
 
-    $if[$includes[$env[arg;0];-shop-];
+    $if[$includes[$get[arg];-shop-];
       $author[$get[comNameEmoji] Shop]
       $description[## Here you can purchase any skin pack you desire! 
       ### Note that some commands may not utilize certain packs. Stay tuned for the release of the ${inl('play')} command!]
       $addField[$get[rel];${inl('balance')}, ${inl('leaderboard')}]
     ]
 
-    $if[$includes[$env[arg;0];-prefix-];
+    $if[$includes[$get[arg];-prefix-];
       $author[$get[comNameEmoji] Prefix]
       $description[## Changes the bot's prefix for your server!
       ### Required permissions: ${inl('Manage Server')} or ${inl('Administrator')}]
       $addField[Usage:;${inl('$getGuildVar[prefix]prefix [your prefix\\]')} $get[desc]]
     ]
 
-    $if[$includes[$env[arg;0];-resetcoins-;-rc-];
+    $if[$includes[$get[arg];-resetcoins-;-rc-];
       $author[$get[comNameEmoji] Reset Coins]
       $description[# ❗ WARNING ❗\n## __This command will reset all your $getGlobalVar[emoji]!__]
       $addField[$get[al];${inl('resetcoins')}, ${inl('rc')}]
       $addField[$get[rel];${inl('resetpacks')}]
     ]
 
-    $if[$includes[$env[arg;0];-resetpacks-;-rmp-;-rp-];
+    $if[$includes[$get[arg];-resetpacks-;-rmp-;-rp-];
       $author[$get[comNameEmoji] Reset Packs]
       $description[# ❗ WARNING ❗\n## __This command will reset all your skin packs!__]
       $addField[$get[al];${inl('resetpacks')}, ${inl('rp')}]
       $addField[$get[rel];${inl('resetcoins')}]
     ]
     
-    $if[$includes[$env[arg;0];-invite-;-inv-];
+    $if[$includes[$get[arg];-invite-;-inv-];
       $author[$get[comNameEmoji] Invite]
       $description[## Invite the Mopey bot to your server, join the Mopey server, and vote for Mopey!]
       $addField[$get[al];${inl('invite')}, ${inl('inv')}]
       $addField[$get[rel];${inl('credits')}]
     ]
 
-    $if[$includes[$env[arg;0];-ping-];
+    $if[$includes[$get[arg];-ping-];
       $author[$get[comNameEmoji] Ping]
       $description[## Displays the bot's latency in milliseconds]
     ]
 
-    $if[$includes[$env[arg;0];-report-];
+    $if[$includes[$get[arg];-report-];
       $author[$get[comNameEmoji] Report]
       $description[## If you encounter a bug or notice a user attempting to disrupt the bot through alts, spamming, or other means, use the Report command to notify us!]
     ]
 
-    $if[$includes[$env[arg;0];-math-];
+    $if[$includes[$get[arg];-math-];
       $author[$get[comNameEmoji] Math]
       $description[## Performs calculations based on the provided input (some arguments may not be supported)!]
       $addField[Usage:;${inl('$getGuildVar[prefix]math [arguments\\]')} $get[desc]]
     ]
 
-    $if[$includes[$env[arg;0];-credits-];
+    $if[$includes[$get[arg];-credits-];
       $author[$get[comNameEmoji] Credits]
       $description[## Displays a list of all contributors to the bot's development!]
       $addField[$get[rel];${inl('invite')}]
     ]
 
-    $if[$includes[$env[arg;0];-muid-;-uid-;-id-];
+    $if[$includes[$get[arg];-muid-;-uid-;-id-];
       $author[$get[comNameEmoji] MUID]
       $description[## Displays the Mopey User Identifier along with their current coin balance!]
       $addField[Usage:;${inl('$getGuildVar[prefix]muid [number\\]')} $get[desc]]
       $addField[$get[al];${inl('muid')}, ${inl('uid')}, ${inl('id')}]
     ]
 
-    $if[$includes[$env[arg;0];-raretry-;-rt-];
+    $if[$includes[$get[arg];-raretry-;-rt-];
       $author[$get[comNameEmoji] Raretry]
       $description[## Use this command to attempt catching some rares!
       ### Check your current rarities and rares you caught with the ${inl('$getGuildVar[prefix]caughtrares')} command!]
@@ -186,7 +202,7 @@ module.exports = [{
       $addField[$get[rel];${inl('chances')}, ${inl('rtmode')}]
     ]
 
-    $if[$includes[$env[arg;0];-chart-];
+    $if[$includes[$get[arg];-chart-];
       $author[$get[comNameEmoji] Chart]
       $description[## Displays the current rare chart for the 1-hour luck challenge!
       ### What is the 1-hour luck challenge? Its a game where you have to get rares in <https://mope.io>! Start from a mouse and try getting rares for 1 hour!
@@ -196,7 +212,7 @@ module.exports = [{
       $addField[$get[rel];${inl('snora')}, ${inl('start')}, ${inl('pause')}, ${inl('resume')}, ${inl('time')}, ${inl('points')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 
-    $if[$includes[$env[arg;0];-raretrymode-;-rtm-;-rtmode-];
+    $if[$includes[$get[arg];-raretrymode-;-rtm-;-rtmode-];
       $author[$get[comNameEmoji] Raretry mode]
       $description[## Displays the current raretry mode. You can switch modes by pressing the buttons!
       ### The higher the active mode, the greater the rewards!]
@@ -204,7 +220,7 @@ module.exports = [{
       $addField[$get[rel];${inl('caughtrares')}, ${inl('raretry')}]
     ]
 
-    $if[$includes[$env[arg;0];-chances-;-caughtrares-;-cr-];
+    $if[$includes[$get[arg];-chances-;-caughtrares-;-cr-];
       $author[$get[comNameEmoji] Caught rares]
       $description[## Displays your caught rares with the current rarities of catching rares from any category! 
       ### To change the chances, use ${inl('$getGuildVar[prefix]rtmode')} or click the button in the command!]
@@ -212,7 +228,7 @@ module.exports = [{
       $addField[$get[rel];${inl('raretry')}, ${inl('rtmode')}]
     ]
 
-    $if[$includes[$env[arg;0];-pumpkin-;-pk-];
+    $if[$includes[$get[arg];-pumpkin-;-pk-];
       $author[$get[comNameEmoji] Pumpkin]
       $description[## Use this command to collect pumpkins!
       ### Current rarities:
@@ -221,7 +237,7 @@ module.exports = [{
       $addField[$get[rel];${inl('beachball')}, ${inl('umbrella')}]
     ]
 
-    $if[$includes[$env[arg;0];-beachball-;-bb-];
+    $if[$includes[$get[arg];-beachball-;-bb-];
       $author[$get[comNameEmoji] Beachball]
       $description[## Use this command to collect beachballs!
       ### Current rarities:
@@ -230,7 +246,7 @@ module.exports = [{
       $addField[$get[rel];${inl('pumpkin')}, ${inl('umbrella')}]
     ]
 
-    $if[$includes[$env[arg;0];-umbrella-;-ur-];
+    $if[$includes[$get[arg];-umbrella-;-ur-];
       $author[$get[comNameEmoji] Umbrella]
       $description[## Use this command to collect umbrellas!
       ### Current rarities:
@@ -239,34 +255,34 @@ module.exports = [{
       $addField[$get[rel];${inl('pumpkin')}, ${inl('beachball')}]
     ]
 
-    $if[$includes[$env[arg;0];-tornado-;-td-];
+    $if[$includes[$get[arg];-tornado-;-td-];
       $author[$get[comNameEmoji] Tornado]
       $description[## Use this command to discover various disasters!]
       $addField[$get[al];${inl('tornado')}, ${inl('td')}]
       $addField[$get[rel];${inl('pumpkin')}, ${inl('beachball')}, ${inl('umbrella')}, ${inl('arena')}]
     ]
 
-    $if[$includes[$env[arg;0];-howlucky-;-hl-];
+    $if[$includes[$get[arg];-howlucky-;-hl-];
       $author[$get[comNameEmoji] How lucky]
       $description[## Use this command to see how lucky you are today!]
       $addField[$get[al];${inl('howlucky')}, ${inl('hl')}]
       $addField[$get[rel];${inl('raretry')}]
     ]
 
-    $if[$includes[$env[arg;0];-rrare-];
+    $if[$includes[$get[arg];-rrare-];
       $author[$get[comNameEmoji] Random rare]
       $description[## Shows random rare!]
       $addField[$get[rel];${inl('raretry')}]
     ]
 
-    $if[$includes[$env[arg;0];-rtr-;-raretryrun-];
+    $if[$includes[$get[arg];-rtr-;-raretryrun-];
       $author[$get[comNameEmoji] Raretryrun]
       $description[## Attempt to obtain rares while progressing from a mouse to a black dragon! The rarities are identical to those in the game!]
       $addField[$get[al];${inl('raretryrun')},${inl('rtr')}]
       $addField[$get[rel];${inl('raretry')}]
     ]
 
-    $if[$includes[$env[arg;0];-cf-;-coinflip-];
+    $if[$includes[$get[arg];-cf-;-coinflip-];
       $author[$get[comNameEmoji] Coinflip]
       $description[## Wager your coins on heads or tails for a chance to win!
       ### ${inl('max')} - the maximum allowable bet (${inl('200,000')})
@@ -275,13 +291,13 @@ module.exports = [{
       $addField[Usage:;${inl('$getGuildVar[prefix]coinflip {amount|max} (side)')} $get[desc]]
     ]
 
-    $if[$includes[$env[arg;0];-ann-;-announcement-];
+    $if[$includes[$get[arg];-ann-;-announcement-];
       $author[$get[comNameEmoji] Announcement]
       $description[## Displays the most recent announcement!]
       $addField[$get[al];${inl('announcement')},${inl('ann')}]
     ]
 
-    $if[$includes[$env[arg;0];-start-];
+    $if[$includes[$get[arg];-start-];
       $author[$get[comNameEmoji] Start]
       $description[## Starts your 1 hour luck challenge! 
       ### While in progress, you must write names of rares from ${inl('$getGuildVar[prefix]snora')} without prefix to earn points!
@@ -291,46 +307,46 @@ module.exports = [{
       $addField[$get[rel];${inl('pause')}, ${inl('resume')}, ${inl('time')}, ${inl('snora')}, ${inl('points')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 
-    $if[$includes[$env[arg;0];-snora-];
+    $if[$includes[$get[arg];-snora-];
       $author[$get[comNameEmoji] SNORA]
       $description[## Displays all "Shorter Names Of Rare Animals"! \n## Basically it's first 3 letters or first letter of each word]
       $addField[$get[rel];${inl('pause')}, ${inl('resume')}, ${inl('time')}, ${inl('start')}, ${inl('points')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 
-    $if[$includes[$env[arg;0];-pause-];
+    $if[$includes[$get[arg];-pause-];
       $author[$get[comNameEmoji] Pause]
       $description[## Pauses your 1 hour luck challenge! 
       ### You can continue it at any time!]
       $addField[$get[rel];${inl('snora')}, ${inl('resume')}, ${inl('time')}, ${inl('start')}, ${inl('points')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 
-    $if[$includes[$env[arg;0];-resume-;-res-;-continue-];
+    $if[$includes[$get[arg];-resume-;-res-;-continue-];
       $author[$get[comNameEmoji] Resume]
       $description[## Continues your 1 hour luck challenge!]
       $addField[$get[al];${inl('resume')}, ${inl('res')}, ${inl('continue')}]
       $addField[$get[rel];${inl('snora')}, ${inl('pause')}, ${inl('time')}, ${inl('start')}, ${inl('points')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 
-    $if[$includes[$env[arg;0];-time-];
+    $if[$includes[$get[arg];-time-];
       $author[$get[comNameEmoji] Time]
       $description[## Displays the time until the end of the 1 hour luck challenge!]
       $addField[$get[rel];${inl('snora')}, ${inl('pause')}, ${inl('resume')}, ${inl('start')}, ${inl('points')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 
-    $if[$includes[$env[arg;0];-points-;-pts-;-score-];
+    $if[$includes[$get[arg];-points-;-pts-;-score-];
       $author[$get[comNameEmoji] Points]
       $description[## Displays the current points you have!]
       $addField[$get[al];${inl('points')}, ${inl('pts')}, ${inl('score')}]
       $addField[$get[rel];${inl('snora')}, ${inl('pause')}, ${inl('resume')}, ${inl('start')}, ${inl('time')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 
-    $if[$includes[$env[arg;0];-end-];
+    $if[$includes[$get[arg];-end-];
       $author[$get[comNameEmoji] End]
       $description[## Immediately ends your 1 hour luck challenge! Also shows the points you got!]
       $addField[$get[rel];${inl('snora')}, ${inl('pause')}, ${inl('resume')}, ${inl('points')}, ${inl('start')}, ${inl('time')}, ${inl('edittime')}, ${inl('editlist')}, ${inl('editpoints')}]
     ]
 
-    $if[$includes[$env[arg;0];-count-];
+    $if[$includes[$get[arg];-count-];
       $author[$get[comNameEmoji] Count]
       $description[## Counts points! 
       ### Does not require participation in a 1-hour luck challenge, instead requires writing the names of rare animals in one message after the command! 
@@ -338,7 +354,7 @@ module.exports = [{
       $addField[$get[rel];${inl('snora')}, ${inl('start')}]
     ]
 
-    $if[$includes[$env[arg;0];-edittime-;-etime-;-et-];
+    $if[$includes[$get[arg];-edittime-;-etime-;-et-];
       $author[$get[comNameEmoji] Edit time]
       $description[## Edits your time in 1 hour luck challenge! 
       ### Usage: ${inl('$getGuildVar[prefix]edittime {MM:SS (has to be "time passed") | seconds}')}
@@ -348,7 +364,7 @@ module.exports = [{
       $addField[$get[rel];${inl('snora')}, ${inl('start')}, ${inl('pause')}, ${inl('resume')}, ${inl('points')}, ${inl('time')}, ${inl('editpoints')}, ${inl('editlist')}, ${inl('end')}]
     ]
 
-    $if[$includes[$env[arg;0];-editpoints-;-epoints-;-epts-];
+    $if[$includes[$get[arg];-editpoints-;-epoints-;-epts-];
       $author[$get[comNameEmoji] Edit points]
       $description[## Edits your points!
       ### Usage: ${inl('$getGuildVar[prefix]editpoints [number\\]')}
@@ -357,7 +373,7 @@ module.exports = [{
       $addField[$get[rel];${inl('snora')}, ${inl('start')}, ${inl('pause')}, ${inl('resume')}, ${inl('points')}, ${inl('time')}, ${inl('edittime')}, ${inl('editlist')}, ${inl('end')}]
     ]
 
-    $if[$includes[$env[arg;0];-editlist-;-elist-;-el-];
+    $if[$includes[$get[arg];-editlist-;-elist-;-el-];
       $author[$get[comNameEmoji] Edit list]
       $description[## Edits your list! 
       ### Usage: ${inl('$getGuildVar[prefix]editlist [rare\\] [add/a/+ || remove/r/-\\] [amount || all\\]')}
@@ -367,7 +383,7 @@ module.exports = [{
       $addField[$get[rel];${inl('snora')}, ${inl('start')}, ${inl('pause')}, ${inl('resume')}, ${inl('points')}, ${inl('time')}, ${inl('edittime')}, ${inl('editpoints')}, ${inl('end')}]
     ]
 
-    $if[$env[arg;0]==--;
+    $if[$get[arg]==--;
       $author[$get[comNameEmoji] ALL COMMANDS]
       $description[Use ${inl('$getGuildVar[prefix]help (command)')} for detailed information on a specific command!]
 
@@ -380,6 +396,6 @@ module.exports = [{
     ]
     $sendMessage[$channelID]
   `
-}]
+}
 
 function inl (text) { return `$inlineCode[${text}]`}

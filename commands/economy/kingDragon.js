@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   name: "kingdragon",
   aliases: ["kd"],
   type: "messageCreate",
@@ -10,7 +10,7 @@ module.exports = [{
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
 
-    ${jsons()}
+    ${JSON()}
 
     $let[luckRarity;$randomNumber[1;1001]]
     $if[$env[userProfile;devMode];
@@ -38,7 +38,7 @@ module.exports = [{
     $arrayLoad[passKeys;,;blackDragonMenu]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    ${jsons()}
+    ${JSON()}
 
     $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
@@ -84,7 +84,7 @@ module.exports = [{
     $arrayLoad[passKeys;,;normal,kingDragonMenu]
 
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    ${jsons()}
+    ${JSON()}
 
     $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
@@ -117,7 +117,7 @@ module.exports = [{
 
     $arrayLoad[passKeys;,;luck,kingDragonMenu]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    ${jsons()}
+    ${JSON()}
 
     $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
@@ -170,7 +170,7 @@ function addSelectMenu(animalID, passKey = '') {
   `
 }
 
-function jsons() {
+function JSON() {
   return `
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[userPacksKeys;$env[userProfile;userPacks]]

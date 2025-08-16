@@ -1,16 +1,16 @@
 // ========== ENVIRONMENT CONFIGURATION ==========
 // Load environment variables before anything else
 
-const dotenv = require("dotenv");
-dotenv.config();
+import dotenv from "dotenv"
+dotenv.config()
 
 // ========== IMPORTS ==========
 // Bring in the essentials for our bot’s operations
 
-const { ForgeClient, LogPriority } = require("@tryforge/forgescript");
-const { ForgeDB } = require("@tryforge/forge.db");
-const { ForgeCanvas } = require("@tryforge/forge.canvas");
-const setupShutdown = require('./functions/setupShutdown');
+import { ForgeClient, LogPriority } from "@tryforge/forgescript"
+import { ForgeDB } from "@tryforge/forge.db"
+import { ForgeCanvas } from "@tryforge/forge.canvas"
+import setupShutdown from './functions/setupShutdown.js'
 
 // ========== CLIENT CONFIGURATION ==========
 // Initialize the bot client with extensions, intents, and events
@@ -88,15 +88,6 @@ DB.variables({
     },
 
     userPacks: [], // expected: array with names inside
-
-    caughtRareCategories: {
-      inferno: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      medium: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      hard: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      insane: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      impossible: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    },
 
     userWardrobe: {
       mouse: 0,
@@ -358,19 +349,8 @@ DB.variables({
   // raretry
 
   raretryVarData: {
-    coinsForRaretry: {
-      inferno: [0, 0, 0, 0, 190, 375, 560, 750, 940],
-      other: [
-        0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000, 2750000, 5500000,
-      ],
-    },
-
-    chancesForRaretry: {
-      inferno: [1, 2, 3, 4, 5, 10, 15, 20, 25],
-      other: [
-        3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000,
-      ],
-    },
+    coinsForRaretry: [0, 0, 500, 1500, 4000, 10500, 55000, 165000, 275000, 550000, 1375000, 2750000, 5500000],
+    chancesForRaretry: [3, 5, 10, 30, 75, 200, 1000, 3000, 5000, 10000, 25000, 50000, 100000],
 
     categories: [
       "Common",
@@ -384,7 +364,6 @@ DB.variables({
       "Ultra",
     ],
     raretryModes: [
-      "Inferno",
       "Default",
       "Medium",
       "Hard",
