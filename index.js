@@ -273,7 +273,7 @@ DB.variables({
 
   // Guild variables
 
-  prefix: ".",
+  prefix: "m!",
 
   // special
 
