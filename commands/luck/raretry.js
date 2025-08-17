@@ -32,8 +32,8 @@ export default {
 
     $let[al;$arrayLength[raresGroup]]
     $let[i;$math[$get[al] - 1]]
-    $let[MC;0]
     $let[arg;$message[0]]
+    $let[isDev;$env[userProfile;devMode]]
 
     $switch[$get[rtMode];
       $case[default;$let[rtModeNum;0]]
@@ -49,14 +49,13 @@ export default {
     $footer[$get[raretryModeContent]: $toTitleCase[$get[rtMode]]]
 
 
-    $if[$and[$env[userProfile;devMode];$get[arg]!=;$isNumber[$get[arg]];$get[arg]>-1;$get[arg]<=$get[i]];
+    $if[$and[$get[isDev];$get[arg]!=;$isNumber[$get[arg]];$get[arg]>-1;$get[arg]<=$get[i]];
       $let[targetID;$get[arg]]
     ;
       $let[targetID;-1]
     ]
 
     $arrayForEach[raresGroup;group;
-      $let[MC;0]
       $let[rtIndex;$math[$get[i] + $get[rtModeNum]]]
       $let[baseChance;$env[raretryVarData;chancesForRaretry;$get[rtIndex]]]
 
@@ -67,21 +66,21 @@ export default {
 
         $jsonLoad[animalIDs;$env[group;animalIDs]]
         $let[animalID;$arrayRandomValue[animalIDs]]
-        $let[MC;$math[$env[raretryVarData;coinsForRaretry;$get[rtIndex]] * $arrayAt[multipliers;$get[rtModeNum]]]]
+        $let[MC;$math[$env[raretryVarData;coinsForRaretry;$get[rtIndex]] * $arrayAt[multipliers;$get[rtModeNum]]]] $c[Can be 0]
         $let[thumbnail;$env[animals;$get[animalID];variants;0;img]]
         $let[animalEmoji;$env[animals;$get[animalID];variants;0;emoji]]
         $let[category;$arrayAt[categories;$get[i]]]
 
         $if[$get[MC]!=0;
           $let[extraContent;$arrayRandomValue[raretryRewardContent] $separateNumber[$get[MC];.]$getGlobalVar[emoji]]
+          $callFunction[sumMC;$get[MC]]
+          $setUserVar[userProfile;$env[userProfile]]
         ]
-        $description[## $arrayRandomValue[raretrySuccessCatch] $get[animalEmoji] $get[extraContent]]
+        $description[## $arrayRandomValue[raretrySuccessCatch] $get[animalEmoji] $get[extraContent]] $delete[extraContent]
         $thumbnail[$get[thumbnail]]
         $footer[$get[rarityContent]: 1/$separateNumber[$get[baseChance];,] • $get[categoryContent]: $get[category] • $get[raretryModeContent]: $toTitleCase[$get[rtMode]]]
         $color[$env[group;color]]
-
-        $callFunction[sumMC;$get[MC]]
-        $setUserVar[userProfile;$env[userProfile]]
+        $getGlobalVar[author]
         $sendMessage[$channelID]
       ]
       $letSub[i;1]
