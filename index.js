@@ -717,19 +717,20 @@ client.functions.add({
   params: ["name"],
   code: `
     $let[time;$getUserCooldownTime[$env[name]]]
-    $let[cooldownTime;$sum[$getTimestamp;$get[time]]]
-    $let[longDateTime;$discordTimestamp[$get[cooldownTime];LongDateTime]]
-    $let[relativeTimeLeft;$discordTimestamp[$get[cooldownTime];RelativeTime]]
+    $let[cooldownEnd;$sum[$getTimestamp;$get[time]]]
+    $let[longDateTime;$discordTimestamp[$get[cooldownEnd];LongDateTime]]
+    $let[relativeTimeLeft;$discordTimestamp[$get[cooldownEnd];RelativeTime]]
 
     $jsonLoad[l;$readFile[json/localizations.json]]
-    $let[l10n;$env[userProfile;language]]
-    $let[cooldownDesc1;$env[l;cooldown;cooldownDesc1;$get[l10n]]] 
-    $let[cooldownDesc2;$advancedReplace[$env[l;cooldown;cooldownDesc2;$get[l10n]];{1};$get[relativeTimeLeft];{2};$get[longDateTime]]] 
-    
+    $let[language;$env[userProfile;language]]
+
+    $let[content1;$default[$env[l;cooldown;0;$get[language]];???]]
+    $let[content2;$default[$advancedReplace[$env[l;cooldown;1;$get[language]];{1};$get[relativeTimeLeft];{2};$get[longDateTime]];???]]
+
     $return[
       $getGlobalVar[author]
-      $title[⏰ $get[cooldownDesc1]]
-      $description[$get[cooldownDesc2]!]
+      $title[$get[content1]]
+      $description[$get[content2]]
       $color[$getGlobalVar[cooldownColor]]    
       $deleteIn[$if[$or[$get[time]>30000;$get[time]==0];10s;$get[time]]]
     ]
@@ -771,7 +772,7 @@ client.functions.add({
   name: "cooldown",
   params: ["time"],
   code: `
-    $if[$env[userProfile;devMode]!=false;;
+    $if[$env[userProfile;devMode];;
       $userCooldown[$commandName;$env[time];$callFunction[cooldownSchema;$commandName]]
     ]
   `,
@@ -782,10 +783,10 @@ client.functions.add({
   name: "interFail",
   code: `
     $jsonLoad[l;$readFile[json/localizations.json]]
-      $let[l10n;$env[userProfile;language]]
-      $let[specialDesc2;$env[l;special;specialDesc2;$get[l10n]]] 
+    $let[language;$env[userProfile;language]]
+    $let[content;$default[$env[l;special;0;$get[language]];???]] 
     $ephemeral 
-    $interactionReply[$get[specialDesc2]]
+    $interactionReply[## $get[content]]
   `,
 });
 
@@ -794,10 +795,10 @@ client.functions.add({
   name: "notYourBTN",
   code: `
     $jsonLoad[l;$readFile[json/localizations.json]]
-    $let[l10n;$env[userProfile;language]]
-    $let[specialDesc3;$env[l;special;specialDesc3;$get[l10n]]] 
+    $let[language;$env[userProfile;language]]
+    $let[content;$default[$env[l;special;1;$get[language]];???]]
     $ephemeral
-    $interactionReply[$get[specialDesc3]]
+    $interactionReply[## $get[content]]
   `,
 });
 

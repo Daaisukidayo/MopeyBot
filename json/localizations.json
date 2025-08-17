@@ -1,10 +1,6 @@
 {
   "special": [
     {
-      "EN": "This message is now inactive. Run the command again.",
-      "RU": "Это сообщение больше не активно. Выполните команду снова."
-    },
-    {
       "EN": "You can't interract with this message anymore!",
       "RU": "Вы больше не можете взаимодействовать с этим сообщением!"
     },
@@ -16,8 +12,8 @@
 
   "cooldown": [
     {
-      "EN": "You are on cooldown!",
-      "RU": "Вы находитесь на перезарядке!"
+      "EN": "⏰ You are on cooldown!",
+      "RU": "⏰ Вы находитесь на перезарядке!"
     },
     {
       "EN": "Cooldown will end {0} {1}",
