@@ -80,6 +80,7 @@ export default {
         $color[$env[group;color]]
 
         $callFunction[sumMC;$get[MC]]
+        $let[MC;0]
         $setUserVar[userProfile;$env[userProfile]]
         $sendMessage[$channelID]
       ]
