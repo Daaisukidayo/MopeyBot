@@ -580,17 +580,15 @@ export default [
     $jsonLoad[history;$env[userProfile;1hl;history]]
 
     $let[page;1]
-    $let[sortType;d]
-    $if[$arrayAt[history;0]==;
+    $let[sortType;date]
+    $onlyIf[$arrayLength[history]!=0;
       $addContainer[
         $callFunction[newAuthor]
         $addSeparator[Large]
         $addTextDisplay[## You haven't completed any challenge!]
-      ]
-      $sendMessage[$channelID]
-      $stop
+      ;$getGlobalVar[luckyColor]]
     ]
-    ${hisSortType()}
+
     ${historySorting()}
     ${historyEmbed()}
     $let[msg;$sendMessage[$channelID;;true]]
@@ -605,15 +603,13 @@ export default [
     $arrayLoad[interactionID;-;$customID]
     $arrayLoad[menuValues;-;$selectMenuValues]
     $arrayLoad[passKeys;,;sortHis,historyPageLeft,historyPageRight,customPage,deleteHistoryPage,historyPageCustom]
-
-
     $onlyIf[$arraySome[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
-    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
     ${JSON()}
     $jsonLoad[history;$env[userProfile;1hl;history]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
-    $let[butid;$env[interactionID;2]]
+    $let[IID;$env[interactionID;2]]
     $let[input;$input[historyPage]]
     $let[msg;$messageID]
     $let[page;$default[$env[menuValues;0];$env[interactionID;0]]]
@@ -633,10 +629,60 @@ export default [
       $stop
     ]
 
-    ${sortBtnLogic()}
+    ${historySorting()}
+
+    $switch[$get[IID];
+    
+      $case[historyPageLeft;
+        $letSub[page;1]
+        $if[$get[page]<=0;
+          $let[page;$arrayLength[history]]
+        ]
+      ]
+
+      $case[historyPageRight;
+        $letSum[page;1]
+        $if[$get[page]>$arrayLength[history];
+          $let[page;1]
+        ]
+      ]
+
+      $case[customPage;
+        $onlyIf[$isNumber[$get[input]];
+          $interactionReply[
+            $ephemeral
+            $callFunction[embed;error]
+            $description[## Argument is not a number!]
+          ]
+        ]
+        $let[page;$get[input]]
+        $if[$get[page]>$arrayLength[history];
+          $let[page;$arrayLength[history]]
+        ]
+        $if[$get[page]<=0;
+          $let[page;1]
+        ]
+      ]
+
+      $case[deleteHistoryPage;
+        $!arraySplice[history;$math[$get[page] - 1];1]
+
+        $arrayAdvancedSort[history;elem1;elem2;
+          $math[$env[elem1;endedAt] - $env[elem2;endedAt]]
+        ;history]
+
+        $!jsonSet[userProfile;1hl;history;$env[history]]
+        $setUserVar[userProfile;$env[userProfile]]
+        
+        ${historySorting()}
+        
+        $if[$get[page]>$arrayLength[history];
+          $let[page;$arrayLength[history]]
+        ]
+      ]
+    ]
 
     $!stopTimeout[1HLHISTORY-$authorID]
-    ${hisSortType()}
     ${historyEmbed()}
     $interactionUpdate
     ${historyTimeout()}
@@ -644,23 +690,84 @@ export default [
 },
 
 //  EDIT HISTORY
-
 {
+  name: 'editHistory',
+  aliases: ['editHis', 'eh', 'ehis'],
+  type: 'messageCreate',
+  code: `
+    $stop
+    $reply
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $callFunction[checking]
+    $callFunction[cooldown;1m]
+    $jsonLoad[history;$env[userProfile;1hl;history]]
+
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addTextDisplay[## Welcome to the history editor!]
+      $addActionRow
+      $addStringSelectMenu[editHistoryOptions-$authorID;Choose an option]
+      $addOption[Add new page;;addNewHistoryPage]
+      $addOption[Edit existing page;;editExistingHistoryPage]
+    ;$getGlobalVar[luckyColor]]
+  `
+},{
   type: 'interactionCreate',
-  allowedInteractionTypes: ['button'],
+  allowedInteractionTypes: ['selectMenu'],
   code: `
     $arrayLoad[interactionID;-;$customID]
-    $arrayLoad[passKeys;,;editHistoryPage]
+    $arrayLoad[passKeys;,;editHistoryOptions]
     $onlyIf[$arraySome[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
-    $let[page;$env[interactionID;0]]
-    $let[sortType;$env[interactionID;1]]
+    $let[value;$selectMenuValues]
+
+    $switch[$get[value];
+
+      $case[addNewHistoryPage;
+        
+      ]
+
+      $case[editExistingHistoryPage;
+        $modal[editHistoryPageModal-$authorID;Edit Existing History Page]
+        $addTextInput[editHistoryPageNumber;Enter page number;Short;true]
+        $addTextInput[editHistoryPageSorting;Enter sorting type;Short;true;Date | Points | Rares]
+        $showModal
+        $fetchResponse[$channelID;$messageID]
+      ]
+    ]
+    $interactionUpdate
+  `
+},{
+  type: 'interactionCreate',
+  allowedInteractionTypes: ['button', 'modal'],
+  code: `
+    $arrayLoad[interactionID;-;$customID]
+    $arrayLoad[passKeys;,;editHistoryPage,editHistoryPageModal]
+    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
+
+    $jsonLoad[sortingOptions;$getGlobalVar[sortingOptions]]
+
+    $let[page;$default[$input[editHistoryPageNumber];$env[interactionID;0]]]
+    $onlyIf[$and[$isNumber[$get[page]];$get[page]>0];
+      $callFunction[newError;Invalid page number]
+      $ephemeral
+      $interactionReply
+    ]
+    $let[sortType;$default[$toLowerCase[$input[editHistoryPageSorting]];$env[interactionID;1]]]
+    $onlyIf[$arrayIncludes[sortingOptions;$get[sortType]];
+      $callFunction[newError;Invalid sorting type]
+      $ephemeral
+      $interactionReply
+    ]
 
     ${editHistoryEmbed()}
     $ephemeral
-    $interactionReply
+    $if[$isModal;$interactionUpdate;$interactionReply]
   `
 },{
   type: 'interactionCreate',
@@ -1308,65 +1415,51 @@ export default [
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
     
-    $onlyIf[$message!=]
+    $onlyIf[$message!=;
+      $callFunction[newError;Usage: \`count <animalShortName> ...\`]
+    ]
 
     $let[totalRares;0]
     $let[totalPoints;0]
 
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
-    $jsonLoad[allRaresList;{}]
-    $arrayLoad[unknown]
+    $jsonLoad[raresList;{}]
     $arrayLoad[unknownContent]
-    $arrayLoad[listContent]
 
     $loop[$arrayLength[caughtRares];
       $let[i;$math[$env[i] - 1]]
       $let[caughtRare;$arrayAt[caughtRares;$get[i]]]
 
       $if[$arrayIncludes[allRares;$get[caughtRare]];;
-        $arrayPush[unknown;$get[caughtRare]]
+        $arrayPush[unknownContent;$get[caughtRare]]
         $continue
       ]
 
       $let[animalID;$callFunction[findingAnimalID;$get[caughtRare]]]
-      
-      $let[newQuantity;$math[$env[allRaresList;$get[animalID]] + 1]]
-      $!jsonSet[allRaresList;$get[animalID];$get[newQuantity]]    
+      $let[newQuantity;$math[$env[raresList;$get[animalID]] + 1]]
+      $!jsonSet[raresList;$get[animalID];$get[newQuantity]]
     ;i;true]
 
-    $jsonLoad[listEntries;$jsonEntries[allRaresList]]
+    ${raresListGenerator('listContent', true)}
 
-    $arrayForEach[listEntries;entry;
+    $c[===========EMBED===========]
 
-      $let[animalID;$env[entry;0]]
-      $let[quantity;$env[entry;1]]
-
-      $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
-
-      $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]      
-
-      $let[listPoints;$env[output;points]]
-      $let[totalPointsInList;$math[$get[quantity] * $get[listPoints]]]
-      $letSum[totalPoints;$get[totalPointsInList]]
-      $letSum[totalRares;$get[quantity]]
-
-      $let[listContent;$get[animalDisplay]⁕$get[quantity] × $get[listPoints] | +$get[totalPointsInList]]
-      $arrayPush[listContent;║ **$get[listContent]**]
-    ]
-    $if[$arrayLength[listContent]==0;$arrayPush[listContent;║ none]]
-
-    $addField[Total points:; \`$get[totalPoints]\`]
-    $addField[Total rares:;\`$get[totalRares]\`]
-    $addField[All Rares List:;╔══════════\n$arrayJoin[listContent;\n]\n╚══════════]
-
-    $if[$arrayLength[unknown]!=0;
-      $arrayForEach[unknown;elem;
-        $arrayPush[unknownContent;║ **$env[elem]**]
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addTextDisplay[# 1 Hour Luck Points Count]
+      $addSeparator[Large]
+      $addTextDisplay[## ⁘ Total points: \`$get[totalPoints]\`]
+      $addTextDisplay[## ⁘ Total rares: \`$get[totalRares]\`]
+      $addSeparator
+      $addTextDisplay[${listDesign('listContent')}]
+      $addSeparator[Large]
+      $if[$arrayLength[unknownContent]!=0;
+        $addTextDisplay[# Unknown rares]
+        $addSeparator
+        $addTextDisplay[${listDesign('unknownContent')}]
       ]
-      $addField[Unknown rares:;╔══════════\n$arrayJoin[unknownContent;\n]\n╚══════════]
-    ]
-
-    $callFunction[embed;lucky]
+    ;$getGlobalVar[luckyColor]]
   `
 }]
 
@@ -1591,20 +1684,28 @@ function reset(id = "$authorID") {
   `
 }
 
-function raresListGenerator() {
+function raresListGenerator(arrayName = 'content', addPoints = false) {
   return `
     $jsonLoad[listEntries;$jsonEntries[raresList]]
-    $arrayLoad[content]
+    $arrayLoad[${arrayName}]
 
     $arrayForEach[listEntries;entry;
       $let[animalID;$env[entry;0]]
       $let[quantity;$env[entry;1]]
 
       $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
-      $arrayPush[content;$get[animalDisplay]\`$get[quantity]\`]
 
+      $if[${addPoints};
+        $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]      
+        $let[listPoints;$env[output;points]]
+        $let[totalPointsInList;$math[$get[quantity] * $get[listPoints]]]
+        $letSum[totalPoints;$get[totalPointsInList]]
+        $letSum[totalRares;$get[quantity]]
+      ]
+
+      $arrayPush[${arrayName};$get[animalDisplay]\`$get[quantity]\`]
     ]
-    $if[$arrayLength[content]==0;$arrayPush[content;none]]
+    $if[$arrayLength[${arrayName}]==0;$arrayPush[${arrayName};none]]
   `
 }
 
@@ -1660,10 +1761,10 @@ function editHistoryEmbed() {
     $addContainer[
       $callFunction[newAuthor]
       $addSeparator[Large]
-      $addTextDisplay[## Choose what you want to edit]
+      $addTextDisplay[## Choose what you want to edit!]
       $addSeparator
       $addActionRow
-      $addStringSelectMenu[$get[page]-$get[sortType]-historyChooseEdit-$authorID;Options]
+      $addStringSelectMenu[$get[page]-$get[sortType]-historyChooseEdit-$authorID;Choose an option]
       $addOption[Points;;points]
       $addOption[Rares;;raresQuantity]
       $addOption[Play Type;;playType]
@@ -1682,6 +1783,7 @@ function historyEmbed() {
     $jsonLoad[allLobbyTags;$getGlobalVar[allLobbyTags]]
     $jsonLoad[raresList;$env[history;$get[index];raresList]]
     $jsonLoad[tags;$env[history;$get[index];tags]]
+    $jsonLoad[sortingOptions;$getGlobalVar[sortingOptions]]
 
     $if[$arrayLength[tags]==0;
       $arrayPush[tags;none]
@@ -1716,9 +1818,9 @@ function historyEmbed() {
         $addButton[$get[page]-$get[sortType]-historyPageRight-$authorID;;Primary;➡️]
         $addActionRow
         $addStringSelectMenu[sortHis-$authorID;Sort by]
-        $addOption[Sort Type: Date;;$get[page]-d;;$checkCondition[$get[sortType]==d]]
-        $addOption[Sort Type: Points;;$get[page]-p;;$checkCondition[$get[sortType]==p]]
-        $addOption[Sort Type: Rares;;$get[page]-r;;$checkCondition[$get[sortType]==r]]
+        $arrayForEach[sortingOptions;option;
+          $addOption[Sort Type: $toTitleCase[$env[option]];;$get[page]-$env[option];;$checkCondition[$get[sortType]==$env[option]]]
+        ]
       ]
       $if[$env[history;0]!=;
         $addActionRow
@@ -1870,87 +1972,25 @@ function historyTimeout () {
     ;1m;1HLHISTORY-$authorID]`
 }
 
-function hisSortType() {
-  return `
-    $switch[$get[sortType];
-      $case[d;$let[sort;Date]]
-      $case[p;$let[sort;Points]]
-      $case[r;$let[sort;Rares]]
-    ]
-  `
-}
-
 function historySorting() {
   return `
     $switch[$get[sortType];
-      $case[p;
+      $case[points;
         $arrayAdvancedSort[history;elem1;elem2;
           $math[$env[elem2;points] - $env[elem1;points]]
         ;history]
       ]
 
-      $case[r;
+      $case[rares;
         $arrayAdvancedSort[history;elem1;elem2;
           $math[$env[elem2;rares] - $env[elem1;rares]]
         ;history]
       ]
 
-      $case[d;
+      $case[data;
         $arrayAdvancedSort[history;elem1;elem2;
           $math[$env[elem2;endedAt] - $env[elem1;endedAt]]
         ;history]
-      ]
-    ]
-  `
-}
-
-function sortBtnLogic() {
-  return `
-    $if[$get[butid]==historyPageLeft;
-      $letSub[page;1]
-      $if[$get[page]<=0;
-        $let[page;$arrayLength[history]]
-      ]
-    ]
-    $if[$get[butid]==historyPageRight;
-      $letSum[page;1]
-      $if[$get[page]>$arrayLength[history];
-        $let[page;1]
-      ]
-    ]
-    $if[$get[butid]==customPage;
-      $onlyIf[$isNumber[$get[input]];
-        $interactionReply[
-          $ephemeral
-          $callFunction[embed;error]
-          $description[## Argument is not a number!]
-        ]
-      ]
-      $let[page;$get[input]]
-      $if[$get[page]>$arrayLength[history];
-        $let[page;$arrayLength[history]]
-      ]
-      $if[$get[page]<=0;
-        $let[page;1]
-      ]
-    ]
-
-    ${historySorting()}
-
-    $if[$get[butid]==deleteHistoryPage;
-      $!arraySplice[history;$math[$get[page] - 1];1]
-
-      $arrayAdvancedSort[history;elem1;elem2;
-        $math[$env[elem1;endedAt] - $env[elem2;endedAt]]
-      ;history]
-
-      $!jsonSet[userProfile;1hl;history;$env[history]]
-      $setUserVar[userProfile;$env[userProfile]]
-      
-      ${historySorting()}
-      
-      $if[$get[page]>$arrayLength[history];
-        $let[page;$arrayLength[history]]
       ]
     ]
   `
@@ -1972,4 +2012,4 @@ function lobbyTimeout () {
   `
 }
 
-function listDesign() { return `# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[content; ]\n# ╚══════༺❀༻༺❀༻══════╝` }
+function listDesign(arrayName = "content") { return `# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[${arrayName}; ]\n# ╚══════༺❀༻༺❀༻══════╝` }

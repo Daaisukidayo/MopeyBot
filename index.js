@@ -301,6 +301,10 @@ DB.variables({
   logChannelID: "1391387203871047731",
   lobbyInactiveTime: "30m",
 
+  // history
+
+  sortingOptions: ['points', 'rares', 'date'],
+
   // play
 
   biomeColors: {
@@ -624,11 +628,11 @@ DB.variables({
     jaguar: ["jag", "jaguar"],
     leopard: ["leo", "leopard"],
     blackPanther: ["bp", "blackpanther"],
-    chocoToucan: ["cht", "chocotoucan"],
-    keelBilledToucan: ["kbt", "keelbilledtoucan"],
-    fieryToucan: ["ft", "fierytoucan"],
-    lavaToucan: ["lt", "lavatoucan"],
-    rareToucan: ["hht", "helmetedhornbill"],
+    chocoToucan: ["cht", "choco", "chocotoucan"],
+    keelBilledToucan: ["kbt", "keelbilled", "keelbilledtoucan"],
+    fieryToucan: ["ft", "fiery", "fierytoucan"],
+    lavaToucan: ["lt", "lava", "lavatoucan"],
+    rareToucan: ["hht", "helmetedhornbill", "helmetedhornbilltoucan"],
     yellowPufferfish: ["yp", "yellowpufferfish"],
     demonPufferfish: ["dp", "df", "demonfish", "demonpufferfish"],
     whiteTiger: ["wt", "whitetiger"],
@@ -720,24 +724,30 @@ client.functions.add({
     $let[cooldownEnd;$sum[$getTimestamp;$get[time]]]
     $let[longDateTime;$discordTimestamp[$get[cooldownEnd];LongDateTime]]
     $let[relativeTimeLeft;$discordTimestamp[$get[cooldownEnd];RelativeTime]]
+    $if[$or[$get[time]>30000;$get[time]==0];
+      $let[deleteTime;10000]
+    ;
+      $let[deleteTime;$get[time]]
+    ]
 
     $jsonLoad[l;$readFile[json/localizations.json]]
     $let[language;$env[userProfile;language]]
 
     $let[content1;$default[$env[l;cooldown;0;$get[language]];???]]
-    $let[content2;$default[$advancedReplace[$env[l;cooldown;1;$get[language]];{1};$get[relativeTimeLeft];{2};$get[longDateTime]];???]]
+    $let[content2;$default[$advancedReplace[$env[l;cooldown;1;$get[language]];{0};$get[relativeTimeLeft];{1};$get[longDateTime]];???]]
 
     $return[
-      $getGlobalVar[author]
+      $getGlobalVar[author] $c[REQUIRES LOADED USER PROFILE]
       $title[$get[content1]]
       $description[$get[content2]]
       $color[$getGlobalVar[cooldownColor]]    
-      $deleteIn[$if[$or[$get[time]>30000;$get[time]==0];10s;$get[time]]]
+      $deleteIn[$get[deleteTime]]
     ]
   `,
 });
 
 // Function for adding/removing coins
+// REQUIRES LOADED USER PROFILE
 client.functions.add({
   name: "sumMC",
   params: ["amount"],
@@ -779,6 +789,7 @@ client.functions.add({
 });
 
 // when important variables for commands' functionality are deleted
+// REQUIRES LOADED USER PROFILE
 client.functions.add({
   name: "interFail",
   code: `
@@ -791,6 +802,7 @@ client.functions.add({
 });
 
 // when other people trying to interact with author's button
+// REQUIRES LOADED USER PROFILE
 client.functions.add({
   name: "notYourBTN",
   code: `
@@ -849,7 +861,7 @@ client.functions.add({
   `
 })
 
-// finds animalID's points and category and return an object
+// finds animalID's points and category. returns an object
 client.functions.add({
   name: 'findingRareInChallengeDataBase',
   params: ["animalID"],
