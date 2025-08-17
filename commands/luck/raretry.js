@@ -56,6 +56,7 @@ export default {
     ]
 
     $arrayForEach[raresGroup;group;
+      $let[MC;0]
       $let[rtIndex;$math[$get[i] + $get[rtModeNum]]]
       $let[baseChance;$env[raretryVarData;chancesForRaretry;$get[rtIndex]]]
 
@@ -80,7 +81,6 @@ export default {
         $color[$env[group;color]]
 
         $callFunction[sumMC;$get[MC]]
-        $let[MC;0]
         $setUserVar[userProfile;$env[userProfile]]
         $sendMessage[$channelID]
       ]
