@@ -10,12 +10,12 @@ export default {
     $callFunction[cooldown;$get[cdTime]]
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[animals;$jsonEntries[animals]]
-    $arrayLoad[rares]
-    $arrayForEach[animals;animal;
+
+    $arrayMap[animals;animal;
       $if[$env[animal;1;isRare];
-        $arrayPush[rares;$env[animal;1;variants;0;name] $env[animal;1;variants;0;emoji]]
+        $return[$env[animal;1;variants;0;name] $env[animal;1;variants;0;emoji]]
       ]
-    ]
+    ;rares]
 
     $sendMessage[$channelID;# $arrayRandomValue[rares]]
   `
