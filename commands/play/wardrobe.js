@@ -61,8 +61,8 @@ export default [{
 
     $let[msg;$messageID]
 
-    $!jsonSet[userProfile;userWardrobe;$get[animal];$get[variant]]
-    $setUserVar[userProfile;$env[userProfile]]        
+    $!jsonSet[userWardrobe;$get[animal];$get[variant]]
+    $setUserVar[userWardrobe;$env[userWardrobe]]        
 
     $let[i;$arrayIndexOf[animalsNames;$get[animal]]]
     $letSum[i;1]
@@ -118,7 +118,7 @@ export default [{
 
         $if[$includes[$get[description];$get[value]];;$continue]
 
-        $!jsonSet[userProfile;userWardrobe;$get[animal];$get[j]]
+        $!jsonSet[userWardrobe;$get[animal];$get[j]]
         $arrayPush[content;$get[emoji]]
 
         $break
@@ -129,7 +129,7 @@ export default [{
 
     $callFunction[embed;default]
     $if[$get[desc]!=;
-      $setUserVar[userProfile;$env[userProfile]]
+      $setUserVar[userWardrobe;$env[userWardrobe]]
       $description[# $get[desc]]
       $title[You have successfully equipped every tier \`$get[tier]\` animal with chosen Skin Pack!]
     ;
@@ -163,12 +163,12 @@ export default [{
 
         $if[$includes[$get[description];$get[value]];;$continue]
 
-        $!jsonSet[userProfile;userWardrobe;$env[animal];$get[i]]
+        $!jsonSet[userWardrobe;$env[animal];$get[i]]
 
         $break
       ;i;true]
     ]
-    $setUserVar[userProfile;$env[userProfile]]
+    $setUserVar[userWardrobe;$env[userWardrobe]]
 
     $callFunction[embed;default]
     $title[You have successfully equipped every animal with chosen Skin Pack!]
@@ -192,8 +192,8 @@ export default [{
 
     $let[msg;$messageID]
 
-    $!jsonSet[userProfile;userWardrobe;$get[animal];$get[variant]]
-    $setUserVar[userProfile;$env[userProfile]]
+    $!jsonSet[userWardrobe;$get[animal];$get[variant]]
+    $setUserVar[userWardrobe;$env[userWardrobe]]
 
     ${embed('$get[animal]')}
     $interactionUpdate
@@ -242,7 +242,7 @@ function newMenu(id) {
 
 function embed(id) {
   return `
-    $let[currentAnimalVariant;$env[userProfile;userWardrobe;$get[animal]]]
+    $let[currentAnimalVariant;$env[userWardrobe;$get[animal]]]
     $let[currentAnimalEmoji;$env[animals;$get[animal];variants;$get[currentAnimalVariant];emoji]]
     $let[fullName;$env[animals;$get[animal];fullName]]
 
@@ -259,6 +259,7 @@ function embed(id) {
 
 function json() {
   return `
+    $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[animalsNames;$jsonKeys[animals]]
     $jsonLoad[shopItems;$getGlobalVar[shopItems]]

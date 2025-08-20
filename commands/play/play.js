@@ -63,7 +63,7 @@ export default [{
 
     $let[bonusPerRare;$default[$env[rareReward;$get[animal]];0]]
 
-    $let[wardrobeIndex;$env[userProfile;userWardrobe;$get[animal]]]
+    $let[wardrobeIndex;$env[userWardrobe;$get[animal]]]
     $let[color;$env[biomeColors;$env[animals;$get[animal];biome]]]
     $let[thumbnail;$env[animals;$get[animal];variants;$get[wardrobeIndex];img]]
     $let[emoji;$env[animals;$get[animal];variants;$get[wardrobeIndex];emoji]]
@@ -125,7 +125,7 @@ export default [{
     $if[$includes[$get[id];kingDragonUpg];
       $jsonLoad[KD;$env[animals;kingDragon]]
       $let[KDtrig;$env[KD;trig]-upgrade-$authorID]
-      $let[KDwr;$env[userProfile;userWardrobe;kingDragon]]
+      $let[KDwr;$env[userWardrobe;kingDragon]]
       $let[KDname;$env[KD;variants;$get[KDwr];name]]
       $let[KDemoji;$env[KD;variants;$get[KDwr];emoji]]
       $let[emojisInDescription;$get[KDemoji]]
@@ -522,7 +522,7 @@ export default [{
 
     $c[? Embeds]
 
-    $let[currentAnimal;$env[animals;$env[playData;currentAnimal];variants;$env[userProfile;userWardrobe;$env[playData;currentAnimal]];emoji]]
+    $let[currentAnimal;$env[animals;$env[playData;currentAnimal];variants;$env[userWardrobe;$env[playData;currentAnimal]];emoji]]
 
     $let[desc;$trimSpace[# __$get[currentAnimal] $userDisplayName__\n### Bites: \`$env[playData;bitesInArena]\`\n# \`VS\`\n# __$env[playData;opponentAnimal]__\n### Bites: \`$env[playData;opponentBitesInArena]\`\n━━━━━━━━━━━━━━━\n## You chose: \`$toTitleCase[$get[playerAction]]\`\n## Opponent chose: \`$toTitleCase[$get[opponentAction]]\`\n━━━━━━━━━━━━━━━\n## $get[actionDesc]\n━━━━━━━━━━━━━━━]]
 
@@ -955,6 +955,7 @@ function XPReqForUpg () {
 function jsonLoader() {
   return `
     $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     $jsonLoad[playData;$getUserVar[userPlayData]]
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[animalsKeys;$jsonKeys[animals]]
@@ -1107,7 +1108,7 @@ function animalsButtonsGenerator() {
 
 function varsForButtonGen () {
   return `
-    $let[wr;$env[userProfile;userWardrobe;$get[animal]]]
+    $let[wr;$env[userWardrobe;$get[animal]]]
     $let[emoji;$env[animals;$get[animal];variants;$get[wr];emoji]]
     $let[animalName;$env[animals;$get[animal];variants;$get[wr];name]]
     $let[trig;$env[animals;$get[animal];trig]-upgrade-animal-play-$authorID]
@@ -1175,7 +1176,7 @@ function actionMenu () {
 // Helper functions
 
 function animalStats() {
-  return `-# $env[animals;$env[playData;currentAnimal];variants;$env[userProfile;userWardrobe;$env[playData;currentAnimal]];emoji] • $abbreviateNumber[$env[playData;XP]]XP • $env[playData;MC]$getGlobalVar[emoji]`
+  return `-# $env[animals;$env[playData;currentAnimal];variants;$env[userWardrobe;$env[playData;currentAnimal]];emoji] • $abbreviateNumber[$env[playData;XP]]XP • $env[playData;MC]$getGlobalVar[emoji]`
 }
 
 function hasAllApex() {

@@ -13,7 +13,7 @@ export default {
     $jsonLoad[animals;$readFile[json/animals.json]]
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $jsonLoad[multipliers;$env[raretryVarData;multipliersForRaretry]]
-    $jsonLoad[userWardrobe;$env[userProfile;userWardrobe]]
+    $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     $jsonLoad[raresGroup;$readFile[json/raresInRaretry.json]]
     $jsonLoad[categories;$env[raretryVarData;categories]]
     $jsonLoad[raretryModes;$env[raretryVarData;raretryModes]]

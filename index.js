@@ -657,7 +657,7 @@ DB.variables({
     bigGoat: ["bg", "biggoat"],
     whiteGiraffe: ["wg", "whitegiraffe"],
     giraffeFamily: ["gf", "wgf", "giraffefamily"],
-    aquaYeti: ["ay", "aquayeti"],
+    aquaYeti: ["ay", "aq", "aquayeti"],
     luckSnowman: ["lsm", "lucksnowman"],
     luckBigfoot: ["lbf", "luckbigfoot"],
     luckSnowgirl: ["lsg", "lucksnowgirl"],
