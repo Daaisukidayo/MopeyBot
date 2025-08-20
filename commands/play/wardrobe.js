@@ -50,14 +50,16 @@ export default [{
   code: `
     $arrayLoad[interactionID;-;$customID]
     $arrayLoad[values;-;$selectMenuValues]
+    $arrayLoad[passKeys;,;new,wardrobe]
     $let[animal;$env[values;0]]
     $let[variant;$env[values;1]]
+    
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     ${json()}
-    $onlyIf[$arrayIncludes[interactionID;new]]
-    $onlyIf[$arrayIncludes[interactionID;wardrobe]]
-    $onlyIf[$arrayIncludes[animalsNames;$get[animal]]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
+    $onlyIf[$arrayIncludes[animalsNames;$get[animal]]]
 
     $let[msg;$messageID]
 
@@ -144,10 +146,10 @@ export default [{
   description: "if user choses skinpack providing all as an argument",
   code: `
     $arrayLoad[interactionID;-;$customID]
-    
+    $arrayLoad[passKeys;,;all,wardrobe]
+
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    $onlyIf[$arrayIncludes[interactionID;all]]
-    $onlyIf[$arrayIncludes[interactionID;wardrobe]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
     ${json()}
@@ -181,14 +183,16 @@ export default [{
   code: `
     $arrayLoad[interactionID;-;$customID]
     $arrayLoad[values;-;$selectMenuValues]
+    $arrayLoad[passKeys;,;animal,wardrobe]
     $let[animal;$env[values;0]]
     $let[variant;$env[values;1]]
+
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+
     $jsonLoad[userProfile;$getUserVar[userProfile]]
-    ${json()}
-    $onlyIf[$arrayIncludes[interactionID;animal]]
-    $onlyIf[$arrayIncludes[interactionID;wardrobe]]
-    $onlyIf[$arrayIncludes[animalsNames;$get[animal]]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
+    ${json()}
+    $onlyIf[$arrayIncludes[animalsNames;$get[animal]]]
 
     $let[msg;$messageID]
 
