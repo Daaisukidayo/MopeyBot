@@ -1,6 +1,3 @@
-const type = 'emoji'
-const separator = ' '
-
 export default {
   name: 'simulator',
   aliases: ['sim'],
@@ -78,7 +75,7 @@ export default {
     ]
 
     $callFunction[embed;lucky]
-    $description[$trim[# $arrayJoin[msgdesc;${separator}]]]
+    $description[$trim[# $arrayJoin[msgdesc; ]]]
     $footer[Points: $get[totalPoints] • Rares: $get[totalRares]]
   `
 }
