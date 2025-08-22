@@ -36,9 +36,9 @@ export default {
       $let[i;0]
 
       $loop[$get[attempts];
-        $let[animalID;$arrayAt[raresArr;$get[i]]]
-        $c[ 
         $let[animalID;$arrayRandomValue[raresArr]]
+        $c[ 
+          $let[animalID;$arrayAt[raresArr;$get[i]]]
         ]
         $arrayShuffle[raresArr]
         $let[isRare;$env[animals;$get[animalID];isRare]]
