@@ -9,7 +9,7 @@ export default {
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
-    $let[cdTime;5s]
+    $let[cdTime;1s]
     $let[arg;$toLowercase[$message]]
     $onlyif[$or[$get[arg]==event;$get[arg]==]]
     $callFunction[cooldown;$get[cdTime]]
@@ -36,10 +36,11 @@ export default {
       $let[i;0]
 
       $loop[$get[attempts];
-        $let[animalID;$arrayRandomValue[raresArr]]
+        $let[animalID;$arrayAt[raresArr;$get[i]]]
         $c[ 
-          $let[animalID;$arrayAt[raresArr;$get[i]]]
+        $let[animalID;$arrayRandomValue[raresArr]]
         ]
+        $arrayShuffle[raresArr]
         $let[isRare;$env[animals;$get[animalID];isRare]]
         $letSum[i;1]
 
@@ -48,7 +49,6 @@ export default {
 
         $let[quantity;$env[result;$get[animalID]]]
         $!jsonSet[result;$get[animalID];$math[$get[quantity] + 1]]
-        $arrayShuffle[raresArr]
       ]
     ]
 
@@ -57,7 +57,7 @@ export default {
     $arrayForEach[result;arr;
       $let[animalID;$env[arr;0]]
       $let[quantity;$env[arr;1]]
-      $let[animalDisplay;$env[animals;$get[animalID];variants;0;${type}]]
+      $let[animalDisplay;$env[animals;$get[animalID];variants;0;emoji]]
 
       $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]
       $let[challengeDataCategory;$env[output;category]]
@@ -87,11 +87,11 @@ function totalAttempts() {
   return `
     [
       [["pigeon", "pig", "deer", "reindeer", "swinehoe"\\], 1\\],
-      [["donkey", "macaw"\\], 150\\],
+      [["donkey", "macaw"\\], 175\\],
       [["giraffe"\\], 75\\],
-      [["cheetah", "toucan", "pufferfish"\\], 200\\],
+      [["cheetah", "toucan", "pufferfish"\\], 225\\],
       [["tiger"\\], 250\\],
-      [["lion", "falcon", "vulture"\\], 120\\],
+      [["lion", "falcon", "vulture"\\], 175\\],
       [["rhino", "baldEagle", "markhor"\\], 30\\],
       [["whiteGiraffe"\\], 10\\]
     \\]
