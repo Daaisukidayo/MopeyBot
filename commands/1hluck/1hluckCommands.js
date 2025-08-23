@@ -2235,13 +2235,14 @@ function LOBBY_EMBED() {
         $addThumbnail[$userAvatar[$get[host]]]
       ]
       $addSeparator
-      $addTextDisplay[### Participants:\n**$codeBlock[$get[parts]]**]
+      $addTextDisplay[# Participants]
+      $addTextDisplay[**$codeBlock[$get[parts]]**]
       $addActionRow
       $addButton[joinLobby;Participate;Success;🔝]
       $addButton[quitLobby;Quit;Danger;🔙]
       $addButton[readyLobby;Ready;Success;✅]
       $addSeparator[Large]
-      $addTextDisplay[# Settings:]
+      $addTextDisplay[# Settings]
       $addSeparator
       $addTextDisplay[### Mode: \`FFA\`]
       $addTextDisplay[### Difficulty: \`$toTitleCase[$getChannelVar[lobbyDifficulty]]\`]
