@@ -227,9 +227,37 @@ export default [
     $if[$get[points]==0;$stop]
 
     $setUserVar[1hpoints|$channelID;$math[$getUserVar[1hpoints|$channelID] + $get[points]]]
-
     ${settingParticProgress()}
-    ${limitedCategory()}
+    
+    $if[$get[unlimitedRares];;
+      $arrayForEach[chartLimits;obj;
+        $loop[$arrayLength[challengeData];
+          $let[i;$math[$env[i] - 1]]
+          $jsonLoad[data;$arrayAt[challengeData;$get[i]]]
+
+          $let[dataCategory;$env[data;category]]
+          $let[objCategory;$env[obj;category]]
+
+          $if[$get[dataCategory]==$get[objCategory];;$continue]
+
+          $let[limit;$env[obj;limit]]
+          $jsonLoad[challengeRares;$env[data;rares]]
+
+          $arrayForEach[challengeRares;rare;
+            $jsonLoad[allRaresDataObj;$getGlobalVar[allRaresData]]
+
+            $let[displayRare;$env[animals;$env[rare];variants;0;emoji]]
+            $let[quantity;$default[$env[allRaresList;$env[rare]];0]]
+
+            $if[$get[quantity]<$get[limit];
+              $arrayPush[limitsContent;$get[displayRare]\`$get[quantity]|$get[limit]\`]
+            ]
+          ]
+          $break
+        ;i;true]
+      ]
+    ]
+
     ${totalPoints()}
     ${time()}
 
@@ -297,16 +325,14 @@ export default [
     $if[$default[$mentioned[0];$message[0]]!=;
       $let[id;$default[$mentioned[0];$message[0]]]
     ]
+    $jsonLoad[userProfile;$getUserVar[userProfile;$get[id]]]
 
     $onlyIf[$userExists[$get[id]];
-      $callFunction[embed;error]
-      $description[## Invalid User ID]
+      $callFunction[newError;Invalid User ID]
     ]
 
-    $jsonLoad[userProfile;$getUserVar[userProfile;$get[id]]]
     $onlyIf[$getUserVar[1hstarted|$channelID;$get[id]];
-      $callFunction[embed;error] 
-      $description[## $if[$get[id]!=$authorID;__$username[$get[id]]__ doesn't;You don't] have an active challenge]
+      $callFunction[newError;$if[$get[id]!=$authorID;__$username[$get[id]]__ doesn't;You don't] have an active challenge]
     ]
 
     ${totalPoints("$get[id]")}
@@ -2000,55 +2026,37 @@ function raresListGenerator(arrayName = 'content', addPoints = false) {
   return `
     $jsonLoad[listEntries;$jsonEntries[raresList]]
     $arrayLoad[${arrayName}]
+    $arrayLoad[displacement]
 
     $arrayForEach[listEntries;entry;
       $let[animalID;$env[entry;0]]
       $let[quantity;$env[entry;1]]
-
       $let[animalDisplay;$env[animals;$get[animalID];variants;0;emoji]]
 
       $if[${addPoints};
-        $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]      
-        $let[listPoints;$env[output;points]]
-        $let[totalPointsInList;$math[$get[quantity] * $get[listPoints]]]
-        $letSum[totalPoints;$get[totalPointsInList]]
+        $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]
+        $letSum[totalPoints;$math[$env[output;points] * $get[quantity]]]
         $letSum[totalRares;$get[quantity]]
       ]
 
       $arrayPush[${arrayName};$get[animalDisplay]\`$get[quantity]\`]
     ]
-    $if[$arrayLength[${arrayName}]==0;$arrayPush[${arrayName};none]]
-  `
-}
 
-function limitedCategory() {
-  return `
-    $if[$get[unlimitedRares];;
-      $arrayForEach[chartLimits;obj;
-        $loop[$arrayLength[challengeData];
-          $let[i;$math[$env[i] - 1]]
-          $jsonLoad[data;$arrayAt[challengeData;$get[i]]]
+    $if[$arrayLength[${arrayName}]==0;
+      $arrayPush[${arrayName};none]
+    ;
+      $loop[$arrayLength[${arrayName}];
+        $let[i;$math[$env[i]-1]]
 
-          $let[dataCategory;$env[data;category]]
-          $let[objCategory;$env[obj;category]]
+        $if[$or[$math[$get[i]%6]==0;$get[i]==$math[$arrayLength[${arrayName}]-1]];
+          $jsonLoad[chunk;$arraySplice[${arrayName};0;6]]
+          $arrayPushJSON[displacement;$env[chunk]]
+        ]
+      ;i;true]
 
-          $if[$get[dataCategory]==$get[objCategory];;$continue]
-
-          $let[limit;$env[obj;limit]]
-          $jsonLoad[challengeRares;$env[data;rares]]
-
-          $arrayForEach[challengeRares;rare;
-            $jsonLoad[allRaresDataObj;$getGlobalVar[allRaresData]]
-
-            $let[displayRare;$env[animals;$env[rare];variants;0;emoji]]
-            $let[quantity;$default[$env[allRaresList;$env[rare]];0]]
-
-            $if[$get[quantity]<$get[limit];
-              $arrayPush[limitsContent;$get[displayRare]\`$get[quantity]|$get[limit]\`]
-            ]
-          ]
-          $break
-        ;i;true]
+      $arrayLoad[${arrayName}]
+      $arrayForEach[displacement;page;
+        $arrayPush[${arrayName};$arrayJoin[page; ]]
       ]
     ]
   `
@@ -2324,4 +2332,4 @@ function lobbyTimeout () {
   `
 }
 
-function listDesign(arrayName = "content") { return `# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[${arrayName}; ]\n# ╚══════༺❀༻༺❀༻══════╝` }
+function listDesign(arrayName = "content") { return `# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[${arrayName};\n# ]\n# ╚══════༺❀༻༺❀༻══════╝` }
