@@ -2026,6 +2026,7 @@ function raresListGenerator(arrayName = 'content', addPoints = false) {
   return `
     $jsonLoad[listEntries;$jsonEntries[raresList]]
     $arrayLoad[${arrayName}]
+    $arrayLoad[preContent]
     $arrayLoad[displacement]
 
     $arrayForEach[listEntries;entry;
@@ -2039,22 +2040,21 @@ function raresListGenerator(arrayName = 'content', addPoints = false) {
         $letSum[totalRares;$get[quantity]]
       ]
 
-      $arrayPush[${arrayName};$get[animalDisplay]\`$get[quantity]\`]
+      $arrayPush[preContent;$get[animalDisplay]\`$get[quantity]\`]
     ]
 
-    $if[$arrayLength[${arrayName}]==0;
-      $arrayPush[${arrayName};none]
+    $if[$arrayLength[preContent]==0;
+      $arrayPush[preContent;none]
     ;
-      $loop[$arrayLength[${arrayName}];
+      $loop[$arrayLength[preContent];
         $let[i;$math[$env[i]-1]]
 
-        $if[$or[$math[$get[i]%6]==0;$and[$get[i]==$math[$arrayLength[${arrayName}]-1];$arrayLength[${arrayName}]<1]];
-          $jsonLoad[chunk;$arraySplice[${arrayName};0;6]]
+        $if[$math[$get[i] % 6]==0;
+          $jsonLoad[chunk;$arraySplice[preContent;0;6]]
           $arrayPushJSON[displacement;$env[chunk]]
         ]
       ;i;true]
 
-      $arrayLoad[${arrayName}]
       $arrayForEach[displacement;page;
         $arrayPush[${arrayName};$arrayJoin[page; ]]
       ]
