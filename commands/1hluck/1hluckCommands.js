@@ -2047,11 +2047,8 @@ function raresListGenerator(arrayName = 'content', addPoints = false) {
       $arrayPush[preContent;none]
     ;
       $loop[$arrayLength[preContent];
-        $let[i;$math[$env[i]-1]]
-
-        $if[$math[$get[i] % 6]==0;
-          $jsonLoad[chunk;$arraySplice[preContent;0;6]]
-          $arrayPushJSON[displacement;$env[chunk]]
+        $if[$math[($env[i] - 1) % 6]==0;
+          $arrayPushJSON[displacement;$arraySplice[preContent;0;6]]
         ]
       ;i;true]
 
