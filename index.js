@@ -300,6 +300,7 @@ DB.variables({
   reportChannelID: "1372645851159330947",
   logChannelID: "1391387203871047731",
   lobbyInactiveTime: "30m",
+  maxRowsInRaresList: 6,
 
   // history
 

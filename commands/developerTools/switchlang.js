@@ -29,7 +29,7 @@ export default {
 
     $callFunction[embed;default]
     $description[## $get[desc]]
-    $!jsonSet[userProfile;l10n;$get[arg]]
+    $!jsonSet[userProfile;language;$get[arg]]
     $setUserVar[userProfile;$env[userProfile]]
   `
 }

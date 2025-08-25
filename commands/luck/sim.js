@@ -12,6 +12,7 @@ export default {
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
     $jsonLoad[challengeData;$getGlobalVar[$toCamelCase[$get[arg] challenge data]]]
     $jsonLoad[chartLimits;$getGlobalVar[$toCamelCase[$get[arg] chart limits]]]
     $jsonLoad[result;{}]
@@ -38,7 +39,7 @@ export default {
           $let[animalID;$arrayAt[raresArr;$get[i]]]
         ]
         $arrayShuffle[raresArr]
-        $let[isRare;$env[animals;$get[animalID];isRare]]
+        $let[isRare;$env[animals;$env[animalsIndexes;$get[animalID]];isRare]]
         $letSum[i;1]
 
         $if[$get[isRare];;$continue]
@@ -54,7 +55,7 @@ export default {
     $arrayForEach[result;arr;
       $let[animalID;$env[arr;0]]
       $let[quantity;$env[arr;1]]
-      $let[animalDisplay;$env[animals;$get[animalID];variants;0;emoji]]
+      $let[animalDisplay;$env[animals;$env[animalsIndexes;$get[animalID]];variants;0;emoji]]
 
       $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]
       $let[challengeDataCategory;$env[output;category]]
@@ -126,8 +127,8 @@ function luckGenerator () {
       $arrayLoad[groupParts;|;$env[groupConfig]]
       $let[keyName;$env[groupParts;0]]
       $let[commonAnimal;$env[groupParts;1]]
-      $let[tier;$env[animals;$get[keyName];tier]]
-      $let[totalAttempts;$env[animals;$env[groupParts;2];rarity;1]]
+      $let[tier;$env[animals;$env[animalsIndexes;$get[keyName]];tier]]
+      $let[totalAttempts;$env[animals;$env[animalsIndexes;$env[groupParts;2]];rarity;1]]
 
       $let[totalRare;0]
       $arrayCreate[rarePool;0]
@@ -135,7 +136,7 @@ function luckGenerator () {
       $loop[$math[$arrayLength[groupParts] - 2];
         $let[ri;$math[$env[ri] + 1]]
         $let[rareAnimal;$env[groupParts;$get[ri]]]
-        $let[countRare;$env[animals;$get[rareAnimal];rarity;0]]
+        $let[countRare;$env[animals;$env[animalsIndexes;$get[rareAnimal]];rarity;0]]
 
         $if[$get[countRare]!=;
           $arrayCreate[oneRareArr;$get[countRare]]

@@ -19,7 +19,7 @@ export default [{
     ${json()}
 
     $if[$get[arg]==new;
-      $let[animal;mouse]
+      $let[animalID;mouse]
       ${embed('new')}
     ;
       $if[$get[arg]==all;
@@ -37,7 +37,7 @@ export default [{
             $description[## Animal not found]
           ]
 
-          $let[animal;$get[arg]]
+          $let[animalID;$get[arg]]
           ${embed('animal')}
         ]
       ]
@@ -51,7 +51,7 @@ export default [{
     $arrayLoad[interactionID;-;$customID]
     $arrayLoad[values;-;$selectMenuValues]
     $arrayLoad[passKeys;,;new,wardrobe]
-    $let[animal;$env[values;0]]
+    $let[animalID;$env[values;0]]
     $let[variant;$env[values;1]]
     
     $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
@@ -59,24 +59,24 @@ export default [{
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     ${json()}
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
-    $onlyIf[$arrayIncludes[animalsNames;$get[animal]]]
+    $onlyIf[$arrayFindIndex[animals;animalObj;$get[animalID]==$env[animalObj;ID]]!=-1]
 
     $let[msg;$messageID]
 
-    $!jsonSet[userWardrobe;$get[animal];$get[variant]]
+    $!jsonSet[userWardrobe;$get[animalID];$get[variant]]
     $setUserVar[userWardrobe;$env[userWardrobe]]        
 
-    $let[i;$arrayIndexOf[animalsNames;$get[animal]]]
+    $let[i;$arrayIndexOf[animalsNames;$get[animalID]]]
     $letSum[i;1]
-    $let[animal;$arrayAt[animalsNames;$get[i]]]
+    $let[animalID;$arrayAt[animalsNames;$get[i]]]
 
     $loop[-1;
-      $if[$env[animals;$get[animal];variants;1]==;;$break]
+      $if[$env[animals;$env[animalsIndexes;$get[animalID]];variants;1]==;;$break]
       $letSum[i;1]
-      $let[animal;$arrayAt[animalsNames;$get[i]]]
+      $let[animalID;$arrayAt[animalsNames;$get[i]]]
     ]
 
-    $if[$get[animal]==;
+    $if[$get[animalID]==;
       $interactionUpdate[# You equipped all skins!]
       $stop
     ]
@@ -100,17 +100,15 @@ export default [{
     ${json()}
     $let[value;$selectMenuValues]
 
-    $arrayLoad[content]
-
     $loop[$arrayLength[animalsNames];
       $let[i;$math[$env[i] - 1]]
-      $let[animal;$arrayAt[animalsNames;$get[i]]]
-      $let[animalTier;$env[animals;$get[animal];tier]]
+      $let[animalID;$arrayAt[animalsNames;$get[i]]]
+      $let[animalTier;$env[animals;$env[animalsIndexes;$get[animalID]];tier]]
 
       $if[$get[animalTier]>$get[tier];$break]
       $if[$get[animalTier]!=$get[tier];$continue]
 
-      $jsonLoad[variants;$env[animals;$get[animal];variants]]
+      $jsonLoad[variants;$env[animals;$env[animalsIndexes;$get[animalID]];variants]]
 
       $loop[$arrayLength[variants];
         $let[j;$math[$env[j] - 1]]
@@ -120,7 +118,7 @@ export default [{
 
         $if[$includes[$get[description];$get[value]];;$continue]
 
-        $!jsonSet[userWardrobe;$get[animal];$get[j]]
+        $!jsonSet[userWardrobe;$get[animalID];$get[j]]
         $arrayPush[content;$get[emoji]]
 
         $break
@@ -156,7 +154,7 @@ export default [{
     $let[value;$selectMenuValues]
 
     $arrayForEach[animalsNames;animal;
-      $jsonLoad[allVariants;$env[animals;$env[animal];variants]]
+      $jsonLoad[allVariants;$env[animals;$env[animalsIndexes;$env[animalID]];variants]]
 
       $loop[$arrayLength[allVariants];
         $let[i;$math[$env[i] - 1]]
@@ -165,7 +163,7 @@ export default [{
 
         $if[$includes[$get[description];$get[value]];;$continue]
 
-        $!jsonSet[userWardrobe;$env[animal];$get[i]]
+        $!jsonSet[userWardrobe;$env[animalID];$get[i]]
 
         $break
       ;i;true]
@@ -184,7 +182,7 @@ export default [{
     $arrayLoad[interactionID;-;$customID]
     $arrayLoad[values;-;$selectMenuValues]
     $arrayLoad[passKeys;,;animal,wardrobe]
-    $let[animal;$env[values;0]]
+    $let[animalID;$env[values;0]]
     $let[variant;$env[values;1]]
 
     $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
@@ -192,14 +190,14 @@ export default [{
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
     ${json()}
-    $onlyIf[$arrayIncludes[animalsNames;$get[animal]]]
+    $onlyIf[$arrayFindIndex[animals;animalObj;$get[animalID]==$env[animalObj;ID]]!=-1]
 
     $let[msg;$messageID]
 
-    $!jsonSet[userWardrobe;$get[animal];$get[variant]]
+    $!jsonSet[userWardrobe;$get[animalID];$get[variant]]
     $setUserVar[userWardrobe;$env[userWardrobe]]
 
-    ${embed('$get[animal]')}
+    ${embed('$get[animalID]')}
     $interactionUpdate
     $!clearTimeout[WARDROBE-$authorID]
     ${timeout()}
@@ -210,10 +208,9 @@ export default [{
 // Functions
 
 function timeout() {
-  return ``
   return `
     $setTimeout[
-      $!disableComponentsOf[$channelID;$get[msg]]
+      $!deleteMessage[$channelID;$get[msg]]
     ;1m;WARDROBE-$authorID]
   `
 }
@@ -227,17 +224,17 @@ function newMenu(id) {
 
       $let[i;$math[$env[i] - 1]] 
 
-      $if[$env[animals;$get[animal];variants;$get[i]]!=;;$break]
+      $if[$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[i]]!=;;$break]
 
-      $let[animalVarCode;$env[animals;$get[animal];variants;$get[i];vCode]]
+      $let[animalVarCode;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[i];vCode]]
 
       $arrayForEach[userSPs;key;
         $if[$get[animalVarCode]==$env[key];
-          $let[animalName;$env[animals;$get[animal];variants;$get[i];name]]
-          $let[animalDesc;$env[animals;$get[animal];variants;$get[i];description]]
-          $let[animalEmoji;$env[animals;$get[animal];variants;$get[i];emoji]]
+          $let[animalName;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[i];name]]
+          $let[animalDesc;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[i];description]]
+          $let[animalEmoji;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[i];emoji]]
           
-          $addOption[$get[animalName];$get[animalDesc];$get[animal]-$get[i];$get[animalEmoji]]
+          $addOption[$get[animalName];$get[animalDesc];$get[animalID]-$get[i];$get[animalEmoji]]
         ]
       ]
     ;i;true]
@@ -246,9 +243,9 @@ function newMenu(id) {
 
 function embed(id) {
   return `
-    $let[currentAnimalVariant;$env[userWardrobe;$get[animal]]]
-    $let[currentAnimalEmoji;$env[animals;$get[animal];variants;$get[currentAnimalVariant];emoji]]
-    $let[fullName;$env[animals;$get[animal];fullName]]
+    $let[currentAnimalVariant;$env[userWardrobe;$get[animalID]]]
+    $let[currentAnimalEmoji;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[currentAnimalVariant];emoji]]
+    $let[fullName;$env[animals;$env[animalsIndexes;$get[animalID]];fullName]]
 
     $addContainer[
       $callFunction[newAuthor]
@@ -265,7 +262,7 @@ function json() {
   return `
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[animalsNames;$jsonKeys[animals]]
+    $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
     $jsonLoad[shopItems;$getGlobalVar[shopItems]]
     $jsonLoad[userSPs;$env[userProfile;userPacks]]
     $arrayPush[userSPs;s1;s2]

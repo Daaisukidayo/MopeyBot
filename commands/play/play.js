@@ -55,23 +55,23 @@ export default [{
 
     ${hasStarted()}
 
-    $let[animal;$env[IID;0]]
-    $onlyIf[$arrayIncludes[animalsKeys;$get[animal]]]
+    $let[animalID;$env[IID;0]]
+    $onlyIf[$arrayFindIndex[animals;animalObj;$get[animalID]==$env[animalObj;ID]]!=-1]
 
     $jsonLoad[rareReward;${rareReward()}]
     $let[bonusPerUpgrade;50]
 
-    $let[bonusPerRare;$default[$env[rareReward;$get[animal]];0]]
+    $let[bonusPerRare;$default[$env[rareReward;$get[animalID]];0]]
 
-    $let[wardrobeIndex;$env[userWardrobe;$get[animal]]]
-    $let[color;$env[biomeColors;$env[animals;$get[animal];biome]]]
-    $let[thumbnail;$env[animals;$get[animal];variants;$get[wardrobeIndex];img]]
-    $let[emoji;$env[animals;$get[animal];variants;$get[wardrobeIndex];emoji]]
-    $let[animalName;$env[animals;$get[animal];variants;$get[wardrobeIndex];name]]
-    $let[biome;$env[animals;$get[animal];biome]]
+    $let[wardrobeIndex;$env[userWardrobe;$get[animalID]]]
+    $let[color;$env[biomeColors;$env[animals;$env[animalsIndexes;$get[animalID]];biome]]]
+    $let[thumbnail;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wardrobeIndex];img]]
+    $let[emoji;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wardrobeIndex];emoji]]
+    $let[animalName;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wardrobeIndex];name]]
+    $let[biome;$env[animals;$env[animalsIndexes;$get[animalID]];biome]]
 
     $!jsonSet[playData;MC;$math[$get[bonusPerUpgrade] + $env[playData;MC] + $get[bonusPerRare]]]
-    $!jsonSet[playData;currentAnimal;$get[animal]]
+    $!jsonSet[playData;currentAnimal;$get[animalID]]
     $!jsonSet[playData;color;$get[color]]
     $!jsonSet[playData;currentBiome;$get[biome]]
     $!jsonSet[playData;animalBiome;$get[biome]]
@@ -123,8 +123,8 @@ export default [{
     ]
 
     $if[$includes[$get[id];kingDragonUpg];
-      $jsonLoad[KD;$env[animals;kingDragon]]
-      $let[KDtrig;$env[KD;trig]-upgrade-$authorID]
+      $jsonLoad[KD;$env[animals;$env[animalsIndexes;kingDragon]]]
+      $let[KDtrig;$env[KD;ID]-upgrade-animal-play-$authorID]
       $let[KDwr;$env[userWardrobe;kingDragon]]
       $let[KDname;$env[KD;variants;$get[KDwr];name]]
       $let[KDemoji;$env[KD;variants;$get[KDwr];emoji]]
@@ -168,10 +168,10 @@ export default [{
 
     $let[biome;$env[playData;currentBiome]]
     $let[animalBiome;$env[playData;animalBiome]]
-    $let[animal;$env[playData;currentAnimal]]
+    $let[animalID;$env[playData;currentAnimal]]
     $let[tier;$env[playData;tier]]
 
-    $if[$env[animals;$get[animal];isRare];
+    $if[$env[animals;$env[animalsIndexes;$get[animalID]];isRare];
       $letSub[deathChance;20]
     ]
 
@@ -232,9 +232,9 @@ export default [{
         $if[$get[findPrayChance]>=$get[findPrayRarity];
           $let[preyIndex;$arrayRandomValue[prey]]
           $let[preyID;$env[preyArray;$get[preyIndex];name]]
-          $let[preyName;$env[animals;$get[preyID];variants;0;name]]
-          $let[preyEmoji;$env[animals;$get[preyID];variants;0;emoji]]
-          $let[preyTier;$env[animals;$get[preyID];tier]]
+          $let[preyName;$env[animals;$env[animalsIndexes;$get[preyID]];variants;0;name]]
+          $let[preyEmoji;$env[animals;$env[animalsIndexes;$get[preyID]];variants;0;emoji]]
+          $let[preyTier;$env[animals;$env[animalsIndexes;$get[preyID]];tier]]
 
           $jsonLoad[XPreq;${XPReqForUpg()}]
           $jsonLoad[XParr;$env[XPreq;$get[preyTier]]]
@@ -332,7 +332,7 @@ export default [{
       $arrayLoad[paths;,;$get[paths]]
 
       $arrayForEach[paths;path;
-        $jsonLoad[vars;$env[animals;$env[path];variants]]
+        $jsonLoad[vars;$env[animals;$env[animalsIndexes;$env[path]];variants]]
         $jsonLoad[v;$env[vars;$arrayRandomIndex[vars]]]
 
         $arrayPush[opp;$env[v;emoji]--$env[v;name]--$env[v;img]--$env[path]]
@@ -522,7 +522,7 @@ export default [{
 
     $c[? Embeds]
 
-    $let[currentAnimal;$env[animals;$env[playData;currentAnimal];variants;$env[userWardrobe;$env[playData;currentAnimal]];emoji]]
+    $let[currentAnimal;$env[animals;$env[animalsIndexes;$env[playData;currentAnimal]];variants;$env[userWardrobe;$env[playData;currentAnimal]];emoji]]
 
     $let[desc;$trimSpace[# __$get[currentAnimal] $userDisplayName__\n### Bites: \`$env[playData;bitesInArena]\`\n# \`VS\`\n# __$env[playData;opponentAnimal]__\n### Bites: \`$env[playData;opponentBitesInArena]\`\n━━━━━━━━━━━━━━━\n## You chose: \`$toTitleCase[$get[playerAction]]\`\n## Opponent chose: \`$toTitleCase[$get[opponentAction]]\`\n━━━━━━━━━━━━━━━\n## $get[actionDesc]\n━━━━━━━━━━━━━━━]]
 
@@ -852,8 +852,8 @@ function luckGenerator () {
       $arrayLoad[groupParts;|;$env[groupConfig]]
       $let[keyName;$env[groupParts;0]]
       $let[commonAnimal;$env[groupParts;1]]
-      $let[tier;$env[animals;$get[keyName];tier]]
-      $let[totalAttempts;$env[animals;$env[groupParts;2];rarity;1]]
+      $let[tier;$env[animals;$env[animalsIndexes;$get[keyName]];tier]]
+      $let[totalAttempts;$env[animals;$env[animalsIndexes;$env[groupParts;2]];rarity;1]]
 
       $let[totalRare;0]
       $arrayCreate[rarePool;0]
@@ -861,7 +861,7 @@ function luckGenerator () {
       $loop[$math[$arrayLength[groupParts] - 2];
         $let[ri;$math[$env[ri] + 1]]
         $let[rareAnimal;$env[groupParts;$get[ri]]]
-        $let[countRare;$env[animals;$get[rareAnimal];rarity;0]]
+        $let[countRare;$env[animals;$env[animalsIndexes;$get[rareAnimal]];rarity;0]]
 
         $if[$get[countRare]!=;
           $arrayCreate[oneRareArr;$get[countRare]]
@@ -955,10 +955,10 @@ function XPReqForUpg () {
 function jsonLoader() {
   return `
     $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     $jsonLoad[playData;$getUserVar[userPlayData]]
     $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[animalsKeys;$jsonKeys[animals]]
     $jsonLoad[biomeColors;$getGlobalVar[biomeColors]]
     $jsonLoad[XPreq;${XPReqForUpg()}]
   `
@@ -1050,11 +1050,11 @@ function animalsButtonsGenerator() {
     $let[emojisInDescription;]
     $jsonLoad[buttonStyle;$getGlobalVar[buttonStyle]]
 
-    $loop[$arrayLength[animalsKeys];
+    $loop[$arrayLength[animals];
 
       $let[i;$math[$env[i] - 1]]
-      $let[animal;$env[animalsKeys;$get[i]]]
-      $let[animalTier;$env[animals;$get[animal];tier]]
+      $let[animalID;$env[animals;$get[i];ID]]
+      $let[animalTier;$env[animals;$get[i];tier]]
 
       $if[$get[animalTier]>$env[playData;tier];
         $break
@@ -1066,36 +1066,41 @@ function animalsButtonsGenerator() {
       $jsonLoad[allRareAttemptsInfo;$getUserVar[allRareAttemptsInfo]]
       $jsonLoad[ARAIkeys;$jsonKeys[allRareAttemptsInfo]]
 
-      $if[$arrayIncludes[ARAIkeys;$get[animal]];
-        $jsonLoad[attemptsArr;$env[allRareAttemptsInfo;$get[animal];attempts]]
-        $let[index;$env[allRareAttemptsInfo;$get[animal];index]]
+      $if[$arrayIncludes[ARAIkeys;$get[animalID]];
+        $jsonLoad[attemptsArr;$env[allRareAttemptsInfo;$get[animalID];attempts]]
 
-        $let[chosenAnimal;$env[attemptsArr;$get[index]]]
-        $letSum[index;1]
-
-        $if[$env[animals;$get[chosenAnimal];isRare];
-          $arrayShuffle[attemptsArr]
-          $!jsonSet[allRareAttemptsInfo;$get[animal];attempts;$env[attemptsArr]]
-          $!jsonSet[allRareAttemptsInfo;$get[animal];index;0]
-          $let[index;0]
+        $c[
+          $let[index;$env[allRareAttemptsInfo;$get[animalID];index]]
+          $let[chosenAnimal;$env[attemptsArr;$get[index]]]
+          $letSum[index;1]
+          $if[$env[animals;$env[animalsIndexes;$get[chosenAnimal]];isRare];
+            $arrayShuffle[attemptsArr]
+            $!jsonSet[allRareAttemptsInfo;$get[animalID];attempts;$env[attemptsArr]]
+            $!jsonSet[allRareAttemptsInfo;$get[animalID];index;0]
+            $let[index;0]
+          ]
         ]
 
-        $!jsonSet[allRareAttemptsInfo;$get[animal];index;$get[index]]
+        $let[chosenAnimal;$arrayRandomValue[attemptsArr]]
+        $arrayShuffle[attemptsArr]
+        $!jsonSet[allRareAttemptsInfo;$get[animalID];attempts;$env[attemptsArr]]
+
+        $!jsonSet[allRareAttemptsInfo;$get[animalID];index;-1]
         $setUserVar[allRareAttemptsInfo;$env[allRareAttemptsInfo]]
         
         $if[$get[chosenAnimal]==undefined;
           $continue
         ]
 
-        $let[animal;$get[chosenAnimal]]
+        $let[animalID;$get[chosenAnimal]]
 
       ;
-        $if[$env[animals;$get[animal];isRare];
+        $if[$env[animals;$env[animalsIndexes;$get[animalID]];isRare];
           $continue
         ]
       ]
 
-      $let[buttonIndex;$arrayFindIndex[buttonStyle;arr;$jsonLoad[list;$env[arr;1]]$arrayincludes[list;$get[animal]]]]
+      $let[buttonIndex;$arrayFindIndex[buttonStyle;arr;$jsonLoad[list;$env[arr;1]]$arrayincludes[list;$get[animalID]]]]
       $let[butStyle;$env[buttonStyle;$get[buttonIndex];0]]
       $if[$get[butStyle]==;
         $let[butStyle;Secondary]
@@ -1108,10 +1113,10 @@ function animalsButtonsGenerator() {
 
 function varsForButtonGen () {
   return `
-    $let[wr;$env[userWardrobe;$get[animal]]]
-    $let[emoji;$env[animals;$get[animal];variants;$get[wr];emoji]]
-    $let[animalName;$env[animals;$get[animal];variants;$get[wr];name]]
-    $let[trig;$env[animals;$get[animal];trig]-upgrade-animal-play-$authorID]
+    $let[wr;$env[userWardrobe;$get[animalID]]]
+    $let[emoji;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wr];emoji]]
+    $let[animalName;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wr];name]]
+    $let[trig;$env[animals;$env[animalsIndexes;$get[animalID]];ID]-upgrade-animal-play-$authorID]
     $let[emojisInDescription;$get[emojisInDescription]$get[emoji]]
     
     $if[$math[$get[buttonsQ]%5]==0;
@@ -1176,7 +1181,7 @@ function actionMenu () {
 // Helper functions
 
 function animalStats() {
-  return `-# $env[animals;$env[playData;currentAnimal];variants;$env[userWardrobe;$env[playData;currentAnimal]];emoji] • $abbreviateNumber[$env[playData;XP]]XP • $env[playData;MC]$getGlobalVar[emoji]`
+  return `-# $env[animals;$env[animalsIndexes;$env[playData;currentAnimal]];variants;$env[userWardrobe;$env[playData;currentAnimal]];emoji] • $abbreviateNumber[$env[playData;XP]]XP • $env[playData;MC]$getGlobalVar[emoji]`
 }
 
 function hasAllApex() {
@@ -1188,7 +1193,7 @@ function hasAllApex() {
 
     $arrayForEach[allApex;apex;
       $if[$arrayIncludes[currentApex;$env[apex]];
-        $let[emoji;$env[animals;$env[apex];variants;0;emoji]]
+        $let[emoji;$env[animals;$env[animalsIndexes;$env[apex]];variants;0;emoji]]
       ;
         $let[emoji;$env[darkApexEmojis;$env[apex]]]
       ]

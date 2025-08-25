@@ -95,5 +95,16 @@ export default {
       $setGlobalVar[cachedLB;$get[lbplace]]
       $wait[5m]
     ]]
+
+    $async[
+      $jsonLoad[animalsIndexes;{}]
+      $jsonLoad[animals;$readFile[json/animals.json]]
+      $loop[$arrayLength[animals];
+        $let[i;$math[$env[i] - 1]]
+        $let[animalID;$env[animals;$get[i];ID]]
+        $!jsonSet[animalsIndexes;$get[animalID];$get[i]]
+      ;i;true]
+      $setGlobalVar[animalsIndexes;$env[animalsIndexes]]
+    ]
   `
 }

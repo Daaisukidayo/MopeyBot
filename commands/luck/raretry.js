@@ -11,6 +11,7 @@ export default {
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $jsonLoad[multipliers;$env[raretryVarData;multipliersForRaretry]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
@@ -20,15 +21,15 @@ export default {
     $let[rtMode;$env[userProfile;rtMode]]
     $onlyIf[$arrayIncludes[raretryModes;$toTitleCase[$get[rtMode]]];## Unknown raretry mode]
 
-    $jsonLoad[l10n;$readFile[json/localizations.json]]
+    $jsonLoad[LOC;$readFile[json/localizations.json]]
     $let[language;$env[userProfile;language]]
 
-    $let[rarityContent;$default[$env[l10n;raretry;0;$get[language]];???]]
-    $let[categoryContent;$default[$env[l10n;raretry;1;$get[language]];???]]
-    $let[raretryModeContent;$default[$env[l10n;raretry;2;$get[language]];???]]
-    $jsonLoad[raretryFailsCatch;$default[$env[l10n;raretry;3;$get[language]];["???"\\]]]
-    $jsonLoad[raretrySuccessCatch;$default[$env[l10n;raretry;4;$get[language]];["???"\\]]]
-    $jsonLoad[raretryRewardContent;$default[$env[l10n;raretry;5;$get[language]];["???"\\]]]
+    $let[rarityContent;$default[$env[LOC;raretry;0;$get[language]];???]]
+    $let[categoryContent;$default[$env[LOC;raretry;1;$get[language]];???]]
+    $let[raretryModeContent;$default[$env[LOC;raretry;2;$get[language]];???]]
+    $jsonLoad[raretryFailsCatch;$default[$env[LOC;raretry;3;$get[language]];["???"\\]]]
+    $jsonLoad[raretrySuccessCatch;$default[$env[LOC;raretry;4;$get[language]];["???"\\]]]
+    $jsonLoad[raretryRewardContent;$default[$env[LOC;raretry;5;$get[language]];["???"\\]]]
 
     $let[al;$arrayLength[raresGroup]]
     $let[i;$math[$get[al] - 1]]
@@ -67,8 +68,8 @@ export default {
         $jsonLoad[animalIDs;$env[group;animalIDs]]
         $let[animalID;$arrayRandomValue[animalIDs]]
         $let[MC;$math[$env[raretryVarData;coinsForRaretry;$get[rtIndex]] * $arrayAt[multipliers;$get[rtModeNum]]]] $c[Can be 0]
-        $let[thumbnail;$env[animals;$get[animalID];variants;0;img]]
-        $let[animalEmoji;$env[animals;$get[animalID];variants;0;emoji]]
+        $let[thumbnail;$env[animals;$env[animalsIndexes;$get[animalID]];variants;0;img]]
+        $let[animalEmoji;$env[animals;$env[animalsIndexes;$get[animalID]];variants;0;emoji]]
         $let[category;$arrayAt[categories;$get[i]]]
 
         $if[$get[MC]!=0;

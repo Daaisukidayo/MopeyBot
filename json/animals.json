@@ -1,9 +1,9 @@
-{
-  "mouse": {
+[
+  {
+    "ID": "mouse",
     "canFly": false,
     "biome": "Land",
     "fullName": "Mouse",
-    "trig": "mouse",
     "tier": 1,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -102,11 +102,11 @@
       }
     ]
   },
-  "desertRat": {
+  {
+    "ID": "desertRat",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Desert Rat",
-    "trig": "desertRat",
     "tier": 1,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -149,11 +149,11 @@
       }
     ]
   },
-  "shrimp": {
+  {
+    "ID": "shrimp",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Shrimp",
-    "trig": "shrimp",
     "tier": 1,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -217,11 +217,11 @@
       }
     ]
   },
-  "arcticChipmunk": {
+  {
+    "ID": "arcticChipmunk",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Arctic Chipmunk",
-    "trig": "arcticChipmunk",
     "tier": 1,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -278,11 +278,11 @@
       }
     ]
   },
-  "tarsier": {
+  {
+    "ID": "tarsier",
     "canFly": false,
     "biome": "Forest",
     "fullName": "Tarsier",
-    "trig": "tarsier",
     "tier": 1,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -297,11 +297,11 @@
       }
     ]
   },
-  "rabbit": {
+  {
+    "ID": "rabbit",
     "canFly": false,
     "biome": "Land",
     "fullName": "Rabbit",
-    "trig": "rabbit",
     "tier": 2,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -330,17 +330,15 @@
       }
     ]
   },
-  "pigeon": {
+  {
+    "ID": "pigeon",
     "canFly": true,
     "biome": "Land",
     "fullName": "Pigeon",
-    "trig": "pigeon",
     "tier": 2,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "whiteDove"
-    ],
+    "rares": ["whiteDove"],
     "variants": [
       {
         "vCode": "s1",
@@ -365,16 +363,16 @@
       }
     ]
   },
-  "whiteDove": {
+  {
+    "ID": "whiteDove",
     "canFly": true,
     "biome": "Land",
     "fullName": "White Dove",
-    "trig": "whiteDove",
     "tier": 2,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [10,100],
+    "rarity": [10, 100],
     "variants": [
       {
         "vCode": "s1",
@@ -392,11 +390,11 @@
       }
     ]
   },
-  "desertChipmunk": {
+  {
+    "ID": "desertChipmunk",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Desert Chipmunk",
-    "trig": "desertChipmunk",
     "tier": 2,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -425,11 +423,11 @@
       }
     ]
   },
-  "trout": {
+  {
+    "ID": "trout",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Trout",
-    "trig": "trout",
     "tier": 2,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -458,11 +456,11 @@
       }
     ]
   },
-  "arcticHare": {
+  {
+    "ID": "arcticHare",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Arctic Hare",
-    "trig": "arcticHare",
     "tier": 2,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -491,11 +489,11 @@
       }
     ]
   },
-  "chukar": {
+  {
+    "ID": "chukar",
     "canFly": true,
     "biome": "Forest",
     "fullName": "Chukar",
-    "trig": "chukar",
     "tier": 2,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -510,11 +508,11 @@
       }
     ]
   },
-  "mole": {
+  {
+    "ID": "mole",
     "canFly": false,
     "biome": "Land",
     "fullName": "Rabbit",
-    "trig": "mole",
     "tier": 3,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -543,11 +541,11 @@
       }
     ]
   },
-  "chicken": {
+  {
+    "ID": "chicken",
     "canFly": false,
     "biome": "Land",
     "fullName": "Chicken",
-    "trig": "chicken",
     "tier": 3,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -569,11 +567,11 @@
       }
     ]
   },
-  "meerkat": {
+  {
+    "ID": "meerkat",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Meerkat",
-    "trig": "meerkat",
     "tier": 3,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -602,11 +600,11 @@
       }
     ]
   },
-  "crab": {
+  {
+    "ID": "crab",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Crab",
-    "trig": "crab",
     "tier": 3,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -635,11 +633,11 @@
       }
     ]
   },
-  "penguin": {
+  {
+    "ID": "penguin",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Penguin",
-    "trig": "penguin",
     "tier": 3,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -668,11 +666,11 @@
       }
     ]
   },
-  "flyingLizard": {
+  {
+    "ID": "flyingLizard",
     "canFly": true,
     "biome": "Forest",
     "fullName": "Flying Lizard",
-    "trig": "flyingLizard",
     "tier": 3,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -687,18 +685,15 @@
       }
     ]
   },
-  "pig": {
+  {
+    "ID": "pig",
     "canFly": false,
     "biome": "Land",
     "fullName": "Pig",
-    "trig": "pig",
     "tier": 4,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "stinkyPig",
-      "pinkyPig"
-    ],
+    "rares": ["stinkyPig", "pinkyPig"],
     "variants": [
       {
         "vCode": "s1",
@@ -723,16 +718,16 @@
       }
     ]
   },
-  "pinkyPig": {
+  {
+    "ID": "pinkyPig",
     "canFly": false,
     "biome": "Land",
     "fullName": "Pinky Pig",
-    "trig": "pinkyPig",
     "tier": 4,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [25,250],
+    "rarity": [25, 250],
     "variants": [
       {
         "vCode": "s1",
@@ -750,16 +745,16 @@
       }
     ]
   },
-  "stinkyPig": {
+  {
+    "ID": "stinkyPig",
     "canFly": false,
     "biome": "Land",
     "fullName": "Stinky Pig",
-    "trig": "stinkyPig",
     "tier": 4,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,250],
+    "rarity": [1, 250],
     "variants": [
       {
         "vCode": "s1",
@@ -777,11 +772,11 @@
       }
     ]
   },
-  "woodpecker": {
+  {
+    "ID": "woodpecker",
     "canFly": true,
     "biome": "Land",
     "fullName": "Woodpecker",
-    "trig": "woodpecker",
     "tier": 4,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -803,11 +798,11 @@
       }
     ]
   },
-  "armadillo": {
+  {
+    "ID": "armadillo",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Armadillo",
-    "trig": "armadillo",
     "tier": 4,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -829,11 +824,11 @@
       }
     ]
   },
-  "seaHorse": {
+  {
+    "ID": "seaHorse",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Sea Horse",
-    "trig": "seaHorse",
     "tier": 4,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -862,11 +857,11 @@
       }
     ]
   },
-  "seal": {
+  {
+    "ID": "seal",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Seal",
-    "trig": "seal",
     "tier": 4,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -895,11 +890,11 @@
       }
     ]
   },
-  "kakapo": {
+  {
+    "ID": "kakapo",
     "canFly": true,
     "biome": "Forest",
     "fullName": "Kakapo",
-    "trig": "kakapo",
     "tier": 4,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -914,18 +909,15 @@
       }
     ]
   },
-  "deer": {
+  {
+    "ID": "deer",
     "canFly": false,
     "biome": "Land",
     "fullName": "Deer",
-    "trig": "deer",
     "tier": 5,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "marshDeer",
-      "doe"
-    ],
+    "rares": ["marshDeer", "doe"],
     "variants": [
       {
         "vCode": "s1",
@@ -950,16 +942,16 @@
       }
     ]
   },
-  "doe": {
+  {
+    "ID": "doe",
     "canFly": false,
     "biome": "Land",
     "fullName": "Doe",
-    "trig": "doe",
     "tier": 5,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [60,300],
+    "rarity": [60, 300],
     "variants": [
       {
         "vCode": "s1",
@@ -977,16 +969,16 @@
       }
     ]
   },
-  "marshDeer": {
+  {
+    "ID": "marshDeer",
     "canFly": false,
     "biome": "Land",
     "fullName": "Marsh Deer",
-    "trig": "marshDeer",
     "tier": 5,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [3,300],
+    "rarity": [3, 300],
     "variants": [
       {
         "vCode": "s1",
@@ -1004,11 +996,11 @@
       }
     ]
   },
-  "gazelle": {
+  {
+    "ID": "gazelle",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Gazelle",
-    "trig": "gazelle",
     "tier": 5,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1030,11 +1022,11 @@
       }
     ]
   },
-  "squid": {
+  {
+    "ID": "squid",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Squid",
-    "trig": "squid",
     "tier": 5,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1063,11 +1055,11 @@
       }
     ]
   },
-  "flamingo": {
+  {
+    "ID": "flamingo",
     "canFly": true,
     "biome": "Ocean",
     "fullName": "Flamingo",
-    "trig": "flamingo",
     "tier": 5,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1089,17 +1081,15 @@
       }
     ]
   },
-  "reindeer": {
+  {
+    "ID": "reindeer",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Reindeer",
-    "trig": "reindeer",
     "tier": 5,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "muskDeer"
-    ],
+    "rares": ["muskDeer"],
     "variants": [
       {
         "vCode": "s1",
@@ -1117,16 +1107,16 @@
       }
     ]
   },
-  "muskDeer": {
+  {
+    "ID": "muskDeer",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Musk Deer",
-    "trig": "muskDeer",
     "tier": 5,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [5,200],
+    "rarity": [5, 200],
     "variants": [
       {
         "vCode": "s1",
@@ -1144,17 +1134,15 @@
       }
     ]
   },
-  "swinehoe": {
+  {
+    "ID": "swinehoe",
     "canFly": true,
     "biome": "Forest",
     "fullName": "Swinehoe",
-    "trig": "swinehoe",
     "tier": 5,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "goldenPheasant"
-    ],
+    "rares": ["goldenPheasant"],
     "variants": [
       {
         "vCode": "s2",
@@ -1165,16 +1153,16 @@
       }
     ]
   },
-  "goldenPheasant": {
+  {
+    "ID": "goldenPheasant",
     "canFly": true,
     "biome": "Forest",
     "fullName": "Golden Pheasant",
-    "trig": "goldenPheasant",
     "tier": 5,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [5,100],
+    "rarity": [5, 100],
     "variants": [
       {
         "vCode": "s2",
@@ -1185,11 +1173,11 @@
       }
     ]
   },
-  "fox": {
+  {
+    "ID": "fox",
     "canFly": false,
     "biome": "Land",
     "fullName": "Fox",
-    "trig": "fox",
     "tier": 6,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1218,11 +1206,11 @@
       }
     ]
   },
-  "hedgehog": {
+  {
+    "ID": "hedgehog",
     "canFly": false,
     "biome": "Land",
     "fullName": "Hedgehog",
-    "trig": "hedgehog",
     "tier": 6,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1251,11 +1239,11 @@
       }
     ]
   },
-  "peacock": {
+  {
+    "ID": "peacock",
     "canFly": true,
     "biome": "Land",
     "fullName": "Peacock",
-    "trig": "peacock",
     "tier": 6,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1277,11 +1265,11 @@
       }
     ]
   },
-  "fennecFox": {
+  {
+    "ID": "fennecFox",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Fennec Fox",
-    "trig": "fennecFox",
     "tier": 6,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1303,11 +1291,11 @@
       }
     ]
   },
-  "jellyfish": {
+  {
+    "ID": "jellyfish",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Jellyfish",
-    "trig": "jellyfish",
     "tier": 6,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1336,11 +1324,11 @@
       }
     ]
   },
-  "arcticFox": {
+  {
+    "ID": "arcticFox",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Arctic Fox",
-    "trig": "arcticFox",
     "tier": 6,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1369,11 +1357,11 @@
       }
     ]
   },
-  "zebra": {
+  {
+    "ID": "zebra",
     "canFly": false,
     "biome": "Land",
     "fullName": "Zebra",
-    "trig": "zebra",
     "tier": 7,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1402,17 +1390,15 @@
       }
     ]
   },
-  "donkey": {
+  {
+    "ID": "donkey",
     "canFly": false,
     "biome": "Land",
     "fullName": "Donkey",
-    "trig": "donkey",
     "tier": 7,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "jackass"
-    ],
+    "rares": ["jackass"],
     "variants": [
       {
         "vCode": "s1",
@@ -1437,16 +1423,16 @@
       }
     ]
   },
-  "jackass": {
+  {
+    "ID": "jackass",
     "canFly": false,
     "biome": "Land",
     "fullName": "Jackass",
-    "trig": "jackass",
     "tier": 7,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [10,700],
+    "rarity": [10, 700],
     "variants": [
       {
         "vCode": "s1",
@@ -1464,18 +1450,15 @@
       }
     ]
   },
-  "macaw": {
+  {
+    "ID": "macaw",
     "canFly": true,
     "biome": "Land",
     "fullName": "Macaw",
-    "trig": "macaw",
     "tier": 7,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "rareMacaw",
-      "blueMacaw"
-    ],
+    "rares": ["rareMacaw", "blueMacaw"],
     "variants": [
       {
         "vCode": "s1",
@@ -1493,16 +1476,16 @@
       }
     ]
   },
-  "blueMacaw": {
+  {
+    "ID": "blueMacaw",
     "canFly": true,
     "biome": "Land",
     "fullName": "Blue Macaw",
-    "trig": "blueMacaw",
     "tier": 7,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [300,3000],
+    "rarity": [300, 3000],
     "variants": [
       {
         "vCode": "s1",
@@ -1520,16 +1503,16 @@
       }
     ]
   },
-  "rareMacaw": {
+  {
+    "ID": "rareMacaw",
     "canFly": true,
     "biome": "Land",
     "fullName": "Rare Macaw",
-    "trig": "rareMacaw",
     "tier": 7,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,3000],
+    "rarity": [1, 3000],
     "variants": [
       {
         "vCode": "s1",
@@ -1568,11 +1551,11 @@
       }
     ]
   },
-  "warthog": {
+  {
+    "ID": "warthog",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Warthog",
-    "trig": "warthog",
     "tier": 7,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1594,11 +1577,11 @@
       }
     ]
   },
-  "turtle": {
+  {
+    "ID": "turtle",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Turtle",
-    "trig": "turtle",
     "tier": 7,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1627,11 +1610,11 @@
       }
     ]
   },
-  "muskox": {
+  {
+    "ID": "muskox",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Muskox",
-    "trig": "muskox",
     "tier": 7,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1660,11 +1643,11 @@
       }
     ]
   },
-  "cobra": {
+  {
+    "ID": "cobra",
     "canFly": false,
     "biome": "Land",
     "fullName": "Cobra",
-    "trig": "cobra",
     "tier": 8,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1693,19 +1676,15 @@
       }
     ]
   },
-  "giraffe": {
+  {
+    "ID": "giraffe",
     "canFly": false,
     "biome": "Land",
     "fullName": "Giraffe",
-    "trig": "giraffe",
     "tier": 8,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "girabie",
-      "momaffieFamily",
-      "momaffie"
-    ],
+    "rares": ["girabie", "momaffieFamily", "momaffie"],
     "variants": [
       {
         "vCode": "s1",
@@ -1730,16 +1709,16 @@
       }
     ]
   },
-  "momaffie": {
+  {
+    "ID": "momaffie",
     "canFly": false,
     "biome": "Land",
     "fullName": "Momaffie",
-    "trig": "momaffie",
     "tier": 8,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [50,500],
+    "rarity": [50, 500],
     "variants": [
       {
         "vCode": "s2",
@@ -1750,16 +1729,16 @@
       }
     ]
   },
-  "momaffieFamily": {
+  {
+    "ID": "momaffieFamily",
     "canFly": false,
     "biome": "Land",
     "fullName": "Momaffie Family",
-    "trig": "momaffieFamily",
     "tier": 8,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [25,500],
+    "rarity": [25, 500],
     "variants": [
       {
         "vCode": "s2",
@@ -1770,16 +1749,16 @@
       }
     ]
   },
-  "girabie": {
+  {
+    "ID": "girabie",
     "canFly": false,
     "biome": "Land",
     "fullName": "Girabie",
-    "trig": "girabie",
     "tier": 8,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [10,500],
+    "rarity": [10, 500],
     "variants": [
       {
         "vCode": "s2",
@@ -1790,11 +1769,11 @@
       }
     ]
   },
-  "camel": {
+  {
+    "ID": "camel",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Camel",
-    "trig": "camel",
     "tier": 8,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1816,11 +1795,11 @@
       }
     ]
   },
-  "stingray": {
+  {
+    "ID": "stingray",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Stingray",
-    "trig": "stingray",
     "tier": 8,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1842,11 +1821,11 @@
       }
     ]
   },
-  "snowyOwl": {
+  {
+    "ID": "snowyOwl",
     "canFly": true,
     "biome": "Arctic",
     "fullName": "Snowy Owl",
-    "trig": "snowyOwl",
     "tier": 8,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1875,11 +1854,11 @@
       }
     ]
   },
-  "walrus": {
+  {
+    "ID": "walrus",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Walrus",
-    "trig": "walrus",
     "tier": 8,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1908,11 +1887,11 @@
       }
     ]
   },
-  "raven": {
+  {
+    "ID": "raven",
     "canFly": true,
     "biome": "Forest",
     "fullName": "Raven",
-    "trig": "raven",
     "tier": 8,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -1934,19 +1913,15 @@
       }
     ]
   },
-  "cheetah": {
+  {
+    "ID": "cheetah",
     "canFly": false,
     "biome": "Land",
     "fullName": "Cheetah",
-    "trig": "cheetah",
     "tier": 9,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "blackPanther",
-      "leopard",
-      "jaguar"
-    ],
+    "rares": ["blackPanther", "leopard", "jaguar"],
     "variants": [
       {
         "vCode": "s1",
@@ -1971,16 +1946,16 @@
       }
     ]
   },
-  "jaguar": {
+  {
+    "ID": "jaguar",
     "canFly": false,
     "biome": "Land",
     "fullName": "Jaguar",
-    "trig": "jaguar",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [5,250],
+    "rarity": [5, 250],
     "variants": [
       {
         "vCode": "s1",
@@ -1998,16 +1973,16 @@
       }
     ]
   },
-  "leopard": {
+  {
+    "ID": "leopard",
     "canFly": false,
     "biome": "Land",
     "fullName": "Leopard",
-    "trig": "leopard",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [4,250],
+    "rarity": [4, 250],
     "variants": [
       {
         "vCode": "s1",
@@ -2025,16 +2000,16 @@
       }
     ]
   },
-  "blackPanther": {
+  {
+    "ID": "blackPanther",
     "canFly": false,
     "biome": "Land",
     "fullName": "Black Panther",
-    "trig": "blackPanther",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,250],
+    "rarity": [1, 250],
     "variants": [
       {
         "vCode": "s1",
@@ -2052,11 +2027,11 @@
       }
     ]
   },
-  "gorilla": {
+  {
+    "ID": "gorilla",
     "canFly": false,
     "biome": "Land",
     "fullName": "Gorilla",
-    "trig": "gorilla",
     "tier": 9,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2085,11 +2060,11 @@
       }
     ]
   },
-  "toucan": {
+  {
+    "ID": "toucan",
     "canFly": true,
     "biome": "Land",
     "fullName": "Toucan",
-    "trig": "toucan",
     "tier": 9,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2117,16 +2092,16 @@
       }
     ]
   },
-  "chocoToucan": {
+  {
+    "ID": "chocoToucan",
     "canFly": true,
     "biome": "Land",
     "fullName": "Choco Toucan",
-    "trig": "chocoToucan",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [900,3000],
+    "rarity": [900, 3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2144,16 +2119,16 @@
       }
     ]
   },
-  "keelBilledToucan": {
+  {
+    "ID": "keelBilledToucan",
     "canFly": true,
     "biome": "Land",
     "fullName": "Keel-Billed Toucan",
-    "trig": "keelBilledToucan",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [600,3000],
+    "rarity": [600, 3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2171,16 +2146,16 @@
       }
     ]
   },
-  "fieryToucan": {
+  {
+    "ID": "fieryToucan",
     "canFly": true,
     "biome": "Land",
     "fullName": "Fiery Toucan",
-    "trig": "fieryToucan",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [300,3000],
+    "rarity": [300, 3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2198,16 +2173,16 @@
       }
     ]
   },
-  "lavaToucan": {
+  {
+    "ID": "lavaToucan",
     "canFly": true,
     "biome": "Volcano",
     "fullName": "Lava Toucan",
-    "trig": "lavaToucan",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [12,3000],
+    "rarity": [12, 3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2225,16 +2200,16 @@
       }
     ]
   },
-  "rareToucan": {
+  {
+    "ID": "rareToucan",
     "canFly": true,
     "biome": "Land",
     "fullName": "Rare Toucan",
-    "trig": "rareToucan",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,3000],
+    "rarity": [1, 3000],
     "variants": [
       {
         "vCode": "s1",
@@ -2273,11 +2248,11 @@
       }
     ]
   },
-  "rattleSnake": {
+  {
+    "ID": "rattleSnake",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Rattle Snake",
-    "trig": "rattleSnake",
     "tier": 9,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2299,18 +2274,15 @@
       }
     ]
   },
-  "pufferfish": {
+  {
+    "ID": "pufferfish",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Pufferfish",
-    "trig": "pufferfish",
     "tier": 9,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "demonPufferfish",
-      "yellowPufferfish"
-    ],
+    "rares": ["demonPufferfish", "yellowPufferfish"],
     "variants": [
       {
         "vCode": "s1",
@@ -2328,16 +2300,16 @@
       }
     ]
   },
-  "yellowPufferfish": {
+  {
+    "ID": "yellowPufferfish",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Yellow Pufferfish",
-    "trig": "yellowPufferfish",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [165,1000],
+    "rarity": [165, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2355,16 +2327,16 @@
       }
     ]
   },
-  "demonPufferfish": {
+  {
+    "ID": "demonPufferfish",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Demonfish",
-    "trig": "demonPufferfish",
     "tier": 9,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [5,1000],
+    "rarity": [5, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2382,11 +2354,11 @@
       }
     ]
   },
-  "snowLeopard": {
+  {
+    "ID": "snowLeopard",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Snow Leopard",
-    "trig": "snowLeopard",
     "tier": 9,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2415,11 +2387,11 @@
       }
     ]
   },
-  "turkey": {
+  {
+    "ID": "turkey",
     "canFly": true,
     "biome": "Forest",
     "fullName": "Turkey",
-    "trig": "turkey",
     "tier": 9,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2434,17 +2406,15 @@
       }
     ]
   },
-  "bear": {
+  {
+    "ID": "bear",
     "canFly": false,
     "biome": "Land",
     "fullName": "Bear",
-    "trig": "bear",
     "tier": 10,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "blackBear"
-    ],
+    "rares": ["blackBear"],
     "variants": [
       {
         "vCode": "s1",
@@ -2469,16 +2439,16 @@
       }
     ]
   },
-  "blackBear": {
+  {
+    "ID": "blackBear",
     "canFly": false,
     "biome": "Land",
     "fullName": "Black Bear",
-    "trig": "blackBear",
     "tier": 10,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [10,200],
+    "rarity": [10, 200],
     "variants": [
       {
         "vCode": "s1",
@@ -2496,18 +2466,15 @@
       }
     ]
   },
-  "tiger": {
+  {
+    "ID": "tiger",
     "canFly": false,
     "biome": "Land",
     "fullName": "Tiger",
-    "trig": "tiger",
     "tier": 10,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "blackTiger",
-      "whiteTiger"
-    ],
+    "rares": ["blackTiger", "whiteTiger"],
     "variants": [
       {
         "vCode": "s1",
@@ -2532,16 +2499,16 @@
       }
     ]
   },
-  "whiteTiger": {
+  {
+    "ID": "whiteTiger",
     "canFly": false,
     "biome": "Land",
     "fullName": "White Tiger",
-    "trig": "whiteTiger",
     "tier": 10,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [5,200],
+    "rarity": [5, 200],
     "variants": [
       {
         "vCode": "s1",
@@ -2559,16 +2526,16 @@
       }
     ]
   },
-  "blackTiger": {
+  {
+    "ID": "blackTiger",
     "canFly": false,
     "biome": "Land",
     "fullName": "Black Tiger",
-    "trig": "blackTiger",
     "tier": 10,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,200],
+    "rarity": [1, 200],
     "variants": [
       {
         "vCode": "s1",
@@ -2586,11 +2553,11 @@
       }
     ]
   },
-  "gobiBear": {
+  {
+    "ID": "gobiBear",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Gobi Bear",
-    "trig": "gobiBear",
     "tier": 10,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2619,11 +2586,11 @@
       }
     ]
   },
-  "hyena": {
+  {
+    "ID": "hyena",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Hyena",
-    "trig": "hyena",
     "tier": 10,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2652,11 +2619,11 @@
       }
     ]
   },
-  "pelican": {
+  {
+    "ID": "pelican",
     "canFly": true,
     "biome": "Ocean",
     "fullName": "Pelican",
-    "trig": "pelican",
     "tier": 10,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2678,11 +2645,11 @@
       }
     ]
   },
-  "swordfish": {
+  {
+    "ID": "swordfish",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Swordfish",
-    "trig": "swordfish",
     "tier": 10,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2711,11 +2678,11 @@
       }
     ]
   },
-  "wolf": {
+  {
+    "ID": "wolf",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Wolf",
-    "trig": "wolf",
     "tier": 10,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2737,11 +2704,11 @@
       }
     ]
   },
-  "crocodile": {
+  {
+    "ID": "crocodile",
     "canFly": false,
     "biome": "Land",
     "fullName": "Crocodile",
-    "trig": "crocodile",
     "tier": 11,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2770,11 +2737,11 @@
       }
     ]
   },
-  "lion": {
+  {
+    "ID": "lion",
     "canFly": false,
     "biome": "Land",
     "fullName": "Lion",
-    "trig": "lion",
     "tier": 11,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -2813,16 +2780,16 @@
       }
     ]
   },
-  "lioness": {
+  {
+    "ID": "lioness",
     "canFly": false,
     "biome": "Land",
     "fullName": "Lioness",
-    "trig": "lioness",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [114,1000],
+    "rarity": [114, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2840,16 +2807,16 @@
       }
     ]
   },
-  "lionCub": {
+  {
+    "ID": "lionCub",
     "canFly": false,
     "biome": "Land",
     "fullName": "Lion Cub",
-    "trig": "lionCub",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [54,1000],
+    "rarity": [54, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2867,16 +2834,16 @@
       }
     ]
   },
-  "blackManedLion": {
+  {
+    "ID": "blackManedLion",
     "canFly": false,
     "biome": "Land",
     "fullName": "Black-Maned Lion",
-    "trig": "blackManedLion",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [14,1000],
+    "rarity": [14, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2894,16 +2861,16 @@
       }
     ]
   },
-  "whiteLionCub": {
+  {
+    "ID": "whiteLionCub",
     "canFly": false,
     "biome": "Land",
     "fullName": "White Lion Cub",
-    "trig": "whiteLionCub",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [5,1000],
+    "rarity": [5, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2921,16 +2888,16 @@
       }
     ]
   },
-  "whiteLioness": {
+  {
+    "ID": "whiteLioness",
     "canFly": false,
     "biome": "Land",
     "fullName": "White Lioness",
-    "trig": "whiteLioness",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [5,1000],
+    "rarity": [5, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2948,16 +2915,16 @@
       }
     ]
   },
-  "whiteLion": {
+  {
+    "ID": "whiteLion",
     "canFly": false,
     "biome": "Land",
     "fullName": "White Lion",
-    "trig": "whiteLion",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [5,1000],
+    "rarity": [5, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -2975,16 +2942,16 @@
       }
     ]
   },
-  "blackLionCub": {
+  {
+    "ID": "blackLionCub",
     "canFly": false,
     "biome": "Land",
     "fullName": "Black Lion Cub",
-    "trig": "blackLionCub",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,1000],
+    "rarity": [1, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3002,16 +2969,16 @@
       }
     ]
   },
-  "blackLioness": {
+  {
+    "ID": "blackLioness",
     "canFly": false,
     "biome": "Land",
     "fullName": "Black Lioness",
-    "trig": "blackLioness",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,1000],
+    "rarity": [1, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3029,16 +2996,16 @@
       }
     ]
   },
-  "blackLion": {
+  {
+    "ID": "blackLion",
     "canFly": false,
     "biome": "Land",
     "fullName": "Black Lion",
-    "trig": "blackLion",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,1000],
+    "rarity": [1, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3056,18 +3023,15 @@
       }
     ]
   },
-  "falcon": {
+  {
+    "ID": "falcon",
     "canFly": true,
     "biome": "Land",
     "fullName": "Falcon",
-    "trig": "falcon",
     "tier": 11,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "shaheen",
-      "predator"
-    ],
+    "rares": ["shaheen", "predator"],
     "variants": [
       {
         "vCode": "s1",
@@ -3085,16 +3049,16 @@
       }
     ]
   },
-  "predator": {
+  {
+    "ID": "predator",
     "canFly": true,
     "biome": "Land",
     "fullName": "Predator",
-    "trig": "predator",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [50,4000],
+    "rarity": [50, 4000],
     "variants": [
       {
         "vCode": "s1",
@@ -3112,16 +3076,16 @@
       }
     ]
   },
-  "shaheen": {
+  {
+    "ID": "shaheen",
     "canFly": true,
     "biome": "Land",
     "fullName": "Shaheen",
-    "trig": "shaheen",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,4000],
+    "rarity": [1, 4000],
     "variants": [
       {
         "vCode": "s1",
@@ -3139,17 +3103,15 @@
       }
     ]
   },
-  "vulture": {
+  {
+    "ID": "vulture",
     "canFly": true,
     "biome": "Desert",
     "fullName": "Vulture",
-    "trig": "vulture",
     "tier": 11,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "rareVulture"
-    ],
+    "rares": ["rareVulture"],
     "variants": [
       {
         "vCode": "s1",
@@ -3174,16 +3136,16 @@
       }
     ]
   },
-  "rareVulture": {
+  {
+    "ID": "rareVulture",
     "canFly": true,
     "biome": "Desert",
     "fullName": "Rare Vulture",
-    "trig": "rareVulture",
     "tier": 11,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,3000],
+    "rarity": [1, 3000],
     "variants": [
       {
         "vCode": "s1",
@@ -3222,11 +3184,11 @@
       }
     ]
   },
-  "octopus": {
+  {
+    "ID": "octopus",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Octopus",
-    "trig": "octopus",
     "tier": 11,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3255,11 +3217,11 @@
       }
     ]
   },
-  "polarBear": {
+  {
+    "ID": "polarBear",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Polar Bear",
-    "trig": "polarBear",
     "tier": 11,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3288,18 +3250,15 @@
       }
     ]
   },
-  "rhino": {
+  {
+    "ID": "rhino",
     "canFly": false,
     "biome": "Land",
     "fullName": "Rhino",
-    "trig": "rhino",
     "tier": 12,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "blackRhino",
-      "whiteRhino"
-    ],
+    "rares": ["blackRhino", "whiteRhino"],
     "variants": [
       {
         "vCode": "s1",
@@ -3324,16 +3283,16 @@
       }
     ]
   },
-  "whiteRhino": {
+  {
+    "ID": "whiteRhino",
     "canFly": false,
     "biome": "Land",
     "fullName": "White Rhino",
-    "trig": "whiteRhino",
     "tier": 12,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [4,1000],
+    "rarity": [4, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3351,16 +3310,16 @@
       }
     ]
   },
-  "blackRhino": {
+  {
+    "ID": "blackRhino",
     "canFly": false,
     "biome": "Land",
     "fullName": "Black Rhino",
-    "trig": "blackRhino",
     "tier": 12,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [2,1000],
+    "rarity": [2, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -3378,19 +3337,15 @@
       }
     ]
   },
-  "baldEagle": {
+  {
+    "ID": "baldEagle",
     "canFly": true,
     "biome": "Land",
     "fullName": "Bald Eagle",
-    "trig": "baldEagle",
     "tier": 12,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "greaterSpottedEagle",
-      "harpyEagle",
-      "goldenEagle"
-    ],
+    "rares": ["greaterSpottedEagle", "harpyEagle", "goldenEagle"],
     "variants": [
       {
         "vCode": "s1",
@@ -3415,16 +3370,16 @@
       }
     ]
   },
-  "goldenEagle": {
+  {
+    "ID": "goldenEagle",
     "canFly": true,
     "biome": "Land",
     "fullName": "Golden Eagle",
-    "trig": "goldenEagle",
     "tier": 12,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [28,5000],
+    "rarity": [28, 5000],
     "variants": [
       {
         "vCode": "s1",
@@ -3442,16 +3397,16 @@
       }
     ]
   },
-  "harpyEagle": {
+  {
+    "ID": "harpyEagle",
     "canFly": true,
     "biome": "Land",
     "fullName": "Harpy Eagle",
-    "trig": "harpyEagle",
     "tier": 12,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,5000],
+    "rarity": [1, 5000],
     "variants": [
       {
         "vCode": "s1",
@@ -3469,16 +3424,16 @@
       }
     ]
   },
-  "greaterSpottedEagle": {
+  {
+    "ID": "greaterSpottedEagle",
     "canFly": true,
     "biome": "Land",
     "fullName": "Greater-Spotted Eagle",
-    "trig": "greaterSpottedEagle",
     "tier": 12,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,5000],
+    "rarity": [1, 5000],
     "variants": [
       {
         "vCode": "s1",
@@ -3496,11 +3451,11 @@
       }
     ]
   },
-  "bison": {
+  {
+    "ID": "bison",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Bison",
-    "trig": "bison",
     "tier": 12,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3529,11 +3484,11 @@
       }
     ]
   },
-  "shark": {
+  {
+    "ID": "shark",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Shark",
-    "trig": "shark",
     "tier": 12,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3555,16 +3510,16 @@
       }
     ]
   },
-  "markhor": {
+  {
+    "ID": "markhor",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Markhor",
-    "trig": "markhor",
     "tier": 12,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [600,700],
+    "rarity": [600, 700],
     "variants": [
       {
         "vCode": "s1",
@@ -3582,16 +3537,16 @@
       }
     ]
   },
-  "bigGoat": {
+  {
+    "ID": "bigGoat",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Big Goat",
-    "trig": "bigGoat",
     "tier": 12,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [15,700],
+    "rarity": [15, 700],
     "variants": [
       {
         "vCode": "s1",
@@ -3609,11 +3564,11 @@
       }
     ]
   },
-  "wolverine": {
+  {
+    "ID": "wolverine",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Wolverine",
-    "trig": "wolverine",
     "tier": 12,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3642,11 +3597,11 @@
       }
     ]
   },
-  "hippo": {
+  {
+    "ID": "hippo",
     "canFly": false,
     "biome": "Land",
     "fullName": "Hippo",
-    "trig": "hippo",
     "tier": 13,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3675,11 +3630,11 @@
       }
     ]
   },
-  "boaConstrictor": {
+  {
+    "ID": "boaConstrictor",
     "canFly": false,
     "biome": "Land",
     "fullName": "Boa Constrictor",
-    "trig": "boaConstrictor",
     "tier": 13,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3708,11 +3663,11 @@
       }
     ]
   },
-  "ostrich": {
+  {
+    "ID": "ostrich",
     "canFly": false,
     "biome": "Land",
     "fullName": "Ostrich",
-    "trig": "ostrich",
     "tier": 13,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3734,11 +3689,11 @@
       }
     ]
   },
-  "komodoDragon": {
+  {
+    "ID": "komodoDragon",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Komodo Dragon",
-    "trig": "komodoDragon",
     "tier": 13,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3760,11 +3715,11 @@
       }
     ]
   },
-  "killerWhale": {
+  {
+    "ID": "killerWhale",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Killer Whale",
-    "trig": "killerWhale",
     "tier": 13,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3793,11 +3748,11 @@
       }
     ]
   },
-  "sabertoothTiger": {
+  {
+    "ID": "sabertoothTiger",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Sabertooth Tiger",
-    "trig": "sabertoothTiger",
     "tier": 13,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3826,16 +3781,16 @@
       }
     ]
   },
-  "whiteGiraffe": {
+  {
+    "ID": "whiteGiraffe",
     "canFly": false,
     "biome": "Forest",
     "fullName": "White Giraffe",
-    "trig": "whiteGiraffe",
     "tier": 13,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [20,700],
+    "rarity": [20, 700],
     "variants": [
       {
         "vCode": "s1",
@@ -3846,16 +3801,16 @@
       }
     ]
   },
-  "giraffeFamily": {
+  {
+    "ID": "giraffeFamily",
     "canFly": false,
     "biome": "Forest",
     "fullName": "Giraffe Family",
-    "trig": "giraffeFamily",
     "tier": 13,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [5,700],
+    "rarity": [5, 700],
     "variants": [
       {
         "vCode": "s1",
@@ -3866,11 +3821,11 @@
       }
     ]
   },
-  "elephant": {
+  {
+    "ID": "elephant",
     "canFly": false,
     "biome": "Land",
     "fullName": "Elephant",
-    "trig": "elephant",
     "tier": 14,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3892,11 +3847,11 @@
       }
     ]
   },
-  "cassowary": {
+  {
+    "ID": "cassowary",
     "canFly": false,
     "biome": "Land",
     "fullName": "Cassowary",
-    "trig": "cassowary",
     "tier": 14,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3925,11 +3880,11 @@
       }
     ]
   },
-  "giantSpider": {
+  {
+    "ID": "giantSpider",
     "canFly": false,
     "biome": "Land",
     "fullName": "Giant Spider",
-    "trig": "giantSpider",
     "tier": 14,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3951,11 +3906,11 @@
       }
     ]
   },
-  "blackwidowSpider": {
+  {
+    "ID": "blackwidowSpider",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Blackwidow Spider",
-    "trig": "blackwidowSpider",
     "tier": 14,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3977,11 +3932,11 @@
       }
     ]
   },
-  "blueWhale": {
+  {
+    "ID": "blueWhale",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Blue Whale",
-    "trig": "blueWhale",
     "tier": 14,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4010,11 +3965,11 @@
       }
     ]
   },
-  "mammoth": {
+  {
+    "ID": "mammoth",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Mammoth",
-    "trig": "mammoth",
     "tier": 14,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4043,11 +3998,11 @@
       }
     ]
   },
-  "dragon": {
+  {
+    "ID": "dragon",
     "canFly": true,
     "biome": "Land",
     "fullName": "Dragon",
-    "trig": "dragon",
     "tier": 15,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4069,11 +4024,11 @@
       }
     ]
   },
-  "trex": {
+  {
+    "ID": "trex",
     "canFly": false,
     "biome": "Land",
     "fullName": "T-Rex",
-    "trig": "trex",
     "tier": 15,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4095,11 +4050,11 @@
       }
     ]
   },
-  "phoenix": {
+  {
+    "ID": "phoenix",
     "canFly": true,
     "biome": "Volcano",
     "fullName": "Phoenix",
-    "trig": "phoenix",
     "tier": 15,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4121,11 +4076,11 @@
       }
     ]
   },
-  "pterodactyl": {
+  {
+    "ID": "pterodactyl",
     "canFly": true,
     "biome": "Desert",
     "fullName": "Pterodactyl",
-    "trig": "pterodactyl",
     "tier": 15,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4147,11 +4102,11 @@
       }
     ]
   },
-  "kraken": {
+  {
+    "ID": "kraken",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Kraken",
-    "trig": "kraken",
     "tier": 15,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4173,11 +4128,11 @@
       }
     ]
   },
-  "kingCrab": {
+  {
+    "ID": "kingCrab",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "King Crab",
-    "trig": "kingCrab",
     "tier": 15,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4199,17 +4154,15 @@
       }
     ]
   },
-  "yeti": {
+  {
+    "ID": "yeti",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Yeti",
-    "trig": "yeti",
     "tier": 15,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "aquaYeti"
-    ],
+    "rares": ["aquaYeti"],
     "variants": [
       {
         "vCode": "s1",
@@ -4227,16 +4180,16 @@
       }
     ]
   },
-  "aquaYeti": {
+  {
+    "ID": "aquaYeti",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Aqua Yeti",
-    "trig": "aquaYeti",
     "tier": 15,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [25,600],
+    "rarity": [25, 600],
     "variants": [
       {
         "vCode": "s1",
@@ -4254,16 +4207,16 @@
       }
     ]
   },
-  "shopBigfoot": {
+  {
+    "ID": "shopBigfoot",
     "canFly": false,
     "biome": "Forest",
     "fullName": "Shop Bigfoot",
-    "trig": "shopBigfoot",
     "tier": 15,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [100,1000],
+    "rarity": [100, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -4281,16 +4234,16 @@
       }
     ]
   },
-  "luckBigfoot": {
+  {
+    "ID": "luckBigfoot",
     "canFly": false,
     "biome": "Forest",
     "fullName": "Luck Bigfoot",
-    "trig": "luckBigfoot",
     "tier": 15,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [1,1000],
+    "rarity": [1, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -4308,16 +4261,16 @@
       }
     ]
   },
-  "shopSnowman": {
+  {
+    "ID": "shopSnowman",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Shop Snowman",
-    "trig": "shopSnowman",
     "tier": 15,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [100,1000],
+    "rarity": [100, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -4328,16 +4281,16 @@
       }
     ]
   },
-  "luckSnowman": {
+  {
+    "ID": "luckSnowman",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Luck Snowman",
-    "trig": "luckSnowman",
     "tier": 15,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [1,1000],
+    "rarity": [1, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -4348,16 +4301,16 @@
       }
     ]
   },
-  "shopSnowgirl": {
+  {
+    "ID": "shopSnowgirl",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Shop Snowgirl",
-    "trig": "shopSnowgirl",
     "tier": 15,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [200,2000],
+    "rarity": [200, 2000],
     "variants": [
       {
         "vCode": "s1",
@@ -4368,16 +4321,16 @@
       }
     ]
   },
-  "luckSnowgirl": {
+  {
+    "ID": "luckSnowgirl",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Luck Snowgirl",
-    "trig": "luckSnowgirl",
     "tier": 15,
     "isRare": true,
     "hasNonRareVariant": false,
     "rares": [],
-    "rarity": [1,2000],
+    "rarity": [1, 2000],
     "variants": [
       {
         "vCode": "s1",
@@ -4388,11 +4341,11 @@
       }
     ]
   },
-  "dinoMonster": {
+  {
+    "ID": "dinoMonster",
     "canFly": false,
     "biome": "Land",
     "fullName": "Dino Monster",
-    "trig": "dinoMonster",
     "tier": 16,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4414,11 +4367,11 @@
       }
     ]
   },
-  "landMonster": {
+  {
+    "ID": "landMonster",
     "canFly": true,
     "biome": "Volcano",
     "fullName": "Land Monster",
-    "trig": "landMonster",
     "tier": 16,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4440,11 +4393,11 @@
       }
     ]
   },
-  "giantScorpion": {
+  {
+    "ID": "giantScorpion",
     "canFly": false,
     "biome": "Desert",
     "fullName": "Giant Scorpion",
-    "trig": "giantScorpion",
     "tier": 16,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4466,11 +4419,11 @@
       }
     ]
   },
-  "seaMonster": {
+  {
+    "ID": "seaMonster",
     "canFly": false,
     "biome": "Ocean",
     "fullName": "Sea Monster",
-    "trig": "seaMonster",
     "tier": 16,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4492,11 +4445,11 @@
       }
     ]
   },
-  "iceMonster": {
+  {
+    "ID": "iceMonster",
     "canFly": false,
     "biome": "Arctic",
     "fullName": "Ice Monster",
-    "trig": "iceMonster",
     "tier": 16,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -4518,17 +4471,15 @@
       }
     ]
   },
-  "blackDragon": {
+  {
+    "ID": "blackDragon",
     "canFly": true,
     "biome": "Volcano",
     "fullName": "Black Dragon",
-    "trig": "blackDragon",
     "tier": 17,
     "isRare": false,
     "hasNonRareVariant": false,
-    "rares": [
-      "kingDragon"
-    ],
+    "rares": ["kingDragon"],
     "variants": [
       {
         "vCode": "s1",
@@ -4567,16 +4518,16 @@
       }
     ]
   },
-  "kingDragon": {
+  {
+    "ID": "kingDragon",
     "canFly": true,
     "biome": "Volcano",
     "fullName": "King Dragon",
-    "trig": "kingDragon",
     "tier": 17,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
-    "rarity": [1,1000],
+    "rarity": [1, 1000],
     "variants": [
       {
         "vCode": "s1",
@@ -4643,4 +4594,4 @@
       }
     ]
   }
-}
+]

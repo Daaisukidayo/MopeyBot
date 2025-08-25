@@ -2,7 +2,8 @@
 forge.db
 node_modules
 allies.json
-locCopy.json
+localizations_old.json
 logs
-animals_transformed.json
-uploadEmojis.js
+TF.js
+UE.js
+animalsOld.json

@@ -10,6 +10,7 @@ export default [{
 
     $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
     $jsonLoad[tierRareAnimals;$getGlobalVar[tierRareAnimals]]
+    $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
     $jsonLoad[animals;$readFile[json/animals.json]]
     
     $arrayForEach[tierRareAnimals;arr;
@@ -20,7 +21,8 @@ export default [{
 
       $arrayForEach[animalIDs;animalID;
         $jsonLoad[rares;$env[allRaresData;$env[animalID]]]
-        $let[animalName;$env[animals;$env[animalID];variants;0;name]] $c[S1]
+        $let[animalIndex;$env[animalsIndexes;$env[animalID]]]
+        $let[animalName;$default[$env[animals;$get[animalIndex];variants;0;name];???]]
         $let[rareInfo;\`$arrayJoin[rares; || ] ➡️ $get[animalName]\`]
         $let[fieldContent;$get[fieldContent]\n$get[rareInfo]]
       ]

@@ -10,6 +10,7 @@ export default {
     $callFunction[cooldown;$get[cdTime]]
 
     $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
     ${luckGenerator()}
     $jsonLoad[addClover;${addClover()}]
     $jsonLoad[content;${content()}]
@@ -21,11 +22,12 @@ export default {
 
     $arrayForEach[allRareAttemptsInfoEntries;entry;
       $let[animalID;$env[entry;1;attempts;0]]
-      $let[animalName;$env[animals;$get[animalID];variants;0;name]]
-      $let[animalEmoji;$env[animals;$get[animalID];variants;0;emoji]]
-      $let[isRare;$env[animals;$get[animalID];isRare]]
-      $let[rareQuantity;$env[animals;$get[animalID];rarity;0]]
-      $let[totalAttempts;$env[animals;$get[animalID];rarity;1]]
+      $let[animalIndex;$env[animalsIndexes;$get[animalID]]]
+      $let[animalName;$env[animals;$get[animalIndex];variants;0;name]]
+      $let[animalEmoji;$env[animals;$get[animalIndex];variants;0;emoji]]
+      $let[isRare;$env[animals;$get[animalIndex];isRare]]
+      $let[rareQuantity;$env[animals;$get[animalIndex];rarity;0]]
+      $let[totalAttempts;$env[animals;$get[animalIndex];rarity;1]]
       $let[animalContent;$get[animalEmoji]]
       $let[percent;$round[$math[$get[rareQuantity] / $get[totalAttempts] * 100];3]]
       $let[CL;]
@@ -34,8 +36,7 @@ export default {
       $if[$and[$get[animalID]!=undefined;$get[isRare]];
         ${addingClover()}
 
-        $let[rewardIndex;$arrayFindIndex[rareReward;obj;$env[obj;animalID]==$get[animalID]]]
-        $let[MC;$env[rareReward;$get[rewardIndex];MC]]
+        $let[MC;$default[$env[rareReward;$get[animalID]];0]]
 
         $arrayPush[desc;## $get[animalContent]$get[CL] | \`$get[rareQuantity]/$get[totalAttempts]\` | +\`$get[MC]\`$getGlobalVar[emoji]]
         $letSum[total;$get[MC]]
@@ -46,11 +47,8 @@ export default {
       $arrayPush[desc;## nothing]
     ]
 
-    $let[content;$arrayRandomValue[content]]
-    $let[msgdesc;# $get[content]\n**$arrayJoin[desc;\n]**]
-
     $callFunction[embed;lucky]
-    $description[$get[msgdesc]\n-# Total: +$get[total]$getGlobalVar[emoji]]
+    $description[# $arrayRandomValue[content]\n**$arrayJoin[desc;\n]**\n-# Total: +$get[total]$getGlobalVar[emoji]]
     
     $callFunction[sumMC;$get[total]]
     $setUserVar[userProfile;$env[userProfile]]
@@ -132,8 +130,8 @@ function luckGenerator () {
       $arrayLoad[groupParts;|;$env[groupConfig]]
       $let[keyName;$env[groupParts;0]]
       $let[commonAnimal;$env[groupParts;1]]
-      $let[tier;$env[animals;$get[keyName];tier]]
-      $let[totalAttempts;$env[animals;$env[groupParts;2];rarity;1]]
+      $let[tier;$env[animals;$env[animalsIndexes;$get[keyName]];tier]]
+      $let[totalAttempts;$env[animals;$env[animalsIndexes;$env[groupParts;2]];rarity;1]]
 
       $let[totalRare;0]
       $arrayCreate[rarePool;0]
@@ -141,7 +139,7 @@ function luckGenerator () {
       $loop[$math[$arrayLength[groupParts] - 2];
         $let[ri;$math[$env[ri] + 1]]
         $let[rareAnimal;$env[groupParts;$get[ri]]]
-        $let[countRare;$env[animals;$get[rareAnimal];rarity;0]]
+        $let[countRare;$env[animals;$env[animalsIndexes;$get[rareAnimal]];rarity;0]]
 
         $if[$get[countRare]!=;
           $arrayCreate[oneRareArr;$get[countRare]]
@@ -167,227 +165,62 @@ function luckGenerator () {
 
 function raresReward() {
   return `
-    [
-      {
-        "animalID": "whiteDove",
-        "MC": 125
-      },
-      {
-        "animalID": "stinkyPig",
-        "MC": 3280
-      },
-      {
-        "animalID": "pinkyPig",
-        "MC": 125
-      },
-      {
-        "animalID": "goldenPheasant",
-        "MC": 250
-      },
-      {
-        "animalID": "marshDeer",
-        "MC": 1250
-      },
-      {
-        "animalID": "doe",
-        "MC": 60
-      },
-      {
-        "animalID": "muskDeer",
-        "MC": 3935
-      },
-      {
-        "animalID": "jackass",
-        "MC": 930
-      },
-      {
-        "animalID": "rareMacaw",
-        "MC": 41250
-      },
-      {
-        "animalID": "blueMacaw",
-        "MC": 125
-      },
-      {
-        "animalID": "girabie",
-        "MC": 660
-      },
-      {
-        "animalID": "momaffieFamily",
-        "MC": 250
-      },
-      {
-        "animalID": "momaffie",
-        "MC": 125
-      },
-      {
-        "animalID": "rareToucan",
-        "MC": 41250
-      },
-      {
-        "animalID": "lavaToucan",
-        "MC": 3280
-      },
-      {
-        "animalID": "fieryToucan",
-        "MC": 125
-      },
-      {
-        "animalID": "keelBilledToucan",
-        "MC": 60
-      },
-      {
-        "animalID": "chocoToucan",
-        "MC": 0
-      },
-      {
-        "animalID": "blackPanther",
-        "MC": 3280
-      },
-      {
-        "animalID": "leopard",
-        "MC": 800
-      },
-      {
-        "animalID": "jaguar",
-        "MC": 660
-      },
-      {
-        "animalID": "demonPufferfish",
-        "MC": 2625
-      },
-      {
-        "animalID": "yellowPufferfish",
-        "MC": 75
-      },
-      {
-        "animalID": "blackTiger",
-        "MC": 3280
-      },
-      {
-        "animalID": "whiteTiger",
-        "MC": 185
-      },
-      {
-        "animalID": "blackBear",
-        "MC": 310
-      },
-      {
-        "animalID": "blackLion",
-        "MC": 13750
-      },
-      {
-        "animalID": "whiteLion",
-        "MC": 2625
-      },
-      {
-        "animalID": "blackManedLion",
-        "MC": 930
-      },
-      {
-        "animalID": "blackLioness",
-        "MC": 13750
-      },
-      {
-        "animalID": "whiteLioness",
-        "MC": 2625
-      },
-      {
-        "animalID": "lioness",
-        "MC": 125
-      },
-      {
-        "animalID": "blackLionCub",
-        "MC": 13750
-      },
-      {
-        "animalID": "whiteLionCub",
-        "MC": 2625
-      },
-      {
-        "animalID": "lionCub",
-        "MC": 250
-      },
-      {
-        "animalID": "shaheen",
-        "MC": 55000
-      },
-      {
-        "animalID": "predator",
-        "MC": 1065
-      },
-      {
-        "animalID": "rareVulture",
-        "MC": 41250
-      },
-      {
-        "animalID": "bigGoat",
-        "MC": 666
-      },
-      {
-        "animalID": "markhor",
-        "MC": 0
-      },
-      {
-        "animalID": "blackRhino",
-        "MC": 6875
-      },
-      {
-        "animalID": "whiteRhino",
-        "MC": 3280
-      },
-      {
-        "animalID": "greaterSpottedEagle",
-        "MC": 68750
-      },
-      {
-        "animalID": "harpyEagle",
-        "MC": 68750
-      },
-      {
-        "animalID": "goldenEagle",
-        "MC": 2360
-      },
-      {
-        "animalID": "giraffeFamily",
-        "MC": 1840
-      },
-      {
-        "animalID": "whiteGiraffe",
-        "MC": 440
-      },
-      {
-        "animalID": "aquaYeti",
-        "MC": 300
-      },
-      {
-        "animalID": "shopBigfoot",
-        "MC": 125
-      },
-      {
-        "animalID": "shopSnowman",
-        "MC": 125
-      },
-      {
-        "animalID": "shopSnowgirl",
-        "MC": 125
-      },
-      {
-        "animalID": "luckBigfoot",
-        "MC": 13750
-      },
-      {
-        "animalID": "luckSnowman",
-        "MC": 13750
-      },
-      {
-        "animalID": "luckSnowgirl",
-        "MC": 27500
-      },
-      {
-        "animalID": "kingDragon",
-        "MC": 13750
-      }
-    \\]
+    {
+      "whiteDove": 125,
+      "stinkyPig": 3280,
+      "pinkyPig": 125,
+      "goldenPheasant": 250,
+      "marshDeer": 1250,
+      "doe": 60,
+      "muskDeer": 3935,
+      "jackass": 930,
+      "rareMacaw": 41250,
+      "blueMacaw": 125,
+      "girabie": 660,
+      "momaffieFamily": 250,
+      "momaffie": 125,
+      "rareToucan": 41250,
+      "lavaToucan": 3280,
+      "fieryToucan": 125,
+      "keelBilledToucan": 60,
+      "chocoToucan": 0,
+      "blackPanther": 3280,
+      "leopard": 800,
+      "jaguar": 660,
+      "demonPufferfish": 2625,
+      "yellowPufferfish": 75,
+      "blackTiger": 3280,
+      "whiteTiger": 185,
+      "blackBear": 310,
+      "blackLion": 13750,
+      "whiteLion": 2625,
+      "blackManedLion": 930,
+      "blackLioness": 13750,
+      "whiteLioness": 2625,
+      "lioness": 125,
+      "blackLionCub": 13750,
+      "whiteLionCub": 2625,
+      "lionCub": 250,
+      "shaheen": 55000,
+      "predator": 1065,
+      "rareVulture": 41250,
+      "bigGoat": 666,
+      "markhor": 0,
+      "blackRhino": 6875,
+      "whiteRhino": 3280,
+      "greaterSpottedEagle": 68750,
+      "harpyEagle": 68750,
+      "goldenEagle": 2360,
+      "giraffeFamily": 1840,
+      "whiteGiraffe": 440,
+      "aquaYeti": 300,
+      "shopBigfoot": 125,
+      "shopSnowman": 125,
+      "shopSnowgirl": 125,
+      "luckBigfoot": 13750,
+      "luckSnowman": 13750,
+      "luckSnowgirl": 27500,
+      "kingDragon": 13750
+    }
   `
 }

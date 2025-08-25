@@ -306,7 +306,7 @@ export default [
       $addTextDisplay[## $get[totalPoints]]
       $addTextDisplay[## $get[totalRares]]
       $addSeparator[Large]
-      $addTextDisplay[$get[allRaresList]]
+      ${listDesign()}
     ;$getGlobalVar[luckyColor]]
     $sendMessage[$channelID]
     ${reset()}
@@ -349,7 +349,7 @@ export default [
       $addTextDisplay[## $get[totalPoints]]
       $addTextDisplay[## $get[totalRares]]
       $addSeparator[Large]
-      $addTextDisplay[$get[allRaresList]]
+      ${listDesign()}
       $addSeparator[Large]
       $addTextDisplay[## $get[time]]
     ;$getGlobalVar[luckyColor]]
@@ -480,7 +480,7 @@ export default [
       $addTextDisplay[## $get[totalPoints]]
       $addTextDisplay[## $get[totalRares]]
       $addSeparator[Large]
-      $addTextDisplay[$get[allRaresList]]
+      ${listDesign()}
       $addSeparator[Large]
       $addTextDisplay[## $get[time]]
     ;$getGlobalVar[luckyColor]]
@@ -515,7 +515,7 @@ export default [
       $addTextDisplay[## $get[totalPoints]]
       $addTextDisplay[## $get[totalRares]]
       $addSeparator[Large]
-      $addTextDisplay[$get[allRaresList]]
+      ${listDesign()}
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
 
@@ -1803,12 +1803,12 @@ export default [
       $addTextDisplay[## ⁘ Total points: \`$get[totalPoints]\`]
       $addTextDisplay[## ⁘ Total rares: \`$get[totalRares]\`]
       $addSeparator
-      $addTextDisplay[${listDesign('listContent')}]
+      ${listDesign('listContent')}
       $addSeparator[Large]
       $if[$arrayLength[unknownContent]!=0;
         $addTextDisplay[# Unknown rares]
         $addSeparator
-        $addTextDisplay[${listDesign('unknownContent')}]
+        ${listDesign('unknownContent')}
       ]
     ;$getGlobalVar[luckyColor]]
   `
@@ -1822,6 +1822,7 @@ function JSON() {
     $jsonLoad[userSettings;$env[userProfile;1hl;settings]]
     $jsonLoad[challengeData;$getGlobalVar[$if[$getUserVar[event1hstarted|$channelID];eventChallengeData;challengeData]]]
     $jsonLoad[animals;$readFile[json/animals.json]]
+    $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
     $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
     $jsonLoad[allRaresData;$jsonEntries[allRaresData]]
     $jsonLoad[allRares;$getGlobalVar[allRares]]
@@ -1981,7 +1982,6 @@ function allRaresList(id = "$authorID") {
   return `
     $jsonLoad[raresList;$getUserVar[1hallRaresList|$channelID;${id}]]
     ${raresListGenerator()}
-    $let[allRaresList;${listDesign()}]
   `
 }
 
@@ -2032,7 +2032,8 @@ function raresListGenerator(arrayName = 'content', addPoints = false) {
     $arrayForEach[listEntries;entry;
       $let[animalID;$env[entry;0]]
       $let[quantity;$env[entry;1]]
-      $let[animalDisplay;$env[animals;$get[animalID];variants;0;emoji]]
+      $let[animalIndex;$env[animalsIndexes;$get[animalID]]]
+      $let[animalDisplay;$env[animals;$get[animalIndex];variants;0;emoji]]
 
       $if[${addPoints};
         $jsonLoad[output;$callFunction[findingRareInChallengeDataBase;$get[animalID]]]
@@ -2047,8 +2048,8 @@ function raresListGenerator(arrayName = 'content', addPoints = false) {
       $arrayPush[preContent;none]
     ;
       $loop[$arrayLength[preContent];
-        $if[$math[($env[i] - 1) % 6]==0;
-          $arrayPushJSON[displacement;$arraySplice[preContent;0;6]]
+        $if[$math[($env[i] - 1) % $getUserVar[maxRowsInRaresList]]==0;
+          $arrayPushJSON[displacement;$arraySplice[preContent;0;$getUserVar[maxRowsInRaresList]]]
         ]
       ;i;true]
 
@@ -2126,7 +2127,7 @@ function historyEmbed() {
       $addTextDisplay[## Tags]
       $addTextDisplay[$codeBlock[$arrayJoin[tags;\n]]]
       $addSeparator[Large]
-      $addTextDisplay[${listDesign()}]
+      ${listDesign()}
 
       $if[$arrayLength[history]>1;
         $addActionRow
@@ -2330,4 +2331,11 @@ function lobbyTimeout () {
   `
 }
 
-function listDesign(arrayName = "content") { return `# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[${arrayName};\n# ]\n# ╚══════༺❀༻༺❀༻══════╝` }
+// function listDesign(arrayName = "content") { return `# ╔══════༺❀༻༺❀༻══════╗\n# $arrayJoin[${arrayName};\n# ]\n# ╚══════༺❀༻༺❀༻══════╝` }
+function listDesign(arrayName = "content") { 
+  return `
+    $addMediaGallery[$addMediaItem[https://i.postimg.cc/65z7tRMd/upperRow.png]]
+    $addTextDisplay[# $arrayJoin[${arrayName};\n# ]]
+    $addMediaGallery[$addMediaItem[https://i.postimg.cc/yY7JMny1/lowerRow.png]]
+  `
+}

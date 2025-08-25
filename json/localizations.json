@@ -199,5 +199,16 @@
         "и Вы разбогатели на"
       ]
     }
+  ],
+
+  "arena": [
+    {
+      "EN": "You went into arena and you beat {0} and you earned {1}{2}!",
+      "RU": "Вы пошли в арену и победили {0}, заработав {1}{2}!"
+    },
+    {
+      "EN": "You went into arena but you lost to {0}",
+      "RU": "Вы пошли в арену но проиграли {0}"
+    }
   ]
 }

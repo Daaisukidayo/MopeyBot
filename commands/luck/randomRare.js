@@ -9,11 +9,10 @@ export default {
     $callFunction[checking]
     $callFunction[cooldown;$get[cdTime]]
     $jsonLoad[animals;$readFile[json/animals.json]]
-    $jsonLoad[animals;$jsonEntries[animals]]
 
     $arrayMap[animals;animal;
-      $if[$env[animal;1;isRare];
-        $return[$env[animal;1;variants;0;name] $env[animal;1;variants;0;emoji]]
+      $if[$env[animal;isRare];
+        $return[$env[animal;variants;0;name] $env[animal;variants;0;emoji]]
       ]
     ;rares]
 

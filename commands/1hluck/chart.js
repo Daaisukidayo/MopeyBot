@@ -1,4 +1,4 @@
-export default [{ 
+export default { 
   name: "chart", 
   type: "messageCreate", 
   code: `
@@ -16,4 +16,4 @@ export default [{
       $timestamp[1753213440000]
     ]
   `
-}]
+}

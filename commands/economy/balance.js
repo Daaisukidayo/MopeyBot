@@ -1,6 +1,4 @@
-const CD = "10s"
-
-export default [{
+export default {
   name: "balance",
   aliases: ['bal', 'coins', 'cash', 'profile', 'prof', 'money', 'packs'],
   type: "messageCreate",
@@ -8,7 +6,7 @@ export default [{
     $reply
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $callFunction[checking]
-    $callFunction[cooldown;${CD}]
+    $callFunction[cooldown;10s]
 
     $arrayLoad[packs]
     $jsonLoad[shopItems;$getGlobalVar[shopItems]]
@@ -17,9 +15,8 @@ export default [{
     $if[$arrayAt[userPacks;0]!=;
       $arrayForEach[userPacks;userPack;
         $loop[$arrayLength[shopItems];
-          $jsonLoad[item;$arrayAt[shopItems;$sub[$env[i];1]]]
-          $if[$env[userPack]==$env[item;code];;$continue]
-          $arrayPush[packs;$env[item;name]]
+          $if[$env[userPack]==$env[shopItems;$math[$env[i]-1];code];;$continue]
+          $arrayPush[packs;$env[shopItems;$math[$env[i]-1];name]]
           $break
         ;i;true]
       ]
@@ -36,4 +33,4 @@ export default [{
       $addTextDisplay[## 🛒 __Purchased Skinpacks:__\n$codeBlock[$arrayJoin[packs;\n]]]
     ;$getGlobalVar[defaultColor]]
   `
-}]
+}
