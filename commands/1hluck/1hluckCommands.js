@@ -2048,8 +2048,8 @@ function raresListGenerator(arrayName = 'content', addPoints = false) {
       $arrayPush[preContent;none]
     ;
       $loop[$arrayLength[preContent];
-        $if[$math[($env[i] - 1) % $getUserVar[maxRowsInRaresList]]==0;
-          $arrayPushJSON[displacement;$arraySplice[preContent;0;$getUserVar[maxRowsInRaresList]]]
+        $if[$math[($env[i] - 1) % $getGlobalVar[maxRowsInRaresList]]==0;
+          $arrayPushJSON[displacement;$arraySplice[preContent;0;$getGlobalVar[maxRowsInRaresList]]]
         ]
       ;i;true]
 
