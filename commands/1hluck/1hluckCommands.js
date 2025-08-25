@@ -198,7 +198,7 @@ export default [
         $continue
       ]
 
-      $let[limitAnimalName;$env[animals;$get[animalID];variants;0;emoji]]
+      $let[limitAnimalName;$env[animals;$env[animalsIndexes;$get[animalID]];variants;0;emoji]]
       $let[chartlimitIndex;$arrayFindIndex[chartLimits;obj;$env[obj;category]==$get[challengeDataCategory]]]
       $jsonLoad[limitChartObj;$env[chartLimits;$get[chartlimitIndex]]]
       $let[limit;$env[limitChartObj;limit]]
@@ -216,7 +216,7 @@ export default [
 
     $jsonLoad[caughtEntries;$jsonEntries[caught]]
     $arrayMap[caughtEntries;entry;
-      $let[animalEmoji;$env[animals;$env[entry;0];variants;0;emoji]]
+      $let[animalEmoji;$env[animals;$env[animalsIndexes;$env[entry;0]];variants;0;emoji]]
       $let[pointsInEntry;$env[entry;1;p]]
       $let[quantityInEntry;$env[entry;1;q]]
       $return[## ⁕ $get[animalEmoji]\`$get[quantityInEntry]\` ⟪+$get[pointsInEntry]⟫]
@@ -246,7 +246,7 @@ export default [
           $arrayForEach[challengeRares;rare;
             $jsonLoad[allRaresDataObj;$getGlobalVar[allRaresData]]
 
-            $let[displayRare;$env[animals;$env[rare];variants;0;emoji]]
+            $let[displayRare;$env[animals;$env[animalsIndexes;$env[rare]];variants;0;emoji]]
             $let[quantity;$default[$env[allRaresList;$env[rare]];0]]
 
             $if[$get[quantity]<$get[limit];
@@ -417,7 +417,7 @@ export default [
     
     $let[caughtRare;$get[arg1]]
     $let[animalID;$callFunction[findingAnimalID;$get[caughtRare]]]
-    $let[animal;$env[animals;$get[animalID];variants;0;emoji]]
+    $let[animal;$env[animals;$env[animalsIndexes;$get[animalID]];variants;0;emoji]]
     $let[count;$get[arg3]]
     $let[quantity;$default[$env[allRaresList;$get[animalID]];0]]
     $let[rares;0]
