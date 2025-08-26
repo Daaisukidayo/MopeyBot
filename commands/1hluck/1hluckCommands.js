@@ -431,7 +431,7 @@ export default [
 
     $if[$and[$jsonHas[allRaresList;$get[animalID]]==false;$get[arg2]==-];
       $callFunction[embed;error] 
-      $description[### Animal «$get[animalID]» is not in the rares list!]
+      $description[### Animal «$get[animal]» is not in the rares list!]
       $sendMessage[$channelID]
       $stop
     ]
