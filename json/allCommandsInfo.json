@@ -36,7 +36,7 @@
     "commandDescription": [
       "## Shows and edits your current timezone! Required for the proper functioning of time functions!",
       "### Example: `{PREFIX}timezone <TimezoneID>`",
-      "### {HYPERLINK_TIMEZONES}"
+      "## {HYPERLINK_TIMEZONES}"
     ],
     "commandRelated": [],
     "commandCategory": "Special"
@@ -132,7 +132,7 @@
     "commandAliases": ["clearcoins", "resetcoins", "rc"],
     "commandName": "Clear Coins",
     "commandDescription": [
-      "❗ WARNING ❗", 
+      "# ❗ WARNING ❗", 
       "## __This command will clear all your {EMOJI}!__"
     ],
     "commandRelated": [],

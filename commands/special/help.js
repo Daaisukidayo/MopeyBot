@@ -48,7 +48,7 @@ export default {
       $jsonLoad[commandRelated;$env[allCommandsInfo;$get[helpIndex];commandRelated]]
       $addContainer[
         $addTextDisplay[# $get[comNameEmoji] $env[allCommandsInfo;$get[helpIndex];commandName]]
-        $addTextDisplay[$advancedReplace[$arrayJoin[commandDesc;\n];{PREFIX};$get[prefix];{BRACKETS_INFO};$codeBlock[$arrayJoin[bracketsInfo;\n]]]]
+        $addTextDisplay[$advancedReplace[$arrayJoin[commandDesc;\n];{PREFIX};$get[prefix];{BRACKETS_INFO};$codeBlock[$arrayJoin[bracketsInfo;\n]];{PUMPKINS_RARITIES};$codeBlock[$arrayJoin[pumpkinsRarities;\n];JSON];{BEACHBALLS_RARITIES};$codeBlock[$arrayJoin[beachballsRarities;\n];JSON];{UMBRELLAS_RARITIES};$codeBlock[$arrayJoin[umbrellasRarities;\n];JSON];{HYPERLINK_TIMEZONES};$get[timezonesHyperlink];{EMOJI};$get[mopecoin]]]
         $addSeparator
         $addTextDisplay[# Aliases]
         $addTextDisplay[## \`$arrayJoin[commandAliases;\` \`]\`]
