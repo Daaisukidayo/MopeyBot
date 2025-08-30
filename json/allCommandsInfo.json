@@ -5,10 +5,10 @@
     "commandDescription": [
       "## Let's you equip any animal with purchased skin!",
       "## Usage: `{PREFIX}wardrobe {new|all|<tier>|<animal>}`",
-      "### [new\\] - Starts new equiping animals with chosen skin for mouse to king dragon",
-      "### `[all\\]` - Equips every animal with chosen skin pack",
-      "### `[tier\\]` - Equips every chosen tier animal with chosen skin pack",
-      "### `[animal\\]` - Equips chosen animal with chosen skin"
+      "### [new] - Starts new equiping animals with chosen skin for mouse to king dragon",
+      "### `[all]` - Equips every animal with chosen skin pack",
+      "### `[tier]` - Equips every chosen tier animal with chosen skin pack",
+      "### `[animal]` - Equips chosen animal with chosen skin"
     ],
     "commandRelated": ["play", "shop"],
     "commandCategory": "Gaming"
