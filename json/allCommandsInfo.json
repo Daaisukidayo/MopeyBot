@@ -2,22 +2,22 @@
   {
     "commandAliases": ["wardrobe", "wr"],
     "commandName": "Wardrobe",
-    "commandDescriptions": [
+    "commandDescription": [
       "## Let's you equip any animal with purchased skin!",
       "## Usage: `{PREFIX}wardrobe {new|all|<tier>|<animal>}`",
-      "### [new] - Starts new equiping animals with chosen skin for mouse to king dragon",
-      "### `[all]` - Equips every animal with chosen skin pack",
-      "### `[tier]` - Equips every chosen tier animal with chosen skin pack",
-      "### `[animal]` - Equips chosen animal with chosen skin"
+      "### [new\\] - Starts new equiping animals with chosen skin for mouse to king dragon",
+      "### `[all\\]` - Equips every animal with chosen skin pack",
+      "### `[tier\\]` - Equips every chosen tier animal with chosen skin pack",
+      "### `[animal\\]` - Equips chosen animal with chosen skin"
     ],
     "commandRelated": ["play", "shop"],
     "commandCategory": "Gaming"
   },
   {
-    "commandAliases": ["party", "lobby"],
+    "commandAliases": ["lobby", "party"],
     "commandName": "1 Hour Luck Challenge Lobby",
-    "commandDescriptions": [
-      "## Creates a new Lobby, and anyone who wishes can join your Lobby and participate in the Co-op 1 Hour Luck Challenge! A maximum of 6 participants.",
+    "commandDescription": [
+      "## Creates a new Lobby, and anyone who wishes can join your Lobby and participate in the Co-op 1 Hour Luck Challenge! A maximum of {MAX_PARTICIPANTS} participants.",
       "### `1`. Press the 'Join' button to enter the Lobby.",
       "### `2`. Press the 'Exit' button to leave the Lobby.",
       "### `3`. Press the 'Start' button (for hosts only) to begin the Challenge! A minimum of 2 participants is required.",
@@ -300,7 +300,7 @@
       "## Wager your coins on heads or tails for a chance to win!",
       "### `max` - the maximum allowable bet (`200,000`)",
       "### `side` - the side of the coin, either heads or tails. If no side is specified, it defaults to heads",
-      "### Usage: `{PREFIX}coinflip <amount>|[max] (<side>)`",
+      "### Usage: `{PREFIX}coinflip [<amount>|max] (<side>)`",
       "{BRACKETS_INFO}"
     ],
     "commandRelated": [],

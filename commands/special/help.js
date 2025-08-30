@@ -10,11 +10,10 @@ export default {
 
     $jsonLoad[allCommandsInfo;$readFile[json/allCommandsInfo.json]]
     $let[arg;$toLowerCase[$message[0]]]
-    $let[al;📚 Aliases:]
-    $let[rel;📖 Related:]
     $let[comNameEmoji;📜]
-    $let[mopecoin;$getGlobalVar[emoji]]
+    $let[emoji;$getGlobalVar[emoji]]
     $let[prefix;$getGuildVar[prefix]]
+    $let[maxParticipants;$getGlobalVar[maxParticipants]]
     $let[timezonesHyperlink;$hyperlink[List of all timezones;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones]]
     $let[helpIndex;$arrayFindIndex[allCommandsInfo;obj;$jsonLoad[aliases;$env[obj;commandAliases]] $return[$arrayIncludes[aliases;$get[arg]]]]]
 
@@ -48,12 +47,12 @@ export default {
       $jsonLoad[commandRelated;$env[allCommandsInfo;$get[helpIndex];commandRelated]]
       $addContainer[
         $addTextDisplay[# $get[comNameEmoji] $env[allCommandsInfo;$get[helpIndex];commandName]]
-        $addTextDisplay[$advancedReplace[$arrayJoin[commandDesc;\n];{PREFIX};$get[prefix];{BRACKETS_INFO};$codeBlock[$arrayJoin[bracketsInfo;\n]];{PUMPKINS_RARITIES};$codeBlock[$arrayJoin[pumpkinsRarities;\n];JSON];{BEACHBALLS_RARITIES};$codeBlock[$arrayJoin[beachballsRarities;\n];JSON];{UMBRELLAS_RARITIES};$codeBlock[$arrayJoin[umbrellasRarities;\n];JSON];{HYPERLINK_TIMEZONES};$get[timezonesHyperlink];{EMOJI};$get[mopecoin]]]
+        $addTextDisplay[$advancedReplace[$arrayJoin[commandDesc;\n];{PREFIX};$get[prefix];{MAX_PARTICIPANTS};$get[maxParticipants];{BRACKETS_INFO};$codeBlock[$arrayJoin[bracketsInfo;\n]];{PUMPKINS_RARITIES};$codeBlock[$arrayJoin[pumpkinsRarities;\n];JSON];{BEACHBALLS_RARITIES};$codeBlock[$arrayJoin[beachballsRarities;\n];JSON];{UMBRELLAS_RARITIES};$codeBlock[$arrayJoin[umbrellasRarities;\n];JSON];{HYPERLINK_TIMEZONES};$get[timezonesHyperlink];{EMOJI};$get[emoji]]]
         $addSeparator
-        $addTextDisplay[# Aliases]
+        $addTextDisplay[# 📚 Aliases]
         $addTextDisplay[## \`$arrayJoin[commandAliases;\` \`]\`]
         $addSeparator
-        $addTextDisplay[# Related]
+        $addTextDisplay[# 📖 Related]
         $addTextDisplay[## \`$default[$arrayJoin[commandRelated;\` \`];none]\`]
 
       ;$getGlobalVar[defaultColor]]
