@@ -5,10 +5,11 @@
     "commandDescription": [
       "## Let's you equip any animal with purchased skin!",
       "## Usage: `{PREFIX}wardrobe {new|all|<tier>|<animal>}`",
-      "### [new] - Starts new equiping animals with chosen skin for mouse to king dragon",
+      "### `[new]` - Starts new equiping animals with chosen skin for mouse to king dragon",
       "### `[all]` - Equips every animal with chosen skin pack",
       "### `[tier]` - Equips every chosen tier animal with chosen skin pack",
-      "### `[animal]` - Equips chosen animal with chosen skin"
+      "### `[animal]` - Equips chosen animal with chosen skin",
+      "{BRACKETS_INFO}"
     ],
     "commandRelated": ["play", "shop"],
     "commandCategory": "Gaming"
@@ -36,7 +37,8 @@
     "commandDescription": [
       "## Shows and edits your current timezone! Required for the proper functioning of time functions!",
       "### Example: `{PREFIX}timezone <TimezoneID>`",
-      "## {HYPERLINK_TIMEZONES}"
+      "## {HYPERLINK_TIMEZONES}",
+      "{BRACKETS_INFO}"
     ],
     "commandRelated": [],
     "commandCategory": "Special"
