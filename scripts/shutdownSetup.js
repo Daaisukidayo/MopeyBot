@@ -5,18 +5,14 @@ export default async function (client) {
   const warn = chalk.yellow.bold
   const debug = chalk.green.bold
   const err = chalk.red.bold
+  const signals = ['SIGINT', 'SIGTERM']
 
-  process.on('SIGINT', () => {
+  signals.forEach(signal => process.on(signal, () => {
     const now = new Date();
     const timestamp = `[${now.toLocaleString().replace(/,/g, '')}]`;
-    
-    console.log(debug(timestamp) + warn(` [WARN] Received signal STOP, shutting down the Bot...`) );
-    try {
-      client.destroy();
-      console.log(debug(timestamp) + info(` [INFO] Bot has been shut down successfully`) );
-      process.exit(0);
-    } catch (error) {
-      console.error(debug(timestamp) + err(` [ERROR] Failed to shut down the Bot: ${error.message}`));
-    }
-  })
+
+    console.log(debug(timestamp) + info(` [INFO] Bot has been shut down`) );
+    client.destroy();
+    process.exit(0);
+  }));
 }

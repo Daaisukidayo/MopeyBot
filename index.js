@@ -41,8 +41,9 @@ const client = new ForgeClient({
 
 // ========== LOAD COMMANDS ==========
 client.commands.load("./commands");
+client.functions.load("./functions");
 
-// ========== SIGINT handler ==========
+// ========== SIGNALS handler ==========
 
 shutdownSetup(client)
 
@@ -301,6 +302,7 @@ DB.variables({
   logChannelID: "1391387203871047731",
   lobbyInactiveTime: "30m",
   maxRowsInRaresList: 6,
+  maxParticipants: 10,
 
   // history
 
@@ -341,7 +343,7 @@ DB.variables({
 
   // lobby
 
-  allLobbyTags: {
+  allLobbyTagsContent: {
     unlimitedRares: "Unlimited Rares",
     normalDifficulty: "Normal Difficulty",
     mediumDifficulty: "Medium Difficulty",
@@ -349,6 +351,8 @@ DB.variables({
   },
 
   difficulties: ["normal", "medium", "hard"],
+  modes: ["FFA", "2 Teams", "3 Teams"],
+  tags: ["unlimitedRares"],
 
   // raretry
 
@@ -682,220 +686,3 @@ DB.variables({
     { tier: 17, animalIDs: [ "kingDragon" ] }
   ],
 });
-
-// ========== FUNCTIONS ==========
-
-// Executes when a user doesn't accept the rules
-client.functions.add({
-  name: "rulesSchema",
-  code: `
-    $return[
-      $onlyIf[$getUserVar[userProfile]!=;$reply Your data had been corrupted. Load your last saved backup to restore data.]
-      $addActionRow
-      $addButton[acceptrules-$authorID;Accept;Success;✅]
-      $addButton[declinerules-$authorID;Decline;Danger;🛑]
-      $callFunction[rulesEmbeds]    
-    ]
-  `,
-});
-
-// Embeds for rules
-client.functions.add({
-  name: "rulesEmbeds",
-  code: `
-    $return[  
-      $author[Hey, $userDisplayName!;$userAvatar]
-      $title[It looks like you haven't accepted the rules yet!]
-      $description[### By clicking on "Accept" button, you confirm that you have read and agree to the following important documents:
-      # $hyperlink[Information;https://github.com/Daaisukidayo/MopeyBot/blob/main/README.md]
-      # $hyperlink[Terms of Service;https://github.com/Daaisukidayo/MopeyBot/blob/main/Mopey's_TOS.md]
-      # $hyperlink[Privacy Policy;https://github.com/Daaisukidayo/MopeyBot/blob/main/Mopey's_TOS.md#-privacy-policy]
-      # $hyperlink[Rules;https://github.com/Daaisukidayo/MopeyBot/blob/main/Rules.md]]
-      $color[$getGlobalVar[cooldownColor]]
-    ]
-  `,
-});
-
-// Executes when on cooldown
-client.functions.add({
-  name: "cooldownSchema",
-  params: ["name"],
-  code: `
-    $let[time;$getUserCooldownTime[$env[name]]]
-    $let[cooldownEnd;$sum[$getTimestamp;$get[time]]]
-    $let[longDateTime;$discordTimestamp[$get[cooldownEnd];LongDateTime]]
-    $let[relativeTimeLeft;$discordTimestamp[$get[cooldownEnd];RelativeTime]]
-    $if[$or[$get[time]>30000;$get[time]==0];
-      $let[deleteTime;10000]
-    ;
-      $let[deleteTime;$get[time]]
-    ]
-
-    $jsonLoad[l;$readFile[json/localizations.json]]
-    $let[language;$env[userProfile;language]]
-
-    $let[content1;$default[$env[l;cooldown;0;$get[language]];???]]
-    $let[content2;$default[$advancedReplace[$env[l;cooldown;1;$get[language]];{0};$get[relativeTimeLeft];{1};$get[longDateTime]];???]]
-
-    $return[
-      $getGlobalVar[author] $c[REQUIRES LOADED USER PROFILE]
-      $title[$get[content1]]
-      $description[$get[content2]]
-      $color[$getGlobalVar[cooldownColor]]    
-      $deleteIn[$get[deleteTime]]
-    ]
-  `,
-});
-
-// Function for adding/removing coins
-// REQUIRES LOADED USER PROFILE
-client.functions.add({
-  name: "sumMC",
-  params: ["amount"],
-  code: `
-    $return[$!jsonSet[userProfile;MC;$sum[$env[userProfile;MC];$env[amount]]]]
-  `,
-});
-
-client.functions.add({
-  name: "subMC",
-  params: ["amount"],
-  code: `
-    $return[$!jsonSet[userProfile;MC;$sub[$env[userProfile;MC];$env[amount]]]]
-  `,
-});
-
-// standart checkings before executing command
-client.functions.add({
-  name: "checking",
-  code: `
-    $if[$env[userProfile;devMode];;
-      $onlyIf[$getGlobalVar[botEnabled]]
-    ]
-    $onlyIf[$env[userProfile;isBanned]!=true]
-    $onlyIf[$env[userProfile;acceptedRules];$callFunction[rulesSchema]]
-    $onlyIf[$env[userProfile;onSlowmode]!=true]
-  `,
-});
-
-// adding cooldown
-client.functions.add({
-  name: "cooldown",
-  params: ["time"],
-  code: `
-    $if[$env[userProfile;devMode];;
-      $userCooldown[$commandName;$env[time];$callFunction[cooldownSchema;$commandName]]
-    ]
-  `,
-});
-
-// when important variables for commands' functionality are deleted
-// REQUIRES LOADED USER PROFILE
-client.functions.add({
-  name: "interFail",
-  code: `
-    $jsonLoad[l;$readFile[json/localizations.json]]
-    $let[language;$env[userProfile;language]]
-    $let[content;$default[$env[l;special;0;$get[language]];???]] 
-    $ephemeral 
-    $interactionReply[## $get[content]]
-  `,
-});
-
-// when other people trying to interact with author's button
-// REQUIRES LOADED USER PROFILE
-client.functions.add({
-  name: "notYourBTN",
-  code: `
-    $jsonLoad[l;$readFile[json/localizations.json]]
-    $let[language;$env[userProfile;language]]
-    $let[content;$default[$env[l;special;1;$get[language]];???]]
-    $ephemeral
-    $interactionReply[## $get[content]]
-  `,
-});
-
-// embed with old author & custom color
-client.functions.add({ 
-  name: "embed",
-  params: ["colorType"],
-  code: `
-    $author[✖️ Error!]
-    $if[$env[colorType]!=error;$getGlobalVar[author]]
-    $color[$getGlobalVar[$env[colorType]Color]]
-  `
-})
-
-// New author with components v2
-client.functions.add({ 
-  name: "newAuthor",
-  code: `
-    $return[
-      $addSection[
-        $addTextDisplay[## $username • MUID: \`$env[userProfile;MUID]\`]
-        $addThumbnail[$userAvatar]
-      ]
-    ]
-  `
-})
-
-// finds and returns animalID by it's aliases ('wd' etc.)
-client.functions.add({ 
-  name: 'findingAnimalID',
-  params: ["alias"],
-  code: `
-    $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
-    $jsonLoad[allRaresData;$jsonEntries[allRaresData]]
-    $loop[$arrayLength[allRaresData];
-      $let[findingAnimalIDIndex;$math[$env[findingAnimalIDLoop] - 1]]
-
-      $jsonLoad[arr;$arrayAt[allRaresData;$get[findingAnimalIDIndex]]]
-      $jsonLoad[arrAliases;$env[arr;1]]
-
-      $if[$arrayIncludes[arrAliases;$env[alias]];;$continue]
-
-      $let[animalID;$env[arr;0]]
-
-      $break
-    ;findingAnimalIDLoop;true]
-    $return[$default[$get[animalID];undefined]]
-  `
-})
-
-// finds animalID's points and category. returns an object
-client.functions.add({
-  name: 'findingRareInChallengeDataBase',
-  params: ["animalID"],
-  code: `
-    $loop[$arrayLength[challengeData];
-      $let[findingRareInChallengeDataBaseIndex;$math[$env[findingRareInChallengeDataBaseLoop] - 1]]
-
-      $jsonLoad[challengeDataObj;$arrayAt[challengeData;$get[findingRareInChallengeDataBaseIndex]]]
-      $jsonLoad[challengeDataRaresList;$env[challengeDataObj;rares]]
-
-      $if[$arrayIncludes[challengeDataRaresList;$env[animalID]];;$continue]
-
-        $jsonLoad[output;{
-          "points": $env[challengeDataObj;points],
-          "category": "$env[challengeDataObj;category]"
-        }]
-
-      $break
-    ;findingRareInChallengeDataBaseLoop;true]
-    $if[$isJSON[$env[output]];;$jsonLoad[output;{"points": 0, "category": "undefined"}]]
-    $return[$env[output]]
-  `
-})
-
-// components V2 new custom error
-client.functions.add({ 
-  name: "newError",
-  params: ["description"],
-  code: `
-    $addContainer[
-      $addTextDisplay[**✖️ Error**]
-      $addSeparator
-      $addTextDisplay[## $env[description]]
-    ;$getGlobalVar[errorColor]]
-  `
-}) 
