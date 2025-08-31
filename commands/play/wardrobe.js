@@ -153,7 +153,7 @@ export default [{
     ${json()}
     $let[value;$selectMenuValues]
 
-    $arrayForEach[animalIDs;animal;
+    $arrayForEach[animalIDs;animalID;
       $jsonLoad[allVariants;$env[animals;$env[animalsIndexes;$env[animalID]];variants]]
 
       $loop[$arrayLength[allVariants];
@@ -186,11 +186,11 @@ export default [{
     $let[variant;$env[values;1]]
 
     $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
-
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
+
     ${json()}
-    $onlyIf[$arrayFindIndex[animals;animalObj;$get[animalID]==$env[animalObj;ID]]!=-1]
+    $onlyIf[$arrayIncludes[animalIDs;$get[animalID]]]
 
     $let[msg;$messageID]
 
