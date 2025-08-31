@@ -32,7 +32,7 @@ export default [{
           $description[# Choose a skinpack]
           ${menu("$get[arg]")}
         ;
-          $onlyIf[$arrayIncludes[animalsNames;$get[arg]];
+          $onlyIf[$arrayIncludes[animalIDs;$get[arg]];
             $callFunction[embed;error]
             $description[## Animal not found]
           ]
@@ -66,14 +66,14 @@ export default [{
     $!jsonSet[userWardrobe;$get[animalID];$get[variant]]
     $setUserVar[userWardrobe;$env[userWardrobe]]        
 
-    $let[i;$arrayIndexOf[animalsNames;$get[animalID]]]
+    $let[i;$arrayIndexOf[animalIDs;$get[animalID]]]
     $letSum[i;1]
-    $let[animalID;$arrayAt[animalsNames;$get[i]]]
+    $let[animalID;$arrayAt[animalIDs;$get[i]]]
 
     $loop[-1;
       $if[$env[animals;$env[animalsIndexes;$get[animalID]];variants;1]==;;$break]
       $letSum[i;1]
-      $let[animalID;$arrayAt[animalsNames;$get[i]]]
+      $let[animalID;$arrayAt[animalIDs;$get[i]]]
     ]
 
     $if[$get[animalID]==;
@@ -100,9 +100,9 @@ export default [{
     ${json()}
     $let[value;$selectMenuValues]
 
-    $loop[$arrayLength[animalsNames];
+    $loop[$arrayLength[animalIDs];
       $let[i;$math[$env[i] - 1]]
-      $let[animalID;$arrayAt[animalsNames;$get[i]]]
+      $let[animalID;$arrayAt[animalIDs;$get[i]]]
       $let[animalTier;$env[animals;$env[animalsIndexes;$get[animalID]];tier]]
 
       $if[$get[animalTier]>$get[tier];$break]
@@ -153,7 +153,7 @@ export default [{
     ${json()}
     $let[value;$selectMenuValues]
 
-    $arrayForEach[animalsNames;animal;
+    $arrayForEach[animalIDs;animal;
       $jsonLoad[allVariants;$env[animals;$env[animalsIndexes;$env[animalID]];variants]]
 
       $loop[$arrayLength[allVariants];
@@ -262,6 +262,9 @@ function json() {
   return `
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     $jsonLoad[animals;$readFile[json/animals.json]]
+    $arrayMap[animals;animal;
+      $return[$env[animal;ID]]
+    ;animalIDs]
     $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
     $jsonLoad[shopItems;$getGlobalVar[shopItems]]
     $jsonLoad[userSPs;$env[userProfile;userPacks]]
