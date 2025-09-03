@@ -4,5 +4,7 @@ export default {
   code: `
     $reply
     $onlyForUsers[;$botOwnerID]
+    $eval[$callFunction[loadNumbers];false]
+    -> $env[nums] <-
   `
 }

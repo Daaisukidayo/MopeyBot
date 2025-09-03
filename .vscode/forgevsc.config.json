@@ -23,7 +23,8 @@
     "forgescript": "tryforge/forgescript#dev",
     "forgedb": "tryforge/forgedb#dev",
     "forgeexpress": "zack-911/forgeexpress#dev",
-    "forgecanvas": "tryforge/forgecanvas#dev"
+    "forgecanvas": "tryforge/forgecanvas#dev",
+    "forgescheduler": "zack-911/forgescheduler#dev"
   },
   "customFunctions": {
     "Example1": {

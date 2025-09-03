@@ -4222,14 +4222,14 @@
         "vCode": "s1",
         "name": "Shop Bigfoot",
         "description": "Season 1",
-        "emoji": "<:BigfootS1:1365791609001611344>",
+        "emoji": "<:ShopBigfootS1:1365791609001611344>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1365793815906226247/Bigfoot-S1.png"
       },
       {
         "vCode": "s2",
         "name": "Shop Bigfoot",
         "description": "Season 2",
-        "emoji": "<:BigfootS2:1285617256562425967>",
+        "emoji": "<:ShopBigfootS2:1285617256562425967>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734721904283729/TheBigfoot.png"
       }
     ]
@@ -4276,7 +4276,7 @@
         "vCode": "s1",
         "name": "Shop Snowman",
         "description": "Season 1",
-        "emoji": "<:SnowmanS1:1284570594075218014>",
+        "emoji": "<:ShopSnowmanS1:1284570594075218014>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722369851525/TheSnowman.png"
       }
     ]
@@ -4316,7 +4316,7 @@
         "vCode": "s1",
         "name": "Shop Snowgirl",
         "description": "Season 1",
-        "emoji": "<:SnowgirlS1:1284570612018315346>",
+        "emoji": "<:ShopSnowgirlS1:1284570612018315346>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734722113863712/TheSnowgirl.png"
       }
     ]
