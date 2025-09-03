@@ -1,5 +1,6 @@
 import loadGlobalLobbyVars from "../../../JSfunctions/lobby/loadGlobalVars.js"
 import loadLobbyVars from "../../../JSfunctions/lobby/loadVars.js"
+import lobbyDefaultEmbed from "../../../JSfunctions/lobby/embed.js"
 
 export default {
   type: 'interactionCreate',
@@ -40,7 +41,7 @@ export default {
 
     $callFunction[messageChangePopUP;# Mode: \`$get[newMode]\`]
 
-    $callFunction[lobbyDefaultEmbed]
+    ${lobbyDefaultEmbed()}
     $deferUpdate
     $try[
       $!editMessage[$channelID;$env[lobby;messageID]]
