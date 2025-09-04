@@ -1,5 +1,7 @@
 // Embed with editing options that are gonna be added to history
 
+import settingTagsContent from "../../../../JSfunctions/lobby/settingTagsContent.js";
+
 export default {
   type: 'interactionCreate',
   allowedInteractionTypes: ['selectMenu'],
@@ -15,6 +17,7 @@ export default {
     
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]
     $jsonLoad[allLobbyTagsContent;$getGlobalVar[allLobbyTagsContent]]
+    $jsonLoad[allLobbyTags;$getGlobalVar[tags]]
 
     $jsonLoad[savedNewHistoryConfig;$getUserVar[savedNewHistoryConfig]]
     $jsonLoad[raresList;$env[savedNewHistoryConfig;raresList]]
@@ -75,21 +78,17 @@ export default {
       ]
 
       $case[tags;
-        $if[$arrayLength[tags]!=0;
-          $arrayMap[tags;tag;
-            $return[$env[allLobbyTagsContent;$env[tag]]]
-          ;tags]
-        ;
-          $arrayPush[tags;None]
-        ]
+        ${settingTagsContent('tags', 'tagsContent')}
 
         $addContainer[
           $callFunction[newAuthor]
           $addSeparator[Large]
           $addActionRow
           $addStringSelectMenu[addHistoryCustomTags-$authorID;Choose Tags]
-          $addOption[Unlimited Rares;;unlimitedRares]
-          $addTextDisplay[-# Current: $arrayJoin[tags;, ]]
+          $arrayForEach[allLobbyTags;tag;
+            $addOption[$env[allLobbyTagsContent;$env[tag]];(Toggle);$env[tag]]
+          ]
+          $addTextDisplay[-# Current: $arrayJoin[tagsContent;, ]]
         ;$getGlobalVar[luckyColor]]
       ]
 

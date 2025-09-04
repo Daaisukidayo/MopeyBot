@@ -1,11 +1,11 @@
-export default function settingTagsContent () {
+export default function settingTagsContent (defaultArrayName = 'lobbyTags', newArrayName = 'tagsContent') {
   return `
-    $if[$arrayLength[lobbyTags]!=0;
-      $arrayMap[lobbyTags;tag;
+    $if[$arrayLength[${defaultArrayName}]!=0;
+      $arrayMap[${defaultArrayName};tag;
         $return[$env[allLobbyTagsContent;$env[tag]]]
-      ;tagsContent]
+      ;${newArrayName}]
     ;
-      $arrayLoad[tagsContent; ;None]
+      $arrayLoad[${newArrayName}; ;None]
     ]
   `
 }

@@ -1,4 +1,5 @@
 import listGenerator from "../luck challenge/listGenerator.js"
+import settingTagsContent from "../lobby/settingTagsContent.js"
 
 export default function historyEmbed() {
   return `
@@ -7,13 +8,8 @@ export default function historyEmbed() {
     $jsonLoad[raresList;$env[history;$get[index];raresList]]
     $jsonLoad[tags;$env[history;$get[index];tags]]
     $jsonLoad[sortingOptions;$getGlobalVar[sortingOptions]]
-
-    $if[$arrayLength[tags]==0;
-      $arrayPush[tags;none]
-    ;
-      $arrayMap[tags;tag;$return[$env[allLobbyTagsContent;$env[tag]]];tags]
-    ]
     
+    ${settingTagsContent('tags', 'tagsContent')}
     ${listGenerator()}
 
     $addContainer[
@@ -30,7 +26,7 @@ export default function historyEmbed() {
       $addTextDisplay[### Ended at: $discordTimestamp[$env[history;$get[index];endedAt];LongDateTime]]
       $addSeparator
       $addTextDisplay[## Tags]
-      $addTextDisplay[$codeBlock[$arrayJoin[tags;\n]]]
+      $addTextDisplay[$codeBlock[$arrayJoin[tagsContent;\n]]]
       $addSeparator[Large]
       $callFunction[listDesign]
 

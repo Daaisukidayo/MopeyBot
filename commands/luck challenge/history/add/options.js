@@ -1,3 +1,4 @@
+import settingTagsContent from "../../../../JSfunctions/lobby/settingTagsContent.js"
 import listGenerator from "../../../../JSfunctions/luck challenge/listGenerator.js"
 
 // Embed with options that are gonna be added to history
@@ -137,14 +138,7 @@ export default {
       ]
     ]
     
-    $if[$arrayLength[tags]==0;
-      $arrayPush[tags;None]
-    ;
-      $arrayMap[tags;tag;
-        $return[$env[allLobbyTagsContent;$env[tag]]]
-      ;tags]
-    ]
-
+    ${settingTagsContent('tags', 'tagsContent')}
     ${listGenerator()}
 
     $if[$and[$get[points]!=0;$get[rares]!=0;$get[endingDate]!=0;$env[raresList]!={}];$let[disabledUploadButton;false]]
@@ -166,7 +160,7 @@ export default {
       $addTextDisplay[### Ended at: $discordTimestamp[$get[endingDate];LongDateTime]]
       $addSeparator
       $addTextDisplay[## Tags]
-      $addTextDisplay[$codeBlock[$arrayJoin[tags;\n]]]
+      $addTextDisplay[$codeBlock[$arrayJoin[tagsContent;\n]]]
       $addSeparator[Large]
       $callFunction[listDesign]
       $addSeparator

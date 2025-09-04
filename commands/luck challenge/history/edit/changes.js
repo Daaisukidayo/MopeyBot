@@ -1,6 +1,7 @@
 import historySorting from "../../../../JSfunctions/history/sorting.js"
 import editHistoryEmbed from "../../../../JSfunctions/history/editHistoryEmbed.js"
 import listGenerator from "../../../../JSfunctions/luck challenge/listGenerator.js"
+import settingTagsContent from "../../../../JSfunctions/lobby/settingTagsContent.js"
 
 // Message after the changes were made
 
@@ -138,16 +139,7 @@ export default {
 
 
       $case[editHistoryCustomTags;
-        $jsonLoad[allLobbyTagsContent;$getGlobalVar[allLobbyTagsContent]]
-        $jsonLoad[oldTags;$env[tagsInHistory]]
-        $if[$arrayLength[oldTags]==0;
-          $let[old;None]
-        ;
-          $arrayMap[oldTags;tag;
-            $return[$env[allLobbyTagsContent;$env[tag]]]
-          ;oldTags]
-          $let[old;$arrayJoin[oldTags;, ]]
-        ]
+        ${settingTagsContent('tagsInHistory', 'oldTags')}
 
         $if[$arrayIncludes[tagsInHistory;$get[value]];
           $!arraySplice[tagsInHistory;$arrayIndexOf[tagsInHistory;$get[value]];1]
@@ -157,14 +149,7 @@ export default {
 
         $!jsonSet[history;$get[pageIndex];tags;$env[tagsInHistory]]
 
-        $if[$arrayLength[tagsInHistory]==0;
-          $let[new;None]
-        ;
-          $arrayMap[tagsInHistory;tag;
-            $return[$env[allLobbyTagsContent;$env[tag]]]
-          ;tagsInHistory]
-          $let[new;$arrayJoin[tagsInHistory;, ]]
-        ]
+        ${settingTagsContent('tagsInHistory', 'newTags')}
 
         $addContainer[
           $callFunction[newAuthor]
@@ -172,10 +157,10 @@ export default {
           $addTextDisplay[## Successfully updated tags!]
           $addSeparator[Large]
           $addTextDisplay[# Old]
-          $addTextDisplay[\`\`\`$get[old]\`\`\`]
+          $addTextDisplay[\`\`\`$arrayJoin[oldTags;, ]\`\`\`]
           $addSeparator
           $addTextDisplay[# New]
-          $addTextDisplay[\`\`\`$get[new]\`\`\`]
+          $addTextDisplay[\`\`\`$arrayJoin[newTags;, ]\`\`\`]
         ;$getGlobalVar[luckyColor]]
       ]
 

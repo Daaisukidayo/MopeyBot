@@ -1,4 +1,5 @@
 import historySorting from "../../../../JSfunctions/history/sorting.js"
+import settingTagsContent from "../../../../JSfunctions/lobby/settingTagsContent.js"
 
 // After choosing editing option
 
@@ -22,6 +23,7 @@ export default {
     $jsonLoad[history;$env[userProfile;1hl;history]]
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]
     $jsonLoad[allLobbyTagsContent;$getGlobalVar[allLobbyTagsContent]]
+    $jsonLoad[allLobbyTags;$getGlobalVar[tags]]
 
     ${historySorting()}
 
@@ -83,21 +85,17 @@ export default {
       ]
 
       $case[tags;
-        $if[$arrayLength[tagsInHistory]!=0;
-          $arrayMap[tagsInHistory;tag;
-            $return[$env[allLobbyTagsContent;$env[tag]]]
-          ;tagsInHistory]
-        ;
-          $arrayPush[tagsInHistory;None]
-        ]
+        ${settingTagsContent('tagsInHistory', 'tagsContent')}
 
         $addContainer[
           $callFunction[newAuthor]
           $addSeparator[Large]
           $addActionRow
           $addStringSelectMenu[$get[page]-$get[sortType]-editHistoryCustomTags-$authorID;Choose Tags]
-          $addOption[Unlimited Rares;;unlimitedRares]
-          $addTextDisplay[-# Current: $arrayJoin[tagsInHistory;, ]]
+          $arrayForEach[allLobbyTags;tag;
+            $addOption[$env[allLobbyTagsContent;$env[tag]];(Toggle);$env[tag]]
+          ]
+          $addTextDisplay[-# Current: $arrayJoin[tagsContent;, ]]
         ;$getGlobalVar[luckyColor]]
       ]
 

@@ -1,4 +1,3 @@
-// TODO
 export default {
   name: 'deleteLobbyVars',
   code: `

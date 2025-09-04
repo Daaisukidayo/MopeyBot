@@ -21,8 +21,8 @@ export default {
     $let[playType;$env[savedNewHistoryConfig;playType]]
 
     $jsonLoad[newHistory;{
-      "points": $get[points],
-      "rares": $get[rares],
+      "points": "$get[points]",
+      "rares": "$get[rares]",
       "endedAt": "$get[endingDate]",
       "playType": "$get[playType]",
       "tags": $env[tags],

@@ -1,4 +1,3 @@
-// TODO
 import loadLobbyVars from '../../JSfunctions/lobby/loadVars.js'
 
 export default {
