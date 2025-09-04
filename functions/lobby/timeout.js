@@ -4,7 +4,7 @@ export default {
     $return[
       $!stopTimeout[LOBBYTIMEOUT-$channelID]
       $setTimeout[
-        $!deleteMessage[$channelID;$default[$get[msgid];$messageID]]
+        $!deleteMessage[$channelID;$default[$env[lobby;messageID];$messageID]]
         $sendMessage[$channelID;
           $description[## Party created by <@$get[host]> was closed due to inactivity]
           $color[Orange]

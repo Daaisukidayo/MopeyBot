@@ -13,6 +13,8 @@ export default {
 
     ${loadGlobalLobbyVars()}
     ${loadLobbyVars()}
+
+    $callFunction[lobbyExist]
     
     $callFunction[lobbySettingsEmbed]
     $ephemeral
