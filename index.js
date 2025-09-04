@@ -39,7 +39,7 @@ const client = new ForgeClient({
   ],
   events: ["interactionCreate", "messageCreate", "ready"],
   prefixes: ["$default[$getGuildVar[prefix];$getGlobalVar[prefix]]"],
-  logLevel: LogPriority.Low,
+  logLevel: LogPriority.VeryLow,
 });
 
 // ========== LOAD COMMANDS ==========
