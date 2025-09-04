@@ -13,18 +13,17 @@ export default {
 
     $if[$arrayLength[teams]==1;
 
-      $arrayLoad[result]
-      $arrayForEach[allPlayers;ID;
+      $arrayMap[allPlayers;ID;
         $jsonLoad[CHP;$getUserVar[challengeProgress|$channelID;$env[ID]]]
-        $arrayPushJSON[result;$env[CHP]]
         $deleteUserVar[participating|$channelID;$env[ID]]
         $deleteUserVar[challengeProgress|$channelID;$env[ID]]
-      ]
-      $arrayAdvancedSort[result;A;B;$math[$env[B;points] - $env[A;points]];result]
+        $return[$env[CHP]]
+      ;results]
+      $arrayAdvancedSort[results;A;B;$math[$env[B;points] - $env[A;points]];results]
 
       $let[pos;0]
       
-      $arrayMap[result;res;
+      $arrayMap[results;result;
         $letSum[pos;1]
         $switch[$get[pos];
           $case[1;$let[emoji;🥇]]
@@ -32,14 +31,16 @@ export default {
           $case[3;$let[emoji;🥉]]
           $case[default;$let[emoji;⁘]]
         ]
-        $return[### $get[emoji] $ordinal[$get[pos]] ➤ $username[$env[res;userID]] \n**$getGlobalVar[blank] Points: \`$env[res;points]\`**]
+        $return[## $get[emoji] $ordinal[$get[pos]] ➤ $username[$env[result;userID]] — \`$env[result;points]\` Points]
       ;playersInLB]
 
       $sendMessage[$channelID;
         $addContainer[
-          $addTextDisplay[# 🎉 1 Hour Luck Challenge Winner: \`$username[$env[result;0;userID]]\` 🎉]
-          $addSeparator
-          $addTextDisplay[$arrayJoin[playersInLB;\n]]
+          $addTextDisplay[# 🎉 Winner: \`$username[$env[results;0;userID]]\` 🎉]
+          $arrayForEach[playersInLB;elem;
+            $addSeparator[Large]
+            $addTextDisplay[$env[elem]]
+          ]
         ;$getGlobalVar[luckyColor]]
       ]
 
@@ -78,20 +79,21 @@ export default {
 
         $arrayMap[sortedPlayers;ID;
           $jsonLoad[CHP;$getUserVar[challengeProgress|$channelID;$env[ID]]]
-          $return[$username[$env[ID]]: $env[CHP;points] Points]
+          $return[### $getGlobalVar[blank] $username[$env[ID]]: \`$env[CHP;points]\` Points]
         ;sortedPlayersContent]
 
-        $return[## $get[emoji] $ordinal[$get[pos]] ➤ Team $math[$env[result;teamID] + 1] - \`$env[result;points]\`\n### $getGlobalVar[blank] $arrayJoin[sortedPlayersContent;\n### $getGlobalVar[blank] ]]
+        $return[## $get[emoji] $ordinal[$get[pos]] ➤ Team $math[$env[result;teamID] + 1] — \`$env[result;points]\` Points\n$arrayJoin[sortedPlayersContent;\n]]
       ;teamsInLB]
 
       $sendMessage[$channelID;
         $addContainer[
-          $addTextDisplay[# 🎉 1 Hour Luck Challenge Winner: \`Team $math[$env[results;0;teamID] + 1]\` 🎉]
-          $addSeparator
-          $addTextDisplay[$arrayJoin[teamsInLB;\n]]
+          $addTextDisplay[# 🎉  Winner: Team \`$math[$env[results;0;teamID] + 1]\` 🎉]
+          $arrayForEach[teamsInLB;elem;
+            $addSeparator[Large]
+            $addTextDisplay[$env[elem]]
+          ]
         ;$getGlobalVar[luckyColor]]
       ]
-
     ]
     $callFunction[deleteLobbyVars]
   `
