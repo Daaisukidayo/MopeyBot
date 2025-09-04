@@ -35,6 +35,9 @@ export default {
       $callFunction[deleteLobbyVars]
       $stop
     ]
+
+    $callFunction[lobbySettingsEmbed]
+    $interactionUpdate
     
     $callFunction[lobbyTimeout]
   `
