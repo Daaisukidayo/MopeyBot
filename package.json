@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
+  },
+  "imports": {
+    "#snippets/*": "./src/snippets/*"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +20,6 @@
     "chalk": "^5.5.0",
     "dotenv": "^16.4.7",
     "forgepages": "github:xloxn69/ForgePages",
-    "forgescheduler": "github:zack-911/forgescheduler#dev",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {

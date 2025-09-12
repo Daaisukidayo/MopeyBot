@@ -10,8 +10,7 @@ dotenv.config()
 import { ForgeClient, LogPriority } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
 import { ForgeCanvas } from "@tryforge/forge.canvas"
-import { ForgeScheduler } from "forgescheduler"
-import shutdownSetup from "./scripts/shutdownSetup.js"
+import shutdownSetup from "./src/scripts/shutdownSetup.js"
 
 // ========== CLIENT CONFIGURATION ==========
 // Initialize the bot client with extensions, intents, and events
@@ -21,14 +20,12 @@ const DB = new ForgeDB({
 });
 
 const FC = new ForgeCanvas();
-const FSCH = new ForgeScheduler()
 
 const client = new ForgeClient({
   mobile: true,
   extensions: [
     DB, // Adds Data Base
     FC, // Adds Forge Canvas
-    FSCH, // Adds Forge Scheduler
   ],
   intents: [
     "Guilds",
@@ -43,8 +40,8 @@ const client = new ForgeClient({
 });
 
 // ========== LOAD COMMANDS ==========
-client.commands.load("./commands");
-client.functions.load("./functions");
+client.commands.load("./src/commands");
+client.functions.load("./src/functions");
 
 // ========== SIGNALS handler ==========
 
@@ -212,9 +209,9 @@ DB.variables({
     shopSnowman: 0,
     shopSnowgirl: 0,
     shopBigfoot: 0,
-    luckSnowman: 0,
-    luckSnowgirl: 0,
-    luckBigfoot: 0,
+    rareSnowman: 0,
+    rareSnowgirl: 0,
+    rareBigfoot: 0,
     dinoMonster: 0,
     landMonster: 0,
     giantScorpion: 0,
@@ -222,6 +219,7 @@ DB.variables({
     iceMonster: 0,
     blackDragon: 0,
     kingDragon: 0,
+    rareKingDragon: 0,
   },
 
   userProfile: {
@@ -306,6 +304,7 @@ DB.variables({
   lobbyInactiveTime: "30m",
   maxRowsInRaresList: 6,
   maxParticipants: 10,
+  maxCoinflipBet: 200000,
 
   // history
 
@@ -339,7 +338,7 @@ DB.variables({
   },
 
   buttonStyle: [
-    ["Success", ["demonPufferfish","rareToucan","rareMacaw","rareVulture","blackLion","blackLioness","blackLionCub","blackRhino","harpyEagle","greaterSpottedEagle","shaheen","luckSnowman","luckSnowgirl","luckBigfoot","kingDragon"]],
+    ["Success", ["demonPufferfish","rareToucan","rareMacaw","rareVulture","blackLion","blackLioness","blackLionCub","blackRhino","harpyEagle","greaterSpottedEagle","shaheen","rareSnowman","rareSnowgirl","rareBigfoot","rareKingDragon"]],
     ["Danger", ["marshDeer","stinkyPig","muskDeer","jackass","girabie","blackPanther","lavaToucan","whiteGiraffe","giraffeFamily","aquaYeti","bigGoat","predator","goldenEagle","whiteRhino","whiteLion","whiteLioness","whiteLionCub","whiteTiger","blackTiger","blackBear"]],
     ["Primary", ["whiteDove","doe","pinkyPig","goldenPheasant","blueMacaw","momaffie","momaffieFamily","chocoToucan","keelBilledToucan","fieryToucan","jaguar","yellowPufferfish","blackManedLion","lioness","lionCub","markhor","blackBear"]],
   ],
@@ -566,7 +565,7 @@ DB.variables({
     },
     {
       category: "godlike",
-      rares: [ "luckBigfoot",  "luckSnowman",  "luckSnowgirl",  "kingDragon" ],
+      rares: [ "rareBigfoot",  "rareSnowman",  "rareSnowgirl",  "rareKingDragon" ],
       points: 40,
     },
     {
@@ -614,7 +613,7 @@ DB.variables({
     },
     {
       category: "divine",
-      rares: [ "rareMacaw", "rareToucan", "rareVulture", "shaheen", "harpyEagle", "greaterSpottedEagle", "luckBigfoot",  "luckSnowman",  "luckSnowgirl",  "kingDragon" ],
+      rares: [ "rareMacaw", "rareToucan", "rareVulture", "shaheen", "harpyEagle", "greaterSpottedEagle", "rareBigfoot",  "rareSnowman",  "rareSnowgirl",  "rareKingDragon" ],
       points: 75,
     },
   ],
@@ -669,10 +668,10 @@ DB.variables({
     shopSnowman: ["ssm", "shopsnowman"],
     shopBigfoot: ["sbf", "shopbigfoot"],
     shopSnowgirl: ["ssg", "shopsnowgirl"],
-    luckSnowman: ["lsm", "lucksnowman"],
-    luckBigfoot: ["lbf", "luckbigfoot"],
-    luckSnowgirl: ["lsg", "lucksnowgirl"],
-    kingDragon: ["kd", "kingdragon"]
+    rareSnowman: ["rsm", "raresnowman"],
+    rareBigfoot: ["rbf", "rarebigfoot"],
+    rareSnowgirl: ["rsg", "raresnowgirl"],
+    rareKingDragon: ["kd", "kingdragon"]
   },
 
   // snora 
@@ -688,7 +687,7 @@ DB.variables({
     { tier: 11, animalIDs: [ "lionCub", "whiteLionCub", "blackLionCub", "lioness", "whiteLioness", "blackLioness", "blackManedLion", "whiteLion", "blackLion", "predator", "shaheen", "rareVulture" ] },
     { tier: 12, animalIDs: [ "whiteRhino", "blackRhino", "goldenEagle", "harpyEagle", "greaterSpottedEagle", "markhor", "bigGoat" ] },
     { tier: 13, animalIDs: [ "whiteGiraffe", "giraffeFamily" ] },
-    { tier: 15, animalIDs: [ "aquaYeti", "luckSnowman", "luckSnowgirl", "luckBigfoot" ] },
-    { tier: 17, animalIDs: [ "kingDragon" ] }
+    { tier: 15, animalIDs: [ "aquaYeti", "rareSnowman", "rareSnowgirl", "rareBigfoot" ] },
+    { tier: 17, animalIDs: [ "rareKingDragon" ] }
   ],
 });

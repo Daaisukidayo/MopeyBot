@@ -1,0 +1,131 @@
+import playSnippets from '#snippets/playSnippets.js'
+
+export default {
+  type: "interactionCreate",
+  allowedInteractionTypes: ["selectMenu"],
+  description: "search XP",
+  code: `
+    $arrayLoad[IID;-;$customID]
+    $arrayLoad[passKeys;,;actions,play]
+
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$selectMenuValues==searchXP]
+    ${playSnippets.loadJSON()}
+    $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
+
+    ${playSnippets.hasStarted()}
+
+    $let[deathRarity;$randomNumber[1;1001]]
+    $let[deathChance;30]
+    $let[deathDesc;You were killed by a predator!]
+
+    $let[findPrayRarity;$randomNumber[1;101]]
+    $let[findPrayChance;20]
+
+    $jsonLoad[expBase;$readFile[src/json/expBase.json]]
+    $jsonLoad[expData;$readFile[src/json/expData.json]]
+
+    $let[biome;$env[playData;currentBiome]]
+    $let[animalBiome;$env[playData;animalBiome]]
+    $let[animalID;$env[playData;currentAnimal]]
+    $let[tier;$env[playData;tier]]
+
+    $if[$env[animals;$env[animalsIndexes;$get[animalID]];isRare];
+      $letSub[deathChance;20]
+    ]
+
+    $if[$get[animalBiome]!=$get[biome];
+      $letSum[deathChance;20]
+      $if[$get[animalBiome]==Ocean;
+        $let[deathChance;1000]
+        $let[deathDesc;You died by a lack of water!]
+      ]
+      $if[$and[$get[animalBiome]==Volcano;$or[$get[biome]==Arctic;$get[biome]==Ocean]];
+        $let[deathChance;800]
+        $let[deathDesc;You died by a lack of lava!]
+      ]
+    ]
+
+    $switch[$get[tier];
+      $case[15;$letSub[deathChance;10]]
+      $case[16;$letSub[deathChance;15]]
+      $case[17;$let[deathChance;5] $let[deathDesc;You were killed by teamers!]]
+    ]
+
+    $let[multiplier;$env[expData;$get[tier];m]]
+    $let[extraMultiplier;1.5]
+
+    $jsonLoad[data;$env[expData;$get[tier];d]]
+    $jsonLoad[biomeArray;$env[expBase;b]]
+    $jsonLoad[foodArray;$env[expBase;f]]
+    $jsonLoad[preyArray;$env[expBase;p]]
+
+    $let[biomeIndex;$arrayIndexOf[biomeArray;$get[biome]]]
+    $jsonLoad[data;$env[data;$get[biomeIndex]]]
+
+    $jsonLoad[food;$env[data;f]]
+    $jsonLoad[prey;$env[data;p]]
+
+    $if[$arrayLength[food]==0;
+      $let[deathChance;1000]
+      $let[deathDesc;You died by staying on lava!]
+    ;
+
+      $let[foodIndex;$arrayRandomValue[food]]
+      $jsonLoad[food;$env[foodArray;$get[foodIndex]]]
+
+      $jsonLoad[foodXPArr;$env[food;XP]]
+      $let[minXP;$math[$env[foodXPArr;0] * $get[multiplier]]]
+      $let[maxXP;$math[$env[foodXPArr;1] * $get[multiplier]]]
+      $let[foodXP;$randomNumber[$get[minXP];$math[$get[maxXP] + 1]]]
+      $let[foodXP;$round[$math[$get[foodXP] * $get[extraMultiplier]]]]
+      $let[foodName;$env[food;name]]
+
+      $if[$get[foodName]==;$let[foodName;undefined]]
+
+      $let[xp;$get[foodXP]]
+      $let[content;You ate a(n) $get[foodName] and gained \`$separateNumber[$get[xp];,]\`XP!]
+
+      $if[$arrayLength[prey]==0;;
+
+        $if[$get[findPrayChance]>=$get[findPrayRarity];
+          $let[preyIndex;$arrayRandomValue[prey]]
+          $let[preyID;$env[preyArray;$get[preyIndex];name]]
+          $let[preyName;$env[animals;$env[animalsIndexes;$get[preyID]];variants;0;name]]
+          $let[preyEmoji;$env[animals;$env[animalsIndexes;$get[preyID]];variants;0;emoji]]
+          $let[preyTier;$env[animals;$env[animalsIndexes;$get[preyID]];tier]]
+
+          $jsonLoad[XPreq;${playSnippets.XPReqForUpg()}]
+          $jsonLoad[XParr;$env[XPreq;$get[preyTier]]]
+
+          $let[minXP;$env[XParr;0]]
+          $let[maxXP;$math[$env[XParr;1] / 1.5]]
+          $let[xp;$randomNumber[$get[minXP];$math[$get[maxXP] + 1]]]
+
+          $let[content;You ate a(n) __$get[preyName]__ $get[preyEmoji] and gained \`$separateNumber[$get[xp];,]\`XP!]
+        ]
+      ]
+    ]
+
+    $color[$env[playData;color]]
+
+    $if[$get[deathChance]>=$get[deathRarity];
+      ${playSnippets.setNewXPOnDeath()}
+      ${playSnippets.setNewTier()}
+      $description[## $get[deathDesc]]
+      $color[$getGlobalVar[errorColor]]
+      ${playSnippets.respawnButton()}
+      $let[showCheats;false]
+    ;
+      $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xp]]]
+      $description[## $get[content]\n${playSnippets.animalStats()}]
+      ${playSnippets.actionMenu()}
+      $let[showCheats;true]
+    ]
+    ${playSnippets.exitButton('$get[showCheats]')}
+    $getGlobalVar[author]
+    $interactionUpdate
+    
+    $setUserVar[userPlayData;$env[playData]]
+  `
+}
