@@ -33,9 +33,13 @@ export default {
     $callFunction[sumMC;$get[MC]]
     $setUserVar[userProfile;$env[userProfile]]
 
-    $description[## $advancedReplace[$get[content];{0};$get[td];{1};$separateNumber[$get[MC];.];{2};$getGlobalVar[emoji]]]
-    $getGlobalVar[author]
-    $thumbnail[$get[thum]]
-    $color[$get[clr]]
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addSection[
+        $addTextDisplay[## $advancedReplace[$get[content];{0};$get[td];{1};$separateNumber[$get[MC];.];{2};$getGlobalVar[emoji]]]
+        $addThumbnail[$get[thum]]
+      ]
+    ;$get[clr]]
   `
 }
