@@ -415,5 +415,19 @@
     "commandDescription": ["## Shows your history of all ended 1 Hour Luck Challenges!"],
     "commandRelated": ["edithistory", "start", "chart"],
     "commandCategory": "Luck Challenge"
+  },
+  {
+    "commandAliases": ["edithistory", "ehis", "eh"],
+    "commandName": "Edit History",
+    "commandDescription": [
+      "## You have 2 options: __Add new page__ or __Edit existing page__",
+      "## 1. If you chose __Add new page__, a new menu with all options will appear.",
+      "## 2. If you chose __Edit existing page__, you will need to provide the page you want to edit and sorting type.",
+      "### - These options are: `Points`, `Rares`, `Play Type`, `Difficulty`, `Ended At`, `Tags` and `Rares List`",
+      "### - `Rares List` option is updating the list, so it's not removing previous rares",
+      "### - To remove a rare, set its quantity to `0`"
+    ],
+    "commandRelated": ["history"],
+    "commandCategory": "Luck Challenge"
   }
 ]

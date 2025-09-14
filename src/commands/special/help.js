@@ -29,7 +29,8 @@ export default {
         $addTextDisplay[# $get[comNameEmoji] ALL COMMANDS]
         $addSeparator
         $addTextDisplay[### Use \`$get[prefix]help (command)\` for detailed information on a specific command!]
-        $addSeparator[Large]
+        $addSeparator
+
         $arrayForEach[categories;category;
           $arrayLoad[ctg]
           $arrayForEach[allCommandsInfo;obj;
@@ -37,7 +38,7 @@ export default {
           ]
           $addTextDisplay[## $env[category]]
           $addTextDisplay[$codeBlock[$arrayJoin[ctg; ]]]
-          $addSeparator
+          $addSeparator[Large]
         ]
         $addTextDisplay[Need assistance with a specific issue? Use the invite command to join our official Discord server!]
       ;$getGlobalVar[defaultColor]]
@@ -45,6 +46,7 @@ export default {
       $jsonLoad[commandDesc;$env[allCommandsInfo;$get[helpIndex];commandDescription]]
       $jsonLoad[commandAliases;$env[allCommandsInfo;$get[helpIndex];commandAliases]]
       $jsonLoad[commandRelated;$env[allCommandsInfo;$get[helpIndex];commandRelated]]
+
       $addContainer[
         $addTextDisplay[# $get[comNameEmoji] $env[allCommandsInfo;$get[helpIndex];commandName]]
         $addTextDisplay[$advancedReplace[$arrayJoin[commandDesc;\n];{PREFIX};$get[prefix];{MAX_PARTICIPANTS};$get[maxParticipants];{BRACKETS_INFO};$codeBlock[$arrayJoin[bracketsInfo;\n]];{PUMPKINS_RARITIES};$codeBlock[$arrayJoin[pumpkinsRarities;\n];JSON];{BEACHBALLS_RARITIES};$codeBlock[$arrayJoin[beachballsRarities;\n];JSON];{UMBRELLAS_RARITIES};$codeBlock[$arrayJoin[umbrellasRarities;\n];JSON];{HYPERLINK_TIMEZONES};$get[timezonesHyperlink];{EMOJI};$get[emoji];{MAX_COINFLIP_BET};$get[maxCoinflipBet]]]
@@ -53,8 +55,7 @@ export default {
         $addTextDisplay[## \`$arrayJoin[commandAliases;\` \`]\`]
         $addSeparator
         $addTextDisplay[# 📖 Related]
-        $addTextDisplay[## \`$default[$arrayJoin[commandRelated;\` \`];none]\`]
-
+        $addTextDisplay[## \`$default[$arrayJoin[commandRelated;\` \`];None]\`]
       ;$getGlobalVar[defaultColor]]
     ]
   `
