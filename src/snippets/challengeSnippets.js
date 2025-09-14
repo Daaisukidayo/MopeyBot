@@ -17,13 +17,18 @@ export default {
           $case[3600;
             ${this.stopUserInterval(id)}
             $sendMessage[$channelID;
-              $jsonLoad[userProfile;$getUserVar[userProfile;${id}]]
-              $author[$username[${id}] • MUID: $env[userProfile;MUID];$userAvatar[${id}]]
-              $color[$getGlobalVar[luckyColor]]
-              $description[# 1 Hour Luck Ended!\n## You can continue typing if you didn't manage to finish.\n### Press «Confirm» button to end your challenge whenever you want.]
-
-              $addActionRow
-              $addButton[confirmEndingChallenge-${id};Confirm;Success;✅]
+              ${universalSnippets.loadProfile(id)}
+              $addContainer[
+                $callFunction[newAuthor]
+                $addSeparator[Large]
+                $addTextDisplay[# 1 Hour Luck Ended!]
+                $addSeparator[Large]
+                $addTextDisplay[## You can continue typing if you didn't manage to finish]
+                $addTextDisplay[## Press «\`Confirm\`» button to end your challenge whenever you want]
+                $addSeparator
+                $addActionRow
+                $addButton[confirmEndingChallenge-${id};Confirm;Success;✅]
+              ;$getGlobalVar[luckyColor]]
             ]
           ] 
         ]
@@ -44,12 +49,14 @@ export default {
   loadGJSON() {
     return `
       $if[$env[userProfile]==;${universalSnippets.loadProfile()}]
+      $jsonLoad[allRaresList;$env[challengeProgress;list]]
       $jsonLoad[userSettings;$env[userProfile;1hl;settings]]
       $jsonLoad[challengeData;$getGlobalVar[challengeData]]
+      $jsonLoad[chartLimits;$getGlobalVar[chartLimits]]
       $jsonLoad[animals;$readFile[src/json/animals.json]]
       $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
       $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
-      $jsonLoad[allRaresData;$jsonEntries[allRaresData]]
+      $jsonLoad[allRaresDataEntries;$jsonEntries[allRaresData]]
       $jsonLoad[allRares;$getGlobalVar[allRares]]
     `
   },
@@ -113,6 +120,36 @@ export default {
       $addMediaGallery[$addMediaItem[https://i.postimg.cc/65z7tRMd/upperRow.png]]
       $addTextDisplay[# $arrayJoin[${arrayName};\n# ]]
       $addMediaGallery[$addMediaItem[https://i.postimg.cc/yY7JMny1/lowerRow.png]]
+    `
+  },
+
+  raresLimit() { // requires loaded: userSettings, chartLimits, challengeData, allRaresList, limitsContent
+    return `
+      $if[$get[unlimitedRares];;
+        $arrayForEach[chartLimits;obj;
+          $loop[$arrayLength[challengeData];
+            $jsonLoad[data;$arrayAt[challengeData;$math[$env[i] - 1]]]
+
+            $let[dataCategory;$env[data;category]]
+            $let[objCategory;$env[obj;category]]
+
+            $if[$get[dataCategory]==$get[objCategory];;$continue]
+
+            $let[limit;$env[obj;limit]]
+            $jsonLoad[challengeRares;$env[data;rares]]
+
+            $arrayForEach[challengeRares;rare;
+              $let[displayRare;$env[animals;$env[animalsIndexes;$env[rare]];variants;0;emoji]]
+              $let[quantity;$default[$env[allRaresList;$env[rare]];0]]
+
+              $if[$get[quantity]<$get[limit];
+                $arrayPush[limitsContent;$get[displayRare]\`$get[quantity]\`|\`$get[limit]\`]
+              ]
+            ]
+            $break
+          ;i;true]
+        ]
+      ]
     `
   },
 

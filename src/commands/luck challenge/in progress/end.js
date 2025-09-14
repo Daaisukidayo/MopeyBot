@@ -1,5 +1,6 @@
 import lobbySnippets from '#snippets/lobbySnippets.js'
 import challengeSnippets from '#snippets/challengeSnippets.js'
+import universalSnippets from '#snippets/universalSnippets.js'
 
 export default {
   name: "end",
@@ -7,6 +8,7 @@ export default {
   code: `
     $reply
     ${challengeSnippets.isActiveChallenge()}
+    ${universalSnippets.checkProfile({addCooldown: false})}
     ${challengeSnippets.loadGJSON()}
     $jsonLoad[raresList;$env[challengeProgress;list]]
     ${challengeSnippets.listGenerator()}

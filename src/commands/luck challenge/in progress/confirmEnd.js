@@ -1,5 +1,6 @@
 import lobbySnippets from '#snippets/lobbySnippets.js'
 import challengeSnippets from '#snippets/challengeSnippets.js'
+import universalSnippets from '#snippets/universalSnippets.js';
 
 export default {
   type: "interactionCreate",
@@ -8,9 +9,10 @@ export default {
   code: `
     $arrayLoad[IID;-;$customID]
     $onlyIf[$arrayIncludes[IID;confirmEndingChallenge]]
-    ${challengeSnippets.loadGJSON()}
+    ${universalSnippets.loadProfile()}
     $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
+    ${challengeSnippets.loadGJSON()}
     ${challengeSnippets.isActiveChallenge()}
     ${lobbySnippets.loadLobbyVars()}
     $jsonLoad[raresList;$env[challengeProgress;list]]

@@ -1,4 +1,5 @@
 import challengeSnippets from "#snippets/challengeSnippets.js"
+import universalSnippets from "#snippets/universalSnippets.js"
 
 export default {
   name: "time",
@@ -6,6 +7,7 @@ export default {
   code: `
     $reply
     ${challengeSnippets.isActiveChallenge()}
+    ${universalSnippets.checkProfile({addCooldown: false})}
 
     $addContainer[
       $callFunction[newAuthor]

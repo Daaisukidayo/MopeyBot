@@ -11,12 +11,10 @@ export default {
     $onlyIf[$startsWith[$messageContent;$getGuildVar[prefix]]==false]
 
     ${challengeSnippets.loadGJSON()}
-    $jsonLoad[caught;{}]
-    $arrayLoad[caughtRares; ;$toLowerCase[$message]]
-    $jsonLoad[allRaresList;$env[challengeProgress;list]]
-    $jsonLoad[chartLimits;$getGlobalVar[chartLimits]]
     ${lobbySnippets.loadLobbyVars()}
 
+    $jsonLoad[caught;{}]
+    $arrayLoad[caughtRares; ;$toLowerCase[$message]]
     $arrayLoad[limitsContent]
     $arrayLoad[reachedLimitContent]
 
@@ -36,33 +34,7 @@ export default {
       ]
     ]
 
-
-    $localFunction[raresLogic;
-      $letSum[points;$get[challengeDataPoints]]
-
-      $jsonLoad[PQ;
-        {
-          "p": $default[$env[caught;$get[animalID];p];0], 
-          "q": $default[$env[caught;$get[animalID];q];0]
-        }
-      ]
-
-      $let[caughtPoints;$env[PQ;p]]
-      $let[caughtQuantity;$env[PQ;q]]
-      $letSum[caughtPoints;$get[challengeDataPoints]]
-      $letSum[caughtQuantity;1]
-      $!jsonSet[PQ;p;$get[caughtPoints]]
-      $!jsonSet[PQ;q;$get[caughtQuantity]]
-      $!jsonSet[caught;$get[animalID];$env[PQ]]
-
-      $let[PR;$env[challengeProgress;rares]]
-      $letSum[PR;1]
-
-      $let[newQuantity;$math[$env[allRaresList;$get[animalID]] + 1]]
-      $!jsonSet[allRaresList;$get[animalID];$get[newQuantity]]
-      $!jsonSet[challengeProgress;rares;$get[PR]]
-      $!jsonSet[challengeProgress;list;$env[allRaresList]]
-    ]
+    ${sumPoints()}
     
     $c[Looping through every rare]
 
@@ -122,38 +94,11 @@ export default {
     
     $if[$get[points]==0;$stop]
 
-    $if[$get[unlimitedRares];;
-      $arrayForEach[chartLimits;obj;
-        $loop[$arrayLength[challengeData];
-          $jsonLoad[data;$arrayAt[challengeData;$math[$env[i] - 1]]]
-
-          $let[dataCategory;$env[data;category]]
-          $let[objCategory;$env[obj;category]]
-
-          $if[$get[dataCategory]==$get[objCategory];;$continue]
-
-          $let[limit;$env[obj;limit]]
-          $jsonLoad[challengeRares;$env[data;rares]]
-
-          $arrayForEach[challengeRares;rare;
-            $jsonLoad[allRaresDataObj;$getGlobalVar[allRaresData]]
-
-            $let[displayRare;$env[animals;$env[animalsIndexes;$env[rare]];variants;0;emoji]]
-            $let[quantity;$default[$env[allRaresList;$env[rare]];0]]
-
-            $if[$get[quantity]<$get[limit];
-              $arrayPush[limitsContent;$get[displayRare]\`$get[quantity]|$get[limit]\`]
-            ]
-          ]
-          $break
-        ;i;true]
-      ]
-    ]
+    ${challengeSnippets.raresLimit()}
 
     $let[PP;$env[challengeProgress;points]]
     $letSum[PP;$get[points]]
     $!jsonSet[challengeProgress;points;$get[PP]]
-
 
     $addContainer[
       $callFunction[newAuthor]
@@ -173,11 +118,44 @@ export default {
       $addSeparator
       $addTextDisplay[## $callFunction[showTime;$authorID]]
       
-      $if[$and[$get[hideRaresLimit]==false;$arrayLength[limitsContent]!=0];
+      $if[$or[$get[unlimitedRares];$get[hideRaresLimit]];;
+        $if[$arrayLength[limitsContent]==0;  $arrayPush[limitsContent;※ All commons received]  ]
+
         $addSeparator[Large]
         $addTextDisplay[# $arrayJoin[limitsContent; ]]
       ]
     ;$getGlobalVar[luckyColor]]
     $setUserVar[challengeProgress|$channelID;$env[challengeProgress]]
+  `
+}
+
+function sumPoints() {
+  return `
+    $localFunction[raresLogic;
+      $letSum[points;$get[challengeDataPoints]]
+
+      $jsonLoad[PQ;
+        {
+          "p": $default[$env[caught;$get[animalID];p];0], 
+          "q": $default[$env[caught;$get[animalID];q];0]
+        }
+      ]
+
+      $let[caughtPoints;$env[PQ;p]]
+      $let[caughtQuantity;$env[PQ;q]]
+      $letSum[caughtPoints;$get[challengeDataPoints]]
+      $letSum[caughtQuantity;1]
+      $!jsonSet[PQ;p;$get[caughtPoints]]
+      $!jsonSet[PQ;q;$get[caughtQuantity]]
+      $!jsonSet[caught;$get[animalID];$env[PQ]]
+
+      $let[PR;$env[challengeProgress;rares]]
+      $letSum[PR;1]
+
+      $let[newQuantity;$math[$env[allRaresList;$get[animalID]] + 1]]
+      $!jsonSet[allRaresList;$get[animalID];$get[newQuantity]]
+      $!jsonSet[challengeProgress;rares;$get[PR]]
+      $!jsonSet[challengeProgress;list;$env[allRaresList]]
+    ]
   `
 }
