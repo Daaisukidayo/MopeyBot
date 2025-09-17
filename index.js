@@ -305,6 +305,7 @@ DB.variables({
   maxRowsInRaresList: 6,
   maxParticipants: 10,
   maxCoinflipBet: 200000,
+  maxSlotsBet: 50000,
 
   // history
 
