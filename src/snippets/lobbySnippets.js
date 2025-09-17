@@ -202,7 +202,7 @@ export default {
           ;$getGlobalVar[luckyColor]]
         ]
       ]
-      $callFunction[deleteLobbyVars]
+      ${this.deleteAllLobbyVars()}
     `
   },
 
