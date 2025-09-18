@@ -89,7 +89,7 @@ export default {
 
       $arrayForEach[result;res;
         $let[emoji;$if[$env[res;position]==1;🥇;$if[$env[res;position]==2;🥈;$if[$env[res;position]==3;🥉;⁘]]]]
-        $let[lbplace;$get[lbplace]$get[emoji] $ordinal[$env[res;position]] ➤ \`$username[$env[res;ID]]\`\n$getGlobalVar[blank] Coins: \`$separateNumber[$env[res;MC];.]\`$getGlobalVar[emoji]\n$getGlobalVar[blank] MUID: \`$env[res;MUID]\`\n\n]
+        $let[lbplace;$get[lbplace]$get[emoji] $ordinal[$env[res;position]] ➤ \`$username[$env[res;ID]]\`\n$getGlobalVar[blank] Coins: \`$separateNumber[$env[res;MC];,]\`$getGlobalVar[emoji]\n$getGlobalVar[blank] MUID: \`$env[res;MUID]\`\n\n]
       ]
 
       $setGlobalVar[cachedLB;$get[lbplace]]
