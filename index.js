@@ -34,7 +34,7 @@ const client = new ForgeClient({
     "DirectMessageReactions",
     "MessageContent",
   ],
-  events: ["interactionCreate", "messageCreate", "ready"],
+  events: ["interactionCreate", "messageCreate", "clientReady"],
   prefixes: ["$default[$getGuildVar[prefix];$getGlobalVar[prefix]]"],
   logLevel: LogPriority.VeryLow,
 });
