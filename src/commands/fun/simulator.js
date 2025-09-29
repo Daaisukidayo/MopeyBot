@@ -126,9 +126,9 @@ function simulatorRaresGroupKey() {
     "markhor|undefined|markhor|bigGoat",
     "whiteGiraffe|undefined|whiteGiraffe|giraffeFamily",
     "yeti|yeti|aquaYeti",
-    "rareBigfoot|undefined|shopBigfoot|rareBigfoot",
-    "rareSnowman|undefined|shopSnowman|rareSnowman",
-    "rareSnowgirl|undefined|shopSnowgirl|rareSnowgirl",
+    "rareBigfoot|undefined|rareBigfoot",
+    "rareSnowman|undefined|rareSnowman",
+    "rareSnowgirl|undefined|rareSnowgirl",
     "blackDragon|blackDragon|rareKingDragon"
   ]).replaceAll(']', '\\]')
 }
