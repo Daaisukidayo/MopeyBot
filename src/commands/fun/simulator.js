@@ -95,7 +95,12 @@ function totalAttempts() {
     [["tiger"], 200],
     [["lion", "falcon", "vulture"], 150],
     [["rhino", "baldEagle", "markhor"], 40],
-    [["whiteGiraffe"], 10]
+    [["whiteGiraffe"], 10],
+    [["yeti"], 3],
+    [["rareBigfoot"], 3],
+    [["rareSnowman"], 3],
+    [["rareSnowgirl"], 3],
+    [["blackDragon"], 1]
   ]).replaceAll(']', '\\]')
 }
 
@@ -119,6 +124,11 @@ function simulatorRaresGroupKey() {
     "rhino|rhino|whiteRhino|blackRhino",
     "baldEagle|baldEagle|goldenEagle|harpyEagle|greaterSpottedEagle",
     "markhor|undefined|markhor|bigGoat",
-    "whiteGiraffe|undefined|whiteGiraffe|giraffeFamily"
+    "whiteGiraffe|undefined|whiteGiraffe|giraffeFamily",
+    "yeti|yeti|aquaYeti",
+    "rareBigfoot|undefined|shopBigfoot|rareBigfoot",
+    "rareSnowman|undefined|shopSnowman|rareSnowman",
+    "rareSnowgirl|undefined|shopSnowgirl|rareSnowgirl",
+    "blackDragon|blackDragon|rareKingDragon"
   ]).replaceAll(']', '\\]')
 }
