@@ -1,5 +1,5 @@
 export default {
-  type: "ready",
+  type: "clientReady",
   code: `
     $logger[Info;Bot $username[$botID] is ready]
 
