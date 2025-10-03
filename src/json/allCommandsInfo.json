@@ -4,7 +4,7 @@
     "commandName": "Wardrobe",
     "commandDescription": [
       "## Let's you equip any animal with purchased skin!",
-      "## Usage: `{PREFIX}wardrobe {new|all|<tier>|<animal>}`",
+      "## Usage: `{PREFIX}wardrobe [new|all|<tier>|<animal>]`",
       "### `[new]` - Starts new equiping animals with chosen skin for mouse to king dragon",
       "### `[all]` - Equips every animal with chosen skin pack",
       "### `[tier]` - Equips every chosen tier animal with chosen skin pack",
@@ -302,10 +302,22 @@
       "## Wager your coins on heads or tails for a chance to win!",
       "### `all` - the maximum allowable bet (`{MAX_COINFLIP_BET}`{EMOJI})",
       "### `side` - the side of the coin, either heads or tails. If no side is specified, it defaults to heads",
-      "### Usage: `{PREFIX}coinflip {<amount>|all} {h|t}`",
+      "### Usage: `{PREFIX}coinflip (<amount>|all) (h|t)`",
       "{BRACKETS_INFO}"
     ],
-    "commandRelated": [],
+    "commandRelated": ["slots"],
+    "commandCategory": "Fun"
+  },
+  {
+    "commandAliases": ["slots"],
+    "commandName": "Slots",
+    "commandDescription": [
+      "## Wager your coins for a chance to win!",
+      "### `all` - the maximum allowable bet (`{MAX_SLOTS_BET}`{EMOJI})",
+      "### Usage: `{PREFIX}slots (<amount>|all)`",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": ["coinflip"],
     "commandCategory": "Fun"
   },
   {
@@ -381,7 +393,7 @@
     "commandAliases": ["edittime", "et"],
     "commandName": "Edit Time",
     "commandDescription": ["## Edits your time in 1 hour Luck Challenge!",
-      "### Usage: `{PREFIX}edittime {<MM:SS> | <seconds>}` (time passed)",
+      "### Usage: `{PREFIX}edittime [<MM:SS> | <seconds>]` (time passed)",
       "### Example: `{PREFIX}edittime 30:00`",
       "### Example: `{PREFIX}edittime 1800`",
       "{BRACKETS_INFO}"
@@ -394,7 +406,7 @@
     "commandName": "Edit List",
     "commandDescription": [
       "## Edits your list of rare animals in 1 hour Luck Challenge!",
-      "### Usage: `{PREFIX}editlist <rare> {+ | -} <quantity>`",
+      "### Usage: `{PREFIX}editlist <rare> [+ | -] <quantity>`",
       "### Example: `{PREFIX}editlist mar + 1` -> Adds 1 Markhor to your list",
       "### Example: `{PREFIX}editlist mar - all` -> Removes all Markhors from your list",
       "{BRACKETS_INFO}"

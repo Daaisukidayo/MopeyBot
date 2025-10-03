@@ -55,12 +55,13 @@ export default {
     $let[slot3;⬜]
 
     $callFunction[subMC;$get[amount]]
+    $setUserVar[userProfile;$env[userProfile]]
 
     $c[=======================]
 
     $let[msgid;$sendMessage[$channelID;$callFn[content];true]]
 
-    $wait[2s]
+    $wait[2000]
 
     $let[slot1;$env[output;0]]
     $!editMessage[$channelID;$get[msgid];$callFn[content]]
@@ -84,15 +85,15 @@ export default {
 
       $let[winAmount;$math[$get[amount] * $get[mlt]]]
       $let[outputContent;**and won \`$separateNumber[$get[winAmount];,]\`$getGlobalVar[emoji]!**]
+      ${uniSnippets.loadProfile()}
       $callFunction[sumMC;$get[winAmount]]
+      $setUserVar[userProfile;$env[userProfile]]
 
     ;
-      $let[outputContent;**but lost**]
+      $let[outputContent;**and lose..**]
     ]
 
     $let[slot3;$env[output;2]]
     $!editMessage[$channelID;$get[msgid];$callFn[content]]
-
-    $setUserVar[userProfile;$env[userProfile]]
   `
 }

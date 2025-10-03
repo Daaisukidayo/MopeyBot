@@ -63,7 +63,7 @@ export default {
     `
   },
 
-  rulesSchema() {
+  rulesSchema(disableButtons = false) {
     return `
       $author[Hey, $userDisplayName!;$userAvatar]
       $title[It looks like you haven't accepted the rules yet!]
@@ -75,8 +75,8 @@ export default {
       $color[$getGlobalVar[cooldownColor]]
 
       $addActionRow
-      $addButton[acceptrules-$authorID;Accept;Success;✅]
-      $addButton[declinerules-$authorID;Decline;Danger;🛑]
+      $addButton[acceptrules-$authorID;Accept;Success;✅;${disableButtons}]
+      $addButton[declinerules-$authorID;Decline;Danger;🛑;${disableButtons}]
     `
   },
 

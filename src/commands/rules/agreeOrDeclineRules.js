@@ -23,7 +23,7 @@ export default [{
       $setUserVar[userProfile;$env[userProfile]]
     ]
 
-    ${universalSnippets.rulesSchema()}
+    ${universalSnippets.rulesSchema(true)}
     $color[$getGlobalVar[luckyColor]]
     $footer[You have successfully accepted the rules! Enjoy using the bot!]
     $interactionUpdate
@@ -39,7 +39,7 @@ export default [{
     $onlyIf[$arrayIncludes[interactionID;declinerules]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
-    ${universalSnippets.rulesSchema()}
+    ${universalSnippets.rulesSchema(true)}
     $color[$getGlobalVar[errorColor]]
     $footer[You have chosen to decline the rules.]
     $interactionUpdate

@@ -58,16 +58,18 @@ export default {
     $let[caughtSide;$arrayRandomValue[sides]]
     $let[msg;$sendMessage[$channelID;# The bet is set on __$get[side]__! Flipping a coin...;true]]
     $callFunction[subMC;$get[amount]]
+    $setUserVar[userProfile;$env[userProfile]]
 
     $wait[3s]
 
     $if[$get[caughtSide]==$get[side];
       $let[winAmount;$math[$get[amount] * 2]]
       $!editMessage[$channelID;$get[msg];# You got __$get[side]__ and won $inlineCode[$separateNumber[$get[winAmount];,]]$getGlobalVar[emoji]!]
+      ${universalSnippets.loadProfile()}
       $callFunction[sumMC;$get[winAmount]]
+      $setUserVar[userProfile;$env[userProfile]]
     ;
       $!editMessage[$channelID;$get[msg];# You got __$get[caughtSide]__ and lost $inlineCode[$separateNumber[$get[amount];,]]$getGlobalVar[emoji]]
     ]
-    $setUserVar[userProfile;$env[userProfile]]
   `
 }
