@@ -4,7 +4,7 @@ export default {
     $logger[Info;Bot $username[$botID] is ready]
 
     $setInterval[
-      $setStatus[online;Watching;$guildCount servers]
+      $setStatus[Online;Watching;$guildCount servers]
     ;12s]
 
     $async[ $c[CACHING allRares]

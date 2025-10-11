@@ -7,6 +7,7 @@ dotenv.config()
 // ========== IMPORTS ==========
 // Bring in the essentials for our bot’s operations
 
+import { ForgeTopGG } from "@tryforge/forge.topgg"
 import { ForgeClient, LogPriority } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
 import { ForgeCanvas } from "@tryforge/forge.canvas"
@@ -15,17 +16,32 @@ import shutdownSetup from "./src/scripts/shutdownSetup.js"
 // ========== CLIENT CONFIGURATION ==========
 // Initialize the bot client with extensions, intents, and events
 
+const TOP = new ForgeTopGG({
+  token: process.env.TOPTOKEN,
+  auth: process.env.TOPAUTH,
+  events: [
+    "error",
+    "posted",
+    "voted"
+  ],
+  port: 9030,
+  post: {
+    interval: 3_600_000
+  }
+})
+
 const DB = new ForgeDB({
   events: ["connect"],
 });
 
 const FC = new ForgeCanvas();
 
-const client = new ForgeClient({
+const BOT = new ForgeClient({
   mobile: true,
   extensions: [
-    DB, // Adds Data Base
-    FC, // Adds Forge Canvas
+    DB,
+    FC,
+    TOP
   ],
   intents: [
     "Guilds",
@@ -40,15 +56,16 @@ const client = new ForgeClient({
 });
 
 // ========== LOAD COMMANDS ==========
-client.commands.load("./src/commands");
-client.functions.load("./src/functions");
+BOT.commands.load("./src/commands");
+BOT.functions.load("./src/functions");
+TOP.commands.load("./src/topgg");
 
 // ========== SIGNALS handler ==========
 
-shutdownSetup(client)
+shutdownSetup(BOT)
 
 // ========== LOGIN ==========
-client.login(process.env.TOKEN);
+BOT.login(process.env.TOKEN);
 
 // ========== DB CONNECT EVENT ==========
 // Executes when the DB is ready
@@ -64,6 +81,55 @@ DB.commands.add({
 
 DB.variables({
   // User variables
+  
+  userProfile: {
+    ID: "",
+    MC: 0,
+    MUID: -1,
+    acceptedRules: false,
+    testerMode: false,
+    onSlowmode: false,
+    isBanned: false,
+    devMode: false,
+    hadAnn: false,
+    rtMode: "default",
+    language: "EN",
+    timezone: "Etc/UTC",
+
+    limiters: {},
+
+    "1hl": {
+      history: [],
+      settings: [],
+      difficulty: "normal"
+    },
+
+    userPacks: [],
+  },
+
+  userPlayData: {
+    started: false,
+    isDead: false,
+    tier: 0,
+    MC: 0,
+    XP: 0,
+    color: "",
+    currentBiome: "",
+    currentAnimal: "",
+    animalBiome: "",
+    bitesInArena: 0,
+    arenaTurn: 0,
+    opponentBitesInArena: 0,
+    opponentAnimal: "",
+    opponentAction: "",
+    opponentTier: "",
+    opponentApex: "",
+    MessageID: "",
+    ChannelID: "",
+    GuildID: "",
+
+    apex: [], // expected: array with names inside
+  },
 
   userWardrobe: {
     mouse: 0,
@@ -220,55 +286,6 @@ DB.variables({
     blackDragon: 0,
     kingDragon: 0,
     rareKingDragon: 0,
-  },
-
-  userProfile: {
-    ID: "",
-    MC: 0,
-    MUID: -1,
-    acceptedRules: false,
-    testerMode: false,
-    onSlowmode: false,
-    isBanned: false,
-    devMode: false,
-    hadAnn: false,
-    rtMode: "default",
-    language: "EN",
-    timezone: "Etc/UTC",
-
-    limiters: {},
-
-    "1hl": {
-      history: [],
-      settings: [],
-      difficulty: "normal"
-    },
-
-    userPacks: [],
-  },
-
-  userPlayData: {
-    started: false,
-    isDead: false,
-    tier: 0,
-    MC: 0,
-    XP: 0,
-    color: "",
-    currentBiome: "",
-    currentAnimal: "",
-    animalBiome: "",
-    bitesInArena: 0,
-    arenaTurn: 0,
-    opponentBitesInArena: 0,
-    opponentAnimal: "",
-    opponentAction: "",
-    opponentTier: "",
-    opponentApex: "",
-    MessageID: "",
-    ChannelID: "",
-    GuildID: "",
-
-    apex: [], // expected: array with names inside
   },
 
   userBackup: {},

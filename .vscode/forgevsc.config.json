@@ -24,7 +24,8 @@
     "forgedb": "tryforge/forgedb#dev",
     "forgeexpress": "zack-911/forgeexpress#dev",
     "forgecanvas": "tryforge/forgecanvas#dev",
-    "forgescheduler": "zack-911/forgescheduler#dev"
+    "forgescheduler": "zack-911/forgescheduler#dev",
+    "forgetopgg": "tryforge/forgetopgg#main"
   },
   "customFunctions": {
     "Example1": {
