@@ -2,7 +2,7 @@ export default {
   type: "voted",
   code: `
     $let[ID;$voteUserID]
-    $logger[Info;$get[ID] voted on Top.gg]
+    $let[MC;$getGlobalVar[voteReward]]
 
     $sendMessage[$getGlobalVar[logChannelID];
       $author[$username[$get[ID]];$userAvatar[$get[ID]]]
@@ -17,12 +17,12 @@ export default {
       $description[## Thank you for voting! Register to earn reward!]
     ;
       $jsonLoad[userProfile;$getUserVar[userProfile;$get[ID]]]
-      $let[MC;10000]
       $callFunction[sumMC;$get[MC]]
       $setUserVar[userProfile;$env[userProfile];$get[ID]]
       $description[## Thank you for voting! Your reward: \`$separateNumber[$get[MC];,]\`$getGlobalVar[emoji]]
-      $getGlobalVar[author]
+      $author[$username[$get[ID]] • MUID: $env[userProfile;MUID];$userAvatar[$get[ID]]]
     ]
+    $color[$getGlobalVar[defaultColor]]
     $sendDM[$get[ID]]
   `
 }

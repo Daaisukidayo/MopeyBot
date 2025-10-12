@@ -323,6 +323,7 @@ DB.variables({
   maxParticipants: 10,
   maxCoinflipBet: 200000,
   maxSlotsBet: 50000,
+  voteReward: 10000,
 
   // history
 

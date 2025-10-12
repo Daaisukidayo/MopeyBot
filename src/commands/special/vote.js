@@ -13,9 +13,10 @@ export default {
       $callFunction[newAuthor]
       $addSeparator[Large]
       $addSection[
-        $addTextDisplay[# Vote on Top.gg every 12h to earn \`15,000\`$getGlobalVar[emoji]!]
+        $addTextDisplay[# Vote on Top.gg every 12h to earn \`$separateNumber[$getGlobalVar[voteReward];,]\`$getGlobalVar[emoji]!]
         $addButton[https://top.gg/bot/$clientID/vote;Vote;Link;;$get[hasVoted]]
       ]
+      $addSeparator[Large]
       $addTextDisplay[## $if[$get[hasVoted];❌ You have already voted! Come back later!;✅ You can vote!]]
     ;$getGlobalVar[defaultColor]]
   `
