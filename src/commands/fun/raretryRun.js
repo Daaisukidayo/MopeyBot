@@ -47,9 +47,8 @@ export default {
         $letSum[total;$get[MC]]
 
         $if[$get[lastDailyRaretryrun]!=$day;
-          $if[$getUserVar[catchedRaresInRaretryrun]<$getGlobalVar[maxRaretryrunRares];
-            $setUserVar[catchedRaresInRaretryrun;$math[$getUserVar[catchedRaresInRaretryrun] + 1]]
-          ;
+          $setUserVar[catchedRaresInRaretryrun;$math[$getUserVar[catchedRaresInRaretryrun] + 1]]
+          $if[$getUserVar[catchedRaresInRaretryrun]>=$getGlobalVar[maxRaretryrunRares];
             $!jsonSet[userProfile;limiters;lastDailyRaretryrun;$day]
             $let[lastDailyRaretryrun;$day]
             $sendMessage[$channelID;## <@$authorID>, you have caught $getGlobalVar[maxRaretryrunRares] \`$commandName\` rares!]
