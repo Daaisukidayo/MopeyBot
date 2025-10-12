@@ -33,6 +33,8 @@ export default {
     $let[i;$math[$get[al] - 1]]
     $let[arg;$message[0]]
     $let[isDev;$env[userProfile;devMode]]
+    $let[lastDailyRaretry;$default[$env[userProfile;limiters;lastDailyRaretry];-1]]
+
 
     $switch[$get[rtMode];
       $case[default;$let[rtModeNum;0]]
@@ -61,7 +63,7 @@ export default {
       $let[cond1;$and[$get[targetID]!=-1;$env[group;ID]==$get[targetID]]]
       $let[cond2;$and[$get[targetID]==-1;1==$randomNumber[1;$sum[1;$get[baseChance]]]]]
 
-      $if[$or[$get[cond1];$get[cond2]];
+      $if[$or[$get[cond1];$get[cond2]]; $c[Catch]
 
         $jsonLoad[animalIDs;$env[group;animalIDs]]
         $let[animalID;$arrayRandomValue[animalIDs]]
@@ -73,7 +75,6 @@ export default {
         $if[$get[MC]!=0;
           $let[extraContent;$arrayRandomValue[raretryRewardContent] $separateNumber[$get[MC];.]$getGlobalVar[emoji]]
           $callFunction[sumMC;$get[MC]]
-          $setUserVar[userProfile;$env[userProfile]]
         ]
         $description[## $arrayRandomValue[raretrySuccessCatch] $get[animalEmoji] $get[extraContent]] $delete[extraContent]
         $thumbnail[$get[thumbnail]]
@@ -81,6 +82,17 @@ export default {
         $color[$env[group;color]]
         $getGlobalVar[author]
         $sendMessage[$channelID]
+
+        $if[$get[lastDailyRaretry]!=$day;
+          $if[$getUserVar[catchedRaresInRaretry]<$getGlobalVar[maxRaretryRares];
+            $setUserVar[catchedRaresInRaretry;$sum[$getUserVar[catchedRaresInRaretry];1]]
+          ;
+            $!jsonSet[userProfile;limiters;lastDailyRaretry;$day]
+            $let[lastDailyRaretry;$day]
+            $sendMessage[$channelID;## <@$authorID>, you have caught $getGlobalVar[maxRaretryRares] \`$commandName\` rares!]
+          ]
+        ]
+        $setUserVar[userProfile;$env[userProfile]]
       ]
       $letSub[i;1]
     ]

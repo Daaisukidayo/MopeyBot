@@ -289,6 +289,10 @@ DB.variables({
   },
 
   userBackup: {},
+  catchedRaresInRaretryrun: 0,
+  catchedRaresInRaretry: 0,
+  dailyStreak: 0,
+  hadAnnouncement: false,
 
   // Guild variables
 
@@ -315,7 +319,7 @@ DB.variables({
   kingDragonByLuckColor: "#d61b4a",
   emoji: "<:MopeCoin:705856410940080232>",
   blank: "<:blank:898514292926713866>",
-  author: "$author[$username • MUID: $env[userProfile;MUID];$userAvatar]",
+  author: "$author[$username[$default[$get[ID];$authorID]] • MUID: $env[userProfile;MUID];$userAvatar[$default[$get[ID];$authorID]]]",
   reportChannelID: "1372645851159330947",
   logChannelID: "1391387203871047731",
   lobbyInactiveTime: "30m",
@@ -323,7 +327,13 @@ DB.variables({
   maxParticipants: 10,
   maxCoinflipBet: 200000,
   maxSlotsBet: 50000,
+  maxRaretryrunRares: 20,
+  maxRaretryRares: 3,
+
   voteReward: 10000,
+  dailyReward: 20000,
+  weeklyReward: 150000,
+  checklistReward: 30000,
 
   // history
 

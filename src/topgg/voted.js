@@ -20,7 +20,7 @@ export default {
       $callFunction[sumMC;$get[MC]]
       $setUserVar[userProfile;$env[userProfile];$get[ID]]
       $description[## Thank you for voting! Your reward: \`$separateNumber[$get[MC];,]\`$getGlobalVar[emoji]]
-      $author[$username[$get[ID]] • MUID: $env[userProfile;MUID];$userAvatar[$get[ID]]]
+      $getGlobalVar[author]
     ]
     $color[$getGlobalVar[defaultColor]]
     $sendDM[$get[ID]]

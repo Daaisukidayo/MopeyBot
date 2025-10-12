@@ -11,12 +11,13 @@ export default {
     $let[lastDay;$default[$env[userProfile;limiters;lastDailyDay];-1]]
     $let[remHours;$sub[24;$hour]]
     $let[remMinutes;$sub[60;$minute]]
+    $let[MC;$getGlobalVar[dailyReward]]
 
     $if[$env[userProfile;devMode];;
       $onlyIf[$day!=$get[lastDay];
         $let[cd;$sum[$parseString[$get[remHours]h$get[remMinutes]m];$getTimestamp]]
         ${universalSnippets.cooldownEmbed()}
-        $description[## You already claimed your daily reward! 
+        $description[## You already have claimed your daily reward! 
         ## Cooldown resets every day at 00:00 AM UTC+0!
         ## Time left: $discordTimestamp[$get[cd];RelativeTime] $discordTimestamp[$get[cd];LongDateTime]]
       ]
@@ -24,7 +25,6 @@ export default {
 
     $!jsonSet[userProfile;limiters;lastDailyDay;$day]
   
-    $let[MC;20000]
     $callFunction[sumMC;$get[MC]]
     $setUserVar[userProfile;$env[userProfile]]
 

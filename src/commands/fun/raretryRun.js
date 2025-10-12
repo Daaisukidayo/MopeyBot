@@ -16,6 +16,7 @@ export default {
     $jsonLoad[content;$env[l;raretryRun;0;$env[userProfile;language]]]
     $jsonLoad[rareReward;${raresReward()}]
     $jsonLoad[allRareAttemptsInfoEntries;$jsonEntries[allRareAttemptsInfo]]
+    $let[lastDailyRaretryrun;$default[$env[userProfile;limiters;lastDailyRaretryrun];-1]]
 
     $arrayLoad[desc]
     $let[total;0]
@@ -45,6 +46,16 @@ export default {
         $let[MC;$default[$env[rareReward;$get[animalID]];0]]
         $letSum[total;$get[MC]]
 
+        $if[$get[lastDailyRaretryrun]!=$day;
+          $if[$getUserVar[catchedRaresInRaretryrun]<$getGlobalVar[maxRaretryrunRares];
+            $setUserVar[catchedRaresInRaretryrun;$math[$getUserVar[catchedRaresInRaretryrun] + 1]]
+          ;
+            $!jsonSet[userProfile;limiters;lastDailyRaretryrun;$day]
+            $let[lastDailyRaretryrun;$day]
+            $sendMessage[$channelID;## <@$authorID>, you have caught $getGlobalVar[maxRaretryrunRares] \`$commandName\` rares!]
+          ]
+        ]
+
         $return[## $get[animalContent]$get[CL] | \`$get[rareQuantity]/$get[totalAttempts]\` | +\`$get[MC]\`$getGlobalVar[emoji]]
       ]
     ;desc]
@@ -54,6 +65,7 @@ export default {
     ]
 
     $callFunction[sumMC;$get[total]]
+    $setUserVar[userProfile;$env[userProfile]]
 
     $addContainer[
       $callFunction[newAuthor]
@@ -64,8 +76,6 @@ export default {
       $addSeparator
       $addTextDisplay[-# Total: +$get[total]$getGlobalVar[emoji]]
     ;$getGlobalVar[luckyColor]]
-    
-    $setUserVar[userProfile;$env[userProfile]]
   `
 }
 
