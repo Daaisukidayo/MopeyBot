@@ -2,7 +2,7 @@ export default {
   type: "voted",
   code: `
     $let[ID;$voteUserID]
-    $log[$get[ID] voted on Top.gg]
+    $logger[Info;$get[ID] voted on Top.gg]
 
     $sendMessage[$getGlobalVar[logChannelID];
       $author[$username[$get[ID]];$userAvatar[$get[ID]]]
