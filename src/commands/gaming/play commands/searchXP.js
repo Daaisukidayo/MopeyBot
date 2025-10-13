@@ -20,7 +20,7 @@ export default {
     $let[deathDesc;$randomText[A predator killed you!;You were killed by a predator!]]
 
     $let[findPrayRarity;$randomNumber[1;101]]
-    $let[findPrayChance;20]
+    $let[findPrayChance;12]
 
     $jsonLoad[expBase;$readFile[src/json/expBase.json]]
     $jsonLoad[expData;$readFile[src/json/expData.json]]
