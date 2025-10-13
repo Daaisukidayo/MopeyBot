@@ -6,7 +6,7 @@ export default {
       $if[$and[$env[playData;tier]==17;$get[hasAllApex]];
         $!jsonSet[playData;XP;0]
       ;
-        $!jsonSet[playData;XP;$floor[$math[$env[playData;XP] / 2.25]]]
+        $!jsonSet[playData;XP;$floor[$math[$env[playData;XP] / 3]]]
       ]
     `;
   },
