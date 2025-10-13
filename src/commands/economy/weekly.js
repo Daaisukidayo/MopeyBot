@@ -19,7 +19,7 @@ export default {
       $onlyIf[$week!=$get[lastWeek];
         ${universalSnippets.cooldownEmbed()}
         $description[## You already have claimed your weekly reward! 
-        ## Cooldown resets every monday at 12:00 PM UTC+0!
+        ## Cooldown resets every monday at 12:00 AM UTC+0!
         ## Time left: $discordTimestamp[$get[cd];RelativeTime] $discordTimestamp[$get[cd];LongDateTime]]
       ]
     ]

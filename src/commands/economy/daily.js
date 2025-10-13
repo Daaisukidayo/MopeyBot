@@ -18,7 +18,7 @@ export default {
         $let[cd;$sum[$parseString[$get[remHours]h$get[remMinutes]m];$getTimestamp]]
         ${universalSnippets.cooldownEmbed()}
         $description[## You already have claimed your daily reward! 
-        ## Cooldown resets every day at 00:00 AM UTC+0!
+        ## Cooldown resets every day at 12:00 AM UTC+0!
         ## Time left: $discordTimestamp[$get[cd];RelativeTime] $discordTimestamp[$get[cd];LongDateTime]]
       ]
     ]

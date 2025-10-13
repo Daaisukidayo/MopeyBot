@@ -9,26 +9,32 @@ export default {
     ${universalSnippets.checkProfile({addCooldown: false})}
 
     $let[lastHLUsed;$env[userProfile;limiters;lastHLUsed]]
+    $let[r;$env[userProfile;limiters;HLRandom]]
 
     $if[$get[lastHLUsed]!=$day;
 
+      $let[r;$randomNumber[0;101]]
       $!jsonSet[userProfile;limiters;lastHLUsed;$day]
-      $!jsonSet[userProfile;limiters;HLRandom;$randomNumber[0;101]]
+      $!jsonSet[userProfile;limiters;HLRandom;$get[r]]
 
       $jsonLoad[data;${data()}]
 
-      $arrayForEach[data;d;
+      $loop[$arrayLength[data];
+        $let[i;$math[$env[i] - 1]]
+        $jsonLoad[d;$arrayAt[data;$get[i]]]
+
         $if[$get[r]>=$env[d;num];
           $!jsonSet[userProfile;limiters;luckDesc;$env[d;desc]]
           $setUserVar[userProfile;$env[userProfile]]
+          $break
         ]
-      ]
+      ;i;true]
     ]
-    $let[r;$env[userProfile;limiters;HLRandom]]
+    
     $getGlobalVar[author]
     $description[## 🍀 Today your luck is $get[r]%, $env[userProfile;limiters;luckDesc]]
     $color[$getGlobalVar[luckyColor]]
-    $footer[The result updates every day at 0 AM UTC+0]
+    $footer[The result updates every day at 12:00 AM UTC+0]
   `
 }
 
