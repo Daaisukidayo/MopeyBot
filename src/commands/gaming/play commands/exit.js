@@ -14,8 +14,11 @@ export default {
     $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
     $onlyif[$env[playData;started];
-      $description[## You don't have an active game session!]
-      $callFunction[embed;error]
+      $addContainer[
+        $callFunction[newAuthor]
+        $addSeparator[Large]
+        $addTextDisplay[## You don't have an active game session!]
+      ;$getGlobalVar[errorColor]]      
       $interactionUpdate
     ]
 
@@ -23,15 +26,22 @@ export default {
 
     $switch[$env[IID;0];
       $case[$env[passKeys;0];
-        $description[## You have been disconnected from the game!\n$get[earned]]
-        $try[$!disableComponentsOf[$env[playData;ChannelID];$env[playData;MessageID]]]
+        $let[content;## You have been disconnected from the game!]
+        $try[$!deleteMessage[$env[playData;ChannelID];$env[playData;MessageID]]]
       ]
+
       $case[$env[passKeys;1];
         $onlyIf[$env[playData;MessageID]==$messageID]
-        $description[## You have exited the game!\n$get[earned]]
+        $let[content;## You have exited the game!]
       ]
     ]
-    $callFunction[embed;default]
+
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addTextDisplay[$get[content]]
+      $addTextDisplay[$get[earned]]
+    ;$getGlobalVar[defaultColor]]
     $interactionUpdate
     ${playSnippets.removeAllProgress()}
   `

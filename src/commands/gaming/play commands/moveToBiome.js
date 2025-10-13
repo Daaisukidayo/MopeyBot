@@ -17,17 +17,27 @@ export default {
 
     $let[biome;$get[value]]
     $let[color;$env[biomeColors;$get[biome]]]
+    $let[tier;$env[playData;tier]]
 
     $!jsonSet[playData;currentBiome;$get[biome]]
     $!jsonSet[playData;color;$get[color]]
-
-    $description[## Successfully moved to __$get[biome]__!\n${playSnippets.animalStats()}]
-    $getGlobalVar[author]
-    $color[$env[playData;color]]
-    ${playSnippets.actionMenu()}
-    ${playSnippets.exitButton()}
-    $interactionUpdate
-    
     $setUserVar[userPlayData;$env[playData]]
+
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addSection[
+        $addTextDisplay[## Successfully moved to __$get[biome]__!]
+        $addThumbnail[$env[playData;currentAnimalImg]]
+      ]
+      $addTextDisplay[${playSnippets.animalStats()}]
+      $if[$get[tier]==17;
+        ${playSnippets.hasAllApex()}
+      ]
+      ${playSnippets.actionMenu()}
+      $addSeparator
+      ${playSnippets.exitButton()}
+    ;$env[playData;color]]
+    $interactionUpdate
   `
 }

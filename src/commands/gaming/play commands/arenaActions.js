@@ -1,4 +1,3 @@
-// TODO
 import playSnippets from '#snippets/playSnippets.js'
 
 export default {
@@ -20,6 +19,12 @@ export default {
     $let[opponentTier;$env[playData;opponentTier]]
     $let[opponentApex;$env[playData;opponentApex]]
     $let[actionR;$randomNumber[1;101]]
+
+    $jsonLoad[xpReward;{
+      "15": [1000000,3000000\\],
+      "16": [3000000,6000000\\],
+      "17": [6000000,12000000\\]
+    }]
 
     $if[$env[playData;arenaTurn]==0;
       $if[$get[actionR]<=65;
@@ -160,104 +165,106 @@ export default {
     $let[CAID;$env[playData;currentAnimal]]
     $let[currentAnimal;$env[animals;$env[animalsIndexes;$get[CAID]];variants;$env[userWardrobe;$get[CAID]];emoji]]
 
-    $jsonLoad[desc;[
-      "# __$get[currentAnimal] $userDisplayName__",
-      "### Bites: $inlineCode[$env[playData;bitesInArena]]",
-      "# \`VS\`",
-      "# __$env[playData;opponentAnimal]__",
-      "### Bites: $inlineCode[$env[playData;opponentBitesInArena]]",
-      "━━━━━━━━━━━━━━━",
-      "## You chose: $inlineCode[$toTitleCase[$get[playerAction]]]",
-      "## Opponent chose: $inlineCode[$toTitleCase[$get[opponentAction]]]",
-      "━━━━━━━━━━━━━━━",
-      "## $get[actionDesc]",
-      "━━━━━━━━━━━━━━━"
-    \\]]
-
     $if[$env[playData;arenaTurn]==0; $c[If user's turn, then setting random opponent's action]
       $let[opponentAction;$randomText[attack;defend;deceive]]
       $!jsonSet[playData;opponentAction;$get[opponentAction]]
     ]
 
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
 
-    $if[$env[playData;bitesInArena]>=10; $c[If user won]
+      $addTextDisplay[# __$get[currentAnimal] $userDisplayName__]
+      $addTextDisplay[### Bites: $inlineCode[$env[playData;bitesInArena]]]
+      $addTextDisplay[# \`VS\`]
+      $addTextDisplay[# __$env[playData;opponentAnimal]__]
+      $addTextDisplay[### Bites: $inlineCode[$env[playData;opponentBitesInArena]]]
+      $addSeparator
+      $addTextDisplay[## You chose: $inlineCode[$toTitleCase[$get[playerAction]]]]
+      $addTextDisplay[## Opponent chose: $inlineCode[$toTitleCase[$get[opponentAction]]]]
+      $addSeparator
+      $addTextDisplay[## $get[actionDesc]]
+      $addSeparator
 
-      $c[Giving XP based on opponent's tier]
-      $jsonLoad[xpReward;{
-        "15": [1000000,3000000\\],
-        "16": [3000000,6000000\\],
-        "17": [6000000,12000000\\]
-      }]
-      $let[min;$env[xpReward;$get[opponentTier];0]]
-      $let[max;$math[$env[xpReward;$get[opponentTier];1] + 1]]
-      $let[xpReward;$randomNumber[$get[min];$get[max]]]
-      
-      $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xpReward]]]
+      $if[$env[playData;bitesInArena]>=10; $c[If user won]
 
-      ${playSnippets.resetArena()}
+        $c[Giving XP based on opponent's tier]
+        $addTextDisplay[## YOU WON!]
 
-      $if[$env[playData;tier]==17; $c[If user is not a KD]
-        $if[$arrayIncludes[currentApex;$get[opponentApex]];;
-          $arrayPush[currentApex;$get[opponentApex]] $c[setting apex based on opponent's animal]
-          $!jsonSet[playData;apex;$env[currentApex]]
-        ]
-        ${playSnippets.hasAllApex()}
+        $let[min;$default[$env[xpReward;$get[opponentTier];0];0]]
+        $let[max;$math[$default[$env[xpReward;$get[opponentTier];1];0] + 1]]
+        $let[xpReward;$randomNumber[$get[min];$get[max]]]
+        $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xpReward]]]
+        $!jsonSet[playData;MC;$math[$env[playData;MC] + 1000]]
 
-        $description[$get[currentApexes];1]
-        $color[$getGlobalVar[apexEmbedColor];1]
-      ]
-
-      $!jsonSet[playData;MC;$math[$env[playData;MC] + 1000]]
-
-      $color[$getGlobalVar[luckyColor]]
-      ${playSnippets.actionMenu()}
-      ${playSnippets.exitButton()}
-      $arrayPush[desc;## YOU WON!]
-      $let[desc;$arrayJoin[desc;\n]\n${playSnippets.animalStats()}]
-
-    ;
-    
-      $if[$env[playData;opponentBitesInArena]>=10; $c[If opponent won]
-
-        $arrayPush[desc;## You lost]
-        $let[desc;$arrayJoin[desc;\n]]
-
-        $!jsonSet[playData;currentAnimal;]
         ${playSnippets.resetArena()}
+        $let[win;true]
+        $let[color;$getGlobalVar[luckyColor]]
 
-        $if[$and[$env[playData;tier]==17;$get[hasAllApex]];
-          $!jsonSet[playData;XP;0];
-          ${playSnippets.setNewXPOnDeath()}
+      ;
+      
+        $if[$env[playData;opponentBitesInArena]>=10; $c[If opponent won]
+
+          $addTextDisplay[## You lost]
+
+          $!jsonSet[playData;currentAnimal;]
+          ${playSnippets.resetArena()}
+
+          $if[$and[$env[playData;tier]==17;$get[hasAllApex]];
+            $!jsonSet[playData;XP;0];
+            ${playSnippets.setNewXPOnDeath()}
+          ]
+
+          ${playSnippets.setNewTier()}
+          ${playSnippets.removeAllApex()}
+
+          ${playSnippets.respawnButton()}
+          $addSeparator
+          ${playSnippets.exitButton(false)}
+          $let[color;$getGlobalVar[errorColor]]
+
+        ;  $c[If arena still in progress]
+
+          $if[$env[playData;arenaTurn]==1; $c[If opponent's turn]
+            $!jsonSet[playData;arenaTurn;0]
+            $addTextDisplay[## Your turn!]
+            $addTextDisplay[### Choose:]
+          ; 
+            $!jsonSet[playData;arenaTurn;1]
+            $addTextDisplay[## Opponent's turn!]
+            $addTextDisplay[### He chose: $inlineCode[$toTitleCase[$get[opponentAction]]]]
+          ]
+
+          ${playSnippets.arenaActionButtons(true)}
+          $addSeparator
+          ${playSnippets.exitButton()}
+          $let[color;$getGlobalVar[defaultColor]]
         ]
-
-        ${playSnippets.setNewTier()}
-        ${playSnippets.removeAllApex()}
-        ${playSnippets.respawnButton()}
-        ${playSnippets.exitButton(false)}
-        $color[$getGlobalVar[errorColor]]
-
-      ;  $c[If arena still in progress]
-
-        $if[$env[playData;arenaTurn]==1; $c[If opponent's turn]
-          $!jsonSet[playData;arenaTurn;0]
-          $arrayPush[desc;## Your turn!;### Choose:]
-          $let[desc;$arrayJoin[desc;\n]]
-        ; 
-          $!jsonSet[playData;arenaTurn;1]
-          $arrayPush[desc;## Opponent's turn!;### He chose: $inlineCode[$toTitleCase[$get[opponentAction]]]]
-          $let[desc;$arrayJoin[desc;\n]]
-        ]
-
-        ${playSnippets.arenaActionButtons(true)}
-        ${playSnippets.exitButton()}
-        $color[$getGlobalVar[defaultColor]]
       ]
-    ]
-    
-    $description[$get[desc]]
-    $getGlobalVar[author]
+
+      $if[$get[win]; $c[If user won]
+        $let[opponentApex;$advancedReplace[$get[opponentApex];aquaYeti;yeti;kingDragon;blackDragon]]
+        $if[$and[$env[playData;tier]==17;$includes[$env[playData;currentAnimal];kingDragon;rareKingDragon]==false]; $c[If user is not a KD]
+          $if[$arrayIncludes[currentApex;$get[opponentApex]];;
+            $arrayPush[currentApex;$get[opponentApex]] $c[setting apex based on opponent's animal]
+            $!jsonSet[playData;apex;$env[currentApex]]
+          ]
+          ${playSnippets.hasAllApex()}
+          $let[showApex;true]
+        ]
+        
+        ${playSnippets.actionMenu()}
+        $addTextDisplay[${playSnippets.animalStats()}]
+        $addSeparator
+        ${playSnippets.exitButton()}
+
+        $if[$get[showApex];
+          $addSeparator
+          $addTextDisplay[$get[currentApexes]]
+        ]
+      ]
+    ;$get[color]]
     $interactionUpdate
-    
     $setUserVar[userPlayData;$env[playData]]
   `
 }

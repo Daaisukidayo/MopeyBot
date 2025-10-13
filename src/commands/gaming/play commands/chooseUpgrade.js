@@ -16,13 +16,18 @@ export default {
 
     ${playSnippets.hasStarted()}
     ${playSnippets.resetArena()}
-    
 
     $!jsonSet[playData;isDead;false]
 
     $let[id;$default[$env[values;0];$env[IID;0]]]
     
-    $if[$includes[$get[id];upgrade;devUpArrow];
+    $if[$includes[$get[id];upgrade];
+      ${playSnippets.setNewTier()}
+      $if[$env[playData;tier]>17;
+        $!jsonSet[playData;tier;1]
+      ]
+    ]
+    $if[$includes[$get[id];devUpArrow];
       $!jsonSet[playData;tier;$math[$env[playData;tier] + 1]]
       $if[$env[playData;tier]>17;
         $!jsonSet[playData;tier;1]
@@ -38,23 +43,31 @@ export default {
       $!jsonSet[playData;XP;$env[XPreq;$env[playData;tier];0]]
     ]
 
-    $if[$includes[$get[id];kingDragonUpg];
-      $jsonLoad[KD;$env[animals;$env[animalsIndexes;kingDragon]]]
-      $let[KDtrig;$env[KD;ID]-upgrade-animal-play-$authorID]
-      $let[KDwr;$env[userWardrobe;kingDragon]]
-      $let[KDname;$env[KD;variants;$get[KDwr];name]]
-      $let[KDemoji;$env[KD;variants;$get[KDwr];emoji]]
-      $let[emojisInDescription;$get[KDemoji]]
-      $addActionRow
-      $addButton[$get[KDtrig];$get[KDname];Secondary;$get[KDemoji]]
-    ;
-      ${playSnippets.animalsButtonsGenerator()}
-    ]
-    ${playSnippets.exitButton()}
+    $addContainer[
+      $callFunction[newAuthor]
 
-    $description[## Choose which animal to spawn as:\n# $get[emojisInDescription]]
-    $getGlobalVar[author]
-    $color[$env[playData;color]]
+      $addSeparator[Large]
+      
+      $addTextDisplay[## Choose which animal to spawn as:]
+      
+      $if[$includes[$get[id];kingDragonUpg];
+        $jsonLoad[KD;$env[animals;$env[animalsIndexes;kingDragon]]]
+        $let[KDtrig;$env[KD;ID]-upgrade-animal-play-$authorID]
+        $let[KDwr;$env[userWardrobe;kingDragon]]
+        $let[KDname;$env[KD;variants;$get[KDwr];name]]
+        $let[KDemoji;$env[KD;variants;$get[KDwr];emoji]]
+        $let[emojisInDescription;$get[KDemoji]]
+        $addActionRow
+        $addButton[$get[KDtrig];$get[KDname];Secondary;$get[KDemoji]]
+      ;
+        ${playSnippets.animalsButtonsGenerator()}
+      ]
+
+      $addSeparator[Large]
+
+      ${playSnippets.exitButton()}
+    ;$default[$env[playData;color];$getGlobalVar[defaultColor]]]
+
     $interactionUpdate
     $setUserVar[userPlayData;$env[playData]]
   `

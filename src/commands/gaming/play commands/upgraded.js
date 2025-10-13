@@ -18,9 +18,7 @@ export default {
 
     $jsonLoad[rareReward;${playSnippets.rareReward()}]
     $let[bonusPerUpgrade;50]
-
     $let[bonusPerRare;$default[$env[rareReward;$get[animalID]];0]]
-
     $let[wardrobeIndex;$env[userWardrobe;$get[animalID]]]
     $let[color;$env[biomeColors;$env[animals;$env[animalsIndexes;$get[animalID]];biome]]]
     $let[thumbnail;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wardrobeIndex];img]]
@@ -30,17 +28,25 @@ export default {
 
     $!jsonSet[playData;MC;$math[$get[bonusPerUpgrade] + $env[playData;MC] + $get[bonusPerRare]]]
     $!jsonSet[playData;currentAnimal;$get[animalID]]
+    $!jsonSet[playData;currentAnimalImg;$get[thumbnail]]
     $!jsonSet[playData;color;$get[color]]
     $!jsonSet[playData;currentBiome;$get[biome]]
     $!jsonSet[playData;animalBiome;$get[biome]]
+    
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addSection[
+        $addThumbnail[$get[thumbnail]]
+        $addTextDisplay[## You upgraded to __$get[emoji] $get[animalName]__!]
+      ]
+      $addSeparator[Small;false]
+      ${playSnippets.actionMenu()}
+      $addTextDisplay[${playSnippets.animalStats()}]
+      $addSeparator[Large]
+      ${playSnippets.exitButton()}
+    ;$get[color]]
 
-    $thumbnail[$get[thumbnail]]
-    $color[$get[color]]
-    $description[## You upgraded to __$get[emoji] $get[animalName]__!\n${playSnippets.animalStats()}]
-    $getGlobalVar[author]
-
-    ${playSnippets.actionMenu()}
-    ${playSnippets.exitButton()}
     $setUserVar[userPlayData;$env[playData]]
     $interactionUpdate
   `

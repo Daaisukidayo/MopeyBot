@@ -11,7 +11,6 @@ export default [{
     ${uniSnippets.checkProfile({addCooldown: false})}
 
     $onlyIf[$guildID!=;## You can't start the game in DMs!]
-    $onlyIf[$env[userProfile;testerMode]]
 
     $onlyIf[$env[playData;started]==false;
       $description[## You already have an active game session!
@@ -33,12 +32,15 @@ export default [{
     $!jsonSet[playData;tier;1]
     ${uniSnippets.luckGenerator(raresGroupsKey())}
     $setUserVar[allRareAttemptsInfo;$env[allRareAttemptsInfo]]
-    ${playSnippets.animalsButtonsGenerator()}
-    ${playSnippets.exitButton()}
-
-    $description[## Choose which animal to spawn as:\n# $get[emojisInDescription]]
-    $getGlobalVar[author]
-
+    
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addTextDisplay[## Choose which animal to spawn as:]
+      ${playSnippets.animalsButtonsGenerator()}
+      $addSeparator[Large]
+      ${playSnippets.exitButton()}
+    ;$getGlobalVar[defaultColor]]
     $let[msgID;$sendMessage[$channelID;;true]]
 
     $!jsonSet[playData;MessageID;$get[msgID]]

@@ -52,7 +52,7 @@ const BOT = new ForgeClient({
   ],
   events: ["interactionCreate", "messageCreate", "clientReady"],
   prefixes: ["$default[$getGuildVar[prefix];$getGlobalVar[prefix]]"],
-  logLevel: LogPriority.VeryLow,
+  logLevel: LogPriority.Low,
 });
 
 // ========== LOAD COMMANDS ==========

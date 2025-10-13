@@ -130,7 +130,7 @@ export default {
       "15": [1000000, 5000000],
       "16": [5000000, 10000000],
       "17": [10000000, 40000000]
-    }).replace(/]/g, '\\]')
+    }).replaceAll(']', '\\]')
   },
 
   loadJSON() {
@@ -172,7 +172,7 @@ export default {
       "Nobody showed up.",
       "They saw your name and ran.",
       "Seems like everyone is scared of you because nobody wants to 1v1 you."
-    ]).replace(/]/g, '\\]')
+    ]).replaceAll(']', '\\]')
   },
 
   respawnButton() {
@@ -220,6 +220,7 @@ export default {
 
         $if[$get[animalTier]>$env[playData;tier];$break]
         $if[$get[animalTier]!=$env[playData;tier];$continue]
+        $if[$get[animalID]==kingDragon;$break]
 
         $jsonLoad[allRareAttemptsInfo;$getUserVar[allRareAttemptsInfo]]
         $jsonLoad[ARAIkeys;$jsonKeys[allRareAttemptsInfo]]
@@ -257,7 +258,7 @@ export default {
       $addActionRow
       $addStringSelectMenu[actions-play-$authorID;Actions]
 
-      $if[$and[$env[playData;tier]==17;$get[hasAllApex]];
+      $if[$and[$env[playData;tier]==17;$get[hasAllApex];$includes[$env[playData;currentAnimal];kingDragon;rareKingDragon]==false];
         $addOption[Upgrade;;kingDragonUpg;⬆️]
         $let[hideSwitchBiome;true]
       ;

@@ -14,6 +14,7 @@ export default [{
   code: `
     $jsonLoad[userProfile;$getUserVar[userProfile]]
     $onlyIf[$env[userProfile;acceptedRules]]
+    $onlyIf[$startsWith[$messageContent;$default[$getGuildVar[prefix];$getGlobalVar[prefix]]]]
     $onlyIf[$getUserVar[hadAnnouncement]==false]
     $setUserVar[hadAnnouncement;true]
     
@@ -28,10 +29,7 @@ function content() {
       $addTextDisplay[# 📢 Announcement]
       $addSeparator[Large]
       $addTextDisplay[## \`New commands\`]
-      $addTextDisplay[### • A \`vote\` command has been added to vote for Mopey on Top.gg and receive a reward!]
-      $addTextDisplay[### • Added \`checklist\` command to claim rewards for completing daily tasks! Also shows your daily streak!]
-      $addSeparator
-      $addTextDisplay[-# Version 2025Y1012]
+      $addTextDisplay[### • Added \`play\` command! Play and earn coins, rares, battles etc! Still in development, many features may be added in the future!]
     ;$getGlobalVar[defaultColor]]
   `
 }

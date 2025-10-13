@@ -77,20 +77,35 @@ export default {
       $!jsonSet[playData;opponentApex;$env[opp;3]]
       $!jsonSet[playData;opponentTier;$get[opponentTier]]
 
-      ${playSnippets.arenaActionButtons()}
+      $let[success;true]
+      
 
     ;
       $jsonLoad[ARC;${playSnippets.arenaRejectContent()}]
       $let[desc;## $arrayRandomValue[ARC]]
-      ${playSnippets.actionMenu()}
+      $let[success;false]
+      
     ]
 
-    ${playSnippets.exitButton()}
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
 
-    $getGlobalVar[author]
-    $description[$get[desc]\n${playSnippets.animalStats()}]
-    $thumbnail[$get[thumb]]
-    $color[$env[playData;color]]
+      $if[$get[success];
+        $addSection[
+          $addThumbnail[$get[thumb]]
+          $addTextDisplay[$get[desc]]
+        ]
+        ${playSnippets.arenaActionButtons()}
+      ;
+        $addTextDisplay[$get[desc]]
+        ${playSnippets.actionMenu()}
+      ]
+      $addTextDisplay[${playSnippets.animalStats()}]
+      $addSeparator
+      ${playSnippets.exitButton()}
+    ;$env[playData;color]]
+
     $interactionUpdate
     
     $setUserVar[userPlayData;$env[playData]]

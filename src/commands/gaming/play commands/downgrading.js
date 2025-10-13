@@ -36,10 +36,10 @@ export default {
 
     ;$if[$and[$includes[$get[animalBiome];Volcano];$includes[$get[currentBiome];Volcano]];
       
-      $let[desc;## You chose to downgrade by $if[$env[playData;tier]<17;giving yourself to a predator;giving everyone bites]!]
+      $let[desc;## You chose to downgrade by $if[$env[playData;tier]<17;giving yourself to predator;giving everyone bites]!]
 
     ;$if[$and[$includes[$get[animalBiome];Land;Arctic;Forest];$includes[$get[currentBiome];Land;Arctic;Forest]];
-      $let[desc;## You chose to downgrade by $randomText[giving yourself to a predator;running out of water]!]
+      $let[desc;## You chose to downgrade by $randomText[giving yourself to predator;running out of water]!]
     ; 
       $let[desc;## ???]
     ]]]]]]
@@ -49,15 +49,15 @@ export default {
     ${playSnippets.setNewXPOnDeath()}
     ${playSnippets.setNewTier()}
 
-    $color[$getGlobalVar[errorColor]]
-    $getGlobalVar[author]
-    $description[$get[desc]]
-    
-    ${playSnippets.respawnButton()}
-    ${playSnippets.exitButton(false)}
-
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addTextDisplay[$get[desc]]
+      ${playSnippets.respawnButton()}
+      $addSeparator
+      ${playSnippets.exitButton(false)}
+    ;$getGlobalVar[errorColor]]
     $interactionUpdate
-    
     $setUserVar[userPlayData;$env[playData]]
   `
 }

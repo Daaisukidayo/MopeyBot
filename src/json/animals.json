@@ -4607,65 +4607,65 @@
     "variants": [
       {
         "vCode": "s1",
-        "name": "King Dragon",
+        "name": "Rare King Dragon",
         "description": "Season 1",
-        "emoji": "<:KingDragonS1:1284470623615189142>",
+        "emoji": "<:RareKingDragonS1:1284470623615189142>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191472648263/KingDragon-S1.png"
       },
       {
         "vCode": "s2",
-        "name": "King Dragon",
+        "name": "Rare King Dragon",
         "description": "Season 2",
-        "emoji": "<:KingDragonS2:1280238249360494825>",
+        "emoji": "<:RareKingDragonS2:1280238249360494825>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1365989191737016360/KingDragon-S2.png"
       },
       {
         "vCode": "lockedSP",
-        "name": "King Shah",
+        "name": "Rare King Shah",
         "description": "Locked Skinpack",
-        "emoji": "<:KingShah:1327340413685596170>",
+        "emoji": "<:RareKingShah:1327340413685596170>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452034777108/KingShah.png"
       },
       {
         "vCode": "lockedSP",
-        "name": "King Stan",
+        "name": "Rare King Stan",
         "description": "Locked Skinpack",
-        "emoji": "<:KingStan:1327340402897977496>",
+        "emoji": "<:RareKingStan:1327340402897977496>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452416331786/KingStan.png"
       },
       {
         "vCode": "lockedSP",
-        "name": "King Ripper",
+        "name": "Rare King Ripper",
         "description": "Locked Skinpack",
-        "emoji": "<:KingRipper:1327340388566040669>",
+        "emoji": "<:RareKingRipper:1327340388566040669>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459451707494440/KingRipper.png"
       },
       {
         "vCode": "lockedSP",
-        "name": "Queen Celeste",
+        "name": "Rare Queen Celeste",
         "description": "Locked Skinpack",
-        "emoji": "<:QueenCeleste:1327340428265259068>",
+        "emoji": "<:RareQueenCeleste:1327340428265259068>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452898803786/QueenCeleste.png"
       },
       {
         "vCode": "lockedSP",
-        "name": "Queen Scarlet",
+        "name": "Rare Queen Scarlet",
         "description": "Locked Skinpack",
-        "emoji": "<:QueenScarlet:1327340439132442796>",
+        "emoji": "<:RareQueenScarlet:1327340439132442796>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453242609695/QueenScarlet.png"
       },
       {
         "vCode": "goldenSP",
-        "name": "Golden King Dragon",
+        "name": "Rare Golden King Dragon",
         "description": "Golden Skinpack",
-        "emoji": "<:GoldenKingDragon:1327340203173744651>",
+        "emoji": "<:RareGoldenKingDragon:1327340203173744651>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634254471304/GoldenKingDragon.png"
       },
       {
         "vCode": "storefrontSP",
-        "name": "Queen Flame",
+        "name": "Rare Queen Flame",
         "description": "Storefront Skinpack",
-        "emoji": "<:QueenFlame:1327340465166614559>",
+        "emoji": "<:RareQueenFlame:1327340465166614559>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453657841755/QueenFlame.png"
       }
     ]

@@ -17,7 +17,7 @@ export default {
 
     $let[deathRarity;$randomNumber[1;1001]]
     $let[deathChance;30]
-    $let[deathDesc;You were killed by a predator!]
+    $let[deathDesc;$randomText[A predator killed you!;You were killed by predator!]]
 
     $let[findPrayRarity;$randomNumber[1;101]]
     $let[findPrayChance;20]
@@ -107,25 +107,43 @@ export default {
       ]
     ]
 
-    $color[$env[playData;color]]
+    $let[color;$env[playData;color]]
 
-    $if[$get[deathChance]>=$get[deathRarity];
-      ${playSnippets.setNewXPOnDeath()}
-      ${playSnippets.setNewTier()}
-      $description[## $get[deathDesc]]
-      $color[$getGlobalVar[errorColor]]
-      ${playSnippets.respawnButton()}
-      $let[showCheats;false]
-    ;
-      $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xp]]]
-      $description[## $get[content]\n${playSnippets.animalStats()}]
-      ${playSnippets.actionMenu()}
-      $let[showCheats;true]
-    ]
-    ${playSnippets.exitButton('$get[showCheats]')}
-    $getGlobalVar[author]
-    $interactionUpdate
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      
+      $if[$get[deathChance]>=$get[deathRarity];
+        ${playSnippets.setNewXPOnDeath()}
+        ${playSnippets.setNewTier()}
+        ${playSnippets.removeAllApex()}
+
+        $addTextDisplay[## $get[deathDesc]]
+
+        $let[color;$getGlobalVar[errorColor]]
+        ${playSnippets.respawnButton()}
+        $let[showCheats;false]
+      ;
+        $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xp]]]
+
+        $addSection[
+          $addTextDisplay[## $get[content]]
+          $addThumbnail[$env[playData;currentAnimalImg]]
+        ]
+        $addTextDisplay[${playSnippets.animalStats()}]
+
+        $if[$get[tier]==17;
+          ${playSnippets.hasAllApex()}
+        ]
+        ${playSnippets.actionMenu()}
+        $let[showCheats;true]
+      ]
+
+      $addSeparator
+      ${playSnippets.exitButton('$get[showCheats]')}
+    ;$get[color]]
     
+    $interactionUpdate
     $setUserVar[userPlayData;$env[playData]]
   `
 }
