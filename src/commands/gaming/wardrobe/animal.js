@@ -23,7 +23,7 @@ export default {
     $!jsonSet[userWardrobe;$get[animalID];$get[variant]]
     $setUserVar[userWardrobe;$env[userWardrobe]]
 
-    ${wardrobeSnippets.animalsEmbed('$get[animalID]')}
+    ${wardrobeSnippets.animalsEmbed('animal')}
     $interactionUpdate
     ${wardrobeSnippets.timeout()}
   `

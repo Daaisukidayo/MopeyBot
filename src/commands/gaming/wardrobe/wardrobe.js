@@ -24,12 +24,12 @@ export default [{
     ;
       $if[$get[arg]==all;
         $callFunction[embed;default]
-        $description[# Choose a skinpack]
+        $description[# Equipping \`all\` animals, choose a skinpack]
         ${wardrobeSnippets.sninpacksMenu("all")}
       ;
         $if[$isNumber[$get[arg]];
           $callFunction[embed;default]
-          $description[# Choose a skinpack]
+          $description[# Equipping tier \`$get[arg]\` animals, choose a skinpack]
           ${wardrobeSnippets.sninpacksMenu("$get[arg]")}
         ;
           $onlyIf[$arrayIncludes[animalIDs;$get[arg]];

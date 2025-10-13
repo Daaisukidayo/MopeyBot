@@ -26,9 +26,9 @@ export default {
     $let[i;$arrayIndexOf[animalIDs;$get[animalID]]]
 
     $loop[-1;
-      $if[$env[animals;$env[animalsIndexes;$get[animalID]];variants;1]==;;$break]
       $letSum[i;1]
       $let[animalID;$arrayAt[animalIDs;$get[i]]]
+      $if[$env[animals;$env[animalsIndexes;$get[animalID]];variants;1]==;;$break]
     ]
 
     $if[$get[animalID]==;

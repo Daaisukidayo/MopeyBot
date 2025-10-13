@@ -4,27 +4,8 @@ export default {
     $logger[Info;Bot $username[$botID] is ready]
 
     $setInterval[
-      $setStatus[Online;Watching;$guildCount servers]
+      $setStatus[Online;Watching;$guildCount servers!]
     ;12s]
-
-    $async[ $c[CACHING allRares]
-      $deleteGlobalVar[allRares]
-      $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
-      $jsonLoad[allRaresData;$jsonEntries[allRaresData]]
-      $jsonLoad[animals;$readFile[src/json/animals.json]]
-      $arrayLoad[allRaresFromSnora]
-      
-      $arrayForEach[allRaresData;elem;
-        $let[animalID;$env[elem;0]]
-        $let[animalName;$env[animals;$get[animalID];variants;0;name]]
-        $jsonLoad[rares;$env[elem;1]]
-        $arrayForEach[rares;rare;
-          $arrayPush[allRaresFromSnora;$env[rare]]
-        ]
-      ]
-      $setGlobalVar[allRares;$env[allRaresFromSnora]]
-      $logger[Info;Cached «allRares»]
-    ]
 
     $if[$getGlobalVar[makeBackups];
       $async[
@@ -97,6 +78,7 @@ export default {
     ]]
 
     $async[
+      $deleteGlobalVar[animalsIndexes]
       $jsonLoad[animalsIndexes;{}]
       $jsonLoad[animals;$readFile[src/json/animals.json]]
       $loop[$arrayLength[animals];
@@ -109,8 +91,8 @@ export default {
     ]
 
     $async[
+      $deleteGlobalVar[arenaEnemies]
       $jsonLoad[animals;$readFile[src/json/animals.json]]
-
       $arrayMap[animals;obj;
         $if[$env[obj;tier]>=15;
           $if[$includes[$toLowercase[$env[obj;fullName]];luck];;
@@ -121,6 +103,25 @@ export default {
       ;enemies]
       $setGlobalVar[arenaEnemies;$env[enemies]]
       $logger[Info;Cached «arenaEnemies»]
+    ]
+
+    $async[ $c[CACHING allRares]
+      $deleteGlobalVar[allRares]
+      $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
+      $jsonLoad[allRaresData;$jsonEntries[allRaresData]]
+      $jsonLoad[animals;$readFile[src/json/animals.json]]
+      $arrayLoad[allRaresFromSnora]
+      
+      $arrayForEach[allRaresData;elem;
+        $let[animalID;$env[elem;0]]
+        $let[animalName;$env[animals;$get[animalID];variants;0;name]]
+        $jsonLoad[rares;$env[elem;1]]
+        $arrayForEach[rares;rare;
+          $arrayPush[allRaresFromSnora;$env[rare]]
+        ]
+      ]
+      $setGlobalVar[allRares;$env[allRaresFromSnora]]
+      $logger[Info;Cached «allRares»]
     ]
   `
 }
