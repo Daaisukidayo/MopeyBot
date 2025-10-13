@@ -17,7 +17,8 @@ export default [{
 },{
   type: "messageCreate",
   code: `
-    $onlyIf[$getUserVar[userProfile]!=]
+    $jsonLoad[userProfile;$getUserVar[userProfile]]
+    $onlyIf[$env[userProfile;acceptedRules]]
     $onlyIf[$getUserVar[hadAnnouncement]==false]
     $setUserVar[hadAnnouncement;true]
     
