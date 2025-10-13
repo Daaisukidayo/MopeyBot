@@ -16,7 +16,7 @@ export default {
     ${playSnippets.hasStarted()}
 
     $let[deathRarity;$randomNumber[1;1001]]
-    $let[deathChance;30]
+    $let[deathChance;15]
     $let[deathDesc;$randomText[A predator killed you!;You were killed by a predator!]]
 
     $let[findPrayRarity;$randomNumber[1;101]]
@@ -31,11 +31,11 @@ export default {
     $let[tier;$env[playData;tier]]
 
     $if[$env[animals;$env[animalsIndexes;$get[animalID]];isRare];
-      $letSub[deathChance;20]
+      $letSub[deathChance;10]
     ]
 
     $if[$get[animalBiome]!=$get[biome];
-      $letSum[deathChance;20]
+      $letSum[deathChance;10]
       $if[$get[animalBiome]==Ocean;
         $let[deathChance;1000]
         $let[deathDesc;You died by a lack of water!]
@@ -48,7 +48,7 @@ export default {
 
     $switch[$get[tier];
       $case[15;$letSub[deathChance;10]]
-      $case[16;$letSub[deathChance;15]]
+      $case[16;$letSub[deathChance;14]]
       $case[17;$let[deathChance;5] $let[deathDesc;You were killed by teamers!]]
     ]
 
