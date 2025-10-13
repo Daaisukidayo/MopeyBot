@@ -17,7 +17,7 @@ export default {
 
     $let[deathRarity;$randomNumber[1;1001]]
     $let[deathChance;30]
-    $let[deathDesc;$randomText[A predator killed you!;You were killed by predator!]]
+    $let[deathDesc;$randomText[A predator killed you!;You were killed by a predator!]]
 
     $let[findPrayRarity;$randomNumber[1;101]]
     $let[findPrayChance;20]
@@ -53,7 +53,7 @@ export default {
     ]
 
     $let[multiplier;$env[expData;$get[tier];m]]
-    $let[extraMultiplier;1.5]
+    $let[extraMultiplier;3]
 
     $jsonLoad[data;$env[expData;$get[tier];d]]
     $jsonLoad[biomeArray;$env[expBase;b]]
