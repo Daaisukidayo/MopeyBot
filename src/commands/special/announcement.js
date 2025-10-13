@@ -16,13 +16,11 @@ export default [{
   `
 },{
   type: "messageCreate",
-  unprefix: true,
   code: `
-    $if[$getUserVar[hadAnnouncement];
-      $stop
-    ;
-      $setUserVar[hadAnnouncement;true]
-    ]
+    $onlyIf[$getUserVar[userProfile]!=]
+    $onlyIf[$getUserVar[hadAnnouncement]==false]
+    $setUserVar[hadAnnouncement;true]
+    
     $reply
     $addContainer[
       $addTextDisplay[# 📢 Announcement]
