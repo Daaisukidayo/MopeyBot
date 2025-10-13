@@ -130,12 +130,12 @@ export default {
           $addTextDisplay[## $get[content]]
           $addThumbnail[$env[playData;currentAnimalImg]]
         ]
-        $addTextDisplay[${playSnippets.animalStats()}]
 
         $if[$get[tier]==17;
           ${playSnippets.hasAllApex()}
         ]
         ${playSnippets.actionMenu()}
+        $addTextDisplay[${playSnippets.animalStats()}]
         $let[showCheats;true]
       ]
 
