@@ -31,10 +31,14 @@ export default {
       $if[$env[animals;$env[animalsIndexes;$get[animalID]];variants;1]==;;$break]
     ]
 
-    $if[$get[animalID]==;
-      $interactionUpdate[# You equipped all skins!]
+    $onlyIf[$get[animalID]!=;
+      $addContainer[
+        $callFunction[newAuthor]
+        $addSeparator[Large]
+        $addTextDisplay[# You equipped all animals!]
+      ;$getGlobalVar[defaultColor]]
+      $interactionUpdate
       ${wardrobeSnippets.stopTimeout()}
-      $stop
     ]
 
     ${wardrobeSnippets.animalsEmbed('new')}

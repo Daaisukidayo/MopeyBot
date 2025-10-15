@@ -12,19 +12,21 @@ export default {
     $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
     ${playSnippets.hasStarted()}
+    ${playSnippets.removeAllApex()}
 
     $let[animalID;$env[IID;0]]
-    $onlyIf[$env[animalsIndexes;$get[animalID]]!=]
+    $let[animalIndex;$env[animalsIndexes;$get[animalID]]]
 
     $jsonLoad[rareReward;${playSnippets.rareReward()}]
     $let[bonusPerUpgrade;50]
     $let[bonusPerRare;$default[$env[rareReward;$get[animalID]];0]]
-    $let[wardrobeIndex;$env[userWardrobe;$get[animalID]]]
-    $let[color;$env[biomeColors;$env[animals;$env[animalsIndexes;$get[animalID]];biome]]]
-    $let[thumbnail;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wardrobeIndex];img]]
-    $let[emoji;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wardrobeIndex];emoji]]
-    $let[animalName;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wardrobeIndex];name]]
-    $let[biome;$env[animals;$env[animalsIndexes;$get[animalID]];biome]]
+    $let[wardrobeIndex;$default[$env[userWardrobe;$get[animalID]];0]]
+    
+    $let[color;$default[$env[biomeColors;$env[animals;$get[animalIndex];biome]];000000]]
+    $let[thumbnail;$env[animals;$get[animalIndex];variants;$get[wardrobeIndex];img]]
+    $let[emoji;$default[$env[animals;$get[animalIndex];variants;$get[wardrobeIndex];emoji];<:undefined:1427991209246199848>]]
+    $let[animalName;$default[$env[animals;$get[animalIndex];variants;$get[wardrobeIndex];name];undefined]]
+    $let[biome;$default[$env[animals;$get[animalIndex];biome];Land]]
 
     $!jsonSet[playData;MC;$math[$get[bonusPerUpgrade] + $env[playData;MC] + $get[bonusPerRare]]]
     $!jsonSet[playData;currentAnimal;$get[animalID]]
@@ -42,7 +44,7 @@ export default {
       ]
       $addSeparator[Small;false]
       ${playSnippets.actionMenu()}
-      $addTextDisplay[${playSnippets.animalStats()}]
+      ${playSnippets.animalStats()}
       $addSeparator[Large]
       ${playSnippets.exitButton()}
     ;$get[color]]

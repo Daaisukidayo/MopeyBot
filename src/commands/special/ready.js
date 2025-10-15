@@ -95,9 +95,8 @@ export default {
       $jsonLoad[animals;$readFile[src/json/animals.json]]
       $arrayMap[animals;obj;
         $if[$env[obj;tier]>=15;
-          $if[$includes[$toLowercase[$env[obj;fullName]];luck];;
-            $jsonLoad[variants;$env[obj;variants]]
-            $return[$default[$env[obj;variants;$arrayRandomIndex[variants];emoji];❓]]
+          $if[$includes[$toLowercase[$env[obj;fullName]];rare];;
+            $return[$env[obj;ID]]
           ]
         ]
       ;enemies]

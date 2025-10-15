@@ -163,7 +163,7 @@ export default {
     $c[? Embeds]
 
     $let[CAID;$env[playData;currentAnimal]]
-    $let[currentAnimal;$env[animals;$env[animalsIndexes;$get[CAID]];variants;$env[userWardrobe;$get[CAID]];emoji]]
+    $let[currentAnimal;$default[$env[animals;$env[animalsIndexes;$get[CAID]];variants;$env[userWardrobe;$get[CAID]];emoji];<:undefined:1427991209246199848>]]
 
     $if[$env[playData;arenaTurn]==0; $c[If user's turn, then setting random opponent's action]
       $let[opponentAction;$randomText[attack;defend;deceive]]
@@ -190,15 +190,21 @@ export default {
 
         $c[Giving XP based on opponent's tier]
         $addTextDisplay[## YOU WON!]
-
-        $let[min;$default[$env[xpReward;$get[opponentTier];0];0]]
-        $let[max;$math[$default[$env[xpReward;$get[opponentTier];1];0] + 1]]
-        $let[xpReward;$randomNumber[$get[min];$get[max]]]
+        $let[xpReward;$env[playData;opponentXP]]
+        $let[opponentApex;$advancedReplace[$get[opponentApex];aquaYeti;yeti;kingDragon;blackDragon;rareKingDragon;blackDragon]]
+        
         $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xpReward]]]
         $!jsonSet[playData;MC;$math[$env[playData;MC] + 1000]]
 
+        $if[$and[$env[playData;tier]==17;$includes[$env[playData;currentAnimal];kingDragon;rareKingDragon]==false]; $c[If user is not a KD]
+          $if[$arrayIncludes[currentApex;$get[opponentApex]];;
+            $arrayPush[currentApex;$get[opponentApex]] $c[setting apex based on opponent's animal]
+            $!jsonSet[playData;apex;$env[currentApex]]
+          ]
+        ]
+
         ${playSnippets.resetArena()}
-        $let[win;true]
+        $let[showStats;true]
         $let[color;$getGlobalVar[luckyColor]]
 
       ;
@@ -242,26 +248,11 @@ export default {
         ]
       ]
 
-      $if[$get[win]; $c[If user won]
-        $let[opponentApex;$advancedReplace[$get[opponentApex];aquaYeti;yeti;kingDragon;blackDragon]]
-        $if[$and[$env[playData;tier]==17;$includes[$env[playData;currentAnimal];kingDragon;rareKingDragon]==false]; $c[If user is not a KD]
-          $if[$arrayIncludes[currentApex;$get[opponentApex]];;
-            $arrayPush[currentApex;$get[opponentApex]] $c[setting apex based on opponent's animal]
-            $!jsonSet[playData;apex;$env[currentApex]]
-          ]
-          ${playSnippets.hasAllApex()}
-          $let[showApex;true]
-        ]
-        
+      $if[$get[showStats];
         ${playSnippets.actionMenu()}
-        $addTextDisplay[${playSnippets.animalStats()}]
+        ${playSnippets.animalStats()}
         $addSeparator
         ${playSnippets.exitButton()}
-
-        $if[$get[showApex];
-          $addSeparator
-          $addTextDisplay[$get[currentApexes]]
-        ]
       ]
     ;$get[color]]
     $interactionUpdate

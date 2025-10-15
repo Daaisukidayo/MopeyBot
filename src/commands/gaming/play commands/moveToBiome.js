@@ -30,11 +30,9 @@ export default {
         $addTextDisplay[## Successfully moved to __$get[biome]__!]
         $addThumbnail[$env[playData;currentAnimalImg]]
       ]
-      $addTextDisplay[${playSnippets.animalStats()}]
-      $if[$get[tier]==17;
-        ${playSnippets.hasAllApex()}
-      ]
+
       ${playSnippets.actionMenu()}
+      ${playSnippets.animalStats()}
       $addSeparator
       ${playSnippets.exitButton()}
     ;$env[playData;color]]

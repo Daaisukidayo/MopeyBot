@@ -18,11 +18,11 @@ export default {
     $let[arenaApexAcceptR;$randomNumber[1;101]]
     $let[KDacceptR;$randomNumber[1;101]]
     $let[aquaAcceptR;$randomNumber[1;101]]
-    $let[KDacceptC;15]
-    $let[aquaAcceptC;30]
-    $let[tier17C;5]
-    $let[tier16C;15]
-    $let[acceptArenaC;60]
+    $let[KDacceptC;25]
+    $let[aquaAcceptC;10]
+    $let[tier17C;15]
+    $let[tier16C;25]
+    $let[acceptArenaC;50]
 
     $if[$get[arenaR]<=$get[acceptArenaC];
 
@@ -73,12 +73,16 @@ export default {
       $let[desc;## You went in arena with __$get[opponent]__\n### Your turn!]
       $let[thumb;$env[opp;2]]
 
+      $let[min;$env[XPreq;$get[opponentTier];0]]
+      $let[max;$math[$env[XPreq;$get[opponentTier];1] + 1]]
+      $let[opponentXP;$randomNumber[$get[min];$get[max]]]
+
       $!jsonSet[playData;opponentAnimal;$get[opponent]]
       $!jsonSet[playData;opponentApex;$env[opp;3]]
       $!jsonSet[playData;opponentTier;$get[opponentTier]]
+      $!jsonSet[playData;opponentXP;$get[opponentXP]]
 
       $let[success;true]
-      
 
     ;
       $jsonLoad[ARC;${playSnippets.arenaRejectContent()}]
@@ -101,7 +105,7 @@ export default {
         $addTextDisplay[$get[desc]]
         ${playSnippets.actionMenu()}
       ]
-      $addTextDisplay[${playSnippets.animalStats()}]
+      ${playSnippets.animalStats()}
       $addSeparator
       ${playSnippets.exitButton()}
     ;$env[playData;color]]

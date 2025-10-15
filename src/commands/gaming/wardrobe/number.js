@@ -42,15 +42,21 @@ export default {
 
     $let[desc;$arrayJoin[content; ]]
 
-    $callFunction[embed;default]
-    $if[$get[desc]!=;
-      $setUserVar[userWardrobe;$env[userWardrobe]]
-      $description[# $get[desc]]
-      $title[Successfully equipped every tier \`$get[tier]\` animal with chosen Skin Pack!]
-    ;
-      $color[Orange]
-      $title[Tier \`$get[tier]\` animals don't have any skins in chosen Skin Pack]
-    ]
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+
+      $if[$get[desc]!=;
+        $setUserVar[userWardrobe;$env[userWardrobe]]
+        $addTextDisplay[## Successfully equipped tier \`$get[tier]\` animals with __$get[value]__!]
+        $addSeparator[Large]
+        $addTextDisplay[# $get[desc]]
+      ;
+        $let[color;Orange]
+        $addTextDisplay[## Tier \`$get[tier]\` animals don't have any skins in __$get[value]__!]
+      ]
+    ;$default[$get[color];$getGlobalVar[defaultColor]]]
+
     $interactionUpdate
     ${wardrobeSnippets.stopTimeout()}
   `

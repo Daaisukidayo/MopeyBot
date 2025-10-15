@@ -9,7 +9,7 @@ export default {
     $arrayLoad[passKeys;,;actions,play]
 
     $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[IID;$env[key]]]]
-    $onlyIf[$selectMenuValues==searchXP]
+    $onlyIf[$selectMenuValues==farmXP]
     ${playSnippets.loadJSON()}
     $onlyIf[$arrayIncludes[IID;$authorID];$callFunction[notYourBTN]]
 
@@ -21,6 +21,9 @@ export default {
 
     $let[findPrayRarity;$randomNumber[1;101]]
     $let[findPrayChance;12]
+
+    $let[findSoccerRarity;$randomNumber[1;101]]
+    $let[findSoccerChance;10]
 
     $jsonLoad[expBase;$readFile[src/json/expBase.json]]
     $jsonLoad[expData;$readFile[src/json/expData.json]]
@@ -46,6 +49,48 @@ export default {
       ]
     ]
 
+    ${farmFood()}
+
+    $let[color;$env[playData;color]]
+
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      
+      $if[$get[deathChance]>=$get[deathRarity];
+        ${playSnippets.setNewXPOnDeath()}
+        ${playSnippets.setNewTier()}
+        ${playSnippets.removeAllApex()}
+
+        $addTextDisplay[## $get[deathDesc]]
+
+        $let[color;$getGlobalVar[errorColor]]
+        ${playSnippets.respawnButton()}
+        $let[showCheats;false]
+      ;
+        $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xp]]]
+
+        $addSection[
+          $addTextDisplay[## $get[content]]
+          $addThumbnail[$env[playData;currentAnimalImg]]
+        ]
+
+        ${playSnippets.actionMenu()}
+        ${playSnippets.animalStats()}
+        $let[showCheats;true]
+      ]
+
+      $addSeparator
+      ${playSnippets.exitButton('$get[showCheats]')}
+    ;$get[color]]
+    
+    $interactionUpdate
+    $setUserVar[userPlayData;$env[playData]]
+  `
+}
+
+function farmFood() {
+  return `
     $switch[$get[tier];
       $case[15;$letSub[deathChance;10]]
       $case[16;$letSub[deathChance;14]]
@@ -106,44 +151,5 @@ export default {
         ]
       ]
     ]
-
-    $let[color;$env[playData;color]]
-
-    $addContainer[
-      $callFunction[newAuthor]
-      $addSeparator[Large]
-      
-      $if[$get[deathChance]>=$get[deathRarity];
-        ${playSnippets.setNewXPOnDeath()}
-        ${playSnippets.setNewTier()}
-        ${playSnippets.removeAllApex()}
-
-        $addTextDisplay[## $get[deathDesc]]
-
-        $let[color;$getGlobalVar[errorColor]]
-        ${playSnippets.respawnButton()}
-        $let[showCheats;false]
-      ;
-        $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xp]]]
-
-        $addSection[
-          $addTextDisplay[## $get[content]]
-          $addThumbnail[$env[playData;currentAnimalImg]]
-        ]
-
-        $if[$get[tier]==17;
-          ${playSnippets.hasAllApex()}
-        ]
-        ${playSnippets.actionMenu()}
-        $addTextDisplay[${playSnippets.animalStats()}]
-        $let[showCheats;true]
-      ]
-
-      $addSeparator
-      ${playSnippets.exitButton('$get[showCheats]')}
-    ;$get[color]]
-    
-    $interactionUpdate
-    $setUserVar[userPlayData;$env[playData]]
   `
 }

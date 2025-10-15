@@ -31,8 +31,11 @@ export default {
     ]
     $setUserVar[userWardrobe;$env[userWardrobe]]
 
-    $callFunction[embed;default]
-    $title[Successfully equipped every animal with chosen Skin Pack!]
+    $addContainer[
+      $callFunction[newAuthor]
+      $addSeparator[Large]
+      $addTextDisplay[## Successfully equipped every animal with __$get[value]__!]
+    ;$getGlobalVar[defaultColor]]
     $interactionUpdate
     ${wardrobeSnippets.stopTimeout()}
   `

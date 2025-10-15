@@ -23,18 +23,29 @@ export default [{
       ${wardrobeSnippets.animalsEmbed('new')}
     ;
       $if[$get[arg]==all;
-        $callFunction[embed;default]
-        $description[# Equipping \`all\` animals, choose a skinpack]
-        ${wardrobeSnippets.sninpacksMenu("all")}
+        $addContainer[
+          $callFunction[newAuthor]
+          $addSeparator[Large]
+          $addTextDisplay[# Equipping \`all\` animals, choose a skinpack]
+          $addSeparator
+          ${wardrobeSnippets.sninpacksMenu("all")}
+        ;$getGlobalVar[defaultColor]]
       ;
         $if[$isNumber[$get[arg]];
-          $callFunction[embed;default]
-          $description[# Equipping tier \`$get[arg]\` animals, choose a skinpack]
-          ${wardrobeSnippets.sninpacksMenu("$get[arg]")}
+          $addContainer[
+            $callFunction[newAuthor]
+            $addSeparator[Large]
+            $addTextDisplay[# Equipping tier \`$get[arg]\` animals, choose a skinpack]
+            $addSeparator
+            ${wardrobeSnippets.sninpacksMenu("$get[arg]")}
+          ;$getGlobalVar[defaultColor]]
         ;
           $onlyIf[$arrayIncludes[animalIDs;$get[arg]];
-            $callFunction[embed;error]
-            $description[## Animal not found]
+            $addContainer[
+              $callFunction[newAuthor]
+              $addSeparator[Large]
+              $addTextDisplay[## Animal not found]
+            ;$getGlobalVar[errorColor]]
           ]
 
           $let[animalID;$get[arg]]

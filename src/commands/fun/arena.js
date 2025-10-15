@@ -12,19 +12,26 @@ export default {
     $let[MC;$randomNumber[1500;2001]]
 
     $jsonLoad[animals;$readFile[src/json/animals.json]]
+    $jsonLoad[animalsIndexes;$getGlobalVar[animalsIndexes]]
     $jsonLoad[LOC;$readFile[src/json/localizations.json]]
     $jsonLoad[enemies;$getGlobalVar[arenaEnemies]]
     $let[lang;$env[userProfile;language]]
     $let[winContent;$env[LOC;arena;0;$get[lang]]]
     $let[loseContent;$env[LOC;arena;1;$get[lang]]]
 
+    $let[enemyAnimalID;$arrayRandomValue[enemies]]
+    $let[enemyAnimalIndex;$env[animalsIndexes;$get[enemyAnimalID]]]
+    $jsonLoad[enemyData;$env[animals;$get[enemyAnimalIndex]]]
+    $jsonLoad[variants;$env[enemyData;variants]]
+    $let[enemy;$env[enemyData;variants;$arrayRandomIndex[variants];emoji]]
+
 
     $if[$get[r]>=20;
       $callFunction[sumMC;$get[MC]]
-      $let[desc;$advancedReplace[$get[winContent];{0};$arrayRandomValue[enemies];{1};$get[MC];{2};$getGlobalVar[emoji]]]
+      $let[desc;$advancedReplace[$get[winContent];{0};$get[enemy];{1};$get[MC];{2};$getGlobalVar[emoji]]]
       $let[color;$getGlobalVar[defaultColor]]
     ;
-      $let[desc;$advancedReplace[$get[loseContent];{0};$arrayRandomValue[enemies]]]
+      $let[desc;$advancedReplace[$get[loseContent];{0};$get[enemy]]]
       $let[color;$getGlobalVar[errorColor]]
     ]
 

@@ -19,7 +19,19 @@ export default {
   },
 
   animalStats() {
-    return `-# $env[animals;$env[animalsIndexes;$env[playData;currentAnimal]];variants;$env[userWardrobe;$env[playData;currentAnimal]];emoji] • $abbreviateNumber[$env[playData;XP]]XP • $env[playData;MC]$getGlobalVar[emoji]`;
+    return `
+      $let[ANML;$env[playData;currentAnimal]]
+      $let[IND;$env[animalsIndexes;$get[ANML]]]
+      $let[WRI;$default[$env[userWardrobe;$get[ANML]];0]]
+      $let[EMJ;$env[animals;$get[IND];variants;$get[WRI];emoji]]
+      $let[EXP;$env[playData;XP]]
+      $let[TIER;$env[playData;tier]]
+      $let[MAXEXP;$env[XPreq;$get[TIER];1]]
+      $let[COINS;$env[playData;MC]]
+
+      $addTextDisplay[# $get[EMJ] • $abbreviateNumber[$get[EXP]]/$abbreviateNumber[$get[MAXEXP]]XP • $separateNumber[$get[COINS];,]$getGlobalVar[emoji]]
+      $addTextDisplay[## $bar[$get[EXP];$get[MAXEXP];15;🟨;⬛]]
+    `;
   },
 
   hasStarted() {
@@ -143,6 +155,9 @@ export default {
       $jsonLoad[currentApex;$env[playData;apex]]
       $jsonLoad[biomeColors;$getGlobalVar[biomeColors]]
       $jsonLoad[XPreq;${this.XPReqForUpg()}]
+      $jsonLoad[allApex;$getGlobalVar[apex]]
+      $jsonLoad[darkApexEmojis;$getGlobalVar[darkApexEmojis]]
+      $jsonLoad[buttonStyle;$getGlobalVar[buttonStyle]]
     `;
   },
 
@@ -155,17 +170,16 @@ export default {
       $!jsonSet[playData;opponentAction;]
       $!jsonSet[playData;opponentTier;]
       $!jsonSet[playData;opponentApex;]
+      $!jsonSet[playData;opponentXP;0]
     `;
   },
 
   arenaRejectContent() {
     return JSON.stringify([
-      "No takers?",
       "Seems like everyone's allergic to danger.",
       "Nobody wants to 1v1 you.",
       "Nobody? Seriously?",
       "No one? Really?",
-      "Another 1v1 declined.",
       "You scared them all off… again.",
       "You didn't find anyone to battle.",
       "Seems like you're destined to battle… your loneliness.",
@@ -211,8 +225,7 @@ export default {
   animalsButtonsGenerator() {
     return `
       $let[buttonsQ;0]
-      $let[emojisInDescription;]
-      $jsonLoad[buttonStyle;$getGlobalVar[buttonStyle]]
+
       $loop[$arrayLength[animals];
         $let[i;$math[$env[i] - 1]]
         $let[animalID;$env[animals;$get[i];ID]]
@@ -238,11 +251,10 @@ export default {
         $let[buttonIndex;$arrayFindIndex[buttonStyle;arr;$jsonLoad[list;$env[arr;1]] $return[$arrayincludes[list;$get[animalID]]]]]
         $let[butStyle;$default[$env[buttonStyle;$get[buttonIndex];0];Secondary]]
 
-        $let[wr;$env[userWardrobe;$get[animalID]]]
+        $let[wr;$default[$env[userWardrobe;$get[animalID]];0]]
         $let[emoji;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wr];emoji]]
         $let[animalName;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[wr];name]]
         $let[trig;$env[animals;$env[animalsIndexes;$get[animalID]];ID]-upgrade-animal-play-$authorID]
-        $let[emojisInDescription;$get[emojisInDescription]$get[emoji]]
         
         $if[$math[$get[buttonsQ]%5]==0;$addActionRow]
         $addButton[$get[trig];$get[animalName];$get[butStyle];$get[emoji]]
@@ -258,7 +270,8 @@ export default {
       $addActionRow
       $addStringSelectMenu[actions-play-$authorID;Actions]
 
-      $if[$and[$env[playData;tier]==17;$get[hasAllApex];$includes[$env[playData;currentAnimal];kingDragon;rareKingDragon]==false];
+      ${this.hasAllApex()}
+      $if[$get[hasAllApex];
         $addOption[Upgrade;;kingDragonUpg;⬆️]
         $let[hideSwitchBiome;true]
       ;
@@ -267,10 +280,10 @@ export default {
           $addOption[Upgrade;;upgrade;⬆️]
           $let[hideSwitchBiome;true]
         ;
-          $addOption[Search for XP;;searchXP;🍴]
+          $addOption[Farm XP;;farmXP;🍴]
           $if[$env[playData;tier]>=15;$addOption[Arena;;arena;⚔️]]
         ]
-
+        
         $addOption[Downgrade;;downgrade;⬇️]
       ]
 
@@ -278,20 +291,36 @@ export default {
         $addActionRow
         $addStringSelectMenu[moveTo-play-$authorID;Switch biome]
 
-        $if[$get[curBiome]!=Land;$addOption[Land;;Land;⛰️]]
-        $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];$addOption[Desert;;Desert;🏜️]]
-        $if[$and[$get[curBiome]!=Volcano;$get[curBiome]!=Ocean;$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Forest];$addOption[Volcano;;Volcano;🌋]]
-        $if[$and[$get[curBiome]!=Ocean;$get[curBiome]!=Volcano];$addOption[Ocean;;Ocean;🌊]]
-        $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];$addOption[Arctic;;Arctic;❄️]]
-        $if[$and[$get[curBiome]!=Forest;$get[curBiome]!=Volcano];$addOption[Forest;;Forest;🌲]]
+        $if[$get[curBiome]!=Land;
+          $addOption[Land;;Land;⛰️]
+        ]
+        $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
+          $addOption[Desert;;Desert;🏜️]
+        ]
+        $if[$get[curBiome]==Land;
+          $addOption[Volcano;;Volcano;🌋]
+        ]
+        $if[$and[$get[curBiome]!=Ocean;$get[curBiome]!=Volcano];
+          $addOption[Ocean;;Ocean;🌊]
+        ]
+        $if[$and[$get[curBiome]!=Desert;$get[curBiome]!=Arctic;$get[curBiome]!=Volcano];
+          $addOption[Arctic;;Arctic;❄️]
+        ]
+        $if[$and[$get[curBiome]!=Forest;$get[curBiome]!=Volcano];
+          $addOption[Forest;;Forest;🌲]
+        ]
+      ]
+
+      $if[$and[$env[playData;tier]==17;$includes[$env[playData;currentAnimal];kingDragon;rareKingDragon]==false];
+        $addActionRow
+        $addButton[showApex-play-$authorID;Show Apex;Primary;👑]
       ]
     `;
   },
 
   hasAllApex() {
     return `
-      $arrayLoad[allApex;,;dragon,trex,phoenix,pterodactyl,kingCrab,yeti,landMonster,dinoMonster,giantScorpion,seaMonster,iceMonster,blackDragon]
-      $jsonLoad[darkApexEmojis;$getGlobalVar[darkApexEmojis]]
+      $if[$env[currentApex]==;$jsonLoad[currentApex;$env[playData;apex]]]
       $let[hasAllApex;$arrayEvery[allApex;apex;$arrayIncludes[currentApex;$env[apex]]]]
 
       $arrayMap[allApex;apex;

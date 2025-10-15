@@ -25,7 +25,7 @@ export default {
 
   animalsEmbed(id) {
     return `
-      $let[currentAnimalVariant;$env[userWardrobe;$get[animalID]]]
+      $let[currentAnimalVariant;$default[$env[userWardrobe;$get[animalID]];0]]
       $let[currentAnimalEmoji;$env[animals;$env[animalsIndexes;$get[animalID]];variants;$get[currentAnimalVariant];emoji]]
       $let[fullName;$env[animals;$env[animalsIndexes;$get[animalID]];fullName]]
 
@@ -35,7 +35,8 @@ export default {
         $addTextDisplay[## All available skins for \`$get[fullName]\`:]
         ${this.animalsMenu(id)}
         $addSeparator
-        $addTextDisplay[## Equipped skin:\n# $get[currentAnimalEmoji]]
+        $addTextDisplay[## Equipped skin:]
+        $addTextDisplay[# $get[currentAnimalEmoji]]
       ;$getGlobalVar[defaultColor]]
     `;
   },
