@@ -142,14 +142,14 @@ export default {
             $case[3;$let[emoji;🥉]]
             $case[default;$let[emoji;⁘]]
           ]
-          $return[## $get[emoji] $ordinal[$get[pos]] ➤ $username[$env[result;userID]] — \`$env[result;points]\` Points]
+          $return[## $get[emoji] ➤ $username[$env[result;userID]] — \`$env[result;points]\` Points]
         ;playersInLB]
 
         $sendMessage[$channelID;
           $addContainer[
             $addTextDisplay[# 🎉 Winner: \`$username[$env[results;0;userID]]\` 🎉]
             $arrayForEach[playersInLB;elem;
-              $addSeparator[Large]
+              $addSeparator[Small;false]
               $addTextDisplay[$env[elem]]
             ]
           ;$getGlobalVar[luckyColor]]
@@ -189,14 +189,14 @@ export default {
             $return[### $getGlobalVar[blank] $username[$env[ID]]: \`$env[CHP;points]\` Points]
           ;sortedPlayersContent]
 
-          $return[## $get[emoji] $ordinal[$get[pos]] ➤ Team $math[$env[result;teamID] + 1] — \`$env[result;points]\` Points\n$arrayJoin[sortedPlayersContent;\n]]
+          $return[## $get[emoji] ➤ Team $math[$env[result;teamID] + 1] — \`$env[result;points]\` Points\n$arrayJoin[sortedPlayersContent;\n]]
         ;teamsInLB]
 
         $sendMessage[$channelID;
           $addContainer[
             $addTextDisplay[# 🎉  Winner: Team \`$math[$env[results;0;teamID] + 1]\` 🎉]
             $arrayForEach[teamsInLB;elem;
-              $addSeparator[Large]
+              $addSeparator[Small;false]
               $addTextDisplay[$env[elem]]
             ]
           ;$getGlobalVar[luckyColor]]
