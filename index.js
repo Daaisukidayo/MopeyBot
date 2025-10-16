@@ -51,7 +51,7 @@ const BOT = new ForgeClient({
     "MessageContent",
   ],
   events: ["interactionCreate", "messageCreate", "clientReady"],
-  prefixes: ["$default[$getGuildVar[prefix];$getGlobalVar[prefix]]"],
+  prefixes: ["$if[$guildID!=;$getGuildVar[prefix];$getGlobalVar[prefix]]"],
   logLevel: LogPriority.Low,
 });
 
