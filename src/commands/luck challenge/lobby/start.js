@@ -49,7 +49,7 @@ export default {
         $break
       ]
       $!editMessage[$channelID;$get[msgid];$callFn[startingEmbed]]
-      $wait[1s]
+      $wait[750]
     ;s]
   `
 }

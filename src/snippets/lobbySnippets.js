@@ -132,9 +132,11 @@ export default {
         ;results]
         $arrayAdvancedSort[results;A;B;$math[$env[B;points] - $env[A;points]];results]
 
+        $let[winner;$username[$env[results;0;userID]]]
         $let[pos;0]
         
         $arrayMap[results;result;
+          $let[i;$arrayIndexOf[results;result]]
           $letSum[pos;1]
           $switch[$get[pos];
             $case[1;$let[emoji;🥇]]
@@ -142,15 +144,22 @@ export default {
             $case[3;$let[emoji;🥉]]
             $case[default;$let[emoji;⁘]]
           ]
+
+          $if[$and[$includes['$get[i]';'0';'1';];$env[results;0;points]==$env[results;1;points]];
+            $let[emoji;🏅]
+            $let[winner;FRIENDSHIP]
+          ]
+
           $return[## $get[emoji] ➤ $username[$env[result;userID]] — \`$env[result;points]\` Points]
         ;playersInLB]
 
         $sendMessage[$channelID;
           $addContainer[
-            $addTextDisplay[# 🎉 Winner: \`$username[$env[results;0;userID]]\` 🎉]
+            $addTextDisplay[# 🎉 Winner: \`$get[winner]\` 🎉]
+            $addSeparator[Small]
             $arrayForEach[playersInLB;elem;
-              $addSeparator[Small;false]
-              $addTextDisplay[$env[elem]]
+            $addTextDisplay[$env[elem]]
+            $addSeparator[Small;false]
             ]
           ;$getGlobalVar[luckyColor]]
         ]
@@ -165,16 +174,22 @@ export default {
 
         $arrayAdvancedSort[teams;A;B;$math[$env[B;points] - $env[A;points]];results]
 
+        $let[winner;Team \`$math[$env[results;0;teamID] + 1]\`]
         $let[pos;0]
         
         $arrayMap[results;result;
-
+          $let[i;$arrayIndexOf[results;result]]
           $letSum[pos;1]
           $switch[$get[pos];
             $case[1;$let[emoji;🥇]]
             $case[2;$let[emoji;🥈]]
             $case[3;$let[emoji;🥉]]
             $case[default;$let[emoji;⁘]]
+          ]
+
+          $if[$and[$includes['$get[i]';'0';'1';];$env[results;0;points]==$env[results;1;points]];
+            $let[emoji;🏅]
+            $let[winner;\`FRIENDSHIP\`]
           ]
 
           $jsonLoad[playersInTeam;$env[result;players]]
@@ -194,10 +209,11 @@ export default {
 
         $sendMessage[$channelID;
           $addContainer[
-            $addTextDisplay[# 🎉  Winner: Team \`$math[$env[results;0;teamID] + 1]\` 🎉]
+            $addTextDisplay[# 🎉  Winner: $get[winner] 🎉]
+            $addSeparator[Small]
             $arrayForEach[teamsInLB;elem;
-              $addSeparator[Small;false]
               $addTextDisplay[$env[elem]]
+              $addSeparator[Small;false]
             ]
           ;$getGlobalVar[luckyColor]]
         ]
