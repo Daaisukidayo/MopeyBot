@@ -13,8 +13,8 @@ export default {
 
     $let[lastDailyRaretry;$default[$env[userProfile;limiters;lastDailyRaretry];-1]]
     $let[lastDailyRaretryrun;$default[$env[userProfile;limiters;lastDailyRaretryrun];-1]]
-    $let[catchedRaresInRaretryrun;$getUserVar[catchedRaresInRaretryrun]]
-    $let[catchedRaresInRaretry;$getUserVar[catchedRaresInRaretry]]
+    $let[caughtRaresInRaretryrun;$getUserVar[caughtRaresInRaretryrun]]
+    $let[caughtRaresInRaretry;$getUserVar[caughtRaresInRaretry]]
 
     $let[hasVoted;$hasVoted[$authorID]]
     $let[checklistReward;$getGlobalVar[checklistReward]]
@@ -30,8 +30,8 @@ export default {
       $callFunction[sumMC;$get[checklistReward]]
       $!jsonSet[userProfile;limiters;lastClaimedDay;$day]
       $setUserVar[userProfile;$env[userProfile]]
-      $setUserVar[catchedRaresInRaretry;0]
-      $setUserVar[catchedRaresInRaretryrun;0]
+      $setUserVar[caughtRaresInRaretry;0]
+      $setUserVar[caughtRaresInRaretryrun;0]
       $setUserVar[dailyStreak;$math[$getUserVar[dailyStreak] + 1]]
       $let[content;## You have completed all tasks and earned $get[extra]]
     ]
@@ -54,12 +54,12 @@ export default {
       $addSeparator[Small;false]
 
       $addTextDisplay[## Catch 3 rare animals in \`raretry\`!]
-      $addTextDisplay[-# $if[$get[lastDailyRaretry]==$day;✅ Completed;In progress ($get[catchedRaresInRaretry]/$getGlobalVar[maxRaretryRares])]]
+      $addTextDisplay[-# $if[$get[lastDailyRaretry]==$day;✅ Completed;In progress ($get[caughtRaresInRaretry]/$getGlobalVar[maxRaretryRares])]]
 
       $addSeparator[Small;false]
 
       $addTextDisplay[## Catch 20 rare animals in \`raretryrun\`!]
-      $addTextDisplay[-# $if[$get[lastDailyRaretryrun]>=$day;✅ Completed;In progress ($get[catchedRaresInRaretryrun]/20)]]
+      $addTextDisplay[-# $if[$get[lastDailyRaretryrun]>=$day;✅ Completed;In progress ($get[caughtRaresInRaretryrun]/20)]]
 
       $addSeparator[Large]
       $addTextDisplay[$get[content]]

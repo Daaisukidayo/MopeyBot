@@ -135,10 +135,11 @@ DB.variables({
   userWardrobe: {},
 
   userBackup: {},
-  catchedRaresInRaretryrun: 0,
-  catchedRaresInRaretry: 0,
+  caughtRaresInRaretryrun: 0,
+  caughtRaresInRaretry: 0,
   dailyStreak: 0,
   hadAnnouncement: false,
+  notifications: [],
 
   // Guild variables
 
