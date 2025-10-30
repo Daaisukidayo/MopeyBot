@@ -1,6 +1,6 @@
 export default { 
   name: "newAuthor",
   code: `
-    $addTextDisplay[## $username • MUID: \`$env[userProfile;MUID]\`]
+    $addTextDisplay[## $username[$env[userProfile;ID]] • MUID: \`$env[userProfile;MUID]\`]
   `
 }

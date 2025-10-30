@@ -34,10 +34,9 @@ export default [{
   code: `
     $arrayLoad[interactionID;-;$customID]
     $arrayLoad[passKeys;,;blackDragonMenu]
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
 
     ${universalSnippets.loadProfile()}
-
-    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
     $jsonLoad[content;${deathContent()}]
@@ -76,10 +75,9 @@ export default [{
   code: `
     $arrayLoad[interactionID;-;$customID]
     $arrayLoad[passKeys;,;normal,kingDragonMenu]
+    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
 
     ${universalSnippets.loadProfile()}
-
-    $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
     $let[index;$selectMenuValues]
@@ -108,9 +106,9 @@ export default [{
   code: `
     $arrayLoad[interactionID;-;$customID]
     $arrayLoad[passKeys;,;luck,kingDragonMenu]
-    ${universalSnippets.loadProfile()}
-
     $onlyIf[$arrayEvery[passKeys;key;$arrayIncludes[interactionID;$env[key]]]]
+
+    ${universalSnippets.loadProfile()}
     $onlyIf[$arrayIncludes[interactionID;$authorID];$callFunction[notYourBTN]]
 
     ${loadJSON()}
@@ -172,7 +170,7 @@ function loadJSON() {
     $arrayPush[userPacksKeys;s1;s2]
     $jsonLoad[blackDragonVars;$env[animals;$env[animalsIndexes;blackDragon];variants]]
     $jsonLoad[kingDragonVars;$env[animals;$env[animalsIndexes;kingDragon];variants]]
-    $arrayLoad[colors; ;24272b 24272b 731C1F 9D3F0E 6E141A 5EB2FF B62323 DDAF02 f63413]
+    $jsonLoad[colors;$getGlobalVar[kingDragonColors]]
   `
 }
 

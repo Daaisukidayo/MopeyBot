@@ -41,7 +41,7 @@ const BOT = new ForgeClient({
   extensions: [
     DB,
     FC,
-    TOP
+    TOP,
   ],
   intents: [
     "Guilds",
@@ -139,7 +139,7 @@ DB.variables({
   caughtRaresInRaretry: 0,
   dailyStreak: 0,
   hadAnnouncement: false,
-  notifications: [],
+  userReminders: ["daily", "weekly"],
 
   // Guild variables
 
@@ -182,13 +182,27 @@ DB.variables({
   weeklyReward: 150000,
   checklistReward: 30000,
 
+  allReminders: ["daily", "weekly"],
+  allRemindersContent: {
+    daily: "Daily reward reminder",
+    weekly: "Weekly reward reminder",
+  },
+
+  leaderboardThumbnail: 'https://cdn.discordapp.com/attachments/701793335941136464/1326901475464450100/Remove-bg.ai_1736428344912.png',
+
+  // King Dragon
+
+  kingDragonColors: ['24272b', '24272b', '731C1F', '9D3F0E', '6E141A', '5EB2FF', 'B62323', 'DDAF02', 'f63413'],
+
   // history
 
   sortingOptions: ['points', 'rares', 'date'],
 
   // play
 
-  biomeColors: {
+  biomes: ["Land", "Desert", "Ocean", "Arctic", "Forest", "Volcano"],
+
+  biomesColors: {
     Land: "#00ff3c",
     Desert: "#ffcc00",
     Volcano: "#ff0000",

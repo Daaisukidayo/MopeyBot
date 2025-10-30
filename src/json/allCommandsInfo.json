@@ -84,7 +84,7 @@
   {
     "commandAliases": ["balance", "bal", "profile", "prof", "coins", "packs"],
     "commandName": "Balance",
-    "commandDescription": ["## Displays your current balance and purchased packs!"],
+    "commandDescription": ["## Displays your current balance and purchased skin packs!"],
     "commandRelated": ["shop"],
     "commandCategory": "Economy"
   },
@@ -102,8 +102,11 @@
     "commandAliases": ["leaderboard", "lb", "top"],
     "commandName": "Leaderboard",
     "commandDescription": [
-      "## Displays the current leaderboard!", 
-      "### Leaderboard updates every 5 minutes!"
+      "## Displays the leaderboard by the number of mope coins!",
+      "## The leaderboard is updated every 2 minutes!",
+      "## Usage: `{PREFIX}leaderboard (<page>) (<rows>)`",
+      "### `page` - page to display",
+      "### `rows` - number of rows to display per page"
     ],
     "commandRelated": ["balance"],
     "commandCategory": "Economy"
