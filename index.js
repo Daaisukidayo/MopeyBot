@@ -157,6 +157,7 @@ DB.variables({
 
   botEnabled: true,
   makeBackups: false,
+  sendReminders: false,
   defaultColor: "#FFD700",
   errorColor: "#D0321D",
   luckyColor: "#228B22",
