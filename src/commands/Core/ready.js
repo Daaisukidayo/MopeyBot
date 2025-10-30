@@ -57,7 +57,7 @@ export default {
         ;profiles]
 
         $arrayAdvancedSort[profiles;A;B;
-          $return[$env[B;MC] - $env[A;MC]]
+          $return[$math[$env[B;MC] - $env[A;MC]]]
         ;result]
 
         $let[pos;0]
