@@ -119,9 +119,7 @@ function embed() {
           $case[default;🏅]
         ]]]
 
-        $addTextDisplay[## $get[emoji] $ordinal[$get[pos]] ➤ \`$username[$get[ID]]\`]
-        $addTextDisplay[### $getGlobalVar[blank] Coins: \`$separateNumber[$get[MC];,]\`$getGlobalVar[emoji]]
-        $addTextDisplay[### $getGlobalVar[blank] MUID: \`$get[MUID]\`]
+        $addTextDisplay[## $get[emoji] $ordinal[$get[pos]] ➤ \`$username[$get[ID]]\`\n### $getGlobalVar[blank] Coins: \`$separateNumber[$get[MC];,]\`$getGlobalVar[emoji]\n### $getGlobalVar[blank] MUID: \`$get[MUID]\`]
 
         $if[$get[pos]<$get[lastPos];$addSeparator[Large;false]]
       ]
