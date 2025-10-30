@@ -471,5 +471,15 @@
     ],
     "commandRelated": ["checklist"],
     "commandCategory": "Economy"
+  },
+  {
+    "commandAliases": ["reminders", "rmd"],
+    "commandName": "Reminders",
+    "commandDescription": [
+      "## Shows reminders.",
+      "### Press on button to enable or disable a reminder."
+    ],
+    "commandRelated": [],
+    "commandCategory": "Special"
   }
 ]
