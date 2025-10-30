@@ -156,7 +156,7 @@ export default {
             $if[$arrayIncludes[userReminders;weekly];;$continue]
             $if[$isUserDMEnabled[$get[userID]];;$continue]
 
-            ${REMINDER_EMBED('Weekly reward is available')}
+            ${REMINDER_EMBED('Weekly reward is available!')}
             $sendDM[$get[userID]]
           ;i;true]
         ]
@@ -174,6 +174,8 @@ function REMINDER_EMBED(content) {
       $addTextDisplay[# 🔔__REMINDER__🔔]
       $addSeparator[Large]
       $addTextDisplay[## ${content}]
+      $addSeparator
+      $addTextDisplay[### To disable reminders, use \`$getGlobalVar[prefix]reminders\` on any server that Mopey has joined.]
     ;$getGlobalVar[defaultColor]]
   `
 }
