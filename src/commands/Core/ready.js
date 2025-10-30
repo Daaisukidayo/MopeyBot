@@ -161,7 +161,7 @@ export default {
           ;i;true]
         ]
 
-      ;1m]
+      ;5m]
     ]
 
     $async[$deleteVars[LBpages]]
