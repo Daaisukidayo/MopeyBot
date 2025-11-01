@@ -23,7 +23,7 @@ export default {
     $let[content;## Complete these tasks to earn $get[extra]]
 
     $if[$get[lastClaimed]==$day;
-      $let[content;## ✅ All rewards have been received! Come back tomorrow!]
+      $let[content;## All rewards have been received! Come back tomorrow!]
     ]
 
     $if[$and[$get[lastClaimed]!=$day;$get[daily]==$day;$get[hasVoted];$get[lastDailyRaretry]==$day;$get[lastDailyRaretryrun]==$day];
@@ -64,7 +64,7 @@ export default {
       $addSeparator[Large]
       $addTextDisplay[$get[content]]
 
-      $addSeparator
+      $addSeparator[Large]
 
       $addTextDisplay[## 🔥 You are on your \`$ordinal[$getUserVar[dailyStreak]]\` daily streak!]
     ;$getGlobalVar[defaultColor]]
