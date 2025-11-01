@@ -64,9 +64,9 @@ export default {
       $addSeparator[Large]
       $addTextDisplay[$get[content]]
 
-      $addSeparator[Large;false]
+      $addSeparator
 
-      $addTextDisplay[### 🔥 You are on your \`$ordinal[$getUserVar[dailyStreak]]\` daily streak!]
+      $addTextDisplay[## 🔥 You are on your \`$ordinal[$getUserVar[dailyStreak]]\` daily streak!]
     ;$getGlobalVar[defaultColor]]
   `
 }
