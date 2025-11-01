@@ -59,7 +59,7 @@ export default {
       $addSeparator[Small;false]
 
       $addTextDisplay[## Catch 20 rare animals in \`raretryrun\`!]
-      $addTextDisplay[-# $if[$get[lastDailyRaretryrun]>=$day;✅ Completed;In progress ($get[caughtRaresInRaretryrun]/20)]]
+      $addTextDisplay[-# $if[$get[lastDailyRaretryrun]==$day;✅ Completed;In progress ($get[caughtRaresInRaretryrun]/$getGlobalVar[maxRaretryrunRares])]]
 
       $addSeparator[Large]
       $addTextDisplay[$get[content]]
