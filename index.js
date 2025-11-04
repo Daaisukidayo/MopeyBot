@@ -139,7 +139,7 @@ DB.variables({
   caughtRaresInRaretry: 0,
   dailyStreak: 0,
   hadAnnouncement: false,
-  userReminders: ["daily", "weekly"],
+  userReminders: [],
 
   // Guild variables
 
