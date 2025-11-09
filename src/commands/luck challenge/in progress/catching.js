@@ -98,7 +98,6 @@ export default {
     ${addPoints()}
     ${addEvent()}
 
-    ${predictScore()}
     ${predictByAverage()}
 
     $addContainer[
@@ -116,8 +115,7 @@ export default {
       $addTextDisplay[$arrayJoin[caught;\n]]
       $addSeparator
       $addTextDisplay[## $callFunction[showPoints;$authorID] ⟪+$get[points]⟫]
-      $addTextDisplay[## ⁘ Prediction 1: \`$get[predict1]\`]
-      $addTextDisplay[## ⁘ Prediction 2: \`$get[predict2]\`]
+      $addTextDisplay[## ⁘ Prediction: \`$get[predict]\`]
       $addTextDisplay[## $callFunction[showTime;$authorID]]
       
       $if[$or[$get[unlimitedRares];$get[hideRaresLimit]];;
@@ -180,29 +178,9 @@ function addPoints() {
   `
 }
 
-function predictScore(secondsAhead = 3600) {
-  return `
-    $let[rate;0]
-    $let[predict1;0]
-    $if[$arrayLength[events]>1;
-      $let[dt;$math[$env[events;$sub[$arrayLength[events];1];0] - $env[events;0;0]]]
-      $let[ds;$math[$env[events;$sub[$arrayLength[events];1];1] - $env[events;0;1]]]
-
-      $if[$get[dt]!=0;
-        $let[rate;$math[$get[ds] / $get[dt]]]
-      ]
-    ]
-
-    $if[$arrayLength[events]>0;
-      $let[s;$env[events;$math[$arrayLength[events] - 1];1]]
-      $let[predict1;$round[$math[$get[s] + $get[rate] * ${secondsAhead}]]]
-    ]
-  `
-}
-
 function predictByAverage(secondsAhead = 3600) {
   return `
-    $let[predict2;0]
+    $let[predict;0]
     $if[$arrayLength[events]>0;
       $arrayMap[events;e;$return[$env[e;0]];times]
       $arrayMap[events;e;$return[$env[e;1]];scores]
@@ -223,7 +201,7 @@ function predictByAverage(secondsAhead = 3600) {
 
       $let[remainingTime;$sub[${secondsAhead};$getUserVar[1htime|$channelID]]]
       $let[possibleInputs;$divide[$get[remainingTime];$get[safeAvgDelay]]]
-      $let[predict2;$round[$math[$get[PP] + $get[possibleInputs] * $get[avgGain]]]]
+      $let[predict;$round[$math[$get[PP] + $get[possibleInputs] * $get[avgGain]]]]
     ]
   `
 }
