@@ -95,10 +95,11 @@ export default {
     $if[$get[points]==0;$stop]
 
     ${challengeSnippets.raresLimit()}
+    ${addPoints()}
+    ${addEvent()}
 
-    $let[PP;$env[challengeProgress;points]]
-    $letSum[PP;$get[points]]
-    $!jsonSet[challengeProgress;points;$get[PP]]
+    ${predictScore()}
+    ${predictByAverage()}
 
     $addContainer[
       $callFunction[newAuthor]
@@ -115,11 +116,14 @@ export default {
       $addTextDisplay[$arrayJoin[caught;\n]]
       $addSeparator
       $addTextDisplay[## $callFunction[showPoints;$authorID] ⟪+$get[points]⟫]
-      $addSeparator
+      $addTextDisplay[## ⁘ Prediction 1: \`$get[predict1]\`]
+      $addTextDisplay[## ⁘ Prediction 2: \`$get[predict2]\`]
       $addTextDisplay[## $callFunction[showTime;$authorID]]
       
       $if[$or[$get[unlimitedRares];$get[hideRaresLimit]];;
-        $if[$arrayLength[limitsContent]==0;  $arrayPush[limitsContent;※ All commons received]  ]
+        $if[$arrayLength[limitsContent]==0;
+          $arrayPush[limitsContent;※ All commons received]
+        ]
 
         $addSeparator[Large]
         $addTextDisplay[# $arrayJoin[limitsContent; ]]
@@ -156,6 +160,70 @@ function sumPoints() {
       $!jsonSet[allRaresList;$get[animalID];$get[newQuantity]]
       $!jsonSet[challengeProgress;rares;$get[PR]]
       $!jsonSet[challengeProgress;list;$env[allRaresList]]
+    ]
+  `
+}
+
+function addEvent() {
+  return `
+    $arrayLoad[event; ;$getUserVar[1htime|$channelID] $get[PP]]
+    $arrayPushJSON[events;$env[event]]
+    $!jsonSet[challengeProgress;events;$env[events]]
+  `
+}
+
+function addPoints() {
+  return `
+    $let[PP;$env[challengeProgress;points]]
+    $letSum[PP;$get[points]]
+    $!jsonSet[challengeProgress;points;$get[PP]]
+  `
+}
+
+function predictScore(secondsAhead = 3600) {
+  return `
+    $let[rate;0]
+    $let[predict1;0]
+    $if[$arrayLength[events]>1;
+      $let[dt;$math[$env[events;$sub[$arrayLength[events];1];0] - $env[events;0;0]]]
+      $let[ds;$math[$env[events;$sub[$arrayLength[events];1];1] - $env[events;0;1]]]
+
+      $if[$get[dt]!=0;
+        $let[rate;$math[$get[ds] / $get[dt]]]
+      ]
+    ]
+
+    $if[$arrayLength[events]>0;
+      $let[s;$env[events;$math[$arrayLength[events] - 1];1]]
+      $let[predict1;$round[$math[$get[s] + $get[rate] * ${secondsAhead}]]]
+    ]
+  `
+}
+
+function predictByAverage(secondsAhead = 3600) {
+  return `
+    $let[predict2;0]
+    $if[$arrayLength[events]>0;
+      $arrayMap[events;e;$return[$env[e;0]];times]
+      $arrayMap[events;e;$return[$env[e;1]];scores]
+      $let[totalGain;0]
+      $let[totalDelay;0]
+      $loop[$arrayLength[events];
+        $let[gain;$math[$env[scores;$env[i]] - $env[scores;$sub[$env[i];1]]]]
+        $let[delay;$math[$env[times;$env[i]] - $env[times;$sub[$env[i];1]]]]
+        $if[$get[delay]>0;
+          $letSum[totalGain;$get[gain]]
+          $letSum[totalDelay;$get[delay]]
+        ]
+      ;i;true]
+
+      $let[avgGain;$replace[$math[$get[totalGain] / ($arrayLength[events] - 1)];NaN;0]]
+      $let[avgDelay;$replace[$math[$get[totalDelay] / ($arrayLength[events] - 1)];NaN;0]]      
+      $let[safeAvgDelay;$max[0.1;$get[avgDelay]]]
+
+      $let[remainingTime;$sub[${secondsAhead};$getUserVar[1htime|$channelID]]]
+      $let[possibleInputs;$divide[$get[remainingTime];$get[safeAvgDelay]]]
+      $let[predict2;$round[$math[$get[PP] + $get[possibleInputs] * $get[avgGain]]]]
     ]
   `
 }
