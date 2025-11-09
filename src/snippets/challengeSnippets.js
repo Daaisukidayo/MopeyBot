@@ -58,6 +58,7 @@ export default {
       $jsonLoad[allRaresData;$getGlobalVar[allRaresData]]
       $jsonLoad[allRaresDataEntries;$jsonEntries[allRaresData]]
       $jsonLoad[allRares;$getGlobalVar[allRares]]
+      $jsonLoad[events;$env[challengeProgress;events]]
     `
   },
 
@@ -101,6 +102,7 @@ export default {
 
   setChallengeVars(id = '$authorID', teamID = -1) {
     return `
+      $arrayLoad[events]
       $jsonLoad[challengeProgress;{
         "started": true,
         "paused": false,
@@ -108,7 +110,8 @@ export default {
         "rares": "0",
         "userID": "${id}",
         "teamID": "${teamID}",
-        "list": {}
+        "list": {},
+        "events": $env[events]
       }]
       $setUserVar[1htime|$channelID;0;${id}]
       $setUserVar[challengeProgress|$channelID;$env[challengeProgress];${id}]
