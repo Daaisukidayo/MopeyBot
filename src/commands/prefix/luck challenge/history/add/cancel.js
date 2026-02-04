@@ -15,7 +15,7 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[ui.addHistory.cancelNewHistoryPageTitle]]
+      $addTextDisplay[$tl[ui.addhistory.cancelNewHistoryPageTitle]]
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
   `

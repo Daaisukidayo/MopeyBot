@@ -12,9 +12,9 @@ export default {
       $addOption[$tl[ui.history.optionNameRaresList];;raresList]
 
       $addActionRow
-      $addButton[uploadNewHistoryPage-$authorID;$tl[ui.addHistory.buttonLabelUpload];Success;;$disabledUploadButton]
-      $addButton[resetNewHistoryPage-$authorID;$tl[ui.addHistory.buttonLabelReset];Secondary]
-      $addButton[cancelNewHistoryPage-$authorID;$tl[ui.addHistory.buttonLabelCancel];Primary]
+      $addButton[uploadNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelUpload];Success;;$disabledUploadButton]
+      $addButton[resetNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelReset];Secondary]
+      $addButton[cancelNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelCancel];Primary]
     ;$getGlobalVar[luckyColor]]
   `
 }

@@ -24,7 +24,7 @@ export default {
     $jsonLoad[sortingOptions;$getGlobalVar[sortingOptions]]
 
     $onlyIf[$env[history;$get[pageIndex]]!=;
-      $newError[$tl[ui.addHistory.unknownPage]]
+      $newError[$tl[ui.addhistory.unknownPage]]
     ]
 
     $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]

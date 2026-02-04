@@ -23,7 +23,7 @@ export default {
     $jsonLoad[playTypes;$getGlobalVar[playTypes]]
 
     $onlyIf[$env[history;$get[pageIndex]]!=;
-      $newError[$tl[ui.editHistory.unknownPage]]
+      $newError[$tl[ui.edithistory.unknownPage]]
     ]
 
     $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]

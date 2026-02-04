@@ -1,4 +1,4 @@
-// Embed when editing an existing history page, appears after running 'editHistory'
+// Embed when editing an existing history page, appears after running 'edithistory'
 
 export default [{
   type: 'interactionCreate',
@@ -13,9 +13,9 @@ export default [{
     $jsonLoad[funcCache;{}]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $modal[editHistoryPageModal-$authorID;$tl[ui.editHistory.modalEditExistingPageTitle]]
-    $addTextInput[editHistoryPageNumber;$tl[ui.editHistory.modalEnterExistingPageDescription];Short;true]
-    $addTextInput[editHistoryPageSorting;$tl[ui.editHistory.modalEnterSortingDescription];Short;true;$tl[ui.editHistory.modalEnterSortingPlaceholder];0]
+    $modal[editHistoryPageModal-$authorID;$tl[ui.edithistory.modalEditExistingPageTitle]]
+    $addTextInput[editHistoryPageNumber;$tl[ui.edithistory.modalEnterExistingPageDescription];Short;true]
+    $addTextInput[editHistoryPageSorting;$tl[ui.edithistory.modalEnterSortingDescription];Short;true;$tl[ui.edithistory.modalEnterSortingPlaceholder];0]
     $showModal
 
     $fetchResponse
@@ -42,19 +42,19 @@ export default [{
     $let[pageIndex;$math[$get[page] - 1]]
 
     $onlyIf[$and[$isNumber[$get[page]];$get[page]>0];
-      $newError[$tl[ui.editHistory.invalidPage]]
+      $newError[$tl[ui.edithistory.invalidPage]]
     ]
 
     $let[sortType;$default[$input[editHistoryPageSorting];$env[IID;1]]]
     $onlyIf[$arrayIncludes[sortingOptions;$get[sortType]];
-      $newError[$tl[ui.editHistory.invalidSorting]]
+      $newError[$tl[ui.edithistory.invalidSorting]]
     ]
 
     $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
     $jsonLoad[thisHistory;$env[history;$get[pageIndex]]]
 
     $onlyIf[$env[thisHistory]!=;
-      $newError[$tl[ui.editHistory.unknownPage]]
+      $newError[$tl[ui.edithistory.unknownPage]]
     ]
 
     $historyEmbed[$env[thisHistory]]

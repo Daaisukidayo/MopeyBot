@@ -1,6 +1,6 @@
 export default {
   name: 'edithistory',
-  aliases: ['editHis', 'eh', 'ehis'],
+  aliases: ['edithis', 'eh', 'ehis'],
   type: 'messageCreate',
   code: `
     $reply

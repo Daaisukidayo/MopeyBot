@@ -425,7 +425,7 @@
     "modalPlaceholderList": "<КороткоеИмяРедкогоX>=<КоличествоX>,...\nУстановите <Количество> на 0 для удаления"
   },
 
-  "addHistory": {
+  "addhistory": {
     "addedHistory": "## _Успешно добавлена новая страница истории!_",
 
     "preview": "# _Предпросмотр_",
@@ -437,7 +437,7 @@
     "cancelNewHistoryPageTitle": "# _Добавление новой страницы истории отменено!_"
   },
 
-  "editHistory": {
+  "edithistory": {
     "welcomeTitle": "# _Добро пожаловать в редактор истории!_",
     "menuTitleEditHistoryOptions": "Выберите опцию!",
     "optionNameAddPage": "Добавить новую страницу",

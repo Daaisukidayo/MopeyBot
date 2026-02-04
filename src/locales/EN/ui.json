@@ -427,7 +427,7 @@
     "currentValue": "## _Current:_"
   },
 
-  "addHistory": {
+  "addhistory": {
     "addedHistory": "## _Successfully added new history page!_",
 
     "preview": "# _Preview_",
@@ -439,7 +439,7 @@
     "cancelNewHistoryPageTitle": "# _Adding new history page is canceled!_"
   },
 
-  "editHistory": {
+  "edithistory": {
     "welcomeTitle": "# _Welcome to the history editor!_",
     "menuTitleEditHistoryOptions": "Choose an option!",
     "optionNameAddPage": "Add new page",
