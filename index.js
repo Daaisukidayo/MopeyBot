@@ -65,7 +65,7 @@ BOT.functions.load("./src/functions")
 BOT.commands.load("./src/commands/prefix")
 BOT.applicationCommands.load("./src/commands/slash")
 TOP.commands.load("./src/commands/topgg")
-DB.commands.load("./src/commands/database")
+DB.commands.load("./src/commands/db")
 
 // ========== SIGNALS handler ==========
 shutdownSetup(BOT)
