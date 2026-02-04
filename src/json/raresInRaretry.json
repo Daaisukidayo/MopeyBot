@@ -1,45 +1,51 @@
 [
   {
-    "ID": 8,
     "animalIDs": [
-      "shaheen",
-      "harpyEagle",
-      "greaterSpottedEagle"
+      "chocoToucan",
+      "keelBilledToucan",
+      "markhor"
     ],
-    "color": "50351E"
+    "color": "c0c0c0"
   },
   {
-    "ID": 7,
     "animalIDs": [
-      "rareMacaw",
-      "rareToucan",
-      "rareVulture"
+      "fieryToucan",
+      "leopard",
+      "jaguar",
+      "doe",
+      "lioness",
+      "yellowPufferfish",
+      "blueMacaw"
     ],
-    "color": "677caf"
+    "color": "ffff00"
   },
   {
-    "ID": 6,
     "animalIDs": [
-      "kingDragon",
-      "luckBigfoot",
-      "luckSnowman",
-      "luckSnowgirl"
+      "goldenPheasant",
+      "momaffieFamily",
+      "momaffie",
+      "marshDeer",
+      "pinkyPig",
+      "whiteDove",
+      "blackManedLion",
+      "lionCub",
+      "blackPanther"
     ],
-    "color": "d61b4a"
+    "color": "f3ab0f"
   },
   {
-    "ID": 5,
     "animalIDs": [
-      "giraffeFamily",
-      "whiteGiraffe",
-      "blackRhino",
-      "demonPufferfish",
-      "lavaToucan"
+      "girabie",
+      "jackass",
+      "bigGoat",
+      "whiteLionCub",
+      "whiteLioness",
+      "whiteLion",
+      "whiteTiger"
     ],
-    "color": "452591"
+    "color": "ffffff"
   },
   {
-    "ID": 4,
     "animalIDs": [
       "blackTiger",
       "blackBear",
@@ -56,53 +62,38 @@
     "color": "750e0e"
   },
   {
-    "ID": 3,
     "animalIDs": [
-      "girabie",
-      "jackass",
-      "bigGoat",
-      "whiteLionCub",
-      "whiteLioness",
-      "whiteLion",
-      "whiteTiger"
+      "giraffeFamily",
+      "whiteGiraffe",
+      "blackRhino",
+      "demonPufferfish",
+      "lavaToucan"
     ],
-    "color": "ffffff"
+    "color": "452591"
   },
   {
-    "ID": 2,
     "animalIDs": [
-      "goldenPheasant",
-      "momaffieFamily",
-      "momaffie",
-      "marshDeer",
-      "pinkyPig",
-      "whiteDove",
-      "blackManedLion",
-      "lionCub",
-      "blackPanther"
+      "rareKingDragon",
+      "rareBigfoot",
+      "rareSnowman",
+      "rareSnowgirl"
     ],
-    "color": "f3ab0f"
+    "color": "d61b4a"
   },
   {
-    "ID": 1,
     "animalIDs": [
-      "fieryToucan",
-      "leopard",
-      "jaguar",
-      "doe",
-      "lioness",
-      "yellowPufferfish",
-      "blueMacaw"
+      "rareMacaw",
+      "rareToucan",
+      "rareVulture"
     ],
-    "color": "ffff00"
+    "color": "677caf"
   },
   {
-    "ID": 0,
     "animalIDs": [
-      "chocoToucan",
-      "keelBilledToucan",
-      "markhor"
+      "shaheen",
+      "harpyEagle",
+      "greaterSpottedEagle"
     ],
-    "color": "c0c0c0"
+    "color": "50351E"
   }
 ]

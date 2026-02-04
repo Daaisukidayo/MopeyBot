@@ -1,10 +1,12 @@
+#! files
 .env
-forge.db
-node_modules
+forgeconfig.json
 allies.json
-localizations_old.json
-logs
-TF.js
-UE.js
-animalsOld.json
+
+#? folders
+.cache/
+node_modules/
+database/
+logs/
 developerTools/
+secret/

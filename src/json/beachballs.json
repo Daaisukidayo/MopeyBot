@@ -1,99 +1,88 @@
 [
   {
     "ID": 10,
-    "MC": [150000, 200001],
-    "rarity": 5000, 
-    "desc": "Tanzanite Beachball",
+    "MC": [150000, 200000],
+    "rarity": 5000,
     "emoji": "<:TanzaniteBeachball:1279447929060593675>",
     "color": "3A3ADE",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765993475801088/10.png"
   },
   {
     "ID": 9,
-    "MC": [100000, 120001],
-    "rarity": 3500, 
-    "desc": "Aquamarine Beachball",
+    "MC": [100000, 120000],
+    "rarity": 3500,
     "emoji": "<:AquamarineBeachball:1279447909183655998>",
     "color": "81A7B4",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765973934538803/9.png"
   },
   {
     "ID": 8,
-    "MC": [80000, 90001],
-    "rarity": 2000, 
-    "desc": "Opal Beachball",
+    "MC": [80000, 90000],
+    "rarity": 2000,
     "emoji": "<:OpalBeachball:1279447898047905822>",
     "color": "9471FF",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765973578027090/8.png"
   },
   {
     "ID": 7,
-    "MC": [60000, 70001],
-    "rarity": 1500, 
-    "desc": "Pink Diamond Beachball",
+    "MC": [60000, 70000],
+    "rarity": 1500,
     "emoji": "<:PinkDiamondBeachball:1279447866477248582>",
     "color": "fc3cb1",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765973355860071/7.png"
   },
   {
     "ID": 6,
-    "MC": [40000, 50001],
-    "rarity": 1000, 
-    "desc": "Pearl Beachball",
+    "MC": [40000, 50000],
+    "rarity": 1000,
     "emoji": "<:PearlBeachball:1279447853676105814>",
     "color": "F4DFF4",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765972915326986/6.png"
   },
   {
     "ID": 5,
-    "MC": [20000, 30001],
-    "rarity": 500, 
-    "desc": "Jade Beachball",
+    "MC": [20000, 30000],
+    "rarity": 500,
     "emoji": "<:JadeBeachball:1279447880108740719>",
     "color": "61B761",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765972353552474/5.png"
   },
   {
     "ID": 4,
-    "MC": [10000, 15001],
-    "rarity": 200, 
-    "desc": "Diamond Beachball",
+    "MC": [10000, 15000],
+    "rarity": 200,
     "emoji": "<:DiamondBeachball:1279447841017958431>",
     "color": "1dfcff",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765972089307147/4.png"
   },
   {
     "ID": 3,
-    "MC": [5000, 9001],
-    "rarity": 100, 
-    "desc": "Platinum Beachball",
+    "MC": [5000, 9000],
+    "rarity": 100,
     "emoji": "<:PlatinumBeachball:1279447828745158706>",
     "color": "A8A8A8",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765971665686700/3.png"
   },
   {
     "ID": 2,
-    "MC": [2000, 4001],
-    "rarity": 50, 
-    "desc": "Golden Beachball",
+    "MC": [2000, 4000],
+    "rarity": 50,
     "emoji": "<:GoldenBeachball:1279447797237809262>",
     "color": "F4BA17",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765971237605519/2.png"
   },
   {
     "ID": 1,
-    "MC": [1000, 1501],
-    "rarity": 20, 
-    "desc": "Amber Beachball",
+    "MC": [1000, 1500],
+    "rarity": 20,
     "emoji": "<:AmberBeachball:1279447777675579443>",
     "color": "FF941C",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765970889474101/1.png"
   },
   {
     "ID": 0,
-    "MC": [400, 751],
-    "rarity": 1, 
-    "desc": "Beachball",
+    "MC": [400, 750],
+    "rarity": 1,
     "emoji": "<:Beachball:1279447760591917099>",
     "color": "f06d5f",
     "thum": "https://media.discordapp.net/attachments/701793335941136464/1279765970411585636/0.png"

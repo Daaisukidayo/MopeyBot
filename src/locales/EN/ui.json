@@ -1,0 +1,688 @@
+{
+  "args": {
+    "newPrefix": "new_prefix",
+    "shortRaresName": "rare_short_name",
+    "fullAnimalName": "full_animal_name",
+    "amount": "Amount",
+    "tier": "Tier"
+  },
+
+  "global": {
+    "mopecoin": "Mopecoin",
+    "mc": "MC",
+    "mopeyUserIdentifier": "Mopey User Identifier",
+    "muid": "MUID"
+  },
+
+  "special": {
+    "interactionFail": "## _You can't interract with this message anymore!_",
+    "interactionInvalidAuthor": "## _This button is not for you!_",
+    "caughtRares": "## _{0}, you have caught `{1}` rares in `{2}`!_",
+    "botDisabled": "The bot is currently disabled for maintenance. Please try again later.",
+    "commandDisabled": "This command is currently disabled for maintenance. Please try again later."
+  },
+  
+  "cooldown": {
+    "title": "⏰ You are on cooldown!",
+    "description": "### _Cooldown will end {0} {1}_"
+  },
+
+  "errors": {
+    "invalidArguments": "Invalid arguments!",
+    "noArgument": "No argument written!",
+    "notNumber": "Argument is not a number!",
+    "userNotFound": "User not found!",
+    "disabledInDMs": "Disabled in DMs",
+    "usage": "Usage: `{0}`",
+    "errorTitle": "# ✖️ Error!"
+  },
+
+  "ping": {
+    "ping": "## _Current ping: `{0}`ms_",
+    "execTime": "## _Execution time: `{0}`ms_"
+  },
+
+  "credits": {
+    "title": "# ___Development team___",
+    "owner&devs": "# _Bot creator & developer_",
+    "pfpBy": "# _Bot's profile picture by_",
+    "artists": "# _Artists_",
+    "madeWithLove": "### _Made with love 💖_"
+  },
+
+  "caughtRares": {
+    "loading": "Loading...",
+    "totalCaughtRares": "Total caught rares in «{0}» mode",
+    "page": "Page: {0}",
+    "quantity": "Quantity: {0}",
+    "rarityInfo": "Rarity: {0}",
+    "reward": "Reward: {0}",
+    "setRaretryMode": "Set raretry mode to {0}",
+    "yourRaretryMode": "Your raretry mode is set to {0}"
+  },
+
+  "prefix": {
+    "missingPerm": "You're missing the following permission: `Manage Server`",
+    "old": "You cannot set an old prefix as a new one!",
+    "current": "## _My prefix in this server is `{0}`_",
+    "changed": "## _Successfully changed prefix to `{0}`_"
+  },
+
+  "raretry": {
+    "nothing": "## _You tried to get rares but you got nothing._",
+    "gotRares": "## _You tried to get rares and you got __{0}__!_",
+    "earned": "### _Earned: `{0}`{EMOJI}_",
+    "unknownMode": "Unknown raretry mode",
+    "rarity": "**• _Rarity: `{0}/{1}`_**",
+    "category": "**• _Category: `{0}`_**",
+    "mode": "**• _Mode: `{0}`_**"
+  },
+
+  "arena": {
+    "won": "## _You went to arena, defeated {0} and you earned `{1}`{EMOJI}!_",
+    "lost": "## _You went to arena but {0} defeated you_"
+  },
+
+  "beachball": {
+    "saw": "## _You were walking across the ocean and saw a(n) __{0}__!_",
+    "earned": "## _You held it for some time, goaled it and earned `{0}`{EMOJI}!_",
+    "rarity": "### • _Rarity: `{0}/{1}`_"
+  },
+
+  "pumpkin": {
+    "saw": "## _You were walking across the map and saw a(n) __{0}__!_",
+    "earned": "## _You held it for some time, goaled it and earned `{0}`{EMOJI}!_",
+    "rarity": "### • _Rarity: `{0}/{1}`_"
+  },
+
+  "umbrella": {
+    "saw": "## _You were walking across the ocean and saw a(n) __{0}__!_",
+    "earned": "## _You held it for some time and earned `{0}`{EMOJI}!_",
+    "rarity": "### • _Rarity: `{0}/{1}`_"
+  },
+
+  "tornado": {
+    "saw": "## _You walked around the map and saw a(n) __{0}__!_",
+    "earned": "### _Earned: `{0}`{EMOJI}_"
+  },
+
+  "raretryrun": {
+    "title": "# _While evolving from mouse to black dragon, you got these rares:_",
+    "total": "### • _Total: `{0}`{EMOJI}_",
+    "nothing": "## _Nothing_"
+  },
+
+  "checklist": {
+    "title": "# __CHECKLIST__",
+    "claimDaily": "## Claim daily reward!",
+    "vote": "Vote on Top.gg!",
+    "catchRaretry": "## Catch `{0}` rare animals in `raretry`!",
+    "catchRaretryrun": "## Catch `{0}` rare animals in `raretryrun`!",
+    "completeTasks": "## Complete these tasks to earn `{0}`{EMOJI}!",
+    "allTasksCompleted": "## You have completed all tasks and earned `{0}`{EMOJI}",
+    "allRewardsReceived": "## All rewards have been received! Come back tomorrow!",
+    "completed": "-# 🟢 Completed",
+    "inProgress": "-# 🔴 In progress",
+    "streak": "## 🔥 You are on `{0:ord}` daily checklist Streak!"
+  },
+
+  "invite": {
+    "title": "# _Invite and important links_",
+    "url": "Invite URL",
+    "discord": "Official Discord server",
+    "topgg": "Top.gg"
+  },
+
+  "raretrymode": {
+    "title": "# _Select your raretry mode_"
+  },
+
+  "balance": {
+    "title": "# __BALANCE__",
+    "mc": "## {EMOJI} Mopecoins: `{0}`",
+    "purchased": "## 🛒 Skin packs:",
+    "none": "None"
+  },
+
+  "daily": {
+    "cooldownDescription1": "## _You already have claimed your daily reward!_",
+    "cooldownDescription2": "## _Cooldown resets every day at `12:00 AM UTC+0`!_",
+    "description": "## _Your daily reward is `{0}`{EMOJI}!_"
+  },
+
+  "leaderboard": {
+    "title": "# 🔝 Leaderboard",
+    "contentLine": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}",
+    "pageButton": "Page {0}/{1}",
+    "modalTitle": "Leaderboard page",
+    "modalDescription": "Enter leaderboard page",
+    "modalPlaceholderPageCondition": "Must be greater than 0 and less or equal to {0}!",
+    "invalidPage": "Invalid number in «page» field!",
+    "notReady": "Leaderboard is not ready yet, please try again later!"
+  },
+
+  "shop": {
+    "title": "# ___Available skins packs___",
+    "empty": "No skin packs available",
+    "available": "### _Available: `{0}`{EMOJI}_",
+    "unknown": "Unknown skins pack!",
+    "alreadyBought": "You already owns this skins pack!",
+    "lowCash": "You don't have enough {EMOJI}!",
+    "purchaseSuccess": "## _Successfully purchased «`{0}`»!_",
+
+    "selectMenuSkinsPacksPlaceholder": "Select a skins pack"
+  },
+
+  "weekly": {
+    "cooldownDescription1": "## _You already have claimed your weekly reward!_",
+    "cooldownDescription2": "## _Cooldown resets every monday at `12:00 AM UTC+0`!_",
+    "description": "## _Your weekly reward is `{0}`{EMOJI}!_"
+  },
+
+  "howlucky": {
+    "description": "## 🍀 Today you are lucky by `{0}`%, {1}",
+    "footer": "## The result updates every day at `12:00 AM UTC+0`"
+  },
+
+  "kingdragon": {
+    "chooseUpgrade": "# _Choose an upgrade:_",
+    "attempt": "## You tried to get King Dragon as {0} {1}... At least you got `{2}`{EMOJI} from this run!",
+    "upgrade": "## You upgraded to __{0}__ and earned `{1}`{EMOJI}!",
+    "byLuckUpgrade": "## You expected to see Black Dragon in upgrade menu, but suddenly you saw a different animal, it was {0}! You were surprised and happy! After playing for some time, you earned `{1}`{EMOJI}!",
+    "rarity": "-# Rarity: {0}/{1}",
+    "reasons": [
+      "but you got killed by teamers",
+      "but your internet fell off and you disconnected with {0} apexes away",
+      "but Mistik made an event so you lost your BD",
+      "but rares bullied and killed you",
+      "but you died by low lava"
+    ]
+  },
+
+  "coinflip": {
+    "invalidAmount": "Only number or argument `all` is allowed!",
+    "invalidCashLow": "You must have at least `{0}`{EMOJI}!",
+    "invalidCashHigh": "You don't have that much {0}!",
+    "balance": "Your balance: `{0}`{EMOJI}",
+    "invalidRange": "You can bet only `{0}`-`{1}`{EMOJI}!",
+    "invalidSide": "Invalid side!",
+    "bet": "# _The bet is set on __{0}__! Flipping the coin..._",
+    "won": "# _You got __{0}__ and won `{1}`{EMOJI}!_",
+    "lost": "# _You got __{0}__ and lost `{1}`{EMOJI}_"
+  },
+
+  "slots": {
+    "invalidAmount": "Only number or argument `all` is allowed!",
+    "invalidCashLow": "You must have at least `{0}`{EMOJI}!",
+    "invalidCashHigh": "You don't have that much {EMOJI}!",
+    "balance": "Your balance: `{0}`{EMOJI}",
+    "invalidRange": "You can bet only `{0}`-`{1}`{EMOJI}!",
+    "title": "**`•⁕※SLOTS※⁕•`**",
+    "bet": "_{0} bet `{1}`{EMOJI}_",
+    "won": "**_and won `{0}`{EMOJI}!_**",
+    "lost": "**_and lost..._**"
+  },
+
+  "hlsimulator": {
+    "invalidDifficulty": "Invalid Difficulty! Available: `0` - Easy, `1` - Default, `2` - Medium, `3` - Hard",
+    "simulating": "## _Simulating..._"
+  },
+
+  "snora": {
+    "title": "# ✦✧✦✧✦Tier {0}✦✧✦✧✦",
+    "or": "### «{0}» means «`OR`». This means, for example, you should type «`{1}`» or «`{2}`»"
+  },
+
+  "start": {
+    "alreadyActive": "You already have an active challenge in this channel!",
+    "activeLobby": "You can't start the challenge in channel with active Lobby!",
+    "hasBegun": "# _1 hour luck challenge has begun!_",
+    "turnOnNotification": "## _Don't forget to turn on notification!_"
+  },
+
+  "pause": {
+    "alreadyPaused": "You already have paused the challenge!",
+    "timesUp": "Time's up!",
+    "paused": "# _Paused!_"
+  },
+
+  "resume": {
+    "notPaused": "You haven't paused your challenge!",
+    "continued": "# _Continued!_"
+  },
+
+  "time": {
+    "paused": "## _Status: `Paused`_",
+    "inProgress": "## _Status: `In progress`_"
+  },
+
+  "points": {
+    "invalidUser": "Invalid User ID",
+    "noActiveChallengeUser": "__{0}__ doesn't have an active challenge!",
+    "noActiveChallengeAuthor": "You don't have an active challenge!"
+  },
+
+  "editlist": {
+    "invalidRare": "The rare «`{0}`» does not exist!",
+    "invalidNumber": "Only a number greater than 0 (or argument «`all`» if removing) is allowed!",
+    "notInList": "Animal {0} is not in your list!",
+    "removed": "## ✅ _Removed `{0}` {1}_",
+    "added": "## ✅ _Added `{0}` {1}_"
+  },
+
+  "edittime": {
+    "invalidTime": "Your new time must be bigger than or equal to 0, lower than 3600 or in format «`MM:SS`»"
+  },
+
+  "count": {
+    "title": "# _1 hour luck challenge points counting_",
+    "unknownRares": "# _Unknown rares_"
+  },
+
+  "challenge": {
+    "completed": "# _1 hour luck challenge completed!_",
+    "points": "## _⁘ Points:_ {0}",
+    "rares": "## _⁘ Rares:_ {0}",
+    "prediction": "## _⁘ Prediction:_ {0}",
+    "time": "## _⁘ Time:_ `{0}`",
+    "unlimitedRares": "# _※ Unlimited Rares_",
+    "allLimitedReceived": "_※ All limited rares received_",
+    "onPause": "You are on pause!",
+    "active": "You don't have an active challenge!",
+    "reachedLimit": "# _Reached limit of {0}_",
+    "completedDescription1": "## _You can continue typing if you didn't manage to finish_",
+    "completedDescription2": "## _Press «`Confirm`» button to end your challenge whenever you want_",
+    "buttonLabelConfirm": "Confirm",
+    "none": "None",
+    "unknown": "Unknown",
+    "timeLeft_s": "# _{0}, you have `{1}` seconds left!_",
+    "timeLeft_m": "# _{0}, you have `{1}` minutes left!_"
+  },
+
+  "lobby": {
+    "notReady": "Unable to create lobby yet. Please try again later.",
+    "lobbyAlreadyExist": "## _A Lobby already exists in this channel!_",
+    "hasActiveChallengeLobby": "You have an active challenge! End it before creating a Lobby!",
+    "hasActiveChallengeParticipate": "You have an active challenge! Complete it before participating!",
+    "lobbyFull": "The Lobby is full.",
+    "notParticipant": "You're not a participant.",
+
+    "participants": "Participants",
+    "participantsTitle": "# _🎮 Participants_",
+    "teamTitle": "# 🎮 Team {0}",
+    "author": "## {0}'s Lobby",
+
+    "settingsTitle": "# _⚙️ Settings_",
+    "settingsChange": "# _⚙️ Change Settings_",
+
+    "modeTitle": "## _Mode: `{0}`_",
+    "modeTitleMenu": "## _Mode:_",
+    "difficultyTitle": "## _Difficulty: `{0}`_",
+    "difficultyTitleMenu": "## _Difficulty:_",
+    "tagsTitle": "## _Tags:_",
+    "hostTitle": "## _Host: {0}_",
+
+    "closedByInactivity": "## _The Lobby created by {0} was closed due to inactivity._",
+    "missingMessage": "## _The Lobby was closed due to a missing message._",
+    "doesNotExist": "This Lobby no longer exists.",
+    "closedByHost": "## _The Lobby was closed by the Host._",
+    "getReady": "# _Get ready! Starting in {0} seconds!_",
+    "failed": "## _Failed to start the challenge._",
+
+    "friendship": "FRIENDSHIP",
+    "sortedPlayersContent": "## {0} ➤ `{1}` — `{2}` Points",
+    "sortedTeamsContent": "## {0} ➤ Team `{1}` — `{2}` Points",
+    "sortedPlayersInSortingTeamsContent": "### - {0} — `{1}` Points",
+    "winner": "# _🎉 Winner: {0} 🎉_",
+    "team": "Team `{0}`",
+    "none": "None",
+
+    "buttonLabelJoin": "Join",
+    "buttonLabelQuit": "Quit",
+    "buttonLabelReady": "Ready",
+    "buttonLabelStart": "Start",
+    "buttonLabelClose": "Close",
+    "buttonLabelSettings": "Show Settings",
+    "buttonLabelCloseManually": "Close Manually (Host only)",
+
+    "menuTitleChooseTags": "Choose Tags",
+    "menuTitleChooseDifficulty": "Choose Difficulty",
+    "menuTitleChooseMode": "Choose Mode",
+    "menuTitleGiveHost": "Give Host",
+    "optionDescriptionToggle": "(Toggle)",
+    "optionDescriptionSelect": "(Select)"
+  },
+
+  "history": {
+    "noHistory": "## _You haven't completed any challenge!_",
+    "noHistoryObject": "## _This history page does not exist!_",
+
+    "points": "# _Points: `{0}`_",
+    "rares": "# _Rares: `{0}`_",
+    "playType": "# _Play Type: `{0}`_",
+    "difficulty": "# _Difficulty: `{0}`_",
+    "endDate": "# _End Date: {0}_",
+    "tags": "# _Tags_",
+
+    "unknownValue": "Unknown",
+
+    "buttonLabelPage": "Page {0}/{1}",
+
+    "menuTitleSort": "Sort by",
+    "optionNameSort": "Sort Type: {0}",
+
+    "buttonLabelDelete": "Delete",
+    "buttonLabelEdit": "Edit",
+
+    "invalidPage": "Page does not exist anymore",
+
+    "modalTitleCustomPage": "Custom page",
+    "modalDescriptionCustomPage": "Enter page",
+
+    "customPageNotNumber": "Argument is not a number!",
+
+    "listOptionUnknownListRare": "Unknown animal `{0}` in `{1}`!",
+    "listOptionInvalidListValue": "Invalid value `{0}` in `{1}`!",
+    "listOptionInvalidDate": "Invalid date!",
+    "listOptionInvalidDifficulty": "Invalid Difficulty!",
+    "listOptionInvalidPlayType": "Invalid Play Type!",
+    "listOptionInvalidRares": "Invalid number of Rares!",
+    "listOptionInvalidPoints": "Invalid number of Points!",
+
+    "menuTitleChooseOptions": "Choose an option to edit",
+    "optionNamePoints": "Points",
+    "optionNameRares": "Rares",
+    "optionNamePlayType": "Play Type",
+    "optionNameDifficulty": "Difficulty",
+    "optionNameEndDate": "End Date",
+    "optionNameTags": "Tags",
+    "optionNameRaresList": "List of Rares",
+    
+    "modalTitlePoints": "Editing Points",
+    "modalDescriptionPoints": "Edit your Points",
+    "modalPlaceholderPoints": "Current: {0}",
+    
+    "modalTitleRares": "Editing Number of Rares",
+    "modalDescriptionRares": "Edit your number of Rares",
+    "modalPlaceholderRares": "Current: {0}",
+    
+    "menuTitlePlayType": "Choose a Play Type",
+    "currentPlayType": "## _Current: `{0}`_",
+    
+    "menuTitleDifficulty": "Choose a Difficulty",
+    "currentDifficulty": "## _Current: `{0}`_",
+    
+    "modalTitleEndDate": "Editing Finishing Date",
+    "modalDescriptionEndDate": "Edit your End date",
+    "modalPlaceholderEndDate": "YYYY-MM-DD, HH:MM:SS",
+    
+    "menuTitleTag": "Choose a Tag",
+    "optionDescriptionTags": "(Toggle)",
+    "currentTags": "## _Current: `{0}`_",
+    
+    "modalTitleList": "Editing List of Rares",
+    "modalDescriptionList": "Edit your list of rares",
+    "modalPlaceholderList": "<ShortRaresNameX>=<AmountX>,...\nSet <Amount> to 0 to remove",
+
+    "currentValue": "## _Current:_"
+  },
+
+  "addHistory": {
+    "addedHistory": "## _Successfully added new history page!_",
+
+    "preview": "# _Preview_",
+
+    "buttonLabelUpload": "Upload",
+    "buttonLabelReset": "Reset",
+    "buttonLabelCancel": "Cancel",
+
+    "cancelNewHistoryPageTitle": "# _Adding new history page is canceled!_"
+  },
+
+  "editHistory": {
+    "welcomeTitle": "# _Welcome to the history editor!_",
+    "menuTitleEditHistoryOptions": "Choose an option!",
+    "optionNameAddPage": "Add new page",
+    "optionNameEditPage": "Edit existing page",
+
+    "modalEditExistingPageTitle": "Edit Existing History Page",
+    "modalEnterExistingPageDescription": "Enter page number",
+    "modalEnterSortingDescription": "Enter sorting type",
+    "modalEnterSortingPlaceholder": "0 = Date, 1 = Points, 2 = Rares",
+
+    "invalidPage": "Invalid page number",
+    "invalidSorting": "Invalid sorting type",
+    "unknownPage": "Page does not exist anymore",
+
+    "chooseOptionTitle": "# _Choose what you want to edit!_"
+  },
+
+  "rules": {
+    "accepted": "You have successfully accepted the rules! Enjoy using the bot!",
+    "declined": "You have chosen to decline the rules.",
+    "greeting": "Hey, {0}!",
+    "notAccepted": "It looks like you haven't accepted the rules yet!",
+    "description": "### By clicking on «Accept» button, you confirm that you have read and agree to the following important documents:",
+    "information": "Information",
+    "tos": "TOS",
+    "privacyPolicy": "Privacy Policy",
+    "rules": "Rules",
+    "buttonLabelAccept": "Accept",
+    "buttonLabelDecline": "Decline"
+  },
+
+  "help": {
+    "allCommandsTitle": "# _📜 __ALL COMMANDS___",
+    "commandTitle": "# _📜 __{0}___",
+    "aliasesTitle": "# _📚 Aliases_",
+    "relatedTitle": "# _📖 Related_",
+    "none": "None",
+    "detailed": "### _Use `{PREFIX}help (command)` for detailed information on a specific command!_",
+    "assistance": "### _Need assistance with a specific issue? [Join our official Discord server]({0})!_"
+  },
+
+  "switchlocale": {
+    "unknown": "Unknown language!",
+    "switched": "# _Switched locale to `{0}`!_"
+  },
+
+  "raretrysimulator": {
+    "invalidNumber": "Invalid number in field «`attempts`»!",
+    "title": "# _Raretry Simulator_",
+    "attempts": "**• _Attempts: `{0}`_**",
+    "mode": "**• _Mode: `{0}`_**",
+    "empty": "# _Empty_"
+  },
+
+  "settings": {
+    "title": "# _⚙️ Settings_",
+    "difficulty": "### _Difficulty_",
+    "stateEnabled": "Enabled",
+    "stateDisabled": "Disabled"
+  },
+
+  "wardrobe": {
+    "allTitle": "# _Equipping `all` animals, select a skin pack_",
+    "tierTitle": "# _Equipping tier `{0}` animals, select a skin pack_",
+    "invalidAnimal": "Animal not found",
+    "equippedTier": "## _Successfully equipped tier `{0}` animals with __{1}__!_",
+    "noSkinsInTier": "## _Tier `{0}` animals don't have any skins in __{1}__!_",
+    "equippedAll": "## _Successfully equipped every animal with __{0}__!_",
+    "everyEquipped": "# _You equipped all animals!_",
+    "availableSkins": "## _All available skins for `{0}`_",
+    "equippedSkin": "## _Equipped skin:_",
+
+    "menuTitleSelectSkin": "Select a skin",
+    "menuTitleSelectSkinPack": "Select a skin pack"
+  },
+
+  "muid": {
+    "userNotExist": "User with `{0}` MUID does not exist",
+    "invalidArgument": "No MUID were written or argument is not a number",
+    "largeNumber": "MUID can't be that large!",
+    "discordId": "### Discord ID: `{0}`"
+  },
+
+  "reminders": {
+    "title": "# 🔔__REMINDERS__🔔",
+    "enabled": "Enabled",
+    "disabled": "Disabled"
+  },
+
+  "report": {
+    "buttonLabel": "Click",
+    "title": "## _Click the button to open the report menu_",
+    "modalTitle": "Report window",
+    "textInputNameAbout": "What's your report about?",
+    "textInputPlaceholderAbout": "Command | user (Discord ID or MUID)",
+    "textInputNameIssue": "What's the issue?",
+    "textInputPlaceholderIssue": "Command is broken | I'm filing an appeal | typo | user spamming commands",
+    "sent": "## Your report has been sent to the support team!",
+    "new": "# _New report_"
+  },
+
+  "resetcoins": {
+    "noCash": "You don't have any {EMOJI} to delete!",
+    "warn": "## _Are you sure you want to delete all your `{0}`{EMOJI}?_",
+    "deleted": "## _Deleted all your `{0}`{EMOJI}_",
+    "canceled": "## _Deletion canceled!_",
+    "buttonLabelConfirm": "Confirm",
+    "buttonLabelDecline": "Decline"
+  },
+
+  "timezone": {
+    "invalid": "Invalid timezone!",
+    "current": "## _Your timezone: `{0}`_"
+  },
+
+  "vote": {
+    "canVote": "# _Vote on Top.gg every 12 hours to earn `{0}`{EMOJI}!_",
+    "cannotVote": "# _You voted on Top.gg and already earned `{0}`{EMOJI}, come back later!_",
+    "buttonLabel": "Vote"
+  },
+
+  "play": {
+    "unableInDm": "You can't start the game in DM!",
+    "activeSession": "## You already have an active game session!",
+    "noSession": "You don't have an active game session!",
+    "endPreviousGame": "Please end your previous game!",
+    "chooseAnimal": "## _Choose which animal to spawn as:_",
+    "chooseUpgrade": "## _Choose an upgrade:_",
+    
+    "upgraded": "## _You upgraded to __{0}__!_",
+
+    "movedTo": "## _Successfully moved to __{0}__ biome!_",
+
+    "earned": "-# _Earned: {0}{EMOJI}_",
+    "xp": "XP",
+    "disconnected": "## _Successfully disconnected you from the game!_",
+    "exited": "## _You have exited the game!_",
+
+    "kill": [
+      "## _A predator killed you!_", 
+      "## _You were killed by a predator!_",
+      "## _A predator has hunted you down!_", 
+      "## _You got hunted by a predator!_"
+    ],
+
+    "lackOfWater": "## _You died by a lack of water!_",
+    "lackOfLava": "## _You died by a lack of lava!_",
+    "diedByTeamers": "## _Teamers suddenly attacked you and you died..._",
+    "diedByLava": "## _You died by staying on lava... You are not a volcano animal!_",
+    "ate": "## _You ate __{0}__ and gained `{1}`XP!_",
+    "found": "## _You found a(n) {0}!_",
+    "chooseAction": "### _Choose an action:_",
+
+    "downgrades": {
+      "downgradeBy": "## _You chose to downgrade by __{0}__!_",
+      "intoLava": "diving into lava",
+      "oceanPredators": "surrendering to the deep ocean predators",
+      "onLand": "suffocating on land",
+      "outOfLava": "running out of lava",
+      "blackDragon": [
+        "giving everyone bites",
+        "letting another black dragon kill you"
+      ],
+      "reasons": [
+        "giving yourself to predator",
+        "running out of water"
+      ]
+    },
+
+    "arena": {
+      "actions": {
+        "-1": "## _Unknown outcome._",
+        "0": "## _You attacked each other, but no one get a bite._",
+        "1": "## _You attacked your opponent and bit him._",
+        "2": "## _Your opponent attacked and bit you._",
+
+        "3": "## _Your opponent defended himself and bit you._",
+        "4": "## _Your opponent defended himself, but no one get a bite._",
+        "5": "## _Your opponent failed to defend himself and you bit him._",
+
+        "6": "## _You counterattacked his deceive and bit him!_",
+        "7": "## _Your opponent deceived you, but no one get a bite._",
+        "8": "## _Your opponent deceived and bit you._",
+
+        "9": "## _You defended yourself and bit your opponent._",
+        "10": "## _You defended yourself, but no one get a bite._",
+        "11": "## _You did not defend yourself and your opponent bit you._",
+
+        "12": "## _You both went defending yourself, and no one get a bite._",
+
+        "13": "## _Your attempt to deceive your opponent failed, and he bit you._",
+        "14": "## _You deceived your opponent and bit him._",
+        "15": "## _You deceived your opponent, but no one get a bite._",
+        "16": "## _You both attempted to deceive each other, but no one get a bite._"
+      },
+
+      "reject": [
+        "## _Seems like everyone's allergic to danger._",
+        "## _Nobody wants to 1v1 you._",
+        "## _Nobody? Seriously?_",
+        "## _No one? Really?_",
+        "## _You scared them all off… again._",
+        "## _You didn't find anyone to battle._",
+        "## _Seems like you're destined to battle… your loneliness._",
+        "## _Nobody showed up._",
+        "## _They saw your name and ran._",
+        "## _Seems like everyone is scared of you because nobody wants to 1v1 you._"
+      ],
+
+      "table": {
+        "player": "# ___{0}___",
+        "bites": "### _Bites: `{0}`_",
+        "vs": "# _`VS`_",
+        "userChose": "## _You chose: `{0}`_",
+        "opponentChose": "## _Opponent chose: `{0}`_",
+        "won": "## _YOU WON!_",
+        "lost": "## _You lost..._",
+        "userTurn": "## _Your turn!_",
+        "userChoose": "## _Choose:_",
+        "opponentTurn": "## _Opponent's turn!_"
+      },
+
+      "wentInArena": "## _You went in arena with __{0}__!_\n### _Your turn!_"
+    },
+
+    "soccer": {
+      "ignored": "## _You chose to ignore the {0}._",
+      "goaled": "## _You goaled the {0} and earned `{1}`{EMOJI}!_",
+      "goalFailed": "## _You tried to goal the {0}, but you couldn't find a hole!_\n### _You still gained `{1}`{EMOJI} for holding it._",
+      "threw": "## _You threw away the {0}._"
+    },
+    
+    "buttonLabelRespawn": "Respawn",
+    "buttonLabelShowApex": "Show Apex",
+    "buttonLabelCantFind": "End manually",
+    "buttonLabelQuitGame": "Quit game",
+
+    "selectMenuPlaceholderActions": "Actions",
+    "optionNameUpgrade": "Upgrade",
+    "optionNameFarmXp": "Farm XP",
+    "optionNameArena": "Arena",
+    "optionNameDowngrade": "Downgrade",
+
+    "selectMenuPlaceholderSwitchBiome": "Switch biome"
+  }
+}

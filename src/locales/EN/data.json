@@ -1,0 +1,238 @@
+{
+  "howlucky": {
+    "0": "legendary luck 🌟",
+    "1": "unbelievable luck 🍀",
+    "2": "great luck 🎉",
+    "3": "decent luck 👍",
+    "4": "mid luck 🤔",
+    "5": "poor luck 😟",
+    "6": "terrible luck 😭",
+    "7": "abysmal luck 💀"
+  },
+
+  "difficulties": {
+    "0": "Easy",
+    "1": "Default",
+    "2": "Medium",
+    "3": "Hard"
+  },
+
+  "lobbyModes": {
+    "0": "FFA",
+    "1": "2 Teams",
+    "2": "3 Teams"
+  },
+
+  "playTypes": {
+    "0": "Single",
+    "1": "Party"
+  },
+
+  "allSettings": {
+    "0": "Hide Points",
+    "1": "Hide Rares",
+    "2": "Hide Rares Limit",
+    "3": "Hide Prediction"
+  },
+
+  "raretryModes": {
+    "0": "Default",
+    "1": "Medium",
+    "2": "Hard",
+    "3": "Insane",
+    "4": "Impossible"
+  },
+  
+  "raretryCategories": {
+    "0": "Common",
+    "1": "Uncommon",
+    "2": "Rare",
+    "3": "Epic",
+    "4": "Legendary",
+    "5": "Extreme",
+    "6": "Mythic",
+    "7": "Godly",
+    "8": "Divine"
+  },
+
+  "challengeData": {
+    "0": "Trash",
+    "1": "Common",
+    "2": "Uncommon",
+    "3": "Rare",
+    "4": "Epic",
+    "5": "Legendary",
+    "6": "Mythic",
+    "7": "Divine"
+  },
+
+  "biomes": {
+    "0": "Land",
+    "1": "Desert",
+    "2": "Ocean",
+    "3": "Arctic",
+    "4": "Forest",
+    "5": "Volcano"
+  },
+
+  "arenaActions": {
+    "0": "Attack",
+    "1": "Defend",
+    "2": "Deceive"
+  },
+
+  "reminders": {
+    "0": "Daily reward",
+    "1": "Weekly reward"
+  },
+
+  "sortingOptions": {
+    "0": "Date",
+    "1": "Points",
+    "2": "Rares"
+  },
+
+  "devil": {
+    "0": "Rare Devil Twister",
+    "1": "Rare Devil Dust Twister",
+    "2": "Rare Devil Tsunami",
+    "3": "Rare Devil Fire Twister",
+    "4": "Rare Devil Arctic Whirl",
+    "5": "Rare Devil Tornado"
+  },
+
+  "normal": {
+    "0": "Dust Tornado",
+    "1": "Tsunami",
+    "2": "Fire Tornado",
+    "3": "Arctic Whirl",
+    "4": "Tornado"
+  },
+
+  "umbrellas": {
+    "0": "Umbrella",
+    "1": "Purple Umbrella",
+    "2": "Golden Umbrella",
+    "3": "Platinum Umbrella",
+    "4": "Diamond Umbrella",
+    "5": "Emerald Umbrella",
+    "6": "Ruby Umbrella",
+    "7": "Sapphire Umbrella",
+    "8": "Amethyst Umbrella",
+    "9": "Ammolite Umbrella",
+    "10": "Taaffeite Umbrella"
+  },
+
+  "umbrellaRarities": [
+    "Purple: 1/20",
+    "Golden: 1/50",
+    "Platinum: 1/100",
+    "Diamond: 1/200",
+    "Emerald: 1/500",
+    "Ruby: 1/1000",
+    "Sapphire: 1/1500",
+    "Amethyst: 1/2000",
+    "Ammolite: 1/3500",
+    "Taaffeite: 1/5000"
+  ],
+
+  "pumpkins": {
+    "0": "Pumpkin",
+    "1": "Jack-o'-lantern Pumpkin",
+    "2": "Golden Pumpkin",
+    "3": "Platinum Pumpkin",
+    "4": "Diamond Pumpkin",
+    "5": "Lapis Lazuli Pumpkin",
+    "6": "Topaz Pumpkin",
+    "7": "Quartz Pumpkin",
+    "8": "Musgravite Pumpkin",
+    "9": "Onyx Pumpkin",
+    "10": "Painite Pumpkin"
+  },
+
+  "pumpkinRarities": [
+    "Jack-o'-lantern: 1/20",
+    "Golden: 1/50",
+    "Platinum: 1/100",
+    "Diamond: 1/200",
+    "Lapis Lazuli: 1/500",
+    "Topaz: 1/1000",
+    "Quartz: 1/1500",
+    "Musgravite: 1/2000",
+    "Onyx 1/3500",
+    "Painite: 1/5000"
+  ],
+
+  "beachballs": {
+    "0": "Beachball",
+    "1": "Amber Beachball",
+    "2": "Golden Beachball",
+    "3": "Platinum Beachball",
+    "4": "Diamond Beachball",
+    "5": "Jade Beachball",
+    "6": "Pearl Beachball",
+    "7": "Pink Diamond Beachball",
+    "8": "Opal Beachball",
+    "9": "Aquamarine Beachball",
+    "10": "Tanzanite Beachball"
+  },
+
+  "beachballRarities": [
+    "Amber: 1/20",
+    "Golden: 1/50",
+    "Platinum: 1/100",
+    "Diamond: 1/200",
+    "Jade: 1/500",
+    "Pearl: 1/1000",
+    "Pink Diamond: 1/1500",
+    "Opal: 1/2000",
+    "Aquamarine: 1/3500",
+    "Tanzanite: 1/5000"
+  ],
+
+  "helpCategories": {
+    "0": "Economy",
+    "1": "Fun",
+    "2": "Special",
+    "3": "Gaming",
+    "4": "Luck Challenge"
+  },
+
+  "bracketsInfo": [
+    "[] - required argument(s)", 
+    "| - 'OR' argument",
+    "() - optional argument(s) or option",
+    "<> - data input"
+  ],
+
+  "soccerActions": {
+    "0": "Hold",
+    "1": "Ignore",
+    "2": "Goal",
+    "3": "Throw away"
+  },
+
+  "shopSkinPacks": {
+    "s1": "Season 1",
+    "s2": "Season 2",
+    "s2w": "Season 2 | Winter Version",
+    "legacySP": "Legacy Skins Pack",
+    "legacySPw": "Legacy Skins Pack | Winter Version",
+    "lockedSP": "Locked Skins Pack",
+    "goldenSP": "Golden Skins Pack",
+    "storefrontSP": "Storefront Skins Pack",
+    "summer2021SP": "Summer Skins Pack 2021",
+    "summer2022SP": "Summer Skins Pack 2022",
+    "halloween2020SP": "Halloween Skins Pack 2020",
+    "halloween2021SP": "Halloween Skins Pack 2021",
+    "halloween2022SP": "Halloween Skins Pack 2022",
+    "halloween2023SP": "Halloween Skins Pack 2023",
+    "may2022SP": "May Skins Pack 2022",
+    "christmas2022SP": "Christmas Skins Pack 2022",
+    "valentine2023SP": "Valentine Skins Pack 2023",
+    "landGTSP": "Land Gold Trim Skins Pack",
+    "desertGTSP": "Desert Gold Trim Skins Pack",
+    "oceanGTSP": "Ocean Gold Trim Skins Pack",
+    "arcticGTSP": "Arctic Gold Trim Skins Pack"
+  }
+}

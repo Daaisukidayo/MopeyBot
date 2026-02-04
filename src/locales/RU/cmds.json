@@ -1,0 +1,805 @@
+[
+  {
+    "commandAliases": [
+      "balance",
+      "bal",
+      "profile",
+      "prof",
+      "coins",
+      "packs"
+    ],
+    "commandName": "Баланс",
+    "commandDescription": [
+      "## Показывает ваш текущий баланс и приобретённые наборы скинов!"
+    ],
+    "commandRelated": [
+      "shop"
+    ],
+    "commandCategory": 0
+  },
+  {
+    "commandAliases": [
+      "checklist",
+      "cl"
+    ],
+    "commandName": "Список задач",
+    "commandDescription": [
+      "## Выполняйте все задания, чтобы заработать монеты!"
+    ],
+    "commandRelated": [
+      "vote",
+      "raretry",
+      "raretryrun",
+      "daily"
+    ],
+    "commandCategory": 0
+  },
+  {
+    "commandAliases": [
+      "daily"
+    ],
+    "commandName": "Ежедневный бонус",
+    "commandDescription": [
+      "## Заберите вашу ежедневную награду раз в день!"
+    ],
+    "commandRelated": [
+      "weekly",
+      "balance",
+      "shop"
+    ],
+    "commandCategory": 0
+  },
+  {
+    "commandAliases": [
+      "leaderboard",
+      "lb",
+      "top"
+    ],
+    "commandName": "Таблица лидеров",
+    "commandDescription": [
+      "## Показывает таблицу лидеров по количеству Мопкоинов!",
+      "## Таблица обновляется каждые 2 минуты!",
+      "## Использование: `{PREFIX}leaderboard (<страница>) (<строк_на_странице>)`",
+      "### `страница` - страница для отображения",
+      "### `строк_на_странице` - число строк на странице"
+    ],
+    "commandRelated": [
+      "balance"
+    ],
+    "commandCategory": 0
+  },
+  {
+    "commandAliases": [
+      "shop"
+    ],
+    "commandName": "Магазин",
+    "commandDescription": [
+      "## Здесь вы можете приобрести любой набор скинов, который пожелаете.",
+      "### Обратите внимание, что некоторые команды могут не использовать определённые наборы."
+    ],
+    "commandRelated": [
+      "balance",
+      "wardrobe"
+    ],
+    "commandCategory": 0
+  },
+  {
+    "commandAliases": [
+      "vote"
+    ],
+    "commandName": "Голосовать",
+    "commandDescription": [
+      "## Голосуйте за Мопи на Top.gg, чтобы заработать монеты!"
+    ],
+    "commandRelated": [
+      "checklist"
+    ],
+    "commandCategory": 0
+  },
+  {
+    "commandAliases": [
+      "weekly"
+    ],
+    "commandName": "Еженедельный бонус",
+    "commandDescription": [
+      "## Заберите вашу еженедельную награду раз в неделю!"
+    ],
+    "commandRelated": [
+      "daily",
+      "balance",
+      "shop"
+    ],
+    "commandCategory": 0
+  },
+  {
+    "commandAliases": [
+      "arena",
+      "pvp",
+      "battle"
+    ],
+    "commandName": "Арена",
+    "commandDescription": [
+      "## Войдите на арену, чтобы получить свою награду!"
+    ],
+    "commandRelated": [
+      "kingdragon",
+      "balance",
+      "shop"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "beachball",
+      "bb"
+    ],
+    "commandName": "Пляжный мяч",
+    "commandDescription": [
+      "## Используйте эту команду, чтобы найти пляжные мячи!",
+      "### Текущие редкости:",
+      "{BEACHBALLS_RARITIES}"
+    ],
+    "commandRelated": [
+      "pumpkin",
+      "umbrella",
+      "tornado"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "coinflip",
+      "cf"
+    ],
+    "commandName": "Орёл или решка",
+    "commandDescription": [
+      "## Поставьте свои монеты на орла или решку, чтобы попытать удачу!",
+      "### Использование: `{PREFIX}coinflip (<количество>|all) (h|t)`",
+      "### `all` - максимальная допустимая ставка (`{MAX_COINFLIP_BET}`{EMOJI})",
+      "### `side` - сторона монеты: орёл или решка. Если сторона не указана, по умолчанию — орёл",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [
+      "slots"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "hlsimulator",
+      "hlsim"
+    ],
+    "commandName": "Симулятор 1-часового испытания удачи",
+    "commandDescription": [
+      "## Показывает, сколько редких вы бы получили в реальном 1-часовом испытании удачи!",
+      "### Используйте `{PREFIX}simulator event` для симуляции в режиме события!"
+    ],
+    "commandRelated": [
+      "raretry",
+      "raretryrun",
+      "start",
+      "chart"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "howlucky",
+      "hl"
+    ],
+    "commandName": "Удача",
+    "commandDescription": [
+      "## Показывает, насколько вы удачливы сегодня!"
+    ],
+    "commandRelated": [],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "kingdragon",
+      "kd"
+    ],
+    "commandName": "Королевский дракон",
+    "commandDescription": [
+      "## Попробуйте превратиться в могучего Королевского Дракона и забрать награду!",
+      "### Также существует шанс 1/1000 стать Королевским Драконом просто по везению!"
+    ],
+    "commandRelated": [
+      "arena",
+      "balance",
+      "shop"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "pumpkin",
+      "pk"
+    ],
+    "commandName": "Тыква",
+    "commandDescription": [
+      "## Используйте эту команду, чтобы найти тыквы!",
+      "### Текущие редкости:",
+      "{PUMPKINS_RARITIES}"
+    ],
+    "commandRelated": [
+      "beachball",
+      "umbrella",
+      "tornado"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "randomrare",
+      "rrare"
+    ],
+    "commandName": "Случайная редкость",
+    "commandDescription": [
+      "## Показывает случайное редкое животное!"
+    ],
+    "commandRelated": [],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "raretry",
+      "rt"
+    ],
+    "commandName": "Попытка редкости",
+    "commandDescription": [
+      "## Используйте эту команду, чтобы попытаться поймать редких!"
+    ],
+    "commandRelated": [
+      "raretrymode"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "raretrymode",
+      "rtm",
+      "rtmode"
+    ],
+    "commandName": "Режим редкости",
+    "commandDescription": [
+      "## Показывает текущий режим raretry. Вы можете переключать режимы, нажимая кнопки!",
+      "### Чем выше активный режим, тем больше награды!"
+    ],
+    "commandRelated": [
+      "raretry"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "raretryrun",
+      "rtr"
+    ],
+    "commandName": "Попытка прохождения",
+    "commandDescription": [
+      "## Попытайтесь получить редких, продвигаясь от мыши до чёрного дракона!",
+      "## Редкости совпадают с теми, что в онлайн игре!"
+    ],
+    "commandRelated": [
+      "raretry"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "slots"
+    ],
+    "commandName": "Слоты",
+    "commandDescription": [
+      "## Поставьте монеты в слоты, чтобы попытать удачу!",
+      "### Использование: `{PREFIX}slots (<количество>|all)`",
+      "### `all` - максимальная допустимая ставка (`{MAX_SLOTS_BET}`{EMOJI})",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [
+      "coinflip"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "tornado"
+    ],
+    "commandName": "Торнадо",
+    "commandDescription": [
+      "## Используйте эту команду, чтобы обнаружить разные ураганы!",
+      "### В настоящий момент шанс обнаружить дьявольский ураган — 1/30!"
+    ],
+    "commandRelated": [
+      "pumpkin",
+      "beachball",
+      "umbrella"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "umbrella",
+      "ur"
+    ],
+    "commandName": "Зонт",
+    "commandDescription": [
+      "## Используйте эту команду, чтобы найти зонты!",
+      "### Текущие редкости:",
+      "{UMBRELLAS_RARITIES}"
+    ],
+    "commandRelated": [
+      "pumpkin",
+      "beachball",
+      "tornado"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "announcements",
+      "announcement",
+      "ann"
+    ],
+    "commandName": "Объявления",
+    "commandDescription": [
+      "## Показывает последнее обновление!"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "clearcoins",
+      "resetcoins",
+      "rc"
+    ],
+    "commandName": "Очистить монеты",
+    "commandDescription": [
+      "# ❗ ВНИМАНИЕ ❗",
+      "## __Эта команда удалит все ваши {EMOJI}!__"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "credits"
+    ],
+    "commandName": "Благодарности",
+    "commandDescription": [
+      "## Показывает список всех участников разработки бота!"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "invite"
+    ],
+    "commandName": "Пригласить",
+    "commandDescription": [
+      "## Пригласите бота Мопи на ваш сервер, присоединяйтесь к серверу Мопи и голосуйте за Мопи!"
+    ],
+    "commandRelated": [
+      "credits"
+    ],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "math"
+    ],
+    "commandName": "Математика",
+    "commandDescription": [
+      "## Выполняет вычисления по введённым аргументам.",
+      "### Некоторые аргументы могут не поддерживаться!",
+      "### Использование: `{PREFIX}math <arguments>`",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "muid",
+      "uid",
+      "id"
+    ],
+    "commandName": "MUID",
+    "commandDescription": [
+      "## Показывает Идентификатор Пользователя Мопи и текущий баланс монет!",
+      "### Использование: `{PREFIX}muid <идентификатор>`",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "ping"
+    ],
+    "commandName": "Пинг",
+    "commandDescription": [
+      "## Показывает задержку бота в миллисекундах."
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "prefix"
+    ],
+    "commandName": "Префикс",
+    "commandDescription": [
+      "## Изменяет префикс бота на вашем сервере.",
+      "### Требуемые права: `Управление сервером` или `Администратор`",
+      "### Использование: `{PREFIX}prefix <новый_префикс>`",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "raretrysimulator",
+      "rtsim"
+    ],
+    "commandName": "Симулятор попытки редкости",
+    "commandDescription": [
+      "## Симулирует команду raretry.",
+      "### Использование: `{PREFIX}raretrysimulator (<режим_попытки_редкого>) (<количество_попыток>)`",
+      "### `<режим_попытки_редкого>` - Режим команды. Все доступные режимы можно посмотреть в команде `{PREFIX}raretrymode`."
+    ],
+    "commandRelated": [
+      "raretry",
+      "raretrymode",
+      "hlsimulator"
+    ],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "reminders",
+      "rmd"
+    ],
+    "commandName": "Напоминания",
+    "commandDescription": [
+      "## Показывает включаемые напоминания."
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "report"
+    ],
+    "commandName": "Жалоба",
+    "commandDescription": [
+      "## Если вы нашли баг или заметили пользователя, пытающегося нарушать работу бота (альты, спам и т.д.), используйте команду Жалоба, чтобы сообщить нам!"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "rules"
+    ],
+    "commandName": "Правила",
+    "commandDescription": [
+      "## Показывает правила, с которыми вы согласились!"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "timezone",
+      "tz"
+    ],
+    "commandName": "Часовой пояс",
+    "commandDescription": [
+      "## Показывает и редактирует ваш текущий часовой пояс! Требуется для корректной работы функций времени!",
+      "### Пример: `{PREFIX}timezone <TimezoneID>`",
+      "## {HYPERLINK_TIMEZONES}",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "play"
+    ],
+    "commandName": "Играть",
+    "commandDescription": [
+      "## Играйте и зарабатывайте монеты. Всё ещё в разработке, возможно добавление множества функций в будущем!"
+    ],
+    "commandRelated": [
+      "wardrobe",
+      "shop"
+    ],
+    "commandCategory": 3
+  },
+  {
+    "commandAliases": [
+      "wardrobe",
+      "wr"
+    ],
+    "commandName": "Гардероб",
+    "commandDescription": [
+      "## Позволяет экипировать любое животное купленным скином!",
+      "## Использование: `{PREFIX}wardrobe [new|all|<tier>|<animal>]`",
+      "### `[new]` - Начинает новое экипирование выбранным паком скинов (от мыши до королевского дракона)",
+      "### `[all]` - Экипирует все животные выбранным паком скинов",
+      "### `[tier]` - Экипирует всех животных выбранного тира выбранным паком скинов",
+      "### `[animal]` - Экипирует выбранное животное выбранным скином",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [
+      "play",
+      "shop"
+    ],
+    "commandCategory": 3
+  },
+  {
+    "commandAliases": [
+      "chart"
+    ],
+    "commandName": "Чарт",
+    "commandDescription": [
+      "## Показывает текущий чарт редких для 1-часового испытания удачи!",
+      "### Что такое 1-часовое испытание удачи? Это игра, где вам нужно ловить редких в <https://mope.io>! Начните с мыши и пытайтесь ловить редких в течение 1 часа!",
+      "### Для лучшего опыта используйте бота для отслеживания прогресса! Бот подсчитает ваши очки за каждого пойманного и записанного редкого!",
+      "### Подробнее в команде `{PREFIX}help start`!",
+      "### Используйте `{PREFIX}chart event`, чтобы посмотреть чарт события!"
+    ],
+    "commandRelated": [],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "count"
+    ],
+    "commandName": "Подсчитать",
+    "commandDescription": [
+      "## Подсчитывает очки!",
+      "### Не нужно участвовать в 1-часовом испытании — вместо этого напишите все названия редких животных в одном сообщении! ",
+      "### Пример: `{PREFIX}count kbt cht mar...`"
+    ],
+    "commandRelated": [
+      "snora"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "edithistory",
+      "ehis",
+      "eh"
+    ],
+    "commandName": "Редактировать историю",
+    "commandDescription": [
+      "## У вас есть 2 варианта: __Добавить новую страницу__ или __Редактировать существующую страницу__",
+      "## 1. Если вы выбрали __Добавить новую страницу__, появится новое меню со всеми опциями.",
+      "## 2. Если вы выбрали __Редактировать существующую страницу__, вам нужно будет указать страницу для редактирования и тип сортировки.",
+      "### - Эти опции: `Очки`, `Редкие`, `Тип игры`, `Сложность`, `Дата окончания` и `Список редких`",
+      "### - Опция `Список редких` обновляет список, поэтому она не удаляет предыдущие редких",
+      "### - Чтобы удалить редкого, установите его количество в `0`"
+    ],
+    "commandRelated": [
+      "history"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "editlist"
+    ],
+    "commandName": "Редактировать список",
+    "commandDescription": [
+      "## Редактирует ваш список редких животных в 1-часовом испытании удачи!",
+      "### Использование: `{PREFIX}editlist <rare> [+ | -] <количество>`",
+      "### Пример: `{PREFIX}editlist mar + 1` -> Добавляет 1 Мархура в ваш прогресс",
+      "### Пример: `{PREFIX}editlist mar - all` -> Удаляет всех Мархуров из вашего прогресса",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "edittime",
+      "et"
+    ],
+    "commandName": "Изменить время",
+    "commandDescription": [
+      "## Редактирует ваше время в 1-часовом испытании удачи!",
+      "### Использование: `{PREFIX}edittime [<ММ:СС> | <секунды>]` (секунд прошедших с момента старта)",
+      "### Пример: `{PREFIX}edittime 30:00`",
+      "### Пример: `{PREFIX}edittime 1800`",
+      "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "end"
+    ],
+    "commandName": "Завершить",
+    "commandDescription": [
+      "## Мгновенно завершает ваше 1-часовое испытание удачи и показывает результат!",
+      "### Не добавляет результат в историю."
+    ],
+    "commandRelated": [],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "history",
+      "his"
+    ],
+    "commandName": "История 1-часовых испытаний удачи",
+    "commandDescription": [
+      "## Показывает вашу историю всех завершённых 1-часовых испытаний удачи!"
+    ],
+    "commandRelated": [
+      "edithistory",
+      "start",
+      "chart"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "hlsettings",
+      "hlsts"
+    ],
+    "commandName": "Настройки 1-часового испытания удачи",
+    "commandDescription": [
+      "## Показывает ваши изменяемые настройки 1-часового испытания удачи!"
+    ],
+    "commandRelated": [
+      "history",
+      "start",
+      "chart"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "lobby",
+      "party"
+    ],
+    "commandName": "Лобби 1-часового испытания удачи",
+    "commandDescription": [
+      "## Создаёт новое лобби, и любой желающий может присоединиться и участвовать в кооперативном 1-часовом испытании удачи! Максимум {MAX_PARTICIPANTS} участников.",
+      "### `1`. Нажмите кнопку «Присоединиться», чтобы войти в лобби.",
+      "### `2`. Нажмите кнопку «Готов», когда будете готовы.",
+      "### `3`. Нажмите кнопку «Выйти», чтобы покинуть лобби.",
+      "### `4`. Нажмите кнопку «Старт» (только для хостов), чтобы начать испытание! Требуется минимум 2 участника.",
+      "### `5`. Нажмите кнопку «Закрыть» (только для хостов), чтобы закрыть лобби и отменить участие.",
+      "## __Примечания:__",
+      "### После нажатия «Старт» появится обратный отсчёт, затем можно будет начинать ловить редких в Mope.io.",
+      "### У каждого участника свой таймер — можно ставить паузу в любой момент.",
+      "### После завершения всех участников (принудительно или по истечении времени) победит участник с наибольшим количеством очков."
+    ],
+    "commandRelated": [
+      "start",
+      "chart",
+      "settings"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "pause"
+    ],
+    "commandName": "Пауза",
+    "commandDescription": [
+      "## Приостанавливает ваше 1-часовое испытание удачи!"
+    ],
+    "commandRelated": [
+      "resume",
+      "time",
+      "points",
+      "edittime",
+      "end"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "points"
+    ],
+    "commandName": "Очки",
+    "commandDescription": [
+      "## Показывает ваши текущие очки!"
+    ],
+    "commandRelated": [
+      "snora",
+      "editpoints",
+      "end"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "resume",
+      "res",
+      "continue"
+    ],
+    "commandName": "Продолжить",
+    "commandDescription": [
+      "## Возобновляет ваше 1-часовое испытание удачи!"
+    ],
+    "commandRelated": [
+      "pause",
+      "time",
+      "points",
+      "edittime",
+      "end"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "snora",
+      "abbreviations", 
+      "abbr"
+    ],
+    "commandName": "SNORA",
+    "commandDescription": [
+      "## Показывает «Короткие названия редких животных», или же абревиатуры!",
+      "### Используется только для команд 1-часового испытания удачи"
+    ],
+    "commandRelated": [
+      "start"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "start"
+    ],
+    "commandName": "Начать",
+    "commandDescription": [
+      "## Запускает ваше 1-часовое испытание удачи!",
+      "### Во время испытания нужно писать названия редких из `{PREFIX}snora` без префикса, чтобы получать очки!",
+      "### Пример: `mar cht chocotoucan ...`",
+      "### По завершении таймера появится сообщение подтверждения. Нажмите «Подтвердить», чтобы завершить 1-часовое испытание удачи"
+    ],
+    "commandRelated": [
+      "start",
+      "pause",
+      "resume",
+      "time",
+      "snora",
+      "points",
+      "edittime",
+      "editpoints",
+      "editlist",
+      "end"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
+      "time"
+    ],
+    "commandName": "Время",
+    "commandDescription": [
+      "## Показывает оставшееся время в 1-часовом испытании удачи!"
+    ],
+    "commandRelated": [
+      "pause",
+      "resume",
+      "points",
+      "edittime",
+      "end"
+    ],
+    "commandCategory": 4
+  }
+]

@@ -1,6 +1,6 @@
 import chalk from "chalk"
 
-export default async function (client) {
+export async function shutdownSetup (client) {
   const info = chalk.cyan.bold
   const warn = chalk.yellow.bold
   const debug = chalk.green.bold
@@ -9,7 +9,7 @@ export default async function (client) {
 
   signals.forEach(signal => process.on(signal, () => {
     const now = new Date();
-    const timestamp = `[${now.toLocaleString().replace(/,/g, '')}]`;
+    const timestamp = `[${now.toLocaleString().replaceAll(',', '')}]`;
 
     console.log(debug(timestamp) + info(` [INFO] Bot has been shut down`) );
     client.destroy();
