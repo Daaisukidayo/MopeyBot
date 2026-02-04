@@ -40,7 +40,7 @@ const BOT = new ForgeClient({
 
   intents: [
     "Guilds",
-    "GuildMembers",
+    "GuildMessages",
     "DirectMessages",
     "MessageContent",
   ],
