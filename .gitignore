@@ -8,5 +8,5 @@ allies.json
 node_modules/
 database/
 logs/
-developerTools/
+dev/
 secret/
