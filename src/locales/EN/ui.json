@@ -489,7 +489,7 @@
   },
 
   "raretrysimulator": {
-    "invalidNumber": "Invalid number in field «`attempts`»! Only a number between `1` and `1000` or argument `max` is allowed!",
+    "invalidNumber": "Invalid number in field «`attempts`»! Only a number > `1` and ≤ `1000` or argument `max` is allowed!",
     "invalidMode": "Unknown raretry mode! Available modes: `{0}`.",
     "title": "# _Raretry Simulator_",
     "attempts": "**• _Attempts: `{0}`_**",
