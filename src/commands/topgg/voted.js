@@ -14,7 +14,7 @@ export default {
     $addContainer[
       $if[$env[userProfile;acceptedRules];
         $addAuthorDisplay
-        $addTextDisplay[$tl[ui.vote.userWithProfileVoted;$get[MC]]]
+        $addTextDisplay[$tl[ui.vote.userWithProfileVoted;$separate[$get[MC]]]]
         $sumCash[$get[MC]]
         $saveProfile[$get[ID]]
       ;
