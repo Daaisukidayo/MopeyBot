@@ -22,6 +22,7 @@ export default {
       ]
 
       $if[$arrayLength[allPlayers]>1;
+        $addSeparator[Large]
         $addActionRow
         $!arraySplice[allPlayers;$arrayIndexOf[allPlayers;$env[lobby;host]];1]
 
