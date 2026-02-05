@@ -3,10 +3,11 @@ export default {
   code: `
     $let[ID;$voteUserID]
     $let[MC;$getGlobalVar[voteReward]]
+    $jsonLoad[funcCache;{}]
 
     $sendMessage[$getGlobalVar[logChannelID];
       $author[$username[$get[ID]];$userAvatar[$get[ID]]]
-      $description[## Voted on Top.gg]
+      $description[## _Voted on Top.gg_]
       $color[$getGlobalVar[logColor]]
     ]
 
@@ -14,12 +15,12 @@ export default {
 
     $if[$getUserVar[userProfile;$get[ID]]==;
       $author[$username[$get[ID]];$userAvatar[$get[ID]]]
-      $description[## Thank you for voting! Register to earn reward!]
+      $description[$tl[ui.vote.userWithoutProfileVoted]]
     ;
       $jsonLoad[userProfile;$getUserVar[userProfile;$get[ID]]]
       $sumCash[$get[MC]]
       $setUserVar[userProfile;$env[userProfile];$get[ID]]
-      $description[## Thank you for voting! Your reward: \`$separate[$get[MC]]\`$getGlobalVar[emoji]]
+      $description[$tl[ui.vote.userWithProfileVoted;$get[MC]]]
       $addAuthor
     ]
     $color[$getGlobalVar[defaultColor]]

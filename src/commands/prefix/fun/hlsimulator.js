@@ -19,7 +19,10 @@ export default {
     ]
 
     $onlyif[$arrayIncludes[difficulties;$get[arg]];
-      $newError[$tl[ui.hlsimulator.invalidDifficulty]]
+      $arrayMap[difficulties;d;
+        $return[$tl[data.difficulties.$env[d]]]
+      ;diffList]
+      $newError[$tl[ui.hlsimulator.invalidDifficulty;$arrayJoin[diffList;\`, \`]]]
     ]
 
     $addCooldown[15s]

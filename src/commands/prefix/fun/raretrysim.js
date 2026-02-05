@@ -13,8 +13,8 @@ export default {
     $jsonLoad[modes;$env[raretryVarData;modes]]
     $jsonLoad[rareGroups;$readFile[src/json/raresInRaretry.json]]
 
-    $let[rtMode;$default[$message[0];0]]
-    $let[attempts;$default[$message[1];100]]
+    $let[attempts;$default[$message[0];100]]
+    $let[rtMode;$default[$message[1];0]]
 
     $if[$isNumber[$get[rtMode]]==false;
       $jsonLoad[rtModes;$tl[data.raretryModes]]
@@ -22,12 +22,15 @@ export default {
       $let[rtMode;$arrayIndexOf[rtModeV;$toTitleCase[$get[rtMode]]]]
     ]
 
-    $onlyIf[$arrayIncludes[modes;$get[rtMode]];
-      $newError[$tl[ui.raretry.unknownMode]]
-    ]
-
     $onlyIf[$and[$isNumber[$get[attempts]];$inRange[$get[attempts];1;1000]];
       $newError[$tl[ui.raretrysimulator.invalidNumber]]
+    ]
+
+    $onlyIf[$arrayIncludes[modes;$get[rtMode]];
+      $arrayMap[modes;m;
+        $return[$tl[data.raretryModes.$env[m]]]
+      ;modeList]
+      $newError[$tl[ui.raretrysimulator.invalidMode;$arrayJoin[modeList;\`, \`]]]
     ]
 
     $addCooldown[10s]

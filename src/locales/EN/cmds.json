@@ -338,6 +338,25 @@
   },
   {
     "commandAliases": [
+      "raretrysimulator",
+      "rtsim"
+    ],
+    "commandName": "Raretry Simulator",
+    "commandDescription": [
+      "## Simulates raretry command.",
+      "### Usage: `{PREFIX}raretrysimulator (<number_of_attempts>) (<raretry_mode>)`",
+      "### `<number_of_attempts>` - Number of attempts to simulate. Default number is `100`, maximum is `1000`, and minimum is `1`.",
+      "### `<raretry_mode>` - Mode of raretry. All available modes can be seen in `{PREFIX}raretrymode` command."
+    ],
+    "commandRelated": [
+      "raretry",
+      "raretrymode",
+      "hlsimulator"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
       "announcements",
       "announcement",
       "ann"
@@ -443,25 +462,6 @@
   },
   {
     "commandAliases": [
-      "raretrysimulator",
-      "rtsim"
-    ],
-    "commandName": "Raretry Simulator",
-    "commandDescription": [
-      "## Simulates raretry command.",
-      "### Usage: `{PREFIX}raretrysimulator (<raretry_mode>) (<number_of_attempts>)`",
-      "### `<raretry_mode>` - Mode of raretry. All available modes can be seen in `{PREFIX}raretrymode` command.",
-      "### `<number_of_attempts>` - Number of attempts to simulate. Default number is `100`, maximum is `1000`, and minimum is `1`."
-    ],
-    "commandRelated": [
-      "raretry",
-      "raretrymode",
-      "hlsimulator"
-    ],
-    "commandCategory": 1
-  },
-  {
-    "commandAliases": [
       "reminders",
       "rmd"
     ],
@@ -506,6 +506,21 @@
       "### Usage: `{PREFIX}timezone <TimezoneID>`",
       "## {HYPERLINK_TIMEZONES}",
       "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "switchlocale",
+      "sl"
+    ],
+    "commandName": "Switch Locale",
+    "commandDescription": [
+      "## Switches the bot's language to another one for user!",
+      "### Usage: `{PREFIX}switchlocale <locale>`",
+      "### Available locales:",
+      "{AVAILABLE_LOCALES}"
     ],
     "commandRelated": [],
     "commandCategory": 2

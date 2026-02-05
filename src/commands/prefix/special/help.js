@@ -26,6 +26,9 @@ export default {
     $jsonLoad[beachballRarities;$tl[data.beachballRarities]]
     $jsonLoad[pumpkinRarities;$tl[data.pumpkinRarities]]
     $jsonLoad[ctgs;$getGlobalVar[helpCategories]]
+    $arrayMap[locales;obj;
+        $return[$env[obj;name] - $env[obj;description]]
+    ;locales]
 
 
     $if[$get[helpIndex]==-1;
@@ -91,6 +94,7 @@ function replacements() {
     ["{HYPERLINK_TIMEZONES}", "$get[timezonesHyperlink]"\\],
     ["{EMOJI}", "$get[emoji]"\\],
     ["{MAX_COINFLIP_BET}", "$separate[$get[maxCoinflipBet]]"\\],
-    ["{MAX_SLOTS_BET}", "$separate[$get[maxSlotsBet]]"\\]
+    ["{MAX_SLOTS_BET}", "$separate[$get[maxSlotsBet]]"\\],
+    ["{AVAILABLE_LOCALES}", "\`\`\`$arrayJoin[locales;(N)]\`\`\`"\\]
   \\]`
 }

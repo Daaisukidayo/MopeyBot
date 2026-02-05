@@ -246,7 +246,7 @@
       "raretry",
       "rt"
     ],
-    "commandName": "Попытка редкости",
+    "commandName": "Попытка редких",
     "commandDescription": [
       "## Используйте эту команду, чтобы попытаться поймать редких!"
     ],
@@ -261,9 +261,9 @@
       "rtm",
       "rtmode"
     ],
-    "commandName": "Режим редкости",
+    "commandName": "Режим попытки редких",
     "commandDescription": [
-      "## Показывает текущий режим raretry. Вы можете переключать режимы, нажимая кнопки!",
+      "## Показывает текущий режим попытки редких. Вы можете переключать режимы, нажимая кнопки!",
       "### Чем выше активный режим, тем больше награды!"
     ],
     "commandRelated": [
@@ -333,6 +333,25 @@
       "pumpkin",
       "beachball",
       "tornado"
+    ],
+    "commandCategory": 1
+  },
+  {
+    "commandAliases": [
+      "raretrysimulator",
+      "rtsim"
+    ],
+    "commandName": "Симулятор попытки редкости",
+    "commandDescription": [
+      "## Симулирует команду попытка редкого.",
+      "### Использование: `{PREFIX}raretrysimulator (<количество_попыток>) (<режим_попытки_редкого>)`",
+      "### `<количество_попыток>` - Количество попыток для симуляции. Число по умолчанию — `100`, максимум — `1000`, минимум — `1`.",
+      "### `<режим_попытки_редкого>` - Режим попытки редкого. Все доступные режимы можно посмотреть в команде `{PREFIX}raretrymode`."
+    ],
+    "commandRelated": [
+      "raretry",
+      "raretrymode",
+      "hlsimulator"
     ],
     "commandCategory": 1
   },
@@ -443,25 +462,6 @@
   },
   {
     "commandAliases": [
-      "raretrysimulator",
-      "rtsim"
-    ],
-    "commandName": "Симулятор попытки редкости",
-    "commandDescription": [
-      "## Симулирует команду raretry.",
-      "### Использование: `{PREFIX}raretrysimulator (<режим_попытки_редкого>) (<количество_попыток>)`",
-      "### `<режим_попытки_редкого>` - Режим команды. Все доступные режимы можно посмотреть в команде `{PREFIX}raretrymode`.",
-      "### `<количество_попыток>` - Количество попыток для симуляции. Число по умолчанию — `100`, максимум — `1000`, минимум — `1`."
-    ],
-    "commandRelated": [
-      "raretry",
-      "raretrymode",
-      "hlsimulator"
-    ],
-    "commandCategory": 1
-  },
-  {
-    "commandAliases": [
       "reminders",
       "rmd"
     ],
@@ -505,6 +505,21 @@
       "### Пример: `{PREFIX}timezone <TimezoneID>`",
       "## {HYPERLINK_TIMEZONES}",
       "{BRACKETS_INFO}"
+    ],
+    "commandRelated": [],
+    "commandCategory": 2
+  },
+  {
+    "commandAliases": [
+      "switchlocale",
+      "sl"
+    ],
+    "commandName": "Переключить язык",
+    "commandDescription": [
+      "## Переключает язык бота на другой для пользователя!",
+      "### Использование: `{PREFIX}switchlocale <язык>`",
+      "### Доступные языки:",
+      "{AVAILABLE_LOCALES}"
     ],
     "commandRelated": [],
     "commandCategory": 2
