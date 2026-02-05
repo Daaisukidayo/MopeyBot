@@ -19,7 +19,8 @@
     "interactionInvalidAuthor": "## _This button is not for you!_",
     "caughtRares": "## _{0}, you have caught `{1}` rares in `{2}`!_",
     "botDisabled": "The bot is currently disabled for maintenance. Please try again later.",
-    "commandDisabled": "This command is currently disabled for maintenance. Please try again later."
+    "commandDisabled": "This command is currently disabled for maintenance. Please try again later.",
+    "maximum": "max"
   },
   
   "cooldown": {
@@ -487,7 +488,7 @@
   },
 
   "raretrysimulator": {
-    "invalidNumber": "Invalid number in field «`attempts`»! Only a number between `1` and `1000` is allowed!",
+    "invalidNumber": "Invalid number in field «`attempts`»! Only a number between `1` and `1000` or argument `max` is allowed!",
     "invalidMode": "Unknown raretry mode! Available modes: `{0}`.",
     "title": "# _Raretry Simulator_",
     "attempts": "**• _Attempts: `{0}`_**",

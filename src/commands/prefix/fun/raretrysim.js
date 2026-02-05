@@ -13,7 +13,7 @@ export default {
     $jsonLoad[modes;$env[raretryVarData;modes]]
     $jsonLoad[rareGroups;$readFile[src/json/raresInRaretry.json]]
 
-    $let[attempts;$default[$message[0];100]]
+    $let[attempts;$default[$replace[$toLowerCase[$message[0]];$tl[ui.special.maximum];1000];100]]
     $let[rtMode;$default[$message[1];0]]
 
     $if[$isNumber[$get[rtMode]]==false;
