@@ -17,7 +17,13 @@ export default {
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     $jsonLoad[rareGroups;$readFile[src/json/raresInRaretry.json]]
 
-    $let[rtMode;$env[userProfile;rtMode]]
+    $let[rtMode;$default[$toLowerCase[$message[0]];$env[userProfile;rtMode]]]
+
+    $if[$isNumber[$get[rtMode]]==false;
+      $jsonLoad[rtModes;$tl[data.raretryModes]]
+      $arrayLoad[rtModeV;, ;$jsonValues[rtModes]]
+      $let[rtMode;$arrayIndexOf[rtModeV;$toTitleCase[$get[rtMode]]]]
+    ]
 
     $onlyIf[$arrayIncludes[modes;$get[rtMode]];
       $newError[$tl[ui.raretry.unknownMode]]
@@ -25,7 +31,7 @@ export default {
 
     $let[al;$arrayLength[rareGroups]]
     $let[li;$math[$get[al] - 1]]
-    $let[arg;$message[0]]
+    $let[arg;$message[1]]
     $let[isDev;$checkCondition[$env[userProfile;devMode]==1]]
     $let[lastDailyRaretry;$default[$env[userProfile;limiters;lastDailyRaretry];-1]]
 
