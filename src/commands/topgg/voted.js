@@ -5,22 +5,24 @@ export default {
     $let[MC;$getGlobalVar[voteReward]]
     $jsonLoad[funcCache;{}]
 
-    $chalkLog[$username[$get[ID]] Voted on Top.gg;bold;italic;green]
+    $logger[Info;User $username[$get[ID]] voted on Top.gg]
 
     $onlyIf[$isUserDMEnabled[$get[ID]]]
 
     $jsonLoad[userProfile;$getProfile[$get[ID]]]
 
-    $if[$env[userProfile;acceptedRules];
-      $sumCash[$get[MC]]
-      $saveProfile[$get[ID]]
-      $description[$tl[ui.vote.userWithProfileVoted;$get[MC]]]
-      $addAuthor
-    ;
-      $author[$username[$get[ID]];$userAvatar[$get[ID]]]
-      $description[$tl[ui.vote.userWithoutProfileVoted]]
-    ]
-    $color[$getGlobalVar[defaultColor]]
+    $addContainer[
+      $if[$env[userProfile;acceptedRules];
+        $addAuthorDisplay
+        $addTextDisplay[$tl[ui.vote.userWithProfileVoted;$get[MC]]]
+        $sumCash[$get[MC]]
+        $saveProfile[$get[ID]]
+      ;
+        $addTextDisplay[## \`$username[$get[ID]]\`]
+        $addSeparator[Large]
+        $addTextDisplay[$tl[ui.vote.userWithoutProfileVoted]]
+      ]
+    ;$getGlobalVar[defaultColor]]
     $sendDM[$get[ID]]
   `
 }
