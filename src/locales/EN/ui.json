@@ -499,7 +499,7 @@
 
   "settings": {
     "title": "# _⚙️ Settings_",
-    "difficulty": "### _Difficulty_",
+    "difficulty": "# _Difficulty_",
     "stateEnabled": "Enabled",
     "stateDisabled": "Disabled"
   },
