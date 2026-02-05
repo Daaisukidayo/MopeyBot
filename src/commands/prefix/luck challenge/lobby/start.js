@@ -64,7 +64,8 @@ export default {
         $startTimer[$env[ID]]
       ]
 
-      $callFn[startingEmbed]
+      $arrayJoin[members; ]
+      $color[$getGlobalVar[luckyColor]]
       $description[$tl[ui.start.hasBegun]\n$tl[ui.start.turnOnNotification]]
       $sendMessage[$channelID]
     ]
