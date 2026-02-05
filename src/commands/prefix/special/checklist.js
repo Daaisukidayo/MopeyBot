@@ -53,18 +53,18 @@ export default {
 
       $addSeparator[Small;false]
 
-      $addTextDisplay[## $hyperlink[$tl[ui.$commandName.vote];https://top.gg/bot/$clientID/vote]]
+      $addTextDisplay[$tl[ui.$commandName.vote;https://top.gg/bot/$clientID/vote]]
       $addTextDisplay[$if[$get[hasVoted];$get[completed];$get[inProgress]]]
 
       $addSeparator[Small;false]
 
       $addTextDisplay[$tl[ui.$commandName.catchRaretry;$getGlobalVar[maxRaretryRares]]]
-      $addTextDisplay[$if[$get[lastDailyRaretry]==$day;$get[completed];$get[inProgress] ($get[caughtRaresInRaretry]/$getGlobalVar[maxRaretryRares])]]
+      $addTextDisplay[$if[$get[lastDailyRaretry]==$day;$get[completed];$get[inProgress] _($get[caughtRaresInRaretry]/$getGlobalVar[maxRaretryRares])_]]
 
       $addSeparator[Small;false]
 
       $addTextDisplay[$tl[ui.$commandName.catchRaretryrun;$getGlobalVar[maxRaretryrunRares]]]
-      $addTextDisplay[$if[$get[lastDailyRaretryrun]==$day;$get[completed];$get[inProgress] ($get[caughtRaresInRaretryrun]/$getGlobalVar[maxRaretryrunRares])]]
+      $addTextDisplay[$if[$get[lastDailyRaretryrun]==$day;$get[completed];$get[inProgress] _($get[caughtRaresInRaretryrun]/$getGlobalVar[maxRaretryrunRares])_]]
 
       $addSeparator[Large]
       $addTextDisplay[$get[content]]

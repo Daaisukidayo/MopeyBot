@@ -116,11 +116,11 @@
   "checklist": {
     "title": "# __CHECKLIST__",
     "claimDaily": "## _Claim daily reward!_",
-    "vote": "Vote on Top.gg!",
+    "vote": "## _[Vote on Top.gg!]({0})_",
     "catchRaretry": "## _Catch `{0}` rare animals in `raretry`!_",
     "catchRaretryrun": "## _Catch `{0}` rare animals in `raretryrun`!_",
     "completeTasks": "## _Complete these tasks to earn `{0}`{EMOJI}!_",
-    "allTasksCompleted": "## _You have completed all tasks and earned `{0}`{EMOJI}!_",
+    "allTasksCompleted": "## _You have completed all tasks! Your reward is `{0}`{EMOJI}!_",
     "allRewardsReceived": "## _All rewards have been received! Come back tomorrow!_",
     "completed": "-# 🟢 _Completed_",
     "inProgress": "-# 🔴 _In progress_",
@@ -526,7 +526,10 @@
   },
 
   "reminders": {
-    "title": "# 🔔__REMINDERS__🔔",
+    "title": "# 🔔___REMINDERS___🔔",
+    "sentReminderTitle": "# 🔔___REMINDER___🔔",
+    "sentReminderTip": "### _To disable reminders, use `{PREFIX}reminders` command!_",
+    "on": "{0} is available!",
     "enabled": "Enabled",
     "disabled": "Disabled"
   },

@@ -6,32 +6,32 @@ export default {
 
       $fn[embed;
         $addContainer[
-          $addTextDisplay[# 🔔__REMINDER__🔔]
+          $addTextDisplay[$tl[ui.reminders.sentReminderTitle]]
           $addSeparator[Large]
-          $addTextDisplay[## $env[content]]
+          $addTextDisplay[$tl[ui.reminders.on;$tl[data.reminders.$env[reminder_id]]]]
           $addSeparator
-          $addTextDisplay[### To disable reminders, use \`/reminders\` slash command!]
+          $addTextDisplay[$tl[ui.reminders.sentReminderTip]]
         ;$getGlobalVar[defaultColor]]
-      ;content]
+      ;reminder_id]
 
       $c[REMIND DAILY REWARD]
       
       $if[$getGlobalVar[lastCheckedDayInReady;-1]!=$day; 
         $setGlobalVar[lastCheckedDayInReady;$day]
         $loop[$arrayLength[allUserIDs];
-          $let[userID;$env[allUserIDs;$math[$env[i] - 1]]]
-          $jsonLoad[userReminders;$getUserVar[userReminders;$get[userID]]]
-          $jsonLoad[userProfile;$getProfile[$get[userID]]]
+          $let[id;$env[allUserIDs;$math[$env[i] - 1]]]
+          $jsonLoad[userReminders;$getUserVar[userReminders;$get[id]]]
+          $jsonLoad[userProfile;$getProfile[$get[id]]]
 
-          $setUserVar[caughtRaresInRaretryrun;0;$get[userID]]
-          $setUserVar[caughtRaresInRaretry;0;$get[userID]]
+          $setUserVar[caughtRaresInRaretryrun;0;$get[id]]
+          $setUserVar[caughtRaresInRaretry;0;$get[id]]
 
           $if[$env[userProfile;limiters;lastDailyDay]==$day;$continue]
           $if[$arrayIncludes[userReminders;daily];;$continue]
-          $if[$isUserDMEnabled[$get[userID]];;$continue]
+          $if[$isUserDMEnabled[$get[id]];;$continue]
 
-          $callFn[embed;Daily reward and checklist quests are available!]
-          $sendDM[$get[userID]]
+          $callFn[embed;0]
+          $sendDM[$get[id]]
         ;i;true]
       ]
 
@@ -40,16 +40,16 @@ export default {
         $setGlobalVar[lastCheckedWeeklyInReady;$calendarWeek]
 
         $loop[$arrayLength[allUserIDs];
-          $let[userID;$env[allUserIDs;$math[$env[i] - 1]]]
-          $jsonLoad[userReminders;$getUserVar[userReminders;$get[userID]]]
-          $jsonLoad[userProfile;$getProfile[$get[userID]]]
+          $let[id;$env[allUserIDs;$math[$env[i] - 1]]]
+          $jsonLoad[userReminders;$getUserVar[userReminders;$get[id]]]
+          $jsonLoad[userProfile;$getProfile[$get[id]]]
 
           $if[$env[userProfile;limiters;lastWeeklyWeek]==$calendarWeek;$continue]
           $if[$arrayIncludes[userReminders;weekly];;$continue]
-          $if[$isUserDMEnabled[$get[userID]];;$continue]
+          $if[$isUserDMEnabled[$get[id]];;$continue]
 
-          $callFn[embed;Weekly reward is available!]
-          $sendDM[$get[userID]]
+          $callFn[embed;1]
+          $sendDM[$get[id]]
         ;i;true]
       ]
       $wait[5m]
