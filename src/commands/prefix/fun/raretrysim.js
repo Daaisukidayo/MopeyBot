@@ -7,7 +7,6 @@ export default {
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
     $checkProfile
-    $addCooldown[10s]
 
     $jsonLoad[raretryVarData;$getGlobalVar[raretryVarData]]
     $jsonLoad[categories;$env[raretryVarData;categories]]
@@ -30,6 +29,8 @@ export default {
     $onlyIf[$and[$isNumber[$get[attempts]];$inRange[$get[attempts];1;1000]];
       $newError[$tl[ui.raretrysimulator.invalidNumber]]
     ]
+
+    $addCooldown[10s]
 
     $jsonLoad[result;{}]
 
