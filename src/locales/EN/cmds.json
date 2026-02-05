@@ -450,14 +450,15 @@
     "commandDescription": [
       "## Simulates raretry command.",
       "### Usage: `{PREFIX}raretrysimulator (<raretry_mode>) (<number_of_attempts>)`",
-      "### `<raretry_mode>` - Mode of raretry. All available modes can be seen in `{PREFIX}raretrymode` command."
+      "### `<raretry_mode>` - Mode of raretry. All available modes can be seen in `{PREFIX}raretrymode` command.",
+      "### `<number_of_attempts>` - Number of attempts to simulate. Default number is `100`, maximum is `1000`, and minimum is `1`."
     ],
     "commandRelated": [
       "raretry",
       "raretrymode",
       "hlsimulator"
     ],
-    "commandCategory": 2
+    "commandCategory": 1
   },
   {
     "commandAliases": [
