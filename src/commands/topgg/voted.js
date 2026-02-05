@@ -13,15 +13,16 @@ export default {
 
     $onlyIf[$isUserDMEnabled[$get[ID]]]
 
-    $if[$getUserVar[userProfile;$get[ID]]==;
-      $author[$username[$get[ID]];$userAvatar[$get[ID]]]
-      $description[$tl[ui.vote.userWithoutProfileVoted]]
-    ;
-      $jsonLoad[userProfile;$getUserVar[userProfile;$get[ID]]]
+    $jsonLoad[userProfile;$getProfile[$get[ID]]]
+
+    $if[$env[userProfile;acceptedRules];
       $sumCash[$get[MC]]
-      $setUserVar[userProfile;$env[userProfile];$get[ID]]
+      $saveProfile[$get[ID]]
       $description[$tl[ui.vote.userWithProfileVoted;$get[MC]]]
       $addAuthor
+    ;
+      $author[$username[$get[ID]];$userAvatar[$get[ID]]]
+      $description[$tl[ui.vote.userWithoutProfileVoted]]
     ]
     $color[$getGlobalVar[defaultColor]]
     $sendDM[$get[ID]]
