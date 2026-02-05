@@ -95,7 +95,7 @@ function settingsEmbed() {
         ]
 
         $addSection[
-          $addTextDisplay[### $tl[data.allSettings.$env[entry;1]]]
+          $addTextDisplay[## _$tl[data.allSettings.$env[entry;1]]_]
           $addButton[$get[key]-settings-$authorID;$get[state];$get[style]]
         ]
       ]

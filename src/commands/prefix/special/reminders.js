@@ -55,7 +55,7 @@ function embed() {
         $let[style;$if[$get[hasReminder];Success;Danger]]
 
         $addSection[
-          $addTextDisplay[## $tl[data.reminders.$env[reminder]]]
+          $addTextDisplay[## _$tl[data.reminders.$env[reminder]]_]
           $addButton[$env[reminder]-reminder-$authorID;$get[isEnabled];$get[style]]
         ]
       ]
