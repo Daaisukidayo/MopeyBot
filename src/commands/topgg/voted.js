@@ -5,11 +5,7 @@ export default {
     $let[MC;$getGlobalVar[voteReward]]
     $jsonLoad[funcCache;{}]
 
-    $sendMessage[$getGlobalVar[logChannelID];
-      $author[$username[$get[ID]];$userAvatar[$get[ID]]]
-      $description[## _Voted on Top.gg_]
-      $color[$getGlobalVar[logColor]]
-    ]
+    $chalkLog[$username[$get[ID]] Voted on Top.gg;bold;italic;green]
 
     $onlyIf[$isUserDMEnabled[$get[ID]]]
 
