@@ -100,7 +100,7 @@ export default [{
     $addContainer[
       $addAuthorDisplay
       $addSection[
-        $addTextDisplay[$tl[ui.kingdragon.upgrade;$get[KD];$separate[$get[MC]]]]
+        $addTextDisplay[$tl[ui.kingdragon.upgrade;$get[displayKD];$separate[$get[MC]]]]
         $addThumbnail[$get[thumbnail]]
       ]
     ;$get[color]]
@@ -133,7 +133,7 @@ export default [{
     $addContainer[
       $addAuthorDisplay
       $addSection[
-        $addTextDisplay[$tl[ui.kingdragon.byLuckUpgrade;$get[KD];$separate[$get[MC]]]]
+        $addTextDisplay[$tl[ui.kingdragon.byLuckUpgrade;$get[displayKD];$separate[$get[MC]]]]
         $addThumbnail[$get[thumbnail]]
       ]
       $addTextDisplay[$tl[ui.kingdragon.rarity;$env[rareKingDragonRarity;0];$env[rareKingDragonRarity;1]]]
@@ -146,7 +146,7 @@ export default [{
 
 function KDVars() {
   return `
-    $let[KD;$env[kingDragonVars;$get[index];emoji]]
+    $let[displayKD;$env[kingDragonVars;$get[index];name]]
     $let[color;$env[colors;$get[index]]]
     $let[thumbnail;$env[kingDragonVars;$get[index];img]]
   `
@@ -154,7 +154,7 @@ function KDVars() {
 
 function rareKDVars() {
   return `
-    $let[KD;$env[rareKingDragonVars;$get[index];emoji]]
+    $let[displayKD;$env[rareKingDragonVars;$get[index];name]]
     $let[color;$env[colors;$get[index]]]
     $let[thumbnail;$env[rareKingDragonVars;$get[index];img]]
   `

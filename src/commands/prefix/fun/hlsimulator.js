@@ -21,9 +21,9 @@ export default {
     $onlyif[$arrayIncludes[difficulties;$get[arg]];
       $newError[$tl[ui.hlsimulator.invalidDifficulty]]
     ]
+
     $addCooldown[15s]
 
-    $jsonLoad[funcCache;{}]
     $jsonLoad[cache;$getGlobalVar[hlSimCachedData;{}]]
     $jsonLoad[totalAttempts;$eval[$getGlobalVar[hlSimAttempts];false]]
     $jsonLoad[GLE;$advJsonEntries[$generateLuck[$getGlobalVar[hlSimKey]]]]
