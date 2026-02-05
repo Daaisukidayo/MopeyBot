@@ -369,7 +369,7 @@
 
     "buttonLabelPage": "Page {0}/{1}",
 
-    "menuTitleSort": "Sort by",
+    "menuTitleSortBy": "Sort by",
     "optionNameSort": "Sort Type: {0}",
 
     "buttonLabelDelete": "Delete",
@@ -446,14 +446,15 @@
     "optionNameAddPage": "Add new page",
     "optionNameEditPage": "Edit existing page",
 
-    "modalEditExistingPageTitle": "Edit Existing History Page",
-    "modalEnterExistingPageDescription": "Enter page number",
-    "modalEnterSortingDescription": "Enter sorting type",
-    "modalEnterSortingPlaceholder": "0 = Date, 1 = Points, 2 = Rares",
+    "modalTitleEditExistingPage": "Editing existing history page",
+    "modalDescriptionEnterExistingPage": "Page number",
+    "modalPlaceholderEnterExistingPage": "Enter page number. Must be > 0 and ≤ {0}!",
+    "modalNameSorting": "Sorting type",
+    "menuTitleChooseSortingType": "Choose a sorting type",
 
-    "invalidPage": "Invalid page number",
-    "invalidSorting": "Invalid sorting type",
-    "unknownPage": "Page does not exist anymore",
+    "invalidPage": "Invalid page number.",
+    "invalidSorting": "Invalid sorting type.",
+    "unknownPage": "The page does not exist anymore.",
 
     "chooseOptionTitle": "# _Choose what you want to edit!_"
   },

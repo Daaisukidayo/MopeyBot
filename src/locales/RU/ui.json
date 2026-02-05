@@ -369,7 +369,7 @@
 
     "buttonLabelPage": "Страница {0}/{1}",
 
-    "menuTitleSort": "Сортировать по",
+    "menuTitleSortBy": "Сортировать по",
     "optionNameSort": "Тип сортировки: {0}",
 
     "buttonLabelDelete": "Удалить",
@@ -401,11 +401,11 @@
     
     "modalTitlePoints": "Редактирование очков",
     "modalDescriptionPoints": "Отредактируйте ваши очки",
-    "modalPlaceholderPoints": "Текущий: {0}",
+    "modalPlaceholderPoints": "Текущие: {0}",
     
     "modalTitleRares": "Редактирование количества редких",
     "modalDescriptionRares": "Отредактируйте количество редких",
-    "modalPlaceholderRares": "Текущий: {0}",
+    "modalPlaceholderRares": "Текущее: {0}",
     
     "menuTitlePlayType": "Выберите тип игры",
     "currentPlayType": "## _Текущий: `{0}`_",
@@ -444,10 +444,11 @@
     "optionNameAddPage": "Добавить новую страницу",
     "optionNameEditPage": "Редактировать существующую страницу",
 
-    "modalEditExistingPageTitle": "Редактирование существующей страницы истории",
-    "modalEnterExistingPageDescription": "Введите номер страницы",
-    "modalEnterSortingDescription": "Введите тип сортировки",
-    "modalEnterSortingPlaceholder": "0 = Дата, 1 = Очки, 2 = Редкие",
+    "modalTitleEditExistingPage": "Редактирование существующей страницы истории",
+    "modalDescriptionEnterExistingPage": "Номер страницы",
+    "modalPlaceholderEnterExistingPage": "Введите номер страницы. Должно быть > 0 и ≤ {0}!",
+    "modalNameSorting": "Тип сортировки",
+    "menuTitleChooseSortingType": "Выберите тип сортировки",
 
     "invalidPage": "Недопустимый номер страницы",
     "invalidSorting": "Недопустимый тип сортировки",

@@ -18,7 +18,7 @@ export default {
 
         $addSeparator[Large]
         $addActionRow
-        $addStringSelectMenu[sortHis-$authorID;$tl[ui.history.menuTitleSort]]
+        $addStringSelectMenu[sortHis-$authorID;$tl[ui.history.menuTitleSortBy]]
         $arrayForEach[sortingOptions;option;
           $addOption[$tl[ui.history.optionNameSort;$tl[data.sortingOptions.$env[option]]];;$get[page]-$env[option];;$checkCondition[$get[sortType]==$env[option]]]
         ]
