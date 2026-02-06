@@ -114,7 +114,7 @@
   },
 
   "checklist": {
-    "title": "# __CHECKLIST__",
+    "title": "# ___CHECKLIST___",
     "claimDaily": "## _Claim daily reward!_",
     "vote": "## _[Vote on Top.gg!]({0})_",
     "catchRaretry": "## _Catch `{0}` rare animals in `raretry`!_",
@@ -139,7 +139,7 @@
   },
 
   "balance": {
-    "title": "# __BALANCE__",
+    "title": "# ___BALANCE___",
     "mc": "## {EMOJI} _Mopecoins: `{0}`_",
     "purchased": "## 🛒 _Skin packs:_",
     "none": "None"
