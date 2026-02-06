@@ -9,14 +9,14 @@ export default {
     $checkProfile
     $addCooldown[10s]
 
-    $jsonLoad[funcCache;{}]
     $jsonLoad[rtrRewardPerRare;$getGlobalVar[rtrRewardPerRare]]
     $jsonLoad[generatedLuckEntries;$advJsonEntries[$generateLuck[$getGlobalVar[rtrLuckKey]]]]
-    $let[lastDailyRaretryrun;$default[$env[userProfile;limiters;lastDailyRaretryrun];-1]]
+    $arrayCreate[desc]
 
-    $arrayLoad[desc]
-    $let[total;0]
+    $let[lastDailyRaretryrun;$default[$env[userProfile;limiters;lastDailyRaretryrun];-1]]
     $let[chance;3]
+    $let[total;0]
+    $let[caughtCount;0]
 
     $arrayMap[generatedLuckEntries;entry;
       $let[animalID;$advArrayRandomValue[$env[entry;1]]]
@@ -31,6 +31,8 @@ export default {
 
       $if[$and[$get[animalID]!=undefined;$get[isRare]];
 
+        $letSum[caughtCount;1]
+
         $if[$get[chance]>=$get[percent];
           $let[CL;🍀]
         ]
@@ -39,23 +41,10 @@ export default {
 
         $if[$get[MC]>0;
           $letSum[total;$get[MC]]
-          $let[extra; | \`$get[MC]\`$getGlobalVar[emoji]]
+          $let[extra; | \`$separate[$get[MC]]\`$getGlobalVar[emoji]]
         ]
 
-        $if[$get[lastDailyRaretryrun]!=$day;
-          $setUserVar[caughtRaresInRaretryrun;$math[$getUserVar[caughtRaresInRaretryrun] + 1]]
-          $if[$getUserVar[caughtRaresInRaretryrun]>=$getGlobalVar[maxRaretryrunRares];
-            $!jsonSet[userProfile;limiters;lastDailyRaretryrun;$day]
-            $let[lastDailyRaretryrun;$day]
-
-            $async[
-              $wait[1s]
-              $sendMessage[$channelID;$tl[ui.special.caughtRares;<@$authorID>;$getGlobalVar[maxRaretryrunRares];$commandName]]
-            ]
-          ]
-        ]
-
-        $return[## _$get[animalDisplay]$get[CL] | \`$get[numberOfRares]/$get[totalAttempts]\`$get[extra]_]
+        $return[## $get[CL]_$get[animalDisplay] | \`$get[numberOfRares]/$get[totalAttempts]\`$get[extra]_]
       ]
     ;desc]
   
@@ -72,10 +61,25 @@ export default {
       $if[$get[total]>0;
         $addSeparator
         $addTextDisplay[$tl[ui.$commandName.total;$separate[$get[total]]]]
-
         $sumCash[$get[total]]
-        $saveProfile
       ]
     ;$getGlobalVar[luckyColor]]
+
+    $if[$get[caughtCount]>0;
+
+      $if[$get[lastDailyRaretryrun]!=$day;
+        $setUserVar[caughtRaresInRaretryrun;$math[$getUserVar[caughtRaresInRaretryrun] + $get[caughtCount]]]
+        $if[$getUserVar[caughtRaresInRaretryrun]>=$getGlobalVar[maxRaretryrunRares];
+          $!jsonSet[userProfile;limiters;lastDailyRaretryrun;$day]
+
+          $async[
+            $wait[1s]
+            $sendMessage[$channelID;$tl[ui.special.caughtRares;<@$authorID>;$getGlobalVar[maxRaretryrunRares];$commandName]]
+          ]
+        ]
+      ]
+
+      $saveProfile
+    ]
   `
 }
