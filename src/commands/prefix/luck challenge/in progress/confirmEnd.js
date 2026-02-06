@@ -8,9 +8,14 @@ export default {
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
-      
-    $isActiveChallenge
+
     $jsonLoad[challengeProgress;$getProgress]
+
+    $onlyIf[$and[$env[challengeProgress]!=;$env[challengeProgress;started]];
+      $!deleteMessage[$channelID;$messageID]
+      $newError[$tl[ui.challenge.active]]
+    ]
+
     $jsonLoad[raresList;$env[challengeProgress;list]]
     $jsonLoad[history;$getUserVar[challengeHistory]]
     $jsonLoad[result;$generateList[$sortList[$env[raresList]]]]
@@ -25,11 +30,6 @@ export default {
       $addTextDisplay[$showRares]
       $addSeparator[Large]
       $showDesignedList[$env[list]]
-      $c[
-        $addSeparator
-        $addButton[showSummary-$authorID;Show summary;Success]
-        $addTextDisplay[# $round[$math[($env[challengeProgress;points] + $env[challengeProgress;rares]) / 100 * 2]]/10⭐]
-      ]
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
 
