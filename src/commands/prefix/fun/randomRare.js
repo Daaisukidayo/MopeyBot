@@ -10,14 +10,8 @@ export default {
     $checkProfile
     $addCooldown[5s]
 
-    $jsonLoad[animals;$getAnimalsData]
+    $jsonLoad[raresContent;$getGlobalVar[raresContent]]
 
-    $arrayMap[animals;animal;
-      $if[$env[animal;isRare];
-        $return[$env[animal;variants;0;name] $env[animal;variants;0;emoji]]
-      ]
-    ;rares]
-
-    $sendMessage[$channelID;# $arrayRandomValue[rares]]
+    $sendMessage[$channelID;# $arrayRandomValue[raresContent]]
   `
 }
