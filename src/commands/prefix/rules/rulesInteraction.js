@@ -4,21 +4,21 @@ export default {
   code: `
     $arrayLoad[IID;-;$customID]
     $onlyIf[$arrayIncludes[IID;notARobot]]
-    $jsonLoad[funcCache;{}]
+    $jsonLoad[funcCache;{ "locales": $getGlobalVar[allLocales] }]
     $jsonLoad[userProfile;$getProfile]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
 
     $let[langIndex;$function[
-      $jsonLoad[locales;$getGlobalVar[allLocales]]
+      $jsonLoad[locales;$env[funcCache;locales]]
       $arrayMap[locales;locale;
         $return[$env[locale;name]]
       ;localeNames]
       
       $arrayLoad[l;-;$locale]
-      $let[lang;$toUpperCase[$env[l;0]]]
+      $let[loc;$toUpperCase[$env[l;0]]]
     
-      $let[i;$arrayFindIndex[localeNames;locale;$env[locale]==$get[lang]]]
+      $let[i;$arrayFindIndex[localeNames;locale;$env[locale]==$get[loc]]]
       $if[$get[i]==-1;
         $let[i;0]
       ]
