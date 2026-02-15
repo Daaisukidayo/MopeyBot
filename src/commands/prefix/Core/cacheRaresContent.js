@@ -7,7 +7,7 @@ export default {
 
     $arrayMap[animals;animal;
       $if[$env[animal;isRare];
-        $return[$env[animal;variants;0;name] $env[animal;variants;0;emoji] \`\\[$env[animal;rarity;0]/$env[animal;rarity;1]\\]\`]
+        $return[$env[animal;variants;0;name] $env[animal;variants;0;emoji] \`\\[$env[animal;rarity;0]/$env[animal;rarity;1]\\]\` \`($round[$math[$env[animal;rarity;0]/$env[animal;rarity;1]*100];2]%)\`]
       ]
     ;raresContent]
 
