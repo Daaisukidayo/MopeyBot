@@ -1,4 +1,5 @@
 [
   "## • Mopey now supports slash commands!",
-  "## • Added new victory type in lobby!"
+  "## • Added new victory type in lobby!",
+  "## • `edittime` command has been removed, and its functionality has been transferred to the `time` command!"
 ]
