@@ -1,5 +1,6 @@
 export default {
   name: 'lobbyEmbed',
+  description: "Adds an embed for the lobby.",
   code: `
     $jsonLoad[userProfile;$getProfile[$env[lobby;host]]]
 

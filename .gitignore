@@ -2,9 +2,11 @@
 .env
 forgeconfig.json
 allies.json
+.forgevsc.json
 
 #? folders
 .cache/
+.vscode/
 node_modules/
 database/
 logs/

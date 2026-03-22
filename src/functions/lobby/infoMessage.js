@@ -1,5 +1,5 @@
 export default {
-  name: 'infoMessage',
+  name: 'lobbyInfoMessage',
   params: [
     {
       name: "content",

@@ -1,6 +1,6 @@
 export default {
   name: "historyEmbed",
-  description: "Displays the embed fro 'add history' commands.",
+  description: "Displays the embed for 'history' commands.",
   params: [
     {
       name: "history_object",

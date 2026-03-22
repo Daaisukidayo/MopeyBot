@@ -2,12 +2,12 @@ export default {
   name: 'deleteProgress',
   params: [
     {
-      name: "user_id",
+      name: "dp_user_id",
       required: false
     }
   ],
   brackets: false,
   code: `
-    $deleteUserVar[challengeProgress|$channelID;$findUser[$env[user_id];true]]
+    $deleteUserVar[challengeProgress|$channelID;$findUser[$env[dp_user_id];true]]
   `
 }

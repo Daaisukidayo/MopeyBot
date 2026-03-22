@@ -16,7 +16,7 @@ export default {
     ]
 
     $addMediaGallery[$addMediaItem[https://i.postimg.cc/65z7tRMd/upperRow.png]]
-    $addTextDisplay[# $arrayJoin[list;\n# ]]
+    $addTextDisplay[# $arrayJoin[list; ]]
     $addMediaGallery[$addMediaItem[https://i.postimg.cc/yY7JMny1/lowerRow.png]]
   `
 }

@@ -23,7 +23,7 @@ export default {
 
     $!jsonSet[CP;userID;"$get[uid]"]
     $!jsonSet[CP;teamID;$get[tid]]
-    $!jsonSet[CP;difficulty;$default[$env[lobby;difficulty];$env[UP;challenge;difficulty]]]
+    $!jsonSet[CP;difficulty;$default[$env[lobby;settings;difficulty];$env[UP;challenge;difficulty]]]
 
     $saveProgress[$get[uid];CP]
     $setUserVar[1htime|$channelID;0;$get[uid]]

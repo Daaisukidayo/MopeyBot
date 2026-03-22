@@ -1,8 +1,8 @@
 {
   "args": {
     "newPrefix": "new_prefix",
-    "shortRaresName": "rare_short_name",
-    "fullAnimalName": "full_animal_name",
+    "shortRaresName": "short_name_of_a_rare",
+    "fullAnimalName": "full_name_of_an_animal",
     "amount": "Amount",
     "tier": "Tier"
   },
@@ -20,12 +20,13 @@
     "caughtRares": "## _{0}, you have caught `{1}` rares in `{2}`!_",
     "botDisabled": "The bot is currently disabled for maintenance. Please try again later.",
     "commandDisabled": "This command is currently disabled for maintenance. Please try again later.",
-    "maximum": "max"
+    "maximum": "max",
+    "disabledCommand": "This command is currently disabled for maintenance. Please try again later."
   },
-  
+
   "cooldown": {
-    "title": "⏰ You are on cooldown!",
-    "description": "### _Cooldown will end {0} {1}_"
+    "title": "You are on cooldown!",
+    "description": "Cooldown will end {0}!"
   },
 
   "errors": {
@@ -35,12 +36,11 @@
     "userNotFound": "User not found!",
     "disabledInDMs": "Disabled in DMs",
     "usage": "Usage: `{0}`",
-    "errorTitle": "# ✖️ Error!"
+    "errorTitle": "Error!"
   },
 
   "ping": {
-    "ping": "## _Current ping: `{0}`ms_",
-    "execTime": "## _Execution time: `{0}`ms_"
+    "ping": "## _My current ping is `{0}`ms!_"
   },
 
   "credits": {
@@ -123,8 +123,8 @@
     "allTasksCompleted": "## _You have completed all tasks! Your reward is `{0}`{EMOJI}!_",
     "allRewardsReceived": "## _All rewards have been received! Come back tomorrow!_",
     "completed": "-# 🟢 _Completed_",
-    "inProgress": "-# 🔴 _In progress_",
-    "streak": "## _🔥 You are on `{0:ord}` daily checklist Streak!_"
+    "inProgress": "-# 🔴 _In progress {0}_",
+    "streak": "## _🔥 Current streak: `{0:ord}`!_"
   },
 
   "invite": {
@@ -181,15 +181,15 @@
   },
 
   "howlucky": {
-    "description": "## _🍀 Today you are lucky by `{0}`%, {1}_",
+    "description": "## _🍀 Today you are lucky by {0}%, {1}_",
     "footer": "## _The result updates every day at `12:00 AM UTC+0`_"
   },
 
   "kingdragon": {
     "chooseUpgrade": "# _Choose an upgrade:_",
-    "attempt": "## _You tried to get King Dragon as {0} {1}... At least you got `{2}`{EMOJI} from this run!_",
+    "attempt": "## _You tried to become the King Dragon as {0} {1}... At least you got `{2}`{EMOJI} from this run!_",
     "upgrade": "## _You upgraded to __{0}__ and earned `{1}`{EMOJI}!_",
-    "byLuckUpgrade": "## _You expected to see Black Dragon in upgrade menu, but suddenly you saw a different animal, it was {0}! You were surprised and happy! After playing for some time, you earned `{1}`{EMOJI}!_",
+    "byLuckUpgrade": "## _You expected to see Black Dragon in upgrade menu, but suddenly you saw a different animal, it was __{0}__! You were surprised and happy! After playing for some time, you earned `{1}`{EMOJI}!_",
     "rarity": "-# _Rarity: {0}/{1}_",
     "reasons": [
       "but you got killed by teamers",
@@ -203,9 +203,9 @@
   "coinflip": {
     "invalidAmount": "Only number or argument `all` is allowed!",
     "invalidCashLow": "You must have at least `{0}`{EMOJI}!",
-    "invalidCashHigh": "You don't have that much {0}!",
+    "invalidCashHigh": "You don't have that much {EMOJI}!",
     "balance": "Your balance: `{0}`{EMOJI}",
-    "invalidRange": "You can bet only `{0}`-`{1}`{EMOJI}!",
+    "invalidRange": "You can only bet from `{0}` to `{1}`{EMOJI}!",
     "invalidSide": "Invalid side!",
     "bet": "# _The bet is set on __{0}__! Flipping the coin..._",
     "won": "# _You got __{0}__ and won `{1}`{EMOJI}!_",
@@ -217,7 +217,7 @@
     "invalidCashLow": "You must have at least `{0}`{EMOJI}!",
     "invalidCashHigh": "You don't have that much {EMOJI}!",
     "balance": "Your balance: `{0}`{EMOJI}",
-    "invalidRange": "You can bet only `{0}`-`{1}`{EMOJI}!",
+    "invalidRange": "You can only bet from `{0}` to `{1}`{EMOJI}!",
     "title": "**`•⁕※SLOTS※⁕•`**",
     "bet": "_{0} bet `{1}`{EMOJI}_",
     "won": "**_and won `{0}`{EMOJI}!_**",
@@ -254,13 +254,15 @@
 
   "time": {
     "paused": "## _Status: `Paused`_",
-    "inProgress": "## _Status: `In progress`_"
+    "inProgress": "## _Status: `In progress`_",
+    "invalidTime": "Invalid time format!"
   },
 
   "points": {
     "invalidUser": "Invalid User ID",
     "noActiveChallengeUser": "__{0}__ doesn't have an active challenge!",
-    "noActiveChallengeAuthor": "You don't have an active challenge!"
+    "noActiveChallengeAuthor": "You don't have an active challenge!",
+    "userIsABot": "Bots cannot have points!"
   },
 
   "editlist": {
@@ -314,26 +316,32 @@
     "author": "## {0}'s Lobby",
 
     "settingsTitle": "# _⚙️ Settings_",
-    "settingsChange": "# _⚙️ Change Settings_",
+    "settingsChange": "# _⚙️ Settings changed_",
 
     "modeTitle": "## _Mode: `{0}`_",
     "modeTitleMenu": "## _Mode:_",
     "difficultyTitle": "## _Difficulty: `{0}`_",
     "difficultyTitleMenu": "## _Difficulty:_",
+    "victoryTypeTitle": "## _Victory Type: `{0}`_",
+    "victoryTypeTitleMenu": "## _Victory Type:_",
     "tagsTitle": "## _Tags:_",
     "hostTitle": "## _Host: {0}_",
 
-    "closedByInactivity": "## _The Lobby created by {0} was closed due to inactivity._",
+    "closedByInactivity": "## _The Lobby created by <@{0}> was closed due to inactivity._",
     "missingMessage": "## _The Lobby was closed due to a missing message._",
     "doesNotExist": "This Lobby no longer exists.",
     "closedByHost": "## _The Lobby was closed by the Host._",
-    "getReady": "# _Get ready! Starting in {0} seconds!_",
+    "getReady": "# _Get ready! Starting in `{0}` second(s)!_",
     "failed": "## _Failed to start the challenge._",
 
+    "sortedPlayersContent_points": "## {0} ➤ `{1}` — `{2}` Points",
+    "sortedPlayersContent_rares": "## {0} ➤ `{1}` — `{2}` Rares",
+    "sortedTeamsContent_points": "## {0} ➤ Team `{1}` — `{2}` Points",
+    "sortedTeamsContent_rares": "## {0} ➤ Team `{1}` — `{2}` Rares",
+    "sortedPlayersInSortingTeamsContent_points": "### - {0} — `{1}` Points",
+    "sortedPlayersInSortingTeamsContent_rares": "### - {0} — `{1}` Rares",
+
     "friendship": "FRIENDSHIP",
-    "sortedPlayersContent": "## {0} ➤ `{1}` — `{2}` Points",
-    "sortedTeamsContent": "## {0} ➤ Team `{1}` — `{2}` Points",
-    "sortedPlayersInSortingTeamsContent": "### - {0} — `{1}` Points",
     "winner": "# _🎉 Winner: {0} 🎉_",
     "team": "Team `{0}`",
     "none": "None",
@@ -349,7 +357,9 @@
     "menuTitleChooseTags": "Choose Tags",
     "menuTitleChooseDifficulty": "Choose Difficulty",
     "menuTitleChooseMode": "Choose Mode",
+    "menuTitleChooseVictoryType": "Choose Victory Type",
     "menuTitleGiveHost": "Give Host",
+
     "optionDescriptionToggle": "(Toggle)",
     "optionDescriptionSelect": "(Select)"
   },
@@ -429,7 +439,7 @@
   },
 
   "addhistory": {
-    "addedHistory": "## _Successfully added new history page!_",
+    "addedHistory": "## _Successfully added the new history page!_",
 
     "preview": "# _Preview_",
 
@@ -437,7 +447,7 @@
     "buttonLabelReset": "Reset",
     "buttonLabelCancel": "Cancel",
 
-    "cancelNewHistoryPageTitle": "# _Adding new history page is canceled!_"
+    "cancelNewHistoryPageTitle": "# _Adding the new history page is canceled!_"
   },
 
   "edithistory": {
@@ -448,7 +458,7 @@
 
     "modalTitleEditExistingPage": "Editing existing history page",
     "modalDescriptionEnterExistingPage": "Page number",
-    "modalPlaceholderEnterExistingPage": "Enter page number. Must be > 0 and ≤ {0}!",
+    "modalPlaceholderEnterExistingPage": "Enter page number. Must be from 1 to {0}!",
     "modalNameSorting": "Sorting type",
     "menuTitleChooseSortingType": "Choose a sorting type",
 
@@ -462,13 +472,11 @@
   "rules": {
     "accepted": "You have successfully accepted the rules! Enjoy using the bot!",
     "declined": "You have chosen to decline the rules.",
-    "greeting": "Hey, {0}!",
-    "notAccepted": "It looks like you haven't accepted the rules yet!",
-    "description": "### By clicking on «Accept» button, you confirm that you have read and agree to the following important documents:",
-    "information": "Information",
-    "tos": "TOS",
-    "privacyPolicy": "Privacy Policy",
-    "rules": "Rules",
+    "notAccepted": "## _Hey! It looks like you haven't accepted the rules yet!_",
+    "description": "### _By clicking on «Accept» button, you confirm that you have read and agree to the following important documents:_",
+    "information": "## [_Information_]({0})",
+    "tos": "## [_Terms of Service_]({0})",
+    "rules": "## [_Rules_]({0})",
     "buttonLabelAccept": "Accept",
     "buttonLabelDecline": "Decline"
   },
@@ -489,7 +497,7 @@
   },
 
   "raretrysimulator": {
-    "invalidNumber": "Invalid number in field «`attempts`»! Only a number > `1` and ≤ `1000` or argument `max` is allowed!",
+    "invalidNumber": "Invalid argument in field «`attempts`»! Only a number from `1` to `1000` or argument `max` is allowed!",
     "invalidMode": "Unknown raretry mode! Available modes: `{0}`.",
     "title": "# _Raretry Simulator_",
     "attempts": "**• _Attempts: `{0}`_**",
@@ -529,8 +537,8 @@
   "reminders": {
     "title": "# 🔔___REMINDERS___🔔",
     "sentReminderTitle": "# 🔔___REMINDER___🔔",
-    "sentReminderTip": "### _To disable reminders, use `{PREFIX}reminders` command!_",
-    "on": "{0} is available!",
+    "sentReminderTip": "### _To disable reminders, use {0}!_",
+    "on": "## _{0} is available!_",
     "enabled": "Enabled",
     "disabled": "Disabled"
   },
@@ -544,10 +552,11 @@
     "textInputNameIssue": "What's the issue?",
     "textInputPlaceholderIssue": "Command is broken | I'm filing an appeal | typo | user spamming commands",
     "sent": "## _Your report has been sent to the support team!_",
-    "new": "# _New report_"
+    "labelName": "Screenshot or video of the issue",
+    "labelDescription": "Send a screenshot or a video of the issue"
   },
 
-  "resetcoins": {
+  "clearcoins": {
     "noCash": "You don't have any {EMOJI} to delete!",
     "warn": "## _Are you sure you want to delete all your `{0}`{EMOJI}?_",
     "deleted": "## _Deleted all your `{0}`{EMOJI}_",
@@ -692,5 +701,9 @@
     "optionNameDowngrade": "Downgrade",
 
     "selectMenuPlaceholderSwitchBiome": "Switch biome"
+  },
+
+  "announcements": {
+    "title": "# 📢 _Announcement_"
   }
 }

@@ -22,6 +22,14 @@ export default {
       ]]
     ]
 
+    $jsonLoad[victoriesMap;{
+      "0": "points",
+      "1": "rares"
+    }]
+
+    $let[type;$env[victoriesMap;$env[lobby;settings;victoryType]]]
+    
+
     $if[$arrayLength[teams]==1;
 
       $arrayMap[allPlayers;ID;
@@ -29,15 +37,13 @@ export default {
       ;results]
 
       $!arrayAdvancedSort[results;A;B;
-        $return[$math[$env[B;points] - $env[A;points]]]
+        $return[$math[$env[B;$get[type]] - $env[A;$get[type]]]]
       ]
-
-      $let[winner;$username[$env[results;0;userID]]]
 
       $arrayLoad[topOneIndexes]
 
       $loop[$arrayLength[results];
-        $if[$env[results;0;points]==$env[results;$env[i];points];;$break]
+        $if[$env[results;0;$get[type]]==$env[results;$env[i];$get[type]];;$break]
         $arrayPush[topOneIndexes;$env[i]]
       ;i;true]
 
@@ -58,8 +64,12 @@ export default {
           $let[emoji;🏅]
         ]
 
-        $return[$tl[ui.lobby.sortedPlayersContent;$get[emoji];$username[$env[result;userID]];$env[result;points]]]
+        $return[$tl[ui.lobby.sortedPlayersContent_$get[type];$get[emoji];$username[$env[result;userID]];$env[result;$get[type]]]]
       ;playersInLB]
+
+      $if[$has[winner];;
+        $let[winner;$username[$env[results;0;userID]]]
+      ]
 
       $sendMessage[$channelID;
         $addContainer[
@@ -72,26 +82,26 @@ export default {
         ;$getGlobalVar[luckyColor]]
       ]
 
+
     ; $c[=========================================================================================]
 
+      
       $arrayForEach[allPlayers;ID;
         $jsonLoad[CP;$getProgress[$env[ID]]]
-        $let[points;$math[$env[CP;points] + $env[teams;$env[CP;teamID];points]]]
-        $!jsonSet[teams;$env[CP;teamID];points;$get[points]]
+        $let[count;$math[$env[CP;$get[type]] + $env[teams;$env[CP;teamID];$get[type]]]]
+        $!jsonSet[teams;$env[CP;teamID];$get[type];$get[count]]
       ]
 
-      $arrayAdvancedSort[teams;A;B;$math[$env[B;points] - $env[A;points]];results]
+      $arrayAdvancedSort[teams;A;B;$math[$env[B;$get[type]] - $env[A;$get[type]]];results]
 
       $let[winnerTeam;$env[results;0;teamID]]
       $letSum[winnerTeam;1]
-
-      $let[winner;$tl[ui.lobby.team;\`$get[winnerTeam]\`]]
 
       $let[pos;0]
       $arrayLoad[topOneIndexes]
 
       $loop[$arrayLength[results];
-        $if[$env[results;0;points]==$env[results;$env[i];points];;$break]
+        $if[$env[results;0;$get[type]]==$env[results;$env[i];$get[type]];;$break]
         $arrayPush[topOneIndexes;$env[i]]
       ;i;true]
 
@@ -112,15 +122,20 @@ export default {
 
         $jsonLoad[playersInTeam;$env[result;players]]
         $arrayAdvancedSort[playersInTeam;A;B;
-          $return[$math[$dump[$getProgress[$env[B]];points] - $dump[$getProgress[$env[A]];points]]]
+          $return[$math[$dump[$getProgress[$env[B]];$get[type]] - $dump[$getProgress[$env[A]];$get[type]]]]
         ;sortedPlayers]
 
         $arrayMap[sortedPlayers;ID;
-          $return[$tl[ui.lobby.sortedPlayersInSortingTeamsContent;$username[$env[ID]];$dump[$getProgress[$env[ID]];points]]]
-        ;sortedPlayersContent]
+          $return[$tl[ui.lobby.sortedPlayersInSortingTeamsContent_$get[type];$username[$env[ID]];$dump[$getProgress[$env[ID]];$get[type]]]]
+        ;sortedPlayersContent_$get[type]]
 
-        $return[$tl[ui.lobby.sortedTeamsContent;$get[emoji];$math[$env[result;teamID] + 1];$env[result;points]]\n$arrayJoin[sortedPlayersContent;\n]]
+        $return[$tl[ui.lobby.sortedTeamsContent_$get[type];$get[emoji];$math[$env[result;teamID] + 1];$env[result;$get[type]]]\n$arrayJoin[sortedPlayersContent_$get[type];\n]]
       ;teamsInLB]
+        
+
+      $if[$has[winner];;
+        $let[winner;$tl[ui.lobby.team;\`$get[winnerTeam]\`]]
+      ]
 
       $sendMessage[$channelID;
         $addContainer[

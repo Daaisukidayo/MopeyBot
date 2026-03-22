@@ -11,18 +11,14 @@ export default {
   ],
   code: `
     $addContainer[
-      $addTextDisplay[$tl[ui.errors.errorTitle]]
-      $addSeparator
-      $addTextDisplay[## _$trim[$env[description]]_]
+      $addAuthorDisplay
+      $addTextDisplay[# ✖️ $tl[ui.errors.errorTitle]]
+      $addSeparator[Small;false]
+      $addTextDisplay[## > $trim[$env[description]]]
     ;$getGlobalVar[errorColor]]
 
-    $if[$isCommand;
-      $if[$isSlashCommand;
-        $ephemeral
-        $interactionReply
-      ;
-        $sendMessage[$channelID]
-      ]
+    $if[$isPrefixCommand;
+      $sendMessage[$channelID]
     ;
       $ephemeral
       $interactionReply

@@ -3,6 +3,7 @@ export default {
   params: [
     {
       name: "json",
+      type: "Json",
       required: true
     },
     {

@@ -14,7 +14,11 @@ export default {
 
     $let[predict;0]
 
-    $jsonLoad[events;$dump[$getProgress[$get[id]];events]]
+    $if[$env[challengeProgress]==;
+      $jsonLoad[events;$dump[$getProgress[$get[id]];events]]
+    ;
+      $jsonLoad[events;$env[challengeProgress;events]]
+    ]
 
     $if[$arrayLength[events]>5;
       $arrayMap[events;e;$return[$env[e;0]];times]

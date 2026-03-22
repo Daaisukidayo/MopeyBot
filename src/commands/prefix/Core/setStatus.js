@@ -5,11 +5,15 @@ export default {
 
     $loop[-1;
       $if[$getGlobalVar[botEnabled];
-        $setStatus[Idle;Watching;$guildCount servers!]
+        $if[$math[$env[i] % 2]==0;
+          $setStatus[idle;Watching;$guildCount servers!]
+        ;
+          $setStatus[idle;Playing;$getGlobalVar[prefix]help]
+        ]
       ;
-        $setStatus[Idle;Custom;Disabled for maintenance]
+        $setStatus[dnd;Custom;Disabled for maintenance]
       ]
       $wait[15s]
-    ]
+    ;i]
   `
 }

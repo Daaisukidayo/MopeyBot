@@ -15,7 +15,7 @@ export default {
     ]
 
     $if[$env[object]==;
-      $return[\\[\\]]
+      $return[[\\]]
     ]
 
     $return[$jsonEntries[object]]

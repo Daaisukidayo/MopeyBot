@@ -20,7 +20,7 @@ export default {
     $return[$js[
       const arr = $env[array]
       Array.isArray(arr) 
-        ? arr\\[Math.floor(Math.random() * arr.length)\\] 
+        ? arr[Math.floor(Math.random() * arr.length)\\] 
         : "null"
     ]]
   `

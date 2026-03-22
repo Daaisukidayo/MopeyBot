@@ -1,8 +1,31 @@
 export default { 
   name: "addAuthorDisplay",
   description: "Adds an text display to the embed, showing the author's username and MUID.",
+  params: [
+    {
+      name: "hideUserAvatar",
+      type: "Boolean",
+      required: false
+    }
+  ],
+  brackets: false,
   code: `
-    $addTextDisplay[# \`$username[$env[userProfile;ID]]#$env[userProfile;MUID]\`]
+    $let[hideUserAvatar;$nullish[$env[hideUserAvatar];true]]
+    $let[authorContent;$function[
+      $if[$env[userProfile;acceptedRules];
+        $return[# \`$username[$env[userProfile;ID]]#$env[userProfile;MUID]\`]
+      ]
+      $return[# \`$username\`]
+    ]]
+
+    $if[$get[hideUserAvatar];
+      $addSection[
+        $addTextDisplay[$get[authorContent]]
+        $addThumbnail[$userAvatar[$env[userProfile;ID];4096]]
+      ]
+    ;
+      $addTextDisplay[$get[authorContent]]
+    ]
     $addSeparator[Large]
   `
 }

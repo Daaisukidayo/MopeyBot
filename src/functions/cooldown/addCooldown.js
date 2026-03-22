@@ -3,25 +3,46 @@ export default {
   description: "Adds a cooldown message to user.",
   params: [
     {
-      name: "time",
-      description: "Time for the new cooldown.",
-      type: "Any",
-      required: true,
-    }
+      name: "cooldownId",
+      description: "Id for the cooldown",
+      required: false,
+    },
+    {
+      name: "updateCooldownTime",
+      type: "Boolean",
+      required: false,
+    },
   ],
+  brackets: false,
   code: `
-    $if[$env[userProfile;devMode]==0;
-      $userCooldown[$commandName;$env[time];
-        $let[time;$getUserCooldownTime[$commandName]]
-        $let[cooldownEnd;$sum[$getTimestamp;$get[time]]]
-        $let[longDateTime;$discordTimestamp[$get[cooldownEnd];LongDateTime]]
-        $let[relativeTimeLeft;$discordTimestamp[$get[cooldownEnd];RelativeTime]]
+    $if[$env[userProfile;devMode]!=0;$return]
 
-        $let[deleteTime;$if[$or[$get[time]>30000;$get[time]==0];10000;$get[time]]]
+    $let[command;$nullish[$env[cooldownId];$default[$commandName;$applicationCommandName]]]
+    $let[time;$getGlobalVar[$get[command]_cooldown]]
 
-        $cooldownEmbed
-        $deleteIn[$get[deleteTime]]
+    $if[$get[time]==;
+      $newError[Failed to get the cooldown time for the \`$get[command]\` command.]
+    ]
+
+    $if[$env[updateCooldownTime];
+      $deleteCooldown[$get[command]-$authorID]
+    ]
+
+    $cooldown[$get[command]-$authorID;$get[time];
+      $let[cooldownTime;$getCooldownTime[$get[command]-$authorID]]
+      
+      $if[$isPrefixCommand;
+        $cooldown[cooldownEmbed;10s;
+          $if[$get[cooldownTime]>10000;
+            $wait[10000]
+          ;
+            $wait[$get[cooldownTime]] 
+          ]
+          $deleteCooldown[cooldownEmbed]
+        ]
       ]
+
+      $newCooldown[$get[cooldownTime]]
     ]
   `
 }

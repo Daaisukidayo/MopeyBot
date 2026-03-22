@@ -14,9 +14,10 @@ export default {
       $let[i;$math[$env[i] - 1]]
       $jsonLoad[arrAliases;$env[allRaresData;$get[i];1]]
       $if[$arrayIncludes[arrAliases;$env[alias]];;$continue]
-      $let[animalID;$env[allRaresData;$get[i];0]]
+      $let[getRareAnimalID_animalID;$env[allRaresData;$get[i];0]]
       $break
     ;i;true]
-    $return[$default[$get[animalID];undefined]]
+
+    $return[$default[$get[getRareAnimalID_animalID];undefined]]
   `
 }

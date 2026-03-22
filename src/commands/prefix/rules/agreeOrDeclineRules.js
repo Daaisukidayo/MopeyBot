@@ -7,28 +7,29 @@ export default [{
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
-
+    $onlyIf[$env[userProfile;acceptedRules]==false;$!deleteMessage[$channelID;$messageID]]
 
     $if[$env[userProfile;MUID]==-1;
-
       $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
       $arrayPush[allUserIDs;$authorID]
       $setGlobalVar[allUserIDs;$env[allUserIDs]]
 
       $setGlobalVar[maxID;$sum[1;$getGlobalVar[maxID]]]
-      $!jsonSet[userProfile;acceptedRules;true]
       $!jsonSet[userProfile;MUID;$getGlobalVar[maxID]]
       $!jsonSet[userProfile;ID;"$authorID"]
-      $saveProfile
     ]
+
+    $!jsonSet[userProfile;acceptedRules;true]
+    $saveProfile
 
     $jsonLoad[usernames;$getGlobalVar[usernames]]
     $!jsonSet[usernames;$get[id];$username]
     $setGlobalVar[usernames;$env[usernames]]
 
-    $rulesEmbed[true]
-    $color[$getGlobalVar[luckyColor]]
-    $footer[$tl[ui.rules.accepted]]
+    $addContainer[
+      $addAuthorDisplay
+      $addTextDisplay[$tl[ui.rules.accepted]]
+    ;$getGlobalVar[luckyColor]]
     $interactionUpdate
   `
 },{
@@ -40,11 +41,12 @@ export default [{
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
+    $onlyIf[$env[userProfile;acceptedRules]==false;$!deleteMessage[$channelID;$messageID]]
 
-
-    $rulesEmbed[true]
-    $color[$getGlobalVar[errorColor]]
-    $footer[$tl[ui.rules.declined]]
+    $addContainer[
+      $addAuthorDisplay
+      $addTextDisplay[$tl[ui.rules.declined]]
+    ;$getGlobalVar[errorColor]]
     $interactionUpdate
   `
 }]

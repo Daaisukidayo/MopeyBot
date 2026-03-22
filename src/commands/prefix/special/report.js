@@ -3,21 +3,7 @@ export default [{
   aliases: ["rep"],
   type: "messageCreate",
   code: `
-    $reply
-    $jsonLoad[userProfile;$getProfile]
-    $jsonLoad[funcCache;{}]
-    $checkProfile
-    $addCooldown[1m]
-    
-    $addContainer[
-      $addAuthorDisplay
-      $addSection[  
-        $addTextDisplay[$tl[ui.report.title]]
-        $addButton[reportButton-$authorID;$tl[ui.report.buttonLabel];Success;📢]
-      ]
-    ;$getGlobalVar[defaultColor]]
-
-    $newTimeout[REPORT-$authorID;1m;$sendMessage[$channelid;;true]]
+    $handleReport
   `
 },{
   type: "interactionCreate",
@@ -30,9 +16,13 @@ export default [{
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
     $modal[reportModal-$authorid;$tl[ui.report.modalTitle]]
-    $addTextInput[modalInput1;$tl[ui.report.textInputNameAbout];Short;true;$tl[ui.report.textInputPlaceholderAbout]]
-    $addTextInput[modalInput2;$tl[ui.report.textInputNameIssue];Paragraph;true;$tl[ui.report.textInputPlaceholderIssue]]
+    $addTextInput[about;$tl[ui.report.textInputNameAbout];Short;true;$tl[ui.report.textInputPlaceholderAbout]]
+    $addTextInput[issue;$tl[ui.report.textInputNameIssue];Paragraph;true;$tl[ui.report.textInputPlaceholderIssue]]
+    $addLabel[$tl[ui.report.labelName];
+      $addFileUpload[modalFile;;10]
+    ;$tl[ui.report.labelDescription];false]
     $showModal
+    $newCommandTimeout[report]
   `
 },{
   type: "interactionCreate",
@@ -44,23 +34,36 @@ export default [{
     $jsonLoad[funcCache;{}]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
+    $arrayLoad[reportFiles;, ;$input[modalFile]]
+    $arrayFilter[reportFiles;file;$return[$checkCondition[$env[file]!=]];reportFiles]
+    
     $addContainer[
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.report.sent]]
     ;$getGlobalVar[defaultColor]]
     $interactionUpdate
 
-    $#sendMessage[$getGlobalVar[reportChannelID];
+    $#sendMessage[$channelID;
       $addContainer[
         $addAuthorDisplay
-        $addTextDisplay[$tl[ui.report.new]]
+        $addTextDisplay[# _New report_]
         $addSeparator[Large]
-        $addTextDisplay[## $input[modalInput1]]
-        $addSeparator[Small]
-        $addTextDisplay[### $input[modalInput2]]
+        $addTextDisplay[## $input[about]]
+        $addSeparator
+        $addTextDisplay[### $input[issue]]
+
+        $if[$arrayLength[reportFiles]!=0;
+          $addSeparator
+          $addMediaGallery[
+            $arrayForEach[reportFiles;file;
+              $addMediaItem[$env[file]]
+            ]
+          ]
+        ]
+
       ;$getGlobalVar[logColor]]
     ]
 
-    $!stopTimeout[REPORT-$authorID]
+    $!stopCommandTimeout[report]
   `
 }]

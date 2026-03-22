@@ -16,6 +16,6 @@ export default {
     }
   ],
   code: `
-    $return[$separateNumber[$env[number];$nullish[$getGlobalVar[NS];$env[separator]]]]
+    $return[$separateBigint[$env[number];$nullish[$env[separator];$getGlobalVar[NS]]]]
   `
 }

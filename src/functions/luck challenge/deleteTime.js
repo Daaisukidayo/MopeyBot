@@ -2,12 +2,12 @@ export default {
   name: 'deleteTime',
   params: [
     {
-      name: 'user_id',
+      name: 'dt_user_id',
       required: false
     }
   ],
   brackets: false,
   code: `
-    $deleteUserVar[1htime|$channelID;$findUser[$env[user_id];true]]
+    $deleteUserVar[1htime|$channelID;$findUser[$env[dt_user_id];true]]
   `
 }

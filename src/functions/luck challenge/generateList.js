@@ -3,7 +3,7 @@ export default {
   description: "Generates an object with keys: 'l' (list of rares, array), 'p' (points) and 'r' (rares).",
   params: [
     {
-      name: "list",
+      name: "caught_rares_list",
       description: "Object of caught rare animals.",
       type: "Object",
       required: true,
@@ -17,10 +17,11 @@ export default {
   code: `
     $let[D;$nullish[$env[difficulty];$getGlobalVar[defaultDifficulty]]]
 
-    $jsonLoad[listEntries;$advJsonEntries[$env[list]]]
-    $arrayLoad[displacement]
+    $jsonLoad[listEntries;$advJsonEntries[$env[caught_rares_list]]]
     $jsonLoad[result;{}]
-    $jsonLoad[chartLimits;$dump[$getGlobalVar[chartLimits];$get[D]]]
+    $c[
+      $jsonLoad[chartLimits;$dump[$getGlobalVar[chartLimits];$get[D]]]
+    ]
 
     $let[P;0]
     $let[R;0]
@@ -28,15 +29,19 @@ export default {
     $arrayMap[listEntries;entry;
       $let[animalID;$env[entry;0]]
       $let[count;$env[entry;1]]
+
       $jsonLoad[data;$getRareFromCDB[$get[animalID]]]
       
-      $let[index;$getChartLimitIndex[$get[animalID]]]
-      $if[$get[index]!=-1;
-        $jsonLoad[limitChartObj;$env[chartLimits;$get[index]]]
-        $let[limit;$env[limitChartObj;limit]]
-
-        $if[$get[count]>$get[limit];
-          $let[count;$get[limit]]
+      $c[
+        $let[index;$getChartLimitIndex[$get[animalID];$get[D]]]
+        
+        $if[$get[index]!=-1;
+          $jsonLoad[limitChartObj;$env[chartLimits;$get[index]]]
+          $let[limit;$env[limitChartObj;limit]]
+  
+          $if[$get[count]>$get[limit];
+            $let[count;$get[limit]]
+          ]
         ]
       ]
       
@@ -44,25 +49,14 @@ export default {
       $letSum[R;$get[count]]
 
       $return[$getAnimalVariantInfo[$get[animalID];emoji]\`$get[count]\`]
-    ;preContent]
+    ;list]
 
 
-    $if[$arrayLength[preContent]>0;
-    
-      $loop[$arrayLength[preContent];
-        $if[$math[($env[i] - 1) % $getGlobalVar[maxRowsInRaresList]]==0;;$continue]
-        
-        $arrayPushJSON[displacement;$arraySplice[preContent;0;$getGlobalVar[maxRowsInRaresList]]]
-      ;i;true]
-
-      $arrayMap[displacement;page;
-        $return[$arrayJoin[page; ]]
-      ;newList]
-    ;
-      $arrayLoad[newList;HINT;$tl[ui.challenge.none]]
+    $if[$arrayLength[list]==0;
+      $arrayPush[list;$tl[ui.challenge.none]]
     ]
 
-    $!jsonSet[result;l;$env[newList]]
+    $!jsonSet[result;l;$env[list]]
     $!jsonSet[result;p;$get[P]]
     $!jsonSet[result;r;$get[R]]
 

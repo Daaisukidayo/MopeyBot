@@ -38,34 +38,3 @@ By inviting the Discord Bot Mopey#4550 (Unique Discord User ID: 6930883072859832
 📌 Official Support Server: ([Link](https://discord.gg/FE4dqGD))
 
 💡 Other support methods may be available but are not guaranteed.
-
-# 🔒 Privacy Policy
-### 🔹 Data Collection & Usage
-##### 🔸 The bot does not share collected data with third parties.
-##### 🔸 Data is used solely for bot functionality and stored securely.
-
-## 📁 Stored Information
-When invited to a server, the bot may store:
-
-### 🛠 Server Settings:
-
-Prefix: `m!` (modifiable by moderators)
-
-### 👤 User Information (Displayed in Bot Responses):
-
-- `User ID`
-- `Mopey User ID`
-- `Username`
-- `Server Nickname` (if applicable)
-- `Avatar`
-- `Mopecoins balance`
-- `Purchased packs`
-- `Raretry mode`
-- `Caught rares`
-
-❌ No other personal information is collected.
-
-## 🔄 Data Updates
-⚙️ Stored data may be updated when users interact with bot features.
-
-🚀 We aim to provide a safe and seamless experience for all users!

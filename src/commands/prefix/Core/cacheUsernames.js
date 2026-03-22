@@ -8,6 +8,7 @@ export default {
         $jsonSet[data;$env[id];$username[$env[id]]]
       ]
       $setGlobalVar[usernames;$env[data]]
+      $logger[Info;Updated cached «usernames»]
       $wait[10m]
     ]
   `

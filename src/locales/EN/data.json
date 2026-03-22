@@ -234,5 +234,10 @@
     "desertGTSP": "Desert Gold Trim Skins Pack",
     "oceanGTSP": "Ocean Gold Trim Skins Pack",
     "arcticGTSP": "Arctic Gold Trim Skins Pack"
+  },
+
+  "victoryTypes": {
+    "0": "Points count", 
+    "1": "Rares count"
   }
 }

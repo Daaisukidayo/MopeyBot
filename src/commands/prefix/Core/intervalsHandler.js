@@ -14,7 +14,7 @@ export default {
 
     $c[Functions]
     $fn[elapsed;$return[$math[$getTimestamp - $env[lastExec]]];lastExec]
-    $fn[execute;$try[$eval[$env[code];false]];code]
+    $fn[execute;$try[$eval[$replace[$get[code];{N};\n;-1];false]];code]
     $fn[updateLastExecution;
       $jsonLoad[intervals;$getGlobalVar[intervals]]
       $!jsonSet[intervals;$env[id];lastExecution;$getTimestamp]

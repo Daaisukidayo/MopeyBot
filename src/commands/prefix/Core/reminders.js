@@ -1,21 +1,23 @@
 export default {
   type: 'clientReady',
   code: `
+    $jsonLoad[funcCache;{}]
+    $jsonLoad[slashCommandsData;$getGlobalVar[slashCommandsData]]
+
+    $fn[embed;
+      $addContainer[
+        $addTextDisplay[$tl[ui.reminders.sentReminderTitle]]
+        $addSeparator[Large]
+        $addTextDisplay[$tl[ui.reminders.on;$tl[data.reminders.$env[reminder_id]]]]
+        $addSeparator
+        $addTextDisplay[$tl[ui.reminders.sentReminderTip;</reminders:$env[slashCommandsData;reminders]>]]
+      ;$getGlobalVar[defaultColor]]
+    ;reminder_id]
+
     $loop[-1;
       $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
 
-      $fn[embed;
-        $addContainer[
-          $addTextDisplay[$tl[ui.reminders.sentReminderTitle]]
-          $addSeparator[Large]
-          $addTextDisplay[$tl[ui.reminders.on;$tl[data.reminders.$env[reminder_id]]]]
-          $addSeparator
-          $addTextDisplay[$tl[ui.reminders.sentReminderTip]]
-        ;$getGlobalVar[defaultColor]]
-      ;reminder_id]
-
       $c[REMIND DAILY REWARD]
-      
       $if[$getGlobalVar[lastCheckedDayInReady;-1]!=$day; 
         $setGlobalVar[lastCheckedDayInReady;$day]
         $loop[$arrayLength[allUserIDs];
@@ -27,7 +29,7 @@ export default {
           $setUserVar[caughtRaresInRaretry;0;$get[id]]
 
           $if[$env[userProfile;limiters;lastDailyDay]==$day;$continue]
-          $if[$arrayIncludes[userReminders;daily];;$continue]
+          $if[$arrayIncludes[userReminders;0];;$continue]
           $if[$isUserDMEnabled[$get[id]];;$continue]
 
           $callFn[embed;0]
@@ -45,7 +47,7 @@ export default {
           $jsonLoad[userProfile;$getProfile[$get[id]]]
 
           $if[$env[userProfile;limiters;lastWeeklyWeek]==$calendarWeek;$continue]
-          $if[$arrayIncludes[userReminders;weekly];;$continue]
+          $if[$arrayIncludes[userReminders;1];;$continue]
           $if[$isUserDMEnabled[$get[id]];;$continue]
 
           $callFn[embed;1]

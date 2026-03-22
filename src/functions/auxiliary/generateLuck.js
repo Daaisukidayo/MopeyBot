@@ -59,7 +59,6 @@ export default {
           $arrayConcat[attempts;attempts;tmp]
         ]
       ;i;true]
-      $!arrayReverse[attempts]
 
       $if[$get[isRare];
         $arrayCreate[regular;$math[$get[total] - $arrayLength[attempts]]]
@@ -70,7 +69,7 @@ export default {
 
       $arrayConcat[attempts;attempts;regular]
 
-      $!jsonSet[result;$get[common];$env[attempts]]
+      $jsonSet[result;$get[common];$env[attempts]]
     ]
 
     $return[$env[result]]

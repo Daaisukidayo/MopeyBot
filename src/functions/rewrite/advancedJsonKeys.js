@@ -13,7 +13,7 @@ export default {
       $jsonLoad[json;$env[$env[json]]]
     ]
     $if[$typeof[$env[json]]!=object;
-      $return[\\[\\]]
+      $return[[\\]]
     ]
     $return[$jsonKeys[json]]
   `

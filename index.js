@@ -4,15 +4,14 @@ import { ForgeTopGG } from "@tryforge/forge.topgg"
 import { ForgeClient, LogPriority } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
 import { ForgeCanvas } from "@tryforge/forge.canvas"
+import { ForgeRegex } from "forge.regex"
 
 import { shutdownSetup } from "./src/scripts/shutdownSetup.js"
-import { allVariables } from "./variables/allVariables.js"
+import { variables } from "./src/variables/index.js"
 import dotenv from "dotenv"
 dotenv.config()
 
 // ========== CLIENT CONFIGURATION ==========
-
-const CV = new ForgeCanvas()
 
 const TOP = new ForgeTopGG({
   token: process.env.TOPTOKEN,
@@ -22,7 +21,7 @@ const TOP = new ForgeTopGG({
     "posted",
     "voted"
   ],
-  port: 9030,
+  port: 1040,
   post: { interval: 3_600_000 }
 })
 
@@ -35,7 +34,8 @@ const BOT = new ForgeClient({
   extensions: [
     DB,
     TOP,
-    CV,
+    new ForgeRegex(),
+    new ForgeCanvas(),
   ],
 
   intents: [
@@ -61,8 +61,8 @@ const BOT = new ForgeClient({
 
 // ========== LOAD COMMANDS ==========
 BOT.functions.load("./src/functions")
-BOT.commands.load("./src/commands/prefix")
 BOT.applicationCommands.load("./src/commands/slash")
+BOT.commands.load("./src/commands/prefix")
 TOP.commands.load("./src/commands/topgg")
 DB.commands.load("./src/commands/db")
 
@@ -73,4 +73,4 @@ shutdownSetup(BOT)
 BOT.login(process.env.TOKEN)
 
 // ========== VARIABLES ==========
-DB.variables(allVariables)
+DB.variables(variables)
