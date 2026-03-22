@@ -20,7 +20,7 @@ export default {
     $let[enemyAnimalIndex;$env[animalIndexes;$get[enemyAnimalID]]]
     $jsonLoad[enemyData;$env[animals;$get[enemyAnimalIndex]]]
     $jsonLoad[enemySkinVariants;$env[enemyData;variants]]
-    $let[enemy;$env[enemyData;enemySkinVariants;$arrayRandomIndex[enemySkinVariants];emoji]]
+    $let[enemy;$env[enemySkinVariants;$arrayRandomIndex[enemySkinVariants];emoji]]
 
 
     $if[$get[r]>=25;
