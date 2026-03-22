@@ -7,16 +7,17 @@ export default {
     $checkProfile
 
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]
+    $jsonLoad[chartLimits;$getGlobalVar[chartLimits]]
 
-    $let[arg;$default[$toTitleCase[$default[$option[difficulty];$message]];1]]
+    $let[difficulty;$default[$toTitleCase[$default[$option[difficulty];$message]];$getGlobalVar[defaultDifficulty]]]
 
-    $if[$isNumber[$get[arg]]==false;
+    $if[$isNumber[$get[difficulty]]==false;
       $jsonLoad[diff;$tl[data.difficulties]]
       $arrayLoad[diffV;, ;$jsonValues[diff]]
-      $let[arg;$arrayIndexOf[diffV;$toTitleCase[$get[arg]]]]
+      $let[difficulty;$arrayIndexOf[diffV;$toTitleCase[$get[difficulty]]]]
     ]
 
-    $onlyif[$arrayIncludes[difficulties;$get[arg]];
+    $onlyif[$arrayIncludes[difficulties;$get[difficulty]];
       $arrayMap[difficulties;d;
         $return[$tl[data.difficulties.$env[d]]]
       ;diffList]
@@ -43,13 +44,27 @@ export default {
 
         $if[$env[cache;$get[animalID]];;$continue]
 
-        $let[count;$default[$env[counts;$get[animalID]];0]]
-        $jsonSet[counts;$get[animalID];$math[$get[count] + 1]]
+        $let[quantity;$default[$env[counts;$get[animalID]];0]]
+
+        $let[index;$getChartLimitIndex[$get[animalID];$get[difficulty]]]
+      
+        $if[$get[index]!=-1;
+          $jsonLoad[limitChartObj;$env[chartLimits;$get[difficulty];$get[index]]]
+          $let[limit;$env[limitChartObj;limit]]
+
+          $if[$get[quantity]==$get[limit];
+            $continue
+          ]
+        ]
+
+        $letSum[quantity;1]
+        $!jsonSet[counts;$get[animalID];$get[quantity]]
       ]
+
       $jsonAssign[rawList;rawList;$env[counts]]
     ]
 
-    $jsonLoad[result;$generateList[$sortList[$env[rawList]];$get[arg]]]
+    $jsonLoad[result;$generateList[$sortList[$env[rawList]];$get[difficulty]]]
     
     $jsonLoad[list;$env[result;l]]
     $let[totalPoints;$env[result;p]]
