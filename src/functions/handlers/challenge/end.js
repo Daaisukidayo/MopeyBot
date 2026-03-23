@@ -28,6 +28,7 @@ export default {
       $addSeparator[Large]
       $showDesignedList[$env[list]]
     ;$getGlobalVar[luckyColor]]    
+    $send
     
     $if[$getChannelVar[lobby]==;
       $deleteProgress

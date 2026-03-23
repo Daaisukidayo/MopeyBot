@@ -77,6 +77,7 @@ export default [{
     ]]
 
     $jsonSet[value;$replace[$env[value];{EMOJI};$getGlobalVar[emoji];-1]]
+    $jsonSet[value;$replace[$env[value];{BLANK};$getGlobalVar[blank];-1]]
     $jsonSet[value;$replace[$env[value];{PREFIX};$get[__prefix];-1]]
 
     $return[$env[value]]

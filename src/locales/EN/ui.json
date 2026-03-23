@@ -329,22 +329,21 @@
 
     "closedByInactivity": "## _The Lobby created by <@{0}> was closed due to inactivity._",
     "missingMessage": "## _The Lobby was closed due to a missing message._",
-    "doesNotExist": "This Lobby no longer exists.",
+    "doesNotExist": "There is no active lobby in this channel.",
     "closedByHost": "## _The Lobby was closed by the Host._",
     "getReady": "# _Get ready! Starting in `{0}` second(s)!_",
+    "notStarted": "The challenge hasn't started yet!",
     "failed": "## _Failed to start the challenge._",
 
-    "sortedPlayersContent_points": "## {0} ➤ `{1}` — `{2}` Points",
-    "sortedPlayersContent_rares": "## {0} ➤ `{1}` — `{2}` Rares",
-    "sortedTeamsContent_points": "## {0} ➤ Team `{1}` — `{2}` Points",
-    "sortedTeamsContent_rares": "## {0} ➤ Team `{1}` — `{2}` Rares",
-    "sortedPlayersInSortingTeamsContent_points": "### - {0} — `{1}` Points",
-    "sortedPlayersInSortingTeamsContent_rares": "### - {0} — `{1}` Rares",
+    "sortedPlayersContent": "> **{0} `{1}`**\n> **`├─` `{2}` Points**\n> **`└─` `{3}` Rares**",
+    "sortedTeamsContent": "> **{0} Team `{1}`**\n>  **`├──` `{2}` Points**\n>  **`└──` `{3}` Rares**",
+    "sortedPlayersInSortingTeamsContent": "> **`{0}`**\n> **`├──` `{1}` Points**\n> **`└──` `{2}` Rares**",
 
     "friendship": "FRIENDSHIP",
     "winner": "# _🎉 Winner: {0} 🎉_",
     "team": "Team `{0}`",
     "none": "None",
+    "lobbyProgressTitle": "# _1 Hour Luck Lobby Progress_",
 
     "buttonLabelJoin": "Join",
     "buttonLabelQuit": "Quit",

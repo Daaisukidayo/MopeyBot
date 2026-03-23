@@ -48,4 +48,5 @@ export default {
   edithistory_cooldown: 60_000,
   addhistory_cooldown: 300_000,
   time_cooldown: 3000,
+  progress_cooldown: 5000,
 }

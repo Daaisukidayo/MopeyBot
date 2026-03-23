@@ -9,12 +9,17 @@ export default {
   defaultPlayType: 0,
   defaultVictoryType: 0,
 
+  victoriesMap: {
+    0: "points",
+    1: "rares"
+  },
+
   baseChallengeProgress: {
     started: true,
     paused: false,
     points: 0,
     rares: 0,
-    userID: -1,
+    userID: null,
     teamID: -1,
     difficulty: 1,
     list: {},
@@ -37,6 +42,7 @@ export default {
 
   baseLobbyTeam: {
     points: 0,
+    rares: 0,
     teamID: 0,
     players: []
   },

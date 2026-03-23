@@ -6,9 +6,6 @@ export default {
     $jsonLoad[funcCache;{}]
     $checkProfile
 
-    $onlyIf[$getGlobalVar[usernames]!=;
-      $newError[$tl[ui.lobby.notReady]]
-    ]
     $cooldown[lobby-$channelID;1000]
 
     $!jsonSet[funcCache;usernames;$getGlobalVar[usernames]]

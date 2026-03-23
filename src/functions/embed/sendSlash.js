@@ -1,6 +1,6 @@
 export default {
   name: 'send',
   code: `
-    $if[$isSlashCommand;$interactionReply]
+    $if[$isSlashCommand;$interactionReply;$sendMessage[$channelID]]
   `
 }

@@ -5,6 +5,7 @@ export default [{
   code: `
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
+    $!jsonSet[funcCache;usernames;$getGlobalVar[usernames]]
     $checkLobby
 
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]
@@ -39,6 +40,7 @@ export default [{
   code: `
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
+    $!jsonSet[funcCache;usernames;$getGlobalVar[usernames]]
     $checkLobby
 
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]
@@ -94,6 +96,7 @@ export default [{
   code: `
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
+    $!jsonSet[funcCache;usernames;$getGlobalVar[usernames]]
     $checkLobby
 
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]
@@ -131,6 +134,7 @@ export default [{
   code: `
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
+    $!jsonSet[funcCache;usernames;$getGlobalVar[usernames]]
     $checkLobby
 
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]

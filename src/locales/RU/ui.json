@@ -329,24 +329,21 @@
 
     "closedByInactivity": "## _Лобби, созданное пользователем <@{0}>, было закрыто из-за бездействия_",
     "missingMessage": "## _Лобби было закрыто из-за отсутствия сообщения_",
-    "doesNotExist": "Лобби больше не существует",
+    "doesNotExist": "В этом канале нет активного лобби.",
     "closedByHost": "## _Лобби было закрыто хостом_",
     "getReady": "# _Приготовьтесь! Старт через `{0}` секунд!_",
+    "notStarted": "Испытание ещё не началось!",
     "failed": "# _Не удалось начать испытание_",
-    
 
-    "sortedPlayersContent_points": "## {0} ➤ `{1}` — `{2}` Очк{2:e}",
-    "sortedTeamsContent_points": "## {0} ➤ Команда `{1}` — `{2}` Очк{2:e}",
-    "sortedPlayersInSortingTeamsContent_points": "### - {0} — `{1}` Очк{1:e}",
-    
-    "sortedPlayersContent_rares": "## {0} ➤ `{1}` — `{2}` Редк{2:re}",
-    "sortedTeamsContent_rares": "## {0} ➤ Команда `{1}` — `{2}` Редк{2:re}",
-    "sortedPlayersInSortingTeamsContent_rares": "### - {0} — `{1}` Редк{1:re}",
+    "sortedPlayersContent": "> **{0} `{1}`**\n> **`├─` `{2}` Очк{2:e}**\n> **`└─` `{3}` Редк{3:re}**",
+    "sortedTeamsContent": "> **{0} Команда `{1}`**\n>  **`├──` `{2}` Очк{2:e}**\n>  **`└──` `{3}` Редк{3:re}**",
+    "sortedPlayersInSortingTeamsContent": "> **`{0}`**\n> **`├──` `{1}` Очк{1:e}**\n> **`└──` `{2}` Редк{2:re}**",
 
     "friendship": "ДРУЖБА",
     "winner": "# _🎉 Победитель: {0} 🎉_",
     "team": "Команда `{0}`",
     "none": "Пусто",
+    "lobbyProgressTitle": "# _1 Hour Luck Lobby Progress_",
 
     "buttonLabelJoin": "Присоединиться",
     "buttonLabelQuit": "Выйти",
