@@ -26,7 +26,7 @@ export default {
       $addTextDisplay[$showPoints]
       $addTextDisplay[$showTime]
 
-      $displayRaresLimit
+      $displayLimitedRares
     ;$getGlobalVar[luckyColor]]
   `
 }

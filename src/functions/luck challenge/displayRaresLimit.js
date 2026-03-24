@@ -1,5 +1,5 @@
 export default {
-  name: "displayRaresLimit",
+  name: "displayLimitedRares",
   description: "Displays animals that are limited as the new V2 components",
   params: [
     {

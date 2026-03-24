@@ -22,7 +22,7 @@ export default {
       $addSeparator[Large]
       $addTextDisplay[$showPoints]
       $addTextDisplay[$showTime]
-      $displayRaresLimit
+      $displayLimitedRares
     ;$getGlobalVar[luckyColor]]
   `
 }

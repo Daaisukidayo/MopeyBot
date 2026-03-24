@@ -5,25 +5,21 @@ export default {
     $jsonLoad[challengeProgress;$getProgress]
     $onlyIf[$env[challengeProgress]!=]
     $onlyIf[$env[challengeProgress;started]]
+    $onlyIf[$env[challengeProgress;paused]==false]
     $onlyIf[$startsWith[$messageContent;$if[$guildID!=;$getGuildVar[prefix];$getGlobalVar[prefix]]]==false]
 
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
 
-    $onlyIf[$env[challengeProgress;paused]==false;
-      $newError[$tl[ui.challenge.onPause]]
-    ]
 
     $jsonLoad[lobby;$getChannelVar[lobby]]
-    $jsonLoad[raresList;$env[challengeProgress;list]]
-    
     $jsonLoad[allRares;$getGlobalVar[allRares]]
+    $jsonLoad[raresList;$env[challengeProgress;list]]
     $jsonLoad[events;$env[challengeProgress;events]]
 
     $let[difficulty;$env[challengeProgress;difficulty]]
     $jsonLoad[chartLimits;$dump[$getGlobalVar[chartLimits];$get[difficulty]]]
     
-
     $jsonLoad[caught;{}]
     $arrayLoad[caughtRares; ;$toLowerCase[$message]]
     $arrayLoad[reachedLimitContent]
@@ -114,7 +110,7 @@ export default {
       $addTextDisplay[$showPredict]
       $addTextDisplay[$showTime]
     ;$getGlobalVar[luckyColor]]
-    $displayRaresLimit
+    $displayLimitedRares
   `
 }
 

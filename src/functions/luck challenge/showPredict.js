@@ -12,22 +12,49 @@ export default {
   code: `
     $let[id;$findUser[$env[user_id];true]]
 
-    $let[predict;0]
+    $jsonLoad[challengeProgress;$getProgress[$get[id]]]
+    $jsonLoad[events;$env[challengeProgress;events]]
+    
+    $let[totalPoints;$env[challengeProgress;points]]
 
-    $if[$env[challengeProgress]==;
-      $jsonLoad[events;$dump[$getProgress[$get[id]];events]]
-    ;
-      $jsonLoad[events;$env[challengeProgress;events]]
+    $let[limit;10]
+    $let[finalPredict;0]
+    $let[totalGain;0]
+    $let[totalDelay;0]
+
+    $c[
+      $if[$arrayLength[events]>5;
+        $arrayMap[events;e;$return[$env[e;0]];times]
+        $arrayMap[events;e;$return[$env[e;1]];scores]
+  
+        $loop[$arrayLength[events];
+          $let[gain;$math[$env[scores;$env[i]] - $env[scores;$sub[$env[i];1]]]]
+          $let[delay;$math[$env[times;$env[i]] - $env[times;$sub[$env[i];1]]]]
+          $if[$get[delay]>0;
+            $letSum[totalGain;$get[gain]]
+            $letSum[totalDelay;$get[delay]]
+          ]
+        ;i;true]
+  
+        $let[avgGain;$math[$get[totalGain] / ($arrayLength[events] - 1)]]
+        $let[avgDelay;$math[$get[totalDelay] / ($arrayLength[events] - 1)]]
+        $let[safeAvgDelay;$max[0.1;$get[avgDelay]]]
+  
+        $let[remainingTime;$sub[3600;$getUserVar[1htime|$channelID;$get[id]]]]
+        $let[possibleInputs;$divide[$get[remainingTime];$get[safeAvgDelay]]]
+        $let[finalPredict;$round[$math[$get[totalPoints] + $get[possibleInputs] * $get[avgGain]]]]
+        $if[$get[finalPredict]<0;
+          $let[finalPredict;0]
+        ]
+      ]
     ]
 
     $if[$arrayLength[events]>5;
+      $arraySlice[events;recent;-$get[limit]]
       $arrayMap[events;e;$return[$env[e;0]];times]
       $arrayMap[events;e;$return[$env[e;1]];scores]
 
-      $let[totalGain;0]
-      $let[totalDelay;0]
-
-      $loop[$arrayLength[events];
+      $loop[$arrayLength[recent];
         $let[gain;$math[$env[scores;$env[i]] - $env[scores;$sub[$env[i];1]]]]
         $let[delay;$math[$env[times;$env[i]] - $env[times;$sub[$env[i];1]]]]
         $if[$get[delay]>0;
@@ -35,21 +62,24 @@ export default {
           $letSum[totalDelay;$get[delay]]
         ]
       ;i;true]
-
-      $let[avgGain;$math[$get[totalGain] / ($arrayLength[events] - 1)]]
-      $let[avgDelay;$math[$get[totalDelay] / ($arrayLength[events] - 1)]]
+      
+      $let[avgGain;$math[$get[totalGain] / ($arrayLength[recent] - 1)]]
+      $let[avgDelay;$math[$get[totalDelay] / ($arrayLength[recent] - 1)]]
       $let[safeAvgDelay;$max[0.1;$get[avgDelay]]]
 
       $let[remainingTime;$sub[3600;$getUserVar[1htime|$channelID;$get[id]]]]
       $let[possibleInputs;$divide[$get[remainingTime];$get[safeAvgDelay]]]
-      $let[predict;$round[$math[$get[totalPoints] + $get[possibleInputs] * $get[avgGain]]]]
-      $if[$get[predict]<0;
-        $let[predict;0]
+      
+      $let[basePredict;$round[$math[$get[totalPoints] + $get[possibleInputs] * $get[avgGain]]]]
+      $let[luckyPredict;$round[$math[$get[basePredict] * 1.15]]]
+      $c[
+        $let[finalPredict;$get[basePredict] - $get[luckyPredict]]
       ]
+      $let[finalPredict;$get[basePredict]]
     ]
     
 
-    $let[styled;$if[$advArrayIncludes[$dump[$getProfile[$get[id]];challenge;settings];hidePrediction];||$get[predict]||;\`$get[predict]\`]]
+    $let[styled;$if[$advArrayIncludes[$env[userProfile;challenge;settings];hidePrediction];||$get[finalPredict]||;\`$get[finalPredict]\`]]
 
     $return[$tl[ui.challenge.prediction;$get[styled]]]
   `
