@@ -61,6 +61,7 @@ const BOT = new ForgeClient({
 
 // ========== LOAD COMMANDS ==========
 BOT.functions.load("./src/functions")
+BOT.functions.load("./src/handlers")
 BOT.applicationCommands.load("./src/commands/slash")
 BOT.commands.load("./src/commands/prefix")
 TOP.commands.load("./src/commands/topgg")

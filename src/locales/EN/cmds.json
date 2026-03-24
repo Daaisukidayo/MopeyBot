@@ -397,5 +397,11 @@
       "## The time can be edited. Usage: `{PREFIX}time <new_time>`",
       "## Your new time must be from 1 to 3599 | in format «`MM:SS`» | in format «`0m0s`»"
     ]
+  },
+  "progress": {
+    "commandName": "Progress",
+    "commandDescription": [
+      "## Shows the 1 hour Luck progress of an active lobby!"
+    ]
   }
 }

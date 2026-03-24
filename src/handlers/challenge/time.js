@@ -10,6 +10,7 @@ export default {
 
     $let[newTime;$toLowerCase[$advancedReplace[$default[$option[new_time];$message]; ;;\n;]]]
     $jsonLoad[challengeProgress;$getProgress]
+    $let[paused;$env[challengeProgress;paused]]
 
     $if[$get[newTime]!=;
 
@@ -29,9 +30,12 @@ export default {
         ]
       ]
 
-      $stopTimer
       $setUserVar[1htime|$channelID;$get[newTime]]
-      $startTimer
+
+      $if[$get[paused];;
+        $stopTimer
+        $startTimer
+      ]
 
       $jsonLoad[events;$env[challengeProgress;events]]
 
@@ -46,7 +50,7 @@ export default {
     $addContainer[
       $addAuthorDisplay
 
-      $if[$env[challengeProgress;paused];
+      $if[$get[paused];
         $addTextDisplay[$tl[ui.time.paused]]
       ;
         $addTextDisplay[$tl[ui.time.inProgress]]

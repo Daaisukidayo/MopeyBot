@@ -73,6 +73,10 @@ export default {
       $jsonLoad[commandDesc;$env[commandLocaleInfo;$get[commandKey];commandDescription]]
       $let[description;$arrayJoin[commandDesc;\n]]
 
+      $if[$get[description]==;
+        $newError[$tl[ui.help.noInfo]]
+      ]
+
       $arrayForEach[replacements;obj;
         $let[description;$replace[$get[description];$env[obj;0];$eval[$env[obj;1];false];-1]]
       ]

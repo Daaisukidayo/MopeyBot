@@ -487,7 +487,8 @@
     "relatedTitle": "# _📖 Related_",
     "none": "None",
     "detailed": "### _Use `{PREFIX}help (command)` for detailed information on a specific command!_",
-    "assistance": "### _Need assistance with a specific issue? [Join our official Discord server]({0})!_"
+    "assistance": "### _Need assistance with a specific issue? [Join our official Discord server]({0})!_",
+    "noInfo": "No information about this command!"
   },
 
   "switchlocale": {

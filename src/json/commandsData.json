@@ -466,6 +466,15 @@
   },
   {
     "commandAliases": [
+      "progress"
+    ],
+    "commandRelated": [
+      "lobby"
+    ],
+    "commandCategory": 4
+  },
+  {
+    "commandAliases": [
       "resume",
       "res",
       "continue"
