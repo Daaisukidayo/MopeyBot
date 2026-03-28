@@ -44,10 +44,6 @@ export default [{
       $return[invalid\_key|$env[key]]
     ]
 
-    $if[$arrayLength[args]==0;
-      $return[$env[value]]
-    ]
-
     $loop[$arrayLength[args];
       $let[i;$sub[$env[i];1]]
       $let[arg;$env[args;$get[i]]]
