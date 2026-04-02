@@ -30,11 +30,6 @@ export default {
       $addTextDisplay[$showRares]
       $addSeparator[Large]
       $showDesignedList[$env[list]]
-      $c[
-        $addSeparator[Large]
-        $addActionRow
-        $addButton[showSummary;$tl[ui.challenge.buttonLabelShowSummary];Success;📊]
-      ]
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
 
@@ -54,7 +49,6 @@ export default {
     $!jsonSet[newHistory;playType;$get[playType]]
     $!jsonSet[newHistory;difficulty;$env[challengeProgress;difficulty]]
     $!jsonSet[newHistory;raresList;$env[challengeProgress;list]]
-    $!jsonSet[newHistory;events;$env[challengeProgress;events]]
 
     $arrayPushJSON[history;$env[newHistory]]
     $setUserVar[challengeHistory;$env[history]]
