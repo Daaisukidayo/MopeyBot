@@ -26,6 +26,7 @@ export default {
     ]]
 
     $!jsonSet[userProfile;language;$get[langIndex]]
+    $!jsonSet[userProfile;ID;"$authorID"]
     $saveProfile
     $rulesEmbed
     $interactionUpdate
