@@ -291,16 +291,14 @@
       "## Note: only names of rare animals from `{PREFIX}snora` command are counted."
     ]
   },
-  "edithistory": {
-    "commandName": "Edit History",
+  "addhistory": {
+    "commandName": "Add History",
     "commandDescription": [
-      "## Edits your 1 hour luck challenge history.",
-      "## You have 2 options: __Add new page__ or __Edit existing page__",
-      "## 1. If you chose __Add new page__, a new menu with all available options will appear.",
-      "## 2. If you chose __Edit existing page__, you will need to provide the page you want to edit and sorting type.",
-      "### - These options are: `Points`, `Rares`, `Play Type`, `Difficulty`, `End Date` and `List of Rares`",
-      "### - `List of Rares` option is updating the list, so it's not removing previous rares",
-      "### - To remove a rare, set its count to `0`"
+      "## Adds a new configurable page to your 1 hour luck history.",
+      "## A new menu with all available options appears.",
+      "### - These options are: `Points`, `Rares`, `Play Type`, `Difficulty`, `End Date` and `List of Rares`.",
+      "### - `List of Rares` option is updating the list, so it's not removing previous rares. Only rares from the `{PREFIX}snora` command are allowed.",
+      "### - To remove a rare, set its count to `0`, e.g. `mar=0`."
     ]
   },
   "editlist": {
