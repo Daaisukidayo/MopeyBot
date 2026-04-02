@@ -353,54 +353,32 @@
     "commandCategory": 1
   },
   {
-    "commandAliases": [
-      "wardrobe",
-      "wr"
-    ],
-    "commandRelated": [
-      "play",
-      "shop"
-    ],
+    "commandAliases": ["wardrobe","wr"],
+    "commandRelated": ["play","shop"],
     "commandCategory": 2
   },
   {
-    "commandAliases": [
-      "chart"
-    ],
+    "commandAliases": ["chart"],
     "commandRelated": [],
     "commandCategory": 4
   },
   {
-    "commandAliases": [
-      "count"
-    ],
-    "commandRelated": [
-      "snora"
-    ],
+    "commandAliases": ["count"],
+    "commandRelated": ["snora"],
     "commandCategory": 4
   },
   {
-    "commandAliases": [
-      "addhistory",
-      "ehis",
-      "eh"
-    ],
-    "commandRelated": [
-      "history"
-    ],
+    "commandAliases": ["addhistory", "addhis", "ahis", "addh"],
+    "commandRelated": ["history"],
     "commandCategory": 4
   },
   {
-    "commandAliases": [
-      "editlist"
-    ],
+    "commandAliases": ["editlist"],
     "commandRelated": [],
     "commandCategory": 4
   },
   {
-    "commandAliases": [
-      "end"
-    ],
+    "commandAliases": ["end"],
     "commandRelated": [],
     "commandCategory": 4
   },
