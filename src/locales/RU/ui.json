@@ -124,7 +124,7 @@
     "allRewardsReceived": "## _Все награды получены! Приходите завтра!_",
     "completed": "-# 🟢 _Выполнено_",
     "inProgress": "-# 🔴 _В процессе {0}_",
-    "streak": "## _🔥 Текущая серия: `{0:ord}`!_"
+    "streak": "## _🔥 У вас `{0}я` Серия!_"
   },
 
   "invite": {
@@ -266,6 +266,7 @@
   },
 
   "editlist": {
+    "failed": "## _Не удалось отредактировать список!_",
     "invalidRare": "Редкого «`{0}`» не существует!",
     "invalidNumber": "Допускается только число больше 0 (или аргумент «`all`», если удаляется)!",
     "notInList": "Животное {0} отсутствует в вашем списке!",
@@ -366,8 +367,18 @@
   "history": {
     "noHistory": "## _На этой странице нечего отображать!_",
     "noHistoryObject": "## _Эта страница истории не существует!_",
+    "noRareAnimalProvided": "## _Не указано редкое животное!_",
+    "invalidRare": "## _Неверное редкое животное!_",
+    "buttonLabelFilterByRare": "Фильтровать по редкому",
+    "buttonLabelCancelFilter": "Отменить фильтр",
+    "modalTitleFilterByRare": "Фильтр по редкому",
+    "modalDescriptionFilterByRare": "Выберите редкое животное для фильтрации.",
+    "modalPlaceholderFilterByRare": "Введите имя редкого животного",
+    "modalTitleSortByRare": "Сортировка по редким",
+    "modalDescriptionSortByRare": "Выберите способ сортировки по редким животным.",
+    "modalPlaceholderSortByRare": "Введите критерий сортировки по редким",
 
-    "points": "# _Очки: `{0}`_",
+    "points": "# _Очки: `{0}`_", 
     "rares": "# _Редких: `{0}`_",
     "playType": "# _Тип игры: `{0}`_",
     "difficulty": "# _Сложность: `{0}`_",
@@ -464,6 +475,9 @@
     "invalidPage": "Недопустимый номер страницы",
     "invalidSorting": "Недопустимый тип сортировки",
     "unknownPage": "Страница больше не существует",
+    "buttonLabelSaveChanges": "Сохранить изменения",
+    "buttonLabelResetChanges": "Сбросить изменения",
+    "buttonLabelCancelChanges": "Отменить изменения",
 
     "chooseOptionTitle": "# _Выберите, что вы хотите редактировать!_"
   },
