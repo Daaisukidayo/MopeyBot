@@ -1,40 +1,25 @@
-// Message after the changes were made
+// Message after any change
 
 export default {
   type: 'interactionCreate',
-  allowedInteractionTypes: ['selectMenu', 'modal'],
+  allowedInteractionTypes: ['selectMenu', 'modal', 'button'],
   code: `
     $arrayLoad[IID;-;$customID]
-    $arrayLoad[passKeys;,;editHistoryCustomPoints,editHistoryCustomRares,editHistoryCustomPlayType,editHistoryCustomDifficulty,editHistoryCustomEndDate,editHistoryCustomTags,editHistoryCustomRaresList]
+    $arrayLoad[passKeys; ;editHistory_resetChanges editHistory_editPoints editHistory_editRares editHistory_editPlayType editHistory_editDifficulty editHistory_editEndDate editHistory_editRaresList]
     $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
     $jsonLoad[userProfile;$getProfile]
     $jsonLoad[funcCache;{}]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $let[value;$selectMenuValues]
-    $let[page;$env[IID;0]]
-    $let[sortType;$env[IID;1]]
-    $let[pageIndex;$math[$get[page] - 1]]
-
+    $addCooldown[history;true]
     $timezone[$env[userProfile;timezone]]
 
-    $jsonLoad[history;$getUserVar[challengeHistory]]
-    $jsonLoad[difficulties;$getGlobalVar[difficulties]]
-    $jsonLoad[playTypes;$getGlobalVar[playTypes]]
-    $jsonLoad[sortingOptions;$getGlobalVar[sortingOptions]]
+    $let[input;$selectMenuValues]
+    $jsonLoad[thisHistory;$getMessageVar[cachedThisHistory;$messageID]]
 
-    $onlyIf[$env[history;$get[pageIndex]]!=;
-      $newError[$tl[ui.addhistory.unknownPage]]
-    ]
+    $switch[$env[IID;0];
 
-    $addCooldown[edithistory;true]
-
-    $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
-    $jsonLoad[thisHistory;$env[history;$get[pageIndex]]]
-
-    $switch[$env[IID;2];
-
-      $case[editHistoryCustomPoints;
+      $case[editHistory_editPoints;
         $let[input;$input[editedPoints]]
         $onlyIf[$and[$isNumber[$get[input]];$get[input]>0];
           $newError[$tl[ui.history.listOptionInvalidPoints]]
@@ -43,7 +28,7 @@ export default {
       ]
 
 
-      $case[editHistoryCustomRares;
+      $case[editHistory_editRares;
         $let[input;$input[editedRaresQuantity]]
         $onlyIf[$and[$isNumber[$get[input]];$get[input]>0];
           $newError[$tl[ui.history.listOptionInvalidRares]]
@@ -52,28 +37,28 @@ export default {
       ]
 
 
-      $case[editHistoryCustomPlayType;
-        $!jsonSet[thisHistory;playType;$get[value]]
+      $case[editHistory_editPlayType;
+        $!jsonSet[thisHistory;playType;$get[input]]
       ]
 
 
-      $case[editHistoryCustomDifficulty;
-        $!jsonSet[thisHistory;difficulty;$get[value]]
+      $case[editHistory_editDifficulty;
+        $!jsonSet[thisHistory;difficulty;$get[input]]
       ]
 
 
-      $case[editHistoryCustomEndDate;
+      $case[editHistory_editEndDate;
         $let[date;$unparseDate[$input[editedEndDate]]]
 
         $onlyIf[$and[$get[date]>0;$get[date]<$getTimestamp];
           $newError[$tl[ui.history.listOptionInvalidDate]]
         ]
 
-        $!jsonSet[thisHistory;endDate;$get[date]]
+        $!jsonSet[thisHistory;endDate;"$get[date]"]
       ]
 
 
-      $case[editHistoryCustomRaresList;
+      $case[editHistory_editRaresList;
         $let[input;$replace[$input[editedRaresList];\n;;-1]]
         $arrayLoad[editedRaresList;,;$get[input]]
 
@@ -90,8 +75,8 @@ export default {
             $newError[$tl[ui.history.listOptionInvalidValue;$get[value];$env[elem]]]
           ]
 
-          $if[$get[value]>200;
-            $let[value;200]
+          $if[$get[value]>100;
+            $let[value;100]
           ]
           
           $if[$get[value]>0;
@@ -101,15 +86,20 @@ export default {
           ]
         ]
       ]
+
+      $case[editHistory_resetChanges;
+        $jsonLoad[cachedHistory;$getMessageVar[cachedHistory;$messageID]]
+        $jsonLoad[history;$env[cachedHistory;history]]
+        $jsonLoad[thisHistory;$env[history;$math[$env[cachedHistory;page] - 1]]]
+      ]
     ]
 
-    $!jsonSet[history;$get[pageIndex];$env[thisHistory]]
-    $setUserVar[challengeHistory;$env[history]]
+    $setMessageVar[cachedThisHistory;$env[thisHistory];$messageID]
 
     $historyEmbed[$env[thisHistory]]
     $editHistoryExtraEmbed
     $interactionUpdate
 
-    $newCommandTimeout[edithistory]
+    $newHistoryTimeout
   `
 }

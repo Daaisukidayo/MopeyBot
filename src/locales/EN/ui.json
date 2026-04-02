@@ -1,8 +1,8 @@
 {
   "args": {
-    "newPrefix": "new_prefix",
-    "shortRaresName": "short_name_of_a_rare",
-    "fullAnimalName": "full_name_of_an_animal",
+    "newPrefix": "New_Prefix",
+    "shortRaresName": "Rare_Animal",
+    "fullAnimalName": "Animal",
     "amount": "Amount",
     "tier": "Tier"
   },
@@ -270,7 +270,8 @@
     "invalidNumber": "Only a number greater than 0 (or argument «`all`» if removing) is allowed!",
     "notInList": "Animal {0} is not in your list!",
     "removed": "## ✅ _Removed `{0}` {1}_",
-    "added": "## ✅ _Added `{0}` {1}_"
+    "added": "## ✅ _Added `{0}` {1}_",
+    "failed": "## ❌ _Failed to add `{0}` {1}_"
   },
 
   "edittime": {
@@ -364,8 +365,14 @@
   },
 
   "history": {
-    "noHistory": "## _You haven't completed any challenge!_",
+    "noHistory": "## _There is nothing to show on this page!_",
     "noHistoryObject": "## _This history page does not exist!_",
+    "invalidPage": "Page does not exist anymore",
+    "providedPageIsNotANumber": "Argument is not a number!",
+    "noRareAnimalProvided": "In order to sort by rare animal, you need to provide one in `Filter` button!",
+    "unknownValue": "Unknown",
+    "invalidRare": "Invalid abbreviation provided!",
+
 
     "points": "# _Points: `{0}`_",
     "rares": "# _Rares: `{0}`_",
@@ -374,22 +381,21 @@
     "endDate": "# _End Date: {0}_",
     "tags": "# _Tags_",
 
-    "unknownValue": "Unknown",
-
     "buttonLabelPage": "Page {0}/{1}",
 
     "menuTitleSortBy": "Sort by",
     "optionNameSort": "Sort Type: {0}",
 
+    "buttonLabelFilterByRare": "Filter",
+    "buttonLabelCancelFilter": "Cancel",
+
     "buttonLabelDelete": "Delete",
     "buttonLabelEdit": "Edit",
 
-    "invalidPage": "Page does not exist anymore",
 
-    "modalTitleCustomPage": "Custom page",
-    "modalDescriptionCustomPage": "Enter page",
+    "modalTitleMoveToPage": "Move to a page",
+    "modalDescriptionMoveToPage": "Enter a page you want to move to.",
 
-    "customPageNotNumber": "Argument is not a number!",
 
     "listOptionUnknownListRare": "Unknown animal `{0}` in `{1}`!",
     "listOptionInvalidListValue": "Invalid value `{0}` in `{1}`!",
@@ -407,6 +413,16 @@
     "optionNameEndDate": "End Date",
     "optionNameTags": "Tags",
     "optionNameRaresList": "List of Rares",
+
+
+    "modalTitleFilterByRare": "Filter by rare animal",
+    "modalDescriptionFilterByRare": "Enter a rare animal to filter by.",
+    "modalPlaceholderFilterByRare": "Only abbreviations from the {PREFIX}snora command are allowed!",
+
+    "modalTitleSortByRare": "Sort by rare animal",
+    "modalDescriptionSortByRare": "Enter a rare animal to sort by.",
+    "modalPlaceholderSortByRare": "Only abbreviations from the {PREFIX}snora command are allowed!",
+
     
     "modalTitlePoints": "Editing Points",
     "modalDescriptionPoints": "Edit your Points",
@@ -424,7 +440,7 @@
     
     "modalTitleEndDate": "Editing Finishing Date",
     "modalDescriptionEndDate": "Edit your End date",
-    "modalPlaceholderEndDate": "YYYY-MM-DD, HH:MM:SS",
+    "modalPlaceholderEndDate": "DD month YYYY HH:MM:SS",
     
     "menuTitleTag": "Choose a Tag",
     "optionDescriptionTags": "(Toggle)",
@@ -432,7 +448,7 @@
     
     "modalTitleList": "Editing List of Rares",
     "modalDescriptionList": "Edit your list of rares",
-    "modalPlaceholderList": "<ShortRaresNameX>=<AmountX>,...\nSet <Amount> to 0 to remove",
+    "modalPlaceholderList": "<ShortRaresNameX>=<AmountX>, ...",
 
     "currentValue": "## _Current:_"
   },
@@ -465,7 +481,11 @@
     "invalidSorting": "Invalid sorting type.",
     "unknownPage": "The page does not exist anymore.",
 
-    "chooseOptionTitle": "# _Choose what you want to edit!_"
+    "chooseOptionTitle": "# _Choose what you want to edit!_",
+
+    "buttonLabelSaveChanges": "Save",
+    "buttonLabelResetChanges": "Reset",
+    "buttonLabelCancelChanges": "Cancel"
   },
 
   "rules": {

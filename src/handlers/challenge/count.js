@@ -51,7 +51,7 @@ export default {
       $!jsonSet[rawList;$get[animalID];$get[value]]
     ;i;true]
 
-    $jsonLoad[result;$generateList[$sortList[$env[rawList]];0]]
+    $jsonLoad[result;$generateList[$sortList[$env[rawList]]]]
       
     $jsonLoad[list;$env[result;l]]
     $let[totalPoints;$env[result;p]]

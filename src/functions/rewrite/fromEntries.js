@@ -5,7 +5,7 @@ export default {
     {
       name: "array",
       description: "Array or it's name of key-value pairs to convert into an object.",
-      type: "Array",
+      type: "Any",
       required: true,
     }
   ],

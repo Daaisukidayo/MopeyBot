@@ -1,4 +1,5 @@
-export default [{
+export default [
+{
   name: 'advancedTimeout',
   description: 'Sets an advanced timeout that persists when the bot is restarted.',
   params: [
@@ -26,7 +27,7 @@ export default [{
     {
       name: 'data',
       description: 'The data to include in the code.',
-      type: 'Object',
+      type: 'Json',
       required: false,
       rest: false,
     },
@@ -36,7 +37,7 @@ export default [{
     $let[rawTime;$trimLines[$replace[$env[time]; ;;-1]]]
     $let[time;$function[
       $if[$isNumber[$get[rawTime]];
-        $return[$get[rawTime]]
+        $return[$abs[$get[rawTime]]]
       ;
         $return[$parseString[$get[rawTime]]]
       ]
@@ -61,13 +62,12 @@ export default [{
         $return[false]
       ]
       
-      $jsonLoad[inputData;$env[data]]
-      $jsonLoad[keys;$jsonKeys[inputData]]
+      $jsonLoad[keys;$jsonKeys[data]]
 
       $c[Iterate through JSON keys and replace {keyName} in the code with values]
       $loop[$arrayLength[keys];
         $let[key;$env[keys;$math[$env[i] - 1]]]
-        $let[val;$env[inputData;$get[key]]]
+        $let[val;$env[data;$get[key]]]
         
         $let[code;$replace[$get[code];{$get[key]};$get[val];-1]]
       ;i;true]
@@ -195,8 +195,8 @@ export default [{
       name: 'rows',
       description: 'Rows per page',
       type: 'Number',
-      rest: false,
       required: true,
+      rest: false,
     }
   ],
   code: `

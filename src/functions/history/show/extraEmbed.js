@@ -1,27 +1,51 @@
 export default {
   name: "showHistoryExtraEmbed",
+  description: "Displays an extra embed with page buttons, sort menu, etc.",
+  params: [
+    {
+      name: "c",
+      description: "The cached history object.",
+      type: "Json",
+      required: true,
+    }
+  ],
   code: `
     $jsonLoad[sortingOptions;$getGlobalVar[sortingOptions]]
+    
+    $let[page;$env[c;page]]
+    $let[sortType;$env[c;sortType]]
+    $let[rareAnimalId;$env[c;rareAnimalId]]
+    $let[filter;$env[cachedHistory;filter]]
+    $jsonLoad[h;$env[c;history]]
+
+    $let[l;$arrayLength[h]]
+    $let[disableEditing;$not[$checkCondition[$get[l]>0]]]
+    $let[disablePages;$not[$checkCondition[$get[l]>1]]]
+
     $addContainer[
-      $if[$arrayLength[history]>0;
-        $addActionRow
-        $addButton[$get[page]-$get[sortType]-deleteHistoryPage-$authorID;$tl[ui.history.buttonLabelDelete];Danger;🗑️]
-        $addButton[$get[page]-$get[sortType]-editHistoryPage-$authorID;$tl[ui.history.buttonLabelEdit];Success;✏️]
+      $addActionRow
+      $addButton[showHistory_deletePage-$authorID;$tl[ui.history.buttonLabelDelete];Danger;🗑️;$get[disableEditing]]
+      $addButton[showHistory_editPage-$authorID;$tl[ui.history.buttonLabelEdit];Success;✏️;$get[disableEditing]]
+      
+      $addSeparator[Large]
+
+      $addActionRow
+      $addButton[showHistory_prevPage-$authorID;;Primary;⬅️;$get[disablePages]]
+      $addButton[showHistory_showPages-$authorID;$tl[ui.history.buttonLabelPage;$get[page];$get[l]];Primary;🔎;$get[disablePages]]
+      $addButton[showHistory_nextPage-$authorID;;Primary;➡️;$get[disablePages]]
+
+      $addSeparator[Large]
+
+      $addActionRow
+      $addStringSelectMenu[showHistory_sortingMenu-$authorID;$tl[ui.history.menuTitleSortBy];$get[disablePages]]
+      $arrayForEach[sortingOptions;option;
+        $addOption[$tl[ui.history.optionNameSort;$tl[data.sortingOptions.$env[option]]];;$env[option];;$checkCondition[$get[sortType]==$env[option]]]
       ]
 
-      $if[$arrayLength[history]>1;
-        $addSeparator[Large]
-        $addActionRow
-        $addButton[$get[page]-$get[sortType]-historyPageLeft-$authorID;;Primary;⬅️]
-        $addButton[$get[page]-$get[sortType]-historyPageCustom-$authorID;$tl[ui.history.buttonLabelPage;$get[page];$arrayLength[history]];Primary;🔎]
-        $addButton[$get[page]-$get[sortType]-historyPageRight-$authorID;;Primary;➡️]
-
-        $addSeparator[Large]
-        $addActionRow
-        $addStringSelectMenu[sortHis-$authorID;$tl[ui.history.menuTitleSortBy]]
-        $arrayForEach[sortingOptions;option;
-          $addOption[$tl[ui.history.optionNameSort;$tl[data.sortingOptions.$env[option]]];;$get[page]-$env[option];;$checkCondition[$get[sortType]==$env[option]]]
-        ]
+      $addActionRow
+      $addButton[showHistory_filterByRareButton-$authorID;$tl[ui.history.buttonLabelFilterByRare];Secondary;$getGlobalVar[filter]]
+      $if[$get[filter];
+        $addButton[showHistory_cancelFilterButton-$authorID;$tl[ui.history.buttonLabelCancelFilter];Danger;$getGlobalVar[filter]]
       ]
     ;$getGlobalVar[luckyColor]]
   `

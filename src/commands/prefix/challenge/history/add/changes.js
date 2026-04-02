@@ -1,11 +1,11 @@
-// Message after the changes were made
+// Message after making changes or after selecting 'Add new page'
 
 export default {
   type: 'interactionCreate',
   allowedInteractionTypes: ['selectMenu', 'modal'],
   code: `
     $arrayLoad[IID;-;$customID]
-    $arrayLoad[passKeys;,;editHistoryOptions,addNewHistoryPageModalPoints,addNewHistoryPageModalRares,addHistoryCustomPoints,addHistoryCustomRares,addHistoryCustomPlayType,addHistoryCustomDifficulty,addHistoryCustomEndDate,addHistoryCustomTags,addHistoryCustomRaresList]
+    $arrayLoad[passKeys;,;addNewHistoryPageModalPoints,addNewHistoryPageModalRares,addHistoryCustomPoints,addHistoryCustomRares,addHistoryCustomPlayType,addHistoryCustomDifficulty,addHistoryCustomEndDate,addHistoryCustomTags,addHistoryCustomRaresList]
     $let[value;$selectMenuValues]
 
     $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
@@ -65,7 +65,7 @@ export default {
           $newError[$tl[ui.history.listOptionInvalidDate]]
         ]
 
-        $!jsonSet[savedNewHistoryConfig;endDate;$get[date]]
+        $!jsonSet[savedNewHistoryConfig;endDate;"$get[date]"]
       ]
 
 
@@ -97,7 +97,7 @@ export default {
           ]
         ]
 
-        $jsonLoad[res;$generateList[$sortList[$env[savedNewHistoryConfig;raresList]];$env[savedNewHistoryConfig;difficulty]]]
+        $jsonLoad[res;$generateList[$sortList[$env[savedNewHistoryConfig;raresList]]]]
         $!jsonSet[savedNewHistoryConfig;points;$env[res;p]]
         $!jsonSet[savedNewHistoryConfig;rares;$env[res;r]]
       ]
@@ -108,7 +108,6 @@ export default {
     $historyEmbed[$env[savedNewHistoryConfig]]
     $addHistoryExtraEmbed
     $interactionUpdate
-    $!stopCommandTimeout[edithistory]
     $newCommandTimeout[addhistory]
   `
 }

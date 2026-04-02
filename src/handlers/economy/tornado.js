@@ -15,12 +15,12 @@ export default {
     $if[$and[$isNumber[$message];$env[userProfile;devMode]==1];
       $let[r;$message]
     ]
-    
+
     $if[1==$get[r];
-      $let[type;devil]
+      $let[type;devilTornadoes]
       $let[MC;$random[2500;4000]]
     ;
-      $let[type;normal]
+      $let[type;normalTornadoes]
       $let[MC;$random[300;600]]
     ]
 

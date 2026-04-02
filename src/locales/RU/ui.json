@@ -1,8 +1,8 @@
 {
   "args": {
-    "newPrefix": "новый_префикс",
-    "shortRaresName": "короткое_имя_редкого",
-    "fullAnimalName": "полное_имя_животного",
+    "newPrefix": "Новый_префикс",
+    "shortRaresName": "Редкое_Животное",
+    "fullAnimalName": "Животное",
     "amount": "Количество",
     "tier": "Уровень"
   },
@@ -364,7 +364,7 @@
   },
   
   "history": {
-    "noHistory": "## _Вы не завершили ни одного испытания!_",
+    "noHistory": "## _На этой странице нечего отображать!_",
     "noHistoryObject": "## _Эта страница истории не существует!_",
 
     "points": "# _Очки: `{0}`_",
@@ -386,10 +386,10 @@
 
     "invalidPage": "Страница больше не существует",
 
-    "modalTitleCustomPage": "Пользовательская страница",
-    "modalDescriptionCustomPage": "Введите страницу",
+    "modalTitleMoveToPage": "Перейти на страницу",
+    "modalDescriptionMoveToPage": "Введите страницу, на которую хотите перейти.",
 
-    "customPageNotNumber": "Аргумент не является числом!",
+    "providedPageIsNotANumber": "Аргумент не является числом!",
 
     "listOptionUnknownListRare": "Неизвестное животное `{0}` в `{1}`!",
     "listOptionInvalidListValue": "Недопустимое значение `{0}` в `{1}`!",
@@ -424,7 +424,7 @@
     
     "modalTitleEndDate": "Редактирование даты окончания",
     "modalDescriptionEndDate": "Отредактируйте дату окончания",
-    "modalPlaceholderEndDate": "YYYY-MM-DD, HH:MM:SS",
+    "modalPlaceholderEndDate": "ДД месяц (англ) ГГГГ ЧЧ:ММ:СС",
     
     "menuTitleTag": "Выберите тег",
     "optionDescriptionTags": "(Переключить)",
@@ -432,7 +432,7 @@
     
     "modalTitleList": "Редактирование списка редких",
     "modalDescriptionList": "Отредактируйте список редких",
-    "modalPlaceholderList": "<КороткоеИмяРедкогоX>=<КоличествоX>,...\nУстановите <Количество> на 0 для удаления",
+    "modalPlaceholderList": "<РедкоеX>=<КоличествоX>, ...",
 
     "currentValue": "## _Текущее:_"
   },

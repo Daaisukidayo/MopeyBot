@@ -1,5 +1,5 @@
 {
-  "devil": [
+  "devilTornadoes": [
     {
       "name": 0,
       "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/4/40/Deviltwisterface.png/revision/latest?cb=20200513000750",
@@ -32,7 +32,7 @@
     }
   ],
 
-  "normal": [
+  "normalTornadoes": [
     {
       "name": 0,
       "thumbnail": "https://static.wikia.nocookie.net/mopeio/images/e/e6/Dustdevil.png/revision/latest?cb=20200512234642",

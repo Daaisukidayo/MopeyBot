@@ -1,5 +1,8 @@
 [
-  "## • Mopey now supports slash commands!",
-  "## • Added new victory type in lobby!",
-  "## • `edittime` command has been removed, and its functionality has been transferred to the `time` command!"
+  "## • Fixed a bug where a new user couldn't confirm that he is a human!",
+  "## • Reworked `history` command! Filter by rare and sort by rare are now supported! Improved editing history! Cooldown has been increased from 1 minute to 5 minutes!",
+  "## • Deleted `edithistory` command! Instead, `addhistory` command is added!",
+  "## • Fixed invalid prediction bug in challenge commands!",
+  "## • Changed color of the luck-related commands!",
+  "## • Updated separator image in history and challenge commands!"
 ]

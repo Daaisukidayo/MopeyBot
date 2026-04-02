@@ -9,7 +9,7 @@ export default {
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]
     $jsonLoad[chartLimits;$getGlobalVar[chartLimits]]
 
-    $let[difficulty;$default[$toTitleCase[$default[$option[difficulty];$message]];$getGlobalVar[defaultDifficulty]]]
+    $let[difficulty;$toTitleCase[$nullish[$option[difficulty];$message;$getGlobalVar[defaultDifficulty]]]]
 
     $if[$isNumber[$get[difficulty]]==false;
       $jsonLoad[diff;$tl[data.difficulties]]
@@ -46,25 +46,14 @@ export default {
 
         $let[quantity;$default[$env[counts;$get[animalID]];0]]
 
-        $let[index;$getChartLimitIndex[$get[animalID];$get[difficulty]]]
-      
-        $if[$get[index]!=-1;
-          $jsonLoad[limitChartObj;$env[chartLimits;$get[difficulty];$get[index]]]
-          $let[limit;$env[limitChartObj;limit]]
-
-          $if[$get[quantity]==$get[limit];
-            $continue
-          ]
-        ]
-
         $letSum[quantity;1]
-        $!jsonSet[counts;$get[animalID];$get[quantity]]
+        $!jsonSet[counts;$get[animalID];$changeRareAmountIfExceededLimit[$get[quantity];$get[animalID];$get[difficulty]]]
       ]
 
       $jsonAssign[rawList;rawList;$env[counts]]
     ]
 
-    $jsonLoad[result;$generateList[$sortList[$env[rawList]];$get[difficulty]]]
+    $jsonLoad[result;$generateList[$sortList[$env[rawList]]]]
     
     $jsonLoad[list;$env[result;l]]
     $let[totalPoints;$env[result;p]]

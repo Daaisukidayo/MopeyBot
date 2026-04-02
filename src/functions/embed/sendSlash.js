@@ -1,6 +1,15 @@
 export default {
   name: 'send',
+  params: [
+    {
+      name: 'returnId',
+      type: "Boolean",
+      required: true,
+    }
+  ],
+  brackets: false,
   code: `
-    $if[$isSlashCommand;$interactionReply;$sendMessage[$channelID]]
+    $let[r;$nullish[$env[returnId];false]]
+    $return[$if[$isSlashCommand;$interactionReply[;$get[r]];$sendMessage[$channelID;;$get[r]]]]
   `
 }

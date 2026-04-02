@@ -3,6 +3,13 @@ export default {
   code: `
     $addContainer[
       $addActionRow
+      $addButton[uploadNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelUpload];Success;;$disabledUploadButton]
+      $addButton[resetNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelReset];Secondary]
+      $addButton[cancelNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelCancel];Primary]
+
+      $addSeparator[Large]
+
+      $addActionRow
       $addStringSelectMenu[historyChooseAdd-$authorID;$tl[ui.history.menuTitleChooseOptions]]
       $addOption[$tl[ui.history.optionNamePoints];;points]
       $addOption[$tl[ui.history.optionNameRares];;raresQuantity]
@@ -10,11 +17,6 @@ export default {
       $addOption[$tl[ui.history.optionNameDifficulty];;difficulty]
       $addOption[$tl[ui.history.optionNameEndDate];;endDate]
       $addOption[$tl[ui.history.optionNameRaresList];;raresList]
-
-      $addActionRow
-      $addButton[uploadNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelUpload];Success;;$disabledUploadButton]
-      $addButton[resetNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelReset];Secondary]
-      $addButton[cancelNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelCancel];Primary]
     ;$getGlobalVar[luckyColor]]
   `
 }

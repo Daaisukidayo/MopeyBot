@@ -87,12 +87,13 @@
   },
 
   "sortingOptions": {
-    "0": "Date",
-    "1": "Points",
-    "2": "Rares"
+    "0": "Ending Date",
+    "1": "Total Points",
+    "2": "Rares quantity",
+    "3": "Rare animal"
   },
 
-  "devil": {
+  "devilTornadoes": {
     "0": "Rare Devil Twister",
     "1": "Rare Devil Dust Twister",
     "2": "Rare Devil Tsunami",
@@ -101,7 +102,7 @@
     "5": "Rare Devil Tornado"
   },
 
-  "normal": {
+  "normalTornadoes": {
     "0": "Dust Tornado",
     "1": "Tsunami",
     "2": "Fire Tornado",

@@ -8,20 +8,10 @@ export default {
       type: "Object",
       required: true,
     },
-    {
-      name: "difficulty",
-      description: "Difficulty to include while calculating points|rares and limiting some rare animals.",
-      required: false,
-    }
   ],
   code: `
-    $let[D;$nullish[$env[difficulty];$getGlobalVar[defaultDifficulty]]]
-
     $jsonLoad[listEntries;$advJsonEntries[$env[caught_rares_list]]]
     $jsonLoad[result;{}]
-    $c[
-      $jsonLoad[chartLimits;$dump[$getGlobalVar[chartLimits];$get[D]]]
-    ]
 
     $let[P;0]
     $let[R;0]
@@ -31,19 +21,6 @@ export default {
       $let[count;$env[entry;1]]
 
       $jsonLoad[data;$getRareFromCDB[$get[animalID]]]
-      
-      $c[
-        $let[index;$getChartLimitIndex[$get[animalID];$get[D]]]
-        
-        $if[$get[index]!=-1;
-          $jsonLoad[limitChartObj;$env[chartLimits;$get[index]]]
-          $let[limit;$env[limitChartObj;limit]]
-  
-          $if[$get[count]>$get[limit];
-            $let[count;$get[limit]]
-          ]
-        ]
-      ]
       
       $letSum[P;$math[$env[data;points] * $get[count]]]
       $letSum[R;$get[count]]

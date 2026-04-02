@@ -1,4 +1,4 @@
-export default {
+export default [{
   name: 'handleHistory',
   code: `
     $reply
@@ -15,19 +15,31 @@ export default {
     $let[pageIndex;0]
     $let[sortType;0]
 
-    $onlyIf[$arrayLength[history]>0;
-      $addContainer[
-        $addAuthorDisplay
-        $addTextDisplay[$tl[ui.history.noHistory]]
-      ;$getGlobalVar[luckyColor]]
-      $send
-    ]
-
     $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
+    $jsonLoad[thisHistory;$env[history;$get[pageIndex]]]
 
-    $historyEmbed[$env[history;$get[pageIndex]]]
-    $showHistoryExtraEmbed
+    $jsonLoad[cachedHistory;$getGlobalVar[baseCachedHistory]]
+    $!jsonSet[cachedHistory;page;$get[page]]
+    $!jsonSet[cachedHistory;sortType;$get[sortType]]
+    $!jsonSet[cachedHistory;history;$env[history]]
 
-    $newCommandTimeout
+    $historyEmbed[$env[thisHistory]]
+    $showHistoryExtraEmbed[$env[cachedHistory]]
+    $let[mid;$send[true]]
+
+    $setMessageVar[cachedHistory;$env[cachedHistory];$get[mid]]
+
+    $newHistoryTimeout
   `
-}
+},{
+  name: 'newHistoryTimeout',
+  code: `
+    $let[mid;$nullish[$get[mid];$messageID]]
+    $!stopAdvancedTimeout[history-$authorID]
+    $!advancedTimeout[$esc[
+      $deleteMessageVar[cachedHistory;{messageId}]
+      $deleteMessageVar[cachedThisHistory;{messageId}]
+      $!deleteMessage[{channelId};{messageId}]
+    ];$getGlobalVar[history_cooldown];history-$authorID;{"messageId": "$get[mid]", "channelId": "$channelID"}]
+  `
+}]

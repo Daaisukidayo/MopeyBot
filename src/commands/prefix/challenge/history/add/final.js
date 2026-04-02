@@ -16,9 +16,10 @@ export default {
     $jsonLoad[history;$getUserVar[challengeHistory]]
 
     $jsonLoad[newHistory;$getGlobalVar[baseHistoryPage]]
+    $!jsonSet[newHistory;id;$randomUUID]
     $!jsonSet[newHistory;points;$env[savedNewHistoryConfig;points]]
     $!jsonSet[newHistory;rares;$env[savedNewHistoryConfig;rares]]
-    $!jsonSet[newHistory;endDate;$env[savedNewHistoryConfig;endDate]]
+    $!jsonSet[newHistory;endDate;"$env[savedNewHistoryConfig;endDate]"]
     $!jsonSet[newHistory;playType;$env[savedNewHistoryConfig;playType]]
     $!jsonSet[newHistory;difficulty;$env[savedNewHistoryConfig;difficulty]]
     $!jsonSet[newHistory;raresList;$env[savedNewHistoryConfig;raresList]]

@@ -10,8 +10,12 @@ export default [{
   allowedInteractionTypes: ["button", "modal", "selectMenu"],
   code: `
     $arrayLoad[IID;-;$customID]
-    $arrayLoad[menuValues;-;$selectMenuValues]
-    $arrayLoad[passKeys;,;sortHis,historyPageLeft,historyPageRight,customPage,deleteHistoryPage,historyPageCustom]
+    $jsonLoad[passKeys;[
+      "showHistory_changePageInModal", "showHistory_deletePage", "showHistory_showPages",
+      "showHistory_sortingMenu", "showHistory_prevPage", "showHistory_nextPage",
+      "showHistory_filterByRareButton", "showHistory_filterByRare", "showHistory_sortByRare",
+      "showHistory_cancelFilterButton", "editHistory_cancelChanges", "editHistory_saveChanges"
+    \\]]
     $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
 
     $jsonLoad[userProfile;$getProfile]
@@ -23,92 +27,167 @@ export default [{
 
     $timezone[$env[userProfile;timezone]]
 
-    $jsonLoad[history;$getUserVar[challengeHistory]]
+    $fn[getPageIndex;$return[$math[$env[page] - 1]];page]
 
-    $onlyIf[$arrayLength[history]>0;
-      $addContainer[
-        $addAuthorDisplay
-        $addTextDisplay[$tl[ui.history.noHistory]]
-      ;$getGlobalVar[luckyColor]]
-    ]
+    $jsonLoad[cachedHistory;$getMessageVar[cachedHistory;$messageID]]
+    $jsonLoad[history;$env[cachedHistory;history]]
 
-    $let[IID;$env[IID;2]]
-    $let[input;$input[historyPage]]
-    $let[page;$default[$env[menuValues;0];$env[IID;0]]]
-    $let[pageIndex;$math[$get[page] - 1]]
-    $let[sortType;$default[$env[menuValues;1];$env[IID;1]]]
-
-    $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
-    
-
-    $if[$arrayIncludes[IID;historyPageCustom];
-      $modal[$get[page]-$get[sortType]-customPage-$authorID;$tl[ui.history.modalTitleCustomPage]]
-      $addTextInput[historyPage;$tl[ui.history.modalDescriptionCustomPage];Short;true;;;1;5]
-      $showModal
-      $stop
-    ]
+    $let[IID;$env[IID;0]]
+    $let[input;$input[showHistory_modalInput]]
+    $let[page;$env[cachedHistory;page]]
+    $let[sortType;$nullish[$selectMenuValues;$env[cachedHistory;sortType];0]]
+    $let[rareAnimalId;$env[cachedHistory;rareAnimalId]]
+    $let[filter;$env[cachedHistory;filter]]
     
 
     $switch[$get[IID];
-      $case[historyPageLeft;
+      $case[showHistory_prevPage;
         $letSub[page;1]
-        $if[$get[page]<=0;
-          $let[page;$arrayLength[history]]
-        ]
       ]
 
 
-      $case[historyPageRight;
+      $case[showHistory_nextPage;
         $letSum[page;1]
-        $if[$get[page]>$arrayLength[history];
-          $let[page;1]
-        ]
       ]
 
 
-      $case[customPage;
+      $case[showHistory_changePageInModal;
         $onlyIf[$isNumber[$get[input]];
-          $newError[$tl[ui.history.customPageNotNumber]]
+          $newError[$tl[ui.history.providedPageIsNotANumber]]
         ]
 
         $let[page;$get[input]]
-        $if[$get[page]>$arrayLength[history];
-          $let[page;$arrayLength[history]]
-        ]
-        $if[$get[page]<=0;
-          $let[page;1]
-        ]
       ]
 
-      $case[deleteHistoryPage;
 
-        $!arraySplice[history;$get[pageIndex];1]
+      $case[showHistory_deletePage;
+        $let[id;$env[history;$callFn[getPageIndex;$get[page]];id]]
 
-        $arrayAdvancedSort[history;A;B;
-          $math[$env[A;endDate] - $env[B;endDate]]
-        ;history]
+        $onlyIf[$get[id]!=]
 
+        $jsonLoad[history;$getUserVar[challengeHistory]]
+        $let[index;$arrayFindIndex[history;page;$env[page;id]==$get[id]]]
+
+        $onlyIf[$get[index]!=-1]
+
+        $!arraySplice[history;$get[index];1]
         $setUserVar[challengeHistory;$env[history]]
-        
-        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
-        
-        $if[$get[page]>$arrayLength[history];
-          $let[page;$arrayLength[history]]
+        $if[$get[filter];
+          $arrayFilter[history;page;$env[page;raresList;$get[rareAnimalId]]!=;history]
         ]
+        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
+      ]
+
+
+      $case[showHistory_showPages;
+        $modal[showHistory_changePageInModal-$authorID;$tl[ui.history.modalTitleMoveToPage]]
+        $addTextInput[showHistory_modalInput;$tl[ui.history.modalDescriptionMoveToPage];Short;true;;;1;5]
+        $showModal
+        $stop
+      ]
+
+
+      $case[showHistory_sortingMenu;
+        $if[$and[$get[sortType]==3;$get[rareAnimalId]==null];
+          $modal[showHistory_sortByRare-$authorID;$tl[ui.history.modalTitleSortByRare]]
+          $addTextInput[showHistory_modalInput;$tl[ui.history.modalDescriptionSortByRare];Short;true;$tl[ui.history.modalPlaceholderSortByRare]]
+          $showModal
+          $stop
+        ]
+
+        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
+        $!jsonSet[cachedHistory;sortType;$get[sortType]]
+      ]
+
+
+      $case[showHistory_sortByRare;
+        $jsonLoad[allRares;$getGlobalVar[allRares]]
+        $onlyIf[$arrayIncludes[allRares;$get[input]];
+          $newError[$tl[ui.history.invalidRare]]
+        ]
+        $let[rareAnimalId;$getRareAnimalID[$get[input]]]
+        $let[sortType;3]
+        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
+        $!jsonSet[cachedHistory;sortType;$get[sortType]]
+      ]
+
+
+      $case[showHistory_filterByRareButton;
+        $modal[showHistory_filterByRare-$authorID;$tl[ui.history.modalTitleFilterByRare]]
+        $addTextInput[showHistory_modalInput;$tl[ui.history.modalDescriptionFilterByRare];Short;true;$tl[ui.history.modalPlaceholderFilterByRare]]
+        $showModal
+        $stop
+      ]
+
+
+      $case[showHistory_filterByRare;
+        $jsonLoad[allRares;$getGlobalVar[allRares]]
+        $onlyIf[$arrayIncludes[allRares;$get[input]];
+          $newError[$tl[ui.history.invalidRare]]
+        ]
+        $let[rareAnimalId;$getRareAnimalID[$get[input]]]
+        $let[page;1]
+        $jsonLoad[history;$getUserVar[challengeHistory]]
+        $arrayFilter[history;page;$env[page;raresList;$get[rareAnimalId]]!=;history]
+        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
+        $!jsonSet[cachedHistory;filter;true]
+      ]
+
+
+      $case[showHistory_cancelFilterButton;
+        $let[page;1]
+        $jsonLoad[history;$getUserVar[challengeHistory]]
+        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
+        $!jsonSet[cachedHistory;filter;false]
+      ]
+
+      $case[editHistory_cancelChanges;
+        $deleteMessageVar[cachedThisHistory;$messageID]
+      ]
+
+      $case[editHistory_saveChanges;
+        $jsonLoad[cachedThisHistory;$getMessageVar[cachedThisHistory;$messageID]]
+        $jsonLoad[challengeHistory;$getUserVar[challengeHistory]]
+
+        $let[cachedThisHistoryId;$env[cachedThisHistory;id]]
+        $let[i;$arrayFindIndex[challengeHistory;page;$env[page;id]==$get[cachedThisHistoryId]]]
+
+        $onlyIf[$get[i]!=-1]
+
+        $!jsonSet[challengeHistory;$get[i];$env[cachedThisHistory]]
+        $!jsonSet[history;$callFn[getPageIndex;$get[page]];$env[cachedThisHistory]]
+        $setUserVar[challengeHistory;$env[challengeHistory]]
+        $deleteMessageVar[cachedThisHistory;$messageID]
       ]
     ]
 
-    $let[pageIndex;$math[$get[page] - 1]]
+    $let[page;$if[$get[page]<=0;$arrayLength[history];$if[$get[page]>$arrayLength[history];1;$get[page]]]]
 
-    $jsonLoad[thisHistory;$env[history;$get[pageIndex]]]
-
-    $onlyIf[$env[thisHistory]!=;
-      $newError[$tl[ui.history.invalidPage]]
+    $if[$env[thisHistory]==;
+      $jsonLoad[thisHistory;$env[history;$callFn[getPageIndex;$get[page]]]]
     ]
+
+    $c[Updating "page" if it's value was changed]
+    $if[$env[cachedHistory;page]!=$get[page];
+      $!jsonSet[cachedHistory;page;$get[page]]
+    ]
+
+    $c[Updating "rareAnimalId" if it's value was changed]
+    $if[$env[cachedHistory;rareAnimalId]!=$get[rareAnimalId];
+      $!jsonSet[cachedHistory;rareAnimalId;$get[rareAnimalId]]
+    ]
+
+    $c[Updating "history" if sorting or any page was changed]
+    $if[$advJsonStringify[$env[cachedHistory;history];0]!=$jsonStringify[history;0];
+      $!jsonSet[cachedHistory;history;$env[history]]
+    ]
+    
+    $setMessageVar[cachedHistory;$env[cachedHistory];$messageID]
 
     $historyEmbed[$env[thisHistory]]
-    $showHistoryExtraEmbed
+    $showHistoryExtraEmbed[$env[cachedHistory]]
     $interactionUpdate
-    $newCommandTimeout[history]
+
+    $newHistoryTimeout
   `
 }]

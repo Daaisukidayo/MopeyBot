@@ -51,8 +51,8 @@ export default {
 
     $if[$arrayLength[events]>5;
       $arraySlice[events;recent;-$get[limit]]
-      $arrayMap[events;e;$return[$env[e;0]];times]
-      $arrayMap[events;e;$return[$env[e;1]];scores]
+      $arrayMap[recent;e;$return[$env[e;0]];times]
+      $arrayMap[recent;e;$return[$env[e;1]];scores]
 
       $loop[$arrayLength[recent];
         $let[gain;$math[$env[scores;$env[i]] - $env[scores;$sub[$env[i];1]]]]

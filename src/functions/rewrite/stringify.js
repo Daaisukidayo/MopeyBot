@@ -23,6 +23,6 @@ export default {
     $if[$typeof[$env[json]]!=object;
       $return[null]
     ]
-    $return[$jsonStringify[json;$default[$env[space];0]]]
+    $return[$jsonStringify[json;$nullish[$env[space];0]]]
   `
 }

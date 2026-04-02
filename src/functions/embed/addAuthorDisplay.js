@@ -15,7 +15,7 @@ export default {
       $if[$env[userProfile;acceptedRules];
         $return[# \`$username[$env[userProfile;ID]]#$env[userProfile;MUID]\`]
       ]
-      $return[# \`$username\`]
+      $return[# \`$username[$env[userProfile;ID]]\`]
     ]]
 
     $if[$get[hideUserAvatar];

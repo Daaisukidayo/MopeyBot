@@ -1,10 +1,10 @@
 export default { 
   name: "getRareAnimalID",
-  description: "Returns the animal ID of a rare based on one of its aliases (snora).",
+  description: "Returns the rare animal's ID based on one of its abbreviations from the snora command.",
   params: [
     {
       name: "alias",
-      description: "Alias (snora) of the rare animal.",
+      description: "Abbreviation of the rare animal.",
       required: true,
     }
   ],

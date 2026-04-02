@@ -1,6 +1,6 @@
 export default {
   name: "startTimer",
-  description: "Sets the luck challenge timer for the user.",
+  description: "Sets 1 hour luck timer for the provided user.",
   params: [
     {
       name: "user_id",
@@ -37,6 +37,10 @@ export default {
             ;$getGlobalVar[luckyColor]]
           ]
         ] 
+      ]
+
+      $if[$getUserVar[1htime|$channelID;$get[id]]>3600;
+        $stopTimer[$get[id]]
       ]
     ;1s;clg_timer-$get[id]|$channelID]
   `

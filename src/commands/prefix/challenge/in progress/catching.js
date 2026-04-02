@@ -104,7 +104,7 @@ export default {
         $addSeparator[Large]
       ]
       
-      $addTextDisplay[$cropText[$arrayJoin[caught;\n];0;3900;...]]
+      $addTextDisplay[$cropText[$arrayJoin[caught;\n];0;3700;...]]
       $addSeparator[Large]
       $addTextDisplay[$showPoints «\`+$get[points]\`»]
       $addTextDisplay[$showPredict]

@@ -284,10 +284,11 @@
     "commandName": "Count",
     "commandDescription": [
       "## Counts points of each provided rare!",
-      "### No need to participate in a 1 hour Luck Challenge, instead you need to write all the names of rare animals in one message! ",
-      "## Usage: {PREFIX}count <...rares=quantity>",
+      "### No need to participate in a 1 hour Luck Challenge, instead you need to write all the names of rare animals in one message!",
+      "## Usage: `{PREFIX}count <rare> <rare=quantity> ...`",
       "### Example 1: `{PREFIX}count kbt cht mar ...`",
-      "### Example 2: `{PREFIX}count kbt=3 cht=2 mar=1 ...`"
+      "### Example 2: `{PREFIX}count kbt=3 cht=2 mar=1 ...`",
+      "## Note: only names of rare animals from `{PREFIX}snora` command are counted."
     ]
   },
   "edithistory": {
@@ -309,16 +310,6 @@
       "### Usage: `{PREFIX}editlist <rare> [+ | -] <quantity>`",
       "### Example: `{PREFIX}editlist mar + 1` -> Adds 1 Markhor to your list",
       "### Example: `{PREFIX}editlist mar - all` -> Removes all Markhors from your list",
-      "{BRACKETS_INFO}"
-    ]
-  },
-  "edittime": {
-    "commandName": "Edit Time",
-    "commandDescription": [
-      "## Edits your time in 1 hour Luck Challenge!",
-      "### Usage: `{PREFIX}edittime [<MM:SS> | <seconds>]` (time passed)",
-      "### Example: `{PREFIX}edittime 30:00`",
-      "### Example: `{PREFIX}edittime 1800`",
       "{BRACKETS_INFO}"
     ]
   },
@@ -394,8 +385,9 @@
     "commandName": "Time",
     "commandDescription": [
       "## Shows the time passed in the 1 hour Luck Challenge!",
-      "## The time can be edited. Usage: `{PREFIX}time <new_time>`",
-      "## Your new time must be from 1 to 3599 | in format «`MM:SS`» | in format «`0m0s`»"
+      "## The time can also be edited. Usage: `{PREFIX}time <new_time>`",
+      "## The `<new_time>` must be a number of seconds from 1 to 3599 | in format «`MM:SS`» | in format «`0m0s`»",
+      "{BRACKETS_INFO}"
     ]
   },
   "progress": {

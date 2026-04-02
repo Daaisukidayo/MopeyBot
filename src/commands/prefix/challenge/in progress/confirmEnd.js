@@ -47,9 +47,10 @@ export default {
 
     $jsonLoad[newHistory;$getGlobalVar[baseHistoryPage]]
 
+    $!jsonSet[newHistory;id;$randomUUID]
     $!jsonSet[newHistory;points;$env[challengeProgress;points]]
     $!jsonSet[newHistory;rares;$env[challengeProgress;rares]]
-    $!jsonSet[newHistory;endDate;$getTimestamp]
+    $!jsonSet[newHistory;endDate;"$getTimestamp"]
     $!jsonSet[newHistory;playType;$get[playType]]
     $!jsonSet[newHistory;difficulty;$env[challengeProgress;difficulty]]
     $!jsonSet[newHistory;raresList;$env[challengeProgress;list]]

@@ -9,6 +9,8 @@ export default {
   defaultPlayType: 0,
   defaultVictoryType: 0,
 
+  lobbyInactiveTime: 1_800_000,
+
   victoriesMap: {
     0: "points",
     1: "rares"

@@ -9,6 +9,8 @@ export default {
   brackets: false,
   description: "Adds a special timeout that deletes the message after a specified time.",
   code: `
+    $if[$authorID==$botOwnerID;$return]
+
     $let[mid;$function[
       $if[$isPrefixCommand;
         $return[$sendMessage[$channelID;;true]]

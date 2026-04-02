@@ -1,20 +1,19 @@
 export default {
   name: 'nullish',
+  description: "Checks every provided argument and return one if it's not empty, null or undefined",
   params: [
     {
-      name: 'leftValue',
+      name: 'arguments',
       required: true,
-    },
-    {
-      name: 'rightValue',
-      required: true,
+      rest: true
     },
   ],
+  output: "String",
   code: `
-    $if[$includes['$env[leftValue]';'null';'undefined';''];
-      $return[$env[rightValue]]
-    ;
-      $return[$env[leftValue]]
+    $arrayForEach[arguments;argument;
+      $if[$isOneOf[$env[argument];null;undefined;]==false;
+        $return[$env[argument]]
+      ]
     ]
   `
 }
