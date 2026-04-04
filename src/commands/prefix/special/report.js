@@ -18,9 +18,9 @@ export default [{
     $modal[reportModal-$authorid;$tl[ui.report.modalTitle]]
     $addTextInput[about;$tl[ui.report.textInputNameAbout];Short;true;$tl[ui.report.textInputPlaceholderAbout]]
     $addTextInput[issue;$tl[ui.report.textInputNameIssue];Paragraph;true;$tl[ui.report.textInputPlaceholderIssue]]
-    $addLabel[$tl[ui.report.labelName];
-      $addFileUpload[modalFile;;10]
-    ;$tl[ui.report.labelDescription];false]
+    $addLabel[$tl[ui.report.labelName];$tl[ui.report.labelDescription];
+      $addFileUpload[modalFile;;10;false]
+    ]
     $showModal
     $newCommandTimeout[report]
   `
