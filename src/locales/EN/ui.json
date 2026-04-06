@@ -16,12 +16,11 @@
 
   "special": {
     "interactionFail": "## _You can't interract with this message anymore!_",
-    "interactionInvalidAuthor": "## _This button is not for you!_",
+    "interactionInvalidAuthor": "## _This interaction is not for you!_",
     "caughtRares": "## _{0}, you have caught `{1}` rares in `{2}`!_",
     "botDisabled": "The bot is currently disabled for maintenance. Please try again later.",
     "commandDisabled": "This command is currently disabled for maintenance. Please try again later.",
-    "maximum": "max",
-    "disabledCommand": "This command is currently disabled for maintenance. Please try again later."
+    "maximum": "max"
   },
 
   "cooldown": {
@@ -49,17 +48,6 @@
     "pfpBy": "# _Bot's profile picture by_",
     "artists": "# _Artists_",
     "madeWithLove": "### _Made with love 💖_"
-  },
-
-  "caughtRares": {
-    "loading": "Loading...",
-    "totalCaughtRares": "Total caught rares in «{0}» mode",
-    "page": "Page: {0}",
-    "quantity": "Quantity: {0}",
-    "rarityInfo": "Rarity: {0}",
-    "reward": "Reward: {0}",
-    "setRaretryMode": "Set raretry mode to {0}",
-    "yourRaretryMode": "Your raretry mode is set to {0}"
   },
 
   "prefix": {
@@ -274,10 +262,6 @@
     "failed": "## ❌ _Failed to add `{0}` {1}_"
   },
 
-  "edittime": {
-    "invalidTime": "Your new time must be bigger than or equal to 0, lower than 3600 or in format «`MM:SS`»"
-  },
-
   "count": {
     "title": "# _1 hour luck challenge points counting_",
     "unknownRares": "# _Unknown rares_"
@@ -354,22 +338,18 @@
     "buttonLabelSettings": "Show Settings",
     "buttonLabelCloseManually": "Close Manually (Host only)",
 
-    "menuTitleChooseTags": "Choose Tags",
     "menuTitleChooseDifficulty": "Choose Difficulty",
     "menuTitleChooseMode": "Choose Mode",
     "menuTitleChooseVictoryType": "Choose Victory Type",
     "menuTitleGiveHost": "Give Host",
 
-    "optionDescriptionToggle": "(Toggle)",
     "optionDescriptionSelect": "(Select)"
   },
 
   "history": {
     "noHistory": "## _There is nothing to show on this page!_",
     "noHistoryObject": "## _This history page does not exist!_",
-    "invalidPage": "Page does not exist anymore",
     "providedPageIsNotANumber": "Argument is not a number!",
-    "noRareAnimalProvided": "In order to sort by rare animal, you need to provide one in `Filter` button!",
     "unknownValue": "Unknown",
     "invalidRare": "Invalid abbreviation provided!",
 
@@ -379,11 +359,9 @@
     "playType": "# _Play Type: `{0}`_",
     "difficulty": "# _Difficulty: `{0}`_",
     "endDate": "# _End Date: {0}_",
-    "tags": "# _Tags_",
 
     "buttonLabelPage": "Page {0}/{1}",
 
-    "menuTitleSortBy": "Sort by",
     "optionNameSort": "Sort Type: {0}",
 
     "buttonLabelFilterByRare": "Filter",
@@ -392,9 +370,24 @@
     "buttonLabelDelete": "Delete",
     "buttonLabelEdit": "Edit",
 
+    "deletePageWarning": "## _Are you sure you want to delete this page?_",
+    "buttonLabelConfirm": "Confirm",
+    "buttonLabelDecline": "Decline",
+
+    "buttonLabelSaveChanges": "Save",
+    "buttonLabelResetChanges": "Reset",
+    "buttonLabelCancelChanges": "Cancel",
 
     "modalTitleMoveToPage": "Move to a page",
     "modalDescriptionMoveToPage": "Enter a page you want to move to.",
+
+    "modalTitleFilterByRare": "Filter by rare animal",
+    "modalDescriptionFilterByRare": "Enter a rare animal to filter by.",
+    "modalPlaceholderFilterByRare": "Only abbreviations from the {PREFIX}snora command are allowed!",
+
+    "modalTitleSortByRare": "Sort by rare animal",
+    "modalDescriptionSortByRare": "Enter a rare animal to sort by.",
+    "modalPlaceholderSortByRare": "Only abbreviations from the {PREFIX}snora command are allowed!",
 
 
     "listOptionUnknownListRare": "Unknown animal `{0}` in `{1}`!",
@@ -413,16 +406,6 @@
     "optionNameEndDate": "End Date",
     "optionNameTags": "Tags",
     "optionNameRaresList": "List of Rares",
-
-
-    "modalTitleFilterByRare": "Filter by rare animal",
-    "modalDescriptionFilterByRare": "Enter a rare animal to filter by.",
-    "modalPlaceholderFilterByRare": "Only abbreviations from the {PREFIX}snora command are allowed!",
-
-    "modalTitleSortByRare": "Sort by rare animal",
-    "modalDescriptionSortByRare": "Enter a rare animal to sort by.",
-    "modalPlaceholderSortByRare": "Only abbreviations from the {PREFIX}snora command are allowed!",
-
     
     "modalTitlePoints": "Editing Points",
     "modalDescriptionPoints": "Edit your Points",
@@ -442,10 +425,6 @@
     "modalDescriptionEndDate": "Edit your End date",
     "modalPlaceholderEndDate": "DD month YYYY HH:MM:SS",
     
-    "menuTitleTag": "Choose a Tag",
-    "optionDescriptionTags": "(Toggle)",
-    "currentTags": "## _Current: `{0}`_",
-    
     "modalTitleList": "Editing List of Rares",
     "modalDescriptionList": "Edit your list of rares",
     "modalPlaceholderList": "<ShortRaresNameX>=<AmountX>, ...",
@@ -463,29 +442,6 @@
     "buttonLabelCancel": "Cancel",
 
     "cancelNewHistoryPageTitle": "# _Adding the new history page is canceled!_"
-  },
-
-  "edithistory": {
-    "welcomeTitle": "# _Welcome to the history editor!_",
-    "menuTitleEditHistoryOptions": "Choose an option!",
-    "optionNameAddPage": "Add new page",
-    "optionNameEditPage": "Edit existing page",
-
-    "modalTitleEditExistingPage": "Editing existing history page",
-    "modalDescriptionEnterExistingPage": "Page number",
-    "modalPlaceholderEnterExistingPage": "Enter page number. Must be from 1 to {0}!",
-    "modalNameSorting": "Sorting type",
-    "menuTitleChooseSortingType": "Choose a sorting type",
-
-    "invalidPage": "Invalid page number.",
-    "invalidSorting": "Invalid sorting type.",
-    "unknownPage": "The page does not exist anymore.",
-
-    "chooseOptionTitle": "# _Choose what you want to edit!_",
-
-    "buttonLabelSaveChanges": "Save",
-    "buttonLabelResetChanges": "Reset",
-    "buttonLabelCancelChanges": "Cancel"
   },
 
   "rules": {

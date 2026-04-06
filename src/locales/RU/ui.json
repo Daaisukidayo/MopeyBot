@@ -16,12 +16,11 @@
 
   "special": {
     "interactionFail": "## _Вы больше не можете взаимодействовать с этим сообщением!_",
-    "interactionInvalidAuthor": "## _Эта кнопка не для Вас!_",
+    "interactionInvalidAuthor": "## _Это взаимодействие не для Вас!_",
     "caughtRares": "## _{0}, Вы поймали `{1}` редких в `{2}`!_",
     "botDisabled": "Бот в данный момент отключён на обслуживание. Пожалуйста, попробуйте позже.",
     "commandDisabled": "Эта команда в данный момент отключена на обслуживание. Пожалуйста, попробуйте позже.",
-    "maximum": "макс",
-    "disabledCommand": "Эта команда отключена на обслуживание. Пожалуйста, попробуйте позже."
+    "maximum": "макс"
   },
   
   "cooldown": {
@@ -49,17 +48,6 @@
     "pfpBy": "# _Аватар бота от_",
     "artists": "# _Художники_",
     "madeWithLove": "### _Создано с любовью 💖_"
-  },
-
-  "caughtRares": {
-    "loading": "Загрузка...",
-    "totalCaughtRares": "Всего поймано редких в режиме «{0}»",
-    "page": "Страница: {0}",
-    "quantity": "Количество: {0}",
-    "rarityInfo": "Редкость: {0}",
-    "reward": "Награда: {0}",
-    "setRaretryMode": "Установить режим попытки редких на {0}",
-    "yourRaretryMode": "Ваш режим попытки редких установлен на {0}"
   },
 
   "prefix": {
@@ -266,20 +254,16 @@
   },
 
   "editlist": {
-    "failed": "## _Не удалось отредактировать список!_",
     "invalidRare": "Редкого «`{0}`» не существует!",
     "invalidNumber": "Допускается только число больше 0 (или аргумент «`all`», если удаляется)!",
     "notInList": "Животное {0} отсутствует в вашем списке!",
     "removed": "## ✅ _Удалено `{0}` {1}_",
-    "added": "## ✅ _Добавлено `{0}` {1}_"
-  },
-
-  "edittime": {
-    "invalidTime": "Ваше новое время должно быть больше или равно 0, меньше 3600, или в формате «`MM:SS`»"
+    "added": "## ✅ _Добавлено `{0}` {1}_",
+    "failed": "## ❌ _Не удалось добавить `{0}` {1}_"
   },
 
   "count": {
-    "title": "# _Подсчёт очков за час удачи_",
+    "title": "# _Подсчёт очков в 1-часовом испытании удачи_",
     "unknownRares": "# _Неизвестные редкие_"
   },
 
@@ -354,53 +338,57 @@
     "buttonLabelSettings": "Показать настройки",
     "buttonLabelCloseManually": "Закрыть вручную (Только Хост)",
 
-    "menuTitleChooseTags": "Выберите теги",
     "menuTitleChooseDifficulty": "Выберите сложность",
     "menuTitleChooseMode": "Выберите режим",
     "menuTitleChooseVictoryType": "Выберите тип победы",
     "menuTitleGiveHost": "Передать хоста",
 
-    "optionDescriptionToggle": "(Переключить)",
     "optionDescriptionSelect": "(Выбрать)"
   },
   
   "history": {
     "noHistory": "## _На этой странице нечего отображать!_",
     "noHistoryObject": "## _Эта страница истории не существует!_",
-    "noRareAnimalProvided": "## _Не указано редкое животное!_",
+    "providedPageIsNotANumber": "Аргумент не является числом!",
+    "unknownValue": "Неизвестно",
     "invalidRare": "## _Неверное редкое животное!_",
-    "buttonLabelFilterByRare": "Фильтровать по редкому",
-    "buttonLabelCancelFilter": "Отменить фильтр",
-    "modalTitleFilterByRare": "Фильтр по редкому",
-    "modalDescriptionFilterByRare": "Выберите редкое животное для фильтрации.",
-    "modalPlaceholderFilterByRare": "Введите имя редкого животного",
-    "modalTitleSortByRare": "Сортировка по редким",
-    "modalDescriptionSortByRare": "Выберите способ сортировки по редким животным.",
-    "modalPlaceholderSortByRare": "Введите критерий сортировки по редким",
+
 
     "points": "# _Очки: `{0}`_", 
     "rares": "# _Редких: `{0}`_",
     "playType": "# _Тип игры: `{0}`_",
     "difficulty": "# _Сложность: `{0}`_",
     "endDate": "# _Дата окончания: {0}_",
-    "tags": "# _Теги_",
-
-    "unknownValue": "Неизвестно",
 
     "buttonLabelPage": "Страница {0}/{1}",
 
-    "menuTitleSortBy": "Сортировать по",
-    "optionNameSort": "Тип сортировки: {0}",
+    "optionNameSort": "Сортировка по: {0}",
+
+    "buttonLabelFilterByRare": "Фильтровать по редкому",
+    "buttonLabelCancelFilter": "Отменить фильтр",
 
     "buttonLabelDelete": "Удалить",
     "buttonLabelEdit": "Редактировать",
 
-    "invalidPage": "Страница больше не существует",
+    "deletePageWarning": "## _Вы уверены, что хотите удалить эту страницу?_",
+    "buttonLabelConfirm": "Подтвердить",
+    "buttonLabelDecline": "Отменить",
+    
+    "buttonLabelSaveChanges": "Сохранить",
+    "buttonLabelResetChanges": "Сбросить",
+    "buttonLabelCancelChanges": "Отменить",
 
     "modalTitleMoveToPage": "Перейти на страницу",
     "modalDescriptionMoveToPage": "Введите страницу, на которую хотите перейти.",
+    
+    "modalTitleFilterByRare": "Фильтр по редкому",
+    "modalDescriptionFilterByRare": "Выберите редкое животное для фильтрации.",
+    "modalPlaceholderFilterByRare": "Введите имя редкого животного",
 
-    "providedPageIsNotANumber": "Аргумент не является числом!",
+    "modalTitleSortByRare": "Сортировка по редким",
+    "modalDescriptionSortByRare": "Выберите способ сортировки по редким животным.",
+    "modalPlaceholderSortByRare": "Введите критерий сортировки по редким",
+
 
     "listOptionUnknownListRare": "Неизвестное животное `{0}` в `{1}`!",
     "listOptionInvalidListValue": "Недопустимое значение `{0}` в `{1}`!",
@@ -437,10 +425,6 @@
     "modalDescriptionEndDate": "Отредактируйте дату окончания",
     "modalPlaceholderEndDate": "ДД месяц (англ) ГГГГ ЧЧ:ММ:СС",
     
-    "menuTitleTag": "Выберите тег",
-    "optionDescriptionTags": "(Переключить)",
-    "currentTags": "## _Текущие: `{0}`_",
-    
     "modalTitleList": "Редактирование списка редких",
     "modalDescriptionList": "Отредактируйте список редких",
     "modalPlaceholderList": "<РедкоеX>=<КоличествоX>, ...",
@@ -458,28 +442,6 @@
     "buttonLabelCancel": "Отмена",
 
     "cancelNewHistoryPageTitle": "# _Добавление новой страницы истории отменено!_"
-  },
-
-  "edithistory": {
-    "welcomeTitle": "# _Добро пожаловать в редактор истории!_",
-    "menuTitleEditHistoryOptions": "Выберите опцию!",
-    "optionNameAddPage": "Добавить новую страницу",
-    "optionNameEditPage": "Редактировать существующую страницу",
-
-    "modalTitleEditExistingPage": "Редактирование существующей страницы истории",
-    "modalDescriptionEnterExistingPage": "Номер страницы",
-    "modalPlaceholderEnterExistingPage": "Введите номер страницы. Должно быть от 1 до {0}!",
-    "modalNameSorting": "Тип сортировки",
-    "menuTitleChooseSortingType": "Выберите тип сортировки",
-
-    "invalidPage": "Недопустимый номер страницы",
-    "invalidSorting": "Недопустимый тип сортировки",
-    "unknownPage": "Страница больше не существует",
-    "buttonLabelSaveChanges": "Сохранить изменения",
-    "buttonLabelResetChanges": "Сбросить изменения",
-    "buttonLabelCancelChanges": "Отменить изменения",
-
-    "chooseOptionTitle": "# _Выберите, что вы хотите редактировать!_"
   },
 
   "rules": {

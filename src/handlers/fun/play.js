@@ -11,7 +11,7 @@ export default {
     ]
 
     $onlyIf[false;
-      $newError[$tl[ui.special.disabledCommand]]
+      $newError[$tl[ui.special.commandDisabled]]
     ]
 
 

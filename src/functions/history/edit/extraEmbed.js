@@ -12,9 +12,9 @@ export default {
       $addOption[$tl[ui.history.optionNameRaresList];;raresList]
       
       $addActionRow
-      $addButton[editHistory_saveChanges-$authorID;$tl[ui.edithistory.buttonLabelSaveChanges];Success]
-      $addButton[editHistory_resetChanges-$authorID;$tl[ui.edithistory.buttonLabelResetChanges];Secondary]
-      $addButton[editHistory_cancelChanges-$authorID;$tl[ui.edithistory.buttonLabelCancelChanges];Danger]
+      $addButton[editHistory_saveChanges-$authorID;$tl[ui.history.buttonLabelSaveChanges];Success]
+      $addButton[editHistory_resetChanges-$authorID;$tl[ui.history.buttonLabelResetChanges];Secondary]
+      $addButton[editHistory_cancelChanges-$authorID;$tl[ui.history.buttonLabelCancelChanges];Danger]
     ;$getGlobalVar[luckyColor]]
   `
 }

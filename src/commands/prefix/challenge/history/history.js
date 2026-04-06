@@ -11,10 +11,20 @@ export default [{
   code: `
     $arrayLoad[IID;-;$customID]
     $jsonLoad[passKeys;[
-      "showHistory_changePageInModal", "showHistory_deletePage", "showHistory_showPages",
-      "showHistory_sortingMenu", "showHistory_prevPage", "showHistory_nextPage",
-      "showHistory_filterByRareButton", "showHistory_filterByRare", "showHistory_sortByRare",
-      "showHistory_cancelFilterButton", "editHistory_cancelChanges", "editHistory_saveChanges"
+      "showHistory_changePageInModal",
+      "showHistory_deletePage",
+      "showHistory_confirmDeletePage",
+      "showHistory_declineDeletePage",
+      "showHistory_showPages",
+      "showHistory_sortingMenu",
+      "showHistory_prevPage",
+      "showHistory_nextPage",
+      "showHistory_filterByRareButton",
+      "showHistory_filterByRare",
+      "showHistory_sortByRare",
+      "showHistory_cancelFilterButton",
+      "editHistory_cancelChanges",
+      "editHistory_saveChanges"
     \\]]
     $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
 
@@ -61,6 +71,19 @@ export default [{
 
 
       $case[showHistory_deletePage;
+        $jsonLoad[thisHistory;$env[history;$callFn[getPageIndex;$get[page]]]]
+        $historyEmbed[$env[thisHistory]]
+        $addContainer[
+          $addTextDisplay[$tl[ui.history.deletePageWarning]]
+          $addActionRow
+          $addButton[showHistory_confirmDeletePage-$authorID;$tl[ui.history.buttonLabelConfirm];Success;✅]
+          $addButton[showHistory_declineDeletePage-$authorID;$tl[ui.history.buttonLabelDecline];Danger;❌]
+        ;$getGlobalVar[luckyColor]]
+        $interactionUpdate
+        $stop
+      ]
+
+      $case[showHistory_confirmDeletePage;
         $let[id;$env[history;$callFn[getPageIndex;$get[page]];id]]
 
         $onlyIf[$get[id]!=]
@@ -163,9 +186,8 @@ export default [{
 
     $let[page;$if[$get[page]<=0;$arrayLength[history];$if[$get[page]>$arrayLength[history];1;$get[page]]]]
 
-    $if[$env[thisHistory]==;
-      $jsonLoad[thisHistory;$env[history;$callFn[getPageIndex;$get[page]]]]
-    ]
+    $jsonLoad[thisHistory;$env[history;$callFn[getPageIndex;$get[page]]]]
+    
 
     $c[Updating "page" if it's value was changed]
     $if[$env[cachedHistory;page]!=$get[page];

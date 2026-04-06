@@ -426,7 +426,6 @@
       "resume",
       "time",
       "points",
-      "edittime",
       "end"
     ],
     "commandCategory": 4
@@ -461,7 +460,6 @@
       "pause",
       "time",
       "points",
-      "edittime",
       "end"
     ],
     "commandCategory": 4
@@ -488,7 +486,6 @@
       "time",
       "snora",
       "points",
-      "edittime",
       "editpoints",
       "editlist",
       "end"
@@ -503,7 +500,6 @@
       "pause",
       "resume",
       "points",
-      "edittime",
       "end"
     ],
     "commandCategory": 4
