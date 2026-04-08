@@ -18,6 +18,7 @@ export default {
   emoji: "<:MopeCoin:1279092125459288124>",
   blank: "<:blank:1337851779253272759>",
   filter: "<:filter:1486794473940979994>",
+  undefined: "<:undefined:1427991209246199848>",
 
   // IDs
   reportChannelID: "1372645851159330947",

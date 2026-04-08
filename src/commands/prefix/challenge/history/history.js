@@ -24,7 +24,8 @@ export default [{
       "showHistory_sortByRare",
       "showHistory_cancelFilterButton",
       "editHistory_cancelChanges",
-      "editHistory_saveChanges"
+      "editHistory_saveChanges",
+      "showHistory_filterByChosenRareButton"
     \\]]
     $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
 
@@ -151,6 +152,13 @@ export default [{
         $let[rareAnimalId;$getRareAnimalID[$get[input]]]
         $let[page;1]
         $jsonLoad[history;$getUserVar[challengeHistory]]
+        $arrayFilter[history;page;$env[page;raresList;$get[rareAnimalId]]!=;history]
+        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
+        $!jsonSet[cachedHistory;filter;true]
+      ]
+
+      $case[showHistory_filterByChosenRareButton;
+        $let[page;1]
         $arrayFilter[history;page;$env[page;raresList;$get[rareAnimalId]]!=;history]
         $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
         $!jsonSet[cachedHistory;filter;true]

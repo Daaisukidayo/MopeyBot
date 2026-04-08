@@ -22,6 +22,24 @@ export default {
     $let[disableEditing;$not[$checkCondition[$get[l]>0]]]
     $let[disablePages;$not[$checkCondition[$get[l]>1]]]
 
+    $let[rareEmoji;$getAnimalVariantInfo[$get[rareAnimalId];emoji]]
+
+    $fn[getFinalEmoji;
+      $if[$get[rareAnimalId]!=null;
+        $return[$get[rareEmoji]]
+      ]
+      $return[$getGlobalVar[undefined]]
+    ]
+
+    $fn[getEmoji;
+      $return[$switch[$env[sort];
+        $case[0;📅]
+        $case[1;🔢]
+        $case[2;🎏]
+        $case[3;$callFn[getFinalEmoji]]
+      ]]
+    ;sort]
+
     $addContainer[
       $addActionRow
       $addButton[showHistory_deletePage-$authorID;$tl[ui.history.buttonLabelDelete];Danger;🗑️;$get[disableEditing]]
@@ -39,13 +57,17 @@ export default {
       $addActionRow
       $addStringSelectMenu[showHistory_sortingMenu-$authorID;;$get[disablePages]]
       $arrayForEach[sortingOptions;option;
-        $addOption[$tl[ui.history.optionNameSort;$tl[data.sortingOptions.$env[option]]];;$env[option];;$checkCondition[$get[sortType]==$env[option]]]
+        $addOption[$tl[ui.history.optionNameSort;$tl[data.sortingOptions.$env[option]]];;$env[option];$callFn[getEmoji;$env[option]];$checkCondition[$get[sortType]==$env[option]]]
       ]
 
       $addActionRow
       $addButton[showHistory_filterByRareButton-$authorID;$tl[ui.history.buttonLabelFilterByRare];Secondary;$getGlobalVar[filter]]
       $if[$get[filter];
         $addButton[showHistory_cancelFilterButton-$authorID;$tl[ui.history.buttonLabelCancelFilter];Danger;$getGlobalVar[filter]]
+      ;
+        $if[$get[rareAnimalId]!=null;
+          $addButton[showHistory_filterByChosenRareButton-$authorID;$tl[ui.history.buttonLabelFilterByRare];Success;$get[rareEmoji]]
+        ]
       ]
     ;$getGlobalVar[luckyColor]]
   `
