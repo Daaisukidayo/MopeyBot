@@ -22,7 +22,7 @@ export default {
   howlucky_cooldown: 10_000,
   randomrare_cooldown: 5000,
   raretrymode_cooldown: 60_000,
-  raretrysimulator_cooldown: 60_000,
+  raretrysimulator_cooldown: 10_000,
 
   //special
   help_cooldown: 5000,
