@@ -17,7 +17,7 @@ export default {
     
     $let[totalPoints;$env[challengeProgress;points]]
 
-    $let[limit;10]
+    $let[limit;25]
     $let[finalPredict;0]
     $let[totalGain;0]
     $let[totalDelay;0]
