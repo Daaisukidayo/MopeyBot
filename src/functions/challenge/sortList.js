@@ -3,14 +3,13 @@ export default {
   description: "Sorts list based on their positions in animals.json.",
   params: [
     {
-      name: "rares_list",
+      name: "l",
       description: "Object with caught rares",
-      type: "Object",
+      type: "Json",
       required: true,
     }
   ],
   code: `
-    $jsonLoad[l;$env[rares_list]]
     $if[$env[l]=={};
       $return[$env[l]]
     ]
@@ -22,6 +21,6 @@ export default {
       $let[iB;$env[ais;$env[eB;0]]]
       $return[$math[$get[iA] - $get[iB]]]
     ]
-    $return[$fromEntries[$env[le]]]
+    $return[$fromEntries[le]]
   `
 }

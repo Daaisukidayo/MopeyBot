@@ -6,6 +6,6 @@ export default {
   data: {
     type: 1,
     name: 'clearcoins',
-    description: 'Clears your mopecoins',
+    description: 'Clears your Mopecoins',
   }
 }
