@@ -2415,7 +2415,7 @@
       "whiteTiger"
     ],
     "rarity": [
-      240,
+      190,
       200
     ],
     "variants": [
@@ -4230,8 +4230,8 @@
     "hasNonRareVariant": false,
     "rares": [],
     "rarity": [
-      200,
-      2000
+      100,
+      1000
     ],
     "variants": [
       {
@@ -4253,7 +4253,7 @@
     "rares": [],
     "rarity": [
       1,
-      2000
+      1000
     ],
     "variants": [
       {
