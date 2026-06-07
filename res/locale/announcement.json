@@ -1,0 +1,18 @@
+{
+  "en-US": [
+    "## • Fixed a bug where a new user couldn't confirm that he is a human!",
+    "## • Reworked `history` command! Filter by rare and sort by rare are now supported! Improved editing history! Cooldown has been increased from 1 minute to 5 minutes!",
+    "## • Deleted `edithistory` command! Instead, `addhistory` command is added!",
+    "## • Fixed invalid prediction bug in challenge commands!",
+    "## • Changed color of the luck-related commands!",
+    "## • Updated separator image in history and challenge commands!"
+  ],
+  "ru": [
+    "## • Исправлена ошибка, из-за которой новый пользователь не мог подтвердить, что он человек!",
+    "## • Команда `history` была переделана! Теперь поддерживаются фильтрация по редкому и сортировка по редкому! Улучшено редактирование истории! Кулдаун увеличен с 1 минуты до 5 минут!",
+    "## • Команда `edithistory` была удалена! Вместо нее добавлена команда `addhistory`!",
+    "## • Исправлена ошибка недействительного прогноза в командах испытаний!",
+    "## • Изменен цвет команд, связанных с удачей!",
+    "## • Обновлено изображение разделителя в командах истории и испытаний!"
+  ]
+}

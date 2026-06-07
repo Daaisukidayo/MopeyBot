@@ -1,0 +1,696 @@
+{
+  "allSettings": {
+    "0": {
+      "en-US": "Hide Points",
+      "ru": "Скрыть очки"
+    },
+    "1": {
+      "en-US": "Hide Rares",
+      "ru": "Скрыть редких"
+    },
+    "2": {
+      "en-US": "Hide Rares Limit",
+      "ru": "Скрыть лимит редких"
+    },
+    "3": {
+      "en-US": "Hide Prediction",
+      "ru": "Скрыть прогноз"
+    }
+  },
+
+  "arenaActions": {
+    "0": {
+      "en-US": "Attack",
+      "ru": "Атаковать"
+    },
+    "1": {
+      "en-US": "Defend",
+      "ru": "Защититься"
+    },
+    "2": {
+      "en-US": "Deceive",
+      "ru": "Обмануть"
+    }
+  },
+
+  "beachballRarities": {
+    "en-US": [
+      "Amber: 1/20",
+      "Golden: 1/50",
+      "Platinum: 1/100",
+      "Diamond: 1/200",
+      "Jade: 1/500",
+      "Pearl: 1/1000",
+      "Pink Diamond: 1/1500",
+      "Opal: 1/2000",
+      "Aquamarine: 1/3500",
+      "Tanzanite: 1/5000"
+    ],
+    "ru": [
+      "Янтарный: 1/20",
+      "Золотой: 1/50",
+      "Платиновый: 1/100",
+      "Алмазный: 1/200",
+      "Нефритовый: 1/500",
+      "Жемчужный: 1/1000",
+      "Розово-алмазный: 1/1500",
+      "Опаловый: 1/2000",
+      "Аквамариновый: 1/3500",
+      "Танзанитовый: 1/5000"
+    ]
+  },
+
+  "beachballs": {
+    "0": {
+      "en-US": "Beachball",
+      "ru": "Пляжный мяч"
+    },
+    "1": {
+      "en-US": "Amber Beachball",
+      "ru": "Янтарный пляжный мяч"
+    },
+    "2": {
+      "en-US": "Golden Beachball",
+      "ru": "Золотой пляжный мяч"
+    },
+    "3": {
+      "en-US": "Platinum Beachball",
+      "ru": "Платиновый пляжный мяч"
+    },
+    "4": {
+      "en-US": "Diamond Beachball",
+      "ru": "Алмазный пляжный мяч"
+    },
+    "5": {
+      "en-US": "Jade Beachball",
+      "ru": "Нефритовый пляжный мяч"
+    },
+    "6": {
+      "en-US": "Pearl Beachball",
+      "ru": "Жемчужный пляжный мяч"
+    },
+    "7": {
+      "en-US": "Pink Diamond Beachball",
+      "ru": "Розово-алмазный пляжный мяч"
+    },
+    "8": {
+      "en-US": "Opal Beachball",
+      "ru": "Опаловый пляжный мяч"
+    },
+    "9": {
+      "en-US": "Aquamarine Beachball",
+      "ru": "Аквамариновый пляжный мяч"
+    },
+    "10": {
+      "en-US": "Tanzanite Beachball",
+      "ru": "Танзанитовый пляжный мяч"
+    }
+  },
+
+  "biomes": {
+    "0": {
+      "en-US": "Land",
+      "ru": "Земля"
+    },
+    "1": {
+      "en-US": "Desert",
+      "ru": "Пустыня"
+    },
+    "2": {
+      "en-US": "Ocean",
+      "ru": "Океан"
+    },
+    "3": {
+      "en-US": "Arctic",
+      "ru": "Арктика"
+    },
+    "4": {
+      "en-US": "Forest",
+      "ru": "Лес"
+    },
+    "5": {
+      "en-US": "Volcano",
+      "ru": "Вулкан"
+    }
+  },
+
+  "bracketsInfo": {
+    "en-US": [
+      "[] - required argument(s)",
+      "| - 'OR' argument",
+      "() - optional argument(s) or option",
+      "<> - data input"
+    ],
+    "ru": [
+      "[] - обязательный(е) аргумент(ы)",
+      "| - аргумент 'ИЛИ'",
+      "() - необязательный(е) аргумент(ы) или опция",
+      "<> - ввод данных"
+    ]
+  },
+
+  "challengeData": {
+    "0": {
+      "en-US": "Trash",
+      "ru": "Мусорные"
+    },
+    "1": {
+      "en-US": "Common",
+      "ru": "Обычные"
+    },
+    "2": {
+      "en-US": "Uncommon",
+      "ru": "Необычные"
+    },
+    "3": {
+      "en-US": "Rare",
+      "ru": "Редкие"
+    },
+    "4": {
+      "en-US": "Epic",
+      "ru": "Эпические"
+    },
+    "5": {
+      "en-US": "Legendary",
+      "ru": "Легендарные"
+    },
+    "6": {
+      "en-US": "Mythic",
+      "ru": "Мифические"
+    },
+    "7": {
+      "en-US": "Divine",
+      "ru": "Божественные"
+    }
+  },
+
+  "devilTornadoes": {
+    "0": {
+      "en-US": "Rare Devil Twister",
+      "ru": "Редкий Дьявольский Смерч"
+    },
+    "1": {
+      "en-US": "Rare Devil Dust Twister",
+      "ru": "Редкий Дьявольский Пыльный Смерч"
+    },
+    "2": {
+      "en-US": "Rare Devil Tsunami",
+      "ru": "Редкий Дьявольский Цунами"
+    },
+    "3": {
+      "en-US": "Rare Devil Fire Twister",
+      "ru": "Редкий Дьявольский Огненный Смерч"
+    },
+    "4": {
+      "en-US": "Rare Devil Arctic Whirl",
+      "ru": "Редкий Дьявольский Арктический Вихр"
+    },
+    "5": {
+      "en-US": "Rare Devil Tornado",
+      "ru": "Редкий Дьявольский Торнадо"
+    }
+  },
+
+  "difficulties": {
+    "0": {
+      "en-US": "Easy",
+      "ru": "Легкая"
+    },
+    "1": {
+      "en-US": "Default",
+      "ru": "Обычная"
+    },
+    "2": {
+      "en-US": "Medium",
+      "ru": "Средняя"
+    },
+    "3": {
+      "en-US": "Hard",
+      "ru": "Сложная"
+    }
+  },
+
+  "helpCategories": {
+    "0": {
+      "en-US": "Economy",
+      "ru": "Экономика"
+    },
+    "1": {
+      "en-US": "Fun",
+      "ru": "Развлечения"
+    },
+    "2": {
+      "en-US": "Special",
+      "ru": "Специальное"
+    },
+    "3": {
+      "en-US": "Gaming",
+      "ru": "Игры"
+    },
+    "4": {
+      "en-US": "Luck Challenge",
+      "ru": "Испытание удачи"
+    }
+  },
+
+  "howlucky": {
+    "0": {
+      "en-US": "legendary luck 🌟",
+      "ru": "легендарная удача 🌟"
+    },
+    "1": {
+      "en-US": "unbelievable luck 🍀",
+      "ru": "невероятная удача 🍀"
+    },
+    "2": {
+      "en-US": "great luck 🎉",
+      "ru": "отличная удача 🎉"
+    },
+    "3": {
+      "en-US": "decent luck 👍",
+      "ru": "неплохая удача 👍"
+    },
+    "4": {
+      "en-US": "mid luck 🤔",
+      "ru": "средняя удача 🤔"
+    },
+    "5": {
+      "en-US": "poor luck 😟",
+      "ru": "плохая удача 😟"
+    },
+    "6": {
+      "en-US": "terrible luck 😭",
+      "ru": "ужасная удача 😭"
+    },
+    "7": {
+      "en-US": "abysmal luck 💀",
+      "ru": "худшая удача 💀"
+    }
+  },
+
+  "lobbyModes": {
+    "0": {
+      "en-US": "FFA",
+      "ru": "ПВП"
+    },
+    "1": {
+      "en-US": "2 Teams",
+      "ru": "2 Команды"
+    },
+    "2": {
+      "en-US": "3 Teams",
+      "ru": "3 Команды"
+    }
+  },
+  
+  "normalTornadoes": {
+    "0": {
+      "en-US": "Dust Tornado",
+      "ru": "Пыльный Смерч"
+    },
+    "1": {
+      "en-US": "Tsunami",
+      "ru": "Цунами"
+    },
+    "2": {
+      "en-US": "Fire Tornado",
+      "ru": "Огненный Смерч"
+    },
+    "3": {
+      "en-US": "Arctic Whirl",
+      "ru": "Арктический Вихр"
+    },
+    "4": {
+      "en-US": "Tornado",
+      "ru": "Торнадо"
+    }
+  },
+
+  "playTypes": {
+    "0": {
+      "en-US": "Single",
+      "ru": "Одиночная"
+    },
+    "1": {
+      "en-US": "Party",
+      "ru": "Командная"
+    }
+  },
+
+  "pumpkinRarities": {
+    "en-US": [
+      "Jack-o'-lantern: 1/20",
+      "Golden: 1/50",
+      "Platinum: 1/100",
+      "Diamond: 1/200",
+      "Lapis Lazuli: 1/500",
+      "Topaz: 1/1000",
+      "Quartz: 1/1500",
+      "Musgravite: 1/2000",
+      "Onyx 1/3500",
+      "Painite: 1/5000"
+    ],
+    "ru": [
+      "Светильник-тыква: 1/20",
+      "Золотая: 1/50",
+      "Платиновая: 1/100",
+      "Алмазная: 1/200",
+      "Лазуритовая: 1/500",
+      "Топазовая: 1/1000",
+      "Кварцевая: 1/1500",
+      "Мусгравитовая: 1/2000",
+      "Ониксовая: 1/3500",
+      "Паинитовая: 1/5000"
+    ]
+  },
+
+  "pumpkins": {
+    "0": {
+      "en-US": "Pumpkin",
+      "ru": "Тыква"
+    },
+    "1": {
+      "en-US": "Jack-o'-lantern Pumpkin",
+      "ru": "Светильник-тыква"
+    },
+    "2": {
+      "en-US": "Golden Pumpkin",
+      "ru": "Золотая Тыква"
+    },
+    "3": {
+      "en-US": "Platinum Pumpkin",
+      "ru": "Платиновая Тыква"
+    },
+    "4": {
+      "en-US": "Diamond Pumpkin",
+      "ru": "Алмазная Тыква"
+    },
+    "5": {
+      "en-US": "Lapis Lazuli Pumpkin",
+      "ru": "Лазуритовая Тыква"
+    },
+    "6": {
+      "en-US": "Topaz Pumpkin",
+      "ru": "Топазовая Тыква"
+    },
+    "7": {
+      "en-US": "Quartz Pumpkin",
+      "ru": "Кварцевая Тыква"
+    },
+    "8": {
+      "en-US": "Musgravite Pumpkin",
+      "ru": "Мусгравитовая Тыква"
+    },
+    "9": {
+      "en-US": "Onyx Pumpkin",
+      "ru": "Ониксовая Тыква"
+    },
+    "10": {
+      "en-US": "Painite Pumpkin",
+      "ru": "Паинитовая Тыква"
+    }
+  },
+
+  "raretryCategories": {
+    "0": {
+      "en-US": "Common",
+      "ru": "Обычные"
+    },
+    "1": {
+      "en-US": "Uncommon",
+      "ru": "Необычные"
+    },
+    "2": {
+      "en-US": "Rare",
+      "ru": "Редкие"
+    },
+    "3": {
+      "en-US": "Epic",
+      "ru": "Эпические"
+    },
+    "4": {
+      "en-US": "Legendary",
+      "ru": "Легендарные"
+    },
+    "5": {
+      "en-US": "Extreme",
+      "ru": "Экстремальные"
+    },
+    "6": {
+      "en-US": "Mythic",
+      "ru": "Мифические"
+    },
+    "7": {
+      "en-US": "Godly",
+      "ru": "Божественные"
+    },
+    "8": {
+      "en-US": "Divine",
+      "ru": "Божественные"
+    }
+  },
+
+  "raretryModes": {
+    "0": {
+      "en-US": "Default",
+      "ru": "Обычный"
+    },
+    "1": {
+      "en-US": "Medium",
+      "ru": "Средний"
+    },
+    "2": {
+      "en-US": "Hard",
+      "ru": "Сложный"
+    },
+    "3": {
+      "en-US": "Insane",
+      "ru": "Безумный"
+    },
+    "4": {
+      "en-US": "Impossible",
+      "ru": "Невозможный"
+    }
+  },
+
+  "reminders": {
+    "0": {
+      "en-US": "Daily reward",
+      "ru": "Ежедневная награда"
+    },
+    "1": {
+      "en-US": "Weekly reward",
+      "ru": "Еженедельная награда"
+    }
+  },
+
+  "shopSkinPacks": {
+    "arcticGTSP": {
+      "en-US": "Arctic Gold Trim Skins Pack",
+      "ru": "Арктика - набор позолоченных скинов"
+    },
+    "christmas2022SP": {
+      "en-US": "Christmas Skins Pack 2022",
+      "ru": "Рождественский набор скинов 2022"
+    },
+    "desertGTSP": {
+      "en-US": "Desert Gold Trim Skins Pack",
+      "ru": "Пустыня - набор позолоченных скинов"
+    },
+    "goldenSP": {
+      "en-US": "Golden Skins Pack",
+      "ru": "Золотой набор скинов"
+    },
+    "halloween2020SP": {
+      "en-US": "Halloween Skins Pack 2020",
+      "ru": "Хеллоуинский набор скинов 2020"
+    },
+    "halloween2021SP": {
+      "en-US": "Halloween Skins Pack 2021",
+      "ru": "Хеллоуинский набор скинов 2021"
+    },
+    "halloween2022SP": {
+      "en-US": "Halloween Skins Pack 2022",
+      "ru": "Хеллоуинский набор скинов 2022"
+    },
+    "halloween2023SP": {
+      "en-US": "Halloween Skins Pack 2023",
+      "ru": "Хеллоуинский набор скинов 2023"
+    },
+    "landGTSP": {
+      "en-US": "Land Gold Trim Skins Pack",
+      "ru": "Земля - набор позолоченных скинов"
+    },
+    "legacySP": {
+      "en-US": "Legacy Skins Pack",
+      "ru": "Классический набор скинов"
+    },
+    "legacySPw": {
+      "en-US": "Legacy Skins Pack | Winter Version",
+      "ru": "Классический набор скинов | Зимняя версия"
+    },
+    "lockedSP": {
+      "en-US": "Locked Skins Pack",
+      "ru": "Закрытый набор скинов"
+    },
+    "may2022SP": {
+      "en-US": "May Skins Pack 2022",
+      "ru": "Майский набор скинов 2022"
+    },
+    "oceanGTSP": {
+      "en-US": "Ocean Gold Trim Skins Pack",
+      "ru": "Океан - набор позолоченных скинов"
+    },
+    "s1": {
+      "en-US": "Season 1",
+      "ru": "Стандартный набор 1го сезона"
+    },
+    "s2": {
+      "en-US": "Season 2",
+      "ru": "Стандартный набор 2го сезона"
+    },
+    "s2w": {
+      "en-US": "Season 2 | Winter Version",
+      "ru": "Стандартный набор 2го сезона | Зимняя версия"
+    },
+    "storefrontSP": {
+      "en-US": "Storefront Skins Pack",
+      "ru": "Витринный набор скинов"
+    },
+    "summer2021SP": {
+      "en-US": "Summer Skins Pack 2021",
+      "ru": "Летний набор скинов 2021"
+    },
+    "summer2022SP": {
+      "en-US": "Summer Skins Pack 2022",
+      "ru": "Летний набор скинов 2022"
+    },
+    "valentine2023SP": {
+      "en-US": "Valentine Skins Pack 2023",
+      "ru": "Валентинский набор скинов 2023"
+    }
+  },
+
+  "soccerActions": {
+    "0": {
+      "en-US": "Hold",
+      "ru": "Держать"
+    },
+    "1": {
+      "en-US": "Ignore",
+      "ru": "Игнорировать"
+    },
+    "2": {
+      "en-US": "Goal",
+      "ru": "Гол"
+    },
+    "3": {
+      "en-US": "Throw away",
+      "ru": "Отбросить"
+    }
+  },
+
+  "sortingOptions": {
+    "0": {
+      "en-US": "Ending Date",
+      "ru": "Дате окончания"
+    },
+    "1": {
+      "en-US": "Total Points",
+      "ru": "Количеству очков"
+    },
+    "2": {
+      "en-US": "Total Rares",
+      "ru": "Количеству редких"
+    },
+    "3": {
+      "en-US": "Rare animal",
+      "ru": "Редкому животному"
+    }
+  },
+
+  "umbrellaRarities": {
+    "en-US": [
+      "Purple: 1/20",
+      "Golden: 1/50",
+      "Platinum: 1/100",
+      "Diamond: 1/200",
+      "Emerald: 1/500",
+      "Ruby: 1/1000",
+      "Sapphire: 1/1500",
+      "Amethyst: 1/2000",
+      "Ammolite: 1/3500",
+      "Taaffeite: 1/5000"
+    ],
+    "ru": [
+      "Фиолетовый: 1/20",
+      "Золотой: 1/50",
+      "Платиновый: 1/100",
+      "Алмазный: 1/200",
+      "Изумрудный: 1/500",
+      "Рубиновый: 1/1000",
+      "Сапфировый: 1/1500",
+      "Аметистовый: 1/2000",
+      "Аммолитовый: 1/3500",
+      "Тааффеитовый: 1/5000"
+    ]
+  },
+
+  "umbrellas": {
+    "0": {
+      "en-US": "Umbrella",
+      "ru": "Зонтик"
+    },
+    "1": {
+      "en-US": "Purple Umbrella",
+      "ru": "Фиолетовый Зонтик"
+    },
+    "2": {
+      "en-US": "Golden Umbrella",
+      "ru": "Золотой Зонтик"
+    },
+    "3": {
+      "en-US": "Platinum Umbrella",
+      "ru": "Платиновый Зонтик"
+    },
+    "4": {
+      "en-US": "Diamond Umbrella",
+      "ru": "Алмазный Зонтик"
+    },
+    "5": {
+      "en-US": "Emerald Umbrella",
+      "ru": "Изумрудный Зонтик"
+    },
+    "6": {
+      "en-US": "Ruby Umbrella",
+      "ru": "Рубиновый Зонтик"
+    },
+    "7": {
+      "en-US": "Sapphire Umbrella",
+      "ru": "Сапфировый Зонтик"
+    },
+    "8": {
+      "en-US": "Amethyst Umbrella",
+      "ru": "Аметистовый Зонтик"
+    },
+    "9": {
+      "en-US": "Ammolite Umbrella",
+      "ru": "Аммолитовый Зонтик"
+    },
+    "10": {
+      "en-US": "Taaffeite Umbrella",
+      "ru": "Тааффеитовый Зонтик"
+    }
+  },
+
+  "victoryTypes": {
+    "0": {
+      "en-US": "Points count",
+      "ru": "Количество очков"
+    },
+    "1": {
+      "en-US": "Rares count",
+      "ru": "Количество редких"
+    }
+  }
+}

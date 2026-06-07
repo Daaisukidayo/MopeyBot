@@ -2,7 +2,6 @@
 .env
 forgeconfig.json
 allies.json
-.forgevsc.json
 
 #? folders
 .cache/
@@ -11,4 +10,5 @@ node_modules/
 database/
 logs/
 dev/
-secret/
+deprecated/
+dist/

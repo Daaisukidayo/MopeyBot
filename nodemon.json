@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "src",
+    "res"
+  ],
+  "ext": "ts json",
+  "exec": "npm start",
+  "delay": "250"
+}

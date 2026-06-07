@@ -1,24 +1,32 @@
 {
   "name": "mopeyforge",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "3.3.0",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "tsc && node dist/index.js",
+    "dev": "nodemon",
+    "build": "tsc"
   },
-  "imports": {},
+  "imports": {
+    "#commandsData": "./dist/utils/getCommandsData.js"
+  },
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
-    "@tryforge/forge.canvas": "^1.2.3",
+    "@quoriel/edge": "github:quoriel/edge",
+    "@tryforge/forge.canvas": "github:tryforge/forgecanvas#dev",
     "@tryforge/forge.db": "github:tryforge/forgedb#dev",
     "@tryforge/forge.topgg": "github:tryforge/forgetopgg#dev",
     "@tryforge/forgescript": "github:tryforge/ForgeScript#dev",
     "better-sqlite3": "^12.5.0",
-    "chalk": "^5.6.2",
     "dotenv": "^16.4.7",
     "forge.regex": "github:xNickyDev/ForgeRegex"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "typescript": "^6.0.3"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.10.0": true
   }
 }

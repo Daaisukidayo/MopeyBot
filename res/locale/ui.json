@@ -1,0 +1,2317 @@
+{
+  "addhistory": {
+    "addedHistory": {
+      "en-US": "## _Successfully added the new history page!_",
+      "ru": "## _Успешно добавлена новая страница истории!_"
+    },
+  
+    "buttonLabelCancel": {
+      "en-US": "Cancel",
+      "ru": "Отмена"
+    },
+  
+    "buttonLabelReset": {
+      "en-US": "Reset",
+      "ru": "Сбросить"
+    },
+  
+    "buttonLabelUpload": {
+      "en-US": "Upload",
+      "ru": "Загрузить"
+    },
+  
+    "cancelNewHistoryPageTitle": {
+      "en-US": "# _Adding the new history page is canceled!_",
+      "ru": "# _Добавление новой страницы истории отменено!_"
+    },
+  
+    "preview": {
+      "en-US": "# _Preview_",
+      "ru": "# _Предпросмотр_"
+    }
+  },
+  
+  "announcements": {
+    "title": {
+      "en-US": "# 📢 _Announcement_",
+      "ru": "# 📢 _Объявление_"
+    }
+  },
+  
+  "arena": {
+    "lost": {
+      "en-US": "## _You went to arena but {0} defeated you_",
+      "ru": "## _Вы пошли в арену, но {0} вас победили_"
+    },
+  
+    "won": {
+      "en-US": "## _You went to arena, defeated {0} and you earned `{1}`{EMOJI}!_",
+      "ru": "## _Вы пошли в арену, победили {0} и заработали `{1}`{EMOJI}!_"
+    }
+  },
+  
+  "args": {
+    "amount": {
+      "en-US": "Amount",
+      "ru": "Количество"
+    },
+  
+    "fullAnimalName": {
+      "en-US": "Animal",
+      "ru": "Животное"
+    },
+  
+    "newPrefix": {
+      "en-US": "New_Prefix",
+      "ru": "Новый_префикс"
+    },
+  
+    "shortRaresName": {
+      "en-US": "Rare_Animal",
+      "ru": "Редкое_Животное"
+    },
+  
+    "tier": {
+      "en-US": "Tier",
+      "ru": "Уровень"
+    }
+  },
+  
+  "balance": {
+    "mc": {
+      "en-US": "## {EMOJI} _Mopecoins: `{0}`_",
+      "ru": "## {EMOJI} _Мопкоинов: `{0}`_"
+    },
+  
+    "none": {
+      "en-US": "None",
+      "ru": "Пусто"
+    },
+  
+    "purchased": {
+      "en-US": "## 🛒 _Skin packs:_",
+      "ru": "## 🛒 _Наборы скинов:_"
+    },
+  
+    "title": {
+      "en-US": "# ___BALANCE___",
+      "ru": "# ___БАЛАНС___"
+    }
+  },
+  
+  "beachball": {
+    "earned": {
+      "en-US": "## _You held it for some time, goaled it and earned `{0}`{EMOJI}!_",
+      "ru": "## _Вы держали его некоторое время, забили гол и заработали `{0}`{EMOJI}!_"
+    },
+  
+    "rarity": {
+      "en-US": "### • _Rarity: `{0}/{1}`_",
+      "ru": "### • _Редкость: `{0}/{1}`_"
+    },
+  
+    "saw": {
+      "en-US": "## _You were walking across the ocean and saw a(n) __{0}__!_",
+      "ru": "## _Вы шли по океану и увидели __{0}__!_"
+    }
+  },
+  
+  "challenge": {
+    "active": {
+      "en-US": "You don't have an active challenge!",
+      "ru": "У Вас нет активного испытания!"
+    },
+  
+    "allLimitedReceived": {
+      "en-US": "_※ Reached limit on limited rares!_",
+      "ru": "_※ Достигнут лимит ограниченных редких!_"
+    },
+  
+    "buttonLabelConfirm": {
+      "en-US": "Confirm",
+      "ru": "Подтвердить"
+    },
+  
+    "completed": {
+      "en-US": "# _1 hour luck challenge completed!_",
+      "ru": "# _Час удачи завершён!_"
+    },
+  
+    "completedDescription1": {
+      "en-US": "## _You can continue typing if you didn't manage to finish_",
+      "ru": "## _Вы можете продолжать писать, если не успели закончить_"
+    },
+  
+    "completedDescription2": {
+      "en-US": "## _Press «`Confirm`» button to end your challenge whenever you want_",
+      "ru": "## _Нажмите кнопку «`Подтвердить`» чтобы завершить испытание в любой момент_"
+    },
+  
+    "none": {
+      "en-US": "None",
+      "ru": "Пусто"
+    },
+  
+    "onPause": {
+      "en-US": "You are on pause!",
+      "ru": "Вы на паузе!"
+    },
+  
+    "points": {
+      "en-US": "## _⁘ Points:_ {0}",
+      "ru": "## _⁘ Очков:_ {0}"
+    },
+  
+    "prediction": {
+      "en-US": "## _⁘ Prediction:_ {0}",
+      "ru": "## _⁘ Предсказание:_ {0}"
+    },
+  
+    "rares": {
+      "en-US": "## _⁘ Rares:_ {0}",
+      "ru": "## _⁘ Редких:_ {0}"
+    },
+  
+    "reachedLimit": {
+      "en-US": "# _Reached limit of {0}_",
+      "ru": "# _Достигнут лимит {0}_"
+    },
+  
+    "time": {
+      "en-US": "## _⁘ Time:_ {0}",
+      "ru": "## _⁘ Время:_ {0}"
+    },
+  
+    "timeLeft_m": {
+      "en-US": "# _{0}, you have `{1}` minute{1:m} left!_",
+      "ru": "# _{0}, у Вас осталось `{1}` минут{1:i}!_"
+    },
+  
+    "timeLeft_s": {
+      "en-US": "# _{0}, you have `{1}` second{1:m} left!_",
+      "ru": "# _{0}, у Вас осталось `{1}` секунд{1:i}!_"
+    },
+  
+    "unknown": {
+      "en-US": "Unknown",
+      "ru": "Неизвестно"
+    },
+  
+    "unlimitedRares": {
+      "en-US": "# _※ Unlimited Rares_",
+      "ru": "# _※ Неограниченные редкие_"
+    }
+  },
+  
+  "checklist": {
+    "allRewardsReceived": {
+      "en-US": "## _All rewards have been received! Come back tomorrow!_",
+      "ru": "## _Все награды получены! Приходите завтра!_"
+    },
+  
+    "allTasksCompleted": {
+      "en-US": "## _You have completed all tasks! Your reward is `{0}`{EMOJI}!_",
+      "ru": "## _Вы завершили все задания! Ваша награда: `{0}`{EMOJI}!_"
+    },
+  
+    "catchRaretry": {
+      "en-US": "## _Catch `{0}` rare animals in `raretry`!_",
+      "ru": "## _Поймайте `{0}` редких животных в `raretry`!_"
+    },
+  
+    "catchRaretryrun": {
+      "en-US": "## _Catch `{0}` rare animals in `raretryrun`!_",
+      "ru": "## _Поймайте `{0}` редких животных в `raretryrun`!_"
+    },
+  
+    "claimDaily": {
+      "en-US": "## _Claim daily reward!_",
+      "ru": "## _Заберите ежедневную награду!_"
+    },
+  
+    "completed": {
+      "en-US": "-# 🟢 _Completed_",
+      "ru": "-# 🟢 _Выполнено_"
+    },
+  
+    "completeTasks": {
+      "en-US": "## _Complete these tasks to earn `{0}`{EMOJI}!_",
+      "ru": "## _Завершите эти задания, чтобы получить `{0}`{EMOJI}_"
+    },
+  
+    "inProgress": {
+      "en-US": "-# 🔴 _In progress {0}_",
+      "ru": "-# 🔴 _В процессе {0}_"
+    },
+  
+    "streak": {
+      "en-US": "## _🔥 Current streak: `{0:ord}`!_",
+      "ru": "## _🔥 Текущая серия: `{0}я`!_"
+    },
+  
+    "title": {
+      "en-US": "# ___CHECKLIST___",
+      "ru": "# ___СПИСОК ДЕЛ___"
+    },
+  
+    "vote": {
+      "en-US": "## _[Vote on Top.gg!]({0})_",
+      "ru": "## _[Проголосуйте на Top.gg!]({0})_"
+    }
+  },
+  
+  "clearcoins": {
+    "buttonLabelConfirm": {
+      "en-US": "Confirm",
+      "ru": "Подтвердить"
+    },
+  
+    "buttonLabelDecline": {
+      "en-US": "Decline",
+      "ru": "Отклонить"
+    },
+  
+    "canceled": {
+      "en-US": "## _Deletion canceled!_",
+      "ru": "## _Удаление отменено!_"
+    },
+  
+    "deleted": {
+      "en-US": "## _Deleted all your `{0}`{EMOJI}_",
+      "ru": "## _Удалены все ваши `{0}`{EMOJI}_"
+    },
+  
+    "noCash": {
+      "en-US": "You don't have any {EMOJI} to delete!",
+      "ru": "У вас нет {EMOJI} для удаления!"
+    },
+  
+    "warn": {
+      "en-US": "## _Are you sure you want to delete all your `{0}`{EMOJI}?_",
+      "ru": "## _Вы уверены, что хотите удалить все ваши `{0}`{EMOJI}?_"
+    }
+  },
+  
+  "coinflip": {
+    "balance": {
+      "en-US": "Your balance: `{0}`{EMOJI}",
+      "ru": "Ваш баланс: `{0}`{EMOJI}"
+    },
+  
+    "bet": {
+      "en-US": "# _The bet is set on __{0}__! Flipping the coin..._",
+      "ru": "# _Ставка сделана на __{0}__! Подбрасываем монету..._"
+    },
+  
+    "invalidAmount": {
+      "en-US": "Only number or argument `all` is allowed!",
+      "ru": "Допускается только число или аргумент `all`!"
+    },
+  
+    "invalidCashHigh": {
+      "en-US": "You don't have that much {EMOJI}!",
+      "ru": "У Вас нет столько {EMOJI}!"
+    },
+  
+    "invalidCashLow": {
+      "en-US": "You must have at least `{0}`{EMOJI}!",
+      "ru": "У Вас должно быть минимум `{0}`{EMOJI}!"
+    },
+  
+    "invalidRange": {
+      "en-US": "You can only bet from `{0}` to `{1}`{EMOJI}!",
+      "ru": "Вы можете поставить только от `{0}` до `{1}`{EMOJI}!"
+    },
+  
+    "invalidSide": {
+      "en-US": "Invalid side!",
+      "ru": "Неверная сторона!"
+    },
+  
+    "lost": {
+      "en-US": "# _You got __{0}__ and lost `{1}`{EMOJI}_",
+      "ru": "# _Выпало __{0}__ и Вы проиграли `{1}`{EMOJI}_"
+    },
+  
+    "won": {
+      "en-US": "# _You got __{0}__ and won `{1}`{EMOJI}!_",
+      "ru": "# _Выпало __{0}__ и Вы выиграли `{1}`{EMOJI}!_"
+    }
+  },
+  
+  "cooldown": {
+    "description": {
+      "en-US": "Cooldown will end {0}!",
+      "ru": "Перезарядка закончится {0}!"
+    },
+  
+    "title": {
+      "en-US": "You are on cooldown!",
+      "ru": "Вы находитесь на перезарядке!"
+    }
+  },
+  
+  "count": {
+    "title": {
+      "en-US": "# _1 hour luck challenge points counting_",
+      "ru": "# _Подсчёт очков в 1-часовом испытании удачи_"
+    },
+  
+    "unknownRares": {
+      "en-US": "# _Unknown rares_",
+      "ru": "# _Неизвестные редкие_"
+    }
+  },
+  
+  "credits": {
+    "artists": {
+      "en-US": "# _Artists_",
+      "ru": "# _Художники_"
+    },
+  
+    "madeWithLove": {
+      "en-US": "### _Made with love 💖_",
+      "ru": "### _Создано с любовью 💖_"
+    },
+  
+    "owner&devs": {
+      "en-US": "# _Bot creator & developer_",
+      "ru": "# _Создатель бота & разработчик_"
+    },
+  
+    "pfpBy": {
+      "en-US": "# _Bot's profile picture by_",
+      "ru": "# _Аватар бота от_"
+    },
+  
+    "title": {
+      "en-US": "# ___Development team___",
+      "ru": "# ___Команда разработки___"
+    }
+  },
+  
+  "daily": {
+    "cooldownDescription1": {
+      "en-US": "## _You already have claimed your daily reward!_",
+      "ru": "## _Вы уже получили свою ежедневную награду!_"
+    },
+  
+    "cooldownDescription2": {
+      "en-US": "## _Cooldown resets every day at `12:00 AM UTC+0`!_",
+      "ru": "## _Перезарядка сбрасывается каждый день в `12:00 AM UTC+0`!_"
+    },
+  
+    "description": {
+      "en-US": "## _Your daily reward is `{0}`{EMOJI}!_",
+      "ru": "## _Ваша ежедневная награда: `{0}`{EMOJI}!_"
+    }
+  },
+  
+  "editlist": {
+    "added": {
+      "en-US": "## ✅ _Added `{0}` {1}_",
+      "ru": "## ✅ _Добавлено `{0}` {1}_"
+    },
+  
+    "failed": {
+      "en-US": "## ❌ _Failed to add `{0}` {1}_",
+      "ru": "## ❌ _Не удалось добавить `{0}` {1}_"
+    },
+  
+    "invalidNumber": {
+      "en-US": "Only a number greater than 0 (or argument «`all`» if removing) is allowed!",
+      "ru": "Допускается только число больше 0 (или аргумент «`all`», если удаляется)!"
+    },
+  
+    "invalidRare": {
+      "en-US": "Rare animal «`{0}`» does not exist!",
+      "ru": "Редкое животное «`{0}`» не существует!"
+    },
+  
+    "notInList": {
+      "en-US": "Rare animal «`{0}`» is not in your list!",
+      "ru": "Редкое животное «`{0}`» отсутствует в вашем списке!"
+    },
+  
+    "removed": {
+      "en-US": "## ✅ _Removed `{0}` {1}_",
+      "ru": "## ✅ _Удалено `{0}` {1}_"
+    }
+  },
+  
+  "errors": {
+    "disabledInDMs": {
+      "en-US": "Disabled in DMs",
+      "ru": "Недоступно в ЛС"
+    },
+  
+    "errorTitle": {
+      "en-US": "Error!",
+      "ru": "Ошибка!"
+    },
+  
+    "invalidArguments": {
+      "en-US": "Invalid arguments!",
+      "ru": "Недопустимые аргументы!"
+    },
+  
+    "noArgument": {
+      "en-US": "No argument written!",
+      "ru": "Не указано ни одного аргумента!"
+    },
+  
+    "notNumber": {
+      "en-US": "Argument is not a number!",
+      "ru": "Аргумент не является числом!"
+    },
+  
+    "usage": {
+      "en-US": "Usage: `{0}`",
+      "ru": "Использование: `{0}`"
+    },
+  
+    "userNotFound": {
+      "en-US": "User not found!",
+      "ru": "Пользователь не найден!"
+    }
+  },
+  
+  "global": {
+    "mc": {
+      "en-US": "MC",
+      "ru": "МК"
+    },
+  
+    "mopecoin": {
+      "en-US": "Mopecoin",
+      "ru": "Мопкоин"
+    },
+  
+    "mopeyUserIdentifier": {
+      "en-US": "Mopey User Identifier",
+      "ru": "Идентификатор Пользователя Мопи"
+    },
+  
+    "muid": {
+      "en-US": "MUID",
+      "ru": "ИДПМ"
+    }
+  },
+  
+  "help": {
+    "aliasesTitle": {
+      "en-US": "# _📚 Aliases_",
+      "ru": "# _📚 Алиасы_"
+    },
+  
+    "allCommandsTitle": {
+      "en-US": "# _📜 __ALL COMMANDS___",
+      "ru": "# _📜 __ВСЕ КОМАНДЫ___"
+    },
+  
+    "assistance": {
+      "en-US": "### _Need assistance with a specific issue? [Join our official Discord server]({0})!_",
+      "ru": "### _Нужна помощь с конкретной проблемой? [Присоединяйтесь к нашему официальному Discord серверу]({0})!_"
+    },
+  
+    "commandTitle": {
+      "en-US": "# _📜 __{0}___",
+      "ru": "# _📜 __{0}___"
+    },
+  
+    "detailed": {
+      "en-US": "### _Use `{PREFIX}help (command)` for detailed information on a specific command!_",
+      "ru": "### _Используйте `{PREFIX}help (command)` для подробной информации по команде!_"
+    },
+  
+    "noInfo": {
+      "en-US": "No information about this command!",
+      "ru": "Нет информации о этой команде!"
+    },
+  
+    "none": {
+      "en-US": "None",
+      "ru": "Пусто"
+    },
+  
+    "relatedTitle": {
+      "en-US": "# _📖 Related_",
+      "ru": "# _📖 Связанные_"
+    }
+  },
+  
+  "history": {
+    "buttonLabelCancelChanges": {
+      "en-US": "Cancel",
+      "ru": "Отменить"
+    },
+  
+    "buttonLabelCancelFilter": {
+      "en-US": "Cancel",
+      "ru": "Отменить фильтр"
+    },
+  
+    "buttonLabelConfirm": {
+      "en-US": "Confirm",
+      "ru": "Подтвердить"
+    },
+  
+    "buttonLabelDecline": {
+      "en-US": "Decline",
+      "ru": "Отменить"
+    },
+  
+    "buttonLabelDelete": {
+      "en-US": "Delete",
+      "ru": "Удалить"
+    },
+  
+    "buttonLabelEdit": {
+      "en-US": "Edit",
+      "ru": "Редактировать"
+    },
+  
+    "buttonLabelFilterByRare": {
+      "en-US": "Filter",
+      "ru": "Фильтровать по редкому"
+    },
+  
+    "buttonLabelPage": {
+      "en-US": "Page {0}/{1}",
+      "ru": "Страница {0}/{1}"
+    },
+  
+    "buttonLabelResetChanges": {
+      "en-US": "Reset",
+      "ru": "Сбросить"
+    },
+  
+    "buttonLabelSaveChanges": {
+      "en-US": "Save",
+      "ru": "Сохранить"
+    },
+  
+    "currentDifficulty": {
+      "en-US": "## _Current: `{0}`_",
+      "ru": "## _Текущая: `{0}`_"
+    },
+  
+    "currentPlayType": {
+      "en-US": "## _Current: `{0}`_",
+      "ru": "## _Текущий: `{0}`_"
+    },
+  
+    "currentValue": {
+      "en-US": "## _Current:_",
+      "ru": "## _Текущее:_"
+    },
+  
+    "deletePageWarning": {
+      "en-US": "## _Are you sure you want to delete this page?_",
+      "ru": "## _Вы уверены, что хотите удалить эту страницу?_"
+    },
+  
+    "difficulty": {
+      "en-US": "# _Difficulty: `{0}`_",
+      "ru": "# _Сложность: `{0}`_"
+    },
+  
+    "endDate": {
+      "en-US": "# _End Date: {0}_",
+      "ru": "# _Дата окончания: {0}_"
+    },
+  
+    "invalidRare": {
+      "en-US": "Invalid abbreviation provided!",
+      "ru": "Неверное редкое животное!"
+    },
+  
+    "listOptionInvalidDate": {
+      "en-US": "Invalid date!",
+      "ru": "Недопустимая дата!"
+    },
+  
+    "listOptionInvalidDifficulty": {
+      "en-US": "Invalid Difficulty!",
+      "ru": "Недопустимая сложность!"
+    },
+  
+    "listOptionInvalidListValue": {
+      "en-US": "Invalid value `{0}` in `{1}`!",
+      "ru": "Недопустимое значение `{0}` в `{1}`!"
+    },
+  
+    "listOptionInvalidPlayType": {
+      "en-US": "Invalid Play Type!",
+      "ru": "Недопустимый тип игры!"
+    },
+  
+    "listOptionInvalidPoints": {
+      "en-US": "Invalid number of Points!",
+      "ru": "Недопустимое количество очков!"
+    },
+  
+    "listOptionInvalidRares": {
+      "en-US": "Invalid number of Rares!",
+      "ru": "Недопустимое количество редких!"
+    },
+  
+    "listOptionUnknownListRare": {
+      "en-US": "Unknown animal `{0}` in `{1}`!",
+      "ru": "Неизвестное животное `{0}` в `{1}`!"
+    },
+  
+    "listOptionInvalidValue": {
+      "en-US": "Invalid value `{0}` in `{1}`!",
+      "ru": "Недопустимое значение `{0}` в `{1}`!"
+    },
+  
+    "menuTitleChooseOptions": {
+      "en-US": "Choose an option to edit",
+      "ru": "Выберите опцию для редактирования"
+    },
+  
+    "menuTitleDifficulty": {
+      "en-US": "Choose a Difficulty",
+      "ru": "Выберите сложность"
+    },
+  
+    "menuTitlePlayType": {
+      "en-US": "Choose a Play Type",
+      "ru": "Выберите тип игры"
+    },
+  
+    "modalDescriptionEndDate": {
+      "en-US": "Edit your End date",
+      "ru": "Отредактируйте дату окончания"
+    },
+  
+    "modalDescriptionFilterByRare": {
+      "en-US": "Enter a rare animal to filter by.",
+      "ru": "Выберите редкое животное для фильтрации."
+    },
+  
+    "modalDescriptionList": {
+      "en-US": "Edit your list of rares",
+      "ru": "Отредактируйте список редких"
+    },
+  
+    "modalDescriptionMoveToPage": {
+      "en-US": "Enter a page you want to move to.",
+      "ru": "Введите страницу, на которую хотите перейти."
+    },
+  
+    "modalDescriptionPoints": {
+      "en-US": "Edit your Points",
+      "ru": "Отредактируйте ваши очки"
+    },
+  
+    "modalDescriptionRares": {
+      "en-US": "Edit your number of Rares",
+      "ru": "Отредактируйте количество редких"
+    },
+  
+    "modalDescriptionSortByRare": {
+      "en-US": "Enter a rare animal to sort by.",
+      "ru": "Выберите редкое животное для сортировки."
+    },
+  
+    "modalPlaceholderEndDate": {
+      "en-US": "DD month YYYY HH:MM:SS",
+      "ru": "ДД месяц (англ) ГГГГ ЧЧ:ММ:СС"
+    },
+  
+    "modalPlaceholderFilterByRare": {
+      "en-US": "Only abbreviations from the {PREFIX}snora command are allowed!",
+      "ru": "Только сокращения из команды {PREFIX}snora допустимы!"
+    },
+  
+    "modalPlaceholderList": {
+      "en-US": "<ShortRaresNameX>=<AmountX>, ...",
+      "ru": "<РедкоеX>=<КоличествоX>, ..."
+    },
+  
+    "modalPlaceholderPoints": {
+      "en-US": "Current: {0}",
+      "ru": "Текущие: {0}"
+    },
+  
+    "modalPlaceholderRares": {
+      "en-US": "Current: {0}",
+      "ru": "Текущее: {0}"
+    },
+  
+    "modalPlaceholderSortByRare": {
+      "en-US": "Only abbreviations from the {PREFIX}snora command are allowed!",
+      "ru": "Только сокращения из команды {PREFIX}snora допустимы!"
+    },
+  
+    "modalTitleEndDate": {
+      "en-US": "Editing Finishing Date",
+      "ru": "Редактирование даты окончания"
+    },
+  
+    "modalTitleFilterByRare": {
+      "en-US": "Filter by rare animal",
+      "ru": "Фильтр по редкому"
+    },
+  
+    "modalTitleList": {
+      "en-US": "Editing List of Rares",
+      "ru": "Редактирование списка редких"
+    },
+  
+    "modalTitleMoveToPage": {
+      "en-US": "Move to a page",
+      "ru": "Перейти на страницу"
+    },
+  
+    "modalTitlePoints": {
+      "en-US": "Editing Points",
+      "ru": "Редактирование очков"
+    },
+  
+    "modalTitleRares": {
+      "en-US": "Editing Number of Rares",
+      "ru": "Редактирование количества редких"
+    },
+  
+    "modalTitleSortByRare": {
+      "en-US": "Sort by rare animal",
+      "ru": "Сортировка по редким"
+    },
+  
+    "noHistory": {
+      "en-US": "## _There is nothing to show on this page!_",
+      "ru": "## _На этой странице нечего отображать!_"
+    },
+  
+    "noHistoryObject": {
+      "en-US": "## _This history page does not exist!_",
+      "ru": "## _Эта страница истории не существует!_"
+    },
+  
+    "optionNameDifficulty": {
+      "en-US": "Difficulty",
+      "ru": "Сложность"
+    },
+  
+    "optionNameEndDate": {
+      "en-US": "End Date",
+      "ru": "Дата окончания"
+    },
+  
+    "optionNamePlayType": {
+      "en-US": "Play Type",
+      "ru": "Тип игры"
+    },
+  
+    "optionNamePoints": {
+      "en-US": "Points",
+      "ru": "Очки"
+    },
+  
+    "optionNameRares": {
+      "en-US": "Rares",
+      "ru": "Редкие"
+    },
+  
+    "optionNameRaresList": {
+      "en-US": "List of Rares",
+      "ru": "Список редких"
+    },
+  
+    "optionNameSort": {
+      "en-US": "Sort Type: {0}",
+      "ru": "Сортировка по: {0}"
+    },
+  
+    "playType": {
+      "en-US": "# _Play Type: `{0}`_",
+      "ru": "# _Тип игры: `{0}`_"
+    },
+  
+    "points": {
+      "en-US": "# _Points: `{0}`_",
+      "ru": "# _Очки: `{0}`_"
+    },
+  
+    "providedPageIsNotANumber": {
+      "en-US": "Argument is not a number!",
+      "ru": "Аргумент не является числом!"
+    },
+  
+    "rares": {
+      "en-US": "# _Rares: `{0}`_",
+      "ru": "# _Редких: `{0}`_"
+    },
+  
+    "unknownValue": {
+      "en-US": "Unknown",
+      "ru": "Неизвестно"
+    }
+  },
+  
+  "hlsimulator": {
+    "invalidDifficulty": {
+      "en-US": "Unknown difficulty!",
+      "ru": "Неизвестная сложность!"
+    }
+  },
+  
+  "howlucky": {
+    "description": {
+      "en-US": "## _🍀 Today you are lucky by {0}%, {1}_",
+      "ru": "## _🍀 Сегодня Вы удачливы на {0}%, {1}_"
+    },
+  
+    "footer": {
+      "en-US": "## _The result will update {0}!_",
+      "ru": "## _Результат обновится {0}!_"
+    }
+  },
+  
+  "invite": {
+    "discord": {
+      "en-US": "Official Discord server",
+      "ru": "Официальный Дискорд сервер"
+    },
+  
+    "title": {
+      "en-US": "# _Invite and important links_",
+      "ru": "# _Приглашение и важные ссылки_"
+    },
+  
+    "topgg": {
+      "en-US": "Top.gg",
+      "ru": "Top.gg"
+    },
+  
+    "url": {
+      "en-US": "Invite URL",
+      "ru": "Ссылка для приглашения"
+    }
+  },
+  
+  "kingdragon": {
+    "attempt": {
+      "en-US": "## _You tried to become the King Dragon as {0} {1}... At least you got `{2}`{EMOJI} from this run!_",
+      "ru": "## _Вы пытались стать Королём Драконов за {0} {1}... По крайней мере, Вы получили `{2}`{EMOJI} из этого раунда!_"
+    },
+  
+    "byLuckUpgrade": {
+      "en-US": "## _You expected to see Black Dragon in upgrade menu, but suddenly you saw a different animal, it was __{0}__! You were surprised and happy! After playing for some time, you earned `{1}`{EMOJI}!_",
+      "ru": "## _Вы ожидали увидеть Чёрного Дракона в меню улучшений, но вдруг увидели другое животное, это был _{0}_! Вы были удивлены и счастливы! После игры некоторое время, Вы заработали `{1}`{EMOJI}!_"
+    },
+  
+    "chooseUpgrade": {
+      "en-US": "# _Choose an upgrade:_",
+      "ru": "# _Выберите улучшение:_"
+    },
+  
+    "rarity": {
+      "en-US": "-# _Rarity: {0}/{1}_",
+      "ru": "-# _Редкость: {0}/{1}_"
+    },
+  
+    "reasons": {
+      "en-US": [
+        "but you got killed by teamers",
+        "but your internet fell off and you disconnected with {0} apexes away",
+        "but Mistik made an event so you lost your BD",
+        "but rare animals bullied and killed you",
+        "but you died by low lava"
+      ],
+      "ru": [
+        "но Вас убили тиммейты",
+        "но Ваш интернет отключился и Вы отключились с {0} апексами от победы",
+        "но Мистик устроил событие, и Вы потеряли своего ЧД",
+        "но редкие животные забуллили и убили Вас",
+        "но Вы погибли от низкого уровня лавы"
+      ]
+    },
+  
+    "upgrade": {
+      "en-US": "## _You upgraded to __{0}__ and earned `{1}`{EMOJI}!_",
+      "ru": "## _Вы улучшились до __{0}__ и заработали `{1}`{EMOJI}!_"
+    }
+  },
+  
+  "leaderboard": {
+    "contentLine": {
+      "en-US": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}",
+      "ru": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}"
+    },
+  
+    "invalidPage": {
+      "en-US": "Invalid number in «page» field!",
+      "ru": "Недопустимое число в поле «страница»!"
+    },
+  
+    "modalDescriptionPage": {
+      "en-US": "Enter leaderboard page",
+      "ru": "Введите страницу таблицы лидеров"
+    },
+  
+    "modalTitle": {
+      "en-US": "Leaderboard page",
+      "ru": "Страница таблицы лидеров"
+    },
+  
+    "notReady": {
+      "en-US": "Leaderboard is not ready yet, please try again later!",
+      "ru": "Таблица лидеров ещё не готова, попробуйте позже!"
+    },
+  
+    "pageButton": {
+      "en-US": "Page {0}/{1}",
+      "ru": "Страница {0}/{1}"
+    },
+  
+    "title": {
+      "en-US": "# 🔝 _Leaderboard_",
+      "ru": "# 🔝 _Таблица лидеров_"
+    }
+  },
+  
+  "lobby": {
+    "author": {
+      "en-US": "## {0}'s Lobby",
+      "ru": "## Лобби {0}"
+    },
+  
+    "buttonLabelClose": {
+      "en-US": "Close",
+      "ru": "Закрыть"
+    },
+  
+    "buttonLabelCloseManually": {
+      "en-US": "Close Manually (Host only)",
+      "ru": "Закрыть вручную (Только Хост)"
+    },
+  
+    "buttonLabelJoin": {
+      "en-US": "Join",
+      "ru": "Войти"
+    },
+  
+    "buttonLabelQuit": {
+      "en-US": "Quit",
+      "ru": "Выйти"
+    },
+  
+    "buttonLabelReady": {
+      "en-US": "Ready",
+      "ru": "Готов"
+    },
+  
+    "buttonLabelSettings": {
+      "en-US": "Show Settings",
+      "ru": "Показать настройки"
+    },
+  
+    "buttonLabelStart": {
+      "en-US": "Start",
+      "ru": "Старт"
+    },
+  
+    "closedByHost": {
+      "en-US": "## _The Lobby was closed by the Host._",
+      "ru": "## _Лобби было закрыто хостом_"
+    },
+  
+    "closedByInactivity": {
+      "en-US": "## _The Lobby created by <@{0}> was closed due to inactivity._",
+      "ru": "## _Лобби, созданное пользователем <@{0}>, было закрыто из-за бездействия_"
+    },
+  
+    "difficultyTitle": {
+      "en-US": "## _Difficulty: `{0}`_",
+      "ru": "## _Сложность: `{0}`_"
+    },
+  
+    "difficultyTitleMenu": {
+      "en-US": "## _Difficulty:_",
+      "ru": "## _Сложность:_"
+    },
+  
+    "doesNotExist": {
+      "en-US": "There is no active lobby in this channel.",
+      "ru": "В этом канале нет активного лобби."
+    },
+  
+    "failed": {
+      "en-US": "## _Failed to start the challenge._",
+      "ru": "# _Не удалось начать испытание_"
+    },
+  
+    "friendship": {
+      "en-US": "FRIENDSHIP",
+      "ru": "ДРУЖБА"
+    },
+  
+    "getReady": {
+      "en-US": "# _Get ready! Starting in `{0}` second{0:m}!_",
+      "ru": "# _Приготовьтесь! Старт через `{0}` секунд{0:u}!_"
+    },
+  
+    "hasActiveChallengeLobby": {
+      "en-US": "You have an active challenge! End it before creating a Lobby!",
+      "ru": "У Вас есть активное испытание! Завершите его перед созданием лобби!"
+    },
+  
+    "hasActiveChallengeParticipate": {
+      "en-US": "You have an active challenge! Complete it before participating!",
+      "ru": "У Вас есть активное испытание! Завершите его перед участием"
+    },
+  
+    "hostTitle": {
+      "en-US": "## _Host: {0}_",
+      "ru": "## _Хост: {0}_"
+    },
+  
+    "lobbyAlreadyExist": {
+      "en-US": "## _A Lobby already exists in this channel!_",
+      "ru": "## _Лобби уже существует в этом канале!_"
+    },
+  
+    "lobbyFull": {
+      "en-US": "The Lobby is full.",
+      "ru": "Лобби заполнено."
+    },
+  
+    "lobbyProgressTitle": {
+      "en-US": "# _1 Hour Luck Lobby Progress_",
+      "ru": "# _1 Hour Luck Lobby Progress_"
+    },
+  
+    "menuTitleChooseDifficulty": {
+      "en-US": "Choose Difficulty",
+      "ru": "Выберите сложность"
+    },
+  
+    "menuTitleChooseMode": {
+      "en-US": "Choose Mode",
+      "ru": "Выберите режим"
+    },
+  
+    "menuTitleChooseVictoryType": {
+      "en-US": "Choose Victory Type",
+      "ru": "Выберите тип победы"
+    },
+  
+    "menuTitleGiveHost": {
+      "en-US": "Give Host",
+      "ru": "Передать хоста"
+    },
+  
+    "missingMessage": {
+      "en-US": "## _The Lobby was closed due to a missing message._",
+      "ru": "## _Лобби было закрыто из-за отсутствия сообщения._"
+    },
+  
+    "modeTitle": {
+      "en-US": "## _Mode: `{0}`_",
+      "ru": "## _Режим: `{0}`_"
+    },
+  
+    "modeTitleMenu": {
+      "en-US": "## _Mode:_",
+      "ru": "## _Режим:_"
+    },
+  
+    "none": {
+      "en-US": "None",
+      "ru": "Пусто"
+    },
+  
+    "notParticipant": {
+      "en-US": "You're not a participant.",
+      "ru": "Вы не участник."
+    },
+  
+    "notReady": {
+      "en-US": "Unable to create lobby yet. Please try again later.",
+      "ru": "Пока не удаётся создать лобби. Пожалуйста, попробуйте позже."
+    },
+  
+    "notStarted": {
+      "en-US": "The challenge hasn't started yet!",
+      "ru": "Испытание ещё не началось!"
+    },
+  
+    "optionDescriptionSelect": {
+      "en-US": "(Select)",
+      "ru": "(Выбрать)"
+    },
+  
+    "participants": {
+      "en-US": "Participants",
+      "ru": "Участники"
+    },
+  
+    "participantsTitle": {
+      "en-US": "# _🎮 Participants_",
+      "ru": "# _🎮 Участники_"
+    },
+  
+    "settingsChange": {
+      "en-US": "# _⚙️ Settings changed_",
+      "ru": "# _⚙️ Настройки изменены_"
+    },
+  
+    "settingsTitle": {
+      "en-US": "# _⚙️ Settings_",
+      "ru": "# _⚙️ Настройки_"
+    },
+  
+    "sortedPlayersContent": {
+      "en-US": "> **{0} `{1}`**\n> **`├─` `{2}` Points**\n> **`└─` `{3}` Rares**",
+      "ru": "> **{0} `{1}`**\n> **`├─` `{2}` Очк{2:e}**\n> **`└─` `{3}` Редк{3:re}**"
+    },
+  
+    "sortedPlayersInSortingTeamsContent": {
+      "en-US": "> **`{0}`**\n> **`├──` `{1}` Points**\n> **`└──` `{2}` Rares**",
+      "ru": "> **`{0}`**\n> **`├──` `{1}` Очк{1:e}**\n> **`└──` `{2}` Редк{2:re}**"
+    },
+  
+    "sortedTeamsContent": {
+      "en-US": "> **{0} Team `{1}`**\n>  **`├──` `{2}` Points**\n>  **`└──` `{3}` Rares**",
+      "ru": "> **{0} Команда `{1}`**\n>  **`├──` `{2}` Очк{2:e}**\n>  **`└──` `{3}` Редк{3:re}**"
+    },
+  
+    "team": {
+      "en-US": "Team `{0}`",
+      "ru": "Команда `{0}`"
+    },
+  
+    "teamTitle": {
+      "en-US": "# 🎮 Team {0}",
+      "ru": "# 🎮 Команда {0}"
+    },
+  
+    "victoryTypeTitle": {
+      "en-US": "## _Victory Type: `{0}`_",
+      "ru": "## _Тип победы: `{0}`_"
+    },
+  
+    "victoryTypeTitleMenu": {
+      "en-US": "## _Victory Type:_",
+      "ru": "## _Тип победы:_"
+    },
+  
+    "winner": {
+      "en-US": "# _🎉 Winner: {0} 🎉_",
+      "ru": "# _🎉 Победитель: {0} 🎉_"
+    }
+  },
+
+  "math": {
+    "expression": {
+      "en-US": "expression",
+      "ru": "выражение"
+    }
+  },
+  
+  "muid": {
+    "discordId": {
+      "en-US": "### _Discord ID: `{0}`_",
+      "ru": "### _Дискорд айди: `{0}`_"
+    },
+  
+    "invalidArgument": {
+      "en-US": "No MUID were written or argument is not a number",
+      "ru": "ИДПМ не указан или аргумент не является числом"
+    },
+  
+    "largeNumber": {
+      "en-US": "MUID can't be that large!",
+      "ru": "ИДПМ не может быть таким большим!"
+    },
+  
+    "userNotExist": {
+      "en-US": "User with `{0}` MUID does not exist",
+      "ru": "Пользователя с `{0}` идентификатором не существует"
+    }
+  },
+  
+  "pause": {
+    "alreadyPaused": {
+      "en-US": "You already have paused the challenge!",
+      "ru": "Вы уже поставили испытание на паузу!"
+    },
+  
+    "paused": {
+      "en-US": "# _Paused!_",
+      "ru": "# _Пауза!_"
+    },
+  
+    "timesUp": {
+      "en-US": "Time's up!",
+      "ru": "Время вышло!"
+    }
+  },
+  
+  "ping": {
+    "ping": {
+      "en-US": "## _My current ping is `{0}`ms!_",
+      "ru": "## _Мой текущий пинг - `{0}`мс!_"
+    }
+  },
+  
+  "play": {
+    "activeSession": {
+      "en-US": "## You already have an active game session!",
+      "ru": "## У вас уже есть активная игровая сессия!"
+    },
+  
+    "arena": {
+      "actions": {
+        "0": {
+          "en-US": "## _You attacked each other, but no one get a bite._",
+          "ru": "## _Вы атаковали друг друга, но никто не укусил._"
+        },
+  
+        "1": {
+          "en-US": "## _You attacked your opponent and bit him._",
+          "ru": "## _Вы атаковали и укусили противника._"
+        },
+  
+        "2": {
+          "en-US": "## _Your opponent attacked and bit you._",
+          "ru": "## _Противник атаковал и укусил вас._"
+        },
+  
+        "3": {
+          "en-US": "## _Your opponent defended himself and bit you._",
+          "ru": "## _Противник защитился и укусил вас._"
+        },
+  
+        "4": {
+          "en-US": "## _Your opponent defended himself, but no one get a bite._",
+          "ru": "## _Противник защитился, но никто не укусил._"
+        },
+  
+        "5": {
+          "en-US": "## _Your opponent failed to defend himself and you bit him._",
+          "ru": "## _Противник не смог защититься и вы укусили его._"
+        },
+  
+        "6": {
+          "en-US": "## _You counterattacked his deceive and bit him!_",
+          "ru": "## _Вы контратаковали его обман и укусили его!_"
+        },
+  
+        "7": {
+          "en-US": "## _Your opponent deceived you, but no one get a bite._",
+          "ru": "## _Противник вас обманул, но никто не укусил._"
+        },
+  
+        "8": {
+          "en-US": "## _Your opponent deceived and bit you._",
+          "ru": "## _Противник обманул и укусил вас._"
+        },
+  
+        "9": {
+          "en-US": "## _You defended yourself and bit your opponent._",
+          "ru": "## _Вы защитились и укусили противника._"
+        },
+  
+        "10": {
+          "en-US": "## _You defended yourself, but no one get a bite._",
+          "ru": "## _Вы защитились, но никто не укусил._"
+        },
+  
+        "11": {
+          "en-US": "## _You did not defend yourself and your opponent bit you._",
+          "ru": "## _Вы не защитились и противник вас укусил._"
+        },
+  
+        "12": {
+          "en-US": "## _You both went defending yourself, and no one get a bite._",
+          "ru": "## _Вы оба защищались, и никто не укусил._"
+        },
+  
+        "13": {
+          "en-US": "## _Your attempt to deceive your opponent failed, and he bit you._",
+          "ru": "## _Ваша попытка обмана не удалась, и он укусил вас._"
+        },
+  
+        "14": {
+          "en-US": "## _You deceived your opponent and bit him._",
+          "ru": "## _Вы обманули противника и укусили его._"
+        },
+  
+        "15": {
+          "en-US": "## _You deceived your opponent, but no one get a bite._",
+          "ru": "## _Вы обманули противника, но никто не укусил._"
+        },
+  
+        "16": {
+          "en-US": "## _You both attempted to deceive each other, but no one get a bite._",
+          "ru": "## _Вы оба пытались обмануть друг друга, но никто не укусил._"
+        },
+  
+        "-1": {
+          "en-US": "## _Unknown outcome._",
+          "ru": "## _Неизвестный результат._"
+        }
+      },
+  
+      "reject": {
+        "en-US": [
+          "## _Seems like everyone's allergic to danger._",
+          "## _Nobody wants to 1v1 you._",
+          "## _Nobody? Seriously?_",
+          "## _No one? Really?_",
+          "## _You scared them all off… again._",
+          "## _You didn't find anyone to battle._",
+          "## _Seems like you're destined to battle… your loneliness._",
+          "## _Nobody showed up._",
+          "## _They saw your name and ran._",
+          "## _Seems like everyone is scared of you because nobody wants to 1v1 you._"
+        ],
+        "ru": [
+          "## _Похоже, все боятся опасности._",
+          "## _Никто не хочет  с вами._",
+          "## _Никого? Серьёзно?_",
+          "## _Никого? Действительно?_",
+          "## _Вы напугали их всех… опять._",
+          "## _Вы не нашли противника для боя._",
+          "## _Похоже, вам суждено биться… с одиночеством._",
+          "## _Никто не пришёл._",
+          "## _Они увидели ваше имя и убежали._",
+          "## _Похоже, все боятся вас, потому что никто не хочет идти 1на1 с вами._"
+        ]
+      },
+  
+      "table": {
+        "bites": {
+          "en-US": "### _Bites: `{0}`_",
+          "ru": "### _Укусов: `{0}`_"
+        },
+  
+        "lost": {
+          "en-US": "## _You lost..._",
+          "ru": "## _Вы проиграли..._"
+        },
+  
+        "opponentChose": {
+          "en-US": "## _Opponent chose: `{0}`_",
+          "ru": "## _Противник выбрал: `{0}`_"
+        },
+  
+        "opponentTurn": {
+          "en-US": "## _Opponent's turn!_",
+          "ru": "## _Ход противника!_"
+        },
+  
+        "player": {
+          "en-US": "# ___{0}___",
+          "ru": "# ___{0}___"
+        },
+  
+        "userChoose": {
+          "en-US": "## _Choose:_",
+          "ru": "## _Выберите:_"
+        },
+  
+        "userChose": {
+          "en-US": "## _You chose: `{0}`_",
+          "ru": "## _Вы выбрали: `{0}`_"
+        },
+  
+        "userTurn": {
+          "en-US": "## _Your turn!_",
+          "ru": "## _Ваш ход!_"
+        },
+  
+        "vs": {
+          "en-US": "# _`VS`_",
+          "ru": "# _`VS`_"
+        },
+  
+        "won": {
+          "en-US": "## _YOU WON!_",
+          "ru": "## _ВЫ ПОБЕДИЛИ!_"
+        }
+      },
+  
+      "wentInArena": {
+        "en-US": "## _You went in arena with __{0}__!_\n### _Your turn!_",
+        "ru": "## _Вы пошли на арену с __{0}__!_\n### _Ваш ход!_"
+      }
+    },
+  
+    "ate": {
+      "en-US": "## _You ate __{0}__ and gained `{1}`XP!_",
+      "ru": "## _Вы съели __{0}__ и получили `{1}` ОП!_"
+    },
+  
+    "buttonLabelCantFind": {
+      "en-US": "End manually",
+      "ru": "Завершить вручную"
+    },
+  
+    "buttonLabelQuitGame": {
+      "en-US": "Quit game",
+      "ru": "Выйти из игры"
+    },
+  
+    "buttonLabelRespawn": {
+      "en-US": "Respawn",
+      "ru": "Возродиться"
+    },
+  
+    "buttonLabelShowApex": {
+      "en-US": "Show Apex",
+      "ru": "Показать Апексов"
+    },
+  
+    "chooseAction": {
+      "en-US": "### _Choose action:_",
+      "ru": "### _Выберите действие:_"
+    },
+  
+    "chooseAnimal": {
+      "en-US": "## _Choose which animal to spawn as:_",
+      "ru": "## _Выберите, за кого появиться:_"
+    },
+  
+    "chooseUpgrade": {
+      "en-US": "## _Choose an upgrade:_",
+      "ru": "## _Выберите прокачку:_"
+    },
+  
+    "diedByLava": {
+      "en-US": "## _You died by staying on lava... You are not a volcano animal!_",
+      "ru": "## _Вы погибли, находясь на лаве... Вы не вулканическое животное!_"
+    },
+  
+    "diedByTeamers": {
+      "en-US": "## _Teamers suddenly attacked you and you died..._",
+      "ru": "## _Тиммеры неожиданно напали на вас и вы погибли..._"
+    },
+  
+    "disconnected": {
+      "en-US": "## _Successfully disconnected you from the game!_",
+      "ru": "## _Вы успешно отключились от игры!_"
+    },
+  
+    "downgrades": {
+      "blackDragon": {
+        "en-US": [
+          "giving everyone bites",
+          "letting another black dragon kill you"
+        ],
+        "ru": [
+          "дав всем покусать вас",
+          "позволив другому чёрному дракону вас убить"
+        ]
+      },
+  
+      "downgradeBy": {
+        "en-US": "## _You chose to downgrade by __{0}__!_",
+        "ru": "## _Вы выбрали понизиться __{0}__!_"
+      },
+  
+      "intoLava": {
+        "en-US": "diving into lava",
+        "ru": "искупавшись в лаве"
+      },
+  
+      "oceanPredators": {
+        "en-US": "surrendering to the deep ocean predators",
+        "ru": "сдавшись глубоководным хищникам"
+      },
+  
+      "onLand": {
+        "en-US": "suffocating on land",
+        "ru": "задохнувшись на суше"
+      },
+  
+      "outOfLava": {
+        "en-US": "running out of lava",
+        "ru": "потратив весь запас лавы"
+      },
+  
+      "reasons": {
+        "en-US": [
+          "giving yourself to predator",
+          "running out of water"
+        ],
+        "ru": [
+          "отдав себя хищнику",
+          "потратив весь запас воды"
+        ]
+      }
+    },
+  
+    "earned": {
+      "en-US": "-# _Earned: {0}{EMOJI}_",
+      "ru": "-# _Получено: {0}{EMOJI}_"
+    },
+  
+    "endPreviousGame": {
+      "en-US": "Please end your previous game!",
+      "ru": "Пожалуйста, закончите вашу предыдущую игру!"
+    },
+  
+    "exited": {
+      "en-US": "## _You have exited the game!_",
+      "ru": "## _Вы вышли из игры!_"
+    },
+  
+    "found": {
+      "en-US": "## _You found a(n) {0}!_",
+      "ru": "## _Вы нашли {0}!_"
+    },
+  
+    "kill": {
+      "en-US": [
+        "## _A predator killed you!_",
+        "## _You were killed by a predator!_",
+        "## _A predator has hunted you down!_",
+        "## _You got hunted by a predator!_"
+      ],
+      "ru": [
+        "## _Хищник вас убил!_",
+        "## _Вас убил хищник!_",
+        "## _Хищник вас поймал!_",
+        "## _На вас поохотился хищник!_"
+      ]
+    },
+  
+    "lackOfLava": {
+      "en-US": "## _You died by a lack of lava!_",
+      "ru": "## _Вы погибли от нехватки лавы!_"
+    },
+  
+    "lackOfWater": {
+      "en-US": "## _You died by a lack of water!_",
+      "ru": "## _Вы погибли от нехватки воды!_"
+    },
+  
+    "movedTo": {
+      "en-US": "## _Successfully moved to __{0}__ biome!_",
+      "ru": "## _Успешно перемещение в биом __{0}__!_"
+    },
+  
+    "noSession": {
+      "en-US": "You don't have an active game session!",
+      "ru": "У вас нет активной игровой сессии!"
+    },
+  
+    "optionNameArena": {
+      "en-US": "Arena",
+      "ru": "Арена"
+    },
+  
+    "optionNameDowngrade": {
+      "en-US": "Downgrade",
+      "ru": "Понизиться"
+    },
+  
+    "optionNameFarmXp": {
+      "en-US": "Farm XP",
+      "ru": "Фарм ОП"
+    },
+  
+    "optionNameUpgrade": {
+      "en-US": "Upgrade",
+      "ru": "Улучшиться"
+    },
+  
+    "selectMenuPlaceholderActions": {
+      "en-US": "Actions",
+      "ru": "Действия"
+    },
+  
+    "selectMenuPlaceholderSwitchBiome": {
+      "en-US": "Switch biome",
+      "ru": "Сменить биом"
+    },
+  
+    "soccer": {
+      "goaled": {
+        "en-US": "## _You goaled the {0} and earned `{1}`{EMOJI}!_",
+        "ru": "## _Вы забили {0} и получили `{1}`{EMOJI}!_"
+      },
+  
+      "goalFailed": {
+        "en-US": "## _You tried to goal the {0}, but you couldn't find a hole!_\n### _You still gained `{1}`{EMOJI} for holding it._",
+        "ru": "## _Вы попытались забить {0}, но не смогли найти где забить!_\n### _Вы всё равно получили `{1}`{EMOJI} за удержание._"
+      },
+  
+      "ignored": {
+        "en-US": "## _You chose to ignore the {0}._",
+        "ru": "## _Вы выбрали проигнорировать {0}._"
+      },
+  
+      "threw": {
+        "en-US": "## _You threw away the {0}._",
+        "ru": "## _Вы выбросили {0}._"
+      }
+    },
+  
+    "unableInDm": {
+      "en-US": "You can't start the game in DM!",
+      "ru": "Вы не можете начать игру в ЛС!"
+    },
+  
+    "upgraded": {
+      "en-US": "## _You upgraded to __{0}__!_",
+      "ru": "## _Вы улучшились до __{0}__!_"
+    },
+  
+    "xp": {
+      "en-US": "XP",
+      "ru": "ОП"
+    }
+  },
+  
+  "points": {
+    "invalidUser": {
+      "en-US": "Invalid User ID",
+      "ru": "Недействительный ID пользователя"
+    },
+  
+    "noActiveChallengeAuthor": {
+      "en-US": "You don't have an active challenge!",
+      "ru": "У Вас нет активного испытания!"
+    },
+  
+    "noActiveChallengeUser": {
+      "en-US": "__{0}__ doesn't have an active challenge!",
+      "ru": "__{0}__ не имеет активного испытания!"
+    },
+  
+    "userIsABot": {
+      "en-US": "Bots cannot have points!",
+      "ru": "Боты не могут иметь очки!"
+    }
+  },
+  
+  "prefix": {
+    "changed": {
+      "en-US": "## _Successfully changed prefix to `{0}`_",
+      "ru": "## _Префикс успешно изменён на `{0}`_"
+    },
+  
+    "current": {
+      "en-US": "## _My prefix in this server is `{0}`_",
+      "ru": "## _Мой префикс на этом сервере `{0}`_"
+    },
+  
+    "missingPerm": {
+      "en-US": "You're missing the following permission: `Manage Server`",
+      "ru": "Вам не хватает следующего права: `Управление сервером`"
+    },
+  
+    "old": {
+      "en-US": "You cannot set an old prefix as a new one!",
+      "ru": "Вы не можете установить старый префикс как новый!"
+    }
+  },
+  
+  "pumpkin": {
+    "earned": {
+      "en-US": "## _You held it for some time, goaled it and earned `{0}`{EMOJI}!_",
+      "ru": "## _Вы держали её некоторое время, забили гол и заработали `{0}`{EMOJI}!_"
+    },
+  
+    "rarity": {
+      "en-US": "### • _Rarity: `{0}/{1}`_",
+      "ru": "### • _Редкость: `{0}/{1}`_"
+    },
+  
+    "saw": {
+      "en-US": "## _You were walking across the map and saw a(n) __{0}__!_",
+      "ru": "## _Вы шли по карте и вам на глаза попалась __{0}__!_"
+    }
+  },
+  
+  "raretry": {
+    "category": {
+      "en-US": "**• _Category: `{0}`_**",
+      "ru": "**• _Категория: `{0}`_**"
+    },
+  
+    "earned": {
+      "en-US": "### _Earned: `{0}`{EMOJI}_",
+      "ru": "### _Получено: `{0}`{EMOJI}_"
+    },
+  
+    "gotRares": {
+      "en-US": "## _You tried to get rares and you got __{0}__!_",
+      "ru": "## _Вы пытались получить редких и в итоге получили __{0}__!_"
+    },
+  
+    "mode": {
+      "en-US": "**• _Mode: `{0}`_**",
+      "ru": "**• _Режим: `{0}`_**"
+    },
+  
+    "nothing": {
+      "en-US": "## _You tried to get rares but you got nothing._",
+      "ru": "## _Вы пытались получить редких, но ничего не поймали._"
+    },
+  
+    "rarity": {
+      "en-US": "**• _Rarity: `{0}/{1}`_**",
+      "ru": "**• _Редкость: `{0}/{1}`_**"
+    },
+  
+    "unknownMode": {
+      "en-US": "Unknown raretry mode",
+      "ru": "Неизвестный режим попытки редких"
+    }
+  },
+  
+  "raretrymode": {
+    "title": {
+      "en-US": "# _Select your raretry mode_",
+      "ru": "# _Выберите ваш режим редкости_"
+    }
+  },
+  
+  "raretryrun": {
+    "nothing": {
+      "en-US": "## _Nothing_",
+      "ru": "## _Ничего_"
+    },
+  
+    "title": {
+      "en-US": "# _While evolving from mouse to black dragon, you got these rares:_",
+      "ru": "# _Эволюционируя от мыши до чёрного дракона, Вы получили следующих редких:_"
+    },
+  
+    "total": {
+      "en-US": "### • _Total: `{0}`{EMOJI}_",
+      "ru": "### • _Всего: `{0}`{EMOJI}_"
+    }
+  },
+  
+  "raretrysimulator": {
+    "attempts": {
+      "en-US": "**• _Attempts: `{0}`_**",
+      "ru": "**• _Попыток: `{0}`_**"
+    },
+  
+    "empty": {
+      "en-US": "# _Empty_",
+      "ru": "# _Пусто_"
+    },
+  
+    "invalidMode": {
+      "en-US": "Unknown raretry mode! Available modes: `{0}`.",
+      "ru": "Неизвестный режим попытки редких! Доступные режимы: `{0}`."
+    },
+  
+    "invalidNumber": {
+      "en-US": "Invalid argument in field «`attempts`»! Only a number from `1` to `1000` or argument `max` is allowed!",
+      "ru": "Недопустимый аргумент в поле «`количество_попыток`»! Допускается только число от `1` до `1000` или аргумент `макс`!"
+    },
+  
+    "mode": {
+      "en-US": "**• _Mode: `{0}`_**",
+      "ru": "**• _Режим: `{0}`_**"
+    },
+  
+    "title": {
+      "en-US": "# _Raretry Simulator_",
+      "ru": "# _Симулятор попытки редких_"
+    }
+  },
+  
+  "reminders": {
+    "disabled": {
+      "en-US": "Disabled",
+      "ru": "Отключено"
+    },
+  
+    "enabled": {
+      "en-US": "Enabled",
+      "ru": "Включено"
+    },
+  
+    "on": {
+      "en-US": "## _{0} is available!_",
+      "ru": "## _{0} доступна!_"
+    },
+  
+    "sentReminderTip": {
+      "en-US": "### _To disable reminders, use {0}!_",
+      "ru": "### _Чтобы отключить напоминания, используйте {0}!_"
+    },
+  
+    "sentReminderTitle": {
+      "en-US": "# 🔔___REMINDER___🔔",
+      "ru": "# 🔔___НАПОМИНАНИЕ___🔔"
+    },
+  
+    "title": {
+      "en-US": "# 🔔___REMINDERS___🔔",
+      "ru": "# 🔔___НАПОМИНАНИЯ___🔔"
+    }
+  },
+  
+  "report": {
+    "buttonLabel": {
+      "en-US": "Click",
+      "ru": "Нажмите"
+    },
+  
+    "labelDescription": {
+      "en-US": "Send a screenshot or a video of the issue",
+      "ru": "Отправьте скриншот или видео проблемы"
+    },
+  
+    "labelName": {
+      "en-US": "Screenshot or video of the issue",
+      "ru": "Скриншот или видео проблемы"
+    },
+  
+    "modalTitle": {
+      "en-US": "Report window",
+      "ru": "Окно репорта"
+    },
+  
+    "sent": {
+      "en-US": "## _Your report has been sent to the support team!_",
+      "ru": "## _Ваш репорт отправлен команде поддержки!_"
+    },
+  
+    "textInputNameAbout": {
+      "en-US": "What's your report about?",
+      "ru": "О чём ваш репорт?"
+    },
+  
+    "textInputNameIssue": {
+      "en-US": "What's the issue?",
+      "ru": "В чём проблема?"
+    },
+  
+    "textInputPlaceholderAbout": {
+      "en-US": "Command | user (Discord ID or MUID)",
+      "ru": "Команда | пользователь (Айди или ИДПМ)"
+    },
+  
+    "textInputPlaceholderIssue": {
+      "en-US": "Command is broken | I'm filing an appeal | typo | user spamming commands",
+      "ru": "Команда не работает | Подаю апелляцию | опечатка | пользователь спамит команды"
+    },
+  
+    "title": {
+      "en-US": "## _Click the button to open the report menu_",
+      "ru": "## _Нажмите кнопку, чтобы открыть меню репорта_"
+    }
+  },
+  
+  "resume": {
+    "continued": {
+      "en-US": "# _Continued!_",
+      "ru": "# _Возобновлено!_"
+    },
+  
+    "notPaused": {
+      "en-US": "You haven't paused your challenge!",
+      "ru": "Вы не ставили испытание на паузу!"
+    }
+  },
+  
+  "rules": {
+    "accepted": {
+      "en-US": "## _You have successfully accepted the rules! Enjoy using the bot!_",
+      "ru": "## _Вы успешно приняли правила! Приятного использования бота!_"
+    },
+  
+    "buttonLabelAccept": {
+      "en-US": "Accept",
+      "ru": "Принять"
+    },
+  
+    "buttonLabelDecline": {
+      "en-US": "Decline",
+      "ru": "Отклонить"
+    },
+  
+    "declined": {
+      "en-US": "## _You have chosen to decline the rules._",
+      "ru": "## _Вы отклонили правила._"
+    },
+  
+    "description": {
+      "en-US": "### _By clicking on «Accept» button, you confirm that you have read and agree to the following important documents:_",
+      "ru": "### _Нажимая кнопку «Принять», вы подтверждаете, что прочитали и согласны со следующими важными документами:_"
+    },
+  
+    "information": {
+      "en-US": "## [_Information_]({0})",
+      "ru": "## [_Информация_]({0})"
+    },
+  
+    "notAccepted": {
+      "en-US": "## _Hey! It looks like you haven't accepted the rules yet!_",
+      "ru": "## _Привет! Похоже, вы ещё не приняли правила!_"
+    },
+  
+    "rules": {
+      "en-US": "## [_Rules_]({0})",
+      "ru": "## [_Правила_]({0})"
+    },
+  
+    "tos": {
+      "en-US": "## [_Terms of Service_]({0})",
+      "ru": "## [_Условия обслуживания_]({0})"
+    }
+  },
+  
+  "settings": {
+    "difficulty": {
+      "en-US": "# _Difficulty_",
+      "ru": "# _Сложность_"
+    },
+  
+    "stateDisabled": {
+      "en-US": "Disabled",
+      "ru": "Отключено"
+    },
+  
+    "stateEnabled": {
+      "en-US": "Enabled",
+      "ru": "Включено"
+    },
+  
+    "title": {
+      "en-US": "# _⚙️ Settings_",
+      "ru": "# _⚙️ Настройки_"
+    }
+  },
+  
+  "shop": {
+    "alreadyBought": {
+      "en-US": "You already own this skins pack!",
+      "ru": "Вы уже купили этот набор скинов!"
+    },
+  
+    "available": {
+      "en-US": "### _Available: `{0}`{EMOJI}_",
+      "ru": "### _Доступно: `{0}`{EMOJI}_"
+    },
+  
+    "empty": {
+      "en-US": "No skin packs are available",
+      "ru": "Нет доступных наборов скинов"
+    },
+  
+    "lowCash": {
+      "en-US": "You don't have enough {EMOJI}!",
+      "ru": "У Вас недостаточно {EMOJI}!"
+    },
+  
+    "purchaseSuccess": {
+      "en-US": "## _Successfully purchased «`{0}`»!_",
+      "ru": "## _Успешно приобретен «`{0}`»!_"
+    },
+  
+    "selectMenuSkinsPacksPlaceholder": {
+      "en-US": "Select a skins pack",
+      "ru": "Выберите набор скинов"
+    },
+  
+    "title": {
+      "en-US": "# ___Available skin packs___",
+      "ru": "# ___Доступные наборы скинов___"
+    },
+  
+    "unknown": {
+      "en-US": "Unknown skins pack!",
+      "ru": "Неизвестный набор скинов!"
+    }
+  },
+  
+  "slots": {
+    "balance": {
+      "en-US": "Your balance: `{0}`{EMOJI}",
+      "ru": "Ваш баланс: `{0}`{EMOJI}"
+    },
+  
+    "bet": {
+      "en-US": "_{0} bet `{1}`{EMOJI}_",
+      "ru": "_{0} поставил(а) `{1}`{EMOJI}_"
+    },
+  
+    "invalidAmount": {
+      "en-US": "Only number or argument `all` is allowed!",
+      "ru": "Допускается только число или аргумент `all`!"
+    },
+  
+    "invalidCashHigh": {
+      "en-US": "You don't have that much {EMOJI}!",
+      "ru": "У Вас нет столько {EMOJI}!"
+    },
+  
+    "invalidCashLow": {
+      "en-US": "You must have at least `{0}`{EMOJI}!",
+      "ru": "У Вас должно быть минимум `{0}`{EMOJI}!"
+    },
+  
+    "invalidRange": {
+      "en-US": "You can only bet from `{0}` to `{1}`{EMOJI}!",
+      "ru": "Вы можете поставить только от `{0}` до `{1}`{EMOJI}!"
+    },
+  
+    "lost": {
+      "en-US": "**_and lost..._**",
+      "ru": "**_и проиграл(а)..._**"
+    },
+  
+    "title": {
+      "en-US": "**`•⁕※SLOTS※⁕•`**",
+      "ru": "**`•⁕※СЛОТЫ※⁕•`**"
+    },
+  
+    "won": {
+      "en-US": "**_and won `{0}`{EMOJI}!_**",
+      "ru": "**_и выиграл(а) `{0}`{EMOJI}!_**"
+    }
+  },
+  
+  "snora": {
+    "or": {
+      "en-US": "### «{0}» means «`OR`». This means, for example, you should type «`{1}`» or «`{2}`»",
+      "ru": "### «{0}» означает «`ИЛИ`». Это значит, что нужно, например, написать «`{1}`» или «`{2}`»"
+    },
+  
+    "title": {
+      "en-US": "## ✦✧✦✧✦Tier {0}✦✧✦✧✦",
+      "ru": "## ✦✧✦✧✦Уровень {0}✦✧✦✧✦"
+    }
+  },
+  
+  "special": {
+    "botDisabled": {
+      "en-US": "The bot is currently disabled for maintenance. Please try again later.",
+      "ru": "Бот в данный момент отключён на обслуживание. Пожалуйста, попробуйте позже."
+    },
+  
+    "caughtRares": {
+      "en-US": "## _{0}, you have caught `{1}` rares in `{2}`!_",
+      "ru": "## _{0}, Вы поймали `{1}` редких в `{2}`!_"
+    },
+  
+    "commandDisabled": {
+      "en-US": "This command is currently disabled for maintenance. Please try again later.",
+      "ru": "Эта команда в данный момент отключена на обслуживание. Пожалуйста, попробуйте позже."
+    },
+  
+    "interactionFail": {
+      "en-US": "## _You can't interract with this message anymore!_",
+      "ru": "## _Вы больше не можете взаимодействовать с этим сообщением!_"
+    },
+  
+    "interactionInvalidAuthor": {
+      "en-US": "## _This interaction is not for you!_",
+      "ru": "## _Это взаимодействие не для Вас!_"
+    },
+  
+    "maximum": {
+      "en-US": "max",
+      "ru": "макс"
+    }
+  },
+  
+  "start": {
+    "activeLobby": {
+      "en-US": "You can't start the challenge in channel with active Lobby!",
+      "ru": "Вы не можете начать испытание в канале с активным лобби!"
+    },
+  
+    "alreadyActive": {
+      "en-US": "You already have an active challenge in this channel!",
+      "ru": "У Вас уже есть активное испытание в этом канале!"
+    },
+  
+    "hasBegun": {
+      "en-US": "# _1 hour luck challenge has begun!_",
+      "ru": "# _Час удачи редких начался!_"
+    },
+  
+    "turnOnNotification": {
+      "en-US": "## _Don't forget to turn on notification!_",
+      "ru": "## _Не забудьте включить уведомления!_"
+    }
+  },
+  
+  "switchlocale": {
+    "switched": {
+      "en-US": "# _Switched locale to `{0}`!_",
+      "ru": "# _Язык бота изменён на `{0}`!_"
+    },
+  
+    "unknown": {
+      "en-US": "Unknown language!",
+      "ru": "Неизвестный язык!"
+    }
+  },
+  
+  "time": {
+    "inProgress": {
+      "en-US": "## _Status: `In progress`_",
+      "ru": "## _Статус: `В процессе`_"
+    },
+  
+    "invalidTime": {
+      "en-US": "Invalid time format!",
+      "ru": "Неверный формат времени!"
+    },
+  
+    "paused": {
+      "en-US": "## _Status: `Paused`_",
+      "ru": "## _Статус: `На паузе`_"
+    }
+  },
+  
+  "timezone": {
+    "current": {
+      "en-US": "## _Your timezone: `{0}`_",
+      "ru": "## _Ваш часовой пояс: `{0}`_"
+    },
+  
+    "invalid": {
+      "en-US": "Invalid timezone!",
+      "ru": "Неверный часовой пояс!"
+    }
+  },
+  
+  "tornado": {
+    "earned": {
+      "en-US": "### _Earned: `{0}`{EMOJI}_",
+      "ru": "### _Получено: `{0}`{EMOJI}_"
+    },
+  
+    "saw": {
+      "en-US": "## _You walked around the map and saw a(n) __{0}__!_",
+      "ru": "## _Вы гуляли по карте и увидели __{0}__!_"
+    }
+  },
+  
+  "umbrella": {
+    "earned": {
+      "en-US": "## _You held it for some time and earned `{0}`{EMOJI}!_",
+      "ru": "## _Вы держали её некоторое время и заработали `{0}`{EMOJI}!_"
+    },
+  
+    "rarity": {
+      "en-US": "### • _Rarity: `{0}/{1}`_",
+      "ru": "### • _Редкость: `{0}/{1}`_"
+    },
+  
+    "saw": {
+      "en-US": "## _You were walking across the ocean and saw a(n) __{0}__!_",
+      "ru": "## _Вы шли по океану и увидели __{0}__!_"
+    }
+  },
+  
+  "vote": {
+    "buttonLabel": {
+      "en-US": "Vote",
+      "ru": "Голосовать"
+    },
+  
+    "cannotVote": {
+      "en-US": "# _You voted on Top.gg and already earned `{0}`{EMOJI}, come back later!_",
+      "ru": "# _Вы голосовали на Top.gg и уже получили `{0}`{EMOJI}, приходите позже!_"
+    },
+  
+    "canVote": {
+      "en-US": "# _Vote on Top.gg every 12 hours to earn `{0}`{EMOJI}!_",
+      "ru": "# _Голосуйте на Top.gg каждые 12 часов, чтобы получить `{0}`{EMOJI}!_"
+    },
+  
+    "userWithoutProfileVoted": {
+      "en-US": "## _Thank you for voting! Register to get your reward next time!_",
+      "ru": "## _Спасибо за голосование! Зарегистрируйтесь, чтобы в следующий раз получить награду!_"
+    },
+  
+    "userWithProfileVoted": {
+      "en-US": "## _Thank you for voting! Your reward: `{0}`{EMOJI}!_",
+      "ru": "## _Спасибо за голосование! Ваша награда: `{0}`{EMOJI}!_"
+    }
+  },
+  
+  "wardrobe": {
+    "allTitle": {
+      "en-US": "# _Equipping `all` animals, select a skin pack_",
+      "ru": "# _Экипировка `всех` животных._"
+    },
+  
+    "availableSkins": {
+      "en-US": "## _All available skins for `{0}`_",
+      "ru": "## _Все доступные скины для `{0}`_"
+    },
+  
+    "equippedAll": {
+      "en-US": "## _Successfully equipped every animal with __{0}__!_",
+      "ru": "## _Успешно экипированы все животные на __{0}__!_"
+    },
+  
+    "equippedSkin": {
+      "en-US": "## _Equipped skin:_",
+      "ru": "## _Экипированный скин:_"
+    },
+  
+    "equippedTier": {
+      "en-US": "## _Successfully equipped tier `{0}` animals with __{1}__!_",
+      "ru": "## _Успешно экипированы животные `{0}го` уровня на __{1}__!_"
+    },
+  
+    "everyEquipped": {
+      "en-US": "# _You equipped all animals!_",
+      "ru": "# _Успешно экипированы все животные!_"
+    },
+  
+    "invalidAnimal": {
+      "en-US": "Animal not found",
+      "ru": "Животное не найдено"
+    },
+  
+    "menuTitleSelectSkin": {
+      "en-US": "Select a skin",
+      "ru": "Выберите скин"
+    },
+  
+    "menuTitleSelectSkinPack": {
+      "en-US": "Select a skin pack",
+      "ru": "Выберите набор скинов"
+    },
+  
+    "noSkinsInTier": {
+      "en-US": "## _Tier `{0}` animals don't have any skins in __{1}__!_",
+      "ru": "## _У животных `{0}го` уровня нет скинов в __{1}__!_"
+    },
+  
+    "tierTitle": {
+      "en-US": "# _Equipping tier `{0}` animals, select a skin pack_",
+      "ru": "# _Экипировка животных `{0}го` уровня._"
+    }
+  },
+  
+  "weekly": {
+    "cooldownDescription1": {
+      "en-US": "## _You already have claimed your weekly reward!_",
+      "ru": "## _Вы уже получили свою еженедельную награду!_"
+    },
+  
+    "cooldownDescription2": {
+      "en-US": "## _Cooldown resets every monday at `12:00 AM UTC+0`!_",
+      "ru": "## _Перезарядка сбрасывается каждый понедельник в `12:00 AM UTC+0`!_"
+    },
+  
+    "description": {
+      "en-US": "## _Your weekly reward is `{0}`{EMOJI}!_",
+      "ru": "## _Ваша еженедельная награда: `{0}`{EMOJI}!_"
+    }
+  }
+}
