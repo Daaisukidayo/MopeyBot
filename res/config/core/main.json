@@ -34,9 +34,9 @@
 
   "leaderboardThumbnail": "https://cdn.discordapp.com/attachments/701793335941136464/1326901475464450100/Remove-bg.ai_1736428344912.png",
   "discordServerInvite": "https://discord.gg/FE4dqGD",
-  "informationLink": "https://github.com/Daaisukidayo/MopeyBot/blob/main/README.md",
-  "tosLink": "https://github.com/Daaisukidayo/MopeyBot/blob/main/Mopey's_TOS.md",
-  "rulesLink": "https://github.com/Daaisukidayo/MopeyBot/blob/main/Rules.md",
+  "informationLink": "https://github.com/Daaisukidayo/MopeyBot/blob/main/.github/README.md",
+  "tosLink": "https://github.com/Daaisukidayo/MopeyBot/blob/main/.github/Mopey's_TOS.md",
+  "rulesLink": "https://github.com/Daaisukidayo/MopeyBot/blob/main/.github/Rules.md",
 
   "allReminders": ["0", "1"],
   "numberSeparator": "∙",
