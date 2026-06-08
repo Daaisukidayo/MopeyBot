@@ -1,1 +1,0 @@
-{"version":3,"file":"getChartPoints.js","sourceRoot":"","sources":["../../../src/functions/challenge/getChartPoints.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,gBAAgB;IACtB,WAAW,EAAE,+DAA+D;IAC5E,MAAM,EAAE;QACN;YACE,IAAI,EAAE,eAAe;YACrB,WAAW,EAAE,uBAAuB;YACpC,QAAQ,EAAE,IAAI;SACf;KACF;IACD,MAAM,EAAE,QAAQ;IAChB,IAAI,EAAE;;GAEL;CACF,CAAA"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"subCash.js","sourceRoot":"","sources":["../../../src/functions/cash/subCash.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,SAAS;IACf,WAAW,EAAE,6CAA6C;IAC1D,MAAM,EAAE;QACN;YACE,IAAI,EAAE,SAAS;YACf,WAAW,EAAE,qBAAqB;YAClC,IAAI,EAAE,QAAQ;YACd,QAAQ,EAAE,IAAI;SACf;KACF;IACD,IAAI,EAAE;;GAEL;CACF,CAAA"}

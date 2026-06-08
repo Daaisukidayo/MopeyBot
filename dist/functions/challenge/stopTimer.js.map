@@ -1,1 +1,0 @@
-{"version":3,"file":"stopTimer.js","sourceRoot":"","sources":["../../../src/functions/challenge/stopTimer.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,WAAW;IACjB,WAAW,EAAE,2DAA2D;IACxE,MAAM,EAAE;QACN;YACE,IAAI,EAAE,SAAS;YACf,WAAW,EAAE,iBAAiB;YAC9B,IAAI,EAAE,MAAM;YACZ,QAAQ,EAAE,KAAK;SAChB;KACF;IACD,QAAQ,EAAE,KAAK;IACf,IAAI,EAAE;;GAEL;CACF,CAAA"}

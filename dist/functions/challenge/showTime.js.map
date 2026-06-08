@@ -1,1 +1,0 @@
-{"version":3,"file":"showTime.js","sourceRoot":"","sources":["../../../src/functions/challenge/showTime.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,UAAU;IAChB,WAAW,EAAE,6CAA6C;IAC1D,MAAM,EAAE;QACN;YACE,IAAI,EAAE,SAAS;YACf,WAAW,EAAE,mCAAmC;YAChD,IAAI,EAAE,MAAM;YACZ,QAAQ,EAAE,KAAK;SAChB;KACF;IACD,QAAQ,EAAE,KAAK;IACf,IAAI,EAAE;;;;;GAKL;CACF,CAAA"}

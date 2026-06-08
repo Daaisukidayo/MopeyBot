@@ -11,3 +11,4 @@ database/
 logs/
 dev/
 deprecated/
+dist/

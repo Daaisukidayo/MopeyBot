@@ -1,1 +1,0 @@
-{"version":3,"file":"stopCommandTimeout.js","sourceRoot":"","sources":["../../../src/functions/auxiliary/stopCommandTimeout.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,oBAAoB;IAC1B,MAAM,EAAE;QACN;YACE,IAAI,EAAE,UAAU;YAChB,QAAQ,EAAE,KAAK;SAChB;KACF;IACD,QAAQ,EAAE,KAAK;IACf,MAAM,EAAE,SAAS;IACjB,IAAI,EAAE;;;;;;;;;;;;;;;GAeL;CACF,CAAA"}

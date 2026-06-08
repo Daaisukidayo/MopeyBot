@@ -1,1 +1,0 @@
-{"version":3,"file":"reminders.js","sourceRoot":"","sources":["../../../../../src/events/ForgeScript/messageCreate/special/reminders.ts"],"names":[],"mappings":";;AAAA,iDAA4C;AAE5C,kBAAe;IACb,IAAI,EAAE,4BAAY,CAAC,iBAAiB,CAAC,WAAW;IAChD,OAAO,EAAE,4BAAY,CAAC,iBAAiB,CAAC,cAAc;IACtD,IAAI,EAAE,eAAe;IACrB,IAAI,EAAE;;GAEL;CACF,CAAA"}

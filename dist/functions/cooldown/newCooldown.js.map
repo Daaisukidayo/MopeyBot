@@ -1,1 +1,0 @@
-{"version":3,"file":"newCooldown.js","sourceRoot":"","sources":["../../../src/functions/cooldown/newCooldown.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,aAAa;IACnB,WAAW,EAAE,4BAA4B;IACzC,MAAM,EAAE;QACN;YACE,IAAI,EAAE,eAAe;YACrB,WAAW,EAAE,wCAAwC;YACrD,QAAQ,EAAE,IAAI;SACf;KACF;IACD,IAAI,EAAE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAoCL;CACF,CAAA"}

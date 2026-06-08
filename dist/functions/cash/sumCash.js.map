@@ -1,1 +1,0 @@
-{"version":3,"file":"sumCash.js","sourceRoot":"","sources":["../../../src/functions/cash/sumCash.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,SAAS;IACf,WAAW,EAAE,2CAA2C;IACxD,MAAM,EAAE;QACN;YACE,IAAI,EAAE,SAAS;YACf,WAAW,EAAE,qBAAqB;YAClC,IAAI,EAAE,QAAQ;YACd,QAAQ,EAAE,IAAI;SACf;KACF;IACD,IAAI,EAAE;;GAEL;CACF,CAAA"}
