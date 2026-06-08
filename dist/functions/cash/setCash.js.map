@@ -1,0 +1,1 @@
+{"version":3,"file":"setCash.js","sourceRoot":"","sources":["../../../src/functions/cash/setCash.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,SAAS;IACf,WAAW,EAAE,4CAA4C;IACzD,MAAM,EAAE;QACN;YACE,IAAI,EAAE,SAAS;YACf,WAAW,EAAE,qBAAqB;YAClC,IAAI,EAAE,QAAQ;YACd,QAAQ,EAAE,IAAI;SACf;KACF;IACD,IAAI,EAAE;;GAEL;CACF,CAAA"}

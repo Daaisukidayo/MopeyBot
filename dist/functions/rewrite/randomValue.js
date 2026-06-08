@@ -1,0 +1,29 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
+    name: "advArrayRandomValue",
+    description: "Get a random value from an array",
+    params: [
+        {
+            name: "_array",
+            description: "Array or it's name",
+            required: true
+        }
+    ],
+    code: `
+    $jsonLoad[array;$env[_array]]
+    $if[$typeof[$env[array]]==string;
+      $jsonLoad[array;$env[$env[array]]]
+    ]
+    $if[$env[array]==;
+      $return[null]
+    ]
+    $return[$js[
+      const arr = $env[array]
+      Array.isArray(arr) 
+        ? arr[Math.floor(Math.random() * arr.length)\\] 
+        : "null"
+    ]]
+  `
+};
+//# sourceMappingURL=randomValue.js.map

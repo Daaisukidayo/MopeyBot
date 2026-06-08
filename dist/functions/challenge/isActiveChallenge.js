@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
+    name: 'isActiveChallenge',
+    description: "Check if the user has an active 1 hour luck challenge, if no, then throw an error and stops the command execution",
+    code: `
+    $jsonLoad[challengeProgress;$getProgress]
+    $onlyIf[$and[$env[challengeProgress]!=;$env[challengeProgress;started]];
+      $newError[$tl[$env[userProfile;language];ui;challenge.active]]
+    ]
+  `
+};
+//# sourceMappingURL=isActiveChallenge.js.map

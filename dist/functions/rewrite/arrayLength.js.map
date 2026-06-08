@@ -1,0 +1,1 @@
+{"version":3,"file":"arrayLength.js","sourceRoot":"","sources":["../../../src/functions/rewrite/arrayLength.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,gBAAgB;IACtB,WAAW,EAAE,4BAA4B;IACzC,MAAM,EAAE;QACN;YACE,IAAI,EAAE,QAAQ;YACd,WAAW,EAAE,oBAAoB;YACjC,QAAQ,EAAE,IAAI;SACf;KACF;IACD,IAAI,EAAE;;;;;;;;;GASL;CACF,CAAA"}

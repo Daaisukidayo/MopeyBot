@@ -1,0 +1,1 @@
+{"version":3,"file":"newCommandTimeout.js","sourceRoot":"","sources":["../../../src/functions/auxiliary/newCommandTimeout.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,mBAAmB;IACzB,WAAW,EAAE,yEAAyE;IACtF,QAAQ,EAAE,KAAK;IACf,MAAM,EAAE;QACN;YACE,IAAI,EAAE,UAAU;YAChB,QAAQ,EAAE,KAAK;SAChB;KACF;IACD,IAAI,EAAE;;;;;;;;;;;;;;;;;;;;;;;;;;GA0BL;CACF,CAAA"}

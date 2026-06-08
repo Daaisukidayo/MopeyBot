@@ -1,0 +1,34 @@
+declare const _default: {
+    independent: boolean;
+    code: string;
+    data: {
+        type: number;
+        name: any;
+        name_localizations: {
+            "en-US": any;
+            ru: any;
+        };
+        description: any;
+        description_localizations: {
+            "en-US": any;
+            ru: any;
+        };
+        options: {
+            type: number;
+            required: boolean;
+            autocomplete: boolean;
+            name: any;
+            name_localizations: {
+                "en-US": any;
+                ru: any;
+            };
+            description: any;
+            description_localizations: {
+                "en-US": any;
+                ru: any;
+            };
+        }[];
+    };
+};
+export default _default;
+//# sourceMappingURL=help.d.ts.map

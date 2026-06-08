@@ -1,0 +1,1 @@
+{"version":3,"file":"switchLocale.js","sourceRoot":"","sources":["../../../../../src/events/ForgeScript/messageCreate/special/switchLocale.ts"],"names":[],"mappings":";;AAAA,iDAA4C;AAE5C,kBAAe;IACb,IAAI,EAAE,4BAAY,CAAC,oBAAoB,CAAC,WAAW;IACnD,OAAO,EAAE,4BAAY,CAAC,oBAAoB,CAAC,cAAc;IACzD,IAAI,EAAE,eAAe;IACrB,IAAI,EAAE;;GAEL;CACF,CAAA"}

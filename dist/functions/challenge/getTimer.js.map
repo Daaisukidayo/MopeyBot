@@ -1,0 +1,1 @@
+{"version":3,"file":"getTimer.js","sourceRoot":"","sources":["../../../src/functions/challenge/getTimer.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,IAAI,EAAE,UAAU;IAChB,MAAM,EAAE;QACN;YACE,IAAI,EAAE,SAAS;YACf,IAAI,EAAE,MAAM;YACZ,QAAQ,EAAE,KAAK;SAChB;KACF;IACD,QAAQ,EAAE,KAAK;IACf,IAAI,EAAE;;GAEL;CACF,CAAA"}
