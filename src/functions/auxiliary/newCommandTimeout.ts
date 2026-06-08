@@ -10,7 +10,7 @@ export default {
   ],
   code: `
     $let[messageId;$function[
-      $if[$or[$isPrefixCommand;$isSlashCommand];
+      $if[$isCommand;
         $return[$send]
       ]
       $return[$messageID]
@@ -18,7 +18,7 @@ export default {
 
     $let[commandName;$function[
       $if[$isSlashCommand;
-        $return[$toCamelCase[$applicationSubCommandName $applicationSubCommandGroupName]]
+        $return[$nullish[$toCamelCase[$applicationSubCommandName $applicationSubCommandGroupName];$applicationCommandName]]
       ]
       $if[$isPrefixCommand;
         $return[$commandName]
