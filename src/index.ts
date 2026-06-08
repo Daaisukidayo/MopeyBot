@@ -13,6 +13,10 @@ import { configDotenv } from "dotenv"
 configDotenv()
 
 // ========== EXTENTIONS CONFIGURATION ==========
+const QE = new QuorielEdge({
+  features: ["arrayDirectPass"]
+})
+
 const TOP = new ForgeTopGG({
   token: process.env.TOPTOKEN,
   auth: process.env.TOPAUTH,
@@ -37,8 +41,8 @@ const BOT: ForgeClient = new ForgeClient({
   extensions: [
     DB,
     TOP,
+    QE,
     new ForgeRegex(),
-    new QuorielEdge(),
     new ForgeCanvas(),
   ],
 

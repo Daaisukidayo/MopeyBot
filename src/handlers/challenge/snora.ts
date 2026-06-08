@@ -11,7 +11,8 @@ export default {
     $defer
 
     $jsonLoad[allRareAbbreviations;$getGlobalVar[allRareAbbreviations]]
-    $jsonLoad[tierAnimalsEntries;$advJsonEntries[$getGlobalVar[tierAnimals]]]
+    $getCache[tierAnimals;tierAnimals]
+    $jsonLoad[tierAnimalsEntries;$jsonEntries[tierAnimals]]
 
     $let[separator; | ]
     

@@ -3,9 +3,10 @@ export default {
   code: `
     $if[$env[playData]==;$return]
 
+    $getCache[tierAnimals;tierAnimals]
     $jsonLoad[raresButtonStyle;$getGlobalVar[raresButtonStyle]]
     $jsonLoad[allRareAttemptsInfo;$getUserVar[allRareAttemptsInfo]]
-    $jsonLoad[animalIds;$dump[$getGlobalVar[tierAnimals];$env[playData;tier];allAnimals]]
+    $jsonLoad[animalIds;$env[tierAnimals;$env[playData;tier];allAnimals]]
 
     $let[buttonsQ;0]
 
