@@ -16,14 +16,7 @@ export default {
       $return[$messageID]
     ]]
 
-    $let[commandName;$function[
-      $if[$isCommand;
-        $return[$nullish[$toCamelCase[$applicationSubCommandName $applicationSubCommandGroupName];$commandName]]
-      ]
-      
-      $return[$env[_command]]
-    ]]
-
+    $let[commandName;$nullish[$env[_command];$toLowerCase[$replace[$applicationSubCommandName $applicationSubCommandGroupName; ;]];$commandName]]
     $let[timeoutName;$get[commandName]-$authorID]
 
     $!stopCommandTimeout[$get[commandName]]
