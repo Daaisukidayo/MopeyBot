@@ -17,7 +17,7 @@ export default {
   code: `
     $if[$env[userProfile;devMode]!=0;$return]
 
-    $let[command;$nullish[$env[_cooldownId];$toCamelCase[$applicationSubCommandName $applicationSubCommandGroupName];$commandName]]
+    $let[command;$nullish[$env[_cooldownId];$toLowercase[$replace[$applicationSubCommandName $applicationSubCommandGroupName; ;]];$commandName]]
     $let[time;$getGlobalVar[$get[command]_cooldown]]
 
     $if[$get[time]==;
