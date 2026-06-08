@@ -10,7 +10,7 @@ export default {
   ],
   code: `
     $let[messageId;$function[
-      $if[$isCommand;
+      $if[$or[$isPrefixCommand;$isSlashCommand];
         $return[$send]
       ]
       $return[$messageID]
