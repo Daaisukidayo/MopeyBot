@@ -17,11 +17,8 @@ export default {
     ]]
 
     $let[commandName;$function[
-      $if[$isSlashCommand;
-        $return[$nullish[$toCamelCase[$applicationSubCommandName $applicationSubCommandGroupName];$applicationCommandName]]
-      ]
-      $if[$isPrefixCommand;
-        $return[$commandName]
+      $if[$isCommand;
+        $return[$nullish[$toCamelCase[$applicationSubCommandName $applicationSubCommandGroupName];$commandName]]
       ]
       
       $return[$env[_command]]
