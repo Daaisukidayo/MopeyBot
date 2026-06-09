@@ -10,7 +10,7 @@ export default {
 
     $isActiveChallenge
     
-    $jsonLoad[allRares;$getGlobalVar[allRares]]
+    $getCache[allRares;allRares]
     
     $jsonLoad[challengeProgress;$getProgress]
     $jsonLoad[events;$env[challengeProgress;events]]

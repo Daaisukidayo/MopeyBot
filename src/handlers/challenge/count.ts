@@ -8,7 +8,7 @@ export default {
     $checkProfile
     $addCooldown
 
-    $jsonLoad[allRares;$getGlobalVar[allRares]]
+    $getCache[allRares;allRares]
     
     $let[rares;$toLowerCase[$default[$option[rares];$message]]]
 

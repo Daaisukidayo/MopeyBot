@@ -4,6 +4,8 @@ export default {
     $let[l;$env[userProfile;language]]
     $let[host;$env[lobby;host]]
 
+    $getCache[usernames;usernames]
+
     $addContainer[
       $addTextDisplay[$tl[$get[l];ui;lobby.settingsTitle]]
       $addSeparator[Large]
@@ -53,7 +55,7 @@ export default {
 
           $addStringSelectMenu[giveLobbyHost;$tl[$get[l];ui;lobby.menuTitleGiveHost];$get[disabled]]
           $arrayForEach[allPlayers;ID;
-            $addOption[$env[cache;usernames;$env[ID]];;$env[ID]]
+            $addOption[$env[usernames;$env[ID]];;$env[ID]]
           ]
         ]
       ]

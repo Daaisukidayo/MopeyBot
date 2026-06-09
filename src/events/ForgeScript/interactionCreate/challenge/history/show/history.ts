@@ -119,7 +119,7 @@ export default {
 
 
       $case[showHistory_sortByRare;
-        $jsonLoad[allRares;$getGlobalVar[allRares]]
+        $getCache[allRares;allRares]
         $onlyIf[$arrayIncludes[allRares;$get[input]];
           $newError[$tl[$get[l];ui;history.invalidRare]]
         ]
@@ -139,7 +139,7 @@ export default {
 
 
       $case[showHistory_filterByRare;
-        $jsonLoad[allRares;$getGlobalVar[allRares]]
+        $getCache[allRares;allRares]
         $onlyIf[$arrayIncludes[allRares;$get[input]];
           $newError[$tl[$get[l];ui;history.invalidRare]]
         ]
