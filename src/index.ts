@@ -46,13 +46,6 @@ const BOT: ForgeClient = new ForgeClient({
     new ForgeCanvas(),
   ],
 
-  intents: [
-    "Guilds",
-    "GuildMessages",
-    "DirectMessages",
-    "MessageContent",
-  ],
-
   prefixes: [
     "$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]",
   ],
@@ -61,6 +54,32 @@ const BOT: ForgeClient = new ForgeClient({
   
   token: process.env.TOKEN,
 
+  intents: [
+    "Guilds",
+    // "GuildMembers",
+    // "GuildModeration",
+    // "GuildBans",
+    // "GuildExpressions",
+    // "GuildEmojisAndStickers",
+    // "GuildIntegrations",
+    // "GuildWebhooks",
+    // "GuildInvites",
+    // "GuildVoiceStates",
+    // "GuildPresences",
+    "GuildMessages",
+    // "GuildMessageReactions",
+    // "GuildMessageTyping",
+    "DirectMessages",
+    // "DirectMessageReactions",
+    // "DirectMessageTyping",
+    "MessageContent",
+    // "GuildScheduledEvents",
+    // "AutoModerationConfiguration",
+    // "AutoModerationExecution",
+    // "GuildMessagePolls",
+    // "DirectMessagePolls"
+  ],
+  
   events: [
     // "autoModerationActionExecution",
     // "autoModerationRuleCreate",
