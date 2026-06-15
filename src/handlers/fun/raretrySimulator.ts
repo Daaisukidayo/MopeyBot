@@ -8,19 +8,17 @@ export default {
     $checkProfile
 
     $jsonLoad[modes;$getGlobalVar[raretryModes]]
-    $jsonLoad[allLocales;$getGlobalVar[allLocales]]
+    $jsonLoad[allLocales;$jsonEntries[$getGlobalVar[allLocales]]]
 
     $let[attempts;$toLowerCase[$nullish[$option[attempts];$message[0];100]]]
     $if[$isNumber[$get[attempts]]==false;
       $loop[$arrayLength[allLocales];
         $let[i;$math[$env[i] - 1]]
-        $jsonLoad[locale;$arrayAt[allLocales;$get[i]]]
+        $let[locale;$env[allLocales;$get[i];0]]
+        $let[localeMax;$tl[$get[locale];ui;special.maximum]]
+        $if[$get[attempts]==$get[localeMax];;$continue]
 
-        $let[lang;$get[i]]
-
-        $if[$get[attempts]==$tl[$get[lang];ui;special.maximum];;$continue]
-
-        $let[attempts;$replace[$get[attempts];$tl[$get[lang];ui;special.maximum];$getGlobalVar[maxRtsimAttempts]]]
+        $let[attempts;$replace[$get[attempts];$get[localeMax];$getGlobalVar[maxRtsimAttempts]]]
         $break
       ;i;true]
     ]
