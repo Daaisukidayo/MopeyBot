@@ -8,26 +8,22 @@ export default {
     $checkProfile
     $addCooldown
 
-    $let[arg;$toLowerCase[$default[$option[locale];$message]]]
+    $let[locale;$default[$option[locale];$message]]
 
     $jsonLoad[locales;$getGlobalVar[allLocales]]
-    $arrayMap[locales;locale;
-      $return[$toLowercase[$env[locale;name]]]
-    ;localeNames]
 
-    $onlyIf[$arrayIncludes[localeNames;$get[arg]];
+    $onlyIf[$jsonHas[locales;$get[locale]];
       $newError[$tl[$get[l];ui;switchlocale.unknown]]
     ]
 
     $defer
     
-    $let[i;$arrayIndexOf[localeNames;$get[arg]]]
-    $!jsonSet[userProfile;language;$get[i]]
+    $!jsonSet[userProfile;language;$get[locale]]
     $saveProfile
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[i];ui;switchlocale.switched;$env[locales;$get[i];description]]]
+      $addTextDisplay[$tl[$get[locale];ui;switchlocale.switched;$env[locales;$get[locale]]]]
     ;$getGlobalVar[defaultColor]]
   `
 }

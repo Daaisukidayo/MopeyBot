@@ -19,38 +19,40 @@ export default {
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     
     
-    $arrayMap[animals;animal;$return[$env[animal;ID]];animalIDs]
+    $arrayMap[animals;animal;$return[$env[animal;ID]];animalIds]
 
     $if[$get[arg]==new;
-      $let[animalID;mouse]
-      $animalsEmbed[new_wardrobe]
+      $animalsEmbed[mouse;true]
     ;
       $if[$get[arg]==all;
         $addContainer[
           $addAuthorDisplay
           $addTextDisplay[$tl[$get[l];ui;wardrobe.allTitle]]
           $addSeparator
-          $addSkinpacksMenu[all_wardrobe]
+          $addSkinpacksMenu[all]
         ;$getGlobalVar[defaultColor]]
       ;
         $if[$isNumber[$get[arg]];
+          $onlyIf[$and[$get[arg]>=1;$get[arg]<=17];
+            $newError[$tl[$get[l];ui;wardrobe.invalidTier]]
+          ]
+
           $addContainer[
             $addAuthorDisplay
             $addTextDisplay[$tl[$get[l];ui;wardrobe.tierTitle;$get[arg]]]
             $addSeparator
-            $addSkinpacksMenu[$get[arg]_wardrobe]
+            $addSkinpacksMenu[$get[arg]]
           ;$getGlobalVar[defaultColor]]
         ;
-          $onlyIf[$arrayIncludes[animalIDs;$get[arg]];
+          $onlyIf[$arrayIncludes[animalIds;$get[arg]];
             $newError[$tl[$get[l];ui;wardrobe.invalidAnimal]]
           ]
 
-          $let[animalID;$get[arg]]
-          $animalsEmbed[animal_wardrobe]
+          $animalsEmbed[$get[arg];false]
         ]
       ]
     ]
-    
+
     $newCommandTimeout
   `
 }

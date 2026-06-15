@@ -15,7 +15,7 @@ export default {
     $loop[$arrayLength[challengeData];
       $let[i;$math[$env[i] - 1]]
 
-      $if[$advArrayIncludes[$env[challengeData;$get[i];rares];$env[_animalId]];;$continue]
+      $if[$arrayIncludes[$env[challengeData;$get[i];rares];$env[_animalId]];;$continue]
 
       $let[points;$env[challengeData;$get[i];points]]
       $let[category;$env[challengeData;$get[i];category]]

@@ -32,8 +32,8 @@ export default {
       $sumCash[$get[checklistReward]]
       $!jsonSet[userProfile;limiters;lastClaimedDay;$day]
       $saveProfile
-      $setUserVar[caughtRaresInRaretry;0]
-      $setUserVar[caughtRaresInRaretryrun;0]
+      $deleteUserVar[caughtRaresInRaretry]
+      $deleteUserVar[caughtRaresInRaretryrun]
       $setUserVar[dailyStreak;$math[$getUserVar[dailyStreak] + 1]]
       $let[content;$tl[$get[l];ui;checklist.allTasksCompleted;$get[extra]]]
     ]

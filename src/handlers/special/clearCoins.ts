@@ -19,8 +19,8 @@ export default {
       $addTextDisplay[$tl[$get[l];ui;clearcoins.warn;$separate[$env[userProfile;MC]]]]
 
       $addActionRow
-      $addButton[confirmClearingCoins-$authorID;$tl[$get[l];ui;clearcoins.buttonLabelConfirm];Success]
-      $addButton[declineClearingCoins-$authorID;$tl[$get[l];ui;clearcoins.buttonLabelDecline];Danger]
+      $addButton[clearCoins-confirm-$authorID;$tl[$get[l];ui;clearcoins.buttonLabelConfirm];Success]
+      $addButton[clearCoins-decline-$authorID;$tl[$get[l];ui;clearcoins.buttonLabelDecline];Danger]
     ;Orange]
     $newCommandTimeout
   `

@@ -2,9 +2,15 @@ export default {
   name: "editHistoryExtraEmbed",
   code: `
     $let[l;$env[userProfile;language]]
+    $let[cachedIndex;$getMessageVar[cachedHistoryPageIndex;$messageID]]
+    $if[$get[cachedIndex]==;
+      $let[cachedIndex;$arrayFindIndex[history;data;$env[data;id]==$env[thisHistory;id]]]
+      $setMessageVar[cachedHistoryPageIndex;$get[cachedIndex];$messageID]
+    ]
+
     $addContainer[
       $addActionRow
-      $addStringSelectMenu[editHistory_selectEditOption-$authorID;$tl[$get[l];ui;history.menuTitleChooseOptions]]
+      $addStringSelectMenu[editHistory-selectEditOption-$authorID;$tl[$get[l];ui;history.menuTitleChooseOptions]]
       $addOption[$tl[$get[l];ui;history.optionNamePoints];;points]
       $addOption[$tl[$get[l];ui;history.optionNameRares];;raresQuantity]
       $addOption[$tl[$get[l];ui;history.optionNamePlayType];;playType]
@@ -13,9 +19,9 @@ export default {
       $addOption[$tl[$get[l];ui;history.optionNameRaresList];;raresList]
       
       $addActionRow
-      $addButton[editHistory_saveChanges-$authorID;$tl[$get[l];ui;history.buttonLabelSaveChanges];Success]
-      $addButton[editHistory_resetChanges-$authorID;$tl[$get[l];ui;history.buttonLabelResetChanges];Secondary]
-      $addButton[editHistory_cancelChanges-$authorID;$tl[$get[l];ui;history.buttonLabelCancelChanges];Danger]
+      $addButton[showHistory-saveEditChanges-$authorID;$tl[$get[l];ui;history.buttonLabelSaveChanges];Success;;$checkCondition[$jsonStringify[$env[thisHistory]]==$jsonStringify[$env[history;$get[cachedIndex]]]]]
+      $addButton[editHistory-resetEditChanges-$authorID;$tl[$get[l];ui;history.buttonLabelResetChanges];Secondary]
+      $addButton[showHistory-cancelEditChanges-$authorID;$tl[$get[l];ui;history.buttonLabelCancelChanges];Danger]
     ;$getGlobalVar[luckyColor]]
   `
 }

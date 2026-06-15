@@ -15,7 +15,7 @@ export default {
 
       $if[$get[animalId]==kingDragon;$break]
 
-      $if[$advArrayIncludes[$jsonKeys[allRareAttemptsInfo];$get[animalId]];
+      $if[$arrayIncludes[$jsonKeys[allRareAttemptsInfo];$get[animalId]];
         $jsonLoad[groupData;$env[allRareAttemptsInfo;$get[animalId]]]
         $jsonLoad[pool;$env[groupData;pool]]
         $let[chosenAnimal;null]
@@ -38,7 +38,7 @@ export default {
           $let[chosenAnimal;$env[groupData;common]]
         ]
 
-        $if[$and[$includes[$get[chosenAnimal];shop];$advArrayIncludes[$env[userProfile;userPacks];lockedSP]==false];$continue]
+        $if[$and[$includes[$get[chosenAnimal];shop];$arrayIncludes[$env[userProfile;userPacks];lockedSP]==false];$continue]
         
         $c[If in the end nothing is selected (chance "empty"), hides the button]
         $if[$get[chosenAnimal]==null;$continue]
@@ -49,13 +49,13 @@ export default {
       ]
       $c[--------------------------------------------]
 
-      $let[buttonIndex;$arrayFindIndex[raresButtonStyle;arr;$advArrayincludes[$env[arr;1];$get[animalId]]]]
+      $let[buttonIndex;$arrayFindIndex[raresButtonStyle;arr;$arrayIncludes[$env[arr;1];$get[animalId]]]]
       $let[butStyle;$default[$env[raresButtonStyle;$get[buttonIndex];0];Secondary]]
 
       $let[wr;$default[$env[userWardrobe;$get[animalId]];0]]
       $let[emoji;$getAnimalVariantInfo[$get[animalId];emoji;$get[wr]]]
       $let[animalName;$getAnimalVariantInfo[$get[animalId];name;$get[wr]]]
-      $let[trig;$get[animalId]-upgrade_animal_play-$authorID]
+      $let[trig;play_upgradeAnimal-$get[animalId]-$authorID]
       
       $if[$math[$get[buttonsQ] % 5]==0;$addActionRow]
       $addButton[$get[trig];$get[animalName];$get[butStyle];$get[emoji]]

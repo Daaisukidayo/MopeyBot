@@ -14,7 +14,12 @@ configDotenv()
 
 // ========== EXTENTIONS CONFIGURATION ==========
 const QE = new QuorielEdge({
-  features: ["arrayDirectPass"]
+  features: [
+    "jsonDirectPass"
+  ],
+  events: [
+    "interactionCreate",
+  ],
 })
 
 const TOP = new ForgeTopGG({
@@ -176,6 +181,7 @@ BOT.applicationCommands.load("dist/commands/")
 BOT.commands.load("dist/events/ForgeScript/")
 TOP.commands.load("dist/events/ForgeTopGG/")
 DB.commands.load("dist/events/ForgeDB/")
+QE.commands.load("dist/events/QuorielEdge/")
 
 // ========== SIGNALS handler ==========
 shutdownSetup(BOT)

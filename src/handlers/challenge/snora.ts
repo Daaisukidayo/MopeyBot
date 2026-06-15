@@ -11,14 +11,12 @@ export default {
     $defer
 
     $jsonLoad[allRareAbbreviations;$getGlobalVar[allRareAbbreviations]]
-    $getCache[tierAnimals;tierAnimals]
-    $jsonLoad[tierAnimalsEntries;$jsonEntries[tierAnimals]]
 
     $let[separator; | ]
     
     $addContainer[
       $addTextDisplay[$codeBlock[Abbreviations  ➡️ Rare Animal]]
-      $arrayForEach[tierAnimalsEntries;entry;
+      $arrayForEach[$jsonEntries[$getCache[tierAnimals]];entry;
         $let[tier;$env[entry;0]]
 
         $jsonLoad[data;$env[entry;1]]
@@ -26,8 +24,7 @@ export default {
 
         $if[$arrayLength[rareAnimalIds]>0;
           $arrayMap[rareAnimalIds;animalId;
-            $jsonLoad[rares;$env[allRareAbbreviations;$env[animalId]]]
-            $return[$arrayJoin[rares;$get[separator]] ➡️ $getAnimalVariantInfo[$env[animalId];name]]
+            $return[$arrayJoin[$env[allRareAbbreviations;$env[animalId]];$get[separator]] ➡️ $getAnimalVariantInfo[$env[animalId];name]]
           ;fieldContent]
 
           $addTextDisplay[$tl[$get[l];ui;snora.title;$get[tier]]]

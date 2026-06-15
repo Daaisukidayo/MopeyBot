@@ -10,7 +10,7 @@
     "devMode": 0,
     "hadAnn": false,
     "rtMode": 0,
-    "language": 0,
+    "language": "en-US",
     "timezone": "Etc/UTC",
 
     "limiters": {},

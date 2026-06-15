@@ -10,8 +10,6 @@ export default [{
 
     $defer
 
-    $jsonLoad[difficulties;$getGlobalVar[difficulties]]
-    $jsonLoad[allSettingsEntries;$advJsonEntries[$getGlobalVar[allSettings]]]
     $settingsEmbed
 
     $newCommandTimeout
@@ -20,6 +18,7 @@ export default [{
   name: 'settingsEmbed',
   code: `
     $jsonLoad[styles;$getGlobalVar[styles]]
+    $jsonLoad[difficulties;$getGlobalVar[difficulties]]
     $let[l;$env[userProfile;language]]
     $addContainer[
       $addAuthorDisplay
@@ -27,7 +26,7 @@ export default [{
 
       $addSeparator[Large]
 
-      $arrayForEach[allSettingsEntries;entry;
+      $arrayForEach[$jsonEntries[$getGlobalVar[allSettings]];entry;
         $let[key;$env[entry;0]]
         $let[hasKey;$arrayIncludes[userSettings;$get[key]]]
 
@@ -41,7 +40,7 @@ export default [{
 
         $addSection[
           $addTextDisplay[## _$tl[$get[l];data;allSettings.$env[entry;1]]_]
-          $addButton[$get[key]-settings-$authorID;$get[state];$get[style]]
+          $addButton[settings-$get[key]-$authorID;$get[state];$get[style]]
         ]
       ]
       
@@ -54,7 +53,7 @@ export default [{
         $let[disabled;$checkCondition[$env[userProfile;challenge;difficulty]==$env[elem]]]
         
         $let[style;$env[styles;$get[i]]]
-        $addButton[$env[elem]-difficulty-settings-$authorID;$tl[$get[l];data;difficulties.$env[elem]];$get[style];;$get[disabled]]
+        $addButton[settings-$env[elem]-$authorID;$tl[$get[l];data;difficulties.$env[elem]];$get[style];;$get[disabled]]
       ]
     ;$getGlobalVar[luckyColor]]
   `

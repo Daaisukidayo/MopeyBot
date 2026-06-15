@@ -15,18 +15,20 @@ export default [{
     $if[$and[$env[userProfile;devMode]==1;$message!=];
       $let[luckRarity;$message]
     ]
-
-    $addContainer[
-      $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;kingdragon.chooseUpgrade]]
-      $if[$get[luckRarity]==1;
+    
+    $if[$get[luckRarity]==1;
+      $addContainer[
+        $addAuthorDisplay
+        $addTextDisplay[$tl[$get[l];ui;kingdragon.chooseUpgrade]]
         $addUpgradeMenuAnimalChoices[rareKingDragon]
-        $let[color;$getGlobalVar[rareKingDragonColor]]
-      ;
+      ;$getGlobalVar[rareKingDragonColor]]
+    ;
+      $addContainer[
+        $addAuthorDisplay
+        $addTextDisplay[$tl[$get[l];ui;kingdragon.chooseUpgrade]]
         $addUpgradeMenuAnimalChoices[blackDragon]
-        $let[color;$getGlobalVar[defaultColor]]
-      ]
-    ;$get[color]]
+      ;$getGlobalVar[defaultColor]]
+    ]
 
     $newCommandTimeout
   `
@@ -34,17 +36,16 @@ export default [{
   name: 'addUpgradeMenuAnimalChoices',
   params: [
     {
-      name: 'animalID',
+      name: 'animalId',
       required: true
     }
   ],
-  brackets: false,
   code: `
-    $jsonLoad[vars;$getAnimalInfo[$env[animalID];variants]]
+    $jsonLoad[vars;$getAnimalInfo[$env[animalId];variants]]
     $jsonLoad[userPacks;$env[userProfile;userPacks]]
     $arrayUnshift[userPacks;s1;s2]
 
-    $let[btns;0]
+    $let[buttonsQuantity;0]
 
     $loop[$arrayLength[vars];
       $let[i;$math[$env[i] - 1]]
@@ -54,13 +55,13 @@ export default [{
       $let[name;$env[variant;name]]
       $let[emoji;$env[variant;emoji]]
 
-      $if[$arrayIncludes[userPacks;$get[packId]];;$continue]
+      $if[$arrayIncludes[userPacks;$get[packId]]==false;$continue]
 
-      $if[$math[$get[btns]%3]==0;
+      $if[$math[$get[buttonsQuantity] % 3]==0;
         $addActionRow
       ]
-      $addButton[$get[i]-$env[animalID]-kingdragon-$authorID;$get[name];Secondary;$get[emoji]]
-      $letSum[btns;1]
+      $addButton[kingdragon-$env[animalId]-$get[i]-$authorID;$get[name];Secondary;$get[emoji]]
+      $letSum[buttonsQuantity;1]
     ;i;true]
   `
 }]

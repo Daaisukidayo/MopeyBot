@@ -2,13 +2,12 @@ export default {
   name: 'addSkinpacksMenu',
   params: [
     {
-      name: '_menuId',
-      required: true
+      name: '_tier',
+      description: "Creates a menu with skins pack options for one or all animal tiers.",
     }
   ],
   code: `
     $let[l;$env[userProfile;language]]
-    $jsonLoad[shopItems;$getGlobalVar[shopItems]]
     $jsonLoad[userSkinPacks;$env[userProfile;userPacks]]
     $arrayUnshift[userSkinPacks;s1;s2;s2w]
 
@@ -18,7 +17,7 @@ export default {
     ]
 
     $addActionRow
-    $addStringSelectMenu[$env[_menuId]-$authorID;$tl[$get[l];ui;wardrobe.menuTitleSelectSkinPack]]
+    $addStringSelectMenu[wardrobe-tier-$env[_tier]-$authorID;$tl[$get[l];ui;wardrobe.menuTitleSelectSkinPack]]
 
     $arrayForEach[userSkinPacks;id;
       $addOption[$tl[$get[l];data;shopSkinPacks.$env[id]];;$env[id]]

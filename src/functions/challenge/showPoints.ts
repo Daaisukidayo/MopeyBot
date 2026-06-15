@@ -14,7 +14,7 @@ export default {
     $let[userId;$findUser[$env[_userId];true]]
 
     $let[points;$dump[$getProgress[$get[userId]];points]]
-    $let[styled;$if[$advArrayIncludes[$dump[$getProfile[$get[userId]];challenge;settings];hidePoints];||$get[points]||;\`$get[points]\`]]
+    $let[styled;$if[$arrayIncludes[$dump[$getProfile[$get[userId]];challenge;settings];hidePoints];||$get[points]||;\`$get[points]\`]]
     
     $return[$tl[$env[userProfile;language];ui;challenge.points;$get[styled]]]
   `

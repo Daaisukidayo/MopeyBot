@@ -41,7 +41,7 @@ export default [{
           $let[optionDesc;$separate[$get[cost]]]
           $let[optionValue;$get[id]-$get[cost]]
 
-          $addOption[$get[optionName];$get[optionDesc];$get[optionValue];$getGlobalVar[emoji]]
+          $addOption[$get[optionName];$get[optionDesc];$get[optionValue];$getGlobalVar[mopecoin]]
         ;i;true]
       ]
       $addSeparator[Large]

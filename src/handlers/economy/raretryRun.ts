@@ -11,7 +11,6 @@ export default {
     $defer
 
     $jsonLoad[rtrRewardPerRare;$getGlobalVar[rtrRewardPerRare]]
-    $jsonLoad[generatedLuckEntries;$advJsonEntries[$generateLuck[$getGlobalVar[rtrLuckKey]]]]
     $arrayCreate[desc]
 
     $let[lastDailyRaretryrun;$default[$env[userProfile;limiters;lastDailyRaretryrun];-1]]
@@ -19,7 +18,7 @@ export default {
     $let[totalReward;0]
     $let[caughtCount;0]
 
-    $arrayForEach[generatedLuckEntries;entry;
+    $arrayForEach[$jsonEntries[$generateLuck[$getGlobalVar[rtrLuckKey]]];entry;
       $jsonLoad[groupData;$env[entry;1]]
       $jsonLoad[pool;$env[groupData;pool]]
       $let[roll;$random[1;$env[groupData;total]]]
@@ -51,7 +50,7 @@ export default {
 
         $if[$get[MC]>0;
           $letSum[totalReward;$get[MC]]
-          $let[extra; | \`$separate[$get[MC]]\`$getGlobalVar[emoji]]
+          $let[extra; | \`$separate[$get[MC]]\`$getGlobalVar[mopecoin]]
         ]
 
         $arrayPush[desc;## $get[CL]$get[animalDisplay] | \`$get[percent]%\`$get[extra]]

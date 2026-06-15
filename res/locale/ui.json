@@ -541,6 +541,11 @@
   },
   
   "history": {
+    "pageDoesNotExist": {
+      "en-US": "The selected history page for deletion does not exist!",
+      "ru": "Выбранная страница истории для удаления не существует!"
+    },
+
     "buttonLabelCancelChanges": {
       "en-US": "Cancel",
       "ru": "Отменить"
@@ -727,8 +732,8 @@
     },
   
     "modalPlaceholderList": {
-      "en-US": "<ShortRaresNameX>=<AmountX>, ...",
-      "ru": "<РедкоеX>=<КоличествоX>, ..."
+      "en-US": "<Rare1>=<Amount1>\n<Rare2>=<Amount2>\n...",
+      "ru": "<Редкое1>=<Количество1>\n<Редкое2>=<Количество2>\n..."
     },
   
     "modalPlaceholderPoints": {
@@ -1131,8 +1136,8 @@
     },
   
     "notReady": {
-      "en-US": "Unable to create lobby yet. Please try again later.",
-      "ru": "Пока не удаётся создать лобби. Пожалуйста, попробуйте позже."
+      "en-US": "Unable to create or update the lobby. Try again in a few seconds.",
+      "ru": "Не удалось создать или обновить лобби. Попробуйте снова через несколько секунд."
     },
   
     "notStarted": {
@@ -1229,7 +1234,7 @@
       "ru": "ИДПМ не может быть таким большим!"
     },
   
-    "userNotExist": {
+    "userDoesNotExist": {
       "en-US": "User with `{0}` MUID does not exist",
       "ru": "Пользователя с `{0}` идентификатором не существует"
     }
@@ -1458,7 +1463,7 @@
       "ru": "Выйти из игры"
     },
   
-    "buttonLabelRespawn": {
+    "optionNameRespawn": {
       "en-US": "Respawn",
       "ru": "Возродиться"
     },
@@ -2268,7 +2273,7 @@
     },
   
     "everyEquipped": {
-      "en-US": "# _You equipped all animals!_",
+      "en-US": "# _Successfully equipped all animals!_",
       "ru": "# _Успешно экипированы все животные!_"
     },
   
@@ -2295,6 +2300,11 @@
     "tierTitle": {
       "en-US": "# _Equipping tier `{0}` animals, select a skin pack_",
       "ru": "# _Экипировка животных `{0}го` уровня._"
+    },
+
+    "invalidTier": {
+      "en-US": "Invalid tier! Only tiers from `1` to `17` are allowed!",
+      "ru": "Недопустимый уровень! Допускаются только уровни от `1` до `17`!"
     }
   },
   

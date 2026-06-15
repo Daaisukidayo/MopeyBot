@@ -28,10 +28,10 @@ export default {
 
       $arrayLoad[keyValue;=;$get[caughtRare]]
 
-      $let[animalID;$getRareAnimalID[$env[keyValue;0]]]
+      $let[animalId;$getRareAnimalID[$env[keyValue;0]]]
       $let[value;$default[$env[keyValue;1];1]]
 
-      $if[$get[animalID]==undefined;
+      $if[$get[animalId]==undefined;
         $arrayPush[unknownContent;\`$get[caughtRare]\`]
         $continue
       ]
@@ -49,7 +49,7 @@ export default {
         $let[value;1]
       ]
 
-      $!jsonSet[rawList;$get[animalID];$get[value]]
+      $!jsonSet[rawList;$get[animalId];$get[value]]
     ;i;true]
 
     $jsonLoad[result;$generateList[$sortList[$env[rawList]]]]

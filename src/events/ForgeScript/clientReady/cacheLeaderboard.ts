@@ -1,10 +1,8 @@
 export default {
   type: "clientReady",
   code: `
-    $loop[-1;
-      $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
-    
-      $arrayMap[allUserIDs;id;
+    $loop[-1;    
+      $arrayMap[$getGlobalVar[allUserIDs];id;
         $jsonLoad[UP;$getUserVar[userProfile;$env[id]]]
         $jsonLoad[data;{}]
 

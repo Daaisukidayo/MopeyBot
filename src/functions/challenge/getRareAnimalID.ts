@@ -10,11 +10,11 @@ export default {
   ],
   output: "String",
   code: `
-    $jsonLoad[entries;$advJsonEntries[$getGlobalVar[allRareAbbreviations]]]
+    $jsonLoad[entries;$jsonEntries[$getGlobalVar[allRareAbbreviations]]]
 
     $loop[$arrayLength[entries];
       $let[i;$math[$env[i] - 1]]
-      $if[$advArrayIncludes[$env[entries;$get[i];1];$env[_alias]]==false;
+      $if[$arrayIncludes[$env[entries;$get[i];1];$env[_alias]]==false;
         $continue
       ]
       $let[animalId;$env[entries;$get[i];0]]

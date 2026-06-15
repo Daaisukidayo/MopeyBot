@@ -4,14 +4,14 @@ export default {
     $let[l;$env[userProfile;language]]
     $addContainer[
       $addActionRow
-      $addButton[uploadNewHistoryPage-$authorID;$tl[$get[l];ui;addhistory.buttonLabelUpload];Success;;$disabledUploadButton]
-      $addButton[resetNewHistoryPage-$authorID;$tl[$get[l];ui;addhistory.buttonLabelReset];Secondary]
-      $addButton[cancelNewHistoryPage-$authorID;$tl[$get[l];ui;addhistory.buttonLabelCancel];Primary]
+      $addButton[addHistory-uploadNewHistoryPage-$authorID;$tl[$get[l];ui;addhistory.buttonLabelUpload];Success;;$or[$env[addHistorySavedConfig;points]==0;$env[addHistorySavedConfig;rares]==0;$env[addHistorySavedConfig;endDate]==0;$env[addHistorySavedConfig;raresList]=={}]]
+      $addButton[addHistory-resetNewHistoryPage-$authorID;$tl[$get[l];ui;addhistory.buttonLabelReset];Secondary]
+      $addButton[addHistory-cancelNewHistoryPage-$authorID;$tl[$get[l];ui;addhistory.buttonLabelCancel];Primary]
 
       $addSeparator[Large]
 
       $addActionRow
-      $addStringSelectMenu[historyChooseAdd-$authorID;$tl[$get[l];ui;history.menuTitleChooseOptions]]
+      $addStringSelectMenu[addHistory-editOptions-$authorID;$tl[$get[l];ui;history.menuTitleChooseOptions]]
       $addOption[$tl[$get[l];ui;history.optionNamePoints];;points]
       $addOption[$tl[$get[l];ui;history.optionNameRares];;raresQuantity]
       $addOption[$tl[$get[l];ui;history.optionNamePlayType];;playType]

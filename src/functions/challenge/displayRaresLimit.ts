@@ -16,7 +16,7 @@ export default {
       $return
     ]
 
-    $if[$advArrayIncludes[$env[userProfile;challenge;settings];hideLimit];
+    $if[$arrayIncludes[$env[userProfile;challenge;settings];hideLimit];
       $return
     ]
 

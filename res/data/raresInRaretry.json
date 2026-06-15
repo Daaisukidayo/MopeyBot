@@ -1,6 +1,6 @@
 [
   {
-    "animalIDs": [
+    "animalIds": [
       "chocoToucan",
       "keelBilledToucan",
       "markhor"
@@ -8,7 +8,7 @@
     "color": "c0c0c0"
   },
   {
-    "animalIDs": [
+    "animalIds": [
       "fieryToucan",
       "leopard",
       "jaguar",
@@ -20,7 +20,7 @@
     "color": "ffff00"
   },
   {
-    "animalIDs": [
+    "animalIds": [
       "goldenPheasant",
       "momaffieFamily",
       "momaffie",
@@ -34,7 +34,7 @@
     "color": "f3ab0f"
   },
   {
-    "animalIDs": [
+    "animalIds": [
       "girabie",
       "jackass",
       "bigGoat",
@@ -46,7 +46,7 @@
     "color": "ffffff"
   },
   {
-    "animalIDs": [
+    "animalIds": [
       "blackTiger",
       "blackBear",
       "aquaYeti",
@@ -62,7 +62,7 @@
     "color": "750e0e"
   },
   {
-    "animalIDs": [
+    "animalIds": [
       "giraffeFamily",
       "whiteGiraffe",
       "blackRhino",
@@ -72,7 +72,7 @@
     "color": "452591"
   },
   {
-    "animalIDs": [
+    "animalIds": [
       "rareKingDragon",
       "rareBigfoot",
       "rareSnowman",
@@ -81,7 +81,7 @@
     "color": "d61b4a"
   },
   {
-    "animalIDs": [
+    "animalIds": [
       "rareMacaw",
       "rareToucan",
       "rareVulture"
@@ -89,7 +89,7 @@
     "color": "677caf"
   },
   {
-    "animalIDs": [
+    "animalIds": [
       "shaheen",
       "harpyEagle",
       "greaterSpottedEagle"

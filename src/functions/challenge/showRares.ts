@@ -13,7 +13,7 @@ export default {
   code: `
     $let[userId;$findUser[$env[_userId];true]]
     $let[rares;$dump[$getProgress[$get[userId]];rares]]
-    $let[styled;$if[$advArrayIncludes[$dump[$getProfile[$get[userId]];challenge;settings];hideRares];||$get[rares]||;\`$get[rares]\`]]
+    $let[styled;$if[$arrayIncludes[$dump[$getProfile[$get[userId]];challenge;settings];hideRares];||$get[rares]||;\`$get[rares]\`]]
 
     $return[$tl[$env[userProfile;language];ui;challenge.rares;$get[styled]]]
   `

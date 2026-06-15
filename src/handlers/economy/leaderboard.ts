@@ -89,9 +89,9 @@ export default [{
         $addSeparator[Large]
         
         $addActionRow
-        $addButton[$get[page]-$get[rowsPerPage]-leftLB-$authorID;;Primary;⬅️;$get[disabled]]
-        $addButton[$get[page]-$get[rowsPerPage]-customPageLB-$authorID;$tl[$get[l];ui;leaderboard.pageButton;$get[page];$get[maxPages]];Primary;;$get[disabled]]
-        $addButton[$get[page]-$get[rowsPerPage]-rightLB-$authorID;;Primary;➡️;$get[disabled]]
+        $addButton[leaderboard-prevPage-$get[page]-$get[rowsPerPage]-$authorID;;Primary;⬅️;$get[disabled]]
+        $addButton[leaderboard-customPage-$get[page]-$get[rowsPerPage]-$authorID;$tl[$get[l];ui;leaderboard.pageButton;$get[page];$get[maxPages]];Primary;;$get[disabled]]
+        $addButton[leaderboard-nextPage-$get[page]-$get[rowsPerPage]-$authorID;;Primary;➡️;$get[disabled]]
       ]
     ;$getGlobalVar[defaultColor]]
   `

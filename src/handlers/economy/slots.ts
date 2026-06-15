@@ -42,7 +42,7 @@ export default {
       ]]]
     ]
 
-    $arrayLoad[emojis;,;<:WatermelonS2:1417213697738281091>,<:MelonS1:1417945198335623219>,$getGlobalVar[emoji],<:gem:1417945445916999842>]
+    $arrayLoad[emojis;,;<:WatermelonS2:1417213697738281091>,<:MelonS1:1417945198335623219>,$getGlobalVar[mopecoin],<:gem:1417945445916999842>]
     
     $let[slot1;⬜]
     $let[slot2;⬜]

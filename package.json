@@ -13,7 +13,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@quoriel/edge": "github:quoriel/edge",
+    "@quoriel/edge": "github:quoriel/edge#dev",
     "@tryforge/forge.canvas": "github:tryforge/forgecanvas#dev",
     "@tryforge/forge.db": "github:tryforge/forgedb#dev",
     "@tryforge/forge.topgg": "github:tryforge/forgetopgg#dev",

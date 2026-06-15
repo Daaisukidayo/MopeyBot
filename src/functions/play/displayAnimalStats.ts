@@ -17,7 +17,7 @@ export default {
 
     $addSection[
       $addTextDisplay[## $get[emoji] $get[animalName]]
-      $addTextDisplay[## $separate[$get[MC]]$getGlobalVar[emoji]]
+      $addTextDisplay[## $separate[$get[MC]]$getGlobalVar[mopecoin]]
       $addTextDisplay[## $abbreviateNumber[$get[exp]] / $abbreviateNumber[$get[maxExp]] $tl[$get[l];ui;play.xp]]
       $addThumbnail[$get[thumbnail]]
     ]

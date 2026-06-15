@@ -44,14 +44,14 @@ export default {
       ]]
     ]]
 
-    $let[animalID;$getRareAnimalID[$get[arg1]]]
-    $let[animalDisplay;$getAnimalVariantInfo[$get[animalID];emoji]]
-    $let[oldQuantity;$default[$env[raresList;$get[animalID]];0]]
+    $let[animalId;$getRareAnimalID[$get[arg1]]]
+    $let[animalDisplay;$getAnimalVariantInfo[$get[animalId];emoji]]
+    $let[oldQuantity;$default[$env[raresList;$get[animalId]];0]]
     $let[rares;0]
     $let[points;0]
 
     $c[Check if user tries to remove something they don't have]
-    $if[$and[$env[raresList;$get[animalID]]==;$get[arg2]==-];
+    $if[$and[$env[raresList;$get[animalId]]==;$get[arg2]==-];
       $newError[$tl[$get[l];ui;editlist.notInList;$get[animalDisplay]]]
     ]
 
@@ -60,7 +60,7 @@ export default {
     $if[$get[arg3]==all;
       $c[If removing all, actual difference equals the old quantity]
       $let[actualDiff;$get[oldQuantity]]
-      $!jsonDelete[raresList;$get[animalID]]
+      $!jsonDelete[raresList;$get[animalId]]
       $let[updatedQuantity;0]
     ;
       $c[Calculate temporary new quantity before applying limits]
@@ -69,14 +69,14 @@ export default {
       $if[$get[tempNew]<=0;
         $c[If result is zero or negative, delete entry. Actual change is the entire old quantity]
         $let[actualDiff;$get[oldQuantity]]
-        $!jsonDelete[raresList;$get[animalID]]
+        $!jsonDelete[raresList;$get[animalId]]
         $let[updatedQuantity;0]
       ;
         $c[If positive, apply difficulty-based limits]
         $let[difficulty;$env[challengeProgress;difficulty]]
-        $!jsonSet[raresList;$get[animalID];$changeLimitedRareAnimalQuantity[$get[tempNew];$get[animalID];$get[difficulty]]]
+        $!jsonSet[raresList;$get[animalId];$changeLimitedRareAnimalQuantity[$get[tempNew];$get[animalId];$get[difficulty]]]
         
-        $let[updatedQuantity;$env[raresList;$get[animalID]]]
+        $let[updatedQuantity;$env[raresList;$get[animalId]]]
         $c[Actual difference is the absolute change after limits were applied]
         $let[actualDiff;$abs[$math[$get[updatedQuantity] - $get[oldQuantity]]]]
       ]

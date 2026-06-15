@@ -74,22 +74,21 @@ export default {
         $if[$random[1;$get[baseChance]]!=1;$continue]
 
         $arrayLoad[rarity; ;1 $get[baseChance]]
-        $let[animalID;$advArrayRandomValue[$env[rareGroups;$get[i];animalIDs]]]
+        $let[animalId;$arrayRandomValue[$env[rareGroups;$get[i];animalIds]]]
         $let[category;$arrayAt[categories;$get[i]]]
 
-        $let[current;$default[$env[result;$get[category];map;$get[animalID]];0]]
+        $let[current;$default[$env[result;$get[category];map;$get[animalId]];0]]
         $letSum[current;1]
 
-        $!jsonSet[result;$get[category];map;$get[animalID];$get[current]]
-        $if[$advArrayLength[$env[result;$get[category];rarity]]==0;
+        $!jsonSet[result;$get[category];map;$get[animalId];$get[current]]
+        $if[$arrayLength[$env[result;$get[category];rarity]]==0;
           $!jsonSet[result;$get[category];rarity;$env[rarity]]
         ]
       ;i]
     ]
 
-    $jsonLoad[resultEntries;$jsonEntries[result]]
-    $arrayMap[resultEntries;entry;
-      $jsonLoad[mapEntries;$advJsonEntries[$env[entry;1;map]]]
+    $arrayMap[$jsonEntries[result];entry;
+      $jsonLoad[mapEntries;$jsonEntries[$env[entry;1;map]]]
 
       $if[$arrayLength[mapEntries]>0;
         $arrayMap[mapEntries;kv;

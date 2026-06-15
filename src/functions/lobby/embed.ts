@@ -9,7 +9,7 @@ export default {
     $getCache[usernames;usernames]
 
     $let[allReady;$checkCondition[$arrayLength[allPlayers]==$arrayLength[ready]]]
-    $let[areSomeTeamsEmpty;$not[$arraySome[teams;team;$advArrayLength[$env[team;players]]==0]]]
+    $let[areSomeTeamsEmpty;$not[$arraySome[teams;team;$arrayLength[$env[team;players]]==0]]]
     $let[disableStart;$not[$and[$get[allReady];$arrayLength[allPlayers]>1;$get[areSomeTeamsEmpty]]]]
 
     $fn[showReady;
@@ -71,7 +71,7 @@ export default {
 
       $addActionRow
       $addButton[startLobby;$tl[$get[l];ui;lobby.buttonLabelStart];Success;✔️;$get[disableStart]]
-      $addButton[endLobby;$tl[$get[l];ui;lobby.buttonLabelClose];Danger;🔚]
+      $addButton[closeLobby-manually;$tl[$get[l];ui;lobby.buttonLabelClose];Danger;🔚]
     ;$getGlobalVar[luckyColor]]
   `
 }

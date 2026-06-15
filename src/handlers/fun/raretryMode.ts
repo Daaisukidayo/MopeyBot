@@ -30,7 +30,7 @@ export default [{
           $addActionRow
         ]
 
-        $addButton[$get[modeI]-rtMode-$authorID;$get[mode];Success;;$checkCondition[$env[userProfile;rtMode]==$get[modeI]]]
+        $addButton[rtMode-$get[modeI]-$authorID;$get[mode];Success;;$checkCondition[$env[userProfile;rtMode]==$get[modeI]]]
       ;i;true]
     ;$getGlobalVar[luckyColor]]
   `

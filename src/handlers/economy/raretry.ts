@@ -91,10 +91,10 @@ export default {
 
       $letSum[caughtCount;1]
       
-      $let[animalID;$advArrayRandomValue[$env[group;animalIDs]]]
+      $let[animalId;$arrayRandomValue[$env[group;animalIds]]]
       $let[MC;$math[$env[rewards;$get[rtIndex]] * $arrayAt[multipliers;$get[rtMode]]]] $c[Can be 0]
-      $let[image;$getAnimalVariantInfo[$get[animalID];img]]
-      $let[animalDisplay;$getAnimalVariantInfo[$get[animalID];name]]
+      $let[image;$getAnimalVariantInfo[$get[animalId];img]]
+      $let[animalDisplay;$getAnimalVariantInfo[$get[animalId];name]]
       $let[category;$tl[$get[l];data;raretryCategories.$arrayAt[categories;$get[i]]]]
 
       $if[$get[MC]!=0;

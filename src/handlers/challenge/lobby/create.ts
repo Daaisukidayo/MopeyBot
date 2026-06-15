@@ -32,7 +32,7 @@ export default {
         $addTextDisplay[$tl[$get[l];ui;lobby.participantsTitle]]
         $addTextDisplay[$codeBlock[$arrayJoin[participantUsernames;\n]]]
         $addActionRow
-        $addButton[closeLobbyManually;$tl[$get[l];ui;lobby.buttonLabelCloseManually];Danger;🔚]
+        $addButton[closeLobby-forcefully;$tl[$get[l];ui;lobby.buttonLabelCloseManually];Danger;🔚]
       ;$getGlobalVar[errorColor]]
     ]
 

@@ -5,7 +5,7 @@ export default [{
   params: [
     {
       name: "_locale",
-      description: "The locale id to determine which locale file to load.",
+      description: "The locale to use.",
       required: true,
     },
     {
@@ -30,8 +30,10 @@ export default [{
     $let[type;$trim[$trimLines[$toLowerCase[$env[_type]]]]]
     $let[locale;$trim[$trimLines[$env[_locale]]]]
 
-    $if[$and[$isNumber[$get[locale]]==false;$get[locale]!=*];
-      $return[❌ invalid locale (\`$get[locale]\`) | $env[_path]]
+    $c[
+      $if[$and[$isNumber[$get[locale]]==false;$get[locale]!=*];
+        $return[❌ invalid locale ($get[locale]) | $env[_path]]
+      ]
     ]
 
     $jsonLoad[allLocales;$getGlobalVar[allLocales]]
@@ -41,14 +43,16 @@ export default [{
       $if[$fileExists[res/locale/$get[type].json];
         $setCache[$get[type];$readFile[res/locale/$get[type].json]]
       ;
-        $return[❌ invalid locale type (\`$default[$get[type];undefined]\`) | $env[_path]]
+        $return[❌ invalid locale type ($default[$get[type];undefined]) | $env[_path]]
       ]
     ]
 
     $getCache[$get[type];$get[type]]
 
     $if[$get[locale]!=*;
-      $let[locale;$env[allLocales;$get[locale];name]]
+      $c[
+        $let[locale;$env[allLocales;$get[locale];name]]
+      ]
       $arrayPush[unwrappedPath;$get[locale]]
     ]
 
@@ -59,7 +63,7 @@ export default [{
     ;i;true]
 
     $if[$env[value]==;
-      $return[❌ invalid path (\`$env[_path]\`)]
+      $return[❌ invalid path ($env[_path])]
     ]
 
     $loop[$arrayLength[_args];
@@ -90,7 +94,7 @@ export default [{
       $return[$getGlobalVar[prefix]]
     ]]
 
-    $jsonSet[value;$advancedReplace[$env[value];{EMOJI};$getGlobalVar[emoji];{BLANK};$getGlobalVar[blank];{PREFIX};$get[prefix]]]
+    $jsonSet[value;$advancedReplace[$env[value];{EMOJI};$getGlobalVar[mopecoin];{BLANK};$getGlobalVar[blank];{PREFIX};$get[prefix]]]
 
     $return[$env[value]]
   `

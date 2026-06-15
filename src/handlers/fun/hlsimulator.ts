@@ -30,10 +30,9 @@ export default {
 
     $getCache[hlSimData;hlSimData]
     $jsonLoad[totalAttempts;$eval[$getGlobalVar[hlSimAttempts];false]]
-    $jsonLoad[GLE;$advJsonEntries[$generateLuck[$getGlobalVar[hlSimKey]]]]
     $jsonLoad[rawList;{}]
 
-    $arrayForEach[GLE;entry;
+    $arrayForEach[$jsonEntries[$generateLuck[$getGlobalVar[hlSimKey]]];entry;
       $jsonLoad[animalData;$env[entry;1]]
       $jsonLoad[pool;$env[animalData;pool]]
       $let[commonAnimal;$env[animalData;common]]
@@ -41,7 +40,7 @@ export default {
       
       $jsonLoad[counts;{}]
 
-      $let[attemptsIndex;$arrayFindIndex[totalAttempts;att;$advArrayIncludes[$env[att;0];$env[entry;0]]]]
+      $let[attemptsIndex;$arrayFindIndex[totalAttempts;att;$arrayIncludes[$env[att;0];$env[entry;0]]]]
       $let[attempts;$default[$env[totalAttempts;$get[attemptsIndex];1];0]]
 
       $loop[$get[attempts];

@@ -1,3 +1,5 @@
+// TODO: needs rewrite
+
 export default {
   name: "saveProfile",
   description: "Saves and updates the user's profile.",
@@ -5,6 +7,7 @@ export default {
     {
       name: "_userId",
       description: "ID of the user.",
+      type: "User",
       required: false,
     }
   ],

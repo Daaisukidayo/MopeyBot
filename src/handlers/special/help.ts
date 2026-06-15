@@ -18,9 +18,6 @@ export default {
 
         $if[$get[arg]==;
             $jsonLoad[categories;$getGlobalVar[helpCategories]]
-            $c[
-              $getCache[slashCommandsData;slashCommandsData]
-            ]
             
             $addContainer[
                 $addTextDisplay[$tl[$get[l];ui;help.allCommandsTitle]]
@@ -30,27 +27,19 @@ export default {
 
                 $arrayForEach[categories;c;
                     $arrayCreate[prefixCommands]
-                    $c[
-                      $arrayCreate[slashCommands]
-                    ]
 
                     $arrayForEach[commandsEntries;data;
                         $if[$env[c]==$env[data;1;commandCategory];
 
                             $let[command;$env[data;1;commandName]]
                             $arrayPush[prefixCommands;$get[command]]
-                            $c[
-                              $arrayPush[slashCommands;</$get[command]:$env[slashCommandsData;$get[command]]>]
-                            ]
 
                         ]
                     ]
 
                     $addTextDisplay[## _$tl[$get[l];data;helpCategories.$env[c]]_]
                     $addTextDisplay[$codeBlock[$arrayJoin[prefixCommands; ]]]
-                    $c[
-                      $addTextDisplay[$arrayJoin[slashCommands; ]]
-                    ]
+
                     $addSeparator[Large]
                 ]
 
@@ -58,28 +47,25 @@ export default {
             ;$getGlobalVar[defaultColor]]
         ;
             $jsonLoad[commandInfo;$arrayFind[commandsEntries;data;
-                $jsonLoad[aliases;$env[data;1;commandAliases]]
-                $return[$or[$arrayIncludes[aliases;$get[arg]];$env[data;1;commandName]==$get[arg]]]
+                $return[$or[$arrayIncludes[$env[data;1;commandAliases];$get[arg]];$env[data;1;commandName]==$get[arg]]]
             ]]
 
             $if[$env[commandInfo]==;
                 $newError[$tl[$get[l];ui;help.noInfo]]
             ]
 
-            $let[emoji;$getGlobalVar[emoji]]
+            $let[emoji;$getGlobalVar[mopecoin]]
             $let[maxCoinflipBet;$getGlobalVar[maxCoinflipBet]]
             $let[maxSlotsBet;$getGlobalVar[maxSlotsBet]]
-            $let[maxParticipants;$getGlobalVar[maxParticipants]]
+            $let[maxLobbyParticipants;$getGlobalVar[maxLobbyParticipants]]
             $let[timezonesHyperlink;$hyperlink[List of all timezones;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones]]
-            $jsonLoad[hlDifficulties;$getGlobalVar[difficulties]]
-            $arrayMap[hlDifficulties;elem;
+            $arrayMap[$getGlobalVar[difficulties];elem;
                 $return[$tl[$get[l];data;difficulties.$env[elem]]]
             ;hlDifficulties]
 
 
-            $jsonLoad[allLocales;$getGlobalVar[allLocales]]
-            $arrayMap[allLocales;obj;
-                $return[$env[obj;name] - $env[obj;description]]
+            $arrayMap[$jsonEntries[$getGlobalVar[allLocales]];elem;
+                $return[$env[elem;0] - $env[elem;1]]
             ;locales]
 
             
@@ -91,9 +77,9 @@ export default {
 
             $jsonLoad[commandRelated;$env[commandInfo;1;commandRelated]]
             $jsonLoad[commandAliases;$env[commandInfo;1;commandAliases]]
-            $jsonLoad[commandDesc;$env[commandInfo;1;commandDescription;$env[allLocales;$get[l];name]]]
+            $jsonLoad[commandDesc;$env[commandInfo;1;commandDescription;$get[l]]]
 
-            $let[detailedName;$env[commandInfo;1;commandDetailedName;$env[allLocales;$get[l];name]]]
+            $let[detailedName;$env[commandInfo;1;commandDetailedName;$get[l]]]
             $let[commandName;$env[commandInfo;1;commandName]]
             $let[description;$arrayJoin[commandDesc;\n]]
 
@@ -104,8 +90,8 @@ export default {
 
             $arrayUnshift[commandAliases;$get[commandName]]
 
-            $arrayForEach[replacements;obj;
-                $let[description;$replace[$get[description];$env[obj;0];$eval[$env[obj;1];false];-1]]
+            $arrayForEach[replacements;elem;
+                $let[description;$replace[$get[description];$env[elem;0];$eval[$env[elem;1];false];-1]]
             ]
 
             $let[description;$replace[$get[description];(N);\n;-1]]

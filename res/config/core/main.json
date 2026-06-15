@@ -2,7 +2,6 @@
   "botEnabled": true,
   "makeBackups": false,
   "sendReminders": false,
-  "clearCache": false,
 
   "defaultColor": "#FFD700",
   "errorColor": "#D0321D",
@@ -12,7 +11,7 @@
   "apexEmbedColor": "#000000",
   "rareKingDragonColor": "#d61b4a",
 
-  "emoji": "<:MopeCoin:1279092125459288124>",
+  "mopecoin": "<:MopeCoin:1279092125459288124>",
   "blank": "<:blank:1337851779253272759>",
   "filter": "<:filter:1486794473940979994>",
   "undefined": "<:undefined:1427991209246199848>",
@@ -20,7 +19,7 @@
   "reportChannelID": "1372645851159330947",
   "logChannelID": "1391387203871047731",
 
-  "maxParticipants": 10,
+  "maxLobbyParticipants": 10,
   "maxCoinflipBet": 200000,
   "maxSlotsBet": 50000,
   "defaultSlotsBet": 5,
@@ -41,16 +40,10 @@
   "allReminders": ["0", "1"],
   "numberSeparator": "∙",
 
-  "allLocales": [
-    {
-      "name": "en-US",
-      "description": "English US"
-    },
-    {
-      "name": "ru",
-      "description": "Русский"
-    }
-  ],
+  "allLocales": {
+    "en-US": "English (US)",
+    "ru": "Русский"
+  },
 
   "endingsMap": {
     "ru": {

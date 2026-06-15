@@ -3,7 +3,7 @@
   
   "helpReplacements": [
     ["{PREFIX}", "$get[prefix]"],
-    ["{MAX_PARTICIPANTS}", "$get[maxParticipants]"],
+    ["{MAX_PARTICIPANTS}", "$get[maxLobbyParticipants]"],
     ["{BRACKETS_INFO}", "$codeBlock[$arrayJoin[bracketsInfo;\n]]"],
     ["{PUMPKINS_RARITIES}", "$codeBlock[$arrayJoin[pumpkinRarities;\n];JSON]"],
     ["{BEACHBALLS_RARITIES}", "$codeBlock[$arrayJoin[beachballRarities;\n];JSON]"],

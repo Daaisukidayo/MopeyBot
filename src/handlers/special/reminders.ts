@@ -10,9 +10,6 @@ export default [{
 
     $defer
 
-    $jsonLoad[allReminders;$getGlobalVar[allReminders]]
-    $jsonLoad[userReminders;$getUserVar[userReminders]]
-
     $remindersEmbed
     $newCommandTimeout
   `
@@ -25,14 +22,14 @@ export default [{
       $addTextDisplay[$tl[$get[l];ui;reminders.title]]
       $addSeparator[Large]
 
-      $arrayForEach[allReminders;reminder;
-        $let[hasReminder;$arrayIncludes[userReminders;$env[reminder]]]
+      $arrayForEach[$getGlobalVar[allReminders];reminder;
+        $let[hasReminder;$arrayIncludes[$getUserVar[userReminders];$env[reminder]]]
         $let[isEnabled;$if[$get[hasReminder];$tl[$get[l];ui;reminders.enabled];$tl[$get[l];ui;reminders.disabled]]]
         $let[style;$if[$get[hasReminder];Success;Danger]]
 
         $addSection[
           $addTextDisplay[## _$tl[$get[l];data;reminders.$env[reminder]]_]
-          $addButton[$env[reminder]-reminder-$authorID;$get[isEnabled];$get[style]]
+          $addButton[reminders-$env[reminder]-$authorID;$get[isEnabled];$get[style]]
         ]
       ]
     ;$getGlobalVar[defaultColor]]

@@ -24,7 +24,7 @@ export default {
         $addTextDisplay[### $hyperlink[$tl[$get[l];ui;play.endPreviousGame];https://discord.com/channels/$env[playData;GuildID]/$env[playData;ChannelID]/$env[playData;MessageID]]]
         $addSeparator
         $addActionRow
-        $addButton[messagemissing-play-$authorID;$tl[$get[l];ui;play.buttonLabelCantFind];Danger]
+        $addButton[play_leave-disconnect-$authorID;$tl[$get[l];ui;play.buttonLabelCantFind];Danger]
       ;$getGlobalVar[defaultColor]]
       $!send
     ;

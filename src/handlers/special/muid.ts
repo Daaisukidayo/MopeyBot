@@ -33,7 +33,7 @@ export default {
     ;i;true]
 
     $onlyIf[$and[$get[arg]>0;$get[userMUID]!=;$get[userID]!=];
-      $newError[$tl[$get[l];ui;muid.userNotExist;$get[arg]]]
+      $newError[$tl[$get[l];ui;muid.userDoesNotExist;$get[arg]]]
     ]
 
     $addContainer[
@@ -42,7 +42,7 @@ export default {
         $addThumbnail[$userAvatar[$get[userID]]]
       ]
       $addSeparator[Large]
-      $addTextDisplay[## \`$separate[$dump[$getProfile[$get[userID]];MC]]\`$getGlobalVar[emoji]]
+      $addTextDisplay[## \`$separate[$dump[$getProfile[$get[userID]];MC]]\`$getGlobalVar[mopecoin]]
       $addTextDisplay[$tl[$get[l];ui;muid.discordId;$get[userID]]]
     ;$getGlobalVar[defaultColor]]
   `
