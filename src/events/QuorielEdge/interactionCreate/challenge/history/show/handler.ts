@@ -92,7 +92,7 @@ export default {
 
       $case[sortingMenu;
         $if[$and[$get[sortType]==3;$get[rareAnimalId]==null];
-          $modal[sortByRare-$authorID;$tl[$get[l];ui;history.modalTitleSortByRare]]
+          $modal[showHistory-sortByRare-$authorID;$tl[$get[l];ui;history.modalTitleSortByRare]]
           $addTextInput[modalInput;$tl[$get[l];ui;history.modalDescriptionSortByRare];Short;true;$tl[$get[l];ui;history.modalPlaceholderSortByRare]]
           $showModal
           $stop
@@ -115,7 +115,7 @@ export default {
 
 
       $case[filterByRareButton;
-        $modal[filterByRare-$authorID;$tl[$get[l];ui;history.modalTitleFilterByRare]]
+        $modal[showHistory-filterByRare-$authorID;$tl[$get[l];ui;history.modalTitleFilterByRare]]
         $addTextInput[modalInput;$tl[$get[l];ui;history.modalDescriptionFilterByRare];Short;true;$tl[$get[l];ui;history.modalPlaceholderFilterByRare]]
         $showModal
         $stop
