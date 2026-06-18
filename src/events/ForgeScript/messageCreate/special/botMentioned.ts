@@ -3,8 +3,8 @@ export default {
   guildOnly: true,
   code: `
     $onlyIf[$messageContent==<@$botID>]
-    $reply[$channelID;$messageID;false]
+    $reply
     $let[prefix;$getGuildVar[prefix]]
-    $addTextDisplay[## Hi, <@$authorID>! I am $hyperlink[$username[$botID];https://discord.com/discovery/applications/$botID]! My prefix here is $inline[$get[prefix]]]
+    ## Hi, <@$authorID>! I am $hyperlink[$username[$botID];<https://discord.com/discovery/applications/$botID>]! My prefix here is $inline[$get[prefix]]
   `
 }
