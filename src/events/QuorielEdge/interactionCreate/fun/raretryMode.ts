@@ -15,7 +15,7 @@ export default {
     $jsonLoad[modes;$getGlobalVar[raretryModes]]
 
     $!jsonSet[userProfile;rtMode;$env[IID;1]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $raretrymodeEmbed
     $interactionUpdate

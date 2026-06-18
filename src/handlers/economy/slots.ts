@@ -56,7 +56,7 @@ export default {
     $let[won;$arrayEvery[output;elem;$return[$checkCondition[$env[output;0]==$env[elem]]]]]
 
     $subCash[$get[amount]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $c[=======================]
 
@@ -93,7 +93,7 @@ export default {
 
       $jsonLoad[userProfile;$getProfile]
       $sumCash[$get[winAmount]]
-      $saveProfile
+      $saveProfile[$env[userProfile]]
 
     ;
       $let[outputContent;$tl[$get[l];ui;slots.lost]]

@@ -16,7 +16,7 @@ export default {
       $case[confirm;
         $let[desc;$tl[$get[l];ui;clearcoins.deleted;$separate[$env[userProfile;MC]]]]
         $setCash[0]
-        $saveProfile
+        $saveProfile[$env[userProfile]]
       ]
 
       $case[decline;

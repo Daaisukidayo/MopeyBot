@@ -2,7 +2,7 @@ export default {
   name: 'removePlayProgress',
   code: `
     $sumCash[$env[playData;MC]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $deleteUserVar[allRareAttemptsInfo]
     $deleteUserVar[userPlayData]

@@ -33,7 +33,7 @@ export default {
     $let[thum;$env[tornado;thumbnail]]
 
     $sumCash[$get[MC]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $addContainer[
       $addAuthorDisplay

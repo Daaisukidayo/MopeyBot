@@ -1,20 +1,15 @@
-// TODO: needs rewrite
-
 export default {
   name: "saveProfile",
   description: "Saves and updates the user's profile.",
   params: [
     {
-      name: "_userId",
-      description: "ID of the user.",
-      type: "User",
-      required: false,
+      name: "_userProfile",
+      description: "User's JSON profile",
+      type: "Json",
+      required: true,
     }
   ],
-  brackets: false,
   code: `
-    $if[$env[userProfile]!=;
-      $setUserVar[userProfile;$env[userProfile];$findUser[$env[_userId];true]]
-    ]
+    $setUserVar[userProfile;$env[_userProfile];$env[_userProfile;ID]]
   `
 }

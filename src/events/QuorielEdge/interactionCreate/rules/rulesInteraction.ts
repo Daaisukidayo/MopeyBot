@@ -21,7 +21,7 @@ export default {
     ]
 
     $!jsonSet[userProfile;ID;"$authorID"]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
     $rulesEmbed
     $interactionUpdate
   `

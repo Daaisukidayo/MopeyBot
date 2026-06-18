@@ -17,7 +17,7 @@ export default {
         $addAuthorDisplay
         $addTextDisplay[$tl[$get[l];ui;vote.userWithProfileVoted;$separate[$get[MC]]]]
         $sumCash[$get[MC]]
-        $saveProfile[$get[ID]]
+        $saveProfile[$env[userProfile]]
       ;
         $addTextDisplay[## \`$username[$get[ID]]\`]
         $addSeparator[Large]

@@ -19,7 +19,7 @@ export default {
     $defer
     
     $!jsonSet[userProfile;language;$get[locale]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $addContainer[
       $addAuthorDisplay

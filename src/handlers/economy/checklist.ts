@@ -10,6 +10,8 @@ export default {
 
     $defer
 
+    $let[day;$calendarDay]
+
     $let[lastClaimed;$default[$env[userProfile;limiters;lastClaimedDay];-1]]
     $let[daily;$default[$env[userProfile;limiters;lastDailyDay];-1]]
 
@@ -24,14 +26,14 @@ export default {
     $let[extra;$separate[$get[checklistReward]]]
     $let[content;$tl[$get[l];ui;checklist.completeTasks;$get[extra]]]
 
-    $if[$get[lastClaimed]==$day;
+    $if[$get[lastClaimed]==$get[day];
       $let[content;$tl[$get[l];ui;checklist.allRewardsReceived]]
     ]
 
-    $if[$and[$get[lastClaimed]!=$day;$get[daily]==$day;$get[hasVoted];$get[lastDailyRaretry]==$day;$get[lastDailyRaretryrun]==$day];
+    $if[$and[$get[lastClaimed]!=$get[day];$get[daily]==$get[day];$get[hasVoted];$get[lastDailyRaretry]==$get[day];$get[lastDailyRaretryrun]==$get[day]];
       $sumCash[$get[checklistReward]]
-      $!jsonSet[userProfile;limiters;lastClaimedDay;$day]
-      $saveProfile
+      $!jsonSet[userProfile;limiters;lastClaimedDay;$get[day]]
+      $saveProfile[$env[userProfile]]
       $deleteUserVar[caughtRaresInRaretry]
       $deleteUserVar[caughtRaresInRaretryrun]
       $setUserVar[dailyStreak;$math[$getUserVar[dailyStreak] + 1]]
@@ -48,7 +50,7 @@ export default {
       $addSeparator[Large]
 
       $addTextDisplay[$tl[$get[l];ui;checklist.claimDaily]]
-      $addTextDisplay[$if[$get[daily]==$day;$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;]]]
+      $addTextDisplay[$if[$get[daily]==$get[day];$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;]]]
 
       $addSeparator[Small;false]
 
@@ -58,12 +60,12 @@ export default {
       $addSeparator[Small;false]
 
       $addTextDisplay[$tl[$get[l];ui;checklist.catchRaretry;$getGlobalVar[maxRaretryRares]]]
-      $addTextDisplay[$if[$get[lastDailyRaretry]==$day;$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;($get[caughtRaresInRaretry]/$getGlobalVar[maxRaretryRares])]]]
+      $addTextDisplay[$if[$get[lastDailyRaretry]==$get[day];$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;($get[caughtRaresInRaretry]/$getGlobalVar[maxRaretryRares])]]]
 
       $addSeparator[Small;false]
 
       $addTextDisplay[$tl[$get[l];ui;checklist.catchRaretryrun;$getGlobalVar[maxRaretryrunRares]]]
-      $addTextDisplay[$if[$get[lastDailyRaretryrun]==$day;$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;($get[caughtRaresInRaretryrun]/$getGlobalVar[maxRaretryrunRares])]]]
+      $addTextDisplay[$if[$get[lastDailyRaretryrun]==$get[day];$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;($get[caughtRaresInRaretryrun]/$getGlobalVar[maxRaretryrunRares])]]]
 
       $addSeparator[Large]
       $addTextDisplay[$get[content]]

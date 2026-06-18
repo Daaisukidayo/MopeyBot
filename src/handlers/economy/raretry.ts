@@ -132,7 +132,7 @@ export default {
         ]
       ]
 
-      $saveProfile
+      $saveProfile[$env[userProfile]]
     ;
       $callFn[embed]
     ]

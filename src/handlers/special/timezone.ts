@@ -30,7 +30,7 @@ export default {
           ]
         ]
 				$!jsonSet[userProfile;timezone;$arrayJoin[tzParts;/]]
-				$saveProfile
+				$saveProfile[$env[userProfile]]
 			;
 				$newError[$tl[$get[l];ui;timezone.invalid]]
 			]

@@ -52,7 +52,7 @@ export default {
     $let[msg;$send]
 
     $subCash[$get[amount]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $wait[3s]
 
@@ -65,7 +65,7 @@ export default {
 
       $jsonLoad[userProfile;$getProfile]
       $sumCash[$get[winAmount]]
-      $saveProfile
+      $saveProfile[$env[userProfile]]
 
     ;
       $!editMessage[$channelID;$get[msg];

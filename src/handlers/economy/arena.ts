@@ -26,7 +26,7 @@ export default {
 
     $if[$get[r]>=25;
       $sumCash[$get[MC]]
-      $saveProfile
+      $saveProfile[$env[userProfile]]
       $let[desc;$tl[$get[l];ui;arena.won;$get[enemy];$separate[$get[MC]]]]
       $let[color;$getGlobalVar[defaultColor]]
     ;

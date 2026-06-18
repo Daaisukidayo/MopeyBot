@@ -32,7 +32,7 @@ export default {
 
         $if[$get[r]>=$env[d;num];
           $!jsonSet[userProfile;limiters;luckDesc;$env[d;desc]]
-          $saveProfile
+          $saveProfile[$env[userProfile]]
           $break
         ]
       ;i;true]

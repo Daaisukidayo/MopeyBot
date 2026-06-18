@@ -33,7 +33,7 @@ export default {
           $newCommandTimeout[kingdragon]
         ;
           $sumCash[$get[MC]]
-          $saveProfile
+          $saveProfile[$env[userProfile]]
 
           $let[BD;$getAnimalVariantInfo[blackDragon;emoji;$get[wrIndex]]]
           $let[reason;$arrayRandomValue[$tl[$get[l];ui;kingdragon.reasons;$random[0;12]]]]
@@ -57,7 +57,7 @@ export default {
         $let[color;$env[colors;$get[wrIndex]]]
 
         $sumCash[$get[MC]]
-        $saveProfile
+        $saveProfile[$env[userProfile]]
 
         $addContainer[
           $addAuthorDisplay
@@ -78,7 +78,7 @@ export default {
         $let[color;$getGlobalVar[rareKingDragonColor]]
 
         $sumCash[$get[MC]]
-        $saveProfile
+        $saveProfile[$env[userProfile]]
 
         $addContainer[
           $addAuthorDisplay

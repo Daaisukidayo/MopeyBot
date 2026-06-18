@@ -29,7 +29,7 @@ export default {
     $!jsonSet[userProfile;limiters;lastWeeklyWeek;$get[week]]
     
     $sumCash[$get[MC]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $addContainer[
       $addAuthorDisplay

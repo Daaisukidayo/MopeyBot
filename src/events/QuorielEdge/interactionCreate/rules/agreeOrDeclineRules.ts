@@ -22,7 +22,7 @@ export default [{
     ]
 
     $!jsonSet[userProfile;acceptedRules;true]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $getCache[usernames;usernames]
     $!jsonSet[usernames;$authorID;$username]

@@ -28,7 +28,7 @@ export default {
     $!jsonSet[userProfile;limiters;lastDailyDay;$get[day]]
   
     $sumCash[$get[MC]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $addContainer[
       $addAuthorDisplay

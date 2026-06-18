@@ -46,7 +46,7 @@ export default [{
     ;i;true]
 
     $sumCash[$get[MC]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $addContainer[
       $addAuthorDisplay

@@ -36,7 +36,7 @@ export default {
     $subCash[$get[cost]]
     $arrayPush[userPacks;$get[skinpack]]
     $!jsonSet[userProfile;userPacks;$env[userPacks]]
-    $saveProfile
+    $saveProfile[$env[userProfile]]
 
     $shopEmbed
     $interactionUpdate
