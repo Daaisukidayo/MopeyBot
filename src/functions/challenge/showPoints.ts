@@ -11,7 +11,7 @@ export default {
   ],
   brackets: false,
   code: `
-    $let[userId;$findUser[$env[_userId];true]]
+    $let[userId;$findUser[$env[_userId;id];true]]
 
     $let[points;$dump[$getProgress[$get[userId]];points]]
     $let[styled;$if[$arrayIncludes[$dump[$getProfile[$get[userId]];challenge;settings];hidePoints];||$get[points]||;\`$get[points]\`]]

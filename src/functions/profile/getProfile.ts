@@ -5,12 +5,13 @@ export default {
     {
       name: "_userId",
       description: "ID of the user.",
+      type: "User",
       required: false,
     }
   ],
   brackets: false,
   output: "Json",
   code: `
-    $return[$getUserVar[userProfile;$findUser[$env[_userId];true]]]
+    $return[$getUserVar[userProfile;$findUser[$env[_userId;id];true]]]
   `
 }

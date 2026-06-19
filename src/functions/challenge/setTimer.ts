@@ -14,6 +14,6 @@ export default {
   ],
   brackets: false,
   code: `
-    $setUserVar[1htime|$channelID;$env[_newTime];$findUser[$env[_userId];true]]
+    $setUserVar[1htime|$channelID;$env[_newTime];$findUser[$env[_userId;id];true]]
   `
 }

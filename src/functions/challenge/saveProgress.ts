@@ -16,6 +16,6 @@ export default {
     },
   ],
   code: `
-    $setUserVar[challengeProgress|$channelID;$env[_progress];$findUser[$env[_userId];true]]
+    $setUserVar[challengeProgress|$channelID;$env[_progress];$findUser[$env[_userId;id];true]]
   `
 }

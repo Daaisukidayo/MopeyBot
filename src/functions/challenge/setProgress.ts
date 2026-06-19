@@ -15,7 +15,7 @@ export default {
   ],
   brackets: false,
   code: `
-    $let[userId;$findUser[$env[_userId];true]]
+    $let[userId;$findUser[$env[_userId;id];true]]
     $let[teamId;$nullish[$env[_teamId];-1]]
 
     $jsonLoad[baseChallengeProgress;$getGlobalVar[baseChallengeProgress]]

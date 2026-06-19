@@ -11,6 +11,6 @@ export default {
   brackets: false,
   output: "Json",
   code: `
-    $return[$getUserVar[challengeProgress|$channelID;$findUser[$env[_userId];true]]]
+    $return[$getUserVar[challengeProgress|$channelID;$findUser[$env[_userId;id];true]]]
   `
 }

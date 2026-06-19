@@ -11,6 +11,6 @@ export default {
   ],
   brackets: false,
   code: `
-    $!stopInterval[challengeTimer-$findUser[$env[_userId];true]|$channelID]
+    $!stopInterval[challengeTimer-$findUser[$env[_userId;id];true]|$channelID]
   `
 }

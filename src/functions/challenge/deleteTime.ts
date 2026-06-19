@@ -9,6 +9,6 @@ export default {
   ],
   brackets: false,
   code: `
-    $deleteUserVar[1htime|$channelID;$findUser[$env[_userId];true]]
+    $deleteUserVar[1htime|$channelID;$findUser[$env[_userId;id];true]]
   `
 }

@@ -9,6 +9,6 @@ export default {
   ],
   brackets: false,
   code: `
-    $return[$getUserVar[1htime|$channelID;$findUser[$env[_userId];true]]]
+    $return[$getUserVar[1htime|$channelID;$findUser[$env[_userId;id];true]]]
   `
 }

@@ -9,6 +9,6 @@ export default {
   ],
   brackets: false,
   code: `
-    $deleteUserVar[challengeProgress|$channelID;$findUser[$env[_userId];true]]
+    $deleteUserVar[challengeProgress|$channelID;$findUser[$env[_userId;id];true]]
   `
 }
