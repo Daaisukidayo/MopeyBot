@@ -12,7 +12,8 @@ export default {
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.rules.information.$get[l];$getGlobalVar[informationLink]]]
       $addTextDisplay[$tl[ui.rules.tos.$get[l];$getGlobalVar[tosLink]]]
-      $addTextDisplay[$tl[ui.rules.rules.$get[l];$getGlobalVar[rulesLink]]]
+      $addTextDisplay[$tl[ui.rules.privacyPolicy.$get[l];$getGlobalVar[privacyLink]]]
+      $addTextDisplay[$tl[ui.rules.usage.$get[l];$getGlobalVar[usageLink]]]
     ;$getGlobalVar[defaultColor]]
   `
 }

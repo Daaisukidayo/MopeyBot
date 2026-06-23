@@ -73,11 +73,12 @@ export default [{
 
       $return[$tl[ui.leaderboard.contentLine.$get[l];$get[emoji];$username[$get[ID]];$get[MUID];$separate[$get[MC]]]]
     ;content]
-
+    
     $addContainer[
+      $attachment[res/img/leaderboard-icon.png;icon.png]
       $addSection[
         $addTextDisplay[$tl[ui.leaderboard.title.$get[l]]]
-        $addThumbnail[$getGlobalVar[leaderboardThumbnail]]
+        $addThumbnail[attachment://icon.png]
       ]
 
       $addSeparator[Large]
