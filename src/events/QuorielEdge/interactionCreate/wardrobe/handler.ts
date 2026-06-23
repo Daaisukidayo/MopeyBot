@@ -12,7 +12,7 @@ export default {
 
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
     $jsonLoad[animals;$getAnimalsData]
-    $jsonLoad[animalIds;$jsonKeys[$getCache[animalIndexes]]]
+    $jsonLoad[animalIds;$jsonKeys[$getCache[animals;animalIndexes]]]
 
     $let[option;$env[IID;2]] $c[Containst tier number or 'all']
     $let[value;$selectMenuValues] $c[Contains animal's variant or skin pack's id]
@@ -39,14 +39,14 @@ export default {
 
           $addContainer[
             $addAuthorDisplay
-            $addTextDisplay[$tl[$get[l];ui;wardrobe.allTitle]]
+            $addTextDisplay[$tl[ui.wardrobe.allTitle.$get[l]]]
             $addSeparator
             $addSkinpacksMenu[all]
           ;$getGlobalVar[defaultColor]]
           $interactionUpdate
 
           $addContainer[
-            $addTextDisplay[$tl[$get[l];ui;wardrobe.equippedAll;$tl[$get[l];data;shopSkinPacks.$get[value]]]]
+            $addTextDisplay[$tl[ui.wardrobe.equippedAll.$get[l];$tl[data.shopSkinPacks.$get[value].$get[l]]]]
           ;$getGlobalVar[defaultColor]]
 
         ;  $c[If only one tier]
@@ -80,7 +80,7 @@ export default {
 
           $addContainer[
             $addAuthorDisplay
-            $addTextDisplay[$tl[$get[l];ui;wardrobe.tierTitle;$get[tier]]]
+            $addTextDisplay[$tl[ui.wardrobe.tierTitle.$get[l];$get[tier]]]
             $addSeparator
             $addSkinpacksMenu[$get[tier]]
           ;$getGlobalVar[defaultColor]]
@@ -90,13 +90,13 @@ export default {
             $setUserVar[userWardrobe;$env[userWardrobe]]
 
             $addContainer[
-              $addTextDisplay[$tl[$get[l];ui;wardrobe.equippedTier;$get[tier];$tl[$get[l];data;shopSkinPacks.$get[value]]]]
+              $addTextDisplay[$tl[ui.wardrobe.equippedTier.$get[l];$get[tier];$tl[data.shopSkinPacks.$get[value].$get[l]]]]
               $addSeparator[Large]
               $addTextDisplay[# $arrayJoin[content; ]]
             ;$getGlobalVar[defaultColor]]
           ;
             $addContainer[
-              $addTextDisplay[$tl[$get[l];ui;wardrobe.noSkinsInTier;$get[tier];$tl[$get[l];data;shopSkinPacks.$get[value]]]]
+              $addTextDisplay[$tl[ui.wardrobe.noSkinsInTier.$get[l];$get[tier];$tl[data.shopSkinPacks.$get[value].$get[l]]]]
             ;Orange]
           ]
         ]
@@ -126,7 +126,7 @@ export default {
           $onlyIf[$get[animalId]!=;
             $addContainer[
               $addAuthorDisplay
-              $addTextDisplay[$tl[$get[l];ui;wardrobe.everyEquipped]]
+              $addTextDisplay[$tl[ui.wardrobe.everyEquipped.$get[l]]]
             ;$getGlobalVar[defaultColor]]
             $interactionUpdate
             $!stopCommandTimeout[wardrobe]

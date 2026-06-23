@@ -43,14 +43,14 @@ export default {
 
     $addContainer[
       $addActionRow
-      $addButton[showHistory-deletePage-$authorID;$tl[$get[l];ui;history.buttonLabelDelete];Danger;🗑️;$get[disableEditing]]
-      $addButton[showHistory-editPage-$authorID;$tl[$get[l];ui;history.buttonLabelEdit];Success;✏️;$get[disableEditing]]
+      $addButton[showHistory-deletePage-$authorID;$tl[ui.history.buttonLabelDelete.$get[l]];Danger;🗑️;$get[disableEditing]]
+      $addButton[showHistory-editPage-$authorID;$tl[ui.history.buttonLabelEdit.$get[l]];Success;✏️;$get[disableEditing]]
       
       $addSeparator[Large]
 
       $addActionRow
       $addButton[showHistory-prevPage-$authorID;;Primary;⬅️;$get[disablePages]]
-      $addButton[showHistory-showPages-$authorID;$tl[$get[l];ui;history.buttonLabelPage;$get[page];$get[entriesCount]];Primary;🔎;$get[disablePages]]
+      $addButton[showHistory-showPages-$authorID;$tl[ui.history.buttonLabelPage.$get[l];$get[page];$get[entriesCount]];Primary;🔎;$get[disablePages]]
       $addButton[showHistory-nextPage-$authorID;;Primary;➡️;$get[disablePages]]
 
       $addSeparator[Large]
@@ -58,16 +58,16 @@ export default {
       $addActionRow
       $addStringSelectMenu[showHistory-sortingMenu-$authorID;;$get[disablePages]]
       $arrayForEach[sortingOptions;option;
-        $addOption[$tl[$get[l];ui;history.optionNameSort;$tl[$get[l];data;sortingOptions.$env[option]]];;$env[option];$callFn[getEmoji;$env[option]];$checkCondition[$get[sortType]==$env[option]]]
+        $addOption[$tl[ui.history.optionNameSort.$get[l];$tl[data.sortingOptions.$env[option].$get[l]]];;$env[option];$callFn[getEmoji;$env[option]];$checkCondition[$get[sortType]==$env[option]]]
       ]
 
       $addActionRow
-      $addButton[showHistory-filterByRareButton-$authorID;$tl[$get[l];ui;history.buttonLabelFilterByRare];Secondary;$getGlobalVar[filter]]
+      $addButton[showHistory-filterByRareButton-$authorID;$tl[ui.history.buttonLabelFilterByRare.$get[l]];Secondary;$getGlobalVar[filter]]
       $if[$get[filter];
-        $addButton[showHistory-cancelFilterButton-$authorID;$tl[$get[l];ui;history.buttonLabelCancelFilter];Danger;$getGlobalVar[filter]]
+        $addButton[showHistory-cancelFilterButton-$authorID;$tl[ui.history.buttonLabelCancelFilter.$get[l]];Danger;$getGlobalVar[filter]]
       ;
         $if[$get[rareAnimalId]!=null;
-          $addButton[showHistory-filterByChosenRareButton-$authorID;$tl[$get[l];ui;history.buttonLabelFilterByRare];Success;$get[rareEmoji]]
+          $addButton[showHistory-filterByChosenRareButton-$authorID;$tl[ui.history.buttonLabelFilterByRare.$get[l]];Success;$get[rareEmoji]]
         ]
       ]
     ;$getGlobalVar[luckyColor]]

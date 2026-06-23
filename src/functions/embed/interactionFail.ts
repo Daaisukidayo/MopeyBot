@@ -4,6 +4,6 @@ export default {
   code: `
     $let[l;$env[userProfile;language]]
     $ephemeral 
-    $interactionReply[$tl[$get[l];ui;special.interactionFail]]
+    $interactionReply[$tl[ui.special.interactionFail.$get[l]]]
   `
 }

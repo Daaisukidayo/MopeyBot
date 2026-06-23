@@ -9,18 +9,18 @@ export default {
     $addCooldown
 
     $onlyIf[$env[userProfile;MC]>0;
-      $newError[$tl[$get[l];ui;clearcoins.noCash]]
+      $newError[$tl[ui.clearcoins.noCash.$get[l]]]
     ]
 
     $defer
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;clearcoins.warn;$separate[$env[userProfile;MC]]]]
+      $addTextDisplay[$tl[ui.clearcoins.warn.$get[l];$separate[$env[userProfile;MC]]]]
 
       $addActionRow
-      $addButton[clearCoins-confirm-$authorID;$tl[$get[l];ui;clearcoins.buttonLabelConfirm];Success]
-      $addButton[clearCoins-decline-$authorID;$tl[$get[l];ui;clearcoins.buttonLabelDecline];Danger]
+      $addButton[clearCoins-confirm-$authorID;$tl[ui.clearcoins.buttonLabelConfirm.$get[l]];Success]
+      $addButton[clearCoins-decline-$authorID;$tl[ui.clearcoins.buttonLabelDecline.$get[l]];Danger]
     ;Orange]
     $newCommandTimeout
   `

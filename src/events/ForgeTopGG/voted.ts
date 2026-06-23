@@ -15,13 +15,13 @@ export default {
     $addContainer[
       $if[$env[userProfile;acceptedRules];
         $addAuthorDisplay
-        $addTextDisplay[$tl[$get[l];ui;vote.userWithProfileVoted;$separate[$get[MC]]]]
+        $addTextDisplay[$tl[ui.vote.userWithProfileVoted.$get[l];$separate[$get[MC]]]]
         $sumCash[$get[MC]]
         $saveProfile[$env[userProfile]]
       ;
         $addTextDisplay[## \`$username[$get[ID]]\`]
         $addSeparator[Large]
-        $addTextDisplay[$tl[$get[l];ui;vote.userWithoutProfileVoted]]
+        $addTextDisplay[$tl[ui.vote.userWithoutProfileVoted.$get[l]]]
       ]
     ;$getGlobalVar[defaultColor]]
     $sendDM[$get[ID]]

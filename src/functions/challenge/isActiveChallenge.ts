@@ -4,7 +4,7 @@ export default {
   code: `
     $jsonLoad[challengeProgress;$getProgress]
     $onlyIf[$and[$env[challengeProgress]!=;$env[challengeProgress;started]];
-      $newError[$tl[$env[userProfile;language];ui;challenge.active]]
+      $newError[$tl[ui.challenge.active.$env[userProfile;language]]]
     ]
   `
 }

@@ -4,6 +4,6 @@ export default {
     $if[$env[playData]==;$return]
     $let[l;$env[userProfile;language]]
     $addActionRow
-    $addButton[play_leave-quit-$authorID;$tl[$get[l];ui;play.buttonLabelQuitGame];Danger;🔚]
+    $addButton[play_leave-quit-$authorID;$tl[ui.play.buttonLabelQuitGame.$get[l]];Danger;🔚]
   `
 }

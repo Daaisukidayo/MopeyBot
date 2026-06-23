@@ -12,9 +12,9 @@ export default {
   brackets: false,
   code: `
     $let[userId;$findUser[$env[_userId;id];true]]
-    $let[rares;$dump[$getProgress[$get[userId]];rares]]
-    $let[styled;$if[$arrayIncludes[$dump[$getProfile[$get[userId]];challenge;settings];hideRares];||$get[rares]||;\`$get[rares]\`]]
+    $let[rares;$env[$getProgress[$get[userId]];rares]]
+    $let[styled;$if[$arrayIncludes[$env[$getProfile[$get[userId]];challenge;settings];hideRares];||$get[rares]||;\`$get[rares]\`]]
 
-    $return[$tl[$env[userProfile;language];ui;challenge.rares;$get[styled]]]
+    $return[$tl[ui.challenge.rares.$env[userProfile;language];$get[styled]]]
   `
 }

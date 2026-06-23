@@ -9,7 +9,7 @@ export default {
   code: `
     $let[l;$env[userProfile;language]]
     $addContainer[
-      $addTextDisplay[$tl[$get[l];ui;lobby.settingsChange]]
+      $addTextDisplay[$tl[ui.lobby.settingsChange.$get[l]]]
       $addSeparator[Large]
       $addTextDisplay[$env[_content]]
     ;$getGlobalVar[luckyColor]]

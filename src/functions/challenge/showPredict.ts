@@ -51,6 +51,6 @@ export default {
 
     $let[styled;$if[$arrayIncludes[$env[userProfile;challenge;settings];hidePrediction];||$get[finalPredict]||;\`$get[finalPredict]\`]]
 
-    $return[$tl[$get[l];ui;challenge.prediction;$get[styled]]]
+    $return[$tl[ui.challenge.prediction.$get[l];$get[styled]]]
   `
 }

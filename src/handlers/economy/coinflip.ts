@@ -31,16 +31,16 @@ export default {
       ]]
     ]]
 
-    $let[balance;$tl[$get[l];ui;coinflip.balance;$separate[$get[MC]]]]
+    $let[balance;$tl[ui.coinflip.balance.$get[l];$separate[$get[MC]]]]
 
     $onlyif[$get[MC]>=$get[defaultAmount];
-      $newError[$tl[$get[l];ui;coinflip.invalidCashLow;$get[defaultAmount]] $get[balance]]
+      $newError[$tl[ui.coinflip.invalidCashLow.$get[l];$get[defaultAmount]] $get[balance]]
     ]
     $onlyif[$get[amount]<=$get[MC];
-      $newError[$tl[$get[l];ui;coinflip.invalidCashHigh] $get[balance]]
+      $newError[$tl[ui.coinflip.invalidCashHigh.$get[l]] $get[balance]]
     ]
     $onlyif[$inRange[$get[amount];$get[defaultAmount];$get[maximum]];
-      $newError[$tl[$get[l];ui;coinflip.invalidRange;$get[defaultAmount];$separate[$get[maximum]]]]
+      $newError[$tl[ui.coinflip.invalidRange.$get[l];$get[defaultAmount];$separate[$get[maximum]]]]
     ]
 
     $defer
@@ -48,7 +48,7 @@ export default {
     $let[caughtSide;$arrayRandomValue[sides]]
 
 
-    $addTextDisplay[$tl[$get[l];ui;coinflip.bet;$get[side]]]
+    $addTextDisplay[$tl[ui.coinflip.bet.$get[l];$get[side]]]
     $let[msg;$send]
 
     $subCash[$get[amount]]
@@ -60,7 +60,7 @@ export default {
       $let[winAmount;$math[$get[amount] * 2]]
 
       $!editMessage[$channelID;$get[msg];
-        $addTextDisplay[$tl[$get[l];ui;coinflip.won;$get[caughtSide];$separate[$get[winAmount]]]]
+        $addTextDisplay[$tl[ui.coinflip.won.$get[l];$get[caughtSide];$separate[$get[winAmount]]]]
       ]
 
       $jsonLoad[userProfile;$getProfile]
@@ -69,7 +69,7 @@ export default {
 
     ;
       $!editMessage[$channelID;$get[msg];
-        $addTextDisplay[$tl[$get[l];ui;coinflip.lost;$get[caughtSide];$separate[$get[amount]]]]
+        $addTextDisplay[$tl[ui.coinflip.lost.$get[l];$get[caughtSide];$separate[$get[amount]]]]
       ]
     ]
   `

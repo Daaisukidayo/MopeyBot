@@ -10,10 +10,6 @@ export default {
     
     $checkLobby
 
-    $if[$hasCache[usernames]==false;
-      $newError[$tl[$get[l];ui;lobby.notReady]]
-    ]
-
     $jsonLoad[lobby;$getChannelVar[lobby]]
     $jsonLoad[ready;$env[lobby;ready]]
     $jsonLoad[teams;$env[lobby;teams]]

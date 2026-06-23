@@ -41,7 +41,7 @@ export default {
 
     $jsonLoad[reward;$env[soccerData;MC]]
     $let[emoji;$env[soccerData;emoji]]
-    $let[name;$tl[$get[l];data;$get[soccerType]s.$env[soccerData;ID]]]
+    $let[name;$tl[data.$get[soccerType]s.$env[soccerData;ID].$get[l]]]
     $let[MC;$round[$math[$random[$env[reward;0];$env[reward;1]] / 20]]]
 
     $let[value;$selectMenuValues]
@@ -58,7 +58,7 @@ export default {
         $addContainer[
           $addAuthorDisplay
           
-          $addTextDisplay[$tl[$get[l];ui;play.soccer.ignored;$get[name] $get[emoji]]]
+          $addTextDisplay[$tl[ui.play.soccer.ignored.$get[l];$get[name] $get[emoji]]]
 
           $addSeparator[Large]
 
@@ -76,7 +76,7 @@ export default {
           $addContainer[
             $addAuthorDisplay
             
-            $addTextDisplay[$tl[$get[l];ui;play.soccer.goalFailed;$get[name] $get[emoji];$get[MC]]]
+            $addTextDisplay[$tl[ui.play.soccer.goalFailed.$get[l];$get[name] $get[emoji];$get[MC]]]
 
             $addSeparator[Large]
 
@@ -90,7 +90,7 @@ export default {
           $addContainer[
             $addAuthorDisplay
             
-            $addTextDisplay[$tl[$get[l];ui;play.soccer.goaled;$get[name] $get[emoji];$get[MC]]]
+            $addTextDisplay[$tl[ui.play.soccer.goaled.$get[l];$get[name] $get[emoji];$get[MC]]]
 
             $addSeparator[Large]
 
@@ -107,7 +107,7 @@ export default {
         $addContainer[
           $addAuthorDisplay
           
-          $addTextDisplay[$tl[$get[l];ui;play.soccer.threw;$get[name] $get[emoji]]]
+          $addTextDisplay[$tl[ui.play.soccer.threw.$get[l];$get[name] $get[emoji]]]
 
           $addSeparator[Large]
 

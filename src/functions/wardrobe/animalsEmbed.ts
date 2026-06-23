@@ -26,10 +26,10 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;wardrobe.availableSkins;$get[fullName]]]
+      $addTextDisplay[$tl[ui.wardrobe.availableSkins.$get[l];$get[fullName]]]
       
       $addActionRow
-      $addStringSelectMenu[wardrobe-animal-$get[animalId]-$authorID-$env[_switchToNext];$tl[$get[l];ui;wardrobe.menuTitleSelectSkin]]
+      $addStringSelectMenu[wardrobe-animal-$get[animalId]-$authorID-$env[_switchToNext];$tl[ui.wardrobe.menuTitleSelectSkin.$get[l]]]
 
       $loop[25;
         $let[i;$math[$env[i] - 1]] 
@@ -43,7 +43,7 @@ export default {
           $if[$get[packId]==$get[purchasedPackId];;$continue]
 
           $let[animalName;$getAnimalVariantInfo[$get[animalId];name;$get[i]]]
-          $let[animalDesc;$tl[$get[l];data;shopSkinPacks.$get[purchasedPackId]]]
+          $let[animalDesc;$tl[data.shopSkinPacks.$get[purchasedPackId].$get[l]]]
           $let[animalEmoji;$getAnimalVariantInfo[$get[animalId];emoji;$get[i]]]
           
           $addOption[$get[animalName];$get[animalDesc];$get[i];$get[animalEmoji];$checkCondition[$get[currentAnimalVariant]==$get[i]]]
@@ -52,7 +52,7 @@ export default {
 
       $addSeparator
 
-      $addTextDisplay[$tl[$get[l];ui;wardrobe.equippedSkin]]
+      $addTextDisplay[$tl[ui.wardrobe.equippedSkin.$get[l]]]
       $addTextDisplay[# $get[currentAnimalEmoji]]
     ;$getGlobalVar[defaultColor]]
   `

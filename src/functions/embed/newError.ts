@@ -14,7 +14,7 @@ export default {
     $ephemeral
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[# ✖️ $tl[$get[l];ui;errors.errorTitle]]
+      $addTextDisplay[# ✖️ $tl[ui.errors.errorTitle.$get[l]]]
       $addSeparator[Small;false]
       $addTextDisplay[## > $trim[$env[_description]]]
     ;$getGlobalVar[errorColor]]

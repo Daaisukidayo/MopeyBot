@@ -4,20 +4,20 @@ export default {
     $let[l;$env[userProfile;language]]
     $addContainer[
       $addActionRow
-      $addButton[addHistory-uploadNewHistoryPage-$authorID;$tl[$get[l];ui;addhistory.buttonLabelUpload];Success;;$or[$env[addHistorySavedConfig;points]==0;$env[addHistorySavedConfig;rares]==0;$env[addHistorySavedConfig;endDate]==0;$env[addHistorySavedConfig;raresList]=={}]]
-      $addButton[addHistory-resetNewHistoryPage-$authorID;$tl[$get[l];ui;addhistory.buttonLabelReset];Secondary]
-      $addButton[addHistory-cancelNewHistoryPage-$authorID;$tl[$get[l];ui;addhistory.buttonLabelCancel];Primary]
+      $addButton[addHistory-uploadNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelUpload.$get[l]];Success;;$or[$env[addHistorySavedConfig;points]==0;$env[addHistorySavedConfig;rares]==0;$env[addHistorySavedConfig;endDate]==0;$env[addHistorySavedConfig;raresList]=={}]]
+      $addButton[addHistory-resetNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelReset.$get[l]];Secondary]
+      $addButton[addHistory-cancelNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelCancel.$get[l]];Primary]
 
       $addSeparator[Large]
 
       $addActionRow
-      $addStringSelectMenu[addHistory-editOptions-$authorID;$tl[$get[l];ui;history.menuTitleChooseOptions]]
-      $addOption[$tl[$get[l];ui;history.optionNamePoints];;points]
-      $addOption[$tl[$get[l];ui;history.optionNameRares];;raresQuantity]
-      $addOption[$tl[$get[l];ui;history.optionNamePlayType];;playType]
-      $addOption[$tl[$get[l];ui;history.optionNameDifficulty];;difficulty]
-      $addOption[$tl[$get[l];ui;history.optionNameEndDate];;endDate]
-      $addOption[$tl[$get[l];ui;history.optionNameRaresList];;raresList]
+      $addStringSelectMenu[addHistory-editOptions-$authorID;$tl[ui.history.menuTitleChooseOptions.$get[l]]]
+      $addOption[$tl[ui.history.optionNamePoints.$get[l]];;points]
+      $addOption[$tl[ui.history.optionNameRares.$get[l]];;raresQuantity]
+      $addOption[$tl[ui.history.optionNamePlayType.$get[l]];;playType]
+      $addOption[$tl[ui.history.optionNameDifficulty.$get[l]];;difficulty]
+      $addOption[$tl[ui.history.optionNameEndDate.$get[l]];;endDate]
+      $addOption[$tl[ui.history.optionNameRaresList.$get[l]];;raresList]
     ;$getGlobalVar[luckyColor]]
   `
 }

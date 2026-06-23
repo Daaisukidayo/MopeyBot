@@ -35,7 +35,7 @@ export default {
     
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;play.upgraded;$get[animalName]]]
+      $addTextDisplay[$tl[ui.play.upgraded.$get[l];$get[animalName]]]
 
       $addSeparator[Large]
 

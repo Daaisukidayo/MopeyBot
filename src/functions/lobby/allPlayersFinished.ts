@@ -1,15 +1,15 @@
 export default {
   name: 'allPlayersFinished',
   code: `
-    $if[$dump[$getProgress;teamID]==-1;$return]
+    $if[$env[$getProgress;teamID]==-1;$return]
 
     $jsonLoad[lobby;$getChannelVar[lobby]]
     $jsonLoad[allPlayers;$env[lobby;allPlayers]]
     $jsonLoad[teams;$env[lobby;teams]]
 
-    $if[$arrayEvery[allPlayers;ID;$return[$checkCondition[$dump[$getProgress[$env[ID]];started]==false]]];;$return]
+    $if[$arrayEvery[allPlayers;ID;$return[$checkCondition[$env[$getProgress[$env[ID]];started]==false]]];;$return]
     
-    $let[l;$dump[$getProfile[$env[lobby;host]];language]]
+    $let[l;$env[$getProfile[$env[lobby;host]];language]]
     $let[type;$env[lobby;settings;victoryType]]
 
     $if[$arrayLength[teams]==1;
@@ -20,14 +20,14 @@ export default {
 
       $sendMessage[$channelID;
         $addContainer[
-          $addTextDisplay[$tl[$get[l];ui;lobby.winner;\`$get[winner]\`]]
+          $addTextDisplay[$tl[ui.lobby.winner.$get[l];\`$get[winner]\`]]
           $addSeparator[Small]
           $arrayForEach[playersInLB;elem;
             $addTextDisplay[$env[elem]]
             $addSeparator[Small;false]
           ]
           $addSeparator[Large]
-          $addTextDisplay[$tl[$get[l];ui;lobby.victoryTypeTitle;$tl[$get[l];data;victoryTypes.$get[type]]]]
+          $addTextDisplay[$tl[ui.lobby.victoryTypeTitle.$get[l];$tl[datavictoryTypes.$get[type].$get[l]]]]
         ;$getGlobalVar[luckyColor]]
       ]
 
@@ -41,14 +41,14 @@ export default {
 
       $sendMessage[$channelID;
         $addContainer[
-          $addTextDisplay[$tl[$get[l];ui;lobby.winner;$get[winner]]]
+          $addTextDisplay[$tl[ui.lobby.winner.$get[l];$get[winner]]]
           $addSeparator[Small]
           $arrayForEach[teamsInLB;elem;
             $addTextDisplay[$env[elem]]
             $addSeparator[Large]
           ]
           $addSeparator[Large]
-          $addTextDisplay[$tl[$get[l];ui;lobby.victoryTypeTitle;$tl[$get[l];data;victoryTypes.$get[type]]]]
+          $addTextDisplay[$tl[ui.lobby.victoryTypeTitle.$get[l];$tl[datavictoryTypes.$get[type].$get[l]]]]
         ;$getGlobalVar[luckyColor]]
       ]
     ]

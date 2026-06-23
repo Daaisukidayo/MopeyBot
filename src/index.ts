@@ -15,11 +15,19 @@ configDotenv()
 // ========== EXTENTIONS CONFIGURATION ==========
 const QE = new QuorielEdge({
   features: [
-    "jsonDirectPass"
+    "jsonDirectPass",
+    "restArgSpread"
   ],
   events: [
     "interactionCreate",
   ],
+  caches: [
+    "animals",
+    "rares",
+    "locale",
+    "arena",
+    "leaderboard",
+  ]
 })
 
 const TOP = new ForgeTopGG({
@@ -50,6 +58,8 @@ const BOT: ForgeClient = new ForgeClient({
     new ForgeRegex(),
     new ForgeCanvas(),
   ],
+
+  disableConsoleErrors: true,
 
   prefixes: [
     "$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]",

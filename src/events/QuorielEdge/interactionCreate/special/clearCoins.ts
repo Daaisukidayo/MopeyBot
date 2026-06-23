@@ -14,13 +14,13 @@ export default {
 
     $switch[$env[IID;1];
       $case[confirm;
-        $let[desc;$tl[$get[l];ui;clearcoins.deleted;$separate[$env[userProfile;MC]]]]
+        $let[desc;$tl[ui.clearcoins.deleted.$get[l];$separate[$env[userProfile;MC]]]]
         $setCash[0]
         $saveProfile[$env[userProfile]]
       ]
 
       $case[decline;
-        $let[desc;$tl[$get[l];ui;clearcoins.canceled]]
+        $let[desc;$tl[ui.clearcoins.canceled.$get[l]]]
       ]
     ]
 

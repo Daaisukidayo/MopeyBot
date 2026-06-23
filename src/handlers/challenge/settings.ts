@@ -18,11 +18,11 @@ export default [{
   name: 'settingsEmbed',
   code: `
     $jsonLoad[styles;$getGlobalVar[styles]]
-    $jsonLoad[difficulties;$getGlobalVar[difficulties]]
+
     $let[l;$env[userProfile;language]]
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;settings.title]]
+      $addTextDisplay[$tl[ui.settings.title.$get[l]]]
 
       $addSeparator[Large]
 
@@ -31,29 +31,30 @@ export default [{
         $let[hasKey;$arrayIncludes[userSettings;$get[key]]]
 
         $if[$get[hasKey];
-          $let[state;$tl[$get[l];ui;settings.stateEnabled]]
+          $let[state;$tl[ui.settings.stateEnabled.$get[l]]]
           $let[style;Success]
         ;
-          $let[state;$tl[$get[l];ui;settings.stateDisabled]]
+          $let[state;$tl[ui.settings.stateDisabled.$get[l]]]
           $let[style;Danger]
         ]
 
         $addSection[
-          $addTextDisplay[## _$tl[$get[l];data;allSettings.$env[entry;1]]_]
+          $addTextDisplay[## _$tl[data.allSettings.$env[entry;1].$get[l]]_]
           $addButton[settings-$get[key]-$authorID;$get[state];$get[style]]
         ]
       ]
       
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;settings.difficulty]]
+      $addTextDisplay[$tl[ui.settings.difficulty.$get[l]]]
       
+      $let[i;0]
       $addActionRow
-      $arrayForEach[difficulties;elem;
-        $let[i;$arrayIndexOf[difficulties;$env[elem]]]
+      $arrayForEach[$getGlobalVar[difficulties];elem;
         $let[disabled;$checkCondition[$env[userProfile;challenge;difficulty]==$env[elem]]]
         
         $let[style;$env[styles;$get[i]]]
-        $addButton[settings-$env[elem]-$authorID;$tl[$get[l];data;difficulties.$env[elem]];$get[style];;$get[disabled]]
+        $addButton[settings-$env[elem]-$authorID;$tl[data.difficulties.$env[elem].$get[l]];$get[style];;$get[disabled]]
+        $letSum[i;1]
       ]
     ;$getGlobalVar[luckyColor]]
   `

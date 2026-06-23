@@ -22,7 +22,7 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;challenge.completed]]
+      $addTextDisplay[$tl[ui.challenge.completed.$get[l]]]
       $addSeparator[Large]
       $addTextDisplay[$showPoints]
       $addTextDisplay[$showRares]

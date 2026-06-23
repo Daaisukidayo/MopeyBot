@@ -27,7 +27,7 @@ export default {
         ]]
 
         $onlyIf[$and[$isNumber[$get[newTime]];$inRange[$get[newTime];1;3599]];
-          $newError[$tl[$get[l];ui;time.invalidTime]]
+          $newError[$tl[ui.time.invalidTime.$get[l]]]
         ]
       ]
 
@@ -50,9 +50,9 @@ export default {
       $addAuthorDisplay
 
       $if[$get[paused];
-        $addTextDisplay[$tl[$get[l];ui;time.paused]]
+        $addTextDisplay[$tl[ui.time.paused.$get[l]]]
       ;
-        $addTextDisplay[$tl[$get[l];ui;time.inProgress]]
+        $addTextDisplay[$tl[ui.time.inProgress.$get[l]]]
       ]
 
       $addSeparator[Large]

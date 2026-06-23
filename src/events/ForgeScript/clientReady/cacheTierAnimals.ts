@@ -36,7 +36,7 @@ export default {
       $jsonSet[result;$get[tier];$env[tierData]]
     ;i;true]
 
-    $setCache[tierAnimals;$env[result]]
+    $setCache[animals;tierAnimals;$env[result]]
     $logger[Info;Cached «tierAnimals»]
   `
 }

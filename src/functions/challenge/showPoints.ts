@@ -13,9 +13,9 @@ export default {
   code: `
     $let[userId;$findUser[$env[_userId;id];true]]
 
-    $let[points;$dump[$getProgress[$get[userId]];points]]
-    $let[styled;$if[$arrayIncludes[$dump[$getProfile[$get[userId]];challenge;settings];hidePoints];||$get[points]||;\`$get[points]\`]]
+    $let[points;$env[$getProgress[$get[userId]];points]]
+    $let[styled;$if[$arrayIncludes[$env[$getProfile[$get[userId]];challenge;settings];hidePoints];||$get[points]||;\`$get[points]\`]]
     
-    $return[$tl[$env[userProfile;language];ui;challenge.points;$get[styled]]]
+    $return[$tl[ui.challenge.points.$env[userProfile;language];$get[styled]]]
   `
 }

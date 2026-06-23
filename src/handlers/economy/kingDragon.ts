@@ -19,13 +19,13 @@ export default [{
     $if[$get[luckRarity]==1;
       $addContainer[
         $addAuthorDisplay
-        $addTextDisplay[$tl[$get[l];ui;kingdragon.chooseUpgrade]]
+        $addTextDisplay[$tl[ui.kingdragon.chooseUpgrade.$get[l]]]
         $addUpgradeMenuAnimalChoices[rareKingDragon]
       ;$getGlobalVar[rareKingDragonColor]]
     ;
       $addContainer[
         $addAuthorDisplay
-        $addTextDisplay[$tl[$get[l];ui;kingdragon.chooseUpgrade]]
+        $addTextDisplay[$tl[ui.kingdragon.chooseUpgrade.$get[l]]]
         $addUpgradeMenuAnimalChoices[blackDragon]
       ;$getGlobalVar[defaultColor]]
     ]

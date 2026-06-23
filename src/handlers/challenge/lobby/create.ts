@@ -7,37 +7,32 @@ export default {
     
     $checkProfile
 
-    $if[$hasCache[usernames]==false;
-      $newError[$tl[$get[l];ui;lobby.notReady]]
-    ]
-
     $cooldown[lobby-$channelID;1000]
     
-    $getCache[usernames;usernames]
     $jsonLoad[lobby;$getChannelVar[lobby]]
 
     $onlyIf[$env[lobby]==;
       $jsonLoad[allPlayers;$env[lobby;allPlayers]]
       $if[$arrayLength[allPlayers]>0;
-        $arrayMap[allPlayers;ID;$return[$env[usernames;$env[ID]]];participantUsernames]
+        $arrayMap[allPlayers;ID;$return[$username[$env[ID]]];participantUsernames]
       ;
-        $arrayLoad[participantUsernames; ;$tl[$get[l];ui;lobby.none]]
+        $arrayLoad[participantUsernames; ;$tl[ui.lobby.none.$get[l]]]
       ]
 
       $addContainer[
-        $addTextDisplay[# ✖️ _$tl[$get[l];ui;errors.errorTitle]_]
+        $addTextDisplay[# ✖️ _$tl[ui.errors.errorTitle.$get[l]]_]
         $addSeparator[Large]
-        $addTextDisplay[$tl[$get[l];ui;lobby.lobbyAlreadyExist]]
+        $addTextDisplay[$tl[ui.lobby.lobbyAlreadyExist.$get[l]]]
         $addSeparator[Large]
-        $addTextDisplay[$tl[$get[l];ui;lobby.participantsTitle]]
+        $addTextDisplay[$tl[ui.lobby.participantsTitle.$get[l]]]
         $addTextDisplay[$codeBlock[$arrayJoin[participantUsernames;\n]]]
         $addActionRow
-        $addButton[closeLobby-forcefully;$tl[$get[l];ui;lobby.buttonLabelCloseManually];Danger;🔚]
+        $addButton[closeLobby-forcefully;$tl[ui.lobby.buttonLabelCloseManually.$get[l]];Danger;🔚]
       ;$getGlobalVar[errorColor]]
     ]
 
     $onlyIf[$getProgress==;
-      $newError[$tl[$get[l];ui;lobby.hasActiveChallengeLobby]]
+      $newError[$tl[ui.lobby.hasActiveChallengeLobby.$get[l]]]
     ]
 
     

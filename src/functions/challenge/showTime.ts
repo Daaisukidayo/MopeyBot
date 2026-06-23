@@ -12,8 +12,8 @@ export default {
   brackets: false,
   code: `
     $let[userId;$findUser[$env[_userId;id];true]]
-    $let[l;$dump[$getProfile[$get[userId]];language]]
+    $let[l;$env[$getProfile[$get[userId]];language]]
     $let[time;$parseDigital[$getTimer[$get[userId]]000]]
-    $return[$tl[$get[l];ui;challenge.time;$get[time]]]
+    $return[$tl[ui.challenge.time.$get[l];$get[time]]]
   `
 }

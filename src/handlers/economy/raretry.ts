@@ -17,17 +17,14 @@ export default {
     $let[rtMode;$toLowerCase[$nullish[$option[mode];$message[0];$env[userProfile;rtMode]]]]
 
     $if[$isNumber[$get[rtMode]]==false;
-      $jsonLoad[rtModes;$tl[*;data;raretryModes]]
-      $jsonLoad[rtModeE;$jsonEntries[rtModes]]
-      $let[rtMode;$arrayFindIndex[rtModeE;e;
-        $jsonLoad[obj;$env[e;1]]
-        $arrayLoad[objValues;, ;$jsonValues[obj]]
+      $let[rtMode;$arrayFindIndex[$jsonEntries[$tl[data.raretryModes]];e;
+        $arrayLoad[objValues;, ;$jsonValues[$env[e;1]]]
         $return[$arrayIncludes[objValues;$toTitleCase[$get[rtMode]]]]
       ]]
     ]
 
     $onlyIf[$arrayIncludes[modes;$get[rtMode]];
-      $newError[$tl[$get[l];ui;raretry.unknownMode]]
+      $newError[$tl[ui.raretry.unknownMode.$get[l]]]
     ]
 
     $addCooldown
@@ -40,7 +37,7 @@ export default {
     $let[lastDailyRaretry;$default[$env[userProfile;limiters;lastDailyRaretry];-1]]
     $let[caughtCount;0]
     $let[color;$getGlobalVar[errorColor]]
-    $let[desc;$tl[$get[l];ui;raretry.nothing]]
+    $let[desc;$tl[ui.raretry.nothing.$get[l]]]
 
     $c[targetID = category index]
     $let[targetID;$function[
@@ -50,7 +47,9 @@ export default {
       $return[-1]
     ]]
 
-    $arrayLoad[footer;   ;$tl[$get[l];ui;raretry.mode;$tl[$get[l];data;raretryModes.$get[rtMode]]]]
+    $jsonLoad[footer;[
+      "$tl[ui.raretry.mode.$get[l];$tl[data.raretryModes.$get[rtMode].$get[l]]]"
+    \\]]
 
     $fn[embed;
       $addContainer[
@@ -95,19 +94,20 @@ export default {
       $let[MC;$math[$env[rewards;$get[rtIndex]] * $arrayAt[multipliers;$get[rtMode]]]] $c[Can be 0]
       $let[image;$getAnimalVariantInfo[$get[animalId];img]]
       $let[animalDisplay;$getAnimalVariantInfo[$get[animalId];name]]
-      $let[category;$tl[$get[l];data;raretryCategories.$arrayAt[categories;$get[i]]]]
+      $let[category;$tl[data.raretryCategories.$arrayAt[categories;$get[i]].$get[l]]]
 
       $if[$get[MC]!=0;
-        $let[extraContent;\n$tl[$get[l];ui;raretry.earned;$separate[$get[MC]]]]
+        $let[extraContent;\n$tl[ui.raretry.earned.$get[l];$separate[$get[MC]]]]
         $sumCash[$get[MC]]
       ]
 
-      $let[desc;$tl[$get[l];ui;raretry.gotRares;$get[animalDisplay]]$get[extraContent]]
+      $let[desc;$tl[ui.raretry.gotRares.$get[l];$get[animalDisplay]]$get[extraContent]]
       
-      $arrayCreate[footer]
-      $arrayPush[footer;$tl[$get[l];ui;raretry.rarity;1;$separate[$get[baseChance]]]]
-      $arrayPush[footer;$tl[$get[l];ui;raretry.category;$get[category]]]
-      $arrayPush[footer;$tl[$get[l];ui;raretry.mode;$tl[$get[l];data;raretryModes.$get[rtMode]]]]
+      $jsonLoad[footer;[
+        "$tl[ui.raretry.rarity.$get[l];1;$separate[$get[baseChance]]]",
+        "$tl[ui.raretry.category.$get[l];$get[category]]",
+        "$tl[ui.raretry.mode.$get[l];$tl[data.raretryModes.$get[rtMode].$get[l]]]"
+      \\]]
 
       $let[color;$env[group;color]]
       $delete[extraContent]
@@ -118,17 +118,16 @@ export default {
 
     $if[$get[caughtCount]>0;
 
-      $if[$get[lastDailyRaretry]!=$day;
+      $if[$get[lastDailyRaretry]!=$calendarDay;
         $setUserVar[caughtRaresInRaretry;$math[$getUserVar[caughtRaresInRaretry] + $get[caughtCount]]]
         $if[$getUserVar[caughtRaresInRaretry]>=$getGlobalVar[maxRaretryRares];
-          $!jsonSet[userProfile;limiters;lastDailyRaretry;$day]
+          $!jsonSet[userProfile;limiters;lastDailyRaretry;$calendarDay]
           
-          $async[
-            $wait[1s]
+          $setTimeout[
             $sendMessage[$channelID;
-              $addTextDisplay[$tl[$get[l];ui;special.caughtRares;<@$authorID>;$getGlobalVar[maxRaretryRares];$commandName]]
+              $addTextDisplay[$tl[ui.special.caughtRares.$get[l];<@$authorID>;$getGlobalVar[maxRaretryRares];$commandName]]
             ]
-          ]
+          ;1s]
         ]
       ]
 

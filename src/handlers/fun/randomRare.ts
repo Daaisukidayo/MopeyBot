@@ -9,8 +9,6 @@ export default {
     $checkProfile
     $addCooldown
 
-    $getCache[raresContent;raresContent]
-
-    $addTextDisplay[# $arrayRandomValue[raresContent]]
+    $addTextDisplay[# $arrayRandomValue[$getCache[rares;raresContent]]]
   `
 }

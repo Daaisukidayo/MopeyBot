@@ -27,7 +27,7 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;play.movedTo;$tl[$get[l];data;biomes.$get[biome]]]]
+      $addTextDisplay[$tl[ui.play.movedTo.$get[l];$tl[data.biomes.$get[biome].$get[l]]]]
       $addSeparator[Large]
       $displayAnimalStats
       $addActionsMenu

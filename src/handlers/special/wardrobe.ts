@@ -10,7 +10,7 @@ export default {
     $let[arg;$toCamelCase[$default[$option[option];$message]]]
 
     $onlyIf[$get[arg]!=;
-      $newError[$tl[$get[l];ui;errors.usage;$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]wardrobe {new|all|<$tl[$get[l];ui;args.tier]>|<$tl[$get[l];ui;args.fullAnimalName]>}]]
+      $newError[$tl[ui.errors.usage.$get[l];$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]wardrobe {new|all|<$tl[ui.args.tier.$get[l]]>|<$tl[ui.args.fullAnimalName.$get[l]]>}]]
     ]
 
     $addCooldown
@@ -27,25 +27,25 @@ export default {
       $if[$get[arg]==all;
         $addContainer[
           $addAuthorDisplay
-          $addTextDisplay[$tl[$get[l];ui;wardrobe.allTitle]]
+          $addTextDisplay[$tl[ui.wardrobe.allTitle.$get[l]]]
           $addSeparator
           $addSkinpacksMenu[all]
         ;$getGlobalVar[defaultColor]]
       ;
         $if[$isNumber[$get[arg]];
           $onlyIf[$and[$get[arg]>=1;$get[arg]<=17];
-            $newError[$tl[$get[l];ui;wardrobe.invalidTier]]
+            $newError[$tl[ui.wardrobe.invalidTier.$get[l]]]
           ]
 
           $addContainer[
             $addAuthorDisplay
-            $addTextDisplay[$tl[$get[l];ui;wardrobe.tierTitle;$get[arg]]]
+            $addTextDisplay[$tl[ui.wardrobe.tierTitle.$get[l];$get[arg]]]
             $addSeparator
             $addSkinpacksMenu[$get[arg]]
           ;$getGlobalVar[defaultColor]]
         ;
           $onlyIf[$arrayIncludes[animalIds;$get[arg]];
-            $newError[$tl[$get[l];ui;wardrobe.invalidAnimal]]
+            $newError[$tl[ui.wardrobe.invalidAnimal.$get[l]]]
           ]
 
           $animalsEmbed[$get[arg];false]

@@ -8,7 +8,7 @@ export default {
       $let[animalId;$env[animals;$get[i];ID]]
       $jsonSet[animalIndexes;$get[animalId];$get[i]]
     ;i;true]
-    $setCache[animalIndexes;$env[animalIndexes]]
+    $setCache[animals;animalIndexes;$env[animalIndexes]]
     $logger[Info;Cached «animalIndexes»]
 
 
@@ -28,7 +28,7 @@ export default {
       ;i;true]
     ]
 
-    $setCache[hlSimData;$env[data]]
+    $setCache[rares;hlSimData;$env[data]]
     $logger[Info;Cached «hlSimData»]
   `
 }

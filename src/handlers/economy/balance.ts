@@ -14,20 +14,20 @@ export default {
 
     $if[$arrayLength[userPacks]>0;
       $arrayMap[userPacks;pack;
-        $return[$tl[$get[l];data;shopSkinPacks.$env[pack]]]
+        $return[$tl[data.shopSkinPacks.$env[pack].$get[l]]]
       ;packsContent]
     ;
-      $arrayLoad[packsContent; ;$tl[$get[l];ui;balance.none]]
+      $arrayLoad[packsContent; ;$tl[ui.balance.none.$get[l]]]
     ]
 
     $let[MC;$separate[$env[userProfile;MC]]]
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;balance.title]]
+      $addTextDisplay[$tl[ui.balance.title.$get[l]]]
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;balance.mc;$get[MC]]]
-      $addTextDisplay[$tl[$get[l];ui;balance.purchased]]
+      $addTextDisplay[$tl[ui.balance.mc.$get[l];$get[MC]]]
+      $addTextDisplay[$tl[ui.balance.purchased.$get[l]]]
       $addTextDisplay[$codeBlock[$arrayJoin[packsContent;\n]]]
     ;$getGlobalVar[defaultColor]]
   `

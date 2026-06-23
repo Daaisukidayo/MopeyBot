@@ -58,18 +58,18 @@ export default {
     ]
   
     $if[$arrayLength[desc]==0;
-      $arrayPush[desc;$tl[$get[l];ui;raretryrun.nothing]]
+      $arrayPush[desc;$tl[ui.raretryrun.nothing.$get[l]]]
     ]
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;raretryrun.title]]
+      $addTextDisplay[$tl[ui.raretryrun.title.$get[l]]]
       $addSeparator
       $addTextDisplay[**$arrayJoin[desc;\n]**]
 
       $if[$get[totalReward]>0;
         $addSeparator
-        $addTextDisplay[$tl[$get[l];ui;raretryrun.total;$separate[$get[totalReward]]]]
+        $addTextDisplay[$tl[ui.raretryrun.total.$get[l];$separate[$get[totalReward]]]]
         $sumCash[$get[totalReward]]
       ]
     ;$getGlobalVar[luckyColor]]
@@ -83,7 +83,7 @@ export default {
           $async[
             $wait[1s]
             $sendMessage[$channelID;
-              $addTextDisplay[$tl[$get[l];ui;special.caughtRares;<@$authorID>;$getGlobalVar[maxRaretryrunRares];raretryrun]]
+              $addTextDisplay[$tl[ui.special.caughtRares.$get[l];<@$authorID>;$getGlobalVar[maxRaretryrunRares];raretryrun]]
             ]
           ]
         ]

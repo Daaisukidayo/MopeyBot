@@ -6,12 +6,12 @@ export default {
     $let[l;$env[userProfile;language]]
 
     $jsonLoad[chartLimitsMap;$getGlobalVar[chartLimitsMap]]
-    $jsonLoad[chartLimits;$dump[$getGlobalVar[chartLimits];$get[difficulty]]]
+    $jsonLoad[chartLimits;$env[$getGlobalVar[chartLimits];$get[difficulty]]]
     $jsonLoad[challengeData;$getGlobalVar[challengeData]]
 
     $if[$get[difficulty]==0;
       $addContainer[
-        $addTextDisplay[$tl[$get[l];ui;challenge.unlimitedRares]]
+        $addTextDisplay[$tl[ui.challenge.unlimitedRares.$get[l]]]
       ;$getGlobalVar[luckyColor]]
       $return
     ]
@@ -45,7 +45,7 @@ export default {
     ]
 
     $if[$arrayLength[limitsContent]==0;
-      $arrayPush[limitsContent;$tl[$get[l];ui;challenge.allLimitedReceived]]
+      $arrayPush[limitsContent;$tl[ui.challenge.allLimitedReceived.$get[l]]]
     ]
 
     $addContainer[

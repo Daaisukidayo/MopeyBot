@@ -22,10 +22,7 @@ export default {
 
     $!jsonSet[baseChallengeProgress;userID;"$get[userId]"]
     $!jsonSet[baseChallengeProgress;teamID;$get[teamId]]
-    $c[
-      $!jsonSet[baseChallengeProgress;startedAt;"$getTimestamp"]
-    ]
-    $!jsonSet[baseChallengeProgress;difficulty;$nullish[$dump[$getChannelVar[lobby];settings;difficulty];$dump[$getProfile[$get[userId]];challenge;difficulty]]]
+    $!jsonSet[baseChallengeProgress;difficulty;$nullish[$env[$getChannelVar[lobby];settings;difficulty];$env[$getProfile[$get[userId]];challenge;difficulty]]]
 
     $saveProgress[$env[baseChallengeProgress];$get[userId]]
   `

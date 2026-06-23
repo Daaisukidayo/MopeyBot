@@ -8,11 +8,11 @@ export default {
     $checkProfile
 
     $onlyIf[$guildID!=;
-      $newError[$tl[$get[l];ui;play.unableInDm]]
+      $newError[$tl[ui.play.unableInDm.$get[l]]]
     ]
 
     $onlyIf[$env[userProfile;devMode]==1;
-      $newError[$tl[$get[l];ui;special.commandDisabled]]
+      $newError[$tl[ui.special.commandDisabled.$get[l]]]
     ]
 
     $jsonLoad[playData;$getUserVar[userPlayData]]
@@ -20,11 +20,11 @@ export default {
     $if[$env[playData;started];
       $addContainer[
         $addAuthorDisplay
-        $addTextDisplay[$tl[$get[l];ui;play.activeSession]]
-        $addTextDisplay[### $hyperlink[$tl[$get[l];ui;play.endPreviousGame];https://discord.com/channels/$env[playData;GuildID]/$env[playData;ChannelID]/$env[playData;MessageID]]]
+        $addTextDisplay[$tl[ui.play.activeSession.$get[l]]]
+        $addTextDisplay[### $hyperlink[$tl[ui.play.endPreviousGame.$get[l]];https://discord.com/channels/$env[playData;GuildID]/$env[playData;ChannelID]/$env[playData;MessageID]]]
         $addSeparator
         $addActionRow
-        $addButton[play_leave-disconnect-$authorID;$tl[$get[l];ui;play.buttonLabelCantFind];Danger]
+        $addButton[play_leave-disconnect-$authorID;$tl[ui.play.buttonLabelCantFind.$get[l]];Danger]
       ;$getGlobalVar[defaultColor]]
       $!send
     ;
@@ -33,7 +33,7 @@ export default {
       
       $addContainer[
         $addAuthorDisplay
-        $addTextDisplay[$tl[$get[l];ui;play.chooseAnimal]]
+        $addTextDisplay[$tl[ui.play.chooseAnimal.$get[l]]]
         $addUpgradeMenu
         $addSeparator[Large]
         $addExitButton

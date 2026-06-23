@@ -9,10 +9,6 @@ export default {
     
     $checkLobby
 
-    $if[$hasCache[usernames]==false;
-      $newError[$tl[$get[l];ui;lobby.notReady]]
-    ]
-
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]
     $jsonLoad[lobbyModes;$getGlobalVar[lobbyModes]]
     $jsonLoad[victoryTypes;$getGlobalVar[victoryTypes]]
@@ -32,7 +28,7 @@ export default {
       $case[difficulty;
         $!jsonSet[lobby;settings;difficulty;$get[value]]
 
-        $let[change;$tl[$get[l];ui;lobby.difficultyTitle;$tl[$get[l];data;difficulties.$get[value]]]]
+        $let[change;$tl[ui.lobby.difficultyTitle.$get[l];$tl[data.difficulties.$get[value].$get[l]]]]
         $settingsChangedInfo[$get[change]]
         
         $setChannelVar[lobby;$env[lobby]]
@@ -64,7 +60,7 @@ export default {
         $!jsonSet[lobby;allPlayers;[\\]]
         $setChannelVar[lobby;$env[lobby]]
 
-        $settingsChangedInfo[$tl[$get[l];ui;lobby.modeTitle;$tl[$get[l];data;lobbyModes.$get[value]]]]
+        $settingsChangedInfo[$tl[ui.lobby.modeTitle.$get[l];$tl[data.lobbyModes.$get[value].$get[l]]]]
         
         $lobbyEmbed
         $!editMessage[$channelID;$env[lobby;messageID]]
@@ -78,7 +74,7 @@ export default {
     
         $setChannelVar[lobby;$env[lobby]]
 
-        $settingsChangedInfo[$tl[$get[l];ui;lobby.victoryTypeTitle;$tl[$get[l];data;victoryTypes.$get[value]]]]
+        $settingsChangedInfo[$tl[ui.lobby.victoryTypeTitle.$get[l];$tl[data.victoryTypes.$get[value].$get[l]]]]
         
         $lobbyEmbed
         $!editMessage[$channelID;$env[lobby;messageID]]
@@ -97,7 +93,7 @@ export default {
         $jsonLoad[userProfile;$getProfile[$get[value]]]
         $let[l;$env[userProfile;language]]
 
-        $settingsChangedInfo[$tl[$get[l];ui;lobby.hostTitle;<@$get[value]>]]
+        $settingsChangedInfo[$tl[ui.lobby.hostTitle.$get[l];<@$get[value]>]]
         
         $lobbyEmbed
         $!editMessage[$channelID;$env[lobby;messageID]]

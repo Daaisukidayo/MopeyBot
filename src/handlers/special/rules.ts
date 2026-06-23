@@ -10,9 +10,9 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;rules.information;$getGlobalVar[informationLink]]]
-      $addTextDisplay[$tl[$get[l];ui;rules.tos;$getGlobalVar[tosLink]]]
-      $addTextDisplay[$tl[$get[l];ui;rules.rules;$getGlobalVar[rulesLink]]]
+      $addTextDisplay[$tl[ui.rules.information.$get[l];$getGlobalVar[informationLink]]]
+      $addTextDisplay[$tl[ui.rules.tos.$get[l];$getGlobalVar[tosLink]]]
+      $addTextDisplay[$tl[ui.rules.rules.$get[l];$getGlobalVar[rulesLink]]]
     ;$getGlobalVar[defaultColor]]
   `
 }

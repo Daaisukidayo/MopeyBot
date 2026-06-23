@@ -5,7 +5,7 @@ export default {
     $let[l;$env[userProfile;language]]
     $onlyIf[$messageExists[$channelID;$env[lobby;messageID]];
       $sendMessage[$channelID;
-        $lobbyInfoMessage[$tl[$get[l];ui;lobby.missingMessage]]
+        $lobbyInfoMessage[$tl[ui.lobby.missingMessage.$get[l]]]
       ]
       $clearEveryProgress
     ]

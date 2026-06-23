@@ -4,14 +4,9 @@ export default {
     $let[l;$env[userProfile;language]]
     $jsonLoad[output;{}]
 
-    $if[$hasCache[victoriesMap]==false;
-      $setCache[victoriesMap;$getGlobalVar[victoriesMap]]
-    ]
-
-    $getCache[victoriesMap;victoriesMap]
+    $jsonLoad[victoriesMap;$getGlobalVar[victoriesMap]]
 
     $arrayLoad[topOneIndexes]
-    $getCache[usernames;usernames]
 
     $let[type;$env[victoriesMap;$env[lobby;settings;victoryType]]]
 
@@ -26,7 +21,7 @@ export default {
     $let[winnerTeam;$env[results;0;teamID]]
     $letSum[winnerTeam;1]
 
-    $let[winner;$tl[$get[l];ui;lobby.team;\`$get[winnerTeam]\`]]
+    $let[winner;$tl[ui.lobby.team.$get[l];\`$get[winnerTeam]\`]]
 
     $arrayLoad[topOneIndexes]
 
@@ -37,7 +32,7 @@ export default {
 
     $if[$arrayLength[topOneIndexes]>0;
       $arrayUnshift[topOneIndexes;0]
-      $let[winner;\`$tl[$get[l];ui;lobby.friendship]\`]
+      $let[winner;\`$tl[ui.lobby.friendship.$get[l]]\`]
     ]
 
     $let[pos;0]
@@ -54,15 +49,15 @@ export default {
 
       $jsonLoad[playersInTeam;$env[result;players]]
       $arrayAdvancedSort[playersInTeam;A;B;
-        $return[$math[$dump[$getProgress[$env[B]];$get[type]] - $dump[$getProgress[$env[A]];$get[type]]]]
+        $return[$math[$env[$getProgress[$env[B]];$get[type]] - $env[$getProgress[$env[A]];$get[type]]]]
       ;sortedPlayers]
 
       $arrayMap[sortedPlayers;ID;
         $jsonLoad[challengeProgress;$getProgress[$env[ID]]]
-        $return[$tl[$get[l];ui;lobby.sortedPlayersInSortingTeamsContent;$env[usernames;$env[ID]];$env[challengeProgress;points];$env[challengeProgress;rares]]]
+        $return[$tl[ui.lobby.sortedPlayersInSortingTeamsContent.$get[l];$username[$env[ID]];$env[challengeProgress;points];$env[challengeProgress;rares]]]
       ;sortedPlayersContent]
 
-      $return[$tl[$get[l];ui;lobby.sortedTeamsContent;$get[emoji];$math[$env[result;teamID] + 1];$env[result;points];$env[result;rares]]\n> \n$arrayJoin[sortedPlayersContent;\n]]
+      $return[$tl[ui.lobby.sortedTeamsContent.$get[l];$get[emoji];$math[$env[result;teamID] + 1];$env[result;points];$env[result;rares]]\n> \n$arrayJoin[sortedPlayersContent;\n]]
     ;teamsInLB]
 
     $jsonSet[output;teamsInLB;$env[teamsInLB]]

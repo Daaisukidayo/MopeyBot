@@ -10,7 +10,7 @@ export default {
       $jsonLoad[rares;$env[elem;1]]
       $arrayConcat[allRaresFromSnora;allRaresFromSnora;rares]
     ]
-    $setCache[allRares;$env[allRaresFromSnora]]
+    $setCache[rares;allRares;$env[allRaresFromSnora]]
     $logger[Info;Cached «allRares»]
   `
 }

@@ -10,12 +10,12 @@ export default {
     
     $jsonLoad[playData;$getUserVar[userPlayData]]
     $onlyif[$env[playData;started];
-      $newError[$tl[$get[l];ui;play.noSession]]
+      $newError[$tl[ui.play.noSession.$get[l]]]
     ]
 
     $switch[$env[IID;1];
       $case[disconnect;
-        $let[content;$tl[$get[l];ui;play.disconnected]]
+        $let[content;$tl[ui.play.disconnected.$get[l]]]
         $if[$messageExists[$env[playData;ChannelID];$env[playData;MessageID]];
           $!deleteMessage[$env[playData;ChannelID];$env[playData;MessageID]]
         ]
@@ -23,7 +23,7 @@ export default {
 
       $case[quit;
         $onlyIf[$env[playData;MessageID]==$messageID]
-        $let[content;$tl[$get[l];ui;play.exited]]
+        $let[content;$tl[ui.play.exited.$get[l]]]
       ]
     ]
 
@@ -33,7 +33,7 @@ export default {
     $addContainer[
       $addAuthorDisplay
       $addTextDisplay[$get[content]]
-      $addTextDisplay[$tl[$get[l];ui;play.earned;$separate[$get[MC]]]]
+      $addTextDisplay[$tl[ui.play.earned.$get[l];$separate[$get[MC]]]]
     ;$getGlobalVar[defaultColor]]
     $interactionUpdate
   `

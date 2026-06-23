@@ -20,15 +20,15 @@ export default {
     $let[itemIndex;$arrayFindIndex[shopItems;item;$env[item;id]==$get[skinpack]]]
 
     $onlyIf[$get[itemIndex]!=-1;
-      $newError[$tl[$get[l];ui;shop.unknown]]
+      $newError[$tl[ui.shop.unknown.$get[l]]]
     ]
 
     $onlyIf[$arrayIncludes[userPacks;$get[skinpack]]==false;
-      $newError[$tl[$get[l];ui;shop.alreadyBought]]
+      $newError[$tl[ui.shop.alreadyBought.$get[l]]]
     ]
 
     $onlyif[$env[userProfile;MC]>=$get[cost];
-      $newError[$tl[$get[l];ui;shop.lowCash]]
+      $newError[$tl[ui.shop.lowCash.$get[l]]]
     ]
 
     $addCooldown[shop;true]
@@ -46,7 +46,7 @@ export default {
       $ephemeral
       $addContainer[
         $addAuthorDisplay
-        $addTextDisplay[$tl[$get[l];ui;shop.purchaseSuccess;$tl[$get[l];data;shopSkinPacks.$get[skinpack]]]]
+        $addTextDisplay[$tl[ui.shop.purchaseSuccess.$get[l];$tl[data.shopSkinPacks.$get[skinpack].$get[l]]]]
       ;$getGlobalVar[defaultColor]]
     ]
   `

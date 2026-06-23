@@ -39,13 +39,13 @@ export default {
     ]
 
     $let[luckI;$env[userProfile;limiters;luckDesc]]
-    $let[luckDesc;$tl[$get[l];data;howlucky.$get[luckI]]]
+    $let[luckDesc;$tl[data.howlucky.$get[luckI].$get[l]]]
     
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;howlucky.description;$get[r];$get[luckDesc]]]
+      $addTextDisplay[$tl[ui.howlucky.description.$get[l];$get[r];$get[luckDesc]]]
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;howlucky.footer;$discordTimestamp[$get[newDayAt];RelativeTime]]]
+      $addTextDisplay[$tl[ui.howlucky.footer.$get[l];$discordTimestamp[$get[newDayAt];RelativeTime]]]
     ;$getGlobalVar[luckyColor]]
   `
 }

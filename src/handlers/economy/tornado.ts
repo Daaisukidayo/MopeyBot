@@ -29,7 +29,7 @@ export default {
     $jsonLoad[tornado;$arrayRandomValue[tornadoes]]
 
     $let[color;$env[tornado;color]]
-    $let[display;$tl[$get[l];data;$get[type].$env[tornado;name]]]
+    $let[display;$tl[data.$get[type].$env[tornado;name].$get[l]]]
     $let[thum;$env[tornado;thumbnail]]
 
     $sumCash[$get[MC]]
@@ -39,8 +39,8 @@ export default {
       $addAuthorDisplay
       $addSection[
         $addTextDisplay[
-          $tl[$get[l];ui;tornado.saw;$get[display]]
-          $tl[$get[l];ui;tornado.earned;$separate[$get[MC]]]
+          $tl[ui.tornado.saw.$get[l];$get[display]]
+          $tl[ui.tornado.earned.$get[l];$separate[$get[MC]]]
         ]
         $addThumbnail[$get[thum]]
       ]

@@ -23,7 +23,7 @@ export default {
 
       $case[editPoints;
         $onlyIf[$and[$isNumber[$get[input]];$get[input]>0];
-          $newError[$tl[$get[l];ui;history.listOptionInvalidPoints]]
+          $newError[$tl[ui.history.listOptionInvalidPoints.$get[l]]]
         ]
         $!jsonSet[thisHistory;points;$get[input]]
       ]
@@ -31,7 +31,7 @@ export default {
 
       $case[editRares;
         $onlyIf[$and[$isNumber[$get[input]];$get[input]>0];
-          $newError[$tl[$get[l];ui;history.listOptionInvalidRares]]
+          $newError[$tl[ui.history.listOptionInvalidRares.$get[l]]]
         ]
         $!jsonSet[thisHistory;rares;$get[input]]
       ]
@@ -51,7 +51,7 @@ export default {
         $let[date;$unparseDate[$get[input]]]
 
         $onlyIf[$and[$get[date]>0;$get[date]<$getTimestamp];
-          $newError[$tl[$get[l];ui;history.listOptionInvalidDate]]
+          $newError[$tl[ui.history.listOptionInvalidDate.$get[l]]]
         ]
 
         $!jsonSet[thisHistory;endDate;"$get[date]"]
@@ -67,11 +67,11 @@ export default {
           $let[value;$trim[$env[keyValue;1]]]
 
           $onlyIf[$get[animalId]!=undefined;
-            $newError[$tl[$get[l];ui;history.listOptionUnknownRare;$env[keyValue;0];$env[elem]]]
+            $newError[$tl[ui.history.listOptionUnknownRare.$get[l];$env[keyValue;0];$env[elem]]]
           ]
 
           $onlyIf[$isNumber[$get[value]];
-            $newError[$tl[$get[l];ui;history.listOptionInvalidValue;$get[value];$env[elem]]]
+            $newError[$tl[ui.history.listOptionInvalidValue.$get[l];$get[value];$env[elem]]]
           ]
 
           $if[$get[value]>100;
@@ -96,24 +96,24 @@ export default {
         $switch[$get[value];
           $case[points;
             $editHistoryExtraEmbed
-            $modal[editHistory-editPoints-$authorID;$tl[$get[l];ui;history.modalTitlePoints]]
-            $addTextInput[editHistoryOptionInput;$tl[$get[l];ui;history.modalDescriptionPoints];Short;true;$tl[$get[l];ui;history.modalPlaceholderPoints;$env[thisHistory;points]];;1;5]
+            $modal[editHistory-editPoints-$authorID;$tl[ui.history.modalTitlePoints.$get[l]]]
+            $addTextInput[editHistoryOptionInput;$tl[ui.history.modalDescriptionPoints.$get[l]];Short;true;$tl[ui.history.modalPlaceholderPoints.$get[l];$env[thisHistory;points]];;1;5]
             $showModal
           ]
 
           $case[raresQuantity;
             $editHistoryExtraEmbed
-            $modal[editHistory-editRares-$authorID;$tl[$get[l];ui;history.modalTitleRares]]
-            $addTextInput[editHistoryOptionInput;$tl[$get[l];ui;history.modalDescriptionRares];Short;true;$tl[$get[l];ui;history.modalPlaceholderRares;$env[thisHistory;rares]];;1;3]
+            $modal[editHistory-editRares-$authorID;$tl[ui.history.modalTitleRares.$get[l]]]
+            $addTextInput[editHistoryOptionInput;$tl[ui.history.modalDescriptionRares.$get[l]];Short;true;$tl[ui.history.modalPlaceholderRares.$get[l];$env[thisHistory;rares]];;1;3]
             $showModal
           ]
 
           $case[playType;
             $addContainer[
               $addActionRow
-              $addStringSelectMenu[editHistory-editPlayType-$authorID;$tl[$get[l];ui;history.menuTitlePlayType]]
+              $addStringSelectMenu[editHistory-editPlayType-$authorID;$tl[ui.history.menuTitlePlayType.$get[l]]]
               $arrayForEach[$getGlobalVar[playTypes];type;
-                $addOption[$tl[$get[l];data;playTypes.$env[type]];;$env[type];;$checkCondition[$env[thisHistory;playType]==$env[type]]]
+                $addOption[$tl[dataplayTypes.$env[type].$get[l]];;$env[type];;$checkCondition[$env[thisHistory;playType]==$env[type]]]
               ]
             ;$getGlobalVar[luckyColor]]
           ]
@@ -121,17 +121,17 @@ export default {
           $case[difficulty;
             $addContainer[
               $addActionRow
-              $addStringSelectMenu[editHistory-editDifficulty-$authorID;$tl[$get[l];ui;history.menuTitleDifficulty]]
+              $addStringSelectMenu[editHistory-editDifficulty-$authorID;$tl[ui.history.menuTitleDifficulty.$get[l]]]
               $arrayForEach[$getGlobalVar[difficulties];dif;
-                $addOption[$tl[$get[l];data;difficulties.$env[dif]];;$env[dif];;$checkCondition[$env[thisHistory;difficulty]==$env[dif]]]
+                $addOption[$tl[datadifficulties.$env[dif].$get[l]];;$env[dif];;$checkCondition[$env[thisHistory;difficulty]==$env[dif]]]
               ]
             ;$getGlobalVar[luckyColor]]
           ]
 
           $case[endDate;
             $editHistoryExtraEmbed
-            $modal[editHistory-editEndDate-$authorID;$tl[$get[l];ui;history.modalTitleEndDate]]
-            $addTextInput[editHistoryOptionInput;$tl[$get[l];ui;history.modalDescriptionEndDate];Paragraph;true;$tl[$get[l];ui;history.modalPlaceholderEndDate]]
+            $modal[editHistory-editEndDate-$authorID;$tl[ui.history.modalTitleEndDate.$get[l]]]
+            $addTextInput[editHistoryOptionInput;$tl[ui.history.modalDescriptionEndDate.$get[l]];Paragraph;true;$tl[ui.history.modalPlaceholderEndDate.$get[l]]]
             $showModal
           ]
 
@@ -142,8 +142,8 @@ export default {
             ;unresolved]
 
             $editHistoryExtraEmbed
-            $modal[editHistory-editRaresList-$authorID;$tl[$get[l];ui;history.modalTitleList]]
-            $addTextInput[editHistoryOptionInput;$tl[$get[l];ui;history.modalDescriptionList];Paragraph;true;$tl[$get[l];ui;history.modalPlaceholderList];$arrayJoin[unresolved;\n]]
+            $modal[editHistory-editRaresList-$authorID;$tl[ui.history.modalTitleList.$get[l]]]
+            $addTextInput[editHistoryOptionInput;$tl[ui.history.modalDescriptionList.$get[l]];Paragraph;true;$tl[ui.history.modalPlaceholderList.$get[l]];$arrayJoin[unresolved;\n]]
             $showModal
           ]
         ]

@@ -8,16 +8,16 @@ export default {
     $checkProfile
 
     $onlyIf[$getChannelVar[lobby]==;
-      $newError[$tl[$get[l];ui;start.activeLobby]]
+      $newError[$tl[ui.start.activeLobby.$get[l]]]
     ]
     $onlyIf[$getProgress==;
-      $newError[$tl[$get[l];ui;start.alreadyActive]]
+      $newError[$tl[ui.start.alreadyActive.$get[l]]]
     ]
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;start.hasBegun]]
-      $addTextDisplay[$tl[$get[l];ui;start.turnOnNotification]]
+      $addTextDisplay[$tl[ui.start.hasBegun.$get[l]]]
+      $addTextDisplay[$tl[ui.start.turnOnNotification.$get[l]]]
     ;$getGlobalVar[luckyColor]]
     $!send
 

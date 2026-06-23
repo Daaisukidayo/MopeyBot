@@ -10,7 +10,7 @@ export default {
 
     $isActiveChallenge
     
-    $getCache[allRares;allRares]
+    $getCache[rares;allRares;allRares]
     
     $jsonLoad[challengeProgress;$getProgress]
     $jsonLoad[events;$env[challengeProgress;events]]
@@ -23,17 +23,17 @@ export default {
     
     $c[Check basic usage and action type]
     $onlyIf[$and[$get[arg1]!=;$isOneOf[$get[arg2];+;-]];
-      $newError[$tl[$get[l];ui;errors.usage;$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]editlist <$tl[$get[l];ui;args.shortRaresName]> [+ | -\\] <$tl[$get[l];ui;args.amount]>]]
+      $newError[$tl[ui.errors.usage.$get[l];$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]editlist <$tl[ui.args.shortRaresName.$get[l]]> [+ | -\\] <$tl[ui.args.amount.$get[l]]>]]
     ]
 
     $c[Check if the animal rare exists in the global list]
     $onlyIf[$arrayIncludes[allRares;$get[arg1]];
-      $newError[$tl[$get[l];ui;editlist.invalidRare;$get[arg1]]]
+      $newError[$tl[ui.editlist.invalidRare.$get[l];$get[arg1]]]
     ]
 
     $c[Ensure "all" is only used for removal, otherwise check if count is a positive number]
     $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$and[$isNumber[$get[arg3]];$get[arg3]>0]];
-      $newError[$tl[$get[l];ui;editlist.invalidNumber]]
+      $newError[$tl[ui.editlist.invalidNumber.$get[l]]]
     ]
 
     $c[Determine the state string based on the action symbol]
@@ -52,7 +52,7 @@ export default {
 
     $c[Check if user tries to remove something they don't have]
     $if[$and[$env[raresList;$get[animalId]]==;$get[arg2]==-];
-      $newError[$tl[$get[l];ui;editlist.notInList;$get[animalDisplay]]]
+      $newError[$tl[ui.editlist.notInList.$get[l];$get[animalDisplay]]]
     ]
 
     $defer
@@ -109,7 +109,7 @@ export default {
       $addAuthorDisplay
 
       $c[Display localized status message (Added/Removed/Failed)]
-      $addTextDisplay[$tl[$get[l];ui;editlist.$get[state];$get[count];$get[animalDisplay]]]
+      $addTextDisplay[$tl[ui.editlist.$get[state].$get[l];$get[count];$get[animalDisplay]]]
       
       $addSeparator[Large]
       $addTextDisplay[$showPoints]

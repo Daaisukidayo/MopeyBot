@@ -11,11 +11,11 @@ export default {
     $try[
       $let[arg;$abs[$default[$option[muid];$message[0]]]]
     ;
-      $newError[$tl[$get[l];ui;muid.invalidArgument]]
+      $newError[$tl[ui.muid.invalidArgument.$get[l]]]
     ]
 
     $onlyIf[$charCount[$get[arg]]<=5;
-      $newError[$tl[$get[l];ui;muid.largeNumber]]
+      $newError[$tl[ui.muid.largeNumber.$get[l]]]
     ]
 
     $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
@@ -23,7 +23,7 @@ export default {
     $loop[$arrayLength[allUserIDs];
       $let[ID;$arrayAt[allUserIDs;$math[$env[i] - 1]]]
 
-      $let[userMUID;$dump[$getProfile[$get[ID]];MUID]]
+      $let[userMUID;$env[$getProfile[$get[ID]];MUID]]
 
       $if[$get[userMUID]==$get[arg];;$continue]
 
@@ -33,7 +33,7 @@ export default {
     ;i;true]
 
     $onlyIf[$and[$get[arg]>0;$get[userMUID]!=;$get[userID]!=];
-      $newError[$tl[$get[l];ui;muid.userDoesNotExist;$get[arg]]]
+      $newError[$tl[ui.muid.userDoesNotExist.$get[l];$get[arg]]]
     ]
 
     $addContainer[
@@ -42,8 +42,8 @@ export default {
         $addThumbnail[$userAvatar[$get[userID]]]
       ]
       $addSeparator[Large]
-      $addTextDisplay[## \`$separate[$dump[$getProfile[$get[userID]];MC]]\`$getGlobalVar[mopecoin]]
-      $addTextDisplay[$tl[$get[l];ui;muid.discordId;$get[userID]]]
+      $addTextDisplay[## \`$separate[$env[$getProfile[$get[userID]];MC]]\`$getGlobalVar[mopecoin]]
+      $addTextDisplay[$tl[ui.muid.discordId.$get[l];$get[userID]]]
     ;$getGlobalVar[defaultColor]]
   `
 }

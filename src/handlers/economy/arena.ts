@@ -14,8 +14,8 @@ export default {
     $let[MC;200]
 
     $jsonLoad[animals;$getAnimalsData]
-    $getCache[animalIndexes;animalIndexes]
-    $getCache[arenaEnemies;arenaEnemies]
+    $getCache[animals;animalIndexes;animalIndexes]
+    $getCache[arena;arenaEnemies;arenaEnemies]
 
     $let[enemyAnimalID;$arrayRandomValue[arenaEnemies]]
     $let[enemyAnimalIndex;$env[animalIndexes;$get[enemyAnimalID]]]
@@ -27,10 +27,10 @@ export default {
     $if[$get[r]>=25;
       $sumCash[$get[MC]]
       $saveProfile[$env[userProfile]]
-      $let[desc;$tl[$get[l];ui;arena.won;$get[enemy];$separate[$get[MC]]]]
+      $let[desc;$tl[ui.arena.won.$get[l];$get[enemy];$separate[$get[MC]]]]
       $let[color;$getGlobalVar[defaultColor]]
     ;
-      $let[desc;$tl[$get[l];ui;arena.lost;$get[enemy]]]
+      $let[desc;$tl[ui.arena.lost.$get[l];$get[enemy]]]
       $let[color;$getGlobalVar[errorColor]]
     ]
 

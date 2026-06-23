@@ -15,6 +15,7 @@ export default {
   ],
   code: `
     $if[$env[$env[_arrayName]]==;$return]
+    $if[$isArray[$env[_arrayName]]==false;$return]
 
     $if[$arrayIncludes[$env[_arrayName];$env[_element]];
       $let[index;$arrayIndexOf[$env[_arrayName];$env[_element]]]

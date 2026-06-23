@@ -17,10 +17,10 @@ export default {
     ]
 
     $addActionRow
-    $addStringSelectMenu[wardrobe-tier-$env[_tier]-$authorID;$tl[$get[l];ui;wardrobe.menuTitleSelectSkinPack]]
+    $addStringSelectMenu[wardrobe-tier-$env[_tier]-$authorID;$tl[ui.wardrobe.menuTitleSelectSkinPack.$get[l]]]
 
     $arrayForEach[userSkinPacks;id;
-      $addOption[$tl[$get[l];data;shopSkinPacks.$env[id]];;$env[id]]
+      $addOption[$tl[data.shopSkinPacks.$env[id].$get[l]];;$env[id]]
     ]
   `
 }

@@ -3,11 +3,11 @@ export default {
   code: `
     $fn[embed;
       $addContainer[
-        $addTextDisplay[$tl[$env[locale];ui;reminders.sentReminderTitle]]
+        $addTextDisplay[$tl[ui.reminders.sentReminderTitle.$env[locale]]]
         $addSeparator[Large]
-        $addTextDisplay[$tl[$env[locale];ui;reminders.on;$tl[$env[locale];data;reminders.$env[reminder_id]]]]
+        $addTextDisplay[$tl[ui.reminders.on.$env[locale];$tl[data.reminders.$env[locale].$env[reminder_id]]]]
         $addSeparator
-        $addTextDisplay[$tl[$env[locale];ui;reminders.sentReminderTip;/reminders]]
+        $addTextDisplay[$tl[ui.reminders.sentReminderTip.$env[locale];/reminders]]
       ;$getGlobalVar[defaultColor]]
     ;reminder_id;locale]
 

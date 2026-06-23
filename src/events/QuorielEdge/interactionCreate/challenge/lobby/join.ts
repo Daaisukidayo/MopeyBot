@@ -11,10 +11,6 @@ export default {
     $checkProfile
     $checkLobby
 
-    $if[$hasCache[usernames]==false;
-      $newError[$tl[$get[l];ui;lobby.notReady]]
-    ]
-
     $jsonLoad[lobby;$getChannelVar[lobby]]
     $jsonLoad[ready;$env[lobby;ready]]
     $jsonLoad[teams;$env[lobby;teams]]
@@ -23,11 +19,11 @@ export default {
     $onlyIf[$messageID==$env[lobby;messageID];$!deleteMessage[$channelID;$messageID]]
 
     $onlyIf[$getProgress==;
-      $newError[$tl[$get[l];ui;lobby.hasActiveChallengeParticipate]]
+      $newError[$tl[ui.lobby.hasActiveChallengeParticipate.$get[l]]]
     ]
 
     $onlyIf[$arrayLength[allPlayers]<$getGlobalVar[maxLobbyParticipants];
-      $newError[$tl[$get[l];ui;lobby.lobbyFull]]
+      $newError[$tl[ui.lobby.lobbyFull.$get[l]]]
     ]
 
     $let[oldTeamIndex;$arrayFindIndex[teams;team;$arrayIncludes[$env[team;players];$authorID]]]
@@ -46,7 +42,7 @@ export default {
     $arrayPush[playersInTeam;$authorID]
     $!jsonSet[teams;$get[newTeamIndex];players;$env[playersInTeam]]
 
-    $if[$arrayIncludes[allPlayers;$authorID];;
+    $if[$arrayIncludes[allPlayers;$authorID]==false;
       $arrayPush[allPlayers;$authorID]
     ]
     $!jsonSet[lobby;teams;$env[teams]]

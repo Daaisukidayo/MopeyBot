@@ -3,7 +3,7 @@ export default {
   code: `
     $if[$env[playData]==;$return]
 
-    $getCache[tierAnimals;tierAnimals]
+    $getCache[animals;tierAnimals;tierAnimals]
     $jsonLoad[raresButtonStyle;$getGlobalVar[raresButtonStyle]]
     $jsonLoad[allRareAttemptsInfo;$getUserVar[allRareAttemptsInfo]]
     $jsonLoad[animalIds;$env[tierAnimals;$env[playData;tier];allAnimals]]

@@ -32,7 +32,7 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;daily.description;$separate[$get[MC]]]]
+      $addTextDisplay[$tl[ui.daily.description.$get[l];$separate[$get[MC]]]]
     ;$getGlobalVar[defaultColor]]
   `
 }

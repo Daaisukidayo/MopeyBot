@@ -9,8 +9,7 @@ export default {
         ]
       ]
     ;enemies]
-    $setCache[arenaEnemies;$env[enemies]]
+    $setCache[arena;arenaEnemies;$env[enemies]]
     $logger[Info;Cached «arenaEnemies»]
-    
   `
 }

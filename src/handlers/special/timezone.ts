@@ -17,7 +17,7 @@ export default {
       $arrayLoad[tzParts;/;$get[tz]]
 
       $if[$arrayLength[tzParts]!=2;
-        $newError[$tl[$get[l];ui;timezone.invalid]]
+        $newError[$tl[ui.timezone.invalid.$get[l]]]
       ]
 
       $arrayMap[tzParts;part;$return[$toTitleCase[$env[part]]];tzParts]
@@ -32,13 +32,13 @@ export default {
 				$!jsonSet[userProfile;timezone;$arrayJoin[tzParts;/]]
 				$saveProfile[$env[userProfile]]
 			;
-				$newError[$tl[$get[l];ui;timezone.invalid]]
+				$newError[$tl[ui.timezone.invalid.$get[l]]]
 			]
     ]
 
 		$addContainer[
 			$addAuthorDisplay
-			$addTextDisplay[$tl[$get[l];ui;timezone.current;$env[userProfile;timezone]]]
+			$addTextDisplay[$tl[ui.timezone.current.$get[l];$env[userProfile;timezone]]]
 		;$getGlobalVar[defaultColor]]
   `
 }

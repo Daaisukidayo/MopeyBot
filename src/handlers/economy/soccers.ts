@@ -39,7 +39,7 @@ export default [{
 
       $let[thum;$env[$get[cmd];thum]]
       $let[MC;$random[$env[$get[cmd];MC;0];$env[$get[cmd];MC;1]]]
-      $let[display;$tl[$get[l];data;$get[cmd]s.$env[$get[cmd];ID]]]
+      $let[display;$tl[data.$get[cmd]s.$env[$get[cmd];ID].$get[l]]]
       $let[color;$env[$get[cmd];color]]
       $break
     
@@ -51,13 +51,13 @@ export default [{
     $addContainer[
       $addAuthorDisplay
       $addSection[
-        $addTextDisplay[$tl[$get[l];ui;$get[cmd].saw;$get[display]]]
-        $addTextDisplay[$tl[$get[l];ui;$get[cmd].earned;$separate[$get[MC]]]]
+        $addTextDisplay[$tl[ui.$get[cmd].saw.$get[l];$get[display]]]
+        $addTextDisplay[$tl[ui.$get[cmd].earned.$get[l];$separate[$get[MC]]]]
         $addThumbnail[$get[thum]]
       ]
       $if[$get[rarity]!=1;
         $addSeparator
-        $addTextDisplay[$tl[$get[l];ui;$get[cmd].rarity;1;$get[rarity]]]
+        $addTextDisplay[$tl[ui.$get[cmd].rarity.$get[l];1;$get[rarity]]]
       ]
     ;$get[color]]
   `

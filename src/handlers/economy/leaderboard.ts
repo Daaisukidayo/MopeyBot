@@ -7,8 +7,8 @@ export default [{
     
     $checkProfile
     
-    $onlyIf[$and[$hasCache[usernames];$hasCache[cachedLB]];
-      $newError[$tl[$get[l];ui;leaderboard.notReady]]
+    $onlyIf[$hasCache[leaderboard;cachedLB];
+      $newError[$tl[ui.leaderboard.notReady.$get[l]]]
     ]
 
     $addCooldown
@@ -19,7 +19,7 @@ export default [{
     $let[arg2;$default[$option[rows];$message[1]]]
 
     $arrayCreate[LBpages]
-    $getCache[cachedLB;cachedLB]
+    $getCache[leaderboard;cachedLB;cachedLB]
     
     $let[rowsPerPage;$function[
       $if[$and[$get[arg2]!=;$isNumber[$get[arg2]];$get[arg2]<=10;$get[arg2]>=1];
@@ -56,7 +56,6 @@ export default [{
 },{
   name: 'leaderboardEmbed',
   code: `
-    $getCache[usernames;usernames]
     $arrayMap[cachedLB;elem;
       $let[pos;$env[elem;pos]]
       $let[ID;$env[elem;ID]]
@@ -72,12 +71,12 @@ export default [{
         ]]
       ]]
 
-      $return[$tl[$get[l];ui;leaderboard.contentLine;$get[emoji];$env[usernames;$get[ID]];$get[MUID];$separate[$get[MC]]]]
+      $return[$tl[ui.leaderboard.contentLine.$get[l];$get[emoji];$username[$get[ID]];$get[MUID];$separate[$get[MC]]]]
     ;content]
 
     $addContainer[
       $addSection[
-        $addTextDisplay[$tl[$get[l];ui;leaderboard.title]]
+        $addTextDisplay[$tl[ui.leaderboard.title.$get[l]]]
         $addThumbnail[$getGlobalVar[leaderboardThumbnail]]
       ]
 
@@ -90,7 +89,7 @@ export default [{
         
         $addActionRow
         $addButton[leaderboard-prevPage-$get[page]-$get[rowsPerPage]-$authorID;;Primary;⬅️;$get[disabled]]
-        $addButton[leaderboard-customPage-$get[page]-$get[rowsPerPage]-$authorID;$tl[$get[l];ui;leaderboard.pageButton;$get[page];$get[maxPages]];Primary;;$get[disabled]]
+        $addButton[leaderboard-customPage-$get[page]-$get[rowsPerPage]-$authorID;$tl[ui.leaderboard.pageButton.$get[l];$get[page];$get[maxPages]];Primary;;$get[disabled]]
         $addButton[leaderboard-nextPage-$get[page]-$get[rowsPerPage]-$authorID;;Primary;➡️;$get[disabled]]
       ]
     ;$getGlobalVar[defaultColor]]

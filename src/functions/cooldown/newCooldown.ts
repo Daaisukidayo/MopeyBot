@@ -20,9 +20,9 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[# ⏰ $tl[$get[l];ui;cooldown.title]]
+      $addTextDisplay[# ⏰ $tl[ui.cooldown.title.$get[l]]]
       $addSeparator[Small;false]
-      $addTextDisplay[## > _$tl[$get[l];ui;cooldown.description;$discordTimestamp[$math[$get[cooldownTime] + $getTimestamp + 1000];RelativeTime]]_]
+      $addTextDisplay[## > _$tl[ui.cooldown.description.$get[l];$discordTimestamp[$math[$get[cooldownTime] + $getTimestamp + 1000];RelativeTime]]_]
     ;$getGlobalVar[cooldownColor]]
     
 

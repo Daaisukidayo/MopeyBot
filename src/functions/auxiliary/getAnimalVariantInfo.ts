@@ -23,7 +23,7 @@ export default {
   ],
   code: `
     $jsonLoad[animals;$getAnimalsData]
-    $getCache[animalIndexes;animalIndexes]
+    $getCache[animals;animalIndexes;animalIndexes]
 
     $let[i;$nullish[$env[_variant];0]]
     $let[animalId;$env[animalIndexes;$env[_animalId]]]

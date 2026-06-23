@@ -11,20 +11,20 @@ export default {
     $let[ID;$findUser[$default[$option[user];$message];true]]
 
     $onlyIf[$userExists[$get[ID]];
-      $newError[$tl[$get[l];ui;points.invalidUser]]
+      $newError[$tl[ui.points.invalidUser.$get[l]]]
     ]
 
     $onlyIf[$isBot[$get[ID]]==false;
-      $newError[$tl[$get[l];ui;points.userIsABot]]
+      $newError[$tl[ui.points.userIsABot.$get[l]]]
     ]
 
     $jsonLoad[challengeProgress;$getProgress[$get[ID]]]
 
     $onlyIf[$env[challengeProgress;started];
       $if[$get[ID]!=$authorID;
-        $newError[$tl[$get[l];ui;points.noActiveChallengeUser;$username[$get[ID]]]]
+        $newError[$tl[ui.points.noActiveChallengeUser.$get[l];$username[$get[ID]]]]
       ;
-        $newError[$tl[$get[l];ui;points.noActiveChallengeAuthor]]
+        $newError[$tl[ui.points.noActiveChallengeAuthor.$get[l]]]
       ]
     ]
 

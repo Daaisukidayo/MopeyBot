@@ -18,7 +18,7 @@ export default {
 
     $fn[timeLeft;
       $sendMessage[$channelID;
-        $addTextDisplay[$tl[$get[l];ui;challenge.timeLeft_$env[designation];<@$get[userId]>;$env[time]]]
+        $addTextDisplay[$tl[ui.challenge.timeLeft_$env[designation].$get[l];<@$get[userId]>;$env[time]]]
       ]
     ;time;designation]
 
@@ -36,13 +36,13 @@ export default {
           $sendMessage[$channelID;
             $addContainer[
               $addAuthorDisplay
-              $addTextDisplay[$tl[$get[l];ui;challenge.completed]]
+              $addTextDisplay[$tl[ui.challenge.completed.$get[l]]]
               $addSeparator[Large]
-              $addTextDisplay[$tl[$get[l];ui;challenge.completedDescription1]]
-              $addTextDisplay[$tl[$get[l];ui;challenge.completedDescription2]]
+              $addTextDisplay[$tl[ui.challenge.completedDescription1.$get[l]]]
+              $addTextDisplay[$tl[ui.challenge.completedDescription2.$get[l]]]
               $addSeparator
               $addActionRow
-              $addButton[confirmEndingChallenge-$get[userId];$tl[$get[l];ui;challenge.buttonLabelConfirm];Success;✅]
+              $addButton[confirmEndingChallenge-$get[userId];$tl[ui.challenge.buttonLabelConfirm.$get[l]];Success;✅]
             ;$getGlobalVar[luckyColor]]
           ]
         ]

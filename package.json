@@ -10,7 +10,7 @@
   "imports": {
     "#commandsData": "./dist/utils/getCommandsData.js"
   },
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "type": "commonjs",
   "dependencies": {
     "@quoriel/edge": "github:quoriel/edge#dev",

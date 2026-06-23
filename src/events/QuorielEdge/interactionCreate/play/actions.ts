@@ -24,83 +24,54 @@ export default {
       $case[downgrade;
         $jsonLoad[deathDesc;{
           "0": {
-            "0": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "1": "$tl[$get[l];ui;play.downgrades.intoLava]",
-            "2": "$tl[$get[l];ui;play.downgrades.oceanPredators]",
-            "3": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "4": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "5": "$tl[$get[l];ui;play.downgrades.intoLava]"
+            "0": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "1": "$tl[ui.play.downgrades.intoLava.$get[l]]",
+            "2": "$tl[ui.play.downgrades.oceanPredators.$get[l]]",
+            "3": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "4": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "5": "$tl[ui.play.downgrades.intoLava.$get[l]]"
           },
           "1": {
-            "0": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "1": "$tl[$get[l];ui;play.downgrades.intoLava]",
-            "2": "$tl[$get[l];ui;play.downgrades.oceanPredators]",
-            "3": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "4": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "5": "$tl[$get[l];ui;play.downgrades.intoLava]"
+            "0": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "1": "$tl[ui.play.downgrades.intoLava.$get[l]]",
+            "2": "$tl[ui.play.downgrades.oceanPredators.$get[l]]",
+            "3": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "4": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "5": "$tl[ui.play.downgrades.intoLava.$get[l]]"
           },
           "2": {
-            "0": "$tl[$get[l];ui;play.downgrades.onLand]",
-            "1": "$tl[$get[l];ui;play.downgrades.intoLava]",
-            "2": "$tl[$get[l];ui;play.downgrades.onLand]",
-            "3": "$tl[$get[l];ui;play.downgrades.onLand]",
-            "4": "$tl[$get[l];ui;play.downgrades.onLand]",
-            "5": "$tl[$get[l];ui;play.downgrades.intoLava]"
+            "0": "$tl[ui.play.downgrades.onLand.$get[l]]",
+            "1": "$tl[ui.play.downgrades.intoLava.$get[l]]",
+            "2": "$tl[ui.play.downgrades.onLand.$get[l]]",
+            "3": "$tl[ui.play.downgrades.onLand.$get[l]]",
+            "4": "$tl[ui.play.downgrades.onLand.$get[l]]",
+            "5": "$tl[ui.play.downgrades.intoLava.$get[l]]"
           },
           "3": {
-            "0": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "1": "$tl[$get[l];ui;play.downgrades.intoLava]",
-            "2": "$tl[$get[l];ui;play.downgrades.oceanPredators]",
-            "3": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "4": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "5": "$tl[$get[l];ui;play.downgrades.intoLava]"
+            "0": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "1": "$tl[ui.play.downgrades.intoLava.$get[l]]",
+            "2": "$tl[ui.play.downgrades.oceanPredators.$get[l]]",
+            "3": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "4": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "5": "$tl[ui.play.downgrades.intoLava.$get[l]]"
           },
           "4": {
-            "0": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "1": "$tl[$get[l];ui;play.downgrades.intoLava]",
-            "2": "$tl[$get[l];ui;play.downgrades.oceanPredators]",
-            "3": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "4": "$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]",
-            "5": "$tl[$get[l];ui;play.downgrades.intoLava]"
+            "0": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "1": "$tl[ui.play.downgrades.intoLava.$get[l]]",
+            "2": "$tl[ui.play.downgrades.oceanPredators.$get[l]]",
+            "3": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "4": "$arrayRandomValue[$tl[ui.play.downgrades.reasons.$get[l]]]",
+            "5": "$tl[ui.play.downgrades.intoLava.$get[l]]"
           },
           "5": {
-            "0": "$tl[$get[l];ui;play.downgrades.outOfLava]",
-            "1": "$tl[$get[l];ui;play.downgrades.outOfLava]",
-            "2": "$tl[$get[l];ui;play.downgrades.oceanPredators]",
-            "3": "$tl[$get[l];ui;play.downgrades.outOfLava]",
-            "4": "$tl[$get[l];ui;play.downgrades.outOfLava]",
-            "5": "$if[$env[playData;tier]<17;$tl[$get[l];ui;play.downgrades.reasons.0];$arrayRandomValue[$tl[$get[l];ui;play.downgrades.blackDragon]]]"
+            "0": "$tl[ui.play.downgrades.outOfLava.$get[l]]",
+            "1": "$tl[ui.play.downgrades.outOfLava.$get[l]]",
+            "2": "$tl[ui.play.downgrades.oceanPredators.$get[l]]",
+            "3": "$tl[ui.play.downgrades.outOfLava.$get[l]]",
+            "4": "$tl[ui.play.downgrades.outOfLava.$get[l]]",
+            "5": "$if[$env[playData;tier]<17;$tl[ui.play.downgrades.reasons.0.$get[l]];$arrayRandomValue[$tl[ui.play.downgrades.blackDragon.$get[l]]]]"
           }
         }]
-        $c[
-          $let[desc;$function[
-            $if[$and[$includes[$get[animalBiome];0;1;2;3;4];$includes[$get[currentBiome];1;5]];
-              
-              $return[$tl[$get[l];ui;play.downgrades.intoLava]]
-
-            ;$if[$and[$includes[$get[animalBiome];0;1;3;4;5];$includes[$get[currentBiome];2]];
-              
-              $return[$tl[$get[l];ui;play.downgrades.oceanPredators]]
-
-            ;$if[$includes[$get[animalBiome];2];
-              
-              $return[$tl[$get[l];ui;play.downgrades.onLand]]
-
-            ;$if[$and[$includes[$get[animalBiome];5];$includes[$get[currentBiome];0;1;2;3;4]];
-              
-              $return[$tl[$get[l];ui;play.downgrades.outOfLava]]
-
-            ;$if[$and[$includes[$get[animalBiome];5];$includes[$get[currentBiome];5]];
-              
-              $return[$if[$env[playData;tier]<17;$tl[$get[l];ui;play.downgrades.reasons.0];$arrayRandomValue[$tl[$get[l];ui;play.downgrades.blackDragon]]]!]
-
-            ;$if[$and[$includes[$get[animalBiome];0;3;4];$includes[$get[currentBiome];0;3;4]];
-
-              $return[$arrayRandomValue[$tl[$get[l];ui;play.downgrades.reasons]]]
-
-            ]]]]]]
-          ]]
-        ]
 
         $let[desc;$env[deathDesc;$get[animalBiome];$get[currentBiome]]]
 
@@ -110,7 +81,7 @@ export default {
 
         $addContainer[
           $addAuthorDisplay
-          $addTextDisplay[$tl[$get[l];ui;play.downgrades.downgradeBy;$get[desc]]]
+          $addTextDisplay[$tl[ui.play.downgrades.downgradeBy.$get[l];$get[desc]]]
           $addActionsMenu
           $addSeparator
           $addExitButton
@@ -124,7 +95,7 @@ export default {
         $jsonLoad[beachballs;$readFile[res/data/beachballs.json]]
         $jsonLoad[umbrellas;$readFile[res/data/umbrellas.json]]
 
-        $let[deathDesc;$arrayRandomValue[$tl[$get[l];ui;play.kill]]]
+        $let[deathDesc;$arrayRandomValue[$tl[ui.play.kill.$get[l]]]]
         $let[deathRoll;$random[1;1000]]
         $let[findPrayRarity;$random[1;100]]
         $let[findSoccerRarity;$random[1;100]]
@@ -146,14 +117,14 @@ export default {
           $if[$get[currentBiome]==5;$letSum[deathChance;700]]
           $if[$get[animalBiome]==2;
             $let[deathChance;1000]
-            $let[deathDesc;$tl[$get[l];ui;play.lackOfWater]]
+            $let[deathDesc;$tl[ui.play.lackOfWater.$get[l]]]
           ]
         ]
 
         $switch[$get[tier];
           $case[15;$if[$get[animalId]==dragon;$let[deathChance;7]]]
           $case[16;$letSub[deathChance;10]]
-          $case[17;$let[deathChance;1] $let[deathDesc;$tl[$get[l];ui;play.diedByTeamers]]]
+          $case[17;$let[deathChance;1] $let[deathDesc;$tl[ui.play.diedByTeamers.$get[l]]]]
         ]
 
         $let[event;$function[
@@ -179,8 +150,8 @@ export default {
             $if[$get[event]==soccer;
 
               $arrayLoad[data;_;pumpkin_$env[pumpkins;10;ID]]
-              $let[soccer;$tl[$get[l];data;pumpkins.$env[data;1]] $env[pumpkins;10;emoji]]
-              $let[content;$tl[$get[l];ui;play.found;$get[soccer]]]
+              $let[soccer;$tl[data.pumpkins.$env[data;1].$get[l]] $env[pumpkins;10;emoji]]
+              $let[content;$tl[ui.play.found.$get[l];$get[soccer]]]
               $addTextDisplay[$get[content]]
               $addSeparator[Large]
 
@@ -218,7 +189,7 @@ export default {
                 $arrayPush[eaten;$get[foodName]]
               ]
 
-              $let[content;$tl[$get[l];ui;play.ate;$arrayJoin[eaten;, ];$separate[$get[xp]]]]
+              $let[content;$tl[ui.play.ate.$get[l];$arrayJoin[eaten;, ];$separate[$get[xp]]]]
 
               $if[$and[$random[1;100]<=10;$arrayLength[preyIndexes]>0];
 
@@ -230,7 +201,7 @@ export default {
                 $jsonLoad[xpArr;$env[xpPerTier;$get[preyTier]]]
                 $let[xp;$random[$env[xpArr;0];$env[xpArr;1]]]
 
-                $let[content;$tl[$get[l];ui;play.ate;$get[preyName] $get[preyEmoji];$separate[$get[xp]]]]
+                $let[content;$tl[ui.play.ate.$get[l];$get[preyName] $get[preyEmoji];$separate[$get[xp]]]]
                 
               ]
 
@@ -310,7 +281,7 @@ export default {
           $let[oppWrI;$env[oppArr;0]]
           $let[oppID;$env[oppArr;1]]
           $let[oppDisplay;$getAnimalVariantInfo[$get[oppID];name;$get[oppWrI]]]
-          $let[desc;$tl[$get[l];ui;play.arena.wentInArena;$get[oppDisplay]]]
+          $let[desc;$tl[ui.play.arena.wentInArena.$get[l];$get[oppDisplay]]]
           $let[thumbnail;$getAnimalVariantInfo[$get[oppID];img;$get[oppWrI]]]
 
           $let[min;$env[xpPerTier;$get[opponentTier];0]]
@@ -326,7 +297,7 @@ export default {
           $let[color;$getGlobalVar[defaultColor]]
 
         ;
-          $let[desc;$arrayRandomValue[$tl[$get[l];ui;play.arena.reject]]]
+          $let[desc;$arrayRandomValue[$tl[ui.play.arena.reject.$get[l]]]]
           $let[success;false]
         ]
 
@@ -363,7 +334,7 @@ export default {
         $addContainer[
           $addAuthorDisplay
 
-          $addTextDisplay[$tl[$get[l];ui;play.chooseUpgrade]]
+          $addTextDisplay[$tl[ui.play.chooseUpgrade.$get[l]]]
           $addUpgradeMenu
           $addSeparator[Large]
 
@@ -376,7 +347,7 @@ export default {
         $addContainer[
           $addAuthorDisplay
 
-          $addTextDisplay[$tl[$get[l];ui;play.chooseAnimal]]
+          $addTextDisplay[$tl[ui.play.chooseAnimal.$get[l]]]
 
           $addUpgradeMenu
 

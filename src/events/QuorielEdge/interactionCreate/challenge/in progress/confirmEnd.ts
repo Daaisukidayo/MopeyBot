@@ -15,7 +15,7 @@ export default {
 
     $onlyIf[$and[$env[challengeProgress]!=;$env[challengeProgress;started]];
       $!deleteMessage[$channelID;$messageID]
-      $newError[$tl[$get[l];ui;challenge.active]]
+      $newError[$tl[ui.challenge.active.$get[l]]]
     ]
 
     $jsonLoad[raresList;$env[challengeProgress;list]]
@@ -26,7 +26,7 @@ export default {
 
     $addContainer[
       $addAuthorDisplay  
-      $addTextDisplay[$tl[$get[l];ui;challenge.completed]]
+      $addTextDisplay[$tl[ui.challenge.completed.$get[l]]]
       $addSeparator[Large]
       $addTextDisplay[$showPoints]
       $addTextDisplay[$showRares]

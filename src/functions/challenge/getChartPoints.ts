@@ -10,6 +10,6 @@ export default {
   ],
   output: "Number",
   code: `
-    $return[$dump[$getRareFromCDB[$env[_rareAnimalId]];points]]
+    $return[$env[$getRareFromCDB[$env[_rareAnimalId]];points]]
   `
 }

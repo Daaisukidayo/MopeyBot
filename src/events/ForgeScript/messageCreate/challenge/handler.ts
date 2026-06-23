@@ -36,14 +36,14 @@ export default {
     $jsonLoad[userProfile;$getProfile]
     $let[l;$env[userProfile;language]]
 
-    $getCache[allRares;allRares]
+    $getCache[rares;allRares;allRares]
 
     $jsonLoad[raresList;$env[challengeProgress;list]]
     $jsonLoad[events;$env[challengeProgress;events]]
 
     $let[difficulty;$env[challengeProgress;difficulty]]
     $jsonLoad[chartLimitsMap;$getGlobalVar[chartLimitsMap]]
-    $jsonLoad[chartLimits;$dump[$getGlobalVar[chartLimits];$get[difficulty]]]
+    $jsonLoad[chartLimits;$env[$getGlobalVar[chartLimits];$get[difficulty]]]
     
     $jsonLoad[tempRaresData;{}]
     $arrayLoad[providedRares; ;$toLowerCase[$message]]
@@ -65,7 +65,7 @@ export default {
       $let[rareAnimalId;$getRareAnimalID[$get[caughtRare]]]
       
       $let[pointsFromChart;$getChartPoints[$get[rareAnimalId]]]
-      $let[category;$dump[$getRareFromCDB[$get[rareAnimalId]];category]]
+      $let[category;$env[$getRareFromCDB[$get[rareAnimalId]];category]]
 
       $let[chartlimitId;$arrayFind[chartLimits;id;$env[chartLimitsMap;$env[id];category]==$get[category]]]
 
@@ -86,7 +86,7 @@ export default {
       $c[Adds an informational content about reaching the rare animal limit]
       $if[$get[limitAnimalCount]==$get[limit];
         $let[limitedAnimalDisplay;$getAnimalVariantInfo[$get[rareAnimalId];emoji]]
-        $arrayPush[reachedLimitContent;$tl[$get[l];ui;challenge.reachedLimit;$get[limitedAnimalDisplay]]]
+        $arrayPush[reachedLimitContent;$tl[ui.challenge.reachedLimit.$get[l];$get[limitedAnimalDisplay]]]
       ]
     ;i;true]
 
@@ -106,7 +106,7 @@ export default {
     $arrayForEach[le;e;
       $let[quantity;$env[e;1]]
 
-      $letSum[totalPoints;$math[$dump[$getRareFromCDB[$env[e;0]];points] * $get[quantity]]]
+      $letSum[totalPoints;$math[$env[$getRareFromCDB[$env[e;0]];points] * $get[quantity]]]
       $letSum[totalRares;$get[quantity]]
     ]
     $!jsonSet[challengeProgress;points;$get[totalPoints]]

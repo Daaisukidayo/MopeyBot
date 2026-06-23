@@ -42,7 +42,7 @@ export default {
 
     $loop[$arrayLength[rules];
       $jsonLoad[rule;$arrayAt[rules;$math[$env[i] - 1]]]
-      $if[$get[actionR]>=$env[rule;0];;$continue]
+      $if[$get[actionR]>=$env[rule;0]==false;$continue]
       $let[actionDesc;$env[rule;1]]
       $switch[$env[rule;2];
         $case[1;$letSum[bites;1]]
@@ -80,22 +80,22 @@ export default {
     $addContainer[
       $addAuthorDisplay
 
-      $addTextDisplay[$tl[$get[l];ui;play.arena.table.player;$get[currentAnimalDisplay]]]
-      $addTextDisplay[$tl[$get[l];ui;play.arena.table.bites;$get[bites]]]
-      $addTextDisplay[$tl[$get[l];ui;play.arena.table.vs]]
-      $addTextDisplay[$tl[$get[l];ui;play.arena.table.player;$get[opponentDisplay]]]
-      $addTextDisplay[$tl[$get[l];ui;play.arena.table.bites;$get[opponentBites]]]
+      $addTextDisplay[$tl[ui.play.arena.table.player.$get[l];$get[currentAnimalDisplay]]]
+      $addTextDisplay[$tl[ui.play.arena.table.bites.$get[l];$get[bites]]]
+      $addTextDisplay[$tl[ui.play.arena.table.vs.$get[l]]]
+      $addTextDisplay[$tl[ui.play.arena.table.player.$get[l];$get[opponentDisplay]]]
+      $addTextDisplay[$tl[ui.play.arena.table.bites.$get[l];$get[opponentBites]]]
       $addSeparator
-      $addTextDisplay[$tl[$get[l];ui;play.arena.table.userChose;$tl[$get[l];data;arenaActions.$get[playerAction]]]]
-      $addTextDisplay[$tl[$get[l];ui;play.arena.table.opponentChose;$tl[$get[l];data;arenaActions.$get[updatedOpponentAction]]]]
+      $addTextDisplay[$tl[ui.play.arena.table.userChose.$get[l];$tl[data.arenaActions.$get[playerAction].$get[l]]]]
+      $addTextDisplay[$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$get[updatedOpponentAction].$get[l]]]]
       $addSeparator
-      $addTextDisplay[$tl[$get[l];ui;play.arena.actions.$get[actionDesc]]]
+      $addTextDisplay[$tl[ui.play.arena.actions.$get[actionDesc].$get[l]]]
       $addSeparator
 
       $if[$get[bites]>=10; $c[If user won]
 
         $c[Giving XP based on opponent's tier]
-        $addTextDisplay[$tl[$get[l];ui;play.arena.table.won]]
+        $addTextDisplay[$tl[ui.play.arena.table.won.$get[l]]]
 
         $addSeparator[Large]
         
@@ -117,7 +117,7 @@ export default {
 
         $if[$get[opponentBites]>=10; $c[If user lost]
 
-          $addTextDisplay[$tl[$get[l];ui;play.arena.table.lost]]
+          $addTextDisplay[$tl[ui.play.arena.table.lost.$get[l]]]
 
           $addSeparator[Large]
 
@@ -139,13 +139,13 @@ export default {
           $switch[$get[turn];
             $case[0; $c[If user's turn]
               $let[turn;1]
-              $addTextDisplay[$tl[$get[l];ui;play.arena.table.opponentTurn]]
-              $addTextDisplay[$tl[$get[l];ui;play.arena.table.opponentChose;$tl[$get[l];data;arenaActions.$get[updatedOpponentAction]]]]
+              $addTextDisplay[$tl[ui.play.arena.table.opponentTurn.$get[l]]]
+              $addTextDisplay[$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$get[updatedOpponentAction].$get[l]]]]
             ]
             $case[1; $c[If opponent's turn]
               $let[turn;0]
-              $addTextDisplay[$tl[$get[l];ui;play.arena.table.userTurn]]
-              $addTextDisplay[$tl[$get[l];ui;play.arena.table.userChoose]]
+              $addTextDisplay[$tl[ui.play.arena.table.userTurn.$get[l]]]
+              $addTextDisplay[$tl[ui.play.arena.table.userChoose.$get[l]]]
             ]
           ]
 

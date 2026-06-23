@@ -9,15 +9,15 @@ export default {
     $addCooldown
 
     $addContainer[
-      $addTextDisplay[$tl[$get[l];ui;credits.title]]
+      $addTextDisplay[$tl[ui.credits.title.$get[l]]]
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;credits.owner&devs]]
+      $addTextDisplay[$tl[ui.credits.owner&devs.$get[l]]]
       $addTextDisplay[$codeBlock[$username[485453670729646090]]]
       $addSeparator
-      $addTextDisplay[$tl[$get[l];ui;credits.artists]]
+      $addTextDisplay[$tl[ui.credits.artists.$get[l]]]
       $addTextDisplay[$codeBlock[$username[502840819380912139]\n$username[254354531951837186]]]
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;credits.madeWithLove]]
+      $addTextDisplay[$tl[ui.credits.madeWithLove.$get[l]]]
     ;$getGlobalVar[defaultColor]]
   `
 }

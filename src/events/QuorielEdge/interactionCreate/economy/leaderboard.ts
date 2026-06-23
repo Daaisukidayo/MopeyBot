@@ -35,15 +35,15 @@ export default [{
         $letSum[page;1]
       ]
       $case[customPage;
-        $modal[leaderboard-modal-$get[page]-$get[rowsPerPage]-$authorID;$tl[$get[l];ui;leaderboard.modalTitle]]
-        $addTextInput[pageInput;$tl[$get[l];ui;leaderboard.modalDescriptionPage];Short;true]
+        $modal[leaderboard-modal-$get[page]-$get[rowsPerPage]-$authorID;$tl[ui.leaderboard.modalTitle.$get[l]]]
+        $addTextInput[pageInput;$tl[ui.leaderboard.modalDescriptionPage.$get[l]];Short;true]
         $showModal
         $stop
       ]
       $case[modal;
         $let[page;$input[pageInput]]
         $onlyIf[$isNumber[$get[page]];
-          $newError[$tl[$get[l];ui;errors.notNumber]]
+          $newError[$tl[ui.errors.notNumber.$get[l]]]
         ]
       ]
     ]

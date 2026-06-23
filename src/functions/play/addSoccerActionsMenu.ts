@@ -15,14 +15,14 @@ export default {
     $let[l;$env[userProfile;language]]
 
     $addActionRow
-    $addStringSelectMenu[play_soccerActions-$arrayJoin[data;___]-$authorID;$tl[$get[l];ui;play.selectMenuPlaceholderActions]]
+    $addStringSelectMenu[play_soccerActions-$arrayJoin[data;___]-$authorID;$tl[ui.play.selectMenuPlaceholderActions.$get[l]]]
 
     $arrayForEach[soccerActions;_elem;
       $if[$and[$env[_elem]==1;$get[replaceIgnoreAction]];
         $jsonSet[_elem;3]
       ]
     
-      $addOption[$tl[$get[l];data;soccerActions.$env[_elem]];;$env[_elem]]
+      $addOption[$tl[data.soccerActions.$env[_elem].$get[l]];;$env[_elem]]
     ]
   `
 }

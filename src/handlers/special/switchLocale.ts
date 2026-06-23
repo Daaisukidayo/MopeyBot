@@ -13,7 +13,7 @@ export default {
     $jsonLoad[locales;$getGlobalVar[allLocales]]
 
     $onlyIf[$jsonHas[locales;$get[locale]];
-      $newError[$tl[$get[l];ui;switchlocale.unknown]]
+      $newError[$tl[ui.switchlocale.unknown.$get[l]]]
     ]
 
     $defer
@@ -23,7 +23,7 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[locale];ui;switchlocale.switched;$env[locales;$get[locale]]]]
+      $addTextDisplay[$tl[ui.switchlocale.switched.$get[locale];$env[locales;$get[locale]]]]
     ;$getGlobalVar[defaultColor]]
   `
 }

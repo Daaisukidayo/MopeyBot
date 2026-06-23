@@ -20,9 +20,9 @@ export default {
             $jsonLoad[categories;$getGlobalVar[helpCategories]]
             
             $addContainer[
-                $addTextDisplay[$tl[$get[l];ui;help.allCommandsTitle]]
+                $addTextDisplay[$tl[ui.help.allCommandsTitle.$get[l]]]
                 $addSeparator
-                $addTextDisplay[$tl[$get[l];ui;help.detailed]]
+                $addTextDisplay[$tl[ui.help.detailed.$get[l]]]
                 $addSeparator
 
                 $arrayForEach[categories;c;
@@ -37,13 +37,13 @@ export default {
                         ]
                     ]
 
-                    $addTextDisplay[## _$tl[$get[l];data;helpCategories.$env[c]]_]
+                    $addTextDisplay[## _$tl[data.helpCategories.$env[c].$get[l]]_]
                     $addTextDisplay[$codeBlock[$arrayJoin[prefixCommands; ]]]
 
                     $addSeparator[Large]
                 ]
 
-                $addTextDisplay[$tl[$get[l];ui;help.assistance;$getGlobalVar[discordServerInvite]]]
+                $addTextDisplay[$tl[ui.help.assistance.$get[l];$getGlobalVar[discordServerInvite]]]
             ;$getGlobalVar[defaultColor]]
         ;
             $jsonLoad[commandInfo;$arrayFind[commandsEntries;data;
@@ -51,7 +51,7 @@ export default {
             ]]
 
             $if[$env[commandInfo]==;
-                $newError[$tl[$get[l];ui;help.noInfo]]
+                $newError[$tl[ui.help.noInfo.$get[l]]]
             ]
 
             $let[emoji;$getGlobalVar[mopecoin]]
@@ -60,7 +60,7 @@ export default {
             $let[maxLobbyParticipants;$getGlobalVar[maxLobbyParticipants]]
             $let[timezonesHyperlink;$hyperlink[List of all timezones;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones]]
             $arrayMap[$getGlobalVar[difficulties];elem;
-                $return[$tl[$get[l];data;difficulties.$env[elem]]]
+                $return[$tl[data.difficulties.$env[elem].$get[l]]]
             ;hlDifficulties]
 
 
@@ -69,10 +69,10 @@ export default {
             ;locales]
 
             
-            $jsonLoad[bracketsInfo;$tl[$get[l];data;bracketsInfo]]
-            $jsonLoad[umbrellaRarities;$tl[$get[l];data;umbrellaRarities]]
-            $jsonLoad[beachballRarities;$tl[$get[l];data;beachballRarities]]
-            $jsonLoad[pumpkinRarities;$tl[$get[l];data;pumpkinRarities]]
+            $jsonLoad[bracketsInfo;$tl[data.bracketsInfo.$get[l]]]
+            $jsonLoad[umbrellaRarities;$tl[data.umbrellaRarities.$get[l]]]
+            $jsonLoad[beachballRarities;$tl[data.beachballRarities.$get[l]]]
+            $jsonLoad[pumpkinRarities;$tl[data.pumpkinRarities.$get[l]]]
             $jsonLoad[replacements;$getGlobalVar[helpReplacements]]
 
             $jsonLoad[commandRelated;$env[commandInfo;1;commandRelated]]
@@ -85,7 +85,7 @@ export default {
 
             $if[$get[description]==;
                 $logger[Error;$get[commandName] is missing 'description']
-                $newError[$tl[$get[l];ui;help.noInfo]]
+                $newError[$tl[ui.help.noInfo.$get[l]]]
             ]
 
             $arrayUnshift[commandAliases;$get[commandName]]
@@ -99,15 +99,15 @@ export default {
             $arrayMap[commandRelated;elem;$return[$nullish[$env[commandsData;$env[elem];commandName];$env[elem]]];commandRelated]
 
             $addContainer[
-                $addTextDisplay[$tl[$get[l];ui;help.commandTitle;$get[detailedName]]]
+                $addTextDisplay[$tl[ui.help.commandTitle.$get[l];$get[detailedName]]]
                 $addSeparator
                 $addTextDisplay[$get[description]]
                 $addSeparator
-                $addTextDisplay[$tl[$get[l];ui;help.aliasesTitle]]
+                $addTextDisplay[$tl[ui.help.aliasesTitle.$get[l]]]
                 $addTextDisplay[## \`$arrayJoin[commandAliases;\` \`]\`]
                 $addSeparator
-                $addTextDisplay[$tl[$get[l];ui;help.relatedTitle]]
-                $addTextDisplay[## \`$default[$arrayJoin[commandRelated;\` \`];$tl[$get[l];ui;help.none]]\`]
+                $addTextDisplay[$tl[ui.help.relatedTitle.$get[l]]]
+                $addTextDisplay[## \`$default[$arrayJoin[commandRelated;\` \`];$tl[ui.help.none.$get[l]]]\`]
             ;$getGlobalVar[defaultColor]]
         ]
         

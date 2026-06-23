@@ -4,14 +4,9 @@ export default {
     $let[l;$env[userProfile;language]]
     $jsonLoad[output;{}]
 
-    $if[$hasCache[victoriesMap]==false;
-      $setCache[victoriesMap;$getGlobalVar[victoriesMap]]
-    ]
-
-    $getCache[victoriesMap;victoriesMap]
+    $jsonLoad[victoriesMap;$getGlobalVar[victoriesMap]]
 
     $arrayLoad[topOneIndexes]
-    $getCache[usernames;usernames]
 
     $let[type;$env[victoriesMap;$env[lobby;settings;victoryType]]]
 
@@ -32,7 +27,7 @@ export default {
 
     $if[$arrayLength[topOneIndexes]>0;
       $arrayUnshift[topOneIndexes;0]
-      $let[winner;$tl[$get[l];ui;lobby.friendship]]
+      $let[winner;$tl[ui.lobby.friendship.$get[l]]]
     ]
 
     $let[pos;0]
@@ -47,7 +42,7 @@ export default {
         $let[emoji;🏅]
       ]
 
-      $return[$tl[$get[l];ui;lobby.sortedPlayersContent;$get[emoji];$env[usernames;$env[result;userID]];$env[result;points];$env[result;rares]]]
+      $return[$tl[ui.lobby.sortedPlayersContent.$get[l];$get[emoji];$username[$env[result;userID]];$env[result;points];$env[result;rares]]]
     ;playersInLB]
 
     $jsonSet[output;playersInLB;$env[playersInLB]]

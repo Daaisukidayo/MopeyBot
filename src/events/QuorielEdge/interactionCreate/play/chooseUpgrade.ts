@@ -62,9 +62,9 @@ export default {
       $addAuthorDisplay
       
       $if[$env[playData;isDead];
-        $addTextDisplay[$tl[$get[l];ui;play.chooseAnimal]]
+        $addTextDisplay[$tl[ui.play.chooseAnimal.$get[l]]]
       ;
-        $addTextDisplay[$tl[$get[l];ui;play.chooseUpgrade]]
+        $addTextDisplay[$tl[ui.play.chooseUpgrade.$get[l]]]
       ]
       
       $if[$includes[$get[iid];kingDragonUpg];

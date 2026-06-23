@@ -18,19 +18,19 @@ export default {
         $jsonLoad[res;$generateList[$sortList[$env[_historyData;raresList]]]]
         $jsonLoad[list;$env[res;l]]
 
-        $addTextDisplay[$tl[$get[l];ui;history.points;$default[$env[_historyData;points];-1]]]
+        $addTextDisplay[$tl[ui.history.points.$get[l];$default[$env[_historyData;points];-1]]]
         $addSeparator[Small;false]
-        $addTextDisplay[$tl[$get[l];ui;history.rares;$default[$env[_historyData;rares];-1]]]
+        $addTextDisplay[$tl[ui.history.rares.$get[l];$default[$env[_historyData;rares];-1]]]
         $addSeparator[Small;false]
-        $addTextDisplay[$tl[$get[l];ui;history.playType;$default[$tl[$get[l];data;playTypes.$env[_historyData;playType]];$tl[$get[l];ui;history.unknownValue]]]]
+        $addTextDisplay[$tl[ui.history.playType.$get[l];$default[$tl[data.playTypes.$env[_historyData;playType].$get[l]];$tl[ui.history.unknownValue.$get[l]]]]]
         $addSeparator[Small;false]
-        $addTextDisplay[$tl[$get[l];ui;history.difficulty;$default[$tl[$get[l];data;difficulties.$env[_historyData;difficulty]];$tl[$get[l];ui;history.unknownValue]]]]
+        $addTextDisplay[$tl[ui.history.difficulty.$get[l];$default[$tl[data.difficulties.$env[_historyData;difficulty].$get[l]];$tl[ui.history.unknownValue.$get[l]]]]]
         $addSeparator[Small;false]
-        $addTextDisplay[$tl[$get[l];ui;history.endDate;$discordTimestamp[$default[$env[_historyData;endDate];0];LongDateTime]]]
+        $addTextDisplay[$tl[ui.history.endDate.$get[l];$discordTimestamp[$default[$env[_historyData;endDate];0];LongDateTime]]]
 
         $showDesignedList[$env[list]]
       ;
-        $addTextDisplay[$tl[$get[l];ui;history.noHistory]]
+        $addTextDisplay[$tl[ui.history.noHistory.$get[l]]]
       ]
     ;$getGlobalVar[luckyColor]]
   `

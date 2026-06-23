@@ -19,24 +19,24 @@ export default {
       $let[amount;$get[MC]]
     ]
 
-    $let[balance;$tl[$get[l];ui;slots.balance;$separate[$get[MC]]]]
+    $let[balance;$tl[ui.slots.balance.$get[l];$separate[$get[MC]]]]
 
     $onlyif[$get[MC]>=$get[defaultAmount];
-      $newError[$tl[$get[l];ui;slots.invalidCashLow;$get[defaultAmount]] $get[balance]]
+      $newError[$tl[ui.slots.invalidCashLow.$get[l];$get[defaultAmount]] $get[balance]]
     ]
     $onlyif[$get[amount]<=$get[MC];
-      $newError[$tl[$get[l];ui;slots.invalidCashHigh] $get[balance]]
+      $newError[$tl[ui.slots.invalidCashHigh.$get[l]] $get[balance]]
     ]
     $onlyif[$inRange[$get[amount];$get[defaultAmount];$get[maximum]];
-      $newError[$tl[$get[l];ui;slots.invalidRange;$get[defaultAmount];$separate[$get[maximum]]]]
+      $newError[$tl[ui.slots.invalidRange.$get[l];$get[defaultAmount];$separate[$get[maximum]]]]
     ]
 
     $defer
 
     $fn[content;
       $return[$trim[$trimLines[
-        ‎ $tl[$get[l];ui;slots.title]
-        \` \` $get[slot1]|$get[slot2]|$get[slot3] \` \` $tl[$get[l];ui;slots.bet;$userDisplayName;$separate[$get[amount]]] $get[outputContent]
+        ‎ $tl[ui.slots.title.$get[l]]
+        \` \` $get[slot1]|$get[slot2]|$get[slot3] \` \` $tl[ui.slots.bet.$get[l];$userDisplayName;$separate[$get[amount]]] $get[outputContent]
         ‎  \`|         |\`
         ‎  \`|         |\`
       ]]]
@@ -89,14 +89,14 @@ export default {
       ]]
 
       $let[winAmount;$math[$get[amount] * $get[mlt]]]
-      $let[outputContent;$tl[$get[l];ui;slots.won;$separate[$get[winAmount]]]]
+      $let[outputContent;$tl[ui.slots.won.$get[l];$separate[$get[winAmount]]]]
 
       $jsonLoad[userProfile;$getProfile]
       $sumCash[$get[winAmount]]
       $saveProfile[$env[userProfile]]
 
     ;
-      $let[outputContent;$tl[$get[l];ui;slots.lost]]
+      $let[outputContent;$tl[ui.slots.lost.$get[l]]]
     ]
 
     $!editMessage[$channelID;$get[msgid];$addTextDisplay[$callFn[content]]]

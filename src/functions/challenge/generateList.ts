@@ -11,14 +11,13 @@ export default {
   ],
   output: "Json",
   code: `
-    $jsonLoad[listEntries;$jsonEntries[_caughtRaresList]]
     $jsonLoad[result;{}]
 
     $let[l;$env[userProfile;language]]
     $let[points;0]
     $let[rares;0]
 
-    $arrayMap[listEntries;entry;
+    $arrayMap[$jsonEntries[_caughtRaresList];entry;
       $let[animalId;$env[entry;0]]
       $let[count;$env[entry;1]]
 
@@ -32,7 +31,7 @@ export default {
 
 
     $if[$arrayLength[list]==0;
-      $arrayPush[list;$tl[$get[l];ui;challenge.none]]
+      $arrayPush[list;$tl[ui.challenge.none.$get[l]]]
     ]
 
     $jsonSet[result;l;$env[list]]

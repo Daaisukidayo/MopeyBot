@@ -3,14 +3,13 @@ export default {
   code: `
     $loop[-1;    
       $arrayMap[$getGlobalVar[allUserIDs];id;
-        $jsonLoad[UP;$getUserVar[userProfile;$env[id]]]
-        $jsonLoad[data;{}]
-
-        $!jsonSet[data;MC;"$env[UP;MC]"]
-        $!jsonSet[data;ID;"$env[UP;ID]"]
-        $!jsonSet[data;MUID;$env[UP;MUID]]
+        $jsonLoad[UP;$getProfile[$env[id]]]
         
-        $return[$env[data]]
+        $return[{
+          "MC": "$env[UP;MC]",
+          "ID": "$env[UP;ID]",
+          "MUID": $env[UP;MUID]
+        }]
       ;profiles]
 
       $arrayAdvancedSort[profiles;A;B;
@@ -24,8 +23,8 @@ export default {
         $return[$env[elem]]
       ;cachedLB]
 
-      $setCache[cachedLB;$env[cachedLB]]
-      $wait[2m]
+      $setCache[leaderboard;cachedLB;$env[cachedLB]]
+      $wait[5m]
     ]
   `
 }

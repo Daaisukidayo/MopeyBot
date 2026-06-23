@@ -10,7 +10,7 @@ export default {
     $jsonLoad[challengeProgress;$getProgress]
 
     $onlyIf[$env[challengeProgress;paused];
-      $newError[$tl[$get[l];ui;resume.notPaused]]
+      $newError[$tl[ui.resume.notPaused.$get[l]]]
     ]
 
     $!jsonSet[challengeProgress;paused;false]
@@ -19,7 +19,7 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;resume.continued]]
+      $addTextDisplay[$tl[ui.resume.continued.$get[l]]]
       $addSeparator[Large]
       $addTextDisplay[$showPoints]
       $addTextDisplay[$showTime]

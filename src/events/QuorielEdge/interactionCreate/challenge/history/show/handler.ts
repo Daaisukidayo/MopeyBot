@@ -37,7 +37,7 @@ export default {
 
       $case[changePageInModal;
         $onlyIf[$isNumber[$get[input]];
-          $newError[$tl[$get[l];ui;history.providedPageIsNotANumber]]
+          $newError[$tl[ui.history.providedPageIsNotANumber.$get[l]]]
         ]
 
         $let[page;$get[input]]
@@ -48,10 +48,10 @@ export default {
         $jsonLoad[thisHistory;$env[history;$callFn[getPageIndex]]]
         $historyEmbed[$env[thisHistory]]
         $addContainer[
-          $addTextDisplay[$tl[$get[l];ui;history.deletePageWarning]]
+          $addTextDisplay[$tl[ui.history.deletePageWarning.$get[l]]]
           $addActionRow
-          $addButton[showHistory-confirmDeletePage-$authorID;$tl[$get[l];ui;history.buttonLabelConfirm];Success;✅]
-          $addButton[showHistory-declineDeletePage-$authorID;$tl[$get[l];ui;history.buttonLabelDecline];Danger;❌]
+          $addButton[showHistory-confirmDeletePage-$authorID;$tl[ui.history.buttonLabelConfirm.$get[l]];Success]
+          $addButton[showHistory-declineDeletePage-$authorID;$tl[ui.history.buttonLabelDecline.$get[l]];Danger]
         ;$getGlobalVar[luckyColor]]
         $interactionUpdate
         $stop
@@ -61,14 +61,14 @@ export default {
         $let[id;$env[history;$callFn[getPageIndex];id]]
 
         $onlyIf[$get[id]!=;
-          $newError[$tl[$get[l];ui;history;pageDoesNotExist]]
+          $newError[$tl[ui.history.pageDoesNotExist.$get[l]]]
         ]
 
         $jsonLoad[history;$getUserVar[challengeHistory]]
         $let[index;$arrayFindIndex[history;page;$env[page;id]==$get[id]]]
 
         $onlyIf[$get[index]!=-1;
-          $newError[$tl[$get[l];ui;history;pageDoesNotExist]]
+          $newError[$tl[ui.history.pageDoesNotExist.$get[l]]]
         ]
 
         $!arraySplice[history;$get[index];1]
@@ -83,8 +83,8 @@ export default {
 
 
       $case[showPages;
-        $modal[showHistory-changePageInModal-$authorID;$tl[$get[l];ui;history.modalTitleMoveToPage]]
-        $addTextInput[modalInput;$tl[$get[l];ui;history.modalDescriptionMoveToPage];Short;true;;;1;5]
+        $modal[showHistory-changePageInModal-$authorID;$tl[ui.history.modalTitleMoveToPage.$get[l]]]
+        $addTextInput[modalInput;$tl[ui.history.modalDescriptionMoveToPage.$get[l]];Short;true;;;1;5]
         $showModal
         $stop
       ]
@@ -92,8 +92,8 @@ export default {
 
       $case[sortingMenu;
         $if[$and[$get[sortType]==3;$get[rareAnimalId]==null];
-          $modal[showHistory-sortByRare-$authorID;$tl[$get[l];ui;history.modalTitleSortByRare]]
-          $addTextInput[modalInput;$tl[$get[l];ui;history.modalDescriptionSortByRare];Short;true;$tl[$get[l];ui;history.modalPlaceholderSortByRare]]
+          $modal[showHistory-sortByRare-$authorID;$tl[ui.history.modalTitleSortByRare.$get[l]]]
+          $addTextInput[modalInput;$tl[ui.history.modalDescriptionSortByRare.$get[l]];Short;true;$tl[ui.history.modalPlaceholderSortByRare.$get[l]]]
           $showModal
           $stop
         ]
@@ -104,8 +104,8 @@ export default {
 
 
       $case[sortByRare;
-        $onlyIf[$arrayIncludes[$getCache[allRares];$get[input]];
-          $newError[$tl[$get[l];ui;history.invalidRare]]
+        $onlyIf[$arrayIncludes[$getCache[rares;allRares];$get[input]];
+          $newError[$tl[ui.history.invalidRare.$get[l]]]
         ]
         $let[rareAnimalId;$getRareAnimalID[$get[input]]]
         $let[sortType;3]
@@ -115,21 +115,20 @@ export default {
 
 
       $case[filterByRareButton;
-        $modal[showHistory-filterByRare-$authorID;$tl[$get[l];ui;history.modalTitleFilterByRare]]
-        $addTextInput[modalInput;$tl[$get[l];ui;history.modalDescriptionFilterByRare];Short;true;$tl[$get[l];ui;history.modalPlaceholderFilterByRare]]
+        $modal[showHistory-filterByRare-$authorID;$tl[ui.history.modalTitleFilterByRare.$get[l]]]
+        $addTextInput[modalInput;$tl[ui.history.modalDescriptionFilterByRare.$get[l]];Short;true;$tl[ui.history.modalPlaceholderFilterByRare.$get[l]]]
         $showModal
         $stop
       ]
 
 
       $case[filterByRare;
-        $onlyIf[$arrayIncludes[$getCache[allRares];$get[input]];
-          $newError[$tl[$get[l];ui;history.invalidRare]]
+        $onlyIf[$arrayIncludes[$getCache[rares;allRares];$get[input]];
+          $newError[$tl[ui.history.invalidRare.$get[l]]]
         ]
         $let[rareAnimalId;$getRareAnimalID[$get[input]]]
         $let[page;1]
-        $jsonLoad[history;$getUserVar[challengeHistory]]
-        $arrayFilter[history;page;$env[page;raresList;$get[rareAnimalId]]!=;history]
+        $arrayFilter[$getUserVar[challengeHistory];page;$env[page;raresList;$get[rareAnimalId]]!=;history]
         $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
         $!jsonSet[cachedHistory;filter;true]
       ]
@@ -163,7 +162,7 @@ export default {
         $let[index;$arrayFindIndex[challengeHistory;page;$env[page;id]==$env[cachedThisHistory;id]]]
 
         $onlyIf[$get[index]!=-1;
-          $newError[$tl[$get[l];ui;history;pageDoesNotExist]]
+          $newError[$tl[ui.history.pageDoesNotExist.$get[l]]]
         ]
 
         $!jsonSet[challengeHistory;$get[index];$env[cachedThisHistory]]

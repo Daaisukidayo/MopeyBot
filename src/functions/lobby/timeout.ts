@@ -11,7 +11,7 @@ export default {
         $!deleteMessage[$channelID;$env[lobby;messageID]]
       ]
       $sendMessage[$channelID;
-        $lobbyInfoMessage[$tl[$get[l];ui;lobby.closedByInactivity;$env[lobby;host]]]
+        $lobbyInfoMessage[$tl[ui.lobby.closedByInactivity.$get[l];$env[lobby;host]]]
       ]
       $clearEveryProgress
     ;$getGlobalVar[lobbyInactiveTime];lobby-$channelID]

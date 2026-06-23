@@ -17,11 +17,11 @@ export default {
       $addAuthorDisplay
       $addSection[
         $if[$get[hasVoted];
-          $addTextDisplay[$tl[$get[l];ui;vote.cannotVote;$get[reward]]]
+          $addTextDisplay[$tl[ui.vote.cannotVote.$get[l];$get[reward]]]
         ;
-          $addTextDisplay[$tl[$get[l];ui;vote.canVote;$get[reward]]]
+          $addTextDisplay[$tl[ui.vote.canVote.$get[l];$get[reward]]]
         ]
-        $addButton[https://top.gg/bot/$clientID/vote;$tl[$get[l];ui;vote.buttonLabel];Link;;$get[hasVoted]]
+        $addButton[https://top.gg/bot/$clientID/vote;$tl[ui.vote.buttonLabel.$get[l]];Link;;$get[hasVoted]]
       ]
     ;$getGlobalVar[defaultColor]]
   `

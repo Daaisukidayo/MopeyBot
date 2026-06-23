@@ -5,17 +5,16 @@ export default {
     $let[l;$env[userProfile;language]]
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;rules.notAccepted]]
-      $addTextDisplay[$tl[$get[l];ui;rules.description]]
+      $addTextDisplay[$tl[ui.rules.notAccepted.$get[l]]]
+      $addTextDisplay[$tl[ui.rules.description.$get[l]]]
       $addSeparator
-      $addTextDisplay[$tl[$get[l];ui;rules.information;$getGlobalVar[informationLink]]]
-      $addTextDisplay[$tl[$get[l];ui;rules.tos;$getGlobalVar[tosLink]]]
-      $addTextDisplay[$tl[$get[l];ui;rules.rules;$getGlobalVar[rulesLink]]]
+      $addTextDisplay[$tl[ui.rules.information.$get[l];$getGlobalVar[informationLink]]]
+      $addTextDisplay[$tl[ui.rules.tos.$get[l];$getGlobalVar[tosLink]]]
+      $addTextDisplay[$tl[ui.rules.rules.$get[l];$getGlobalVar[rulesLink]]]
       $addSeparator
       $addActionRow
-      $addButton[acceptrules-$authorID;$tl[$get[l];ui;rules.buttonLabelAccept];Success;✅]
-      $addButton[declinerules-$authorID;$tl[$get[l];ui;rules.buttonLabelDecline];Danger;🛑]
+      $addButton[acceptrules-$authorID;$tl[ui.rules.buttonLabelAccept.$get[l]];Success;✅]
+      $addButton[declinerules-$authorID;$tl[ui.rules.buttonLabelDecline.$get[l]];Danger;🛑]
     ;$getGlobalVar[cooldownColor]]
-
   `
 }

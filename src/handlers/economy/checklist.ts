@@ -24,10 +24,10 @@ export default {
     $let[checklistReward;$getGlobalVar[checklistReward]]
 
     $let[extra;$separate[$get[checklistReward]]]
-    $let[content;$tl[$get[l];ui;checklist.completeTasks;$get[extra]]]
+    $let[content;$tl[ui.checklist.completeTasks.$get[l];$get[extra]]]
 
     $if[$get[lastClaimed]==$get[day];
-      $let[content;$tl[$get[l];ui;checklist.allRewardsReceived]]
+      $let[content;$tl[ui.checklist.allRewardsReceived.$get[l]]]
     ]
 
     $if[$and[$get[lastClaimed]!=$get[day];$get[daily]==$get[day];$get[hasVoted];$get[lastDailyRaretry]==$get[day];$get[lastDailyRaretryrun]==$get[day]];
@@ -37,7 +37,7 @@ export default {
       $deleteUserVar[caughtRaresInRaretry]
       $deleteUserVar[caughtRaresInRaretryrun]
       $setUserVar[dailyStreak;$math[$getUserVar[dailyStreak] + 1]]
-      $let[content;$tl[$get[l];ui;checklist.allTasksCompleted;$get[extra]]]
+      $let[content;$tl[ui.checklist.allTasksCompleted.$get[l];$get[extra]]]
     ]
 
     $let[streak;$getUserVar[dailyStreak]]
@@ -46,33 +46,33 @@ export default {
     $addContainer[
       $addAuthorDisplay
 
-      $addTextDisplay[$tl[$get[l];ui;checklist.title]]
+      $addTextDisplay[$tl[ui.checklist.title.$get[l]]]
       $addSeparator[Large]
 
-      $addTextDisplay[$tl[$get[l];ui;checklist.claimDaily]]
-      $addTextDisplay[$if[$get[daily]==$get[day];$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;]]]
+      $addTextDisplay[$tl[ui.checklist.claimDaily.$get[l]]]
+      $addTextDisplay[$if[$get[daily]==$get[day];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];]]]
 
       $addSeparator[Small;false]
 
-      $addTextDisplay[$tl[$get[l];ui;checklist.vote;https://top.gg/bot/$clientID/vote]]
-      $addTextDisplay[$if[$get[hasVoted];$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;]]]
+      $addTextDisplay[$tl[ui.checklist.vote.$get[l];https://top.gg/bot/$clientID/vote]]
+      $addTextDisplay[$if[$get[hasVoted];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];]]]
 
       $addSeparator[Small;false]
 
-      $addTextDisplay[$tl[$get[l];ui;checklist.catchRaretry;$getGlobalVar[maxRaretryRares]]]
-      $addTextDisplay[$if[$get[lastDailyRaretry]==$get[day];$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;($get[caughtRaresInRaretry]/$getGlobalVar[maxRaretryRares])]]]
+      $addTextDisplay[$tl[ui.checklist.catchRaretry.$get[l];$getGlobalVar[maxRaretryRares]]]
+      $addTextDisplay[$if[$get[lastDailyRaretry]==$get[day];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];($get[caughtRaresInRaretry]/$getGlobalVar[maxRaretryRares])]]]
 
       $addSeparator[Small;false]
 
-      $addTextDisplay[$tl[$get[l];ui;checklist.catchRaretryrun;$getGlobalVar[maxRaretryrunRares]]]
-      $addTextDisplay[$if[$get[lastDailyRaretryrun]==$get[day];$tl[$get[l];ui;checklist.completed];$tl[$get[l];ui;checklist.inProgress;($get[caughtRaresInRaretryrun]/$getGlobalVar[maxRaretryrunRares])]]]
+      $addTextDisplay[$tl[ui.checklist.catchRaretryrun.$get[l];$getGlobalVar[maxRaretryrunRares]]]
+      $addTextDisplay[$if[$get[lastDailyRaretryrun]==$get[day];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];($get[caughtRaresInRaretryrun]/$getGlobalVar[maxRaretryrunRares])]]]
 
       $addSeparator[Large]
       $addTextDisplay[$get[content]]
 
       $addSeparator[Large]
 
-      $addTextDisplay[$tl[$get[l];ui;checklist.streak;$get[streak]]]
+      $addTextDisplay[$tl[ui.checklist.streak.$get[l];$get[streak]]]
     ;$getGlobalVar[defaultColor]]
   `
 }

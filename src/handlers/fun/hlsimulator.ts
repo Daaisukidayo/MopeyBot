@@ -12,23 +12,20 @@ export default {
     $let[difficulty;$toTitleCase[$nullish[$option[difficulty];$message;$getGlobalVar[defaultDifficulty]]]]
 
     $if[$isNumber[$get[difficulty]]==false;
-      $jsonLoad[diff;$tl[*;data;difficulties]]
-      $jsonLoad[diffE;$jsonEntries[diff]]
-      $let[difficulty;$arrayFindIndex[diffE;e;
-        $jsonLoad[obj;$env[e;1]]
-        $arrayLoad[objValues;, ;$jsonValues[obj]]
+      $let[difficulty;$arrayFindIndex[$jsonEntries[$tl[data.difficulties]];e;
+        $arrayLoad[objValues;, ;$jsonValues[$env[e;1]]]
         $return[$arrayIncludes[objValues;$toTitleCase[$get[difficulty]]]]
       ]]
     ]
 
     $onlyif[$arrayIncludes[difficulties;$get[difficulty]];
-      $newError[$tl[$get[l];ui;hlsimulator.invalidDifficulty]]
+      $newError[$tl[ui.hlsimulator.invalidDifficulty.$get[l]]]
     ]
 
     $addCooldown
     $defer
 
-    $getCache[hlSimData;hlSimData]
+    $getCache[rares;hlSimData;hlSimData]
     $jsonLoad[totalAttempts;$eval[$getGlobalVar[hlSimAttempts];false]]
     $jsonLoad[rawList;{}]
 
@@ -84,10 +81,10 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;challenge.completed]]
+      $addTextDisplay[$tl[ui.challenge.completed.$get[l]]]
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;challenge.points;$get[totalPoints]]]
-      $addTextDisplay[$tl[$get[l];ui;challenge.rares;$get[totalRares]]]
+      $addTextDisplay[$tl[ui.challenge.points.$get[l];$get[totalPoints]]]
+      $addTextDisplay[$tl[ui.challenge.rares.$get[l];$get[totalRares]]]
       $addSeparator[Large]
       $showDesignedList[$env[list]]
     ;$getGlobalVar[luckyColor]]

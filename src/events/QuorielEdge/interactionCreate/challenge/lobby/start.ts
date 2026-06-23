@@ -33,7 +33,7 @@ export default {
     $let[s;10]
 
     $!deleteMessage[$channelID;$env[lobby;messageID]]
-    $let[mid;$sendMessage[$channelID;$callFn[startingEmbed;$tl[$get[l];ui;lobby.getReady;$get[s]]];true]]
+    $let[mid;$sendMessage[$channelID;$callFn[startingEmbed;$tl[ui.lobby.getReady.$get[l];$get[s]]];true]]
     
     $while[$get[s]>0;
       $letSub[s;1]
@@ -42,7 +42,7 @@ export default {
 
       $if[$or[$getChannelVar[lobby]==;$env[lobby;started]!=false];
         $sendMessage[$channelID;
-          $lobbyInfoMessage[$tl[$get[l];ui;lobby.failed]]
+          $lobbyInfoMessage[$tl[ui.lobby.failed.$get[l]]]
         ]
         $!deleteMessage[$channelID;$get[mid]]
         $stop
@@ -50,7 +50,7 @@ export default {
 
       $if[$get[s]>0;
         $!editMessage[$channelID;$get[mid];
-          $callFn[startingEmbed;$tl[$get[l];ui;lobby.getReady;$get[s]]]
+          $callFn[startingEmbed;$tl[ui.lobby.getReady.$get[l];$get[s]]]
         ]
       ]
     ]
@@ -67,7 +67,7 @@ export default {
     ]
 
     $sendMessage[$channelID;
-      $callFn[startingEmbed;$tl[$get[l];ui;start.hasBegun]]
+      $callFn[startingEmbed;$tl[ui.start.hasBegun.$get[l]]]
     ]
   `
 }

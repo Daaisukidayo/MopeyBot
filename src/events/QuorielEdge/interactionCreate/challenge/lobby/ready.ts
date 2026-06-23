@@ -6,10 +6,6 @@ export default {
     $let[l;$env[userProfile;language]]
     
     $checkLobby
-
-    $if[$hasCache[usernames]==false;
-      $newError[$tl[$get[l];ui;lobby.notReady]]
-    ]
     
     $jsonLoad[lobby;$getChannelVar[lobby]]
     $jsonLoad[ready;$env[lobby;ready]]
@@ -19,7 +15,7 @@ export default {
     $onlyIf[$messageID==$env[lobby;messageID];$!deleteMessage[$channelID;$messageID]]
 
     $onlyIf[$arrayIncludes[allPlayers;$authorID];
-      $newError[$tl[$get[l];ui;lobby.notParticipant]]
+      $newError[$tl[ui.lobby.notParticipant.$get[l]]]
     ]
 
     $if[$arrayIncludes[ready;$authorID];

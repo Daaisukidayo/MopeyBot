@@ -11,7 +11,7 @@ export default {
   ],
   code: `
     $if[$arrayLength[_list]==0;
-      $arrayPush[_list;$tl[$get[l];ui;challenge.unknown]]
+      $arrayPush[_list;$tl[ui.challenge.unknown.$get[l]]]
     ]
 
     $let[imageName;row1]

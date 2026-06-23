@@ -8,13 +8,13 @@ export default {
     $checkProfile
     $addCooldown
 
-    $getCache[allRares;allRares]
+    $getCache[rares;allRares;allRares]
     
     $let[rares;$toLowerCase[$default[$option[rares];$message]]]
 
     $onlyIf[$get[rares]!=;
-      $let[SNORA;$tl[$get[l];ui;args.shortRaresName]]
-      $newError[$tl[$get[l];ui;errors.usage;$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]count <$get[SNORA]1> <$get[SNORA]2>...]]
+      $let[SNORA;$tl[ui.args.shortRaresName.$get[l]]]
+      $newError[$tl[ui.errors.usage.$get[l];$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]count <$get[SNORA]1> <$get[SNORA]2>...]]
     ]
 
     $defer
@@ -61,15 +61,15 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;count.title]]
+      $addTextDisplay[$tl[ui.count.title.$get[l]]]
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;challenge.points;\`$get[totalPoints]\`]]
-      $addTextDisplay[$tl[$get[l];ui;challenge.rares;\`$get[totalRares]\`]]
+      $addTextDisplay[$tl[ui.challenge.points.$get[l];\`$get[totalPoints]\`]]
+      $addTextDisplay[$tl[ui.challenge.rares.$get[l];\`$get[totalRares]\`]]
       $addSeparator
       $showDesignedList[$env[list]]
       $if[$arrayLength[unknownContent]>0;
         $addSeparator[Large]
-        $addTextDisplay[$tl[$get[l];ui;count.unknownRares]]
+        $addTextDisplay[$tl[ui.count.unknownRares.$get[l]]]
         $addSeparator[Large]
         $showDesignedList[$env[unknownContent]]
       ]

@@ -12,11 +12,11 @@ export default {
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;invite.title]]
+      $addTextDisplay[$tl[ui.invite.title.$get[l]]]
       $addActionRow
-      $addButton[https://discord.com/oauth2/authorize?client_id=$clientID;$tl[$get[l];ui;invite.url];Link]
-      $addButton[$getGlobalVar[discordServerInvite];$tl[$get[l];ui;invite.discord];Link]
-      $addButton[https://top.gg/bot/$clientID;$tl[$get[l];ui;invite.topgg];Link]
+      $addButton[https://discord.com/oauth2/authorize?client_id=$clientID;$tl[ui.invite.url.$get[l]];Link]
+      $addButton[$getGlobalVar[discordServerInvite];$tl[ui.invite.discord.$get[l]];Link]
+      $addButton[https://top.gg/bot/$clientID;$tl[ui.invite.topgg.$get[l]];Link]
     ;$getGlobalVar[defaultColor]]
   `
 }

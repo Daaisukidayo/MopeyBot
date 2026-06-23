@@ -11,7 +11,7 @@ export default {
   ],
   output: "Json",
   code: `
-    $getCache[animalIndexes;animalIndexes]
+    $getCache[animals;animalIndexes;animalIndexes]
 
     $if[$env[_list]=={};
       $return[$env[_list]]

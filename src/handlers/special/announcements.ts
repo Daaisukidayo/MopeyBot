@@ -10,10 +10,7 @@ export default [{
 
     $defer
 
-    $jsonLoad[locales;$getGlobalVar[allLocales]]
-    $let[locale;$env[locales;$env[userProfile;language];name]]
-    $jsonLoad[announcement;$readFile[res/locale/announcement.json]]
-    $jsonLoad[announce;$env[announcement;$get[locale]]]
+    $jsonLoad[announce;$env[$readFile[res/locale/announcement.json];$get[l]]]
 
     $announcementsEmbed
   `
@@ -21,7 +18,7 @@ export default [{
   name: 'announcementsEmbed',
   code: `
     $addContainer[
-      $addTextDisplay[$tl[$get[l];ui;announcements.title]]
+      $addTextDisplay[$tl[ui.announcements.title.$get[l]]]
       $addSeparator[Large]
       $addTextDisplay[$arrayJoin[announce;\n]]
     ;$getGlobalVar[defaultColor]]

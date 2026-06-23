@@ -46,7 +46,7 @@ export default {
       ]
     ]
 
-    $lobbyInfoMessage[$tl[$get[l];ui;lobby.closedByHost]]
+    $lobbyInfoMessage[$tl[ui.lobby.closedByHost.$get[l]]]
     $sendMessage[$channelID]
     $!stopTimeout[lobby-$channelID]
   `

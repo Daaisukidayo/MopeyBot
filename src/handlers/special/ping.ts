@@ -16,7 +16,7 @@ export default {
         $addThumbnail[$userAvatar[$botID]]
       ]
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;ping.ping;$ping]]
+      $addTextDisplay[$tl[ui.ping.ping.$get[l];$ping]]
     ;$getGlobalVar[defaultColor]]
   `
 }

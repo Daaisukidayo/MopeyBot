@@ -9,7 +9,7 @@ export default {
     $let[e;$default[$option[expression];$message]]
     $let[a;$math[$get[e]]]
     $onlyIf[$get[a]!=;
-      $newError[$tl[$get[l];ui;errors.usage;$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]math <$tl[$get[l];ui;math.expression]>]]
+      $newError[$tl[ui.errors.usage.$get[l];$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]math <$tl[ui.math.expression.$get[l]]>]]
     ]
 
     $addTextDisplay[## $get[e] = $get[a]]

@@ -4,16 +4,14 @@ export default [{
   allowed: [ "button" ],
   code: `
     $arrayLoad[IID;-;$customID]
-
     $jsonLoad[userProfile;$getProfile]
     $let[l;$env[userProfile;language]]
-
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $modal[reportModal-$authorID;$tl[$get[l];ui;report.modalTitle]]
-    $addTextInput[about;$tl[$get[l];ui;report.textInputNameAbout];Short;true;$tl[$get[l];ui;report.textInputPlaceholderAbout]]
-    $addTextInput[issue;$tl[$get[l];ui;report.textInputNameIssue];Paragraph;true;$tl[$get[l];ui;report.textInputPlaceholderIssue]]
-    $addLabel[$tl[$get[l];ui;report.labelName];$tl[$get[l];ui;report.labelDescription];
+    $modal[reportModal-$authorID;$tl[ui.report.modalTitle.$get[l]]]
+    $addTextInput[about;$tl[ui.report.textInputNameAbout.$get[l]];Short;true;$tl[ui.report.textInputPlaceholderAbout.$get[l]]]
+    $addTextInput[issue;$tl[ui.report.textInputNameIssue.$get[l]];Paragraph;true;$tl[ui.report.textInputPlaceholderIssue.$get[l]]]
+    $addLabel[$tl[ui.report.labelName.$get[l]];$tl[ui.report.labelDescription.$get[l]];
       $addFileUpload[modalFile;;10]
     ]
     $showModal
@@ -36,7 +34,7 @@ export default [{
     
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;report.sent]]
+      $addTextDisplay[$tl[ui.report.sent.$get[l]]]
     ;$getGlobalVar[defaultColor]]
     $interactionUpdate
 

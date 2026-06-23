@@ -21,14 +21,14 @@ export default [{
   code: `
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;shop.title]]
+      $addTextDisplay[$tl[ui.shop.title.$get[l]]]
 
       $addActionRow
       $if[$arrayLength[userPacks]==$arrayLength[shopItems];
-        $addStringSelectMenu[.;$tl[$get[l];ui;shop.empty];true]
+        $addStringSelectMenu[.;$tl[ui.shop.empty.$get[l]];true]
         $addOption[.;;.]
       ;
-        $addStringSelectMenu[purchasingSkinpacks-$authorID;$tl[$get[l];ui;shop.selectMenuSkinsPacksPlaceholder]]
+        $addStringSelectMenu[purchasingSkinpacks-$authorID;$tl[ui.shop.selectMenuSkinsPacksPlaceholder.$get[l]]]
 
         $loop[$arrayLength[shopItems];
           $let[i;$math[$env[i] - 1]]
@@ -37,7 +37,7 @@ export default [{
           $if[$arrayIncludes[userPacks;$get[id]];$continue]
 
           $let[cost;$env[shopItems;$get[i];cost]]
-          $let[optionName;$tl[$get[l];data;shopSkinPacks.$get[id]]]
+          $let[optionName;$tl[data.shopSkinPacks.$get[id].$get[l]]]
           $let[optionDesc;$separate[$get[cost]]]
           $let[optionValue;$get[id]-$get[cost]]
 
@@ -45,7 +45,7 @@ export default [{
         ;i;true]
       ]
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;shop.available;$separate[$env[userProfile;MC]]]]
+      $addTextDisplay[$tl[ui.shop.available.$get[l];$separate[$env[userProfile;MC]]]]
     ;$getGlobalVar[defaultColor]]
   `
 }]

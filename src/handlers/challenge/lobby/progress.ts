@@ -11,7 +11,7 @@ export default {
     $jsonLoad[lobby;$getChannelVar[lobby]]
     $checkLobby
     $onlyIf[$env[lobby;started];
-      $newError[$tl[$get[l];ui;lobby.notStarted]]
+      $newError[$tl[ui.lobby.notStarted.$get[l]]]
     ]
 
     $defer
@@ -28,14 +28,14 @@ export default {
 
       $addContainer[
         $addAuthorDisplay
-        $addTextDisplay[$tl[$get[l];ui;lobby.lobbyProgressTitle]]
+        $addTextDisplay[$tl[ui.lobby.lobbyProgressTitle.$get[l]]]
         $addSeparator[Large]
         $arrayForEach[playersInLB;elem;
           $addTextDisplay[$env[elem]]
           $addSeparator[Small;false]
         ]
         $addSeparator[Large]
-        $addTextDisplay[$tl[$get[l];ui;lobby.victoryTypeTitle;$tl[$get[l];data;victoryTypes.$get[type]]]]
+        $addTextDisplay[$tl[ui.lobby.victoryTypeTitle.$get[l];$tl[data.victoryTypes.$get[type].$get[l]]]]
       ;$getGlobalVar[luckyColor]]
   
     ;
@@ -45,14 +45,14 @@ export default {
 
       $addContainer[
         $addAuthorDisplay
-        $addTextDisplay[$tl[$get[l];ui;lobby.lobbyProgressTitle]]
+        $addTextDisplay[$tl[ui.lobby.lobbyProgressTitle.$get[l]]]
         $addSeparator[Large]
         $arrayForEach[teamsInLB;elem;
           $addTextDisplay[$env[elem]]
           $addSeparator[Large]
         ]
         $addSeparator[Large]
-        $addTextDisplay[$tl[$get[l];ui;lobby.victoryTypeTitle;$tl[$get[l];data;victoryTypes.$get[type]]]]
+        $addTextDisplay[$tl[ui.lobby.victoryTypeTitle.$get[l];$tl[data.victoryTypes.$get[type].$get[l]]]]
       ;$getGlobalVar[luckyColor]]
     ]
   `

@@ -2,6 +2,6 @@ export default {
   name: 'resetArenaData',
   code: `
     $if[$env[playData]==;$return]
-    $!jsonSet[playData;arena;$dump[$getGlobalVar[userPlayData];arena]]
+    $!jsonSet[playData;arena;$env[$getGlobalVar[userPlayData];arena]]
   `
 }

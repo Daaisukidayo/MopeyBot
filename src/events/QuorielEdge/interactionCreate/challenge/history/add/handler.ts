@@ -26,15 +26,15 @@ export default {
         $switch[$get[value];
 
           $case[points;
-            $modal[addHistory-customPoints-$authorID;$tl[$get[l];ui;history.modalTitlePoints]]
-            $addTextInput[addHistoryModalInput;$tl[$get[l];ui;history.modalDescriptionPoints];Short;true;$tl[$get[l];ui;history.modalPlaceholderPoints;$env[addHistorySavedConfig;points]];$env[addHistorySavedConfig;points];1;4]
+            $modal[addHistory-customPoints-$authorID;$tl[ui.history.modalTitlePoints.$get[l]]]
+            $addTextInput[addHistoryModalInput;$tl[ui.history.modalDescriptionPoints.$get[l]];Short;true;$tl[ui.history.modalPlaceholderPoints.$get[l];$env[addHistorySavedConfig;points]];$env[addHistorySavedConfig;points];1;4]
             $showModal
             $stop
           ]
 
           $case[raresQuantity;
-            $modal[addHistory-customRares-$authorID;$tl[$get[l];ui;history.modalTitleRares]]
-            $addTextInput[addHistoryModalInput;$tl[$get[l];ui;history.modalDescriptionRares];Short;true;$tl[$get[l];ui;history.modalPlaceholderRares;$env[addHistorySavedConfig;rares]];;1;3]
+            $modal[addHistory-customRares-$authorID;$tl[ui.history.modalTitleRares.$get[l]]]
+            $addTextInput[addHistoryModalInput;$tl[ui.history.modalDescriptionRares.$get[l]];Short;true;$tl[ui.history.modalPlaceholderRares.$get[l];$env[addHistorySavedConfig;rares]];;1;3]
             $showModal
             $stop
           ]
@@ -43,9 +43,9 @@ export default {
             $historyEmbed[$env[addHistorySavedConfig]]
             $addContainer[
               $addActionRow
-              $addStringSelectMenu[addHistory-customPlayType-$authorID;$tl[$get[l];ui;history.menuTitlePlayType]]
+              $addStringSelectMenu[addHistory-customPlayType-$authorID;$tl[ui.history.menuTitlePlayType.$get[l]]]
               $arrayForEach[$getGlobalVar[playTypes];type;
-                $addOption[$tl[$get[l];data;playTypes.$env[type]];;$env[type]]
+                $addOption[$tl[data.playTypes.$env[type].$get[l]];;$env[type]]
               ]
             ;$getGlobalVar[luckyColor]]
             $interactionUpdate
@@ -56,9 +56,9 @@ export default {
             $historyEmbed[$env[addHistorySavedConfig]]
             $addContainer[
               $addActionRow
-              $addStringSelectMenu[addHistory-customDifficulty-$authorID;$tl[$get[l];ui;history.menuTitleDifficulty]]
+              $addStringSelectMenu[addHistory-customDifficulty-$authorID;$tl[ui.history.menuTitleDifficulty.$get[l]]]
               $arrayForEach[$getGlobalVar[difficulties];dif;
-                $addOption[$tl[$get[l];data;difficulties.$env[dif]];;$env[dif]]
+                $addOption[$tl[data.difficulties.$env[dif].$get[l]];;$env[dif]]
               ]
             ;$getGlobalVar[luckyColor]]
             $interactionUpdate
@@ -66,8 +66,8 @@ export default {
           ]
 
           $case[endDate;
-            $modal[addHistory-customEndDate-$authorID;$tl[$get[l];ui;history.modalTitleEndDate]]
-            $addTextInput[addHistoryModalInput;$tl[$get[l];ui;history.modalDescriptionEndDate];Paragraph;true;$tl[$get[l];ui;history.modalPlaceholderEndDate]]
+            $modal[addHistory-customEndDate-$authorID;$tl[ui.history.modalTitleEndDate.$get[l]]]
+            $addTextInput[addHistoryModalInput;$tl[ui.history.modalDescriptionEndDate.$get[l]];Paragraph;true;$tl[ui.history.modalPlaceholderEndDate.$get[l]]]
             $showModal
             $stop
           ]
@@ -77,8 +77,8 @@ export default {
             $arrayMap[$jsonEntries[$env[addHistorySavedConfig;raresList]];entry;
               $return[$env[allRareAbbreviations;$env[entry;0];0] = $env[entry;1]]
             ;unresolved]
-            $modal[addHistory-customRaresList-$authorID;$tl[$get[l];ui;history.modalTitleList]]
-            $addTextInput[addHistoryModalInput;$tl[$get[l];ui;history.modalDescriptionList];Paragraph;true;$tl[$get[l];ui;history.modalPlaceholderList];$arrayJoin[unresolved;\n]]
+            $modal[addHistory-customRaresList-$authorID;$tl[ui.history.modalTitleList.$get[l]]]
+            $addTextInput[addHistoryModalInput;$tl[ui.history.modalDescriptionList.$get[l]];Paragraph;true;$tl[ui.history.modalPlaceholderList.$get[l]];$arrayJoin[unresolved;\n]]
             $showModal
             $stop
           ]
@@ -87,14 +87,14 @@ export default {
 
       $case[customPoints;
         $onlyIf[$and[$isNumber[$get[input]];$get[input]>0];
-          $newError[$tl[$get[l];ui;history.listOptionInvalidPoints]]
+          $newError[$tl[ui.history.listOptionInvalidPoints.$get[l]]]
         ]
         $!jsonSet[addHistorySavedConfig;points;$get[input]]
       ]
 
       $case[customRares;
         $onlyIf[$and[$isNumber[$get[input]];$get[input]>0];
-          $newError[$tl[$get[l];ui;history.listOptionInvalidRares]]
+          $newError[$tl[ui.history.listOptionInvalidRares.$get[l]]]
         ]
         $!jsonSet[addHistorySavedConfig;rares;$get[input]]
       ]
@@ -111,7 +111,7 @@ export default {
         $let[date;$unparseDate[$get[input]]]
 
         $onlyIf[$and[$get[date]>0;$get[date]<$getTimestamp];
-          $newError[$tl[$get[l];ui;history.listOptionInvalidDate]]
+          $newError[$tl[ui.history.listOptionInvalidDate.$get[l]]]
         ]
 
         $!jsonSet[addHistorySavedConfig;endDate;"$get[date]"]
@@ -126,11 +126,11 @@ export default {
           $let[value;$trim[$env[keyValue;1]]]
 
           $onlyIf[$get[animalId]!=undefined;
-            $newError[$tl[$get[l];ui;history.listOptionUnknownRare;$env[keyValue;0];$env[elem]]]
+            $newError[$tl[ui.history.listOptionUnknownRare.$get[l];$env[keyValue;0];$env[elem]]]
           ]
 
           $onlyIf[$isNumber[$get[value]];
-            $newError[$tl[$get[l];ui;history.listOptionInvalidValue;$get[value];$env[elem]]]
+            $newError[$tl[ui.history.listOptionInvalidValue.$get[l];$get[value];$env[elem]]]
           ]
 
           $if[$get[value]>100;
@@ -160,7 +160,7 @@ export default {
 
         $addContainer[
           $addAuthorDisplay
-          $addTextDisplay[$tl[$get[l];ui;addhistory.cancelNewHistoryPageTitle]]
+          $addTextDisplay[$tl[ui.addhistory.cancelNewHistoryPageTitle.$get[l]]]
         ;$getGlobalVar[luckyColor]]
         $interactionUpdate
         $!stopCommandTimeout[addhistory]
@@ -187,7 +187,7 @@ export default {
 
         $addContainer[
           $addAuthorDisplay
-          $addTextDisplay[$tl[$get[l];ui;addhistory.addedHistory]]
+          $addTextDisplay[$tl[ui.addhistory.addedHistory.$get[l]]]
         ;$getGlobalVar[luckyColor]]
         $interactionUpdate
 

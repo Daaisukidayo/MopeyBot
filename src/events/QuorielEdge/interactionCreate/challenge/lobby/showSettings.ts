@@ -7,10 +7,6 @@ export default {
     $let[l;$env[userProfile;language]]
     
     $checkLobby
-
-    $if[$hasCache[usernames]==false;
-      $newError[$tl[$get[l];ui;lobby.notReady]]
-    ]
     
     $jsonLoad[difficulties;$getGlobalVar[difficulties]]
     $jsonLoad[lobbyModes;$getGlobalVar[lobbyModes]]

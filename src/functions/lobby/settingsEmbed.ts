@@ -4,38 +4,36 @@ export default {
     $let[l;$env[userProfile;language]]
     $let[host;$env[lobby;host]]
 
-    $getCache[usernames;usernames]
-
     $addContainer[
-      $addTextDisplay[$tl[$get[l];ui;lobby.settingsTitle]]
+      $addTextDisplay[$tl[ui.lobby.settingsTitle.$get[l]]]
       $addSeparator[Large]
 
       $let[disabled;$not[$checkCondition[$authorID==$get[host]]]]
 
       $c[DIFFICULTY]
-      $addTextDisplay[$tl[$get[l];ui;lobby.difficultyTitleMenu]]
+      $addTextDisplay[$tl[ui.lobby.difficultyTitleMenu.$get[l]]]
       $addActionRow
-      $addStringSelectMenu[editLobbySettings-difficulty;$tl[$get[l];ui;lobby.menuTitleChooseDifficulty];$get[disabled]]
+      $addStringSelectMenu[editLobbySettings-difficulty;$tl[ui.lobby.menuTitleChooseDifficulty.$get[l]];$get[disabled]]
       $arrayForEach[difficulties;difficulty;
-        $addOption[$tl[$get[l];data;difficulties.$env[difficulty]];$tl[$get[l];ui;lobby.optionDescriptionSelect];$env[difficulty];;$checkCondition[$env[lobby;settings;difficulty]==$env[difficulty]]]
+        $addOption[$tl[data.difficulties.$env[difficulty].$get[l]];$tl[ui.lobby.optionDescriptionSelect.$get[l]];$env[difficulty];;$checkCondition[$env[lobby;settings;difficulty]==$env[difficulty]]]
       ]
 
 
       $c[MODE]
-      $addTextDisplay[$tl[$get[l];ui;lobby.modeTitleMenu]]
+      $addTextDisplay[$tl[ui.lobby.modeTitleMenu.$get[l]]]
       $addActionRow
-      $addStringSelectMenu[editLobbySettings-mode;$tl[$get[l];ui;lobby.menuTitleChooseMode];$get[disabled]]
+      $addStringSelectMenu[editLobbySettings-mode;$tl[ui.lobby.menuTitleChooseMode.$get[l]];$get[disabled]]
       $arrayForEach[lobbyModes;mode;
-        $addOption[$tl[$get[l];data;lobbyModes.$env[mode]];$tl[$get[l];ui;lobby.optionDescriptionSelect];$env[mode];;$checkCondition[$env[lobby;settings;mode]==$env[mode]]]
+        $addOption[$tl[data.lobbyModes.$env[mode].$get[l]];$tl[ui.lobby.optionDescriptionSelect.$get[l]];$env[mode];;$checkCondition[$env[lobby;settings;mode]==$env[mode]]]
       ]
 
 
       $c[VICTORY TYPE]
-      $addTextDisplay[$tl[$get[l];ui;lobby.victoryTypeTitleMenu]]
+      $addTextDisplay[$tl[ui.lobby.victoryTypeTitleMenu.$get[l]]]
       $addActionRow
-      $addStringSelectMenu[editLobbySettings-victoryType;$tl[$get[l];ui;lobby.menuTitleChooseVictoryType];$get[disabled]]
+      $addStringSelectMenu[editLobbySettings-victoryType;$tl[ui.lobby.menuTitleChooseVictoryType.$get[l]];$get[disabled]]
       $arrayForEach[victoryTypes;type;
-        $addOption[$tl[$get[l];data;victoryTypes.$env[type]];$tl[$get[l];ui;lobby.optionDescriptionSelect];$env[type];;$checkCondition[$env[lobby;settings;victoryType]==$env[type]]]
+        $addOption[$tl[data.victoryTypes.$env[type].$get[l]];$tl[ui.lobby.optionDescriptionSelect.$get[l]];$env[type];;$checkCondition[$env[lobby;settings;victoryType]==$env[type]]]
       ]
 
       
@@ -53,9 +51,9 @@ export default {
             $!arraySplice[allPlayers;$arrayIndexOf[allPlayers;$get[host]];1]
           ]
 
-          $addStringSelectMenu[editLobbySettings-host;$tl[$get[l];ui;lobby.menuTitleGiveHost];$get[disabled]]
+          $addStringSelectMenu[editLobbySettings-host;$tl[ui.lobby.menuTitleGiveHost.$get[l]];$get[disabled]]
           $arrayForEach[allPlayers;ID;
-            $addOption[$env[usernames;$env[ID]];;$env[ID]]
+            $addOption[$username[$env[ID]];;$env[ID]]
           ]
         ]
       ]

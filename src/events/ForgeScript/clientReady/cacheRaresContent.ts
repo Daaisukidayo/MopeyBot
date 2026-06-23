@@ -1,5 +1,3 @@
-// Used in 'randomRare'
-
 export default {
   type: 'clientReady',
   code: `
@@ -11,7 +9,7 @@ export default {
       ]
     ;raresContent]
 
-    $setCache[raresContent;$env[raresContent]]
+    $setCache[rares;raresContent;$env[raresContent]]
     $logger[Info;Cached «raresContent»]
   `
 }

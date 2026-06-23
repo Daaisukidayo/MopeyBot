@@ -25,7 +25,7 @@ export default {
         $if[$get[successChance]>=$get[successRarity];
           $addContainer[
             $addAuthorDisplay
-            $addTextDisplay[$tl[$get[l];ui;kingdragon.chooseUpgrade]]
+            $addTextDisplay[$tl[ui.kingdragon.chooseUpgrade.$get[l]]]
             $addUpgradeMenuAnimalChoices[kingDragon]
           ;$getGlobalVar[defaultColor]]
           $interactionUpdate
@@ -36,11 +36,11 @@ export default {
           $saveProfile[$env[userProfile]]
 
           $let[BD;$getAnimalVariantInfo[blackDragon;emoji;$get[wrIndex]]]
-          $let[reason;$arrayRandomValue[$tl[$get[l];ui;kingdragon.reasons;$random[0;12]]]]
+          $let[reason;$arrayRandomValue[$tl[ui.kingdragon.reasons.$get[l];$random[0;12]]]]
 
           $addContainer[
           $addAuthorDisplay
-            $addTextDisplay[$tl[$get[l];ui;kingdragon.attempt;$get[BD];$get[reason];$separate[$get[MC]]]]
+            $addTextDisplay[$tl[ui.kingdragon.attempt.$get[l];$get[BD];$get[reason];$separate[$get[MC]]]]
           ;$getGlobalVar[errorColor]]
           $interactionUpdate
 
@@ -62,7 +62,7 @@ export default {
         $addContainer[
           $addAuthorDisplay
           $addSection[
-            $addTextDisplay[$tl[$get[l];ui;kingdragon.upgrade;$get[animalDisplay];$separate[$get[MC]]]]
+            $addTextDisplay[$tl[ui.kingdragon.upgrade.$get[l];$get[animalDisplay];$separate[$get[MC]]]]
             $addThumbnail[$get[thumbnail]]
           ]
         ;$get[color]]
@@ -83,10 +83,10 @@ export default {
         $addContainer[
           $addAuthorDisplay
           $addSection[
-            $addTextDisplay[$tl[$get[l];ui;kingdragon.byLuckUpgrade;$get[animalDisplay];$separate[$get[MC]]]]
+            $addTextDisplay[$tl[ui.kingdragon.byLuckUpgrade.$get[l];$get[animalDisplay];$separate[$get[MC]]]]
             $addThumbnail[$get[thumbnail]]
           ]
-          $addTextDisplay[$tl[$get[l];ui;kingdragon.rarity;$env[rareKingDragonRarity;0];$env[rareKingDragonRarity;1]]]
+          $addTextDisplay[$tl[ui.kingdragon.rarity.$get[l];$env[rareKingDragonRarity;0];$env[rareKingDragonRarity;1]]]
         ;$get[color]]
 
         $interactionUpdate

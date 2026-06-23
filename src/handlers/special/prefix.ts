@@ -8,21 +8,21 @@ export default {
     $checkProfile
 
     $onlyIf[$guildID!=;
-      $newError[$tl[$get[l];ui;errors.disabledInDMs]]
+      $newError[$tl[ui.errors.disabledInDMs.$get[l]]]
     ]
 
     $let[newPrefix;$default[$option[new-prefix];$message[0]]]
 
     $onlyIf[$get[newPrefix]!=;
-      $newError[$tl[$get[l];ui;errors.usage;$getGuildVar[prefix]prefix <$tl[$get[l];ui;args.newPrefix]>]]
+      $newError[$tl[ui.errors.usage.$get[l];$getGuildVar[prefix]prefix <$tl[ui.args.newPrefix.$get[l]]>]]
     ]
 
     $onlyIf[$get[newPrefix]!=$getGuildVar[prefix];
-      $newError[$tl[$get[l];ui;prefix.old]]
+      $newError[$tl[ui.prefix.old.$get[l]]]
     ]
 
     $onlyIf[$hasPerms[$guildID;$authorID;ManageGuild];
-      $newError[$tl[$get[l];ui;prefix.missingPerm]]
+      $newError[$tl[ui.prefix.missingPerm.$get[l]]]
     ]
 
     $setGuildVar[prefix;$get[newPrefix]]
@@ -38,7 +38,7 @@ export default {
         ]
       ]
       $addSeparator[Large]
-      $addTextDisplay[$tl[$get[l];ui;prefix.changed;$get[newPrefix]]]
+      $addTextDisplay[$tl[ui.prefix.changed.$get[l];$get[newPrefix]]]
     ;$getGlobalVar[defaultColor]]
   `
 }

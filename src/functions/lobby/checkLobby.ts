@@ -4,7 +4,7 @@ export default {
   code: `
     $let[l;$env[userProfile;language]]
     $onlyIf[$getChannelVar[lobby]!=;
-      $newError[$tl[$get[l];ui;lobby.doesNotExist]]
+      $newError[$tl[ui.lobby.doesNotExist.$get[l]]]
     ]
   `
 }

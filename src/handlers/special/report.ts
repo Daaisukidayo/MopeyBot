@@ -13,8 +13,8 @@ export default {
     $addContainer[
       $addAuthorDisplay
       $addSection[  
-        $addTextDisplay[$tl[$get[l];ui;report.title]]
-        $addButton[reportButton-$authorID;$tl[$get[l];ui;report.buttonLabel];Success;📢]
+        $addTextDisplay[$tl[ui.report.title.$get[l]]]
+        $addButton[reportButton-$authorID;$tl[ui.report.buttonLabel.$get[l]];Success;📢]
       ]
     ;$getGlobalVar[defaultColor]]
 

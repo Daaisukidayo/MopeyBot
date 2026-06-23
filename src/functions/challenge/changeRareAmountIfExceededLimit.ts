@@ -24,9 +24,9 @@ export default {
   output: "Number",
   code: `
     $jsonLoad[chartLimitsMap;$getGlobalVar[chartLimitsMap]]
-    $jsonLoad[chartLimits;$dump[$getGlobalVar[chartLimits];$nullish[$env[_difficulty];$getGlobalVar[defaultDifficulty]]]]
+    $jsonLoad[chartLimits;$env[$getGlobalVar[chartLimits];$nullish[$env[_difficulty];$getGlobalVar[defaultDifficulty]]]]
 
-    $let[category;$dump[$getRareFromCDB[$env[_rareAnimalId]];category]]
+    $let[category;$env[$getRareFromCDB[$env[_rareAnimalId]];category]]
     $let[id;$arrayFind[chartLimits;id;$env[chartLimitsMap;$env[id];category]==$get[category]]]
 
     $if[$get[id]==;

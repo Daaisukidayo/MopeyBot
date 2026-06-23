@@ -24,13 +24,9 @@ export default [{
     $!jsonSet[userProfile;acceptedRules;true]
     $saveProfile[$env[userProfile]]
 
-    $getCache[usernames;usernames]
-    $!jsonSet[usernames;$authorID;$username]
-    $setCache[usernames;$env[usernames]]
-
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;rules.accepted]]
+      $addTextDisplay[$tl[ui.rules.accepted.$get[l]]]
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
   `
@@ -43,14 +39,15 @@ export default [{
 
     $jsonLoad[userProfile;$getProfile]
     $let[l;$env[userProfile;language]]
-    
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
     $onlyIf[$env[userProfile;acceptedRules]==false;$!deleteMessage[$channelID;$messageID]]
 
+    $deleteUserVar[userProfile]
+
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[$get[l];ui;rules.declined]]
+      $addTextDisplay[$tl[ui.rules.declined.$get[l]]]
     ;$getGlobalVar[errorColor]]
     $interactionUpdate
   `
