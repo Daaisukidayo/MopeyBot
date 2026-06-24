@@ -5,7 +5,7 @@ export default {
       $addContainer[
         $addTextDisplay[$tl[ui.reminders.sentReminderTitle.$env[locale]]]
         $addSeparator[Large]
-        $addTextDisplay[$tl[ui.reminders.on.$env[locale];$tl[data.reminders.$env[locale].$env[reminder_id]]]]
+        $addTextDisplay[$tl[ui.reminders.on.$env[locale];$tl[data.reminders.$env[reminder_id].$env[locale]]]]
         $addSeparator
         $addTextDisplay[$tl[ui.reminders.sentReminderTip.$env[locale];/reminders]]
       ;$getGlobalVar[defaultColor]]
