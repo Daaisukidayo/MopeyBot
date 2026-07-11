@@ -18,13 +18,13 @@ export default {
     $let[opponentTier;$env[playData;arena;opponentTier]]
     $let[opponentAnimal;$env[playData;arena;opponentAnimal]]
     $let[opponentWardrobe;$env[playData;arena;opponentWardrobe]]
-    $let[opponentDisplay;$getAnimalVariantInfo[$get[opponentAnimal];emoji;$get[opponentWardrobe]] $getAnimalVariantInfo[$get[opponentAnimal];name;$get[opponentWardrobe]]]
+    $let[opponentDisplay;$getAnimalInfo[$get[opponentAnimal];emoji;$get[opponentWardrobe]] $getAnimalInfo[$get[opponentAnimal];name;$get[opponentWardrobe]]]
     $let[bites;$env[playData;arena;bites]]
     $let[opponentBites;$env[playData;arena;opponentBites]]
     
     $let[currentAnimal;$env[playData;currentAnimal]]
     $let[wrI;$env[userWardrobe;$get[currentAnimal]]]
-    $let[currentAnimalDisplay;$getAnimalVariantInfo[$get[currentAnimal];emoji;$get[wrI]] $userDisplayName]
+    $let[currentAnimalDisplay;$getAnimalInfo[$get[currentAnimal];emoji;$get[wrI]] $userDisplayName]
 
     $let[xpReward;$env[playData;arena;opponentXP]]
     $let[opponentApex;$advancedReplace[$get[opponentAnimal];aquaYeti;yeti;kingDragon;blackDragon;rareKingDragon;blackDragon]]
@@ -35,13 +35,11 @@ export default {
     $let[actionDesc;-1]
     
     $jsonLoad[currentApex;$env[playData;apex]]
-    $jsonLoad[arenaMatrix;$getGlobalVar[arenaMatrix]]
     $jsonLoad[counterMap;{"0": 1,"1": 2,"2": 0}]
     $jsonLoad[mistakeMap;{"0": 2,"1": 0,"2": 1}]
-    $jsonLoad[rules;$env[arenaMatrix;$get[key]]]
+    $jsonLoad[rules;$env[$getGlobalVar[arenaMatrix];$get[key]]]
 
-    $loop[$arrayLength[rules];
-      $jsonLoad[rule;$arrayAt[rules;$math[$env[i] - 1]]]
+    $forOf[rules;rule;
       $if[$get[actionR]>=$env[rule;0]==false;$continue]
       $let[actionDesc;$env[rule;1]]
       $switch[$env[rule;2];
@@ -49,7 +47,7 @@ export default {
         $case[2;$letSum[opponentBites;1]]
       ]
       $break
-    ;i;true]
+    ;i]
 
     $if[$get[turn]==0;
       $let[opponentAction;$function[

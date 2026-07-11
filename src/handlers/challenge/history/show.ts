@@ -1,4 +1,6 @@
-export default [{
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleShowHistory',
   code: `
     $reply
@@ -32,15 +34,4 @@ export default [{
 
     $newHistoryTimeout
   `
-},{
-  name: 'newHistoryTimeout',
-  code: `
-    $let[mid;$nullish[$get[mid];$messageID]]
-    $!stopAdvancedTimeout[showhistory-$authorID]
-    $!advancedTimeout[$esc[$function[
-      $deleteMessageVar[cachedHistory;{messageId}]
-      $deleteMessageVar[cachedThisHistory;{messageId}]
-      $!deleteMessage[{channelId};{messageId}]
-    ]];$getGlobalVar[showhistory_cooldown];showhistory-$authorID;{"messageId": "$get[mid]", "channelId": "$channelID"}]
-  `
-}]
+})

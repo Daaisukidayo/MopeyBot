@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleReport',
   code: `
     $reply
@@ -20,4 +22,4 @@ export default {
 
     $newCommandTimeout
   `
-}
+})

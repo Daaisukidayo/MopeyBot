@@ -22,18 +22,15 @@ export default {
         $if[$get[option]==all;  $c[If all tiers]
         
           $arrayForEach[animalIds;animalId;
-            $jsonLoad[variants;$getAnimalInfo[$env[animalId];variants]]
-
-            $loop[$arrayLength[variants];
-              $let[i;$math[$env[i] - 1]]
-              $let[packId;$env[variants;$get[i];packId]]
+            $forOf[$getAnimalInfo[$env[animalId];variants];variant;
+              $let[packId;$env[variant;packId]]
 
               $if[$get[packId]==$get[value];;$continue]
 
-              $!jsonSet[userWardrobe;$env[animalId];$get[i]]
+              $!jsonSet[userWardrobe;$env[animalId];$env[i]]
 
               $break
-            ;i;true]
+            ;i]
           ]
           $setUserVar[userWardrobe;$env[userWardrobe]]
 
@@ -54,29 +51,26 @@ export default {
           $let[tier;$get[option]]
           $arrayLoad[content]
           
-          $loop[$arrayLength[animalIds];
-            $let[i;$math[$env[i] - 1]]
-            $let[animalId;$arrayAt[animalIds;$get[i]]]
-            $let[animalTier;$getAnimalInfo[$get[animalId];tier]]
+          $forOf[animalIds;animalId;
+            $let[animalTier;$getAnimalInfo[$env[animalId];tier]]
 
             $if[$get[animalTier]>$get[tier];$break]
             $if[$get[animalTier]!=$get[tier];$continue]
 
-            $jsonLoad[variants;$getAnimalInfo[$get[animalId];variants]]
+            $jsonLoad[variants;$getAnimalInfo[$env[animalId];variants]]
 
-            $loop[$arrayLength[variants];
-              $let[j;$math[$env[j] - 1]]
-              $let[emoji;$env[variants;$get[j];emoji]]
-              $let[packId;$env[variants;$get[j];packId]]
+            $forOf[variants;variant;
+              $let[emoji;$env[variant;emoji]]
+              $let[packId;$env[variant;packId]]
 
               $if[$get[packId]==$get[value];;$continue]
 
-              $!jsonSet[userWardrobe;$get[animalId];$get[j]]
+              $!jsonSet[userWardrobe;$env[animalId];$env[j]]
               $arrayPush[content;$get[emoji]]
 
               $break
-            ;j;true]
-          ;i;true]
+            ;j]
+          ]
 
           $addContainer[
             $addAuthorDisplay
@@ -120,7 +114,7 @@ export default {
           $loop[-1;
             $letSum[i;1]
             $let[animalId;$arrayAt[animalIds;$get[i]]]
-            $if[$getAnimalVariantInfo[$get[animalId];name;1]==undefined;;$break]
+            $if[$getAnimalInfo[$get[animalId];name;1]==undefined;;$break]
           ]
 
           $onlyIf[$get[animalId]!=;

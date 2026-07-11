@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleStart',
   code: `
     $reply
@@ -24,4 +26,4 @@ export default {
     $setProgress
     $startTimer
   `
-}
+})

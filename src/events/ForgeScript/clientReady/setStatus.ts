@@ -1,4 +1,6 @@
-export default {
+import { BaseCommand } from "@tryforge/forgescript"
+
+export default new BaseCommand({
   type: "clientReady",
   code: `
     $logger[Info;Bot $username[$botID] is ready]
@@ -16,4 +18,4 @@ export default {
       $wait[15s]
     ;i]
   `
-}
+})

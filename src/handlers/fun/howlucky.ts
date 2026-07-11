@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleHowlucky',
   code: `
     $reply
@@ -24,18 +26,13 @@ export default {
       $!jsonSet[userProfile;limiters;lastHLUsed;$day]
       $!jsonSet[userProfile;limiters;HLRandom;$get[r]]
 
-      $jsonLoad[data;$getGlobalVar[howluckyData]]
+      $forOf[$getGlobalVar[howluckyData];data;
+        $if[$get[r]>=$env[data;num];;$continue]
 
-      $loop[$arrayLength[data];
-        $let[i;$math[$env[i] - 1]]
-        $jsonLoad[d;$arrayAt[data;$get[i]]]
-
-        $if[$get[r]>=$env[d;num];
-          $!jsonSet[userProfile;limiters;luckDesc;$env[d;desc]]
-          $saveProfile[$env[userProfile]]
-          $break
-        ]
-      ;i;true]
+        $!jsonSet[userProfile;limiters;luckDesc;$env[data;desc]]
+        $saveProfile[$env[userProfile]]
+        $break
+      ]
     ]
 
     $let[luckI;$env[userProfile;limiters;luckDesc]]
@@ -48,4 +45,4 @@ export default {
       $addTextDisplay[$tl[ui.howlucky.footer.$get[l];$discordTimestamp[$get[newDayAt];RelativeTime]]]
     ;$getGlobalVar[luckyColor]]
   `
-}
+})

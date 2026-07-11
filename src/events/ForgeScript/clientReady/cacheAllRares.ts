@@ -1,4 +1,6 @@
-export default {
+import { BaseCommand } from "@tryforge/forgescript"
+
+export default new BaseCommand({
   type: 'clientReady',
   code: `
     $onlyIf[$getGlobalVar[allRareAbbreviations]!=;
@@ -13,4 +15,4 @@ export default {
     $setCache[rares;allRares;$env[allRaresFromSnora]]
     $logger[Info;Cached «allRares»]
   `
-}
+})

@@ -35,7 +35,7 @@ export default {
           $sumCash[$get[MC]]
           $saveProfile[$env[userProfile]]
 
-          $let[BD;$getAnimalVariantInfo[blackDragon;emoji;$get[wrIndex]]]
+          $let[BD;$getAnimalInfo[blackDragon;emoji;$get[wrIndex]]]
           $let[reason;$arrayRandomValue[$tl[ui.kingdragon.reasons.$get[l];$random[0;12]]]]
 
           $addContainer[
@@ -52,8 +52,8 @@ export default {
         $jsonLoad[colors;$getGlobalVar[kingDragonColors]]
 
         $let[MC;2500]
-        $let[animalDisplay;$getAnimalVariantInfo[kingDragon;name;$get[wrIndex]]]
-        $let[thumbnail;$getAnimalVariantInfo[kingDragon;img;$get[wrIndex]]]
+        $let[animalDisplay;$getAnimalInfo[kingDragon;name;$get[wrIndex]]]
+        $let[thumbnail;$getAnimalInfo[kingDragon;img;$get[wrIndex]]]
         $let[color;$env[colors;$get[wrIndex]]]
 
         $sumCash[$get[MC]]
@@ -73,8 +73,8 @@ export default {
 
       $case[rareKingDragon;
         $let[MC;250000]
-        $let[animalDisplay;$getAnimalVariantInfo[rareKingDragon;name;$get[wrIndex]]]
-        $let[thumbnail;$getAnimalVariantInfo[rareKingDragon;img;$get[wrIndex]]]
+        $let[animalDisplay;$getAnimalInfo[rareKingDragon;name;$get[wrIndex]]]
+        $let[thumbnail;$getAnimalInfo[rareKingDragon;img;$get[wrIndex]]]
         $let[color;$getGlobalVar[rareKingDragonColor]]
 
         $sumCash[$get[MC]]

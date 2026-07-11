@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleSnora',
   code: `
     $reply
@@ -24,7 +26,7 @@ export default {
 
         $if[$arrayLength[rareAnimalIds]>0;
           $arrayMap[rareAnimalIds;animalId;
-            $return[$arrayJoin[$env[allRareAbbreviations;$env[animalId]];$get[separator]] ➡️ $getAnimalVariantInfo[$env[animalId];name]]
+            $return[$arrayJoin[$env[allRareAbbreviations;$env[animalId]];$get[separator]] ➡️ $getAnimalInfo[$env[animalId];name;0]]
           ;fieldContent]
 
           $addTextDisplay[$tl[ui.snora.title.$get[l];$get[tier]]]
@@ -35,4 +37,4 @@ export default {
       $addTextDisplay[$tl[ui.snora.or.$get[l];$get[separator];$env[allRareAbbreviations;whiteDove;0];$env[allRareAbbreviations;whiteDove;1]]]
     ;$getGlobalVar[luckyColor]]
   `
-}
+})

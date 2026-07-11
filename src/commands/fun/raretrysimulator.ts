@@ -1,8 +1,9 @@
 import { commandsData } from "#commandsData"
+import { ApplicationCommand } from "@tryforge/forgescript"
 const slash = commandsData.command_raretrysimulator.slash
 const options = slash.options
 
-export default {
+export default new ApplicationCommand({
   independent: true,
   code: `
     $handleRaretrysimulator
@@ -54,4 +55,4 @@ export default {
       }
     ]
   }
-}
+})

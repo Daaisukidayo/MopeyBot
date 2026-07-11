@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleSlots',
   code: `
     $reply
@@ -101,4 +103,4 @@ export default {
 
     $!editMessage[$channelID;$get[msgid];$addTextDisplay[$callFn[content]]]
   `
-}
+})

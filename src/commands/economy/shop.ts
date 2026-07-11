@@ -1,7 +1,8 @@
 import { commandsData } from "#commandsData"
+import { ApplicationCommand } from "@tryforge/forgescript"
 const slash = commandsData.command_shop.slash
 
-export default {
+export default new ApplicationCommand({
   independent: true,
   code: `
     $handleShop
@@ -21,4 +22,4 @@ export default {
       "ru": slash.description["ru"]
     }
   }
-}
+})

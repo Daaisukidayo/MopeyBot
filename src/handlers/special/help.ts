@@ -16,29 +16,22 @@ export default {
         $jsonLoad[commandsData;$readFile[res/data/commandsData.json]]
         $jsonLoad[commandsEntries;$jsonEntries[commandsData]]
 
-        $if[$get[arg]==;
-            $jsonLoad[categories;$getGlobalVar[helpCategories]]
-            
+        $if[$get[arg]==;            
             $addContainer[
                 $addTextDisplay[$tl[ui.help.allCommandsTitle.$get[l]]]
                 $addSeparator
                 $addTextDisplay[$tl[ui.help.detailed.$get[l]]]
                 $addSeparator
 
-                $arrayForEach[categories;c;
-                    $arrayCreate[prefixCommands]
-
-                    $arrayForEach[commandsEntries;data;
-                        $if[$env[c]==$env[data;1;commandCategory];
-
-                            $let[command;$env[data;1;commandName]]
-                            $arrayPush[prefixCommands;$get[command]]
-
+                $arrayForEach[$getGlobalVar[helpCategories];c;
+                    $arrayMap[commandsEntries;data;
+                        $if[$env[c]==$env[data;1;category];
+                            $return[$env[data;1;name]]
                         ]
-                    ]
+                    ;commands]
 
                     $addTextDisplay[## _$tl[data.helpCategories.$env[c].$get[l]]_]
-                    $addTextDisplay[$codeBlock[$arrayJoin[prefixCommands; ]]]
+                    $addTextDisplay[$codeBlock[$arrayJoin[commands; ]]]
 
                     $addSeparator[Large]
                 ]
@@ -47,7 +40,7 @@ export default {
             ;$getGlobalVar[defaultColor]]
         ;
             $jsonLoad[commandInfo;$arrayFind[commandsEntries;data;
-                $return[$or[$arrayIncludes[$env[data;1;commandAliases];$get[arg]];$env[data;1;commandName]==$get[arg]]]
+                $return[$or[$arrayIncludes[$env[data;1;aliases];$get[arg]];$env[data;1;name]==$get[arg]]]
             ]]
 
             $if[$env[commandInfo]==;
@@ -75,20 +68,20 @@ export default {
             $jsonLoad[pumpkinRarities;$tl[data.pumpkinRarities.$get[l]]]
             $jsonLoad[replacements;$getGlobalVar[helpReplacements]]
 
-            $jsonLoad[commandRelated;$env[commandInfo;1;commandRelated]]
-            $jsonLoad[commandAliases;$env[commandInfo;1;commandAliases]]
-            $jsonLoad[commandDesc;$env[commandInfo;1;commandDescription;$get[l]]]
+            $jsonLoad[related;$env[commandInfo;1;related]]
+            $jsonLoad[aliases;$env[commandInfo;1;aliases]]
+            $jsonLoad[description;$env[commandInfo;1;description;$get[l]]]
 
-            $let[detailedName;$env[commandInfo;1;commandDetailedName;$get[l]]]
-            $let[commandName;$env[commandInfo;1;commandName]]
-            $let[description;$arrayJoin[commandDesc;\n]]
+            $let[detailedName;$env[commandInfo;1;detailedName;$get[l]]]
+            $let[name;$env[commandInfo;1;name]]
+            $let[description;$arrayJoin[description;\n]]
 
             $if[$get[description]==;
-                $logger[Error;$get[commandName] is missing 'description']
+                $logger[Error;$get[name] is missing 'description']
                 $newError[$tl[ui.help.noInfo.$get[l]]]
             ]
 
-            $arrayUnshift[commandAliases;$get[commandName]]
+            $arrayUnshift[aliases;$get[name]]
 
             $arrayForEach[replacements;elem;
                 $let[description;$replace[$get[description];$env[elem;0];$eval[$env[elem;1];false];-1]]
@@ -96,7 +89,7 @@ export default {
 
             $let[description;$replace[$get[description];(N);\n;-1]]
 
-            $arrayMap[commandRelated;elem;$return[$nullish[$env[commandsData;$env[elem];commandName];$env[elem]]];commandRelated]
+            $arrayMap[related;elem;$return[$nullish[$env[commandsData;$env[elem];name];$env[elem]]];related]
 
             $addContainer[
                 $addTextDisplay[$tl[ui.help.commandTitle.$get[l];$get[detailedName]]]
@@ -104,10 +97,10 @@ export default {
                 $addTextDisplay[$get[description]]
                 $addSeparator
                 $addTextDisplay[$tl[ui.help.aliasesTitle.$get[l]]]
-                $addTextDisplay[## \`$arrayJoin[commandAliases;\` \`]\`]
+                $addTextDisplay[## \`$arrayJoin[aliases;\` \`]\`]
                 $addSeparator
                 $addTextDisplay[$tl[ui.help.relatedTitle.$get[l]]]
-                $addTextDisplay[## \`$default[$arrayJoin[commandRelated;\` \`];$tl[ui.help.none.$get[l]]]\`]
+                $addTextDisplay[## \`$default[$arrayJoin[related;\` \`];$tl[ui.help.none.$get[l]]]\`]
             ;$getGlobalVar[defaultColor]]
         ]
         

@@ -1,4 +1,6 @@
-export default [{
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleKingdragon',
   code: `
     $reply
@@ -32,36 +34,4 @@ export default [{
 
     $newCommandTimeout
   `
-},{
-  name: 'addUpgradeMenuAnimalChoices',
-  params: [
-    {
-      name: 'animalId',
-      required: true
-    }
-  ],
-  code: `
-    $jsonLoad[vars;$getAnimalInfo[$env[animalId];variants]]
-    $jsonLoad[userPacks;$env[userProfile;userPacks]]
-    $arrayUnshift[userPacks;s1;s2]
-
-    $let[buttonsQuantity;0]
-
-    $loop[$arrayLength[vars];
-      $let[i;$math[$env[i] - 1]]
-      $jsonLoad[variant;$arrayAt[vars;$get[i]]]
-
-      $let[packId;$env[variant;packId]]
-      $let[name;$env[variant;name]]
-      $let[emoji;$env[variant;emoji]]
-
-      $if[$arrayIncludes[userPacks;$get[packId]]==false;$continue]
-
-      $if[$math[$get[buttonsQuantity] % 3]==0;
-        $addActionRow
-      ]
-      $addButton[kingdragon-$env[animalId]-$get[i]-$authorID;$get[name];Secondary;$get[emoji]]
-      $letSum[buttonsQuantity;1]
-    ;i;true]
-  `
-}]
+})

@@ -1,10 +1,11 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_randomrare.commandName,
-  aliases: commandsData.command_randomrare.commandAliases,
+export default new BaseCommand({
+  name: commandsData.command_randomrare.name,
+  aliases: commandsData.command_randomrare.aliases,
   type: "messageCreate",
   code: `
     $handleRandomrare
   `
-}
+})

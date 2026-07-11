@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleResume',
   code: `
     $reply
@@ -26,4 +28,4 @@ export default {
       $displayLimitedRares
     ;$getGlobalVar[luckyColor]]
   `
-}
+})

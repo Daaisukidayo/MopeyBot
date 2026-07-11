@@ -1,10 +1,11 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_checklist.commandName,
-  aliases: commandsData.command_checklist.commandAliases,
+export default new BaseCommand({
+  name: commandsData.command_checklist.name,
+  aliases: commandsData.command_checklist.aliases,
   type: "messageCreate",
   code: `
     $handleChecklist
   `
-}
+})

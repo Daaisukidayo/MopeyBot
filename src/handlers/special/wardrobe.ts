@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleWardrobe',
   code: `
     $reply
@@ -55,4 +57,4 @@ export default {
 
     $newCommandTimeout
   `
-}
+})

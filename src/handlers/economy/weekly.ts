@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript";
+
+export default new ForgeFunction({
   name: 'handleWeekly',
   code: `
     $reply
@@ -6,11 +8,12 @@ export default {
     $let[l;$env[userProfile;language]]
     
     $checkProfile
+    $calendar[Iso8601]
 
     $let[MC;$getGlobalVar[weeklyReward]]
 
     $let[lastWeek;$default[$env[userProfile;limiters;lastWeeklyWeek];-1]]
-    $let[week;$if[$weekday==0;$sub[$calendarWeek;1];$calendarWeek]]
+    $let[week;$calendarWeek]
 
     $let[remDays;$sub[7;$replace[$weekday;0;7]]]
     $let[remHours;$sub[24;$hour]]
@@ -36,4 +39,4 @@ export default {
       $addTextDisplay[$tl[ui.weekly.description.$get[l];$separate[$get[MC]]]]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

@@ -1,10 +1,11 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_raretryrun.commandName,
-  aliases: commandsData.command_raretryrun.commandAliases,
+export default new BaseCommand({
+  name: commandsData.command_raretryrun.name,
+  aliases: commandsData.command_raretryrun.aliases,
   type: "messageCreate",
   code: `
     $handleRaretryrun
   `
-}
+})

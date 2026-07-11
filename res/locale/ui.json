@@ -858,9 +858,9 @@
   },
   
   "hlsimulator": {
-    "invalidDifficulty": {
-      "en-US": "Unknown difficulty!",
-      "ru": "Неизвестная сложность!"
+    "unknownDifficulty": {
+      "en-US": "Unknown difficulty! Available difficulties: `{0}`.",
+      "ru": "Неизвестная сложность! Доступные сложности: `{0}`."
     }
   },
   
@@ -1704,8 +1704,8 @@
     },
   
     "current": {
-      "en-US": "## _My prefix in this server is `{0}`_",
-      "ru": "## _Мой префикс на этом сервере `{0}`_"
+      "en-US": "## _Hi, {0}! I am {1}! My prefix on this server is `{2}`_",
+      "ru": "## _Привет, {0}! Я {1}! Вот мой префикс на этом сервере: `{2}`_"
     },
   
     "missingPerm": {
@@ -1768,8 +1768,8 @@
     },
   
     "unknownMode": {
-      "en-US": "Unknown raretry mode",
-      "ru": "Неизвестный режим попытки редких"
+      "en-US": "Unknown raretry mode! Available modes: `{0}`.",
+      "ru": "Неизвестный режим попытки редких! Доступные режимы: `{0}`."
     }
   },
   
@@ -1808,7 +1808,7 @@
       "ru": "# _Пусто_"
     },
   
-    "invalidMode": {
+    "unknownMode": {
       "en-US": "Unknown raretry mode! Available modes: `{0}`.",
       "ru": "Неизвестный режим попытки редких! Доступные режимы: `{0}`."
     },

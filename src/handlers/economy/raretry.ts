@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleRaretry',
   code: `
     $reply
@@ -24,7 +26,10 @@ export default {
     ]
 
     $onlyIf[$arrayIncludes[modes;$get[rtMode]];
-      $newError[$tl[ui.raretry.unknownMode.$get[l]]]
+      $arrayMap[modes;m;
+        $return[$tl[data.raretryModes.$env[m].$get[l]]]
+      ;modeList]
+      $newError[$tl[ui.raretry.unknownMode.$get[l];$arrayJoin[modeList;\`, \`]]]
     ]
 
     $addCooldown
@@ -92,8 +97,8 @@ export default {
       
       $let[animalId;$arrayRandomValue[$env[group;animalIds]]]
       $let[MC;$math[$env[rewards;$get[rtIndex]] * $arrayAt[multipliers;$get[rtMode]]]] $c[Can be 0]
-      $let[image;$getAnimalVariantInfo[$get[animalId];img]]
-      $let[animalDisplay;$getAnimalVariantInfo[$get[animalId];name]]
+      $let[image;$getAnimalInfo[$get[animalId];img;0]]
+      $let[animalDisplay;$getAnimalInfo[$get[animalId];name;0]]
       $let[category;$tl[data.raretryCategories.$arrayAt[categories;$get[i]].$get[l]]]
 
       $if[$get[MC]!=0;
@@ -136,4 +141,4 @@ export default {
       $callFn[embed]
     ]
   `
-}
+})

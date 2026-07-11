@@ -1,6 +1,6 @@
 // ========== IMPORTS ==========
 import { ForgeTopGG, IForgeTopGGOptions } from "@tryforge/forge.topgg"
-import { ForgeClient, LogPriority } from "@tryforge/forgescript"
+import { ForgeClient, LogPriority, FunctionManager } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
 import { ForgeRegex } from "forge.regex"
 import { shutdownSetup } from "./utils/shutdownSetup.js"
@@ -8,9 +8,11 @@ import { variables } from "./utils/loadVariables.js"
 import { ForgeCanvas } from "@tryforge/forge.canvas"
 // @ts-ignore - No type declaration available for @quoriel/edge
 import { QuorielEdge } from "@quoriel/edge"
-
+import path from "path"
 import { configDotenv } from "dotenv" 
 configDotenv()
+
+FunctionManager.load(path.resolve(process.cwd(), "dist", "functions", "native"))
 
 // ========== EXTENTIONS CONFIGURATION ==========
 const QE = new QuorielEdge({
@@ -181,7 +183,7 @@ const BOT: ForgeClient = new ForgeClient({
 DB.variables(variables)
 
 // ========== LOAD FUNCTIONS & COMMAND HANDLERS ==========
-BOT.functions.load("dist/functions/")
+BOT.functions.load("dist/functions/custom")
 BOT.functions.load("dist/handlers/")
 
 // ========== LOAD SLASH COMMANDS ==========

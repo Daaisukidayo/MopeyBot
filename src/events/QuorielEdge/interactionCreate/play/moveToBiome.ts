@@ -23,7 +23,7 @@ export default {
 
     $let[animalId;$env[playData;currentAnimal]]
     $let[color;$env[biomeColors;$get[biome]]]
-    $let[thumbnail;$getAnimalVariantInfo[$get[animalId];img;$env[userWardrobe;$get[animalId]]]]
+    $let[thumbnail;$getAnimalInfo[$get[animalId];img;$env[userWardrobe;$get[animalId]]]]
 
     $addContainer[
       $addAuthorDisplay

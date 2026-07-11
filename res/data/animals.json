@@ -305,8 +305,8 @@
       "whiteDove"
     ],
     "rarity": [
-      90,
-      100
+      9,
+      10
     ],
     "variants": [
       {
@@ -339,8 +339,8 @@
     "hasNonRareVariant": true,
     "rares": [],
     "rarity": [
-      10,
-      100
+      1,
+      10
     ],
     "variants": [
       {
@@ -640,8 +640,8 @@
       "pinkyPig"
     ],
     "rarity": [
-      224,
-      250
+      400,
+      450
     ],
     "variants": [
       {
@@ -674,8 +674,8 @@
     "hasNonRareVariant": true,
     "rares": [],
     "rarity": [
-      25,
-      250
+      49,
+      450
     ],
     "variants": [
       {
@@ -703,7 +703,7 @@
     "rares": [],
     "rarity": [
       1,
-      250
+      450
     ],
     "variants": [
       {
@@ -1331,8 +1331,8 @@
       "jackass"
     ],
     "rarity": [
-      690,
-      700
+      1375,
+      1400
     ],
     "variants": [
       {
@@ -1365,8 +1365,8 @@
     "hasNonRareVariant": true,
     "rares": [],
     "rarity": [
-      10,
-      700
+      25,
+      1400
     ],
     "variants": [
       {
@@ -1603,106 +1603,124 @@
     ]
   },
   {
-    "ID": "giraffe",
+    "ID": "cheetah",
     "canFly": false,
     "biome": 0,
-    "fullName": "Giraffe",
+    "fullName": "Cheetah",
     "tier": 8,
     "isRare": false,
     "hasNonRareVariant": false,
     "rares": [
-      "girabie",
-      "momaffieFamily",
-      "momaffie"
+      "blackPanther",
+      "leopard",
+      "jaguar"
     ],
     "rarity": [
-      415,
-      500
+      80,
+      100
     ],
     "variants": [
       {
         "packId": "s1",
-        "name": "Giraffe",
-        "emoji": "<:GiraffeS1:1361400386161742087>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158599467110/Giraffe-S1.png"
+        "name": "Cheetah",
+        "emoji": "<:CheetahS1:1361776155883212991>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310748164399/Cheetah-S1.png"
       },
       {
         "packId": "s2",
-        "name": "Giraffe",
-        "emoji": "<:GiraffeS2:1292124965663146045>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384834114818069/Giraffe-S2.png"
+        "name": "Cheetah",
+        "emoji": "<:CheetahS2:1292125135683190804>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368368353280/Cheetah-S2.png"
       },
       {
         "packId": "s2w",
-        "name": "Giraffe",
-        "emoji": "<:GiraffeS2Winter:1361400397939347511>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158901330001/Giraffe-S2-Winter.png"
+        "name": "Cheetah",
+        "emoji": "<:CheetahS2Winter:1361776168491155486>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310986973424/Cheetah-S2-Winter.png"
       }
     ]
   },
   {
-    "ID": "momaffie",
+    "ID": "jaguar",
     "canFly": false,
     "biome": 0,
-    "fullName": "Momaffie",
-    "tier": 8,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      50,
-      500
-    ],
-    "variants": [
-      {
-        "packId": "s2",
-        "name": "Momaffie",
-        "emoji": "<:MomaffieS2:1284567606422147202>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734058642210939/Momaffie.png"
-      }
-    ]
-  },
-  {
-    "ID": "momaffieFamily",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Momaffie Family",
-    "tier": 8,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      25,
-      500
-    ],
-    "variants": [
-      {
-        "packId": "s2",
-        "name": "Momaffie Family",
-        "emoji": "<:MomaffieFamilyS2:1284567618627571896>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734059053256737/Momaffie_family.png"
-      }
-    ]
-  },
-  {
-    "ID": "girabie",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Girabie",
+    "fullName": "Jaguar",
     "tier": 8,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
     "rarity": [
       10,
-      500
+      100
     ],
     "variants": [
       {
+        "packId": "s1",
+        "name": "Jaguar",
+        "emoji": "<:JaguarS1:1362129903771844638>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134313134592092/Jaguar-S1.png"
+      },
+      {
         "packId": "s2",
-        "name": "Girabie",
-        "emoji": "<:GirabieS2:1284567631956807701>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734058289762485/Girabie.png"
+        "name": "Jaguar",
+        "emoji": "<:JaguarS2:1284567739440300052>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608680370289/Jaguar.png"
+      }
+    ]
+  },
+  {
+    "ID": "leopard",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Leopard",
+    "tier": 8,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      9,
+      100
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Leopard",
+        "emoji": "<:LeopardS1:1362130076342292710>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134548850147530/Leopard-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Leopard",
+        "emoji": "<:LeopardS2:1284567751641530579>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609888067654/Leopard.png"
+      }
+    ]
+  },
+  {
+    "ID": "blackPanther",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Black Panther",
+    "tier": 8,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      1,
+      100
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Black Panther",
+        "emoji": "<:BlackPantherS1:1362130496867270896>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310450233474/BlackPanther-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Black Panther",
+        "emoji": "<:BlackPantherS2:1284567767764177028>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png"
       }
     ]
   },
@@ -1835,158 +1853,6 @@
         "name": "Raven",
         "emoji": "<:RavenS2:1292124940912562256>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1292384833518960683/Raven-S2.png"
-      }
-    ]
-  },
-  {
-    "ID": "cheetah",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Cheetah",
-    "tier": 9,
-    "isRare": false,
-    "hasNonRareVariant": false,
-    "rares": [
-      "blackPanther",
-      "leopard",
-      "jaguar"
-    ],
-    "rarity": [
-      210,
-      250
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Cheetah",
-        "emoji": "<:CheetahS1:1361776155883212991>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310748164399/Cheetah-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Cheetah",
-        "emoji": "<:CheetahS2:1292125135683190804>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368368353280/Cheetah-S2.png"
-      },
-      {
-        "packId": "s2w",
-        "name": "Cheetah",
-        "emoji": "<:CheetahS2Winter:1361776168491155486>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310986973424/Cheetah-S2-Winter.png"
-      }
-    ]
-  },
-  {
-    "ID": "jaguar",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Jaguar",
-    "tier": 9,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      20,
-      250
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Jaguar",
-        "emoji": "<:JaguarS1:1362129903771844638>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134313134592092/Jaguar-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Jaguar",
-        "emoji": "<:JaguarS2:1284567739440300052>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730608680370289/Jaguar.png"
-      }
-    ]
-  },
-  {
-    "ID": "leopard",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Leopard",
-    "tier": 9,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      16,
-      250
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Leopard",
-        "emoji": "<:LeopardS1:1362130076342292710>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134548850147530/Leopard-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Leopard",
-        "emoji": "<:LeopardS2:1284567751641530579>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730609888067654/Leopard.png"
-      }
-    ]
-  },
-  {
-    "ID": "blackPanther",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Black Panther",
-    "tier": 9,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      4,
-      250
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Black Panther",
-        "emoji": "<:BlackPantherS1:1362130496867270896>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134310450233474/BlackPanther-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Black Panther",
-        "emoji": "<:BlackPantherS2:1284567767764177028>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286730607287730186/BlackPanther.png"
-      }
-    ]
-  },
-  {
-    "ID": "gorilla",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Gorilla",
-    "tier": 9,
-    "isRare": false,
-    "hasNonRareVariant": false,
-    "rares": [],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Gorilla",
-        "emoji": "<:GorillaS1:1361776326591385670>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312123896001/Gorilla-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Gorilla",
-        "emoji": "<:GorillaS2:1294274658903920661>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368800497674/Gorilla-S2.png"
-      },
-      {
-        "packId": "s2w",
-        "name": "Gorilla",
-        "emoji": "<:GorillaS2Winter:1361776337634988224>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312417235205/Gorilla-S2-Winter.png"
       }
     ]
   },
@@ -2179,6 +2045,36 @@
         "name": "USSR Toucan",
         "emoji": "<:USSRToucanS2:1288058651075940382>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1288064074365534208/USSR_Toucan-S2.png"
+      }
+    ]
+  },
+  {
+    "ID": "gorilla",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Gorilla",
+    "tier": 9,
+    "isRare": false,
+    "hasNonRareVariant": false,
+    "rares": [],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Gorilla",
+        "emoji": "<:GorillaS1:1361776326591385670>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312123896001/Gorilla-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Gorilla",
+        "emoji": "<:GorillaS2:1294274658903920661>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292385368800497674/Gorilla-S2.png"
+      },
+      {
+        "packId": "s2w",
+        "name": "Gorilla",
+        "emoji": "<:GorillaS2Winter:1361776337634988224>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362134312417235205/Gorilla-S2-Winter.png"
       }
     ]
   },
@@ -2403,96 +2299,298 @@
     ]
   },
   {
-    "ID": "tiger",
+    "ID": "lion",
     "canFly": false,
     "biome": 0,
-    "fullName": "Tiger",
+    "fullName": "Lion",
     "tier": 10,
     "isRare": false,
     "hasNonRareVariant": false,
     "rares": [
-      "blackTiger",
-      "whiteTiger"
+      "blackLion",
+      "blackLioness",
+      "blackLionCub",
+      "whiteLion",
+      "whiteLioness",
+      "whiteLionCub",
+      "blackManedLion",
+      "lionCub",
+      "lioness"
     ],
     "rarity": [
-      190,
-      200
+      800,
+      1000
     ],
     "variants": [
       {
         "packId": "s1",
-        "name": "Tiger",
-        "emoji": "<:TigerS1:1362499086422511906>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501452419283/Tiger-S1.png"
+        "name": "Lion",
+        "emoji": "<:LionS1v2:1363245637826646309>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245816914903231/Lion-S1-v2.png"
       },
       {
         "packId": "s2",
-        "name": "Tiger",
-        "emoji": "<:TigerS2:1292125609786609675>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239722553434/Tiger-S2.png"
+        "name": "Lion",
+        "emoji": "<:LionS2:1292125931691049010>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961469739018/Lion-S2.png"
       },
       {
         "packId": "s2w",
-        "name": "Tiger",
-        "emoji": "<:TigerS2Winter:1362499098640388306>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501871718491/Tiger-S2-Winter.png"
+        "name": "Lion",
+        "emoji": "<:LionS2Winter:1363245655858086269>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245817149919443/Lion-S2-Winter.png"
       }
     ]
   },
   {
-    "ID": "whiteTiger",
+    "ID": "lioness",
     "canFly": false,
     "biome": 0,
-    "fullName": "White Tiger",
+    "fullName": "Lioness",
     "tier": 10,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
     "rarity": [
-      10,
-      200
+      113,
+      1000
     ],
     "variants": [
       {
         "packId": "s1",
-        "name": "White Tiger",
-        "emoji": "<:WhiteTigerS1:1362499110745276598>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501502408851696/WhiteTiger-S1.png"
+        "name": "Lioness",
+        "emoji": "<:LionessS1:1363446577687166986>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145840832512/Lioness-S1.png"
       },
       {
         "packId": "s2",
-        "name": "White Tiger",
-        "emoji": "<:WhiteTigerS2:1284568061474508810>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1286734059422093375/WhiteTiger.png"
+        "name": "Lioness",
+        "emoji": "<:LionessS2:1284568161206800505>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060651286589/Lioness.png"
       }
     ]
   },
   {
-    "ID": "blackTiger",
-    "deleted": true,
+    "ID": "lionCub",
     "canFly": false,
     "biome": 0,
-    "fullName": "Black Tiger",
+    "fullName": "Lion Cub",
     "tier": 10,
     "isRare": true,
     "hasNonRareVariant": true,
     "rares": [],
     "rarity": [
-      1,
-      200
+      53,
+      1000
     ],
     "variants": [
       {
         "packId": "s1",
-        "name": "Black Tiger",
-        "emoji": "<:BlackTigerS1:1363515430978719797>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363515303929319464/BlackTiger-S1.png"
+        "name": "Lion Cub",
+        "emoji": "<:LionCubS1:1363446651758579743>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145367011389/LionCub-S1.png"
       },
       {
         "packId": "s2",
-        "name": "Black Tiger",
-        "emoji": "<:BlackTigerS2:1288058719082643526>",
-        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1288064073644376095/BlackTiger.png"
+        "name": "Lion Cub",
+        "emoji": "<:LionCubS2:1284568208082341929>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060387041394/LionCub.png"
+      }
+    ]
+  },
+  {
+    "ID": "blackManedLion",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Black-Maned Lion",
+    "tier": 10,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      13,
+      1000
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Black-Maned Lion",
+        "emoji": "<:BlackManedLionS1v2:1363446321700274236>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145123606618/BlackManedLion-S1-v2.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Black-Maned Lion",
+        "emoji": "<:BlackManedLionS2:1284568114562076903>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png"
+      }
+    ]
+  },
+  {
+    "ID": "whiteLionCub",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "White Lion Cub",
+    "tier": 10,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      5,
+      1000
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "White Lion Cub",
+        "emoji": "<:WhiteLionCubS1:1363446677859598356>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146117787689/WhiteLionCub-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "White Lion Cub",
+        "emoji": "<:WhiteLionCubS2:1284568220644409386>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061607452752/WhiteLionCub.png"
+      }
+    ]
+  },
+  {
+    "ID": "whiteLioness",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "White Lioness",
+    "tier": 10,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      5,
+      1000
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "White Lioness",
+        "emoji": "<:WhiteLionessS1:1363446595898839150>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146406932540/WhiteLioness-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "White Lioness",
+        "emoji": "<:WhiteLionessS2:1284568171931766927>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png"
+      }
+    ]
+  },
+  {
+    "ID": "whiteLion",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "White Lion",
+    "tier": 10,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      5,
+      1000
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "White Lion",
+        "emoji": "<:WhiteLionS1v2:1363446370538754329>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146667245729/WhiteLion-S1-v2.png"
+      },
+      {
+        "packId": "s2",
+        "name": "White Lion",
+        "emoji": "<:WhiteLionS2:1284568130668199966>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png"
+      }
+    ]
+  },
+  {
+    "ID": "blackLionCub",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Black Lion Cub",
+    "tier": 10,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      2,
+      1000
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Black Lion Cub",
+        "emoji": "<:BlackLionCubS1:1363446693508419605>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144356184234/BlackLionCub-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Black Lion Cub",
+        "emoji": "<:BlackLionCubS2:1284568232950366290>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150342148148/BlackLionCub.png"
+      }
+    ]
+  },
+  {
+    "ID": "blackLioness",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Black Lioness",
+    "tier": 10,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      2,
+      1000
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Black Lioness",
+        "emoji": "<:BlackLionessS1:1363446620968194058>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144632873031/BlackLioness-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Black Lioness",
+        "emoji": "<:BlackLionessS2:1284568191569235999>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png"
+      }
+    ]
+  },
+  {
+    "ID": "blackLion",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Black Lion",
+    "tier": 10,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      2,
+      1000
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Black Lion",
+        "emoji": "<:BlackLionS1v2:1363446394693750885>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144901181571/BlackLion-S1-v2.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Black Lion",
+        "emoji": "<:BlackLionS2:1284568143435661374>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png"
       }
     ]
   },
@@ -2635,6 +2733,100 @@
     ]
   },
   {
+    "ID": "tiger",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Tiger",
+    "tier": 11,
+    "isRare": false,
+    "hasNonRareVariant": false,
+    "rares": [
+      "blackTiger",
+      "whiteTiger"
+    ],
+    "rarity": [
+      190,
+      200
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Tiger",
+        "emoji": "<:TigerS1:1362499086422511906>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501452419283/Tiger-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Tiger",
+        "emoji": "<:TigerS2:1292125609786609675>",
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1292386239722553434/Tiger-S2.png"
+      },
+      {
+        "packId": "s2w",
+        "name": "Tiger",
+        "emoji": "<:TigerS2Winter:1362499098640388306>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501501871718491/Tiger-S2-Winter.png"
+      }
+    ]
+  },
+  {
+    "ID": "whiteTiger",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "White Tiger",
+    "tier": 11,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      10,
+      200
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "White Tiger",
+        "emoji": "<:WhiteTigerS1:1362499110745276598>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1362501502408851696/WhiteTiger-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "White Tiger",
+        "emoji": "<:WhiteTigerS2:1284568061474508810>",
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1286734059422093375/WhiteTiger.png"
+      }
+    ]
+  },
+  {
+    "ID": "blackTiger",
+    "deleted": true,
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Black Tiger",
+    "tier": 11,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      1,
+      200
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Black Tiger",
+        "emoji": "<:BlackTigerS1:1363515430978719797>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363515303929319464/BlackTiger-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Black Tiger",
+        "emoji": "<:BlackTigerS2:1288058719082643526>",
+        "img": "https://cdn.discordapp.com/attachments/701793335941136464/1288064073644376095/BlackTiger.png"
+      }
+    ]
+  },
+  {
     "ID": "crocodile",
     "canFly": false,
     "biome": 0,
@@ -2665,302 +2857,6 @@
     ]
   },
   {
-    "ID": "lion",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Lion",
-    "tier": 11,
-    "isRare": false,
-    "hasNonRareVariant": false,
-    "rares": [
-      "blackLion",
-      "blackLioness",
-      "blackLionCub",
-      "whiteLion",
-      "whiteLioness",
-      "whiteLionCub",
-      "blackManedLion",
-      "lionCub",
-      "lioness"
-    ],
-    "rarity": [
-      800,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Lion",
-        "emoji": "<:LionS1v2:1363245637826646309>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245816914903231/Lion-S1-v2.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Lion",
-        "emoji": "<:LionS2:1292125931691049010>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386961469739018/Lion-S2.png"
-      },
-      {
-        "packId": "s2w",
-        "name": "Lion",
-        "emoji": "<:LionS2Winter:1363245655858086269>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363245817149919443/Lion-S2-Winter.png"
-      }
-    ]
-  },
-  {
-    "ID": "lioness",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Lioness",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      114,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Lioness",
-        "emoji": "<:LionessS1:1363446577687166986>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145840832512/Lioness-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Lioness",
-        "emoji": "<:LionessS2:1284568161206800505>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060651286589/Lioness.png"
-      }
-    ]
-  },
-  {
-    "ID": "lionCub",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Lion Cub",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      54,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Lion Cub",
-        "emoji": "<:LionCubS1:1363446651758579743>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145367011389/LionCub-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Lion Cub",
-        "emoji": "<:LionCubS2:1284568208082341929>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060387041394/LionCub.png"
-      }
-    ]
-  },
-  {
-    "ID": "blackManedLion",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Black-Maned Lion",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      14,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Black-Maned Lion",
-        "emoji": "<:BlackManedLionS1v2:1363446321700274236>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448145123606618/BlackManedLion-S1-v2.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Black-Maned Lion",
-        "emoji": "<:BlackManedLionS2:1284568114562076903>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734060042977393/BlackManedLion.png"
-      }
-    ]
-  },
-  {
-    "ID": "whiteLionCub",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "White Lion Cub",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      5,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "White Lion Cub",
-        "emoji": "<:WhiteLionCubS1:1363446677859598356>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146117787689/WhiteLionCub-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "White Lion Cub",
-        "emoji": "<:WhiteLionCubS2:1284568220644409386>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061607452752/WhiteLionCub.png"
-      }
-    ]
-  },
-  {
-    "ID": "whiteLioness",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "White Lioness",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      5,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "White Lioness",
-        "emoji": "<:WhiteLionessS1:1363446595898839150>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146406932540/WhiteLioness-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "White Lioness",
-        "emoji": "<:WhiteLionessS2:1284568171931766927>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061888606279/WhiteLioness.png"
-      }
-    ]
-  },
-  {
-    "ID": "whiteLion",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "White Lion",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      5,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "White Lion",
-        "emoji": "<:WhiteLionS1v2:1363446370538754329>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448146667245729/WhiteLion-S1-v2.png"
-      },
-      {
-        "packId": "s2",
-        "name": "White Lion",
-        "emoji": "<:WhiteLionS2:1284568130668199966>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734061070454784/WhiteLion.png"
-      }
-    ]
-  },
-  {
-    "ID": "blackLionCub",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Black Lion Cub",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      1,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Black Lion Cub",
-        "emoji": "<:BlackLionCubS1:1363446693508419605>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144356184234/BlackLionCub-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Black Lion Cub",
-        "emoji": "<:BlackLionCubS2:1284568232950366290>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150342148148/BlackLionCub.png"
-      }
-    ]
-  },
-  {
-    "ID": "blackLioness",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Black Lioness",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      1,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Black Lioness",
-        "emoji": "<:BlackLionessS1:1363446620968194058>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144632873031/BlackLioness-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Black Lioness",
-        "emoji": "<:BlackLionessS2:1284568191569235999>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150593675305/BlackLioness.png"
-      }
-    ]
-  },
-  {
-    "ID": "blackLion",
-    "canFly": false,
-    "biome": 0,
-    "fullName": "Black Lion",
-    "tier": 11,
-    "isRare": true,
-    "hasNonRareVariant": true,
-    "rares": [],
-    "rarity": [
-      1,
-      1000
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Black Lion",
-        "emoji": "<:BlackLionS1v2:1363446394693750885>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363448144901181571/BlackLion-S1-v2.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Black Lion",
-        "emoji": "<:BlackLionS2:1284568143435661374>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734150128242698/BlackLion.png"
-      }
-    ]
-  },
-  {
     "ID": "falcon",
     "canFly": true,
     "biome": 0,
@@ -2973,8 +2869,8 @@
       "predator"
     ],
     "rarity": [
-      3949,
-      4000
+      7949,
+      8000
     ],
     "variants": [
       {
@@ -3002,7 +2898,7 @@
     "rares": [],
     "rarity": [
       50,
-      4000
+      8000
     ],
     "variants": [
       {
@@ -3030,7 +2926,7 @@
     "rares": [],
     "rarity": [
       1,
-      4000
+      8000
     ],
     "variants": [
       {
@@ -3059,8 +2955,8 @@
       "rareVulture"
     ],
     "rarity": [
-      2999,
-      3000
+      5999,
+      6000
     ],
     "variants": [
       {
@@ -3094,7 +2990,7 @@
     "rares": [],
     "rarity": [
       1,
-      3000
+      6000
     ],
     "variants": [
       {
@@ -3160,10 +3056,66 @@
     ]
   },
   {
-    "ID": "polarBear",
+    "ID": "markhor",
     "canFly": false,
     "biome": 3,
-    "fullName": "Polar Bear",
+    "fullName": "Markhor",
+    "tier": 11,
+    "isRare": false,
+    "hasNonRareVariant": false,
+    "rares": [],
+    "rarity": [
+      685,
+      700
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Markhor",
+        "emoji": "<:MarkhorS1:1364671294544678962>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111304274093/Markhor-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Markhor",
+        "emoji": "<:MarkhorS2:1284568638170595459>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png"
+      }
+    ]
+  },
+  {
+    "ID": "bigGoat",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Big Goat",
+    "tier": 11,
+    "isRare": true,
+    "hasNonRareVariant": false,
+    "rares": [],
+    "rarity": [
+      15,
+      700
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Big Goat",
+        "emoji": "<:BigGoatS1:1364671305760375005>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353110926659716/BigGoat-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Big Goat",
+        "emoji": "<:BigGoatS2:1284568654092173404>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455092023296/BigGoat.png"
+      }
+    ]
+  },
+  {
+    "ID": "wolverine",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Wolverine",
     "tier": 11,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3171,21 +3123,21 @@
     "variants": [
       {
         "packId": "s1",
-        "name": "Polar Bear",
-        "emoji": "<:PolarBearS1:1363467191915385022>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470170634453262/PolarBear-S1.png"
+        "name": "Wolverine",
+        "emoji": "<:WolverineS1:1364671266744700948>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111568384141/Wolverine-S1.png"
       },
       {
         "packId": "s2",
-        "name": "Polar Bear",
-        "emoji": "<:PolarBearS2:1292125689109286923>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386960622751765/PolarBear-S2.png"
+        "name": "Wolverine",
+        "emoji": "<:WolverineS2:1292126006571831358>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584364675072/Wolverine-S2.png"
       },
       {
         "packId": "s2w",
-        "name": "Polar Bear",
-        "emoji": "<:PolarBearS2Winter:1363467203026096288>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470170923729097/PolarBear-S2-Winter.png"
+        "name": "Wolverine",
+        "emoji": "<:WolverineS2Winter:1364671276957831178>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111836688434/Wolverine-S2-Winter.png"
       }
     ]
   },
@@ -3296,8 +3248,8 @@
       "goldenEagle"
     ],
     "rarity": [
-      4970,
-      5000
+      7984,
+      8000
     ],
     "variants": [
       {
@@ -3330,8 +3282,8 @@
     "hasNonRareVariant": true,
     "rares": [],
     "rarity": [
-      28,
-      5000
+      14,
+      8000
     ],
     "variants": [
       {
@@ -3359,7 +3311,7 @@
     "rares": [],
     "rarity": [
       1,
-      5000
+      8000
     ],
     "variants": [
       {
@@ -3387,7 +3339,7 @@
     "rares": [],
     "rarity": [
       1,
-      5000
+      8000
     ],
     "variants": [
       {
@@ -3401,6 +3353,110 @@
         "name": "Golden Shahbaz",
         "emoji": "<:GoldenShahbazS2:1284568382850727997>",
         "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456077680826/GoldenShahbaz.png"
+      }
+    ]
+  },
+  {
+    "ID": "giraffe",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Giraffe",
+    "tier": 12,
+    "isRare": false,
+    "hasNonRareVariant": false,
+    "rares": [
+      "girabie",
+      "momaffieFamily",
+      "momaffie"
+    ],
+    "rarity": [
+      415,
+      500
+    ],
+    "variants": [
+      {
+        "packId": "s1",
+        "name": "Giraffe",
+        "emoji": "<:GiraffeS1:1361400386161742087>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158599467110/Giraffe-S1.png"
+      },
+      {
+        "packId": "s2",
+        "name": "Giraffe",
+        "emoji": "<:GiraffeS2:1292124965663146045>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292384834114818069/Giraffe-S2.png"
+      },
+      {
+        "packId": "s2w",
+        "name": "Giraffe",
+        "emoji": "<:GiraffeS2Winter:1361400397939347511>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1361395158901330001/Giraffe-S2-Winter.png"
+      }
+    ]
+  },
+  {
+    "ID": "momaffie",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Momaffie",
+    "tier": 12,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      50,
+      500
+    ],
+    "variants": [
+      {
+        "packId": "s2",
+        "name": "Momaffie",
+        "emoji": "<:MomaffieS2:1284567606422147202>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734058642210939/Momaffie.png"
+      }
+    ]
+  },
+  {
+    "ID": "momaffieFamily",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Momaffie Family",
+    "tier": 12,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      25,
+      500
+    ],
+    "variants": [
+      {
+        "packId": "s2",
+        "name": "Momaffie Family",
+        "emoji": "<:MomaffieFamilyS2:1284567618627571896>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734059053256737/Momaffie_family.png"
+      }
+    ]
+  },
+  {
+    "ID": "girabie",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Girabie",
+    "tier": 12,
+    "isRare": true,
+    "hasNonRareVariant": true,
+    "rares": [],
+    "rarity": [
+      10,
+      500
+    ],
+    "variants": [
+      {
+        "packId": "s2",
+        "name": "Girabie",
+        "emoji": "<:GirabieS2:1284567631956807701>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734058289762485/Girabie.png"
       }
     ]
   },
@@ -3459,66 +3515,10 @@
     ]
   },
   {
-    "ID": "markhor",
+    "ID": "polarBear",
     "canFly": false,
     "biome": 3,
-    "fullName": "Markhor",
-    "tier": 12,
-    "isRare": true,
-    "hasNonRareVariant": false,
-    "rares": [],
-    "rarity": [
-      600,
-      700
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Markhor",
-        "emoji": "<:MarkhorS1:1364671294544678962>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111304274093/Markhor-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Markhor",
-        "emoji": "<:MarkhorS2:1284568638170595459>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734456429744221/Markhor.png"
-      }
-    ]
-  },
-  {
-    "ID": "bigGoat",
-    "canFly": false,
-    "biome": 3,
-    "fullName": "Big Goat",
-    "tier": 12,
-    "isRare": true,
-    "hasNonRareVariant": false,
-    "rares": [],
-    "rarity": [
-      15,
-      700
-    ],
-    "variants": [
-      {
-        "packId": "s1",
-        "name": "Big Goat",
-        "emoji": "<:BigGoatS1:1364671305760375005>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353110926659716/BigGoat-S1.png"
-      },
-      {
-        "packId": "s2",
-        "name": "Big Goat",
-        "emoji": "<:BigGoatS2:1284568654092173404>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1286734455092023296/BigGoat.png"
-      }
-    ]
-  },
-  {
-    "ID": "wolverine",
-    "canFly": false,
-    "biome": 3,
-    "fullName": "Wolverine",
+    "fullName": "Polar Bear",
     "tier": 12,
     "isRare": false,
     "hasNonRareVariant": false,
@@ -3526,21 +3526,21 @@
     "variants": [
       {
         "packId": "s1",
-        "name": "Wolverine",
-        "emoji": "<:WolverineS1:1364671266744700948>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111568384141/Wolverine-S1.png"
+        "name": "Polar Bear",
+        "emoji": "<:PolarBearS1:1363467191915385022>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470170634453262/PolarBear-S1.png"
       },
       {
         "packId": "s2",
-        "name": "Wolverine",
-        "emoji": "<:WolverineS2:1292126006571831358>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1292460584364675072/Wolverine-S2.png"
+        "name": "Polar Bear",
+        "emoji": "<:PolarBearS2:1292125689109286923>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1292386960622751765/PolarBear-S2.png"
       },
       {
         "packId": "s2w",
-        "name": "Wolverine",
-        "emoji": "<:WolverineS2Winter:1364671276957831178>",
-        "img": "https://media.discordapp.net/attachments/701793335941136464/1365353111836688434/Wolverine-S2-Winter.png"
+        "name": "Polar Bear",
+        "emoji": "<:PolarBearS2Winter:1363467203026096288>",
+        "img": "https://media.discordapp.net/attachments/701793335941136464/1363470170923729097/PolarBear-S2-Winter.png"
       }
     ]
   },
@@ -4074,8 +4074,8 @@
       "aquaYeti"
     ],
     "rarity": [
-      575,
-      600
+      775,
+      800
     ],
     "variants": [
       {
@@ -4103,7 +4103,7 @@
     "rares": [],
     "rarity": [
       25,
-      600
+      800
     ],
     "variants": [
       {

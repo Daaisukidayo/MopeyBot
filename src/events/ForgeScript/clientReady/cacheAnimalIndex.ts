@@ -1,34 +1,30 @@
-export default {
+import { BaseCommand } from "@tryforge/forgescript"
+
+export default new BaseCommand({
   type: 'clientReady',
   code: `
     $jsonLoad[animalIndexes;{}]
-    $jsonLoad[animals;$getAnimalsData]
-    $loop[$arrayLength[animals];
-      $let[i;$math[$env[i] - 1]]
-      $let[animalId;$env[animals;$get[i];ID]]
-      $jsonSet[animalIndexes;$get[animalId];$get[i]]
-    ;i;true]
+    $forOf[$getAnimalsData;obj;
+      $jsonSet[animalIndexes;$env[obj;ID];$env[i]]
+    ;i]
     $setCache[animals;animalIndexes;$env[animalIndexes]]
     $logger[Info;Cached «animalIndexes»]
 
 
-    $onlyIf[$getGlobalVar[hlSimKey]!=;
-      $logger[Error;Failed to Cached «hlSimData»: «hlSimKey» variable is empty!]
-    ]
     $jsonLoad[hlKey;$getGlobalVar[hlSimKey]]
+    $onlyIf[$env[hlKey]!=;
+      $logger[Error;Failed to cache «hlSimData»: «hlSimKey» variable is empty!]
+    ]
     $jsonLoad[data;{}]
 
     $arrayForEach[hlKey;animalsIds;
-      $loop[$arrayLength[animalsIds];
-        $let[animalId;$env[animalsIds;$sub[$env[i];1]]]
-
-        $if[$env[data;$get[animalId]]==;
-          $jsonSet[data;$get[animalId];$not[$or[$get[animalId]==null;$getAnimalInfo[$get[animalId];isRare]==false;$includes[$get[animalId];shop]==true]]]
-        ]
-      ;i;true]
+      $forOf[animalsIds;animalId;
+        $if[$jsonHas[data;$env[animalId]];$continue]
+        $jsonSet[data;$env[animalId];$not[$or[$env[animalId]==null;$getAnimalInfo[$env[animalId];isRare]==false;$includes[$env[animalId];shop]]]]
+      ;i]
     ]
 
     $setCache[rares;hlSimData;$env[data]]
     $logger[Info;Cached «hlSimData»]
   `
-}
+})

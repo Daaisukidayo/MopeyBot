@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleTornado',
   code: `
     $reply
@@ -46,4 +48,4 @@ export default {
       ]
     ;$get[color]]
   `
-}
+})

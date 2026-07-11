@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleRules',
   code: `
     $reply
@@ -16,4 +18,4 @@ export default {
       $addTextDisplay[$tl[ui.rules.usage.$get[l];$getGlobalVar[usageLink]]]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

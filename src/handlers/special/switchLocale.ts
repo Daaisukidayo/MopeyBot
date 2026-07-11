@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleSwitchlocale',
   code: `
     $reply
@@ -26,4 +28,4 @@ export default {
       $addTextDisplay[$tl[ui.switchlocale.switched.$get[locale];$env[locales;$get[locale]]]]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

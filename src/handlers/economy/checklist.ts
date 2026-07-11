@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleChecklist',
   code: `
     $reply
@@ -75,4 +77,4 @@ export default {
       $addTextDisplay[$tl[ui.checklist.streak.$get[l];$get[streak]]]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

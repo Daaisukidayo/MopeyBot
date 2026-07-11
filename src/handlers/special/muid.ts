@@ -20,17 +20,14 @@ export default {
 
     $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
 
-    $loop[$arrayLength[allUserIDs];
-      $let[ID;$arrayAt[allUserIDs;$math[$env[i] - 1]]]
-
+    $forOf[allUserIDs;ID;
       $let[userMUID;$env[$getProfile[$get[ID]];MUID]]
 
       $if[$get[userMUID]==$get[arg];;$continue]
 
       $let[userID;$get[ID]]
-
       $break
-    ;i;true]
+    ]
 
     $onlyIf[$and[$get[arg]>0;$get[userMUID]!=;$get[userID]!=];
       $newError[$tl[ui.muid.userDoesNotExist.$get[l];$get[arg]]]

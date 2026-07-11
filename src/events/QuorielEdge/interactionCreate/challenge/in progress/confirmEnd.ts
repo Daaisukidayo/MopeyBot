@@ -18,45 +18,29 @@ export default {
       $newError[$tl[ui.challenge.active.$get[l]]]
     ]
 
+    $!jsonSet[challengeProgress;endDate;"$getTimestamp"]
+    $!jsonSet[challengeProgress;playType;$if[$env[challengeProgress;teamID]==-1;0;1]]
     $jsonLoad[raresList;$env[challengeProgress;list]]
-    $jsonLoad[history;$getUserVar[challengeHistory]]
     $jsonLoad[result;$generateList[$sortList[$env[raresList]]]]
       
     $jsonLoad[list;$env[result;l]]
 
-    $addContainer[
-      $addAuthorDisplay  
-      $addTextDisplay[$tl[ui.challenge.completed.$get[l]]]
-      $addSeparator[Large]
-      $addTextDisplay[$showPoints]
-      $addTextDisplay[$showRares]
-      $addSeparator[Large]
-      $showDesignedList[$env[list]]
-    ;$getGlobalVar[luckyColor]]
+    $addChallengeCompletedContainer[{
+      "locale": "$get[l]",
+      "points": $env[challengeProgress;points],
+      "rares": $env[challengeProgress;rares],
+      "list": $env[list]
+    }]
     $interactionUpdate
 
     $stopTimer
     $deleteTime
 
-    $c[============== ADDING HISTORY ==============]
 
-    $let[playType;$if[$env[challengeProgress;teamID]==-1;0;1]]
-
-    $jsonLoad[newHistory;$getGlobalVar[baseHistoryPage]]
-
-    $!jsonSet[newHistory;id;$randomUUID]
-    $!jsonSet[newHistory;points;$env[challengeProgress;points]]
-    $!jsonSet[newHistory;rares;$env[challengeProgress;rares]]
-    $!jsonSet[newHistory;endDate;"$getTimestamp"]
-    $!jsonSet[newHistory;playType;$get[playType]]
-    $!jsonSet[newHistory;difficulty;$env[challengeProgress;difficulty]]
-    $!jsonSet[newHistory;raresList;$env[challengeProgress;list]]
-
-    $arrayPushJSON[history;$env[newHistory]]
-    $setUserVar[challengeHistory;$env[history]]
+    $pushNewHistoryPage[$env[challengeProgress]]
 
     $if[$env[challengeProgress;teamID]==-1;
-      $deleteProgress
+      $deleteChallengeProgress
     ;
       $!jsonSet[challengeProgress;started;false]
       $saveProgress[$env[challengeProgress]]

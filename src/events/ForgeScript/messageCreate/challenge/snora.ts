@@ -1,10 +1,11 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_snora.commandName,
-  aliases: commandsData.command_snora.commandAliases,
+export default new BaseCommand({
+  name: commandsData.command_snora.name,
+  aliases: commandsData.command_snora.aliases,
   type: "messageCreate",
   code: `
     $handleSnora
   `
-}
+})

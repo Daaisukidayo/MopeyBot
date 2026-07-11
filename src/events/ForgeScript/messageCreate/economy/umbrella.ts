@@ -1,10 +1,11 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_umbrella.commandName,
-  aliases: commandsData.command_umbrella.commandAliases,
+export default new BaseCommand({
+  name: commandsData.command_umbrella.name,
+  aliases: commandsData.command_umbrella.aliases,
   type: "messageCreate",
   code: `
     $handleSoccer
   `
-}
+})

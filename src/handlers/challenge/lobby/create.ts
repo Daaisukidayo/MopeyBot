@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleCreateLobby',
   code: `
     $reply
@@ -57,4 +59,4 @@ export default {
     $setChannelVar[lobby;$env[lobby]]
     $newLobbyTimeout
   `
-}
+})

@@ -1,4 +1,6 @@
-export default {
+import { BaseCommand } from "@tryforge/forgescript";
+
+export default new BaseCommand({
   type: "messageCreate",
   code: `
     $jsonLoad[challengeProgress;$getProgress]
@@ -55,21 +57,20 @@ export default {
     
 
     $c[Handling every provided rare]
-    $loop[$arrayLength[providedRares];
-      $let[caughtRare;$arrayAt[providedRares;$math[$env[i] - 1]]]
-
-      $if[$arrayIncludes[allRares;$get[caughtRare]]==false;
-        $if[$env[i]==1;$break;$continue] $c[Stops the loop if the first provided rare is invalid, otherwise continues.]
+    $forOf[providedRares;providedRare;
+      $if[$arrayIncludes[allRares;$env[providedRare]]==false;
+        $if[$env[i]==0;$stop;$continue] $c[Stops the loop if the first provided rare is invalid, otherwise continues.]
       ]
 
-      $let[rareAnimalId;$getRareAnimalID[$get[caughtRare]]]
+      $let[rareAnimalId;$getRareAnimalID[$env[providedRare]]]
       
-      $let[pointsFromChart;$getChartPoints[$get[rareAnimalId]]]
-      $let[category;$env[$getRareFromCDB[$get[rareAnimalId]];category]]
+      $jsonLoad[rareDB;$getRareFromCDB[$get[rareAnimalId]]]
+      $let[pointsFromChart;$env[rareDB;points]]
+      $let[category;$env[rareDB;category]]
 
       $let[chartlimitId;$arrayFind[chartLimits;id;$env[chartLimitsMap;$env[id];category]==$get[category]]]
 
-      $c[if rare is not limited, adds immediately to the list and continues cycle]
+      $c[if rare is not limited, adds immediately to the list and continues loop]
       $if[$get[chartlimitId]==;
         $callFn[addRareToList]
         $continue
@@ -85,16 +86,15 @@ export default {
 
       $c[Adds an informational content about reaching the rare animal limit]
       $if[$get[limitAnimalCount]==$get[limit];
-        $let[limitedAnimalDisplay;$getAnimalVariantInfo[$get[rareAnimalId];emoji]]
+        $let[limitedAnimalDisplay;$getAnimalInfo[$get[rareAnimalId];emoji;0]]
         $arrayPush[reachedLimitContent;$tl[ui.challenge.reachedLimit.$get[l];$get[limitedAnimalDisplay]]]
       ]
-    ;i;true]
+    ;i]
 
     $onlyIf[$get[points]>0]
     
-    $jsonLoad[entries;$jsonEntries[tempRaresData]]
-    $arrayMap[entries;e;
-      $let[animalDisplay;$getAnimalVariantInfo[$env[e;0];emoji]]
+    $arrayMap[$jsonEntries[tempRaresData];e;
+      $let[animalDisplay;$getAnimalInfo[$env[e;0];emoji;0]]
       $let[pointsInEntry;$env[e;1;points]]
       $let[quantityInEntry;$env[e;1;quantity]]
       $return[## - $get[animalDisplay]\`$get[quantityInEntry]\` «\`+$get[pointsInEntry]\`»]
@@ -102,8 +102,7 @@ export default {
     
 
     $c[Adds and saves total points and total rares]
-    $jsonLoad[le;$jsonEntries[raresList]]
-    $arrayForEach[le;e;
+    $arrayForEach[$jsonEntries[raresList];e;
       $let[quantity;$env[e;1]]
 
       $letSum[totalPoints;$math[$env[$getRareFromCDB[$env[e;0]];points] * $get[quantity]]]
@@ -113,12 +112,12 @@ export default {
     $!jsonSet[challengeProgress;rares;$get[totalRares]]
 
     $c[Adds an event for prediction]
-    $let[currentTimeMS;$math[3600000 - ($env[challengeProgress;endTime] - $getTimestamp)]]
-    $let[passedSeconds;$round[$math[$get[currentTimeMS] / 1000]]]
+      $let[currentTimeMS;$math[3600000 - ($env[challengeProgress;endTime] - $getTimestamp)]]
+      $let[passedSeconds;$round[$math[$get[currentTimeMS] / 1000]]]
 
-    $arrayLoad[event; ;$get[passedSeconds] $get[totalPoints]]
-    $arrayPushJSON[events;$env[event]]
-    $!jsonSet[challengeProgress;events;$env[events]]
+      $arrayLoad[event; ;$get[passedSeconds] $get[totalPoints]]
+      $arrayPushJSON[events;$env[event]]
+      $!jsonSet[challengeProgress;events;$env[events]]
 
     $if[$env[challengeProgress;paused];
       $!jsonSet[challengeProgress;paused;false]
@@ -145,4 +144,4 @@ export default {
     ;$getGlobalVar[luckyColor]]
     $displayLimitedRares
   `
-}
+})

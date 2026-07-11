@@ -1,4 +1,6 @@
-export default {
+import { BaseCommand } from "@tryforge/forgescript"
+
+export default new BaseCommand({
   type: "clientReady",
   code: `
     $loop[-1;    
@@ -27,4 +29,4 @@ export default {
       $wait[5m]
     ]
   `
-}
+})

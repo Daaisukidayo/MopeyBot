@@ -194,8 +194,8 @@ export default {
               $if[$and[$random[1;100]<=10;$arrayLength[preyIndexes]>0];
 
                 $let[preyID;$env[preyBase;$arrayRandomValue[preyIndexes];name]]
-                $let[preyName;$getAnimalVariantInfo[$get[preyID];name]]
-                $let[preyEmoji;$getAnimalVariantInfo[$get[preyID];emoji]]
+                $let[preyName;$getAnimalInfo[$get[preyID];name;0]]
+                $let[preyEmoji;$getAnimalInfo[$get[preyID];emoji;0]]
                 $let[preyTier;$getAnimalInfo[$get[preyID];tier]]
 
                 $jsonLoad[xpArr;$env[xpPerTier;$get[preyTier]]]
@@ -280,9 +280,9 @@ export default {
           $jsonLoad[oppArr;$arrayRandomValue[oppData]]
           $let[oppWrI;$env[oppArr;0]]
           $let[oppID;$env[oppArr;1]]
-          $let[oppDisplay;$getAnimalVariantInfo[$get[oppID];name;$get[oppWrI]]]
+          $let[oppDisplay;$getAnimalInfo[$get[oppID];name;$get[oppWrI]]]
           $let[desc;$tl[ui.play.arena.wentInArena.$get[l];$get[oppDisplay]]]
-          $let[thumbnail;$getAnimalVariantInfo[$get[oppID];img;$get[oppWrI]]]
+          $let[thumbnail;$getAnimalInfo[$get[oppID];img;$get[oppWrI]]]
 
           $let[min;$env[xpPerTier;$get[opponentTier];0]]
           $let[max;$env[xpPerTier;$get[opponentTier];1]]

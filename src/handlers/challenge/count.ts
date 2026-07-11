@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleCount',
   code: `
     $reply
@@ -23,21 +25,14 @@ export default {
     $jsonLoad[rawList;{}]
     $arrayCreate[unknownContent]
 
-    $loop[$arrayLength[caughtRares];
-      $let[caughtRare;$arrayAt[caughtRares;$math[$env[i] - 1]]]
-
-      $arrayLoad[keyValue;=;$get[caughtRare]]
+    $forOf[caughtRares;caughtRare;
+      $arrayLoad[keyValue;=;$env[caughtRare]]
 
       $let[animalId;$getRareAnimalID[$env[keyValue;0]]]
-      $let[value;$default[$env[keyValue;1];1]]
+      $let[value;$nullish[$env[keyValue;1];1]]
 
-      $if[$get[animalId]==undefined;
-        $arrayPush[unknownContent;\`$get[caughtRare]\`]
-        $continue
-      ]
-
-      $if[$isNumber[$get[value]]==false;
-        $arrayPush[unknownContent;\`$get[caughtRare]\`]
+      $if[$or[$isNumber[$get[value]]==false;$get[animalId]==undefined];
+        $arrayPush[unknownContent;\`$env[caughtRare]\`]
         $continue
       ]
 
@@ -50,7 +45,7 @@ export default {
       ]
 
       $!jsonSet[rawList;$get[animalId];$get[value]]
-    ;i;true]
+    ]
 
     $jsonLoad[result;$generateList[$sortList[$env[rawList]]]]
       
@@ -75,4 +70,4 @@ export default {
       ]
     ;$getGlobalVar[luckyColor]]
   `
-}
+})

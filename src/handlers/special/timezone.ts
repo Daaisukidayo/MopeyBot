@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleTimezone',
   code: `
     $reply
@@ -41,4 +43,4 @@ export default {
 			$addTextDisplay[$tl[ui.timezone.current.$get[l];$env[userProfile;timezone]]]
 		;$getGlobalVar[defaultColor]]
   `
-}
+})

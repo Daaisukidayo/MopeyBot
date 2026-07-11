@@ -1,9 +1,10 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_help.commandName,
+export default new BaseCommand({
+  name: commandsData.command_help.name,
   type: "messageCreate",
   code: `
     $handleHelp
   `
-}
+})

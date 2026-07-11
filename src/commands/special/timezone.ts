@@ -1,8 +1,9 @@
 import { commandsData } from "#commandsData"
+import { ApplicationCommand } from "@tryforge/forgescript"
 const slash = commandsData.command_timezone.slash
 const options = slash.options
 
-export default {
+export default new ApplicationCommand({
   independent: true,
   code: `
     $handleTimezone
@@ -40,4 +41,4 @@ export default {
       }
     ]
   }
-}
+})

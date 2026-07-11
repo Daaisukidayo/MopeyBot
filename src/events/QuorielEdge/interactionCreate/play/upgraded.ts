@@ -25,7 +25,7 @@ export default {
     
     $let[biome;$getAnimalInfo[$get[animalId];biome]]
     $let[color;$default[$env[biomeColors;$get[biome]];$getGlobalVar[defaultColor]]]
-    $let[animalName;$getAnimalVariantInfo[$get[animalId];name;$get[wrI]]]
+    $let[animalName;$getAnimalInfo[$get[animalId];name;$get[wrI]]]
 
     $sumPlayCash[$math[$get[bonusPerUpgrade] + $get[bonusPerRare]]]
 

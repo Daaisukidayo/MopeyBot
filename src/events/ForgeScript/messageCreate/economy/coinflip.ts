@@ -1,10 +1,11 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_coinflip.commandName,
-  aliases: commandsData.command_coinflip.commandAliases,
+export default new BaseCommand({
+  name: commandsData.command_coinflip.name,
+  aliases: commandsData.command_coinflip.aliases,
   type: "messageCreate",
   code: `
     $handleCoinflip
   `
-}
+})

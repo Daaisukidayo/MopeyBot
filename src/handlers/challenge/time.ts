@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleTime',
   code: `
     $reply
@@ -59,4 +61,4 @@ export default {
       $addTextDisplay[$showTime]
     ;$getGlobalVar[luckyColor]]
   `
-}
+})

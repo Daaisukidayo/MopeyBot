@@ -8,19 +8,17 @@ export default {
     $checkProfile
 
     $jsonLoad[modes;$getGlobalVar[raretryModes]]
-    $jsonLoad[allLocales;$jsonKeys[$getGlobalVar[allLocales]]]
 
     $let[attempts;$toLowerCase[$nullish[$option[attempts];$message[0];100]]]
     $if[$isNumber[$get[attempts]]==false;
-      $loop[$arrayLength[allLocales];
-        $let[locale;$arrayAt[allLocales;$math[$env[i] - 1]]]
-        $let[localeMax;$tl[ui.special.maximum.$get[locale]]]
+      $forOf[$getGlobalVar[allLocales];;
+        $let[localeMax;$tl[ui.special.maximum.$env[key]]]
 
-        $if[$get[attempts]==$get[localeMax]==false;$continue]
+        $if[$get[attempts]!=$get[localeMax];$continue]
 
         $let[attempts;$replace[$get[attempts];$get[localeMax];$getGlobalVar[maxRtsimAttempts]]]
         $break
-      ;i;true]
+      ;key]
     ]
     
     $let[rtMode;$nullish[$option[mode];$message[1];$env[userProfile;rtMode]]]
@@ -40,7 +38,7 @@ export default {
       $arrayMap[modes;m;
         $return[$tl[data.raretryModes.$env[m].$get[l]]]
       ;modeList]
-      $newError[$tl[ui.raretrysimulator.invalidMode.$get[l];$arrayJoin[modeList;\`, \`]]]
+      $newError[$tl[ui.raretrysimulator.unknownMode.$get[l];$arrayJoin[modeList;\`, \`]]]
     ]
 
     $addCooldown
@@ -59,7 +57,6 @@ export default {
     ]
 
     $loop[$get[attempts];
-
       $loop[$arrayLength[rareGroups];
         $let[i;$math[$env[i] - 1]]
 
@@ -87,7 +84,7 @@ export default {
 
       $if[$arrayLength[mapEntries]>0;
         $arrayMap[mapEntries;kv;
-          $return[$getAnimalVariantInfo[$env[kv;0];emoji]\`$env[kv;1]\`]
+          $return[$getAnimalInfo[$env[kv;0];emoji;0]\`$env[kv;1]\`]
         ;contentInEntries]
 
         $return[# _\`$tl[data.raretryCategories.$env[entry;0].$get[l]] ($env[entry;1;rarity;0]/$env[entry;1;rarity;1])\`_\n## $arrayJoin[contentInEntries; ]]

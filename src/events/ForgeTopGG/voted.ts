@@ -1,4 +1,6 @@
-export default {
+import { BaseCommand } from "@tryforge/forgescript";
+
+export default new BaseCommand({
   type: "voted",
   code: `
     $let[ID;$voteUserID]
@@ -26,4 +28,4 @@ export default {
     ;$getGlobalVar[defaultColor]]
     $sendDM[$get[ID]]
   `
-}
+})

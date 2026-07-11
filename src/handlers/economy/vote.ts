@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleVote',
   code: `
     $reply
@@ -25,4 +27,4 @@ export default {
       ]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

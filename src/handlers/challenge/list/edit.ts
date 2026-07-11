@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleEditlist',
   code: `
     $reply
@@ -45,7 +47,7 @@ export default {
     ]]
 
     $let[animalId;$getRareAnimalID[$get[arg1]]]
-    $let[animalDisplay;$getAnimalVariantInfo[$get[animalId];emoji]]
+    $let[animalDisplay;$getAnimalInfo[$get[animalId];emoji;0]]
     $let[oldQuantity;$default[$env[raresList;$get[animalId]];0]]
     $let[rares;0]
     $let[points;0]
@@ -119,4 +121,4 @@ export default {
       $showDesignedList[$env[list]]
     ;$getGlobalVar[luckyColor]]
   `
-}
+})

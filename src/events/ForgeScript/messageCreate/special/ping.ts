@@ -1,10 +1,11 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_ping.commandName,
-  aliases: commandsData.command_ping.commandAliases,
+export default new BaseCommand({
+  name: commandsData.command_ping.name,
+  aliases: commandsData.command_ping.aliases,
   type: "messageCreate",
   code: `
     $handlePing
   `
-}
+})

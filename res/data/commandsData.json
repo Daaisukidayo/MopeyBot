@@ -1,12 +1,12 @@
 {
   "command_addhistory": {
-    "commandName": "addhistory",
-    "commandAliases": [
+    "name": "addhistory",
+    "aliases": [
       "addhis",
       "ahis",
       "addh"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Add History",
       "ru": "Добавить историю"
     },
@@ -22,7 +22,7 @@
         "ru": "Добавляет новую настраиваемую страницу в вашу историю 1-часового испытания удачи."
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Adds a new configurable page to your 1 hour luck history.",
         "## A new menu with all available options will appear.",
@@ -38,19 +38,19 @@
         "### - Чтобы удалить редкого, установите его количество в `0`, например, `mar=0`."
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_showhistory"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_announcements": {
-    "commandName": "announcements",
-    "commandAliases": [
+    "name": "announcements",
+    "aliases": [
       "announcement",
       "ann"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Announcements",
       "ru": "Объявления"
     },
@@ -66,7 +66,7 @@
         "ru": "Показывает последнее обновление!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays the most recent announcement!"
       ],
@@ -74,17 +74,17 @@
         "## Показывает последнее обновление!"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_arena": {
-    "commandName": "arena",
-    "commandAliases": [
+    "name": "arena",
+    "aliases": [
       "pvp",
       "battle"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Arena",
       "ru": "Арена"
     },
@@ -100,7 +100,7 @@
         "ru": "Начните бой на арене с случайным противником и получите награду!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Start a battle on arena with a random opponent and claim reward!"
       ],
@@ -108,24 +108,24 @@
         "## Начните бой на арене с случайным противником и получите награду!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_kingdragon",
       "command_balance",
       "command_shop"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_balance": {
-    "commandName": "balance",
-    "commandAliases": [
+    "name": "balance",
+    "aliases": [
       "bal",
       "profile",
       "prof",
       "coins",
       "packs"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Balance",
       "ru": "Баланс"
     },
@@ -141,7 +141,7 @@
         "ru": "Показывает ваш текущий баланс и приобретённые наборы скинов!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays your current balance and purchased skin packs!"
       ],
@@ -149,18 +149,18 @@
         "## Показывает ваш текущий баланс и приобретённые наборы скинов!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_shop"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_beachball": {
-    "commandName": "beachball",
-    "commandAliases": [
+    "name": "beachball",
+    "aliases": [
       "bb"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Beachball",
       "ru": "Пляжный мяч"
     },
@@ -176,7 +176,7 @@
         "ru": "Используйте эту команду, чтобы найти пляжные мячи!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Use this command to collect beachballs!",
         "### Current rarities:",
@@ -188,18 +188,18 @@
         "{BEACHBALLS_RARITIES}"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_pumpkin",
       "command_umbrella",
       "command_tornado"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_chart": {
-    "commandName": "chart",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "chart",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Chart",
       "ru": "Таблица"
     },
@@ -215,7 +215,7 @@
         "ru": "Показывает текущую таблицу редких для 1-часового испытания удачи!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays the current rare chart for the 1-hour Luck Challenge!",
         "### What is the 1-hour Luck Challenge? Its a game where you have to get rares in <https://mope.io>! Start from a mouse and try getting rares for 1 hour!",
@@ -231,19 +231,19 @@
         "### Используйте `{PREFIX}chart event`, чтобы посмотреть событийную таблицу!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_start",
       "command_hlsimulator"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_checklist": {
-    "commandName": "checklist",
-    "commandAliases": [
+    "name": "checklist",
+    "aliases": [
       "cl"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Checklist",
       "ru": "Список задач"
     },
@@ -259,7 +259,7 @@
         "ru": "Выполняйте все задания, чтобы заработать монеты!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Do all the tasks to earn coins!"
       ],
@@ -267,21 +267,21 @@
         "## Выполняйте все задания, чтобы заработать монеты!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_vote",
       "command_raretry",
       "command_raretryrun",
       "command_daily"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_clearcoins": {
-    "commandName": "clearcoins",
-    "commandAliases": [
+    "name": "clearcoins",
+    "aliases": [
       "cc"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Clear Coins",
       "ru": "Удалить монеты"
     },
@@ -297,7 +297,7 @@
         "ru": "Удаляет ваш баланс Мопкоинов. Используйте эту команду только если вы знаете, что делаете!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "# ❗ WARNING ❗",
         "## __This command will clear all your {EMOJI}!__"
@@ -307,16 +307,16 @@
         "## __Эта команда удалит все ваши {EMOJI}!__"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_coinflip": {
-    "commandName": "coinflip",
-    "commandAliases": [
+    "name": "coinflip",
+    "aliases": [
       "cf"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Coin Flip",
       "ru": "Орёл или решка"
     },
@@ -374,7 +374,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Take a chance and wager your coins on heads or tails!",
         "### `all` - the maximum allowable bet (`{MAX_COINFLIP_BET}`{EMOJI})",
@@ -390,16 +390,16 @@
         "{BRACKETS_INFO}"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_slots"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_count": {
-    "commandName": "count",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "count",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Count",
       "ru": "Подсчитать"
     },
@@ -429,7 +429,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Counts points of each provided rare based on the current challenge chart!",
         "### No need to participate in a 1 hour Luck Challenge, instead you need to write all the names of rare animals in one message!",
@@ -447,19 +447,19 @@
         "## Примечание: учитываются только имена редких животных из команды `{PREFIX}snora`."
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_snora"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_createlobby": {
-    "commandName": "createlobby",
-    "commandAliases": [
+    "name": "createlobby",
+    "aliases": [
       "lobby",
       "party"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "1 Hour Luck Challenge Lobby",
       "ru": "Лобби 1-часового испытания удачи"
     },
@@ -475,7 +475,7 @@
         "ru": "Создаёт новое лобби для совместного 1-часового испытания удачи."
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Creates a new Lobby, and anyone who wishes can join your Lobby and participate in the Co-op 1 Hour Luck Challenge! A maximum of {MAX_PARTICIPANTS} participants.",
         "### `1`. Press the 'Join' button to enter the Lobby.",
@@ -501,17 +501,17 @@
         "### После завершения всех участников (принудительно или по истечении времени) победит участник с наибольшим количеством очков."
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_chart",
       "command_settings"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_credits": {
-    "commandName": "credits",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "credits",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Credits",
       "ru": "Благодарности"
     },
@@ -527,7 +527,7 @@
         "ru": "Показывает список всех участников разработки бота!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays a list of all contributors to the bot's development!"
       ],
@@ -535,14 +535,14 @@
         "## Показывает список всех участников разработки бота!"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_daily": {
-    "commandName": "daily",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "daily",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Daily",
       "ru": "Ежедневный бонус"
     },
@@ -558,7 +558,7 @@
         "ru": "Заберите вашу ежедневную награду раз в день!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Claim your daily reward once a day!"
       ],
@@ -566,18 +566,18 @@
         "## Заберите вашу ежедневную награду раз в день!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_weekly",
       "command_balance",
       "command_shop"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_editlist": {
-    "commandName": "editlist",
-    "commandAliases": ["elist", "el"],
-    "commandDetailedName": {
+    "name": "editlist",
+    "aliases": ["elist", "el"],
+    "detailedName": {
       "en-US": "Edit List",
       "ru": "Редактировать список"
     },
@@ -647,7 +647,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Edits your list of rare animals in 1 hour Luck Challenge!",
         "### Usage: `{PREFIX}editlist <rare> [+ | -] <quantity>`",
@@ -663,17 +663,17 @@
         "{BRACKETS_INFO}"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_showlist",
       "command_snora"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_end": {
-    "commandName": "end",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "end",
+    "aliases": [],
+    "detailedName": {
       "en-US": "End",
       "ru": "Завершить"
     },
@@ -689,7 +689,7 @@
         "ru": "Мгновенно завершает ваше 1-часовое испытание удачи и показывает результат!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Instantly ends your 1 hour Luck Challenge and displays your score!",
         "### Does not add the result to your history!"
@@ -699,16 +699,16 @@
         "### Не добавляет результат в историю."
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_start"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_help": {
-    "commandName": "help",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "help",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Help",
       "ru": "Помощь"
     },
@@ -738,7 +738,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays every available command!",
         "## If a command is provided, it will show description and usage of the command!"
@@ -748,16 +748,16 @@
         "## Если указана конкретная команда, будет показано её описание и использование!"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 3
+    "related": [],
+    "category": 3
   },
 
   "command_hlsimulator": {
-    "commandName": "hlsimulator",
-    "commandAliases": [
+    "name": "hlsimulator",
+    "aliases": [
       "hlsim"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "1 Hour Luck Simulator",
       "ru": "Симулятор 1-часового испытания удачи"
     },
@@ -787,7 +787,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Shows how much rares you'd get in real 1 Hour Luck Challenge!",
         "### Use `{PREFIX}hlsimulator <difficulty>` to include a specific difficulty!",
@@ -801,21 +801,21 @@
         "{HL_DIFFICULTIES}"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_raretry",
       "command_raretryrun",
       "command_start",
       "command_chart"
     ],
-    "commandCategory": 1
+    "category": 1
   },
 
   "command_howlucky": {
-    "commandName": "howlucky",
-    "commandAliases": [
+    "name": "howlucky",
+    "aliases": [
       "hl"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "How Lucky",
       "ru": "Какая удача"
     },
@@ -831,7 +831,7 @@
         "ru": "Показывает, насколько вы удачливы сегодня!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays how lucky you are today!"
       ],
@@ -839,14 +839,14 @@
         "## Показывает, насколько вы удачливы сегодня!"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 1
+    "related": [],
+    "category": 1
   },
 
   "command_invite": {
-    "commandName": "invite",
-    "commandAliases": ["inv", "links", "link"],
-    "commandDetailedName": {
+    "name": "invite",
+    "aliases": ["inv", "links", "link"],
+    "detailedName": {
       "en-US": "Invite",
       "ru": "Пригласить"
     },
@@ -862,7 +862,7 @@
         "ru": "Пригласите бота Мопи на ваш сервер, присоединяйтесь к серверу Мопи и голосуйте за Мопи!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Invite the Mopey bot to your server, join the Mopey server, and vote for Mopey!"
       ],
@@ -870,18 +870,18 @@
         "## Пригласите бота Мопи на ваш сервер, присоединяйтесь к серверу Мопи и голосуйте за Мопи!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_credits"
     ],
-    "commandCategory": 2
+    "category": 2
   },
 
   "command_kingdragon": {
-    "commandName": "kingdragon",
-    "commandAliases": [
+    "name": "kingdragon",
+    "aliases": [
       "kd"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "King Dragon",
       "ru": "Королевский дракон"
     },
@@ -897,7 +897,7 @@
         "ru": "Попробуйте превратиться в могучего Королевского Дракона и забрать награду!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Attempt to transform into a mighty King Dragon and claim your reward!",
         "### Additionally, there is a 1/1000 chance of becoming a King Dragon by sheer luck!"
@@ -907,21 +907,21 @@
         "### Также существует шанс 1/1000 стать Королевским Драконом просто по везению!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_arena",
       "command_balance",
       "command_shop"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_leaderboard": {
-    "commandName": "leaderboard",
-    "commandAliases": [
+    "name": "leaderboard",
+    "aliases": [
       "lb",
       "top"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Leaderboard",
       "ru": "Таблица лидеров"
     },
@@ -963,7 +963,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays the leaderboard by the number of mope coins!",
         "## The leaderboard is updated every 2 minutes!",
@@ -979,16 +979,16 @@
         "### `строк_на_странице` - число строк на странице"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_balance"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_math": {
-    "commandName": "math",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "math",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Math",
       "ru": "Математика"
     },
@@ -1018,7 +1018,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Performs calculations based on the provided input.",
         "### Some arguments may not be supported!",
@@ -1032,17 +1032,17 @@
         "{BRACKETS_INFO}"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_muid": {
-    "commandName": "muid",
-    "commandAliases": [
+    "name": "muid",
+    "aliases": [
       "uid",
       "id"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "MUID",
       "ru": "ИДПМ"
     },
@@ -1072,7 +1072,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays the User's Mopey Identifier along with their current coin balance!",
         "### Usage: `{PREFIX}muid <number>`",
@@ -1084,14 +1084,14 @@
         "{BRACKETS_INFO}"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_pause": {
-    "commandName": "pause",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "pause",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Pause",
       "ru": "Пауза"
     },
@@ -1107,7 +1107,7 @@
         "ru": "Приостанавливает ваше 1-часовое испытание удачи!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Pauses your 1 hour Luck Challenge!"
       ],
@@ -1115,19 +1115,19 @@
         "## Приостанавливает ваше 1-часовое испытание удачи!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_resume",
       "command_time",
       "command_showlist",
       "command_end"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_ping": {
-    "commandName": "ping",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "ping",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Ping",
       "ru": "Пинг"
     },
@@ -1143,7 +1143,7 @@
         "ru": "Показывает задержку бота в миллисекундах."
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays the bot's latency in milliseconds."
       ],
@@ -1151,14 +1151,14 @@
         "## Показывает задержку бота в миллисекундах."
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_play": {
-    "commandName": "play",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "play",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Play",
       "ru": "Играть"
     },
@@ -1174,7 +1174,7 @@
         "ru": "Экспериментальная команда для игры и заработка монет."
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Play and earn coins. Still in development, many features may be added in the future!"
       ],
@@ -1182,17 +1182,17 @@
         "## Играйте и зарабатывайте монеты. Всё ещё в разработке, возможно добавление множества функций в будущем!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_wardrobe",
       "command_shop"
     ],
-    "commandCategory": 1
+    "category": 1
   },
 
   "command_showlist": {
-    "commandName": "showlist",
-    "commandAliases": ["points", "pts", "score"],
-    "commandDetailedName": {
+    "name": "showlist",
+    "aliases": ["points", "pts", "score"],
+    "detailedName": {
       "en-US": "Show List",
       "ru": "Показать список"
     },
@@ -1222,7 +1222,7 @@
           }
         ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Show's your or a user's 1 hour luck challenge list and points!"
       ],
@@ -1230,17 +1230,17 @@
         "## Показывает ваш или другого пользователя список редких и очки в 1-часовом испытании удачи!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_snora",
       "command_end"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_prefix": {
-    "commandName": "prefix",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "prefix",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Prefix",
       "ru": "Префикс"
     },
@@ -1270,7 +1270,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Changes the bot's prefix for your server.",
         "### Required permissions: `Manage Server` or `Administrator`",
@@ -1284,14 +1284,14 @@
         "{BRACKETS_INFO}"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_progress": {
-    "commandName": "progress",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "progress",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Progress",
       "ru": "Прогресс"
     },
@@ -1307,7 +1307,7 @@
         "ru": "Показывает прогресс 1-часового испытания удачи активного лобби!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Shows the 1 hour Luck progress of an active lobby!"
       ],
@@ -1315,18 +1315,18 @@
         "## Показывает прогресс 1-часового испытания удачи активного лобби!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_createlobby"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_pumpkin": {
-    "commandName": "pumpkin",
-    "commandAliases": [
+    "name": "pumpkin",
+    "aliases": [
       "pk"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Pumpkin",
       "ru": "Тыква"
     },
@@ -1342,7 +1342,7 @@
         "ru": "Используйте эту команду, чтобы найти тыквы!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Use this command to collect pumpkins!",
         "### Current rarities:",
@@ -1354,20 +1354,20 @@
         "{PUMPKINS_RARITIES}"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_beachball",
       "command_umbrella",
       "command_tornado"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_randomrare": {
-    "commandName": "randomrare",
-    "commandAliases": [
+    "name": "randomrare",
+    "aliases": [
       "rrare"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Random Rare",
       "ru": "Случайное редкое"
     },
@@ -1383,7 +1383,7 @@
         "ru": "Показывает случайное редкое животное!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Shows random rare!"
       ],
@@ -1391,16 +1391,16 @@
         "## Показывает случайное редкое животное!"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 1
+    "related": [],
+    "category": 1
   },
 
   "command_raretry": {
-    "commandName": "raretry",
-    "commandAliases": [
+    "name": "raretry",
+    "aliases": [
       "rt"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Raretry",
       "ru": "Попытка редких"
     },
@@ -1430,7 +1430,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Use this command to attempt getting some rares!"
       ],
@@ -1438,19 +1438,19 @@
         "## Используйте эту команду, чтобы попытаться выбить редких!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_raretrymode"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_raretrymode": {
-    "commandName": "raretrymode",
-    "commandAliases": [
+    "name": "raretrymode",
+    "aliases": [
       "rtm",
       "rtmode"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Raretry mode",
       "ru": "Режим попытки редких"
     },
@@ -1466,7 +1466,7 @@
         "ru": "Показывает текущий режим попытки редких. Вы можете переключать режимы, нажимая кнопки!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays the current raretry mode. You can switch modes by pressing the buttons!",
         "### The higher the active mode, the greater the rewards!"
@@ -1476,18 +1476,18 @@
         "### Чем выше активный режим, тем больше награды!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_raretry"
     ],
-    "commandCategory": 1
+    "category": 1
   },
 
   "command_raretryrun": {
-    "commandName": "raretryrun",
-    "commandAliases": [
+    "name": "raretryrun",
+    "aliases": [
       "rtr"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Raretry Run",
       "ru": "Попытка прохождения"
     },
@@ -1503,7 +1503,7 @@
         "ru": "Попытайтесь получить редких, продвигаясь от мыши до чёрного дракона!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Attempt to obtain rares while progressing from a mouse to a black dragon!",
         "## The rarities are identical to those in the game!"
@@ -1513,18 +1513,18 @@
         "## Редкости совпадают с теми, что в онлайн игре!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_raretry"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_raretrysimulator": {
-    "commandName": "raretrysimulator",
-    "commandAliases": [
+    "name": "raretrysimulator",
+    "aliases": [
       "rtsim"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Raretry Simulator",
       "ru": "Симулятор попытки редкого"
     },
@@ -1566,7 +1566,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Simulates raretry command.",
         "### Usage: `{PREFIX}raretrysimulator (<number_of_attempts>) (<raretry_mode>)`",
@@ -1580,20 +1580,20 @@
         "### `<режим_попытки_редкого>` - Режим попытки редкого. Все доступные режимы можно посмотреть в команде `{PREFIX}raretrymode`."
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_raretry",
       "command_raretrymode",
       "command_hlsimulator"
     ],
-    "commandCategory": 1
+    "category": 1
   },
 
   "command_reminders": {
-    "commandName": "reminders",
-    "commandAliases": [
+    "name": "reminders",
+    "aliases": [
       "rmd"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Reminders",
       "ru": "Напоминания"
     },
@@ -1609,7 +1609,7 @@
         "ru": "Показывает доступные напоминания."
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Shows available reminders.",
         "### Press on button to enable or disable a reminder."
@@ -1619,14 +1619,14 @@
         "### Нажмите на кнопку, чтобы включить или отключить напоминание."
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_report": {
-    "commandName": "report",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "report",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Report",
       "ru": "Сообщить"
     },
@@ -1642,7 +1642,7 @@
         "ru": "Сообщить о баге/пользователе команде разработчиков!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## If you encounter a bug or notice a user attempting to disrupt the bot through alts, spamming, or other means, use the Report command to notify us!"
       ],
@@ -1650,17 +1650,17 @@
         "## Если вы нашли баг или заметили пользователя, пытающегося нарушать работу бота (альты, спам и т.д.), используйте команду Сообщить, чтобы сообщить нам!"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_resume": {
-    "commandName": "resume",
-    "commandAliases": [
+    "name": "resume",
+    "aliases": [
       "res",
       "continue"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Resume",
       "ru": "Продолжить"
     },
@@ -1676,7 +1676,7 @@
         "ru": "Возобновляет ваше 1-часовое испытание удачи!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Continues your 1 hour Luck Challenge!"
       ],
@@ -1684,19 +1684,19 @@
         "## Возобновляет ваше 1-часовое испытание удачи!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_pause",
       "command_time",
       "command_showlist",
       "command_end"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_rules": {
-    "commandName": "rules",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "rules",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Rules",
       "ru": "Правила"
     },
@@ -1712,7 +1712,7 @@
         "ru": "Показывает правила, с которыми вы согласились!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Shows the rules you agreed with!"
       ],
@@ -1720,16 +1720,16 @@
         "## Показывает правила, с которыми вы согласились!"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_settings": {
-    "commandName": "settings",
-    "commandAliases": [
+    "name": "settings",
+    "aliases": [
       "sts"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "1 Hour Luck Settings",
       "ru": "Настройки 1-часового испытания удачи"
     },
@@ -1745,7 +1745,7 @@
         "ru": "Показывает ваши изменяемые настройки 1-часового испытания удачи!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Shows your 1 hour luck challenge configurable settings!"
       ],
@@ -1753,18 +1753,18 @@
         "## Показывает ваши изменяемые настройки 1-часового испытания удачи!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_showhistory",
       "command_start",
       "command_chart"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_shop": {
-    "commandName": "shop",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "shop",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Shop",
       "ru": "Магазин"
     },
@@ -1780,7 +1780,7 @@
         "ru": "Приобретайте любые наборы скинов, которые вы хотите."
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Purchase any skin pack you desire.",
         "### Note that some commands may not utilize certain packs."
@@ -1790,21 +1790,21 @@
         "### Обратите внимание, что некоторые команды могут не использовать определённые наборы."
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_balance",
       "command_wardrobe"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_showhistory": {
-    "commandName": "showhistory",
-    "commandAliases": [
+    "name": "showhistory",
+    "aliases": [
       "history",
       "shis",
       "his"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "1 Hour Luck History",
       "ru": "История 1-часовых испытаний удачи"
     },
@@ -1820,7 +1820,7 @@
         "ru": "Показывает вашу историю всех завершённых 1-часовых испытаний удачи!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Shows your history of all ended 1 Hour Luck Challenges!"
       ],
@@ -1828,18 +1828,18 @@
         "## Показывает вашу историю всех завершённых 1-часовых испытаний удачи!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_addhistory",
       "command_start",
       "command_chart"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_slots": {
-    "commandName": "slots",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "slots",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Slots",
       "ru": "Слоты"
     },
@@ -1869,7 +1869,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Wager your coins for a chance to win!",
         "### Usage: `{PREFIX}slots (<amount>|all)`",
@@ -1885,19 +1885,19 @@
         "{BRACKETS_INFO}"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_coinflip"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_snora": {
-    "commandName": "snora",
-    "commandAliases": [
+    "name": "snora",
+    "aliases": [
       "abbreviations",
       "abbr"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "SNORA",
       "ru": "SNORA"
     },
@@ -1913,7 +1913,7 @@
         "ru": "Показывает «Короткие названия редких животных», или же абревиатуры!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Displays «Shorter Names Of Rare Animals», aka abbreviations!",
         "### Used only for 1 hour luck challenge commands"
@@ -1923,16 +1923,16 @@
         "### Используется только для команд 1-часового испытания удачи"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_start"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_start": {
-    "commandName": "start",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "start",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Start",
       "ru": "Начать"
     },
@@ -1948,7 +1948,7 @@
         "ru": "Немедленно запускает ваше 1-часовое испытание удачи!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Immediately starts your 1 hour Luck Challenge!",
         "### During the challenge, you need to type the abbreviations of rare animals' names from the `{PREFIX}snora` command without the prefix to earn points!",
@@ -1962,7 +1962,7 @@
         "### По завершении таймера появится сообщение подтверждения. Нажмите «Подтвердить», чтобы завершить 1-часовое испытание удачи"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_start",
       "command_pause",
       "command_resume",
@@ -1972,15 +1972,15 @@
       "command_editlist",
       "command_end"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_switchlocale": {
-    "commandName": "switchlocale",
-    "commandAliases": [
+    "name": "switchlocale",
+    "aliases": [
       "sl"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Switch Locale",
       "ru": "Переключить язык"
     },
@@ -2010,7 +2010,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Switches the bot's language to another one for you!",
         "### Usage: `{PREFIX}switchlocale <locale>`",
@@ -2024,14 +2024,14 @@
         "{AVAILABLE_LOCALES}"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_time": {
-    "commandName": "time",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "time",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Time",
       "ru": "Время"
     },
@@ -2061,7 +2061,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Shows the time passed in your 1 hour Luck Challenge!",
         "## The time can also be edited. Usage: `{PREFIX}time (<new_time>)`",
@@ -2075,21 +2075,21 @@
         "{BRACKETS_INFO}"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_pause",
       "command_resume",
       "command_showlist",
       "command_end"
     ],
-    "commandCategory": 4
+    "category": 4
   },
 
   "command_timezone": {
-    "commandName": "timezone",
-    "commandAliases": [
+    "name": "timezone",
+    "aliases": [
       "tz"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Timezone",
       "ru": "Часовой пояс"
     },
@@ -2119,7 +2119,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Shows or changes your timezone. Required for time functions.",
         "### Usage: `{PREFIX}timezone <Timezone>`",
@@ -2133,16 +2133,16 @@
         "{BRACKETS_INFO}"
       ]
     },
-    "commandRelated": [],
-    "commandCategory": 2
+    "related": [],
+    "category": 2
   },
 
   "command_tornado": {
-    "commandName": "tornado",
-    "commandAliases": [
+    "name": "tornado",
+    "aliases": [
       "td"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Tornado",
       "ru": "Торнадо"
     },
@@ -2158,7 +2158,7 @@
         "ru": "Используйте эту команду, чтобы обнаружить разные ураганы!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Use this command to discover various disasters!",
         "### There is currently 1/30 chance to discover devil disasters!"
@@ -2168,20 +2168,20 @@
         "### В настоящий момент шанс обнаружить дьявольский ураган — 1/30!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_pumpkin",
       "command_beachball",
       "command_umbrella"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_umbrella": {
-    "commandName": "umbrella",
-    "commandAliases": [
+    "name": "umbrella",
+    "aliases": [
       "ur"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Umbrella",
       "ru": "Зонт"
     },
@@ -2197,7 +2197,7 @@
         "ru": "Используйте эту команду, чтобы найти зонты!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Use this command to collect umbrellas!",
         "### Current rarities:",
@@ -2209,18 +2209,18 @@
         "{UMBRELLAS_RARITIES}"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_pumpkin",
       "command_beachball",
       "command_tornado"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_vote": {
-    "commandName": "vote",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "vote",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Vote",
       "ru": "Голосовать"
     },
@@ -2236,7 +2236,7 @@
         "ru": "Голосуйте за Мопи на Top.gg, чтобы заработать монеты!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Vote Mopey on Top.gg to earn coins!"
       ],
@@ -2244,18 +2244,18 @@
         "## Голосуйте за Мопи на Top.gg, чтобы заработать монеты!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_checklist"
     ],
-    "commandCategory": 0
+    "category": 0
   },
 
   "command_wardrobe": {
-    "commandName": "wardrobe",
-    "commandAliases": [
+    "name": "wardrobe",
+    "aliases": [
       "wr"
     ],
-    "commandDetailedName": {
+    "detailedName": {
       "en-US": "Wardrobe",
       "ru": "Гардероб"
     },
@@ -2285,7 +2285,7 @@
         }
       ]
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Allows you to equip purchased skins on your animals!",
         "### Usage: `{PREFIX}wardrobe [new|all|<tier>|<animal>]`",
@@ -2307,17 +2307,17 @@
         "{BRACKETS_INFO}"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_play",
       "command_shop"
     ],
-    "commandCategory": 2
+    "category": 2
   },
 
   "command_weekly": {
-    "commandName": "weekly",
-    "commandAliases": [],
-    "commandDetailedName": {
+    "name": "weekly",
+    "aliases": [],
+    "detailedName": {
       "en-US": "Weekly",
       "ru": "Еженедельный бонус"
     },
@@ -2333,7 +2333,7 @@
         "ru": "Заберите вашу еженедельную награду раз в неделю!"
       }
     },
-    "commandDescription": {
+    "description": {
       "en-US": [
         "## Claim your weekly reward once a week!"
       ],
@@ -2341,11 +2341,11 @@
         "## Заберите вашу еженедельную награду раз в неделю!"
       ]
     },
-    "commandRelated": [
+    "related": [
       "command_daily",
       "command_balance",
       "command_shop"
     ],
-    "commandCategory": 0
+    "category": 0
   }
 }

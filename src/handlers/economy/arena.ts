@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleArena',
   code: `
     $reply
@@ -39,4 +41,4 @@ export default {
       $addTextDisplay[$get[desc]]
     ;$get[color]]
   `
-}
+})

@@ -1,4 +1,6 @@
-export default {
+import { BaseCommand } from "@tryforge/forgescript"
+
+export default new BaseCommand({
   type: 'clientReady',
   code: `
     $jsonLoad[animals;$getAnimalsData]
@@ -12,4 +14,4 @@ export default {
     $setCache[arena;arenaEnemies;$env[enemies]]
     $logger[Info;Cached «arenaEnemies»]
   `
-}
+})

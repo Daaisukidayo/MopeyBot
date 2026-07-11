@@ -14,8 +14,7 @@ export default {
     ]
 
     $loop[25;
-      $let[i;$math[$env[i] - 1]]
-      $jsonLoad[command;$arrayAt[commandsData;$get[i]]]
+      $jsonLoad[command;$arrayAt[commandsData;$math[$env[i] - 1]]]
 
       $let[value;$env[command;1;commandName]]
 

@@ -71,8 +71,8 @@ export default {
         $let[animalId;kingDragon]
         $let[trig;play_upgradeAnimal-$get[animalId]-$authorID]
         $let[wrI;$env[userWardrobe;$get[animalId]]]
-        $let[name;$getAnimalVariantInfo[$get[animalId];name;$get[wrI]]]
-        $let[emoji;$getAnimalVariantInfo[$get[animalId];emoji;$get[wrI]]]
+        $let[name;$getAnimalInfo[$get[animalId];name;$get[wrI]]]
+        $let[emoji;$getAnimalInfo[$get[animalId];emoji;$get[wrI]]]
         $let[emojisInDescription;$get[emoji]]
         $addActionRow
         $addButton[$get[trig];$get[name];Secondary;$get[emoji]]

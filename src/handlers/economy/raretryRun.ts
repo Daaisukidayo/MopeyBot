@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleRaretryrun',
   code: `
     $reply
@@ -17,26 +19,32 @@ export default {
     $let[chance;3]
     $let[totalReward;0]
     $let[caughtCount;0]
+    $let[arg;$message[0]]
+    $let[isDev;$checkCondition[$env[userProfile;devMode]==1]]
+    $let[luckConfig;$function[
+      $if[$and[$get[isDev];$get[arg]!=;$isNumber[$get[arg]]];
+        $return[$get[arg]]
+      ]
+      $return[1]
+    ]]
 
-    $arrayForEach[$jsonEntries[$generateLuck[$getGlobalVar[rtrLuckKey]]];entry;
+    $arrayForEach[$jsonEntries[$generateLuck[$getGlobalVar[rtrLuckKey];$get[luckConfig]]];entry;
       $jsonLoad[groupData;$env[entry;1]]
-      $jsonLoad[pool;$env[groupData;pool]]
       $let[roll;$random[1;$env[groupData;total]]]
       $let[chosenAnimal;]
       
-      $loop[$arrayLength[pool];
-        $jsonLoad[item;$arrayAt[pool;$math[$env[i] - 1]]]
-        $if[$get[roll]<=$env[item;rarity];
-          $let[chosenAnimal;$env[item;id]]
-          $break
-        ]
-      ;i;true]
+      $forOf[$env[groupData;pool];item;
+        $if[$get[roll]<=$env[item;rarity];;$continue]
+
+        $let[chosenAnimal;$env[item;id]]
+        $break
+      ]
       
 
       $if[$and[$get[chosenAnimal]!=;$getAnimalInfo[$get[chosenAnimal];isRare]];
         $letSum[caughtCount;1]
         
-        $let[animalDisplay;$getAnimalVariantInfo[$get[chosenAnimal];emoji;0]]
+        $let[animalDisplay;$getAnimalInfo[$get[chosenAnimal];emoji;0]]
         $let[numberOfRares;$getAnimalInfo[$get[chosenAnimal];rarity.0]]
         $let[totalAttempts;$env[groupData;total]]
         
@@ -91,4 +99,4 @@ export default {
       $saveProfile[$env[userProfile]]
     ]
   `
-}
+})

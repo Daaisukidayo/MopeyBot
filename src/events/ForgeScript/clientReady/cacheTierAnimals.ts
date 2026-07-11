@@ -1,12 +1,11 @@
-export default {
+import { BaseCommand } from "@tryforge/forgescript"
+
+export default new BaseCommand({
   type: 'clientReady',
   code: `
-    $jsonLoad[animals;$getAnimalsData]
     $jsonLoad[result;{}]
 
-    $loop[$arrayLength[animals];
-      $jsonLoad[animal;$arrayAt[animals;$math[$env[i]-1]]]
-
+    $forOf[$getAnimalsData;animal;
       $if[$env[animal;deleted];$continue]
 
       $let[animalId;$env[animal;ID]]
@@ -34,9 +33,9 @@ export default {
       $jsonSet[tierData;rareAnimals;$env[rareAnimals]]
 
       $jsonSet[result;$get[tier];$env[tierData]]
-    ;i;true]
+    ]
 
     $setCache[animals;tierAnimals;$env[result]]
     $logger[Info;Cached «tierAnimals»]
   `
-}
+})

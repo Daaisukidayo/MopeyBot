@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleShowList',
   code: `
     $reply
@@ -44,4 +46,4 @@ export default {
       $showDesignedList[$env[list]]
     ;$getGlobalVar[luckyColor]]
   `
-}
+})

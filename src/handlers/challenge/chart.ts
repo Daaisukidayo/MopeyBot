@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleChart',
   code: `
     $reply
@@ -30,4 +32,4 @@ export default {
       $addTextDisplay[$discordTimestamp[$get[time];LongDateTime]]
     ;$getGlobalVar[luckyColor]]
   `
-}
+})

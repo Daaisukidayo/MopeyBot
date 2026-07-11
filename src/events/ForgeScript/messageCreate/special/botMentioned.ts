@@ -1,10 +1,13 @@
-export default {
+import { BaseCommand } from "@tryforge/forgescript";
+
+export default new BaseCommand({
   type: "messageCreate",
   guildOnly: true,
   code: `
-    $onlyIf[$messageContent==<@$botID>]
+    $let[id;$botID]
+    $onlyIf[$messageContent==<@$get[id]>]
     $reply
     $let[prefix;$getGuildVar[prefix]]
-    ## Hi, <@$authorID>! I am $hyperlink[$username[$botID];<https://discord.com/discovery/applications/$botID>]! My prefix here is $inline[$get[prefix]]
+    $tl[ui.prefix.current.$env[$getProfile;language];<@$authorID>;$hyperlink[$username[$get[id]];<https://discord.com/discovery/applications/$get[id]>];$get[prefix]]
   `
-}
+})

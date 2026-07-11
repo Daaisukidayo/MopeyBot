@@ -1,10 +1,11 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_kingdragon.commandName,
-  aliases: commandsData.command_kingdragon.commandAliases,
+export default new BaseCommand({
+  name: commandsData.command_kingdragon.name,
+  aliases: commandsData.command_kingdragon.aliases,
   type: "messageCreate",
   code: `
     $handleKingdragon
   `
-}
+})

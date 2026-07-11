@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleRandomrare',
   code: `
     $reply
@@ -11,4 +13,4 @@ export default {
 
     $addTextDisplay[# $arrayRandomValue[$getCache[rares;raresContent]]]
   `
-}
+})

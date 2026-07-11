@@ -1,7 +1,8 @@
 import { commandsData } from "#commandsData"
+import { ApplicationCommand } from "@tryforge/forgescript"
 const slash = commandsData.command_chart.slash
 
-export default {
+export default new ApplicationCommand({
   code: `
     $handleChart
   `,
@@ -20,4 +21,4 @@ export default {
       "ru": slash.description["ru"]
     },
   }
-}
+})

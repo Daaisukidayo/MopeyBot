@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handlePause',
   code: `
     $reply
@@ -30,4 +32,4 @@ export default {
       $displayLimitedRares
     ;$getGlobalVar[luckyColor]]
   `
-}
+})

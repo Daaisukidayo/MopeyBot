@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleHLSimulator',
   code: `
     $reply
@@ -19,7 +21,10 @@ export default {
     ]
 
     $onlyif[$arrayIncludes[difficulties;$get[difficulty]];
-      $newError[$tl[ui.hlsimulator.invalidDifficulty.$get[l]]]
+      $arrayMap[difficulties;d;
+        $return[$tl[data.difficulties.$env[d].$get[l]]]
+      ;difficultiesList]
+      $newError[$tl[ui.hlsimulator.unknownDifficulty.$get[l];$arrayJoin[difficultiesList;\`, \`]]]
     ]
 
     $addCooldown
@@ -45,13 +50,12 @@ export default {
         $let[randomNum;$random[1;$get[totalChance]]]
 
         $c[Iterate through the rare animal pool and check if they hit their chance]
-        $loop[$arrayLength[pool];
-          $jsonLoad[rareItem;$env[pool;$sub[$env[i];1]]]
-          $if[$get[randomNum]<=$env[rareItem;rarity];;$continue]
+        $forOf[pool;item;
+          $if[$get[randomNum]<=$env[item;rarity];;$continue]
           
-          $let[rolledAnimal;$env[rareItem;id]]
+          $let[rolledAnimal;$env[item;id]]
           $break
-        ;i;true]
+        ]
 
         $c[If no rare animal was selected and we have a default one (common != null) — use it]
         $if[$and[$get[rolledAnimal]==;$get[commonAnimal]!=null];
@@ -75,18 +79,11 @@ export default {
 
     $jsonLoad[result;$generateList[$sortList[$env[rawList]]]]
     
-    $jsonLoad[list;$env[result;l]]
-    $let[totalPoints;$env[result;p]]
-    $let[totalRares;$env[result;r]]
-
-    $addContainer[
-      $addAuthorDisplay
-      $addTextDisplay[$tl[ui.challenge.completed.$get[l]]]
-      $addSeparator[Large]
-      $addTextDisplay[$tl[ui.challenge.points.$get[l];$get[totalPoints]]]
-      $addTextDisplay[$tl[ui.challenge.rares.$get[l];$get[totalRares]]]
-      $addSeparator[Large]
-      $showDesignedList[$env[list]]
-    ;$getGlobalVar[luckyColor]]
+    $addChallengeCompletedContainer[{
+      "locale": "$get[l]",
+      "points": $env[result;p],
+      "rares": $env[result;r],
+      "list": $env[result;l]
+    }]
   `
-}
+})

@@ -68,7 +68,7 @@
     ],
     [
       "Primary", 
-      ["whiteDove","doe","pinkyPig","goldenPheasant","blueMacaw","momaffie","momaffieFamily","chocoToucan","keelBilledToucan","fieryToucan","jaguar","yellowPufferfish","blackManedLion","lioness","lionCub","markhor","blackBear"]
+      ["whiteDove","doe","pinkyPig","goldenPheasant","blueMacaw","momaffie","momaffieFamily","chocoToucan","keelBilledToucan","fieryToucan","jaguar","yellowPufferfish","blackManedLion","lioness","lionCub"]
     ]
   ],
 
@@ -100,17 +100,17 @@
     ["swinehoe", "goldenPheasant"],
     ["donkey", "jackass"],
     ["macaw", "blueMacaw", "rareMacaw"],
-    ["giraffe", "momaffie", "momaffieFamily", "girabie"],
     ["cheetah", "jaguar", "leopard", "blackPanther"],
     ["toucan", "chocoToucan", "keelBilledToucan", "fieryToucan", "lavaToucan", "rareToucan"],
     ["pufferfish", "yellowPufferfish", "demonPufferfish"],
-    ["tiger", "whiteTiger"],
     ["lion", "lioness", "lionCub", "blackManedLion", "whiteLionCub", "whiteLioness", "whiteLion", "blackLionCub", "blackLioness", "blackLion"],
+    ["tiger", "whiteTiger"],
     ["falcon", "predator", "shaheen"],
     ["vulture", "rareVulture"],
+    ["markhor", "bigGoat"],
     ["rhino", "whiteRhino", "blackRhino"],
     ["baldEagle", "goldenEagle", "harpyEagle", "greaterSpottedEagle"],
-    [null, "markhor", "bigGoat"],
+    ["giraffe", "momaffie", "momaffieFamily", "girabie"],
     [null, "whiteGiraffe", "giraffeFamily"],
     ["yeti", "aquaYeti"],
     [null, "shopBigfoot", "rareBigfoot"],

@@ -1,8 +1,9 @@
 import { commandsData } from "#commandsData"
+import { ApplicationCommand } from "@tryforge/forgescript"
 const slash = commandsData.command_prefix.slash
 const options = slash.options
 
-export default {
+export default new ApplicationCommand({
   independent: true,
   code: `
     $handlePrefix
@@ -15,7 +16,7 @@ export default {
     contexts: [
       0
     ],
-    default_member_permissions: 32,
+    default_member_permissions: "32",
 
     name: slash.name["default"],
     name_localizations: {
@@ -49,4 +50,4 @@ export default {
       }
     ]
   }
-}
+})

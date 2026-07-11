@@ -1,8 +1,9 @@
 import { commandsData } from "#commandsData"
+import { ApplicationCommand } from "@tryforge/forgescript"
 const slash = commandsData.command_time.slash
 const options = slash.options
 
-export default {
+export default new ApplicationCommand({
   code: `
     $handleTime
   `,
@@ -39,4 +40,4 @@ export default {
       }
     ]
   }
-}
+})

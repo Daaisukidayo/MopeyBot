@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleDaily',
   code: `
     $reply
@@ -35,4 +37,4 @@ export default {
       $addTextDisplay[$tl[ui.daily.description.$get[l];$separate[$get[MC]]]]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

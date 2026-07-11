@@ -1,4 +1,6 @@
-export default {
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
   name: 'handleEnd',
   code: `
     $reply
@@ -20,23 +22,20 @@ export default {
 
     $jsonLoad[list;$env[result;l]]
 
-    $addContainer[
-      $addAuthorDisplay
-      $addTextDisplay[$tl[ui.challenge.completed.$get[l]]]
-      $addSeparator[Large]
-      $addTextDisplay[$showPoints]
-      $addTextDisplay[$showRares]
-      $addSeparator[Large]
-      $showDesignedList[$env[list]]
-    ;$getGlobalVar[luckyColor]]    
+    $addChallengeCompletedContainer[{
+      "locale": "$get[l]",
+      "points": $env[challengeProgress;points],
+      "rares": $env[challengeProgress;rares],
+      "list": $env[list]
+    }]   
     $!send
     
     $if[$getChannelVar[lobby]==;
-      $deleteProgress
+      $deleteChallengeProgress
     ;
       $!jsonSet[challengeProgress;started;false]
       $saveProgress[$env[challengeProgress]]
       $allPlayersFinished
     ]
   `
-}
+})

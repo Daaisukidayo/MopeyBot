@@ -1,10 +1,11 @@
 import { commandsData } from "#commandsData"
+import { BaseCommand } from "@tryforge/forgescript"
 
-export default {
-  name: commandsData.command_switchlocale.commandName,
-  aliases: commandsData.command_switchlocale.commandAliases,
+export default new BaseCommand({
+  name: commandsData.command_switchlocale.name,
+  aliases: commandsData.command_switchlocale.aliases,
   type: "messageCreate",
   code: `
     $handleSwitchlocale
   `
-}
+})
