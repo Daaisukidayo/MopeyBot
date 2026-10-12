@@ -69,7 +69,7 @@ const BOT: ForgeClient = new ForgeClient({
     // "GuildWebhooks",
     // "GuildInvites",
     // "GuildVoiceStates",
-    "GuildPresences",
+    // "GuildPresences",
     "GuildMessages",
     // "GuildMessageReactions",
     // "GuildMessageTyping",
