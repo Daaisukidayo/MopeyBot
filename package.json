@@ -17,14 +17,14 @@
   "license": "GPL-3.0-only",
   "type": "commonjs",
   "dependencies": {
-    "@quoriel/edge": "github:quoriel/edge#3ebcb96803c2b8422515d56da40030e6f65c9cd2",
+    "@quoriel/edge": "https://codeload.github.com/quoriel/edge/tar.gz/3ebcb96803c2b8422515d56da40030e6f65c9cd2",
     "@tryforge/forge.canvas": "^1.3.1",
     "@tryforge/forge.db": "^2.1.1",
-    "@tryforge/forge.topgg": "github:tryforge/forgetopgg#dev",
+    "@tryforge/forge.topgg": "https://codeload.github.com/tryforge/forgetopgg/tar.gz/645de9e5802ed7b5bbb2157e584df5bde97925ee",
     "@tryforge/forgescript": "^2.7.1",
     "better-sqlite3": "^12.5.0",
     "forge.json": "^1.1.1",
-    "forge.regex": "github:xNickyDev/ForgeRegex#2544fc6fdc523406db309d158928b6b679206d0e",
+    "forge.regex": "https://codeload.github.com/xNickyDev/ForgeRegex/tar.gz/2544fc6fdc523406db309d158928b6b679206d0e",
     "forge.timers": "^2.0.0"
   },
   "devDependencies": {
