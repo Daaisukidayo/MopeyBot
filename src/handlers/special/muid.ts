@@ -1,9 +1,11 @@
-export default {
-  name: 'handleMuid',
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
+  name: "handleMuid",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown
@@ -18,29 +20,21 @@ export default {
       $newError[$tl[ui.muid.largeNumber.$get[l]]]
     ]
 
-    $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
+    $c[Saved profiles are read directly, so no user is looked up in Discord]
+    $let[userID;$arrayFind[$getGlobalVar[allUserIDs];ID;$jsonGet[$getUserVar[userProfile;$env[ID]];MUID]==$get[arg]]]
 
-    $forOf[allUserIDs;ID;
-      $let[userMUID;$env[$getProfile[$get[ID]];MUID]]
-
-      $if[$get[userMUID]==$get[arg];;$continue]
-
-      $let[userID;$get[ID]]
-      $break
-    ]
-
-    $onlyIf[$and[$get[arg]>0;$get[userMUID]!=;$get[userID]!=];
+    $onlyIf[$and[$get[arg]>0;$get[userID]!=];
       $newError[$tl[ui.muid.userDoesNotExist.$get[l];$get[arg]]]
     ]
 
     $addContainer[
       $addSection[
-        $addTextDisplay[# \`@$username[$get[userID]]#$get[userMUID]\`]
+        $addTextDisplay[# \`@$username[$get[userID]]#$get[arg]\`]
         $addThumbnail[$userAvatar[$get[userID]]]
       ]
       $addSeparator[Large]
-      $addTextDisplay[## \`$separate[$env[$getProfile[$get[userID]];MC]]\`$getGlobalVar[mopecoin]]
+      $addTextDisplay[## \`$separate[$jsonGet[$getProfile[$get[userID]];MC]]\`$getGlobalVar[mopecoin]]
       $addTextDisplay[$tl[ui.muid.discordId.$get[l];$get[userID]]]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

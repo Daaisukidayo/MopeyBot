@@ -1,18 +1,16 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleRaretrymode',
+  name: "handleRaretrymode",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown
 
     $defer
-
-    $jsonLoad[modes;$getGlobalVar[raretryModes]]
 
     $raretrymodeEmbed
     $newCommandTimeout

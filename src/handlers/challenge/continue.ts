@@ -1,31 +1,31 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleResume',
+  name: "handleResume",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
-    $isActiveChallenge
     $jsonLoad[challengeProgress;$getProgress]
+    $isActiveChallenge[challengeProgress]
 
-    $onlyIf[$env[challengeProgress;paused];
+    $onlyIf[$jsonGet[challengeProgress;paused];
       $newError[$tl[ui.resume.notPaused.$get[l]]]
     ]
 
     $!jsonSet[challengeProgress;paused;false]
     $saveProgress[$env[challengeProgress]]
-    $startTimer
+    $resumeChallengeTimer
 
     $addContainer[
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.resume.continued.$get[l]]]
       $addSeparator[Large]
-      $addTextDisplay[$showPoints]
+      $addTextDisplay[$showPoints[challengeProgress]]
       $addTextDisplay[$showTime]
-      $displayLimitedRares
+      $displayLimitedRares[challengeProgress]
     ;$getGlobalVar[luckyColor]]
   `
 })

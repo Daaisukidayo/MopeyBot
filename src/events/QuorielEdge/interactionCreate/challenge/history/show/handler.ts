@@ -1,52 +1,48 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "showHistory",
   type: "interactionCreate",
   allowed: ["button", "modal", "stringSelect"],
   code: `
     $arrayLoad[IID;-;$customID]
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $fn[getPageIndex;$return[$math[$get[page] - 1]]]
-    
     $addCooldown[showhistory;true]
-    $timezone[$env[userProfile;timezone]]
+    $timezone[$jsonGet[userProfile;timezone]]
 
     $jsonLoad[cachedHistory;$getMessageVar[cachedHistory;$messageID]]
-    $jsonLoad[history;$env[cachedHistory;history]]
+    $jsonLoad[history;$jsonGet[cachedHistory;history]]
 
-    $let[actionId;$env[IID;1]]
     $let[input;$input[modalInput]]
-    $let[page;$env[cachedHistory;page]]
-    $let[sortType;$nullish[$selectMenuValues;$env[cachedHistory;sortType];0]]
-    $let[rareAnimalId;$env[cachedHistory;rareAnimalId]]
-    $let[filter;$env[cachedHistory;filter]]
-    
+    $let[page;$jsonGet[cachedHistory;page]]
+    $c[Each select menu sets only its own option: sort type or order]
+    $let[sortType;$nullish[$if[$jsonGet[IID;1]==sortingMenu;$selectMenuValues];$jsonGet[cachedHistory;sortType];0]]
+    $let[sortOrder;$nullish[$if[$jsonGet[IID;1]==orderMenu;$selectMenuValues];$jsonGet[cachedHistory;sortOrder];desc]]
+    $let[rareAnimalId;$jsonGet[cachedHistory;rareAnimalId]]
+    $let[filter;$jsonGet[cachedHistory;filter]]
 
-    $switch[$get[actionId];
+    $c[After a change of order, filter or pages, the pages are filtered and sorted again at the end]
+    $switch[$jsonGet[IID;1];
       $case[prevPage;
         $letSub[page;1]
       ]
-
 
       $case[nextPage;
         $letSum[page;1]
       ]
 
-
       $case[changePageInModal;
         $onlyIf[$isNumber[$get[input]];
           $newError[$tl[ui.history.providedPageIsNotANumber.$get[l]]]
         ]
-
-        $let[page;$get[input]]
+        $let[page;$floor[$get[input]]]
       ]
 
-
       $case[deletePage;
-        $jsonLoad[thisHistory;$env[history;$callFn[getPageIndex]]]
-        $historyEmbed[$env[thisHistory]]
+        $historyEmbed[$jsonGet[history;$math[$get[page] - 1]]]
         $addContainer[
           $addTextDisplay[$tl[ui.history.deletePageWarning.$get[l]]]
           $addActionRow
@@ -58,29 +54,21 @@ export default {
       ]
 
       $case[confirmDeletePage;
-        $let[id;$env[history;$callFn[getPageIndex];id]]
+        $let[id;$jsonGet[history;$math[$get[page] - 1];id]]
+        $jsonLoad[challengeHistory;$getUserVar[challengeHistory]]
+        $let[index;$arrayFindIndex[challengeHistory;page;$jsonGet[page;id]==$get[id]]]
 
-        $onlyIf[$get[id]!=;
+        $onlyIf[$and[$get[id]!=;$get[index]!=-1];
           $newError[$tl[ui.history.pageDoesNotExist.$get[l]]]
         ]
 
-        $jsonLoad[history;$getUserVar[challengeHistory]]
-        $let[index;$arrayFindIndex[history;page;$env[page;id]==$get[id]]]
-
-        $onlyIf[$get[index]!=-1;
-          $newError[$tl[ui.history.pageDoesNotExist.$get[l]]]
-        ]
-
-        $!arraySplice[history;$get[index];1]
-        $setUserVar[challengeHistory;$env[history]]
-        $if[$get[filter];
-          $arrayFilter[history;page;$env[page;raresList;$get[rareAnimalId]]!=;history]
-        ]
-        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
+        $!arraySplice[challengeHistory;$get[index];1]
+        $setUserVar[challengeHistory;$env[challengeHistory]]
+        $jsonLoad[history;$env[challengeHistory]]
+        $let[refresh;true]
       ]
 
       $case[declineDeletePage;]
-
 
       $case[showPages;
         $modal[showHistory-changePageInModal-$authorID;$tl[ui.history.modalTitleMoveToPage.$get[l]]]
@@ -89,30 +77,29 @@ export default {
         $stop
       ]
 
-
       $case[sortingMenu;
-        $if[$and[$get[sortType]==3;$get[rareAnimalId]==null];
+        $c[Sorting by a rare needs the rare first]
+        $if[$and[$get[sortType]==3;$get[rareAnimalId]==];
           $modal[showHistory-sortByRare-$authorID;$tl[ui.history.modalTitleSortByRare.$get[l]]]
           $addTextInput[modalInput;$tl[ui.history.modalDescriptionSortByRare.$get[l]];Short;true;$tl[ui.history.modalPlaceholderSortByRare.$get[l]]]
           $showModal
           $stop
         ]
-
-        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
-        $!jsonSet[cachedHistory;sortType;$get[sortType]]
+        $let[refresh;true]
       ]
 
+      $case[orderMenu;
+        $let[refresh;true]
+      ]
 
       $case[sortByRare;
-        $onlyIf[$arrayIncludes[$getCache[rares;allRares];$get[input]];
+        $let[rareAnimalId;$getRareAnimalID[$toLowerCase[$get[input]]]]
+        $onlyIf[$get[rareAnimalId]!=undefined;
           $newError[$tl[ui.history.invalidRare.$get[l]]]
         ]
-        $let[rareAnimalId;$getRareAnimalID[$get[input]]]
         $let[sortType;3]
-        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
-        $!jsonSet[cachedHistory;sortType;$get[sortType]]
+        $let[refresh;true]
       ]
-
 
       $case[filterByRareButton;
         $modal[showHistory-filterByRare-$authorID;$tl[ui.history.modalTitleFilterByRare.$get[l]]]
@@ -121,101 +108,89 @@ export default {
         $stop
       ]
 
-
       $case[filterByRare;
-        $onlyIf[$arrayIncludes[$getCache[rares;allRares];$get[input]];
+        $let[rareAnimalId;$getRareAnimalID[$toLowerCase[$get[input]]]]
+        $onlyIf[$get[rareAnimalId]!=undefined;
           $newError[$tl[ui.history.invalidRare.$get[l]]]
         ]
-        $let[rareAnimalId;$getRareAnimalID[$get[input]]]
+        $jsonLoad[history;$getUserVar[challengeHistory]]
+        $let[filter;true]
         $let[page;1]
-        $arrayFilter[$getUserVar[challengeHistory];page;$env[page;raresList;$get[rareAnimalId]]!=;history]
-        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
-        $!jsonSet[cachedHistory;filter;true]
+        $let[refresh;true]
       ]
-
 
       $case[filterByChosenRareButton;
+        $let[filter;true]
         $let[page;1]
-        $arrayFilter[history;page;$env[page;raresList;$get[rareAnimalId]]!=;history]
-        $jsonLoad[history;$sortHistory[$env[history];$get[sortType]]]
-        $!jsonSet[cachedHistory;filter;true]
+        $let[refresh;true]
       ]
-
 
       $case[cancelFilterButton;
+        $jsonLoad[history;$getUserVar[challengeHistory]]
+        $let[filter;false]
         $let[page;1]
-        $jsonLoad[history;$sortHistory[$getUserVar[challengeHistory];$get[sortType]]]
-        $!jsonSet[cachedHistory;filter;false]
+        $let[refresh;true]
       ]
-
 
       $case[cancelEditChanges;
         $deleteMessageVar[cachedThisHistory;$messageID]
         $deleteMessageVar[cachedHistoryPageIndex;$messageID]
       ]
 
-
       $case[saveEditChanges;
         $jsonLoad[cachedThisHistory;$getMessageVar[cachedThisHistory;$messageID]]
         $jsonLoad[challengeHistory;$getUserVar[challengeHistory]]
-
-        $let[index;$arrayFindIndex[challengeHistory;page;$env[page;id]==$env[cachedThisHistory;id]]]
+        $let[index;$arrayFindIndex[challengeHistory;page;$jsonGet[page;id]==$jsonGet[cachedThisHistory;id]]]
 
         $onlyIf[$get[index]!=-1;
           $newError[$tl[ui.history.pageDoesNotExist.$get[l]]]
         ]
 
         $!jsonSet[challengeHistory;$get[index];$env[cachedThisHistory]]
-        $!jsonSet[history;$callFn[getPageIndex];$env[cachedThisHistory]]
+        $!jsonSet[history;$math[$get[page] - 1];$env[cachedThisHistory]]
         $setUserVar[challengeHistory;$env[challengeHistory]]
         $deleteMessageVar[cachedThisHistory;$messageID]
+        $deleteMessageVar[cachedHistoryPageIndex;$messageID]
       ]
 
-
       $case[editPage;
-        $jsonLoad[thisHistory;$env[history;$callFn[getPageIndex]]]
+        $c[A new edit finds the page index again instead of reusing an earlier one]
+        $deleteMessageVar[cachedHistoryPageIndex;$messageID]
+        $jsonLoad[thisHistory;$jsonGet[history;$math[$get[page] - 1]]]
         $setMessageVar[cachedThisHistory;$env[thisHistory];$messageID]
 
         $historyEmbed[$env[thisHistory]]
-        $editHistoryExtraEmbed
+        $editHistoryExtraEmbed[thisHistory;history]
         $interactionUpdate
 
         $newHistoryTimeout
         $stop
       ]
 
-
       $case[default;
         $stop
       ]
     ]
 
-    $let[page;$if[$get[page]<=0;$arrayLength[history];$if[$get[page]>$arrayLength[history];1;$get[page]]]]
-
-    $jsonLoad[thisHistory;$env[history;$callFn[getPageIndex]]]
-    
-
-    $c[Updating "page" if it's value was changed]
-    $if[$env[cachedHistory;page]!=$get[page];
-      $!jsonSet[cachedHistory;page;$get[page]]
+    $c[When filtered, only pages with the chosen rare are shown, in the chosen order]
+    $if[$get[refresh];
+      $if[$get[filter];
+        $arrayFilter[history;page;$jsonGet[page;raresList;$get[rareAnimalId]]!=;history]
+      ]
+      $jsonLoad[history;$sortHistory[$env[history];$get[sortType];$get[rareAnimalId];$get[sortOrder]]]
     ]
 
-    $c[Updating "rareAnimalId" if it's value was changed]
-    $if[$env[cachedHistory;rareAnimalId]!=$get[rareAnimalId];
-      $!jsonSet[cachedHistory;rareAnimalId;$get[rareAnimalId]]
-    ]
+    $c[Pages wrap around]
+    $let[page;$if[$get[page]<=0;$jsonSize[history];$if[$get[page]>$jsonSize[history];1;$get[page]]]]
 
-    $c[Updating "history" if sorting or any page was changed]
-    $if[$jsonStringify[$env[cachedHistory;history]]!=$jsonStringify[history];
-      $!jsonSet[cachedHistory;history;$env[history]]
-    ]
-    
+    $objectMerge[cachedHistory;$objectOf[page;$get[page];sortType;$get[sortType];sortOrder;$get[sortOrder];rareAnimalId;$default[$get[rareAnimalId];null];filter;$get[filter]]]
+    $!jsonSet[cachedHistory;history;$env[history]]
     $setMessageVar[cachedHistory;$env[cachedHistory];$messageID]
 
-    $historyEmbed[$env[thisHistory]]
+    $historyEmbed[$jsonGet[history;$math[$get[page] - 1]]]
     $showHistoryExtraEmbed[$env[cachedHistory]]
     $interactionUpdate
 
     $newHistoryTimeout
   `
-}
+})

@@ -1,30 +1,22 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "switchlocale",
   type: "interactionCreate",
-  allowed: ['autocomplete'],
+  allowed: ["autocomplete"],
   code: `
     $let[focusedValue;$toLowerCase[$focusedOptionValue]]
 
     $jsonLoad[locales;$jsonEntries[$getGlobalVar[allLocales]]]
 
     $if[$get[focusedValue]!=;
-      $arrayFilter[locales;locale;
-        $return[$or[$includes[$toLowercase[$env[locale;0]];$get[focusedValue]];$includes[$toLowercase[$env[locale;1]];$get[focusedValue]]]]
-      ;locales]
+      $arrayFilter[locales;locale;$or[$includes[$toLowerCase[$jsonGet[locale;0]];$get[focusedValue]];$includes[$toLowerCase[$jsonGet[locale;1]];$get[focusedValue]]];locales]
     ]
 
-    $loop[25;
-      $let[i;$math[$env[i] - 1]]
-      $let[name;$env[locales;$get[i];0]]
-      $let[desc;$env[locales;$get[i];1]]
-
-      $if[$or[$get[name]==;$get[desc]==];
-        $break
-      ]
-
-      $addChoice[$get[desc];$get[name]]
-    ;i;true]
+    $arrayForEach[$arraySlice[locales;;0;25];locale;
+      $addChoice[$jsonGet[locale;1];$jsonGet[locale;0]]
+    ]
 
     true
   `
-}
+})

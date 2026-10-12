@@ -1,48 +1,51 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "startLobby",
   type: "interactionCreate",
   allowed: ["button"],
   code: `
     $enableUserMentions
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkLobby
 
     $jsonLoad[lobby;$getChannelVar[lobby]]
-    $jsonLoad[teams;$env[lobby;teams]]
-    $jsonLoad[allPlayers;$env[lobby;allPlayers]]
+    $jsonLoad[teams;$jsonGet[lobby;teams]]
+    $c[A tester can have several entries: count everyone once]
+    $jsonLoad[players;$arrayUnique[$jsonGet[lobby;allPlayers]]]
 
-    $onlyIf[$env[lobby;host]==$authorID;$onlyAuthorInteraction]
+    $onlyIf[$jsonGet[lobby;host]==$authorID;$onlyAuthorInteraction]
 
-    $onlyIf[$arrayLength[allPlayers]>1]
+    $onlyIf[$jsonSize[lobby;allPlayers]>1;
+      $newError[$tl[ui.lobby.notEnoughPlayers.$get[l]]]
+    ]
 
     $!stopTimeout[lobby-$channelID]
 
-    $arrayMap[allPlayers;ID;
-      $return[<@$env[ID]>]
-    ;members]
-
     $fn[startingEmbed;
-      $addTextDisplay[$arrayJoin[members; ]]
+      $addTextDisplay[$arrayFormat[players;<@{.}>;;; ]]
       $addContainer[
         $addTextDisplay[$default[$env[content];???]]
       ;$getGlobalVar[luckyColor]]
     ;content]
-    
+
     $let[s;10]
 
-    $!deleteMessage[$channelID;$env[lobby;messageID]]
+    $!deleteMessage[$channelID;$jsonGet[lobby;messageID]]
     $let[mid;$sendMessage[$channelID;$callFn[startingEmbed;$tl[ui.lobby.getReady.$get[l];$get[s]]];true]]
-    
+
+    $c[Countdown: the start fails if the lobby closed or started meanwhile]
     $while[$get[s]>0;
       $letSub[s;1]
 
       $wait[800]
 
-      $if[$or[$getChannelVar[lobby]==;$env[lobby;started]!=false];
+      $let[current;$getChannelVar[lobby]]
+      $if[$or[$get[current]==;$jsonGet[$get[current];started]!=false];
         $sendMessage[$channelID;
-          $lobbyInfoMessage[$tl[ui.lobby.failed.$get[l]]]
+          $lobbyInfoMessage[lobby;$tl[ui.lobby.failed.$get[l]]]
         ]
         $!deleteMessage[$channelID;$get[mid]]
         $stop
@@ -60,14 +63,13 @@ export default {
     $!jsonSet[lobby;started;true]
     $setChannelVar[lobby;$env[lobby]]
 
-    $arrayForEach[allPlayers;ID;
-      $let[teamID;$arrayFindIndex[teams;team;$arrayIncludes[$env[team;players];$env[ID]]]]
-      $setProgress[$env[ID];$get[teamID]]
-      $startTimer[$env[ID]]
+    $arrayForEach[players;ID;
+      $setProgress[$env[ID];$arrayFindIndex[teams;team;$arrayIncludes[$jsonGet[team;players];"$env[ID]"]]]
+      $startChallengeTimer[$env[ID]]
     ]
 
     $sendMessage[$channelID;
       $callFn[startingEmbed;$tl[ui.start.hasBegun.$get[l]]]
     ]
   `
-}
+})

@@ -1,25 +1,27 @@
-import { BaseCommand } from "@tryforge/forgescript";
+import { BaseCommand } from "@tryforge/forgescript"
 
 export default new BaseCommand({
   type: "voted",
   code: `
     $let[ID;$voteUserID]
     $let[MC;$getGlobalVar[voteReward]]
-    
-
     $logger[Info;User $username[$get[ID]] voted on Top.gg]
 
-    $onlyIf[$isUserDMEnabled[$get[ID]]]
-
     $jsonLoad[userProfile;$getProfile[$get[ID]]]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
+    $let[hasProfile;$jsonGet[userProfile;acceptedRules]]
 
+    $c[The reward is given even if the user can't be messaged]
+    $if[$get[hasProfile];
+      $sumCash[$get[MC]]
+      $saveProfile[$env[userProfile]]
+    ]
+
+    $onlyIf[$isUserDMEnabled[$get[ID]]]
     $addContainer[
-      $if[$env[userProfile;acceptedRules];
+      $if[$get[hasProfile];
         $addAuthorDisplay
         $addTextDisplay[$tl[ui.vote.userWithProfileVoted.$get[l];$separate[$get[MC]]]]
-        $sumCash[$get[MC]]
-        $saveProfile[$env[userProfile]]
       ;
         $addTextDisplay[## \`$username[$get[ID]]\`]
         $addSeparator[Large]

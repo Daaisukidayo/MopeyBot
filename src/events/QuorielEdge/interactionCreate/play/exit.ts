@@ -1,34 +1,36 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "play_leave",
   type: "interactionCreate",
   allowed: ["button"],
   code: `
     $arrayLoad[IID;-;$customID]
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
     
     $jsonLoad[playData;$getUserVar[userPlayData]]
-    $onlyif[$env[playData;started];
+    $onlyIf[$jsonGet[playData;started];
       $newError[$tl[ui.play.noSession.$get[l]]]
     ]
 
-    $switch[$env[IID;1];
+    $switch[$jsonGet[IID;1];
       $case[disconnect;
         $let[content;$tl[ui.play.disconnected.$get[l]]]
-        $if[$messageExists[$env[playData;ChannelID];$env[playData;MessageID]];
-          $!deleteMessage[$env[playData;ChannelID];$env[playData;MessageID]]
+        $if[$messageExists[$jsonGet[playData;ChannelID];$jsonGet[playData;MessageID]];
+          $!deleteMessage[$jsonGet[playData;ChannelID];$jsonGet[playData;MessageID]]
         ]
       ]
 
       $case[quit;
-        $onlyIf[$env[playData;MessageID]==$messageID]
+        $onlyIf[$jsonGet[playData;MessageID]==$messageID]
         $let[content;$tl[ui.play.exited.$get[l]]]
       ]
     ]
 
-    $let[MC;$env[playData;MC]]
-    $removePlayProgress
+    $let[MC;$jsonGet[playData;MC]]
+    $removePlayProgress[playData]
 
     $addContainer[
       $addAuthorDisplay
@@ -37,4 +39,4 @@ export default {
     ;$getGlobalVar[defaultColor]]
     $interactionUpdate
   `
-}
+})

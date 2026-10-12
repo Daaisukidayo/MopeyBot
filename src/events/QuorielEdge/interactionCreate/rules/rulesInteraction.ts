@@ -1,28 +1,22 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "notARobot",
   type: "interactionCreate",
-  allowed: ['button'],
+  allowed: ["button"],
   code: `
     $arrayLoad[IID;-;$customID]
 
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
+    $c[The user's Discord language, when available]
     $jsonLoad[allLocales;$getGlobalVar[allLocales]]
-      
-    $let[locale;$locale]
-
-    $if[$jsonHas[allLocales;$get[locale]];
-      $!jsonSet[userProfile;language;$get[locale]]
-    ;
-      $!jsonSet[userProfile;language;en-US]
-    ]
-
-    $!jsonSet[userProfile;ID;"$authorID"]
+    $objectMerge[userProfile;$objectOf[language;$if[$jsonHas[allLocales;$locale];$locale;en-US];ID;"$authorID"]]
     $saveProfile[$env[userProfile]]
     $rulesEmbed
     $interactionUpdate
   `
-}
+})

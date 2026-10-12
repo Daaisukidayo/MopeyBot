@@ -1,26 +1,25 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "play_showApexes",
   type: "interactionCreate",
-  allowed: ['button'],
+  allowed: ["button"],
   code: `
     $arrayLoad[IID;-;$customID]
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
     $jsonLoad[playData;$getUserVar[userPlayData]]
-    $isPlaying
+    $isPlaying[playData]
 
-    $jsonLoad[apexData;$getCurrentApexData]
-    $jsonLoad[biomeColors;$getGlobalVar[biomeColors]]
-
-    $let[color;$env[biomeColors;$env[playData;currentBiome]]]
+    $jsonLoad[apexData;$getCurrentApexData[playData]]
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$env[apexData;content]]
-    ;$get[color]]
+      $addTextDisplay[$jsonGet[apexData;content]]
+    ;$getBiomeColor[playData]]
     $ephemeral
     $interactionReply
   `
-}
+})

@@ -222,7 +222,7 @@
       "ID": 0
     },
     {
-      "name": "desertRat",
+      "name": "kangaroo_rat",
       "ID": 1
     },
     {
@@ -230,7 +230,7 @@
       "ID": 2
     },
     {
-      "name": "arcticChipmunk",
+      "name": "chipmunk",
       "ID": 3
     },
     {
@@ -246,11 +246,11 @@
       "ID": 6
     },
     {
-      "name": "whiteDove",
+      "name": "dove",
       "ID": 7
     },
     {
-      "name": "desertChipmunk",
+      "name": "desert_chipmunk",
       "ID": 8
     },
     {
@@ -258,7 +258,7 @@
       "ID": 9
     },
     {
-      "name": "arcticHare",
+      "name": "arctic_hare",
       "ID": 10
     },
     {
@@ -286,7 +286,7 @@
       "ID": 16
     },
     {
-      "name": "flyingLizard",
+      "name": "flying_lizard",
       "ID": 17
     },
     {
@@ -294,11 +294,11 @@
       "ID": 18
     },
     {
-      "name": "pinkyPig",
+      "name": "pinky",
       "ID": 19
     },
     {
-      "name": "stinkyPig",
+      "name": "stinky",
       "ID": 20
     },
     {
@@ -310,7 +310,7 @@
       "ID": 22
     },
     {
-      "name": "seaHorse",
+      "name": "sea_horse",
       "ID": 23
     },
     {
@@ -330,7 +330,7 @@
       "ID": 27
     },
     {
-      "name": "marshDeer",
+      "name": "marsh",
       "ID": 28
     },
     {
@@ -350,7 +350,7 @@
       "ID": 32
     },
     {
-      "name": "muskDeer",
+      "name": "musk",
       "ID": 33
     },
     {
@@ -358,7 +358,7 @@
       "ID": 34
     },
     {
-      "name": "goldenPheasant",
+      "name": "golden_pheasant",
       "ID": 35
     },
     {
@@ -374,7 +374,7 @@
       "ID": 38
     },
     {
-      "name": "fennecFox",
+      "name": "fennec_fox",
       "ID": 39
     },
     {
@@ -382,7 +382,7 @@
       "ID": 40
     },
     {
-      "name": "arcticFox",
+      "name": "arctic_fox",
       "ID": 41
     },
     {
@@ -402,11 +402,11 @@
       "ID": 45
     },
     {
-      "name": "blueMacaw",
+      "name": "blue",
       "ID": 46
     },
     {
-      "name": "rareMacaw",
+      "name": "spix",
       "ID": 47
     },
     {
@@ -434,7 +434,7 @@
       "ID": 53
     },
     {
-      "name": "momaffieFamily",
+      "name": "momaffie_family",
       "ID": 54
     },
     {
@@ -450,7 +450,7 @@
       "ID": 57
     },
     {
-      "name": "snowyOwl",
+      "name": "snowy_owl",
       "ID": 58
     },
     {
@@ -474,7 +474,7 @@
       "ID": 63
     },
     {
-      "name": "blackPanther",
+      "name": "black_panther",
       "ID": 64
     },
     {
@@ -486,27 +486,27 @@
       "ID": 66
     },
     {
-      "name": "chocoToucan",
+      "name": "choco",
       "ID": 67
     },
     {
-      "name": "keelBilledToucan",
+      "name": "keel_billed",
       "ID": 68
     },
     {
-      "name": "fieryToucan",
+      "name": "fiery",
       "ID": 69
     },
     {
-      "name": "lavaToucan",
+      "name": "lava",
       "ID": 70
     },
     {
-      "name": "rareToucan",
+      "name": "helmeted_hornbill",
       "ID": 71
     },
     {
-      "name": "rattleSnake",
+      "name": "rattle_snake",
       "ID": 72
     },
     {
@@ -514,15 +514,15 @@
       "ID": 73
     },
     {
-      "name": "yellowPufferfish",
+      "name": "yellow",
       "ID": 74
     },
     {
-      "name": "demonPufferfish",
+      "name": "demon",
       "ID": 75
     },
     {
-      "name": "snowLeopard",
+      "name": "snow_leopard",
       "ID": 76
     },
     {
@@ -534,7 +534,7 @@
       "ID": 78
     },
     {
-      "name": "blackBear",
+      "name": "black_bear",
       "ID": 79
     },
     {
@@ -542,15 +542,15 @@
       "ID": 80
     },
     {
-      "name": "whiteTiger",
+      "name": "white_tiger",
       "ID": 81
     },
     {
-      "name": "blackTiger",
+      "name": "black_tiger",
       "ID": 82
     },
     {
-      "name": "gobiBear",
+      "name": "gobi_bear",
       "ID": 83
     },
     {
@@ -582,35 +582,35 @@
       "ID": 90
     },
     {
-      "name": "lionCub",
+      "name": "cub",
       "ID": 91
     },
     {
-      "name": "blackManedLion",
+      "name": "black_maned",
       "ID": 92
     },
     {
-      "name": "whiteLionCub",
+      "name": "white_cub",
       "ID": 93
     },
     {
-      "name": "whiteLioness",
+      "name": "white_lioness",
       "ID": 94
     },
     {
-      "name": "whiteLion",
+      "name": "white_lion",
       "ID": 95
     },
     {
-      "name": "blackLionCub",
+      "name": "black_cub",
       "ID": 96
     },
     {
-      "name": "blackLioness",
+      "name": "black_lioness",
       "ID": 97
     },
     {
-      "name": "blackLion",
+      "name": "black_lion",
       "ID": 98
     },
     {
@@ -630,7 +630,7 @@
       "ID": 102
     },
     {
-      "name": "rareVulture",
+      "name": "argentavis",
       "ID": 103
     },
     {
@@ -638,35 +638,35 @@
       "ID": 104
     },
     {
-      "name": "polarBear",
+      "name": "polar_bear",
       "ID": 105
     },
     {
-      "name": "rhino",
+      "name": "rhinoceros",
       "ID": 106
     },
     {
-      "name": "whiteRhino",
+      "name": "white_rhinoceros",
       "ID": 107
     },
     {
-      "name": "blackRhino",
+      "name": "black_rhinoceros",
       "ID": 108
     },
     {
-      "name": "baldEagle",
+      "name": "eagle",
       "ID": 109
     },
     {
-      "name": "goldenEagle",
+      "name": "golden",
       "ID": 110
     },
     {
-      "name": "harpyEagle",
+      "name": "harpy",
       "ID": 111
     },
     {
-      "name": "greaterSpottedEagle",
+      "name": "greater_spotted",
       "ID": 112
     },
     {
@@ -682,7 +682,7 @@
       "ID": 115
     },
     {
-      "name": "bigGoat",
+      "name": "big_goat",
       "ID": 116
     },
     {
@@ -690,11 +690,11 @@
       "ID": 117
     },
     {
-      "name": "hippo",
+      "name": "hippopotamus",
       "ID": 118
     },
     {
-      "name": "boaConstrictor",
+      "name": "boa",
       "ID": 119
     },
     {
@@ -702,23 +702,23 @@
       "ID": 120
     },
     {
-      "name": "komodoDragon",
+      "name": "komodo_dragon",
       "ID": 121
     },
     {
-      "name": "killerWhale",
+      "name": "orca",
       "ID": 122
     },
     {
-      "name": "sabertoothTiger",
+      "name": "sabertooth_tiger",
       "ID": 123
     },
     {
-      "name": "whiteGiraffe",
+      "name": "white_giraffe",
       "ID": 124
     },
     {
-      "name": "giraffeFamily",
+      "name": "family",
       "ID": 125
     },
     {
@@ -730,15 +730,15 @@
       "ID": 127
     },
     {
-      "name": "giantSpider",
+      "name": "giant_spider",
       "ID": 128
     },
     {
-      "name": "blackwidowSpider",
+      "name": "black_widow",
       "ID": 129
     },
     {
-      "name": "blueWhale",
+      "name": "blue_whale",
       "ID": 130
     },
     {
@@ -766,7 +766,7 @@
       "ID": 136
     },
     {
-      "name": "kingCrab",
+      "name": "king_crab",
       "ID": 137
     },
     {
@@ -774,55 +774,55 @@
       "ID": 138
     },
     {
-      "name": "aquaYeti",
+      "name": "aqua",
       "ID": 139
     },
     {
-      "name": "shopBigfoot",
+      "name": "shop_bigfoot",
       "ID": 140
     },
     {
-      "name": "rareBigfoot",
+      "name": "rare_bigfoot",
       "ID": 141
     },
     {
-      "name": "shopSnowman",
+      "name": "shop_snowman",
       "ID": 142
     },
     {
-      "name": "rareSnowman",
+      "name": "rare_snowman",
       "ID": 143
     },
     {
-      "name": "shopSnowgirl",
+      "name": "shop_snowgirl",
       "ID": 144
     },
     {
-      "name": "rareSnowgirl",
+      "name": "rare_snowgirl",
       "ID": 145
     },
     {
-      "name": "dinoMonster",
+      "name": "dino_monster",
       "ID": 146
     },
     {
-      "name": "landMonster",
+      "name": "lava_monster",
       "ID": 147
     },
     {
-      "name": "giantScorpion",
+      "name": "giant_scorpion",
       "ID": 148
     },
     {
-      "name": "seaMonster",
+      "name": "sea_monster",
       "ID": 149
     },
     {
-      "name": "iceMonster",
+      "name": "ice_monster",
       "ID": 150
     },
     {
-      "name": "blackDragon",
+      "name": "black_dragon",
       "ID": 151
     }
   ]

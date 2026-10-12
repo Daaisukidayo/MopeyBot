@@ -1,33 +1,30 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "purchasingSkinpacks",
   type: "interactionCreate",
   allowed: ["stringSelect"],
   code: `
     $arrayLoad[IID;-;$customID]
-    $arrayLoad[values;-;$selectMenuValues]
 
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $jsonLoad[userPacks;$env[userProfile;userPacks]]
+    $c[The price is taken from the shop, not from the menu]
     $jsonLoad[shopItems;$getGlobalVar[shopItems]]
+    $jsonLoad[userPacks;$jsonGet[userProfile;userPacks]]
+    $let[skinpack;$selectMenuValues]
+    $let[cost;$jsonGet[$arrayFind[shopItems;item;$jsonGet[item;id]==$get[skinpack]];cost]]
 
-    $let[skinpack;$env[values;0]]
-    $let[cost;$env[values;1]]
-    $let[msgid;$messageID]
-    $let[itemIndex;$arrayFindIndex[shopItems;item;$env[item;id]==$get[skinpack]]]
-
-    $onlyIf[$get[itemIndex]!=-1;
+    $onlyIf[$get[cost]!=;
       $newError[$tl[ui.shop.unknown.$get[l]]]
     ]
-
     $onlyIf[$arrayIncludes[userPacks;$get[skinpack]]==false;
       $newError[$tl[ui.shop.alreadyBought.$get[l]]]
     ]
-
-    $onlyif[$env[userProfile;MC]>=$get[cost];
+    $onlyIf[$jsonGet[userProfile;MC]>=$get[cost];
       $newError[$tl[ui.shop.lowCash.$get[l]]]
     ]
 
@@ -50,4 +47,4 @@ export default {
       ;$getGlobalVar[defaultColor]]
     ]
   `
-}
+})

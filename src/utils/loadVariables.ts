@@ -10,7 +10,7 @@ function assignVariable(key: string, value: any): void {
   variables[key] = value
 }
 
-((): void => {
+;((): void => {
   try {
     const configRootPath = path.join(process.cwd(), "res", "config")
 
@@ -22,8 +22,8 @@ function assignVariable(key: string, value: any): void {
     const entries = fs.readdirSync(configRootPath, { withFileTypes: true })
 
     const dirs = entries
-      .filter(entry => entry.isDirectory() && (!entry.name.startsWith('_') || !entry.name.startsWith('.')))
-      .map(entry => entry.name)
+      .filter((entry) => entry.isDirectory() && (!entry.name.startsWith("_") || !entry.name.startsWith(".")))
+      .map((entry) => entry.name)
 
     if (dirs.length === 0) {
       console.warn("⚠️ No valid sub-directories found in res/config.")
@@ -32,9 +32,9 @@ function assignVariable(key: string, value: any): void {
 
     for (const dir of dirs) {
       const dirPath = path.join(configRootPath, dir)
-      
+
       const allFiles = fs.readdirSync(dirPath)
-      const jsonFiles = allFiles.filter(file => file.endsWith(".json"))
+      const jsonFiles = allFiles.filter((file) => file.endsWith(".json"))
 
       if (jsonFiles.length === 0) {
         console.info(`ℹ️ Skipped empty directory "${dir}"`)
@@ -48,14 +48,13 @@ function assignVariable(key: string, value: any): void {
           const fileContent = fs.readFileSync(filePath, "utf-8")
           const jsonData = JSON.parse(fileContent)
 
-          if (jsonData && typeof jsonData === 'object' && !Array.isArray(jsonData)) {
+          if (jsonData && typeof jsonData === "object" && !Array.isArray(jsonData)) {
             for (const [key, value] of Object.entries(jsonData)) {
               assignVariable(key, value)
             }
           } else {
             console.warn(`⚠️ File [${dir}/${file}] must contain a valid JSON object.`)
           }
-
         } catch (err: any) {
           console.error(`❌ Error parsing JSON in [${dir}/${file}]:`, err.message)
         }

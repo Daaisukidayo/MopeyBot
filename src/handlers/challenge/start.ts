@@ -1,11 +1,11 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleStart',
+  name: "handleStart",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
 
@@ -24,6 +24,6 @@ export default new ForgeFunction({
     $!send
 
     $setProgress
-    $startTimer
+    $startChallengeTimer
   `
 })

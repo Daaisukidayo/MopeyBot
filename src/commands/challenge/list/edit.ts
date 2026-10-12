@@ -1,4 +1,5 @@
 import { commandsData } from "#commandsData"
+import { localized } from "../../../utils/getLocalization.js"
 import { ApplicationCommand } from "@tryforge/forgescript"
 const slash = commandsData.command_editlist.slash
 const options = slash.options
@@ -10,85 +11,22 @@ export default new ApplicationCommand({
   data: {
     type: 1,
 
-    name: slash.name["default"],
-    name_localizations: {
-      "en-US": slash.name["en-US"],
-      "ru": slash.name["ru"]
-    },
-    description: slash.description["default"],
-    description_localizations: {
-      "en-US": slash.description["en-US"],
-      "ru": slash.description["ru"]
-    },
+    ...localized(slash),
 
     options: [
+      { type: 3, required: true, ...localized(options[0]) },
       {
         type: 3,
         required: true,
 
-        name: options[0].name["default"],
-        name_localizations: {
-          "en-US": options[0].name["en-US"],
-          "ru": options[0].name["ru"]
-        },
-        
-        description: options[0].description["default"],
-        description_localizations: {
-          "en-US": options[0].description["en-US"],
-          "ru": options[0].description["ru"]
-        },
-      },
-      {
-        type: 3,
-        required: true,
-
-        name: options[1].name["default"],
-        name_localizations: {
-          "en-US": options[1].name["en-US"],
-          "ru": options[1].name["ru"]
-        },
-        
-        description: options[1].description["default"],
-        description_localizations: {
-          "en-US": options[1].description["en-US"],
-          "ru": options[1].description["ru"]
-        },
+        ...localized(options[1]),
 
         choices: [
-          { 
-            name: options[1].choices[0].name["default"],
-            name_localizations: {
-              "en-US": options[1].choices[0].name["en-US"],
-              "ru": options[1].choices[0].name["ru"]
-            }, 
-            value: '+'
-          },
-          { 
-            name: options[1].choices[1].name["default"],
-            name_localizations: {
-              "en-US": options[1].choices[1].name["en-US"],
-              "ru": options[1].choices[1].name["ru"]
-            }, 
-            value: '-'
-          },
+          { ...localized(options[1].choices[0]), value: "+" },
+          { ...localized(options[1].choices[1]), value: "-" }
         ]
       },
-      {
-        type: 3,
-        required: true,
-
-        name: options[2].name["default"],
-        name_localizations: {
-          "en-US": options[2].name["en-US"],
-          "ru": options[2].name["ru"]
-        },
-        
-        description: options[2].description["default"],
-        description_localizations: {
-          "en-US": options[2].description["en-US"],
-          "ru": options[2].description["ru"]
-        },
-      },
+      { type: 3, required: true, ...localized(options[2]) }
     ]
   }
 })

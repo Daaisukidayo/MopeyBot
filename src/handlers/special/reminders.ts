@@ -1,11 +1,11 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleReminders',
+  name: "handleReminders",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown

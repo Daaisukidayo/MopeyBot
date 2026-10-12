@@ -1,60 +1,30 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleRaretry',
+  name: "handleRaretry",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkProfile
 
-    $jsonLoad[modes;$getGlobalVar[raretryModes]]
-    $jsonLoad[multipliers;$getGlobalVar[raretryMultipliers]]
-    $jsonLoad[rewards;$getGlobalVar[raretryRewards]]
-    $jsonLoad[rarities;$getGlobalVar[raretryRarities]]
-    $jsonLoad[categories;$getGlobalVar[raretryCategories]]
-    $jsonLoad[rareGroups;$readFile[res/data/raresInRaretry.json]]
-
-    $let[rtMode;$toLowerCase[$nullish[$option[mode];$message[0];$env[userProfile;rtMode]]]]
-
-    $if[$isNumber[$get[rtMode]]==false;
-      $let[rtMode;$arrayFindIndex[$jsonEntries[$tl[data.raretryModes]];e;
-        $arrayLoad[objValues;, ;$jsonValues[$env[e;1]]]
-        $return[$arrayIncludes[objValues;$toTitleCase[$get[rtMode]]]]
-      ]]
-    ]
-
-    $onlyIf[$arrayIncludes[modes;$get[rtMode]];
-      $arrayMap[modes;m;
-        $return[$tl[data.raretryModes.$env[m].$get[l]]]
-      ;modeList]
-      $newError[$tl[ui.raretry.unknownMode.$get[l];$arrayJoin[modeList;\`, \`]]]
-    ]
+    $let[rtMode;$pickLocalizedOption[data.raretryModes;$nullish[$option[mode];$message[0];$jsonGet[userProfile;rtMode]];$getGlobalVar[raretryModes];ui.raretry.unknownMode]]
 
     $addCooldown
     $defer
 
-    $let[al;$arrayLength[rareGroups]]
-    $let[li;$math[$get[al] - 1]]
+    $jsonLoad[rarities;$getGlobalVar[raretryRarities]]
+    $jsonLoad[rewards;$getGlobalVar[raretryRewards]]
+    $jsonLoad[categories;$getGlobalVar[raretryCategories]]
+    $jsonLoad[rareGroups;$readFile[res/data/raresInRaretry.json]]
+    $let[li;$math[$jsonSize[rareGroups] - 1]]
+    $let[multiplier;$jsonGet[$getGlobalVar[raretryMultipliers];$get[rtMode]]]
+    $let[modeLine;$tl[ui.raretry.mode.$get[l];$tl[data.raretryModes.$get[rtMode].$get[l]]]]
+
+    $c[A developer catches the category with this index]
     $let[arg;$message[1]]
-    $let[isDev;$checkCondition[$env[userProfile;devMode]==1]]
-    $let[lastDailyRaretry;$default[$env[userProfile;limiters;lastDailyRaretry];-1]]
-    $let[caughtCount;0]
-    $let[color;$getGlobalVar[errorColor]]
-    $let[desc;$tl[ui.raretry.nothing.$get[l]]]
-
-    $c[targetID = category index]
-    $let[targetID;$function[
-      $if[$and[$get[isDev];$get[arg]!=;$isNumber[$get[arg]];$get[arg]>-1;$get[arg]<=$get[li]];
-        $return[$get[arg]]
-      ]
-      $return[-1]
-    ]]
-
-    $jsonLoad[footer;[
-      "$tl[ui.raretry.mode.$get[l];$tl[data.raretryModes.$get[rtMode].$get[l]]]"
-    \\]]
+    $let[targetID;$if[$and[$isNumber[$get[arg]];$isDev;$get[arg]>-1;$get[arg]<=$get[li]];$get[arg];-1]]
 
     $fn[embed;
       $addContainer[
@@ -68,76 +38,52 @@ export default new ForgeFunction({
         ;
           $addTextDisplay[$get[desc]]
         ]
-        
-        $addSeparator[Large]
-        $addTextDisplay[$arrayJoin[footer;\n]]
 
+        $addSeparator[Large]
+        $addTextDisplay[$get[footer]]
       ;$get[color]]
     ]
 
-    
-    $loop[$get[al];
-      $let[i;$math[$env[i] - 1]]
-      $jsonLoad[group;$arrayAt[rareGroups;$get[i]]]
+    $let[caughtCount;0]
 
-      $let[rtIndex;$math[$get[i] + $get[rtMode]]]
-      $let[baseChance;$env[rarities;$get[rtIndex]]]
+    $c[From the rarest category down, so the rarest catch is shown first. Anyone but a developer with a target rolls 1/chance]
+    $arrayForEach[$arrayRange[$get[li];0;-1];i;
+      $let[rtIndex;$math[$env[i] + $get[rtMode]]]
+      $let[baseChance;$jsonGet[rarities;$get[rtIndex]]]
 
-      $let[condition;$function[
-        $if[$get[targetID]==-1;
-          $return[$checkCondition[$random[1;$get[baseChance]]==1]]
+      $if[$or[$env[i]==$get[targetID];$and[$get[targetID]==-1;$random[1;$get[baseChance]]==1]];
+        $letSum[caughtCount;1]
+
+        $jsonLoad[group;$jsonGet[rareGroups;$env[i]]]
+        $let[animalId;$arraySample[$jsonGet[group;animalIds]]]
+        $let[image;$animalImage[$get[animalId]]]
+        $let[color;$jsonGet[group;color]]
+        $let[desc;$tl[ui.raretry.gotRares.$get[l];$getAnimalInfo[$get[animalId];name;0]]]
+
+        $c[A mode can give no coins]
+        $let[MC;$math[$jsonGet[rewards;$get[rtIndex]] * $get[multiplier]]]
+        $if[$get[MC]!=0;
+          $let[desc;$get[desc]\n$tl[ui.raretry.earned.$get[l];$separate[$get[MC]]]]
+          $sumCash[$get[MC]]
         ]
 
-        $return[$checkCondition[$get[i]==$get[targetID]]]
-      ]]
-
-      $if[$get[condition];;$continue]
-
-      $letSum[caughtCount;1]
-      
-      $let[animalId;$arrayRandomValue[$env[group;animalIds]]]
-      $let[MC;$math[$env[rewards;$get[rtIndex]] * $arrayAt[multipliers;$get[rtMode]]]] $c[Can be 0]
-      $let[image;$getAnimalInfo[$get[animalId];img;0]]
-      $let[animalDisplay;$getAnimalInfo[$get[animalId];name;0]]
-      $let[category;$tl[data.raretryCategories.$arrayAt[categories;$get[i]].$get[l]]]
-
-      $if[$get[MC]!=0;
-        $let[extraContent;\n$tl[ui.raretry.earned.$get[l];$separate[$get[MC]]]]
-        $sumCash[$get[MC]]
+        $let[footer;$tl[ui.raretry.rarity.$get[l];1;$separate[$get[baseChance]]]\n$tl[ui.raretry.category.$get[l];$tl[data.raretryCategories.$jsonGet[categories;$env[i]].$get[l]]]\n$get[modeLine]]
+        $callFn[embed]
       ]
+    ]
 
-      $let[desc;$tl[ui.raretry.gotRares.$get[l];$get[animalDisplay]]$get[extraContent]]
-      
-      $jsonLoad[footer;[
-        "$tl[ui.raretry.rarity.$get[l];1;$separate[$get[baseChance]]]",
-        "$tl[ui.raretry.category.$get[l];$get[category]]",
-        "$tl[ui.raretry.mode.$get[l];$tl[data.raretryModes.$get[rtMode].$get[l]]]"
-      \\]]
-
-      $let[color;$env[group;color]]
-      $delete[extraContent]
-
-      $callFn[embed]
-    ;i]
-
-
+    $c[The daily task counts the catches until it is done]
     $if[$get[caughtCount]>0;
-
-      $if[$get[lastDailyRaretry]!=$calendarDay;
-        $setUserVar[caughtRaresInRaretry;$math[$getUserVar[caughtRaresInRaretry] + $get[caughtCount]]]
-        $if[$getUserVar[caughtRaresInRaretry]>=$getGlobalVar[maxRaretryRares];
+      $if[$jsonGet[userProfile;limiters;lastDailyRaretry]!=$calendarDay;
+        $if[$countDailyRares[raretry;$get[caughtCount]];
           $!jsonSet[userProfile;limiters;lastDailyRaretry;$calendarDay]
-          
-          $setTimeout[
-            $sendMessage[$channelID;
-              $addTextDisplay[$tl[ui.special.caughtRares.$get[l];<@$authorID>;$getGlobalVar[maxRaretryRares];$commandName]]
-            ]
-          ;1s]
         ]
       ]
-
       $saveProfile[$env[userProfile]]
     ;
+      $let[color;$getGlobalVar[errorColor]]
+      $let[desc;$tl[ui.raretry.nothing.$get[l]]]
+      $let[footer;$get[modeLine]]
       $callFn[embed]
     ]
   `

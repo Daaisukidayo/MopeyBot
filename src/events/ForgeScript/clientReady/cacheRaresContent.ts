@@ -1,11 +1,15 @@
 import { BaseCommand } from "@tryforge/forgescript"
 
 export default new BaseCommand({
-  type: 'clientReady',
+  type: "clientReady",
   code: `
-    $arrayMap[$getAnimalsData;animal;
-      $if[$and[$env[animal;isRare];$jsonHas[animal;deleted]==false];
-        $return[$env[animal;variants;0;name] $env[animal;variants;0;emoji] \`[$env[animal;rarity;0]/$env[animal;rarity;1]\\]\` \`($round[$math[$env[animal;rarity;0]/$env[animal;rarity;1]*100];2]%)\`]
+    $c[Read by reference: never modify 'animals']
+    $cacheAnimalsData
+    $getCache[animals;animalsData;animals]
+
+    $arrayMap[animals;animal;
+      $if[$and[$jsonGet[animal;isRare];$jsonHas[animal;deleted]==false];
+        $return[$jsonGet[animal;variants;0;name] $jsonGet[animal;variants;0;emoji] \`[$jsonGet[animal;rarity;0]/$jsonGet[animal;rarity;1]\\]\` \`($round[$math[$jsonGet[animal;rarity;0]/$jsonGet[animal;rarity;1]*100];2]%)\`]
       ]
     ;raresContent]
 

@@ -1,7 +1,7 @@
 import { ArgType, NativeFunction } from "@tryforge/forgescript"
 
 export default new NativeFunction({
-  name: '$not',
+  name: "$not",
   description: "Returns the logical NOT of a boolean value",
   output: ArgType.Boolean,
   brackets: true,
@@ -12,7 +12,7 @@ export default new NativeFunction({
       description: "The boolean value to invert.",
       type: ArgType.Boolean,
       required: true,
-      rest: false,
+      rest: false
     }
   ],
   async execute(ctx, [bool]) {

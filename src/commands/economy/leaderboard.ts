@@ -1,4 +1,5 @@
 import { commandsData } from "#commandsData"
+import { localized } from "../../utils/getLocalization.js"
 import { ApplicationCommand } from "@tryforge/forgescript"
 const slash = commandsData.command_leaderboard.slash
 const options = slash.options
@@ -10,58 +11,14 @@ export default new ApplicationCommand({
   `,
   data: {
     type: 1,
-    integration_types: [
-      0
-    ],
-    contexts: [
-      0
-    ],
+    integration_types: [0],
+    contexts: [0],
 
-    name: slash.name["default"],
-    name_localizations: {
-      "en-US": slash.name["en-US"],
-      "ru": slash.name["ru"],
-    },
-    description: slash.description["default"],
-    description_localizations: {
-      "en-US": slash.description["en-US"],
-      "ru": slash.description["ru"],
-    },
+    ...localized(slash),
 
     options: [
-      {
-        type: 4,
-        required: false,
-        min_value: 1,
-
-        name: options[0].name["default"],
-        name_localizations: {
-          "en-US": options[0].name["en-US"],
-          "ru": options[0].name["ru"]
-        },
-        description: options[0].description["default"],
-        description_localizations: {
-          "en-US": options[0].description["en-US"],
-          "ru": options[0].description["ru"]
-        },
-      },
-      {
-        type: 4,
-        required: false,
-        min_value: 1,
-        max_value: 10,
-
-        name: options[1].name["default"],
-        name_localizations: {
-          "en-US": options[1].name["en-US"],
-          "ru": options[1].name["ru"]
-        },
-        description: options[1].description["default"],
-        description_localizations: {
-          "en-US": options[1].description["en-US"],
-          "ru": options[1].description["ru"]
-        },
-      }
-    ],
+      { type: 4, required: false, min_value: 1, ...localized(options[0]) },
+      { type: 4, required: false, min_value: 1, max_value: 10, ...localized(options[1]) }
+    ]
   }
 })

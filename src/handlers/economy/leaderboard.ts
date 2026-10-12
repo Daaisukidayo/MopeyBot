@@ -1,58 +1,38 @@
-import { ForgeFunction } from "@tryforge/forgescript";
+import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleLeaderboard',
+  name: "handleLeaderboard",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkProfile
-    
+
     $onlyIf[$hasCache[leaderboard;cachedLB];
       $newError[$tl[ui.leaderboard.notReady.$get[l]]]
     ]
 
     $addCooldown
-
     $defer
-    
-    $let[arg1;$default[$option[page];$message[0]]]
-    $let[arg2;$default[$option[rows];$message[1]]]
 
-    $arrayCreate[LBpages]
-    $getCache[leaderboard;cachedLB;cachedLB]
-    
-    $let[rowsPerPage;$function[
-      $if[$and[$get[arg2]!=;$isNumber[$get[arg2]];$get[arg2]<=10;$get[arg2]>=1];
-        $return[$get[arg2]]
-      ]
-      $return[10]
-    ]]
+    $c[The cached array is shared, so a page is copied out of it without changing it. The message keeps the whole list, so its pages stay the same until it is deleted]
+    $getCache[leaderboard;cachedLB;LBlist]
 
-    $loop[$arrayLength[cachedLB];
-      $if[$math[($env[i] - 1) % $get[rowsPerPage]]==0;
-        $arrayPushJSON[LBpages;$arraySplice[cachedLB;0;$get[rowsPerPage]]]
-      ]
-    ;i;true]
+    $c[10 rows and the first page, unless others are given]
+    $let[rows;$default[$option[rows];$message[1]]]
+    $let[rowsPerPage;$if[$and[$isNumber[$get[rows]];$inRange[$get[rows];1;10]];$floor[$get[rows]];10]]
+    $let[maxPages;$arrayPageCount[LBlist;$get[rowsPerPage]]]
+    $let[page;$default[$option[page];$message[0]]]
+    $let[page;$if[$and[$isNumber[$get[page]];$inRange[$get[page];1;$get[maxPages]]];$floor[$get[page]];1]]
 
-    $let[maxPages;$arrayLength[LBpages]]
-    $let[page;$function[
-      $if[$and[$get[arg1]!=;$isNumber[$get[arg1]];$get[arg1]<=$get[maxPages];$get[arg1]>=1];
-        $return[$get[arg1]]
-      ]
-      $return[1]
-    ]]
-
-    $!jsonSet[cachedLB;$arrayAt[LBpages;$math[$get[page]-1]]]
-
-    $leaderboardEmbed
-
+    $jsonLoad[cachedLB;$arrayPage[LBlist;$get[page];$get[rowsPerPage]]]
+    $leaderboardEmbed[cachedLB;$get[page];$get[maxPages];$get[rowsPerPage]]
     $let[msgID;$send]
 
     $if[$get[maxPages]>1;
-      $setMessageVar[LBpages;$env[LBpages];$get[msgID]]
-      $newLeaderboardTimeout
+      $setMessageVar[LBlist;$env[LBlist];$get[msgID]]
+      $newLeaderboardTimeout[$get[msgID]]
     ]
   `
 })

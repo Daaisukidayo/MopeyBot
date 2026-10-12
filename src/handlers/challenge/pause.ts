@@ -1,35 +1,35 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handlePause',
+  name: "handlePause",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
-    $isActiveChallenge
     $jsonLoad[challengeProgress;$getProgress]
+    $isActiveChallenge[challengeProgress]
 
-    $onlyIf[$env[challengeProgress;paused]==false;
+    $onlyIf[$jsonGet[challengeProgress;paused]==false;
       $newError[$tl[ui.pause.alreadyPaused.$get[l]]]
     ]
 
-    $onlyIf[$getTimer<3600;
+    $onlyIf[$getChallengeTimer<3600;
       $newError[$tl[ui.pause.timesUp.$get[l]]]
     ]
     
     $!jsonSet[challengeProgress;paused;true]
     $saveProgress[$env[challengeProgress]]
-    $stopTimer
+    $pauseChallengeTimer
 
     $addContainer[
       $addAuthorDisplay  
       $addTextDisplay[$tl[ui.pause.paused.$get[l]]]
       $addSeparator[Large]
-      $addTextDisplay[$showPoints]
+      $addTextDisplay[$showPoints[challengeProgress]]
       $addTextDisplay[$showTime]
-      $displayLimitedRares
+      $displayLimitedRares[challengeProgress]
     ;$getGlobalVar[luckyColor]]
   `
 })

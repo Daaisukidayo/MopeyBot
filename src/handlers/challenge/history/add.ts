@@ -1,30 +1,22 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleAddHistory',
+  name: "handleAddHistory",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 
     $defer
 
-    $jsonLoad[difficulties;$getGlobalVar[difficulties]]
-    $jsonLoad[playTypes;$getGlobalVar[playTypes]]
+    $c[A page being added is kept until it is uploaded or canceled]
+    $let[saved;$getUserVar[addHistorySavedConfig]]
+    $jsonLoad[addHistorySavedConfig;$if[$get[saved]==;$addHistoryNewConfig;$get[saved]]]
 
-    $timezone[$env[userProfile;timezone]]
-
-    $if[$getUserVar[addHistorySavedConfig]==;
-      $addHistoryNewConfig
-    ]
-
-    $jsonLoad[addHistorySavedConfig;$getUserVar[addHistorySavedConfig]]
-
-    $historyEmbed[$getUserVar[addHistorySavedConfig]]
-    $addHistoryExtraEmbed
+    $historyEmbed[$env[addHistorySavedConfig]]
+    $addHistoryExtraEmbed[addHistorySavedConfig]
     $newCommandTimeout
   `
 })

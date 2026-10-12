@@ -1,9 +1,11 @@
-export default {
-  name: 'handleInvite',
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
+  name: "handleInvite",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown
@@ -19,4 +21,4 @@ export default {
       $addButton[https://top.gg/bot/$clientID;$tl[ui.invite.topgg.$get[l]];Link]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

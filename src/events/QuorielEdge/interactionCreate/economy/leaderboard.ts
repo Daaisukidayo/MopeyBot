@@ -1,33 +1,33 @@
-export default [{
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "leaderboard",
   type: "interactionCreate",
-  allowed: ['button', 'modal'],
+  allowed: ["button", "modal"],
   code: `
     $arrayLoad[IID;-;$customID]
-    $arrayLoad[passKeys;,;prevPage,nextPage,customPage,modal]
-    $onlyIf[$arraySome[passKeys;key;$arrayIncludes[IID;$env[key]]]]
+    $onlyIf[$isOneOf[$jsonGet[IID;1];prevPage;nextPage;customPage;modal]]
 
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $let[page;$env[IID;2]]
-    $let[rowsPerPage;$env[IID;3]]
-    $let[msgID;$messageID]
+    $let[page;$jsonGet[IID;2]]
+    $let[rowsPerPage;$jsonGet[IID;3]]
 
-    $jsonLoad[LBpages;$getMessageVar[LBpages;$get[msgID]]]
-    $onlyIf[$env[LBpages]!=;
+    $jsonLoad[LBlist;$getMessageVar[LBlist;$messageID]]
+    $onlyIf[$env[LBlist]!=;
       $interactionFail
     ]
 
     $addCooldown[leaderboard;true]
-    
-    $let[maxPages;$arrayLength[LBpages]]
+
+    $let[maxPages;$arrayPageCount[LBlist;$get[rowsPerPage]]]
 
 
-    $switch[$env[IID;1];
+    $switch[$jsonGet[IID;1];
       $case[prevPage;
         $letSub[page;1]
       ]
@@ -45,15 +45,17 @@ export default [{
         $onlyIf[$isNumber[$get[page]];
           $newError[$tl[ui.errors.notNumber.$get[l]]]
         ]
+        $c[A page can only be a whole number]
+        $let[page;$floor[$get[page]]]
       ]
     ]
 
     $let[page;$if[$get[page]<=0;$get[maxPages];$if[$get[page]>$get[maxPages];1;$get[page]]]]
 
-    $jsonLoad[cachedLB;$arrayAt[LBpages;$math[$get[page]-1]]]
+    $jsonLoad[cachedLB;$arrayPage[LBlist;$get[page];$get[rowsPerPage]]]
 
-    $leaderboardEmbed
+    $leaderboardEmbed[cachedLB;$get[page];$get[maxPages];$get[rowsPerPage]]
     $interactionUpdate
     $newLeaderboardTimeout
   `
-}]
+})

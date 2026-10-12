@@ -1,11 +1,15 @@
 import { BaseCommand } from "@tryforge/forgescript"
 
 export default new BaseCommand({
-  type: 'clientReady',
+  type: "clientReady",
   code: `
-    $jsonLoad[animalIndexes;{}]
-    $forOf[$getAnimalsData;obj;
-      $jsonSet[animalIndexes;$env[obj;ID];$env[i]]
+    $c[Read by reference: never modify 'animals']
+    $cacheAnimalsData
+    $getCache[animals;animalsData;animals]
+
+    $jsonLoad[animalIndexes;$objectOf]
+    $arrayForEach[animals;obj;
+      $jsonSet[animalIndexes;$jsonGet[obj;ID];$env[i]]
     ;i]
     $setCache[animals;animalIndexes;$env[animalIndexes]]
     $logger[Info;Cached «animalIndexes»]
@@ -15,13 +19,11 @@ export default new BaseCommand({
     $onlyIf[$env[hlKey]!=;
       $logger[Error;Failed to cache «hlSimData»: «hlSimKey» variable is empty!]
     ]
-    $jsonLoad[data;{}]
+    $jsonLoad[data;$objectOf]
 
-    $arrayForEach[hlKey;animalsIds;
-      $forOf[animalsIds;animalId;
-        $if[$jsonHas[data;$env[animalId]];$continue]
-        $jsonSet[data;$env[animalId];$not[$or[$env[animalId]==null;$getAnimalInfo[$env[animalId];isRare]==false;$includes[$env[animalId];shop]]]]
-      ;i]
+    $c[Every animal of the groups once: true for the rares that count]
+    $arrayForEach[$arrayUnique[$arrayFlat[hlKey]];animalId;
+      $jsonSet[data;$env[animalId];$not[$or[$env[animalId]==null;$getAnimalInfo[$env[animalId];isRare]==false;$includes[$env[animalId];shop]]]]
     ]
 
     $setCache[rares;hlSimData;$env[data]]

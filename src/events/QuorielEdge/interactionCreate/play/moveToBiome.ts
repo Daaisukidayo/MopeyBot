@@ -1,40 +1,51 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "play_moveToBiome",
   type: "interactionCreate",
-  allowed: ['stringSelect'],
+  allowed: ["stringSelect"],
   code: `
     $arrayLoad[IID;-;$customID]
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $let[value;$selectMenuValues]
-
     $jsonLoad[playData;$getUserVar[userPlayData]]
-    $isPlaying
+    $isPlaying[playData]
     
-    $jsonLoad[biomeColors;$getGlobalVar[biomeColors]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
-    $let[biome;$get[value]]
+    $let[biome;$selectMenuValues]
 
     $!jsonSet[playData;currentBiome;$get[biome]]
-    $updatePlayData
 
-    $let[animalId;$env[playData;currentAnimal]]
-    $let[color;$env[biomeColors;$get[biome]]]
-    $let[thumbnail;$getAnimalInfo[$get[animalId];img;$env[userWardrobe;$get[animalId]]]]
+    $let[color;$getBiomeColor[playData;$get[biome]]]
+
+    $c[Moving with a soccer in hands counts as holding it]
+    $let[heldSoccer;$jsonGet[playData;heldSoccer]]
+    $if[$get[heldSoccer]!=;
+      $arrayLoad[soccerData;_;$get[heldSoccer]]
+      $jsonLoad[holdResult;$holdSoccer[playData;$jsonGet[soccerData;0];$jsonGet[soccerData;1]]]
+      $if[$jsonGet[holdResult;outcome]!=held;
+        $let[color;$getGlobalVar[errorColor]]
+      ]
+    ]
 
     $addContainer[
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.play.movedTo.$get[l];$tl[data.biomes.$get[biome].$get[l]]]]
-      $addSeparator[Large]
-      $displayAnimalStats
-      $addActionsMenu
+      $if[$get[heldSoccer]!=;
+        $addSoccerHoldResult[playData;userWardrobe;$jsonGet[soccerData;0];$jsonGet[soccerData;1];held;$env[holdResult]]
+      ;
+        $addSeparator[Large]
+        $displayAnimalStats[playData;userWardrobe]
+        $addActionsMenu[playData]
+      ]
       $addSeparator
-      $addExitButton
-      $addCheats
+      $addExitButton[playData]
+      $addCheats[playData]
     ;$get[color]]
+    $updatePlayData[playData]
     $interactionUpdate
   `
-}
+})

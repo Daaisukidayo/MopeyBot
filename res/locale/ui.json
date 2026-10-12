@@ -732,8 +732,8 @@
     },
   
     "modalPlaceholderList": {
-      "en-US": "<Rare1>=<Amount1>\n<Rare2>=<Amount2>\n...",
-      "ru": "<Редкое1>=<Количество1>\n<Редкое2>=<Количество2>\n..."
+      "en-US": "Rare_Animal=Amount\nRare_Animal=Amount\n...",
+      "ru": "Редкое_Животное=Количество\nРедкое_Животное=Количество\n..."
     },
   
     "modalPlaceholderPoints": {
@@ -829,6 +829,11 @@
     "optionNameSort": {
       "en-US": "Sort Type: {0}",
       "ru": "Сортировка по: {0}"
+    },
+
+    "optionNameOrder": {
+      "en-US": "Order: {0}",
+      "ru": "Порядок: {0}"
     },
   
     "playType": {
@@ -1130,6 +1135,21 @@
       "ru": "Пусто"
     },
   
+    "alreadyInTeam": {
+      "en-US": "You're already in this team.",
+      "ru": "Вы уже в этой команде."
+    },
+
+    "notInThisTeam": {
+      "en-US": "You're not in this team.",
+      "ru": "Вы не в этой команде."
+    },
+
+    "notEnoughPlayers": {
+      "en-US": "At least 2 players are needed to start the Lobby.",
+      "ru": "Для старта лобби нужно минимум 2 игрока."
+    },
+
     "notParticipant": {
       "en-US": "You're not a participant.",
       "ru": "Вы не участник."
@@ -1487,6 +1507,21 @@
       "en-US": "## _Choose an upgrade:_",
       "ru": "## _Выберите прокачку:_"
     },
+
+    "devTierButton": {
+      "en-US": "Tier {0}/17",
+      "ru": "Уровень {0}/17"
+    },
+
+    "devTierModalTitle": {
+      "en-US": "Go to a tier",
+      "ru": "Перейти на уровень"
+    },
+
+    "devTierModalLabel": {
+      "en-US": "Tier from 1 to 17",
+      "ru": "Уровень от 1 до 17"
+    },
   
     "diedByLava": {
       "en-US": "## _You died by staying on lava... You are not a volcano animal!_",
@@ -1639,23 +1674,48 @@
   
     "soccer": {
       "goaled": {
-        "en-US": "## _You goaled the {0} and earned `{1}`{EMOJI}!_",
-        "ru": "## _Вы забили {0} и получили `{1}`{EMOJI}!_"
+        "en-US": "## _You goaled the {0} and earned `{1}`{EMOJI} and `{2}` XP!_",
+        "ru": "## _Вы забили {0} и получили `{1}`{EMOJI} и `{2}` ОП!_"
       },
   
       "goalFailed": {
-        "en-US": "## _You tried to goal the {0}, but you couldn't find a hole!_\n### _You still gained `{1}`{EMOJI} for holding it._",
-        "ru": "## _Вы попытались забить {0}, но не смогли найти где забить!_\n### _Вы всё равно получили `{1}`{EMOJI} за удержание._"
+        "en-US": "## _You tried to goal the {0}, but you couldn't find a hole!_\n### _You still gained `{1}`{EMOJI} and `{2}` XP for holding it._",
+        "ru": "## _Вы попытались забить {0}, но не смогли найти где забить!_\n### _Вы всё равно получили `{1}`{EMOJI} и `{2}` ОП за удержание._"
       },
-  
+
+      "held": {
+        "en-US": "## _You gained `{1}`{EMOJI} and `{2}` XP from holding the {0}!_",
+        "ru": "## _Вы получили `{1}`{EMOJI} и `{2}` ОП за удержание {0}!_"
+      },
+
+      "stolen": {
+        "en-US": "## _Someone sneaked up and stole your {0}!_",
+        "ru": "## _Кто-то подкрался и украл вашу добычу: {0}!_"
+      },
+
+      "stillHolding": {
+        "en-US": "### _You are still holding the {0}_",
+        "ru": "### _Вы всё ещё держите добычу: {0}_"
+      },
+
+      "stolenOnGoal": {
+        "en-US": "## _While you were trying to goal the {0}, someone stole it!_",
+        "ru": "## _Пока вы пытались забить, кто-то украл вашу добычу: {0}!_"
+      },
+
+      "vanished": {
+        "en-US": "## _You got distracted and your {0} vanished!_",
+        "ru": "## _Вы отвлеклись, и ваша добыча пропала: {0}!_"
+      },
+
       "ignored": {
-        "en-US": "## _You chose to ignore the {0}._",
-        "ru": "## _Вы выбрали проигнорировать {0}._"
+        "en-US": "## _You chose to ignore the {0}_",
+        "ru": "## _Вы выбрали проигнорировать {0}_"
       },
   
       "threw": {
-        "en-US": "## _You threw away the {0}._",
-        "ru": "## _Вы выбросили {0}._"
+        "en-US": "## _You threw away the {0}_",
+        "ru": "## _Вы выбросили {0}_"
       }
     },
   
@@ -2310,6 +2370,99 @@
     "invalidTier": {
       "en-US": "Invalid tier! Only tiers from `1` to `17` are allowed!",
       "ru": "Недопустимый уровень! Допускаются только уровни от `1` до `17`!"
+    },
+
+    "menuTitle": {
+      "en-US": "# _Wardrobe: how do you want to equip your skins?_",
+      "ru": "# _Гардероб: как вы хотите экипировать скины?_"
+    },
+
+    "menuPlaceholder": {
+      "en-US": "Select an option",
+      "ru": "Выберите опцию"
+    },
+
+    "menuOptions": {
+      "new": {
+        "label": {
+          "en-US": "One by one",
+          "ru": "По очереди"
+        },
+        "description": {
+          "en-US": "Every animal in turn, from the mouse to the King Dragon",
+          "ru": "Все животные по очереди, от мыши до Королевского Дракона"
+        }
+      },
+      "animal": {
+        "label": {
+          "en-US": "One animal",
+          "ru": "Одно животное"
+        },
+        "description": {
+          "en-US": "A skin for the animal you choose",
+          "ru": "Скин для выбранного животного"
+        }
+      },
+      "tier": {
+        "label": {
+          "en-US": "A tier",
+          "ru": "Уровень"
+        },
+        "description": {
+          "en-US": "A skin pack for every animal of a tier",
+          "ru": "Набор скинов для всех животных уровня"
+        }
+      },
+      "all": {
+        "label": {
+          "en-US": "All animals",
+          "ru": "Все животные"
+        },
+        "description": {
+          "en-US": "A skin pack for every animal",
+          "ru": "Набор скинов для всех животных"
+        }
+      }
+    },
+
+    "tierMenuTitle": {
+      "en-US": "# _Choose a tier_",
+      "ru": "# _Выберите уровень_"
+    },
+
+    "tierPlaceholder": {
+      "en-US": "Select a tier",
+      "ru": "Выберите уровень"
+    },
+
+    "tierOption": {
+      "en-US": "Tier {0}",
+      "ru": "Уровень {0}"
+    },
+
+    "animalMenuTitle": {
+      "en-US": "# _Tier `{0}`: choose an animal_",
+      "ru": "# _Уровень `{0}`: выберите животное_"
+    },
+
+    "animalPlaceholder": {
+      "en-US": "Select an animal",
+      "ru": "Выберите животное"
+    },
+
+    "buttonBack": {
+      "en-US": "Back",
+      "ru": "Назад"
+    },
+
+    "buttonPrevious": {
+      "en-US": "Previous",
+      "ru": "Предыдущее"
+    },
+
+    "buttonNext": {
+      "en-US": "Next",
+      "ru": "Следующее"
     }
   },
   

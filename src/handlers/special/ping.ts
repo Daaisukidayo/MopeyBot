@@ -1,9 +1,11 @@
-export default {
-  name: 'handlePing',
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
+  name: "handlePing",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown
@@ -19,4 +21,4 @@ export default {
       $addTextDisplay[$tl[ui.ping.ping.$get[l];$ping]]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

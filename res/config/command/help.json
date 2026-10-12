@@ -1,19 +1,19 @@
 {
   "helpCategories": [0, 1, 2, 4],
-  
+
   "helpReplacements": [
-    ["{PREFIX}", "$get[prefix]"],
-    ["{MAX_PARTICIPANTS}", "$get[maxLobbyParticipants]"],
-    ["{BRACKETS_INFO}", "$codeBlock[$arrayJoin[bracketsInfo;\n]]"],
-    ["{PUMPKINS_RARITIES}", "$codeBlock[$arrayJoin[pumpkinRarities;\n];JSON]"],
-    ["{BEACHBALLS_RARITIES}", "$codeBlock[$arrayJoin[beachballRarities;\n];JSON]"],
-    ["{UMBRELLAS_RARITIES}", "$codeBlock[$arrayJoin[umbrellaRarities;\n];JSON]"],
-    ["{HYPERLINK_TIMEZONES}", "$get[timezonesHyperlink]"],
-    ["{EMOJI}", "$get[emoji]"],
-    ["{MAX_COINFLIP_BET}", "$separate[$get[maxCoinflipBet]]"],
-    ["{MAX_SLOTS_BET}", "$separate[$get[maxSlotsBet]]"],
-    ["{MIN_SLOTS_BET}", "$separate[$get[minSlotsBet]]"],
-    ["{AVAILABLE_LOCALES}", "$codeBlock[$arrayJoin[locales;\n];MD]"],
-    ["{HL_DIFFICULTIES}", "$codeBlock[$arrayJoin[hlDifficulties;\n];JSON]"]
+    ["{PREFIX}", "$getPrefix"],
+    ["{MAX_PARTICIPANTS}", "$getGlobalVar[maxLobbyParticipants]"],
+    ["{BRACKETS_INFO}", "$codeBlock[$arrayJoin[$tl[data.bracketsInfo.$get[l]];\n]]"],
+    ["{PUMPKINS_RARITIES}", "$codeBlock[$arrayJoin[$tl[data.pumpkinRarities.$get[l]];\n];JSON]"],
+    ["{BEACHBALLS_RARITIES}", "$codeBlock[$arrayJoin[$tl[data.beachballRarities.$get[l]];\n];JSON]"],
+    ["{UMBRELLAS_RARITIES}", "$codeBlock[$arrayJoin[$tl[data.umbrellaRarities.$get[l]];\n];JSON]"],
+    ["{HYPERLINK_TIMEZONES}", "$hyperlink[List of all timezones;https://en.wikipedia.org/wiki/List_of_tzdatabase_time_zones]"],
+    ["{EMOJI}", "$getGlobalVar[mopecoin]"],
+    ["{MAX_COINFLIP_BET}", "$separate[$getGlobalVar[maxCoinflipBet]]"],
+    ["{MAX_SLOTS_BET}", "$separate[$getGlobalVar[maxSlotsBet]]"],
+    ["{MIN_SLOTS_BET}", "$separate[$getGlobalVar[defaultSlotsBet]]"],
+    ["{AVAILABLE_LOCALES}", "$codeBlock[$arrayFormat[$jsonEntries[$getGlobalVar[allLocales]];{0} - {1};;;\n];MD]"],
+    ["{HL_DIFFICULTIES}", "$codeBlock[$arrayJoin[$arrayMap[$getGlobalVar[difficulties];d;$return[$tl[data.difficulties.$env[d].$get[l]]]];\n];JSON]"]
   ]
 }

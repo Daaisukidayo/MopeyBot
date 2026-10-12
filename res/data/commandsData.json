@@ -17,25 +17,27 @@
         "ru": "добавить"
       },
       "description": {
-        "default": "Adds a new configurable page to your 1 hour luck history.",
-        "en-US": "Adds a new configurable page to your 1 hour luck history.",
+        "default": "Adds a new configurable page to your 1 Hour Luck Challenge history.",
+        "en-US": "Adds a new configurable page to your 1 Hour Luck Challenge history.",
         "ru": "Добавляет новую настраиваемую страницу в вашу историю 1-часового испытания удачи."
       }
     },
     "description": {
       "en-US": [
-        "## Adds a new configurable page to your 1 hour luck history.",
+        "## Adds a new configurable page to your 1 Hour Luck Challenge history.",
         "## A new menu with all available options will appear.",
         "### - These options are: `Points`, `Rares`, `Play Type`, `Difficulty`, `End Date` and `List of Rares`.",
-        "### - `List of Rares` option is updating the list, so it's not removing previous rares. Only abbreviations from the `{PREFIX}snora` command are allowed.",
-        "### - To remove a rare, set its count to `0`, e.g. `mar=0`."
+        "### - The `List of Rares` field shows the whole list, one rare per line as `abbreviation=count`. Removing a line removes that rare. Only abbreviations from the `{PREFIX}snora` command are allowed.",
+        "### - You can also remove a rare by setting its count to `0`, e.g. `doe=0`.",
+        "### - Changing the list recalculates `Points` and `Rares`."
       ],
       "ru": [
         "## Добавляет новую настраиваемую страницу в вашу историю 1-часового испытания удачи.",
         "## Появится новое меню со всеми доступными опциями.",
         "### - Эти опции: `Очки`, `Редкие`, `Тип игры`, `Сложность`, `Дата окончания` и `Список редких`.",
-        "### - Опция `Список редких` обновляет список, поэтому она не удаляет предыдущих редких. Разрешены только аббревиатуры из команды `{PREFIX}snora`.",
-        "### - Чтобы удалить редкого, установите его количество в `0`, например, `mar=0`."
+        "### - В поле `Список редких` показан весь список, по одному редкому в строке в виде `аббревиатура=количество`. Удалённая строка удаляет этого редкого. Разрешены только аббревиатуры из команды `{PREFIX}snora`.",
+        "### - Удалить редкого можно и указав количество `0`, например `doe=0`.",
+        "### - При изменении списка `Очки` и `Редкие` пересчитываются."
       ]
     },
     "related": [
@@ -63,7 +65,7 @@
       "description": {
         "default": "Displays the most recent announcement!",
         "en-US": "Displays the most recent announcement!",
-        "ru": "Показывает последнее обновление!"
+        "ru": "Показывает последнее объявление!"
       }
     },
     "description": {
@@ -71,7 +73,7 @@
         "## Displays the most recent announcement!"
       ],
       "ru": [
-        "## Показывает последнее обновление!"
+        "## Показывает последнее объявление!"
       ]
     },
     "related": [],
@@ -95,17 +97,17 @@
         "ru": "арена"
       },
       "description": {
-        "default": "Start a battle on arena with random opponent and claim reward!",
-        "en-US": "Start a battle on arena with random opponent and claim reward!",
-        "ru": "Начните бой на арене с случайным противником и получите награду!"
+        "default": "Start a battle in the arena against a random opponent and claim a reward!",
+        "en-US": "Start a battle in the arena against a random opponent and claim a reward!",
+        "ru": "Начните бой на арене со случайным противником и получите награду!"
       }
     },
     "description": {
       "en-US": [
-        "## Start a battle on arena with a random opponent and claim reward!"
+        "## Start a battle in the arena against a random opponent and claim a reward!"
       ],
       "ru": [
-        "## Начните бой на арене с случайным противником и получите награду!"
+        "## Начните бой на арене со случайным противником и получите награду!"
       ]
     },
     "related": [
@@ -210,25 +212,23 @@
         "ru": "таблица"
       },
       "description": {
-        "default": "Displays the current rare chart for the 1-hour Luck Challenge!",
-        "en-US": "Displays the current rare chart for the 1-hour Luck Challenge!",
+        "default": "Displays the current rare chart for the 1 Hour Luck Challenge!",
+        "en-US": "Displays the current rare chart for the 1 Hour Luck Challenge!",
         "ru": "Показывает текущую таблицу редких для 1-часового испытания удачи!"
       }
     },
     "description": {
       "en-US": [
-        "## Displays the current rare chart for the 1-hour Luck Challenge!",
-        "### What is the 1-hour Luck Challenge? Its a game where you have to get rares in <https://mope.io>! Start from a mouse and try getting rares for 1 hour!",
-        "### For better experience, use the bot to track your progress! The bot will count your points from every rare you caught and wrote!",
-        "### More information is in `{PREFIX}help start`!",
-        "### Use `{PREFIX}chart event` to see the event chart!"
+        "## Displays the current rare chart for the 1 Hour Luck Challenge!",
+        "### What is the 1 Hour Luck Challenge? It's a game where you get rares in <https://mope.io>! Start as a mouse and try to get rares for 1 hour!",
+        "### For a better experience, use the bot to track your progress! It counts points for every rare you catch and write down!",
+        "### More information is in `{PREFIX}help start`!"
       ],
       "ru": [
         "## Показывает текущую таблицу редких для 1-часового испытания удачи!",
         "### Что такое 1-часовое испытание удачи? Это игра, где вам нужно ловить редких в <https://mope.io>! Начните с мыши и пытайтесь выбивать редких в течение 1 часа!",
-        "### Для лучшего опыта используйте бота для отслеживания прогресса! Бот подсчитает ваши очки за каждого пойманного и записанного редкого!",
-        "### Подробнее в `{PREFIX}help start`!",
-        "### Используйте `{PREFIX}chart event`, чтобы посмотреть событийную таблицу!"
+        "### Для удобства отслеживайте прогресс с помощью бота! Он подсчитает очки за каждого пойманного и записанного редкого!",
+        "### Подробнее в `{PREFIX}help start`!"
       ]
     },
     "related": [
@@ -294,7 +294,7 @@
       "description": {
         "default": "Clears your Mopecoins balance. Use this command only if you know what you are doing!",
         "en-US": "Clears your Mopecoins balance. Use this command only if you know what you are doing!",
-        "ru": "Удаляет ваш баланс Мопкоинов. Используйте эту команду только если вы знаете, что делаете!"
+        "ru": "Удаляет ваш баланс Мопкоинов. Используйте эту команду, только если знаете, что делаете!"
       }
     },
     "description": {
@@ -329,7 +329,7 @@
       "description": {
         "default": "Take a chance and wager your coins on heads or tails!",
         "en-US": "Take a chance and wager your coins on heads or tails!",
-        "ru": "Попытайте удачу, и поставьте свои монеты на орла или решку!"
+        "ru": "Попытайте удачу и поставьте монеты на орла или решку!"
       },
       "options": [
         {
@@ -377,16 +377,16 @@
     "description": {
       "en-US": [
         "## Take a chance and wager your coins on heads or tails!",
+        "### Usage: `{PREFIX}coinflip (<amount>|all) (h|t)`",
         "### `all` - the maximum allowable bet (`{MAX_COINFLIP_BET}`{EMOJI})",
         "### `side` - the side of the coin, either heads or tails. Defaults to heads",
-        "### Usage: `{PREFIX}coinflip (<amount>|all) (h|t)`",
         "{BRACKETS_INFO}"
       ],
       "ru": [
         "## Поставьте свои монеты на орла или решку, чтобы попытать удачу!",
         "### Использование: `{PREFIX}coinflip (<количество>|all) (h|t)`",
         "### `all` - максимальная допустимая ставка (`{MAX_COINFLIP_BET}`{EMOJI})",
-        "### `side` - сторона монеты: орёл или решка. Если сторона не указана, по умолчанию — орёл",
+        "### `side` - сторона монеты: орёл или решка. По умолчанию — орёл",
         "{BRACKETS_INFO}"
       ]
     },
@@ -432,19 +432,19 @@
     "description": {
       "en-US": [
         "## Counts points of each provided rare based on the current challenge chart!",
-        "### No need to participate in a 1 hour Luck Challenge, instead you need to write all the names of rare animals in one message!",
+        "### You don't need to take part in a 1 Hour Luck Challenge: just write all the rares in one message!",
         "## Usage: `{PREFIX}count <rare> <rare=quantity> ...`",
-        "### Example 1: `{PREFIX}count kbt cht mar ...`",
-        "### Example 2: `{PREFIX}count kbt=3 cht=2 mar=1 ...`",
-        "## Note: only names of rare animals from `{PREFIX}snora` command are counted."
+        "### Example 1: `{PREFIX}count kbt cht doe ...`",
+        "### Example 2: `{PREFIX}count kbt=3 cht=2 doe=1 ...`",
+        "## Note: only abbreviations from the `{PREFIX}snora` command are counted."
       ],
       "ru": [
         "## Подсчитывает очки каждого указанного редкого животного на основе текущей таблицы испытаний!",
-        "### Не нужно участвовать в 1-часовом испытании — вместо этого напишите все названия редких животных в одном сообщении! ",
+        "### Не нужно участвовать в 1-часовом испытании удачи — просто напишите всех редких в одном сообщении!",
         "## Использование: `{PREFIX}count <редкое> <редкое=количество> ...`",
-        "### Пример 1: `{PREFIX}count kbt cht mar ...`",
-        "### Пример 2: `{PREFIX}count kbt=3 cht=2 mar=1 ...`",
-        "## Примечание: учитываются только имена редких животных из команды `{PREFIX}snora`."
+        "### Пример 1: `{PREFIX}count kbt cht doe ...`",
+        "### Пример 2: `{PREFIX}count kbt=3 cht=2 doe=1 ...`",
+        "## Примечание: учитываются только аббревиатуры из команды `{PREFIX}snora`."
       ]
     },
     "related": [
@@ -470,35 +470,37 @@
         "ru": "создать"
       },
       "description": {
-        "default": "Creates a new lobby for a joint 1 hour luck challenge.",
-        "en-US": "Creates a new lobby for a joint 1 hour luck challenge.",
+        "default": "Creates a new lobby for a co-op 1 Hour Luck Challenge.",
+        "en-US": "Creates a new lobby for a co-op 1 Hour Luck Challenge.",
         "ru": "Создаёт новое лобби для совместного 1-часового испытания удачи."
       }
     },
     "description": {
       "en-US": [
-        "## Creates a new Lobby, and anyone who wishes can join your Lobby and participate in the Co-op 1 Hour Luck Challenge! A maximum of {MAX_PARTICIPANTS} participants.",
-        "### `1`. Press the 'Join' button to enter the Lobby.",
-        "### `2`. Press the 'Ready' button whenever you're ready.",
-        "### `3`. Press the 'Exit' button to leave the Lobby.",
-        "### `4`. Press the 'Start' button (for hosts only) to begin the Challenge! A minimum of 2 participants is required.",
-        "### `5`. Press the 'End' button (for hosts only) to close the Lobby and cancel participation in the Challenge.",
+        "## Creates a new lobby that anyone can join to take part in a co-op 1 Hour Luck Challenge! Up to {MAX_PARTICIPANTS} participants.",
+        "### `1`. Press 'Join' to enter the lobby. In team modes, every team has its own buttons.",
+        "### `2`. Press 'Ready' when you're ready.",
+        "### `3`. Press 'Quit' to leave the lobby.",
+        "### `4`. Press 'Start' (host only) to begin the challenge! At least 2 participants are required.",
+        "### `5`. Press 'Close' (host only) to close the lobby and cancel the challenge.",
+        "### `6`. Press 'Show Settings' to see the difficulty, mode and victory type. The host can change them and pass the host role to another participant.",
         "## __Notes:__",
-        "### After pressing the 'Start' button, a countdown will appear, and then you will be able to start trying to get rares in Mope.io.",
-        "### Each participant has their own timer.",
-        "### After all participants have completed their challenge either forcibly or after timer's end, the participant with the highest number of points wins."
+        "### After 'Start' is pressed, a countdown appears, and then you can start getting rares in Mope.io.",
+        "### Each participant has their own timer and can pause it at any time.",
+        "### Once every participant has finished (early or when the timer runs out), the player or team with the best result wins: the most points or the most rares, depending on the victory type."
       ],
       "ru": [
-        "## Создаёт новое лобби, и любой желающий может присоединиться и участвовать в кооперативном 1-часовом испытании удачи! Максимум {MAX_PARTICIPANTS} участников.",
-        "### `1`. Нажмите кнопку «Присоединиться», чтобы войти в лобби.",
-        "### `2`. Нажмите кнопку «Готов», когда будете готовы.",
-        "### `3`. Нажмите кнопку «Выйти», чтобы покинуть лобби.",
-        "### `4`. Нажмите кнопку «Старт» (только для хостов), чтобы начать испытание! Требуется минимум 2 участника.",
-        "### `5`. Нажмите кнопку «Закрыть» (только для хостов), чтобы закрыть лобби и отменить участие.",
+        "## Создаёт новое лобби, к которому может присоединиться любой желающий, чтобы пройти кооперативное 1-часовое испытание удачи! Максимум {MAX_PARTICIPANTS} участников.",
+        "### `1`. Нажмите «Войти», чтобы войти в лобби. В командных режимах у каждой команды свои кнопки.",
+        "### `2`. Нажмите «Готов», когда будете готовы.",
+        "### `3`. Нажмите «Выйти», чтобы покинуть лобби.",
+        "### `4`. Нажмите «Старт» (только для хоста), чтобы начать испытание! Нужно минимум 2 участника.",
+        "### `5`. Нажмите «Закрыть» (только для хоста), чтобы закрыть лобби и отменить испытание.",
+        "### `6`. Нажмите «Показать настройки», чтобы увидеть сложность, режим и тип победы. Хост может их изменить и передать роль хоста другому участнику.",
         "## __Примечания:__",
-        "### После нажатия «Старт» появится обратный отсчёт, затем можно будет начинать ловить редких в Mope.io.",
-        "### У каждого участника свой таймер — можно ставить паузу в любой момент.",
-        "### После завершения всех участников (принудительно или по истечении времени) победит участник с наибольшим количеством очков."
+        "### После нажатия «Старт» появится обратный отсчёт, затем можно начинать ловить редких в Mope.io.",
+        "### У каждого участника свой таймер, его можно поставить на паузу в любой момент.",
+        "### Когда все участники закончат (досрочно или по истечении времени), побеждает игрок или команда с лучшим результатом: больше всего очков или редких, в зависимости от типа победы."
       ]
     },
     "related": [
@@ -588,8 +590,8 @@
         "ru": "редактировать"
       },
       "description": {
-        "default": "Edits your list of rare animals in 1 hour Luck Challenge!",
-        "en-US": "Edits your list of rare animals in 1 hour Luck Challenge!",
+        "default": "Edits your list of rares in your 1 Hour Luck Challenge!",
+        "en-US": "Edits your list of rares in your 1 Hour Luck Challenge!",
         "ru": "Редактирует ваш список редких животных в 1-часовом испытании удачи!"
       },
       "options": [
@@ -640,26 +642,26 @@
             "ru": "количество"
           },
           "description": {
-            "default": "The count of rare to add or remove. Use 'all' to remove the rare animal.",
-            "en-US": "The count of rare to add or remove. Use 'all' to remove the rare animal.",
-            "ru": "Количество редкого для добавления или удаления. Используйте 'all', чтобы удалить редкое животное."
+            "default": "How many to add or remove. Use 'all' to remove the rare completely.",
+            "en-US": "How many to add or remove. Use 'all' to remove the rare completely.",
+            "ru": "Сколько добавить или удалить. Используйте 'all', чтобы удалить редкого полностью."
           }
         }
       ]
     },
     "description": {
       "en-US": [
-        "## Edits your list of rare animals in 1 hour Luck Challenge!",
+        "## Edits your list of rares in your 1 Hour Luck Challenge!",
         "### Usage: `{PREFIX}editlist <rare> [+ | -] <quantity>`",
-        "### Example: `{PREFIX}editlist mar + 1` -> Adds 1 Markhor to your list",
-        "### Example: `{PREFIX}editlist mar - all` -> Removes all Markhors from your list",
+        "### Example: `{PREFIX}editlist doe + 1` -> Adds 1 Doe to your list",
+        "### Example: `{PREFIX}editlist doe - all` -> Removes all Does from your list",
         "{BRACKETS_INFO}"
       ],
       "ru": [
         "## Редактирует ваш список редких животных в 1-часовом испытании удачи!",
-        "### Использование: `{PREFIX}editlist <rare> [+ | -] <количество>`",
-        "### Пример: `{PREFIX}editlist mar + 1` -> Добавляет 1 Мархура в ваш прогресс",
-        "### Пример: `{PREFIX}editlist mar - all` -> Удаляет всех Мархуров из вашего прогресса",
+        "### Использование: `{PREFIX}editlist <редкое> [+ | -] <количество>`",
+        "### Пример: `{PREFIX}editlist doe + 1` -> Добавляет 1 Лань в ваш список",
+        "### Пример: `{PREFIX}editlist doe - all` -> Удаляет всех Ланей из вашего списка",
         "{BRACKETS_INFO}"
       ]
     },
@@ -684,14 +686,14 @@
         "ru": "закончить"
       },
       "description": {
-        "default": "Instantly ends your 1 hour Luck Challenge and displays your score!",
-        "en-US": "Instantly ends your 1 hour Luck Challenge and displays your score!",
+        "default": "Instantly ends your 1 Hour Luck Challenge and displays your score!",
+        "en-US": "Instantly ends your 1 Hour Luck Challenge and displays your score!",
         "ru": "Мгновенно завершает ваше 1-часовое испытание удачи и показывает результат!"
       }
     },
     "description": {
       "en-US": [
-        "## Instantly ends your 1 hour Luck Challenge and displays your score!",
+        "## Instantly ends your 1 Hour Luck Challenge and displays your score!",
         "### Does not add the result to your history!"
       ],
       "ru": [
@@ -749,7 +751,7 @@
       ]
     },
     "related": [],
-    "category": 3
+    "category": 2
   },
 
   "command_hlsimulator": {
@@ -764,12 +766,12 @@
     "slash": {
       "name": {
         "default": "hlsimulator",
-        "en-US": "hour-luck-simulator",
+        "en-US": "hlsimulator",
         "ru": "симулятор-часа-удачи"
       },
       "description": {
-        "default": "Shows how much rares you'd get in real 1 Hour Luck Challenge!",
-        "en-US": "Shows how much rares you'd get in real 1 Hour Luck Challenge!",
+        "default": "Shows how many rares you'd get in a real 1 Hour Luck Challenge!",
+        "en-US": "Shows how many rares you'd get in a real 1 Hour Luck Challenge!",
         "ru": "Показывает, сколько редких вы бы получили в реальном 1-часовом испытании удачи!"
       },
       "options": [
@@ -789,7 +791,7 @@
     },
     "description": {
       "en-US": [
-        "## Shows how much rares you'd get in real 1 Hour Luck Challenge!",
+        "## Shows how many rares you'd get in a real 1 Hour Luck Challenge!",
         "### Use `{PREFIX}hlsimulator <difficulty>` to include a specific difficulty!",
         "### Difficulties:",
         "{HL_DIFFICULTIES}"
@@ -965,18 +967,18 @@
     },
     "description": {
       "en-US": [
-        "## Displays the leaderboard by the number of mope coins!",
-        "## The leaderboard is updated every 2 minutes!",
+        "## Displays the leaderboard by the number of Mopecoins!",
+        "## The leaderboard is updated every 5 minutes!",
         "## Usage: `{PREFIX}leaderboard (<page>) (<rows>)`",
         "### `page` - page to display",
-        "### `rows` - number of rows to display per page"
+        "### `rows` - number of rows per page, from 1 to 10"
       ],
       "ru": [
         "## Показывает таблицу лидеров по количеству Мопкоинов!",
-        "## Таблица обновляется каждые 2 минуты!",
+        "## Таблица обновляется каждые 5 минут!",
         "## Использование: `{PREFIX}leaderboard (<страница>) (<строк_на_странице>)`",
         "### `страница` - страница для отображения",
-        "### `строк_на_странице` - число строк на странице"
+        "### `строк_на_странице` - число строк на странице, от 1 до 10"
       ]
     },
     "related": [
@@ -1053,9 +1055,9 @@
         "ru": "идпм"
       },
       "description": {
-        "default": "Displays the User's Mopey Identifier along with their current coin balance!",
-        "en-US": "Displays the User's Mopey Identifier along with their current coin balance!",
-        "ru": "Показывает Идентификатор Пользователя Мопи и текущий баланс монет!"
+        "default": "Finds a user by their Mopey User Identifier and shows their coin balance!",
+        "en-US": "Finds a user by their Mopey User Identifier and shows their coin balance!",
+        "ru": "Находит пользователя по Идентификатору Пользователя Мопи и показывает его баланс!"
       },
       "options": [
         {
@@ -1074,12 +1076,12 @@
     },
     "description": {
       "en-US": [
-        "## Displays the User's Mopey Identifier along with their current coin balance!",
+        "## Finds a user by their Mopey User Identifier and shows their coin balance!",
         "### Usage: `{PREFIX}muid <number>`",
         "{BRACKETS_INFO}"
       ],
       "ru": [
-        "## Показывает Идентификатор Пользователя Мопи и текущий баланс монет!",
+        "## Находит пользователя по Идентификатору Пользователя Мопи и показывает его баланс!",
         "### Использование: `{PREFIX}muid <идентификатор>`",
         "{BRACKETS_INFO}"
       ]
@@ -1102,14 +1104,14 @@
         "ru": "пауза"
       },
       "description": {
-        "default": "Pauses your 1 hour Luck Challenge!",
-        "en-US": "Pauses your 1 hour Luck Challenge!",
+        "default": "Pauses your 1 Hour Luck Challenge!",
+        "en-US": "Pauses your 1 Hour Luck Challenge!",
         "ru": "Приостанавливает ваше 1-часовое испытание удачи!"
       }
     },
     "description": {
       "en-US": [
-        "## Pauses your 1 hour Luck Challenge!"
+        "## Pauses your 1 Hour Luck Challenge!"
       ],
       "ru": [
         "## Приостанавливает ваше 1-часовое испытание удачи!"
@@ -1176,10 +1178,10 @@
     },
     "description": {
       "en-US": [
-        "## Play and earn coins. Still in development, many features may be added in the future!"
+        "## Play and earn coins! It's still in development, and more features are coming!"
       ],
       "ru": [
-        "## Играйте и зарабатывайте монеты. Всё ещё в разработке, возможно добавление множества функций в будущем!"
+        "## Играйте и зарабатывайте монеты! Команда ещё в разработке, в будущем появится много нового!"
       ]
     },
     "related": [
@@ -1203,8 +1205,8 @@
         "ru": "показать"
       },
       "description": {
-        "default": "Show's your or a user's 1 hour luck challenge list and points!",
-        "en-US": "Show's your or a user's 1 hour luck challenge list and points!",
+        "default": "Shows your or a user's 1 Hour Luck Challenge list and points!",
+        "en-US": "Shows your or a user's 1 Hour Luck Challenge list and points!",
         "ru": "Показывает ваш или другого пользователя список редких и очки в 1-часовом испытании удачи!"
       },
         "options": [
@@ -1224,7 +1226,7 @@
     },
     "description": {
       "en-US": [
-        "## Show's your or a user's 1 hour luck challenge list and points!"
+        "## Shows your or a user's 1 Hour Luck Challenge list and points!"
       ],
       "ru": [
         "## Показывает ваш или другого пользователя список редких и очки в 1-часовом испытании удачи!"
@@ -1302,14 +1304,14 @@
         "ru": "прогресс"
       },
       "description": {
-        "default": "Shows the 1 hour Luck progress of an active lobby!",
-        "en-US": "Shows the 1 hour Luck progress of an active lobby!",
+        "default": "Shows the 1 Hour Luck Challenge progress of the active lobby!",
+        "en-US": "Shows the 1 Hour Luck Challenge progress of the active lobby!",
         "ru": "Показывает прогресс 1-часового испытания удачи активного лобби!"
       }
     },
     "description": {
       "en-US": [
-        "## Shows the 1 hour Luck progress of an active lobby!"
+        "## Shows the 1 Hour Luck Challenge progress of the active lobby!"
       ],
       "ru": [
         "## Показывает прогресс 1-часового испытания удачи активного лобби!"
@@ -1378,14 +1380,14 @@
         "ru": "случайное-редкое"
       },
       "description": {
-        "default": "Shows random rare!",
-        "en-US": "Shows random rare!",
+        "default": "Shows a random rare!",
+        "en-US": "Shows a random rare!",
         "ru": "Показывает случайное редкое животное!"
       }
     },
     "description": {
       "en-US": [
-        "## Shows random rare!"
+        "## Shows a random rare!"
       ],
       "ru": [
         "## Показывает случайное редкое животное!"
@@ -1411,8 +1413,8 @@
         "ru": "попытка-редких"
       },
       "description": {
-        "default": "Use this command to attempt getting some rares!",
-        "en-US": "Use this command to attempt getting some rares!",
+        "default": "Use this command to try to get some rares!",
+        "en-US": "Use this command to try to get some rares!",
         "ru": "Используйте эту команду, чтобы попытаться выбить редких!"
       },
       "options": [
@@ -1423,19 +1425,25 @@
             "ru": "режим"
           },
           "description": {
-            "default": "The mode of raretry. Defaults to default",
-            "en-US": "The mode of raretry. Defaults to default",
-            "ru": "Режим попытки редкого. По умолчанию — обычный"
+            "default": "The raretry mode. Defaults to the mode chosen in /raretrymode",
+            "en-US": "The raretry mode. Defaults to the mode chosen in /raretrymode",
+            "ru": "Режим попытки редких. По умолчанию — режим, выбранный в /raretrymode"
           }
         }
       ]
     },
     "description": {
       "en-US": [
-        "## Use this command to attempt getting some rares!"
+        "## Use this command to try to get some rares!",
+        "### Usage: `{PREFIX}raretry (<mode>)`",
+        "### `mode` - a mode number or name. Defaults to the mode chosen in `{PREFIX}raretrymode`",
+        "{BRACKETS_INFO}"
       ],
       "ru": [
-        "## Используйте эту команду, чтобы попытаться выбить редких!"
+        "## Используйте эту команду, чтобы попытаться выбить редких!",
+        "### Использование: `{PREFIX}raretry (<режим>)`",
+        "### `режим` - номер или название режима. По умолчанию — режим, выбранный в `{PREFIX}raretrymode`",
+        "{BRACKETS_INFO}"
       ]
     },
     "related": [
@@ -1498,8 +1506,8 @@
         "ru": "попытка-прохождения"
       },
       "description": {
-        "default": "Attempt to obtain rares while progressing from a mouse to black dragon!",
-        "en-US": "Attempt to obtain rares while progressing from a mouse to black dragon!",
+        "default": "Attempt to obtain rares while progressing from a mouse to a black dragon!",
+        "en-US": "Attempt to obtain rares while progressing from a mouse to a black dragon!",
         "ru": "Попытайтесь получить редких, продвигаясь от мыши до чёрного дракона!"
       }
     },
@@ -1510,7 +1518,7 @@
       ],
       "ru": [
         "## Попытайтесь получить редких, продвигаясь от мыши до чёрного дракона!",
-        "## Редкости совпадают с теми, что в онлайн игре!"
+        "## Редкости совпадают с теми, что в игре!"
       ]
     },
     "related": [
@@ -1535,8 +1543,8 @@
         "ru": "симулятор-попытки-редкого"
       },
       "description": {
-        "default": "Simulates raretry command.",
-        "en-US": "Simulates raretry command.",
+        "default": "Simulates the raretry command.",
+        "en-US": "Simulates the raretry command.",
         "ru": "Симулирует команду попытки редкого."
       },
       "options": [
@@ -1559,8 +1567,8 @@
             "ru": "режим"
           },
           "description": {
-            "default": "Mode of raretry. All available modes can be seen in the /raretrymode command.",
-            "en-US": "Mode of raretry. All available modes can be seen in the /raretrymode command.",
+            "default": "The raretry mode. All available modes are listed in the /raretrymode command.",
+            "en-US": "The raretry mode. All available modes are listed in the /raretrymode command.",
             "ru": "Режим попытки редкого. Все доступные режимы можно посмотреть в команде /raretrymode."
           }
         }
@@ -1568,16 +1576,16 @@
     },
     "description": {
       "en-US": [
-        "## Simulates raretry command.",
+        "## Simulates the raretry command.",
         "### Usage: `{PREFIX}raretrysimulator (<number_of_attempts>) (<raretry_mode>)`",
-        "### `<number_of_attempts>` - Number of attempts to simulate. A number from `1` to `1000` or the `max` argument is allowed.",
-        "### `<raretry_mode>` - Mode of raretry. All available modes can be seen in `{PREFIX}raretrymode` command."
+        "### `<number_of_attempts>` - Number of attempts to simulate. A number from `1` to `1000` or the `max` argument is allowed. Defaults to `100`.",
+        "### `<raretry_mode>` - The raretry mode. Defaults to your current mode. All available modes are listed in the `{PREFIX}raretrymode` command."
       ],
       "ru": [
         "## Симулирует команду попытки редкого.",
         "### Использование: `{PREFIX}raretrysimulator (<количество_попыток>) (<режим_попытки_редкого>)`",
-        "### `<количество_попыток>` - Количество попыток для симуляции. Допускается число от `1` до `1000` или аргумент `макс`.",
-        "### `<режим_попытки_редкого>` - Режим попытки редкого. Все доступные режимы можно посмотреть в команде `{PREFIX}raretrymode`."
+        "### `<количество_попыток>` - Количество попыток для симуляции. Допускается число от `1` до `1000` или аргумент `макс`. По умолчанию — `100`.",
+        "### `<режим_попытки_редкого>` - Режим попытки редкого. По умолчанию — ваш текущий режим. Все доступные режимы можно посмотреть в команде `{PREFIX}raretrymode`."
       ]
     },
     "related": [
@@ -1612,7 +1620,7 @@
     "description": {
       "en-US": [
         "## Shows available reminders.",
-        "### Press on button to enable or disable a reminder."
+        "### Press a button to turn a reminder on or off."
       ],
       "ru": [
         "## Показывает доступные напоминания.",
@@ -1647,7 +1655,7 @@
         "## If you encounter a bug or notice a user attempting to disrupt the bot through alts, spamming, or other means, use the Report command to notify us!"
       ],
       "ru": [
-        "## Если вы нашли баг или заметили пользователя, пытающегося нарушать работу бота (альты, спам и т.д.), используйте команду Сообщить, чтобы сообщить нам!"
+        "## Если вы нашли баг или заметили пользователя, который пытается нарушить работу бота (альты, спам и т.д.), используйте эту команду, чтобы сообщить нам!"
       ]
     },
     "related": [],
@@ -1671,14 +1679,14 @@
         "ru": "продолжить"
       },
       "description": {
-        "default": "Continues your 1 hour Luck Challenge!",
-        "en-US": "Continues your 1 hour Luck Challenge!",
+        "default": "Resumes your 1 Hour Luck Challenge!",
+        "en-US": "Resumes your 1 Hour Luck Challenge!",
         "ru": "Возобновляет ваше 1-часовое испытание удачи!"
       }
     },
     "description": {
       "en-US": [
-        "## Continues your 1 hour Luck Challenge!"
+        "## Resumes your 1 Hour Luck Challenge!"
       ],
       "ru": [
         "## Возобновляет ваше 1-часовое испытание удачи!"
@@ -1707,14 +1715,14 @@
         "ru": "правила"
       },
       "description": {
-        "default": "Shows the rules you agreed with!",
-        "en-US": "Shows the rules you agreed with!",
+        "default": "Shows the rules you agreed to!",
+        "en-US": "Shows the rules you agreed to!",
         "ru": "Показывает правила, с которыми вы согласились!"
       }
     },
     "description": {
       "en-US": [
-        "## Shows the rules you agreed with!"
+        "## Shows the rules you agreed to!"
       ],
       "ru": [
         "## Показывает правила, с которыми вы согласились!"
@@ -1740,14 +1748,14 @@
         "ru": "настройки"
       },
       "description": {
-        "default": "Shows your 1 hour luck challenge configurable settings!",
-        "en-US": "Shows your 1 hour luck challenge configurable settings!",
+        "default": "Shows your 1 Hour Luck Challenge settings, which you can change!",
+        "en-US": "Shows your 1 Hour Luck Challenge settings, which you can change!",
         "ru": "Показывает ваши изменяемые настройки 1-часового испытания удачи!"
       }
     },
     "description": {
       "en-US": [
-        "## Shows your 1 hour luck challenge configurable settings!"
+        "## Shows your 1 Hour Luck Challenge settings, which you can change!"
       ],
       "ru": [
         "## Показывает ваши изменяемые настройки 1-часового испытания удачи!"
@@ -1815,14 +1823,14 @@
         "ru": "показать"
       },
       "description": {
-        "default": "Shows your history of all ended 1 Hour Luck Challenges!",
-        "en-US": "Shows your history of all ended 1 Hour Luck Challenges!",
+        "default": "Shows the history of all your finished 1 Hour Luck Challenges!",
+        "en-US": "Shows the history of all your finished 1 Hour Luck Challenges!",
         "ru": "Показывает вашу историю всех завершённых 1-часовых испытаний удачи!"
       }
     },
     "description": {
       "en-US": [
-        "## Shows your history of all ended 1 Hour Luck Challenges!"
+        "## Shows the history of all your finished 1 Hour Luck Challenges!"
       ],
       "ru": [
         "## Показывает вашу историю всех завершённых 1-часовых испытаний удачи!"
@@ -1873,15 +1881,15 @@
       "en-US": [
         "## Wager your coins for a chance to win!",
         "### Usage: `{PREFIX}slots (<amount>|all)`",
-        "### `all` - bets the maximum allowable value (`{MAX_SLOTS_BET}`{EMOJI})",
+        "### `all` - bets the maximum allowed amount (`{MAX_SLOTS_BET}`{EMOJI})",
         "### Default and minimum bet is `{MIN_SLOTS_BET}`{EMOJI}",
         "{BRACKETS_INFO}"
       ],
       "ru": [
         "## Поставьте монеты в слоты, чтобы попытать удачу!",
         "### Использование: `{PREFIX}slots (<количество>|all)`",
-        "### `all` - поставит максимальное допустимое значение (`{MAX_SLOTS_BET}`{EMOJI})",
-        "### Минимальная и по умолчанию ставка - `{MIN_SLOTS_BET}`{EMOJI}",
+        "### `all` - ставит максимально допустимую сумму (`{MAX_SLOTS_BET}`{EMOJI})",
+        "### Минимальная ставка и ставка по умолчанию — `{MIN_SLOTS_BET}`{EMOJI}",
         "{BRACKETS_INFO}"
       ]
     },
@@ -1910,17 +1918,17 @@
       "description": {
         "default": "Displays «Shorter Names Of Rare Animals», aka abbreviations!",
         "en-US": "Displays «Shorter Names Of Rare Animals», aka abbreviations!",
-        "ru": "Показывает «Короткие названия редких животных», или же абревиатуры!"
+        "ru": "Показывает «Короткие названия редких животных», то есть аббревиатуры!"
       }
     },
     "description": {
       "en-US": [
         "## Displays «Shorter Names Of Rare Animals», aka abbreviations!",
-        "### Used only for 1 hour luck challenge commands"
+        "### Used only by the 1 Hour Luck Challenge commands"
       ],
       "ru": [
-        "## Показывает «Короткие названия редких животных», или же абревиатуры!",
-        "### Используется только для команд 1-часового испытания удачи"
+        "## Показывает «Короткие названия редких животных», то есть аббревиатуры!",
+        "### Используются только в командах 1-часового испытания удачи"
       ]
     },
     "related": [
@@ -1943,27 +1951,26 @@
         "ru": "начать"
       },
       "description": {
-        "default": "Immediately starts your 1 hour Luck Challenge!",
-        "en-US": "Immediately starts your 1 hour Luck Challenge!",
+        "default": "Immediately starts your 1 Hour Luck Challenge!",
+        "en-US": "Immediately starts your 1 Hour Luck Challenge!",
         "ru": "Немедленно запускает ваше 1-часовое испытание удачи!"
       }
     },
     "description": {
       "en-US": [
-        "## Immediately starts your 1 hour Luck Challenge!",
-        "### During the challenge, you need to type the abbreviations of rare animals' names from the `{PREFIX}snora` command without the prefix to earn points!",
-        "### Example: `mar cht kbt pf mud ...`",
-        "### Once the timer is up, a confirmation message will appear. Click the «Confirm» button to complete your 1 hour Luck Challenge"
+        "## Immediately starts your 1 Hour Luck Challenge!",
+        "### During the challenge, type the abbreviations from the `{PREFIX}snora` command without the prefix to earn points!",
+        "### Example: `doe cht kbt pf mud ...`",
+        "### Once the timer is up, a confirmation message will appear. Press «Confirm» to finish your 1 Hour Luck Challenge and save the result to your history"
       ],
       "ru": [
         "## Немедленно запускает ваше 1-часовое испытание удачи!",
-        "### Во время испытания нужно писать аббревиатуры имен редких животных из команды `{PREFIX}snora` без префикса, чтобы получать очки!",
-        "### Пример: `mar cht kbt pf mud ...`",
-        "### По завершении таймера появится сообщение подтверждения. Нажмите «Подтвердить», чтобы завершить 1-часовое испытание удачи"
+        "### Во время испытания пишите аббревиатуры из команды `{PREFIX}snora` без префикса, чтобы получать очки!",
+        "### Пример: `doe cht kbt pf mud ...`",
+        "### Когда время выйдет, появится сообщение с подтверждением. Нажмите «Подтвердить», чтобы завершить 1-часовое испытание удачи и сохранить результат в историю"
       ]
     },
     "related": [
-      "command_start",
       "command_pause",
       "command_resume",
       "command_time",
@@ -2042,9 +2049,9 @@
         "ru": "время"
       },
       "description": {
-        "default": "Shows the time passed in your 1 hour Luck Challenge or sets a new time!",
-        "en-US": "Shows the time passed in your 1 hour Luck Challenge or sets a new time!",
-        "ru": "Показывает время, прошедшее в вашем 1-часовом испытании удачи или устанавливает новое время!"
+        "default": "Shows the time passed in your 1 Hour Luck Challenge or sets a new time!",
+        "en-US": "Shows the time passed in your 1 Hour Luck Challenge or sets a new time!",
+        "ru": "Показывает время, прошедшее в вашем 1-часовом испытании удачи, или устанавливает новое время!"
       },
       "options": [
         {
@@ -2054,24 +2061,24 @@
             "ru": "новое-время"
           },
           "description": {
-            "default": "The new time to set.",
-            "en-US": "The new time to set.",
-            "ru": "Новое время для установки."
+            "default": "The new time: seconds from 0 to 3600, MM:SS or 0m0s.",
+            "en-US": "The new time: seconds from 0 to 3600, MM:SS or 0m0s.",
+            "ru": "Новое время: секунды от 0 до 3600, MM:SS или 0m0s."
           }
         }
       ]
     },
     "description": {
       "en-US": [
-        "## Shows the time passed in your 1 hour Luck Challenge!",
-        "## The time can also be edited. Usage: `{PREFIX}time (<new_time>)`",
-        "## The `<new_time>` must be a number of seconds from 1 to 3599 | in format «`MM:SS`» | in format «`0m0s`»",
+        "## Shows the time passed in your 1 Hour Luck Challenge!",
+        "### You can also set a new time. Usage: `{PREFIX}time (<new_time>)`",
+        "### `<new_time>` is a number of seconds from 0 to 3600, «`MM:SS`» or «`0m0s`». `3600` ends the hour right away",
         "{BRACKETS_INFO}"
       ],
       "ru": [
         "## Показывает время, прошедшее в вашем 1-часовом испытании удачи!",
-        "### Время так же можно отредактировать. Использование: `{PREFIX}time (<новое_время>)`",
-        "### В `<новое_время>` должно быть число секунд от 1 до 3599 | в формате «`MM:SS`» | в формате «`0m0s`»",
+        "### Время также можно изменить. Использование: `{PREFIX}time (<новое_время>)`",
+        "### `<новое_время>` — число секунд от 0 до 3600, «`MM:SS`» или «`0m0s`». `3600` сразу завершает час",
         "{BRACKETS_INFO}"
       ]
     },
@@ -2128,7 +2135,7 @@
       ],
       "ru": [
         "## Показывает или изменяет ваш часовой пояс. Требуется для функций времени.",
-        "### Пример: `{PREFIX}timezone <часовой_пояс>`",
+        "### Использование: `{PREFIX}timezone <часовой_пояс>`",
         "## {HYPERLINK_TIMEZONES}",
         "{BRACKETS_INFO}"
       ]
@@ -2161,7 +2168,7 @@
     "description": {
       "en-US": [
         "## Use this command to discover various disasters!",
-        "### There is currently 1/30 chance to discover devil disasters!"
+        "### There is currently a 1/30 chance to discover a devil disaster!"
       ],
       "ru": [
         "## Используйте эту команду, чтобы обнаружить разные ураганы!",
@@ -2231,14 +2238,14 @@
         "ru": "голосовать"
       },
       "description": {
-        "default": "Vote Mopey on Top.gg to earn coins!",
-        "en-US": "Vote Mopey on Top.gg to earn coins!",
+        "default": "Vote for Mopey on Top.gg to earn coins!",
+        "en-US": "Vote for Mopey on Top.gg to earn coins!",
         "ru": "Голосуйте за Мопи на Top.gg, чтобы заработать монеты!"
       }
     },
     "description": {
       "en-US": [
-        "## Vote Mopey on Top.gg to earn coins!"
+        "## Vote for Mopey on Top.gg to earn coins!"
       ],
       "ru": [
         "## Голосуйте за Мопи на Top.gg, чтобы заработать монеты!"
@@ -2278,9 +2285,9 @@
             "ru": "опция"
           },
           "description": {
-            "default": "The option of equipping skins. Use /help wardrobe for more info.",
-            "en-US": "The option of equipping skins. Use /help wardrobe for more info.",
-            "ru": "Опция экипировки скинов. Используйте /help wardrobe для получения дополнительной информации."
+            "default": "The option of equipping skins, without it a menu opens. More: /help wardrobe",
+            "en-US": "The option of equipping skins, without it a menu opens. More: /help wardrobe",
+            "ru": "Опция экипировки скинов, без неё откроется меню. Подробнее: /help wardrobe"
           }
         }
       ]
@@ -2289,20 +2296,22 @@
       "en-US": [
         "## Allows you to equip purchased skins on your animals!",
         "### Usage: `{PREFIX}wardrobe [new|all|<tier>|<animal>]`",
+        "### Without an option a menu with these options opens",
         "### Options:",
-        "### `[new]` - Starts a new equiping animals with chosen skin for mouse to king dragon process",
-        "### `[all]` - Equips every animal with chosen skin pack",
-        "### `[tier]` - Equips every chosen animal tier with chosen skin pack",
-        "### `[animal]` - Equips chosen animal with chosen skin",
+        "### `[new]` - Equips your animals one by one with the chosen skins, from the mouse to the King Dragon",
+        "### `[all]` - Equips every animal with the chosen skin pack",
+        "### `[tier]` - Equips every animal of the chosen tier with the chosen skin pack",
+        "### `[animal]` - Equips the chosen animal with the chosen skin",
         "{BRACKETS_INFO}"
       ],
       "ru": [
         "## Позволяет экипировать любое животное купленным скином!",
-        "## Использование: `{PREFIX}wardrobe [new|all|<tier>|<animal>]`",
-        "### Options:",
-        "### `[new]` - Начинает новый цикл экипировки животных купленными скинами от мыши до королевского дракона.",
-        "### `[all]` - Экипирует все животные выбранным паком скинов",
-        "### `[tier]` - Экипирует всех животных выбранного уровня выбранным паком скинов",
+        "### Использование: `{PREFIX}wardrobe [new|all|<tier>|<animal>]`",
+        "### Без опции открывается меню с этими опциями",
+        "### Опции:",
+        "### `[new]` - По очереди экипирует ваших животных выбранными скинами, от мыши до Королевского Дракона",
+        "### `[all]` - Экипирует всех животных выбранным набором скинов",
+        "### `[tier]` - Экипирует всех животных выбранного уровня выбранным набором скинов",
         "### `[animal]` - Экипирует выбранное животное выбранным скином",
         "{BRACKETS_INFO}"
       ]

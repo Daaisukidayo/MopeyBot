@@ -1,32 +1,22 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleArena',
+  name: "handleArena",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkProfile
     $addCooldown
-
     $defer
-    
-    $let[r;$random[0;100]]
+
+    $c[A random arena enemy in a random skin, beaten three times in four]
+    $let[enemyAnimalID;$arraySample[$getCache[arena;arenaEnemies]]]
+    $let[enemy;$getAnimalInfo[$get[enemyAnimalID];emoji;$arrayRandomIndex[$getAnimalInfo[$get[enemyAnimalID];variants]]]]
     $let[MC;200]
 
-    $jsonLoad[animals;$getAnimalsData]
-    $getCache[animals;animalIndexes;animalIndexes]
-    $getCache[arena;arenaEnemies;arenaEnemies]
-
-    $let[enemyAnimalID;$arrayRandomValue[arenaEnemies]]
-    $let[enemyAnimalIndex;$env[animalIndexes;$get[enemyAnimalID]]]
-    $jsonLoad[enemyData;$env[animals;$get[enemyAnimalIndex]]]
-    $jsonLoad[enemySkinVariants;$env[enemyData;variants]]
-    $let[enemy;$env[enemySkinVariants;$arrayRandomIndex[enemySkinVariants];emoji]]
-
-
-    $if[$get[r]>=25;
+    $if[$random[0;100]>=25;
       $sumCash[$get[MC]]
       $saveProfile[$env[userProfile]]
       $let[desc;$tl[ui.arena.won.$get[l];$get[enemy];$separate[$get[MC]]]]

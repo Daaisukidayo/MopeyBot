@@ -1,11 +1,11 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleCreateLobby',
+  name: "handleCreateLobby",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
 
@@ -14,12 +14,7 @@ export default new ForgeFunction({
     $jsonLoad[lobby;$getChannelVar[lobby]]
 
     $onlyIf[$env[lobby]==;
-      $jsonLoad[allPlayers;$env[lobby;allPlayers]]
-      $if[$arrayLength[allPlayers]>0;
-        $arrayMap[allPlayers;ID;$return[$username[$env[ID]]];participantUsernames]
-      ;
-        $arrayLoad[participantUsernames; ;$tl[ui.lobby.none.$get[l]]]
-      ]
+      $let[participants;$arrayJoin[$arrayMap[$jsonGet[lobby;allPlayers];ID;$return[$username[$env[ID]]]];\n]]
 
       $addContainer[
         $addTextDisplay[# ✖️ _$tl[ui.errors.errorTitle.$get[l]]_]
@@ -27,7 +22,7 @@ export default new ForgeFunction({
         $addTextDisplay[$tl[ui.lobby.lobbyAlreadyExist.$get[l]]]
         $addSeparator[Large]
         $addTextDisplay[$tl[ui.lobby.participantsTitle.$get[l]]]
-        $addTextDisplay[$codeBlock[$arrayJoin[participantUsernames;\n]]]
+        $addTextDisplay[$codeBlock[$default[$get[participants];$tl[ui.lobby.none.$get[l]]]]]
         $addActionRow
         $addButton[closeLobby-forcefully;$tl[ui.lobby.buttonLabelCloseManually.$get[l]];Danger;🔚]
       ;$getGlobalVar[errorColor]]
@@ -38,19 +33,13 @@ export default new ForgeFunction({
     ]
 
     
-    $arrayLoad[players; ;$authorID]
-    $arrayLoad[teams]
-
+    $c[A new lobby has one team with its host in it]
     $jsonLoad[team;$getGlobalVar[baseLobbyTeam]]
-    $!jsonSet[team;players;$env[players]]
-    $arrayPushJSON[teams;$env[team]]
-
+    $!jsonSet[team;players;$arrayOf["$authorID"]]
     $jsonLoad[lobby;$getGlobalVar[baseLobby]]
-    $!jsonSet[lobby;host;"$authorID"]
-    $!jsonSet[lobby;allPlayers;$env[players]]
-    $!jsonSet[lobby;teams;$env[teams]]
+    $objectMerge[lobby;$objectOf[host;"$authorID";allPlayers;$arrayOf["$authorID"];teams;$arrayOf[$env[team]]]]
     
-    $lobbyEmbed
+    $lobbyEmbed[lobby]
 
     $let[mid;$send]
 

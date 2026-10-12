@@ -1,21 +1,19 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "reminders",
   type: "interactionCreate",
-  allowed: ['button'],
+  allowed: ["button"],
   code: `
     $arrayLoad[IID;-;$customID]
 
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $jsonLoad[allReminders;$getGlobalVar[allReminders]]
     $jsonLoad[userReminders;$getUserVar[userReminders]]
-    
-    $let[reminder;$env[IID;1]]
-
-    $toggleArrayValue[userReminders;$get[reminder]]
+    $toggleArrayValue[userReminders;$jsonGet[IID;1]]
 
     $setUserVar[userReminders;$env[userReminders]]
 
@@ -23,4 +21,4 @@ export default {
     $interactionUpdate
     $newCommandTimeout[reminders]
   `
-}
+})

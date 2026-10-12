@@ -1,4 +1,6 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "closeLobby",
   type: "interactionCreate",
   description: "When pressing End or Close manually",
@@ -7,38 +9,40 @@ export default {
     $arrayLoad[IID;-;$customID]
 
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkLobby
 
     $jsonLoad[lobby;$getChannelVar[lobby]]
-    $onlyIf[$env[lobby;host]==$authorID;$onlyAuthorInteraction]
+    $c[Moderators can close it too]
+    $onlyIf[$or[$jsonGet[lobby;host]==$authorID;$hasPerms[$guildID;$authorID;ManageMessages]];$onlyAuthorInteraction]
 
-    $jsonLoad[teams;$env[lobby;teams]]
-    $jsonLoad[allPlayers;$env[lobby;allPlayers]]
-    $let[mid;$env[lobby;messageID]]
+    $let[mid;$jsonGet[lobby;messageID]]
 
-    $switch[$env[IID;1];
+    $switch[$jsonGet[IID;1];
       $case[forcefully;
         $!deleteMessage[$channelID;$messageID]
         $if[$messageExists[$channelID;$get[mid]];
           $!deleteMessage[$channelID;$get[mid]]
         ]
 
-        $if[$env[lobby;started];
-          $arrayForEach[allPlayers;ID;
-            $jsonLoad[CP;$getProgress[$env[ID]]]
-            $!jsonSet[CP;started;false]
-            $saveProgress[$env[CP];$env[ID]]
-            $stopTimer[$env[ID]]
+        $c[A started lobby ends the challenge of every player, and the results are sent once everyone has finished]
+        $if[$jsonGet[lobby;started];
+          $arrayForEach[$arrayUnique[$jsonGet[lobby;allPlayers]];ID;
+            $jsonLoad[progress;$getProgress[$env[ID]]]
+            $if[$env[progress]!=;
+              $!jsonSet[progress;started;false]
+              $saveProgress[$env[progress];$env[ID]]
+            ]
+            $stopChallengeTimer[$env[ID]]
           ]
-        
+
           $allPlayersFinished
         ;
-          $removeChallengeProgressForEveryone[$env[allPlayers]]
+          $deleteLobbyProgress[$jsonGet[lobby;allPlayers]]
         ]
       ]
-    
+
       $case[manually;
         $onlyIf[$messageID==$get[mid];$!deleteMessage[$channelID;$messageID]]
         $!deleteMessage[$channelID;$messageID]
@@ -46,8 +50,8 @@ export default {
       ]
     ]
 
-    $lobbyInfoMessage[$tl[ui.lobby.closedByHost.$get[l]]]
+    $lobbyInfoMessage[lobby;$tl[ui.lobby.closedByHost.$get[l]]]
     $sendMessage[$channelID]
     $!stopTimeout[lobby-$channelID]
   `
-}
+})

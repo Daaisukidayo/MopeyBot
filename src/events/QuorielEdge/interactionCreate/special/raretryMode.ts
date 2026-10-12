@@ -1,4 +1,6 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "rtMode",
   type: "interactionCreate",
   allowed: ["button"],
@@ -6,15 +8,13 @@ export default {
     $arrayLoad[IID;-;$customID]
 
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]    
+    $let[l;$jsonGet[userProfile;language]]    
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
     $addCooldown[raretrymode;true]
 
-    $jsonLoad[modes;$getGlobalVar[raretryModes]]
-
-    $!jsonSet[userProfile;rtMode;$env[IID;1]]
+    $!jsonSet[userProfile;rtMode;$jsonGet[IID;1]]
     $saveProfile[$env[userProfile]]
 
     $raretrymodeEmbed
@@ -22,4 +22,4 @@ export default {
     
     $newCommandTimeout[raretrymode]
   `
-}
+})

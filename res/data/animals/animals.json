@@ -1,0 +1,1094 @@
+[
+  {
+    "ID": "mouse",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Mouse",
+    "tier": 1,
+    "isRare": false
+  },
+  {
+    "ID": "kangaroo_rat",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Kangaroo Rat",
+    "tier": 1,
+    "isRare": false
+  },
+  {
+    "ID": "shrimp",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Shrimp",
+    "tier": 1,
+    "isRare": false
+  },
+  {
+    "ID": "chipmunk",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Chipmunk",
+    "tier": 1,
+    "isRare": false
+  },
+  {
+    "ID": "tarsier",
+    "canFly": false,
+    "biome": 4,
+    "fullName": "Tarsier",
+    "tier": 1,
+    "isRare": false
+  },
+  {
+    "ID": "rabbit",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Rabbit",
+    "tier": 2,
+    "isRare": false
+  },
+  {
+    "ID": "pigeon",
+    "canFly": true,
+    "biome": 0,
+    "fullName": "Pigeon",
+    "tier": 2,
+    "isRare": false,
+    "rares": [
+      "dove"
+    ],
+    "rarity": [
+      9,
+      10
+    ]
+  },
+  {
+    "ID": "desert_chipmunk",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Desert Chipmunk",
+    "tier": 2,
+    "isRare": false
+  },
+  {
+    "ID": "trout",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Trout",
+    "tier": 2,
+    "isRare": false
+  },
+  {
+    "ID": "arctic_hare",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Arctic Hare",
+    "tier": 2,
+    "isRare": false
+  },
+  {
+    "ID": "chukar",
+    "canFly": true,
+    "biome": 4,
+    "fullName": "Chukar",
+    "tier": 2,
+    "isRare": false
+  },
+  {
+    "ID": "mole",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Mole",
+    "tier": 3,
+    "isRare": false
+  },
+  {
+    "ID": "chicken",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Chicken",
+    "tier": 3,
+    "isRare": false
+  },
+  {
+    "ID": "meerkat",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Meerkat",
+    "tier": 3,
+    "isRare": false
+  },
+  {
+    "ID": "crab",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Crab",
+    "tier": 3,
+    "isRare": false
+  },
+  {
+    "ID": "penguin",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Penguin",
+    "tier": 3,
+    "isRare": false
+  },
+  {
+    "ID": "flying_lizard",
+    "canFly": true,
+    "biome": 4,
+    "fullName": "Flying Lizard",
+    "tier": 3,
+    "isRare": false
+  },
+  {
+    "ID": "pig",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Pig",
+    "tier": 4,
+    "isRare": false,
+    "rares": [
+      "pinky",
+      "stinky"
+    ],
+    "rarity": [
+      400,
+      450
+    ]
+  },
+  {
+    "ID": "woodpecker",
+    "canFly": true,
+    "biome": 0,
+    "fullName": "Woodpecker",
+    "tier": 4,
+    "isRare": false
+  },
+  {
+    "ID": "armadillo",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Armadillo",
+    "tier": 4,
+    "isRare": false
+  },
+  {
+    "ID": "sea_horse",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Sea Horse",
+    "tier": 4,
+    "isRare": false
+  },
+  {
+    "ID": "seal",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Seal",
+    "tier": 4,
+    "isRare": false
+  },
+  {
+    "ID": "kakapo",
+    "canFly": true,
+    "biome": 4,
+    "fullName": "Kakapo",
+    "tier": 4,
+    "isRare": false
+  },
+  {
+    "ID": "deer",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Deer",
+    "tier": 5,
+    "isRare": false,
+    "rares": [
+      "doe",
+      "marsh"
+    ],
+    "rarity": [
+      79,
+      100
+    ]
+  },
+  {
+    "ID": "gazelle",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Gazelle",
+    "tier": 5,
+    "isRare": false
+  },
+  {
+    "ID": "squid",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Squid",
+    "tier": 5,
+    "isRare": false
+  },
+  {
+    "ID": "flamingo",
+    "canFly": true,
+    "biome": 2,
+    "fullName": "Flamingo",
+    "tier": 5,
+    "isRare": false
+  },
+  {
+    "ID": "reindeer",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Reindeer",
+    "tier": 5,
+    "isRare": false,
+    "rares": [
+      "musk"
+    ],
+    "rarity": [
+      39,
+      40
+    ]
+  },
+  {
+    "ID": "swinehoe",
+    "canFly": true,
+    "biome": 4,
+    "fullName": "Swinehoe",
+    "tier": 5,
+    "isRare": false,
+    "rares": [
+      "golden_pheasant"
+    ]
+  },
+  {
+    "ID": "fox",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Fox",
+    "tier": 6,
+    "isRare": false
+  },
+  {
+    "ID": "hedgehog",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Hedgehog",
+    "tier": 6,
+    "isRare": false
+  },
+  {
+    "ID": "peacock",
+    "canFly": true,
+    "biome": 0,
+    "fullName": "Peacock",
+    "tier": 6,
+    "isRare": false
+  },
+  {
+    "ID": "fennec_fox",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Fennec Fox",
+    "tier": 6,
+    "isRare": false
+  },
+  {
+    "ID": "jellyfish",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Jellyfish",
+    "tier": 6,
+    "isRare": false
+  },
+  {
+    "ID": "arctic_fox",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Arctic Fox",
+    "tier": 6,
+    "isRare": false
+  },
+  {
+    "ID": "zebra",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Zebra",
+    "tier": 7,
+    "isRare": false
+  },
+  {
+    "ID": "donkey",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Donkey",
+    "tier": 7,
+    "isRare": false,
+    "rares": [
+      "jackass"
+    ],
+    "rarity": [
+      55,
+      56
+    ]
+  },
+  {
+    "ID": "macaw",
+    "canFly": true,
+    "biome": 0,
+    "fullName": "Macaw",
+    "tier": 7,
+    "isRare": false,
+    "rares": [
+      "blue",
+      "spix"
+    ],
+    "rarity": [
+      2699,
+      3000
+    ]
+  },
+  {
+    "ID": "warthog",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Warthog",
+    "tier": 7,
+    "isRare": false
+  },
+  {
+    "ID": "turtle",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Turtle",
+    "tier": 7,
+    "isRare": false
+  },
+  {
+    "ID": "muskox",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Muskox",
+    "tier": 7,
+    "isRare": false
+  },
+  {
+    "ID": "cobra",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Cobra",
+    "tier": 8,
+    "isRare": false
+  },
+  {
+    "ID": "cheetah",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Cheetah",
+    "tier": 8,
+    "isRare": false,
+    "rares": [
+      "jaguar",
+      "leopard",
+      "black_panther"
+    ],
+    "rarity": [
+      80,
+      100
+    ]
+  },
+  {
+    "ID": "camel",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Camel",
+    "tier": 8,
+    "isRare": false
+  },
+  {
+    "ID": "stingray",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Stingray",
+    "tier": 8,
+    "isRare": false
+  },
+  {
+    "ID": "snowy_owl",
+    "canFly": true,
+    "biome": 3,
+    "fullName": "Snowy Owl",
+    "tier": 8,
+    "isRare": false
+  },
+  {
+    "ID": "walrus",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Walrus",
+    "tier": 8,
+    "isRare": false
+  },
+  {
+    "ID": "raven",
+    "canFly": true,
+    "biome": 4,
+    "fullName": "Raven",
+    "tier": 8,
+    "isRare": false
+  },
+  {
+    "ID": "toucan",
+    "canFly": true,
+    "biome": 0,
+    "fullName": "Toucan",
+    "tier": 9,
+    "isRare": false,
+    "rares": [
+      "choco",
+      "keel_billed",
+      "fiery",
+      "lava",
+      "helmeted_hornbill"
+    ],
+    "rarity": [
+      1000,
+      3000
+    ]
+  },
+  {
+    "ID": "gorilla",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Gorilla",
+    "tier": 9,
+    "isRare": false
+  },
+  {
+    "ID": "rattle_snake",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Rattlesnake",
+    "tier": 9,
+    "isRare": false
+  },
+  {
+    "ID": "pufferfish",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Pufferfish",
+    "tier": 9,
+    "isRare": false,
+    "rares": [
+      "yellow",
+      "demon"
+    ],
+    "rarity": [
+      157,
+      240
+    ]
+  },
+  {
+    "ID": "snow_leopard",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Snow Leopard",
+    "tier": 9,
+    "isRare": false
+  },
+  {
+    "ID": "turkey",
+    "canFly": true,
+    "biome": 4,
+    "fullName": "Turkey",
+    "tier": 9,
+    "isRare": false
+  },
+  {
+    "ID": "bear",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Bear",
+    "tier": 10,
+    "isRare": false,
+    "rares": [
+      "black_bear"
+    ]
+  },
+  {
+    "ID": "lion",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Lion",
+    "tier": 10,
+    "isRare": false,
+    "rares": [
+      "lioness",
+      "cub",
+      "black_maned",
+      "white_cub",
+      "white_lioness",
+      "white_lion",
+      "black_cub",
+      "black_lioness",
+      "black_lion"
+    ],
+    "rarity": [
+      800,
+      1000
+    ]
+  },
+  {
+    "ID": "gobi_bear",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Gobi Bear",
+    "tier": 10,
+    "isRare": false
+  },
+  {
+    "ID": "hyena",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Hyena",
+    "tier": 10,
+    "isRare": false
+  },
+  {
+    "ID": "pelican",
+    "canFly": true,
+    "biome": 2,
+    "fullName": "Pelican",
+    "tier": 10,
+    "isRare": false
+  },
+  {
+    "ID": "swordfish",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Swordfish",
+    "tier": 10,
+    "isRare": false
+  },
+  {
+    "ID": "wolf",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Wolf",
+    "tier": 10,
+    "isRare": false
+  },
+  {
+    "ID": "tiger",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Tiger",
+    "tier": 11,
+    "isRare": false,
+    "rares": [
+      "white_tiger",
+      "black_tiger"
+    ],
+    "rarity": [
+      190,
+      200
+    ]
+  },
+  {
+    "ID": "crocodile",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Crocodile",
+    "tier": 11,
+    "isRare": false
+  },
+  {
+    "ID": "falcon",
+    "canFly": true,
+    "biome": 0,
+    "fullName": "Falcon",
+    "tier": 11,
+    "isRare": false,
+    "rares": [
+      "predator",
+      "shaheen"
+    ],
+    "rarity": [
+      3949,
+      4000
+    ]
+  },
+  {
+    "ID": "vulture",
+    "canFly": true,
+    "biome": 1,
+    "fullName": "Vulture",
+    "tier": 11,
+    "isRare": false,
+    "rares": [
+      "argentavis"
+    ],
+    "rarity": [
+      2499,
+      2500
+    ]
+  },
+  {
+    "ID": "octopus",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Octopus",
+    "tier": 11,
+    "isRare": false
+  },
+  {
+    "ID": "markhor",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Markhor",
+    "tier": 11,
+    "isRare": false,
+    "rares": [
+      "big_goat"
+    ],
+    "rarity": [
+      46,
+      47
+    ],
+    "challenge": {
+      "category": 0,
+      "abbreviations": [
+        "mar",
+        "markhor"
+      ]
+    }
+  },
+  {
+    "ID": "wolverine",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Wolverine",
+    "tier": 11,
+    "isRare": false
+  },
+  {
+    "ID": "rhinoceros",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Rhino",
+    "tier": 12,
+    "isRare": false,
+    "rares": [
+      "white_rhinoceros",
+      "black_rhinoceros"
+    ],
+    "rarity": [
+      994,
+      1000
+    ]
+  },
+  {
+    "ID": "eagle",
+    "canFly": true,
+    "biome": 0,
+    "fullName": "Eagle",
+    "tier": 12,
+    "isRare": false,
+    "rares": [
+      "golden",
+      "harpy",
+      "greater_spotted"
+    ],
+    "rarity": [
+      6970,
+      7000
+    ]
+  },
+  {
+    "ID": "giraffe",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Giraffe",
+    "tier": 12,
+    "isRare": false,
+    "rares": [
+      "momaffie",
+      "momaffie_family",
+      "girabie",
+      "white_giraffe",
+      "family"
+    ],
+    "rarity": [
+      3173,
+      3290
+    ]
+  },
+  {
+    "ID": "bison",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Bison",
+    "tier": 12,
+    "isRare": false
+  },
+  {
+    "ID": "shark",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Shark",
+    "tier": 12,
+    "isRare": false
+  },
+  {
+    "ID": "polar_bear",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Polar Bear",
+    "tier": 12,
+    "isRare": false
+  },
+  {
+    "ID": "hippopotamus",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Hippo",
+    "tier": 13,
+    "isRare": false
+  },
+  {
+    "ID": "boa",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Boa",
+    "tier": 13,
+    "isRare": false
+  },
+  {
+    "ID": "ostrich",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Ostrich",
+    "tier": 13,
+    "isRare": false
+  },
+  {
+    "ID": "komodo_dragon",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Komodo Dragon",
+    "tier": 13,
+    "isRare": false
+  },
+  {
+    "ID": "orca",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Orca",
+    "tier": 13,
+    "isRare": false
+  },
+  {
+    "ID": "sabertooth_tiger",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Sabertooth Tiger",
+    "tier": 13,
+    "isRare": false
+  },
+  {
+    "ID": "elephant",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Elephant",
+    "tier": 14,
+    "isRare": false
+  },
+  {
+    "ID": "cassowary",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Cassowary",
+    "tier": 14,
+    "isRare": false
+  },
+  {
+    "ID": "giant_spider",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Giant Spider",
+    "tier": 14,
+    "isRare": false
+  },
+  {
+    "ID": "black_widow",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Black Widow",
+    "tier": 14,
+    "isRare": false
+  },
+  {
+    "ID": "blue_whale",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Blue Whale",
+    "tier": 14,
+    "isRare": false
+  },
+  {
+    "ID": "mammoth",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Mammoth",
+    "tier": 14,
+    "isRare": false
+  },
+  {
+    "ID": "dragon",
+    "canFly": true,
+    "biome": 0,
+    "fullName": "Dragon",
+    "tier": 15,
+    "isRare": false
+  },
+  {
+    "ID": "trex",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "T-Rex",
+    "tier": 15,
+    "isRare": false
+  },
+  {
+    "ID": "phoenix",
+    "canFly": true,
+    "biome": 5,
+    "fullName": "Phoenix",
+    "tier": 15,
+    "isRare": false
+  },
+  {
+    "ID": "pterodactyl",
+    "canFly": true,
+    "biome": 1,
+    "fullName": "Pterodactyl",
+    "tier": 15,
+    "isRare": false
+  },
+  {
+    "ID": "kraken",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Kraken",
+    "tier": 15,
+    "isRare": false
+  },
+  {
+    "ID": "king_crab",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "King Crab",
+    "tier": 15,
+    "isRare": false
+  },
+  {
+    "ID": "yeti",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Yeti",
+    "tier": 15,
+    "isRare": false,
+    "rares": [
+      "aqua",
+      "forgotten_one"
+    ],
+    "rarity": [
+      775,
+      800
+    ]
+  },
+  {
+    "ID": "shop_bigfoot",
+    "deleted": true,
+    "canFly": false,
+    "biome": 4,
+    "fullName": "Shop Bigfoot",
+    "tier": 15,
+    "isRare": true,
+    "rarity": [
+      100,
+      1000
+    ],
+    "challenge": {
+      "abbreviations": [
+        "sbf",
+        "shopbigfoot"
+      ]
+    }
+  },
+  {
+    "ID": "rare_bigfoot",
+    "deleted": true,
+    "canFly": false,
+    "biome": 4,
+    "fullName": "Rare Bigfoot",
+    "tier": 15,
+    "isRare": true,
+    "rarity": [
+      1,
+      1000
+    ],
+    "challenge": {
+      "category": 7,
+      "abbreviations": [
+        "rbf",
+        "rarebigfoot"
+      ]
+    }
+  },
+  {
+    "ID": "shop_snowman",
+    "deleted": true,
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Shop Snowman",
+    "tier": 15,
+    "isRare": true,
+    "rarity": [
+      100,
+      1000
+    ],
+    "challenge": {
+      "abbreviations": [
+        "ssm",
+        "shopsnowman"
+      ]
+    }
+  },
+  {
+    "ID": "rare_snowman",
+    "deleted": true,
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Rare Snowman",
+    "tier": 15,
+    "isRare": true,
+    "rarity": [
+      1,
+      1000
+    ],
+    "challenge": {
+      "category": 7,
+      "abbreviations": [
+        "rsm",
+        "raresnowman"
+      ]
+    }
+  },
+  {
+    "ID": "shop_snowgirl",
+    "deleted": true,
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Shop Snowgirl",
+    "tier": 15,
+    "isRare": true,
+    "rarity": [
+      100,
+      1000
+    ],
+    "challenge": {
+      "abbreviations": [
+        "ssg",
+        "shopsnowgirl"
+      ]
+    }
+  },
+  {
+    "ID": "rare_snowgirl",
+    "deleted": true,
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Rare Snowgirl",
+    "tier": 15,
+    "isRare": true,
+    "rarity": [
+      1,
+      1000
+    ],
+    "challenge": {
+      "category": 7,
+      "abbreviations": [
+        "rsg",
+        "raresnowgirl"
+      ]
+    }
+  },
+  {
+    "ID": "dino_monster",
+    "canFly": false,
+    "biome": 0,
+    "fullName": "Dino Monster",
+    "tier": 16,
+    "isRare": false
+  },
+  {
+    "ID": "lava_monster",
+    "canFly": true,
+    "biome": 5,
+    "fullName": "Lava Monster",
+    "tier": 16,
+    "isRare": false
+  },
+  {
+    "ID": "giant_scorpion",
+    "canFly": false,
+    "biome": 1,
+    "fullName": "Giant Scorpion",
+    "tier": 16,
+    "isRare": false
+  },
+  {
+    "ID": "sea_monster",
+    "canFly": false,
+    "biome": 2,
+    "fullName": "Sea Monster",
+    "tier": 16,
+    "isRare": false
+  },
+  {
+    "ID": "ice_monster",
+    "canFly": false,
+    "biome": 3,
+    "fullName": "Ice Monster",
+    "tier": 16,
+    "isRare": false
+  },
+  {
+    "ID": "black_dragon",
+    "canFly": true,
+    "biome": 5,
+    "fullName": "Black Dragon",
+    "tier": 17,
+    "isRare": false,
+    "rares": [
+      "rare_king_dragon"
+    ],
+    "rarity": [
+      999,
+      1000
+    ]
+  },
+  {
+    "ID": "king_dragon",
+    "canFly": true,
+    "biome": 5,
+    "fullName": "King Dragon",
+    "tier": 17,
+    "isRare": false,
+    "rarity": []
+  }
+]

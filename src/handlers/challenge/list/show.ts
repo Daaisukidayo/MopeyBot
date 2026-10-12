@@ -1,11 +1,11 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleShowList',
+  name: "handleShowList",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown
@@ -22,7 +22,7 @@ export default new ForgeFunction({
 
     $jsonLoad[challengeProgress;$getProgress[$get[ID]]]
 
-    $onlyIf[$env[challengeProgress;started];
+    $onlyIf[$jsonGet[challengeProgress;started];
       $if[$get[ID]!=$authorID;
         $newError[$tl[ui.points.noActiveChallengeUser.$get[l];$username[$get[ID]]]]
       ;
@@ -30,20 +30,20 @@ export default new ForgeFunction({
       ]
     ]
 
-    $jsonLoad[events;$env[challengeProgress;events]]
-    $jsonLoad[raresList;$env[challengeProgress;list]]
-    $jsonLoad[result;$generateList[$sortList[$env[raresList]]]]
+    $jsonLoad[result;$generateList[$jsonGet[challengeProgress;raresList]]]
+
+    $c[The user's profile is shown, in the author's language]
     $jsonLoad[userProfile;$getProfile[$get[ID]]]
-    $jsonLoad[list;$env[result;l]]
+    $!jsonSet[userProfile;language;$get[l]]
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$showPoints[$get[ID]]]
-      $addTextDisplay[$showRares[$get[ID]]]
-      $addTextDisplay[$showPredict[$get[ID]]]
+      $addTextDisplay[$showPoints[challengeProgress]]
+      $addTextDisplay[$showRares[challengeProgress]]
+      $addTextDisplay[$showPredict[challengeProgress;$get[ID]]]
       $addTextDisplay[$showTime[$get[ID]]]
       $addSeparator[Large]
-      $showDesignedList[$env[list]]
+      $showDesignedList[$jsonGet[result;l]]
     ;$getGlobalVar[luckyColor]]
   `
 })

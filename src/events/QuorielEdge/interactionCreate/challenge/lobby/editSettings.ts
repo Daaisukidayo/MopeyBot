@@ -1,105 +1,66 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "editLobbySettings",
   type: "interactionCreate",
-  allowed: ['stringSelect'],
+  allowed: ["stringSelect"],
   code: `
     $arrayLoad[IID;-;$customID]
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkLobby
 
-    $jsonLoad[difficulties;$getGlobalVar[difficulties]]
-    $jsonLoad[lobbyModes;$getGlobalVar[lobbyModes]]
-    $jsonLoad[victoryTypes;$getGlobalVar[victoryTypes]]
-
     $jsonLoad[lobby;$getChannelVar[lobby]]
-    $jsonLoad[ready;$env[lobby;ready]]
-    $jsonLoad[teams;$env[lobby;teams]]
-    $jsonLoad[allPlayers;$env[lobby;allPlayers]]
 
-    $onlyIf[$env[lobby;host]==$authorID;$onlyAuthorInteraction]
-    $onlyIf[$messageExists[$channelID;$env[lobby;messageID]]]
-    $onlyIf[$env[lobby;started]==false]
+    $onlyIf[$jsonGet[lobby;host]==$authorID;$onlyAuthorInteraction]
+    $c[Settings can only change for a lobby that still has its message and has not started]
+    $onlyIf[$messageExists[$channelID;$jsonGet[lobby;messageID]];$interactionFail]
+    $onlyIf[$jsonGet[lobby;started]==false;$interactionFail]
 
+    $let[setting;$jsonGet[IID;1]]
     $let[value;$selectMenuValues]
 
-    $switch[$env[IID;1];
-      $case[difficulty;
-        $!jsonSet[lobby;settings;difficulty;$get[value]]
-
-        $let[change;$tl[ui.lobby.difficultyTitle.$get[l];$tl[data.difficulties.$get[value].$get[l]]]]
-        $settingsChangedInfo[$get[change]]
-        
-        $setChannelVar[lobby;$env[lobby]]
-
-        $lobbySettingsEmbed
-        $interactionUpdate
-      ]
-
-      $case[mode;
-        $arrayLoad[teams]
-        $jsonLoad[team;$getGlobalVar[baseLobbyTeam]]
-        $!jsonSet[lobby;settings;mode;$get[value]]
-        
-        $let[loopsCount;$function[
-          $return[$switch[$get[value];
-            $case[$arrayAt[lobbyModes;0];1]
-            $case[$arrayAt[lobbyModes;1];2]
-            $case[$arrayAt[lobbyModes;2];3]
-          ]]
-        ]]
-
-        $loop[$get[loopsCount];
-          $!jsonSet[team;teamID;$arrayLength[teams]]
-          $!arrayPushJSON[teams;$env[team]]
-        ]
-
-        $!jsonSet[lobby;teams;$env[teams]]
-        $!jsonSet[lobby;ready;[\\]]
-        $!jsonSet[lobby;allPlayers;[\\]]
-        $setChannelVar[lobby;$env[lobby]]
-
-        $settingsChangedInfo[$tl[ui.lobby.modeTitle.$get[l];$tl[data.lobbyModes.$get[value].$get[l]]]]
-        
-        $lobbyEmbed
-        $!editMessage[$channelID;$env[lobby;messageID]]
-
-        $lobbySettingsEmbed
-        $interactionUpdate
-      ]
-
-      $case[victoryType;
-        $!jsonSet[lobby;settings;victoryType;$get[value]]
-    
-        $setChannelVar[lobby;$env[lobby]]
-
-        $settingsChangedInfo[$tl[ui.lobby.victoryTypeTitle.$get[l];$tl[data.victoryTypes.$get[value].$get[l]]]]
-        
-        $lobbyEmbed
-        $!editMessage[$channelID;$env[lobby;messageID]]
-
-        $lobbySettingsEmbed
-        $interactionUpdate
-      ]
-
+    $switch[$get[setting];
       $case[host;
-        $!jsonSet[lobby;host;"$get[value]"]
-        $setChannelVar[lobby;$env[lobby]]
-
-        $lobbySettingsEmbed
-        $interactionUpdate
-
-        $jsonLoad[userProfile;$getProfile[$get[value]]]
-        $let[l;$env[userProfile;language]]
-
-        $settingsChangedInfo[$tl[ui.lobby.hostTitle.$get[l];<@$get[value]>]]
-        
-        $lobbyEmbed
-        $!editMessage[$channelID;$env[lobby;messageID]]
+        $!jsonSet[lobby;host;$get[value]]
+      ]
+      $case[mode;
+        $c[A new mode starts with empty teams, numbered from 0, and nobody in them]
+        $jsonLoad[team;$getGlobalVar[baseLobbyTeam]]
+        $arrayMap[$arrayRange[0;$get[value]];teamID;
+          $!jsonSet[team;teamID;$env[teamID]]
+          $return[$env[team]]
+        ;teams]
+        $objectMerge[lobby;$objectOf[teams;$env[teams];ready;$arrayOf;allPlayers;$arrayOf]]
+        $!jsonSet[lobby;settings;mode;$get[value]]
+      ]
+      $case[default;
+        $!jsonSet[lobby;settings;$get[setting];$get[value]]
       ]
     ]
-    
+    $setChannelVar[lobby;$env[lobby]]
+
+    $lobbySettingsEmbed[lobby]
+    $interactionUpdate
+
+    $c[A new host gets the notices and the closing of the lobby in their language]
+    $if[$get[setting]==host;
+      $jsonLoad[userProfile;$getProfile[$get[value]]]
+      $let[l;$jsonGet[userProfile;language]]
+    ]
+    $settingsChangedInfo[$switch[$get[setting];
+      $case[host;$tl[ui.lobby.hostTitle.$get[l];<@$get[value]>]]
+      $case[mode;$tl[ui.lobby.modeTitle.$get[l];$tl[data.lobbyModes.$get[value].$get[l]]]]
+      $case[difficulty;$tl[ui.lobby.difficultyTitle.$get[l];$tl[data.difficulties.$get[value].$get[l]]]]
+      $case[victoryType;$tl[ui.lobby.victoryTypeTitle.$get[l];$tl[data.victoryTypes.$get[value].$get[l]]]]
+    ]]
+
+    $if[$isOneOf[$get[setting];mode;host];
+      $lobbyEmbed[lobby]
+      $!editMessage[$channelID;$jsonGet[lobby;messageID]]
+    ]
+
     $newLobbyTimeout
   `
-}
+})

@@ -1,48 +1,30 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleHowlucky',
+  name: "handleHowlucky",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkProfile
     $addCooldown
-
     $defer
 
-    $let[lastHLUsed;$env[userProfile;limiters;lastHLUsed]]
-    $let[r;$env[userProfile;limiters;HLRandom]]
-
-    $let[remHours;$sub[24;$hour]]
-    $let[remMinutes;$sub[60;$minute]]
-
-    $let[newDayAt;$math[$parseString[$get[remHours]h$get[remMinutes]m] + $getTimestamp]]
-
-    $if[$get[lastHLUsed]!=$day;
-
+    $c[The luck is rolled once a day: the profile keeps the number and its description until the next day]
+    $if[$jsonGet[userProfile;limiters;lastHLUsed]!=$calendarDay;
       $let[r;$random[0;100]]
-      $!jsonSet[userProfile;limiters;lastHLUsed;$day]
-      $!jsonSet[userProfile;limiters;HLRandom;$get[r]]
-
-      $forOf[$getGlobalVar[howluckyData];data;
-        $if[$get[r]>=$env[data;num];;$continue]
-
-        $!jsonSet[userProfile;limiters;luckDesc;$env[data;desc]]
-        $saveProfile[$env[userProfile]]
-        $break
-      ]
+      $c[The thresholds go down to 0, so one always matches]
+      $jsonLoad[luck;$arrayFind[$getGlobalVar[howluckyData];data;$get[r]>=$jsonGet[data;num]]]
+      $objectMerge[userProfile;limiters;$objectOf[lastHLUsed;$calendarDay;HLRandom;$get[r];luckDesc;$jsonGet[luck;desc]]]
+      $saveProfile[$env[userProfile]]
     ]
 
-    $let[luckI;$env[userProfile;limiters;luckDesc]]
-    $let[luckDesc;$tl[data.howlucky.$get[luckI].$get[l]]]
-    
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[ui.howlucky.description.$get[l];$get[r];$get[luckDesc]]]
+      $addTextDisplay[$tl[ui.howlucky.description.$get[l];$jsonGet[userProfile;limiters;HLRandom];$tl[data.howlucky.$jsonGet[userProfile;limiters;luckDesc].$get[l]]]]
       $addSeparator[Large]
-      $addTextDisplay[$tl[ui.howlucky.footer.$get[l];$discordTimestamp[$get[newDayAt];RelativeTime]]]
+      $addTextDisplay[$tl[ui.howlucky.footer.$get[l];$discordTimestamp[$math[$getTimestamp + $msUntilNextDay];RelativeTime]]]
     ;$getGlobalVar[luckyColor]]
   `
 })

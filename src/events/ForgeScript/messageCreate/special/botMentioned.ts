@@ -1,4 +1,4 @@
-import { BaseCommand } from "@tryforge/forgescript";
+import { BaseCommand } from "@tryforge/forgescript"
 
 export default new BaseCommand({
   type: "messageCreate",
@@ -7,7 +7,6 @@ export default new BaseCommand({
     $let[id;$botID]
     $onlyIf[$messageContent==<@$get[id]>]
     $reply
-    $let[prefix;$getGuildVar[prefix]]
-    $tl[ui.prefix.current.$env[$getProfile;language];<@$authorID>;$hyperlink[$username[$get[id]];<https://discord.com/discovery/applications/$get[id]>];$get[prefix]]
+    $tl[ui.prefix.current.$jsonGet[$getProfile;language];<@$authorID>;$hyperlink[$username[$get[id]];<https://discord.com/discovery/applications/$get[id]>];$getGuildVar[prefix]]
   `
 })

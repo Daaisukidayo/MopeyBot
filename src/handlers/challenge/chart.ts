@@ -1,35 +1,24 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleChart',
+  name: "handleChart",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown
 
     $defer
 
-    $c[
-      $if[$toLowerCase[$default[$option[type];$message[0]]]==event;
-        $let[img;https://media.discordapp.net/attachments/701793335941136464/1398666514663739474/eventluckchart.png]
-        $let[time;1753213440000]
-      ;
-        $let[img;https://media.discordapp.net/attachments/701793335941136464/1403754359107354744/luckchart.png]
-        $let[time;1754664900000]
-      ]
-    ]
-
-    $let[img;https://media.discordapp.net/attachments/701793335941136464/1403754359107354744/luckchart.png]
-    $let[time;1754664900000]
-
+    $c[The luck chart and when it was last changed]
+    $attachment[res/img/challenge/rare-points-chart.png;rare-points-chart.png]
     $addContainer[
       $addMediaGallery[
-        $addMediaItem[$get[img]]
+        $addMediaItem[attachment://rare-points-chart.png]
       ]
-      $addTextDisplay[$discordTimestamp[$get[time];LongDateTime]]
+      $addTextDisplay[$discordTimestamp[1791557000000;LongDateTime]]
     ;$getGlobalVar[luckyColor]]
   `
 })

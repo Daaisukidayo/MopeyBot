@@ -571,6 +571,59 @@
     }
   },
 
+  "playSoccers": {
+    "pumpkin": {
+      "0": {
+        "en-US": "Pumpkin",
+        "ru": "Тыква"
+      },
+      "1": {
+        "en-US": "Golden Pumpkin",
+        "ru": "Золотая Тыква"
+      },
+      "2": {
+        "en-US": "Jack-o'-lantern Pumpkin",
+        "ru": "Светильник-тыква"
+      },
+      "3": {
+        "en-US": "Emerald Pumpkin",
+        "ru": "Изумрудная Тыква"
+      },
+      "4": {
+        "en-US": "Ruby Pumpkin",
+        "ru": "Рубиновая Тыква"
+      },
+      "5": {
+        "en-US": "Diamond Pumpkin",
+        "ru": "Алмазная Тыква"
+      }
+    },
+    "umbrella": {
+      "0": {
+        "en-US": "Umbrella",
+        "ru": "Зонтик"
+      },
+      "1": {
+        "en-US": "Purple Umbrella",
+        "ru": "Фиолетовый Зонтик"
+      },
+      "2": {
+        "en-US": "Golden Umbrella",
+        "ru": "Золотой Зонтик"
+      }
+    },
+    "beachball": {
+      "0": {
+        "en-US": "Beachball",
+        "ru": "Пляжный мяч"
+      },
+      "1": {
+        "en-US": "Golden Beachball",
+        "ru": "Золотой пляжный мяч"
+      }
+    }
+  },
+
   "soccerActions": {
     "0": {
       "en-US": "Hold",
@@ -606,6 +659,17 @@
     "3": {
       "en-US": "Rare animal",
       "ru": "Редкому животному"
+    }
+  },
+
+  "sortingOrders": {
+    "desc": {
+      "en-US": "Descending",
+      "ru": "по убыванию"
+    },
+    "asc": {
+      "en-US": "Ascending",
+      "ru": "по возрастанию"
     }
   },
 

@@ -1,9 +1,11 @@
-export default {
-  name: 'handlePrefix',
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
+  name: "handlePrefix",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
 
@@ -41,4 +43,4 @@ export default {
       $addTextDisplay[$tl[ui.prefix.changed.$get[l];$get[newPrefix]]]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

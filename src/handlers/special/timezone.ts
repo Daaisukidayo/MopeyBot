@@ -1,46 +1,36 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleTimezone',
+  name: "handleTimezone",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
-    $checkProfile
-		$addCooldown
+    $let[l;$jsonGet[userProfile;language]]
 
-		$jsonLoad[timezones;$readFile[res/data/timezones.json]]
+    $checkProfile
+    $addCooldown
 
     $let[tz;$default[$option[new-timezone];$message]]
-    
 
-		$if[$get[tz]!=;
-      $arrayLoad[tzParts;/;$get[tz]]
-
-      $if[$arrayLength[tzParts]!=2;
+    $c[Any timezone of the list, in any letter case: the list's own spelling is saved. A new one can be set once a week]
+    $if[$get[tz]!=;
+      $let[zoneName;$jsonGet[$arrayFind[$readFile[res/data/timezones.json];zone;$toLowerCase[$jsonGet[zone;zoneName]]==$toLowerCase[$get[tz]]];zoneName]]
+      $onlyIf[$get[zoneName]!=;
         $newError[$tl[ui.timezone.invalid.$get[l]]]
       ]
 
-      $arrayMap[tzParts;part;$return[$toTitleCase[$env[part]]];tzParts]
-			$let[tzExists;$arraySome[timezones;tz;$toLowerCase[$env[tz;zoneName]]==$toLowerCase[$get[tz]]]]
-
-			$if[$get[tzExists];
-        $if[$env[userProfile;devMode]==0;
-          $cooldown[setTimezone-$authorID;1w;
-            $newCooldown[$getCooldownTime[setTimezone-$authorID]]
-          ]
+      $if[$isDev==false;
+        $cooldown[setTimezone-$authorID;1w;
+          $newCooldown[$getCooldownTime[setTimezone-$authorID]]
         ]
-				$!jsonSet[userProfile;timezone;$arrayJoin[tzParts;/]]
-				$saveProfile[$env[userProfile]]
-			;
-				$newError[$tl[ui.timezone.invalid.$get[l]]]
-			]
+      ]
+      $!jsonSet[userProfile;timezone;$get[zoneName]]
+      $saveProfile[$env[userProfile]]
     ]
 
-		$addContainer[
-			$addAuthorDisplay
-			$addTextDisplay[$tl[ui.timezone.current.$get[l];$env[userProfile;timezone]]]
-		;$getGlobalVar[defaultColor]]
+    $addContainer[
+      $addAuthorDisplay
+      $addTextDisplay[$tl[ui.timezone.current.$get[l];$jsonGet[userProfile;timezone]]]
+    ;$getGlobalVar[defaultColor]]
   `
 })

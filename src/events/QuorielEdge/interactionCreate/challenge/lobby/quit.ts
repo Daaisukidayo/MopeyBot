@@ -1,4 +1,6 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "quitLobby",
   type: "interactionCreate",
   description: "When pressing Quit",
@@ -6,39 +8,41 @@ export default {
     $arrayLoad[IID;-;$customID]
 
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkLobby
 
     $jsonLoad[lobby;$getChannelVar[lobby]]
-    $jsonLoad[ready;$env[lobby;ready]]
-    $jsonLoad[teams;$env[lobby;teams]]
-    $jsonLoad[allPlayers;$env[lobby;allPlayers]]
+    $jsonLoad[ready;$jsonGet[lobby;ready]]
+    $jsonLoad[teams;$jsonGet[lobby;teams]]
+    $jsonLoad[allPlayers;$jsonGet[lobby;allPlayers]]
 
-    $onlyIf[$messageID==$env[lobby;messageID];$!deleteMessage[$channelID;$messageID]]
+    $onlyIf[$messageID==$jsonGet[lobby;messageID];$!deleteMessage[$channelID;$messageID]]
 
-    $onlyIf[$arrayIncludes[allPlayers;$authorID]]
-
-    $let[teamIndex;$env[IID;1]]
-    $jsonLoad[playersInTeam;$env[teams;$get[teamIndex];players]]
-    $onlyIf[$arrayIncludes[playersInTeam;$authorID]]
-    $!arraySplice[playersInTeam;$arrayIndexOf[playersInTeam;$authorID];1]
-    
-    $if[$arrayIncludes[ready;$authorID];
-      $!arraySplice[ready;$arrayIndexOf[ready;$authorID];1]
+    $onlyIf[$arrayIncludes[allPlayers;$authorID];
+      $newError[$tl[ui.lobby.notParticipant.$get[l]]]
     ]
-    
-    $!arraySplice[allPlayers;$arrayIndexOf[allPlayers;$authorID];1]
 
+    $c[Quit only works on the team whose button was pressed]
+    $let[teamIndex;$jsonGet[IID;1]]
+    $jsonLoad[playersInTeam;$jsonGet[teams;$get[teamIndex];players]]
+    $onlyIf[$arrayIncludes[playersInTeam;$authorID];
+      $newError[$tl[ui.lobby.notInThisTeam.$get[l]]]
+    ]
+    $!arraySplice[playersInTeam;$arrayIndexOf[playersInTeam;$authorID];1]
     $!jsonSet[teams;$get[teamIndex];players;$env[playersInTeam]]
-    $!jsonSet[lobby;teams;$env[teams]]
-    $!jsonSet[lobby;ready;$env[ready]]
-    $!jsonSet[lobby;allPlayers;$env[allPlayers]]
 
+    $c[Each quit removes one entry. A tester stays ready while any entry is left]
+    $!arraySplice[allPlayers;$arrayIndexOf[allPlayers;$authorID];1]
+    $if[$arrayIncludes[allPlayers;$authorID]==false;
+      $arrayRemove[ready;$authorID]
+    ]
+
+    $objectMerge[lobby;$objectOf[teams;$env[teams];ready;$env[ready];allPlayers;$env[allPlayers]]]
     $setChannelVar[lobby;$env[lobby]]
 
-    $lobbyEmbed
+    $lobbyEmbed[lobby]
     $interactionUpdate
     $newLobbyTimeout
   `
-}
+})

@@ -1,11 +1,11 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handlePlay',
+  name: "handlePlay",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
 
@@ -13,17 +13,19 @@ export default new ForgeFunction({
       $newError[$tl[ui.play.unableInDm.$get[l]]]
     ]
 
-    $onlyIf[$env[userProfile;devMode]==1;
-      $newError[$tl[ui.special.commandDisabled.$get[l]]]
+    $c[
+      $onlyIf[$isDev;
+        $newError[$tl[ui.special.commandDisabled.$get[l]]]
+      ]
     ]
 
     $jsonLoad[playData;$getUserVar[userPlayData]]
 
-    $if[$env[playData;started];
+    $if[$jsonGet[playData;started];
       $addContainer[
         $addAuthorDisplay
         $addTextDisplay[$tl[ui.play.activeSession.$get[l]]]
-        $addTextDisplay[### $hyperlink[$tl[ui.play.endPreviousGame.$get[l]];https://discord.com/channels/$env[playData;GuildID]/$env[playData;ChannelID]/$env[playData;MessageID]]]
+        $addTextDisplay[### $hyperlink[$tl[ui.play.endPreviousGame.$get[l]];https://discord.com/channels/$jsonGet[playData;GuildID]/$jsonGet[playData;ChannelID]/$jsonGet[playData;MessageID]]]
         $addSeparator
         $addActionRow
         $addButton[play_leave-disconnect-$authorID;$tl[ui.play.buttonLabelCantFind.$get[l]];Danger]
@@ -36,19 +38,16 @@ export default new ForgeFunction({
       $addContainer[
         $addAuthorDisplay
         $addTextDisplay[$tl[ui.play.chooseAnimal.$get[l]]]
-        $addUpgradeMenu
+        $addUpgradeMenu[playData;userWardrobe]
         $addSeparator[Large]
-        $addExitButton
-        $addCheats
+        $addExitButton[playData]
+        $addCheats[playData]
       ;$getGlobalVar[defaultColor]]
 
       $let[mid;$send]
 
-      $!jsonSet[playData;MessageID;"$get[mid]"]
-      $!jsonSet[playData;ChannelID;"$channelID"]
-      $!jsonSet[playData;GuildID;"$guildID"]
-      $!jsonSet[playData;started;true]
-      $updatePlayData
+      $objectMerge[playData;$objectOf[MessageID;"$get[mid]";ChannelID;"$channelID";GuildID;"$guildID";started;true]]
+      $updatePlayData[playData]
     ]
   `
 })

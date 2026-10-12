@@ -1,54 +1,68 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "play_upgradeAnimal",
   type: "interactionCreate",
   allowed: ["button"],
   code: `
     $arrayLoad[IID;-;$customID]
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
     $jsonLoad[playData;$getUserVar[userPlayData]]
-    $isPlaying
+    $isPlaying[playData]
     
-    $removeAllApex
+    $removeAllApex[playData]
 
     $jsonLoad[rewardPerRare;$getGlobalVar[playRewardPerRare]]
-    $jsonLoad[biomeColors;$getGlobalVar[biomeColors]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
-    $let[animalId;$env[IID;1]]
+    $let[animalId;$jsonGet[IID;1]]
 
-    $let[bonusPerUpgrade;10]
-    $let[bonusPerRare;$default[$env[rewardPerRare;$get[animalId]];0]]
-    $let[wrI;$default[$env[userWardrobe;$get[animalId]];0]]
+    $let[bonusPerUpgrade;$getGlobalVar[playRewardPerUpgrade]]
+    $let[bonusPerRare;$default[$jsonGet[rewardPerRare;$get[animalId]];0]]
+    $let[wrI;$default[$jsonGet[userWardrobe;$get[animalId]];0]]
     
     $let[biome;$getAnimalInfo[$get[animalId];biome]]
-    $let[color;$default[$env[biomeColors;$get[biome]];$getGlobalVar[defaultColor]]]
+    $let[color;$getBiomeColor[playData;$get[biome]]]
     $let[animalName;$getAnimalInfo[$get[animalId];name;$get[wrI]]]
 
-    $sumPlayCash[$math[$get[bonusPerUpgrade] + $get[bonusPerRare]]]
+    $sumPlayCash[playData;$math[$get[bonusPerUpgrade] + $get[bonusPerRare]]]
 
-    $!jsonSet[playData;currentAnimal;$get[animalId]]
-    $!jsonSet[playData;currentBiome;$get[biome]]
-    $!jsonSet[playData;isDead;false]
-    
+    $let[heldSoccer;$jsonGet[playData;heldSoccer]]
+    $if[$and[$get[heldSoccer]!=;$jsonGet[playData;isDead]==false;$jsonGet[playData;currentBiome]==$get[biome]];
+      $arrayLoad[soccerData;_;$get[heldSoccer]]
+      $let[keepSoccer;true]
+    ;
+      $!jsonDelete[playData;heldSoccer]
+    ]
+
+    $objectMerge[playData;$objectOf[currentAnimal;$get[animalId];currentBiome;$get[biome];isDead;false]]
+
     $addContainer[
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.play.upgraded.$get[l];$get[animalName]]]
+      $if[$get[keepSoccer];
+        $addTextDisplay[$tl[ui.play.soccer.stillHolding.$get[l];$getSoccerDisplay[$jsonGet[soccerData;0];$jsonGet[soccerData;1]]]]
+      ]
 
       $addSeparator[Large]
 
-      $displayAnimalStats
-      $addActionsMenu
+      $displayAnimalStats[playData;userWardrobe]
+      $if[$get[keepSoccer];
+        $addHeldSoccerMenu[playData]
+      ;
+        $addActionsMenu[playData]
+      ]
 
       $addSeparator[Large]
       
-      $addExitButton
-      $addCheats
+      $addExitButton[playData]
+      $addCheats[playData]
     ;$get[color]]
 
-    $updatePlayData
+    $updatePlayData[playData]
     $interactionUpdate
   `
-}
+})

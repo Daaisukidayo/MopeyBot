@@ -1,28 +1,21 @@
-export default {
-  name: 'showLobbySettings',
+import { Command } from "@quoriel/edge"
+
+export default new Command({
+  name: "showLobbySettings",
   type: "interactionCreate",
-  allowed: ['button'],
+  allowed: ["button"],
   code: `
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+
     $checkLobby
-    
-    $jsonLoad[difficulties;$getGlobalVar[difficulties]]
-    $jsonLoad[lobbyModes;$getGlobalVar[lobbyModes]]
-    $jsonLoad[victoryTypes;$getGlobalVar[victoryTypes]]
 
     $jsonLoad[lobby;$getChannelVar[lobby]]
-    $jsonLoad[ready;$env[lobby;ready]]
-    $jsonLoad[teams;$env[lobby;teams]]
-    $jsonLoad[allPlayers;$env[lobby;allPlayers]]
-
-    $onlyIf[$messageID==$env[lobby;messageID];
+    $onlyIf[$messageID==$jsonGet[lobby;messageID];
       $!deleteMessage[$channelID;$messageID]
     ]
-    
+
     $ephemeral
-    $lobbySettingsEmbed
+    $lobbySettingsEmbed[lobby]
     $interactionReply
   `
-}
+})

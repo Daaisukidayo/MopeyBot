@@ -1,38 +1,21 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleTornado',
+  name: "handleTornado",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkProfile
     $addCooldown
-
     $defer
 
-    $jsonLoad[allTornadoes;$readFile[res/data/tornadoes.json]]
-
-    $let[r;$random[1;30]]
-    $if[$and[$isNumber[$message];$env[userProfile;devMode]==1];
-      $let[r;$message]
-    ]
-
-    $if[1==$get[r];
-      $let[type;devilTornadoes]
-      $let[MC;$random[2500;4000]]
-    ;
-      $let[type;normalTornadoes]
-      $let[MC;$random[300;600]]
-    ]
-
-    $jsonLoad[tornadoes;$env[allTornadoes;$get[type]]]
-    $jsonLoad[tornado;$arrayRandomValue[tornadoes]]
-
-    $let[color;$env[tornado;color]]
-    $let[display;$tl[data.$get[type].$env[tornado;name].$get[l]]]
-    $let[thum;$env[tornado;thumbnail]]
+    $c[One tornado in 30 is a devil tornado, which gives more. A developer can give the roll]
+    $let[devil;$checkCondition[$if[$and[$isNumber[$message];$isDev];$message;$random[1;30]]==1]]
+    $let[type;$if[$get[devil];devilTornadoes;normalTornadoes]]
+    $let[MC;$if[$get[devil];$random[2500;4000];$random[300;600]]]
+    $jsonLoad[tornado;$arraySample[$jsonGet[$readFile[res/data/tornadoes.json];$get[type]]]]
 
     $sumCash[$get[MC]]
     $saveProfile[$env[userProfile]]
@@ -41,11 +24,11 @@ export default new ForgeFunction({
       $addAuthorDisplay
       $addSection[
         $addTextDisplay[
-          $tl[ui.tornado.saw.$get[l];$get[display]]
+          $tl[ui.tornado.saw.$get[l];$tl[data.$get[type].$jsonGet[tornado;name].$get[l]]]
           $tl[ui.tornado.earned.$get[l];$separate[$get[MC]]]
         ]
-        $addThumbnail[$get[thum]]
+        $addThumbnail[$jsonGet[tornado;thumbnail]]
       ]
-    ;$get[color]]
+    ;$jsonGet[tornado;color]]
   `
 })

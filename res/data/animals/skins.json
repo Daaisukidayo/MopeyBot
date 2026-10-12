@@ -1,0 +1,2715 @@
+{
+  "mouse": [
+    {
+      "id": "mouse.s1.0",
+      "packId": "s1",
+      "name": "Mouse",
+      "emoji": "<:MouseS1:1291425874700271788>"
+    },
+    {
+      "id": "mouse.s2.0",
+      "packId": "s2",
+      "name": "Mouse",
+      "emoji": "<:MouseS2:1290349331895029852>"
+    },
+    {
+      "id": "mouse.s2w.0",
+      "packId": "s2w",
+      "name": "Mouse",
+      "emoji": "<:MouseS2Winter:1331658994326044722>"
+    },
+    {
+      "id": "mouse.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Purple Mouse",
+      "emoji": "<:PurpleMouse:1290701105243754531>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/3/3c/PurpleMouse.png"
+    },
+    {
+      "id": "mouse.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Mouse",
+      "emoji": "<:GoldenMouse:1290701057143472238>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/0/02/GoldenMouse.png"
+    },
+    {
+      "id": "mouse.legacySP.0",
+      "packId": "legacySP",
+      "name": "Mouse",
+      "emoji": "<:ClassicMouse:1331661370864963725>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/7/79/Mouse-Classic.png"
+    },
+    {
+      "id": "mouse.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Mouse",
+      "emoji": "<:LegacyMouseWinterV2:1331663409212690534>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/c/c0/Mouse-Classic-Winter-v2.png"
+    },
+    {
+      "id": "mouse.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Mouse",
+      "emoji": "<:MouseGoldTrim:1331664429053513780>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/4/4f/Mouse-GoldTrim.png"
+    },
+    {
+      "id": "mouse.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Robo Mouse",
+      "emoji": "<:RoboMouse:1331666011967193138>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/5/51/RoboMouse.png"
+    },
+    {
+      "id": "mouse.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Bubbly Mouse",
+      "emoji": "<:BubblyMouse:1331666787753787423>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/8/8b/BubblyMouse.png"
+    },
+    {
+      "id": "mouse.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Super Mouse",
+      "emoji": "<:SuperMouse:1331675123236864001>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/2/24/SuperMouse.png"
+    },
+    {
+      "id": "mouse.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Light Plague Rat",
+      "emoji": "<:LightPlagueRat:1331670155217866962>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/1/19/LightPlagueRat.png"
+    },
+    {
+      "id": "mouse.halloween2021SP.1",
+      "packId": "halloween2021SP",
+      "name": "Dark Plague Rat",
+      "emoji": "<:DarkPlagueRat:1331670165120876574>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/1/15/DarkPlagueRat.png"
+    }
+  ],
+  "kangaroo_rat": [
+    {
+      "id": "kangaroo_rat.s1.0",
+      "packId": "s1",
+      "name": "Kangaroo Rat",
+      "emoji": "<:DesertRatS1:1291425991587270676>"
+    },
+    {
+      "id": "kangaroo_rat.s2.0",
+      "packId": "s2",
+      "name": "Kangaroo Rat",
+      "emoji": "<:DesertRatS2:1290350508627722301>"
+    },
+    {
+      "id": "kangaroo_rat.legacySP.0",
+      "packId": "legacySP",
+      "name": "Kangaroo Rat",
+      "emoji": "<:DesertRatClassic:1331696156560068649>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/b/b2/DesertRat-Classic.png"
+    },
+    {
+      "id": "kangaroo_rat.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Kangaroo Rat",
+      "emoji": "<:DesertRatGoldTrim:1331696932803838034>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/2/26/DesertRat-GoldTrim.png"
+    },
+    {
+      "id": "kangaroo_rat.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Cacti Rat",
+      "emoji": "<:CactiRat:1331697830229966882>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/4/4b/CactiRat.png"
+    }
+  ],
+  "shrimp": [
+    {
+      "id": "shrimp.s1.0",
+      "packId": "s1",
+      "name": "Shrimp",
+      "emoji": "<:ShrimpS1:1291425951338467440>"
+    },
+    {
+      "id": "shrimp.s2.0",
+      "packId": "s2",
+      "name": "Shrimp",
+      "emoji": "<:ShrimpS2:1290350647459450972>"
+    },
+    {
+      "id": "shrimp.s2w.0",
+      "packId": "s2w",
+      "name": "Shrimp",
+      "emoji": "<:ShrimpS2Winter:1291425929322823758>"
+    },
+    {
+      "id": "shrimp.legacySP.0",
+      "packId": "legacySP",
+      "name": "Shrimp",
+      "emoji": "<:ShrimpClassic:1332053833316306945>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/d/dc/Shrimp-Classic.png"
+    },
+    {
+      "id": "shrimp.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Shrimp",
+      "emoji": "<:ShrimpClassicWinter:1332053845190246480>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/a/a6/Shrimp-Classic-Winter.png"
+    },
+    {
+      "id": "shrimp.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Shrimp",
+      "emoji": "<:ShrimpGoldTrim:1332054190351978666>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/4/41/Shrimp-GoldTrim.png"
+    },
+    {
+      "id": "shrimp.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Deluxe Shrimp",
+      "emoji": "<:DeluxeShrimp:1332054246866292888>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/0/00/DeluxeShrimp.png"
+    },
+    {
+      "id": "shrimp.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Chef Shrimp",
+      "emoji": "<:ChefShrimp:1332054266487246898>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/f/f3/ChefShrimp.png"
+    }
+  ],
+  "chipmunk": [
+    {
+      "id": "chipmunk.s1.0",
+      "packId": "s1",
+      "name": "Chipmunk",
+      "emoji": "<:ChipmunkS1:1291426701351583754>"
+    },
+    {
+      "id": "chipmunk.s2.0",
+      "packId": "s2",
+      "name": "Chipmunk",
+      "emoji": "<:ChipmunkS2:1290350695698137118>"
+    },
+    {
+      "id": "chipmunk.s2w.0",
+      "packId": "s2w",
+      "name": "Chipmunk",
+      "emoji": "<:ChipmunkS2Winter:1291426691142520872>"
+    },
+    {
+      "id": "chipmunk.legacySP.0",
+      "packId": "legacySP",
+      "name": "Chipmunk",
+      "emoji": "<:ArcticChipmunkClassic:1332390003870924840>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/7/76/ArcticChipmunk-Classic.png"
+    },
+    {
+      "id": "chipmunk.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Chipmunk",
+      "emoji": "<:ArcticChipmunkClassicWinter:1332390685566828575>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/d/d1/ArcticChipmunk-Classic-Winter.png"
+    },
+    {
+      "id": "chipmunk.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Chipmunk",
+      "emoji": "<:ArcticChipmunkGoldTrim:1332391843530408107>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/9/95/ArcticChipmunk-GoldTrim.png"
+    },
+    {
+      "id": "chipmunk.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Playful Munk",
+      "emoji": "<:PlayfulMunk:1332391870776479764>",
+      "img": "https://static.wikia.nocookie.net/mopeio/images/f/fd/PlayfulMunk.png"
+    }
+  ],
+  "tarsier": [
+    {
+      "id": "tarsier.s2.0",
+      "packId": "s2",
+      "name": "Tarsier",
+      "emoji": "<:Tarsier:1290351366119620708>"
+    }
+  ],
+  "rabbit": [
+    {
+      "id": "rabbit.s1.0",
+      "packId": "s1",
+      "name": "Rabbit",
+      "emoji": "<:RabbitS1:1291427677558931572>"
+    },
+    {
+      "id": "rabbit.s2.0",
+      "packId": "s2",
+      "name": "Rabbit",
+      "emoji": "<:RabbitS2:1291427653055807530>"
+    },
+    {
+      "id": "rabbit.s2w.0",
+      "packId": "s2w",
+      "name": "Rabbit",
+      "emoji": "<:RabbitS2Winter:1291427664296415297>"
+    }
+  ],
+  "pigeon": [
+    {
+      "id": "pigeon.s1.0",
+      "packId": "s1",
+      "name": "Pigeon",
+      "emoji": "<:PigeonS1:1332411742273273856>"
+    },
+    {
+      "id": "pigeon.s2.0",
+      "packId": "s2",
+      "name": "Pigeon",
+      "emoji": "<:PigeonS2:1291427610860978237>"
+    },
+    {
+      "id": "pigeon.s2w.0",
+      "packId": "s2w",
+      "name": "Pigeon",
+      "emoji": "<:PigeonS2Winter:1291427628632379423>"
+    }
+  ],
+  "dove": [
+    {
+      "id": "dove.s1.0",
+      "packId": "s1",
+      "name": "Dove",
+      "emoji": "<:WhiteDoveS1:1332414122146402346>"
+    },
+    {
+      "id": "dove.s2.0",
+      "packId": "s2",
+      "name": "Dove",
+      "emoji": "<:WhiteDoveS2:1291258772492255263>"
+    }
+  ],
+  "desert_chipmunk": [
+    {
+      "id": "desert_chipmunk.s1.0",
+      "packId": "s1",
+      "name": "Desert Chipmunk",
+      "emoji": "<:DesertChipmunkS1:1291427348473839666>"
+    },
+    {
+      "id": "desert_chipmunk.s2.0",
+      "packId": "s2",
+      "name": "Desert Chipmunk",
+      "emoji": "<:DesertChipmunkS2:1291427318970974238>"
+    },
+    {
+      "id": "desert_chipmunk.s2w.0",
+      "packId": "s2w",
+      "name": "Desert Chipmunk",
+      "emoji": "<:DesertChipmunkS2Winter:1291427332396941352>"
+    }
+  ],
+  "trout": [
+    {
+      "id": "trout.s1.0",
+      "packId": "s1",
+      "name": "Trout",
+      "emoji": "<:TroutS1:1291427844194439284>"
+    },
+    {
+      "id": "trout.s2.0",
+      "packId": "s2",
+      "name": "Trout",
+      "emoji": "<:TroutS2:1291427823273381959>"
+    },
+    {
+      "id": "trout.s2w.0",
+      "packId": "s2w",
+      "name": "Trout",
+      "emoji": "<:TroutS2Winter:1291427833402363975>"
+    }
+  ],
+  "arctic_hare": [
+    {
+      "id": "arctic_hare.s1.0",
+      "packId": "s1",
+      "name": "Arctic Hare",
+      "emoji": "<:ArcticHareS1:1291427235751788675>"
+    },
+    {
+      "id": "arctic_hare.s2.0",
+      "packId": "s2",
+      "name": "Arctic Hare",
+      "emoji": "<:ArcticHareS2:1291427190692380783>"
+    },
+    {
+      "id": "arctic_hare.s2w.0",
+      "packId": "s2w",
+      "name": "Arctic Hare",
+      "emoji": "<:ArcticHareS2Winter:1291427205989011527>"
+    }
+  ],
+  "chukar": [
+    {
+      "id": "chukar.s2.0",
+      "packId": "s2",
+      "name": "Chukar",
+      "emoji": "<:ChukarS2:1291427563578589204>"
+    }
+  ],
+  "mole": [
+    {
+      "id": "mole.s1.0",
+      "packId": "s1",
+      "name": "Mole",
+      "emoji": "<:MoleS1:1291428307308511273>"
+    },
+    {
+      "id": "mole.s2.0",
+      "packId": "s2",
+      "name": "Mole",
+      "emoji": "<:MoleS2:1291428285221437472>"
+    },
+    {
+      "id": "mole.s2w.0",
+      "packId": "s2w",
+      "name": "Mole",
+      "emoji": "<:MoleS2Winter:1291428295325388926>"
+    }
+  ],
+  "chicken": [
+    {
+      "id": "chicken.s1.0",
+      "packId": "s1",
+      "name": "Chicken",
+      "emoji": "<:ChickenS1:1333092004820942860>"
+    },
+    {
+      "id": "chicken.s2.0",
+      "packId": "s2",
+      "name": "Chicken",
+      "emoji": "<:ChickenS2:1291428272915218442>"
+    }
+  ],
+  "meerkat": [
+    {
+      "id": "meerkat.s1.0",
+      "packId": "s1",
+      "name": "Meerkat",
+      "emoji": "<:MeerkatS1:1291428108465082409>"
+    },
+    {
+      "id": "meerkat.s2.0",
+      "packId": "s2",
+      "name": "Meerkat",
+      "emoji": "<:MeerkatS2:1291428085971030057>"
+    },
+    {
+      "id": "meerkat.s2w.0",
+      "packId": "s2w",
+      "name": "Meerkat",
+      "emoji": "<:MeerkatS2Winter:1291428095777177705>"
+    }
+  ],
+  "crab": [
+    {
+      "id": "crab.s1.0",
+      "packId": "s1",
+      "name": "Crab",
+      "emoji": "<:CrabS1:1291428698939068446>"
+    },
+    {
+      "id": "crab.s2.0",
+      "packId": "s2",
+      "name": "Crab",
+      "emoji": "<:CrabS2:1291428674649718964>"
+    },
+    {
+      "id": "crab.s2w.0",
+      "packId": "s2w",
+      "name": "Crab",
+      "emoji": "<:CrabS2Winter:1291428685815087137>"
+    }
+  ],
+  "penguin": [
+    {
+      "id": "penguin.s1.0",
+      "packId": "s1",
+      "name": "Penguin",
+      "emoji": "<:PenguinS1:1291428028395814932>"
+    },
+    {
+      "id": "penguin.s2.0",
+      "packId": "s2",
+      "name": "Penguin",
+      "emoji": "<:PenguinS2:1291427995134722099>"
+    },
+    {
+      "id": "penguin.s2w.0",
+      "packId": "s2w",
+      "name": "Penguin",
+      "emoji": "<:PenguinS2Winter:1291428006002429994>"
+    }
+  ],
+  "flying_lizard": [
+    {
+      "id": "flying_lizard.s2.0",
+      "packId": "s2",
+      "name": "Flying Lizard",
+      "emoji": "<:FlyingLizard:1291428239239020687>"
+    }
+  ],
+  "pig": [
+    {
+      "id": "pig.s1.0",
+      "packId": "s1",
+      "name": "Pig",
+      "emoji": "<:PigS1v2:1333508176343203860>"
+    },
+    {
+      "id": "pig.s2.0",
+      "packId": "s2",
+      "name": "Pig",
+      "emoji": "<:PigS2:1291429320211955844>"
+    },
+    {
+      "id": "pig.s2w.0",
+      "packId": "s2w",
+      "name": "Pig",
+      "emoji": "<:PigS2Winter:1291429334774452386>"
+    }
+  ],
+  "pinky": [
+    {
+      "id": "pinky.s1.0",
+      "packId": "s1",
+      "name": "Pinky Pig",
+      "emoji": "<:PinkyPigS1:1333508206428815360>"
+    },
+    {
+      "id": "pinky.s2.0",
+      "packId": "s2",
+      "name": "Pinky Pig",
+      "emoji": "<:PinkyPigS2:1284520701541351454>"
+    }
+  ],
+  "stinky": [
+    {
+      "id": "stinky.s1.0",
+      "packId": "s1",
+      "name": "Stinky Pig",
+      "emoji": "<:StinkyPigS1:1333508221968584714>"
+    },
+    {
+      "id": "stinky.s2.0",
+      "packId": "s2",
+      "name": "Stinky Pig",
+      "emoji": "<:StinkyPigS2:1284520753793863831>"
+    }
+  ],
+  "woodpecker": [
+    {
+      "id": "woodpecker.s1.0",
+      "packId": "s1",
+      "name": "Woodpecker",
+      "emoji": "<:WoodpeckerS1:1367569904634564701>"
+    },
+    {
+      "id": "woodpecker.s2.0",
+      "packId": "s2",
+      "name": "Woodpecker",
+      "emoji": "<:WoodpeckerS2:1291429347466412072>"
+    }
+  ],
+  "armadillo": [
+    {
+      "id": "armadillo.s1.0",
+      "packId": "s1",
+      "name": "Armadillo",
+      "emoji": "<:ArmadilloS1:1367569927074222200>"
+    },
+    {
+      "id": "armadillo.s2.0",
+      "packId": "s2",
+      "name": "Armadillo",
+      "emoji": "<:ArmadilloS2:1291429055748640870>"
+    }
+  ],
+  "sea_horse": [
+    {
+      "id": "sea_horse.s1.0",
+      "packId": "s1",
+      "name": "Sea Horse",
+      "emoji": "<:SeahorseS1:1291429464949133364>"
+    },
+    {
+      "id": "sea_horse.s2.0",
+      "packId": "s2",
+      "name": "Sea Horse",
+      "emoji": "<:SeahorseS2:1291429430584938597>"
+    },
+    {
+      "id": "sea_horse.s2w.0",
+      "packId": "s2w",
+      "name": "Sea Horse",
+      "emoji": "<:SeahorseS2Winter:1291429453645484082>"
+    }
+  ],
+  "seal": [
+    {
+      "id": "seal.s1.0",
+      "packId": "s1",
+      "name": "Seal",
+      "emoji": "<:SealS1:1291429019262128189>"
+    },
+    {
+      "id": "seal.s2.0",
+      "packId": "s2",
+      "name": "Seal",
+      "emoji": "<:SealS2:1291428996134731837>"
+    },
+    {
+      "id": "seal.s2w.0",
+      "packId": "s2w",
+      "name": "Seal",
+      "emoji": "<:SealS2Winter:1291429006503182358>"
+    }
+  ],
+  "kakapo": [
+    {
+      "id": "kakapo.s2.0",
+      "packId": "s2",
+      "name": "Kakapo",
+      "emoji": "<:KakapoS2:1291429273349132410>"
+    }
+  ],
+  "deer": [
+    {
+      "id": "deer.s1.0",
+      "packId": "s1",
+      "name": "Deer",
+      "emoji": "<:DeerS1:1291430265889099849>"
+    },
+    {
+      "id": "deer.s2.0",
+      "packId": "s2",
+      "name": "Deer",
+      "emoji": "<:DeerS2:1291430215456919693>"
+    },
+    {
+      "id": "deer.s2w.0",
+      "packId": "s2w",
+      "name": "Deer",
+      "emoji": "<:DeerS2Winter:1291430228677103677>"
+    }
+  ],
+  "doe": [
+    {
+      "id": "doe.s1.0",
+      "packId": "s1",
+      "name": "Doe",
+      "emoji": "<:DoeS1:1291430288529952911>"
+    },
+    {
+      "id": "doe.s2.0",
+      "packId": "s2",
+      "name": "Doe",
+      "emoji": "<:DoeS2:1284520854276804680>"
+    }
+  ],
+  "marsh": [
+    {
+      "id": "marsh.s1.0",
+      "packId": "s1",
+      "name": "Marsh Deer",
+      "emoji": "<:MarshDeerS1:1291430302895444070>"
+    },
+    {
+      "id": "marsh.s2.0",
+      "packId": "s2",
+      "name": "Marsh Deer",
+      "emoji": "<:MarshDeerS2:1284520894894702788>"
+    }
+  ],
+  "gazelle": [
+    {
+      "id": "gazelle.s1.0",
+      "packId": "s1",
+      "name": "Gazelle",
+      "emoji": "<:GazelleS1:1291429668528066702>"
+    },
+    {
+      "id": "gazelle.s2.0",
+      "packId": "s2",
+      "name": "Gazelle",
+      "emoji": "<:GazelleS2:1291429655978446920>"
+    }
+  ],
+  "squid": [
+    {
+      "id": "squid.s1.0",
+      "packId": "s1",
+      "name": "Squid",
+      "emoji": "<:SquidS1:1291430540213489714>"
+    },
+    {
+      "id": "squid.s2.0",
+      "packId": "s2",
+      "name": "Squid",
+      "emoji": "<:SquidS2:1291430517186760865>"
+    },
+    {
+      "id": "squid.s2w.0",
+      "packId": "s2w",
+      "name": "Squid",
+      "emoji": "<:SquidS2Winter:1291430528313987104>"
+    }
+  ],
+  "flamingo": [
+    {
+      "id": "flamingo.s1.0",
+      "packId": "s1",
+      "name": "Flamingo",
+      "emoji": "<:FlamingoS1:1336376893267775528>"
+    },
+    {
+      "id": "flamingo.s2.0",
+      "packId": "s2",
+      "name": "Flamingo",
+      "emoji": "<:FlamingoS2:1291430551206629447>"
+    }
+  ],
+  "reindeer": [
+    {
+      "id": "reindeer.s1.0",
+      "packId": "s1",
+      "name": "Reindeer",
+      "emoji": "<:ReindeerS1:1291429583500873839>"
+    },
+    {
+      "id": "reindeer.s2.0",
+      "packId": "s2",
+      "name": "Reindeer",
+      "emoji": "<:ReindeerS2:1291429559337484422>"
+    }
+  ],
+  "musk": [
+    {
+      "id": "musk.s1.0",
+      "packId": "s1",
+      "name": "Musk Deer",
+      "emoji": "<:MuskDeerS1:1291429595744047165>"
+    },
+    {
+      "id": "musk.s2.0",
+      "packId": "s2",
+      "name": "Musk Deer",
+      "emoji": "<:MuskDeerS2:1284540790583984139>"
+    }
+  ],
+  "swinehoe": [
+    {
+      "id": "swinehoe.s2.0",
+      "packId": "s2",
+      "name": "Swinehoe",
+      "emoji": "<:SwinehoeS2:1291430007545139333>"
+    }
+  ],
+  "golden_pheasant": [
+    {
+      "id": "golden_pheasant.s2.0",
+      "packId": "s2",
+      "name": "Golden Pheasant",
+      "emoji": "<:GoldenPheasantS2:1285692782765408360>"
+    }
+  ],
+  "fox": [
+    {
+      "id": "fox.s1.0",
+      "packId": "s1",
+      "name": "Fox",
+      "emoji": "<:FoxS1:1291430809231953952>"
+    },
+    {
+      "id": "fox.s2.0",
+      "packId": "s2",
+      "name": "Fox",
+      "emoji": "<:FoxS2:1291430732522192896>"
+    },
+    {
+      "id": "fox.s2w.0",
+      "packId": "s2w",
+      "name": "Fox",
+      "emoji": "<:FoxS2Winter:1291430796791648368>"
+    }
+  ],
+  "hedgehog": [
+    {
+      "id": "hedgehog.s1.0",
+      "packId": "s1",
+      "name": "Hedgehog",
+      "emoji": "<:HedgehogS1:1291430861086134332>"
+    },
+    {
+      "id": "hedgehog.s2.0",
+      "packId": "s2",
+      "name": "Hedgehog",
+      "emoji": "<:HedgehogS2:1291430829087789066>"
+    },
+    {
+      "id": "hedgehog.s2w.0",
+      "packId": "s2w",
+      "name": "Hedgehog",
+      "emoji": "<:HedgehogS2Winter:1291430839787458681>"
+    }
+  ],
+  "peacock": [
+    {
+      "id": "peacock.s1.0",
+      "packId": "s1",
+      "name": "Peacock",
+      "emoji": "<:PeacockS1:1337028604881670226>"
+    },
+    {
+      "id": "peacock.s2.0",
+      "packId": "s2",
+      "name": "Peacock",
+      "emoji": "<:PeacockS2:1291430902898888704>"
+    }
+  ],
+  "fennec_fox": [
+    {
+      "id": "fennec_fox.s1.0",
+      "packId": "s1",
+      "name": "Fennec Fox",
+      "emoji": "<:FennecFoxS1:1291430678730248334>"
+    },
+    {
+      "id": "fennec_fox.s2.0",
+      "packId": "s2",
+      "name": "Fennec Fox",
+      "emoji": "<:FennecFoxS2:1291430668667981834>"
+    }
+  ],
+  "jellyfish": [
+    {
+      "id": "jellyfish.s1.0",
+      "packId": "s1",
+      "name": "Jellyfish",
+      "emoji": "<:JellyfishS1:1291430997157744770>"
+    },
+    {
+      "id": "jellyfish.s2.0",
+      "packId": "s2",
+      "name": "Jellyfish",
+      "emoji": "<:JellyfishS2:1291430985438859356>"
+    },
+    {
+      "id": "jellyfish.s2w.0",
+      "packId": "s2w",
+      "name": "Jellyfish",
+      "emoji": "<:JellyfishS2Winter:1337044388056137819>"
+    }
+  ],
+  "arctic_fox": [
+    {
+      "id": "arctic_fox.s1.0",
+      "packId": "s1",
+      "name": "Arctic Fox",
+      "emoji": "<:ArcticFoxS1:1291430637932122194>"
+    },
+    {
+      "id": "arctic_fox.s2.0",
+      "packId": "s2",
+      "name": "Arctic Fox",
+      "emoji": "<:ArcticFoxS2:1291430623306711060>"
+    },
+    {
+      "id": "arctic_fox.s2w.0",
+      "packId": "s2w",
+      "name": "Arctic Fox",
+      "emoji": "<:ArcticFoxS2Winter:1337048370576883742>"
+    }
+  ],
+  "zebra": [
+    {
+      "id": "zebra.s1.0",
+      "packId": "s1",
+      "name": "Zebra",
+      "emoji": "<:ZebraS1:1291436281485725797>"
+    },
+    {
+      "id": "zebra.s2.0",
+      "packId": "s2",
+      "name": "Zebra",
+      "emoji": "<:ZebraS2:1291436256647053382>"
+    },
+    {
+      "id": "zebra.s2w.0",
+      "packId": "s2w",
+      "name": "Zebra",
+      "emoji": "<:ZebraS2Winter:1291436268487704726>"
+    }
+  ],
+  "donkey": [
+    {
+      "id": "donkey.s1.0",
+      "packId": "s1",
+      "name": "Donkey",
+      "emoji": "<:DonkeyS1:1291436063059087451>"
+    },
+    {
+      "id": "donkey.s2.0",
+      "packId": "s2",
+      "name": "Donkey",
+      "emoji": "<:DonkeyS2:1291436028732899449>"
+    },
+    {
+      "id": "donkey.s2w.0",
+      "packId": "s2w",
+      "name": "Donkey",
+      "emoji": "<:DonkeyS2Winter:1291436049758814280>"
+    }
+  ],
+  "jackass": [
+    {
+      "id": "jackass.s1.0",
+      "packId": "s1",
+      "name": "Jackass",
+      "emoji": "<:JackassS1:1291436237105664134>"
+    },
+    {
+      "id": "jackass.s2.0",
+      "packId": "s2",
+      "name": "Jackass",
+      "emoji": "<:JackassS2:1284567568299851918>"
+    }
+  ],
+  "macaw": [
+    {
+      "id": "macaw.s1.0",
+      "packId": "s1",
+      "name": "Macaw",
+      "emoji": "<:MacawS1:1291435943429013565>"
+    },
+    {
+      "id": "macaw.s2.0",
+      "packId": "s2",
+      "name": "Macaw",
+      "emoji": "<:MacawS2:1291435930338459658>"
+    }
+  ],
+  "blue": [
+    {
+      "id": "blue.s1.0",
+      "packId": "s1",
+      "name": "Blue Macaw",
+      "emoji": "<:BlueMacawS1:1291435973057445888>"
+    },
+    {
+      "id": "blue.s2.0",
+      "packId": "s2",
+      "name": "Blue Macaw",
+      "emoji": "<:BlueMacawS2:1284540918648541287>"
+    }
+  ],
+  "spix": [
+    {
+      "id": "spix.s1.0",
+      "packId": "s1",
+      "name": "Spix's Macaw",
+      "emoji": "<:SpixMacaw:1362500826597298236>"
+    },
+    {
+      "id": "spix.s1.1",
+      "packId": "s1",
+      "name": "Pakistan Macaw",
+      "emoji": "<:PakistanMacawS1:1291435993710198868>"
+    },
+    {
+      "id": "spix.s2.0",
+      "packId": "s2",
+      "name": "Pakistan Macaw",
+      "emoji": "<:PakistanMacawS2:1284540970876145704>"
+    },
+    {
+      "id": "spix.s1.2",
+      "packId": "s1",
+      "name": "USSR Macaw",
+      "emoji": "<:USSRMacawS1:1287125634539323463>"
+    },
+    {
+      "id": "spix.s2.1",
+      "packId": "s2",
+      "name": "USSR Macaw",
+      "emoji": "<:USSRMacawS2:1288058610655690804>"
+    }
+  ],
+  "warthog": [
+    {
+      "id": "warthog.s1.0",
+      "packId": "s1",
+      "name": "Warthog",
+      "emoji": "<:WarthogS1:1291435873455575153>"
+    },
+    {
+      "id": "warthog.s2.0",
+      "packId": "s2",
+      "name": "Warthog",
+      "emoji": "<:WarthogS2:1291435861593952318>"
+    }
+  ],
+  "turtle": [
+    {
+      "id": "turtle.s1.0",
+      "packId": "s1",
+      "name": "Turtle",
+      "emoji": "<:TurtleS1:1291436332626874378>"
+    },
+    {
+      "id": "turtle.s2.0",
+      "packId": "s2",
+      "name": "Turtle",
+      "emoji": "<:TurtleS2:1291436319808946286>"
+    },
+    {
+      "id": "turtle.s2w.0",
+      "packId": "s2w",
+      "name": "Turtle",
+      "emoji": "<:TurtleS2Winter:1338158405579182203>"
+    }
+  ],
+  "muskox": [
+    {
+      "id": "muskox.s1.0",
+      "packId": "s1",
+      "name": "Muskox",
+      "emoji": "<:MuskoxS1:1291435721181106258>"
+    },
+    {
+      "id": "muskox.s2.0",
+      "packId": "s2",
+      "name": "Muskox",
+      "emoji": "<:MuskoxS2:1291435711123165295>"
+    },
+    {
+      "id": "muskox.s2w.0",
+      "packId": "s2w",
+      "name": "Muskox",
+      "emoji": "<:MuskoxS2Winter:1338159518609182900>"
+    }
+  ],
+  "cobra": [
+    {
+      "id": "cobra.s1.0",
+      "packId": "s1",
+      "name": "Cobra",
+      "emoji": "<:CobraS1:1361400186424918217>"
+    },
+    {
+      "id": "cobra.s2.0",
+      "packId": "s2",
+      "name": "Cobra",
+      "emoji": "<:CobraS2:1292124983421567029>"
+    },
+    {
+      "id": "cobra.s2w.0",
+      "packId": "s2w",
+      "name": "Cobra",
+      "emoji": "<:CobraS2Winter:1361400218435977416>"
+    }
+  ],
+  "cheetah": [
+    {
+      "id": "cheetah.s1.0",
+      "packId": "s1",
+      "name": "Cheetah",
+      "emoji": "<:CheetahS1:1361776155883212991>"
+    },
+    {
+      "id": "cheetah.s2.0",
+      "packId": "s2",
+      "name": "Cheetah",
+      "emoji": "<:CheetahS2:1292125135683190804>"
+    },
+    {
+      "id": "cheetah.s2w.0",
+      "packId": "s2w",
+      "name": "Cheetah",
+      "emoji": "<:CheetahS2Winter:1361776168491155486>"
+    }
+  ],
+  "jaguar": [
+    {
+      "id": "jaguar.s1.0",
+      "packId": "s1",
+      "name": "Jaguar",
+      "emoji": "<:JaguarS1:1362129903771844638>"
+    },
+    {
+      "id": "jaguar.s2.0",
+      "packId": "s2",
+      "name": "Jaguar",
+      "emoji": "<:JaguarS2:1284567739440300052>"
+    }
+  ],
+  "leopard": [
+    {
+      "id": "leopard.s1.0",
+      "packId": "s1",
+      "name": "Leopard",
+      "emoji": "<:LeopardS1:1362130076342292710>"
+    },
+    {
+      "id": "leopard.s2.0",
+      "packId": "s2",
+      "name": "Leopard",
+      "emoji": "<:LeopardS2:1284567751641530579>"
+    }
+  ],
+  "black_panther": [
+    {
+      "id": "black_panther.s1.0",
+      "packId": "s1",
+      "name": "Black Panther",
+      "emoji": "<:BlackPantherS1:1362130496867270896>"
+    },
+    {
+      "id": "black_panther.s2.0",
+      "packId": "s2",
+      "name": "Black Panther",
+      "emoji": "<:BlackPantherS2:1284567767764177028>"
+    }
+  ],
+  "camel": [
+    {
+      "id": "camel.s1.0",
+      "packId": "s1",
+      "name": "Camel",
+      "emoji": "<:CamelS1:1361401207964303432>"
+    },
+    {
+      "id": "camel.s2.0",
+      "packId": "s2",
+      "name": "Camel",
+      "emoji": "<:CamelS2:1292124920658264086>"
+    }
+  ],
+  "stingray": [
+    {
+      "id": "stingray.s1.0",
+      "packId": "s1",
+      "name": "Stingray",
+      "emoji": "<:StingrayS1:1361401336536633545>"
+    },
+    {
+      "id": "stingray.s2.0",
+      "packId": "s2",
+      "name": "Stingray",
+      "emoji": "<:StingrayS2:1292125010886004854>"
+    }
+  ],
+  "snowy_owl": [
+    {
+      "id": "snowy_owl.s1.0",
+      "packId": "s1",
+      "name": "Snowy Owl",
+      "emoji": "<:SnowyOwlS1:1361401655798792392>"
+    },
+    {
+      "id": "snowy_owl.s2.0",
+      "packId": "s2",
+      "name": "Snowy Owl",
+      "emoji": "<:SnowyOwlS2:1292124886252388372>"
+    },
+    {
+      "id": "snowy_owl.s2w.0",
+      "packId": "s2w",
+      "name": "Snowy Owl",
+      "emoji": "<:SnowyOwlS2Winter:1361401644373377174>"
+    }
+  ],
+  "walrus": [
+    {
+      "id": "walrus.s1.0",
+      "packId": "s1",
+      "name": "Walrus",
+      "emoji": "<:WalrusS1:1361401443843571863>"
+    },
+    {
+      "id": "walrus.s2.0",
+      "packId": "s2",
+      "name": "Walrus",
+      "emoji": "<:WalrusS2:1292124896779960492>"
+    },
+    {
+      "id": "walrus.s2w.0",
+      "packId": "s2w",
+      "name": "Walrus",
+      "emoji": "<:WalrusS2Winter:1361401453838598407>"
+    }
+  ],
+  "raven": [
+    {
+      "id": "raven.s1.0",
+      "packId": "s1",
+      "name": "Raven",
+      "emoji": "<:RavenS1:1361402329215143946>"
+    },
+    {
+      "id": "raven.s2.0",
+      "packId": "s2",
+      "name": "Raven",
+      "emoji": "<:RavenS2:1292124940912562256>"
+    }
+  ],
+  "toucan": [
+    {
+      "id": "toucan.s1.0",
+      "packId": "s1",
+      "name": "Toucan",
+      "emoji": "<:ToucanS1:1361777009843372253>"
+    },
+    {
+      "id": "toucan.s2.0",
+      "packId": "s2",
+      "name": "Toucan",
+      "emoji": "<:ToucanS2:1292125146533990410>"
+    }
+  ],
+  "choco": [
+    {
+      "id": "choco.s1.0",
+      "packId": "s1",
+      "name": "Choco Toucan",
+      "emoji": "<:ChocoToucanS1:1362133014095597811>"
+    },
+    {
+      "id": "choco.s2.0",
+      "packId": "s2",
+      "name": "Choco Toucan",
+      "emoji": "<:ChocoToucanS2:1284567662353059971>"
+    }
+  ],
+  "keel_billed": [
+    {
+      "id": "keel_billed.s1.0",
+      "packId": "s1",
+      "name": "Keel-billed Toucan",
+      "emoji": "<:KeelBilledToucanS1:1362133045502808124>"
+    },
+    {
+      "id": "keel_billed.s2.0",
+      "packId": "s2",
+      "name": "Keel-billed Toucan",
+      "emoji": "<:KeelBilledToucanS2:1284567675212664964>"
+    }
+  ],
+  "fiery": [
+    {
+      "id": "fiery.s1.0",
+      "packId": "s1",
+      "name": "Fiery Toucan",
+      "emoji": "<:FieryToucanS1:1362133066943955074>"
+    },
+    {
+      "id": "fiery.s2.0",
+      "packId": "s2",
+      "name": "Fiery Toucan",
+      "emoji": "<:FieryToucanS2:1284567688781238323>"
+    }
+  ],
+  "lava": [
+    {
+      "id": "lava.s1.0",
+      "packId": "s1",
+      "name": "Lava Toucan",
+      "emoji": "<:LavaToucanS1:1362133087118430370>"
+    },
+    {
+      "id": "lava.s2.0",
+      "packId": "s2",
+      "name": "Lava Toucan",
+      "emoji": "<:LavaToucanS2:1284567706171080725>"
+    }
+  ],
+  "helmeted_hornbill": [
+    {
+      "id": "helmeted_hornbill.s1.0",
+      "packId": "s1",
+      "name": "Helmeted Hornbill",
+      "emoji": "<:HornbillToucan:1362133135894253818>"
+    },
+    {
+      "id": "helmeted_hornbill.s1.1",
+      "packId": "s1",
+      "name": "Pakistan Toucan",
+      "emoji": "<:PakistanToucanS1:1362133109121749052>"
+    },
+    {
+      "id": "helmeted_hornbill.s2.0",
+      "packId": "s2",
+      "name": "Pakistan Toucan",
+      "emoji": "<:PakistanToucanS2:1284567718351077386>"
+    },
+    {
+      "id": "helmeted_hornbill.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "USSR Toucan",
+      "emoji": "<:USSRToucanLegacy:1287125672342454406>"
+    },
+    {
+      "id": "helmeted_hornbill.s2.1",
+      "packId": "s2",
+      "name": "USSR Toucan",
+      "emoji": "<:USSRToucanS2:1288058651075940382>"
+    }
+  ],
+  "gorilla": [
+    {
+      "id": "gorilla.s1.0",
+      "packId": "s1",
+      "name": "Gorilla",
+      "emoji": "<:GorillaS1:1361776326591385670>"
+    },
+    {
+      "id": "gorilla.s2.0",
+      "packId": "s2",
+      "name": "Gorilla",
+      "emoji": "<:GorillaS2:1294274658903920661>"
+    },
+    {
+      "id": "gorilla.s2w.0",
+      "packId": "s2w",
+      "name": "Gorilla",
+      "emoji": "<:GorillaS2Winter:1361776337634988224>"
+    }
+  ],
+  "rattle_snake": [
+    {
+      "id": "rattle_snake.s1.0",
+      "packId": "s1",
+      "name": "Rattlesnake",
+      "emoji": "<:RattleSnakeS1:1361777470411378950>"
+    },
+    {
+      "id": "rattle_snake.s2.0",
+      "packId": "s2",
+      "name": "Rattlesnake",
+      "emoji": "<:RattleSnakeS2:1292125087201366067>"
+    }
+  ],
+  "pufferfish": [
+    {
+      "id": "pufferfish.s1.0",
+      "packId": "s1",
+      "name": "Pufferfish",
+      "emoji": "<:PufferfishS1:1361777855507337516>"
+    },
+    {
+      "id": "pufferfish.s2.0",
+      "packId": "s2",
+      "name": "Pufferfish",
+      "emoji": "<:PufferfishS2:1292125226083287090>"
+    }
+  ],
+  "yellow": [
+    {
+      "id": "yellow.s1.0",
+      "packId": "s1",
+      "name": "Yellow Pufferfish",
+      "emoji": "<:YellowPufferfishS1:1361777870434734090>"
+    },
+    {
+      "id": "yellow.s2.0",
+      "packId": "s2",
+      "name": "Yellow Pufferfish",
+      "emoji": "<:YellowPufferfishS2:1284567779156168846>"
+    }
+  ],
+  "demon": [
+    {
+      "id": "demon.s1.0",
+      "packId": "s1",
+      "name": "Demonfish",
+      "emoji": "<:DemonPufferfishS1:1361777884619870428>"
+    },
+    {
+      "id": "demon.s2.0",
+      "packId": "s2",
+      "name": "Demonfish",
+      "emoji": "<:DemonPufferfishS2:1284567803596116047>"
+    }
+  ],
+  "snow_leopard": [
+    {
+      "id": "snow_leopard.s1.0",
+      "packId": "s1",
+      "name": "Snow Leopard",
+      "emoji": "<:SnowLeopardS1:1361778282672029887>"
+    },
+    {
+      "id": "snow_leopard.s2.0",
+      "packId": "s2",
+      "name": "Snow Leopard",
+      "emoji": "<:SnowLeopardS2:1292125039088504926>"
+    },
+    {
+      "id": "snow_leopard.s2w.0",
+      "packId": "s2w",
+      "name": "Snow Leopard",
+      "emoji": "<:SnowLeopardS2Winter:1361778296198533403>"
+    }
+  ],
+  "turkey": [
+    {
+      "id": "turkey.s1.0",
+      "packId": "s1",
+      "name": "Turkey",
+      "emoji": "<:Turkey:1292125105551573142>"
+    }
+  ],
+  "bear": [
+    {
+      "id": "bear.s1.0",
+      "packId": "s1",
+      "name": "Bear",
+      "emoji": "<:BearS1:1362498849704378550>"
+    },
+    {
+      "id": "bear.s2.0",
+      "packId": "s2",
+      "name": "Bear",
+      "emoji": "<:BearS2:1292125598411653120>"
+    },
+    {
+      "id": "bear.s2w.0",
+      "packId": "s2w",
+      "name": "Bear",
+      "emoji": "<:BearS2Winter:1362498863448985943>"
+    }
+  ],
+  "black_bear": [
+    {
+      "id": "black_bear.s1.0",
+      "packId": "s1",
+      "name": "Black Bear",
+      "emoji": "<:BlackBearS1:1363599773361508452>"
+    },
+    {
+      "id": "black_bear.s2.0",
+      "packId": "s2",
+      "name": "Black Bear",
+      "emoji": "<:BlackBearS2:1288058731363569684>"
+    }
+  ],
+  "lion": [
+    {
+      "id": "lion.s1.0",
+      "packId": "s1",
+      "name": "Lion",
+      "emoji": "<:LionS1v2:1363245637826646309>"
+    },
+    {
+      "id": "lion.s2.0",
+      "packId": "s2",
+      "name": "Lion",
+      "emoji": "<:LionS2:1292125931691049010>"
+    },
+    {
+      "id": "lion.s2w.0",
+      "packId": "s2w",
+      "name": "Lion",
+      "emoji": "<:LionS2Winter:1363245655858086269>"
+    }
+  ],
+  "lioness": [
+    {
+      "id": "lioness.s1.0",
+      "packId": "s1",
+      "name": "Lioness",
+      "emoji": "<:LionessS1:1363446577687166986>"
+    },
+    {
+      "id": "lioness.s2.0",
+      "packId": "s2",
+      "name": "Lioness",
+      "emoji": "<:LionessS2:1284568161206800505>"
+    }
+  ],
+  "cub": [
+    {
+      "id": "cub.s1.0",
+      "packId": "s1",
+      "name": "Lion Cub",
+      "emoji": "<:LionCubS1:1363446651758579743>"
+    },
+    {
+      "id": "cub.s2.0",
+      "packId": "s2",
+      "name": "Lion Cub",
+      "emoji": "<:LionCubS2:1284568208082341929>"
+    }
+  ],
+  "black_maned": [
+    {
+      "id": "black_maned.s1.0",
+      "packId": "s1",
+      "name": "Black-Maned Lion",
+      "emoji": "<:BlackManedLionS1v2:1363446321700274236>"
+    },
+    {
+      "id": "black_maned.s2.0",
+      "packId": "s2",
+      "name": "Black-Maned Lion",
+      "emoji": "<:BlackManedLionS2:1284568114562076903>"
+    }
+  ],
+  "white_cub": [
+    {
+      "id": "white_cub.s1.0",
+      "packId": "s1",
+      "name": "White Lion Cub",
+      "emoji": "<:WhiteLionCubS1:1363446677859598356>"
+    },
+    {
+      "id": "white_cub.s2.0",
+      "packId": "s2",
+      "name": "White Lion Cub",
+      "emoji": "<:WhiteLionCubS2:1284568220644409386>"
+    }
+  ],
+  "white_lioness": [
+    {
+      "id": "white_lioness.s1.0",
+      "packId": "s1",
+      "name": "White Lioness",
+      "emoji": "<:WhiteLionessS1:1363446595898839150>"
+    },
+    {
+      "id": "white_lioness.s2.0",
+      "packId": "s2",
+      "name": "White Lioness",
+      "emoji": "<:WhiteLionessS2:1284568171931766927>"
+    }
+  ],
+  "white_lion": [
+    {
+      "id": "white_lion.s1.0",
+      "packId": "s1",
+      "name": "White Lion",
+      "emoji": "<:WhiteLionS1v2:1363446370538754329>"
+    },
+    {
+      "id": "white_lion.s2.0",
+      "packId": "s2",
+      "name": "White Lion",
+      "emoji": "<:WhiteLionS2:1284568130668199966>"
+    }
+  ],
+  "black_cub": [
+    {
+      "id": "black_cub.s1.0",
+      "packId": "s1",
+      "name": "Black Lion Cub",
+      "emoji": "<:BlackLionCubS1:1363446693508419605>"
+    },
+    {
+      "id": "black_cub.s2.0",
+      "packId": "s2",
+      "name": "Black Lion Cub",
+      "emoji": "<:BlackLionCubS2:1284568232950366290>"
+    }
+  ],
+  "black_lioness": [
+    {
+      "id": "black_lioness.s1.0",
+      "packId": "s1",
+      "name": "Black Lioness",
+      "emoji": "<:BlackLionessS1:1363446620968194058>"
+    },
+    {
+      "id": "black_lioness.s2.0",
+      "packId": "s2",
+      "name": "Black Lioness",
+      "emoji": "<:BlackLionessS2:1284568191569235999>"
+    }
+  ],
+  "black_lion": [
+    {
+      "id": "black_lion.s1.0",
+      "packId": "s1",
+      "name": "Black Lion",
+      "emoji": "<:BlackLionS1v2:1363446394693750885>"
+    },
+    {
+      "id": "black_lion.s2.0",
+      "packId": "s2",
+      "name": "Black Lion",
+      "emoji": "<:BlackLionS2:1284568143435661374>"
+    }
+  ],
+  "gobi_bear": [
+    {
+      "id": "gobi_bear.s1.0",
+      "packId": "s1",
+      "name": "Gobi Bear",
+      "emoji": "<:GobiBearS1:1362499557564481596>"
+    },
+    {
+      "id": "gobi_bear.s2.0",
+      "packId": "s2",
+      "name": "Gobi Bear",
+      "emoji": "<:GobiBearS2:1292125557827305553>"
+    },
+    {
+      "id": "gobi_bear.s2w.0",
+      "packId": "s2w",
+      "name": "Gobi Bear",
+      "emoji": "<:GobiBearS2Winter:1362499574945550336>"
+    }
+  ],
+  "hyena": [
+    {
+      "id": "hyena.s1.0",
+      "packId": "s1",
+      "name": "Hyena",
+      "emoji": "<:HyenaS1:1362499585469186119>"
+    },
+    {
+      "id": "hyena.s2.0",
+      "packId": "s2",
+      "name": "Hyena",
+      "emoji": "<:HyenaS2:1292125566534684692>"
+    },
+    {
+      "id": "hyena.s2w.0",
+      "packId": "s2w",
+      "name": "Hyena",
+      "emoji": "<:HyenaS2Winter:1362499599226503319>"
+    }
+  ],
+  "pelican": [
+    {
+      "id": "pelican.s1.0",
+      "packId": "s1",
+      "name": "Pelican",
+      "emoji": "<:PelicanS1:1362500144670441594>"
+    },
+    {
+      "id": "pelican.s2.0",
+      "packId": "s2",
+      "name": "Pelican",
+      "emoji": "<:PelicanS2:1292125644909580289>"
+    }
+  ],
+  "swordfish": [
+    {
+      "id": "swordfish.s1.0",
+      "packId": "s1",
+      "name": "Swordfish",
+      "emoji": "<:SwordfishS1:1362500257640087655>"
+    },
+    {
+      "id": "swordfish.s2.0",
+      "packId": "s2",
+      "name": "Swordfish",
+      "emoji": "<:SwordfishS2:1292125632079069255>"
+    },
+    {
+      "id": "swordfish.s2w.0",
+      "packId": "s2w",
+      "name": "Swordfish",
+      "emoji": "<:SwordfishS2Winter:1362500267492376766>"
+    }
+  ],
+  "wolf": [
+    {
+      "id": "wolf.s1.0",
+      "packId": "s1",
+      "name": "Wolf",
+      "emoji": "<:WolfS1:1362500368507867487>"
+    },
+    {
+      "id": "wolf.s2.0",
+      "packId": "s2",
+      "name": "Wolf",
+      "emoji": "<:WolfS2:1292125538688696330>"
+    }
+  ],
+  "tiger": [
+    {
+      "id": "tiger.s1.0",
+      "packId": "s1",
+      "name": "Tiger",
+      "emoji": "<:TigerS1:1362499086422511906>"
+    },
+    {
+      "id": "tiger.s2.0",
+      "packId": "s2",
+      "name": "Tiger",
+      "emoji": "<:TigerS2:1292125609786609675>"
+    },
+    {
+      "id": "tiger.s2w.0",
+      "packId": "s2w",
+      "name": "Tiger",
+      "emoji": "<:TigerS2Winter:1362499098640388306>"
+    }
+  ],
+  "white_tiger": [
+    {
+      "id": "white_tiger.s1.0",
+      "packId": "s1",
+      "name": "White Tiger",
+      "emoji": "<:WhiteTigerS1:1362499110745276598>"
+    },
+    {
+      "id": "white_tiger.s2.0",
+      "packId": "s2",
+      "name": "White Tiger",
+      "emoji": "<:WhiteTigerS2:1284568061474508810>"
+    }
+  ],
+  "black_tiger": [
+    {
+      "id": "black_tiger.s1.0",
+      "packId": "s1",
+      "name": "Black Tiger",
+      "emoji": "<:BlackTigerS1:1363515430978719797>"
+    },
+    {
+      "id": "black_tiger.s2.0",
+      "packId": "s2",
+      "name": "Black Tiger",
+      "emoji": "<:BlackTigerS2:1288058719082643526>"
+    }
+  ],
+  "crocodile": [
+    {
+      "id": "crocodile.s1.0",
+      "packId": "s1",
+      "name": "Crocodile",
+      "emoji": "<:CrocodileS1:1363244989894627609>"
+    },
+    {
+      "id": "crocodile.s2.0",
+      "packId": "s2",
+      "name": "Crocodile",
+      "emoji": "<:CrocodileS2:1292125920039276677>"
+    },
+    {
+      "id": "crocodile.s2w.0",
+      "packId": "s2w",
+      "name": "Crocodile",
+      "emoji": "<:CrocodileS2Winter:1363245002247110757>"
+    }
+  ],
+  "falcon": [
+    {
+      "id": "falcon.s1.0",
+      "packId": "s1",
+      "name": "Falcon",
+      "emoji": "<:FalconS1:1363453109900279839>"
+    },
+    {
+      "id": "falcon.s2.0",
+      "packId": "s2",
+      "name": "Falcon",
+      "emoji": "<:FalconS2:1292125951127457802>"
+    }
+  ],
+  "predator": [
+    {
+      "id": "predator.s1.0",
+      "packId": "s1",
+      "name": "Predator Falcon",
+      "emoji": "<:PredatorFalconS1:1363453135053656144>"
+    },
+    {
+      "id": "predator.s2.0",
+      "packId": "s2",
+      "name": "Predator Falcon",
+      "emoji": "<:PredatorFalconS2:1284568255599476786>"
+    }
+  ],
+  "shaheen": [
+    {
+      "id": "shaheen.s1.0",
+      "packId": "s1",
+      "name": "Shaheen Falcon",
+      "emoji": "<:ShaheenFalconS1:1363453153550270554>"
+    },
+    {
+      "id": "shaheen.s2.0",
+      "packId": "s2",
+      "name": "Shaheen Falcon",
+      "emoji": "<:ShaheenFalconS2:1284568268493033533>"
+    }
+  ],
+  "vulture": [
+    {
+      "id": "vulture.s1.0",
+      "packId": "s1",
+      "name": "Vulture",
+      "emoji": "<:VultureS1:1363454971319816304>"
+    },
+    {
+      "id": "vulture.s2.0",
+      "packId": "s2",
+      "name": "Vulture",
+      "emoji": "<:VultureS2:1292125734005112985>"
+    },
+    {
+      "id": "vulture.s2w.0",
+      "packId": "s2w",
+      "name": "Vulture",
+      "emoji": "<:VultureS2Winter:1363454984011907092>"
+    }
+  ],
+  "argentavis": [
+    {
+      "id": "argentavis.s1.0",
+      "packId": "s1",
+      "name": "Argentavis",
+      "emoji": "<:ArgentavisVulture:1363455043273097276>"
+    },
+    {
+      "id": "argentavis.s1.1",
+      "packId": "s1",
+      "name": "Pakistan Vulture",
+      "emoji": "<:PakistanVultureS1:1292135264470437919>"
+    },
+    {
+      "id": "argentavis.s2.0",
+      "packId": "s2",
+      "name": "Pakistan Vulture",
+      "emoji": "<:PakistanVultureS2:1284568287971377233>"
+    },
+    {
+      "id": "argentavis.s1.2",
+      "packId": "s1",
+      "name": "USSR Vulture",
+      "emoji": "<:USSRVultureS1:1287125751207952455>"
+    },
+    {
+      "id": "argentavis.s2.1",
+      "packId": "s2",
+      "name": "USSR Vulture",
+      "emoji": "<:USSRVultureS2:1288058686241243157>"
+    }
+  ],
+  "octopus": [
+    {
+      "id": "octopus.s1.0",
+      "packId": "s1",
+      "name": "Octopus",
+      "emoji": "<:OctopusS1:1363467028236865657>"
+    },
+    {
+      "id": "octopus.s2.0",
+      "packId": "s2",
+      "name": "Octopus",
+      "emoji": "<:OctopusS2:1292125973269053541>"
+    },
+    {
+      "id": "octopus.s2w.0",
+      "packId": "s2w",
+      "name": "Octopus",
+      "emoji": "<:OctopusS2Winter:1363467038823153807>"
+    }
+  ],
+  "markhor": [
+    {
+      "id": "markhor.s1.0",
+      "packId": "s1",
+      "name": "Markhor",
+      "emoji": "<:MarkhorS1:1364671294544678962>"
+    },
+    {
+      "id": "markhor.s2.0",
+      "packId": "s2",
+      "name": "Markhor",
+      "emoji": "<:MarkhorS2:1284568638170595459>"
+    }
+  ],
+  "big_goat": [
+    {
+      "id": "big_goat.s1.0",
+      "packId": "s1",
+      "name": "Big Goat",
+      "emoji": "<:BigGoatS1:1364671305760375005>"
+    },
+    {
+      "id": "big_goat.s2.0",
+      "packId": "s2",
+      "name": "Big Goat",
+      "emoji": "<:BigGoatS2:1284568654092173404>"
+    }
+  ],
+  "wolverine": [
+    {
+      "id": "wolverine.s1.0",
+      "packId": "s1",
+      "name": "Wolverine",
+      "emoji": "<:WolverineS1:1364671266744700948>"
+    },
+    {
+      "id": "wolverine.s2.0",
+      "packId": "s2",
+      "name": "Wolverine",
+      "emoji": "<:WolverineS2:1292126006571831358>"
+    },
+    {
+      "id": "wolverine.s2w.0",
+      "packId": "s2w",
+      "name": "Wolverine",
+      "emoji": "<:WolverineS2Winter:1364671276957831178>"
+    }
+  ],
+  "rhinoceros": [
+    {
+      "id": "rhinoceros.s1.0",
+      "packId": "s1",
+      "name": "Rhino",
+      "emoji": "<:RhinoS1v2:1364670671531278377>"
+    },
+    {
+      "id": "rhinoceros.s2.0",
+      "packId": "s2",
+      "name": "Rhino",
+      "emoji": "<:RhinoS2:1292126057599602820>"
+    },
+    {
+      "id": "rhinoceros.s2w.0",
+      "packId": "s2w",
+      "name": "Rhino",
+      "emoji": "<:RhinoS2Winter:1364670704200581182>"
+    }
+  ],
+  "white_rhinoceros": [
+    {
+      "id": "white_rhinoceros.s1.0",
+      "packId": "s1",
+      "name": "White Rhino",
+      "emoji": "<:WhiteRhinoS1v2:1364670719572578306>"
+    },
+    {
+      "id": "white_rhinoceros.s2.0",
+      "packId": "s2",
+      "name": "White Rhino",
+      "emoji": "<:WhiteRhinoS2:1284568524806684724>"
+    }
+  ],
+  "black_rhinoceros": [
+    {
+      "id": "black_rhinoceros.s1.0",
+      "packId": "s1",
+      "name": "Black Rhino",
+      "emoji": "<:BlackRhinoS1:1364670738182701186>"
+    },
+    {
+      "id": "black_rhinoceros.s2.0",
+      "packId": "s2",
+      "name": "Black Rhino",
+      "emoji": "<:BlackRhinoS2:1284568536362127493>"
+    }
+  ],
+  "eagle": [
+    {
+      "id": "eagle.s1.0",
+      "packId": "s1",
+      "name": "Eagle",
+      "emoji": "<:BaldEagleS1:1364670804738048100>"
+    },
+    {
+      "id": "eagle.s2.0",
+      "packId": "s2",
+      "name": "Eagle",
+      "emoji": "<:BaldEagleS2:1292126046283366440>"
+    },
+    {
+      "id": "eagle.s2w.0",
+      "packId": "s2w",
+      "name": "Eagle",
+      "emoji": "<:BaldEagleS2Winter:1364670817975402547>"
+    }
+  ],
+  "golden": [
+    {
+      "id": "golden.s1.0",
+      "packId": "s1",
+      "name": "Golden Eagle",
+      "emoji": "<:GoldenEagleS1:1364670840611930143>"
+    },
+    {
+      "id": "golden.s2.0",
+      "packId": "s2",
+      "name": "Golden Eagle",
+      "emoji": "<:GoldenEagleS2:1284568352404279326>"
+    }
+  ],
+  "harpy": [
+    {
+      "id": "harpy.s1.0",
+      "packId": "s1",
+      "name": "Harpy Eagle",
+      "emoji": "<:HarpyEagleS1:1364670862191624294>"
+    },
+    {
+      "id": "harpy.s2.0",
+      "packId": "s2",
+      "name": "Shahbaz",
+      "emoji": "<:ShahbazS2:1284568371043635352>"
+    }
+  ],
+  "greater_spotted": [
+    {
+      "id": "greater_spotted.s1.0",
+      "packId": "s1",
+      "name": "Greater Spotted Eagle",
+      "emoji": "<:GreaterSpottedEagleS1:1364670886967382119>"
+    },
+    {
+      "id": "greater_spotted.s2.0",
+      "packId": "s2",
+      "name": "Golden Shahbaz",
+      "emoji": "<:GoldenShahbazS2:1284568382850727997>"
+    }
+  ],
+  "giraffe": [
+    {
+      "id": "giraffe.s1.0",
+      "packId": "s1",
+      "name": "Giraffe",
+      "emoji": "<:GiraffeS1:1361400386161742087>"
+    },
+    {
+      "id": "giraffe.s2.0",
+      "packId": "s2",
+      "name": "Giraffe",
+      "emoji": "<:GiraffeS2:1292124965663146045>"
+    },
+    {
+      "id": "giraffe.s2w.0",
+      "packId": "s2w",
+      "name": "Giraffe",
+      "emoji": "<:GiraffeS2Winter:1361400397939347511>"
+    }
+  ],
+  "momaffie": [
+    {
+      "id": "momaffie.s2.0",
+      "packId": "s2",
+      "name": "Momaffie",
+      "emoji": "<:MomaffieS2:1284567606422147202>"
+    }
+  ],
+  "momaffie_family": [
+    {
+      "id": "momaffie_family.s2.0",
+      "packId": "s2",
+      "name": "Momaffie Family",
+      "emoji": "<:MomaffieFamilyS2:1284567618627571896>"
+    }
+  ],
+  "girabie": [
+    {
+      "id": "girabie.s2.0",
+      "packId": "s2",
+      "name": "Girabie",
+      "emoji": "<:GirabieS2:1284567631956807701>"
+    }
+  ],
+  "white_giraffe": [
+    {
+      "id": "white_giraffe.s1.0",
+      "packId": "s1",
+      "name": "White Giraffe",
+      "emoji": "<:WhiteGiraffeS1:1284570509589352478>"
+    }
+  ],
+  "family": [
+    {
+      "id": "family.s1.0",
+      "packId": "s1",
+      "name": "Giraffe Family",
+      "emoji": "<:GiraffeFamilyS1:1284570523786936450>"
+    }
+  ],
+  "bison": [
+    {
+      "id": "bison.s1.0",
+      "packId": "s1",
+      "name": "Bison",
+      "emoji": "<:BisonS1:1364671181269237760>"
+    },
+    {
+      "id": "bison.s2.0",
+      "packId": "s2",
+      "name": "Bison",
+      "emoji": "<:BisonS2:1292126024557002762>"
+    },
+    {
+      "id": "bison.s2w.0",
+      "packId": "s2w",
+      "name": "Bison",
+      "emoji": "<:BisonS2Winter:1364671192187011112>"
+    }
+  ],
+  "shark": [
+    {
+      "id": "shark.s1.0",
+      "packId": "s1",
+      "name": "Shark",
+      "emoji": "<:SharkS1v2:1364671232892473434>"
+    },
+    {
+      "id": "shark.s2.0",
+      "packId": "s2",
+      "name": "Shark",
+      "emoji": "<:SharkS2:1292126307143909476>"
+    }
+  ],
+  "polar_bear": [
+    {
+      "id": "polar_bear.s1.0",
+      "packId": "s1",
+      "name": "Polar Bear",
+      "emoji": "<:PolarBearS1:1363467191915385022>"
+    },
+    {
+      "id": "polar_bear.s2.0",
+      "packId": "s2",
+      "name": "Polar Bear",
+      "emoji": "<:PolarBearS2:1292125689109286923>"
+    },
+    {
+      "id": "polar_bear.s2w.0",
+      "packId": "s2w",
+      "name": "Polar Bear",
+      "emoji": "<:PolarBearS2Winter:1363467203026096288>"
+    }
+  ],
+  "hippopotamus": [
+    {
+      "id": "hippopotamus.s1.0",
+      "packId": "s1",
+      "name": "Hippo",
+      "emoji": "<:HippoS1:1365717641083486208>"
+    },
+    {
+      "id": "hippopotamus.s2.0",
+      "packId": "s2",
+      "name": "Hippo",
+      "emoji": "<:HippoS2:1292126402312798361>"
+    },
+    {
+      "id": "hippopotamus.s2w.0",
+      "packId": "s2w",
+      "name": "Hippo",
+      "emoji": "<:HippoS2Winter:1365717652114247770>"
+    }
+  ],
+  "boa": [
+    {
+      "id": "boa.s1.0",
+      "packId": "s1",
+      "name": "Boa",
+      "emoji": "<:BoaConstrictorS1:1365717742728249445>"
+    },
+    {
+      "id": "boa.s2.0",
+      "packId": "s2",
+      "name": "Boa",
+      "emoji": "<:BoaConstrictorS2:1292126392569565365>"
+    },
+    {
+      "id": "boa.s2w.0",
+      "packId": "s2w",
+      "name": "Boa",
+      "emoji": "<:BoaConstrictorS2Winter:1365717752983060511>"
+    }
+  ],
+  "ostrich": [
+    {
+      "id": "ostrich.s1.0",
+      "packId": "s1",
+      "name": "Ostrich",
+      "emoji": "<:OstrichS1:1365717943664771144>"
+    },
+    {
+      "id": "ostrich.s2.0",
+      "packId": "s2",
+      "name": "Ostrich",
+      "emoji": "<:OstrichS2:1292126412874055700>"
+    }
+  ],
+  "komodo_dragon": [
+    {
+      "id": "komodo_dragon.s1.0",
+      "packId": "s1",
+      "name": "Komodo Dragon",
+      "emoji": "<:KomodoDragonS1:1365718023100567653>"
+    },
+    {
+      "id": "komodo_dragon.s2.0",
+      "packId": "s2",
+      "name": "Komodo Dragon",
+      "emoji": "<:KomodoDragonS2:1292126362756190279>"
+    }
+  ],
+  "orca": [
+    {
+      "id": "orca.s1.0",
+      "packId": "s1",
+      "name": "Orca",
+      "emoji": "<:KillerWhaleS1:1365718184228818965>"
+    },
+    {
+      "id": "orca.s2.0",
+      "packId": "s2",
+      "name": "Orca",
+      "emoji": "<:KillerWhaleS2:1292126434298429450>"
+    },
+    {
+      "id": "orca.s2w.0",
+      "packId": "s2w",
+      "name": "Orca",
+      "emoji": "<:KillerWhaleS2Winter:1365718194735812699>"
+    }
+  ],
+  "sabertooth_tiger": [
+    {
+      "id": "sabertooth_tiger.s1.0",
+      "packId": "s1",
+      "name": "Sabertooth Tiger",
+      "emoji": "<:SabertoothTigerS1:1365718474013282344>"
+    },
+    {
+      "id": "sabertooth_tiger.s2.0",
+      "packId": "s2",
+      "name": "Sabertooth Tiger",
+      "emoji": "<:SabertoothTigerS2:1292126341713362954>"
+    },
+    {
+      "id": "sabertooth_tiger.s2w.0",
+      "packId": "s2w",
+      "name": "Sabertooth Tiger",
+      "emoji": "<:SabertoothTigerS2Winter:1365718485187166208>"
+    }
+  ],
+  "elephant": [
+    {
+      "id": "elephant.s1.0",
+      "packId": "s1",
+      "name": "Elephant",
+      "emoji": "<:ElephantS1:1365777144831016970>"
+    },
+    {
+      "id": "elephant.s2.0",
+      "packId": "s2",
+      "name": "Elephant",
+      "emoji": "<:ElephantS2:1292127864971329646>"
+    }
+  ],
+  "cassowary": [
+    {
+      "id": "cassowary.s1.0",
+      "packId": "s1",
+      "name": "Cassowary",
+      "emoji": "<:CassowaryS1:1365777216021205002>"
+    },
+    {
+      "id": "cassowary.s2.0",
+      "packId": "s2",
+      "name": "Cassowary",
+      "emoji": "<:CassowaryS2:1292127854745882644>"
+    },
+    {
+      "id": "cassowary.s2w.0",
+      "packId": "s2w",
+      "name": "Cassowary",
+      "emoji": "<:CassowaryS2Winter:1365777226766880898>"
+    }
+  ],
+  "giant_spider": [
+    {
+      "id": "giant_spider.s1.0",
+      "packId": "s1",
+      "name": "Giant Spider",
+      "emoji": "<:GiantSpiderS1:1365777460523962388>"
+    },
+    {
+      "id": "giant_spider.s2.0",
+      "packId": "s2",
+      "name": "Giant Spider",
+      "emoji": "<:GiantSpiderS2:1292127876803596411>"
+    }
+  ],
+  "black_widow": [
+    {
+      "id": "black_widow.s1.0",
+      "packId": "s1",
+      "name": "Black Widow",
+      "emoji": "<:BlackwidowSpiderS1:1365777705764651059>"
+    },
+    {
+      "id": "black_widow.s2.0",
+      "packId": "s2",
+      "name": "Black Widow",
+      "emoji": "<:BlackwidowSpiderS2:1292127821673791599>"
+    }
+  ],
+  "blue_whale": [
+    {
+      "id": "blue_whale.s1.0",
+      "packId": "s1",
+      "name": "Blue Whale",
+      "emoji": "<:BlueWhaleS1v2:1365777910761390120>"
+    },
+    {
+      "id": "blue_whale.s2.0",
+      "packId": "s2",
+      "name": "Blue Whale",
+      "emoji": "<:BlueWhaleS2:1292128040142377071>"
+    },
+    {
+      "id": "blue_whale.s2w.0",
+      "packId": "s2w",
+      "name": "Blue Whale",
+      "emoji": "<:BlueWhaleS2Winter:1365777926796083260>"
+    }
+  ],
+  "mammoth": [
+    {
+      "id": "mammoth.s1.0",
+      "packId": "s1",
+      "name": "Mammoth",
+      "emoji": "<:MammothS1:1365778098745905263>"
+    },
+    {
+      "id": "mammoth.s2.0",
+      "packId": "s2",
+      "name": "Mammoth",
+      "emoji": "<:MammothS2:1292127799909289985>"
+    },
+    {
+      "id": "mammoth.s2w.0",
+      "packId": "s2w",
+      "name": "Mammoth",
+      "emoji": "<:MammothS2Winter:1365778107771916418>"
+    }
+  ],
+  "dragon": [
+    {
+      "id": "dragon.s1.0",
+      "packId": "s1",
+      "name": "Dragon",
+      "emoji": "<:DragonS1:1327713041357213727>"
+    },
+    {
+      "id": "dragon.s2.0",
+      "packId": "s2",
+      "name": "Dragon",
+      "emoji": "<:DragonS2:1292128309798244485>"
+    }
+  ],
+  "trex": [
+    {
+      "id": "trex.s1.0",
+      "packId": "s1",
+      "name": "T-Rex",
+      "emoji": "<:TRexS1:1327713055219515442>"
+    },
+    {
+      "id": "trex.s2.0",
+      "packId": "s2",
+      "name": "T-Rex",
+      "emoji": "<:TrexS2:1292128324801269880>"
+    }
+  ],
+  "phoenix": [
+    {
+      "id": "phoenix.s1.0",
+      "packId": "s1",
+      "name": "Phoenix",
+      "emoji": "<:PhoenixS1:1327713584406335498>"
+    },
+    {
+      "id": "phoenix.s2.0",
+      "packId": "s2",
+      "name": "Phoenix",
+      "emoji": "<:PhoenixS2:1292128384444530689>"
+    }
+  ],
+  "pterodactyl": [
+    {
+      "id": "pterodactyl.s1.0",
+      "packId": "s1",
+      "name": "Pterodactyl",
+      "emoji": "<:PterodactylS1:1327713012798193694>"
+    },
+    {
+      "id": "pterodactyl.s2.0",
+      "packId": "s2",
+      "name": "Pterodactyl",
+      "emoji": "<:PterodactylS2:1292128266559426724>"
+    }
+  ],
+  "kraken": [
+    {
+      "id": "kraken.s1.0",
+      "packId": "s1",
+      "name": "Kraken",
+      "emoji": "<:KrakenS1:1327713559618125908>"
+    },
+    {
+      "id": "kraken.s2.0",
+      "packId": "s2",
+      "name": "Kraken",
+      "emoji": "<:KrakenS2:1292128363690856541>"
+    }
+  ],
+  "king_crab": [
+    {
+      "id": "king_crab.s1.0",
+      "packId": "s1",
+      "name": "King Crab",
+      "emoji": "<:KingCrabS1:1327713548046045319>"
+    },
+    {
+      "id": "king_crab.s2.0",
+      "packId": "s2",
+      "name": "King Crab",
+      "emoji": "<:KingCrabS2:1292128350961401897>"
+    }
+  ],
+  "yeti": [
+    {
+      "id": "yeti.s1.0",
+      "packId": "s1",
+      "name": "Yeti",
+      "emoji": "<:YetiS1:1327712991692455987>"
+    },
+    {
+      "id": "yeti.s2.0",
+      "packId": "s2",
+      "name": "Yeti",
+      "emoji": "<:YetiS2:1292128236096065690>"
+    }
+  ],
+  "aqua": [
+    {
+      "id": "aqua.s1.0",
+      "packId": "s1",
+      "name": "Aqua Yeti",
+      "emoji": "<:AquaYetiS1:1365791266989670511>"
+    },
+    {
+      "id": "aqua.s2.0",
+      "packId": "s2",
+      "name": "Aqua Yeti",
+      "emoji": "<:AquaYetiS2:1284570581093711914>"
+    }
+  ],
+  "forgotten_one": [
+    {
+      "id": "forgotten_one.s1.0",
+      "packId": "s1",
+      "name": "The Forgotten One",
+      "emoji": "<:TheForgottenOne:1556709217522548807>"
+    }
+  ],
+  "shop_bigfoot": [
+    {
+      "id": "shop_bigfoot.s1.0",
+      "packId": "s1",
+      "name": "Shop Bigfoot",
+      "emoji": "<:ShopBigfootS1:1365791609001611344>"
+    },
+    {
+      "id": "shop_bigfoot.s2.0",
+      "packId": "s2",
+      "name": "Shop Bigfoot",
+      "emoji": "<:ShopBigfootS2:1285617256562425967>"
+    }
+  ],
+  "rare_bigfoot": [
+    {
+      "id": "rare_bigfoot.s1.0",
+      "packId": "s1",
+      "name": "Rare Bigfoot",
+      "emoji": "<:RareBigfootS1:1365791609001611344>"
+    },
+    {
+      "id": "rare_bigfoot.s2.0",
+      "packId": "s2",
+      "name": "Rare Bigfoot",
+      "emoji": "<:RareBigfootS2:1285617256562425967>"
+    }
+  ],
+  "shop_snowman": [
+    {
+      "id": "shop_snowman.s1.0",
+      "packId": "s1",
+      "name": "Shop Snowman",
+      "emoji": "<:ShopSnowmanS1:1284570594075218014>"
+    }
+  ],
+  "rare_snowman": [
+    {
+      "id": "rare_snowman.s1.0",
+      "packId": "s1",
+      "name": "Rare Snowman",
+      "emoji": "<:RareSnowmanS1:1284570594075218014>"
+    }
+  ],
+  "shop_snowgirl": [
+    {
+      "id": "shop_snowgirl.s1.0",
+      "packId": "s1",
+      "name": "Shop Snowgirl",
+      "emoji": "<:ShopSnowgirlS1:1284570612018315346>"
+    }
+  ],
+  "rare_snowgirl": [
+    {
+      "id": "rare_snowgirl.s1.0",
+      "packId": "s1",
+      "name": "Rare Snowgirl",
+      "emoji": "<:RareSnowgirlS1:1284570612018315346>"
+    }
+  ],
+  "dino_monster": [
+    {
+      "id": "dino_monster.s1.0",
+      "packId": "s1",
+      "name": "Dino Monster",
+      "emoji": "<:DinoMonsterS1:1327716246929543269>"
+    },
+    {
+      "id": "dino_monster.s2.0",
+      "packId": "s2",
+      "name": "Dino Monster",
+      "emoji": "<:DinoMonsterS2:1292128471501242368>"
+    }
+  ],
+  "lava_monster": [
+    {
+      "id": "lava_monster.s1.0",
+      "packId": "s1",
+      "name": "Lava Monster",
+      "emoji": "<:LandMonsterS1:1327716340701593723>"
+    },
+    {
+      "id": "lava_monster.s2.0",
+      "packId": "s2",
+      "name": "Lava Monster",
+      "emoji": "<:LandMonsterS2:1292128532889075757>"
+    }
+  ],
+  "giant_scorpion": [
+    {
+      "id": "giant_scorpion.s1.0",
+      "packId": "s1",
+      "name": "Giant Scorpion",
+      "emoji": "<:GiantScorpionS1:1327716215262548051>"
+    },
+    {
+      "id": "giant_scorpion.s2.0",
+      "packId": "s2",
+      "name": "Giant Scorpion",
+      "emoji": "<:GiantScorpionS2:1292128439603560499>"
+    }
+  ],
+  "sea_monster": [
+    {
+      "id": "sea_monster.s1.0",
+      "packId": "s1",
+      "name": "Sea Monster",
+      "emoji": "<:SeaMonsterS1:1327716267691479123>"
+    },
+    {
+      "id": "sea_monster.s2.0",
+      "packId": "s2",
+      "name": "Sea Monster",
+      "emoji": "<:SeaMonsterS2:1292128514031616112>"
+    }
+  ],
+  "ice_monster": [
+    {
+      "id": "ice_monster.s1.0",
+      "packId": "s1",
+      "name": "Ice Monster",
+      "emoji": "<:IceMonsterS1:1327716198275747870>"
+    },
+    {
+      "id": "ice_monster.s2.0",
+      "packId": "s2",
+      "name": "Ice Monster",
+      "emoji": "<:IceMonsterS2:1292128414463037523>"
+    }
+  ],
+  "black_dragon": [
+    {
+      "id": "black_dragon.s1.0",
+      "packId": "s1",
+      "name": "Black Dragon",
+      "emoji": "<:BlackDragonS1:1327342429736538152>"
+    },
+    {
+      "id": "black_dragon.s2.0",
+      "packId": "s2",
+      "name": "Black Dragon",
+      "emoji": "<:BlackDragonS2:1287156849350807623>"
+    },
+    {
+      "id": "black_dragon.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Azure Bringer",
+      "emoji": "<:AzureBringer:1327342827360751627>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366447268915580968/AzureBringer.png"
+    },
+    {
+      "id": "black_dragon.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Black Dragon",
+      "emoji": "<:GoldenBlackDragon:1327342318818295848>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634510319676/GoldenBlackDragon.png"
+    },
+    {
+      "id": "black_dragon.legacySP.0",
+      "packId": "legacySP",
+      "name": "Black Dragon",
+      "emoji": "<:BlackDragonLegacy:1337845295794622587>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366447269192138893/BlackDragon-Legacy.png"
+    }
+  ],
+  "rare_king_dragon": [
+    {
+      "id": "rare_king_dragon.s1.0",
+      "packId": "s1",
+      "name": "Rare King Dragon",
+      "emoji": "<:RareKingDragonS1:1284470623615189142>"
+    },
+    {
+      "id": "rare_king_dragon.s2.0",
+      "packId": "s2",
+      "name": "Rare King Dragon",
+      "emoji": "<:RareKingDragonS2:1280238249360494825>"
+    },
+    {
+      "id": "rare_king_dragon.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Rare King Shah",
+      "emoji": "<:RareKingShah:1327340413685596170>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452034777108/KingShah.png"
+    },
+    {
+      "id": "rare_king_dragon.lockedSP.1",
+      "packId": "lockedSP",
+      "name": "Rare King Stan",
+      "emoji": "<:RareKingStan:1327340402897977496>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452416331786/KingStan.png"
+    },
+    {
+      "id": "rare_king_dragon.lockedSP.2",
+      "packId": "lockedSP",
+      "name": "Rare King Ripper",
+      "emoji": "<:RareKingRipper:1327340388566040669>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459451707494440/KingRipper.png"
+    },
+    {
+      "id": "rare_king_dragon.lockedSP.3",
+      "packId": "lockedSP",
+      "name": "Rare Queen Celeste",
+      "emoji": "<:RareQueenCeleste:1327340428265259068>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452898803786/QueenCeleste.png"
+    },
+    {
+      "id": "rare_king_dragon.lockedSP.4",
+      "packId": "lockedSP",
+      "name": "Rare Queen Scarlet",
+      "emoji": "<:RareQueenScarlet:1327340439132442796>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453242609695/QueenScarlet.png"
+    },
+    {
+      "id": "rare_king_dragon.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Rare Golden King Dragon",
+      "emoji": "<:RareGoldenKingDragon:1327340203173744651>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634254471304/GoldenKingDragon.png"
+    },
+    {
+      "id": "rare_king_dragon.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Rare Queen Flame",
+      "emoji": "<:RareQueenFlame:1327340465166614559>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453657841755/QueenFlame.png"
+    }
+  ],
+  "king_dragon": [
+    {
+      "id": "king_dragon.s1.0",
+      "packId": "s1",
+      "name": "King Dragon",
+      "emoji": "<:KingDragonS1:1284470623615189142>"
+    },
+    {
+      "id": "king_dragon.s2.0",
+      "packId": "s2",
+      "name": "King Dragon",
+      "emoji": "<:KingDragonS2:1280238249360494825>"
+    },
+    {
+      "id": "king_dragon.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "King Shah",
+      "emoji": "<:KingShah:1327340413685596170>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452034777108/KingShah.png"
+    },
+    {
+      "id": "king_dragon.lockedSP.1",
+      "packId": "lockedSP",
+      "name": "King Stan",
+      "emoji": "<:KingStan:1327340402897977496>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452416331786/KingStan.png"
+    },
+    {
+      "id": "king_dragon.lockedSP.2",
+      "packId": "lockedSP",
+      "name": "King Ripper",
+      "emoji": "<:KingRipper:1327340388566040669>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459451707494440/KingRipper.png"
+    },
+    {
+      "id": "king_dragon.lockedSP.3",
+      "packId": "lockedSP",
+      "name": "Queen Celeste",
+      "emoji": "<:QueenCeleste:1327340428265259068>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452898803786/QueenCeleste.png"
+    },
+    {
+      "id": "king_dragon.lockedSP.4",
+      "packId": "lockedSP",
+      "name": "Queen Scarlet",
+      "emoji": "<:QueenScarlet:1327340439132442796>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453242609695/QueenScarlet.png"
+    },
+    {
+      "id": "king_dragon.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden King Dragon",
+      "emoji": "<:GoldenKingDragon:1327340203173744651>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634254471304/GoldenKingDragon.png"
+    },
+    {
+      "id": "king_dragon.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Queen Flame",
+      "emoji": "<:QueenFlame:1327340465166614559>",
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453657841755/QueenFlame.png"
+    }
+  ]
+}

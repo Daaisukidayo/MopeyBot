@@ -1,124 +1,81 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleEditlist',
+  name: "handleEditlist",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkProfile
     $addCooldown
 
-    $isActiveChallenge
-    
-    $getCache[rares;allRares;allRares]
-    
     $jsonLoad[challengeProgress;$getProgress]
-    $jsonLoad[events;$env[challengeProgress;events]]
-    $jsonLoad[raresList;$env[challengeProgress;list]]
+    $isActiveChallenge[challengeProgress]
 
-    $c[Parse arguments from options or message content]
+    $getCache[rares;activeRares;activeRares]
+
+    $c[A rare, + or -, and a count or "all"]
     $let[arg1;$toLowerCase[$default[$option[rare];$message[0]]]]
     $let[arg2;$default[$option[action];$message[1]]]
     $let[arg3;$toLowerCase[$default[$option[count];$message[2]]]]
-    
-    $c[Check basic usage and action type]
+
     $onlyIf[$and[$get[arg1]!=;$isOneOf[$get[arg2];+;-]];
-      $newError[$tl[ui.errors.usage.$get[l];$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]editlist <$tl[ui.args.shortRaresName.$get[l]]> [+ | -\\] <$tl[ui.args.amount.$get[l]]>]]
+      $let[prefix;$getPrefix]
+      $newError[$tl[ui.errors.usage.$get[l];$get[prefix]editlist <$tl[ui.args.shortRaresName.$get[l]]> [+ | -\\] <$tl[ui.args.amount.$get[l]]>]]
     ]
 
-    $c[Check if the animal rare exists in the global list]
-    $onlyIf[$arrayIncludes[allRares;$get[arg1]];
+    $onlyIf[$arrayIncludes[activeRares;$get[arg1]];
       $newError[$tl[ui.editlist.invalidRare.$get[l];$get[arg1]]]
     ]
 
-    $c[Ensure "all" is only used for removal, otherwise check if count is a positive number]
+    $c["all" only removes, any other count is a positive number]
     $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$and[$isNumber[$get[arg3]];$get[arg3]>0]];
       $newError[$tl[ui.editlist.invalidNumber.$get[l]]]
     ]
 
-    $c[Determine the state string based on the action symbol]
-    $let[state;$function[
-      $return[$switch[$get[arg2];
-        $case[-;removed]
-        $case[+;added]
-      ]]
-    ]]
-
     $let[animalId;$getRareAnimalID[$get[arg1]]]
     $let[animalDisplay;$getAnimalInfo[$get[animalId];emoji;0]]
-    $let[oldQuantity;$default[$env[raresList;$get[animalId]];0]]
-    $let[rares;0]
-    $let[points;0]
+    $let[oldQuantity;$default[$jsonGet[challengeProgress;raresList;$get[animalId]];0]]
 
-    $c[Check if user tries to remove something they don't have]
-    $if[$and[$env[raresList;$get[animalId]]==;$get[arg2]==-];
+    $onlyIf[$or[$get[arg2]==+;$jsonGet[challengeProgress;raresList;$get[animalId]]!=];
       $newError[$tl[ui.editlist.notInList.$get[l];$get[animalDisplay]]]
     ]
 
     $defer
-    
-    $if[$get[arg3]==all;
-      $c[If removing all, actual difference equals the old quantity]
-      $let[actualDiff;$get[oldQuantity]]
-      $!jsonDelete[raresList;$get[animalId]]
-      $let[updatedQuantity;0]
-    ;
-      $c[Calculate temporary new quantity before applying limits]
-      $let[tempNew;$math[$get[oldQuantity] $get[arg2] $get[arg3]]]
 
-      $if[$get[tempNew]<=0;
-        $c[If result is zero or negative, delete entry. Actual change is the entire old quantity]
-        $let[actualDiff;$get[oldQuantity]]
-        $!jsonDelete[raresList;$get[animalId]]
-        $let[updatedQuantity;0]
-      ;
-        $c[If positive, apply difficulty-based limits]
-        $let[difficulty;$env[challengeProgress;difficulty]]
-        $!jsonSet[raresList;$get[animalId];$changeLimitedRareAnimalQuantity[$get[tempNew];$get[animalId];$get[difficulty]]]
-        
-        $let[updatedQuantity;$env[raresList;$get[animalId]]]
-        $c[Actual difference is the absolute change after limits were applied]
-        $let[actualDiff;$abs[$math[$get[updatedQuantity] - $get[oldQuantity]]]]
-      ]
+    $c["all", or a count that leaves nothing, removes the rare. A new count above the limit becomes the limit]
+    $let[newQuantity;$if[$get[arg3]==all;0;$math[$get[oldQuantity] $get[arg2] $get[arg3]]]]
+    $if[$get[newQuantity]<=0;
+      $let[updatedQuantity;0]
+      $!jsonDelete[challengeProgress;raresList;$get[animalId]]
+    ;
+      $let[updatedQuantity;$limitRareCount[$get[newQuantity];$get[animalId];$jsonGet[challengeProgress;difficulty]]]
+      $!jsonSet[challengeProgress;raresList;$get[animalId];$get[updatedQuantity]]
     ]
 
-    $c[Recalculate list UI, total points, and total rares]
-    $jsonLoad[result;$generateList[$sortList[$env[raresList]]]]
-    $jsonLoad[list;$env[result;l]]
+    $jsonLoad[result;$generateList[$jsonGet[challengeProgress;raresList]]]
 
-    $c[Final verification: check if any changes actually occurred]
+    $c[Nothing changed: the count the user tried is shown. A change is saved and shows how much really changed]
     $if[$get[oldQuantity]==$get[updatedQuantity];
       $let[state;failed]
-      $c[On failure, show the quantity user TRIED to add/remove for better feedback]
       $let[count;$if[$get[arg3]==all;$get[oldQuantity];$get[arg3]]]
     ;
-      $c[On success, update points/counts and save progress]
-      $let[points;$env[result;p]]
-      $let[rares;$env[result;r]]
-
-      $!jsonSet[challengeProgress;list;$env[raresList]]
-      $!jsonSet[challengeProgress;rares;$get[rares]]
-      $!jsonSet[challengeProgress;points;$get[points]]
+      $let[state;$if[$get[arg2]==+;added;removed]]
+      $let[count;$abs[$math[$get[updatedQuantity] - $get[oldQuantity]]]]
+      $objectMerge[challengeProgress;$objectOf[points;$jsonGet[result;p];rares;$jsonGet[result;r]]]
       $saveProgress[$env[challengeProgress]]
-      
-      $c[On success, count is the actual value changed]
-      $let[count;$get[actualDiff]]
     ]
 
     $addContainer[
       $addAuthorDisplay
-
-      $c[Display localized status message (Added/Removed/Failed)]
       $addTextDisplay[$tl[ui.editlist.$get[state].$get[l];$get[count];$get[animalDisplay]]]
-      
       $addSeparator[Large]
-      $addTextDisplay[$showPoints]
-      $addTextDisplay[$showRares]
+      $addTextDisplay[$showPoints[challengeProgress]]
+      $addTextDisplay[$showRares[challengeProgress]]
       $addTextDisplay[$showTime]
       $addSeparator[Large]
-      $showDesignedList[$env[list]]
+      $showDesignedList[$jsonGet[result;l]]
     ;$getGlobalVar[luckyColor]]
   `
 })

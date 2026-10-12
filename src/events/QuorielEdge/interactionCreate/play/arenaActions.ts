@@ -1,172 +1,113 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "play_arenaAction",
   type: "interactionCreate",
-  allowed: ['button'],
+  allowed: ["button"],
   code: `
     $arrayLoad[IID;-;$customID]
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
     $jsonLoad[playData;$getUserVar[userPlayData]]
-    $isPlaying
+    $isPlaying[playData]
 
-    $let[playerAction;$env[IID;1]]
-    $let[tier;$env[playData;tier]]
-    $let[turn;$env[playData;arena;turn]]
-    $let[opponentAction;$env[playData;arena;opponentAction]]
-    $let[opponentTier;$env[playData;arena;opponentTier]]
-    $let[opponentAnimal;$env[playData;arena;opponentAnimal]]
-    $let[opponentWardrobe;$env[playData;arena;opponentWardrobe]]
-    $let[opponentDisplay;$getAnimalInfo[$get[opponentAnimal];emoji;$get[opponentWardrobe]] $getAnimalInfo[$get[opponentAnimal];name;$get[opponentWardrobe]]]
-    $let[bites;$env[playData;arena;bites]]
-    $let[opponentBites;$env[playData;arena;opponentBites]]
-    
-    $let[currentAnimal;$env[playData;currentAnimal]]
-    $let[wrI;$env[userWardrobe;$get[currentAnimal]]]
-    $let[currentAnimalDisplay;$getAnimalInfo[$get[currentAnimal];emoji;$get[wrI]] $userDisplayName]
+    $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
-    $let[xpReward;$env[playData;arena;opponentXP]]
-    $let[opponentApex;$advancedReplace[$get[opponentAnimal];aquaYeti;yeti;kingDragon;blackDragon;rareKingDragon;blackDragon]]
+    $let[playerAction;$jsonGet[IID;1]]
+    $let[turn;$jsonGet[playData;arena;turn]]
+    $let[opponentAction;$jsonGet[playData;arena;opponentAction]]
+    $let[bites;$jsonGet[playData;arena;bites]]
+    $let[opponentBites;$jsonGet[playData;arena;opponentBites]]
+    $c[A rare apex counts as its common one]
+    $let[opponentApex;$jsonGet[playData;arena;opponentAnimal]]
+    $if[$get[opponentApex]==aqua;$let[opponentApex;yeti]]
+    $if[$isOneOf[$get[opponentApex];king_dragon;rare_king_dragon];$let[opponentApex;black_dragon]]
 
-    $let[actionR;$random[0;100]]
-    $let[key;$get[playerAction]_$get[opponentAction]]
-
-    $let[actionDesc;-1]
-    
-    $jsonLoad[currentApex;$env[playData;apex]]
-    $jsonLoad[counterMap;{"0": 1,"1": 2,"2": 0}]
-    $jsonLoad[mistakeMap;{"0": 2,"1": 0,"2": 1}]
-    $jsonLoad[rules;$env[$getGlobalVar[arenaMatrix];$get[key]]]
-
-    $forOf[rules;rule;
-      $if[$get[actionR]>=$env[rule;0]==false;$continue]
-      $let[actionDesc;$env[rule;1]]
-      $switch[$env[rule;2];
-        $case[1;$letSum[bites;1]]
-        $case[2;$letSum[opponentBites;1]]
-      ]
-      $break
-    ;i]
-
+    $c[On the player's turn the opponent reacts: 65% the counter, 25% the same action, 10% the one it beats. It also picks its next action]
     $if[$get[turn]==0;
-      $let[opponentAction;$function[
-        $if[$get[actionR]<=65;
-          $return[$env[counterMap;$get[playerAction]]]
-        ;$if[$get[actionR]<=90;
-          $return[$get[playerAction]]
-        ;
-          $return[$env[mistakeMap;$get[playerAction]]]
-        ]]
-      ]]
-
-
-      $c[If user's turn, then setting new random opponent's action]
-      $jsonLoad[action;$arrayRandomValue[$getGlobalVar[arenaActions]]]
-      $let[newOpponentAction;$env[action;id]]
+      $let[reaction;$random[0;100]]
+      $let[opponentAction;$math[($get[playerAction] + $if[$get[reaction]<=65;1;$if[$get[reaction]<=90;0;2]]) % 3]]
+      $let[nextOpponentAction;$jsonGet[$arraySample[$getGlobalVar[arenaActions]];id]]
     ]
-    
 
-    $!jsonSet[playData;arena;bites;$get[bites]]
-    $!jsonSet[playData;arena;opponentBites;$get[opponentBites]]
-
-    $let[updatedOpponentAction;$default[$get[newOpponentAction];$get[opponentAction]]]
-    $!jsonSet[playData;arena;opponentAction;$get[updatedOpponentAction]]
-
-    $c[Embed]
+    $c[A rule is [chance, description, who gets a bite\\]: the last one has chance 0, so one always matches]
+    $let[actionR;$random[0;100]]
+    $jsonLoad[rule;$arrayFind[$jsonGet[$getGlobalVar[arenaMatrix];$get[playerAction]_$get[opponentAction]];r;$get[actionR]>=$jsonGet[r;0]]]
+    $switch[$jsonGet[rule;2];
+      $case[1;$letSum[bites;1]]
+      $case[2;$letSum[opponentBites;1]]
+    ]
+    $objectMerge[playData;arena;$objectOf[bites;$get[bites];opponentBites;$get[opponentBites];opponentAction;$default[$get[nextOpponentAction];$get[opponentAction]]]]
 
     $addContainer[
       $addAuthorDisplay
 
-      $addTextDisplay[$tl[ui.play.arena.table.player.$get[l];$get[currentAnimalDisplay]]]
-      $addTextDisplay[$tl[ui.play.arena.table.bites.$get[l];$get[bites]]]
-      $addTextDisplay[$tl[ui.play.arena.table.vs.$get[l]]]
-      $addTextDisplay[$tl[ui.play.arena.table.player.$get[l];$get[opponentDisplay]]]
-      $addTextDisplay[$tl[ui.play.arena.table.bites.$get[l];$get[opponentBites]]]
+      $addArenaStatus[playData;userWardrobe]
       $addSeparator
       $addTextDisplay[$tl[ui.play.arena.table.userChose.$get[l];$tl[data.arenaActions.$get[playerAction].$get[l]]]]
-      $addTextDisplay[$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$get[updatedOpponentAction].$get[l]]]]
+      $addTextDisplay[$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$get[opponentAction].$get[l]]]]
       $addSeparator
-      $addTextDisplay[$tl[ui.play.arena.actions.$get[actionDesc].$get[l]]]
+      $addTextDisplay[$tl[ui.play.arena.actions.$jsonGet[rule;1].$get[l]]]
       $addSeparator
 
-      $if[$get[bites]>=10; $c[If user won]
-
-        $c[Giving XP based on opponent's tier]
+      $c[Ten bites win or lose the fight, otherwise the turn passes]
+      $if[$get[bites]>=10;
         $addTextDisplay[$tl[ui.play.arena.table.won.$get[l]]]
-
         $addSeparator[Large]
-        
-        $!jsonSet[playData;XP;$math[$env[playData;XP] + $get[xpReward]]]
-        $!jsonSet[playData;MC;$math[$env[playData;MC] + 1000]]
 
-        $if[$and[$get[tier]==17;$includes[$toLowerCase[$get[currentAnimal]];kingdragon]==false]; $c[If user is not the king dragon]
-          $if[$arrayIncludes[currentApex;$get[opponentApex]];;
-            $arrayPush[currentApex;$get[opponentApex]] $c[setting apex based on opponent's animal]
-            $!jsonSet[playData;apex;$env[currentApex]]
-          ]
+        $jsonMath[playData;XP;$jsonGet[playData;arena;opponentXP]]
+        $jsonMath[playData;MC;1000]
+
+        $c[A black dragon gets the opponent's apex. The opponent must be an apex: dev arena allows opponents of any tier]
+        $if[$and[$jsonGet[playData;tier]==17;$includes[$toLowerCase[$jsonGet[playData;currentAnimal]];kingdragon]==false;$arrayIncludes[$getGlobalVar[allApex];$get[opponentApex]]];
+          $!jsonSet[playData;apex;$arrayUnion[$jsonGet[playData;apex];$arrayOf[$get[opponentApex]]]]
         ]
 
-        $resetArenaData
-        $let[showStats;true]
-        $let[color;$getGlobalVar[luckyColor]]
-
-      ;
-
-        $if[$get[opponentBites]>=10; $c[If user lost]
-
-          $addTextDisplay[$tl[ui.play.arena.table.lost.$get[l]]]
-
-          $addSeparator[Large]
-
-          $!jsonSet[playData;currentAnimal;null]
-          $!jsonSet[playData;isDead;true]
-
-          $updateXpOnDeath
-          $resetArenaData
-          $setNewTier
-          $removeAllApex
-
-          $addActionsMenu
-          $addSeparator
-          $addExitButton
-          $let[color;$getGlobalVar[errorColor]]
-
-        ;  $c[If arena is still in progress]
-
-          $switch[$get[turn];
-            $case[0; $c[If user's turn]
-              $let[turn;1]
-              $addTextDisplay[$tl[ui.play.arena.table.opponentTurn.$get[l]]]
-              $addTextDisplay[$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$get[updatedOpponentAction].$get[l]]]]
-            ]
-            $case[1; $c[If opponent's turn]
-              $let[turn;0]
-              $addTextDisplay[$tl[ui.play.arena.table.userTurn.$get[l]]]
-              $addTextDisplay[$tl[ui.play.arena.table.userChoose.$get[l]]]
-            ]
-          ]
-
-          $!jsonSet[playData;arena;turn;$get[turn]]
-
-          $addArenaActionButtons
-
-          $addSeparator
-          $addExitButton
-          $addCheats
-          $let[color;$getGlobalVar[defaultColor]]
-        ]
-      ]
-
-      $if[$get[showStats];
-        $displayAnimalStats
-        $addActionsMenu
+        $resetArenaData[playData]
+        $displayAnimalStats[playData;userWardrobe]
+        $addActionsMenu[playData]
         $addSeparator
-        $addExitButton
-        $addCheats
-      ]
+        $addExitButton[playData]
+        $addCheats[playData]
+        $let[color;$getGlobalVar[luckyColor]]
+      ;$if[$get[opponentBites]>=10;
+        $addTextDisplay[$tl[ui.play.arena.table.lost.$get[l]]]
+        $addSeparator[Large]
+
+        $!jsonSet[playData;isDead;true]
+        $c[Must run before clearing currentAnimal: King Dragon's XP reset depends on it]
+        $updateXpOnDeath[playData]
+        $!jsonSet[playData;currentAnimal;null]
+        $resetArenaData[playData]
+        $setNewTier[playData]
+        $removeAllApex[playData]
+
+        $addActionsMenu[playData]
+        $addSeparator
+        $addExitButton[playData]
+        $let[color;$getGlobalVar[errorColor]]
+      ;
+        $let[turn;$math[1 - $get[turn]]]
+        $!jsonSet[playData;arena;turn;$get[turn]]
+        $if[$get[turn]==1;
+          $addTextDisplay[$tl[ui.play.arena.table.opponentTurn.$get[l]]]
+          $addTextDisplay[$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$jsonGet[playData;arena;opponentAction].$get[l]]]]
+        ;
+          $addTextDisplay[$tl[ui.play.arena.table.userTurn.$get[l]]]
+          $addTextDisplay[$tl[ui.play.arena.table.userChoose.$get[l]]]
+        ]
+
+        $addArenaActionButtons
+        $addArenaDevMenu[playData]
+        $addSeparator
+        $addExitButton[playData]
+        $addCheats[playData]
+        $let[color;$getGlobalVar[defaultColor]]
+      ]]
     ;$get[color]]
+    $updatePlayData[playData]
     $interactionUpdate
-    $updatePlayData
   `
-}
+})

@@ -13,7 +13,13 @@
     "language": "en-US",
     "timezone": "Etc/UTC",
 
-    "limiters": {},
+    "limiters": {
+      "lastDailyDay": -1,
+      "lastWeeklyWeek": -1,
+      "lastClaimedDay": -1,
+      "lastDailyRaretry": -1,
+      "lastDailyRaretryrun": -1
+    },
 
     "challenge": {
       "settings": [],

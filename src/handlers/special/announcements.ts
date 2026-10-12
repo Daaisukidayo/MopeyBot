@@ -1,26 +1,31 @@
-export default [{
-  name: 'handleAnnouncements',
-  code: `
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default [
+  new ForgeFunction({
+    name: "handleAnnouncements",
+    code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown
 
     $defer
 
-    $jsonLoad[announce;$env[$readFile[res/locale/announcement.json];$get[l]]]
+    $jsonLoad[announce;$jsonGet[$readFile[res/locale/announcement.json];$get[l]]]
 
     $announcementsEmbed
   `
-},{
-  name: 'announcementsEmbed',
-  code: `
+  }),
+  new ForgeFunction({
+    name: "announcementsEmbed",
+    code: `
     $addContainer[
       $addTextDisplay[$tl[ui.announcements.title.$get[l]]]
       $addSeparator[Large]
       $addTextDisplay[$arrayJoin[announce;\n]]
     ;$getGlobalVar[defaultColor]]
   `
-}]
+  })
+]

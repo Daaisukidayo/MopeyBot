@@ -1,0 +1,19 @@
+{
+  "pumpkin": [
+    { "ID": 0, "chance": 85, "mcMultiplier": 1, "xpMultiplier": 1, "emoji": "<:Pumpkin:1279092215800397854>", "color": "D97522" },
+    { "ID": 1, "chance": 1, "mcMultiplier": 4, "xpMultiplier": 2, "emoji": "<:GoldenPumpkin:1279092382943412304>", "color": "F4BA17" },
+    { "ID": 2, "chance": 13.6, "mcMultiplier": 1.77, "xpMultiplier": 1.33, "emoji": "<:JackPumpkin:1279092277251276881>", "color": "D97522" },
+    { "ID": 3, "chance": 0.25, "mcMultiplier": 6.15, "xpMultiplier": 2.48, "emoji": "<:Emerald_Pumpkin:1556709419855773757>", "color": "52D72A" },
+    { "ID": 4, "chance": 0.1, "mcMultiplier": 8.18, "xpMultiplier": 2.86, "emoji": "<:Ruby_Pumpkin:1556709421114068992>", "color": "E2253B" },
+    { "ID": 5, "chance": 0.05, "mcMultiplier": 10.18, "xpMultiplier": 3.19, "emoji": "<:Diamond_Pumpkin:1556709422649180300>", "color": "1DFCFF" }
+  ],
+  "umbrella": [
+    { "ID": 0, "chance": 93.1, "mcMultiplier": 1, "xpMultiplier": 1, "emoji": "<:Umbrella:1279452562466017321>", "color": "DA1D36" },
+    { "ID": 1, "chance": 4.9, "mcMultiplier": 2.5, "xpMultiplier": 1.58, "emoji": "<:PurpleUmbrella:1279452606246420622>", "color": "BE70C0" },
+    { "ID": 2, "chance": 2, "mcMultiplier": 4, "xpMultiplier": 2, "emoji": "<:GoldenUmbrella:1279452649338572906>", "color": "EDC255" }
+  ],
+  "beachball": [
+    { "ID": 0, "chance": 98, "mcMultiplier": 1, "xpMultiplier": 1, "emoji": "<:Beachball:1279447760591917099>", "color": "F06D5F" },
+    { "ID": 1, "chance": 2, "mcMultiplier": 4, "xpMultiplier": 2, "emoji": "<:GoldenBeachball:1279447797237809262>", "color": "F4BA17" }
+  ]
+}

@@ -1,49 +1,44 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleChecklist',
+  name: "handleChecklist",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkProfile
     $addCooldown
-
     $defer
 
     $let[day;$calendarDay]
+    $let[reward;$getGlobalVar[checklistReward]]
+    $let[maxRaretry;$getGlobalVar[maxRaretryRares]]
+    $let[maxRaretryrun;$getGlobalVar[maxRaretryrunRares]]
 
-    $let[lastClaimed;$default[$env[userProfile;limiters;lastClaimedDay];-1]]
-    $let[daily;$default[$env[userProfile;limiters;lastDailyDay];-1]]
-
-    $let[lastDailyRaretry;$default[$env[userProfile;limiters;lastDailyRaretry];-1]]
-    $let[lastDailyRaretryrun;$default[$env[userProfile;limiters;lastDailyRaretryrun];-1]]
-    $let[caughtRaresInRaretryrun;$getUserVar[caughtRaresInRaretryrun]]
-    $let[caughtRaresInRaretry;$getUserVar[caughtRaresInRaretry]]
-
+    $let[dailyDone;$checkCondition[$jsonGet[userProfile;limiters;lastDailyDay]==$get[day]]]
     $let[hasVoted;$hasVoted[$authorID]]
-    $let[checklistReward;$getGlobalVar[checklistReward]]
+    $let[raretryDone;$checkCondition[$jsonGet[userProfile;limiters;lastDailyRaretry]==$get[day]]]
+    $let[raretryrunDone;$checkCondition[$jsonGet[userProfile;limiters;lastDailyRaretryrun]==$get[day]]]
 
-    $let[extra;$separate[$get[checklistReward]]]
-    $let[content;$tl[ui.checklist.completeTasks.$get[l];$get[extra]]]
+    $fn[status;
+      $return[$if[$env[done];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];$env[progress]]]]
+    ;done;progress]
 
-    $if[$get[lastClaimed]==$get[day];
+    $c[The reward is given once a day, when every task is done]
+    $if[$jsonGet[userProfile;limiters;lastClaimedDay]==$get[day];
       $let[content;$tl[ui.checklist.allRewardsReceived.$get[l]]]
-    ]
-
-    $if[$and[$get[lastClaimed]!=$get[day];$get[daily]==$get[day];$get[hasVoted];$get[lastDailyRaretry]==$get[day];$get[lastDailyRaretryrun]==$get[day]];
-      $sumCash[$get[checklistReward]]
+    ;$if[$and[$get[dailyDone];$get[hasVoted];$get[raretryDone];$get[raretryrunDone]];
+      $sumCash[$get[reward]]
       $!jsonSet[userProfile;limiters;lastClaimedDay;$get[day]]
       $saveProfile[$env[userProfile]]
       $deleteUserVar[caughtRaresInRaretry]
       $deleteUserVar[caughtRaresInRaretryrun]
       $setUserVar[dailyStreak;$math[$getUserVar[dailyStreak] + 1]]
-      $let[content;$tl[ui.checklist.allTasksCompleted.$get[l];$get[extra]]]
-    ]
-
-    $let[streak;$getUserVar[dailyStreak]]
-
+      $let[content;$tl[ui.checklist.allTasksCompleted.$get[l];$separate[$get[reward]]]]
+    ;
+      $let[content;$tl[ui.checklist.completeTasks.$get[l];$separate[$get[reward]]]]
+    ]]
 
     $addContainer[
       $addAuthorDisplay
@@ -52,29 +47,24 @@ export default new ForgeFunction({
       $addSeparator[Large]
 
       $addTextDisplay[$tl[ui.checklist.claimDaily.$get[l]]]
-      $addTextDisplay[$if[$get[daily]==$get[day];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];]]]
-
+      $addTextDisplay[$callFn[status;$get[dailyDone]]]
       $addSeparator[Small;false]
 
       $addTextDisplay[$tl[ui.checklist.vote.$get[l];https://top.gg/bot/$clientID/vote]]
-      $addTextDisplay[$if[$get[hasVoted];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];]]]
-
+      $addTextDisplay[$callFn[status;$get[hasVoted]]]
       $addSeparator[Small;false]
 
-      $addTextDisplay[$tl[ui.checklist.catchRaretry.$get[l];$getGlobalVar[maxRaretryRares]]]
-      $addTextDisplay[$if[$get[lastDailyRaretry]==$get[day];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];($get[caughtRaresInRaretry]/$getGlobalVar[maxRaretryRares])]]]
-
+      $addTextDisplay[$tl[ui.checklist.catchRaretry.$get[l];$get[maxRaretry]]]
+      $addTextDisplay[$callFn[status;$get[raretryDone];($getUserVar[caughtRaresInRaretry]/$get[maxRaretry])]]
       $addSeparator[Small;false]
 
-      $addTextDisplay[$tl[ui.checklist.catchRaretryrun.$get[l];$getGlobalVar[maxRaretryrunRares]]]
-      $addTextDisplay[$if[$get[lastDailyRaretryrun]==$get[day];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];($get[caughtRaresInRaretryrun]/$getGlobalVar[maxRaretryrunRares])]]]
+      $addTextDisplay[$tl[ui.checklist.catchRaretryrun.$get[l];$get[maxRaretryrun]]]
+      $addTextDisplay[$callFn[status;$get[raretryrunDone];($getUserVar[caughtRaresInRaretryrun]/$get[maxRaretryrun])]]
 
       $addSeparator[Large]
       $addTextDisplay[$get[content]]
-
       $addSeparator[Large]
-
-      $addTextDisplay[$tl[ui.checklist.streak.$get[l];$get[streak]]]
+      $addTextDisplay[$tl[ui.checklist.streak.$get[l];$getUserVar[dailyStreak]]]
     ;$getGlobalVar[defaultColor]]
   `
 })

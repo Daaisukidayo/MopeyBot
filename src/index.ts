@@ -2,73 +2,60 @@
 import { ForgeTopGG, IForgeTopGGOptions } from "@tryforge/forge.topgg"
 import { ForgeClient, LogPriority, FunctionManager } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
+import { ForgeCanvas } from "@tryforge/forge.canvas"
 import { ForgeRegex } from "forge.regex"
+import { ForgeTimers, TimerEvent } from "forge.timers"
+import { ForgeJSON } from "forge.json"
+import { QuorielEdge } from "@quoriel/edge"
+
 import { shutdownSetup } from "./utils/shutdownSetup.js"
 import { variables } from "./utils/loadVariables.js"
-import { ForgeCanvas } from "@tryforge/forge.canvas"
-// @ts-ignore - No type declaration available for @quoriel/edge
-import { QuorielEdge } from "@quoriel/edge"
 import path from "path"
-import { configDotenv } from "dotenv" 
-configDotenv()
 
-FunctionManager.load(path.resolve(process.cwd(), "dist", "functions", "native"))
+process.loadEnvFile()
 
 // ========== EXTENTIONS CONFIGURATION ==========
+const FT = new ForgeTimers({
+  intervalConfig: {
+    restoredTicksLimit: 0
+  },
+  cronConfig: {
+    restoredTicksLimit: 1
+  },
+  events: [TimerEvent.timerDrop, TimerEvent.timersReady, TimerEvent.databaseFail]
+})
+
 const QE = new QuorielEdge({
-  features: [
-    "jsonDirectPass",
-    "restArgSpread"
-  ],
-  events: [
-    "interactionCreate",
-  ],
-  caches: [
-    "animals",
-    "rares",
-    "locale",
-    "arena",
-    "leaderboard",
-  ]
+  features: ["jsonDirectPass", "restArgSpread"],
+  events: ["interactionCreate"],
+  caches: ["animals", "rares", "locale", "arena", "leaderboard"]
 })
 
 const TOP = new ForgeTopGG({
   token: process.env.TOPTOKEN,
   auth: process.env.TOPAUTH,
-  events: [
-    "error",
-    "posted",
-    "voted"
-  ],
+  events: ["error", "posted", "voted"],
   port: 1040,
-  post: { 
+  post: {
     interval: 3_600_000
   }
 } as IForgeTopGGOptions)
 
-const DB: ForgeDB = new ForgeDB({
+const DB = new ForgeDB({
   events: ["connect"],
-  type: 'better-sqlite3',
+  type: "better-sqlite3"
 })
 
 // ========== CLIENT CONFIGURATION ==========
+FunctionManager.load(path.resolve(process.cwd(), "dist", "functions", "native")) // Native functions loader
+
 const BOT: ForgeClient = new ForgeClient({
-  extensions: [
-    DB,
-    TOP,
-    QE,
-    new ForgeRegex(),
-    new ForgeCanvas(),
-  ],
+  extensions: [DB, TOP, QE, FT, new ForgeRegex(), new ForgeCanvas(), new ForgeJSON()],
 
-  disableConsoleErrors: true,
+  prefixes: ["$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]"],
 
-  prefixes: [
-    "$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]",
-  ],
+  logLevel: LogPriority.High,
 
-  logLevel: LogPriority.Low,
-  
   token: process.env.TOKEN,
 
   intents: [
@@ -82,21 +69,21 @@ const BOT: ForgeClient = new ForgeClient({
     // "GuildWebhooks",
     // "GuildInvites",
     // "GuildVoiceStates",
-    // "GuildPresences",
+    "GuildPresences",
     "GuildMessages",
     // "GuildMessageReactions",
     // "GuildMessageTyping",
     "DirectMessages",
     // "DirectMessageReactions",
     // "DirectMessageTyping",
-    "MessageContent",
+    "MessageContent"
     // "GuildScheduledEvents",
     // "AutoModerationConfiguration",
     // "AutoModerationExecution",
     // "GuildMessagePolls",
     // "DirectMessagePolls"
   ],
-  
+
   events: [
     // "autoModerationActionExecution",
     // "autoModerationRuleCreate",
@@ -149,7 +136,7 @@ const BOT: ForgeClient = new ForgeClient({
     // "messageReactionRemoveAll",
     // "messageReactionRemoveEmoji",
     // "messageUpdate",
-    // "presenceUpdate",
+    "presenceUpdate"
     // "roleCreate",
     // "roleDelete",
     // "roleUpdate",
@@ -176,13 +163,13 @@ const BOT: ForgeClient = new ForgeClient({
     // "voiceChannelEffectSend",
     // "voiceStateUpdate",
     // "webhooksUpdate"
-  ],
+  ]
 })
 
 // ========== LOAD VARIABLES ==========
 DB.variables(variables)
 
-// ========== LOAD FUNCTIONS & COMMAND HANDLERS ==========
+// ========== LOAD CUSTOM FUNCTIONS & COMMAND HANDLERS ==========
 BOT.functions.load("dist/functions/custom")
 BOT.functions.load("dist/handlers/")
 
@@ -194,6 +181,7 @@ BOT.commands.load("dist/events/ForgeScript/")
 TOP.commands.load("dist/events/ForgeTopGG/")
 DB.commands.load("dist/events/ForgeDB/")
 QE.commands.load("dist/events/QuorielEdge/")
+FT.commands.load("dist/events/ForgeTimers/")
 
 // ========== SIGNALS handler ==========
 shutdownSetup(BOT)

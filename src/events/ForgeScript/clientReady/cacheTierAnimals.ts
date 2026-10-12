@@ -1,38 +1,21 @@
 import { BaseCommand } from "@tryforge/forgescript"
 
 export default new BaseCommand({
-  type: 'clientReady',
+  type: "clientReady",
   code: `
-    $jsonLoad[result;{}]
+    $c[Read by reference: never modify 'animals']
+    $cacheAnimalsData
+    $getCache[animals;animalsData;animals]
 
-    $forOf[$getAnimalsData;animal;
-      $if[$env[animal;deleted];$continue]
+    $jsonLoad[result;$objectOf]
 
-      $let[animalId;$env[animal;ID]]
-      $let[tier;$env[animal;tier]]
-      $let[isRare;$env[animal;isRare]]
+    $arrayFilter[animals;animal;$jsonGet[animal;deleted]!=true;liveAnimals]
+    $arrayForEach[liveAnimals;animal;
+      $let[tier;$jsonGet[animal;tier]]
 
-      $if[$env[result;$get[tier]]==;
-        $jsonSet[result;$get[tier];{"allAnimals": [\\], "commonAnimals": [\\], "rareAnimals": [\\]}]
-      ]
-      $jsonLoad[tierData;$env[result;$get[tier]]]
-
-      $jsonLoad[allAnimals;$env[tierData;allAnimals]]
-      $jsonLoad[commonAnimals;$env[tierData;commonAnimals]]
-      $jsonLoad[rareAnimals;$env[tierData;rareAnimals]]
-      
-      $arrayPush[allAnimals;$get[animalId]]
-      $if[$get[isRare];
-        $arrayPush[rareAnimals;$get[animalId]]
-      ;
-        $arrayPush[commonAnimals;$get[animalId]]
-      ]
-
-      $jsonSet[tierData;allAnimals;$env[allAnimals]]
-      $jsonSet[tierData;commonAnimals;$env[commonAnimals]]
-      $jsonSet[tierData;rareAnimals;$env[rareAnimals]]
-
-      $jsonSet[result;$get[tier];$env[tierData]]
+      $objectDefaults[result;$get[tier];$objectOf[allAnimals;$arrayOf;commonAnimals;$arrayOf;rareAnimals;$arrayOf]]
+      $arrayPushAt[result;$get[tier];allAnimals;$jsonGet[animal;ID]]
+      $arrayPushAt[result;$get[tier];$if[$jsonGet[animal;isRare];rareAnimals;commonAnimals];$jsonGet[animal;ID]]
     ]
 
     $setCache[animals;tierAnimals;$env[result]]

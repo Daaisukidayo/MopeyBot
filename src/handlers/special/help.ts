@@ -1,108 +1,73 @@
-export default {
-    name: 'handleHelp',
-    code: `
-        $reply
-        $jsonLoad[userProfile;$getProfile]
-        $let[l;$env[userProfile;language]]
-        
-        $checkProfile
-        $addCooldown
+import { ForgeFunction } from "@tryforge/forgescript"
 
-        $defer
+export default new ForgeFunction({
+  name: "handleHelp",
+  code: `
+		$reply
+		$jsonLoad[userProfile;$getProfile]
+		$let[l;$jsonGet[userProfile;language]]
 
-        $let[arg;$toLowerCase[$default[$option[command];$message[0]]]]
-        $let[prefix;$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]]
+		$checkProfile
+		$addCooldown
+		$defer
 
-        $jsonLoad[commandsData;$readFile[res/data/commandsData.json]]
-        $jsonLoad[commandsEntries;$jsonEntries[commandsData]]
+		$let[arg;$toLowerCase[$default[$option[command];$message[0]]]]
+		$jsonLoad[commandsData;$readFile[res/data/commandsData.json]]
+		$jsonLoad[commandsEntries;$jsonEntries[commandsData]]
 
-        $if[$get[arg]==;            
-            $addContainer[
-                $addTextDisplay[$tl[ui.help.allCommandsTitle.$get[l]]]
-                $addSeparator
-                $addTextDisplay[$tl[ui.help.detailed.$get[l]]]
-                $addSeparator
+		$c[No command given: every command by category]
+		$if[$get[arg]==;
+			$addContainer[
+				$addTextDisplay[$tl[ui.help.allCommandsTitle.$get[l]]]
+				$addSeparator
+				$addTextDisplay[$tl[ui.help.detailed.$get[l]]]
+				$addSeparator
 
-                $arrayForEach[$getGlobalVar[helpCategories];c;
-                    $arrayMap[commandsEntries;data;
-                        $if[$env[c]==$env[data;1;category];
-                            $return[$env[data;1;name]]
-                        ]
-                    ;commands]
+				$arrayForEach[$getGlobalVar[helpCategories];c;
+					$addTextDisplay[## _$tl[data.helpCategories.$env[c].$get[l]]_]
+					$addTextDisplay[$codeBlock[$arrayFormat[$arrayFilter[commandsEntries;data;$jsonGet[data;1;category]==$env[c]];{1.name};;; ]]]
+					$addSeparator[Large]
+				]
 
-                    $addTextDisplay[## _$tl[data.helpCategories.$env[c].$get[l]]_]
-                    $addTextDisplay[$codeBlock[$arrayJoin[commands; ]]]
+				$addTextDisplay[$tl[ui.help.assistance.$get[l];$getGlobalVar[discordServerInvite]]]
+			;$getGlobalVar[defaultColor]]
+		;
+			$c[A command is found by its name or any of its aliases]
+			$jsonLoad[commandInfo;$arrayFind[commandsEntries;data;$or[$arrayIncludes[$jsonGet[data;1;aliases];$get[arg]];$jsonGet[data;1;name]==$get[arg]]]]
+			$onlyIf[$env[commandInfo]!=;
+				$newError[$tl[ui.help.noInfo.$get[l]]]
+			]
 
-                    $addSeparator[Large]
-                ]
+			$let[name;$jsonGet[commandInfo;1;name]]
+			$let[description;$arrayJoin[$jsonGet[commandInfo;1;description;$get[l]];\n]]
+			$onlyIf[$get[description]!=;
+				$logger[Error;$get[name] is missing 'description']
+				$newError[$tl[ui.help.noInfo.$get[l]]]
+			]
 
-                $addTextDisplay[$tl[ui.help.assistance.$get[l];$getGlobalVar[discordServerInvite]]]
-            ;$getGlobalVar[defaultColor]]
-        ;
-            $jsonLoad[commandInfo;$arrayFind[commandsEntries;data;
-                $return[$or[$arrayIncludes[$env[data;1;aliases];$get[arg]];$env[data;1;name]==$get[arg]]]
-            ]]
+			$c[A placeholder like {PREFIX} is replaced with what its code gives, (N) with a new line]
+			$arrayForEach[$getGlobalVar[helpReplacements];replacement;
+				$if[$includes[$get[description];$jsonGet[replacement;0]];
+					$let[description;$replace[$get[description];$jsonGet[replacement;0];$eval[$jsonGet[replacement;1];false];-1]]
+				]
+			]
+			$let[description;$replace[$get[description];(N);\n;-1]]
 
-            $if[$env[commandInfo]==;
-                $newError[$tl[ui.help.noInfo.$get[l]]]
-            ]
+			$jsonLoad[aliases;$jsonGet[commandInfo;1;aliases]]
+			$arrayUnshift[aliases;$get[name]]
+			$arrayMap[$jsonGet[commandInfo;1;related];elem;$return[$nullish[$jsonGet[commandsData;$env[elem];name];$env[elem]]];related]
 
-            $let[emoji;$getGlobalVar[mopecoin]]
-            $let[maxCoinflipBet;$getGlobalVar[maxCoinflipBet]]
-            $let[maxSlotsBet;$getGlobalVar[maxSlotsBet]]
-            $let[maxLobbyParticipants;$getGlobalVar[maxLobbyParticipants]]
-            $let[timezonesHyperlink;$hyperlink[List of all timezones;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones]]
-            $arrayMap[$getGlobalVar[difficulties];elem;
-                $return[$tl[data.difficulties.$env[elem].$get[l]]]
-            ;hlDifficulties]
-
-
-            $arrayMap[$jsonEntries[$getGlobalVar[allLocales]];elem;
-                $return[$env[elem;0] - $env[elem;1]]
-            ;locales]
-
-            
-            $jsonLoad[bracketsInfo;$tl[data.bracketsInfo.$get[l]]]
-            $jsonLoad[umbrellaRarities;$tl[data.umbrellaRarities.$get[l]]]
-            $jsonLoad[beachballRarities;$tl[data.beachballRarities.$get[l]]]
-            $jsonLoad[pumpkinRarities;$tl[data.pumpkinRarities.$get[l]]]
-            $jsonLoad[replacements;$getGlobalVar[helpReplacements]]
-
-            $jsonLoad[related;$env[commandInfo;1;related]]
-            $jsonLoad[aliases;$env[commandInfo;1;aliases]]
-            $jsonLoad[description;$env[commandInfo;1;description;$get[l]]]
-
-            $let[detailedName;$env[commandInfo;1;detailedName;$get[l]]]
-            $let[name;$env[commandInfo;1;name]]
-            $let[description;$arrayJoin[description;\n]]
-
-            $if[$get[description]==;
-                $logger[Error;$get[name] is missing 'description']
-                $newError[$tl[ui.help.noInfo.$get[l]]]
-            ]
-
-            $arrayUnshift[aliases;$get[name]]
-
-            $arrayForEach[replacements;elem;
-                $let[description;$replace[$get[description];$env[elem;0];$eval[$env[elem;1];false];-1]]
-            ]
-
-            $let[description;$replace[$get[description];(N);\n;-1]]
-
-            $arrayMap[related;elem;$return[$nullish[$env[commandsData;$env[elem];name];$env[elem]]];related]
-
-            $addContainer[
-                $addTextDisplay[$tl[ui.help.commandTitle.$get[l];$get[detailedName]]]
-                $addSeparator
-                $addTextDisplay[$get[description]]
-                $addSeparator
-                $addTextDisplay[$tl[ui.help.aliasesTitle.$get[l]]]
-                $addTextDisplay[## \`$arrayJoin[aliases;\` \`]\`]
-                $addSeparator
-                $addTextDisplay[$tl[ui.help.relatedTitle.$get[l]]]
-                $addTextDisplay[## \`$default[$arrayJoin[related;\` \`];$tl[ui.help.none.$get[l]]]\`]
-            ;$getGlobalVar[defaultColor]]
-        ]
-        
-    `
-}
+			$addContainer[
+				$addTextDisplay[$tl[ui.help.commandTitle.$get[l];$jsonGet[commandInfo;1;detailedName;$get[l]]]]
+				$addSeparator
+				$addTextDisplay[$get[description]]
+				$addSeparator
+				$addTextDisplay[$tl[ui.help.aliasesTitle.$get[l]]]
+				$addTextDisplay[## \`$arrayJoin[aliases;\` \`]\`]
+				$addSeparator
+				$addTextDisplay[$tl[ui.help.relatedTitle.$get[l]]]
+				$addTextDisplay[## \`$default[$arrayJoin[related;\` \`];$tl[ui.help.none.$get[l]]]\`]
+			;$getGlobalVar[defaultColor]]
+		]
+	`
+})

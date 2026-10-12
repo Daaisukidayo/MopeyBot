@@ -1,63 +1,25 @@
 import { BaseCommand } from "@tryforge/forgescript"
 
 export default new BaseCommand({
-  type: 'clientReady',
+  type: "clientReady",
   code: `
-    $fn[embed;
-      $addContainer[
-        $addTextDisplay[$tl[ui.reminders.sentReminderTitle.$env[locale]]]
-        $addSeparator[Large]
-        $addTextDisplay[$tl[ui.reminders.on.$env[locale];$tl[data.reminders.$env[reminder_id].$env[locale]]]]
-        $addSeparator
-        $addTextDisplay[$tl[ui.reminders.sentReminderTip.$env[locale];/reminders]]
-      ;$getGlobalVar[defaultColor]]
-    ;reminder_id;locale]
+    $migrateUserReminders
 
-    $calendar[Iso8601]
+    $c[Resets run only from the crons: ForgeTimers replays a midnight missed while offline once on startup (cronConfig.restoredTicksLimit in index.ts). Calling them here too ran them twice, both passing the day check]
 
-    $loop[-1;
-      $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
-      $let[week;$calendarWeek]
-      $let[day;$calendarDay]
+    $let[dailyCron;0 0 * * *]
+    $let[weeklyCron;0 0 * * 1]
 
-      $c[REMIND DAILY REWARD]
-      $if[$getGlobalVar[lastCheckedDayInReady;-1]!=$get[day]; 
-        $setGlobalVar[lastCheckedDayInReady;$get[day]]
-        $forOf[allUserIDs;userId;
-          $let[id;$env[userId]]
-          $jsonLoad[userReminders;$getUserVar[userReminders;$get[id]]]
-          $jsonLoad[userProfile;$getProfile[$get[id]]]
+    $if[$timerExists[cron;dailyReset];
+      $if[$getTimer[cron;dailyReset;cron]!=$get[dailyCron];$!rescheduleTimer[cron;dailyReset;$get[dailyCron]]]
+    ;
+      $setCron[$runDailyReset;$get[dailyCron];dailyReset]
+    ]
 
-          $deleteUserVar[caughtRaresInRaretryrun;$get[id]]
-          $deleteUserVar[caughtRaresInRaretry;$get[id]]
-
-          $if[$env[userProfile;limiters;lastDailyDay]==$get[day];$continue]
-          $if[$arrayIncludes[userReminders;0];;$continue]
-          $if[$isUserDMEnabled[$get[id]];;$continue]
-
-          $callFn[embed;0;$env[userProfile;language]]
-          $sendDM[$get[id]]
-        ]
-      ]
-
-      $c[REMIND WEEKLY REWARD]
-      $if[$getGlobalVar[lastCheckedWeeklyInReady;-1]!=$get[week]; 
-        $setGlobalVar[lastCheckedWeeklyInReady;$get[week]]
-
-        $forOf[allUserIDs;userId;
-          $let[id;$env[userId]]
-          $jsonLoad[userReminders;$getUserVar[userReminders;$get[id]]]
-          $jsonLoad[userProfile;$getProfile[$get[id]]]
-
-          $if[$env[userProfile;limiters;lastWeeklyWeek]==$get[week];$continue]
-          $if[$arrayIncludes[userReminders;1]==false;$continue]
-          $if[$isUserDMEnabled[$get[id]]==false;$continue]
-
-          $callFn[embed;1;$env[userProfile;language]]
-          $sendDM[$get[id]]
-        ]
-      ]
-      $wait[5m]
+    $if[$timerExists[cron;weeklyReset];
+      $if[$getTimer[cron;weeklyReset;cron]!=$get[weeklyCron];$!rescheduleTimer[cron;weeklyReset;$get[weeklyCron]]]
+    ;
+      $setCron[$runWeeklyReset;$get[weeklyCron];weeklyReset]
     ]
   `
 })

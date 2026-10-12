@@ -1,36 +1,24 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleKingdragon',
+  name: "handleKingdragon",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
-    
+    $let[l;$jsonGet[userProfile;language]]
+
     $checkProfile
     $addCooldown
-
     $defer
 
-    $let[luckRarity;$random[1;1000]]
+    $c[The black dragon becomes the rare king dragon by its rarity (1 in 1000). A developer can give the roll]
+    $let[rare;$checkCondition[$if[$and[$message!=;$isDev];$message;$random[1;$getAnimalInfo[rare_king_dragon;rarity.1]]]<=$getAnimalInfo[rare_king_dragon;rarity.0]]]
 
-    $if[$and[$env[userProfile;devMode]==1;$message!=];
-      $let[luckRarity;$message]
-    ]
-    
-    $if[$get[luckRarity]==1;
-      $addContainer[
-        $addAuthorDisplay
-        $addTextDisplay[$tl[ui.kingdragon.chooseUpgrade.$get[l]]]
-        $addUpgradeMenuAnimalChoices[rareKingDragon]
-      ;$getGlobalVar[rareKingDragonColor]]
-    ;
-      $addContainer[
-        $addAuthorDisplay
-        $addTextDisplay[$tl[ui.kingdragon.chooseUpgrade.$get[l]]]
-        $addUpgradeMenuAnimalChoices[blackDragon]
-      ;$getGlobalVar[defaultColor]]
-    ]
+    $addContainer[
+      $addAuthorDisplay
+      $addTextDisplay[$tl[ui.kingdragon.chooseUpgrade.$get[l]]]
+      $addUpgradeMenuAnimalChoices[$if[$get[rare];rare_king_dragon;black_dragon]]
+    ;$getGlobalVar[$if[$get[rare];rareKingDragonColor;defaultColor]]]
 
     $newCommandTimeout
   `

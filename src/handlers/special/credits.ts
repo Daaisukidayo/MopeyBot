@@ -1,9 +1,11 @@
-export default {
-  name: 'handleCredits',
+import { ForgeFunction } from "@tryforge/forgescript"
+
+export default new ForgeFunction({
+  name: "handleCredits",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown
@@ -20,4 +22,4 @@ export default {
       $addTextDisplay[$tl[ui.credits.madeWithLove.$get[l]]]
     ;$getGlobalVar[defaultColor]]
   `
-}
+})

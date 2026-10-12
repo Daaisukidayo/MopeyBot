@@ -1,4 +1,5 @@
 import { commandsData } from "#commandsData"
+import { localized } from "../../utils/getLocalization.js"
 import { ApplicationCommand } from "@tryforge/forgescript"
 const slash = commandsData.command_prefix.slash
 const options = slash.options
@@ -10,44 +11,12 @@ export default new ApplicationCommand({
   `,
   data: {
     type: 1,
-    integration_types: [
-      0
-    ],
-    contexts: [
-      0
-    ],
+    integration_types: [0],
+    contexts: [0],
     default_member_permissions: "32",
 
-    name: slash.name["default"],
-    name_localizations: {
-      "en-US": slash.name["en-US"],
-      "ru": slash.name["ru"]
-    },
-    
-    description: slash.description["default"],
-    description_localizations: {
-      "en-US": slash.description["en-US"],
-      "ru": slash.description["ru"]
-    },
+    ...localized(slash),
 
-    options: [
-      {
-        type: 3,
-        required: true,
-        min_length: 1,
-        max_length: 5,
-
-        name: options[0].name["default"],
-        name_localizations: {
-          "en-US": options[0].name["en-US"],
-          "ru": options[0].name["ru"]
-        },
-        description: options[0].description["default"],
-        description_localizations: {
-          "en-US": options[0].description["en-US"],
-          "ru": options[0].description["ru"]
-        }
-      }
-    ]
+    options: [{ type: 3, required: true, min_length: 1, max_length: 5, ...localized(options[0]) }]
   }
 })

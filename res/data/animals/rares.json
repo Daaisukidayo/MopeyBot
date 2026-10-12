@@ -1,0 +1,796 @@
+{
+  "dove": {
+    "fullName": "Dove",
+    "isRare": true,
+    "common": "pigeon",
+    "rarity": [
+      1,
+      10
+    ],
+    "challenge": {
+      "category": 2,
+      "abbreviations": [
+        "wd",
+        "whitedove"
+      ]
+    }
+  },
+  "pinky": {
+    "fullName": "Pinky Pig",
+    "isRare": true,
+    "common": "pig",
+    "rarity": [
+      49,
+      450
+    ],
+    "challenge": {
+      "category": 2,
+      "abbreviations": [
+        "pp",
+        "pinkypig"
+      ]
+    }
+  },
+  "stinky": {
+    "fullName": "Stinky Pig",
+    "isRare": true,
+    "common": "pig",
+    "rarity": [
+      1,
+      450
+    ],
+    "challenge": {
+      "category": 5,
+      "abbreviations": [
+        "sp",
+        "stinkypig"
+      ]
+    }
+  },
+  "doe": {
+    "fullName": "Doe",
+    "isRare": true,
+    "common": "deer",
+    "rarity": [
+      20,
+      100
+    ],
+    "challenge": {
+      "category": 1,
+      "abbreviations": [
+        "doe"
+      ]
+    }
+  },
+  "marsh": {
+    "fullName": "Marsh Deer",
+    "isRare": true,
+    "common": "deer",
+    "rarity": [
+      1,
+      100
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "mad",
+        "marshdeer"
+      ]
+    }
+  },
+  "musk": {
+    "fullName": "Musk Deer",
+    "isRare": true,
+    "common": "reindeer",
+    "rarity": [
+      1,
+      40
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "mud",
+        "muskdeer"
+      ]
+    }
+  },
+  "golden_pheasant": {
+    "deleted": true,
+    "fullName": "Golden Pheasant",
+    "isRare": true,
+    "common": "swinehoe",
+    "rarity": [
+      5,
+      100
+    ],
+    "challenge": {
+      "category": 2,
+      "points": 3,
+      "abbreviations": [
+        "gph",
+        "goldenpheasant"
+      ]
+    }
+  },
+  "jackass": {
+    "fullName": "Jackass",
+    "isRare": true,
+    "common": "donkey",
+    "rarity": [
+      1,
+      56
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "jac",
+        "jack",
+        "jackass"
+      ]
+    }
+  },
+  "blue": {
+    "fullName": "Blue Macaw",
+    "isRare": true,
+    "common": "macaw",
+    "rarity": [
+      300,
+      3000
+    ],
+    "challenge": {
+      "category": 2,
+      "abbreviations": [
+        "bm",
+        "bluemacaw"
+      ]
+    }
+  },
+  "spix": {
+    "fullName": "Spix's Macaw",
+    "isRare": true,
+    "common": "macaw",
+    "rarity": [
+      1,
+      3000
+    ],
+    "challenge": {
+      "category": 6,
+      "abbreviations": [
+        "sm",
+        "spixmacaw"
+      ]
+    }
+  },
+  "jaguar": {
+    "fullName": "Jaguar",
+    "isRare": true,
+    "common": "cheetah",
+    "rarity": [
+      10,
+      100
+    ],
+    "challenge": {
+      "category": 2,
+      "abbreviations": [
+        "jag",
+        "jaguar"
+      ]
+    }
+  },
+  "leopard": {
+    "fullName": "Leopard",
+    "isRare": true,
+    "common": "cheetah",
+    "rarity": [
+      9,
+      100
+    ],
+    "challenge": {
+      "category": 2,
+      "abbreviations": [
+        "leo",
+        "leopard"
+      ]
+    }
+  },
+  "black_panther": {
+    "fullName": "Black Panther",
+    "isRare": true,
+    "common": "cheetah",
+    "rarity": [
+      1,
+      100
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "bp",
+        "blackpanther"
+      ]
+    }
+  },
+  "choco": {
+    "fullName": "Choco Toucan",
+    "isRare": true,
+    "common": "toucan",
+    "rarity": [
+      900,
+      3000
+    ],
+    "challenge": {
+      "category": 0,
+      "abbreviations": [
+        "cht",
+        "choco",
+        "chocotoucan"
+      ]
+    }
+  },
+  "keel_billed": {
+    "fullName": "Keel-billed Toucan",
+    "isRare": true,
+    "common": "toucan",
+    "rarity": [
+      700,
+      3000
+    ],
+    "challenge": {
+      "category": 0,
+      "abbreviations": [
+        "kbt",
+        "keelbilled",
+        "keelbilledtoucan"
+      ]
+    }
+  },
+  "fiery": {
+    "fullName": "Fiery Toucan",
+    "isRare": true,
+    "common": "toucan",
+    "rarity": [
+      375,
+      3000
+    ],
+    "challenge": {
+      "category": 1,
+      "abbreviations": [
+        "ft",
+        "fiery",
+        "fierytoucan"
+      ]
+    }
+  },
+  "lava": {
+    "biome": 5,
+    "fullName": "Lava Toucan",
+    "isRare": true,
+    "common": "toucan",
+    "rarity": [
+      24,
+      3000
+    ],
+    "challenge": {
+      "category": 4,
+      "abbreviations": [
+        "lt",
+        "lava",
+        "lavatoucan"
+      ]
+    }
+  },
+  "helmeted_hornbill": {
+    "fullName": "Helmeted Hornbill",
+    "isRare": true,
+    "common": "toucan",
+    "rarity": [
+      1,
+      3000
+    ],
+    "challenge": {
+      "category": 6,
+      "abbreviations": [
+        "hht",
+        "helmetedhornbill",
+        "helmetedhornbilltoucan"
+      ]
+    }
+  },
+  "yellow": {
+    "fullName": "Yellow Pufferfish",
+    "isRare": true,
+    "common": "pufferfish",
+    "rarity": [
+      80,
+      240
+    ],
+    "challenge": {
+      "category": 0,
+      "abbreviations": [
+        "yp",
+        "yellowpufferfish"
+      ]
+    }
+  },
+  "demon": {
+    "fullName": "Demonfish",
+    "isRare": true,
+    "common": "pufferfish",
+    "rarity": [
+      3,
+      240
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "dp",
+        "df",
+        "demonfish",
+        "demonpufferfish"
+      ]
+    }
+  },
+  "black_bear": {
+    "deleted": true,
+    "fullName": "Black Bear",
+    "isRare": true,
+    "common": "bear",
+    "rarity": [
+      10,
+      200
+    ]
+  },
+  "lioness": {
+    "fullName": "Lioness",
+    "isRare": true,
+    "common": "lion",
+    "rarity": [
+      113,
+      1000
+    ],
+    "challenge": {
+      "category": 1,
+      "abbreviations": [
+        "ln",
+        "lioness"
+      ]
+    }
+  },
+  "cub": {
+    "fullName": "Lion Cub",
+    "isRare": true,
+    "common": "lion",
+    "rarity": [
+      53,
+      1000
+    ],
+    "challenge": {
+      "category": 2,
+      "abbreviations": [
+        "lc",
+        "lioncub"
+      ]
+    }
+  },
+  "black_maned": {
+    "fullName": "Black-Maned Lion",
+    "isRare": true,
+    "common": "lion",
+    "rarity": [
+      13,
+      1000
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "bml",
+        "blackmanedlion"
+      ]
+    }
+  },
+  "white_cub": {
+    "fullName": "White Lion Cub",
+    "isRare": true,
+    "common": "lion",
+    "rarity": [
+      5,
+      1000
+    ],
+    "challenge": {
+      "category": 4,
+      "abbreviations": [
+        "wlc",
+        "whitelioncub"
+      ]
+    }
+  },
+  "white_lioness": {
+    "fullName": "White Lioness",
+    "isRare": true,
+    "common": "lion",
+    "rarity": [
+      5,
+      1000
+    ],
+    "challenge": {
+      "category": 4,
+      "abbreviations": [
+        "wln",
+        "whitelioness"
+      ]
+    }
+  },
+  "white_lion": {
+    "fullName": "White Lion",
+    "isRare": true,
+    "common": "lion",
+    "rarity": [
+      5,
+      1000
+    ],
+    "challenge": {
+      "category": 4,
+      "abbreviations": [
+        "wl",
+        "whitelion"
+      ]
+    }
+  },
+  "black_cub": {
+    "fullName": "Black Lion Cub",
+    "isRare": true,
+    "common": "lion",
+    "rarity": [
+      2,
+      1000
+    ],
+    "challenge": {
+      "category": 5,
+      "abbreviations": [
+        "blc",
+        "blacklioncub"
+      ]
+    }
+  },
+  "black_lioness": {
+    "fullName": "Black Lioness",
+    "isRare": true,
+    "common": "lion",
+    "rarity": [
+      2,
+      1000
+    ],
+    "challenge": {
+      "category": 5,
+      "abbreviations": [
+        "bln",
+        "blacklioness"
+      ]
+    }
+  },
+  "black_lion": {
+    "fullName": "Black Lion",
+    "isRare": true,
+    "common": "lion",
+    "rarity": [
+      2,
+      1000
+    ],
+    "challenge": {
+      "category": 5,
+      "abbreviations": [
+        "bl",
+        "blacklion"
+      ]
+    }
+  },
+  "white_tiger": {
+    "fullName": "White Tiger",
+    "isRare": true,
+    "common": "tiger",
+    "rarity": [
+      10,
+      200
+    ],
+    "challenge": {
+      "category": 2,
+      "abbreviations": [
+        "wt",
+        "whitetiger"
+      ]
+    }
+  },
+  "black_tiger": {
+    "deleted": true,
+    "fullName": "Black Tiger",
+    "isRare": true,
+    "common": "tiger",
+    "rarity": [
+      1,
+      200
+    ]
+  },
+  "predator": {
+    "fullName": "Predator Falcon",
+    "isRare": true,
+    "common": "falcon",
+    "rarity": [
+      50,
+      4000
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "pf",
+        "pre",
+        "predator"
+      ]
+    }
+  },
+  "shaheen": {
+    "fullName": "Shaheen Falcon",
+    "isRare": true,
+    "common": "falcon",
+    "rarity": [
+      1,
+      4000
+    ],
+    "challenge": {
+      "category": 6,
+      "abbreviations": [
+        "sf",
+        "sha",
+        "shaheen"
+      ]
+    }
+  },
+  "argentavis": {
+    "fullName": "Argentavis",
+    "isRare": true,
+    "common": "vulture",
+    "rarity": [
+      1,
+      2500
+    ],
+    "challenge": {
+      "category": 6,
+      "abbreviations": [
+        "arg",
+        "argentavis"
+      ]
+    }
+  },
+  "big_goat": {
+    "fullName": "Big Goat",
+    "isRare": true,
+    "common": "markhor",
+    "rarity": [
+      1,
+      47
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "bg",
+        "biggoat"
+      ]
+    }
+  },
+  "white_rhinoceros": {
+    "fullName": "White Rhino",
+    "isRare": true,
+    "common": "rhinoceros",
+    "rarity": [
+      4,
+      1000
+    ],
+    "challenge": {
+      "category": 4,
+      "abbreviations": [
+        "wr",
+        "whiterhino"
+      ]
+    }
+  },
+  "black_rhinoceros": {
+    "fullName": "Black Rhino",
+    "isRare": true,
+    "common": "rhinoceros",
+    "rarity": [
+      2,
+      1000
+    ],
+    "challenge": {
+      "category": 5,
+      "abbreviations": [
+        "br",
+        "blackrhino"
+      ]
+    }
+  },
+  "golden": {
+    "fullName": "Golden Eagle",
+    "isRare": true,
+    "common": "eagle",
+    "rarity": [
+      28,
+      7000
+    ],
+    "challenge": {
+      "category": 4,
+      "abbreviations": [
+        "ge",
+        "goldeneagle"
+      ]
+    }
+  },
+  "harpy": {
+    "fullName": "Harpy Eagle",
+    "isRare": true,
+    "common": "eagle",
+    "rarity": [
+      1,
+      7000
+    ],
+    "challenge": {
+      "category": 6,
+      "abbreviations": [
+        "har",
+        "harpyeagle"
+      ]
+    }
+  },
+  "greater_spotted": {
+    "fullName": "Greater Spotted Eagle",
+    "isRare": true,
+    "common": "eagle",
+    "rarity": [
+      1,
+      7000
+    ],
+    "challenge": {
+      "category": 6,
+      "abbreviations": [
+        "gse",
+        "greaterspottedeagle"
+      ]
+    }
+  },
+  "momaffie": {
+    "deleted": true,
+    "fullName": "Momaffie",
+    "isRare": true,
+    "common": "giraffe",
+    "rarity": [
+      50,
+      500
+    ],
+    "challenge": {
+      "category": 2,
+      "points": 3,
+      "abbreviations": [
+        "mom",
+        "momaffie"
+      ]
+    }
+  },
+  "momaffie_family": {
+    "deleted": true,
+    "fullName": "Momaffie Family",
+    "isRare": true,
+    "common": "giraffe",
+    "rarity": [
+      25,
+      500
+    ],
+    "challenge": {
+      "category": 2,
+      "points": 3,
+      "abbreviations": [
+        "mf",
+        "momaffiefamily"
+      ]
+    }
+  },
+  "girabie": {
+    "deleted": true,
+    "fullName": "Girabie",
+    "isRare": true,
+    "common": "giraffe",
+    "rarity": [
+      10,
+      500
+    ],
+    "challenge": {
+      "category": 4,
+      "points": 10,
+      "abbreviations": [
+        "gir",
+        "girabie"
+      ]
+    }
+  },
+  "white_giraffe": {
+    "fullName": "White Giraffe",
+    "isRare": true,
+    "common": "giraffe",
+    "rarity": [
+      70,
+      3290
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "wg",
+        "whitegiraffe"
+      ]
+    }
+  },
+  "family": {
+    "fullName": "Giraffe Family",
+    "isRare": true,
+    "common": "giraffe",
+    "rarity": [
+      47,
+      3290
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "gf",
+        "wgf",
+        "giraffefamily"
+      ]
+    }
+  },
+  "aqua": {
+    "fullName": "Aqua Yeti",
+    "isRare": true,
+    "common": "yeti",
+    "rarity": [
+      25,
+      800
+    ],
+    "challenge": {
+      "category": 3,
+      "abbreviations": [
+        "ay",
+        "aq",
+        "aquayeti"
+      ]
+    }
+  },
+  "forgotten_one": {
+    "fullName": "The Forgotten One",
+    "isRare": true,
+    "common": "yeti",
+    "rarity": [
+      1,
+      300
+    ],
+    "challenge": {
+      "category": 5,
+      "abbreviations": [
+        "tfo",
+        "fo",
+        "theforgottenone",
+        "forgottenone"
+      ]
+    }
+  },
+  "rare_king_dragon": {
+    "fullName": "Rare King Dragon",
+    "isRare": true,
+    "common": "black_dragon",
+    "rarity": [
+      1,
+      1000
+    ],
+    "challenge": {
+      "category": 6,
+      "abbreviations": [
+        "rkd",
+        "rarekingdragon"
+      ]
+    }
+  }
+}

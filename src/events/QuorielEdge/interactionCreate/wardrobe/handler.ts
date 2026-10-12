@@ -1,100 +1,117 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "wardrobe",
   type: "interactionCreate",
-  allowed: ["stringSelect"],
+  allowed: ["stringSelect", "button"],
   code: `
     $arrayLoad[IID;-;$customID]
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
     $addCooldown[wardrobe;true]
 
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
-    $jsonLoad[animals;$getAnimalsData]
-    $jsonLoad[animalIds;$jsonKeys[$getCache[animals;animalIndexes]]]
+    $c[Read by reference: never modify 'animals']
+    $cacheAnimalsData
+    $getCache[animals;animalsData;animals]
 
-    $let[option;$env[IID;2]] $c[Containst tier number or 'all']
-    $let[value;$selectMenuValues] $c[Contains animal's variant or skin pack's id]
+    $c[The option is a tier, 'all' or an animal. The value is a skin pack, or the id of the animal's skin]
+    $let[option;$jsonGet[IID;2]]
+    $let[value;$selectMenuValues]
 
-    $switch[$env[IID;1];
-      $case[tier;
-        $if[$get[option]==all;  $c[If all tiers]
-        
-          $arrayForEach[animalIds;animalId;
-            $forOf[$getAnimalInfo[$env[animalId];variants];variant;
-              $let[packId;$env[variant;packId]]
+    $switch[$jsonGet[IID;1];
+      $case[menu;
+        $c[The start menu: every animal one by one from the mouse, or what to choose next]
+        $switch[$get[value];
+          $case[new;$animalsEmbed[userWardrobe;mouse;true]]
+          $case[animal;$wardrobeTierEmbed[animal]]
+          $case[tier;$wardrobeTierEmbed[pack]]
+          $case[all;$wardrobePacksEmbed[all]]
+        ]
+        $interactionUpdate
+        $newCommandTimeout[wardrobe]
+      ]
 
-              $if[$get[packId]==$get[value];;$continue]
+      $case[chooseTier;
+        $c[The tier is chosen for a skin pack of the whole tier, or for one of its animals]
+        $onlyIf[$inRange[$get[value];1;17];$deferUpdate]
+        $if[$get[option]==animal;
+          $wardrobeAnimalsEmbed[userWardrobe;$get[value]]
+        ;
+          $wardrobePacksEmbed[$get[value]]
+        ]
+        $interactionUpdate
+        $newCommandTimeout[wardrobe]
+      ]
 
-              $!jsonSet[userWardrobe;$env[animalId];$env[i]]
-
-              $break
-            ;i]
-          ]
-          $setUserVar[userWardrobe;$env[userWardrobe]]
-
-          $addContainer[
-            $addAuthorDisplay
-            $addTextDisplay[$tl[ui.wardrobe.allTitle.$get[l]]]
-            $addSeparator
-            $addSkinpacksMenu[all]
-          ;$getGlobalVar[defaultColor]]
-          $interactionUpdate
-
-          $addContainer[
-            $addTextDisplay[$tl[ui.wardrobe.equippedAll.$get[l];$tl[data.shopSkinPacks.$get[value].$get[l]]]]
-          ;$getGlobalVar[defaultColor]]
-
-        ;  $c[If only one tier]
-        
-          $let[tier;$get[option]]
-          $arrayLoad[content]
-          
-          $forOf[animalIds;animalId;
-            $let[animalTier;$getAnimalInfo[$env[animalId];tier]]
-
-            $if[$get[animalTier]>$get[tier];$break]
-            $if[$get[animalTier]!=$get[tier];$continue]
-
-            $jsonLoad[variants;$getAnimalInfo[$env[animalId];variants]]
-
-            $forOf[variants;variant;
-              $let[emoji;$env[variant;emoji]]
-              $let[packId;$env[variant;packId]]
-
-              $if[$get[packId]==$get[value];;$continue]
-
-              $!jsonSet[userWardrobe;$env[animalId];$env[j]]
-              $arrayPush[content;$get[emoji]]
-
-              $break
-            ;j]
-          ]
-
-          $addContainer[
-            $addAuthorDisplay
-            $addTextDisplay[$tl[ui.wardrobe.tierTitle.$get[l];$get[tier]]]
-            $addSeparator
-            $addSkinpacksMenu[$get[tier]]
-          ;$getGlobalVar[defaultColor]]
-          $interactionUpdate
-
-          $if[$arrayLength[content]>0;
-            $setUserVar[userWardrobe;$env[userWardrobe]]
-
-            $addContainer[
-              $addTextDisplay[$tl[ui.wardrobe.equippedTier.$get[l];$get[tier];$tl[data.shopSkinPacks.$get[value].$get[l]]]]
-              $addSeparator[Large]
-              $addTextDisplay[# $arrayJoin[content; ]]
-            ;$getGlobalVar[defaultColor]]
-          ;
-            $addContainer[
-              $addTextDisplay[$tl[ui.wardrobe.noSkinsInTier.$get[l];$get[tier];$tl[data.shopSkinPacks.$get[value].$get[l]]]]
-            ;Orange]
+      $case[back;
+        $c[Back: to the start menu, a tier choice, or a tier's animals]
+        $switch[$get[option];
+          $case[menu;$wardrobeMenuEmbed]
+          $case[pack;$wardrobeTierEmbed[pack]]
+          $case[animal;$wardrobeTierEmbed[animal]]
+          $case[default;
+            $onlyIf[$inRange[$get[option];1;17];$deferUpdate]
+            $wardrobeAnimalsEmbed[userWardrobe;$get[option]]
           ]
         ]
+        $interactionUpdate
+        $newCommandTimeout[wardrobe]
+      ]
 
+      $case[goto;
+        $c[Previous and Next: keep one by one on or off]
+        $getCache[animals;animalIndexes;animalIndexes]
+        $onlyIf[$jsonGet[animalIndexes;$get[option]]!=;$deferUpdate]
+        $animalsEmbed[userWardrobe;$get[option];$jsonGet[IID;4]]
+        $interactionUpdate
+        $newCommandTimeout[wardrobe]
+      ]
+
+      $case[chooseAnimal;
+        $getCache[animals;animalIndexes;animalIndexes]
+        $onlyIf[$jsonGet[animalIndexes;$get[value]]!=;$deferUpdate]
+        $animalsEmbed[userWardrobe;$get[value];false]
+        $interactionUpdate
+        $newCommandTimeout[wardrobe]
+      ]
+
+      $case[tier;
+        $c[Every animal of the tier, or of all tiers, gets its skin of the pack]
+        $arrayLoad[equipped]
+        $arrayForEach[animals;animal;
+          $if[$or[$get[option]==all;$jsonGet[animal;tier]==$get[option]];
+            $let[variant;$arrayFindIndex[$jsonGet[animal;variants];variant;$jsonGet[variant;packId]==$get[value]]]
+            $if[$get[variant]!=-1;
+              $!jsonSet[userWardrobe;$jsonGet[animal;ID];$jsonGet[animal;variants;$get[variant];id]]
+              $arrayPush[equipped;$jsonGet[animal;variants;$get[variant];emoji]]
+            ]
+          ]
+        ]
+        $if[$jsonSize[equipped]>0;$setUserVar[userWardrobe;$env[userWardrobe]]]
+
+        $wardrobePacksEmbed[$get[option]]
+        $interactionUpdate
+
+        $c[An ephemeral message tells what was equipped]
+        $let[pack;$tl[data.shopSkinPacks.$get[value].$get[l]]]
+        $if[$get[option]==all;
+          $addContainer[
+            $addTextDisplay[$tl[ui.wardrobe.equippedAll.$get[l];$get[pack]]]
+          ;$getGlobalVar[defaultColor]]
+        ;$if[$jsonSize[equipped]>0;
+          $addContainer[
+            $addTextDisplay[$tl[ui.wardrobe.equippedTier.$get[l];$get[option];$get[pack]]]
+            $addSeparator[Large]
+            $addTextDisplay[# $arrayJoin[equipped; ]]
+          ;$getGlobalVar[defaultColor]]
+        ;
+          $addContainer[
+            $addTextDisplay[$tl[ui.wardrobe.noSkinsInTier.$get[l];$get[option];$get[pack]]]
+          ;Orange]
+        ]]
         $ephemeral
         $interactionFollowUp
 
@@ -103,20 +120,15 @@ export default {
 
       $case[animal;
         $let[animalId;$get[option]]
+        $getCache[animals;animalIndexes;animalIndexes]
+        $onlyIf[$jsonGet[animalIndexes;$get[animalId]]!=;$deferUpdate]
 
-        $if[$env[IID;4]; $c[If equipping every animal one by one]
-          $onlyIf[$getAnimalInfo[$get[animalId];ID]!=undefined;$deferUpdate]
-          $!jsonSet[userWardrobe;$get[animalId];$get[variant]]
-          $setUserVar[userWardrobe;$env[userWardrobe]]
+        $!jsonSet[userWardrobe;$get[animalId];$get[value]]
+        $setUserVar[userWardrobe;$env[userWardrobe]]
 
-          $let[i;$arrayIndexOf[animalIds;$get[animalId]]]
-
-          $loop[-1;
-            $letSum[i;1]
-            $let[animalId;$arrayAt[animalIds;$get[i]]]
-            $if[$getAnimalInfo[$get[animalId];name;1]==undefined;;$break]
-          ]
-
+        $c[One by one: the next animal with more than one variant, none after the last]
+        $if[$jsonGet[IID;4];
+          $let[animalId;$jsonGet[$arrayFind[$arraySlice[animals;;$math[$jsonGet[animalIndexes;$get[animalId]] + 1]];animal;$jsonSize[animal;variants]>1];ID]]
           $onlyIf[$get[animalId]!=;
             $addContainer[
               $addAuthorDisplay
@@ -125,15 +137,12 @@ export default {
             $interactionUpdate
             $!stopCommandTimeout[wardrobe]
           ]
-        ; $c[If equipping only one animal]
-          $!jsonSet[userWardrobe;$get[animalId];$get[value]]
-          $setUserVar[userWardrobe;$env[userWardrobe]]
         ]
-        
-        $animalsEmbed[$get[animalId];$env[IID;4]]
+
+        $animalsEmbed[userWardrobe;$get[animalId];$jsonGet[IID;4]]
         $interactionUpdate
         $newCommandTimeout[wardrobe]
       ]
     ]
   `
-}
+})

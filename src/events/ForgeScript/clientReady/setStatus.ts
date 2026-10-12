@@ -5,17 +5,8 @@ export default new BaseCommand({
   code: `
     $logger[Info;Bot $username[$botID] is ready]
 
-    $loop[-1;
-      $if[$getGlobalVar[botEnabled];
-        $if[$math[$env[i] % 2]==0;
-          $setStatus[idle;Watching;$guildCount servers!]
-        ;
-          $setStatus[idle;Playing;$getGlobalVar[prefix]help]
-        ]
-      ;
-        $setStatus[dnd;Custom;Disabled for maintenance]
-      ]
-      $wait[15s]
-    ;i]
+    $c[Each call shows both statuses for 15s, so a 30s interval keeps them alternating]
+    $setInterval[$updateBotStatus;30s]
+    $updateBotStatus
   `
 })

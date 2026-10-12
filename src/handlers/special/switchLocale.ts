@@ -1,11 +1,11 @@
 import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
-  name: 'handleSwitchlocale',
+  name: "handleSwitchlocale",
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
     
     $checkProfile
     $addCooldown
@@ -25,7 +25,7 @@ export default new ForgeFunction({
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[ui.switchlocale.switched.$get[locale];$env[locales;$get[locale]]]]
+      $addTextDisplay[$tl[ui.switchlocale.switched.$get[locale];$jsonGet[locales;$get[locale]]]]
     ;$getGlobalVar[defaultColor]]
   `
 })

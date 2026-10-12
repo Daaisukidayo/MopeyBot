@@ -1,4 +1,6 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "kingdragon",
   type: "interactionCreate",
   allowed: ["button"],
@@ -6,92 +8,59 @@ export default {
     $arrayLoad[IID;-;$customID]
 
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$env[userProfile;language]]
+    $let[l;$jsonGet[userProfile;language]]
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
     $addCooldown[kingdragon;true]
 
-    $let[animalId;$env[IID;1]]
-    $let[wrIndex;$env[IID;2]]
+    $let[animalId;$jsonGet[IID;1]]
+    $let[wrIndex;$jsonGet[IID;2]]
 
-    $switch[$get[animalId];
-      $case[blackDragon;
+    $c[A black dragon becomes the king dragon 60% of the time, otherwise it gets some coins]
+    $if[$get[animalId]==black_dragon;
+      $if[$random[1;100]<=60;
+        $addContainer[
+          $addAuthorDisplay
+          $addTextDisplay[$tl[ui.kingdragon.chooseUpgrade.$get[l]]]
+          $addUpgradeMenuAnimalChoices[king_dragon]
+        ;$getGlobalVar[defaultColor]]
+        $interactionUpdate
+        $newCommandTimeout[kingdragon]
+      ;
         $let[MC;750]
-        $let[successRarity;$random[1;100]]
-        $let[successChance;60]
-
-          
-        $if[$get[successChance]>=$get[successRarity];
-          $addContainer[
-            $addAuthorDisplay
-            $addTextDisplay[$tl[ui.kingdragon.chooseUpgrade.$get[l]]]
-            $addUpgradeMenuAnimalChoices[kingDragon]
-          ;$getGlobalVar[defaultColor]]
-          $interactionUpdate
-
-          $newCommandTimeout[kingdragon]
-        ;
-          $sumCash[$get[MC]]
-          $saveProfile[$env[userProfile]]
-
-          $let[BD;$getAnimalInfo[blackDragon;emoji;$get[wrIndex]]]
-          $let[reason;$arrayRandomValue[$tl[ui.kingdragon.reasons.$get[l];$random[0;12]]]]
-
-          $addContainer[
-          $addAuthorDisplay
-            $addTextDisplay[$tl[ui.kingdragon.attempt.$get[l];$get[BD];$get[reason];$separate[$get[MC]]]]
-          ;$getGlobalVar[errorColor]]
-          $interactionUpdate
-
-          $!stopCommandTimeout[kingdragon]
-        ]
-      ]
-  
-      $case[kingDragon;
-        $jsonLoad[colors;$getGlobalVar[kingDragonColors]]
-
-        $let[MC;2500]
-        $let[animalDisplay;$getAnimalInfo[kingDragon;name;$get[wrIndex]]]
-        $let[thumbnail;$getAnimalInfo[kingDragon;img;$get[wrIndex]]]
-        $let[color;$env[colors;$get[wrIndex]]]
-
         $sumCash[$get[MC]]
         $saveProfile[$env[userProfile]]
 
         $addContainer[
           $addAuthorDisplay
-          $addSection[
-            $addTextDisplay[$tl[ui.kingdragon.upgrade.$get[l];$get[animalDisplay];$separate[$get[MC]]]]
-            $addThumbnail[$get[thumbnail]]
-          ]
-        ;$get[color]]
-
+          $addTextDisplay[$tl[ui.kingdragon.attempt.$get[l];$getAnimalInfo[black_dragon;emoji;$get[wrIndex]];$arraySample[$tl[ui.kingdragon.reasons.$get[l]]];$separate[$get[MC]]]]
+        ;$getGlobalVar[errorColor]]
         $interactionUpdate
         $!stopCommandTimeout[kingdragon]
       ]
-
-      $case[rareKingDragon;
-        $let[MC;250000]
-        $let[animalDisplay;$getAnimalInfo[rareKingDragon;name;$get[wrIndex]]]
-        $let[thumbnail;$getAnimalInfo[rareKingDragon;img;$get[wrIndex]]]
-        $let[color;$getGlobalVar[rareKingDragonColor]]
-
-        $sumCash[$get[MC]]
-        $saveProfile[$env[userProfile]]
-
-        $addContainer[
-          $addAuthorDisplay
-          $addSection[
-            $addTextDisplay[$tl[ui.kingdragon.byLuckUpgrade.$get[l];$get[animalDisplay];$separate[$get[MC]]]]
-            $addThumbnail[$get[thumbnail]]
-          ]
-          $addTextDisplay[$tl[ui.kingdragon.rarity.$get[l];$env[rareKingDragonRarity;0];$env[rareKingDragonRarity;1]]]
-        ;$get[color]]
-
-        $interactionUpdate
-        $!stopCommandTimeout[kingdragon]
-      ]
+      $stop
     ]
+
+    $c[The king dragon, or the rare one got by luck]
+    $onlyIf[$isOneOf[$get[animalId];king_dragon;rare_king_dragon]]
+    $let[rare;$checkCondition[$get[animalId]==rare_king_dragon]]
+    $let[MC;$if[$get[rare];250000;2500]]
+    $sumCash[$get[MC]]
+    $saveProfile[$env[userProfile]]
+
+    $addContainer[
+      $addAuthorDisplay
+      $addSection[
+        $addTextDisplay[$tl[ui.kingdragon.$if[$get[rare];byLuckUpgrade;upgrade].$get[l];$getAnimalInfo[$get[animalId];name;$get[wrIndex]];$separate[$get[MC]]]]
+        $addThumbnail[$animalImage[$get[animalId];$get[wrIndex]]]
+      ]
+      $if[$get[rare];
+        $addTextDisplay[$tl[ui.kingdragon.rarity.$get[l];$getAnimalInfo[rare_king_dragon;rarity.0];$getAnimalInfo[rare_king_dragon;rarity.1]]]
+      ]
+    ;$if[$get[rare];$getGlobalVar[rareKingDragonColor];$jsonGet[$getGlobalVar[kingDragonColors];$get[wrIndex]]]]
+
+    $interactionUpdate
+    $!stopCommandTimeout[kingdragon]
   `
-}
+})

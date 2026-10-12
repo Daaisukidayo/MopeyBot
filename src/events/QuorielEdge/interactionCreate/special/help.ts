@@ -1,30 +1,22 @@
-export default {
+import { Command } from "@quoriel/edge"
+
+export default new Command({
   name: "help",
   type: "interactionCreate",
-  allowed: ['autocomplete'],
+  allowed: ["autocomplete"],
   code: `
-    $let[focusedValue;$focusedOptionValue]
+    $let[focusedValue;$toLowerCase[$focusedOptionValue]]
 
-    $jsonLoad[commandsData;$readFile[res/data/commandsData.json]]
-    $jsonLoad[commandsData;$jsonEntries[commandsData]]
-    $arrayAdvancedSort[commandsData;a;b;$return[$localeCompare[$env[a;1;commandName];$env[b;1;commandName]]];commandsData]
+    $jsonLoad[commandsData;$arraySortBy[$jsonEntries[$readFile[res/data/commandsData.json]];asc;1;name]]
 
     $if[$get[focusedValue]!=;
-      $arrayFilter[commandsData;command;$return[$includes[$env[command;1;commandName];$get[focusedValue]]];commandsData]
+      $arrayFilter[commandsData;command;$includes[$jsonGet[command;1;name];$get[focusedValue]];commandsData]
     ]
 
-    $loop[25;
-      $jsonLoad[command;$arrayAt[commandsData;$math[$env[i] - 1]]]
-
-      $let[value;$env[command;1;commandName]]
-
-      $if[$get[value]==;
-        $break
-      ]
-
-      $addChoice[$get[value];$get[value]]
-    ;i;true]
+    $arrayForEach[$arraySlice[commandsData;;0;25];command;
+      $addChoice[$jsonGet[command;1;name];$jsonGet[command;1;name]]
+    ]
 
     true
   `
-}
+})
