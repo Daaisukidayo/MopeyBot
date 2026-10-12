@@ -18,7 +18,7 @@ export default new ForgeFunction({
       $addMediaGallery[
         $addMediaItem[attachment://rare-points-chart.png]
       ]
-      $addTextDisplay[$discordTimestamp[1791557000000;LongDateTime]]
+      $addTextDisplay[$discordTimestamp[1791833744470;LongDateTime]]
     ;$getGlobalVar[luckyColor]]
   `
 })

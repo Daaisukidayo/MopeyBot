@@ -9,7 +9,7 @@
     "eslint": "eslint ./src --fix",
     "prettier": "prettier --write \"./src/**/*\"",
     "lint": "eslint ./src && prettier --check \"./src/**/*\"",
-    "tidy": "npm run eslint && npm run prettier"
+    "tidy": "npm run eslint && npm run prettier && npm run lint && npm run build"
   },
   "imports": {
     "#commandsData": "./dist/utils/getCommandsData.js"

@@ -2,8 +2,8 @@
   "en-US": [
     "# New update!",
     "- New `play` command is now available to everyone! Farm XP, upgrade your animal up to the King Dragon and catch rares by luck, move between biomes, fight apex animals in the arena and collect soccers to earn coins! It's still experimental, more features are coming!",
-    "- New Rare Points Chart in `chart`! Rares are now split into 7 tiers: Trash (1), Common (2), Uncommon (4), Rare (9), Epic (14), Legendary (22) and Mythic (71).",
-    "- New limits in challenge difficulties! Default: max 3 of each Trash and Common. Medium: Trash 3, Common 2. Hard: Trash 3, Common 2, Uncommon 1. Easy has no limits!",
+    "- New Rare Points Chart in `chart`! Rares are now split into 7 tiers: Common (1), Common (2), Uncommon (4), Rare (9), Epic (14), Legendary (22) and Mythic (71).",
+    "- New limits in challenge difficulties! Default: max 3 of each Common. Medium: max 3 of each 1-point Common and 2 of each 2-point Common. Hard: the same, plus max 1 of each Uncommon. Easy has no limits!",
     "- Markhor and the rares removed from mope.io (Golden Pheasant, Momaffie, Momaffie Family, Girabie, Bigfoot, Snowman, Snowgirl) no longer count in new challenges!",
     " - They no longer drop in `raretry` and `hlsimulator` either, same as Black Bear and Black Tiger!",
     "- `time` now accepts any time from 0 to 3600 seconds! `3600` ends the hour right away!",
@@ -19,8 +19,8 @@
   "ru": [
     "# Новое обновление!",
     "- Команда `play` теперь доступна всем! Фармите опыт, прокачивайте животное вплоть до King Dragon и ловите редких по удаче, перемещайтесь между биомами, сражайтесь с апексами на арене и собирайте мячи, чтобы зарабатывать монеты! Команда всё ещё экспериментальная, новые возможности впереди!",
-    "- Новый чарт очков редких в `chart`! Теперь редкие разделены на 7 уровней: Trash (1), Common (2), Uncommon (4), Rare (9), Epic (14), Legendary (22) и Mythic (71).",
-    "- Новые лимиты в сложностях испытания! Обычная: не больше 3 каждого Trash и Common. Средняя: Trash 3, Common 2. Сложная: Trash 3, Common 2, Uncommon 1. В лёгкой лимитов нет!",
+    "- Новый чарт очков редких в `chart`! Теперь редкие разделены на 7 уровней: Common (1), Common (2), Uncommon (4), Rare (9), Epic (14), Legendary (22) и Mythic (71).",
+    "- Новые лимиты в сложностях испытания! Обычная: не больше 3 каждого Common. Средняя: не больше 3 каждого Common за 1 очко и 2 каждого Common за 2 очка. Сложная: то же самое и не больше 1 каждого Uncommon. В лёгкой лимитов нет!",
     "- Markhor и редкие, удалённые из mope.io (Golden Pheasant, Momaffie, Momaffie Family, Girabie, Bigfoot, Snowman, Snowgirl), больше не засчитываются в новых испытаниях!",
     " - Они также больше не выпадают в `raretry` и `hlsimulator`, как и Black Bear и Black Tiger!",
     "- `time` теперь принимает любое время от 0 до 3600 секунд! `3600` сразу завершает час!",
