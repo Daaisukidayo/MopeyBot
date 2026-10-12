@@ -1,0 +1,36 @@
+{
+  "en-US": [
+    "# New update!",
+    "- New `play` command is now available to everyone! Farm XP, upgrade your animal up to the King Dragon and catch rares by luck, move between biomes, fight apex animals in the arena and collect soccers to earn coins! It's still experimental, more features are coming!",
+    "- New Rare Points Chart in `chart`! Rares are now split into 7 tiers: Trash (1), Common (2), Uncommon (4), Rare (9), Epic (14), Legendary (22) and Mythic (71).",
+    "- New limits in challenge difficulties! Default: max 3 of each Trash and Common. Medium: Trash 3, Common 2. Hard: Trash 3, Common 2, Uncommon 1. Easy has no limits!",
+    "- Markhor and the rares removed from mope.io (Golden Pheasant, Momaffie, Momaffie Family, Girabie, Bigfoot, Snowman, Snowgirl) no longer count in new challenges!",
+    " - They no longer drop in `raretry` and `hlsimulator` either, same as Black Bear and Black Tiger!",
+    "- `time` now accepts any time from 0 to 3600 seconds! `3600` ends the hour right away!",
+    "- Added sort order to `history`: ascending or descending!",
+    "- Reworked `wardrobe` command! Without an option, it opens a menu: one by one, one animal, a tier or all animals!",
+    " - Added «Back», «Previous» and «Next» buttons! Going past the last animal brings you back to the first!",
+    "- Animal names now match the game: Kangaroo Rat, Chipmunk, Mole, Dove, Spix's Macaw, Helmeted Hornbill, Rattlesnake, Argentavis, Eagle, Boa, Orca, Black Widow, Lava Monster and more!",
+    "- Animal and skin pictures are now taken from the game! Updated S1 skins!",
+    "- Some rare chances now match the game: Argentavis is now 1/2500 (was 1/6000), White Giraffe 1/47 (was 1/35), Giraffe Family 1/70 (was 1/140), Yellow Pufferfish 33% (was 30%)!",
+    "- Fixed `daily` and `weekly` showing one hour more than the real time left until the next reward!",
+    "- Updated and clarified command descriptions in `help`!"
+  ],
+  "ru": [
+    "# Новое обновление!",
+    "- Команда `play` теперь доступна всем! Фармите опыт, прокачивайте животное вплоть до King Dragon и ловите редких по удаче, перемещайтесь между биомами, сражайтесь с апексами на арене и собирайте мячи, чтобы зарабатывать монеты! Команда всё ещё экспериментальная, новые возможности впереди!",
+    "- Новый чарт очков редких в `chart`! Теперь редкие разделены на 7 уровней: Trash (1), Common (2), Uncommon (4), Rare (9), Epic (14), Legendary (22) и Mythic (71).",
+    "- Новые лимиты в сложностях испытания! Обычная: не больше 3 каждого Trash и Common. Средняя: Trash 3, Common 2. Сложная: Trash 3, Common 2, Uncommon 1. В лёгкой лимитов нет!",
+    "- Markhor и редкие, удалённые из mope.io (Golden Pheasant, Momaffie, Momaffie Family, Girabie, Bigfoot, Snowman, Snowgirl), больше не засчитываются в новых испытаниях!",
+    " - Они также больше не выпадают в `raretry` и `hlsimulator`, как и Black Bear и Black Tiger!",
+    "- `time` теперь принимает любое время от 0 до 3600 секунд! `3600` сразу завершает час!",
+    "- В `history` добавлен порядок сортировки: по возрастанию или по убыванию!",
+    "- Команда `wardrobe` переделана! Без опции открывается меню: по одному, одно животное, тир или все животные!",
+    " - Добавлены кнопки «Назад», «Предыдущее» и «Следующее»! После последнего животного вы возвращаетесь к первому!",
+    "- Названия животных теперь как в игре: Kangaroo Rat, Chipmunk, Mole, Dove, Spix's Macaw, Helmeted Hornbill, Rattlesnake, Argentavis, Eagle, Boa, Orca, Black Widow, Lava Monster и другие!",
+    "- Картинки животных и скинов теперь взяты из игры! Обновлены скины S1!",
+    "- Шансы некоторых редких приведены к игре: Argentavis теперь 1/2500 (было 1/6000), White Giraffe 1/47 (было 1/35), Giraffe Family 1/70 (было 1/140), Yellow Pufferfish 33% (было 30%)!",
+    "- Исправлено: `daily` и `weekly` показывали на час больше реального времени до следующей награды!",
+    "- Описания команд в `help` обновлены и уточнены!"
+  ]
+}

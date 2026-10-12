@@ -2,29 +2,27 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default [
   new ForgeFunction({
-    name: "handleAnnouncements",
+    name: "handleChangelog",
     code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 
     $defer
 
-    $jsonLoad[announce;$jsonGet[$readFile[res/locale/announcement.json];$get[l]]]
+    $jsonLoad[changelog;$jsonGet[$readFile[res/locale/changelog.json];$get[l]]]
 
-    $announcementsEmbed
+    $changelogEmbed
   `
   }),
   new ForgeFunction({
-    name: "announcementsEmbed",
+    name: "changelogEmbed",
     code: `
     $addContainer[
-      $addTextDisplay[$tl[ui.announcements.title.$get[l]]]
-      $addSeparator[Large]
-      $addTextDisplay[$arrayJoin[announce;\n]]
+      $addTextDisplay[$arrayJoin[changelog;\n]]
     ;$getGlobalVar[defaultColor]]
   `
   })

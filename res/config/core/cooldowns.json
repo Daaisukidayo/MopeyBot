@@ -33,7 +33,7 @@
   "clearcoins_cooldown": 60000,
   "timezone_cooldown": 10000,
   "wardrobe_cooldown": 60000,
-  "announcements_cooldown": 10000,
+  "changelog_cooldown": 10000,
 
   "count_cooldown": 10000,
   "snora_cooldown": 10000,

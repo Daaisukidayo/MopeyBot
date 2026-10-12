@@ -46,34 +46,36 @@
     "category": 4
   },
 
-  "command_announcements": {
-    "name": "announcements",
+  "command_changelog": {
+    "name": "changelog",
     "aliases": [
+      "changes",
+      "announcements",
       "announcement",
       "ann"
     ],
     "detailedName": {
-      "en-US": "Announcements",
-      "ru": "Объявления"
+      "en-US": "Changelog",
+      "ru": "Список изменений"
     },
     "slash": {
       "name": {
-        "default": "announcements",
-        "en-US": "announcements",
-        "ru": "объявления"
+        "default": "changelog",
+        "en-US": "changelog",
+        "ru": "изменения"
       },
       "description": {
-        "default": "Displays the most recent announcement!",
-        "en-US": "Displays the most recent announcement!",
-        "ru": "Показывает последнее объявление!"
+        "default": "Displays the changes of the latest update!",
+        "en-US": "Displays the changes of the latest update!",
+        "ru": "Показывает изменения последнего обновления!"
       }
     },
     "description": {
       "en-US": [
-        "## Displays the most recent announcement!"
+        "## Displays the changes of the latest update!"
       ],
       "ru": [
-        "## Показывает последнее объявление!"
+        "## Показывает изменения последнего обновления!"
       ]
     },
     "related": [],

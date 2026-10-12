@@ -31,13 +31,6 @@
     }
   },
   
-  "announcements": {
-    "title": {
-      "en-US": "# 📢 _Announcement_",
-      "ru": "# 📢 _Объявление_"
-    }
-  },
-  
   "arena": {
     "lost": {
       "en-US": "## _You went to arena but {0} defeated you_",
