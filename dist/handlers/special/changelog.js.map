@@ -1,0 +1,1 @@
+{"version":3,"file":"changelog.js","sourceRoot":"","sources":["../../../src/handlers/special/changelog.ts"],"names":[],"mappings":";;AAAA,uDAAqD;AAErD,kBAAe;IACb,IAAI,2BAAa,CAAC;QAChB,IAAI,EAAE,iBAAiB;QACvB,IAAI,EAAE;;;;;;;;;;;;;GAaP;KACA,CAAC;IACF,IAAI,2BAAa,CAAC;QAChB,IAAI,EAAE,gBAAgB;QACtB,IAAI,EAAE;;;;GAIP;KACA,CAAC;CACH,CAAA"}

@@ -25,8 +25,6 @@ export default new ForgeFunction({
     ]
 
     $addContainer[
-      $addHistoryOptionsMenu[editHistory-selectEditOption-$authorID]
-
       $addActionRow
       $addButton[showHistory-saveEditChanges-$authorID;$tl[ui.history.buttonLabelSaveChanges.$get[l]];Success;;$and[$get[cachedIndex]!=-1;$jsonEquals[page;$jsonGet[history;$get[cachedIndex]]]]]
       $addButton[editHistory-resetEditChanges-$authorID;$tl[ui.history.buttonLabelResetChanges.$get[l]];Secondary]

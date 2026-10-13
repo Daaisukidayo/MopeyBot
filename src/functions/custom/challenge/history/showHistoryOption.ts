@@ -3,7 +3,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "showHistoryOption",
   description:
-    "Shows how to change an option of a history page: a menu under the page for the play type and the difficulty, a form for the others. The answer comes as '<handler>-set-<author ID>-<option>'.",
+    "Opens the form that changes a typed option of a history page (the play type and the difficulty have menus on the page). The answer comes as '<handler>-set-<author ID>-<option>'.",
   params: [
     {
       name: "handler",
@@ -12,7 +12,7 @@ export default new ForgeFunction({
     },
     {
       name: "option",
-      description: "The option: points, raresQuantity, playType, difficulty, endDate or raresList.",
+      description: "The option: points, raresQuantity, endDate or raresList.",
       type: ArgType.String
     },
     {
@@ -25,22 +25,7 @@ export default new ForgeFunction({
     $let[l;$jsonGet[userProfile;language]]
     $let[id;$env[handler]-set-$authorID-$env[option]]
 
-    $c[The play type and the difficulty are chosen in a menu under the page]
-    $if[$isOneOf[$env[option];playType;difficulty];
-      $let[list;$if[$env[option]==playType;playTypes;difficulties]]
-      $historyEmbed[$env[page]]
-      $addContainer[
-        $addActionRow
-        $addStringSelectMenu[$get[id];$tl[ui.history.menuTitle$if[$env[option]==playType;PlayType;Difficulty].$get[l]]]
-        $arrayForEach[$getGlobalVar[$get[list]];value;
-          $addOption[$tl[data.$get[list].$env[value].$get[l]];;$env[value];;$checkCondition[$env[value]==$jsonGet[page;$env[option]]]]
-        ]
-      ;$getGlobalVar[luckyColor]]
-      $interactionUpdate
-      $return
-    ]
-
-    $c[The others are typed in a form prefilled with the current value]
+    $c[A form prefilled with the current value]
     $switch[$env[option];
       $case[points;
         $modal[$get[id];$tl[ui.history.modalTitlePoints.$get[l]]]

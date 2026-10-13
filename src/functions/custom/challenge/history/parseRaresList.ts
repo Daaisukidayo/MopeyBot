@@ -25,7 +25,7 @@ export default new ForgeFunction({
       $let[value;$trim[$jsonGet[keyValue;1]]]
 
       $onlyIf[$get[animalId]!=undefined;
-        $newError[$tl[ui.history.listOptionUnknownRare.$get[l];$jsonGet[keyValue;0];$env[line]]]
+        $newError[$tl[ui.history.listOptionUnknownListRare.$get[l];$jsonGet[keyValue;0];$env[line]]]
       ]
 
       $onlyIf[$isNumber[$get[value]];

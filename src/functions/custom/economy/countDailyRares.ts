@@ -3,7 +3,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "countDailyRares",
   description:
-    "Adds the rares caught today in raretry or raretryrun to the user's daily task. When the task is done, tells the user and returns true, so the caller marks the day as done.",
+    "Adds the rares caught today in raretry or raretryrun to the user's daily task. When the task is done, sends the command's reply (it must be ready), tells the user in a new message and returns true, so the caller marks the day as done.",
   output: ArgType.Boolean,
   params: [
     {
@@ -27,12 +27,11 @@ export default new ForgeFunction({
     $setUserVar[$get[counter];$math[$getUserVar[$get[counter]] + $env[count]]]
     $if[$getUserVar[$get[counter]]<$get[max];$return[false]]
 
-    $c[The message comes a second later, after the command's own reply]
-    $setTimeout[
-      $sendMessage[$channelID;
-        $addTextDisplay[$tl[ui.special.caughtRares.$jsonGet[userProfile;language];<@$authorID>;$get[max];$env[command]]]
-      ]
-    ;1s]
+    $c[The command's reply is sent first, then the notice in its own message]
+    $!send
+    $sendMessage[$channelID;
+      $addTextDisplay[$tl[ui.special.caughtRares.$jsonGet[userProfile;language];<@$authorID>;$get[max];$env[command]]]
+    ]
     $return[true]
   `
 })

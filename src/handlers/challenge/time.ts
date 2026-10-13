@@ -54,7 +54,7 @@ export default new ForgeFunction({
 
     $c[No timer is set for a reached milestone, so the end of the hour is told here, in its own message after the reply]
     $if[$get[hourOver]==true;
-      $let[replyId;$send]
+      $!send
       $sendMessage[$channelID;$addHourOverContainer[$authorID;$get[l]]]
     ]
   `

@@ -19,8 +19,8 @@ export default new Command({
     $jsonLoad[history;$jsonGet[cachedHistory;history]]
 
     $switch[$jsonGet[IID;1];
-      $case[selectEditOption;
-        $showHistoryOption[editHistory;$selectMenuValues;$env[thisHistory]]
+      $case[edit;
+        $showHistoryOption[editHistory;$jsonGet[IID;3];$env[thisHistory]]
         $newHistoryTimeout
         $stop
       ]
@@ -40,7 +40,7 @@ export default new Command({
 
     $setMessageVar[cachedThisHistory;$env[thisHistory];$messageID]
 
-    $historyEmbed[$env[thisHistory]]
+    $historyEmbed[$env[thisHistory];editHistory]
     $editHistoryExtraEmbed[thisHistory;history]
     $interactionUpdate
 

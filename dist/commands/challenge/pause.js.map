@@ -1,0 +1,1 @@
+{"version":3,"file":"pause.js","sourceRoot":"","sources":["../../../src/commands/challenge/pause.ts"],"names":[],"mappings":";;AAAA,iDAA4C;AAC5C,uEAA0D;AAC1D,uDAA0D;AAC1D,MAAM,KAAK,GAAG,4BAAY,CAAC,aAAa,CAAC,KAAK,CAAA;AAE9C,kBAAe,IAAI,gCAAkB,CAAC;IACpC,IAAI,EAAE;;GAEL;IACD,IAAI,EAAE;QACJ,IAAI,EAAE,CAAC;QAEP,GAAG,IAAA,8BAAS,EAAC,KAAK,CAAC;KACpB;CACF,CAAC,CAAA"}

@@ -18,8 +18,8 @@ export default new Command({
         $jsonLoad[addHistorySavedConfig;$if[$get[saved]==;$addHistoryNewConfig;$get[saved]]]
 
         $switch[$jsonGet[IID;1];
-            $case[editOptions;
-                $showHistoryOption[addHistory;$selectMenuValues;$env[addHistorySavedConfig]]
+            $case[edit;
+                $showHistoryOption[addHistory;$jsonGet[IID;3];$env[addHistorySavedConfig]]
                 $stop
             ]
 
@@ -66,7 +66,7 @@ export default new Command({
         ]
 
         $setUserVar[addHistorySavedConfig;$env[addHistorySavedConfig]]
-        $historyEmbed[$env[addHistorySavedConfig]]
+        $historyEmbed[$env[addHistorySavedConfig];addHistory]
         $addHistoryExtraEmbed[addHistorySavedConfig]
         $interactionUpdate
         $newCommandTimeout[addhistory]

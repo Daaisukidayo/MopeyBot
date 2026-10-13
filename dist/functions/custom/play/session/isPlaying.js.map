@@ -1,0 +1,1 @@
+{"version":3,"file":"isPlaying.js","sourceRoot":"","sources":["../../../../../src/functions/custom/play/session/isPlaying.ts"],"names":[],"mappings":";;AAAA,uDAA8D;AAE9D,kBAAe,IAAI,2BAAa,CAAC;IAC/B,IAAI,EAAE,WAAW;IACjB,MAAM,EAAE;QACN;YACE,IAAI,EAAE,aAAa;YACnB,WAAW,EAAE,oDAAoD;YACjE,IAAI,EAAE,qBAAO,CAAC,MAAM;SACrB;KACF;IACD,IAAI,EAAE;;;;;;;;;;;;GAYL;CACF,CAAC,CAAA"}

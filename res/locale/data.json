@@ -149,41 +149,6 @@
     ]
   },
 
-  "challengeData": {
-    "0": {
-      "en-US": "Common",
-      "ru": "Обычные"
-    },
-    "1": {
-      "en-US": "Common",
-      "ru": "Обычные"
-    },
-    "2": {
-      "en-US": "Uncommon",
-      "ru": "Необычные"
-    },
-    "3": {
-      "en-US": "Rare",
-      "ru": "Редкие"
-    },
-    "4": {
-      "en-US": "Epic",
-      "ru": "Эпические"
-    },
-    "5": {
-      "en-US": "Legendary",
-      "ru": "Легендарные"
-    },
-    "6": {
-      "en-US": "Mythic",
-      "ru": "Мифические"
-    },
-    "7": {
-      "en-US": "Divine",
-      "ru": "Божественные"
-    }
-  },
-
   "devilTornadoes": {
     "0": {
       "en-US": "Rare Devil Twister",

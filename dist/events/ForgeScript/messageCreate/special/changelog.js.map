@@ -1,0 +1,1 @@
+{"version":3,"file":"changelog.js","sourceRoot":"","sources":["../../../../../src/events/ForgeScript/messageCreate/special/changelog.ts"],"names":[],"mappings":";;AAAA,iDAA4C;AAC5C,uDAAmD;AAEnD,kBAAe,IAAI,yBAAW,CAAC;IAC7B,IAAI,EAAE,4BAAY,CAAC,iBAAiB,CAAC,IAAI;IACzC,OAAO,EAAE,4BAAY,CAAC,iBAAiB,CAAC,OAAO;IAC/C,IAAI,EAAE,eAAe;IACrB,IAAI,EAAE;;GAEL;CACF,CAAC,CAAA"}

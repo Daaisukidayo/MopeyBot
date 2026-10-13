@@ -15,7 +15,7 @@ export default new ForgeFunction({
     $let[saved;$getUserVar[addHistorySavedConfig]]
     $jsonLoad[addHistorySavedConfig;$if[$get[saved]==;$addHistoryNewConfig;$get[saved]]]
 
-    $historyEmbed[$env[addHistorySavedConfig]]
+    $historyEmbed[$env[addHistorySavedConfig];addHistory]
     $addHistoryExtraEmbed[addHistorySavedConfig]
     $newCommandTimeout
   `

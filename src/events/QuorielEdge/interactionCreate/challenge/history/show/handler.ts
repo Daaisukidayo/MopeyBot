@@ -159,7 +159,7 @@ export default new Command({
         $jsonLoad[thisHistory;$jsonGet[history;$math[$get[page] - 1]]]
         $setMessageVar[cachedThisHistory;$env[thisHistory];$messageID]
 
-        $historyEmbed[$env[thisHistory]]
+        $historyEmbed[$env[thisHistory];editHistory]
         $editHistoryExtraEmbed[thisHistory;history]
         $interactionUpdate
 

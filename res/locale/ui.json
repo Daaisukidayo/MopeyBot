@@ -543,6 +543,21 @@
       "en-US": "Cancel",
       "ru": "Отменить"
     },
+
+    "playTypeLabel": {
+      "en-US": "# _Play Type:_",
+      "ru": "# _Тип игры:_"
+    },
+
+    "difficultyLabel": {
+      "en-US": "# _Difficulty:_",
+      "ru": "# _Сложность:_"
+    },
+
+    "raresListLabel": {
+      "en-US": "# _Rares List:_",
+      "ru": "# _Список редких:_"
+    },
   
     "buttonLabelCancelFilter": {
       "en-US": "Cancel",
@@ -664,11 +679,6 @@
       "ru": "Недопустимое значение `{0}` в `{1}`!"
     },
   
-    "menuTitleChooseOptions": {
-      "en-US": "Choose an option to edit",
-      "ru": "Выберите опцию для редактирования"
-    },
-  
     "menuTitleDifficulty": {
       "en-US": "Choose a Difficulty",
       "ru": "Выберите сложность"
@@ -787,36 +797,6 @@
     "noHistoryObject": {
       "en-US": "## _This history page does not exist!_",
       "ru": "## _Эта страница истории не существует!_"
-    },
-  
-    "optionNameDifficulty": {
-      "en-US": "Difficulty",
-      "ru": "Сложность"
-    },
-  
-    "optionNameEndDate": {
-      "en-US": "End Date",
-      "ru": "Дата окончания"
-    },
-  
-    "optionNamePlayType": {
-      "en-US": "Play Type",
-      "ru": "Тип игры"
-    },
-  
-    "optionNamePoints": {
-      "en-US": "Points",
-      "ru": "Очки"
-    },
-  
-    "optionNameRares": {
-      "en-US": "Rares",
-      "ru": "Редкие"
-    },
-  
-    "optionNameRaresList": {
-      "en-US": "List of Rares",
-      "ru": "Список редких"
     },
   
     "optionNameSort": {

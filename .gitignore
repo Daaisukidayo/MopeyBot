@@ -4,11 +4,6 @@ forgeconfig.json
 allies.json
 
 #? folders
-.cache/
-.vscode/
 node_modules/
 database/
-logs/
 dev/
-deprecated/
-dist/
