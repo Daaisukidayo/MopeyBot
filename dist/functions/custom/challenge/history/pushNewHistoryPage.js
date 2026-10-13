@@ -18,15 +18,15 @@ exports.default = new forgescript_1.ForgeFunction({
         }
     ],
     code: `
-		$let[userId;$nullish[$env[userId;id];$authorID]]
+    $let[userId;$nullish[$env[userId;id];$authorID]]
 
-		$jsonLoad[newHistory;$getGlobalVar[baseHistoryPage]]
-		$!jsonSet[newHistory;id;$randomUUID]
-		$objectMerge[newHistory;$objectPick[newPageData;points;rares;endDate;playType;difficulty;raresList]]
+    $jsonLoad[newHistory;$getGlobalVar[baseHistoryPage]]
+    $!jsonSet[newHistory;id;$randomUUID]
+    $objectMerge[newHistory;$objectPick[newPageData;points;rares;endDate;playType;difficulty;raresList]]
 
-		$jsonLoad[history;$getUserVar[challengeHistory;$get[userId]]]
-		$arrayPushJSON[history;$env[newHistory]]
-		$setUserVar[challengeHistory;$env[history];$get[userId]]
-	`
+    $jsonLoad[history;$getUserVar[challengeHistory;$get[userId]]]
+    $arrayPushJSON[history;$env[newHistory]]
+    $setUserVar[challengeHistory;$env[history];$get[userId]]
+  `
 });
 //# sourceMappingURL=pushNewHistoryPage.js.map

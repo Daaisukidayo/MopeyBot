@@ -1,1 +1,0 @@
-{"version":3,"file":"timestampsMigration.js","sourceRoot":"","sources":["../../src/utils/timestampsMigration.ts"],"names":[],"mappings":";;AAEA,kDAEC;AAJD,MAAM,aAAa,GAAG,4BAA4B,CAAA;AAElD,SAAgB,mBAAmB,CAAC,KAAa;IAC/C,OAAO,KAAK,CAAC,OAAO,CAAC,aAAa,EAAE,MAAM,CAAC,CAAA;AAC7C,CAAC"}

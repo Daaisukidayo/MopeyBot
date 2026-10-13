@@ -1,1 +1,1 @@
-{"version":3,"file":"cacheAllRares.js","sourceRoot":"","sources":["../../../../src/events/ForgeScript/clientReady/cacheAllRares.ts"],"names":[],"mappings":";;AAAA,uDAAmD;AAEnD,kBAAe,IAAI,yBAAW,CAAC;IAC7B,IAAI,EAAE,aAAa;IACnB,IAAI,EAAE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAoDL;CACF,CAAC,CAAA"}
+{"version":3,"file":"cacheAllRares.js","sourceRoot":"","sources":["../../../../src/events/ForgeScript/clientReady/cacheAllRares.ts"],"names":[],"mappings":";;AAAA,uDAAmD;AAEnD,kBAAe,IAAI,yBAAW,CAAC;IAC7B,IAAI,EAAE,aAAa;IACnB,IAAI,EAAE;;GAEL;CACF,CAAC,CAAA"}

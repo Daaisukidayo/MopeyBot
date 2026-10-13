@@ -3,14 +3,14 @@ import { BaseCommand } from "@tryforge/forgescript"
 export default new BaseCommand({
   type: "messageCreate",
   code: `
-    $c[Only a message starting with a rare counts. Most don't, so this is checked first, against the cached rares]
+    $jsonLoad[challengeProgress;$getProgress]
+    $onlyIf[$jsonGet[challengeProgress;started]==true]
+    $onlyIf[$startsWith[$messageContent;$getPrefix]==false]
+
     $getCache[rares;activeRares;activeRares]
     $arrayLoad[providedRares; ;$toLowerCase[$message]]
     $onlyIf[$arrayIncludes[activeRares;$jsonGet[providedRares;0]]]
 
-    $jsonLoad[challengeProgress;$getProgress]
-    $onlyIf[$jsonGet[challengeProgress;started]==true]
-    $onlyIf[$startsWith[$messageContent;$getPrefix]==false]
 
     $reply
     $jsonLoad[userProfile;$getProfile]

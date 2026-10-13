@@ -4,23 +4,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.variables = void 0;
+exports.readVariables = readVariables;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const variables = {};
-exports.variables = variables;
-function assignVariable(key, value) {
-    if (Object.hasOwn(variables, key)) {
-        throw new Error(`Name collision! Variable "${key}" is already defined.`);
+// Reads every res/config/<dir>/*.json into one object of global variables. Each call reads the files again
+function readVariables() {
+    const variables = {};
+    function assignVariable(key, value) {
+        if (Object.hasOwn(variables, key)) {
+            throw new Error(`Name collision! Variable "${key}" is already defined.`);
+        }
+        variables[key] = value;
     }
-    variables[key] = value;
-}
-;
-(() => {
     try {
         const configRootPath = path_1.default.join(process.cwd(), "res", "config");
         if (!fs_1.default.existsSync(configRootPath)) {
             console.warn(`⚠️ Configuration directory not found at: ${configRootPath}`);
-            return;
+            return variables;
         }
         const entries = fs_1.default.readdirSync(configRootPath, { withFileTypes: true });
         const dirs = entries
@@ -28,7 +28,7 @@ function assignVariable(key, value) {
             .map((entry) => entry.name);
         if (dirs.length === 0) {
             console.warn("⚠️ No valid sub-directories found in res/config.");
-            return;
+            return variables;
         }
         for (const dir of dirs) {
             const dirPath = path_1.default.join(configRootPath, dir);
@@ -61,5 +61,8 @@ function assignVariable(key, value) {
     catch (err) {
         console.error("❌ Critical failure during configuration loading:", err);
     }
-})();
+    return variables;
+}
+const variables = readVariables();
+exports.variables = variables;
 //# sourceMappingURL=loadVariables.js.map

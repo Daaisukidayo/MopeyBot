@@ -9,7 +9,11 @@
     "eslint": "eslint ./src --fix",
     "prettier": "prettier --write \"./src/**/*\"",
     "lint": "eslint ./src && prettier --check \"./src/**/*\"",
-    "tidy": "npm run eslint && npm run prettier && npm run lint && npm run build"
+    "tidy": "npm run eslint && npm run prettier && npm run lint && npm run build",
+    "check:forge": "npm run build && node scripts/check-forge.js",
+    "check:locale": "node scripts/check-locale.js",
+    "check": "npm run check:forge && npm run lint && npm run check:locale",
+    "db:backup": "node scripts/db-backup.js"
   },
   "imports": {
     "#commandsData": "./dist/utils/getCommandsData.js"

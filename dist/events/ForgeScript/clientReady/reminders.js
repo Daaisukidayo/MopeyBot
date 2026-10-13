@@ -4,8 +4,6 @@ const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.BaseCommand({
     type: "clientReady",
     code: `
-    $migrateUserReminders
-
     $c[Resets run only from the crons: ForgeTimers replays a midnight missed while offline once on startup (cronConfig.restoredTicksLimit in index.ts). Calling them here too ran them twice, both passing the day check]
 
     $let[dailyCron;0 0 * * *]

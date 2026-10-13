@@ -1,22 +1,23 @@
 import fs from "fs"
 import path from "path"
 
-const variables: Record<string, any> = {}
+// Reads every res/config/<dir>/*.json into one object of global variables. Each call reads the files again
+export function readVariables(): Record<string, any> {
+  const variables: Record<string, any> = {}
 
-function assignVariable(key: string, value: any): void {
-  if (Object.hasOwn(variables, key)) {
-    throw new Error(`Name collision! Variable "${key}" is already defined.`)
+  function assignVariable(key: string, value: any): void {
+    if (Object.hasOwn(variables, key)) {
+      throw new Error(`Name collision! Variable "${key}" is already defined.`)
+    }
+    variables[key] = value
   }
-  variables[key] = value
-}
 
-;((): void => {
   try {
     const configRootPath = path.join(process.cwd(), "res", "config")
 
     if (!fs.existsSync(configRootPath)) {
       console.warn(`⚠️ Configuration directory not found at: ${configRootPath}`)
-      return
+      return variables
     }
 
     const entries = fs.readdirSync(configRootPath, { withFileTypes: true })
@@ -27,7 +28,7 @@ function assignVariable(key: string, value: any): void {
 
     if (dirs.length === 0) {
       console.warn("⚠️ No valid sub-directories found in res/config.")
-      return
+      return variables
     }
 
     for (const dir of dirs) {
@@ -63,6 +64,10 @@ function assignVariable(key: string, value: any): void {
   } catch (err: any) {
     console.error("❌ Critical failure during configuration loading:", err)
   }
-})()
+
+  return variables
+}
+
+const variables = readVariables()
 
 export { variables }

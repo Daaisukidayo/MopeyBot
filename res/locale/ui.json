@@ -23,11 +23,6 @@
     "cancelNewHistoryPageTitle": {
       "en-US": "# _Adding the new history page is canceled!_",
       "ru": "# _Добавление новой страницы истории отменено!_"
-    },
-  
-    "preview": {
-      "en-US": "# _Preview_",
-      "ru": "# _Предпросмотр_"
     }
   },
   
@@ -49,11 +44,6 @@
       "ru": "Количество"
     },
   
-    "fullAnimalName": {
-      "en-US": "Animal",
-      "ru": "Животное"
-    },
-  
     "newPrefix": {
       "en-US": "New_Prefix",
       "ru": "Новый_префикс"
@@ -62,11 +52,6 @@
     "shortRaresName": {
       "en-US": "Rare_Animal",
       "ru": "Редкое_Животное"
-    },
-  
-    "tier": {
-      "en-US": "Tier",
-      "ru": "Уровень"
     }
   },
   
@@ -143,11 +128,6 @@
     "none": {
       "en-US": "None",
       "ru": "Пусто"
-    },
-  
-    "onPause": {
-      "en-US": "You are on pause!",
-      "ru": "Вы на паузе!"
     },
   
     "points": {
@@ -296,16 +276,6 @@
       "ru": "# _Ставка сделана на __{0}__! Подбрасываем монету..._"
     },
   
-    "invalidAmount": {
-      "en-US": "Only number or argument `all` is allowed!",
-      "ru": "Допускается только число или аргумент `all`!"
-    },
-  
-    "invalidCashHigh": {
-      "en-US": "You don't have that much {EMOJI}!",
-      "ru": "У Вас нет столько {EMOJI}!"
-    },
-  
     "invalidCashLow": {
       "en-US": "You must have at least `{0}`{EMOJI}!",
       "ru": "У Вас должно быть минимум `{0}`{EMOJI}!"
@@ -314,11 +284,6 @@
     "invalidRange": {
       "en-US": "You can only bet from `{0}` to `{1}`{EMOJI}!",
       "ru": "Вы можете поставить только от `{0}` до `{1}`{EMOJI}!"
-    },
-  
-    "invalidSide": {
-      "en-US": "Invalid side!",
-      "ru": "Неверная сторона!"
     },
   
     "lost": {
@@ -372,11 +337,6 @@
       "ru": "# _Создатель бота & разработчик_"
     },
   
-    "pfpBy": {
-      "en-US": "# _Bot's profile picture by_",
-      "ru": "# _Аватар бота от_"
-    },
-  
     "title": {
       "en-US": "# ___Development team___",
       "ru": "# ___Команда разработки___"
@@ -384,16 +344,6 @@
   },
   
   "daily": {
-    "cooldownDescription1": {
-      "en-US": "## _You already have claimed your daily reward!_",
-      "ru": "## _Вы уже получили свою ежедневную награду!_"
-    },
-  
-    "cooldownDescription2": {
-      "en-US": "## _Cooldown resets every day at `12:00 AM UTC+0`!_",
-      "ru": "## _Перезарядка сбрасывается каждый день в `12:00 AM UTC+0`!_"
-    },
-  
     "description": {
       "en-US": "## _Your daily reward is `{0}`{EMOJI}!_",
       "ru": "## _Ваша ежедневная награда: `{0}`{EMOJI}!_"
@@ -448,11 +398,6 @@
       "ru": "Недопустимые аргументы!"
     },
   
-    "noArgument": {
-      "en-US": "No argument written!",
-      "ru": "Не указано ни одного аргумента!"
-    },
-  
     "notNumber": {
       "en-US": "Argument is not a number!",
       "ru": "Аргумент не является числом!"
@@ -466,28 +411,6 @@
     "userNotFound": {
       "en-US": "User not found!",
       "ru": "Пользователь не найден!"
-    }
-  },
-  
-  "global": {
-    "mc": {
-      "en-US": "MC",
-      "ru": "МК"
-    },
-  
-    "mopecoin": {
-      "en-US": "Mopecoin",
-      "ru": "Мопкоин"
-    },
-  
-    "mopeyUserIdentifier": {
-      "en-US": "Mopey User Identifier",
-      "ru": "Идентификатор Пользователя Мопи"
-    },
-  
-    "muid": {
-      "en-US": "MUID",
-      "ru": "ИДПМ"
     }
   },
   
@@ -604,21 +527,6 @@
       "ru": "Сохранить"
     },
   
-    "currentDifficulty": {
-      "en-US": "## _Current: `{0}`_",
-      "ru": "## _Текущая: `{0}`_"
-    },
-  
-    "currentPlayType": {
-      "en-US": "## _Current: `{0}`_",
-      "ru": "## _Текущий: `{0}`_"
-    },
-  
-    "currentValue": {
-      "en-US": "## _Current:_",
-      "ru": "## _Текущее:_"
-    },
-  
     "deletePageWarning": {
       "en-US": "## _Are you sure you want to delete this page?_",
       "ru": "## _Вы уверены, что хотите удалить эту страницу?_"
@@ -642,21 +550,6 @@
     "listOptionInvalidDate": {
       "en-US": "Invalid date!",
       "ru": "Недопустимая дата!"
-    },
-  
-    "listOptionInvalidDifficulty": {
-      "en-US": "Invalid Difficulty!",
-      "ru": "Недопустимая сложность!"
-    },
-  
-    "listOptionInvalidListValue": {
-      "en-US": "Invalid value `{0}` in `{1}`!",
-      "ru": "Недопустимое значение `{0}` в `{1}`!"
-    },
-  
-    "listOptionInvalidPlayType": {
-      "en-US": "Invalid Play Type!",
-      "ru": "Недопустимый тип игры!"
     },
   
     "listOptionInvalidPoints": {
@@ -794,11 +687,6 @@
       "ru": "## _На этой странице нечего отображать!_"
     },
   
-    "noHistoryObject": {
-      "en-US": "## _This history page does not exist!_",
-      "ru": "## _Эта страница истории не существует!_"
-    },
-  
     "optionNameSort": {
       "en-US": "Sort Type: {0}",
       "ru": "Сортировка по: {0}"
@@ -924,11 +812,6 @@
     "contentLine": {
       "en-US": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}",
       "ru": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}"
-    },
-  
-    "invalidPage": {
-      "en-US": "Invalid number in «page» field!",
-      "ru": "Недопустимое число в поле «страница»!"
     },
   
     "modalDescriptionPage": {
@@ -1088,11 +971,6 @@
       "ru": "Передать хоста"
     },
   
-    "missingMessage": {
-      "en-US": "## _The Lobby was closed due to a missing message._",
-      "ru": "## _Лобби было закрыто из-за отсутствия сообщения._"
-    },
-  
     "modeTitle": {
       "en-US": "## _Mode: `{0}`_",
       "ru": "## _Режим: `{0}`_"
@@ -1126,11 +1004,6 @@
     "notParticipant": {
       "en-US": "You're not a participant.",
       "ru": "Вы не участник."
-    },
-  
-    "notReady": {
-      "en-US": "Unable to create or update the lobby. Try again in a few seconds.",
-      "ru": "Не удалось создать или обновить лобби. Попробуйте снова через несколько секунд."
     },
   
     "notStarted": {
@@ -2085,16 +1958,6 @@
       "ru": "_{0} поставил(а) `{1}`{EMOJI}_"
     },
   
-    "invalidAmount": {
-      "en-US": "Only number or argument `all` is allowed!",
-      "ru": "Допускается только число или аргумент `all`!"
-    },
-  
-    "invalidCashHigh": {
-      "en-US": "You don't have that much {EMOJI}!",
-      "ru": "У Вас нет столько {EMOJI}!"
-    },
-  
     "invalidCashLow": {
       "en-US": "You must have at least `{0}`{EMOJI}!",
       "ru": "У Вас должно быть минимум `{0}`{EMOJI}!"
@@ -2134,11 +1997,6 @@
   },
   
   "special": {
-    "botDisabled": {
-      "en-US": "The bot is currently disabled for maintenance. Please try again later.",
-      "ru": "Бот в данный момент отключён на обслуживание. Пожалуйста, попробуйте позже."
-    },
-  
     "caughtRares": {
       "en-US": "## _{0}, you have caught `{1}` rares in `{2}`!_",
       "ru": "## _{0}, Вы поймали `{1}` редких в `{2}`!_"
@@ -2440,16 +2298,6 @@
   },
   
   "weekly": {
-    "cooldownDescription1": {
-      "en-US": "## _You already have claimed your weekly reward!_",
-      "ru": "## _Вы уже получили свою еженедельную награду!_"
-    },
-  
-    "cooldownDescription2": {
-      "en-US": "## _Cooldown resets every monday at `12:00 AM UTC+0`!_",
-      "ru": "## _Перезарядка сбрасывается каждый понедельник в `12:00 AM UTC+0`!_"
-    },
-  
     "description": {
       "en-US": "## _Your weekly reward is `{0}`{EMOJI}!_",
       "ru": "## _Ваша еженедельная награда: `{0}`{EMOJI}!_"
