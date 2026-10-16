@@ -1,5 +1,3 @@
-// Copies the bot's databases to database/backups, named with the date and time.
-// Uses SQLite's online backup, so the copy is whole even while the bot is running.
 const fs = require("fs")
 const path = require("path")
 const Database = require("better-sqlite3")
