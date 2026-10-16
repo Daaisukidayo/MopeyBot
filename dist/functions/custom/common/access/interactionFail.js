@@ -8,6 +8,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[l;$jsonGet[userProfile;language]]
     $ephemeral 
     $interactionReply[$tl[ui.special.interactionFail.$get[l]]]
-  `
+  `,
 });
 //# sourceMappingURL=interactionFail.js.map

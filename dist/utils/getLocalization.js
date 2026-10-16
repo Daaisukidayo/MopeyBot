@@ -7,8 +7,8 @@ function getLocalization(locObj) {
         name: locObj["default"],
         name_localizations: {
             "en-US": locObj["en-US"],
-            ru: locObj["ru"]
-        }
+            ru: locObj["ru"],
+        },
     };
 }
 function localized(entry) {

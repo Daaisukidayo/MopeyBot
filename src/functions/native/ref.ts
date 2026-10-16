@@ -12,15 +12,15 @@ export default new NativeFunction({
       description: "The name of the new variable",
       type: ArgType.String,
       required: true,
-      rest: false
+      rest: false,
     },
     {
       name: "source",
       description: "The name of the variable to point to",
       type: ArgType.String,
       required: true,
-      rest: false
-    }
+      rest: false,
+    },
   ],
   async execute(ctx, [name, source]) {
     const value = ctx.getEnvironmentKey(source)
@@ -28,5 +28,5 @@ export default new NativeFunction({
 
     ctx.setEnvironmentKey(name, value)
     return this.success()
-  }
+  },
 })

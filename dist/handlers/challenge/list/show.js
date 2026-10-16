@@ -46,6 +46,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator[Large]
       $showDesignedList[$jsonGet[result;l]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=show.js.map

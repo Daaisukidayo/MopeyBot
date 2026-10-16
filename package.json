@@ -9,7 +9,7 @@
     "eslint": "eslint ./src --fix",
     "prettier": "prettier --write \"./src/**/*\"",
     "lint": "eslint ./src && prettier --check \"./src/**/*\"",
-    "tidy": "npm run eslint && npm run prettier && npm run lint && npm run build",
+    "tidy": "npm run eslint && npm run prettier && npm run build",
     "check:forge": "npm run build && node scripts/check-forge.js",
     "check:locale": "node scripts/check-locale.js",
     "check": "npm run check:forge && npm run lint && npm run check:locale",
@@ -27,6 +27,7 @@
     "@tryforge/forge.topgg": "https://codeload.github.com/tryforge/forgetopgg/tar.gz/645de9e5802ed7b5bbb2157e584df5bde97925ee",
     "@tryforge/forgescript": "^2.7.1",
     "better-sqlite3": "^12.5.0",
+    "forge.class": "^1.1.0",
     "forge.json": "^1.1.1",
     "forge.regex": "https://codeload.github.com/xNickyDev/ForgeRegex/tar.gz/2544fc6fdc523406db309d158928b6b679206d0e",
     "forge.timers": "^2.0.0"

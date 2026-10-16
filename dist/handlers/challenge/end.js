@@ -16,6 +16,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $addChallengeCompletedContainer[$jsonGet[challengeProgress;raresList]]
     $!send
     $finishChallenge[challengeProgress]
-  `
+  `,
 });
 //# sourceMappingURL=end.js.map

@@ -8,23 +8,23 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "wardrobeVar",
       description: "The name of the variable that holds the user's wardrobe.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "soccerType",
       description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "soccerId",
       description: "The ID of the soccer item",
-      type: ArgType.Number
-    }
+      type: ArgType.Number,
+    },
   ],
   code: `
     $ref[playData;$env[playDataVar]]
@@ -46,5 +46,5 @@ export default new ForgeFunction({
 
     $displayAnimalStats[playData;wardrobe]
     $addSoccerActionsMenu[$env[soccerData]]
-  `
+  `,
 })

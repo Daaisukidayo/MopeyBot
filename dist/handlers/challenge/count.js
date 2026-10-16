@@ -56,6 +56,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $showDesignedList[$env[unknownContent]]
       ]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=count.js.map

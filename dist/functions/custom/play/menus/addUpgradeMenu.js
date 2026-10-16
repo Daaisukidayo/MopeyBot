@@ -8,13 +8,13 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "playDataVar",
             description: "The name of the variable that holds the play data.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "wardrobeVar",
             description: "The name of the variable that holds the user's wardrobe.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $ref[wardrobe;$env[wardrobeVar]]
@@ -61,6 +61,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addButton[play_upgradeAnimal-$env[animalId]-$authorID;$get[animalName];$get[butStyle];$get[emoji]]
     ;i]
 
-  `
+  `,
 });
 //# sourceMappingURL=addUpgradeMenu.js.map

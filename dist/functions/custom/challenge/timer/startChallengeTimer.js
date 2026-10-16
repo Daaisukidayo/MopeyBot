@@ -10,14 +10,14 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "userId",
             description: "ID of the user.",
             type: forgescript_1.ArgType.User,
-            required: false
+            required: false,
         },
         {
             name: "fromTime",
             description: "The second of the challenge to start from (default: 0, a new challenge).",
             type: forgescript_1.ArgType.Number,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[userId;$nullish[$env[userId;id];$authorID]]
@@ -40,6 +40,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $setTimeout[$challengeTimerMilestone[$get[userId];$get[l];$get[milestone]];$math[($get[milestone] - $get[fromTime]) * 1000];challengeTimer$get[milestone]-$get[userId]|$channelID;;$if[$get[milestone]<3600;10s]]
       ]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=startChallengeTimer.js.map

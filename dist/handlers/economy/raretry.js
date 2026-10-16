@@ -87,6 +87,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $let[footer;$get[modeLine]]
       $callFn[embed]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=raretry.js.map

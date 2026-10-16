@@ -14,5 +14,5 @@ export default new ForgeFunction({
     $cacheArenaEnemies
     $cacheRaresContent
     $cacheTierAnimals
-  `
+  `,
 })

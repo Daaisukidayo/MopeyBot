@@ -70,6 +70,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $addTextDisplay[## \`$default[$arrayJoin[related;\` \`];$tl[ui.help.none.$get[l]]]\`]
       ;$getGlobalVar[defaultColor]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=help.js.map

@@ -9,8 +9,8 @@ export default new ForgeFunction({
     {
       name: "text",
       description: "The name or ID to look for",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $cacheAnimalsData
@@ -19,5 +19,5 @@ export default new ForgeFunction({
     $let[index;$arrayFindIndex[animals;animal;$or[$toCamelCase[$jsonGet[animal;fullName]]==$get[query];$toCamelCase[$jsonGet[animal;ID]]==$get[query]]]]
     $if[$get[index]==-1;$return]
     $return[$jsonGet[animals;$get[index];ID]]
-  `
+  `,
 })

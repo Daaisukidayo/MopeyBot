@@ -42,5 +42,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.prefix.changed.$get[l];$get[newPrefix]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

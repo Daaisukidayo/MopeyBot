@@ -10,17 +10,17 @@ export default new ForgeFunction({
     {
       name: "soccerType",
       description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "soccerId",
       description: "The ID of the soccer item",
-      type: ArgType.Number
-    }
+      type: ArgType.Number,
+    },
   ],
   code: `
     $jsonLoad[soccers;$readFile[res/data/playSoccers.json]]
     $if[$jsonType[soccers;$env[soccerType]]!=array;$return]
     $return[$arrayFind[$jsonGet[soccers;$env[soccerType]];item;$jsonGet[item;ID]==$env[soccerId]]]
-  `
+  `,
 })

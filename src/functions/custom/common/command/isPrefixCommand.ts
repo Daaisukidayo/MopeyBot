@@ -6,5 +6,5 @@ export default new ForgeFunction({
   output: ArgType.Boolean,
   code: `
     $return[$checkCondition[$instanceName==Message]]
-  `
+  `,
 })

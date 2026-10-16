@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "description",
       description: "The error description to display in the embed.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -21,5 +21,5 @@ export default new ForgeFunction({
     ;$getGlobalVar[errorColor]]
     $!send
     $stop
-  `
+  `,
 })

@@ -10,8 +10,8 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "text",
             description: "The list as the user wrote it.",
             type: forgescript_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -42,6 +42,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $jsonLoad[result;$sumRaresList[$env[raresList]]]
     $!jsonSet[result;raresList;$env[raresList]]
     $return[$env[result]]
-  `
+  `,
 });
 //# sourceMappingURL=parseRaresList.js.map

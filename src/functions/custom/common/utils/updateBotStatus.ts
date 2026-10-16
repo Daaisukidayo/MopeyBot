@@ -17,5 +17,5 @@ export default new ForgeFunction({
     ;
       $setStatus[dnd;Custom;Disabled for maintenance]
     ]
-  `
+  `,
 })

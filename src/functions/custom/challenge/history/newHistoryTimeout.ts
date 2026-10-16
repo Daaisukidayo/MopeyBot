@@ -9,8 +9,8 @@ export default new ForgeFunction({
       name: "messageId",
       description: "The history message (default: the message of the interaction).",
       type: ArgType.String,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $let[mid;$default[$env[messageId];$messageID]]
@@ -22,5 +22,5 @@ export default new ForgeFunction({
       $deleteMessageVar[cachedHistoryPageIndex;$get[mid]]
       $deleteMessage[$channelID;$get[mid]]
     ;$getGlobalVar[showhistory_cooldown];showhistory-$authorID]
-  `
+  `,
 })

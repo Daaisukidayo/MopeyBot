@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "animalId",
             description: "The ID of the animal to load variants for",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $jsonLoad[userPacks;$jsonGet[userProfile;userPacks]]
@@ -27,6 +27,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $letSum[buttonsQuantity;1]
       ]
     ;i]
-  `
+  `,
 });
 //# sourceMappingURL=addUpgradeMenuAnimalChoices.js.map

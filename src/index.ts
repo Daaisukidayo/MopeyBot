@@ -6,6 +6,7 @@ import { ForgeCanvas } from "@tryforge/forge.canvas"
 import { ForgeRegex } from "forge.regex"
 import { ForgeTimers, TimerEvent } from "forge.timers"
 import { ForgeJSON } from "forge.json"
+import { ForgeClass } from "forge.class"
 import { QuorielEdge } from "@quoriel/edge"
 
 import { shutdownSetup } from "./utils/shutdownSetup.js"
@@ -17,18 +18,18 @@ process.loadEnvFile()
 // ========== EXTENTIONS CONFIGURATION ==========
 const FT = new ForgeTimers({
   intervalConfig: {
-    restoredTicksLimit: 0
+    restoredTicksLimit: 0,
   },
   cronConfig: {
-    restoredTicksLimit: 1
+    restoredTicksLimit: 1,
   },
-  events: [TimerEvent.timerDrop, TimerEvent.timersReady, TimerEvent.databaseFail]
+  events: [TimerEvent.timerDrop, TimerEvent.timersReady, TimerEvent.databaseFail],
 })
 
 const QE = new QuorielEdge({
   features: ["jsonDirectPass", "restArgSpread"],
   events: ["interactionCreate"],
-  caches: ["animals", "rares", "locale", "arena", "leaderboard"]
+  caches: ["animals", "rares", "locale", "arena", "leaderboard"],
 })
 
 const TOP = new ForgeTopGG({
@@ -37,20 +38,20 @@ const TOP = new ForgeTopGG({
   events: ["error", "posted", "voted"],
   port: 1040,
   post: {
-    interval: 3_600_000
-  }
+    interval: 3_600_000,
+  },
 } as IForgeTopGGOptions)
 
 const DB = new ForgeDB({
   events: ["connect"],
-  type: "better-sqlite3"
+  type: "better-sqlite3",
 })
 
 // ========== CLIENT CONFIGURATION ==========
 FunctionManager.load(path.resolve(process.cwd(), "dist", "functions", "native")) // Native functions loader
 
 const BOT: ForgeClient = new ForgeClient({
-  extensions: [DB, TOP, QE, FT, new ForgeRegex(), new ForgeCanvas(), new ForgeJSON()],
+  extensions: [DB, TOP, QE, FT, new ForgeRegex(), new ForgeCanvas(), new ForgeJSON(), new ForgeClass()],
 
   prefixes: ["$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]"],
 
@@ -76,7 +77,7 @@ const BOT: ForgeClient = new ForgeClient({
     "DirectMessages",
     // "DirectMessageReactions",
     // "DirectMessageTyping",
-    "MessageContent"
+    "MessageContent",
     // "GuildScheduledEvents",
     // "AutoModerationConfiguration",
     // "AutoModerationExecution",
@@ -136,7 +137,7 @@ const BOT: ForgeClient = new ForgeClient({
     // "messageReactionRemoveAll",
     // "messageReactionRemoveEmoji",
     // "messageUpdate",
-    "presenceUpdate"
+    // "presenceUpdate",
     // "roleCreate",
     // "roleDelete",
     // "roleUpdate",
@@ -163,11 +164,14 @@ const BOT: ForgeClient = new ForgeClient({
     // "voiceChannelEffectSend",
     // "voiceStateUpdate",
     // "webhooksUpdate"
-  ]
+  ],
 })
 
 // ========== LOAD VARIABLES ==========
 DB.variables(variables)
+
+// ========== LOAD CLASSES ==========
+BOT.classes.load("dist/classes/")
 
 // ========== LOAD CUSTOM FUNCTIONS & COMMAND HANDLERS ==========
 BOT.functions.load("dist/functions/custom")

@@ -40,6 +40,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]]]
 
     $newCommandTimeout
-  `
+  `,
 });
 //# sourceMappingURL=wardrobe.js.map

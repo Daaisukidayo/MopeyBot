@@ -21,10 +21,10 @@ exports.default = new forgescript_1.ApplicationCommand({
                 ...(0, getLocalization_js_1.localized)(options[1]),
                 choices: [
                     { ...(0, getLocalization_js_1.localized)(options[1].choices[0]), value: "h" },
-                    { ...(0, getLocalization_js_1.localized)(options[1].choices[1]), value: "t" }
-                ]
-            }
-        ]
-    }
+                    { ...(0, getLocalization_js_1.localized)(options[1].choices[1]), value: "t" },
+                ],
+            },
+        ],
+    },
 });
 //# sourceMappingURL=coinflip.js.map

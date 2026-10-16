@@ -9,19 +9,19 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "animalId",
             description: "Animal or rare identifier from res/data/animals.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "key",
             description: "Information to get from the JSON structure.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "variant",
             description: "Optional: the skin's index in 'animal.variants', or the skin's id (e.g. lion_s2_0). If omitted, gets base info.",
             type: forgescript_1.ArgType.String,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $c[Read by reference: never modify 'animals']
@@ -49,6 +49,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $return[$default[$jsonGet[animals;$get[animalIndex];variants;$get[variant];$env[key]];undefined]]
-  `
+  `,
 });
 //# sourceMappingURL=getAnimalInfo.js.map

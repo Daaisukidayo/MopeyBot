@@ -10,18 +10,18 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "playDataVar",
             description: "The name of the variable that holds the play data.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerType",
             description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerId",
             description: "The ID of the soccer item",
-            type: forgescript_1.ArgType.Number
-        }
+            type: forgescript_1.ArgType.Number,
+        },
     ],
     code: `
     $ref[playData;$env[playDataVar]]
@@ -31,6 +31,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[chance;$jsonGet[$getPlaySoccer[$env[soccerType];$env[soccerId]];chance]]
     $let[rank;$arrayCount[$jsonGet[$readFile[res/data/playSoccers.json];$env[soccerType]];item;$jsonGet[item;chance]>$get[chance]]]
     $return[$round[$math[($jsonGet[lossChances;stealBase] + $jsonGet[lossChances;stealPerRarity] * $get[rank]) * $get[tierFactor]]]]
-  `
+  `,
 });
 //# sourceMappingURL=getSoccerStealChance.js.map

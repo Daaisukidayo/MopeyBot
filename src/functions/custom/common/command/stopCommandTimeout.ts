@@ -10,10 +10,10 @@ export default new ForgeFunction({
       name: "command",
       description: "The command name to stop the timeout for. Defaults to the command where the function were executed",
       type: ArgType.String,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $return[$clearTimeout[$commandKey[$env[command]]-$authorID]]
-  `
+  `,
 })

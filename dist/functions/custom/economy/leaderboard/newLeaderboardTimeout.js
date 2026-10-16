@@ -10,8 +10,8 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "messageId",
             description: "The leaderboard message (default: the message of the interaction).",
             type: forgescript_1.ArgType.String,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[msgID;$default[$env[messageId];$messageID]]
@@ -21,6 +21,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $deleteMessage[$channelID;$get[msgID]]
       $deleteMessageVar[LBlist;$get[msgID]]
     ;$getGlobalVar[leaderboard_cooldown];leaderboard-$authorID]
-  `
+  `,
 });
 //# sourceMappingURL=newLeaderboardTimeout.js.map

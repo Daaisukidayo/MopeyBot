@@ -28,6 +28,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.switchlocale.switched.$get[locale];$jsonGet[locales;$get[locale]]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=switchLocale.js.map

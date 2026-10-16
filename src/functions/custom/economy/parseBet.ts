@@ -10,26 +10,26 @@ export default new ForgeFunction({
       name: "command",
       description: "The game, whose texts are used: coinflip or slots",
       type: ArgType.String,
-      required: true
+      required: true,
     },
     {
       name: "minimum",
       description: "The smallest bet",
       type: ArgType.Number,
-      required: true
+      required: true,
     },
     {
       name: "maximum",
       description: "The biggest bet",
       type: ArgType.Number,
-      required: true
+      required: true,
     },
     {
       name: "amount",
       description: "The bet as the user wrote it",
       type: ArgType.String,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -44,5 +44,5 @@ export default new ForgeFunction({
       $newError[$tl[ui.$env[command].invalidRange.$get[l];$env[minimum];$separate[$env[maximum]]]]
     ]
     $return[$get[amount]]
-  `
+  `,
 })

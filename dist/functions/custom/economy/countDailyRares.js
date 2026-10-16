@@ -10,14 +10,14 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "command",
             description: "raretry or raretryrun",
             type: forgescript_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "count",
             description: "The rares caught now",
             type: forgescript_1.ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
     code: `
     $c[caughtRaresInRaretry and maxRaretryRares, or the same with Raretryrun]
@@ -33,6 +33,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addTextDisplay[$tl[ui.special.caughtRares.$jsonGet[userProfile;language];<@$authorID>;$get[max];$env[command]]]
     ]
     $return[true]
-  `
+  `,
 });
 //# sourceMappingURL=countDailyRares.js.map

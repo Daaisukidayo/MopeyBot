@@ -10,5 +10,5 @@ export default new ForgeFunction({
     $arrayFilter[animals;obj;$and[$jsonGet[obj;tier]>=15;$jsonGet[obj;deleted]!=true;$includes[$toLowerCase[$jsonGet[obj;fullName]];rare]==false];enemies]
     $setCache[arena;arenaEnemies;$arrayPluck[enemies;ID]]
     $logger[Info;Cached «arenaEnemies»]
-  `
+  `,
 })

@@ -50,6 +50,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $objectMerge[playData;$objectOf[MessageID;"$get[mid]";ChannelID;"$channelID";GuildID;"$guildID";started;true]]
       $updatePlayData[playData]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=play.js.map

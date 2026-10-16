@@ -7,6 +7,6 @@ exports.default = new forgescript_1.ForgeFunction({
     output: forgescript_1.ArgType.Number,
     code: `
     $return[$math[86400000 - $getTimestamp % 86400000]]
-  `
+  `,
 });
 //# sourceMappingURL=msUntilNextDay.js.map

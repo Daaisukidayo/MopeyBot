@@ -16,5 +16,5 @@ export default new ForgeFunction({
         $addOption[$tl[ui.wardrobe.menuOptions.$env[option].label.$get[l]];$tl[ui.wardrobe.menuOptions.$env[option].description.$get[l]];$env[option]]
       ]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

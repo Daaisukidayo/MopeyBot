@@ -10,10 +10,10 @@ export default new ForgeFunction({
       name: "userId",
       description: "The user ID.",
       type: ArgType.User,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $return[$getUserVar[challengeProgress|$channelID;$nullish[$env[userId;id];$authorID]]]
-  `
+  `,
 })

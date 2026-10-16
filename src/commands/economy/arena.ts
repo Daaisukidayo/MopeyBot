@@ -11,6 +11,6 @@ export default new ApplicationCommand({
   data: {
     type: 1,
 
-    ...localized(slash)
-  }
+    ...localized(slash),
+  },
 })

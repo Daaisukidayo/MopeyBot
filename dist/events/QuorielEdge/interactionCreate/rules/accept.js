@@ -32,6 +32,6 @@ exports.default = new edge_1.Command({
       $addTextDisplay[$tl[ui.rules.accepted.$get[l]]]
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
-  `
+  `,
 });
 //# sourceMappingURL=accept.js.map

@@ -9,18 +9,18 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "playDataVar",
             description: "The name of the variable that holds the play data.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "opponentId",
             description: "The animal ID of the opponent",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "opponentTier",
             description: "The tier of the opponent (any existing tier, 1-17)",
-            type: forgescript_1.ArgType.Number
-        }
+            type: forgescript_1.ArgType.Number,
+        },
     ],
     code: `
     $ref[playData;$env[playDataVar]]
@@ -40,6 +40,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
     $addArenaActionButtons
     $addArenaDevMenu[playData]
-  `
+  `,
 });
 //# sourceMappingURL=addArenaOpponent.js.map

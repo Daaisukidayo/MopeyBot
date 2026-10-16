@@ -39,6 +39,6 @@ exports.default = new edge_1.Command({
       $addTextDisplay[$tl[ui.play.earned.$get[l];$separate[$get[MC]]]]
     ;$getGlobalVar[defaultColor]]
     $interactionUpdate
-  `
+  `,
 });
 //# sourceMappingURL=exit.js.map

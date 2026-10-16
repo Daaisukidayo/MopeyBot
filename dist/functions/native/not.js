@@ -13,11 +13,11 @@ exports.default = new forgescript_1.NativeFunction({
             description: "The boolean value to invert.",
             type: forgescript_1.ArgType.Boolean,
             required: true,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     async execute(ctx, [bool]) {
         return this.success(!bool);
-    }
+    },
 });
 //# sourceMappingURL=not.js.map

@@ -17,6 +17,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $addTextDisplay[## $get[e] = $get[a]]
-  `
+  `,
 });
 //# sourceMappingURL=math.js.map

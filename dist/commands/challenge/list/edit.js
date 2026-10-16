@@ -20,11 +20,11 @@ exports.default = new forgescript_1.ApplicationCommand({
                 ...(0, getLocalization_js_1.localized)(options[1]),
                 choices: [
                     { ...(0, getLocalization_js_1.localized)(options[1].choices[0]), value: "+" },
-                    { ...(0, getLocalization_js_1.localized)(options[1].choices[1]), value: "-" }
-                ]
+                    { ...(0, getLocalization_js_1.localized)(options[1].choices[1]), value: "-" },
+                ],
             },
-            { type: 3, required: true, ...(0, getLocalization_js_1.localized)(options[2]) }
-        ]
-    }
+            { type: 3, required: true, ...(0, getLocalization_js_1.localized)(options[2]) },
+        ],
+    },
 });
 //# sourceMappingURL=edit.js.map

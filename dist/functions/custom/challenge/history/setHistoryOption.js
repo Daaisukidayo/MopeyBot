@@ -9,18 +9,18 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "page",
             description: "The history page being made or edited.",
-            type: forgescript_1.ArgType.Json
+            type: forgescript_1.ArgType.Json,
         },
         {
             name: "option",
             description: "The option: points, raresQuantity, playType, difficulty, endDate or raresList.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "value",
             description: "The value from the form or the menu.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -65,6 +65,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $return[$env[page]]
-  `
+  `,
 });
 //# sourceMappingURL=setHistoryOption.js.map

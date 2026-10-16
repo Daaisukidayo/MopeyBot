@@ -8,14 +8,14 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "historyData",
             description: "The history object that holds the data",
-            type: forgescript_1.ArgType.Json
+            type: forgescript_1.ArgType.Json,
         },
         {
             name: "editHandler",
             description: "The interaction that edits the page (addHistory or editHistory). Without it the page is only shown.",
             type: forgescript_1.ArgType.String,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -83,6 +83,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $addTextDisplay[$tl[ui.history.noHistory.$get[l]]]
       ]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=historyEmbed.js.map

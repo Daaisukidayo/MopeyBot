@@ -64,5 +64,5 @@ export default new ForgeFunction({
     ]
 
     $!editMessage[$channelID;$get[msgid];$addTextDisplay[$callFn[content]]]
-  `
+  `,
 })

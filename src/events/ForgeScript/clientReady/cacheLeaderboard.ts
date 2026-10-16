@@ -6,5 +6,5 @@ export default new BaseCommand({
     $refreshLeaderboardCache
 
     $setInterval[$refreshLeaderboardCache;5m]
-  `
+  `,
 })

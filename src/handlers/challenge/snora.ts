@@ -33,5 +33,5 @@ export default new ForgeFunction({
       $addSeparator
       $addTextDisplay[$tl[ui.snora.or.$get[l];$get[separator];$getAnimalInfo[dove;challenge.abbreviations.0];$getAnimalInfo[dove;challenge.abbreviations.1]]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

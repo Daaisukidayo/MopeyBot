@@ -28,6 +28,6 @@ exports.default = new edge_1.Command({
     $!jsonSet[challengeProgress;playType;$if[$jsonGet[challengeProgress;teamID]==-1;0;1]]
     $pushNewHistoryPage[$env[challengeProgress]]
     $finishChallenge[challengeProgress]
-  `
+  `,
 });
 //# sourceMappingURL=confirmEnd.js.map

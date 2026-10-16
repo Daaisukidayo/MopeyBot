@@ -5,6 +5,6 @@ exports.default = new forgescript_1.BaseCommand({
     type: "clientReady",
     code: `
     $cacheRaresContent
-  `
+  `,
 });
 //# sourceMappingURL=cacheRaresContent.js.map

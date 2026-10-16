@@ -16,6 +16,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ;cachedLB;i]
 
     $setCache[leaderboard;cachedLB;$env[cachedLB]]
-  `
+  `,
 });
 //# sourceMappingURL=refreshLeaderboardCache.js.map

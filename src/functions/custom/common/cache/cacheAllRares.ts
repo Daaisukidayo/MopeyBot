@@ -56,5 +56,5 @@ export default new ForgeFunction({
     $setCache[rares;challengeCategories;$env[challengeCategories]]
     $setCache[rares;categoryLimits;$env[categoryLimits]]
     $logger[Info;Cached the challenge rares]
-  `
+  `,
 })

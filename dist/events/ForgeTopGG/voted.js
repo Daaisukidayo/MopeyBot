@@ -30,6 +30,6 @@ exports.default = new forgescript_1.BaseCommand({
       ]
     ;$getGlobalVar[defaultColor]]
     $sendDM[$get[ID]]
-  `
+  `,
 });
 //# sourceMappingURL=voted.js.map

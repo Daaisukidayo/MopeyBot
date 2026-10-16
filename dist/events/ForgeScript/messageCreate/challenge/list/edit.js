@@ -8,6 +8,6 @@ exports.default = new forgescript_1.BaseCommand({
     type: "messageCreate",
     code: `
     $handleEditList
-  `
+  `,
 });
 //# sourceMappingURL=edit.js.map

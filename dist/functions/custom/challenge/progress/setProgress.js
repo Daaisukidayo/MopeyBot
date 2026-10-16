@@ -10,14 +10,14 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "userId",
             description: "The ID of the user for whom progress is being set.",
             type: forgescript_1.ArgType.User,
-            required: false
+            required: false,
         },
         {
             name: "teamId",
             description: "The ID of the team to which the progress belongs.",
             type: forgescript_1.ArgType.Number,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[userId;$nullish[$env[userId;id];$authorID]]
@@ -29,6 +29,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $objectMerge[baseChallengeProgress;$objectOf[userID;"$get[userId]";teamID;$get[teamId];difficulty;$nullish[$jsonGet[$getChannelVar[lobby];settings;difficulty];$jsonGet[$getProfile[$get[userId]];challenge;difficulty]]]]
 
     $saveProgress[$env[baseChallengeProgress];$get[userId]]
-  `
+  `,
 });
 //# sourceMappingURL=setProgress.js.map

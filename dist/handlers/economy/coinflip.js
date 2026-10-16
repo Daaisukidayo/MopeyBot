@@ -42,6 +42,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $!editMessage[$channelID;$get[msg];$addTextDisplay[$get[result]]]
-  `
+  `,
 });
 //# sourceMappingURL=coinflip.js.map

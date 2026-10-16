@@ -23,9 +23,9 @@ export default new ApplicationCommand({
 
         choices: [
           { ...localized(options[1].choices[0]), value: "h" },
-          { ...localized(options[1].choices[1]), value: "t" }
-        ]
-      }
-    ]
-  }
+          { ...localized(options[1].choices[1]), value: "t" },
+        ],
+      },
+    ],
+  },
 })

@@ -9,8 +9,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "text",
             description: "The name or ID to look for",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $cacheAnimalsData
@@ -19,6 +19,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[index;$arrayFindIndex[animals;animal;$or[$toCamelCase[$jsonGet[animal;fullName]]==$get[query];$toCamelCase[$jsonGet[animal;ID]]==$get[query]]]]
     $if[$get[index]==-1;$return]
     $return[$jsonGet[animals;$get[index];ID]]
-  `
+  `,
 });
 //# sourceMappingURL=findAnimalId.js.map

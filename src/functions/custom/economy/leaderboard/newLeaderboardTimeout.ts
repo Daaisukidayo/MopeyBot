@@ -9,8 +9,8 @@ export default new ForgeFunction({
       name: "messageId",
       description: "The leaderboard message (default: the message of the interaction).",
       type: ArgType.String,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $let[msgID;$default[$env[messageId];$messageID]]
@@ -20,5 +20,5 @@ export default new ForgeFunction({
       $deleteMessage[$channelID;$get[msgID]]
       $deleteMessageVar[LBlist;$get[msgID]]
     ;$getGlobalVar[leaderboard_cooldown];leaderboard-$authorID]
-  `
+  `,
 })

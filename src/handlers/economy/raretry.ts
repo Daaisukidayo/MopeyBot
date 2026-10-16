@@ -86,5 +86,5 @@ export default new ForgeFunction({
       $let[footer;$get[modeLine]]
       $callFn[embed]
     ]
-  `
+  `,
 })

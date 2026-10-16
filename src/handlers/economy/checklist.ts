@@ -47,11 +47,11 @@ export default new ForgeFunction({
       $addSeparator[Large]
 
       $addTextDisplay[$tl[ui.checklist.claimDaily.$get[l]]]
-      $addTextDisplay[$callFn[status;$get[dailyDone]]]
+      $addTextDisplay[$callFn[status;$get[dailyDone];]]
       $addSeparator[Small;false]
 
       $addTextDisplay[$tl[ui.checklist.vote.$get[l];https://top.gg/bot/$clientID/vote]]
-      $addTextDisplay[$callFn[status;$get[hasVoted]]]
+      $addTextDisplay[$callFn[status;$get[hasVoted];]]
       $addSeparator[Small;false]
 
       $addTextDisplay[$tl[ui.checklist.catchRaretry.$get[l];$get[maxRaretry]]]
@@ -66,5 +66,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.checklist.streak.$get[l];$getUserVar[dailyStreak]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

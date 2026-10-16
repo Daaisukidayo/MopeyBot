@@ -55,5 +55,5 @@ export default new ForgeFunction({
         $showDesignedList[$env[unknownContent]]
       ]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

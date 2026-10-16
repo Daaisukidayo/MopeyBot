@@ -34,6 +34,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $addButton[settings-$env[elem]-$authorID;$tl[data.difficulties.$env[elem].$get[l]];$get[style];;$get[disabled]]
       ;i]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=settingsEmbed.js.map

@@ -62,5 +62,5 @@ export default new Command({
 
     $interactionUpdate
     $!stopCommandTimeout[kingdragon]
-  `
+  `,
 })

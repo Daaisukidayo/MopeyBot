@@ -9,18 +9,18 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "soccerType",
             description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerId",
             description: "The ID of the soccer item",
-            type: forgescript_1.ArgType.Number
+            type: forgescript_1.ArgType.Number,
         },
         {
             name: "text",
             description: "The text next to the picture",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $attachment[res/img/play/soccer/$env[soccerType]/$env[soccerId].png;soccer.png]
@@ -28,6 +28,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addTextDisplay[$env[text]]
       $addThumbnail[attachment://soccer.png]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=addSoccerSection.js.map

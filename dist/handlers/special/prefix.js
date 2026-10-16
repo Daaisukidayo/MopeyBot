@@ -43,6 +43,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.prefix.changed.$get[l];$get[newPrefix]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=prefix.js.map

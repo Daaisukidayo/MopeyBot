@@ -14,8 +14,8 @@ exports.default = new forgescript_1.NativeFunction({
             description: "The argument to convert to a boolean.",
             type: forgescript_1.ArgType.String,
             required: true,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     execute: async function (ctx, [arg]) {
         if (arg === "true")
@@ -41,6 +41,6 @@ exports.default = new forgescript_1.NativeFunction({
         }
         catch { }
         return this.success(arg !== "");
-    }
+    },
 });
 //# sourceMappingURL=boolean.js.map

@@ -17,6 +17,6 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $setCache[rares;raresContent;$env[raresContent]]
     $logger[Info;Cached «raresContent»]
-  `
+  `,
 });
 //# sourceMappingURL=cacheRaresContent.js.map

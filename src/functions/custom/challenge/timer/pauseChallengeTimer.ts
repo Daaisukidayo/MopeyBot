@@ -9,13 +9,13 @@ export default new ForgeFunction({
       name: "userId",
       description: "ID of the user.",
       type: ArgType.User,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $let[userId;$nullish[$env[userId;id];$authorID]]
     $arrayForEach[$getGlobalVar[challengeTimerMilestones];milestone;
       $!pauseTimer[timeout;challengeTimer$env[milestone]-$get[userId]|$channelID]
     ]
-  `
+  `,
 })

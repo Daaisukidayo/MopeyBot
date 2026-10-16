@@ -8,18 +8,18 @@ export default new ForgeFunction({
     {
       name: "soccerType",
       description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "soccerId",
       description: "The ID of the soccer item",
-      type: ArgType.Number
+      type: ArgType.Number,
     },
     {
       name: "text",
       description: "The text next to the picture",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $attachment[res/img/play/soccer/$env[soccerType]/$env[soccerId].png;soccer.png]
@@ -27,5 +27,5 @@ export default new ForgeFunction({
       $addTextDisplay[$env[text]]
       $addThumbnail[attachment://soccer.png]
     ]
-  `
+  `,
 })

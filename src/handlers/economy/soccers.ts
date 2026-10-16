@@ -11,5 +11,5 @@ export default new ForgeFunction({
     $addCooldown
     
     $soccerEmbed
-  `
+  `,
 })

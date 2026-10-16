@@ -16,7 +16,7 @@ export default [
     $jsonLoad[changelog;$jsonGet[$readFile[res/locale/changelog.json];$get[l]]]
 
     $changelogEmbed
-  `
+  `,
   }),
   new ForgeFunction({
     name: "changelogEmbed",
@@ -24,6 +24,6 @@ export default [
     $addContainer[
       $addTextDisplay[$arrayJoin[changelog;\n]]
     ;$getGlobalVar[defaultColor]]
-  `
-  })
+  `,
+  }),
 ]

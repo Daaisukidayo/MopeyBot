@@ -2,7 +2,7 @@ import { ArgType, NativeFunction } from "@tryforge/forgescript"
 
 const SUFFIX_MAP: Record<string, Record<Intl.LDMLPluralRule, string> & { other: string }> = {
   "en-US": { one: "st", two: "nd", few: "rd", other: "th", zero: "th", many: "th" },
-  ru: { one: "-й", two: "-й", few: "-й", other: "-й", zero: "-й", many: "-й" }
+  ru: { one: "-й", two: "-й", few: "-й", other: "-й", zero: "-й", many: "-й" },
 }
 
 export default new NativeFunction({
@@ -17,15 +17,15 @@ export default new NativeFunction({
       description: "The number to convert to an ordinal representation.",
       type: ArgType.Number,
       required: true,
-      rest: false
+      rest: false,
     },
     {
       name: "language",
       description: "The language code used for the ordinal format. Defaults to en-US",
       type: ArgType.String,
       required: false,
-      rest: false
-    }
+      rest: false,
+    },
   ],
   execute: async function (ctx, [number, language]) {
     const [langPart, regionPart] = (language ?? "en-US").split("-")
@@ -37,5 +37,5 @@ export default new NativeFunction({
     const suffix = langSuffixes[rule] || langSuffixes["other"]
 
     return this.success(`${number}${suffix}`)
-  }
+  },
 })

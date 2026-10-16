@@ -9,14 +9,14 @@ export default new ForgeFunction({
       name: "userId",
       description: "The ID of the user for whom progress is being set.",
       type: ArgType.User,
-      required: false
+      required: false,
     },
     {
       name: "teamId",
       description: "The ID of the team to which the progress belongs.",
       type: ArgType.Number,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $let[userId;$nullish[$env[userId;id];$authorID]]
@@ -28,5 +28,5 @@ export default new ForgeFunction({
     $objectMerge[baseChallengeProgress;$objectOf[userID;"$get[userId]";teamID;$get[teamId];difficulty;$nullish[$jsonGet[$getChannelVar[lobby];settings;difficulty];$jsonGet[$getProfile[$get[userId]];challenge;difficulty]]]]
 
     $saveProgress[$env[baseChallengeProgress];$get[userId]]
-  `
+  `,
 })

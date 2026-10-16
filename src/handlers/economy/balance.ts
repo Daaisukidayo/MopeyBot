@@ -21,5 +21,5 @@ export default new ForgeFunction({
       $addTextDisplay[$tl[ui.balance.purchased.$get[l]]]
       $addTextDisplay[$codeBlock[$default[$get[packs];$tl[ui.balance.none.$get[l]]]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

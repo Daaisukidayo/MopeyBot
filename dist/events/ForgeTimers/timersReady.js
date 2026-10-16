@@ -5,6 +5,6 @@ exports.default = new forgescript_1.BaseCommand({
     type: "timersReady",
     code: `
     $logger[Info;ForgeTimers | Restored $eventData[restored] timers, dropped $eventData[dropped]]
-  `
+  `,
 });
 //# sourceMappingURL=timersReady.js.map

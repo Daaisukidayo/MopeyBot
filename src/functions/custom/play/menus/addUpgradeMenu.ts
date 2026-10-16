@@ -7,13 +7,13 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "wardrobeVar",
       description: "The name of the variable that holds the user's wardrobe.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[wardrobe;$env[wardrobeVar]]
@@ -60,5 +60,5 @@ export default new ForgeFunction({
       $addButton[play_upgradeAnimal-$env[animalId]-$authorID;$get[animalName];$get[butStyle];$get[emoji]]
     ;i]
 
-  `
+  `,
 })

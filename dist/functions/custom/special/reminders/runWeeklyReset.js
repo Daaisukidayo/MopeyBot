@@ -21,6 +21,6 @@ exports.default = new forgescript_1.ForgeFunction({
         ]
       ]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=runWeeklyReset.js.map

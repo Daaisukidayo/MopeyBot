@@ -19,5 +19,5 @@ export default new ForgeFunction({
       $addButton[acceptrules-$authorID;$tl[ui.rules.buttonLabelAccept.$get[l]];Success;✅]
       $addButton[declinerules-$authorID;$tl[ui.rules.buttonLabelDecline.$get[l]];Danger;🛑]
     ;$getGlobalVar[cooldownColor]]
-  `
+  `,
 })

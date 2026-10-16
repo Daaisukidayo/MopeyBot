@@ -10,23 +10,23 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "playDataVar",
             description: "The name of the variable that holds the play data.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerType",
             description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerId",
             description: "The ID of the soccer item",
-            type: forgescript_1.ArgType.Number
+            type: forgescript_1.ArgType.Number,
         },
         {
             name: "action",
             description: "What the reward is for: 'goal' or 'hold'",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $ref[playData;$env[playDataVar]]
@@ -34,6 +34,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[share;$if[$env[action]==hold;$getGlobalVar[soccerHoldMCShare];1]]
     $jsonLoad[reward;$jsonGet[$getGlobalVar[soccerGoalMC];$jsonGet[playData;tier]]]
     $return[$round[$math[$random[$jsonGet[reward;0];$jsonGet[reward;1]] * $get[share] * $get[multiplier]]]]
-  `
+  `,
 });
 //# sourceMappingURL=getSoccerMC.js.map

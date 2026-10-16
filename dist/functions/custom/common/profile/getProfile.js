@@ -11,14 +11,14 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "userId",
             description: "ID of the user.",
             type: forgescript_1.ArgType.User,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $jsonLoad[profile;$getUserVar[userProfile;$nullish[$env[userId;id];$authorID]]]
     $c[Keys added to the profile config later are filled in for older profiles]
     $objectDefaults[profile;$getGlobalVar[userProfile]]
     $return[$env[profile]]
-  `
+  `,
 });
 //# sourceMappingURL=getProfile.js.map

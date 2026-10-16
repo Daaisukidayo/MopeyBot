@@ -40,6 +40,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $addTextDisplay[$tl[ui.$get[cmd].rarity.$get[l];1;$get[rarity]]]
       ]
     ;$get[color]]
-  `
+  `,
 });
 //# sourceMappingURL=soccerEmbed.js.map

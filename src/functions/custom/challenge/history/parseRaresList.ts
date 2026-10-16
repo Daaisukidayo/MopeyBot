@@ -10,8 +10,8 @@ export default new ForgeFunction({
       name: "text",
       description: "The list as the user wrote it.",
       type: ArgType.String,
-      required: true
-    }
+      required: true,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -42,5 +42,5 @@ export default new ForgeFunction({
     $jsonLoad[result;$sumRaresList[$env[raresList]]]
     $!jsonSet[result;raresList;$env[raresList]]
     $return[$env[result]]
-  `
+  `,
 })

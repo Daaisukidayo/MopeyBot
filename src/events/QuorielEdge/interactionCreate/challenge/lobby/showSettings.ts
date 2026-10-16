@@ -9,7 +9,7 @@ export default new Command({
 
     $checkLobby
 
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
     $onlyIf[$messageID==$jsonGet[lobby;messageID];
       $!deleteMessage[$channelID;$messageID]
     ]
@@ -17,5 +17,5 @@ export default new Command({
     $ephemeral
     $lobbySettingsEmbed[lobby]
     $interactionReply
-  `
+  `,
 })

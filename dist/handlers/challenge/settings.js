@@ -16,6 +16,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $settingsEmbed
 
     $newCommandTimeout
-  `
+  `,
 });
 //# sourceMappingURL=settings.js.map

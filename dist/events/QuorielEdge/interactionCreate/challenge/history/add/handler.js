@@ -71,6 +71,6 @@ exports.default = new edge_1.Command({
         $addHistoryExtraEmbed[addHistorySavedConfig]
         $interactionUpdate
         $newCommandTimeout[addhistory]
-    `
+    `,
 });
 //# sourceMappingURL=handler.js.map

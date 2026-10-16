@@ -20,7 +20,7 @@ exports.default = [
       ]
       $showModal
       $newCommandTimeout[report]
-    `
+    `,
     }),
     new edge_1.Command({
         name: "reportModal",
@@ -65,7 +65,7 @@ exports.default = [
       ]
 
       $!stopCommandTimeout[report]
-    `
-    })
+    `,
+    }),
 ];
 //# sourceMappingURL=report.js.map

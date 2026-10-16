@@ -14,6 +14,6 @@ export default new ApplicationCommand({
 
     ...localized(slash),
 
-    options: [{ type: 3, required: false, autocomplete: true, ...localized(options[0]) }]
-  }
+    options: [{ type: 3, required: false, autocomplete: true, ...localized(options[0]) }],
+  },
 })

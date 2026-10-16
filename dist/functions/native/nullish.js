@@ -13,8 +13,8 @@ exports.default = new forgescript_1.NativeFunction({
             description: "A list of values to check",
             type: forgescript_1.ArgType.String,
             required: true,
-            rest: true
-        }
+            rest: true,
+        },
     ],
     async execute(ctx, [values]) {
         for (const value of values) {
@@ -28,6 +28,6 @@ exports.default = new forgescript_1.NativeFunction({
             }
         }
         return this.success(values.at(-1));
-    }
+    },
 });
 //# sourceMappingURL=nullish.js.map

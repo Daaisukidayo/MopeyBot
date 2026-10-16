@@ -13,18 +13,18 @@ exports.default = new forgescript_1.NativeFunction({
             description: "The string to check for a match against any of the provided values",
             type: forgescript_1.ArgType.String,
             required: true,
-            rest: false
+            rest: false,
         },
         {
             name: "matches",
             description: "One or more values (strings) to compare",
             type: forgescript_1.ArgType.String,
             required: true,
-            rest: true
-        }
+            rest: true,
+        },
     ],
     async execute(ctx, [string, matches]) {
         return this.success(matches.includes(string));
-    }
+    },
 });
 //# sourceMappingURL=isOneOf.js.map

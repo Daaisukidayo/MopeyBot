@@ -9,10 +9,10 @@ export default new ForgeFunction({
       name: "userId",
       description: "The user ID to show the time for.",
       type: ArgType.User,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $return[$tl[ui.challenge.time.$jsonGet[userProfile;language];$inline[$parseDigital[$getChallengeTimer[$env[userId;id]]000]]]]
-  `
+  `,
 })

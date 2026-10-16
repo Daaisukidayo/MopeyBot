@@ -11,11 +11,11 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "command",
             description: "The command name to stop the timeout for. Defaults to the command where the function were executed",
             type: forgescript_1.ArgType.String,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $return[$clearTimeout[$commandKey[$env[command]]-$authorID]]
-  `
+  `,
 });
 //# sourceMappingURL=stopCommandTimeout.js.map

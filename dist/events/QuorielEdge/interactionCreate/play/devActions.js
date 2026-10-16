@@ -300,6 +300,6 @@ exports.default = new edge_1.Command({
       $ephemeral
       $interactionFollowUp
     ]
-  `
+  `,
 });
 //# sourceMappingURL=devActions.js.map

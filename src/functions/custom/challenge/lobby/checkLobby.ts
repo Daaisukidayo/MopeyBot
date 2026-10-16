@@ -8,5 +8,5 @@ export default new ForgeFunction({
     $onlyIf[$getChannelVar[lobby]!=;
       $newError[$tl[ui.lobby.doesNotExist.$get[l]]]
     ]
-  `
+  `,
 })

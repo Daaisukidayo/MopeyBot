@@ -34,5 +34,5 @@ export default new ForgeFunction({
       $setMessageVar[LBlist;$env[LBlist];$get[msgID]]
       $newLeaderboardTimeout[$get[msgID]]
     ]
-  `
+  `,
 })

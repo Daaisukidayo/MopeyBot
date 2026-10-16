@@ -8,14 +8,14 @@ export default new ForgeFunction({
     {
       name: "progressVar",
       description: "The name of the variable that holds the challenge progress.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "userId",
       description: "The user whose challenge timer is read (default: the author).",
       type: ArgType.User,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $ref[progress;$env[progressVar]]
@@ -44,5 +44,5 @@ export default new ForgeFunction({
     ]
 
     $return[$tl[ui.challenge.prediction.$get[l];$if[$arrayIncludes[$jsonGet[userProfile;challenge;settings];hidePrediction];||$get[prediction]||;\`$get[prediction]\`]]]
-  `
+  `,
 })

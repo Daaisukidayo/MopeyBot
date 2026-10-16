@@ -49,5 +49,5 @@ export default new ForgeFunction({
       $objectMerge[playData;$objectOf[MessageID;"$get[mid]";ChannelID;"$channelID";GuildID;"$guildID";started;true]]
       $updatePlayData[playData]
     ]
-  `
+  `,
 })

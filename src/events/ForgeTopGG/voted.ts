@@ -29,5 +29,5 @@ export default new BaseCommand({
       ]
     ;$getGlobalVar[defaultColor]]
     $sendDM[$get[ID]]
-  `
+  `,
 })

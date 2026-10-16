@@ -10,14 +10,14 @@ export default new ForgeFunction({
       name: "command",
       description: "raretry or raretryrun",
       type: ArgType.String,
-      required: true
+      required: true,
     },
     {
       name: "count",
       description: "The rares caught now",
       type: ArgType.Number,
-      required: true
-    }
+      required: true,
+    },
   ],
   code: `
     $c[caughtRaresInRaretry and maxRaretryRares, or the same with Raretryrun]
@@ -33,5 +33,5 @@ export default new ForgeFunction({
       $addTextDisplay[$tl[ui.special.caughtRares.$jsonGet[userProfile;language];<@$authorID>;$get[max];$env[command]]]
     ]
     $return[true]
-  `
+  `,
 })

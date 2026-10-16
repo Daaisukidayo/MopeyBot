@@ -145,6 +145,6 @@ exports.default = new edge_1.Command({
         $newCommandTimeout[wardrobe]
       ]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=handler.js.map

@@ -13,8 +13,8 @@ export default new NativeFunction({
       name: "guild ID",
       description: "The guild whose bot display name style should be reset",
       rest: false,
-      type: ArgType.Guild
-    }
+      type: ArgType.Guild,
+    },
   ],
   execute: async function (ctx, [guild]) {
     const res = await ctx.client.rest
@@ -22,11 +22,11 @@ export default new NativeFunction({
         body: {
           display_name_font_id: null,
           display_name_effect_id: null,
-          display_name_colors: null
-        }
+          display_name_colors: null,
+        },
       })
       .catch((e) => Logger.error(e))
 
     return this.success(Boolean(res))
-  }
+  },
 })

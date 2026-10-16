@@ -11,7 +11,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $checkProfile
     $addCooldown
 
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
     $checkLobby
     $onlyIf[$jsonGet[lobby;started];
       $newError[$tl[ui.lobby.notStarted.$get[l]]]
@@ -25,6 +25,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator[Large]
       $addLobbyStandings[lobby;$lobbyLeaderboard[lobby]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=progress.js.map

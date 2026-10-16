@@ -39,6 +39,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $addChallengeCompletedContainer[$env[rawList]]
-  `
+  `,
 });
 //# sourceMappingURL=hlsimulator.js.map

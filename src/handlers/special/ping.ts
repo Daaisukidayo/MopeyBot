@@ -20,5 +20,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.ping.ping.$get[l];$ping]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

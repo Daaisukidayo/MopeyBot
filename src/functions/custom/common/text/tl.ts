@@ -8,15 +8,15 @@ export default new ForgeFunction({
     {
       name: "path",
       description: "The key path to the desired content, e.g. 'ui.errors.test.en-US'.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "args",
       description: "Arguments to replace {PLACEHOLDERS} in the content.",
       type: ArgType.String,
       required: false,
-      rest: true
-    }
+      rest: true,
+    },
   ],
   code: `
     $arrayLoad[rawPath;.;$trim[$replace[$trimLines[$env[path]];\n;]]]
@@ -77,5 +77,5 @@ export default new ForgeFunction({
     ]
 
     $return[$env[value]]
-  `
+  `,
 })

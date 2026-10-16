@@ -14,6 +14,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $cacheArenaEnemies
     $cacheRaresContent
     $cacheTierAnimals
-  `
+  `,
 });
 //# sourceMappingURL=reloadData.js.map

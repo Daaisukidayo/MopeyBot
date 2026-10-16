@@ -7,5 +7,5 @@ export default new BaseCommand({
   type: "messageCreate",
   code: `
     $handleKingdragon
-  `
+  `,
 })

@@ -8,12 +8,12 @@ export default new ForgeFunction({
       name: "target",
       description:
         "Where it goes back to: 'menu' (the start menu), 'pack' or 'animal' (the tier choice for that), or a tier (its animals)",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
     $addActionRow
     $addButton[wardrobe-back-$env[target]-$authorID;$tl[ui.wardrobe.buttonBack.$get[l]];Secondary;↩️]
-  `
+  `,
 })

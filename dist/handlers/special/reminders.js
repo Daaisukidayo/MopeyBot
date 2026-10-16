@@ -15,6 +15,6 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $remindersEmbed
     $newCommandTimeout
-  `
+  `,
 });
 //# sourceMappingURL=reminders.js.map

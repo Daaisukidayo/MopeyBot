@@ -28,5 +28,5 @@ export default new ForgeFunction({
       ]
     ]
     $setCache[animals;animalsData;$env[animals]]
-  `
+  `,
 })

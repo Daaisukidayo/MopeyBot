@@ -64,5 +64,5 @@ export default new Command({
 
     $updatePlayData[playData]
     $interactionUpdate
-  `
+  `,
 })

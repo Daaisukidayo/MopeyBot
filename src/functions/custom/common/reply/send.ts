@@ -6,5 +6,5 @@ export default new ForgeFunction({
   output: ArgType.Number,
   code: `
     $return[$if[$or[$isSlashCommand;$isCommand==false];$interactionReply[;true];$sendMessage[$channelID;;true]]]
-  `
+  `,
 })

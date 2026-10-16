@@ -6,13 +6,13 @@ export default new ForgeFunction({
     {
       name: "pageVar",
       description: "The name of the variable that holds the history page being edited.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "historyVar",
       description: "The name of the variable that holds the shown history pages.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[page;$env[pageVar]]
@@ -30,5 +30,5 @@ export default new ForgeFunction({
       $addButton[editHistory-resetEditChanges-$authorID;$tl[ui.history.buttonLabelResetChanges.$get[l]];Secondary]
       $addButton[showHistory-cancelEditChanges-$authorID;$tl[ui.history.buttonLabelCancelChanges.$get[l]];Danger]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

@@ -5,6 +5,6 @@ exports.default = new forgescript_1.BaseCommand({
     type: "connect",
     code: `
     $logger[Info;Connected to the database | Ping: $dbPingms]
-  `
+  `,
 });
 //# sourceMappingURL=connect.js.map

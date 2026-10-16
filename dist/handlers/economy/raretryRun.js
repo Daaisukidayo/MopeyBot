@@ -55,6 +55,6 @@ exports.default = new forgescript_1.ForgeFunction({
       ]
       $saveProfile[$env[userProfile]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=raretryRun.js.map

@@ -4,7 +4,7 @@ export default new ForgeFunction({
   name: "publishLobbyResults",
   description: "Sends the lobby results and removes the lobby. Runs from the named timeout set by allPlayersFinished",
   code: `
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
     $if[$env[lobby]==;$return]
 
     $jsonLoad[userProfile;$getProfile[$jsonGet[lobby;host]]]
@@ -19,5 +19,5 @@ export default new ForgeFunction({
       ;$getGlobalVar[luckyColor]]
     ]
     $deleteLobbyProgress[$jsonGet[lobby;allPlayers]]
-  `
+  `,
 })

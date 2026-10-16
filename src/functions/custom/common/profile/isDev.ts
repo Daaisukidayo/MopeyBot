@@ -7,5 +7,5 @@ export default new ForgeFunction({
   output: ArgType.Boolean,
   code: `
     $return[$checkCondition[$jsonGet[userProfile;devMode]==1]]
-  `
+  `,
 })

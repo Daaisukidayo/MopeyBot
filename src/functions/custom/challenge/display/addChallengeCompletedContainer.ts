@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "raresList",
       description: "Object of the caught rare animals: their counts by their IDs.",
-      type: ArgType.Json
-    }
+      type: ArgType.Json,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -22,5 +22,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $showDesignedList[$jsonGet[result;l]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

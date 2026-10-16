@@ -19,6 +19,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $historyEmbed[$env[addHistorySavedConfig];addHistory]
     $addHistoryExtraEmbed[addHistorySavedConfig]
     $newCommandTimeout
-  `
+  `,
 });
 //# sourceMappingURL=add.js.map

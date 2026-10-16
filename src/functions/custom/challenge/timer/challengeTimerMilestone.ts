@@ -8,18 +8,18 @@ export default new ForgeFunction({
     {
       name: "userId",
       description: "ID of the user.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "locale",
       description: "The user's language.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "milestone",
       description: "The reached second of the challenge (see challengeTimerMilestones).",
-      type: ArgType.Number
-    }
+      type: ArgType.Number,
+    },
   ],
   code: `
     $let[userId;$env[userId]]
@@ -39,5 +39,5 @@ export default new ForgeFunction({
     $jsonLoad[userProfile;$getProfile[$get[userId]]]
 
     $sendMessage[$channelID;$addHourOverContainer[$get[userId];$get[l]]]
-  `
+  `,
 })

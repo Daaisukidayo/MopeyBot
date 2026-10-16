@@ -30,6 +30,6 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $setCache[rares;hlSimData;$env[data]]
     $logger[Info;Cached «hlSimData»]
-  `
+  `,
 });
 //# sourceMappingURL=cacheAnimalIndex.js.map

@@ -25,5 +25,5 @@ export default new ForgeFunction({
 
     $setProgress
     $startChallengeTimer
-  `
+  `,
 })

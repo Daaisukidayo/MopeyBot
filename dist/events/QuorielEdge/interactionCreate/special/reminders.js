@@ -21,6 +21,6 @@ exports.default = new edge_1.Command({
     $remindersEmbed
     $interactionUpdate
     $newCommandTimeout[reminders]
-  `
+  `,
 });
 //# sourceMappingURL=reminders.js.map

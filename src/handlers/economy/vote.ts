@@ -20,5 +20,5 @@ export default new ForgeFunction({
         $addButton[https://top.gg/bot/$clientID/vote;$tl[ui.vote.buttonLabel.$get[l]];Link;;$get[hasVoted]]
       ]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

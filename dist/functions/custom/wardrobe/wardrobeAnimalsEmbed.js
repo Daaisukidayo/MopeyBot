@@ -8,13 +8,13 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "wardrobeVar",
             description: "The name of the variable that holds the user's wardrobe.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "tier",
             description: "The tier of the animals",
-            type: forgescript_1.ArgType.Number
-        }
+            type: forgescript_1.ArgType.Number,
+        },
     ],
     code: `
     $ref[wardrobe;$env[wardrobeVar]]
@@ -36,6 +36,6 @@ exports.default = new forgescript_1.ForgeFunction({
       ]
       $addWardrobeBackButton[animal]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=wardrobeAnimalsEmbed.js.map

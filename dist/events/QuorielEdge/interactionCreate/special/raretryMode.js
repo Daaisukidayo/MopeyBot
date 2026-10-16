@@ -22,6 +22,6 @@ exports.default = new edge_1.Command({
     $interactionUpdate
     
     $newCommandTimeout[raretrymode]
-  `
+  `,
 });
 //# sourceMappingURL=raretryMode.js.map

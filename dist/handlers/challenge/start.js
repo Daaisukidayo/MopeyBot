@@ -26,6 +26,6 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $setProgress
     $startChallengeTimer
-  `
+  `,
 });
 //# sourceMappingURL=start.js.map

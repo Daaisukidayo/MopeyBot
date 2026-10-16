@@ -9,5 +9,5 @@ export default new ForgeFunction({
     $arrayForEach[$getGlobalVar[arenaActions];elem;
       $addButton[play_arenaAction-$jsonGet[elem;id]-$authorID;$tl[data.arenaActions.$jsonGet[elem;id].$get[l]];Success;$jsonGet[elem;emoji]]
     ]
-  `
+  `,
 })

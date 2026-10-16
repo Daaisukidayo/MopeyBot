@@ -10,6 +10,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $!jsonSet[baseHistoryPage;endDate;$getTimestamp]
     $setUserVar[addHistorySavedConfig;$env[baseHistoryPage]]
     $return[$env[baseHistoryPage]]
-  `
+  `,
 });
 //# sourceMappingURL=addHistoryNewConfig.js.map

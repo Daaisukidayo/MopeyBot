@@ -15,8 +15,8 @@ exports.default = new forgescript_1.ApplicationCommand({
         ...(0, getLocalization_js_1.localized)(slash),
         options: [
             { type: 3, required: false, ...(0, getLocalization_js_1.localized)(options[0]) },
-            { type: 3, required: false, ...(0, getLocalization_js_1.localized)(options[1]) }
-        ]
-    }
+            { type: 3, required: false, ...(0, getLocalization_js_1.localized)(options[1]) },
+        ],
+    },
 });
 //# sourceMappingURL=raretrysimulator.js.map

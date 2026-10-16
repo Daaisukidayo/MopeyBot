@@ -8,13 +8,13 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "lobbyVar",
             description: "The name of the variable that holds the lobby.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "standings",
             description: "The standings returned by $lobbyLeaderboard.",
-            type: forgescript_1.ArgType.Json
-        }
+            type: forgescript_1.ArgType.Json,
+        },
     ],
     code: `
     $ref[lobby;$env[lobbyVar]]
@@ -26,6 +26,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
     $if[$jsonGet[standings;solo];$addSeparator[Large]]
     $addTextDisplay[$tl[ui.lobby.victoryTypeTitle.$get[l];$tl[data.victoryTypes.$jsonGet[lobby;settings;victoryType].$get[l]]]]
-  `
+  `,
 });
 //# sourceMappingURL=addLobbyStandings.js.map

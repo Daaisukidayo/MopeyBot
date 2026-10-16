@@ -28,6 +28,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.weekly.description.$get[l];$separate[$get[MC]]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=weekly.js.map

@@ -8,8 +8,8 @@ export default new ForgeFunction({
     {
       name: "pos",
       description: "The position to get the emoji for",
-      type: ArgType.Number
-    }
+      type: ArgType.Number,
+    },
   ],
   code: `
     $return[$switch[$env[pos];
@@ -18,5 +18,5 @@ export default new ForgeFunction({
       $case[3;🥉]
       $case[default;\`#$env[pos]\`]
     ]]
-  `
+  `,
 })

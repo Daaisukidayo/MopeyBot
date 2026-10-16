@@ -21,5 +21,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.credits.madeWithLove.$get[l]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

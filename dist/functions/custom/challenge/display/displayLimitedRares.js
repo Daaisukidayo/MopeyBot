@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "progressVar",
             description: "The name of the variable that holds the challenge progress.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $ref[progress;$env[progressVar]]
@@ -47,6 +47,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $addContainer[
       $addTextDisplay[# $arrayJoin[limitsContent; ]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=displayLimitedRares.js.map

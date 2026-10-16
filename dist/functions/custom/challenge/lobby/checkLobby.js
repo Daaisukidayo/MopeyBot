@@ -9,6 +9,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $onlyIf[$getChannelVar[lobby]!=;
       $newError[$tl[ui.lobby.doesNotExist.$get[l]]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=checkLobby.js.map

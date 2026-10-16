@@ -25,6 +25,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $setMessageVar[cachedHistory;$env[cachedHistory];$get[mid]]
 
     $newHistoryTimeout[$get[mid]]
-  `
+  `,
 });
 //# sourceMappingURL=show.js.map

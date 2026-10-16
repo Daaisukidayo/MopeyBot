@@ -26,6 +26,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addButton[clearCoins-decline-$authorID;$tl[ui.clearcoins.buttonLabelDecline.$get[l]];Danger]
     ;Orange]
     $newCommandTimeout
-  `
+  `,
 });
 //# sourceMappingURL=clearCoins.js.map

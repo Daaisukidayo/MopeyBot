@@ -20,6 +20,6 @@ exports.default = new forgescript_1.BaseCommand({
     ;
       $setCron[$runWeeklyReset;$get[weeklyCron];weeklyReset]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=reminders.js.map

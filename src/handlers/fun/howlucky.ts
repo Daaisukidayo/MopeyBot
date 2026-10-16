@@ -26,5 +26,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.howlucky.footer.$get[l];$discordTimestamp[$math[$getTimestamp + $msUntilNextDay];RelativeTime]]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

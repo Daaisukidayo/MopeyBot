@@ -15,5 +15,5 @@ export default new ForgeFunction({
     $addChallengeCompletedContainer[$jsonGet[challengeProgress;raresList]]
     $!send
     $finishChallenge[challengeProgress]
-  `
+  `,
 })

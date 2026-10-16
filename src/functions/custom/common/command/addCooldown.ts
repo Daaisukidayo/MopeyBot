@@ -9,14 +9,14 @@ export default new ForgeFunction({
       name: "cooldownId",
       description: "Id for the cooldown",
       type: ArgType.String,
-      required: false
+      required: false,
     },
     {
       name: "updateCooldownTime",
       description: "Whether to start the cooldown over instead of checking it.",
       type: ArgType.Boolean,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $if[$isDev;$return]
@@ -45,5 +45,5 @@ export default new ForgeFunction({
 
       $newCooldown[$get[cooldownTime]]
     ]
-  `
+  `,
 })

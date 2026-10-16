@@ -1,6 +1,7 @@
 const fs = require("fs")
 const path = require("path")
 const { FunctionManager, ForgeFunction, Compiler, Logger } = require("@tryforge/forgescript")
+const { ClassManager, ForgeClassBuilder } = require("forge.class")
 
 const root = path.resolve(__dirname, "..")
 const dist = path.join(root, "dist")
@@ -24,7 +25,8 @@ for (const [name, dir] of [
   ["ForgeTimers", "node_modules/forge.timers/dist/native"],
   ["ForgeRegex", "node_modules/forge.regex/dist/native"],
   ["ForgeCanvas", "node_modules/@tryforge/forge.canvas/dist/functions"],
-  ["ForgeJSON", "node_modules/forge.json/dist/native"]
+  ["ForgeJSON", "node_modules/forge.json/dist/native"],
+  ["ForgeClass", "node_modules/forge.class/dist/native"],
 ]) {
   FunctionManager.load(name, path.join(root, dir))
 }
@@ -34,9 +36,34 @@ Logger.warn = warn
 const customFiles = [...walk(path.join(dist, "functions", "custom")), ...walk(path.join(dist, "handlers"))]
 for (const file of customFiles) for (const fn of exportsOf(file)) if (fn instanceof ForgeFunction) fn.populate()
 
-const files = ["commands", "events", "handlers", path.join("functions", "custom")].flatMap((d) =>
+const files = ["commands", "events", "handlers", path.join("functions", "custom"), "classes"].flatMap((d) =>
   walk(path.join(dist, d))
 )
+// A class has a code for every field default and method
+const codesOf = (item) => {
+  const cls = item instanceof ForgeClassBuilder ? item.data : item?.methods || item?.fields ? item : null
+  if (!cls) return [item?.data?.code ?? item?.options?.code].filter((code) => typeof code === "string")
+  return [...Object.values(cls.fields ?? {}), ...Object.values(cls.methods ?? {}).map((m) => m.code ?? m)].map(String)
+}
+// A local function called with fewer args than its params compiles, and fails only when the call runs
+const calledShort = (compiled) => {
+  const all = []
+  const collect = (fns) => {
+    for (const { data } of fns ?? []) {
+      all.push(data)
+      for (const field of data.fields ?? []) collect(field.functions)
+    }
+  }
+  collect(compiled.functions)
+  // A name built at run time can't be checked
+  const nameOf = (data) => (data.fields?.[0]?.functions?.length ? null : data.fields?.[0]?.value)
+  const params = new Map(
+    all.filter((f) => f.name === "$localFunction" && nameOf(f)).map((f) => [nameOf(f), f.fields.length - 2])
+  )
+  return all
+    .filter((f) => f.name === "$callLocalFunction" && f.fields.length - 1 < (params.get(nameOf(f)) ?? 0))
+    .map((f) => `$callFn[${nameOf(f)}] needs ${params.get(nameOf(f))} args, gets ${f.fields.length - 1}`)
+}
 let codes = 0
 const errors = []
 const report = (file, error, code) => {
@@ -58,15 +85,23 @@ for (const file of files) {
   }
 
   for (const item of items) {
-    const code = item?.data?.code ?? item?.options?.code
-    if (typeof code !== "string") continue
-    codes++
-    try {
-      Compiler.compile(code)
-    } catch (e) {
-      report(file, e, code)
+    for (const code of codesOf(item)) {
+      codes++
+      try {
+        for (const problem of calledShort(Compiler.compile(code))) report(file, new Error(problem))
+      } catch (e) {
+        report(file, e, code)
+      }
     }
   }
+}
+
+// The classes are added as the bot adds them: their params, parents and names are checked too
+const classesDir = path.join(dist, "classes")
+try {
+  if (fs.existsSync(classesDir)) new ClassManager().load(classesDir)
+} catch (e) {
+  report(classesDir, e)
 }
 
 for (const error of errors) console.log(error)

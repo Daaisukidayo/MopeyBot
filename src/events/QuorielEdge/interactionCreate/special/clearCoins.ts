@@ -31,5 +31,5 @@ export default new Command({
       $addTextDisplay[$get[desc]]
     ;$getGlobalVar[defaultColor]]
     $interactionUpdate
-  `
+  `,
 })

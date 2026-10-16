@@ -21,5 +21,5 @@ export default new ForgeFunction({
 
     $setCache[animals;tierAnimals;$env[result]]
     $logger[Info;Cached «tierAnimals»]
-  `
+  `,
 })

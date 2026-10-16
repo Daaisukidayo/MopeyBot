@@ -20,5 +20,5 @@ export default new ForgeFunction({
       ]
       $addTextDisplay[$discordTimestamp[1791833744470;LongDateTime]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

@@ -77,5 +77,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $showDesignedList[$jsonGet[result;l]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

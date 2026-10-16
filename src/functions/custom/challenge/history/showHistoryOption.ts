@@ -8,18 +8,18 @@ export default new ForgeFunction({
     {
       name: "handler",
       description: "The interaction that gets the answer: addHistory or editHistory.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "option",
       description: "The option: points, raresQuantity, endDate or raresList.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "page",
       description: "The history page being made or edited.",
-      type: ArgType.Json
-    }
+      type: ArgType.Json,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -48,5 +48,5 @@ export default new ForgeFunction({
       ]
     ]
     $showModal
-  `
+  `,
 })

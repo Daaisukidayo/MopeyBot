@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $if[$env[$env[playDataVar]]==;$return]
@@ -16,5 +16,5 @@ export default new ForgeFunction({
     $let[l;$jsonGet[userProfile;language]]
     $addActionRow
     $addButton[play_leave-quit-$authorID;$tl[ui.play.buttonLabelQuitGame.$get[l]];Danger;🔚]
-  `
+  `,
 })

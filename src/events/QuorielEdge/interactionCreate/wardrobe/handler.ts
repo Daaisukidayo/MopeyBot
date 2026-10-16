@@ -144,5 +144,5 @@ export default new Command({
         $newCommandTimeout[wardrobe]
       ]
     ]
-  `
+  `,
 })

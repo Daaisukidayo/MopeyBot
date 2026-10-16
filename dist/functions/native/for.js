@@ -11,28 +11,28 @@ exports.default = new forgescript_1.NativeFunction({
             name: "init",
             description: "The initialization code (runs once before the loop starts)",
             rest: false,
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "condition",
             description: "The loop condition code (evaluated before each iteration)",
             condition: true,
             rest: false,
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "step",
             description: "The step expression code (runs at the end of each iteration)",
             rest: false,
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "code",
             description: "The main code block to execute inside the loop",
             rest: false,
             required: true,
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     async execute(ctx) {
         const { 0: initField, 2: stepField, 3: codeField } = this.data.fields;
@@ -63,6 +63,6 @@ exports.default = new forgescript_1.NativeFunction({
                 return stepRes;
         }
         return this.success(output);
-    }
+    },
 });
 //# sourceMappingURL=for.js.map

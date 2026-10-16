@@ -8,16 +8,16 @@ export default new ForgeFunction({
     {
       name: "number",
       description: "The number to separate.",
-      type: ArgType.Number
+      type: ArgType.Number,
     },
     {
       name: "separator",
       description: "The separator to use.",
       type: ArgType.Unknown,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $return[$separateBigint[$env[number];$nullish[$env[separator];$getGlobalVar[numberSeparator]]]]
-  `
+  `,
 })

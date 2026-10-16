@@ -38,5 +38,5 @@ export default new ForgeFunction({
     ]
 
     $addChallengeCompletedContainer[$env[rawList]]
-  `
+  `,
 })

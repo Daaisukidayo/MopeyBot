@@ -8,18 +8,18 @@ export default new ForgeFunction({
     {
       name: "number",
       description: "The number to determine the correct form for.",
-      type: ArgType.Number
+      type: ArgType.Number,
     },
     {
       name: "key",
       description: "The key for the word to pluralize.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "locale",
       description: "The locale to use for pluralization.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $jsonLoad[endingsMap;$getGlobalVar[endingsMap]]
@@ -31,5 +31,5 @@ export default new ForgeFunction({
     $let[lastTwo;$math[$abs[$env[number]] % 100]]
     $let[last;$math[$get[lastTwo] % 10]]
     $return[$jsonGet[endingsMap;$env[locale];$env[key];$if[$inRange[$get[lastTwo];11;19];2;$if[$get[last]==1;0;$if[$inRange[$get[last];2;4];1;2]]]]]
-  `
+  `,
 })

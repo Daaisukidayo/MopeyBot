@@ -3,7 +3,7 @@ import {
   NativeFunction,
   Return,
   ArgType,
-  IExtendedCompiledFunctionConditionField
+  IExtendedCompiledFunctionConditionField,
 } from "@tryforge/forgescript"
 
 export default new NativeFunction({
@@ -16,28 +16,28 @@ export default new NativeFunction({
       name: "init",
       description: "The initialization code (runs once before the loop starts)",
       rest: false,
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "condition",
       description: "The loop condition code (evaluated before each iteration)",
       condition: true,
       rest: false,
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "step",
       description: "The step expression code (runs at the end of each iteration)",
       rest: false,
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "code",
       description: "The main code block to execute inside the loop",
       rest: false,
       required: true,
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   async execute(ctx) {
     const { 0: initField, 2: stepField, 3: codeField } = this.data.fields as IExtendedCompiledFunctionField[]
@@ -70,5 +70,5 @@ export default new NativeFunction({
     }
 
     return this.success(output)
-  }
+  },
 })

@@ -7,13 +7,13 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "pageVar",
             description: "The name of the variable that holds the history page being edited.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "historyVar",
             description: "The name of the variable that holds the shown history pages.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $ref[page;$env[pageVar]]
@@ -31,6 +31,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addButton[editHistory-resetEditChanges-$authorID;$tl[ui.history.buttonLabelResetChanges.$get[l]];Secondary]
       $addButton[showHistory-cancelEditChanges-$authorID;$tl[ui.history.buttonLabelCancelChanges.$get[l]];Danger]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=editHistoryExtraEmbed.js.map

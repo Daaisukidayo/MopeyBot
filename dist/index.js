@@ -11,6 +11,7 @@ const forge_canvas_1 = require("@tryforge/forge.canvas");
 const forge_regex_1 = require("forge.regex");
 const forge_timers_1 = require("forge.timers");
 const forge_json_1 = require("forge.json");
+const forge_class_1 = require("forge.class");
 const edge_1 = require("@quoriel/edge");
 const shutdownSetup_js_1 = require("./utils/shutdownSetup.js");
 const loadVariables_js_1 = require("./utils/loadVariables.js");
@@ -19,17 +20,17 @@ process.loadEnvFile();
 // ========== EXTENTIONS CONFIGURATION ==========
 const FT = new forge_timers_1.ForgeTimers({
     intervalConfig: {
-        restoredTicksLimit: 0
+        restoredTicksLimit: 0,
     },
     cronConfig: {
-        restoredTicksLimit: 1
+        restoredTicksLimit: 1,
     },
-    events: [forge_timers_1.TimerEvent.timerDrop, forge_timers_1.TimerEvent.timersReady, forge_timers_1.TimerEvent.databaseFail]
+    events: [forge_timers_1.TimerEvent.timerDrop, forge_timers_1.TimerEvent.timersReady, forge_timers_1.TimerEvent.databaseFail],
 });
 const QE = new edge_1.QuorielEdge({
     features: ["jsonDirectPass", "restArgSpread"],
     events: ["interactionCreate"],
-    caches: ["animals", "rares", "locale", "arena", "leaderboard"]
+    caches: ["animals", "rares", "locale", "arena", "leaderboard"],
 });
 const TOP = new forge_topgg_1.ForgeTopGG({
     token: process.env.TOPTOKEN,
@@ -37,17 +38,17 @@ const TOP = new forge_topgg_1.ForgeTopGG({
     events: ["error", "posted", "voted"],
     port: 1040,
     post: {
-        interval: 3_600_000
-    }
+        interval: 3_600_000,
+    },
 });
 const DB = new forge_db_1.ForgeDB({
     events: ["connect"],
-    type: "better-sqlite3"
+    type: "better-sqlite3",
 });
 // ========== CLIENT CONFIGURATION ==========
 forgescript_1.FunctionManager.load(path_1.default.resolve(process.cwd(), "dist", "functions", "native")); // Native functions loader
 const BOT = new forgescript_1.ForgeClient({
-    extensions: [DB, TOP, QE, FT, new forge_regex_1.ForgeRegex(), new forge_canvas_1.ForgeCanvas(), new forge_json_1.ForgeJSON()],
+    extensions: [DB, TOP, QE, FT, new forge_regex_1.ForgeRegex(), new forge_canvas_1.ForgeCanvas(), new forge_json_1.ForgeJSON(), new forge_class_1.ForgeClass()],
     prefixes: ["$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]"],
     logLevel: forgescript_1.LogPriority.High,
     token: process.env.TOKEN,
@@ -69,7 +70,7 @@ const BOT = new forgescript_1.ForgeClient({
         "DirectMessages",
         // "DirectMessageReactions",
         // "DirectMessageTyping",
-        "MessageContent"
+        "MessageContent",
         // "GuildScheduledEvents",
         // "AutoModerationConfiguration",
         // "AutoModerationExecution",
@@ -128,7 +129,7 @@ const BOT = new forgescript_1.ForgeClient({
         // "messageReactionRemoveAll",
         // "messageReactionRemoveEmoji",
         // "messageUpdate",
-        "presenceUpdate"
+        // "presenceUpdate",
         // "roleCreate",
         // "roleDelete",
         // "roleUpdate",
@@ -155,10 +156,12 @@ const BOT = new forgescript_1.ForgeClient({
         // "voiceChannelEffectSend",
         // "voiceStateUpdate",
         // "webhooksUpdate"
-    ]
+    ],
 });
 // ========== LOAD VARIABLES ==========
 DB.variables(loadVariables_js_1.variables);
+// ========== LOAD CLASSES ==========
+BOT.classes.load("dist/classes/");
 // ========== LOAD CUSTOM FUNCTIONS & COMMAND HANDLERS ==========
 BOT.functions.load("dist/functions/custom");
 BOT.functions.load("dist/handlers/");

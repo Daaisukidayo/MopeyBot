@@ -9,5 +9,5 @@ export default new ForgeFunction({
     $!jsonSet[baseHistoryPage;endDate;$getTimestamp]
     $setUserVar[addHistorySavedConfig;$env[baseHistoryPage]]
     $return[$env[baseHistoryPage]]
-  `
+  `,
 })

@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "allPlayers",
       description: "The array of all lobby players",
-      type: ArgType.Json
-    }
+      type: ArgType.Json,
+    },
   ],
   code: `
     $if[$jsonType[allPlayers]!=array;$return]
@@ -16,5 +16,5 @@ export default new ForgeFunction({
       $deleteChallengeProgress[$env[userId]]
     ]
     $deleteChannelVar[lobby]
-  `
+  `,
 })

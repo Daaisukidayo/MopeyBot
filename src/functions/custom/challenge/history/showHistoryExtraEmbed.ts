@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "historyData",
       description: "The cached history object.",
-      type: ArgType.Json
-    }
+      type: ArgType.Json,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -61,5 +61,5 @@ export default new ForgeFunction({
         ]
       ]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

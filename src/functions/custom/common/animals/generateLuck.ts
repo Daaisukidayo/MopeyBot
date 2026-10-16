@@ -10,14 +10,14 @@ export default new ForgeFunction({
       name: "groups",
       description: "Array of animal groups.",
       type: ArgType.Json,
-      required: true
+      required: true,
     },
     {
       name: "luckConfig",
       description: "Luck multiplier (e.g., 1.0 is default, 2.0 is double rare chance, 0.5 is half).",
       type: ArgType.Number,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $jsonLoad[result;$objectOf]
@@ -49,5 +49,5 @@ export default new ForgeFunction({
     ]
 
     $return[$env[result]]
-  `
+  `,
 })

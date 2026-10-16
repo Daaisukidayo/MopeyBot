@@ -20,5 +20,5 @@ export default new ForgeFunction({
       $addButton[$getGlobalVar[discordServerInvite];$tl[ui.invite.discord.$get[l]];Link]
       $addButton[https://top.gg/bot/$clientID;$tl[ui.invite.topgg.$get[l]];Link]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

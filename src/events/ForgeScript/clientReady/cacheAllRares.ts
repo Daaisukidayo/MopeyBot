@@ -4,5 +4,5 @@ export default new BaseCommand({
   type: "clientReady",
   code: `
     $cacheAllRares
-  `
+  `,
 })

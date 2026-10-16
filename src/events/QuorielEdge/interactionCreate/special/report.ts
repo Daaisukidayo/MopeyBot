@@ -19,7 +19,7 @@ export default [
       ]
       $showModal
       $newCommandTimeout[report]
-    `
+    `,
   }),
   new Command({
     name: "reportModal",
@@ -64,6 +64,6 @@ export default [
       ]
 
       $!stopCommandTimeout[report]
-    `
-  })
+    `,
+  }),
 ]

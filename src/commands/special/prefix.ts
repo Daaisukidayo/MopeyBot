@@ -17,6 +17,6 @@ export default new ApplicationCommand({
 
     ...localized(slash),
 
-    options: [{ type: 3, required: true, min_length: 1, max_length: 5, ...localized(options[0]) }]
-  }
+    options: [{ type: 3, required: true, min_length: 1, max_length: 5, ...localized(options[0]) }],
+  },
 })

@@ -14,5 +14,5 @@ export default new ForgeFunction({
 
     $shopEmbed
     $newCommandTimeout
-  `
+  `,
 })

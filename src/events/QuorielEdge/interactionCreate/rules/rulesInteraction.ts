@@ -18,5 +18,5 @@ export default new Command({
     $saveProfile[$env[userProfile]]
     $rulesEmbed
     $interactionUpdate
-  `
+  `,
 })

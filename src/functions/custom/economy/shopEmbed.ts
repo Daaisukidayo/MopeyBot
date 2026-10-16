@@ -25,5 +25,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.shop.available.$get[l];$separate[$jsonGet[userProfile;MC]]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

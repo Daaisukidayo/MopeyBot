@@ -38,5 +38,5 @@ export default new Command({
       $addTextDisplay[$tl[ui.play.earned.$get[l];$separate[$get[MC]]]]
     ;$getGlobalVar[defaultColor]]
     $interactionUpdate
-  `
+  `,
 })

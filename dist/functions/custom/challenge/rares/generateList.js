@@ -9,8 +9,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "raresList",
             description: "Object of caught rare animals.",
-            type: forgescript_1.ArgType.Json
-        }
+            type: forgescript_1.ArgType.Json,
+        },
     ],
     code: `
     $jsonLoad[totals;$sumRaresList[$env[raresList]]]
@@ -24,6 +24,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $return[$objectOf[l;$env[list];p;$jsonGet[totals;points];r;$jsonGet[totals;rares]]]
-  `
+  `,
 });
 //# sourceMappingURL=generateList.js.map

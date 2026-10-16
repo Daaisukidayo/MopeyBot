@@ -15,6 +15,6 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $raretrymodeEmbed
     $newCommandTimeout
-  `
+  `,
 });
 //# sourceMappingURL=raretryMode.js.map

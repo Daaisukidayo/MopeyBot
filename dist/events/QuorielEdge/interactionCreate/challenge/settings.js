@@ -40,6 +40,6 @@ exports.default = new edge_1.Command({
     $settingsEmbed
     $interactionUpdate
     $newCommandTimeout[settings]
-  `
+  `,
 });
 //# sourceMappingURL=settings.js.map

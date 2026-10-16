@@ -27,5 +27,5 @@ export default new ForgeFunction({
       $addTextDisplay[$showTime]
       $displayLimitedRares[challengeProgress]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

@@ -9,6 +9,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $addActionRow
     $addButton[notARobot-$authorID;I'm not a robot;Success;🤖]
     $!send
-  `
+  `,
 });
 //# sourceMappingURL=robotCheck.js.map

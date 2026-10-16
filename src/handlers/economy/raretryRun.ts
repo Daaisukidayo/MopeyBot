@@ -54,5 +54,5 @@ export default new ForgeFunction({
       ]
       $saveProfile[$env[userProfile]]
     ]
-  `
+  `,
 })

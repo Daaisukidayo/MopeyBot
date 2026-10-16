@@ -16,29 +16,29 @@ exports.default = new forgescript_1.NativeFunction({
             description: "The iterable to iterate over",
             rest: false,
             required: true,
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "variable",
             description: "The variable to load the current element or value to",
             rest: false,
             required: true,
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "code",
             description: "The code to execute for every iteration",
             rest: false,
             required: true,
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "index",
             description: "The variable to store the index or key name",
             rest: false,
             required: false,
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     async execute(ctx) {
         const code = this.data.fields[2];
@@ -66,7 +66,7 @@ exports.default = new forgescript_1.NativeFunction({
         }
         // ctx.clearArguments()
         return this.success(output);
-    }
+    },
 });
 function* iterate(target) {
     if (Array.isArray(target)) {

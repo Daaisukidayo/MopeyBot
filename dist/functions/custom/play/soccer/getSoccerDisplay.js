@@ -10,17 +10,17 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "soccerType",
             description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerId",
             description: "The ID of the soccer item",
-            type: forgescript_1.ArgType.Number
-        }
+            type: forgescript_1.ArgType.Number,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
     $return[$tl[data.playSoccers.$env[soccerType].$env[soccerId].$get[l]] $jsonGet[$getPlaySoccer[$env[soccerType];$env[soccerId]];emoji]]
-  `
+  `,
 });
 //# sourceMappingURL=getSoccerDisplay.js.map

@@ -25,8 +25,8 @@ exports.default = new forgescript_1.NativeFunction({
             description: "The user whose variables to return",
             type: forgescript_1.ArgType.String,
             required: true,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     async execute(ctx, [userId]) {
         const result = {};
@@ -40,6 +40,6 @@ exports.default = new forgescript_1.NativeFunction({
                 ((result[record.type] ??= {})[record.guildId || "-"] ??= {})[record.name] = value;
         }
         return this.success(JSON.stringify(result, null, 2));
-    }
+    },
 });
 //# sourceMappingURL=userRecords.js.map

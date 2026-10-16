@@ -19,6 +19,6 @@ exports.default = new edge_1.Command({
     $saveProfile[$env[userProfile]]
     $rulesEmbed
     $interactionUpdate
-  `
+  `,
 });
 //# sourceMappingURL=rulesInteraction.js.map

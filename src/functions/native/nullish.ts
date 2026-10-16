@@ -12,8 +12,8 @@ export default new NativeFunction({
       description: "A list of values to check",
       type: ArgType.String,
       required: true,
-      rest: true
-    }
+      rest: true,
+    },
   ],
   async execute(ctx, [values]) {
     for (const value of values) {
@@ -29,5 +29,5 @@ export default new NativeFunction({
     }
 
     return this.success(values.at(-1))
-  }
+  },
 })

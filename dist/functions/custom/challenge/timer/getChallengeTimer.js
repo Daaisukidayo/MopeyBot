@@ -11,8 +11,8 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "userId",
             description: "ID of the user.",
             type: forgescript_1.ArgType.User,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[userId;$nullish[$env[userId;id];$authorID]]
@@ -27,6 +27,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $c[No timer: the hour is over if the challenge is still started (a paused one keeps its timers), else it hasn't started]
     $jsonLoad[challengeProgress;$getProgress[$get[userId]]]
     $return[$if[$jsonGet[challengeProgress;started];3600;0]]
-  `
+  `,
 });
 //# sourceMappingURL=getChallengeTimer.js.map

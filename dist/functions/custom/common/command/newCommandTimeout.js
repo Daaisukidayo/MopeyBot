@@ -10,8 +10,8 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "command",
             description: "The command to delete",
             type: forgescript_1.ArgType.String,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $c[A command sends its message now, an interaction's message is the one to delete]
@@ -39,6 +39,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $logger[Error;$env[e]]
       ;e]
     ;$get[duration];$get[timeoutName]]
-  `
+  `,
 });
 //# sourceMappingURL=newCommandTimeout.js.map

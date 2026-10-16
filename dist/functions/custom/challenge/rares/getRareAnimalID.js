@@ -9,8 +9,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "alias",
             description: "Abbreviation of the rare animal.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $c[Checked against the list first: user input could name a key like 'constructor']
@@ -19,6 +19,6 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $getCache[rares;rareByAbbreviation;rareByAbbreviation]
     $return[$jsonGet[rareByAbbreviation;$env[alias]]]
-  `
+  `,
 });
 //# sourceMappingURL=getRareAnimalID.js.map

@@ -16,7 +16,7 @@ export default new ApplicationCommand({
 
     options: [
       { type: 3, required: false, ...localized(options[0]) },
-      { type: 3, required: false, ...localized(options[1]) }
-    ]
-  }
+      { type: 3, required: false, ...localized(options[1]) },
+    ],
+  },
 })

@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "content",
       description: "The content to display in the notification.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -21,5 +21,5 @@ export default new ForgeFunction({
     $setTimeout[
       $!deleteMessage[$channelID;$get[messageId]]
     ;10s]
-  `
+  `,
 })

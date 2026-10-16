@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[playData;$env[playDataVar]]
@@ -27,5 +27,5 @@ export default new ForgeFunction({
     $arrayForEach[bitesOptions;count;
       $addOption[$env[count];$if[$env[count]==10;Lose on the next action];$env[count];🩸]
     ]
-  `
+  `,
 })

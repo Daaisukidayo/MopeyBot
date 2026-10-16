@@ -9,8 +9,8 @@ export default new ForgeFunction({
     {
       name: "lobbyVar",
       description: "The name of the variable that holds the lobby.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[lobby;$env[lobbyVar]]
@@ -20,7 +20,7 @@ export default new ForgeFunction({
 
     $c[Every progress is read once. A team counts the points and rares of its own players, so its total always matches the lines under it]
     $jsonLoad[progresses;$objectOf]
-    $arrayForEach[$arrayUnique[$jsonGet[lobby;allPlayers]];ID;
+    $arrayForEach[$callMethod[lobby;players];ID;
       $!jsonSet[progresses;$env[ID];$getProgress[$env[ID]]]
     ]
     $jsonLoad[results;$if[$get[solo];
@@ -49,5 +49,5 @@ export default new ForgeFunction({
     ;lines;i]
 
     $return[$objectOf[solo;$get[solo];lines;$env[lines];winner;$get[winner]]]
-  `
+  `,
 })

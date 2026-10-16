@@ -29,5 +29,5 @@ export default new ForgeFunction({
 
     $setCache[rares;hlSimData;$env[data]]
     $logger[Info;Cached «hlSimData»]
-  `
+  `,
 })

@@ -6,8 +6,8 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $if[$env[$env[playDataVar]]==;$return]
@@ -18,5 +18,5 @@ export default new ForgeFunction({
     ;
       $!jsonSet[playData;XP;$floor[$math[$jsonGet[playData;XP] / $random[1.5;2.15;true]]]]
     ]
-  `
+  `,
 })

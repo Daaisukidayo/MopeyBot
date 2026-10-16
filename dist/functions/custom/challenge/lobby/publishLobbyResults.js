@@ -5,7 +5,7 @@ exports.default = new forgescript_1.ForgeFunction({
     name: "publishLobbyResults",
     description: "Sends the lobby results and removes the lobby. Runs from the named timeout set by allPlayersFinished",
     code: `
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
     $if[$env[lobby]==;$return]
 
     $jsonLoad[userProfile;$getProfile[$jsonGet[lobby;host]]]
@@ -20,6 +20,6 @@ exports.default = new forgescript_1.ForgeFunction({
       ;$getGlobalVar[luckyColor]]
     ]
     $deleteLobbyProgress[$jsonGet[lobby;allPlayers]]
-  `
+  `,
 });
 //# sourceMappingURL=publishLobbyResults.js.map

@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "historyData",
             description: "The cached history object.",
-            type: forgescript_1.ArgType.Json
-        }
+            type: forgescript_1.ArgType.Json,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -62,6 +62,6 @@ exports.default = new forgescript_1.ForgeFunction({
         ]
       ]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=showHistoryExtraEmbed.js.map

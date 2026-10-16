@@ -26,6 +26,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.shop.available.$get[l];$separate[$jsonGet[userProfile;MC]]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=shopEmbed.js.map

@@ -8,12 +8,12 @@ export default new ForgeFunction({
     {
       name: "progressVar",
       description: "The name of the variable that holds the challenge progress.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[progress;$env[progressVar]]
     $let[points;$jsonGet[progress;points]]
     $return[$tl[ui.challenge.points.$jsonGet[userProfile;language];$if[$arrayIncludes[$jsonGet[userProfile;challenge;settings];hidePoints];||$get[points]||;\`$get[points]\`]]]
-  `
+  `,
 })

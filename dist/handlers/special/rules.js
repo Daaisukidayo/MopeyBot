@@ -18,6 +18,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addTextDisplay[$tl[ui.rules.privacyPolicy.$get[l];$getGlobalVar[privacyLink]]]
       $addTextDisplay[$tl[ui.rules.usage.$get[l];$getGlobalVar[usageLink]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=rules.js.map

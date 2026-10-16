@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $if[$env[$env[playDataVar]]==;$return]
@@ -72,5 +72,5 @@ export default new ForgeFunction({
       $addActionRow
       $addButton[play_showApexes-$authorID;$tl[ui.play.buttonLabelShowApex.$get[l]];Primary;👑]
     ]
-  `
+  `,
 })

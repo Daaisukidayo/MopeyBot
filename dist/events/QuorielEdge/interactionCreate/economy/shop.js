@@ -47,6 +47,6 @@ exports.default = new edge_1.Command({
         $addTextDisplay[$tl[ui.shop.purchaseSuccess.$get[l];$tl[data.shopSkinPacks.$get[skinpack].$get[l]]]]
       ;$getGlobalVar[defaultColor]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=shop.js.map

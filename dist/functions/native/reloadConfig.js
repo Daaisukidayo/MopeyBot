@@ -12,6 +12,6 @@ exports.default = new forgescript_1.NativeFunction({
         const variables = (0, loadVariables_1.readVariables)();
         forge_db_1.ForgeDB.variables(variables);
         return this.success(Object.keys(variables).length);
-    }
+    },
 });
 //# sourceMappingURL=reloadConfig.js.map

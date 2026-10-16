@@ -8,5 +8,5 @@ export default new BaseCommand({
     $c[Each call shows both statuses for 15s, so a 30s interval keeps them alternating]
     $setInterval[$updateBotStatus;30s]
     $updateBotStatus
-  `
+  `,
 })

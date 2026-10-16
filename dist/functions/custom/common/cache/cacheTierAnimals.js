@@ -22,6 +22,6 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $setCache[animals;tierAnimals;$env[result]]
     $logger[Info;Cached «tierAnimals»]
-  `
+  `,
 });
 //# sourceMappingURL=cacheTierAnimals.js.map

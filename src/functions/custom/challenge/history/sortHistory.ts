@@ -8,25 +8,25 @@ export default new ForgeFunction({
     {
       name: "history",
       description: "Array of history pages.",
-      type: ArgType.Json
+      type: ArgType.Json,
     },
     {
       name: "sortType",
       description: "Type of sorting to apply.",
-      type: ArgType.Number
+      type: ArgType.Number,
     },
     {
       name: "rareAnimalId",
       description: "The rare to sort by, for the sort type 3.",
       type: ArgType.String,
-      required: false
+      required: false,
     },
     {
       name: "order",
       description: "'asc' or 'desc' (the default).",
       type: ArgType.String,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $let[order;$if[$env[order]==asc;asc;desc]]
@@ -45,5 +45,5 @@ export default new ForgeFunction({
       $case[3;$env[history]]
       $case[default;$env[history]]
     ]]
-  `
+  `,
 })

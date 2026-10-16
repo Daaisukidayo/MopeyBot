@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "tier",
             description: 'Tier number or "all" argument',
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -27,6 +27,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $arrayForEach[userSkinPacks;id;
       $addOption[$tl[data.shopSkinPacks.$env[id].$get[l]];;$env[id]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=addSkinpacksMenu.js.map

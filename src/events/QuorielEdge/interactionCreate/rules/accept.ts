@@ -31,5 +31,5 @@ export default new Command({
       $addTextDisplay[$tl[ui.rules.accepted.$get[l]]]
     ;$getGlobalVar[luckyColor]]
     $interactionUpdate
-  `
+  `,
 })

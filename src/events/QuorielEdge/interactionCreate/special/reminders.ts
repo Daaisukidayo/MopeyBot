@@ -20,5 +20,5 @@ export default new Command({
     $remindersEmbed
     $interactionUpdate
     $newCommandTimeout[reminders]
-  `
+  `,
 })

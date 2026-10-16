@@ -9,14 +9,14 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "animalId",
             description: "Animal or rare identifier from res/data/animals.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "skin",
             description: "Optional: the skin's id, or its index in 'variants'. The first skin by default.",
             type: forgescript_1.ArgType.String,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $c[A skin not given reads as 'undefined']
@@ -33,6 +33,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $return[attachment://$get[skinId].png]
     ]
     $return[$getAnimalInfo[$env[animalId];img;$get[skin]]]
-  `
+  `,
 });
 //# sourceMappingURL=animalImage.js.map

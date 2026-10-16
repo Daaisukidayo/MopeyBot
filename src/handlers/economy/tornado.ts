@@ -30,5 +30,5 @@ export default new ForgeFunction({
         $addThumbnail[$jsonGet[tornado;thumbnail]]
       ]
     ;$jsonGet[tornado;color]]
-  `
+  `,
 })

@@ -10,14 +10,14 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "groups",
             description: "Array of animal groups.",
             type: forgescript_1.ArgType.Json,
-            required: true
+            required: true,
         },
         {
             name: "luckConfig",
             description: "Luck multiplier (e.g., 1.0 is default, 2.0 is double rare chance, 0.5 is half).",
             type: forgescript_1.ArgType.Number,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $jsonLoad[result;$objectOf]
@@ -49,6 +49,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $return[$env[result]]
-  `
+  `,
 });
 //# sourceMappingURL=generateLuck.js.map

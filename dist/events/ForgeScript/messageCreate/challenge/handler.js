@@ -77,6 +77,6 @@ exports.default = new forgescript_1.BaseCommand({
       $addTextDisplay[$showTime]
     ;$getGlobalVar[luckyColor]]
     $displayLimitedRares[challengeProgress]
-  `
+  `,
 });
 //# sourceMappingURL=handler.js.map

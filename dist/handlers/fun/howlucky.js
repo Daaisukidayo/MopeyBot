@@ -27,6 +27,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.howlucky.footer.$get[l];$discordTimestamp[$math[$getTimestamp + $msUntilNextDay];RelativeTime]]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=howlucky.js.map

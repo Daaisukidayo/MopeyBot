@@ -12,10 +12,10 @@ export default new NativeFunction({
       description: "The boolean value to invert.",
       type: ArgType.Boolean,
       required: true,
-      rest: false
-    }
+      rest: false,
+    },
   ],
   async execute(ctx, [bool]) {
     return this.success(!bool)
-  }
+  },
 })

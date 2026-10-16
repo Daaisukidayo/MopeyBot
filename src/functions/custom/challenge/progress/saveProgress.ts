@@ -7,16 +7,16 @@ export default new ForgeFunction({
     {
       name: "progress",
       description: "Progress data.",
-      type: ArgType.Json
+      type: ArgType.Json,
     },
     {
       name: "userId",
       description: "ID of the user.",
       type: ArgType.User,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $setUserVar[challengeProgress|$channelID;$env[progress];$nullish[$env[userId;id];$authorID]]
-  `
+  `,
 })

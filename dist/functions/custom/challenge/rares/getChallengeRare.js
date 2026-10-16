@@ -9,14 +9,14 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "animalId",
             description: "Animal identifier from '/animals.json'.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `    
     $getCache[rares;challengeRares;challengeRares]
     $c[A rare outside the challenge gives no points and has no category]
     $let[rare;$jsonGet[challengeRares;$env[animalId]]]
     $return[$if[$get[rare]==;$objectOf[points;0;category;-1];$get[rare]]]
-  `
+  `,
 });
 //# sourceMappingURL=getChallengeRare.js.map

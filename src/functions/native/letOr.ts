@@ -11,15 +11,15 @@ export default new NativeFunction({
       description: "The key name",
       required: true,
       type: ArgType.String,
-      rest: false
+      rest: false,
     },
     {
       name: "value",
       description: "The key value",
       required: true,
       type: ArgType.String,
-      rest: false
-    }
+      rest: false,
+    },
   ],
   async execute(ctx, [key, value]) {
     let val = ctx.getKeyword(key)
@@ -32,5 +32,5 @@ export default new NativeFunction({
     }
     ctx.setKeyword(key, val || value)
     return this.success()
-  }
+  },
 })

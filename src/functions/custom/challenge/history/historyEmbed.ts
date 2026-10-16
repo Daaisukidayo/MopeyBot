@@ -7,15 +7,15 @@ export default new ForgeFunction({
     {
       name: "historyData",
       description: "The history object that holds the data",
-      type: ArgType.Json
+      type: ArgType.Json,
     },
     {
       name: "editHandler",
       description:
         "The interaction that edits the page (addHistory or editHistory). Without it the page is only shown.",
       type: ArgType.String,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -83,5 +83,5 @@ export default new ForgeFunction({
         $addTextDisplay[$tl[ui.history.noHistory.$get[l]]]
       ]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

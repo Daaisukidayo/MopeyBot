@@ -12,15 +12,15 @@ exports.default = new forgescript_1.NativeFunction({
             description: "The name of the new variable",
             type: forgescript_1.ArgType.String,
             required: true,
-            rest: false
+            rest: false,
         },
         {
             name: "source",
             description: "The name of the variable to point to",
             type: forgescript_1.ArgType.String,
             required: true,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     async execute(ctx, [name, source]) {
         const value = ctx.getEnvironmentKey(source);
@@ -28,6 +28,6 @@ exports.default = new forgescript_1.NativeFunction({
             return this.customError(`Variable "${source}" does not exist`);
         ctx.setEnvironmentKey(name, value);
         return this.success();
-    }
+    },
 });
 //# sourceMappingURL=ref.js.map

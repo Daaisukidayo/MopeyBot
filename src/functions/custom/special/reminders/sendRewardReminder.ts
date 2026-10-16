@@ -8,18 +8,18 @@ export default new ForgeFunction({
     {
       name: "userId",
       description: "The ID of the user to remind",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "reminderId",
       description: "The reminder ID from data.reminders (0 - daily, 1 - weekly)",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "locale",
       description: "The user's language",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $addContainer[
@@ -30,5 +30,5 @@ export default new ForgeFunction({
       $addTextDisplay[$tl[ui.reminders.sentReminderTip.$env[locale];/reminders]]
     ;$getGlobalVar[defaultColor]]
     $sendDM[$env[userId]]
-  `
+  `,
 })

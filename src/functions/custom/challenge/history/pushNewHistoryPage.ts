@@ -7,14 +7,14 @@ export default new ForgeFunction({
     {
       name: "newPageData",
       description: "JSON object containing new page fields: points, rares, endDate, playType, difficulty, list.",
-      type: ArgType.Json
+      type: ArgType.Json,
     },
     {
       name: "userId",
       description: "The user ID.",
       type: ArgType.User,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $let[userId;$nullish[$env[userId;id];$authorID]]
@@ -26,5 +26,5 @@ export default new ForgeFunction({
     $jsonLoad[history;$getUserVar[challengeHistory;$get[userId]]]
     $arrayPushJSON[history;$env[newHistory]]
     $setUserVar[challengeHistory;$env[history];$get[userId]]
-  `
+  `,
 })

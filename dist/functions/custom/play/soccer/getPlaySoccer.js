@@ -10,18 +10,18 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "soccerType",
             description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerId",
             description: "The ID of the soccer item",
-            type: forgescript_1.ArgType.Number
-        }
+            type: forgescript_1.ArgType.Number,
+        },
     ],
     code: `
     $jsonLoad[soccers;$readFile[res/data/playSoccers.json]]
     $if[$jsonType[soccers;$env[soccerType]]!=array;$return]
     $return[$arrayFind[$jsonGet[soccers;$env[soccerType]];item;$jsonGet[item;ID]==$env[soccerId]]]
-  `
+  `,
 });
 //# sourceMappingURL=getPlaySoccer.js.map

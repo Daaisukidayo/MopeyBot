@@ -8,18 +8,18 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "opponentId",
       description: "The animal ID of the opponent",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "opponentTier",
       description: "The tier of the opponent (any existing tier, 1-17)",
-      type: ArgType.Number
-    }
+      type: ArgType.Number,
+    },
   ],
   code: `
     $ref[playData;$env[playDataVar]]
@@ -39,5 +39,5 @@ export default new ForgeFunction({
     ]
     $addArenaActionButtons
     $addArenaDevMenu[playData]
-  `
+  `,
 })

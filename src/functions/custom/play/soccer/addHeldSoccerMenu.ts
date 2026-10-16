@@ -8,8 +8,8 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[playData;$env[playDataVar]]
@@ -23,5 +23,5 @@ export default new ForgeFunction({
     $arrayLoad[soccerData;_;$jsonGet[playData;heldSoccer]]
     $addSoccerActionsMenu[$env[soccerData];true]
     $addBiomeMenu[playData]
-  `
+  `,
 })

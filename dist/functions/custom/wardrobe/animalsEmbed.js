@@ -8,18 +8,18 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "wardrobeVar",
             description: "The name of the variable that holds the user's wardrobe.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "animalId",
             description: "ID of the animal to display.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "switchToNext",
             description: "Whether to switch to the next skin after selection.",
-            type: forgescript_1.ArgType.Boolean
-        }
+            type: forgescript_1.ArgType.Boolean,
+        },
     ],
     code: `
     $ref[wardrobe;$env[wardrobeVar]]
@@ -73,6 +73,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addButton[wardrobe-back-$get[backTo]-$authorID;$tl[ui.wardrobe.buttonBack.$get[l]];Secondary;↩️]
       $addButton[wardrobe-goto-$get[nextId]-$authorID-$env[switchToNext];$tl[ui.wardrobe.buttonNext.$get[l]];Secondary;➡️]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=animalsEmbed.js.map

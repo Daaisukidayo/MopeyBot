@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "tier",
       description: "The tier, or 'all'",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -20,5 +20,5 @@ export default new ForgeFunction({
       $addSkinpacksMenu[$env[tier]]
       $addWardrobeBackButton[$if[$env[tier]==all;menu;pack]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

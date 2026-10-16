@@ -70,5 +70,5 @@ export default new Command({
         $addHistoryExtraEmbed[addHistorySavedConfig]
         $interactionUpdate
         $newCommandTimeout[addhistory]
-    `
+    `,
 })

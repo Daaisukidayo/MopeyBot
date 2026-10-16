@@ -115,6 +115,6 @@ exports.default = new edge_1.Command({
 
     $updatePlayData[playData]
     $interactionUpdate
-  `
+  `,
 });
 //# sourceMappingURL=soccerActions.js.map

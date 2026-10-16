@@ -76,5 +76,5 @@ export default new BaseCommand({
       $addTextDisplay[$showTime]
     ;$getGlobalVar[luckyColor]]
     $displayLimitedRares[challengeProgress]
-  `
+  `,
 })

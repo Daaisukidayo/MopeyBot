@@ -20,6 +20,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addButton[acceptrules-$authorID;$tl[ui.rules.buttonLabelAccept.$get[l]];Success;✅]
       $addButton[declinerules-$authorID;$tl[ui.rules.buttonLabelDecline.$get[l]];Danger;🛑]
     ;$getGlobalVar[cooldownColor]]
-  `
+  `,
 });
 //# sourceMappingURL=rulesEmbed.js.map

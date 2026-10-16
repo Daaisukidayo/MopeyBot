@@ -21,5 +21,5 @@ export default new Command({
     ;$getBiomeColor[playData]]
     $ephemeral
     $interactionReply
-  `
+  `,
 })

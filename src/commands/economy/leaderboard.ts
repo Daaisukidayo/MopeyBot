@@ -18,7 +18,7 @@ export default new ApplicationCommand({
 
     options: [
       { type: 4, required: false, min_value: 1, ...localized(options[0]) },
-      { type: 4, required: false, min_value: 1, max_value: 10, ...localized(options[1]) }
-    ]
-  }
+      { type: 4, required: false, min_value: 1, max_value: 10, ...localized(options[1]) },
+    ],
+  },
 })

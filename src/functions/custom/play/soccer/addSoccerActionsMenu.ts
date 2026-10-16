@@ -9,14 +9,14 @@ export default new ForgeFunction({
       name: "data",
       description:
         "The data of the soccer to include (e.g. ['pumpkin', 0], where 'pumpkin' is the soccer name, and 10 is the ID of the soccer item)",
-      type: ArgType.Json
+      type: ArgType.Json,
     },
     {
       name: "replaceIgnoreAction",
       description: "Whether to replace the ignore action when a user is holding the soccer item",
       type: ArgType.Boolean,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $let[replaceIgnoreAction;$nullish[$env[replaceIgnoreAction];false]]
@@ -32,5 +32,5 @@ export default new ForgeFunction({
       $let[action;$if[$and[$env[action]==1;$get[replaceIgnoreAction]];3;$env[action]]]
       $addOption[$tl[data.soccerActions.$get[action].$get[l]];;$get[action]]
     ]
-  `
+  `,
 })

@@ -9,18 +9,18 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "userId",
             description: "The ID of the user to remind",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "reminderId",
             description: "The reminder ID from data.reminders (0 - daily, 1 - weekly)",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "locale",
             description: "The user's language",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $addContainer[
@@ -31,6 +31,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addTextDisplay[$tl[ui.reminders.sentReminderTip.$env[locale];/reminders]]
     ;$getGlobalVar[defaultColor]]
     $sendDM[$env[userId]]
-  `
+  `,
 });
 //# sourceMappingURL=sendRewardReminder.js.map

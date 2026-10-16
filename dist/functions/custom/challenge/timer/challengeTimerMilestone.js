@@ -9,18 +9,18 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "userId",
             description: "ID of the user.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "locale",
             description: "The user's language.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "milestone",
             description: "The reached second of the challenge (see challengeTimerMilestones).",
-            type: forgescript_1.ArgType.Number
-        }
+            type: forgescript_1.ArgType.Number,
+        },
     ],
     code: `
     $let[userId;$env[userId]]
@@ -40,6 +40,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $jsonLoad[userProfile;$getProfile[$get[userId]]]
 
     $sendMessage[$channelID;$addHourOverContainer[$get[userId];$get[l]]]
-  `
+  `,
 });
 //# sourceMappingURL=challengeTimerMilestone.js.map

@@ -21,6 +21,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $addButton[https://top.gg/bot/$clientID/vote;$tl[ui.vote.buttonLabel.$get[l]];Link;;$get[hasVoted]]
       ]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=vote.js.map

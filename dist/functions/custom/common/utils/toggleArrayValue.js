@@ -8,13 +8,13 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "arrayName",
             description: "The name of the array variable to modify.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "element",
             description: "The value to add or remove from the array.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $if[$jsonType[$env[arrayName]]!=array;$return]
@@ -24,6 +24,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ;
       $arrayPush[$env[arrayName];$env[element]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=toggleArrayValue.js.map

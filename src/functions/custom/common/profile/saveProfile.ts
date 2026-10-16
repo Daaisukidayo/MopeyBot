@@ -7,10 +7,10 @@ export default new ForgeFunction({
     {
       name: "userProfile",
       description: "User's JSON profile",
-      type: ArgType.Json
-    }
+      type: ArgType.Json,
+    },
   ],
   code: `
     $setUserVar[userProfile;$env[userProfile];$jsonGet[userProfile;ID]]
-  `
+  `,
 })

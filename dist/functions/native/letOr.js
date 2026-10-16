@@ -12,15 +12,15 @@ exports.default = new forgescript_1.NativeFunction({
             description: "The key name",
             required: true,
             type: forgescript_1.ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "value",
             description: "The key value",
             required: true,
             type: forgescript_1.ArgType.String,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     async execute(ctx, [key, value]) {
         let val = ctx.getKeyword(key);
@@ -33,6 +33,6 @@ exports.default = new forgescript_1.NativeFunction({
         }
         ctx.setKeyword(key, val || value);
         return this.success();
-    }
+    },
 });
 //# sourceMappingURL=letOr.js.map

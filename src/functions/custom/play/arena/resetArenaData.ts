@@ -6,12 +6,12 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $if[$env[$env[playDataVar]]==;$return]
     $ref[playData;$env[playDataVar]]
     $!jsonSet[playData;arena;$jsonGet[$getGlobalVar[userPlayData];arena]]
-  `
+  `,
 })

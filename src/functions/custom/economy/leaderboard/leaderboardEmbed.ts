@@ -7,23 +7,23 @@ export default new ForgeFunction({
     {
       name: "rowsVar",
       description: "The name of the variable that holds the rows of the page.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "page",
       description: "The number of the page.",
-      type: ArgType.Number
+      type: ArgType.Number,
     },
     {
       name: "maxPages",
       description: "How many pages there are.",
-      type: ArgType.Number
+      type: ArgType.Number,
     },
     {
       name: "rowsPerPage",
       description: "How many rows a page has.",
-      type: ArgType.Number
-    }
+      type: ArgType.Number,
+    },
   ],
   code: `
     $ref[rows;$env[rowsVar]]
@@ -55,5 +55,5 @@ export default new ForgeFunction({
         $addButton[leaderboard-nextPage-$get[page]-$get[rowsPerPage]-$authorID;;Primary;➡️]
       ]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

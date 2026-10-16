@@ -9,10 +9,10 @@ export default new ForgeFunction({
       name: "userId",
       description: "The user ID",
       type: ArgType.User,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $deleteUserVar[challengeProgress|$channelID;$nullish[$env[userId;id];$authorID]]
-  `
+  `,
 })

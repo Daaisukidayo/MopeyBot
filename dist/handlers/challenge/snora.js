@@ -34,6 +34,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator
       $addTextDisplay[$tl[ui.snora.or.$get[l];$get[separator];$getAnimalInfo[dove;challenge.abbreviations.0];$getAnimalInfo[dove;challenge.abbreviations.1]]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=snora.js.map

@@ -33,5 +33,5 @@ export default new ForgeFunction({
         $addButton[settings-$env[elem]-$authorID;$tl[data.difficulties.$env[elem].$get[l]];$get[style];;$get[disabled]]
       ;i]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

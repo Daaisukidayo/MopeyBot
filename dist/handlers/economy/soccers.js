@@ -12,6 +12,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $addCooldown
     
     $soccerEmbed
-  `
+  `,
 });
 //# sourceMappingURL=soccers.js.map

@@ -33,6 +33,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.timezone.current.$get[l];$jsonGet[userProfile;timezone]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=timezone.js.map

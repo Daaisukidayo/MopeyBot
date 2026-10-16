@@ -22,6 +22,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ;$getGlobalVar[$if[$get[rare];rareKingDragonColor;defaultColor]]]
 
     $newCommandTimeout
-  `
+  `,
 });
 //# sourceMappingURL=kingDragon.js.map

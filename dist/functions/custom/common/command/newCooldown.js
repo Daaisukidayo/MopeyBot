@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "cooldownTime",
             description: "Remaining time when the cooldown ends.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -36,6 +36,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $interactionDelete
       ;$get[deleteTime]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=newCooldown.js.map

@@ -21,6 +21,6 @@ exports.default = new forgescript_1.ForgeFunction({
       ]
       $addTextDisplay[$discordTimestamp[1791833744470;LongDateTime]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=chart.js.map

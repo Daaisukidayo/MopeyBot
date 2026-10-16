@@ -10,26 +10,26 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "path",
             description: "The locale path of the options, e.g. data.raretryModes",
             type: forgescript_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "value",
             description: "The option as the user wrote it",
             type: forgescript_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "allowed",
             description: "The array of indexes that can be chosen",
             type: forgescript_1.ArgType.Json,
-            required: true
+            required: true,
         },
         {
             name: "error",
             description: "The locale path of the error text, which gets the list of names",
             type: forgescript_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -39,6 +39,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $newError[$tl[$env[error].$get[l];$arrayJoin[$arrayMap[allowed;option;$return[$tl[$env[path].$env[option].$get[l]]]];\`, \`]]]
     ]
     $return[$get[index]]
-  `
+  `,
 });
 //# sourceMappingURL=pickLocalizedOption.js.map

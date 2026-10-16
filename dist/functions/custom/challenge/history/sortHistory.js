@@ -9,25 +9,25 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "history",
             description: "Array of history pages.",
-            type: forgescript_1.ArgType.Json
+            type: forgescript_1.ArgType.Json,
         },
         {
             name: "sortType",
             description: "Type of sorting to apply.",
-            type: forgescript_1.ArgType.Number
+            type: forgescript_1.ArgType.Number,
         },
         {
             name: "rareAnimalId",
             description: "The rare to sort by, for the sort type 3.",
             type: forgescript_1.ArgType.String,
-            required: false
+            required: false,
         },
         {
             name: "order",
             description: "'asc' or 'desc' (the default).",
             type: forgescript_1.ArgType.String,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[order;$if[$env[order]==asc;asc;desc]]
@@ -46,6 +46,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $case[3;$env[history]]
       $case[default;$env[history]]
     ]]
-  `
+  `,
 });
 //# sourceMappingURL=sortHistory.js.map

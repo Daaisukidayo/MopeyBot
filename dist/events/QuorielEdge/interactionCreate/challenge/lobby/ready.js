@@ -6,30 +6,19 @@ exports.default = new edge_1.Command({
     type: "interactionCreate",
     code: `
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$jsonGet[userProfile;language]]
 
     $checkLobby
 
-    $jsonLoad[lobby;$getChannelVar[lobby]]
-    $jsonLoad[ready;$jsonGet[lobby;ready]]
+    $jsonLoad[lobby;$getLobby]
 
     $onlyIf[$messageID==$jsonGet[lobby;messageID];$!deleteMessage[$channelID;$messageID]]
 
-    $onlyIf[$arrayIncludes[$jsonGet[lobby;allPlayers];$authorID];
-      $newError[$tl[ui.lobby.notParticipant.$get[l]]]
-    ]
-
-    $if[$arrayIncludes[ready;$authorID];
-      $arrayRemove[ready;$authorID]
-    ;
-      $arrayPush[ready;$authorID]
-    ]
-    $!jsonSet[lobby;ready;$env[ready]]
+    $callMethod[lobby;toggleReady;$authorID]
     $setChannelVar[lobby;$env[lobby]]
 
     $lobbyEmbed[lobby]
     $interactionUpdate
     $newLobbyTimeout
-  `
+  `,
 });
 //# sourceMappingURL=ready.js.map

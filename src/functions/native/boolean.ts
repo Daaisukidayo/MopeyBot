@@ -14,8 +14,8 @@ export default new NativeFunction({
       description: "The argument to convert to a boolean.",
       type: ArgType.String,
       required: true,
-      rest: false
-    }
+      rest: false,
+    },
   ],
   execute: async function (ctx, [arg]) {
     if (arg === "true") return this.success(true)
@@ -42,5 +42,5 @@ export default new NativeFunction({
     } catch {}
 
     return this.success(arg !== "")
-  }
+  },
 })

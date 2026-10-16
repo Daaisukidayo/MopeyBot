@@ -10,24 +10,24 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "soccerType",
       description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "soccerId",
       description: "The ID of the soccer item",
-      type: ArgType.Number
+      type: ArgType.Number,
     },
     {
       name: "canLose",
       description: "Whether the soccer can be stolen or vanish on this hold (default: true)",
       type: ArgType.Boolean,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $ref[playData;$env[playDataVar]]
@@ -61,5 +61,5 @@ export default new ForgeFunction({
     $!jsonSet[playData;heldSoccer;$env[soccerType]_$env[soccerId]]
 
     $return[$objectOf[outcome;held;MC;$get[MC];XP;$get[XP]]]
-  `
+  `,
 })

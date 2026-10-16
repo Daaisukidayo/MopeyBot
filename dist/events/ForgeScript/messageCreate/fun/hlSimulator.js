@@ -8,6 +8,6 @@ exports.default = new forgescript_1.BaseCommand({
     type: "messageCreate",
     code: `
     $handleHlsimulator
-  `
+  `,
 });
 //# sourceMappingURL=hlSimulator.js.map

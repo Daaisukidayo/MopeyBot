@@ -63,6 +63,6 @@ exports.default = new edge_1.Command({
 
     $interactionUpdate
     $!stopCommandTimeout[kingdragon]
-  `
+  `,
 });
 //# sourceMappingURL=kingDragon.js.map

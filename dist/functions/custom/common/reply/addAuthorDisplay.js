@@ -10,8 +10,8 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "withAvatar",
             description: "Whether to show the user avatar as thumbnail (default: true).",
             type: forgescript_1.ArgType.Boolean,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $c[A user who accepted the rules has a MUID after the name]
@@ -26,6 +26,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addTextDisplay[$get[name]]
     ]
     $addSeparator[Large]
-  `
+  `,
 });
 //# sourceMappingURL=addAuthorDisplay.js.map

@@ -12,5 +12,5 @@ export default new NativeFunction({
     const variables = readVariables()
     ForgeDB.variables(variables)
     return this.success(Object.keys(variables).length)
-  }
+  },
 })

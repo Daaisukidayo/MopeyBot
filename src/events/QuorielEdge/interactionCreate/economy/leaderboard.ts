@@ -57,5 +57,5 @@ export default new Command({
     $leaderboardEmbed[cachedLB;$get[page];$get[maxPages];$get[rowsPerPage]]
     $interactionUpdate
     $newLeaderboardTimeout
-  `
+  `,
 })

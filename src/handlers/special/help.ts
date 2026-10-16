@@ -69,5 +69,5 @@ export default new ForgeFunction({
         $addTextDisplay[## \`$default[$arrayJoin[related;\` \`];$tl[ui.help.none.$get[l]]]\`]
       ;$getGlobalVar[defaultColor]]
     ]
-  `
+  `,
 })

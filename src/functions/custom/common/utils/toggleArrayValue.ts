@@ -7,13 +7,13 @@ export default new ForgeFunction({
     {
       name: "arrayName",
       description: "The name of the array variable to modify.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "element",
       description: "The value to add or remove from the array.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $if[$jsonType[$env[arrayName]]!=array;$return]
@@ -23,5 +23,5 @@ export default new ForgeFunction({
     ;
       $arrayPush[$env[arrayName];$env[element]]
     ]
-  `
+  `,
 })

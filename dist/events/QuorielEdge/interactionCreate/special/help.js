@@ -19,6 +19,6 @@ exports.default = new edge_1.Command({
     ]
 
     true
-  `
+  `,
 });
 //# sourceMappingURL=help.js.map

@@ -36,5 +36,5 @@ export default new ForgeFunction({
       $addTextDisplay[## \`$separate[$jsonGet[$getProfile[$get[userID]];MC]]\`$getGlobalVar[mopecoin]]
       $addTextDisplay[$tl[ui.muid.discordId.$get[l];$get[userID]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

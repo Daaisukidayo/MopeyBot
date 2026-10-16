@@ -8,11 +8,11 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "userProfile",
             description: "User's JSON profile",
-            type: forgescript_1.ArgType.Json
-        }
+            type: forgescript_1.ArgType.Json,
+        },
     ],
     code: `
     $setUserVar[userProfile;$env[userProfile];$jsonGet[userProfile;ID]]
-  `
+  `,
 });
 //# sourceMappingURL=saveProfile.js.map

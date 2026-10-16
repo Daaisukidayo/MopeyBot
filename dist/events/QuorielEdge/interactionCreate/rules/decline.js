@@ -21,6 +21,6 @@ exports.default = new edge_1.Command({
       $addTextDisplay[$tl[ui.rules.declined.$get[l]]]
     ;$getGlobalVar[errorColor]]
     $interactionUpdate
-  `
+  `,
 });
 //# sourceMappingURL=decline.js.map

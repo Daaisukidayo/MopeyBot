@@ -10,26 +10,26 @@ export default new ForgeFunction({
       name: "path",
       description: "The locale path of the options, e.g. data.raretryModes",
       type: ArgType.String,
-      required: true
+      required: true,
     },
     {
       name: "value",
       description: "The option as the user wrote it",
       type: ArgType.String,
-      required: true
+      required: true,
     },
     {
       name: "allowed",
       description: "The array of indexes that can be chosen",
       type: ArgType.Json,
-      required: true
+      required: true,
     },
     {
       name: "error",
       description: "The locale path of the error text, which gets the list of names",
       type: ArgType.String,
-      required: true
-    }
+      required: true,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -39,5 +39,5 @@ export default new ForgeFunction({
       $newError[$tl[$env[error].$get[l];$arrayJoin[$arrayMap[allowed;option;$return[$tl[$env[path].$env[option].$get[l]]]];\`, \`]]]
     ]
     $return[$get[index]]
-  `
+  `,
 })

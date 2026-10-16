@@ -23,10 +23,10 @@ export default new ApplicationCommand({
 
         choices: [
           { ...localized(options[1].choices[0]), value: "+" },
-          { ...localized(options[1].choices[1]), value: "-" }
-        ]
+          { ...localized(options[1].choices[1]), value: "-" },
+        ],
       },
-      { type: 3, required: true, ...localized(options[2]) }
-    ]
-  }
+      { type: 3, required: true, ...localized(options[2]) },
+    ],
+  },
 })

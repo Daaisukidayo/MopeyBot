@@ -8,14 +8,14 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "newTime",
             description: "The new passed time in seconds.",
-            type: forgescript_1.ArgType.Number
+            type: forgescript_1.ArgType.Number,
         },
         {
             name: "userId",
             description: "Optional user to set the timer for.",
             type: forgescript_1.ArgType.User,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[userId;$nullish[$env[userId;id];$authorID]]
@@ -26,6 +26,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $if[$and[$jsonGet[challengeProgress;paused];$env[newTime]<3600];
       $pauseChallengeTimer[$get[userId]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=setChallengeTimer.js.map

@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "allPlayers",
             description: "The array of all lobby players",
-            type: forgescript_1.ArgType.Json
-        }
+            type: forgescript_1.ArgType.Json,
+        },
     ],
     code: `
     $if[$jsonType[allPlayers]!=array;$return]
@@ -17,6 +17,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $deleteChallengeProgress[$env[userId]]
     ]
     $deleteChannelVar[lobby]
-  `
+  `,
 });
 //# sourceMappingURL=deleteLobbyProgress.js.map

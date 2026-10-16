@@ -2,7 +2,7 @@
   "parser": "typescript",
   "tabWidth": 2,
   "semi": false,
-  "trailingComma": "none",
+  "trailingComma": "es5",
   "printWidth": 120,
   "endOfLine": "lf"
 }

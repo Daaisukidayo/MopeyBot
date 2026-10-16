@@ -27,5 +27,5 @@ export default new ForgeFunction({
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.weekly.description.$get[l];$separate[$get[MC]]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

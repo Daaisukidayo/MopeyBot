@@ -32,5 +32,5 @@ export default new ForgeFunction({
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.timezone.current.$get[l];$jsonGet[userProfile;timezone]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

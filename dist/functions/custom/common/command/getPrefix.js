@@ -6,6 +6,6 @@ exports.default = new forgescript_1.ForgeFunction({
     description: "Returns the prefix of the current server, or the global prefix in DMs.",
     code: `
     $return[$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]]
-  `
+  `,
 });
 //# sourceMappingURL=getPrefix.js.map

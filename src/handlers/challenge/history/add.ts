@@ -18,5 +18,5 @@ export default new ForgeFunction({
     $historyEmbed[$env[addHistorySavedConfig];addHistory]
     $addHistoryExtraEmbed[addHistorySavedConfig]
     $newCommandTimeout
-  `
+  `,
 })

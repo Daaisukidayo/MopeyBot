@@ -17,6 +17,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $addOption[$tl[ui.wardrobe.menuOptions.$env[option].label.$get[l]];$tl[ui.wardrobe.menuOptions.$env[option].description.$get[l]];$env[option]]
       ]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=wardrobeMenuEmbed.js.map

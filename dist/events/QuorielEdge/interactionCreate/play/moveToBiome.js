@@ -48,6 +48,6 @@ exports.default = new edge_1.Command({
     ;$get[color]]
     $updatePlayData[playData]
     $interactionUpdate
-  `
+  `,
 });
 //# sourceMappingURL=moveToBiome.js.map

@@ -5,12 +5,12 @@ export default new ForgeFunction({
   code: `
     $if[$jsonGet[$getProgress;teamID]==-1;$return]
 
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
     $jsonLoad[allPlayers;$jsonGet[lobby;allPlayers]]
 
     $if[$not[$arrayEvery[allPlayers;ID;$jsonGet[$getProgress[$env[ID]];started]==false]];$return]
 
     $c[The last players can finish at the same moment and all get here. The results go out through one named timeout: a new one replaces the pending one, so they are sent once]
     $setTimeout[$publishLobbyResults;1s;lobbyResults-$channelID]
-  `
+  `,
 })

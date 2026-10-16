@@ -21,6 +21,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.ping.ping.$get[l];$ping]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=ping.js.map

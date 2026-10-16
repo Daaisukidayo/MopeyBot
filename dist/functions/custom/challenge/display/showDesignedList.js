@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "list",
             description: "Array of caught rare animals.",
-            type: forgescript_1.ArgType.Json
-        }
+            type: forgescript_1.ArgType.Json,
+        },
     ],
     code: `
     $if[$jsonSize[list]==0;
@@ -22,6 +22,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $addMediaGallery[$addMediaItem[attachment://$get[imageName].png]]
     $addTextDisplay[# $arrayJoin[list; ]]
     $addMediaGallery[$addMediaItem[attachment://$get[imageName].png]]
-  `
+  `,
 });
 //# sourceMappingURL=showDesignedList.js.map

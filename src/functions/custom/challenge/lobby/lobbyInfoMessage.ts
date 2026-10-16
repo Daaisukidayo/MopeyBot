@@ -7,13 +7,13 @@ export default new ForgeFunction({
     {
       name: "lobbyVar",
       description: "The name of the variable that holds the lobby.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "content",
       description: "The content text to display in the lobby info message.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[lobby;$env[lobbyVar]]
@@ -26,5 +26,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$env[content]]
     ;Orange]
-  `
+  `,
 })

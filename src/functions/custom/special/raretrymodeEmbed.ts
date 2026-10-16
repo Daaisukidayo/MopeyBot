@@ -17,5 +17,5 @@ export default new ForgeFunction({
         $addButton[rtMode-$env[mode]-$authorID;$tl[data.raretryModes.$env[mode].$get[l]];Success;;$checkCondition[$jsonGet[userProfile;rtMode]==$env[mode]]]
       ;i]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

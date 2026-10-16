@@ -5,6 +5,6 @@ exports.default = new forgescript_1.BaseCommand({
     type: "clientReady",
     code: `
     $arrayForEach[$getGlobalVar[allUserIDs];id;$username[$env[id]]]
-  `
+  `,
 });
 //# sourceMappingURL=cacheUsernames.js.map

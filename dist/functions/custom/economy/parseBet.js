@@ -10,26 +10,26 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "command",
             description: "The game, whose texts are used: coinflip or slots",
             type: forgescript_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "minimum",
             description: "The smallest bet",
             type: forgescript_1.ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "maximum",
             description: "The biggest bet",
             type: forgescript_1.ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "amount",
             description: "The bet as the user wrote it",
             type: forgescript_1.ArgType.String,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -44,6 +44,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $newError[$tl[ui.$env[command].invalidRange.$get[l];$env[minimum];$separate[$env[maximum]]]]
     ]
     $return[$get[amount]]
-  `
+  `,
 });
 //# sourceMappingURL=parseBet.js.map

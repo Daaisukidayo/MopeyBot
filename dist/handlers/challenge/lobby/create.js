@@ -12,7 +12,7 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $cooldown[lobby-$channelID;1000]
     
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
 
     $onlyIf[$env[lobby]==;
       $let[participants;$arrayJoin[$arrayMap[$jsonGet[lobby;allPlayers];ID;$return[$username[$env[ID]]]];\n]]
@@ -34,20 +34,16 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     
-    $c[A new lobby has one team with its host in it]
-    $jsonLoad[team;$getGlobalVar[baseLobbyTeam]]
-    $!jsonSet[team;players;$arrayOf["$authorID"]]
-    $jsonLoad[lobby;$getGlobalVar[baseLobby]]
-    $objectMerge[lobby;$objectOf[host;"$authorID";allPlayers;$arrayOf["$authorID"];teams;$arrayOf[$env[team]]]]
+    $new[lobby;Lobby;$authorID]
     
     $lobbyEmbed[lobby]
 
     $let[mid;$send]
 
-    $!jsonSet[lobby;messageID;"$get[mid]"]
+    $setField[lobby;messageID;"$get[mid]"]
     
     $setChannelVar[lobby;$env[lobby]]
     $newLobbyTimeout
-  `
+  `,
 });
 //# sourceMappingURL=create.js.map

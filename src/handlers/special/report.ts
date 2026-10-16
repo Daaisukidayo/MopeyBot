@@ -21,5 +21,5 @@ export default new ForgeFunction({
     ;$getGlobalVar[defaultColor]]
 
     $newCommandTimeout
-  `
+  `,
 })

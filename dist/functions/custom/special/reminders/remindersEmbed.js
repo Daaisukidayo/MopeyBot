@@ -19,6 +19,6 @@ exports.default = new forgescript_1.ForgeFunction({
         ]
       ]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=remindersEmbed.js.map

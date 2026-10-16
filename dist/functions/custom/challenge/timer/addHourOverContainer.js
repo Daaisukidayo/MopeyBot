@@ -9,13 +9,13 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "userId",
             description: "ID of the user.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "locale",
             description: "The user's language.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $let[l;$env[locale]]
@@ -29,6 +29,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addActionRow
       $addButton[confirmEndingChallenge-$env[userId];$tl[ui.challenge.buttonLabelConfirm.$get[l]];Success;✅]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=addHourOverContainer.js.map

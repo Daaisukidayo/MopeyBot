@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "playDataVar",
             description: "The name of the variable that holds the play data.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $if[$env[$env[playDataVar]]==;$return]
@@ -25,6 +25,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $addButton[play_chooseUpgrade-devDownArrow-$authorID;;Success;🔽]
     $addButton[play_chooseUpgrade-devUpdateArrow-$authorID;;Success;🔃]
     $addButton[play_chooseUpgrade-toggleRares-$authorID;Toggle rares;$if[$jsonGet[playData;devShowAllRares];Success;Secondary];🍀]
-  `
+  `,
 });
 //# sourceMappingURL=addCheats.js.map

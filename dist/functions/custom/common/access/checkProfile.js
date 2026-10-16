@@ -17,6 +17,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
     $onlyIf[$jsonGet[userProfile;acceptedRules];$robotCheck]
     $onlyIf[$jsonGet[userProfile;onSlowmode]!=true]
-  `
+  `,
 });
 //# sourceMappingURL=checkProfile.js.map

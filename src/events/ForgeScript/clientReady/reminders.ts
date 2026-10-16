@@ -19,5 +19,5 @@ export default new BaseCommand({
     ;
       $setCron[$runWeeklyReset;$get[weeklyCron];weeklyReset]
     ]
-  `
+  `,
 })

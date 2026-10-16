@@ -13,7 +13,7 @@ export default new Command({
 
     $checkLobby
 
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
     $c[Moderators can close it too]
     $onlyIf[$or[$jsonGet[lobby;host]==$authorID;$hasPerms[$guildID;$authorID;ManageMessages]];$onlyAuthorInteraction]
 
@@ -28,7 +28,7 @@ export default new Command({
 
         $c[A started lobby ends the challenge of every player, and the results are sent once everyone has finished]
         $if[$jsonGet[lobby;started];
-          $arrayForEach[$arrayUnique[$jsonGet[lobby;allPlayers]];ID;
+          $arrayForEach[$callMethod[lobby;players];ID;
             $jsonLoad[progress;$getProgress[$env[ID]]]
             $if[$env[progress]!=;
               $!jsonSet[progress;started;false]
@@ -53,5 +53,5 @@ export default new Command({
     $lobbyInfoMessage[lobby;$tl[ui.lobby.closedByHost.$get[l]]]
     $sendMessage[$channelID]
     $!stopTimeout[lobby-$channelID]
-  `
+  `,
 })

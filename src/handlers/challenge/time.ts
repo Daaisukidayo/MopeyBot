@@ -57,5 +57,5 @@ export default new ForgeFunction({
       $!send
       $sendMessage[$channelID;$addHourOverContainer[$authorID;$get[l]]]
     ]
-  `
+  `,
 })

@@ -31,6 +31,6 @@ exports.default = new forgescript_1.ForgeFunction({
         $addThumbnail[$jsonGet[tornado;thumbnail]]
       ]
     ;$jsonGet[tornado;color]]
-  `
+  `,
 });
 //# sourceMappingURL=tornado.js.map

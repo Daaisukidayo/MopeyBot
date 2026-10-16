@@ -63,6 +63,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addTextDisplay[$tl[ui.raretrysimulator.attempts.$get[l];$get[attempts]]]
       $addTextDisplay[$tl[ui.raretrysimulator.mode.$get[l];$tl[data.raretryModes.$get[rtMode].$get[l]]]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=raretrySimulator.js.map

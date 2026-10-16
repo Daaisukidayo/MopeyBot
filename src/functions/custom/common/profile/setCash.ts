@@ -7,10 +7,10 @@ export default new ForgeFunction({
     {
       name: "amount",
       description: "The amount of cash.",
-      type: ArgType.Number
-    }
+      type: ArgType.Number,
+    },
   ],
   code: `
     $!jsonSet[userProfile;MC;$round[$env[amount]]]
-  `
+  `,
 })

@@ -10,11 +10,11 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "userId",
             description: "The user ID to show the time for.",
             type: forgescript_1.ArgType.User,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $return[$tl[ui.challenge.time.$jsonGet[userProfile;language];$inline[$parseDigital[$getChallengeTimer[$env[userId;id]]000]]]]
-  `
+  `,
 });
 //# sourceMappingURL=showTime.js.map

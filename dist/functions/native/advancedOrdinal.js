@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 const SUFFIX_MAP = {
     "en-US": { one: "st", two: "nd", few: "rd", other: "th", zero: "th", many: "th" },
-    ru: { one: "-й", two: "-й", few: "-й", other: "-й", zero: "-й", many: "-й" }
+    ru: { one: "-й", two: "-й", few: "-й", other: "-й", zero: "-й", many: "-й" },
 };
 exports.default = new forgescript_1.NativeFunction({
     name: "$advancedOrdinal",
@@ -17,15 +17,15 @@ exports.default = new forgescript_1.NativeFunction({
             description: "The number to convert to an ordinal representation.",
             type: forgescript_1.ArgType.Number,
             required: true,
-            rest: false
+            rest: false,
         },
         {
             name: "language",
             description: "The language code used for the ordinal format. Defaults to en-US",
             type: forgescript_1.ArgType.String,
             required: false,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     execute: async function (ctx, [number, language]) {
         const [langPart, regionPart] = (language ?? "en-US").split("-");
@@ -34,6 +34,6 @@ exports.default = new forgescript_1.NativeFunction({
         const langSuffixes = SUFFIX_MAP[language] || SUFFIX_MAP["en-US"];
         const suffix = langSuffixes[rule] || langSuffixes["other"];
         return this.success(`${number}${suffix}`);
-    }
+    },
 });
 //# sourceMappingURL=advancedOrdinal.js.map

@@ -13,7 +13,7 @@ exports.default = new forgescript_1.ApplicationCommand({
     data: {
         type: 1,
         ...(0, getLocalization_js_1.localized)(slash),
-        options: [{ type: 3, required: false, ...(0, getLocalization_js_1.localized)(options[0]) }]
-    }
+        options: [{ type: 3, required: false, ...(0, getLocalization_js_1.localized)(options[0]) }],
+    },
 });
 //# sourceMappingURL=timezone.js.map

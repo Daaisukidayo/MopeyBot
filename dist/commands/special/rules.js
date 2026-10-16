@@ -11,7 +11,7 @@ exports.default = new forgescript_1.ApplicationCommand({
   `,
     data: {
         type: 1,
-        ...(0, getLocalization_js_1.localized)(slash)
-    }
+        ...(0, getLocalization_js_1.localized)(slash),
+    },
 });
 //# sourceMappingURL=rules.js.map

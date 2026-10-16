@@ -8,13 +8,13 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "lobbyVar",
             description: "The name of the variable that holds the lobby.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "content",
             description: "The content text to display in the lobby info message.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $ref[lobby;$env[lobbyVar]]
@@ -27,6 +27,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator[Large]
       $addTextDisplay[$env[content]]
     ;Orange]
-  `
+  `,
 });
 //# sourceMappingURL=lobbyInfoMessage.js.map

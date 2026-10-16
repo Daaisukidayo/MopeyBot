@@ -7,6 +7,6 @@ exports.default = new forgescript_1.ForgeFunction({
     output: forgescript_1.ArgType.Boolean,
     code: `
     $return[$checkCondition[$instanceName==Message]]
-  `
+  `,
 });
 //# sourceMappingURL=isPrefixCommand.js.map

@@ -39,5 +39,5 @@ export default new Command({
     $settingsEmbed
     $interactionUpdate
     $newCommandTimeout[settings]
-  `
+  `,
 })

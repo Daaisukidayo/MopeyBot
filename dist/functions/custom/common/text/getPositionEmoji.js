@@ -9,8 +9,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "pos",
             description: "The position to get the emoji for",
-            type: forgescript_1.ArgType.Number
-        }
+            type: forgescript_1.ArgType.Number,
+        },
     ],
     code: `
     $return[$switch[$env[pos];
@@ -19,6 +19,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $case[3;🥉]
       $case[default;\`#$env[pos]\`]
     ]]
-  `
+  `,
 });
 //# sourceMappingURL=getPositionEmoji.js.map

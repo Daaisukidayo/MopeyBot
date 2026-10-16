@@ -7,13 +7,13 @@ export default new ForgeFunction({
     {
       name: "lobbyVar",
       description: "The name of the variable that holds the lobby.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "standings",
       description: "The standings returned by $lobbyLeaderboard.",
-      type: ArgType.Json
-    }
+      type: ArgType.Json,
+    },
   ],
   code: `
     $ref[lobby;$env[lobbyVar]]
@@ -25,5 +25,5 @@ export default new ForgeFunction({
     ]
     $if[$jsonGet[standings;solo];$addSeparator[Large]]
     $addTextDisplay[$tl[ui.lobby.victoryTypeTitle.$get[l];$tl[data.victoryTypes.$jsonGet[lobby;settings;victoryType].$get[l]]]]
-  `
+  `,
 })

@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "tier",
       description: 'Tier number or "all" argument',
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -26,5 +26,5 @@ export default new ForgeFunction({
     $arrayForEach[userSkinPacks;id;
       $addOption[$tl[data.shopSkinPacks.$env[id].$get[l]];;$env[id]]
     ]
-  `
+  `,
 })

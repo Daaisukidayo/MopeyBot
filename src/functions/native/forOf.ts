@@ -12,29 +12,29 @@ export default new NativeFunction({
       description: "The iterable to iterate over",
       rest: false,
       required: true,
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "variable",
       description: "The variable to load the current element or value to",
       rest: false,
       required: true,
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "code",
       description: "The code to execute for every iteration",
       rest: false,
       required: true,
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "index",
       description: "The variable to store the index or key name",
       rest: false,
       required: false,
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   async execute(ctx) {
     const code = this.data.fields![2] as IExtendedCompiledFunctionField
@@ -67,7 +67,7 @@ export default new NativeFunction({
     }
     // ctx.clearArguments()
     return this.success(output)
-  }
+  },
 })
 
 function* iterate(target: any): Generator<[any, PropertyKey]> {

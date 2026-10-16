@@ -9,18 +9,18 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "number",
             description: "The number to determine the correct form for.",
-            type: forgescript_1.ArgType.Number
+            type: forgescript_1.ArgType.Number,
         },
         {
             name: "key",
             description: "The key for the word to pluralize.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "locale",
             description: "The locale to use for pluralization.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $jsonLoad[endingsMap;$getGlobalVar[endingsMap]]
@@ -32,6 +32,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[lastTwo;$math[$abs[$env[number]] % 100]]
     $let[last;$math[$get[lastTwo] % 10]]
     $return[$jsonGet[endingsMap;$env[locale];$env[key];$if[$inRange[$get[lastTwo];11;19];2;$if[$get[last]==1;0;$if[$inRange[$get[last];2;4];1;2]]]]]
-  `
+  `,
 });
 //# sourceMappingURL=pluralize.js.map

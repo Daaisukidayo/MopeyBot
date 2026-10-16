@@ -22,6 +22,6 @@ exports.default = new edge_1.Command({
     ;$getBiomeColor[playData]]
     $ephemeral
     $interactionReply
-  `
+  `,
 });
 //# sourceMappingURL=showApex.js.map

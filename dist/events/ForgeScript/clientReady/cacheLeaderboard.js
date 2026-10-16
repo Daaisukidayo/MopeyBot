@@ -7,6 +7,6 @@ exports.default = new forgescript_1.BaseCommand({
     $refreshLeaderboardCache
 
     $setInterval[$refreshLeaderboardCache;5m]
-  `
+  `,
 });
 //# sourceMappingURL=cacheLeaderboard.js.map

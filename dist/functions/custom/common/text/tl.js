@@ -9,15 +9,15 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "path",
             description: "The key path to the desired content, e.g. 'ui.errors.test.en-US'.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "args",
             description: "Arguments to replace {PLACEHOLDERS} in the content.",
             type: forgescript_1.ArgType.String,
             required: false,
-            rest: true
-        }
+            rest: true,
+        },
     ],
     code: `
     $arrayLoad[rawPath;.;$trim[$replace[$trimLines[$env[path]];\n;]]]
@@ -78,6 +78,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $return[$env[value]]
-  `
+  `,
 });
 //# sourceMappingURL=tl.js.map

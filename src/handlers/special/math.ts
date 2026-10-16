@@ -16,5 +16,5 @@ export default new ForgeFunction({
     ]
 
     $addTextDisplay[## $get[e] = $get[a]]
-  `
+  `,
 })

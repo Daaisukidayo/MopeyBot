@@ -7,20 +7,17 @@ export default new ForgeFunction({
     {
       name: "lobbyVar",
       description: "The name of the variable that holds the lobby.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[lobby;$env[lobbyVar]]
     $let[host;$jsonGet[lobby;host]]
     $let[l;$jsonGet[$getProfile[$get[host]];language]]
     $jsonLoad[teams;$jsonGet[lobby;teams]]
-    $jsonLoad[allPlayers;$jsonGet[lobby;allPlayers]]
     $jsonLoad[ready;$jsonGet[lobby;ready]]
     $let[solo;$checkCondition[$jsonSize[teams]==1]]
-
-    $c[Starts with 2+ participants, all ready and no empty team. Not a count of ready entries: a tester can have several but is ready once]
-    $let[canStart;$and[$jsonSize[allPlayers]>1;$arrayEvery[allPlayers;ID;$arrayIncludes[ready;"$env[ID]"]];$arraySome[teams;team;$jsonSize[team;players]==0]==false]]
+    $let[canStart;$callMethod[lobby;canStart]]
 
     $addContainer[
       $addSection[
@@ -55,5 +52,5 @@ export default new ForgeFunction({
       $addButton[startLobby;$tl[ui.lobby.buttonLabelStart.$get[l]];Success;✔️;$not[$get[canStart]]]
       $addButton[closeLobby-manually;$tl[ui.lobby.buttonLabelClose.$get[l]];Danger;🔚]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

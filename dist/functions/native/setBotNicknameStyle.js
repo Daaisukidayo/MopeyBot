@@ -41,7 +41,7 @@ exports.default = new forgescript_1.NativeFunction({
             description: "The guild ID where the bot's display style should be applied",
             required: false,
             rest: false,
-            type: forgescript_1.ArgType.Guild
+            type: forgescript_1.ArgType.Guild,
         },
         {
             name: "font",
@@ -49,7 +49,7 @@ exports.default = new forgescript_1.NativeFunction({
             required: true,
             rest: false,
             type: forgescript_1.ArgType.Enum,
-            enum: NicknameFonts
+            enum: NicknameFonts,
         },
         {
             name: "effect",
@@ -57,14 +57,14 @@ exports.default = new forgescript_1.NativeFunction({
             required: true,
             rest: false,
             type: forgescript_1.ArgType.Enum,
-            enum: NicknameEffects
+            enum: NicknameEffects,
         },
         {
             name: "colors",
             description: "One or more colors to apply to the display name",
             rest: true,
-            type: forgescript_1.ArgType.Color
-        }
+            type: forgescript_1.ArgType.Color,
+        },
     ],
     async execute(ctx, [guild, font, effect, colors]) {
         const res = await ctx.client.rest
@@ -72,11 +72,11 @@ exports.default = new forgescript_1.NativeFunction({
             body: {
                 display_name_font_id: (0, enum_js_1.resolveNumericEnum)(NicknameFonts, font),
                 display_name_effect_id: (0, enum_js_1.resolveNumericEnum)(NicknameEffects, effect),
-                display_name_colors: colors
-            }
+                display_name_colors: colors,
+            },
         })
             .catch((e) => forgescript_1.Logger.error(e));
         return this.success(Boolean(res));
-    }
+    },
 });
 //# sourceMappingURL=setBotNicknameStyle.js.map

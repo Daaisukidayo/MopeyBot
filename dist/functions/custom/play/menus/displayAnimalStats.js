@@ -7,13 +7,13 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "playDataVar",
             description: "The name of the variable that holds the play data.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "wardrobeVar",
             description: "The name of the variable that holds the user's wardrobe.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $ref[playData;$env[playDataVar]]
@@ -39,6 +39,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addThumbnail[$get[thumbnail]]
     ]
     $addTextDisplay[### 【$bar[$math[$get[exp] - $get[minExp]];$math[$get[maxExp] - $get[minExp]];15;█;░;]】]
-  `
+  `,
 });
 //# sourceMappingURL=displayAnimalStats.js.map

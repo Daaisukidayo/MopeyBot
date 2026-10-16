@@ -9,8 +9,8 @@ export default new ForgeFunction({
     {
       name: "raresList",
       description: "Object of caught rare animals.",
-      type: ArgType.Json
-    }
+      type: ArgType.Json,
+    },
   ],
   code: `
     $jsonLoad[totals;$sumRaresList[$env[raresList]]]
@@ -24,5 +24,5 @@ export default new ForgeFunction({
     ]
 
     $return[$objectOf[l;$env[list];p;$jsonGet[totals;points];r;$jsonGet[totals;rares]]]
-  `
+  `,
 })

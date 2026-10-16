@@ -9,8 +9,8 @@ export default new ForgeFunction({
       name: "command",
       description: "The command to delete",
       type: ArgType.String,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $c[A command sends its message now, an interaction's message is the one to delete]
@@ -38,5 +38,5 @@ export default new ForgeFunction({
         $logger[Error;$env[e]]
       ;e]
     ;$get[duration];$get[timeoutName]]
-  `
+  `,
 })

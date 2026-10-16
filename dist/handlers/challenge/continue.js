@@ -28,6 +28,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addTextDisplay[$showTime]
       $displayLimitedRares[challengeProgress]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=continue.js.map

@@ -8,5 +8,5 @@ export default new ForgeFunction({
     $addActionRow
     $addButton[notARobot-$authorID;I'm not a robot;Success;🤖]
     $!send
-  `
+  `,
 })

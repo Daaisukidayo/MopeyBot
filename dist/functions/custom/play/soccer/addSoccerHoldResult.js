@@ -9,33 +9,33 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "playDataVar",
             description: "The name of the variable that holds the play data.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "wardrobeVar",
             description: "The name of the variable that holds the user's wardrobe.",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerType",
             description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerId",
             description: "The ID of the soccer item",
-            type: forgescript_1.ArgType.Number
+            type: forgescript_1.ArgType.Number,
         },
         {
             name: "textKey",
             description: "The ui.play.soccer locale key used when the soccer is held (e.g. 'held', 'goalFailed')",
-            type: forgescript_1.ArgType.String
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "result",
             description: "The result JSON: {outcome, MC?, XP?}. Any outcome other than 'held' is a loss and uses its own locale key",
-            type: forgescript_1.ArgType.Json
-        }
+            type: forgescript_1.ArgType.Json,
+        },
     ],
     code: `
     $ref[playData;$env[playDataVar]]
@@ -56,6 +56,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $addSeparator[Large]
     $displayAnimalStats[playData;wardrobe]
     $addHeldSoccerMenu[playData]
-  `
+  `,
 });
 //# sourceMappingURL=addSoccerHoldResult.js.map

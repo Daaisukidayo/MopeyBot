@@ -12,5 +12,5 @@ export default new ForgeFunction({
     $addCooldown
 
     $addTextDisplay[# $arraySample[$getCache[rares;raresContent]]]
-  `
+  `,
 })

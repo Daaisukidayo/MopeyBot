@@ -9,18 +9,18 @@ export default new ForgeFunction({
     {
       name: "page",
       description: "The history page being made or edited.",
-      type: ArgType.Json
+      type: ArgType.Json,
     },
     {
       name: "option",
       description: "The option: points, raresQuantity, playType, difficulty, endDate or raresList.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "value",
       description: "The value from the form or the menu.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -65,5 +65,5 @@ export default new ForgeFunction({
     ]
 
     $return[$env[page]]
-  `
+  `,
 })

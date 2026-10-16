@@ -9,17 +9,17 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "number",
             description: "The number to separate.",
-            type: forgescript_1.ArgType.Number
+            type: forgescript_1.ArgType.Number,
         },
         {
             name: "separator",
             description: "The separator to use.",
             type: forgescript_1.ArgType.Unknown,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $return[$separateBigint[$env[number];$nullish[$env[separator];$getGlobalVar[numberSeparator]]]]
-  `
+  `,
 });
 //# sourceMappingURL=separate.js.map

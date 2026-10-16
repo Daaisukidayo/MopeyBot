@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "content",
             description: "The content to display in the notification.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -22,6 +22,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $setTimeout[
       $!deleteMessage[$channelID;$get[messageId]]
     ;10s]
-  `
+  `,
 });
 //# sourceMappingURL=settingsChangedInfo.js.map

@@ -7,5 +7,5 @@ export default new ForgeFunction({
     $let[l;$jsonGet[userProfile;language]]
     $ephemeral
     $interactionReply[$tl[ui.special.interactionInvalidAuthor.$get[l]]]
-  `
+  `,
 })

@@ -8,11 +8,11 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "amount",
             description: "The amount of cash.",
-            type: forgescript_1.ArgType.Number
-        }
+            type: forgescript_1.ArgType.Number,
+        },
     ],
     code: `
     $!jsonSet[userProfile;MC;$round[$env[amount]]]
-  `
+  `,
 });
 //# sourceMappingURL=setCash.js.map

@@ -22,6 +22,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ;$getGlobalVar[defaultColor]]
 
     $newCommandTimeout
-  `
+  `,
 });
 //# sourceMappingURL=report.js.map

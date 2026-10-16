@@ -10,7 +10,7 @@ exports.default = new edge_1.Command({
 
     $checkLobby
 
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
     $onlyIf[$messageID==$jsonGet[lobby;messageID];
       $!deleteMessage[$channelID;$messageID]
     ]
@@ -18,6 +18,6 @@ exports.default = new edge_1.Command({
     $ephemeral
     $lobbySettingsEmbed[lobby]
     $interactionReply
-  `
+  `,
 });
 //# sourceMappingURL=showSettings.js.map

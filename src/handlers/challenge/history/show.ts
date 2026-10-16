@@ -24,5 +24,5 @@ export default new ForgeFunction({
     $setMessageVar[cachedHistory;$env[cachedHistory];$get[mid]]
 
     $newHistoryTimeout[$get[mid]]
-  `
+  `,
 })

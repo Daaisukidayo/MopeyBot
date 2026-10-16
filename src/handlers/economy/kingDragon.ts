@@ -21,5 +21,5 @@ export default new ForgeFunction({
     ;$getGlobalVar[$if[$get[rare];rareKingDragonColor;defaultColor]]]
 
     $newCommandTimeout
-  `
+  `,
 })

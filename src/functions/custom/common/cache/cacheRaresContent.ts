@@ -16,5 +16,5 @@ export default new ForgeFunction({
 
     $setCache[rares;raresContent;$env[raresContent]]
     $logger[Info;Cached «raresContent»]
-  `
+  `,
 })

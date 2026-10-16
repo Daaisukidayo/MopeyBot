@@ -13,7 +13,7 @@ exports.default = new forgescript_1.ApplicationCommand({
     data: {
         type: 1,
         ...(0, getLocalization_js_1.localized)(slash),
-        options: [{ type: 4, required: true, min_value: 1, ...(0, getLocalization_js_1.localized)(options[0]) }]
-    }
+        options: [{ type: 4, required: true, min_value: 1, ...(0, getLocalization_js_1.localized)(options[0]) }],
+    },
 });
 //# sourceMappingURL=muid.js.map

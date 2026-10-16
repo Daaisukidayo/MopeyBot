@@ -192,5 +192,5 @@ export default new Command({
     $interactionUpdate
 
     $newHistoryTimeout
-  `
+  `,
 })

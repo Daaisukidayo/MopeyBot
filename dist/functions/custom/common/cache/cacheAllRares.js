@@ -56,6 +56,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $setCache[rares;challengeCategories;$env[challengeCategories]]
     $setCache[rares;categoryLimits;$env[categoryLimits]]
     $logger[Info;Cached the challenge rares]
-  `
+  `,
 });
 //# sourceMappingURL=cacheAllRares.js.map

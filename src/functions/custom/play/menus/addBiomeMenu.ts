@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[playData;$env[playDataVar]]
@@ -33,5 +33,5 @@ export default new ForgeFunction({
     $if[$isOneOf[$get[biome];4;5];;
       $addOption[$tl[data.biomes.4.$get[l]];;4;🌲]
     ]
-  `
+  `,
 })

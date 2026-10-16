@@ -27,5 +27,5 @@ export default new ForgeFunction({
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.switchlocale.switched.$get[locale];$jsonGet[locales;$get[locale]]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

@@ -32,6 +32,6 @@ exports.default = new edge_1.Command({
       $addTextDisplay[$get[desc]]
     ;$getGlobalVar[defaultColor]]
     $interactionUpdate
-  `
+  `,
 });
 //# sourceMappingURL=clearCoins.js.map

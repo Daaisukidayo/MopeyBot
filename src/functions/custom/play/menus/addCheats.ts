@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $if[$env[$env[playDataVar]]==;$return]
@@ -24,5 +24,5 @@ export default new ForgeFunction({
     $addButton[play_chooseUpgrade-devDownArrow-$authorID;;Success;🔽]
     $addButton[play_chooseUpgrade-devUpdateArrow-$authorID;;Success;🔃]
     $addButton[play_chooseUpgrade-toggleRares-$authorID;Toggle rares;$if[$jsonGet[playData;devShowAllRares];Success;Secondary];🍀]
-  `
+  `,
 })

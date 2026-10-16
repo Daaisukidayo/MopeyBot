@@ -13,6 +13,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $addCooldown
 
     $addTextDisplay[# $arraySample[$getCache[rares;raresContent]]]
-  `
+  `,
 });
 //# sourceMappingURL=randomRare.js.map

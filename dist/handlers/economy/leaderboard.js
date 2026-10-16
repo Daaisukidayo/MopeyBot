@@ -35,6 +35,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $setMessageVar[LBlist;$env[LBlist];$get[msgID]]
       $newLeaderboardTimeout[$get[msgID]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=leaderboard.js.map

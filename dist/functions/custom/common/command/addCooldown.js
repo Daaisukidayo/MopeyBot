@@ -10,14 +10,14 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "cooldownId",
             description: "Id for the cooldown",
             type: forgescript_1.ArgType.String,
-            required: false
+            required: false,
         },
         {
             name: "updateCooldownTime",
             description: "Whether to start the cooldown over instead of checking it.",
             type: forgescript_1.ArgType.Boolean,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $if[$isDev;$return]
@@ -46,6 +46,6 @@ exports.default = new forgescript_1.ForgeFunction({
 
       $newCooldown[$get[cooldownTime]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=addCooldown.js.map

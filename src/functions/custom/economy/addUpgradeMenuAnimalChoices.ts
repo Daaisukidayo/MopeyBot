@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "animalId",
       description: "The ID of the animal to load variants for",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $jsonLoad[userPacks;$jsonGet[userProfile;userPacks]]
@@ -26,5 +26,5 @@ export default new ForgeFunction({
         $letSum[buttonsQuantity;1]
       ]
     ;i]
-  `
+  `,
 })

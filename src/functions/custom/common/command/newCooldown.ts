@@ -7,8 +7,8 @@ export default new ForgeFunction({
     {
       name: "cooldownTime",
       description: "Remaining time when the cooldown ends.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -35,5 +35,5 @@ export default new ForgeFunction({
         $interactionDelete
       ;$get[deleteTime]]
     ]
-  `
+  `,
 })

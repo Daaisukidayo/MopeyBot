@@ -8,8 +8,8 @@ export default new ForgeFunction({
       name: "mode",
       description:
         "What the tier is chosen for: 'pack' (a skin pack for the whole tier) or 'animal' (one animal of it)",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -25,5 +25,5 @@ export default new ForgeFunction({
       ]
       $addWardrobeBackButton[menu]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

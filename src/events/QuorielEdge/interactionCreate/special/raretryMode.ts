@@ -21,5 +21,5 @@ export default new Command({
     $interactionUpdate
     
     $newCommandTimeout[raretrymode]
-  `
+  `,
 })

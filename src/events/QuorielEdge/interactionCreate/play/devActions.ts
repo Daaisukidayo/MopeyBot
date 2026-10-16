@@ -299,5 +299,5 @@ export default new Command({
       $ephemeral
       $interactionFollowUp
     ]
-  `
+  `,
 })

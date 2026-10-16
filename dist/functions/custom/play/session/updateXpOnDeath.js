@@ -7,8 +7,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "playDataVar",
             description: "The name of the variable that holds the play data.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $if[$env[$env[playDataVar]]==;$return]
@@ -19,6 +19,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ;
       $!jsonSet[playData;XP;$floor[$math[$jsonGet[playData;XP] / $random[1.5;2.15;true]]]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=updateXpOnDeath.js.map

@@ -15,5 +15,5 @@ export default new ForgeFunction({
     ;cachedLB;i]
 
     $setCache[leaderboard;cachedLB;$env[cachedLB]]
-  `
+  `,
 })

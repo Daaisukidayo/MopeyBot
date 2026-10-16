@@ -16,7 +16,7 @@ exports.default = new forgescript_1.ApplicationCommand({
         contexts: [0],
         default_member_permissions: "32",
         ...(0, getLocalization_js_1.localized)(slash),
-        options: [{ type: 3, required: true, min_length: 1, max_length: 5, ...(0, getLocalization_js_1.localized)(options[0]) }]
-    }
+        options: [{ type: 3, required: true, min_length: 1, max_length: 5, ...(0, getLocalization_js_1.localized)(options[0]) }],
+    },
 });
 //# sourceMappingURL=prefix.js.map

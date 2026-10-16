@@ -12,10 +12,8 @@ exports.default = new edge_1.Command({
 
     $checkLobby
 
-    $jsonLoad[lobby;$getChannelVar[lobby]]
-    $jsonLoad[teams;$jsonGet[lobby;teams]]
-    $c[A tester can have several entries: count everyone once]
-    $jsonLoad[players;$arrayUnique[$jsonGet[lobby;allPlayers]]]
+    $jsonLoad[lobby;$getLobby]
+    $jsonLoad[players;$callMethod[lobby;players]]
 
     $onlyIf[$jsonGet[lobby;host]==$authorID;$onlyAuthorInteraction]
 
@@ -61,17 +59,17 @@ exports.default = new edge_1.Command({
 
     $!deleteMessage[$channelID;$get[mid]]
 
-    $!jsonSet[lobby;started;true]
+    $setField[lobby;started;true]
     $setChannelVar[lobby;$env[lobby]]
 
     $arrayForEach[players;ID;
-      $setProgress[$env[ID];$arrayFindIndex[teams;team;$arrayIncludes[$jsonGet[team;players];"$env[ID]"]]]
+      $setProgress[$env[ID];$callMethod[lobby;teamOf;$env[ID]]]
       $startChallengeTimer[$env[ID]]
     ]
 
     $sendMessage[$channelID;
       $callFn[startingEmbed;$tl[ui.start.hasBegun.$get[l]]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=start.js.map

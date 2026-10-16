@@ -10,7 +10,7 @@ export default new ForgeFunction({
     $checkProfile
     $addCooldown
 
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
     $checkLobby
     $onlyIf[$jsonGet[lobby;started];
       $newError[$tl[ui.lobby.notStarted.$get[l]]]
@@ -24,5 +24,5 @@ export default new ForgeFunction({
       $addSeparator[Large]
       $addLobbyStandings[lobby;$lobbyLeaderboard[lobby]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

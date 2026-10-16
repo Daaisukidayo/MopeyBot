@@ -7,13 +7,13 @@ export default new ForgeFunction({
     {
       name: "wardrobeVar",
       description: "The name of the variable that holds the user's wardrobe.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "tier",
       description: "The tier of the animals",
-      type: ArgType.Number
-    }
+      type: ArgType.Number,
+    },
   ],
   code: `
     $ref[wardrobe;$env[wardrobeVar]]
@@ -35,5 +35,5 @@ export default new ForgeFunction({
       ]
       $addWardrobeBackButton[animal]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

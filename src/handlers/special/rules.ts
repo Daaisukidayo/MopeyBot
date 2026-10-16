@@ -17,5 +17,5 @@ export default new ForgeFunction({
       $addTextDisplay[$tl[ui.rules.privacyPolicy.$get[l];$getGlobalVar[privacyLink]]]
       $addTextDisplay[$tl[ui.rules.usage.$get[l];$getGlobalVar[usageLink]]]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 })

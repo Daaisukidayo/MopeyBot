@@ -46,5 +46,5 @@ export default new Command({
         $addTextDisplay[$tl[ui.shop.purchaseSuccess.$get[l];$tl[data.shopSkinPacks.$get[skinpack].$get[l]]]]
       ;$getGlobalVar[defaultColor]]
     ]
-  `
+  `,
 })

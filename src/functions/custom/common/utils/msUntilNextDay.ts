@@ -6,5 +6,5 @@ export default new ForgeFunction({
   output: ArgType.Number,
   code: `
     $return[$math[86400000 - $getTimestamp % 86400000]]
-  `
+  `,
 })

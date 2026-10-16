@@ -9,6 +9,6 @@ exports.default = new forgescript_1.BaseCommand({
     $c[Each call shows both statuses for 15s, so a 30s interval keeps them alternating]
     $setInterval[$updateBotStatus;30s]
     $updateBotStatus
-  `
+  `,
 });
 //# sourceMappingURL=setStatus.js.map

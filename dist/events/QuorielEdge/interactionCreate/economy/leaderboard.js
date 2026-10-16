@@ -58,6 +58,6 @@ exports.default = new edge_1.Command({
     $leaderboardEmbed[cachedLB;$get[page];$get[maxPages];$get[rowsPerPage]]
     $interactionUpdate
     $newLeaderboardTimeout
-  `
+  `,
 });
 //# sourceMappingURL=leaderboard.js.map

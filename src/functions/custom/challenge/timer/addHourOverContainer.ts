@@ -8,13 +8,13 @@ export default new ForgeFunction({
     {
       name: "userId",
       description: "ID of the user.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "locale",
       description: "The user's language.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $let[l;$env[locale]]
@@ -28,5 +28,5 @@ export default new ForgeFunction({
       $addActionRow
       $addButton[confirmEndingChallenge-$env[userId];$tl[ui.challenge.buttonLabelConfirm.$get[l]];Success;✅]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

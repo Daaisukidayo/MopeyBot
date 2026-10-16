@@ -28,6 +28,6 @@ exports.default = new forgescript_1.ForgeFunction({
       ]
     ]
     $setCache[animals;animalsData;$env[animals]]
-  `
+  `,
 });
 //# sourceMappingURL=cacheAnimalsData.js.map

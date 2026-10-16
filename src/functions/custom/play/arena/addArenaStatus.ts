@@ -7,13 +7,13 @@ export default new ForgeFunction({
     {
       name: "playDataVar",
       description: "The name of the variable that holds the play data.",
-      type: ArgType.String
+      type: ArgType.String,
     },
     {
       name: "wardrobeVar",
       description: "The name of the variable that holds the user's wardrobe.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[playData;$env[playDataVar]]
@@ -43,5 +43,5 @@ export default new ForgeFunction({
       $addTextDisplay[$tl[ui.play.arena.table.player.$get[l];$get[opponentDisplay]]]
       $addTextDisplay[$tl[ui.play.arena.table.bites.$get[l];$jsonGet[playData;arena;opponentBites]]]
     ]
-  `
+  `,
 })

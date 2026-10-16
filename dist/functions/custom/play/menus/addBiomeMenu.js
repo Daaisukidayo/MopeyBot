@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "playDataVar",
             description: "The name of the variable that holds the play data.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $ref[playData;$env[playDataVar]]
@@ -34,6 +34,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $if[$isOneOf[$get[biome];4;5];;
       $addOption[$tl[data.biomes.4.$get[l]];;4;🌲]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=addBiomeMenu.js.map

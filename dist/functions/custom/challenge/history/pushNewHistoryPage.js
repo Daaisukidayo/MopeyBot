@@ -8,14 +8,14 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "newPageData",
             description: "JSON object containing new page fields: points, rares, endDate, playType, difficulty, list.",
-            type: forgescript_1.ArgType.Json
+            type: forgescript_1.ArgType.Json,
         },
         {
             name: "userId",
             description: "The user ID.",
             type: forgescript_1.ArgType.User,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[userId;$nullish[$env[userId;id];$authorID]]
@@ -27,6 +27,6 @@ exports.default = new forgescript_1.ForgeFunction({
     $jsonLoad[history;$getUserVar[challengeHistory;$get[userId]]]
     $arrayPushJSON[history;$env[newHistory]]
     $setUserVar[challengeHistory;$env[history];$get[userId]]
-  `
+  `,
 });
 //# sourceMappingURL=pushNewHistoryPage.js.map

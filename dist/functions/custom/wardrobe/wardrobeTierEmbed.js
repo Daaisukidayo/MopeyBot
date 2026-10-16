@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "mode",
             description: "What the tier is chosen for: 'pack' (a skin pack for the whole tier) or 'animal' (one animal of it)",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -25,6 +25,6 @@ exports.default = new forgescript_1.ForgeFunction({
       ]
       $addWardrobeBackButton[menu]
     ;$getGlobalVar[defaultColor]]
-  `
+  `,
 });
 //# sourceMappingURL=wardrobeTierEmbed.js.map

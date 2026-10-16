@@ -20,5 +20,5 @@ export default new Command({
       $addTextDisplay[$tl[ui.rules.declined.$get[l]]]
     ;$getGlobalVar[errorColor]]
     $interactionUpdate
-  `
+  `,
 })

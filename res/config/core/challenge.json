@@ -30,27 +30,6 @@
     "events": []
   },
 
-  "baseLobby": {
-    "host": null,
-    "messageID": null,
-    "started": false,
-    "settings": {
-      "mode": 0,
-      "difficulty": 1,
-      "victoryType": 0
-    },
-    "ready": [],
-    "allPlayers": [],
-    "teams": []
-  },
-
-  "baseLobbyTeam": {
-    "points": 0,
-    "rares": 0,
-    "teamID": 0,
-    "players": []
-  },
-
   "allSettings": {
     "hidePoints": 0,
     "hideRares": 1,

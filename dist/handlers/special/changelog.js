@@ -17,7 +17,7 @@ exports.default = [
     $jsonLoad[changelog;$jsonGet[$readFile[res/locale/changelog.json];$get[l]]]
 
     $changelogEmbed
-  `
+  `,
     }),
     new forgescript_1.ForgeFunction({
         name: "changelogEmbed",
@@ -25,7 +25,7 @@ exports.default = [
     $addContainer[
       $addTextDisplay[$arrayJoin[changelog;\n]]
     ;$getGlobalVar[defaultColor]]
-  `
-    })
+  `,
+    }),
 ];
 //# sourceMappingURL=changelog.js.map

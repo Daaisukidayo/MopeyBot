@@ -6,8 +6,8 @@ export default new ForgeFunction({
     {
       name: "pageVar",
       description: "The name of the variable that holds the history page being added.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $ref[page;$env[pageVar]]
@@ -18,5 +18,5 @@ export default new ForgeFunction({
       $addButton[addHistory-resetNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelReset.$get[l]];Secondary]
       $addButton[addHistory-cancelNewHistoryPage-$authorID;$tl[ui.addhistory.buttonLabelCancel.$get[l]];Primary]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 })

@@ -8,11 +8,11 @@ export default new ForgeFunction({
     {
       name: "locale",
       description: "The language of the closing message",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
     $if[$env[lobby]==;$return]
     $if[$jsonGet[lobby;started];$return]
     $if[$messageExists[$channelID;$jsonGet[lobby;messageID]];
@@ -22,5 +22,5 @@ export default new ForgeFunction({
       $lobbyInfoMessage[lobby;$tl[ui.lobby.closedByInactivity.$env[locale];$jsonGet[lobby;host]]]
     ]
     $deleteLobbyProgress[$jsonGet[lobby;allPlayers]]
-  `
+  `,
 })

@@ -7,6 +7,6 @@ exports.default = new forgescript_1.ForgeFunction({
     output: forgescript_1.ArgType.Number,
     code: `
     $return[$if[$or[$isSlashCommand;$isCommand==false];$interactionReply[;true];$sendMessage[$channelID;;true]]]
-  `
+  `,
 });
 //# sourceMappingURL=send.js.map

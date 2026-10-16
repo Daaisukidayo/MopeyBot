@@ -7,5 +7,5 @@ export default new ForgeFunction({
     $!stopTimeout[lobby-$channelID]
     $c[The stored timeout only calls a function, so code changes apply to pending timeouts too]
     $setTimeout[$closeInactiveLobby[$get[l]];$getGlobalVar[lobbyInactiveTime];lobby-$channelID]
-  `
+  `,
 })

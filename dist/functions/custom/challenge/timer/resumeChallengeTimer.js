@@ -10,14 +10,14 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "userId",
             description: "ID of the user.",
             type: forgescript_1.ArgType.User,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $let[userId;$nullish[$env[userId;id];$authorID]]
     $arrayForEach[$getGlobalVar[challengeTimerMilestones];milestone;
       $!resumeTimer[timeout;challengeTimer$env[milestone]-$get[userId]|$channelID]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=resumeChallengeTimer.js.map

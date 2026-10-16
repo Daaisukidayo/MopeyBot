@@ -65,6 +65,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $!editMessage[$channelID;$get[msgid];$addTextDisplay[$callFn[content]]]
-  `
+  `,
 });
 //# sourceMappingURL=slots.js.map

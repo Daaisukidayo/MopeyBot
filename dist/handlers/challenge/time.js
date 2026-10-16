@@ -58,6 +58,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $!send
       $sendMessage[$channelID;$addHourOverContainer[$authorID;$get[l]]]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=time.js.map

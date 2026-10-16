@@ -18,6 +18,6 @@ exports.default = new forgescript_1.ForgeFunction({
     ;
       $setStatus[dnd;Custom;Disabled for maintenance]
     ]
-  `
+  `,
 });
 //# sourceMappingURL=updateBotStatus.js.map

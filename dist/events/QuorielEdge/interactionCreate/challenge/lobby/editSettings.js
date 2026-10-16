@@ -12,7 +12,7 @@ exports.default = new edge_1.Command({
 
     $checkLobby
 
-    $jsonLoad[lobby;$getChannelVar[lobby]]
+    $jsonLoad[lobby;$getLobby]
 
     $onlyIf[$jsonGet[lobby;host]==$authorID;$onlyAuthorInteraction]
     $c[Settings can only change for a lobby that still has its message and has not started]
@@ -22,24 +22,7 @@ exports.default = new edge_1.Command({
     $let[setting;$jsonGet[IID;1]]
     $let[value;$selectMenuValues]
 
-    $switch[$get[setting];
-      $case[host;
-        $!jsonSet[lobby;host;$get[value]]
-      ]
-      $case[mode;
-        $c[A new mode starts with empty teams, numbered from 0, and nobody in them]
-        $jsonLoad[team;$getGlobalVar[baseLobbyTeam]]
-        $arrayMap[$arrayRange[0;$get[value]];teamID;
-          $!jsonSet[team;teamID;$env[teamID]]
-          $return[$env[team]]
-        ;teams]
-        $objectMerge[lobby;$objectOf[teams;$env[teams];ready;$arrayOf;allPlayers;$arrayOf]]
-        $!jsonSet[lobby;settings;mode;$get[value]]
-      ]
-      $case[default;
-        $!jsonSet[lobby;settings;$get[setting];$get[value]]
-      ]
-    ]
+    $callMethod[lobby;changeSetting;$get[setting];$get[value]]
     $setChannelVar[lobby;$env[lobby]]
 
     $lobbySettingsEmbed[lobby]
@@ -63,6 +46,6 @@ exports.default = new edge_1.Command({
     ]
 
     $newLobbyTimeout
-  `
+  `,
 });
 //# sourceMappingURL=editSettings.js.map

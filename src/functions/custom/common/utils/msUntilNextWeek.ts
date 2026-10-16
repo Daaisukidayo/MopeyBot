@@ -10,5 +10,5 @@ export default new ForgeFunction({
 
     $c[1 January 1970 was a Thursday: counting Monday as 0, a day's place in its week is (days + 3) % 7]
     $return[$math[(7 - ($get[days] + 3) % 7) * 86400000 - $get[now] % 86400000]]
-  `
+  `,
 })

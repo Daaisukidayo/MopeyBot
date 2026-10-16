@@ -14,7 +14,7 @@ export enum NicknameFonts {
   Ribes = 9,
   Sinistre = 10,
   Default = 11,
-  ZillaSlab = 12
+  ZillaSlab = 12,
 }
 
 export enum NicknameEffects {
@@ -23,7 +23,7 @@ export enum NicknameEffects {
   Neon = 3,
   Toon = 4,
   Pop = 5,
-  Glow = 6
+  Glow = 6,
 }
 
 export default new NativeFunction({
@@ -39,7 +39,7 @@ export default new NativeFunction({
       description: "The guild ID where the bot's display style should be applied",
       required: false,
       rest: false,
-      type: ArgType.Guild
+      type: ArgType.Guild,
     },
     {
       name: "font",
@@ -47,7 +47,7 @@ export default new NativeFunction({
       required: true,
       rest: false,
       type: ArgType.Enum,
-      enum: NicknameFonts
+      enum: NicknameFonts,
     },
     {
       name: "effect",
@@ -55,14 +55,14 @@ export default new NativeFunction({
       required: true,
       rest: false,
       type: ArgType.Enum,
-      enum: NicknameEffects
+      enum: NicknameEffects,
     },
     {
       name: "colors",
       description: "One or more colors to apply to the display name",
       rest: true,
-      type: ArgType.Color
-    }
+      type: ArgType.Color,
+    },
   ],
   async execute(ctx, [guild, font, effect, colors]) {
     const res = await ctx.client.rest
@@ -70,11 +70,11 @@ export default new NativeFunction({
         body: {
           display_name_font_id: resolveNumericEnum(NicknameFonts, font),
           display_name_effect_id: resolveNumericEnum(NicknameEffects, effect),
-          display_name_colors: colors
-        }
+          display_name_colors: colors,
+        },
       })
       .catch((e) => Logger.error(e))
 
     return this.success(Boolean(res))
-  }
+  },
 })

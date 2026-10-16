@@ -193,6 +193,6 @@ exports.default = new edge_1.Command({
     $interactionUpdate
 
     $newHistoryTimeout
-  `
+  `,
 });
 //# sourceMappingURL=handler.js.map

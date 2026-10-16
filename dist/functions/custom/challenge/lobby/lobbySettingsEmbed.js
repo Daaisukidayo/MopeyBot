@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "lobbyVar",
             description: "The name of the variable that holds the lobby.",
-            type: forgescript_1.ArgType.String
-        }
+            type: forgescript_1.ArgType.String,
+        },
     ],
     code: `
     $ref[lobby;$env[lobbyVar]]
@@ -42,9 +42,8 @@ exports.default = new forgescript_1.ForgeFunction({
         $addOption[$tl[data.victoryTypes.$env[type].$get[l]];$tl[ui.lobby.optionDescriptionSelect.$get[l]];$env[type];;$checkCondition[$jsonGet[lobby;settings;victoryType]==$env[type]]]
       ]
 
-      $c[Give host: every other participant once (a tester can have several entries, options must be unique)]
       $if[$get[disabled]==false;
-        $jsonLoad[hostCandidates;$arrayDiff[$arrayUnique[$jsonGet[lobby;allPlayers]];$arrayOf[$get[host]]]]
+        $jsonLoad[hostCandidates;$callMethod[lobby;hostCandidates]]
 
         $if[$jsonSize[hostCandidates]>0;
           $addSeparator[Large]
@@ -56,6 +55,6 @@ exports.default = new forgescript_1.ForgeFunction({
         ]
       ]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=lobbySettingsEmbed.js.map

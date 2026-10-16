@@ -8,8 +8,8 @@ export default new ForgeFunction({
     {
       name: "alias",
       description: "Abbreviation of the rare animal.",
-      type: ArgType.String
-    }
+      type: ArgType.String,
+    },
   ],
   code: `
     $c[Checked against the list first: user input could name a key like 'constructor']
@@ -18,5 +18,5 @@ export default new ForgeFunction({
 
     $getCache[rares;rareByAbbreviation;rareByAbbreviation]
     $return[$jsonGet[rareByAbbreviation;$env[alias]]]
-  `
+  `,
 })

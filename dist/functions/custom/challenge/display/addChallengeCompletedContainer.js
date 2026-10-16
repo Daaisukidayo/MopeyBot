@@ -8,8 +8,8 @@ exports.default = new forgescript_1.ForgeFunction({
         {
             name: "raresList",
             description: "Object of the caught rare animals: their counts by their IDs.",
-            type: forgescript_1.ArgType.Json
-        }
+            type: forgescript_1.ArgType.Json,
+        },
     ],
     code: `
     $let[l;$jsonGet[userProfile;language]]
@@ -23,6 +23,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator[Large]
       $showDesignedList[$jsonGet[result;l]]
     ;$getGlobalVar[luckyColor]]
-  `
+  `,
 });
 //# sourceMappingURL=addChallengeCompletedContainer.js.map

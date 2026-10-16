@@ -10,8 +10,8 @@ export function getLocalization(locObj: AllLocales): LocalizationResult {
     name: locObj["default"],
     name_localizations: {
       "en-US": locObj["en-US"],
-      ru: locObj["ru"]
-    }
+      ru: locObj["ru"],
+    },
   }
 }
 

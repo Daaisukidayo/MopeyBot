@@ -31,6 +31,6 @@ exports.default = new forgescript_1.ForgeFunction({
       $addAuthorDisplay
       $addTextDisplay[$get[desc]]
     ;$get[color]]
-  `
+  `,
 });
 //# sourceMappingURL=arena.js.map

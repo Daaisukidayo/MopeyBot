@@ -47,5 +47,5 @@ export default new Command({
     ;$get[color]]
     $updatePlayData[playData]
     $interactionUpdate
-  `
+  `,
 })

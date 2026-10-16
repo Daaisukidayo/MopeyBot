@@ -10,11 +10,11 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "userId",
             description: "The user ID",
             type: forgescript_1.ArgType.User,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $deleteUserVar[challengeProgress|$channelID;$nullish[$env[userId;id];$authorID]]
-  `
+  `,
 });
 //# sourceMappingURL=deleteChallengeProgress.js.map

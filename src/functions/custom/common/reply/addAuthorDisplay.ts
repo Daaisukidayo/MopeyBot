@@ -9,8 +9,8 @@ export default new ForgeFunction({
       name: "withAvatar",
       description: "Whether to show the user avatar as thumbnail (default: true).",
       type: ArgType.Boolean,
-      required: false
-    }
+      required: false,
+    },
   ],
   code: `
     $c[A user who accepted the rules has a MUID after the name]
@@ -25,5 +25,5 @@ export default new ForgeFunction({
       $addTextDisplay[$get[name]]
     ]
     $addSeparator[Large]
-  `
+  `,
 })

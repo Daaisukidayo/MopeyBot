@@ -11,11 +11,11 @@ exports.default = new forgescript_1.ForgeFunction({
             name: "name",
             description: "The name to use instead of the running command's.",
             type: forgescript_1.ArgType.String,
-            required: false
-        }
+            required: false,
+        },
     ],
     code: `
     $return[$nullish[$env[name];$toLowerCase[$replace[$applicationSubCommandName $applicationSubCommandGroupName; ;]];$commandName]]
-  `
+  `,
 });
 //# sourceMappingURL=commandKey.js.map

@@ -30,5 +30,5 @@ export default new ForgeFunction({
       $addAuthorDisplay
       $addTextDisplay[$get[desc]]
     ;$get[color]]
-  `
+  `,
 })

@@ -16,5 +16,5 @@ export default new ForgeFunction({
     ]
     $onlyIf[$jsonGet[userProfile;acceptedRules];$robotCheck]
     $onlyIf[$jsonGet[userProfile;onSlowmode]!=true]
-  `
+  `,
 })
