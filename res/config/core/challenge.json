@@ -17,19 +17,6 @@
     "1": "rares"
   },
 
-  "baseChallengeProgress": {
-    "started": true,
-    "paused": false,
-    "points": 0,
-    "rares": 0,
-    "userID": null,
-    "teamID": -1,
-    "difficulty": 1,
-    "endTime": null,
-    "raresList": {},
-    "events": []
-  },
-
   "allSettings": {
     "hidePoints": 0,
     "hideRares": 1,

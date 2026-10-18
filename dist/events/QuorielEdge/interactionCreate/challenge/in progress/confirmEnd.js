@@ -24,9 +24,7 @@ exports.default = new edge_1.Command({
     $addChallengeCompletedContainer[$jsonGet[challengeProgress;raresList]]
     $interactionUpdate
 
-    $!jsonSet[challengeProgress;endDate;$getTimestamp]
-    $!jsonSet[challengeProgress;playType;$if[$jsonGet[challengeProgress;teamID]==-1;0;1]]
-    $pushNewHistoryPage[$env[challengeProgress]]
+    $pushNewHistoryPage[$callMethod[challengeProgress;historyPage]]
     $finishChallenge[challengeProgress]
   `,
 });

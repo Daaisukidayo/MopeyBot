@@ -12,16 +12,14 @@ export default new ForgeFunction({
 
     $defer
 
-    $c[A new view starts on the first page, newest first, as the base view does]
-    $jsonLoad[history;$sortHistory[$getUserVar[challengeHistory];0]]
-    $jsonLoad[cachedHistory;$getGlobalVar[baseCachedHistory]]
-    $!jsonSet[cachedHistory;history;$env[history]]
+    $new[challengeHistory;ChallengeHistory;$authorID]
+    $new[view;HistoryView;$getField[challengeHistory;pages]]
 
-    $historyEmbed[$jsonGet[history;0]]
-    $showHistoryExtraEmbed[$env[cachedHistory]]
+    $historyEmbed[$callMethod[view;current]]
+    $showHistoryExtraEmbed[$env[view]]
     $let[mid;$send]
 
-    $setMessageVar[cachedHistory;$env[cachedHistory];$get[mid]]
+    $setMessageVar[cachedHistory;$env[view];$get[mid]]
 
     $newHistoryTimeout[$get[mid]]
   `,

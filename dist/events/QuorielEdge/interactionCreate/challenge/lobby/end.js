@@ -32,7 +32,7 @@ exports.default = new edge_1.Command({
           $arrayForEach[$callMethod[lobby;players];ID;
             $jsonLoad[progress;$getProgress[$env[ID]]]
             $if[$env[progress]!=;
-              $!jsonSet[progress;started;false]
+              $setField[progress;started;false]
               $saveProgress[$env[progress];$env[ID]]
             ]
             $stopChallengeTimer[$env[ID]]

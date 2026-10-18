@@ -29,7 +29,7 @@ export default new Command({
       $c[A solo challenge going on in this channel gets the new difficulty too]
       $jsonLoad[challengeProgress;$getProgress]
       $if[$and[$env[challengeProgress]!=;$getChannelVar[lobby]==];
-        $!jsonSet[challengeProgress;difficulty;$get[value]]
+        $setField[challengeProgress;difficulty;$get[value]]
         $saveProgress[$env[challengeProgress]]
       ]
     ]

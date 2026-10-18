@@ -33,13 +33,12 @@ export default new ForgeFunction({
 
       $c[3600 ends the hour right away, so the challenge is no longer paused]
       $if[$get[newTime]>=3600;
-        $!jsonSet[challengeProgress;paused;false]
+        $setField[challengeProgress;paused;false]
         $let[paused;false]
         $let[hourOver;true]
       ]
 
-      $let[passedSeconds;$getChallengeTimer]
-      $!jsonSet[challengeProgress;events;$arrayFilter[$jsonGet[challengeProgress;events];event;$get[passedSeconds]>$jsonGet[event;0]]]
+      $callMethod[challengeProgress;trimEvents;$getChallengeTimer]
       $saveProgress[$env[challengeProgress]]
     ]
 

@@ -25,6 +25,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $c[Each sort type has its emoji, sorting by a rare shows that rare]
     $let[rareEmoji;$if[$get[rareAnimalId]!=;$getAnimalInfo[$get[rareAnimalId];emoji;0];$getGlobalVar[undefined]]]
     $jsonLoad[sortEmojis;$arrayOf[📅;🔢;🎏;$get[rareEmoji]]]
+    $jsonLoad[sortingOrders;$getGlobalVar[sortingOrders]]
 
     $addContainer[
       $addActionRow
@@ -48,8 +49,8 @@ exports.default = new forgescript_1.ForgeFunction({
 
       $addActionRow
       $addStringSelectMenu[showHistory-orderMenu-$authorID;;$get[disablePages]]
-      $arrayForEach[$arrayOf[desc;asc];order;
-        $addOption[$tl[ui.history.optionNameOrder.$get[l];$tl[data.sortingOrders.$env[order].$get[l]]];;$env[order];$if[$env[order]==desc;⬇️;⬆️];$checkCondition[$get[sortOrder]==$env[order]]]
+      $arrayForEach[$jsonKeys[sortingOrders];order;
+        $addOption[$tl[ui.history.optionNameOrder.$get[l];$tl[data.sortingOrders.$env[order].$get[l]]];;$env[order];$jsonGet[sortingOrders;$env[order]];$checkCondition[$get[sortOrder]==$env[order]]]
       ]
 
       $addActionRow

@@ -1,13 +1,9 @@
 {
   "sortingOptions": [0, 1, 2, 3],
 
-  "baseCachedHistory": {
-    "page": 1,
-    "sortType": 0,
-    "sortOrder": "desc",
-    "rareAnimalId": null,
-    "filter": false,
-    "history": []
+  "sortingOrders": {
+    "desc": "📉",
+    "asc": "📈"
   },
 
   "baseHistoryPage": {

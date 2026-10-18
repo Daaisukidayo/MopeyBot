@@ -19,7 +19,7 @@ export default new ForgeFunction({
       $newError[$tl[ui.pause.timesUp.$get[l]]]
     ]
     
-    $!jsonSet[challengeProgress;paused;true]
+    $setField[challengeProgress;paused;true]
     $saveProgress[$env[challengeProgress]]
     $pauseChallengeTimer
 

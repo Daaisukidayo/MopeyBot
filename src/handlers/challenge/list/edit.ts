@@ -44,15 +44,8 @@ export default new ForgeFunction({
 
     $defer
 
-    $c["all", or a count that leaves nothing, removes the rare. A new count above the limit becomes the limit]
     $let[newQuantity;$if[$get[arg3]==all;0;$math[$get[oldQuantity] $get[arg2] $get[arg3]]]]
-    $if[$get[newQuantity]<=0;
-      $let[updatedQuantity;0]
-      $!jsonDelete[challengeProgress;raresList;$get[animalId]]
-    ;
-      $let[updatedQuantity;$limitRareCount[$get[newQuantity];$get[animalId];$jsonGet[challengeProgress;difficulty]]]
-      $!jsonSet[challengeProgress;raresList;$get[animalId];$get[updatedQuantity]]
-    ]
+    $let[updatedQuantity;$callMethod[challengeProgress;setRareCount;$get[animalId];$get[newQuantity]]]
 
     $jsonLoad[result;$generateList[$jsonGet[challengeProgress;raresList]]]
 
@@ -63,7 +56,6 @@ export default new ForgeFunction({
     ;
       $let[state;$if[$get[arg2]==+;added;removed]]
       $let[count;$abs[$math[$get[updatedQuantity] - $get[oldQuantity]]]]
-      $objectMerge[challengeProgress;$objectOf[points;$jsonGet[result;p];rares;$jsonGet[result;r]]]
       $saveProgress[$env[challengeProgress]]
     ]
 

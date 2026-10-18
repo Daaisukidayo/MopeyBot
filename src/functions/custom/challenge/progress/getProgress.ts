@@ -14,6 +14,11 @@ export default new ForgeFunction({
     },
   ],
   code: `
-    $return[$getUserVar[challengeProgress|$channelID;$nullish[$env[userId;id];$authorID]]]
+    $jsonLoad[progress;$getUserVar[challengeProgress|$channelID;$nullish[$env[userId;id];$authorID]]]
+    $c[Progress saved before the ChallengeProgress class has no class name]
+    $if[$and[$env[progress]!=;$isInstance[progress]==false];
+      $!jsonSet[progress;__class;ChallengeProgress]
+    ]
+    $return[$env[progress]]
   `,
 })

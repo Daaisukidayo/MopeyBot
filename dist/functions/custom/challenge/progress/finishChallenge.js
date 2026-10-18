@@ -19,7 +19,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $if[$jsonGet[progress;teamID]==-1;
       $deleteChallengeProgress
     ;
-      $!jsonSet[progress;started;false]
+      $setField[progress;started;false]
       $saveProgress[$env[progress]]
       $allPlayersFinished
     ]

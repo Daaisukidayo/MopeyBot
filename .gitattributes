@@ -1,4 +1,4 @@
 * text=auto eol=lf
 
-dist linguist-generated=true
+dist/** linguist-generated=true
 package-lock.json linguist-generated=true

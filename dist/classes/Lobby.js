@@ -4,17 +4,21 @@ const forge_class_1 = require("forge.class");
 exports.default = new forge_class_1.ForgeClassBuilder({
     name: "Lobby",
     fields: {
-        host: "null",
-        messageID: "null",
+        host: null,
+        messageID: null,
         started: false,
-        settings: "$objectOf[mode;0;difficulty;$getGlobalVar[defaultDifficulty];victoryType;0]",
-        ready: "[]",
-        allPlayers: "[]",
-        teams: "[]",
+        settings: {
+            mode: 0,
+            difficulty: "$getGlobalVar[defaultDifficulty]",
+            victoryType: 0,
+        },
+        ready: [],
+        allPlayers: [],
+        teams: [],
     },
     methods: {
         constructor: {
-            params: ["host"],
+            params: [{ name: "host", type: forge_class_1.ParamType.String }],
             code: `
         $setField[this;host;$env[host]]
         $setField[this;allPlayers;$arrayOf[$env[host]]]
@@ -25,11 +29,11 @@ exports.default = new forge_class_1.ForgeClassBuilder({
       $return[$arrayUnique[$getField[this;allPlayers]]]
     `,
         "private isPlayer": {
-            params: ["userId"],
+            params: [{ name: "userId", type: forge_class_1.ParamType.String }],
             code: `$return[$arrayIncludes[$getField[this;allPlayers];$env[userId]]]`,
         },
         teamOf: {
-            params: ["userId"],
+            params: [{ name: "userId", type: forge_class_1.ParamType.String }],
             code: `$return[$arrayFindIndex[$getField[this;teams];team;$arrayIncludes[$jsonGet[team;players];$env[userId]]]]`,
         },
         hostCandidates: `
@@ -40,7 +44,11 @@ exports.default = new forge_class_1.ForgeClassBuilder({
       $return[$and[$jsonSize[this;allPlayers]>$jsonSize[this;teams];$arrayEvery[$getField[this;allPlayers];ID;$arrayIncludes[ready;$env[ID]]];$arraySome[$getField[this;teams];team;$jsonSize[team;players]==0]==false]]
     `,
         join: {
-            params: ["userId", { name: "team", type: "Number" }, { name: "tester", type: "Boolean" }],
+            params: [
+                { name: "userId", type: forge_class_1.ParamType.String },
+                { name: "team", type: forge_class_1.ParamType.Number },
+                { name: "tester", type: forge_class_1.ParamType.Boolean },
+            ],
             code: `
         $let[l;$jsonGet[userProfile;language]]
         $let[isPlayer;$callMethod[this;isPlayer;$env[userId]]]
@@ -69,7 +77,10 @@ exports.default = new forge_class_1.ForgeClassBuilder({
       `,
         },
         quit: {
-            params: ["userId", { name: "team", type: "Number" }],
+            params: [
+                { name: "userId", type: forge_class_1.ParamType.String },
+                { name: "team", type: forge_class_1.ParamType.Number },
+            ],
             code: `
         $let[l;$jsonGet[userProfile;language]]
         $onlyIf[$callMethod[this;isPlayer;$env[userId]];
@@ -94,7 +105,7 @@ exports.default = new forge_class_1.ForgeClassBuilder({
       `,
         },
         toggleReady: {
-            params: ["userId"],
+            params: [{ name: "userId", type: forge_class_1.ParamType.String }],
             code: `
         $let[l;$jsonGet[userProfile;language]]
         $onlyIf[$callMethod[this;isPlayer;$env[userId]];
@@ -111,7 +122,10 @@ exports.default = new forge_class_1.ForgeClassBuilder({
       `,
         },
         changeSetting: {
-            params: ["setting", "value"],
+            params: [
+                { name: "setting", type: forge_class_1.ParamType.String },
+                { name: "value", type: forge_class_1.ParamType.String },
+            ],
             code: `
         $switch[$env[setting];
           $case[host;

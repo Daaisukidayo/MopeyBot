@@ -16,7 +16,7 @@ exports.default = new forgescript_1.ForgeFunction({
       $newError[$tl[ui.resume.notPaused.$get[l]]]
     ]
 
-    $!jsonSet[challengeProgress;paused;false]
+    $setField[challengeProgress;paused;false]
     $saveProgress[$env[challengeProgress]]
     $resumeChallengeTimer
 

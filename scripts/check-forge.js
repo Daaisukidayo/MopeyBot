@@ -39,11 +39,18 @@ for (const file of customFiles) for (const fn of exportsOf(file)) if (fn instanc
 const files = ["commands", "events", "handlers", path.join("functions", "custom"), "classes"].flatMap((d) =>
   walk(path.join(dist, d))
 )
+// Every string in a field default is code, even inside an array or object
+const stringsIn = (value) =>
+  typeof value === "string"
+    ? [value]
+    : value && typeof value === "object"
+      ? Object.values(value).flatMap(stringsIn)
+      : []
 // A class has a code for every field default and method
 const codesOf = (item) => {
   const cls = item instanceof ForgeClassBuilder ? item.data : item?.methods || item?.fields ? item : null
   if (!cls) return [item?.data?.code ?? item?.options?.code].filter((code) => typeof code === "string")
-  return [...Object.values(cls.fields ?? {}), ...Object.values(cls.methods ?? {}).map((m) => m.code ?? m)].map(String)
+  return [...stringsIn(cls.fields ?? {}), ...Object.values(cls.methods ?? {}).map((m) => m.code ?? m)]
 }
 // A local function called with fewer args than its params compiles, and fails only when the call runs
 const calledShort = (compiled) => {

@@ -23,12 +23,9 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[userId;$nullish[$env[userId;id];$authorID]]
     $let[teamId;$nullish[$env[teamId];-1]]
 
-    $jsonLoad[baseChallengeProgress;$getGlobalVar[baseChallengeProgress]]
-
     $c[A lobby player plays the lobby's difficulty, a solo player their own]
-    $objectMerge[baseChallengeProgress;$objectOf[userID;"$get[userId]";teamID;$get[teamId];difficulty;$nullish[$jsonGet[$getChannelVar[lobby];settings;difficulty];$jsonGet[$getProfile[$get[userId]];challenge;difficulty]]]]
-
-    $saveProgress[$env[baseChallengeProgress];$get[userId]]
+    $new[challengeProgress;ChallengeProgress;$get[userId];$get[teamId];$nullish[$jsonGet[$getChannelVar[lobby];settings;difficulty];$jsonGet[$getProfile[$get[userId]];challenge;difficulty]]]
+    $saveProgress[$env[challengeProgress];$get[userId]]
   `,
 });
 //# sourceMappingURL=setProgress.js.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"show.js","sourceRoot":"","sources":["../../../../src/handlers/challenge/history/show.ts"],"names":[],"mappings":";;AAAA,uDAAqD;AAErD,kBAAe,IAAI,2BAAa,CAAC;IAC/B,IAAI,EAAE,mBAAmB;IACzB,IAAI,EAAE;;;;;;;;;;;;;;;;;;;;;;GAsBL;CACF,CAAC,CAAA"}
+{"version":3,"file":"show.js","sourceRoot":"","sources":["../../../../src/handlers/challenge/history/show.ts"],"names":[],"mappings":";;AAAA,uDAAqD;AAErD,kBAAe,IAAI,2BAAa,CAAC;IAC/B,IAAI,EAAE,mBAAmB;IACzB,IAAI,EAAE;;;;;;;;;;;;;;;;;;;;GAoBL;CACF,CAAC,CAAA"}
