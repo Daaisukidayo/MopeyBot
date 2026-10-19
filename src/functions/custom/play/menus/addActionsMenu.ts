@@ -15,8 +15,8 @@ export default new ForgeFunction({
     $ref[playData;$env[playDataVar]]
 
     $let[l;$jsonGet[userProfile;language]]
-    $let[animalId;$jsonGet[playData;currentAnimal]]
-    $let[biome;$jsonGet[playData;currentBiome]]
+    $let[animalId;$jsonGet[playData;animal_id]]
+    $let[biome;$jsonGet[playData;biome]]
     $let[tier;$jsonGet[playData;tier]]
 
     $jsonLoad[apexData;$getCurrentApexData[playData]]
@@ -25,7 +25,7 @@ export default new ForgeFunction({
     $addActionRow
     $addStringSelectMenu[play_actions-$authorID;$tl[ui.play.selectMenuPlaceholderActions.$get[l]]]
 
-    $if[$jsonGet[playData;isDead];
+    $if[$jsonGet[playData;is_dead];
       $addOption[$tl[ui.play.optionNameRespawn.$get[l]];;respawn;🔄]
       $return
     ]
@@ -35,7 +35,7 @@ export default new ForgeFunction({
       $return
     ]
 
-    $if[$and[$jsonGet[playData;XP]>=$jsonGet[xpPerTier;$get[tier];1];$get[tier]!=17];
+    $if[$and[$jsonGet[playData;xp]>=$jsonGet[xpPerTier;$get[tier];1];$get[tier]!=17];
       $addOption[$tl[ui.play.optionNameUpgrade.$get[l]];;upgrade;⬆️]
       $return
     ]
@@ -48,6 +48,9 @@ export default new ForgeFunction({
       
     $addOption[$tl[ui.play.optionNameDowngrade.$get[l]];;downgrade;⬇️]
 
+    $if[$and[$get[tier]==17;$get[animalId]==black_dragon];
+      $addOption[$tl[ui.play.optionNameShowApex.$get[l]];;showApex;👑]
+    ]
 
     $addBiomeMenu[playData]
     
@@ -57,7 +60,7 @@ export default new ForgeFunction({
       $addOption[Spawn soccer;;spawnSoccer;⚽]
       $addOption[Force next soccer outcome;;forceSoccer;🎯]
       $addOption[Force next farm event;;forceEvent;🎲]
-      $addOption[Toggle immortality;Currently: $if[$jsonGet[playData;devImmortal];on;off];toggleImmortal;🛡️]
+      $addOption[Toggle immortality;Currently: $if[$jsonGet[playData;dev;immortal];on;off];toggleImmortal;🛡️]
       $addOption[Fill XP;Up to the tier maximum;fillXP;📈]
       $addOption[Give coins;;giveMC;💰]
       $addOption[Teleport;To any biome;teleport;🌀]
@@ -66,11 +69,6 @@ export default new ForgeFunction({
       $addOption[Get all apex;;getAllApex;👑]
       $addOption[Remove all apex;;removeAllApex;🚫]
       $addOption[Show play data;;showPlayData;🧾]
-    ]
-
-    $if[$and[$get[tier]==17;$get[animalId]==black_dragon];
-      $addActionRow
-      $addButton[play_showApexes-$authorID;$tl[ui.play.buttonLabelShowApex.$get[l]];Primary;👑]
     ]
   `,
 })

@@ -15,12 +15,12 @@ exports.default = new forgescript_1.ForgeFunction({
     $ref[playData;$env[playDataVar]]
     $jsonLoad[xpPerTier;$getGlobalVar[xpPerTier]]
 
-    $if[$and[$jsonGet[playData;XP]>=$jsonGet[xpPerTier;$jsonGet[playData;tier];1];$jsonGet[playData;tier]!=17];
+    $if[$and[$jsonGet[playData;xp]>=$jsonGet[xpPerTier;$jsonGet[playData;tier];1];$jsonGet[playData;tier]!=17];
       $addActionsMenu[playData]
       $return
     ]
 
-    $arrayLoad[soccerData;_;$jsonGet[playData;heldSoccer]]
+    $arrayLoad[soccerData;_;$jsonGet[playData;held_soccer]]
     $addSoccerActionsMenu[$env[soccerData];true]
     $addBiomeMenu[playData]
   `,

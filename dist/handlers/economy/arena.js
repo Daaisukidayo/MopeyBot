@@ -14,7 +14,7 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $c[A random arena enemy in a random skin, beaten three times in four]
     $let[enemyAnimalID;$arraySample[$getCache[arena;arenaEnemies]]]
-    $let[enemy;$getAnimalInfo[$get[enemyAnimalID];emoji;$arrayRandomIndex[$getAnimalInfo[$get[enemyAnimalID];variants]]]]
+    $let[enemy;$getAnimalInfo[$get[enemyAnimalID];emoji;$arrayRandomIndex[$getAnimalInfo[$get[enemyAnimalID];skins]]]]
     $let[MC;200]
 
     $if[$random[0;100]>=25;

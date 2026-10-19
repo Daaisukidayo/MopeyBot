@@ -2,8 +2,7 @@ import { ArgType, NativeFunction } from "@tryforge/forgescript"
 
 export default new NativeFunction({
   name: "$ref",
-  description:
-    "Makes a variable share another variable's object instead of copying it. Replacing either variable whole breaks the link",
+  description: "Makes a variable share another variable's object instead of copying it. Replacing either variable whole breaks the link",
   unwrap: true,
   brackets: true,
   args: [

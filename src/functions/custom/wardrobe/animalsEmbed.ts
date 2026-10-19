@@ -40,10 +40,10 @@ export default new ForgeFunction({
     $getCache[animals;animalsData;animals]
     $getCache[animals;animalIndexes;animalIndexes]
     $let[index;$jsonGet[animalIndexes;$get[animalId]]]
-    $let[prevId;$if[$get[index]>0;$jsonGet[$arrayFindLast[$arraySlice[animals;;0;$get[index]];animal;$jsonSize[animal;variants]>1];ID]]]
-    $let[nextId;$jsonGet[$arrayFind[$arraySlice[animals;;$math[$get[index] + 1]];animal;$jsonSize[animal;variants]>1];ID]]
-    $if[$get[prevId]==;$let[prevId;$jsonGet[$arrayFindLast[animals;animal;$jsonSize[animal;variants]>1];ID]]]
-    $if[$get[nextId]==;$let[nextId;$jsonGet[$arrayFind[animals;animal;$jsonSize[animal;variants]>1];ID]]]
+    $let[prevId;$if[$get[index]>0;$jsonGet[$arrayFindLast[$arraySlice[animals;;0;$get[index]];animal;$jsonSize[animal;skins]>1];ID]]]
+    $let[nextId;$jsonGet[$arrayFind[$arraySlice[animals;;$math[$get[index] + 1]];animal;$jsonSize[animal;skins]>1];ID]]
+    $if[$get[prevId]==;$let[prevId;$jsonGet[$arrayFindLast[animals;animal;$jsonSize[animal;skins]>1];ID]]]
+    $if[$get[nextId]==;$let[nextId;$jsonGet[$arrayFind[animals;animal;$jsonSize[animal;skins]>1];ID]]]
 
     $c[Back goes to the start menu one by one, else to the animals of this tier]
     $let[backTo;$if[$env[switchToNext];menu;$getAnimalInfo[$get[animalId];tier]]]
@@ -56,9 +56,9 @@ export default new ForgeFunction({
       $addStringSelectMenu[wardrobe-animal-$get[animalId]-$authorID-$env[switchToNext];$tl[ui.wardrobe.menuTitleSelectSkin.$get[l]]]
 
       $c[A select menu holds 25 options at most]
-      $arrayForEach[$arraySlice[$getAnimalInfo[$get[animalId];variants];;0;25];variant;
-        $if[$arrayIncludes[userSkinPacks;$jsonGet[variant;packId]];
-          $addOption[$jsonGet[variant;name];$tl[data.shopSkinPacks.$jsonGet[variant;packId].$get[l]];$jsonGet[variant;id];$jsonGet[variant;emoji];$checkCondition[$get[currentSkin]==$jsonGet[variant;id]]]
+      $arrayForEach[$arraySlice[$getAnimalInfo[$get[animalId];skins];;0;25];skin;
+        $if[$arrayIncludes[userSkinPacks;$jsonGet[skin;packId]];
+          $addOption[$jsonGet[skin;name];$tl[data.shopSkinPacks.$jsonGet[skin;packId].$get[l]];$jsonGet[skin;id];$jsonGet[skin;emoji];$checkCondition[$get[currentSkin]==$jsonGet[skin;id]]]
         ]
       ]
 

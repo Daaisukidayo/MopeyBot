@@ -11,10 +11,10 @@ export default new ForgeFunction({
     $jsonLoad[rares;$readFile[res/data/animals/rares.json]]
     $jsonLoad[skins;$readFile[res/data/animals/skins.json]]
 
-    $c[One flat list, each rare right after its common animal. Skins go back as 'variants', the last key]
+    $c[One flat list, each rare right after its common animal. Skins go back as 'skins', the last key]
     $arrayLoad[animals]
     $arrayForEach[$readFile[res/data/animals/animals.json];animal;
-      $!jsonSet[animal;variants;$jsonGet[skins;$jsonGet[animal;ID]]]
+      $!jsonSet[animal;skins;$jsonGet[skins;$jsonGet[animal;ID]]]
       $arrayPushJSON[animals;$env[animal]]
 
       $c[A rare leaves out what it shares with its common animal: the tier, biome and flying are put back here]
@@ -22,7 +22,7 @@ export default new ForgeFunction({
       $arrayForEach[$default[$jsonGet[animal;rares];$arrayOf];rareId;
         $jsonLoad[rare;$objectOf[ID;$env[rareId]]]
         $objectMerge[rare;$jsonGet[rares;$env[rareId]]]
-        $!jsonSet[rare;variants;$jsonGet[skins;$env[rareId]]]
+        $!jsonSet[rare;skins;$jsonGet[skins;$env[rareId]]]
         $objectDefaults[rare;shared]
         $arrayPushJSON[animals;$env[rare]]
       ]

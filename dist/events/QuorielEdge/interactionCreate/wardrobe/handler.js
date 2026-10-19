@@ -84,10 +84,10 @@ exports.default = new edge_1.Command({
         $arrayLoad[equipped]
         $arrayForEach[animals;animal;
           $if[$or[$get[option]==all;$jsonGet[animal;tier]==$get[option]];
-            $let[variant;$arrayFindIndex[$jsonGet[animal;variants];variant;$jsonGet[variant;packId]==$get[value]]]
-            $if[$get[variant]!=-1;
-              $!jsonSet[userWardrobe;$jsonGet[animal;ID];$jsonGet[animal;variants;$get[variant];id]]
-              $arrayPush[equipped;$jsonGet[animal;variants;$get[variant];emoji]]
+            $let[skinIndex;$arrayFindIndex[$jsonGet[animal;skins];skin;$jsonGet[skin;packId]==$get[value]]]
+            $if[$get[skinIndex]!=-1;
+              $!jsonSet[userWardrobe;$jsonGet[animal;ID];$jsonGet[animal;skins;$get[skinIndex];id]]
+              $arrayPush[equipped;$jsonGet[animal;skins;$get[skinIndex];emoji]]
             ]
           ]
         ]
@@ -127,9 +127,9 @@ exports.default = new edge_1.Command({
         $!jsonSet[userWardrobe;$get[animalId];$get[value]]
         $setUserVar[userWardrobe;$env[userWardrobe]]
 
-        $c[One by one: the next animal with more than one variant, none after the last]
+        $c[One by one: the next animal with more than one skin, none after the last]
         $if[$jsonGet[IID;4];
-          $let[animalId;$jsonGet[$arrayFind[$arraySlice[animals;;$math[$jsonGet[animalIndexes;$get[animalId]] + 1]];animal;$jsonSize[animal;variants]>1];ID]]
+          $let[animalId;$jsonGet[$arrayFind[$arraySlice[animals;;$math[$jsonGet[animalIndexes;$get[animalId]] + 1]];animal;$jsonSize[animal;skins]>1];ID]]
           $onlyIf[$get[animalId]!=;
             $addContainer[
               $addAuthorDisplay

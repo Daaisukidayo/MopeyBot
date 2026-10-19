@@ -18,13 +18,13 @@ exports.default = new forgescript_1.ForgeFunction({
     $jsonLoad[bitesOptions;$arrayRange[0;10]]
 
     $addActionRow
-    $addStringSelectMenu[play_devActions-arenaBites-$authorID;Dev: my bites (now $jsonGet[playData;arena;bites])]
+    $addStringSelectMenu[play_devActions-arenaBites-$authorID;Dev: my bites (now $jsonGet[playData;arena;player;bites])]
     $arrayForEach[bitesOptions;count;
       $addOption[$env[count];$if[$env[count]==10;Win on the next action];$env[count];🦷]
     ]
 
     $addActionRow
-    $addStringSelectMenu[play_devActions-arenaOpponentBites-$authorID;Dev: opponent bites (now $jsonGet[playData;arena;opponentBites])]
+    $addStringSelectMenu[play_devActions-arenaOpponentBites-$authorID;Dev: opponent bites (now $jsonGet[playData;arena;opponent;bites])]
     $arrayForEach[bitesOptions;count;
       $addOption[$env[count];$if[$env[count]==10;Lose on the next action];$env[count];🩸]
     ]

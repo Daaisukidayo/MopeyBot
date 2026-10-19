@@ -11,22 +11,22 @@ exports.default = new edge_1.Command({
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $jsonLoad[playData;$getUserVar[userPlayData]]
+    $jsonLoad[playData;$getPlayData]
     $isPlaying[playData]
     
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
     $let[biome;$selectMenuValues]
 
-    $!jsonSet[playData;currentBiome;$get[biome]]
+    $setField[playData;biome;$get[biome]]
 
     $let[color;$getBiomeColor[playData;$get[biome]]]
 
     $c[Moving with a soccer in hands counts as holding it]
-    $let[heldSoccer;$jsonGet[playData;heldSoccer]]
+    $let[heldSoccer;$jsonGet[playData;held_soccer]]
     $if[$get[heldSoccer]!=;
       $arrayLoad[soccerData;_;$get[heldSoccer]]
-      $jsonLoad[holdResult;$holdSoccer[playData;$jsonGet[soccerData;0];$jsonGet[soccerData;1]]]
+      $jsonLoad[holdResult;$callMethod[playData;holdSoccer;$jsonGet[soccerData;0];$jsonGet[soccerData;1]]]
       $if[$jsonGet[holdResult;outcome]!=held;
         $let[color;$getGlobalVar[errorColor]]
       ]

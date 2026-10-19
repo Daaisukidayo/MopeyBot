@@ -11,26 +11,27 @@ exports.default = new edge_1.Command({
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
     
-    $jsonLoad[playData;$getUserVar[userPlayData]]
-    $onlyIf[$jsonGet[playData;started];
+    $jsonLoad[playData;$getPlayData]
+    $onlyIf[$jsonGet[playData;is_started];
       $newError[$tl[ui.play.noSession.$get[l]]]
     ]
 
     $switch[$jsonGet[IID;1];
       $case[disconnect;
         $let[content;$tl[ui.play.disconnected.$get[l]]]
-        $if[$messageExists[$jsonGet[playData;ChannelID];$jsonGet[playData;MessageID]];
-          $!deleteMessage[$jsonGet[playData;ChannelID];$jsonGet[playData;MessageID]]
+        $arrayLoad[path;/;$jsonGet[playData;path]]
+        $if[$messageExists[$jsonGet[path;1];$jsonGet[path;2]];
+          $!deleteMessage[$jsonGet[path;1];$jsonGet[path;2]]
         ]
       ]
 
       $case[quit;
-        $onlyIf[$jsonGet[playData;MessageID]==$messageID]
+        $onlyIf[$jsonGet[playData;path]==$guildID/$channelID/$messageID]
         $let[content;$tl[ui.play.exited.$get[l]]]
       ]
     ]
 
-    $let[MC;$jsonGet[playData;MC]]
+    $let[MC;$jsonGet[playData;mope_coins]]
     $removePlayProgress[playData]
 
     $addContainer[

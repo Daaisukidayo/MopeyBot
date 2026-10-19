@@ -11,18 +11,32 @@ exports.default = new edge_1.Command({
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $jsonLoad[playData;$getUserVar[userPlayData]]
+    $jsonLoad[playData;$getPlayData]
     $isPlaying[playData]
 
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
+    $c[A button of a fight that already ended shows the game again]
+    $if[$jsonGet[playData;arena;opponent;animal_id]==;
+      $addContainer[
+        $addAuthorDisplay
+        $if[$jsonGet[playData;animal_id]!=;$displayAnimalStats[playData;userWardrobe]]
+        $addActionsMenu[playData]
+        $addSeparator
+        $addExitButton[playData]
+        $addCheats[playData]
+      ;$getBiomeColor[playData]]
+      $interactionUpdate
+      $stop
+    ]
+
     $let[playerAction;$jsonGet[IID;1]]
     $let[turn;$jsonGet[playData;arena;turn]]
-    $let[opponentAction;$jsonGet[playData;arena;opponentAction]]
-    $let[bites;$jsonGet[playData;arena;bites]]
-    $let[opponentBites;$jsonGet[playData;arena;opponentBites]]
+    $let[opponentAction;$jsonGet[playData;arena;opponent;action]]
+    $let[bites;$jsonGet[playData;arena;player;bites]]
+    $let[opponentBites;$jsonGet[playData;arena;opponent;bites]]
     $c[A rare apex counts as its common one]
-    $let[opponentApex;$jsonGet[playData;arena;opponentAnimal]]
+    $let[opponentApex;$jsonGet[playData;arena;opponent;animal_id]]
     $if[$get[opponentApex]==aqua;$let[opponentApex;yeti]]
     $if[$isOneOf[$get[opponentApex];king_dragon;rare_king_dragon];$let[opponentApex;black_dragon]]
 
@@ -40,15 +54,16 @@ exports.default = new edge_1.Command({
       $case[1;$letSum[bites;1]]
       $case[2;$letSum[opponentBites;1]]
     ]
-    $objectMerge[playData;arena;$objectOf[bites;$get[bites];opponentBites;$get[opponentBites];opponentAction;$default[$get[nextOpponentAction];$get[opponentAction]]]]
+    $!jsonSet[playData;arena;player;bites;$get[bites]]
+    $objectMerge[playData;arena;opponent;$objectOf[bites;$get[opponentBites];action;$default[$get[nextOpponentAction];$get[opponentAction]]]]
 
     $addContainer[
       $addAuthorDisplay
 
       $addArenaStatus[playData;userWardrobe]
       $addSeparator
-      $addTextDisplay[$tl[ui.play.arena.table.userChose.$get[l];$tl[data.arenaActions.$get[playerAction].$get[l]]]]
-      $addTextDisplay[$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$get[opponentAction].$get[l]]]]
+      $c[Lines that follow each other are one text: a message holds 40 components at most]
+      $addTextDisplay[$tl[ui.play.arena.table.userChose.$get[l];$tl[data.arenaActions.$get[playerAction].$get[l]]]\n$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$get[opponentAction].$get[l]]]]
       $addSeparator
       $addTextDisplay[$tl[ui.play.arena.actions.$jsonGet[rule;1].$get[l]]]
       $addSeparator
@@ -58,15 +73,7 @@ exports.default = new edge_1.Command({
         $addTextDisplay[$tl[ui.play.arena.table.won.$get[l]]]
         $addSeparator[Large]
 
-        $jsonMath[playData;XP;$jsonGet[playData;arena;opponentXP]]
-        $jsonMath[playData;MC;1000]
-
-        $c[A black dragon gets the opponent's apex. The opponent must be an apex: dev arena allows opponents of any tier]
-        $if[$and[$jsonGet[playData;tier]==17;$includes[$toLowerCase[$jsonGet[playData;currentAnimal]];kingdragon]==false;$arrayIncludes[$getGlobalVar[allApex];$get[opponentApex]]];
-          $!jsonSet[playData;apex;$arrayUnion[$jsonGet[playData;apex];$arrayOf[$get[opponentApex]]]]
-        ]
-
-        $resetArenaData[playData]
+        $callMethod[playData;winArena;$get[opponentApex]]
         $displayAnimalStats[playData;userWardrobe]
         $addActionsMenu[playData]
         $addSeparator
@@ -77,13 +84,7 @@ exports.default = new edge_1.Command({
         $addTextDisplay[$tl[ui.play.arena.table.lost.$get[l]]]
         $addSeparator[Large]
 
-        $!jsonSet[playData;isDead;true]
-        $c[Must run before clearing currentAnimal: King Dragon's XP reset depends on it]
-        $updateXpOnDeath[playData]
-        $!jsonSet[playData;currentAnimal;null]
-        $resetArenaData[playData]
-        $setNewTier[playData]
-        $removeAllApex[playData]
+        $callMethod[playData;loseArena]
 
         $addActionsMenu[playData]
         $addSeparator
@@ -93,11 +94,9 @@ exports.default = new edge_1.Command({
         $let[turn;$math[1 - $get[turn]]]
         $!jsonSet[playData;arena;turn;$get[turn]]
         $if[$get[turn]==1;
-          $addTextDisplay[$tl[ui.play.arena.table.opponentTurn.$get[l]]]
-          $addTextDisplay[$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$jsonGet[playData;arena;opponentAction].$get[l]]]]
+          $addTextDisplay[$tl[ui.play.arena.table.opponentTurn.$get[l]]\n$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$jsonGet[playData;arena;opponent;action].$get[l]]]]
         ;
-          $addTextDisplay[$tl[ui.play.arena.table.userTurn.$get[l]]]
-          $addTextDisplay[$tl[ui.play.arena.table.userChoose.$get[l]]]
+          $addTextDisplay[$tl[ui.play.arena.table.userTurn.$get[l]]\n$tl[ui.play.arena.table.userChoose.$get[l]]]
         ]
 
         $addArenaActionButtons

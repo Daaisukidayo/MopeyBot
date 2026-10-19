@@ -19,7 +19,7 @@ export default new ForgeFunction({
   ],
   code: `
     $ref[playData;$env[playDataVar]]
-    $let[biome;$nullish[$env[biome];$jsonGet[playData;currentBiome]]]
+    $let[biome;$nullish[$env[biome];$jsonGet[playData;biome]]]
     $return[$nullish[$jsonGet[$getGlobalVar[biomeColors];$get[biome]];$getGlobalVar[defaultColor]]]
   `,
 })

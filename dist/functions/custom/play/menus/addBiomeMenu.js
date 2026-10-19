@@ -14,7 +14,7 @@ exports.default = new forgescript_1.ForgeFunction({
     code: `
     $ref[playData;$env[playDataVar]]
     $let[l;$jsonGet[userProfile;language]]
-    $let[biome;$jsonGet[playData;currentBiome]]
+    $let[biome;$jsonGet[playData;biome]]
 
     $addActionRow
     $addStringSelectMenu[play_moveToBiome-$authorID;$tl[ui.play.selectMenuPlaceholderSwitchBiome.$get[l]]]

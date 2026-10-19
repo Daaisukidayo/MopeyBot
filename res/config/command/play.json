@@ -37,9 +37,13 @@
   },
 
   "soccerGoalFailChance": 30,
-  "soccerGoalXpPercent": 0.25,
-  "soccerHoldXpShare": 0.015,
+  "soccerGoalXpMultiplier": 2,
+  "soccerHoldXpPercent": 0.8,
+  "soccerHoldMinXp": 20,
+  "soccerHoldMaxXp": 200000,
   "soccerHoldMCShare": 0.5,
+  "soccerMCRareBonus": 5,
+  "soccerGoalMCMultiplier": 2,
   "soccerGoalMC": {
     "1": [40, 60], "2": [40, 60], "3": [40, 60], "4": [40, 60], "5": [40, 60], "6": [40, 60], "7": [40, 60], "8": [40, 60], "9": [40, 60],
     "10": [65, 85], "11": [65, 85], "12": [65, 85], "13": [65, 85], "14": [65, 85],
@@ -254,20 +258,20 @@
       "5": ["phoenix"]
     },
     "16": {
-      "0": ["dino_monster"],
-      "1": ["giant_scorpion"],
-      "2": ["sea_monster"],
-      "3": ["ice_monster"],
-      "4": ["dino_monster"],
-      "5": ["lava_monster"]
+      "0": ["dino_monster", "dragon", "trex"],
+      "1": ["giant_scorpion", "pterodactyl"],
+      "2": ["sea_monster", "kraken", "king_crab"],
+      "3": ["ice_monster", "yeti"],
+      "4": ["dino_monster", "dragon", "trex"],
+      "5": ["lava_monster", "phoenix"]
     },
     "17": {
-      "0": ["black_dragon"],
-      "1": ["black_dragon"],
-      "2": ["black_dragon"],
-      "3": ["black_dragon"],
-      "4": ["black_dragon"],
-      "5": ["black_dragon"]
+      "0": ["black_dragon", "dino_monster", "dragon", "trex"],
+      "1": ["black_dragon", "giant_scorpion", "pterodactyl"],
+      "2": ["black_dragon", "sea_monster", "kraken", "king_crab"],
+      "3": ["black_dragon", "ice_monster", "yeti"],
+      "4": ["black_dragon", "dino_monster", "dragon", "trex"],
+      "5": ["black_dragon", "lava_monster", "phoenix"]
     }
   },
 

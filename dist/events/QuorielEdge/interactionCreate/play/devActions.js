@@ -11,7 +11,7 @@ exports.default = new edge_1.Command({
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $jsonLoad[playData;$getUserVar[userPlayData]]
+    $jsonLoad[playData;$getPlayData]
     $isPlaying[playData]
 
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
@@ -46,7 +46,7 @@ exports.default = new edge_1.Command({
 
           $case[forceSoccer;
             $let[view;custom]
-            $let[desc;Force the next Hold/Goal outcome (current: $default[$jsonGet[playData;devForcedSoccer];none])]
+            $let[desc;Force the next Hold/Goal outcome (current: $default[$jsonGet[playData;dev;forcedSoccer];none])]
             $fn[extra;
               $addActionRow
               $addStringSelectMenu[play_devActions-forceSoccer-$authorID;Soccer outcome]
@@ -61,7 +61,7 @@ exports.default = new edge_1.Command({
 
           $case[forceEvent;
             $let[view;custom]
-            $let[desc;Force the next farm event (current: $default[$jsonGet[playData;devForcedEvent];none])]
+            $let[desc;Force the next farm event (current: $default[$jsonGet[playData;dev;forcedEvent];none])]
             $fn[extra;
               $addActionRow
               $addStringSelectMenu[play_devActions-forceEvent-$authorID;Farm event]
@@ -75,12 +75,12 @@ exports.default = new edge_1.Command({
           ]
 
           $case[toggleImmortal;
-            $jsonToggle[playData;devImmortal]
-            $let[desc;Immortality: $if[$jsonGet[playData;devImmortal];on;off]]
+            $jsonToggle[playData;dev;immortal]
+            $let[desc;Immortality: $if[$jsonGet[playData;dev;immortal];on;off]]
           ]
 
           $case[fillXP;
-            $!jsonSet[playData;XP;$jsonGet[xpPerTier;$jsonGet[playData;tier];1]]
+            $setField[playData;xp;$jsonGet[xpPerTier;$jsonGet[playData;tier];1]]
             $let[desc;XP filled up to the tier maximum]
           ]
 
@@ -134,12 +134,12 @@ exports.default = new edge_1.Command({
           ]
 
           $case[getAllApex;
-            $!jsonSet[playData;apex;$getGlobalVar[allApex]]
+            $setField[playData;apex;$getGlobalVar[allApex]]
             $let[desc;All apexes added]
           ]
 
           $case[removeAllApex;
-            $removeAllApex[playData]
+            $callMethod[playData;removeAllApex]
             $let[desc;All apexes removed]
           ]
 
@@ -172,31 +172,31 @@ exports.default = new edge_1.Command({
 
       $case[forceSoccer;
         $if[$get[value]==clear;
-          $!jsonDelete[playData;devForcedSoccer]
+          $!jsonSet[playData;dev;forcedSoccer;null]
           $let[desc;Forced soccer outcome cleared]
         ;
-          $!jsonSet[playData;devForcedSoccer;$get[value]]
+          $!jsonSet[playData;dev;forcedSoccer;$get[value]]
           $let[desc;Next Hold/Goal outcome: $get[value]]
         ]
       ]
 
       $case[forceEvent;
         $if[$get[value]==clear;
-          $!jsonDelete[playData;devForcedEvent]
+          $!jsonSet[playData;dev;forcedEvent;null]
           $let[desc;Forced farm event cleared]
         ;
-          $!jsonSet[playData;devForcedEvent;$get[value]]
+          $!jsonSet[playData;dev;forcedEvent;$get[value]]
           $let[desc;Next farm event: $get[value]]
         ]
       ]
 
       $case[giveMC;
-        $sumPlayCash[playData;$get[value]]
+        $callMethod[playData;addCash;$get[value]]
         $let[desc;Added $separate[$get[value]] coins]
       ]
 
       $case[teleport;
-        $!jsonSet[playData;currentBiome;$get[value]]
+        $setField[playData;biome;$get[value]]
         $let[desc;Teleported to $tl[data.biomes.$get[value].$get[l]]]
       ]
 
@@ -215,12 +215,14 @@ exports.default = new edge_1.Command({
         $c[Become the animal: its biome, and the tier's lowest XP if the tier changes]
         $let[tier;$getAnimalInfo[$get[animalId];tier]]
         $if[$get[tier]!=$jsonGet[playData;tier];
-          $!jsonSet[playData;tier;$get[tier]]
-          $!jsonSet[playData;XP;$jsonGet[xpPerTier;$get[tier];0]]
-          $resetArenaData[playData]
+          $setField[playData;tier;$get[tier]]
+          $callMethod[playData;restartTier]
         ]
-        $!jsonDelete[playData;heldSoccer]
-        $objectMerge[playData;$objectOf[currentAnimal;$get[animalId];currentBiome;$getAnimalInfo[$get[animalId];biome];isDead;false]]
+        $callMethod[playData;dropSoccer]
+        $setField[playData;animal_id;$get[animalId]]
+        $setField[playData;animal_skin_id;$default[$jsonGet[userWardrobe;$get[animalId]];0]]
+        $setField[playData;biome;$getAnimalInfo[$get[animalId];biome]]
+        $setField[playData;is_dead;false]
         $let[desc;Summoned $getAnimalInfo[$get[animalId];name;$default[$jsonGet[userWardrobe;$get[animalId]];0]]]
       ]
 
@@ -238,7 +240,7 @@ exports.default = new edge_1.Command({
       ]
 
       $case[arenaBites;
-        $!jsonSet[playData;arena;bites;$get[value]]
+        $!jsonSet[playData;arena;player;bites;$get[value]]
         $let[desc;My bites set to $get[value]]
         $let[view;custom]
         $fn[extra;
@@ -250,7 +252,7 @@ exports.default = new edge_1.Command({
       ]
 
       $case[arenaOpponentBites;
-        $!jsonSet[playData;arena;opponentBites;$get[value]]
+        $!jsonSet[playData;arena;opponent;bites;$get[value]]
         $let[desc;Opponent bites set to $get[value]]
         $let[view;custom]
         $fn[extra;
@@ -262,7 +264,7 @@ exports.default = new edge_1.Command({
       ]
 
       $case[arena;
-        $resetArenaData[playData]
+        $callMethod[playData;resetArena]
         $let[view;custom]
         $fn[extra;
           $addArenaOpponent[playData;$get[value];$get[arg]]

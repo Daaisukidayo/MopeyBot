@@ -996,9 +996,9 @@
       "ru": "Вы не в этой команде."
     },
 
-    "notEnoughPlayers": {
-      "en-US": "At least 2 players are needed to start the Lobby.",
-      "ru": "Для старта лобби нужно минимум 2 игрока."
+    "cannotStart": {
+      "en-US": "Everyone must be ready, every team needs a player, and there must be more players than teams.",
+      "ru": "Все должны быть готовы, в каждой команде нужен игрок, а игроков должно быть больше, чем команд."
     },
 
     "notParticipant": {
@@ -1334,7 +1334,7 @@
       "ru": "Возродиться"
     },
   
-    "buttonLabelShowApex": {
+    "optionNameShowApex": {
       "en-US": "Show Apex",
       "ru": "Показать Апексов"
     },

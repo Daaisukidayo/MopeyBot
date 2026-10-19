@@ -32,7 +32,7 @@ export default new ForgeFunction({
     $let[l;$jsonGet[userProfile;language]]
 
     $c[A newly found soccer is not held yet]
-    $!jsonDelete[playData;heldSoccer]
+    $callMethod[playData;dropSoccer]
 
     $c[The rarity is shown as "1 in N", rounded from the chance in percent]
     $let[rarity;$round[$math[100 / $jsonGet[$getPlaySoccer[$env[soccerType];$env[soccerId]];chance]]]]

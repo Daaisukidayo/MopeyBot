@@ -19,13 +19,13 @@ export default new ForgeFunction({
       ]
     ]
 
-    $jsonLoad[playData;$getUserVar[userPlayData]]
+    $jsonLoad[playData;$getPlayData]
 
-    $if[$jsonGet[playData;started];
+    $if[$jsonGet[playData;is_started];
       $addContainer[
         $addAuthorDisplay
         $addTextDisplay[$tl[ui.play.activeSession.$get[l]]]
-        $addTextDisplay[### $hyperlink[$tl[ui.play.endPreviousGame.$get[l]];https://discord.com/channels/$jsonGet[playData;GuildID]/$jsonGet[playData;ChannelID]/$jsonGet[playData;MessageID]]]
+        $addTextDisplay[### $hyperlink[$tl[ui.play.endPreviousGame.$get[l]];https://discord.com/channels/$jsonGet[playData;path]]]
         $addSeparator
         $addActionRow
         $addButton[play_leave-disconnect-$authorID;$tl[ui.play.buttonLabelCantFind.$get[l]];Danger]
@@ -46,7 +46,7 @@ export default new ForgeFunction({
 
       $let[mid;$send]
 
-      $objectMerge[playData;$objectOf[MessageID;"$get[mid]";ChannelID;"$channelID";GuildID;"$guildID";started;true]]
+      $callMethod[playData;start;$guildID;$channelID;$get[mid]]
       $updatePlayData[playData]
     ]
   `,

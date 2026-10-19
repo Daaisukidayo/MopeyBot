@@ -11,10 +11,8 @@ exports.default = new edge_1.Command({
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $jsonLoad[playData;$getUserVar[userPlayData]]
+    $jsonLoad[playData;$getPlayData]
     $isPlaying[playData]
-    
-    $removeAllApex[playData]
 
     $jsonLoad[rewardPerRare;$getGlobalVar[playRewardPerRare]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
@@ -29,17 +27,8 @@ exports.default = new edge_1.Command({
     $let[color;$getBiomeColor[playData;$get[biome]]]
     $let[animalName;$getAnimalInfo[$get[animalId];name;$get[wrI]]]
 
-    $sumPlayCash[playData;$math[$get[bonusPerUpgrade] + $get[bonusPerRare]]]
-
-    $let[heldSoccer;$jsonGet[playData;heldSoccer]]
-    $if[$and[$get[heldSoccer]!=;$jsonGet[playData;isDead]==false;$jsonGet[playData;currentBiome]==$get[biome]];
-      $arrayLoad[soccerData;_;$get[heldSoccer]]
-      $let[keepSoccer;true]
-    ;
-      $!jsonDelete[playData;heldSoccer]
-    ]
-
-    $objectMerge[playData;$objectOf[currentAnimal;$get[animalId];currentBiome;$get[biome];isDead;false]]
+    $let[keepSoccer;$callMethod[playData;evolveInto;$get[animalId];$math[$get[bonusPerUpgrade] + $get[bonusPerRare]];$get[wrI]]]
+    $if[$get[keepSoccer];$arrayLoad[soccerData;_;$jsonGet[playData;held_soccer]]]
 
     $addContainer[
       $addAuthorDisplay

@@ -26,12 +26,12 @@ export default new ForgeFunction({
     $let[l;$jsonGet[userProfile;language]]
     $jsonLoad[xpPerTier;$getGlobalVar[xpPerTier]]
 
-    $let[oppWrI;$arrayRandomIndex[$getAnimalInfo[$env[opponentId];variants]]]
+    $let[oppWrI;$arrayRandomIndex[$getAnimalInfo[$env[opponentId];skins]]]
     $let[oppDisplay;$getAnimalInfo[$env[opponentId];name;$get[oppWrI]]]
     $let[thumbnail;$animalImage[$env[opponentId];$get[oppWrI]]]
     $let[opponentXP;$random[$jsonGet[xpPerTier;$env[opponentTier];0];$jsonGet[xpPerTier;$env[opponentTier];1]]]
 
-    $objectMerge[playData;arena;$objectOf[opponentAnimal;$env[opponentId];opponentWardrobe;$get[oppWrI];opponentTier;$env[opponentTier];opponentXP;$get[opponentXP]]]
+    $callMethod[playData;meetOpponent;$env[opponentId];$get[oppWrI];$env[opponentTier];$get[opponentXP]]
 
     $addSection[
       $addThumbnail[$get[thumbnail]]

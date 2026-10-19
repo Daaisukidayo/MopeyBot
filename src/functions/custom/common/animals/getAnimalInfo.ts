@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "getAnimalInfo",
-  description: "Extracts animal's main or variant information from the specified key.",
+  description: "Extracts an animal's base or skin information from the specified key.",
   output: ArgType.Unknown,
   params: [
     {
@@ -16,9 +16,9 @@ export default new ForgeFunction({
       type: ArgType.String,
     },
     {
-      name: "variant",
+      name: "skin",
       description:
-        "Optional: the skin's index in 'animal.variants', or the skin's id (e.g. lion_s2_0). If omitted, gets base info.",
+        "Optional: the skin's index in 'animal.skins', or the skin's id (e.g. lion_s2_0). If omitted, gets base info.",
       type: ArgType.String,
       required: false,
     },
@@ -30,24 +30,24 @@ export default new ForgeFunction({
     $getCache[animals;animalIndexes;animalIndexes]
 
     $let[animalIndex;$jsonGet[animalIndexes;$env[animalId]]]
-    $let[variant;$env[variant]]
+    $let[skin;$env[skin]]
 
     $if[$get[animalIndex]==;
       $return[undefined]
     ]
 
-    $if[$isOneOf[$get[variant];null;];
+    $if[$isOneOf[$get[skin];null;];
       $return[$default[$jsonGet[animals;$get[animalIndex];$spread[$env[key];.]];undefined]]
     ]
 
-    $c[The variant is the skin's index in 'variants', or the skin's id]
-    $if[$isNumber[$get[variant]]==false;
-      $let[variant;$arrayFindIndex[$jsonGet[animals;$get[animalIndex];variants];skin;$jsonGet[skin;id]==$get[variant]]]
+    $c[The skin is its index in 'skins', or its id]
+    $if[$isNumber[$get[skin]]==false;
+      $let[skin;$arrayFindIndex[$jsonGet[animals;$get[animalIndex];skins];item;$jsonGet[item;id]==$get[skin]]]
     ]
-    $if[$get[variant]<0;
+    $if[$get[skin]<0;
       $return[undefined]
     ]
 
-    $return[$default[$jsonGet[animals;$get[animalIndex];variants;$get[variant];$env[key]];undefined]]
+    $return[$default[$jsonGet[animals;$get[animalIndex];skins;$get[skin];$env[key]];undefined]]
   `,
 })

@@ -12,13 +12,13 @@ export default new ForgeFunction({
   code: `
     $ref[playData;$env[playDataVar]]
     $c[The game goes on in this very message]
-    $onlyIf[$and[$jsonGet[playData;started];$jsonGet[playData;MessageID]==$messageID;$jsonGet[playData;ChannelID]==$channelID];$interactionFail]
+    $onlyIf[$and[$jsonGet[playData;is_started];$jsonGet[playData;path]==$guildID/$channelID/$messageID];$interactionFail]
 
     $c[A held soccer removed from the game is dropped]
-    $if[$jsonGet[playData;heldSoccer]!=;
-      $arrayLoad[heldSoccer;_;$jsonGet[playData;heldSoccer]]
+    $if[$jsonGet[playData;held_soccer]!=;
+      $arrayLoad[heldSoccer;_;$jsonGet[playData;held_soccer]]
       $if[$getPlaySoccer[$jsonGet[heldSoccer;0];$jsonGet[heldSoccer;1]]==;
-        $!jsonDelete[playData;heldSoccer]
+        $callMethod[playData;dropSoccer]
       ]
     ]
   `,

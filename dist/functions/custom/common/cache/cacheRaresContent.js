@@ -11,7 +11,7 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $arrayMap[animals;animal;
       $if[$and[$jsonGet[animal;isRare];$jsonHas[animal;deleted]==false];
-        $return[$jsonGet[animal;variants;0;name] $jsonGet[animal;variants;0;emoji] \`[$jsonGet[animal;rarity;0]/$jsonGet[animal;rarity;1]\\]\` \`($round[$math[$jsonGet[animal;rarity;0]/$jsonGet[animal;rarity;1]*100];2]%)\`]
+        $return[$jsonGet[animal;skins;0;name] $jsonGet[animal;skins;0;emoji] \`[$jsonGet[animal;rarity;0]/$jsonGet[animal;rarity;1]\\]\` \`($round[$math[$jsonGet[animal;rarity;0]/$jsonGet[animal;rarity;1]*100];2]%)\`]
       ]
     ;raresContent]
 

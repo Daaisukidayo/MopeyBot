@@ -16,8 +16,9 @@ export default new Command({
 
     $onlyIf[$jsonGet[lobby;host]==$authorID;$onlyAuthorInteraction]
 
-    $onlyIf[$jsonSize[lobby;allPlayers]>1;
-      $newError[$tl[ui.lobby.notEnoughPlayers.$get[l]]]
+    $c[The same rule that greys out the button, for a click on an old lobby message]
+    $onlyIf[$callMethod[lobby;canStart];
+      $newError[$tl[ui.lobby.cannotStart.$get[l]]]
     ]
 
     $!stopTimeout[lobby-$channelID]

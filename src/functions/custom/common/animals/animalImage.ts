@@ -13,7 +13,7 @@ export default new ForgeFunction({
     },
     {
       name: "skin",
-      description: "Optional: the skin's id, or its index in 'variants'. The first skin by default.",
+      description: "Optional: the skin's id, or its index in 'skins'. The first skin by default.",
       type: ArgType.String,
       required: false,
     },

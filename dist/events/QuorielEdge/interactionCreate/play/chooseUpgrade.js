@@ -13,7 +13,7 @@ exports.default = new edge_1.Command({
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $jsonLoad[playData;$getUserVar[userPlayData]]
+    $jsonLoad[playData;$getPlayData]
     $isPlaying[playData]
 
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
@@ -24,19 +24,19 @@ exports.default = new edge_1.Command({
     $c[Tiers wrap around: after 17 comes 1]
     $switch[$get[action];
       $case[upgrade;
-        $setNewTier[playData]
+        $callMethod[playData;updateTier]
         $if[$jsonGet[playData;tier]>17;
-          $!jsonSet[playData;tier;1]
+          $setField[playData;tier;1]
         ]
       ]
       $case[devUpArrow;
-        $!jsonSet[playData;tier;$if[$get[tier]>=17;1;$math[$get[tier] + 1]]]
+        $setField[playData;tier;$if[$get[tier]>=17;1;$math[$get[tier] + 1]]]
       ]
       $case[devDownArrow;
-        $!jsonSet[playData;tier;$if[$get[tier]<=1;17;$math[$get[tier] - 1]]]
+        $setField[playData;tier;$if[$get[tier]<=1;17;$math[$get[tier] - 1]]]
       ]
       $case[toggleRares;
-        $jsonToggle[playData;devShowAllRares]
+        $jsonToggle[playData;dev;showAllRares]
       ]
       $case[devTier;
         $c[The tester types the tier in a modal (comes back as devTierModal)]
@@ -50,19 +50,18 @@ exports.default = new edge_1.Command({
         $onlyIf[$isNumber[$get[newTier]];$newError[$tl[ui.wardrobe.invalidTier.$get[l]]]]
         $onlyIf[$and[$isInteger[$get[newTier]];$inRange[$get[newTier];1;17]];$newError[$tl[ui.wardrobe.invalidTier.$get[l]]]]
         $c[As a number: a typed tier may have leading zeros]
-        $!jsonSet[playData;tier;$floor[$get[newTier]]]
+        $setField[playData;tier;$floor[$get[newTier]]]
       ]
     ]
 
     $c[A dev tier change starts from the tier's lowest XP]
     $if[$startsWith[$get[action];dev];
-      $!jsonSet[playData;XP;$jsonGet[$getGlobalVar[xpPerTier];$jsonGet[playData;tier];0]]
-      $resetArenaData[playData]
+      $callMethod[playData;restartTier]
     ]
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[ui.play.$if[$jsonGet[playData;isDead];chooseAnimal;chooseUpgrade].$get[l]]]
+      $addTextDisplay[$tl[ui.play.$if[$jsonGet[playData;is_dead];chooseAnimal;chooseUpgrade].$get[l]]]
       $addUpgradeMenu[playData;userWardrobe]
       $addSeparator[Large]
       $addExitButton[playData]

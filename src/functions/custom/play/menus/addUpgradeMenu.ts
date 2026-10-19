@@ -20,7 +20,7 @@ export default new ForgeFunction({
     $if[$env[$env[playDataVar]]==;$return]
     $ref[playData;$env[playDataVar]]
     $c[A tester can switch luck off: every animal and rare of the tier is shown]
-    $let[allRares;$and[$jsonGet[userProfile;testerMode];$jsonGet[playData;devShowAllRares]]]
+    $let[allRares;$and[$jsonGet[userProfile;testerMode];$jsonGet[playData;dev;showAllRares]]]
 
     $getCache[animals;tierAnimals;tierAnimals]
     $jsonLoad[raresButtonStyle;$getGlobalVar[raresButtonStyle]]

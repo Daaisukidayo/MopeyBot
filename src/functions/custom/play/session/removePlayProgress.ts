@@ -11,7 +11,7 @@ export default new ForgeFunction({
   ],
   code: `
     $ref[playData;$env[playDataVar]]
-    $sumCash[$jsonGet[playData;MC]]
+    $sumCash[$jsonGet[playData;mope_coins]]
     $saveProfile[$env[userProfile]]
 
     $deleteUserVar[allRareAttemptsInfo]

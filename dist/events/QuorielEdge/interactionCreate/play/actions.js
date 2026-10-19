@@ -11,14 +11,14 @@ exports.default = new edge_1.Command({
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $jsonLoad[playData;$getUserVar[userPlayData]]
+    $jsonLoad[playData;$getPlayData]
     $isPlaying[playData]
 
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
-    $let[animalId;$jsonGet[playData;currentAnimal]]
+    $let[animalId;$jsonGet[playData;animal_id]]
     $let[animalBiome;$getAnimalInfo[$get[animalId];biome]]
-    $let[currentBiome;$jsonGet[playData;currentBiome]]
+    $let[currentBiome;$jsonGet[playData;biome]]
     $let[color;$getBiomeColor[playData]]
 
     $switch[$selectMenuValues;
@@ -31,9 +31,7 @@ exports.default = new edge_1.Command({
           $case[default;$tl[ui.play.downgrades.$get[reason].$get[l]]]
         ]]
 
-        $!jsonSet[playData;isDead;true]
-        $updateXpOnDeath[playData]
-        $setNewTier[playData]
+        $callMethod[playData;die]
 
         $addContainer[
           $addAuthorDisplay
@@ -88,9 +86,9 @@ exports.default = new edge_1.Command({
         $let[event;$if[$get[findSoccerRarity]<=$get[findSoccerChance];soccer;food]]
 
         $c[Dev overrides: a forced event is used once and beats immortality]
-        $let[forcedEvent;$jsonGet[playData;devForcedEvent]]
+        $let[forcedEvent;$jsonGet[playData;dev;forcedEvent]]
         $if[$get[forcedEvent]!=;
-          $!jsonDelete[playData;devForcedEvent]
+          $!jsonSet[playData;dev;forcedEvent;null]
           $let[deathChance;0]
 
           $switch[$get[forcedEvent];
@@ -99,7 +97,7 @@ exports.default = new edge_1.Command({
             $case[food;$let[event;food] $let[preyRoll;101]]
             $case[prey;$let[event;food] $let[preyRoll;1]]
           ]
-        ;$if[$jsonGet[playData;devImmortal]==true;
+        ;$if[$jsonGet[playData;dev;immortal]==true;
           $let[deathChance;0]
         ]]
 
@@ -107,10 +105,8 @@ exports.default = new edge_1.Command({
           $addAuthorDisplay
 
           $if[$get[deathChance]>=$get[deathRoll];
-            $!jsonSet[playData;isDead;true]
-            $updateXpOnDeath[playData]
-            $setNewTier[playData]
-            $removeAllApex[playData]
+            $callMethod[playData;die]
+            $callMethod[playData;removeAllApex]
 
             $addTextDisplay[$get[deathDesc]]
             $addActionsMenu[playData]
@@ -160,7 +156,7 @@ exports.default = new edge_1.Command({
                 
               ]
 
-              $jsonMath[playData;XP;$get[xp]]
+              $callMethod[playData;addXp;$get[xp]]
               $addTextDisplay[$get[content]]
               $addSeparator[Large]
 
@@ -189,7 +185,7 @@ exports.default = new edge_1.Command({
           $jsonLoad[paths;$jsonGet[$getGlobalVar[arenaOpponents];$get[opponentTier];$get[currentBiome]]]
           $let[oppID;$arraySample[paths]]
 
-          $c[Some opponents can be replaced with their rare variant]
+          $c[Some opponents can be replaced with their rare animal]
           $if[$jsonGet[rareOpponents;$get[oppID]]!=;
             $if[$random[1;100]<=$jsonGet[rareOpponents;$get[oppID];chance];
               $let[oppID;$jsonGet[rareOpponents;$get[oppID];id]]
@@ -222,7 +218,7 @@ exports.default = new edge_1.Command({
       ]
 
       $case[upgrade;
-        $setNewTier[playData]
+        $callMethod[playData;updateTier]
 
         $addContainer[
           $addAuthorDisplay
@@ -239,7 +235,7 @@ exports.default = new edge_1.Command({
       $case[kingDragonUpg;
         $let[animalId;king_dragon]
         $let[trig;play_upgradeAnimal-$get[animalId]-$authorID]
-        $let[wrI;$jsonGet[userWardrobe;$get[animalId]]]
+        $let[wrI;$nullish[$jsonGet[userWardrobe;$get[animalId]];0]]
         $let[name;$getAnimalInfo[$get[animalId];name;$get[wrI]]]
         $let[emoji;$getAnimalInfo[$get[animalId];emoji;$get[wrI]]]
 
@@ -255,6 +251,20 @@ exports.default = new edge_1.Command({
           $addExitButton[playData]
           $addCheats[playData]
         ;$get[color]]
+      ]
+
+      $case[showApex;
+        $c[The message is sent again with its own components so the menu lets go of the choice. No attachments are sent, so the pictures stay: a Forge update always replaces them. The apexes come in a message only the player sees]
+        $!djsEval[ctx.interaction.update({ components: ctx.interaction.message.components })]
+
+        $jsonLoad[apexData;$getCurrentApexData[playData]]
+        $addContainer[
+          $addAuthorDisplay
+          $addTextDisplay[$jsonGet[apexData;content]]
+        ;$get[color]]
+        $ephemeral
+        $interactionFollowUp
+        $stop
       ]
 
       $case[respawn;
