@@ -1,6 +1,6 @@
 import { BaseCommand } from "@tryforge/forgescript"
 
-module.exports = new BaseCommand({
+export default new BaseCommand({
   name: "test",
   type: "messageCreate",
   code: `

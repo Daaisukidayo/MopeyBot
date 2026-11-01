@@ -162,12 +162,12 @@
   
     "timeLeft_m": {
       "en-US": "# _{0}, you have `{1}` {1|minute|minutes} left!_",
-      "ru": "# _{0}, у Вас осталось `{1}` {1|минута|минуты|минут}!_"
+      "ru": "# _{0}, у Вас {1|осталась|осталось|осталось} `{1}` {1|минута|минуты|минут}!_"
     },
   
     "timeLeft_s": {
       "en-US": "# _{0}, you have `{1}` {1|second|seconds} left!_",
-      "ru": "# _{0}, у Вас осталось `{1}` {1|секунда|секунды|секунд}!_"
+      "ru": "# _{0}, у Вас {1|осталась|осталось|осталось} `{1}` {1|секунда|секунды|секунд}!_"
     },
   
     "unknown": {
@@ -830,14 +830,14 @@
     "reasons": {
       "en-US": [
         "but you got killed by teamers",
-        "but your internet fell off and you disconnected with {0} apexes away",
+        "but your internet fell off and you disconnected with {0} {0|apex|apexes} away",
         "but Mistik made an event so you lost your BD",
         "but rare animals bullied and killed you",
         "but you died by low lava"
       ],
       "ru": [
         "но Вас убили тиммейты",
-        "но Ваш интернет отключился и Вы отключились с {0} апексами от победы",
+        "но Ваш интернет отключился и Вы отключились с {0} {0|апексом|апексами|апексами} от победы",
         "но Мистик устроил событие, и Вы потеряли своего ЧД",
         "но редкие животные забуллили и убили Вас",
         "но Вы погибли от низкого уровня лавы"

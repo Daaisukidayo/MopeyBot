@@ -32,9 +32,13 @@ export default new Command({
         $callMethod[userProfile;addCoins;$get[MC]]
         $callMethod[userProfile;save]
 
+        $c[reason picked by index so the apexes left get filled in, a sampled text keeps its raw placeholder]
+        $jsonLoad[reasons;$tl[ui.kingdragon.reasons.$get[l]]]
+        $let[reason;$tl[ui.kingdragon.reasons.$get[l].$arrayRandomIndex[reasons];$random[1;12]]]
+
         $addContainer[
           $addAuthorDisplay
-          $addTextDisplay[$tl[ui.kingdragon.attempt.$get[l];$getAnimalInfo[black_dragon;emoji;$get[wrIndex]];$arraySample[$tl[ui.kingdragon.reasons.$get[l]]];$separate[$get[MC]]]]
+          $addTextDisplay[$tl[ui.kingdragon.attempt.$get[l];$getAnimalInfo[black_dragon;emoji;$get[wrIndex]];$get[reason];$separate[$get[MC]]]]
         ;$getGlobalVar[errorColor]]
         $interactionUpdate
         $!stopCommandTimeout[kingdragon]
