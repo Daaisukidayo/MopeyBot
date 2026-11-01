@@ -4,6 +4,5 @@
 #? folders
 node_modules/
 database/
-dev/
 dist/
 tests/
