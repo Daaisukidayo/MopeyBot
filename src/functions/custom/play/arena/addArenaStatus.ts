@@ -2,16 +2,16 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addArenaStatus",
-  description: "Adds the arena scoreboard: player and opponent with their bites",
+  description: "adds the arena scoreboard: player and opponent w/ their bites",
   params: [
     {
       name: "playDataVar",
-      description: "The name of the variable that holds the play data.",
+      description: "var w/ the play data",
       type: ArgType.String,
     },
     {
       name: "wardrobeVar",
-      description: "The name of the variable that holds the user's wardrobe.",
+      description: "var w/ the user's wardrobe",
       type: ArgType.String,
     },
   ],
@@ -28,11 +28,11 @@ export default new ForgeFunction({
     $let[playerDisplay;$getAnimalInfo[$get[currentAnimal];emoji;$get[wrI]] $userDisplayName]
     $let[opponentDisplay;$getAnimalInfo[$get[opponentAnimal];emoji;$get[opponentWardrobe]] $getAnimalInfo[$get[opponentAnimal];name;$get[opponentWardrobe]]]
 
-    $c[Each side shows its animal's picture. The same skin on both sides is attached once]
+    $c[each side shows its pic, same skin on both sides = attach once]
     $let[playerImage;$animalImage[$get[currentAnimal];$get[wrI]]]
     $let[opponentImage;$if[$getAnimalInfo[$get[currentAnimal];id;$get[wrI]]==$getAnimalInfo[$get[opponentAnimal];id;$get[opponentWardrobe]];$get[playerImage];$animalImage[$get[opponentAnimal];$get[opponentWardrobe]]]]
 
-    $c[A side's name and bites are one text: a message holds 40 components at most]
+    $c[name + bites in one text, 40 components max per msg]
     $addSection[
       $addThumbnail[$get[playerImage]]
       $addTextDisplay[$tl[ui.play.arena.table.player.$get[l];$get[playerDisplay]]\n$tl[ui.play.arena.table.bites.$get[l];$jsonGet[playData;arena;player;bites]]]

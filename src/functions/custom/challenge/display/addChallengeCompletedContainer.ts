@@ -2,11 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addChallengeCompletedContainer",
-  description: "Adds a designed container displaying a completed challenge summary: its points, rares and list.",
+  description: "adds the 'challenge done' container: points, rares and the list",
   params: [
     {
       name: "raresList",
-      description: "Object of the caught rare animals: their counts by their IDs.",
+      description: "caught rares as counts by ID",
       type: ArgType.Json,
     },
   ],

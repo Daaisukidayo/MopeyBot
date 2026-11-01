@@ -2,7 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "robotCheck",
-  description: "Checks if the user is a robot.",
+  description: "checks if the user is a bot",
   code: `
     $addTextDisplay[## _Are you a robot?_]
     $addActionRow

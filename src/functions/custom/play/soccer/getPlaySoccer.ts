@@ -2,19 +2,18 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "getPlaySoccer",
-  description:
-    "Returns the soccer item of the play command (res/data/playSoccers.json) by its type and ID, or nothing if there is no such item",
+  description: "the /play soccer item (res/data/playSoccers.json) by type and ID, nothing if there's no such item",
   output: ArgType.Json,
   brackets: true,
   params: [
     {
       name: "soccerType",
-      description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
+      description: "the soccer type, like 'pumpkin', 'umbrella' or 'beachball'",
       type: ArgType.String,
     },
     {
       name: "soccerId",
-      description: "The ID of the soccer item",
+      description: "the soccer item's ID",
       type: ArgType.Number,
     },
   ],

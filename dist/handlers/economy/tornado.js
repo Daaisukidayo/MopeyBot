@@ -12,14 +12,14 @@ exports.default = new forgescript_1.ForgeFunction({
     $addCooldown
     $defer
 
-    $c[One tornado in 30 is a devil tornado, which gives more. A developer can give the roll]
+    $c[1 in 30 is a devil tornado (pays more), devs can force the roll]
     $let[devil;$checkCondition[$if[$and[$isNumber[$message];$isDev];$message;$random[1;30]]==1]]
     $let[type;$if[$get[devil];devilTornadoes;normalTornadoes]]
     $let[MC;$if[$get[devil];$random[2500;4000];$random[300;600]]]
     $jsonLoad[tornado;$arraySample[$jsonGet[$readFile[res/data/tornadoes.json];$get[type]]]]
 
-    $sumCash[$get[MC]]
-    $saveProfile[$env[userProfile]]
+    $callMethod[userProfile;addCoins;$get[MC]]
+    $callMethod[userProfile;save]
 
     $addContainer[
       $addAuthorDisplay

@@ -15,7 +15,7 @@ export default new ForgeFunction({
 
     $getCache[rares;activeRares;activeRares]
 
-    $c[A rare, + or -, and a count or "all"]
+    $c[args: rare, + or -, a count or all]
     $let[arg1;$toLowerCase[$default[$option[rare];$message[0]]]]
     $let[arg2;$default[$option[action];$message[1]]]
     $let[arg3;$toLowerCase[$default[$option[count];$message[2]]]]
@@ -29,7 +29,7 @@ export default new ForgeFunction({
       $newError[$tl[ui.editlist.invalidRare.$get[l];$get[arg1]]]
     ]
 
-    $c["all" only removes, any other count is a positive number]
+    $c['all' only works for removing, other counts must be positive]
     $onlyIf[$or[$and[$get[arg3]==all;$get[arg2]==-];$and[$isNumber[$get[arg3]];$get[arg3]>0]];
       $newError[$tl[ui.editlist.invalidNumber.$get[l]]]
     ]
@@ -49,7 +49,7 @@ export default new ForgeFunction({
 
     $jsonLoad[result;$generateList[$jsonGet[challengeProgress;raresList]]]
 
-    $c[Nothing changed: the count the user tried is shown. A change is saved and shows how much really changed]
+    $c[no change: show the count they tried. otherwise save and show the real change]
     $if[$get[oldQuantity]==$get[updatedQuantity];
       $let[state;failed]
       $let[count;$if[$get[arg3]==all;$get[oldQuantity];$get[arg3]]]

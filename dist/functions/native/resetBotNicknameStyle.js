@@ -4,7 +4,7 @@ const forgescript_1 = require("@tryforge/forgescript");
 const discord_js_1 = require("discord.js");
 exports.default = new forgescript_1.NativeFunction({
     name: "$resetBotNicknameStyle",
-    description: "Resets the bot's display name style for the specified guild, returns bool",
+    description: "resets the bot's display name style in a guild, returns a bool",
     aliases: ["$resetClientNicknameStyle", "$resetBotDisplayNameStyle", "$resetClientDisplayNameStyle"],
     unwrap: true,
     brackets: false,
@@ -12,7 +12,7 @@ exports.default = new forgescript_1.NativeFunction({
     args: [
         {
             name: "guild ID",
-            description: "The guild whose bot display name style should be reset",
+            description: "the guild to reset it in",
             rest: false,
             type: forgescript_1.ArgType.Guild,
         },

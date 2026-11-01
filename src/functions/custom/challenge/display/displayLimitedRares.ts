@@ -2,11 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "displayLimitedRares",
-  description: "Displays limited rare animals as the V2 component",
+  description: "shows the capped rares as a V2 component",
   params: [
     {
       name: "progressVar",
-      description: "The name of the variable that holds the challenge progress.",
+      description: "var w/ the challenge progress",
       type: ArgType.String,
     },
   ],
@@ -29,7 +29,7 @@ export default new ForgeFunction({
     $getCache[rares;categoryLimits;categoryLimits]
     $getCache[rares;challengeCategories;challengeCategories]
 
-    $c[Every rare of a limited category that is still below its limit. A limit is [category, limit\\]]
+    $c[every rare of a capped category that's still under the cap. a limit is a category, cap pair]
     $jsonLoad[limitsContent;$arrayFlat[$arrayMap[$jsonEntries[categoryLimits;$get[difficulty]];limit;
       $return[$arrayMap[$default[$jsonGet[challengeCategories;$jsonGet[limit;0]];$arrayOf];rare;
         $let[quantity;$default[$jsonGet[progress;raresList;$env[rare]];0]]

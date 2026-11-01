@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "closeInactiveLobby",
-    description: "Closes the channel's lobby if it has not started yet",
+    description: "closes the channel's lobby if it hasn't started yet",
     brackets: true,
     params: [
         {
             name: "locale",
-            description: "The language of the closing message",
+            description: "language of the closing msg",
             type: forgescript_1.ArgType.String,
         },
     ],

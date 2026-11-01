@@ -3,16 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "historyEmbed",
-    description: "Displays the embed for 'history' commands.",
+    description: "the embed for the history commands",
     params: [
         {
             name: "historyData",
-            description: "The history object that holds the data",
+            description: "the history object w/ the data",
             type: forgescript_1.ArgType.Json,
         },
         {
             name: "editHandler",
-            description: "The interaction that edits the page (addHistory or editHistory). Without it the page is only shown.",
+            description: "the interaction that edits the page (addHistory or editHistory). w/o it the page is just shown",
             type: forgescript_1.ArgType.String,
             required: false,
         },
@@ -41,7 +41,7 @@ exports.default = new forgescript_1.ForgeFunction({
           $addTextDisplay[$tl[ui.history.raresListLabel.$get[l]]]
           $showDesignedList[$env[list]]
         ;
-          $c[Editing: a typed value has an Edit button that opens its form, the play type and the difficulty have a menu that saves the choice]
+          $c[edit mode: typed values get an Edit button w/ a form, play type and difficulty get menus that save right away]
           $let[editId;$get[handler]-edit-$authorID]
           $let[editLabel;$tl[ui.history.buttonLabelEdit.$get[l]]]
 

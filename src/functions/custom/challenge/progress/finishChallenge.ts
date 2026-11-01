@@ -3,11 +3,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "finishChallenge",
   description:
-    "Ends the challenge loaded in 'challengeProgress': stops its timer, then removes a solo challenge or marks a lobby player as finished.",
+    "ends the challenge in 'challengeProgress': stops the timer, then removes a solo challenge or marks a lobby player as done",
   params: [
     {
       name: "progressVar",
-      description: "The name of the variable that holds the challenge progress.",
+      description: "var w/ the challenge progress",
       type: ArgType.String,
     },
   ],
@@ -15,7 +15,7 @@ export default new ForgeFunction({
     $ref[progress;$env[progressVar]]
     $stopChallengeTimer
 
-    $c[A solo challenge can run in a channel that also has a lobby, so the team decides, not the lobby]
+    $c[solo runs can share a channel w/ a lobby, so go by the team, not the lobby]
     $if[$jsonGet[progress;teamID]==-1;
       $deleteChallengeProgress
     ;

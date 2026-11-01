@@ -7,34 +7,34 @@ const forgescript_1 = require("@tryforge/forgescript");
 const parseJSON_js_1 = __importDefault(require("@tryforge/forgescript/dist/functions/parseJSON.js"));
 exports.default = new forgescript_1.NativeFunction({
     name: "$forOf",
-    description: "Executes given code for every element of an iterable (Array, JSON Object, or String)",
+    description: "runs code for every element of an array, JSON object or string",
     unwrap: false,
     brackets: true,
     args: [
         {
             name: "value",
-            description: "The iterable to iterate over",
+            description: "the thing to iterate over",
             rest: false,
             required: true,
             type: forgescript_1.ArgType.String,
         },
         {
             name: "variable",
-            description: "The variable to load the current element or value to",
+            description: "the var that gets the current element or value",
             rest: false,
             required: true,
             type: forgescript_1.ArgType.String,
         },
         {
             name: "code",
-            description: "The code to execute for every iteration",
+            description: "code to run each round",
             rest: false,
             required: true,
             type: forgescript_1.ArgType.String,
         },
         {
             name: "index",
-            description: "The variable to store the index or key name",
+            description: "the var that gets the index or key",
             rest: false,
             required: false,
             type: forgescript_1.ArgType.String,

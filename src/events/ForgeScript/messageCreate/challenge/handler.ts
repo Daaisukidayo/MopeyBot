@@ -16,7 +16,7 @@ export default new BaseCommand({
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
 
-    $c[Only the words that are rares count]
+    $c[only rare words count]
     $jsonLoad[added;$callMethod[challengeProgress;addRares;$getChallengeTimer;$arrayMap[$arrayFilter[providedRares;word;$arrayIncludes[activeRares;$env[word]]];word;$return[$getRareAnimalID[$env[word]]]]]]
     $onlyIf[$jsonGet[added;points]>0]
 
@@ -28,7 +28,7 @@ export default new BaseCommand({
       $return[## - $getAnimalInfo[$jsonGet[entry;0];emoji;0]\`$jsonGet[entry;1;quantity]\` «\`+$jsonGet[entry;1;points]\`»]
     ;raresContent]
 
-    $c[A rare sent during a pause resumes the challenge]
+    $c[sending a rare while paused resumes it]
     $let[paused;$jsonGet[challengeProgress;paused]]
     $setField[challengeProgress;paused;false]
     $saveProgress[$env[challengeProgress]]

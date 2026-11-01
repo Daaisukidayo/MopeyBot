@@ -21,7 +21,7 @@ exports.default = new edge_1.Command({
     $let[action;$nullish[$jsonGet[values;0];$jsonGet[IID;1]]]
     $let[tier;$jsonGet[playData;tier]]
 
-    $c[Tiers wrap around: after 17 comes 1]
+    $c[tiers wrap, 17 goes back to 1]
     $switch[$get[action];
       $case[upgrade;
         $callMethod[playData;updateTier]
@@ -39,7 +39,7 @@ exports.default = new edge_1.Command({
         $jsonToggle[playData;dev;showAllRares]
       ]
       $case[devTier;
-        $c[The tester types the tier in a modal (comes back as devTierModal)]
+        $c[tester types the tier in a modal, comes back as devTierModal]
         $modal[play_chooseUpgrade-devTierModal-$authorID;$tl[ui.play.devTierModalTitle.$get[l]]]
         $addTextInput[tier;$tl[ui.play.devTierModalLabel.$get[l]];Short;true;1-17;$get[tier];1;2]
         $showModal
@@ -49,12 +49,12 @@ exports.default = new edge_1.Command({
         $let[newTier;$input[tier]]
         $onlyIf[$isNumber[$get[newTier]];$newError[$tl[ui.wardrobe.invalidTier.$get[l]]]]
         $onlyIf[$and[$isInteger[$get[newTier]];$inRange[$get[newTier];1;17]];$newError[$tl[ui.wardrobe.invalidTier.$get[l]]]]
-        $c[As a number: a typed tier may have leading zeros]
+        $c[cast to number, typed tiers can have leading zeros]
         $setField[playData;tier;$floor[$get[newTier]]]
       ]
     ]
 
-    $c[A dev tier change starts from the tier's lowest XP]
+    $c[dev tier change starts at the tier's min XP]
     $if[$startsWith[$get[action];dev];
       $callMethod[playData;restartTier]
     ]

@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "settingsChangedInfo",
-    description: "Displays a lobby settings changed notification.",
+    description: "a 'lobby settings changed' notice",
     params: [
         {
             name: "content",
-            description: "The content to display in the notification.",
+            description: "the notice text",
             type: forgescript_1.ArgType.String,
         },
     ],

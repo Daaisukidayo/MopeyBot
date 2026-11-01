@@ -10,12 +10,12 @@ exports.default = new forgescript_1.BaseCommand({
 
     $jsonLoad[userProfile;$getProfile[$get[ID]]]
     $let[l;$jsonGet[userProfile;language]]
-    $let[hasProfile;$jsonGet[userProfile;acceptedRules]]
+    $let[hasProfile;$jsonGet[userProfile;verified]]
 
-    $c[The reward is given even if the user can't be messaged]
+    $c[reward goes through even if DMs are closed]
     $if[$get[hasProfile];
-      $sumCash[$get[MC]]
-      $saveProfile[$env[userProfile]]
+      $callMethod[userProfile;addCoins;$get[MC]]
+      $callMethod[userProfile;save]
     ]
 
     $onlyIf[$isUserDMEnabled[$get[ID]]]

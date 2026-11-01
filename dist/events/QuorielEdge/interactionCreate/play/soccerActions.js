@@ -22,7 +22,7 @@ exports.default = new edge_1.Command({
     $let[soccerType;$jsonGet[data;0]]
     $let[id;$jsonGet[data;1]]
 
-    $c[A soccer removed from the game is dropped]
+    $c[soccer got removed from the game? drop it]
     $if[$getPlaySoccer[$get[soccerType];$get[id]]==;
       $logger[Error;Soccer item not found: Type - $get[soccerType], ID - $get[id]]
       $callMethod[playData;dropSoccer]
@@ -42,25 +42,25 @@ exports.default = new edge_1.Command({
 
     $let[value;$selectMenuValues]
 
-    $c[Hold-like actions put their result in 'holdResult' (see holdSoccer), the others drop the soccer and set 'desc']
+    $c[hold-ish actions fill 'holdResult' (see holdSoccer), the rest drop the soccer and set 'desc']
     $switch[$get[value];
-      $case[0; $c[Hold]
+      $case[soccer_action_hold;
         $jsonLoad[holdResult;$callMethod[playData;holdSoccer;$get[soccerType];$get[id]]]
         $let[resultTextKey;held]
       ]
 
-      $case[1; $c[Ignore]
+      $case[soccer_action_ignore;
         $callMethod[playData;dropSoccer]
         $let[desc;$tl[ui.play.soccer.ignored.$get[l];$get[soccer]]]
       ]
 
-      $case[2; $c[Goal]
+      $case[soccer_action_goal;
         $let[goalFailR;$random[1;100]]
         $let[goalFailC;$getGlobalVar[soccerGoalFailChance]]
         $let[lossRoll;$random[1;1000]]
         $let[goalStealChance;$round[$math[$getSoccerStealChance[playData;$get[soccerType];$get[id]] * $jsonGet[$getGlobalVar[soccerLossChances];stealGoalMultiplier]]]]
 
-        $c[Dev override: forces this goal's outcome, used once]
+        $c[dev override for the goal outcome, one-shot]
         $switch[$jsonGet[playData;dev;forcedSoccer];
           $case[stolen;$let[lossRoll;0]]
           $case[failed;$let[lossRoll;1001] $let[goalFailR;0]]
@@ -72,11 +72,11 @@ exports.default = new edge_1.Command({
           $callMethod[playData;dropSoccer]
           $jsonLoad[holdResult;$objectOf[outcome;stolenOnGoal]]
         ;$if[$get[goalFailR]<=$get[goalFailC];
-          $c[A failed goal counts as holding the soccer. The steal was already rolled for the goal]
+          $c[failed goal = a hold, the steal was already rolled for the goal]
           $jsonLoad[holdResult;$callMethod[playData;holdSoccer;$get[soccerType];$get[id];false]]
           $let[resultTextKey;goalFailed]
         ;
-          $c[A goal gives a multiple of what holding this soccer would]
+          $c[a goal pays a multiple of a hold]
           $let[goalXP;$math[$callMethod[playData;soccerXp;$get[soccerType];$get[id]] * $getGlobalVar[soccerGoalXpMultiplier]]]
           $let[MC;$getSoccerMC[playData;$get[soccerType];$get[id];goal]]
 
@@ -87,7 +87,7 @@ exports.default = new edge_1.Command({
         ]]
       ]
 
-      $case[3; $c[Throw away]
+      $case[soccer_action_throwaway;
         $callMethod[playData;dropSoccer]
         $let[desc;$tl[ui.play.soccer.threw.$get[l];$get[soccer]]]
       ]

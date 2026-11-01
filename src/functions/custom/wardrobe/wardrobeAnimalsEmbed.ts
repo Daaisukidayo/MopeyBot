@@ -2,38 +2,55 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "wardrobeAnimalsEmbed",
-  description: "Generates the choice of an animal of the tier, each shown in its equipped skin.",
+  description: "a page of the all animals list: a skin menu per animal, by tier",
   params: [
     {
       name: "wardrobeVar",
-      description: "The name of the variable that holds the user's wardrobe.",
+      description: "var w/ the user's wardrobe",
       type: ArgType.String,
     },
     {
-      name: "tier",
-      description: "The tier of the animals",
+      name: "page",
+      description: "the page, wraps around when out of range",
       type: ArgType.Number,
     },
   ],
   code: `
     $ref[wardrobe;$env[wardrobeVar]]
     $let[l;$jsonGet[userProfile;language]]
-    $cacheAnimalsData
-    $getCache[animals;animalsData;animals]
+    $jsonLoad[userSkins;$getUserVar[userSkins]]
+    $jsonLoad[freePacks;$getGlobalVar[freeSkinPacks]]
+    $jsonLoad[ids;$wearableAnimals]
+
+    $c[pages wrap around]
+    $let[pageSize;$getGlobalVar[wardrobeAnimalsPageSize]]
+    $let[pages;$max[1;$arrayPageCount[ids;$get[pageSize]]]]
+    $let[page;$env[page]]
+    $let[page;$if[$get[page]<1;$get[pages];$if[$get[page]>$get[pages];1;$get[page]]]]
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[ui.wardrobe.animalMenuTitle.$get[l];$env[tier]]]
+      $addTextDisplay[$tl[ui.wardrobe.listTitle.$get[l]]]
 
-      $addActionRow
-      $addStringSelectMenu[wardrobe-chooseAnimal-$authorID;$tl[ui.wardrobe.animalPlaceholder.$get[l]]]
-
-      $c[A tier has 17 animals and rares at most, a select menu holds 25]
-      $arrayForEach[$arrayFilter[animals;animal;$jsonGet[animal;tier]==$env[tier]];animal;
-        $let[id;$jsonGet[animal;ID]]
-        $addOption[$jsonGet[animal;fullName];;$get[id];$getAnimalInfo[$get[id];emoji;$default[$jsonGet[wardrobe;$get[id]];0]]]
+      $c[the worn skin is picked, nothing in the wardrobe = the first skin. owned only, cut to 25 cuz that's all a select fits]
+      $arrayForEach[$arrayPage[ids;$get[page];$get[pageSize]];id;
+        $let[current;$default[$jsonGet[wardrobe;$env[id]];$getAnimalInfo[$env[id];id;0]]]
+        $addTextDisplay[### $getAnimalInfo[$env[id];fullName]]
+        $addActionRow
+        $addStringSelectMenu[wardrobe-pick-$env[id]-$get[page]-$authorID;$tl[ui.wardrobe.menuTitleSelectSkin.$get[l]]]
+        $arrayFilter[$getAnimalInfo[$env[id];skins];skin;$or[$arrayIncludes[freePacks;$jsonGet[skin;packId]];$arrayIncludes[userSkins;$jsonGet[skin;id]]];owned]
+        $arrayForEach[$arraySlice[owned;;0;25];skin;
+          $arrayLoad[idParts;.;$jsonGet[skin;id]]
+          $addOption[$jsonGet[skin;name];$skinCollectionName[$jsonGet[idParts;1]];$jsonGet[skin;id];$jsonGet[skin;emoji];$checkCondition[$get[current]==$jsonGet[skin;id]]]
+        ]
       ]
-      $addWardrobeBackButton[animal]
+
+      $addSeparator
+      $addActionRow
+      $addButton[wardrobe-page-$math[$get[page] - 1]-$authorID;$tl[ui.wardrobe.buttonPrevious.$get[l]];Secondary;⬅️]
+      $addButton[wardrobe-back-menu-$authorID;$tl[ui.wardrobe.buttonBack.$get[l]];Secondary;↩️]
+      $addButton[wardrobe-page-$math[$get[page] + 1]-$authorID;$tl[ui.wardrobe.buttonNext.$get[l]];Secondary;➡️]
+      $addButton[wardrobe-pageModal-$get[page]-$authorID;$tl[ui.wardrobe.pageButton.$get[l];$get[page];$get[pages]];Secondary;🔎]
     ;$getGlobalVar[defaultColor]]
   `,
 })

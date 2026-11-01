@@ -19,6 +19,7 @@ export type SlashCommandOptionDescription = AllLocales
 export type SlashCommandOptionChoiceName = AllLocales
 
 export interface SlashCommandOptionChoice {
+  value?: string
   name: SlashCommandOptionChoiceName
 }
 
@@ -42,7 +43,7 @@ export interface commandInfo {
     slash: SlashCommandInfo
     description: LocalesPropArray
     related: string[]
-    category: number
+    category: string
   }
 }
 

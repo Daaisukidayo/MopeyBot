@@ -11,14 +11,14 @@ export default new ForgeFunction({
     $addCooldown
     $defer
 
-    $c[The black dragon becomes the rare king dragon by its rarity (1 in 1000). A developer can give the roll]
-    $let[rare;$checkCondition[$if[$and[$message!=;$isDev];$message;$random[1;$getAnimalInfo[rare_king_dragon;rarity.1]]]<=$getAnimalInfo[rare_king_dragon;rarity.0]]]
+    $c[BD turns into KD by luck at KD's rarity (1 in 1000), devs can force the roll]
+    $let[luck;$checkCondition[$if[$and[$message!=;$isDev];$message;$random[1;$getAnimalInfo[king_dragon;rarity.1]]]<=$getAnimalInfo[king_dragon;rarity.0]]]
 
     $addContainer[
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.kingdragon.chooseUpgrade.$get[l]]]
-      $addUpgradeMenuAnimalChoices[$if[$get[rare];rare_king_dragon;black_dragon]]
-    ;$getGlobalVar[$if[$get[rare];rareKingDragonColor;defaultColor]]]
+      $addUpgradeMenuAnimalChoices[$if[$get[luck];king_dragon;black_dragon];$get[luck]]
+    ;$getGlobalVar[$if[$get[luck];rareKingDragonColor;defaultColor]]]
 
     $newCommandTimeout
   `,

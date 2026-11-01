@@ -2,11 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addBiomeMenu",
-  description: "Adds the menu to move to a neighbouring biome",
+  description: "adds the menu to move to a neighbouring biome",
   params: [
     {
       name: "playDataVar",
-      description: "The name of the variable that holds the play data.",
+      description: "var w/ the play data",
       type: ArgType.String,
     },
   ],
@@ -16,7 +16,7 @@ export default new ForgeFunction({
     $let[biome;$jsonGet[playData;biome]]
 
     $addActionRow
-    $addStringSelectMenu[play_moveToBiome-$authorID;$tl[ui.play.selectMenuPlaceholderSwitchBiome.$get[l]]]
+    $addStringSelectMenu[play_moveToBiome-$playID[playData];$tl[ui.play.selectMenuPlaceholderSwitchBiome.$get[l]]]
 
     $if[$get[biome]!=0;
       $addOption[$tl[data.biomes.0.$get[l]];;0;⛰️]

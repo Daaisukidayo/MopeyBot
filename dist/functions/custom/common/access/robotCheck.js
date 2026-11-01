@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "robotCheck",
-    description: "Checks if the user is a robot.",
+    description: "checks if the user is a bot",
     code: `
     $addTextDisplay[## _Are you a robot?_]
     $addActionRow

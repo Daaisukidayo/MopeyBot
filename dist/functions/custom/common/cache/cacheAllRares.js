@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "cacheAllRares",
-    description: "Caches the challenge rares: their points and categories, the abbreviations, and the limits of every difficulty.",
+    description: "caches the challenge rares (points, categories, abbreviations), every difficulty's caps and the raretry categories",
     code: `
     $jsonLoad[points;$getGlobalVar[challengeCategoryPoints]]
     $jsonLoad[rareByAbbreviation;$objectOf]
@@ -12,11 +12,11 @@ exports.default = new forgescript_1.ForgeFunction({
     $arrayLoad[allRares]
     $arrayLoad[activeRares]
 
-    $c[Read by reference: never modify 'animals']
+    $c[shared ref, don't mutate 'animals']
     $cacheAnimalsData
     $getCache[animals;animalsData;animals]
 
-    $c[The history knows every animal with a challenge block, only rares still in the game count in a new challenge]
+    $c[history knows every animal w/ a challenge block, but new challenges only count live rares]
     $arrayFilter[animals;animal;$jsonHas[animal;challenge];challengeAnimals]
     $arrayForEach[challengeAnimals;animal;
       $let[id;$jsonGet[animal;ID]]
@@ -29,14 +29,26 @@ exports.default = new forgescript_1.ForgeFunction({
         $if[$get[active];$arrayPush[activeRares;$env[abbreviation]]]
       ]
 
-      $c[A rare's own points override its category's: removed rares keep their old points]
+      $c[own points beat the category's, so removed rares keep their old points]
       $!jsonSet[challengeRares;$get[id];$objectOf[points;$nullish[$jsonGet[animal;challenge;points];$jsonGet[points;$get[category]];0];category;$get[category]]]
       $if[$and[$get[active];$get[category]!=-1];
         $arrayPushAt[challengeCategories;$get[category];$get[id]]
       ]
     ]
 
-    $c[Per difficulty, the limit of each limited category. A negative limit marks a difficulty without limits]
+    $c[raretry categories = mope.io rarity tiers plus our own common up front. a rare lands in the first one whose maxChance fits. removed rares get one too (for the color), but raretry only drops live ones]
+    $jsonLoad[raretryCategories;$getGlobalVar[raretryCategories]]
+    $arrayFilter[animals;animal;$jsonGet[animal;isRare]==true;rareAnimals]
+    $jsonLoad[raretryCategoryOf;$objectOf]
+    $arrayForEach[rareAnimals;animal;
+      $let[chance;$math[$jsonGet[animal;rarity;1] / $jsonGet[animal;rarity;0]]]
+      $!jsonSet[raretryCategoryOf;$jsonGet[animal;ID];$arrayFindIndex[raretryCategories;category;$or[$jsonGet[category;maxChance]==;$get[chance]<=$jsonGet[category;maxChance]]]]
+    ]
+    $arrayMap[raretryCategories;category;
+      $return[$arrayMap[$arrayFilter[rareAnimals;animal;$and[$jsonGet[animal;deleted]!=true;$jsonGet[raretryCategoryOf;$jsonGet[animal;ID]]==$env[i]]];animal;$return[$jsonGet[animal;ID]]]]
+    ;raretryGroups;i]
+
+    $c[caps per category per difficulty, negative = no caps on that difficulty]
     $jsonLoad[limitsMap;$getGlobalVar[chartLimitsMap]]
     $jsonLoad[categoryLimits;$objectOf]
     $arrayForEach[$jsonEntries[$getGlobalVar[chartLimits]];difficulty;
@@ -55,6 +67,8 @@ exports.default = new forgescript_1.ForgeFunction({
     $setCache[rares;challengeRares;$env[challengeRares]]
     $setCache[rares;challengeCategories;$env[challengeCategories]]
     $setCache[rares;categoryLimits;$env[categoryLimits]]
+    $setCache[rares;raretryGroups;$env[raretryGroups]]
+    $setCache[rares;raretryCategoryOf;$env[raretryCategoryOf]]
     $logger[Info;Cached the challenge rares]
   `,
 });

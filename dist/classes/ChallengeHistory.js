@@ -15,13 +15,14 @@ exports.default = new forge_class_1.ForgeClassBuilder({
         $setField[this;pages;$getUserVar[challengeHistory;$env[userId]]]
       `,
         },
-        save: `
-      $setUserVar[challengeHistory;$getField[this;pages];$getField[this;userID]]
-    `,
+        save: {
+            code: `
+        $setUserVar[challengeHistory;$getField[this;pages];$getField[this;userID]]
+      `,
+        },
         add: {
             params: [{ name: "pageData", type: forge_class_1.ParamType.Json }],
             code: `
-        $c[A new page gets an ID and only the fields a history page has]
         $jsonLoad[page;$getGlobalVar[baseHistoryPage]]
         $!jsonSet[page;id;$randomUUID]
         $objectMerge[page;$objectPick[pageData;points;rares;endDate;playType;difficulty;raresList]]

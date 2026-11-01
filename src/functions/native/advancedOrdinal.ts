@@ -7,21 +7,21 @@ const SUFFIX_MAP: Record<string, Record<Intl.LDMLPluralRule, string> & { other: 
 
 export default new NativeFunction({
   name: "$advancedOrdinal",
-  description: "Returns the ordinal representation of a number based on the language.",
+  description: "a number as an ordinal in the given language",
   output: ArgType.String,
   brackets: true,
   unwrap: true,
   args: [
     {
       name: "number",
-      description: "The number to convert to an ordinal representation.",
+      description: "the number",
       type: ArgType.Number,
       required: true,
       rest: false,
     },
     {
       name: "language",
-      description: "The language code used for the ordinal format. Defaults to en-US",
+      description: "the language code, en-US by default",
       type: ArgType.String,
       required: false,
       rest: false,

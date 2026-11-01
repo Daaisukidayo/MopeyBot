@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "sortList",
-  description: "Sorts list based on their positions in animals.json.",
+  description: "sorts the list by the animals order in animals.json",
   output: ArgType.Json,
   params: [
     {
       name: "raresList",
-      description: "Object with caught rares",
+      description: "caught rares",
       type: ArgType.Json,
     },
   ],
@@ -18,7 +18,7 @@ export default new ForgeFunction({
       $return[$objectOf]
     ]
 
-    $c[Rares follow the animals' order, one missing from the animals goes last]
+    $c[follow the animals order, unknown ones go last]
     $jsonLoad[keys;$arrayPluck[$arraySortBy[$arrayMap[$jsonKeys[raresList];id;$return[$objectOf[id;$env[id];index;$jsonGet[animalIndexes;$env[id]]]]];asc;index];id]]
     $return[$objectPick[raresList;$spread[$arrayJoin[keys;,];,]]]
   `,

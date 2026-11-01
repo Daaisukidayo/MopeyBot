@@ -2,18 +2,18 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "newCommandTimeout",
-  description: "Adds a special timeout that deletes the command after a specified time.",
+  description: "sets a timeout that deletes the command's msg later",
   brackets: false,
   params: [
     {
       name: "command",
-      description: "The command to delete",
+      description: "the command to delete",
       type: ArgType.String,
       required: false,
     },
   ],
   code: `
-    $c[A command sends its message now, an interaction's message is the one to delete]
+    $c[commands send their msg right now, for interactions the msg to delete is the clicked one]
     $let[isCommand;$or[$isPrefixCommand;$isSlashCommand]]
     $let[messageId;$if[$get[isCommand];$send;$messageID]]
 
@@ -21,10 +21,10 @@ export default new ForgeFunction({
     $let[timeoutName;$get[commandName]-$authorID]
     $let[duration;$getGlobalVar[$get[commandName]_cooldown]]
 
-    $c[The timeout keeps the variables it is made with, and the parameter is not one it can keep]
+    $c[timeouts keep the vars they were made with, params don't count]
     $!jsonDelete[command]
 
-    $c[An interaction moves the timeout of its message further]
+    $c[each interaction pushes the msg timeout back]
     $if[$get[isCommand]==false;
       $if[$rescheduleTimer[timeout;$get[timeoutName];$get[duration]];$return]
     ]

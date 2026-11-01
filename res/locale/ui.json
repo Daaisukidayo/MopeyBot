@@ -67,10 +67,15 @@
     },
   
     "purchased": {
-      "en-US": "## 🛒 _Skin packs:_",
-      "ru": "## 🛒 _Наборы скинов:_"
+      "en-US": "## 📦 _Bundles:_",
+      "ru": "## 📦 _Наборы:_"
     },
-  
+
+    "skins": {
+      "en-US": "## 👕 _Skins: `{0}`_",
+      "ru": "## 👕 _Скины: `{0}`_"
+    },
+
     "title": {
       "en-US": "# ___BALANCE___",
       "ru": "# ___БАЛАНС___"
@@ -156,13 +161,13 @@
     },
   
     "timeLeft_m": {
-      "en-US": "# _{0}, you have `{1}` minute{1:m} left!_",
-      "ru": "# _{0}, у Вас осталось `{1}` минут{1:i}!_"
+      "en-US": "# _{0}, you have `{1}` {1|minute|minutes} left!_",
+      "ru": "# _{0}, у Вас осталось `{1}` {1|минута|минуты|минут}!_"
     },
   
     "timeLeft_s": {
-      "en-US": "# _{0}, you have `{1}` second{1:m} left!_",
-      "ru": "# _{0}, у Вас осталось `{1}` секунд{1:i}!_"
+      "en-US": "# _{0}, you have `{1}` {1|second|seconds} left!_",
+      "ru": "# _{0}, у Вас осталось `{1}` {1|секунда|секунды|секунд}!_"
     },
   
     "unknown": {
@@ -188,13 +193,13 @@
     },
   
     "catchRaretry": {
-      "en-US": "## _Catch `{0}` rare animals in `raretry`!_",
-      "ru": "## _Поймайте `{0}` редких животных в `raretry`!_"
+      "en-US": "## _Catch `{0}` rare {0|animal|animals} in `raretry`!_",
+      "ru": "## _Поймайте `{0}` {0|редкое|редких|редких} {0|животное|животных|животных} в `raretry`!_"
     },
   
     "catchRaretryrun": {
-      "en-US": "## _Catch `{0}` rare animals in `raretryrun`!_",
-      "ru": "## _Поймайте `{0}` редких животных в `raretryrun`!_"
+      "en-US": "## _Catch `{0}` rare {0|animal|animals} in `raretryrun`!_",
+      "ru": "## _Поймайте `{0}` {0|редкое|редких|редких} {0|животное|животных|животных} в `raretryrun`!_"
     },
   
     "claimDaily": {
@@ -413,7 +418,44 @@
       "ru": "Пользователь не найден!"
     }
   },
-  
+
+  "halloffame": {
+    "allGames": {
+      "en-US": "All games",
+      "ru": "Все игры"
+    },
+
+    "description": {
+      "en-US": "-# _The rarest rolls of every player_",
+      "ru": "-# _Самые редкие броски всех игроков_"
+    },
+
+    "empty": {
+      "en-US": "## _Nobody is here yet: roll something very rare to get in!_",
+      "ru": "## _Здесь пока никого нет: выбейте что-нибудь очень редкое, чтобы попасть сюда!_"
+    },
+
+    "filterMenu": {
+      "en-US": "Choose a game",
+      "ru": "Выберите игру"
+    },
+
+    "line": {
+      "en-US": "## {0} {1} `1/{2}`\n### `{3}#{4}` • {5} • <t:{6}:d>",
+      "ru": "## {0} {1} `1/{2}`\n### `{3}#{4}` • {5} • <t:{6}:d>"
+    },
+
+    "pageButton": {
+      "en-US": "Page {0}/{1}",
+      "ru": "Страница {0}/{1}"
+    },
+
+    "title": {
+      "en-US": "# 🏛️ _Hall of Fame_",
+      "ru": "# 🏛️ _Зал славы_"
+    }
+  },
+
   "help": {
     "aliasesTitle": {
       "en-US": "# _📚 Aliases_",
@@ -809,11 +851,30 @@
   },
   
   "leaderboard": {
-    "contentLine": {
-      "en-US": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}",
-      "ru": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}"
+    "empty": {
+      "en-US": "## _Nobody is in this table yet!_",
+      "ru": "## _В этой таблице пока никого нет!_"
     },
-  
+
+    "lines": {
+      "collection": {
+        "en-US": "## {0} ➤ `{1}#{2}` — `{3}/{4}`",
+        "ru": "## {0} ➤ `{1}#{2}` — `{3}/{4}`"
+      },
+      "mc": {
+        "en-US": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}",
+        "ru": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}"
+      },
+      "rares": {
+        "en-US": "## {0} ➤ `{1}#{2}` — `{3}` {3|rare|rares}",
+        "ru": "## {0} ➤ `{1}#{2}` — `{3}` {3|редкое|редких|редких}"
+      },
+      "soccer": {
+        "en-US": "## {0} ➤ `{1}#{2}` — {3} `1/{4}`",
+        "ru": "## {0} ➤ `{1}#{2}` — {3} `1/{4}`"
+      }
+    },
+
     "modalDescriptionPage": {
       "en-US": "Enter leaderboard page",
       "ru": "Введите страницу таблицы лидеров"
@@ -833,10 +894,20 @@
       "en-US": "Page {0}/{1}",
       "ru": "Страница {0}/{1}"
     },
-  
+
+    "subtitle": {
+      "en-US": "## _{0}_",
+      "ru": "## _{0}_"
+    },
+
     "title": {
       "en-US": "# 🔝 _Leaderboard_",
       "ru": "# 🔝 _Таблица лидеров_"
+    },
+
+    "typeMenu": {
+      "en-US": "Choose a table",
+      "ru": "Выберите таблицу"
     }
   },
   
@@ -917,8 +988,8 @@
     },
   
     "getReady": {
-      "en-US": "# _Get ready! Starting in `{0}` second{0:m}!_",
-      "ru": "# _Приготовьтесь! Старт через `{0}` секунд{0:u}!_"
+      "en-US": "# _Get ready! Starting in `{0}` {0|second|seconds}!_",
+      "ru": "# _Приготовьтесь! Старт через `{0}` {0|секунду|секунды|секунд}!_"
     },
   
     "hasActiveChallengeLobby": {
@@ -1038,17 +1109,17 @@
   
     "sortedPlayersContent": {
       "en-US": "> **{0} `{1}`**\n> **`├─` `{2}` Points**\n> **`└─` `{3}` Rares**",
-      "ru": "> **{0} `{1}`**\n> **`├─` `{2}` Очк{2:e}**\n> **`└─` `{3}` Редк{3:re}**"
+      "ru": "> **{0} `{1}`**\n> **`├─` `{2}` {2|Очко|Очка|Очков}**\n> **`└─` `{3}` {3|Редкое|Редких|Редких}**"
     },
   
     "sortedPlayersInSortingTeamsContent": {
       "en-US": "> **`{0}`**\n> **`├──` `{1}` Points**\n> **`└──` `{2}` Rares**",
-      "ru": "> **`{0}`**\n> **`├──` `{1}` Очк{1:e}**\n> **`└──` `{2}` Редк{2:re}**"
+      "ru": "> **`{0}`**\n> **`├──` `{1}` {1|Очко|Очка|Очков}**\n> **`└──` `{2}` {2|Редкое|Редких|Редких}**"
     },
   
     "sortedTeamsContent": {
       "en-US": "> **{0} Team `{1}`**\n>  **`├──` `{2}` Points**\n>  **`└──` `{3}` Rares**",
-      "ru": "> **{0} Команда `{1}`**\n>  **`├──` `{2}` Очк{2:e}**\n>  **`└──` `{3}` Редк{3:re}**"
+      "ru": "> **{0} Команда `{1}`**\n>  **`├──` `{2}` {2|Очко|Очка|Очков}**\n>  **`└──` `{3}` {3|Редкое|Редких|Редких}**"
     },
   
     "team": {
@@ -1830,7 +1901,84 @@
       "ru": "Вы не ставили испытание на паузу!"
     }
   },
-  
+
+  "rolls": {
+    "best": {
+      "en-US": "### _Best roll: {0} `1/{1}` <t:{2}:d>_",
+      "ru": "### _Лучший бросок: {0} `1/{1}` <t:{2}:d>_"
+    },
+
+    "empty": {
+      "en-US": "## _No rolls here yet. Play the game to fill the history!_",
+      "ru": "## _Здесь пока нет бросков. Сыграйте, чтобы заполнить историю!_"
+    },
+
+    "gameMenu": {
+      "en-US": "Choose a game",
+      "ru": "Выберите игру"
+    },
+
+    "more": {
+      "en-US": ", +{0}",
+      "ru": ", +{0}"
+    },
+
+    "noBest": {
+      "en-US": "### _Best roll: none yet_",
+      "ru": "### _Лучший бросок: пока нет_"
+    },
+
+    "coins": {
+      "en-US": "• +`{0}`{EMOJI}",
+      "ru": "• +`{0}`{EMOJI}"
+    },
+
+    "nothingCaught": {
+      "en-US": "Nothing caught",
+      "ru": "Ничего не поймано"
+    },
+
+    "pageButton": {
+      "en-US": "Page {0}/{1}",
+      "ru": "Страница {0}/{1}"
+    },
+
+    "raretryEntry": {
+      "en-US": "### - <t:{0}:R> {1} {2}",
+      "ru": "### - <t:{0}:R> {1} {2}"
+    },
+
+    "raretryStats": {
+      "en-US": "### _Rolls: `{0}` • Rares caught: `{1}` • Earned: `{2}`{EMOJI}_",
+      "ru": "### _Бросков: `{0}` • Поймано редких: `{1}` • Заработано: `{2}`{EMOJI}_"
+    },
+
+    "soccerEntry": {
+      "en-US": "### - <t:{0}:R> {1} `1/{2}` {3}",
+      "ru": "### - <t:{0}:R> {1} `1/{2}` {3}"
+    },
+
+    "streak": {
+      "en-US": "### - <t:{0}:R> {1} ×`{2}` {3}",
+      "ru": "### - <t:{0}:R> {1} ×`{2}` {3}"
+    },
+
+    "soccerStats": {
+      "en-US": "### _Rolls: `{0}` • Found: `{1}/{2}` • Earned: `{3}`{EMOJI}_",
+      "ru": "### _Бросков: `{0}` • Найдено: `{1}/{2}` • Заработано: `{3}`{EMOJI}_"
+    },
+
+    "title": {
+      "en-US": "# 🎲 _{0}: roll history_",
+      "ru": "# 🎲 _{0}: история бросков_"
+    },
+
+    "unknownGame": {
+      "en-US": "Unknown game! Available games: `{0}`.",
+      "ru": "Неизвестная игра! Доступные игры: `{0}`."
+    }
+  },
+
   "rules": {
     "accepted": {
       "en-US": "## _You have successfully accepted the rules! Enjoy using the bot!_",
@@ -1907,7 +2055,7 @@
   
   "shop": {
     "alreadyBought": {
-      "en-US": "You already own this skins pack!",
+      "en-US": "You already own this bundle!",
       "ru": "Вы уже купили этот набор скинов!"
     },
   
@@ -1917,8 +2065,8 @@
     },
   
     "empty": {
-      "en-US": "No skin packs are available",
-      "ru": "Нет доступных наборов скинов"
+      "en-US": "## _There are no bundles left for you to buy!_",
+      "ru": "## _Больше нет наборов, которые можно купить!_"
     },
   
     "lowCash": {
@@ -1932,18 +2080,94 @@
     },
   
     "selectMenuSkinsPacksPlaceholder": {
-      "en-US": "Select a skins pack",
+      "en-US": "Select a bundle",
       "ru": "Выберите набор скинов"
     },
   
     "title": {
-      "en-US": "# ___Available skin packs___",
-      "ru": "# ___Доступные наборы скинов___"
+      "en-US": "# ___Shop___",
+      "ru": "# ___Магазин___"
     },
-  
+
     "unknown": {
-      "en-US": "Unknown skins pack!",
+      "en-US": "Unknown bundle!",
       "ru": "Неизвестный набор скинов!"
+    },
+
+    "modalTitlePage": {
+      "en-US": "Move to a page",
+      "ru": "Перейти на страницу"
+    },
+
+    "modalDescriptionPage": {
+      "en-US": "Enter a page you want to move to.",
+      "ru": "Введите страницу, на которую хотите перейти."
+    },
+
+    "allSkinsOwned": {
+      "en-US": "You already own every skin of this bundle!",
+      "ru": "У Вас уже есть все скины этого набора!"
+    },
+
+    "packDiscount": {
+      "en-US": "{0} -{1}%",
+      "ru": "{0} -{1}%"
+    },
+
+    "packOwnedSkins": {
+      "en-US": "{0} · {1}/{2} skins owned",
+      "ru": "{0} · {1}/{2} скинов уже есть"
+    },
+
+    "views": {
+      "packs": {
+        "en-US": "Bundles",
+        "ru": "Наборы"
+      },
+      "skins": {
+        "en-US": "Skins",
+        "ru": "Скины"
+      }
+    },
+
+    "optionNameSort": {
+      "en-US": "Sort Type: {0}",
+      "ru": "Сортировка по: {0}"
+    },
+
+    "optionNameOrder": {
+      "en-US": "Order: {0}",
+      "ru": "Порядок: {0}"
+    },
+
+    "skinsEmpty": {
+      "en-US": "## _There are no skins left for you to buy!_",
+      "ru": "## _Больше нет скинов, которые можно купить!_"
+    },
+
+    "skinLine": {
+      "en-US": "## {0} {1}\n-# For {2}",
+      "ru": "## {0} {1}\n-# Для {2}"
+    },
+
+    "free": {
+      "en-US": "Free",
+      "ru": "Бесплатно"
+    },
+
+    "pageButton": {
+      "en-US": "Page {0}/{1}",
+      "ru": "Страница {0}/{1}"
+    },
+
+    "skinOwned": {
+      "en-US": "You already own this skin!",
+      "ru": "У Вас уже есть этот скин!"
+    },
+
+    "skinNotForSale": {
+      "en-US": "This skin isn't sold on its own!",
+      "ru": "Этот скин не продаётся отдельно!"
     }
   },
   
@@ -1998,8 +2222,8 @@
   
   "special": {
     "caughtRares": {
-      "en-US": "## _{0}, you have caught `{1}` rares in `{2}`!_",
-      "ru": "## _{0}, Вы поймали `{1}` редких в `{2}`!_"
+      "en-US": "## _`checklist`: {0}, you caught `{1}` rare {1|animal|animals} in `{2}` and completed the quest!_",
+      "ru": "## _`checklist`: {0}, Вы поймали `{1}` {1|редкое|редких|редких} {1|животное|животных|животных} в `{2}` и выполнили задание!_"
     },
   
     "commandDisabled": {
@@ -2144,13 +2368,8 @@
   
   "wardrobe": {
     "allTitle": {
-      "en-US": "# _Equipping `all` animals, select a skin pack_",
+      "en-US": "# _Equipping `all` animals, select a bundle_",
       "ru": "# _Экипировка `всех` животных._"
-    },
-  
-    "availableSkins": {
-      "en-US": "## _All available skins for `{0}`_",
-      "ru": "## _Все доступные скины для `{0}`_"
     },
   
     "equippedAll": {
@@ -2158,24 +2377,44 @@
       "ru": "## _Успешно экипированы все животные на __{0}__!_"
     },
   
-    "equippedSkin": {
-      "en-US": "## _Equipped skin:_",
-      "ru": "## _Экипированный скин:_"
-    },
-  
     "equippedTier": {
       "en-US": "## _Successfully equipped tier `{0}` animals with __{1}__!_",
       "ru": "## _Успешно экипированы животные `{0}го` уровня на __{1}__!_"
     },
   
-    "everyEquipped": {
-      "en-US": "# _Successfully equipped all animals!_",
-      "ru": "# _Успешно экипированы все животные!_"
-    },
-  
     "invalidAnimal": {
       "en-US": "Animal not found",
       "ru": "Животное не найдено"
+    },
+
+    "notListed": {
+      "en-US": "`{0}` isn't on the list! It has only one skin or is out of the game",
+      "ru": "`{0}` нет в списке! у него один скин или его убрали из игры"
+    },
+
+    "listTitle": {
+      "en-US": "# _Pick a skin for each animal_",
+      "ru": "# _Выберите скин для каждого животного_"
+    },
+
+    "goToTitle": {
+      "en-US": "Go to",
+      "ru": "Перейти"
+    },
+
+    "goToPage": {
+      "en-US": "Page",
+      "ru": "Страница"
+    },
+
+    "goToTier": {
+      "en-US": "Tier",
+      "ru": "Уровень"
+    },
+
+    "goToAnimal": {
+      "en-US": "Animal name",
+      "ru": "Имя животного"
     },
   
     "menuTitleSelectSkin": {
@@ -2183,9 +2422,24 @@
       "ru": "Выберите скин"
     },
   
-    "menuTitleSelectSkinPack": {
-      "en-US": "Select a skin pack",
-      "ru": "Выберите набор скинов"
+    "packLine": {
+      "en-US": "## {0} · `{1}` {1|skin|skins}",
+      "ru": "## {0} · `{1}` {1|скин|скина|скинов}"
+    },
+
+    "buttonEquip": {
+      "en-US": "Equip",
+      "ru": "Надеть"
+    },
+
+    "pageButton": {
+      "en-US": "Page {0}/{1}",
+      "ru": "Страница {0}/{1}"
+    },
+
+    "noPacks": {
+      "en-US": "## _None of your bundles have skins for these animals!_",
+      "ru": "## _Ни в одном вашем наборе нет скинов для этих животных!_"
     },
   
     "noSkinsInTier": {
@@ -2194,7 +2448,7 @@
     },
   
     "tierTitle": {
-      "en-US": "# _Equipping tier `{0}` animals, select a skin pack_",
+      "en-US": "# _Equipping tier `{0}` animals, select a bundle_",
       "ru": "# _Экипировка животных `{0}го` уровня._"
     },
 
@@ -2204,8 +2458,8 @@
     },
 
     "menuTitle": {
-      "en-US": "# _Wardrobe: how do you want to equip your skins?_",
-      "ru": "# _Гардероб: как вы хотите экипировать скины?_"
+      "en-US": "# _How do you want to equip your skins?_",
+      "ru": "# _Как вы хотите экипировать скины?_"
     },
 
     "menuPlaceholder": {
@@ -2216,22 +2470,12 @@
     "menuOptions": {
       "new": {
         "label": {
-          "en-US": "One by one",
-          "ru": "По очереди"
+          "en-US": "All animals",
+          "ru": "Все животные"
         },
         "description": {
-          "en-US": "Every animal in turn, from the mouse to the King Dragon",
-          "ru": "Все животные по очереди, от мыши до Королевского Дракона"
-        }
-      },
-      "animal": {
-        "label": {
-          "en-US": "One animal",
-          "ru": "Одно животное"
-        },
-        "description": {
-          "en-US": "A skin for the animal you choose",
-          "ru": "Скин для выбранного животного"
+          "en-US": "Every animal's skins, page by page",
+          "ru": "Скины всех животных по страницам"
         }
       },
       "tier": {
@@ -2240,17 +2484,17 @@
           "ru": "Уровень"
         },
         "description": {
-          "en-US": "A skin pack for every animal of a tier",
+          "en-US": "A bundle for every animal of a tier",
           "ru": "Набор скинов для всех животных уровня"
         }
       },
       "all": {
         "label": {
-          "en-US": "All animals",
-          "ru": "Все животные"
+          "en-US": "One bundle for all",
+          "ru": "Один набор на всех"
         },
         "description": {
-          "en-US": "A skin pack for every animal",
+          "en-US": "A bundle for every animal",
           "ru": "Набор скинов для всех животных"
         }
       }
@@ -2271,16 +2515,6 @@
       "ru": "Уровень {0}"
     },
 
-    "animalMenuTitle": {
-      "en-US": "# _Tier `{0}`: choose an animal_",
-      "ru": "# _Уровень `{0}`: выберите животное_"
-    },
-
-    "animalPlaceholder": {
-      "en-US": "Select an animal",
-      "ru": "Выберите животное"
-    },
-
     "buttonBack": {
       "en-US": "Back",
       "ru": "Назад"
@@ -2288,12 +2522,12 @@
 
     "buttonPrevious": {
       "en-US": "Previous",
-      "ru": "Предыдущее"
+      "ru": "Предыдущая"
     },
 
     "buttonNext": {
       "en-US": "Next",
-      "ru": "Следующее"
+      "ru": "Следующая"
     }
   },
   

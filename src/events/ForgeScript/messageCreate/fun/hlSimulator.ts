@@ -6,6 +6,6 @@ export default new BaseCommand({
   aliases: commandsData.command_hlsimulator.aliases,
   type: "messageCreate",
   code: `
-    $handleHlsimulator
+    $handleHLSimulator
   `,
 })

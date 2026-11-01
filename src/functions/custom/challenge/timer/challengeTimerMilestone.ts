@@ -2,22 +2,22 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "challengeTimerMilestone",
-  description: "Runs when the challenge timer reaches a milestone: sends the time left notice, or completes the hour.",
+  description: "fires when the challenge timer hits a milestone: sends the time-left notice or wraps up the hour",
   brackets: true,
   params: [
     {
       name: "userId",
-      description: "ID of the user.",
+      description: "the user's ID",
       type: ArgType.String,
     },
     {
       name: "locale",
-      description: "The user's language.",
+      description: "the user's language",
       type: ArgType.String,
     },
     {
       name: "milestone",
-      description: "The reached second of the challenge (see challengeTimerMilestones).",
+      description: "the second the challenge reached (see challengeTimerMilestones)",
       type: ArgType.Number,
     },
   ],
@@ -26,7 +26,7 @@ export default new ForgeFunction({
     $let[l;$env[locale]]
     $let[remaining;$math[3600 - $env[milestone]]]
 
-    $c[Time left notice: in minutes while at least one is left, then in seconds]
+    $c[time-left notice in minutes, seconds for the last one]
     $if[$get[remaining]>0;
       $let[inMinutes;$checkCondition[$get[remaining]>=60]]
       $sendMessage[$channelID;
@@ -35,7 +35,7 @@ export default new ForgeFunction({
       $return
     ]
 
-    $c[The hour is over. The profile is loaded here: the timer doesn't keep the environment it was made in]
+    $c[hour's over. load the profile here, the timer doesn't keep its env]
     $jsonLoad[userProfile;$getProfile[$get[userId]]]
 
     $sendMessage[$channelID;$addHourOverContainer[$get[userId];$get[l]]]

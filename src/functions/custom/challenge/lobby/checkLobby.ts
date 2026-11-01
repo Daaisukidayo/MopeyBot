@@ -2,7 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "checkLobby",
-  description: "Checks if a lobby exist in a channel.",
+  description: "checks if the channel has a lobby",
   code: `
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$getChannelVar[lobby]!=;

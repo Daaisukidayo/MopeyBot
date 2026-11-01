@@ -3,16 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "pushNewHistoryPage",
-    description: "Creates and pushes a new challenge history page for a user using provided page data.",
+    description: "builds a new challenge history page from the given data and pushes it for the user",
     params: [
         {
             name: "newPageData",
-            description: "JSON object containing new page fields: points, rares, endDate, playType, difficulty, list.",
+            description: "the new page fields: points, rares, endDate, playType, difficulty, list",
             type: forgescript_1.ArgType.Json,
         },
         {
             name: "userId",
-            description: "The user ID.",
+            description: "the user's ID",
             type: forgescript_1.ArgType.User,
             required: false,
         },

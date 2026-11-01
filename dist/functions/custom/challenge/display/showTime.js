@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "showTime",
-    description: "Displays the user's timer from the 1 hour luck challenge in content format, in the caller's language.",
+    description: "the user's 1h luck challenge timer, in the caller's language",
     brackets: false,
     params: [
         {
             name: "userId",
-            description: "The user ID to show the time for.",
+            description: "whose time to show",
             type: forgescript_1.ArgType.User,
             required: false,
         },

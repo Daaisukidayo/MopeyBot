@@ -2,16 +2,16 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addUpgradeMenu",
-  description: "Adds upgrade menu for a player's play session",
+  description: "adds the upgrade menu",
   params: [
     {
       name: "playDataVar",
-      description: "The name of the variable that holds the play data.",
+      description: "var w/ the play data",
       type: ArgType.String,
     },
     {
       name: "wardrobeVar",
-      description: "The name of the variable that holds the user's wardrobe.",
+      description: "var w/ the user's wardrobe",
       type: ArgType.String,
     },
   ],
@@ -19,35 +19,35 @@ export default new ForgeFunction({
     $ref[wardrobe;$env[wardrobeVar]]
     $if[$env[$env[playDataVar]]==;$return]
     $ref[playData;$env[playDataVar]]
-    $c[A tester can switch luck off: every animal and rare of the tier is shown]
-    $let[allRares;$and[$jsonGet[userProfile;testerMode];$jsonGet[playData;dev;showAllRares]]]
+    $c[testers can turn luck off and see every animal + rare of the tier]
+    $let[allRares;$and[$jsonGet[userProfile;tester];$jsonGet[playData;dev;showAllRares]]]
 
     $getCache[animals;tierAnimals;tierAnimals]
     $jsonLoad[raresButtonStyle;$getGlobalVar[raresButtonStyle]]
     $jsonLoad[allRareAttemptsInfo;$getUserVar[allRareAttemptsInfo]]
 
-    $c[A session started before the pools got weights still holds the old pools ("common" and summed rarities): they are made again]
+    $c[sessions from before weighted pools still have the old ones ('common' + summed rarities), rebuild them]
     $if[$arraySome[$jsonEntries[allRareAttemptsInfo];e;$jsonHas[e;1;common]];
       $jsonLoad[allRareAttemptsInfo;$generateLuck[$getGlobalVar[playRaritiesKey]]]
       $setUserVar[allRareAttemptsInfo;$env[allRareAttemptsInfo]]
     ]
 
-    $c[Every animal of the tier but the king dragon. A luck group rolls its common animal or a rare by weight, a rare outside the groups is left out]
-    $arrayMap[$arrayFilter[$jsonGet[tierAnimals;$jsonGet[playData;tier];allAnimals];id;$env[id]!=king_dragon];animalId;
+    $c[luck groups roll common vs rare by weight, rares outside a group get skipped, so KD only shows up via BD's roll]
+    $arrayMap[$jsonGet[tierAnimals;$jsonGet[playData;tier];allAnimals];animalId;
       $if[$get[allRares];$return[$env[animalId]]]
       $if[$jsonHas[allRareAttemptsInfo;$env[animalId]];
         $jsonLoad[rolled;$arrayWeightedRandom[$jsonGet[allRareAttemptsInfo;$env[animalId];pool];weight]]
         $let[chosenAnimal;$jsonGet[rolled;id]]
 
-        $c[Nothing rolled (null) hides the button, and so does a shop animal without the locked pack]
-        $let[hidden;$or[$isOneOf[$get[chosenAnimal];null;];$and[$includes[$get[chosenAnimal];shop];$arrayIncludes[$jsonGet[userProfile;userPacks];lockedSP]==false]]]
+        $c[null roll hides the button, same for shop animals w/o the locked pack]
+        $let[hidden;$or[$isOneOf[$get[chosenAnimal];null;];$and[$includes[$get[chosenAnimal];shop];$arrayIncludes[$jsonGet[userProfile;user_packs];lockedSP]==false]]]
         $if[$get[hidden]==false;$return[$get[chosenAnimal]]]
       ;
         $if[$getAnimalInfo[$env[animalId];isRare]!=true;$return[$env[animalId]]]
       ]
     ;shownAnimals]
 
-    $c[Five buttons in a row]
+    $c[5 per row]
     $arrayForEach[shownAnimals;animalId;
       $let[buttonIndex;$arrayFindIndex[raresButtonStyle;arr;$arrayIncludes[$jsonGet[arr;1];$env[animalId]]]]
       $let[butStyle;$if[$get[buttonIndex]==-1;Secondary;$jsonGet[raresButtonStyle;$get[buttonIndex];0]]]
@@ -57,7 +57,7 @@ export default new ForgeFunction({
       $let[animalName;$getAnimalInfo[$env[animalId];name;$get[wr]]]
 
       $if[$math[$env[i] % 5]==0;$addActionRow]
-      $addButton[play_upgradeAnimal-$env[animalId]-$authorID;$get[animalName];$get[butStyle];$get[emoji]]
+      $addButton[play_upgradeAnimal-$env[animalId]-$playID[playData];$get[animalName];$get[butStyle];$get[emoji]]
     ;i]
 
   `,

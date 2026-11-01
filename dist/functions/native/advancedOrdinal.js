@@ -7,21 +7,21 @@ const SUFFIX_MAP = {
 };
 exports.default = new forgescript_1.NativeFunction({
     name: "$advancedOrdinal",
-    description: "Returns the ordinal representation of a number based on the language.",
+    description: "a number as an ordinal in the given language",
     output: forgescript_1.ArgType.String,
     brackets: true,
     unwrap: true,
     args: [
         {
             name: "number",
-            description: "The number to convert to an ordinal representation.",
+            description: "the number",
             type: forgescript_1.ArgType.Number,
             required: true,
             rest: false,
         },
         {
             name: "language",
-            description: "The language code used for the ordinal format. Defaults to en-US",
+            description: "the language code, en-US by default",
             type: forgescript_1.ArgType.String,
             required: false,
             rest: false,

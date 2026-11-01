@@ -7,7 +7,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 
@@ -18,7 +18,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $addContainer[
       $addTextDisplay[$codeBlock[Abbreviations  ➡️ Rare Animal]]
       $arrayForEach[$jsonEntries[$getCache[animals;tierAnimals]];entry;
-        $c[Only rares with abbreviations: those are the ones a challenge accepts]
+        $c[only rares w/ abbreviations, those are what challenges accept]
         $arrayMap[$jsonGet[entry;1;rareAnimals];animalId;
           $let[abbreviations;$getAnimalInfo[$env[animalId];challenge.abbreviations]]
           $if[$get[abbreviations]!=undefined;

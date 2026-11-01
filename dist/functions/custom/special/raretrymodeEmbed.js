@@ -9,13 +9,13 @@ exports.default = new forgescript_1.ForgeFunction({
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.raretrymode.title.$get[l]]]
 
-      $c[Three buttons in a row]
+      $c[3 per row]
       $arrayForEach[$getGlobalVar[raretryModes];mode;
         $if[$math[$env[i] % 3]==0;
           $addActionRow
         ]
 
-        $addButton[rtMode-$env[mode]-$authorID;$tl[data.raretryModes.$env[mode].$get[l]];Success;;$checkCondition[$jsonGet[userProfile;rtMode]==$env[mode]]]
+        $addButton[rtMode-$env[mode]-$authorID;$tl[data.raretryModes.$env[mode].$get[l]];Success;;$checkCondition[$jsonGet[userProfile;raretry_mode]==$env[mode]]]
       ;i]
     ;$getGlobalVar[luckyColor]]
   `,

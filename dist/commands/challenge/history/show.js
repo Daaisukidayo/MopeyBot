@@ -6,7 +6,7 @@ const forgescript_1 = require("@tryforge/forgescript");
 const slash = _commandsData_1.commandsData.command_showhistory.slash;
 exports.default = new forgescript_1.ApplicationCommand({
     code: `
-    $handleshowHistory
+    $handleShowHistory
   `,
     data: {
         type: 1,

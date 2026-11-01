@@ -3,16 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "toggleArrayValue",
-    description: "Toggles an element in the specified array: adds it if missing, removes it if already present.",
+    description: "adds the value to the array, or removes it if it's already there",
     params: [
         {
             name: "arrayName",
-            description: "The name of the array variable to modify.",
+            description: "the array var's name",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "element",
-            description: "The value to add or remove from the array.",
+            description: "the value to add or remove",
             type: forgescript_1.ArgType.String,
         },
     ],

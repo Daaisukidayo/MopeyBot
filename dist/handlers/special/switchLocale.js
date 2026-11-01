@@ -7,7 +7,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 
@@ -20,9 +20,9 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $defer
-    
+
     $!jsonSet[userProfile;language;$get[locale]]
-    $saveProfile[$env[userProfile]]
+    $callMethod[userProfile;save]
 
     $addContainer[
       $addAuthorDisplay

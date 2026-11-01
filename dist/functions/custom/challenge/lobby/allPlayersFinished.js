@@ -11,7 +11,7 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $if[$not[$arrayEvery[allPlayers;ID;$jsonGet[$getProgress[$env[ID]];started]==false]];$return]
 
-    $c[The last players can finish at the same moment and all get here. The results go out through one named timeout: a new one replaces the pending one, so they are sent once]
+    $c[the last players can finish at the same time and all land here. results go out via one named timeout, each new one replaces the pending one, so it's sent once]
     $setTimeout[$publishLobbyResults;1s;lobbyResults-$channelID]
   `,
 });

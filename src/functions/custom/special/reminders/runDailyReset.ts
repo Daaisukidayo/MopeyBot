@@ -2,8 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "runDailyReset",
-  description:
-    "Resets the daily limits and sends daily reward reminders. Runs at most once per day, so it is safe to call more than once",
+  description: "sends the daily reward reminders. runs at most once a day, so calling it twice is fine",
   code: `
     $calendar[Iso8601]
     $let[day;$calendarDay]
@@ -14,11 +13,8 @@ export default new ForgeFunction({
     $arrayForEach[$getGlobalVar[allUserIDs];id;
       $jsonLoad[userProfile;$getProfile[$env[id]]]
 
-      $deleteUserVar[caughtRaresInRaretryrun;$env[id]]
-      $deleteUserVar[caughtRaresInRaretry;$env[id]]
-
-      $c[Only to someone who has not claimed the reward today and wants the reminder. DMs are checked last, as it asks Discord]
-      $if[$and[$jsonGet[userProfile;limiters;lastDailyDay]!=$get[day];$arrayIncludes[$getUserVar[userReminders;$env[id]];0]];
+      $c[only folks who haven't claimed today and want the reminder. check DMs last bc that hits Discord]
+      $if[$and[$jsonGet[userProfile;rewards;daily_day]!=$get[day];$arrayIncludes[$getUserVar[userReminders;$env[id]];0]];
         $if[$isUserDMEnabled[$env[id]];
           $sendRewardReminder[$env[id];0;$jsonGet[userProfile;language]]
         ]

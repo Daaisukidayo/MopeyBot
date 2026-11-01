@@ -3,27 +3,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "addFoundSoccer",
-    description: "Adds the 'found soccer' screen with its rarity, animal stats and soccer actions menu",
+    description: "adds the 'found a soccer' screen: its rarity, the animal stats and the soccer actions menu",
     brackets: true,
     params: [
         {
             name: "playDataVar",
-            description: "The name of the variable that holds the play data.",
+            description: "var w/ the play data",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "wardrobeVar",
-            description: "The name of the variable that holds the user's wardrobe.",
+            description: "var w/ the user's wardrobe",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerType",
-            description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
+            description: "the soccer type, like 'pumpkin', 'umbrella' or 'beachball'",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerId",
-            description: "The ID of the soccer item",
+            description: "the soccer item's ID",
             type: forgescript_1.ArgType.Number,
         },
     ],
@@ -32,10 +32,10 @@ exports.default = new forgescript_1.ForgeFunction({
     $ref[wardrobe;$env[wardrobeVar]]
     $let[l;$jsonGet[userProfile;language]]
 
-    $c[A newly found soccer is not held yet]
+    $c[freshly found, not held yet]
     $callMethod[playData;dropSoccer]
 
-    $c[The rarity is shown as "1 in N", rounded from the chance in percent]
+    $c[show rarity as 1 in N, rounded from the %]
     $let[rarity;$round[$math[100 / $jsonGet[$getPlaySoccer[$env[soccerType];$env[soccerId]];chance]]]]
     $arrayLoad[soccerData;_;$env[soccerType]_$env[soccerId]]
 
@@ -46,7 +46,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $addSeparator[Large]
 
     $displayAnimalStats[playData;wardrobe]
-    $addSoccerActionsMenu[$env[soccerData]]
+    $addSoccerActionsMenu[playData;$env[soccerData]]
   `,
 });
 //# sourceMappingURL=addFoundSoccer.js.map

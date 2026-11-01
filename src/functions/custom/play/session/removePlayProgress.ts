@@ -5,14 +5,14 @@ export default new ForgeFunction({
   params: [
     {
       name: "playDataVar",
-      description: "The name of the variable that holds the play data.",
+      description: "var w/ the play data",
       type: ArgType.String,
     },
   ],
   code: `
     $ref[playData;$env[playDataVar]]
-    $sumCash[$jsonGet[playData;mope_coins]]
-    $saveProfile[$env[userProfile]]
+    $callMethod[userProfile;addCoins;$jsonGet[playData;mope_coins]]
+    $callMethod[userProfile;save]
 
     $deleteUserVar[allRareAttemptsInfo]
     $deleteUserVar[userPlayData]

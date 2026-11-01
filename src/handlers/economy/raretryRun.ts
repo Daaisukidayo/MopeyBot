@@ -11,11 +11,13 @@ export default new ForgeFunction({
     $addCooldown
     $defer
 
-    $jsonLoad[rtrRewardPerRare;$getGlobalVar[rtrRewardPerRare]]
+    $jsonLoad[categories;$getGlobalVar[raretryCategories]]
+    $getCache[rares;raretryCategoryOf;categoryOf]
     $arrayLoad[desc]
+    $arrayLoad[caught]
     $let[totalReward;0]
 
-    $c[A developer can give a luck multiplier]
+    $c[devs can pass a luck multiplier]
     $let[arg;$message[0]]
     $let[luck;$if[$and[$isNumber[$get[arg]];$isDev];$get[arg];1]]
 
@@ -23,12 +25,15 @@ export default new ForgeFunction({
       $jsonLoad[rolled;$arrayWeightedRandom[$jsonGet[entry;1;pool];weight]]
       $let[animalId;$jsonGet[rolled;id]]
 
-      $c[Only a rare counts: the common animal or nothing (null) is a miss. A chance of 3% or less gets a clover]
+      $c[only rares count, a common or null is a miss. rares show their category color + pool chance]
       $if[$getAnimalInfo[$get[animalId];isRare]==true;
-        $let[percent;$round[$math[$getAnimalInfo[$get[animalId];rarity.0] / $jsonGet[entry;1;total] * 100];3]]
-        $let[MC;$default[$jsonGet[rtrRewardPerRare;$get[animalId]];0]]
+        $let[colorEmoji;$jsonGet[categories;$jsonGet[categoryOf;$get[animalId]];emoji]]
+        $let[chance;$fraction[$getAnimalInfo[$get[animalId];rarity.0];$jsonGet[entry;1;total]]]
+        $c[every rare pays rtrRewardPerChance x N (1 in N), so on avg each one's worth the same]
+        $let[MC;$round[$math[$getGlobalVar[rtrRewardPerChance] * $jsonGet[entry;1;total] / $getAnimalInfo[$get[animalId];rarity.0]]]]
         $letSum[totalReward;$get[MC]]
-        $arrayPush[desc;## $if[$get[percent]<=3;🍀]$getAnimalInfo[$get[animalId];emoji;0] | \`$get[percent]%\`$if[$get[MC]>0; | \`$separate[$get[MC]]\`$getGlobalVar[mopecoin]]]
+        $arrayPushJSON[caught;$objectOf[id;$get[animalId];chance;$round[$math[$jsonGet[entry;1;total] / $getAnimalInfo[$get[animalId];rarity.0]]]]]
+        $arrayPush[desc;## $get[colorEmoji]$getAnimalInfo[$get[animalId];emoji;0] | \`$get[chance]\`$if[$get[MC]>0; | \`$separate[$get[MC]]\`$getGlobalVar[mopecoin]]]
       ]
     ]
 
@@ -41,18 +46,19 @@ export default new ForgeFunction({
       $if[$get[totalReward]>0;
         $addSeparator
         $addTextDisplay[$tl[ui.raretryrun.total.$get[l];$separate[$get[totalReward]]]]
-        $sumCash[$get[totalReward]]
+        $callMethod[userProfile;addCoins;$get[totalReward]]
       ]
     ;$getGlobalVar[luckyColor]]
 
-    $c[The daily task counts the catches until it is done]
+    $c[log to history/stats unless a dev boosted the luck, recordDevRolls turns that off for testing]
+    $if[$or[$get[luck]==1;$getGlobalVar[recordDevRolls]];
+      $recordRoll[raretryrun;$objectOf[at;$getTimestamp;rares;$env[caught];mope_coins;$get[totalReward]]]
+    ]
+
+    $c[count catches for the daily quest till it's done]
     $if[$jsonSize[desc]>0;
-      $if[$jsonGet[userProfile;limiters;lastDailyRaretryrun]!=$calendarDay;
-        $if[$countDailyRares[raretryrun;$jsonSize[desc]];
-          $!jsonSet[userProfile;limiters;lastDailyRaretryrun;$calendarDay]
-        ]
-      ]
-      $saveProfile[$env[userProfile]]
+      $countDailyRares[raretryrun;$jsonSize[desc]]
+      $callMethod[userProfile;save]
     ]
   `,
 })

@@ -2,27 +2,33 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addUpgradeMenuAnimalChoices",
-  description: "Adds upgrade menu animal skin choices as buttons based on user's owned packs",
+  description: "adds the upgrade menu skin buttons for the skins the user owns",
   params: [
     {
       name: "animalId",
-      description: "The ID of the animal to load skins for",
+      description: "the animal whose skins to show",
       type: ArgType.String,
+    },
+    {
+      name: "luck",
+      description: "KD rolled by luck, its buttons get a -luck tag",
+      type: ArgType.Boolean,
+      required: false,
     },
   ],
   code: `
-    $jsonLoad[userPacks;$jsonGet[userProfile;userPacks]]
-    $arrayUnshift[userPacks;s1;s2]
+    $jsonLoad[userSkins;$getUserVar[userSkins]]
+    $jsonLoad[freePacks;$getGlobalVar[freeSkinPacks]]
 
     $let[buttonsQuantity;0]
 
-    $c[Only the skins of the owned packs, three buttons in a row]
+    $c[only owned skins, free or bought, 3 buttons per row]
     $arrayForEach[$getAnimalInfo[$env[animalId];skins];skin;
-      $if[$arrayIncludes[userPacks;$jsonGet[skin;packId]];
-        $if[$math[$get[buttonsQuantity] % 3]==0;
+      $if[$or[$arrayIncludes[freePacks;$jsonGet[skin;packId]];$arrayIncludes[userSkins;$jsonGet[skin;id]]];
+        $if[$math[$get[buttonsQuantity] % 5]==0;
           $addActionRow
         ]
-        $addButton[kingdragon-$env[animalId]-$env[i]-$authorID;$jsonGet[skin;name];Secondary;$jsonGet[skin;emoji]]
+        $addButton[kingdragon-$env[animalId]-$env[i]-$authorID$if[$env[luck]==true;-luck];$jsonGet[skin;name];Secondary;$jsonGet[skin;emoji]]
         $letSum[buttonsQuantity;1]
       ]
     ;i]

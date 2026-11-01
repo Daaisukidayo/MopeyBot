@@ -2,11 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addExitButton",
-  description: "Adds exit button for a player's play session",
+  description: "adds the exit button",
   params: [
     {
       name: "playDataVar",
-      description: "The name of the variable that holds the play data.",
+      description: "var w/ the play data",
       type: ArgType.String,
     },
   ],

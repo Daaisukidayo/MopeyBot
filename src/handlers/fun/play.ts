@@ -6,7 +6,7 @@ export default new ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
 
     $onlyIf[$guildID!=;
@@ -34,7 +34,7 @@ export default new ForgeFunction({
     ;
       $setUserVar[allRareAttemptsInfo;$generateLuck[$getGlobalVar[playRaritiesKey]]]
       $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
-      
+
       $addContainer[
         $addAuthorDisplay
         $addTextDisplay[$tl[ui.play.chooseAnimal.$get[l]]]

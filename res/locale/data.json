@@ -1,18 +1,18 @@
 {
   "allSettings": {
-    "0": {
+    "hidePoints": {
       "en-US": "Hide Points",
       "ru": "Скрыть очки"
     },
-    "1": {
+    "hideRares": {
       "en-US": "Hide Rares",
       "ru": "Скрыть редких"
     },
-    "2": {
+    "hideLimit": {
       "en-US": "Hide Rares Limit",
       "ru": "Скрыть лимит редких"
     },
-    "3": {
+    "hidePrediction": {
       "en-US": "Hide Prediction",
       "ru": "Скрыть прогноз"
     }
@@ -196,23 +196,23 @@
   },
 
   "helpCategories": {
-    "0": {
+    "help_category_economy": {
       "en-US": "Economy",
       "ru": "Экономика"
     },
-    "1": {
+    "help_category_fun": {
       "en-US": "Fun",
       "ru": "Развлечения"
     },
-    "2": {
+    "help_category_special": {
       "en-US": "Special",
       "ru": "Специальное"
     },
-    "3": {
+    "help_category_gaming": {
       "en-US": "Gaming",
       "ru": "Игры"
     },
-    "4": {
+    "help_category_luckchallenge": {
       "en-US": "Luck Challenge",
       "ru": "Испытание удачи"
     }
@@ -250,6 +250,37 @@
     "7": {
       "en-US": "abysmal luck 💀",
       "ru": "худшая удача 💀"
+    }
+  },
+
+  "leaderboardTypes": {
+    "mc": {
+      "en-US": "Mopecoins",
+      "ru": "Мопкоины"
+    },
+    "raretry": {
+      "en-US": "Raretry rares",
+      "ru": "Редкие в попытке редких"
+    },
+    "raretryrun": {
+      "en-US": "Raretry Run rares",
+      "ru": "Редкие в попытке прохождения"
+    },
+    "pumpkin": {
+      "en-US": "Rarest pumpkin",
+      "ru": "Самая редкая тыква"
+    },
+    "umbrella": {
+      "en-US": "Rarest umbrella",
+      "ru": "Самый редкий зонт"
+    },
+    "beachball": {
+      "en-US": "Rarest beachball",
+      "ru": "Самый редкий пляжный мяч"
+    },
+    "collection": {
+      "en-US": "Soccer collection",
+      "ru": "Коллекция мячей"
     }
   },
 
@@ -377,41 +408,29 @@
   },
 
   "raretryCategories": {
-    "0": {
+    "raretry_category_common": {
       "en-US": "Common",
       "ru": "Обычные"
     },
-    "1": {
+    "raretry_category_uncommon": {
       "en-US": "Uncommon",
       "ru": "Необычные"
     },
-    "2": {
+    "raretry_category_rare": {
       "en-US": "Rare",
       "ru": "Редкие"
     },
-    "3": {
+    "raretry_category_epic": {
       "en-US": "Epic",
       "ru": "Эпические"
     },
-    "4": {
+    "raretry_category_legendary": {
       "en-US": "Legendary",
       "ru": "Легендарные"
     },
-    "5": {
-      "en-US": "Extreme",
-      "ru": "Экстремальные"
-    },
-    "6": {
+    "raretry_category_mythic": {
       "en-US": "Mythic",
       "ru": "Мифические"
-    },
-    "7": {
-      "en-US": "Godly",
-      "ru": "Божественные"
-    },
-    "8": {
-      "en-US": "Divine",
-      "ru": "Божественные"
     }
   },
 
@@ -438,6 +457,29 @@
     }
   },
 
+  "rollGames": {
+    "raretry": {
+      "en-US": "Raretry",
+      "ru": "Попытка редких"
+    },
+    "raretryrun": {
+      "en-US": "Raretry Run",
+      "ru": "Попытка прохождения"
+    },
+    "pumpkin": {
+      "en-US": "Pumpkin",
+      "ru": "Тыква"
+    },
+    "umbrella": {
+      "en-US": "Umbrella",
+      "ru": "Зонт"
+    },
+    "beachball": {
+      "en-US": "Beachball",
+      "ru": "Пляжный мяч"
+    }
+  },
+
   "reminders": {
     "0": {
       "en-US": "Daily reward",
@@ -451,60 +493,76 @@
 
   "shopSkinPacks": {
     "arcticGTSP": {
-      "en-US": "Arctic Gold Trim Skins Pack",
+      "en-US": "Arctic Gold Trim Bundle",
       "ru": "Арктика - набор позолоченных скинов"
     },
     "christmas2022SP": {
-      "en-US": "Christmas Skins Pack 2022",
+      "en-US": "Christmas Bundle 2022",
       "ru": "Рождественский набор скинов 2022"
     },
+    "christmas2025SP": {
+      "en-US": "Christmas Bundle 2025",
+      "ru": "Рождественский набор скинов 2025"
+    },
     "desertGTSP": {
-      "en-US": "Desert Gold Trim Skins Pack",
+      "en-US": "Desert Gold Trim Bundle",
       "ru": "Пустыня - набор позолоченных скинов"
     },
     "goldenSP": {
-      "en-US": "Golden Skins Pack",
+      "en-US": "Gold Bundle",
       "ru": "Золотой набор скинов"
     },
     "halloween2020SP": {
-      "en-US": "Halloween Skins Pack 2020",
+      "en-US": "Halloween Bundle 2020",
       "ru": "Хеллоуинский набор скинов 2020"
     },
     "halloween2021SP": {
-      "en-US": "Halloween Skins Pack 2021",
+      "en-US": "Halloween Bundle 2021",
       "ru": "Хеллоуинский набор скинов 2021"
     },
     "halloween2022SP": {
-      "en-US": "Halloween Skins Pack 2022",
+      "en-US": "Halloween Bundle 2022",
       "ru": "Хеллоуинский набор скинов 2022"
     },
     "halloween2023SP": {
-      "en-US": "Halloween Skins Pack 2023",
+      "en-US": "Halloween Bundle 2023",
       "ru": "Хеллоуинский набор скинов 2023"
     },
+    "halloween2025SP": {
+      "en-US": "Halloween Bundle 2025",
+      "ru": "Хеллоуинский набор скинов 2025"
+    },
     "landGTSP": {
-      "en-US": "Land Gold Trim Skins Pack",
+      "en-US": "Land Gold Trim Bundle",
       "ru": "Земля - набор позолоченных скинов"
     },
     "legacySP": {
-      "en-US": "Legacy Skins Pack",
+      "en-US": "Classic Bundle",
       "ru": "Классический набор скинов"
     },
     "legacySPw": {
-      "en-US": "Legacy Skins Pack | Winter Version",
+      "en-US": "Classic Bundle | Winter Version",
       "ru": "Классический набор скинов | Зимняя версия"
     },
     "lockedSP": {
-      "en-US": "Locked Skins Pack",
+      "en-US": "Locked Bundle",
       "ru": "Закрытый набор скинов"
     },
-    "may2022SP": {
-      "en-US": "May Skins Pack 2022",
-      "ru": "Майский набор скинов 2022"
+    "mope10LegendsSP": {
+      "en-US": "mope.10 Legends Bundle",
+      "ru": "Легендарный набор скинов mope.10"
+    },
+    "mope10PartySP": {
+      "en-US": "mope.10 Party Bundle",
+      "ru": "Праздничный набор скинов mope.10"
     },
     "oceanGTSP": {
-      "en-US": "Ocean Gold Trim Skins Pack",
+      "en-US": "Ocean Gold Trim Bundle",
       "ru": "Океан - набор позолоченных скинов"
+    },
+    "oldestSP": {
+      "en-US": "Oldest Bundle",
+      "ru": "Старейший набор скинов"
     },
     "s1": {
       "en-US": "Season 1",
@@ -519,20 +577,47 @@
       "ru": "Стандартный набор 2го сезона | Зимняя версия"
     },
     "storefrontSP": {
-      "en-US": "Storefront Skins Pack",
+      "en-US": "Storefront Bundle",
       "ru": "Витринный набор скинов"
     },
     "summer2021SP": {
-      "en-US": "Summer Skins Pack 2021",
+      "en-US": "Summer Bundle 2021",
       "ru": "Летний набор скинов 2021"
     },
     "summer2022SP": {
-      "en-US": "Summer Skins Pack 2022",
+      "en-US": "Summer Bundle 2022",
       "ru": "Летний набор скинов 2022"
     },
+    "summer2025SP": {
+      "en-US": "Summer Bundle 2025",
+      "ru": "Летний набор скинов 2025"
+    },
     "valentine2023SP": {
-      "en-US": "Valentine Skins Pack 2023",
+      "en-US": "Valentine Bundle 2023",
       "ru": "Валентинский набор скинов 2023"
+    }
+  },
+
+  "skinCollections": {
+    "cosmic": {
+      "en-US": "Cosmic Skins",
+      "ru": "Космические скины"
+    },
+    "march2025": {
+      "en-US": "March Skins 2025",
+      "ru": "Мартовские скины 2025"
+    },
+    "may2022": {
+      "en-US": "May Skins 2022",
+      "ru": "Майские скины 2022"
+    },
+    "promo": {
+      "en-US": "Promo Skins",
+      "ru": "Промо-скины"
+    },
+    "retired": {
+      "en-US": "Retired Skins",
+      "ru": "Ушедшие скины"
     }
   },
 
@@ -590,40 +675,59 @@
   },
 
   "soccerActions": {
-    "0": {
+    "soccer_action_hold": {
       "en-US": "Hold",
       "ru": "Держать"
     },
-    "1": {
+    "soccer_action_ignore": {
       "en-US": "Ignore",
       "ru": "Игнорировать"
     },
-    "2": {
+    "soccer_action_goal": {
       "en-US": "Goal",
       "ru": "Гол"
     },
-    "3": {
+    "soccer_action_throwaway": {
       "en-US": "Throw away",
       "ru": "Отбросить"
     }
   },
 
   "sortingOptions": {
-    "0": {
+    "history_sort_endingdate": {
       "en-US": "Ending Date",
       "ru": "Дате окончания"
     },
-    "1": {
+    "history_sort_totalpoints": {
       "en-US": "Total Points",
       "ru": "Количеству очков"
     },
-    "2": {
+    "history_sort_totalrares": {
       "en-US": "Total Rares",
       "ru": "Количеству редких"
     },
-    "3": {
+    "history_sort_rareanimal": {
       "en-US": "Rare animal",
       "ru": "Редкому животному"
+    }
+  },
+
+  "shopSortingOptions": {
+    "shop_sort_collection": {
+      "en-US": "Collection",
+      "ru": "Коллекциям"
+    },
+    "shop_sort_price": {
+      "en-US": "Price",
+      "ru": "Цене"
+    },
+    "shop_sort_tier": {
+      "en-US": "Animal Tier",
+      "ru": "Уровню животного"
+    },
+    "shop_sort_name": {
+      "en-US": "Name",
+      "ru": "Названию"
     }
   },
 

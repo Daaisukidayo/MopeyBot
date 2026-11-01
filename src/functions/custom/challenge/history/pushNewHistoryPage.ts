@@ -2,16 +2,16 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "pushNewHistoryPage",
-  description: "Creates and pushes a new challenge history page for a user using provided page data.",
+  description: "builds a new challenge history page from the given data and pushes it for the user",
   params: [
     {
       name: "newPageData",
-      description: "JSON object containing new page fields: points, rares, endDate, playType, difficulty, list.",
+      description: "the new page fields: points, rares, endDate, playType, difficulty, list",
       type: ArgType.Json,
     },
     {
       name: "userId",
-      description: "The user ID.",
+      description: "the user's ID",
       type: ArgType.User,
       required: false,
     },

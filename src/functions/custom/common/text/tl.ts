@@ -2,17 +2,18 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "tl",
-  description: "Returns a text from the locale file based on the provided path in key(s).value format.",
+  description: "a text from the locale files by its path",
   output: ArgType.Unknown,
   params: [
     {
       name: "path",
-      description: "The key path to the desired content, e.g. 'ui.errors.test.en-US'.",
+      description:
+        "the path + the language, like 'ui.errors.test.en-US'. w/o the language it's the caller's userProfile one, else the default",
       type: ArgType.String,
     },
     {
       name: "args",
-      description: "Arguments to replace {PLACEHOLDERS} in the content.",
+      description: "values for {0}, {1}... texts also take {0:ord} for ordinals and {0|form|forms} for plurals",
       type: ArgType.String,
       required: false,
       rest: true,
@@ -21,12 +22,11 @@ export default new ForgeFunction({
   code: `
     $arrayLoad[rawPath;.;$trim[$replace[$trimLines[$env[path]];\n;]]]
 
-    $c[The first part is the locale file (ui, data...)]
+    $c[first part = locale file (ui, data...), last = language]
     $let[type;$arrayShift[rawPath]]
+    $let[locale;$jsonGet[rawPath;-1]]
 
-    $let[path;$arrayJoin[rawPath;.]]
-
-    $c[Both the file and each resolved path are cached]
+    $c[the file and resolved paths are both cached]
     $if[$hasCache[locale;$get[type]]==false;
       $if[$fileExists[res/locale/$get[type].json];
         $setCache[locale;$get[type];$readFile[res/locale/$get[type].json]]
@@ -35,45 +35,70 @@ export default new ForgeFunction({
       ]
     ]
 
+    $c[a text w/o the language at the end gets the caller's profile one, else the default. a whole group comes back as it is]
+    $if[$jsonGet[$getGlobalVar[allLocales];$get[locale]]==;
+      $if[$jsonGet[$getCache[locale;$get[type]];$spread[$arrayJoin[rawPath;.];.];$getGlobalVar[defaultLocale]]!=;
+        $let[locale;$default[$env[userProfile;language];$getGlobalVar[defaultLocale]]]
+        $arrayPush[rawPath;$get[locale]]
+      ]
+    ]
+
+    $let[path;$arrayJoin[rawPath;.]]
+
     $if[$hasCache[locale;$get[type].$get[path]]==false;
       $setCache[locale;$get[type].$get[path];$jsonGet[$getCache[locale;$get[type]];$spread[$get[path];.]]]
     ]
     $getCache[locale;$get[type].$get[path];value]
 
+    $c[missing text in a known language falls back to the default one (plurals too), logged once per text]
+    $let[defaultLocale;$getGlobalVar[defaultLocale]]
+    $if[$and[$env[value]==;$get[locale]!=$get[defaultLocale];$jsonGet[$getGlobalVar[allLocales];$get[locale]]!=];
+      $if[$hasCache[locale;missing|$get[type].$get[path]]==false;
+        $setCache[locale;missing|$get[type].$get[path];true]
+        $logger[Warn;No $get[locale] text at $get[type].$get[path]: the $get[defaultLocale] one is shown]
+      ]
+      $!arrayPop[rawPath]
+      $arrayPush[rawPath;$get[defaultLocale]]
+      $let[locale;$get[defaultLocale]]
+      $let[path;$arrayJoin[rawPath;.]]
+      $if[$hasCache[locale;$get[type].$get[path]]==false;
+        $setCache[locale;$get[type].$get[path];$jsonGet[$getCache[locale;$get[type]];$spread[$get[path];.]]]
+      ]
+      $getCache[locale;$get[type].$get[path];value]
+    ]
+
     $if[$env[value]==;
       $return[❌ invalid path ($get[path])]
     ]
 
+    $c[ordinals {0:ord} and plurals {0|form|forms} come out of the text itself, so they go first. Intl picks the form: en needs 2, ru 3]
     $if[$jsonSize[args]>0;
-      $c[The last part is the language]
-      $let[locale;$jsonGet[rawPath;-1]]
-      
+      $jsonLoad[formOfCategory;$objectOf[one;0;two;1;few;1;other;1;many;2;zero;2]]
       $arrayForEach[args;arg;
-        $c[{0}, {1}...]
-        $jsonSet[value;$replace[$env[value];{$env[i]};$env[arg]]]
-
-        $c[Ordinals: {0:ord}]
         $if[$includes[$env[value];{$env[i]:ord}];
           $jsonSet[value;$replace[$env[value];{$env[i]:ord};$advancedOrdinal[$env[arg];$get[locale]]]]
         ]
-        
-        $c[Plurals: {0:keyName}]
-        $createRegex[findKey;{$env[i]:([a-z\\]+)};g]
-        $arrayLoad[keysToProcess;,;$regexMatch[findKey;$env[value];,]]
-        
-        $if[$jsonGet[keysToProcess;0]!=;
-          $arrayForEach[keysToProcess;key;
-            $let[currentKey;$replaceRegex[$env[key];[{}0-9:\\];g;]]
-            $jsonSet[value;$replace[$env[value];{$env[i]:$get[currentKey]};$pluralize[$env[arg];$get[currentKey];$get[locale]]]]
+        $if[$includes[$env[value];{$env[i]|];
+          $let[form;$jsonGet[formOfCategory;$pluralRule[$env[arg];$get[locale]]]]
+          $createRegex[findForms;{$env[i][|\\][^{}\\]+};g]
+          $arrayLoad[tokens;¦;$regexMatch[findForms;$env[value];¦]]
+          $arrayForEach[tokens;token;
+            $arrayLoad[forms;|;$advancedReplace[$env[token];{$env[i]|;;};]]
+            $jsonSet[value;$replace[$env[value];$env[token];$jsonGet[forms;$min[$get[form];$math[$jsonSize[forms] - 1]]]]]
           ;j]
         ]
       ;i]
     ]
 
-    
+    $c[global placeholders, still on the bare text. the prefix is the server's or the default one in DMs]
     $if[$includes[$env[value];{EMOJI};{BLANK};{PREFIX}];
-      $c[Global placeholders. The prefix is the server's, or the global one in DMs]
       $jsonSet[value;$advancedReplace[$env[value];{EMOJI};$getGlobalVar[mopecoin];{BLANK};$getGlobalVar[blank];{PREFIX};$getPrefix]]
+    ]
+
+    $c[args go in last through a marker each, so a {1} or {PREFIX} typed into one stays as it is]
+    $if[$jsonSize[args]>0;
+      $arrayForEach[args;arg;$jsonSet[value;$replace[$env[value];{$env[i]};\u0001$env[i]\u0001]];i]
+      $arrayForEach[args;arg;$jsonSet[value;$replace[$env[value];\u0001$env[i]\u0001;$replace[$env[arg];\u0001;]]];i]
     ]
 
     $return[$env[value]]

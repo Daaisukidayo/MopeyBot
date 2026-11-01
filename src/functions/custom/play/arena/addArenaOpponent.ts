@@ -2,22 +2,22 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addArenaOpponent",
-  description: "Sets up an arena opponent with a random wardrobe and adds the arena intro with action buttons",
+  description: "sets up an arena opponent w/ a random wardrobe and adds the arena intro + action buttons",
   brackets: true,
   params: [
     {
       name: "playDataVar",
-      description: "The name of the variable that holds the play data.",
+      description: "var w/ the play data",
       type: ArgType.String,
     },
     {
       name: "opponentId",
-      description: "The animal ID of the opponent",
+      description: "the opponent's animal ID",
       type: ArgType.String,
     },
     {
       name: "opponentTier",
-      description: "The tier of the opponent (any existing tier, 1-17)",
+      description: "the opponent's tier (any existing one, 1-17)",
       type: ArgType.Number,
     },
   ],
@@ -37,7 +37,7 @@ export default new ForgeFunction({
       $addThumbnail[$get[thumbnail]]
       $addTextDisplay[$tl[ui.play.arena.wentInArena.$get[l];$get[oppDisplay]]]
     ]
-    $addArenaActionButtons
+    $addArenaActionButtons[playData]
     $addArenaDevMenu[playData]
   `,
 })

@@ -6,7 +6,7 @@ export default new ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $jsonLoad[challengeProgress;$getProgress]
     $isActiveChallenge[challengeProgress]

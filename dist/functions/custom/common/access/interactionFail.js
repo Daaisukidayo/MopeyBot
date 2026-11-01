@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "interactionFail",
-    description: "Sends a warning message if the user cannot interact with the message",
+    description: "warns the user they can't interact w/ this msg",
     code: `
     $let[l;$jsonGet[userProfile;language]]
-    $ephemeral 
+    $ephemeral
     $interactionReply[$tl[ui.special.interactionFail.$get[l]]]
   `,
 });

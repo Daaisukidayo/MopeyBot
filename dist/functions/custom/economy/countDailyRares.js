@@ -3,8 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "countDailyRares",
-    description: "Adds the rares caught today in raretry or raretryrun to the user's daily task. When the task is done, sends the command's reply (it must be ready), tells the user in a new message and returns true, so the caller marks the day as done.",
-    output: forgescript_1.ArgType.Boolean,
+    description: "adds raretry/raretryrun catches to today's quest, capped at its max. finishing it sends the cmd reply (has to be ready) + a notice in a new msg",
     params: [
         {
             name: "command",
@@ -14,25 +13,28 @@ exports.default = new forgescript_1.ForgeFunction({
         },
         {
             name: "count",
-            description: "The rares caught now",
+            description: "rares caught just now",
             type: forgescript_1.ArgType.Number,
             required: true,
         },
     ],
     code: `
-    $c[caughtRaresInRaretry and maxRaretryRares, or the same with Raretryrun]
-    $let[counter;caughtRaresIn$toTitleCase[$env[command]]]
+    $c[raretry_rares + maxRaretryRares or the raretryrun pair. capped so the notice only goes out once, the caller saves]
+    $callMethod[userProfile;refreshChecklist]
+    $let[counter;$env[command]_rares]
     $let[max;$getGlobalVar[max$toTitleCase[$env[command]]Rares]]
+    $let[had;$jsonGet[userProfile;checklist;$get[counter]]]
+    $if[$get[had]>=$get[max];$return]
 
-    $setUserVar[$get[counter];$math[$getUserVar[$get[counter]] + $env[count]]]
-    $if[$getUserVar[$get[counter]]<$get[max];$return[false]]
+    $let[now;$math[$get[had] + $env[count]]]
+    $!jsonSet[userProfile;checklist;$get[counter];$min[$get[now];$get[max]]]
+    $if[$get[now]<$get[max];$return]
 
-    $c[The command's reply is sent first, then the notice in its own message]
+    $c[send the cmd reply first, then the notice as its own msg]
     $!send
     $sendMessage[$channelID;
       $addTextDisplay[$tl[ui.special.caughtRares.$jsonGet[userProfile;language];<@$authorID>;$get[max];$env[command]]]
     ]
-    $return[true]
   `,
 });
 //# sourceMappingURL=countDailyRares.js.map

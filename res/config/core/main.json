@@ -23,13 +23,13 @@
   "maxCoinflipBet": 200000,
   "maxSlotsBet": 50000,
   "defaultSlotsBet": 5,
-  "maxRaretryrunRares": 20,
-  "maxRaretryRares": 3,
+  "maxRaretryrunRares": 15,
+  "maxRaretryRares": 2,
 
-  "voteReward": 10000,
-  "dailyReward": 20000,
-  "weeklyReward": 150000,
-  "checklistReward": 30000,
+  "voteReward": 7500,
+  "dailyReward": 15000,
+  "weeklyReward": 100000,
+  "checklistReward": 25000,
 
   "discordServerInvite": "https://discord.gg/FE4dqGD",
   "informationLink": "https://github.com/Daaisukidayo/MopeyBot/blob/main/README.md",
@@ -39,22 +39,9 @@
 
   "numberSeparator": "∙",
 
+  "defaultLocale": "en-US",
   "allLocales": {
     "en-US": "English (US)",
     "ru": "Русский"
-  },
-
-  "endingsMap": {
-    "ru": {
-      "e": ["о", "а", "ов"],
-      "i": ["а", "ы", ""],
-      "u": ["у", "ы", ""],
-      "m": ["", "а", "ов"],
-      "y": ["я", "и", "ей"],
-      "re": ["ое", "их", "их"]
-    },
-    "en-US": {
-      "m": ["", "s", "s"]
-    }
   }
 }

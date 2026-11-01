@@ -1,5 +1,5 @@
 {
-  "helpCategories": [0, 1, 2, 4],
+  "helpCategories": ["help_category_economy", "help_category_fun", "help_category_special", "help_category_luckchallenge"],
 
   "helpReplacements": [
     ["{PREFIX}", "$getPrefix"],
@@ -14,6 +14,8 @@
     ["{MAX_SLOTS_BET}", "$separate[$getGlobalVar[maxSlotsBet]]"],
     ["{MIN_SLOTS_BET}", "$separate[$getGlobalVar[defaultSlotsBet]]"],
     ["{AVAILABLE_LOCALES}", "$codeBlock[$arrayFormat[$jsonEntries[$getGlobalVar[allLocales]];{0} - {1};;;\n];MD]"],
-    ["{HL_DIFFICULTIES}", "$codeBlock[$arrayJoin[$arrayMap[$getGlobalVar[difficulties];d;$return[$tl[data.difficulties.$env[d].$get[l]]]];\n];JSON]"]
+    ["{ROLL_HISTORY_LENGTH}", "$getGlobalVar[rollHistoryLength]"],
+    ["{HOF_MIN_CHANCE}", "$arrayMap[$getGlobalVar[rollGames];game;$return[$jsonGet[$getGlobalVar[hallOfFameMinChance];$env[game]]];hofChances]$separate[$min[$spread[$arrayJoin[hofChances;,];,]]]"],
+    ["{HL_DIFFICULTIES}","$codeBlock[$arrayJoin[$arrayMap[$getGlobalVar[difficulties];d;$return[$tl[data.difficulties.$env[d].$get[l]]]];\n];JSON]"]
   ]
 }

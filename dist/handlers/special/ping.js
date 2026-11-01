@@ -7,12 +7,12 @@ exports.default = new forgescript_1.ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 
     $defer
-    
+
     $addContainer[
       $addSection[
         $addTextDisplay[# $username[$botID]]

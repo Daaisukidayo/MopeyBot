@@ -11,18 +11,18 @@ export default new ForgeFunction({
     $addCooldown
     $defer
 
-    $c[The luck is rolled once a day: the profile keeps the number and its description until the next day]
-    $if[$jsonGet[userProfile;limiters;lastHLUsed]!=$calendarDay;
+    $c[rolled once a day, the profile keeps the number + desc till tomorrow]
+    $if[$jsonGet[userProfile;howlucky;day]!=$calendarDay;
       $let[r;$random[0;100]]
-      $c[The thresholds go down to 0, so one always matches]
+      $c[thresholds go down to 0 so something always matches]
       $jsonLoad[luck;$arrayFind[$getGlobalVar[howluckyData];data;$get[r]>=$jsonGet[data;num]]]
-      $objectMerge[userProfile;limiters;$objectOf[lastHLUsed;$calendarDay;HLRandom;$get[r];luckDesc;$jsonGet[luck;desc]]]
-      $saveProfile[$env[userProfile]]
+      $objectMerge[userProfile;howlucky;$objectOf[day;$calendarDay;number;$get[r];desc;$jsonGet[luck;desc]]]
+      $callMethod[userProfile;save]
     ]
 
     $addContainer[
       $addAuthorDisplay
-      $addTextDisplay[$tl[ui.howlucky.description.$get[l];$jsonGet[userProfile;limiters;HLRandom];$tl[data.howlucky.$jsonGet[userProfile;limiters;luckDesc].$get[l]]]]
+      $addTextDisplay[$tl[ui.howlucky.description.$get[l];$jsonGet[userProfile;howlucky;number];$tl[data.howlucky.$jsonGet[userProfile;howlucky;desc].$get[l]]]]
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.howlucky.footer.$get[l];$discordTimestamp[$math[$getTimestamp + $msUntilNextDay];RelativeTime]]]
     ;$getGlobalVar[luckyColor]]

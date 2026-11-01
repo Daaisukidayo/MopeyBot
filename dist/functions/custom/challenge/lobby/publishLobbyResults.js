@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "publishLobbyResults",
-    description: "Sends the lobby results and removes the lobby. Runs from the named timeout set by allPlayersFinished",
+    description: "sends the lobby results and removes the lobby. runs from the named timeout allPlayersFinished sets",
     code: `
     $jsonLoad[lobby;$getLobby]
     $if[$env[lobby]==;$return]

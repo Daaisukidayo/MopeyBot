@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.NativeFunction({
     name: "$not",
-    description: "Returns the logical NOT of a boolean value",
+    description: "logical NOT",
     output: forgescript_1.ArgType.Boolean,
     brackets: true,
     unwrap: true,
     args: [
         {
             name: "boolean",
-            description: "The boolean value to invert.",
+            description: "the boolean to flip",
             type: forgescript_1.ArgType.Boolean,
             required: true,
             rest: false,

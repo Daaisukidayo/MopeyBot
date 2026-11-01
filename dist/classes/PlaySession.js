@@ -19,6 +19,7 @@ exports.default = new forge_class_1.ForgeClassBuilder({
             },
         },
         path: null,
+        screen: 0,
         is_started: false,
         is_dead: false,
         tier: 1,
@@ -45,9 +46,15 @@ exports.default = new forge_class_1.ForgeClassBuilder({
                 { name: "messageId", type: forge_class_1.ParamType.Message },
             ],
             code: `
-        $c[The game message as in its link: guild/channel/message]
+        $c[msg link format: guild/channel/message]
         $setField[this;path;$env[guildId;id]/$env[channelId;id]/$env[messageId;id]]
         $setField[this;is_started;true]
+      `,
+        },
+        nextScreen: {
+            code: `
+        $c[components carry their screen number so stale ones can be spotted]
+        $jsonMath[this;screen;1]
       `,
         },
         addXp: {
@@ -58,31 +65,47 @@ exports.default = new forge_class_1.ForgeClassBuilder({
             params: [{ name: "amount", type: forge_class_1.ParamType.Number }],
             code: `$jsonMath[this;mope_coins;$round[$env[amount]]]`,
         },
-        updateTier: `
-      $c[Every tier holds its first XP and the first XP of the next tier. Past the last tier the tier stays]
-      $let[xp;$getField[this;xp]]
-      $jsonLoad[tier;$arrayFind[$jsonEntries[$getGlobalVar[xpPerTier]];e;$inRange[$get[xp];$jsonGet[e;1;0];$math[$jsonGet[e;1;1] - 1]]]]
-      $if[$env[tier]!=;$setField[this;tier;$jsonGet[tier;0]]]
-    `,
-        restartTier: `
-      $c[The tier starts again from its lowest XP]
-      $setField[this;xp;$jsonGet[$getGlobalVar[xpPerTier];$getField[this;tier];0]]
-      $callMethod[this;resetArena]
-    `,
-        "private loseXp": `
-      $if[$and[$getField[this;tier]==17;$includes[$toLowerCase[$jsonGet[this;animal_id]];king_dragon]];
-        $setField[this;xp;0]
-      ;
-        $setField[this;xp;$floor[$math[$getField[this;xp] / $random[1.5;2.15;true]]]]
-      ]
-    `,
-        die: `
-      $setField[this;is_dead;true]
-      $callMethod[this;loseXp]
-      $callMethod[this;updateTier]
-    `,
-        removeAllApex: `$setField[this;apex;$arrayOf]`,
-        resetArena: `$setField[this;arena;$getStatic[PlaySession;baseArena]]`,
+        updateTier: {
+            code: `
+        $c[each tier knows its start XP and the next tier's. past the last one the tier just stays put]
+        $let[xp;$getField[this;xp]]
+        $jsonLoad[tier;$arrayFind[$jsonEntries[$getGlobalVar[xpPerTier]];e;$inRange[$get[xp];$jsonGet[e;1;0];$math[$jsonGet[e;1;1] - 1]]]]
+        $if[$env[tier]!=;$setField[this;tier;$jsonGet[tier;0]]]
+      `,
+        },
+        restartTier: {
+            code: `
+        $c[back to the tier's min XP]
+        $setField[this;xp;$jsonGet[$getGlobalVar[xpPerTier];$getField[this;tier];0]]
+        $callMethod[this;resetArena]
+      `,
+        },
+        "private loseXp": {
+            code: `
+        $if[$and[$getField[this;tier]==17;$includes[$toLowerCase[$jsonGet[this;animal_id]];king_dragon]];
+          $setField[this;xp;0]
+        ;
+          $setField[this;xp;$floor[$math[$getField[this;xp] / $random[1.5;2.15;true]]]]
+        ]
+      `,
+        },
+        die: {
+            code: `
+        $setField[this;is_dead;true]
+        $callMethod[this;loseXp]
+        $callMethod[this;updateTier]
+      `,
+        },
+        removeAllApex: {
+            code: `
+        $setField[this;apex;$arrayOf]
+      `,
+        },
+        resetArena: {
+            code: `
+        $setField[this;arena;$getStatic[PlaySession;baseArena]]
+      `,
+        },
         meetOpponent: {
             params: [
                 { name: "animalId", type: forge_class_1.ParamType.String },
@@ -100,21 +123,23 @@ exports.default = new forge_class_1.ForgeClassBuilder({
         $callMethod[this;addXp;$jsonGet[this;arena;opponent;xp]]
         $callMethod[this;addCash;1000]
 
-        $c[A black dragon gets the opponent's apex. The opponent must be an apex: dev arena allows opponents of any tier]
+        $c[BD gets the opponent's apex, but only if it IS an apex (dev arena lets any tier in)]
         $if[$and[$getField[this;tier]==17;$includes[$toLowerCase[$jsonGet[this;animal_id]];king_dragon]==false;$arrayIncludes[$getGlobalVar[allApex];$env[opponentApex]]];
           $setField[this;apex;$arrayUnion[$getField[this;apex];$arrayOf[$env[opponentApex]]]]
         ]
         $callMethod[this;resetArena]
       `,
         },
-        loseArena: `
-      $c[The XP is lost before the animal is: a king dragon's loss depends on it]
-      $callMethod[this;die]
-      $setField[this;animal_id;null]
-      $setField[this;animal_skin_id;null]
-      $callMethod[this;resetArena]
-      $callMethod[this;removeAllApex]
-    `,
+        loseArena: {
+            code: `
+        $c[drop the XP before the animal, KD's loss depends on that order]
+        $callMethod[this;die]
+        $setField[this;animal_id;null]
+        $setField[this;animal_skin_id;null]
+        $callMethod[this;resetArena]
+        $callMethod[this;removeAllApex]
+      `,
+        },
         evolveInto: {
             params: [
                 { name: "animalId", type: forge_class_1.ParamType.String },
@@ -125,7 +150,7 @@ exports.default = new forge_class_1.ForgeClassBuilder({
         $callMethod[this;removeAllApex]
         $callMethod[this;addCash;$env[cash]]
 
-        $c[A held soccer stays with a living animal that keeps its biome]
+        $c[held soccer stays only if you're alive and still in the same biome]
         $let[biome;$getAnimalInfo[$env[animalId];biome]]
         $let[keepSoccer;$and[$jsonGet[this;held_soccer]!=;$getField[this;is_dead]==false;$getField[this;biome]==$get[biome]]]
         $if[$get[keepSoccer]==false;$callMethod[this;dropSoccer]]
@@ -137,14 +162,18 @@ exports.default = new forge_class_1.ForgeClassBuilder({
         $return[$get[keepSoccer]]
       `,
         },
-        dropSoccer: `$setField[this;held_soccer;null]`,
+        dropSoccer: {
+            code: `
+        $setField[this;held_soccer;null]
+      `,
+        },
         soccerXp: {
             params: [
                 { name: "soccerType", type: forge_class_1.ParamType.String },
                 { name: "soccerId", type: forge_class_1.ParamType.Number },
             ],
             code: `
-        $c[A hold gives a percent of the XP the next tier starts at, kept between a minimum and a limit, all bigger for a rarer soccer. A goal gives a multiple of it]
+        $c[hold = % of the next tier's start XP, clamped to min/max, all scaled up for rarer soccers. goal = a multiple of that]
         $let[multiplier;$jsonGet[$getPlaySoccer[$env[soccerType];$env[soccerId]];xpMultiplier]]
         $let[tierMaxXp;$jsonGet[$getGlobalVar[xpPerTier];$getField[this;tier];1]]
         $let[xp;$max[$min[$math[$get[tierMaxXp] * $getGlobalVar[soccerHoldXpPercent] / 100];$getGlobalVar[soccerHoldMaxXp]];$getGlobalVar[soccerHoldMinXp]]]
@@ -164,7 +193,7 @@ exports.default = new forge_class_1.ForgeClassBuilder({
           $jsonLoad[lossChances;$getGlobalVar[soccerLossChances]]
           $let[stealChance;$getSoccerStealChance[this;$env[soccerType];$env[soccerId]]]
           $let[lossRoll;$random[1;1000]]
-          $c[Dev override: forces this hold's outcome, used once]
+          $c[dev override for the hold outcome, one-shot]
           $switch[$jsonGet[this;dev;forcedSoccer];
             $case[stolen;$let[lossRoll;0]]
             $case[vanished;$let[lossRoll;$math[$get[stealChance] + 1]]]

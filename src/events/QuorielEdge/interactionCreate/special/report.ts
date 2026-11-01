@@ -30,12 +30,12 @@ export default [
 
       $jsonLoad[userProfile;$getProfile]
       $let[l;$jsonGet[userProfile;language]]
-      
+
       $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
       $arrayLoad[reportFiles;, ;$input[modalFile]]
       $arrayFilter[reportFiles;file;$env[file]!=;reportFiles]
-      
+
       $addContainer[
         $addAuthorDisplay
         $addTextDisplay[$tl[ui.report.sent.$get[l]]]

@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "getPositionEmoji",
-  description: "Returns an emoji for a given numeric position.",
+  description: "an emoji for a place, like a medal for the top 3",
   output: ArgType.String,
   params: [
     {
       name: "pos",
-      description: "The position to get the emoji for",
+      description: "the place",
       type: ArgType.Number,
     },
   ],

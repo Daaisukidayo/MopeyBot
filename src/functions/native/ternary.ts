@@ -2,15 +2,14 @@ import { ArgType, NativeFunction } from "@tryforge/forgescript"
 
 export default new NativeFunction({
   name: "$ternary",
-  description:
-    "Checks every provided value and return one if it's not empty or false. Returns last value if nothing matched.",
+  description: "returns the first value that's not empty or false, or the last one if none match",
   output: ArgType.Unknown,
   brackets: true,
   unwrap: true,
   args: [
     {
       name: "values",
-      description: "A list of values to check and return the first non-false/empty item from.",
+      description: "the values to check",
       type: ArgType.Unknown,
       required: true,
       rest: true,

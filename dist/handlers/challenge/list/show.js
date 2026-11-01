@@ -7,7 +7,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 
@@ -33,7 +33,7 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $jsonLoad[result;$generateList[$jsonGet[challengeProgress;raresList]]]
 
-    $c[The user's profile is shown, in the author's language]
+    $c[show the user's profile in the author's language]
     $jsonLoad[userProfile;$getProfile[$get[ID]]]
     $!jsonSet[userProfile;language;$get[l]]
 

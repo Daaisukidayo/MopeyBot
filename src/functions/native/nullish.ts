@@ -2,14 +2,14 @@ import { ArgType, NativeFunction } from "@tryforge/forgescript"
 
 export default new NativeFunction({
   name: "$nullish",
-  description: "Checks every provided value and returns the first one that is not empty, 'null' or 'undefined'",
+  description: "the first value that's not empty, 'null' or 'undefined'",
   output: ArgType.String,
   brackets: true,
   unwrap: true,
   args: [
     {
       name: "values",
-      description: "A list of values to check",
+      description: "the values to check",
       type: ArgType.String,
       required: true,
       rest: true,

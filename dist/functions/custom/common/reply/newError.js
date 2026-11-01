@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "newError",
-    description: "Sends a V2 message with the specified error message.",
+    description: "sends a V2 error msg",
     params: [
         {
             name: "description",
-            description: "The error description to display in the embed.",
+            description: "the error text",
             type: forgescript_1.ArgType.String,
         },
     ],

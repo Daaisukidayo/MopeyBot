@@ -2,17 +2,17 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "getRareAnimalID",
-  description: "Returns the rare animal's ID based on one of its abbreviations from the snora command.",
+  description: "the rare's ID from one of its abbreviations (see snora)",
   output: ArgType.String,
   params: [
     {
       name: "alias",
-      description: "Abbreviation of the rare animal.",
+      description: "the rare's abbreviation",
       type: ArgType.String,
     },
   ],
   code: `
-    $c[Checked against the list first: user input could name a key like 'constructor']
+    $c[check the list first, user input could be stuff like 'constructor']
     $getCache[rares;allRares;allRares]
     $if[$arrayIncludes[allRares;$env[alias]]==false;$return[undefined]]
 

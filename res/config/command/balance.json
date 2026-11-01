@@ -1,0 +1,4 @@
+{
+  "balanceSkinsPageSize": 5,
+  "balanceHiddenPacks": ["legacySP", "landGTSP", "desertGTSP", "oceanGTSP", "arcticGTSP"]
+}

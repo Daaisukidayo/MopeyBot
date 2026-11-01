@@ -2,16 +2,16 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "lobbyInfoMessage",
-  description: "Creates and sends a formatted lobby information message with author and content.",
+  description: "sends a lobby info msg w/ the author and some text",
   params: [
     {
       name: "lobbyVar",
-      description: "The name of the variable that holds the lobby.",
+      description: "var w/ the lobby",
       type: ArgType.String,
     },
     {
       name: "content",
-      description: "The content text to display in the lobby info message.",
+      description: "the text to show",
       type: ArgType.String,
     },
   ],

@@ -2,38 +2,37 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addSoccerHoldResult",
-  description: "Adds the result of a soccer hold ($holdSoccer) or loss: text, animal stats and the next menus",
+  description: "adds the result of a soccer hold (holdSoccer) or loss: text, animal stats and the next menus",
   brackets: true,
   params: [
     {
       name: "playDataVar",
-      description: "The name of the variable that holds the play data.",
+      description: "var w/ the play data",
       type: ArgType.String,
     },
     {
       name: "wardrobeVar",
-      description: "The name of the variable that holds the user's wardrobe.",
+      description: "var w/ the user's wardrobe",
       type: ArgType.String,
     },
     {
       name: "soccerType",
-      description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
+      description: "the soccer type, like 'pumpkin', 'umbrella' or 'beachball'",
       type: ArgType.String,
     },
     {
       name: "soccerId",
-      description: "The ID of the soccer item",
+      description: "the soccer item's ID",
       type: ArgType.Number,
     },
     {
       name: "textKey",
-      description: "The ui.play.soccer locale key used when the soccer is held (e.g. 'held', 'goalFailed')",
+      description: "the ui.play.soccer key used when the soccer's held, like 'held' or 'goalFailed'",
       type: ArgType.String,
     },
     {
       name: "result",
-      description:
-        "The result JSON: {outcome, MC?, XP?}. Any outcome other than 'held' is a loss and uses its own locale key",
+      description: "the result JSON: {outcome, MC?, XP?}. any outcome but 'held' is a loss w/ its own locale key",
       type: ArgType.Json,
     },
   ],

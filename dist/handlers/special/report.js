@@ -7,15 +7,15 @@ exports.default = new forgescript_1.ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 
     $defer
-    
+
     $addContainer[
       $addAuthorDisplay
-      $addSection[  
+      $addSection[
         $addTextDisplay[$tl[ui.report.title.$get[l]]]
         $addButton[reportButton-$authorID;$tl[ui.report.buttonLabel.$get[l]];Success;📢]
       ]

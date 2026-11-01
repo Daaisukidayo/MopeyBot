@@ -6,11 +6,11 @@ export default new ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
 
     $cooldown[lobby-$channelID;1000]
-    
+
     $jsonLoad[lobby;$getLobby]
 
     $onlyIf[$env[lobby]==;
@@ -32,15 +32,15 @@ export default new ForgeFunction({
       $newError[$tl[ui.lobby.hasActiveChallengeLobby.$get[l]]]
     ]
 
-    
+
     $new[lobby;Lobby;$authorID]
-    
+
     $lobbyEmbed[lobby]
 
     $let[mid;$send]
 
     $setField[lobby;messageID;"$get[mid]"]
-    
+
     $setChannelVar[lobby;$env[lobby]]
     $newLobbyTimeout
   `,

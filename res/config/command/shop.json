@@ -6,51 +6,58 @@
     },
     {
       "id": "lockedSP",
-      "cost": 14229000
+      "cost": 4043000,
+      "discount": 25
     },
     {
       "id": "goldenSP",
-      "cost": 10820000
+      "cost": 2705000,
+      "discount": 25
     },
     {
       "id": "storefrontSP",
-      "cost": 1177000
+      "cost": 1177000,
+      "discount": 25
     },
     {
       "id": "summer2021SP",
-      "cost": 2359000
+      "cost": 2359000,
+      "discount": 25
     },
     {
       "id": "summer2022SP",
-      "cost": 485000
+      "cost": 485000,
+      "discount": 25
     },
     {
       "id": "halloween2020SP",
-      "cost": 2105000
+      "cost": 2105000,
+      "discount": 25
     },
     {
       "id": "halloween2021SP",
-      "cost": 2545000
+      "cost": 2545000,
+      "discount": 25
     },
     {
       "id": "halloween2022SP",
-      "cost": 1770000
+      "cost": 1770000,
+      "discount": 25
     },
     {
       "id": "halloween2023SP",
-      "cost": 1570000
-    },
-    {
-      "id": "may2022SP",
-      "cost": 749000
+      "cost": 1570000,
+      "discount": 25
     },
     {
       "id": "christmas2022SP",
-      "cost": 300000
+      "cost": 300000,
+      "discount": 25
     },
     {
       "id": "valentine2023SP",
-      "cost": 1600000
+      "cost": 1600000,
+      "discount": 25
     },
     {
       "id": "landGTSP",
@@ -67,6 +74,34 @@
     {
       "id": "arcticGTSP",
       "cost": 250000
+    },
+    {
+      "id": "halloween2025SP",
+      "cost": 520000,
+      "discount": 25
+    },
+    {
+      "id": "summer2025SP",
+      "cost": 940000,
+      "discount": 25
+    },
+    {
+      "id": "christmas2025SP",
+      "cost": 235000,
+      "discount": 25
+    },
+    {
+      "id": "mope10LegendsSP",
+      "cost": 1140000,
+      "discount": 25
+    },
+    {
+      "id": "mope10PartySP",
+      "cost": 2850000,
+      "discount": 25
     }
-  ]
+  ],
+  "shopSkinsPageSize": 5,
+  "shopSortingOptions": ["shop_sort_collection", "shop_sort_price", "shop_sort_tier", "shop_sort_name"],
+  "skinCollections": ["may2022", "march2025", "cosmic", "promo", "retired"]
 }

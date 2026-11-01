@@ -2,11 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "lobbySettingsEmbed",
-  description: "Creates the settings of the lobby loaded in 'lobby': only its host can change them.",
+  description: "the settings of the lobby in 'lobby', only the host can change them",
   params: [
     {
       name: "lobbyVar",
-      description: "The name of the variable that holds the lobby.",
+      description: "var w/ the lobby",
       type: ArgType.String,
     },
   ],

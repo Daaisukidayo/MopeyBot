@@ -28,7 +28,7 @@ export enum NicknameEffects {
 
 export default new NativeFunction({
   name: "$setBotNicknameStyle",
-  description: "Sets the bot's display name style for a specific guild, returns bool",
+  description: "sets the bot's display name style in a guild, returns a bool",
   aliases: ["$setClientNicknameStyle"],
   unwrap: true,
   brackets: true,
@@ -36,14 +36,14 @@ export default new NativeFunction({
   args: [
     {
       name: "guild ID",
-      description: "The guild ID where the bot's display style should be applied",
+      description: "the guild to set it in",
       required: false,
       rest: false,
       type: ArgType.Guild,
     },
     {
       name: "font",
-      description: "Font to use for the display name",
+      description: "the display name font",
       required: true,
       rest: false,
       type: ArgType.Enum,
@@ -51,7 +51,7 @@ export default new NativeFunction({
     },
     {
       name: "effect",
-      description: "Visual effect to use for the display name",
+      description: "the display name effect",
       required: true,
       rest: false,
       type: ArgType.Enum,
@@ -59,7 +59,7 @@ export default new NativeFunction({
     },
     {
       name: "colors",
-      description: "One or more colors to apply to the display name",
+      description: "one or more display name colors",
       rest: true,
       type: ArgType.Color,
     },

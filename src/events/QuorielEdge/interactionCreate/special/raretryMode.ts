@@ -8,18 +8,18 @@ export default new Command({
     $arrayLoad[IID;-;$customID]
 
     $jsonLoad[userProfile;$getProfile]
-    $let[l;$jsonGet[userProfile;language]]    
+    $let[l;$jsonGet[userProfile;language]]
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
     $addCooldown[raretrymode;true]
 
-    $!jsonSet[userProfile;rtMode;$jsonGet[IID;1]]
-    $saveProfile[$env[userProfile]]
+    $!jsonSet[userProfile;raretry_mode;$jsonGet[IID;1]]
+    $callMethod[userProfile;save]
 
     $raretrymodeEmbed
     $interactionUpdate
-    
+
     $newCommandTimeout[raretrymode]
   `,
 })

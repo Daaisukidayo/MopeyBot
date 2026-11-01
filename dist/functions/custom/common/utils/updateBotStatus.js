@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "updateBotStatus",
-    description: "Shows both bot statuses in turn, 15 seconds each (one call takes 15 seconds)",
+    description: "shows both bot statuses in turn, 15s each (one call takes 15s)",
     code: `
     $if[$getGlobalVar[botEnabled];
       $setStatus[idle;Watching;$guildCount servers!]

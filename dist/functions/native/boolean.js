@@ -4,14 +4,14 @@ const forgescript_1 = require("@tryforge/forgescript");
 const BigIntFormatRegex = /^\d+n$/;
 exports.default = new forgescript_1.NativeFunction({
     name: "$boolean",
-    description: "Converts an argument into its real boolean representation.",
+    description: "turns the argument into a real boolean",
     output: forgescript_1.ArgType.Boolean,
     brackets: true,
     unwrap: true,
     args: [
         {
             name: "argument",
-            description: "The argument to convert to a boolean.",
+            description: "what to convert",
             type: forgescript_1.ArgType.String,
             required: true,
             rest: false,

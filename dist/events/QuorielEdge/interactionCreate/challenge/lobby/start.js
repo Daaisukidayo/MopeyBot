@@ -17,7 +17,7 @@ exports.default = new edge_1.Command({
 
     $onlyIf[$jsonGet[lobby;host]==$authorID;$onlyAuthorInteraction]
 
-    $c[The same rule that greys out the button, for a click on an old lobby message]
+    $c[same check as the greyed-out button, for clicks on old lobby msgs]
     $onlyIf[$callMethod[lobby;canStart];
       $newError[$tl[ui.lobby.cannotStart.$get[l]]]
     ]
@@ -36,7 +36,7 @@ exports.default = new edge_1.Command({
     $!deleteMessage[$channelID;$jsonGet[lobby;messageID]]
     $let[mid;$sendMessage[$channelID;$callFn[startingEmbed;$tl[ui.lobby.getReady.$get[l];$get[s]]];true]]
 
-    $c[Countdown: the start fails if the lobby closed or started meanwhile]
+    $c[countdown, bail if the lobby closed or started in the meantime]
     $while[$get[s]>0;
       $letSub[s;1]
 

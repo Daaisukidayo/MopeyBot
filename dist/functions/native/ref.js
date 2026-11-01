@@ -3,20 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.NativeFunction({
     name: "$ref",
-    description: "Makes a variable share another variable's object instead of copying it. Replacing either variable whole breaks the link",
+    description: "makes a var share another var's object instead of copying it. replacing either var whole breaks the link",
     unwrap: true,
     brackets: true,
     args: [
         {
             name: "name",
-            description: "The name of the new variable",
+            description: "the new var's name",
             type: forgescript_1.ArgType.String,
             required: true,
             rest: false,
         },
         {
             name: "source",
-            description: "The name of the variable to point to",
+            description: "the var to point to",
             type: forgescript_1.ArgType.String,
             required: true,
             rest: false,

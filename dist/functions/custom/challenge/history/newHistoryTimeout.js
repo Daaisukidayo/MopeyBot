@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "newHistoryTimeout",
-    description: "Deletes the history message and what is kept for it after a while.",
+    description: "deletes the history msg and its cached stuff after a while",
     brackets: false,
     params: [
         {
             name: "messageId",
-            description: "The history message (default: the message of the interaction).",
+            description: "the history msg (default: the interaction's msg)",
             type: forgescript_1.ArgType.String,
             required: false,
         },

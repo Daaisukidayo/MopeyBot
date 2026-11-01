@@ -2,29 +2,28 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "getAnimalInfo",
-  description: "Extracts an animal's base or skin information from the specified key.",
+  description: "gets a key of an animal's base info or of one of its skins",
   output: ArgType.Unknown,
   params: [
     {
       name: "animalId",
-      description: "Animal or rare identifier from res/data/animals.",
+      description: "animal or rare ID from res/data/animals",
       type: ArgType.String,
     },
     {
       name: "key",
-      description: "Information to get from the JSON structure.",
+      description: "the key to read",
       type: ArgType.String,
     },
     {
       name: "skin",
-      description:
-        "Optional: the skin's index in 'animal.skins', or the skin's id (e.g. lion_s2_0). If omitted, gets base info.",
+      description: "optional: skin index in 'animal.skins' or a skin id (like lion.s2.0). w/o it you get the base info",
       type: ArgType.String,
       required: false,
     },
   ],
   code: `
-    $c[Read by reference: never modify 'animals']
+    $c[shared ref, don't mutate 'animals']
     $if[$hasCache[animals;animalsData]==false;$cacheAnimalsData]
     $getCache[animals;animalsData;animals]
     $getCache[animals;animalIndexes;animalIndexes]
@@ -40,7 +39,7 @@ export default new ForgeFunction({
       $return[$default[$jsonGet[animals;$get[animalIndex];$spread[$env[key];.]];undefined]]
     ]
 
-    $c[The skin is its index in 'skins', or its id]
+    $c[skin = index in 'skins' or a skin id]
     $if[$isNumber[$get[skin]]==false;
       $let[skin;$arrayFindIndex[$jsonGet[animals;$get[animalIndex];skins];item;$jsonGet[item;id]==$get[skin]]]
     ]

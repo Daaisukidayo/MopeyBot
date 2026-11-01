@@ -14,15 +14,21 @@ exports.default = new edge_1.Command({
     $jsonLoad[playData;$getPlayData]
     $isPlaying[playData]
 
-    $jsonLoad[rewardPerRare;$getGlobalVar[playRewardPerRare]]
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
     $let[animalId;$jsonGet[IID;1]]
 
     $let[bonusPerUpgrade;$getGlobalVar[playRewardPerUpgrade]]
-    $let[bonusPerRare;$default[$jsonGet[rewardPerRare;$get[animalId]];0]]
+    $c[rares pay playRewardPerChance x N (1 in N in their luck group), like raretryrun. group total = the common's, old event animals w/o one use their own]
+    $c[only menu picks count: BD's apex upgrade into KD stays in tier 17, so no rare bonus]
+    $let[bonusPerRare;0]
+    $if[$and[$getAnimalInfo[$get[animalId];isRare]==true;$jsonGet[playData;tier]<$getAnimalInfo[$get[animalId];tier]];
+      $let[common;$getAnimalInfo[$get[animalId];common]]
+      $let[poolTotal;$if[$isOneOf[$get[common];undefined;];$getAnimalInfo[$get[animalId];rarity.1];$getAnimalInfo[$get[common];rarity.1]]]
+      $let[bonusPerRare;$round[$math[$getGlobalVar[playRewardPerChance] * $get[poolTotal] / $getAnimalInfo[$get[animalId];rarity.0]]]]
+    ]
     $let[wrI;$default[$jsonGet[userWardrobe;$get[animalId]];0]]
-    
+
     $let[biome;$getAnimalInfo[$get[animalId];biome]]
     $let[color;$getBiomeColor[playData;$get[biome]]]
     $let[animalName;$getAnimalInfo[$get[animalId];name;$get[wrI]]]
@@ -47,7 +53,7 @@ exports.default = new edge_1.Command({
       ]
 
       $addSeparator[Large]
-      
+
       $addExitButton[playData]
       $addCheats[playData]
     ;$get[color]]

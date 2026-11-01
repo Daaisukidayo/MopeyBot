@@ -2,12 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "wardrobeTierEmbed",
-  description: "Generates the wardrobe tier choice. Then the skin packs of the tier are shown, or its animals.",
+  description: "the wardrobe tier pick, then the tier's skin packs or its animals",
   params: [
     {
       name: "mode",
-      description:
-        "What the tier is chosen for: 'pack' (a skin pack for the whole tier) or 'animal' (one animal of it)",
+      description: "what the tier's picked for: 'pack' (one pack for the whole tier) or 'animal' (one animal in it)",
       type: ArgType.String,
     },
   ],

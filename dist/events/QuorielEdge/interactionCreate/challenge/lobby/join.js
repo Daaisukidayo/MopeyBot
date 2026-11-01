@@ -10,19 +10,19 @@ exports.default = new edge_1.Command({
 
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $checkLobby
 
     $jsonLoad[lobby;$getLobby]
-    
+
     $onlyIf[$messageID==$jsonGet[lobby;messageID];$!deleteMessage[$channelID;$messageID]]
 
     $onlyIf[$getProgress==;
       $newError[$tl[ui.lobby.hasActiveChallengeParticipate.$get[l]]]
     ]
 
-    $callMethod[lobby;join;$authorID;$jsonGet[IID;1];$jsonGet[userProfile;testerMode]]
+    $callMethod[lobby;join;$authorID;$jsonGet[IID;1];$jsonGet[userProfile;tester]]
     $setChannelVar[lobby;$env[lobby]]
 
     $lobbyEmbed[lobby]

@@ -2,14 +2,14 @@ import { ArgType, NativeFunction } from "@tryforge/forgescript"
 
 export default new NativeFunction({
   name: "$not",
-  description: "Returns the logical NOT of a boolean value",
+  description: "logical NOT",
   output: ArgType.Boolean,
   brackets: true,
   unwrap: true,
   args: [
     {
       name: "boolean",
-      description: "The boolean value to invert.",
+      description: "the boolean to flip",
       type: ArgType.Boolean,
       required: true,
       rest: false,

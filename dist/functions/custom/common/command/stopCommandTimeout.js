@@ -3,13 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "stopCommandTimeout",
-    description: "Stops an active command timeout for the current user",
+    description: "stops the user's running command timeout",
     output: forgescript_1.ArgType.Boolean,
     brackets: false,
     params: [
         {
             name: "command",
-            description: "The command name to stop the timeout for. Defaults to the command where the function were executed",
+            description: "the command whose timeout to stop. defaults to the one running this",
             type: forgescript_1.ArgType.String,
             required: false,
         },

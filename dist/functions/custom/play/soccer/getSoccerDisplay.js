@@ -3,18 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "getSoccerDisplay",
-    description: "Returns the localized soccer name with its emoji",
+    description: "the soccer's localized name w/ its emoji",
     output: forgescript_1.ArgType.String,
     brackets: true,
     params: [
         {
             name: "soccerType",
-            description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
+            description: "the soccer type, like 'pumpkin', 'umbrella' or 'beachball'",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "soccerId",
-            description: "The ID of the soccer item",
+            description: "the soccer item's ID",
             type: forgescript_1.ArgType.Number,
         },
     ],

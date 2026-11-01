@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "generateList",
-    description: "Generates an object with keys: 'l' (list[] of rares, in the order of the animals), 'p' (points) and 'r' (rares).",
+    description: "returns 'l' (rares in the animals order), 'p' (points) and 'r' (rares)",
     output: forgescript_1.ArgType.Json,
     params: [
         {
             name: "raresList",
-            description: "Object of caught rare animals.",
+            description: "caught rares",
             type: forgescript_1.ArgType.Json,
         },
     ],

@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "sumRaresList",
-    description: "Returns the totals of a rares list as an object with keys: 'points' and 'rares'.",
+    description: "totals of a rares list: 'points' and 'rares'",
     output: forgescript_1.ArgType.Json,
     params: [
         {
             name: "raresList",
-            description: "Object of caught rare animals: their counts by their IDs.",
+            description: "caught rares as counts by ID",
             type: forgescript_1.ArgType.Json,
         },
     ],

@@ -7,7 +7,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
 
     $onlyIf[$guildID!=;
@@ -30,7 +30,7 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $setGuildVar[prefix;$get[newPrefix]]
     $let[guildIcon;$guildIcon]
-    
+
     $addContainer[
       $if[$get[guildIcon]==;
         $addTextDisplay[# $guildName]

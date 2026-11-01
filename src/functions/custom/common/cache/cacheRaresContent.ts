@@ -2,9 +2,9 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "cacheRaresContent",
-  description: "Caches the lines of the rares still in the game, with their rarity, for the rares list.",
+  description: "caches the lines of the live rares w/ their rarity, for the rares list",
   code: `
-    $c[Read by reference: never modify 'animals']
+    $c[shared ref, don't mutate 'animals']
     $cacheAnimalsData
     $getCache[animals;animalsData;animals]
 

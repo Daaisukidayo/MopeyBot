@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "showRares",
-    description: "Displays the count of total rares of a 1 hour luck challenge in content format, hidden when the profile's settings say so.",
+    description: "total rares count of the 1h luck challenge, hidden if the profile settings say so",
     params: [
         {
             name: "progressVar",
-            description: "The name of the variable that holds the challenge progress.",
+            description: "var w/ the challenge progress",
             type: forgescript_1.ArgType.String,
         },
     ],

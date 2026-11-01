@@ -14,7 +14,7 @@ exports.default = new edge_1.Command({
     $addCooldown[showhistory;true]
     $timezone[$jsonGet[userProfile;timezone]]
 
-    $c[A view saved before the HistoryView class, or a closed one, is opened again with the command]
+    $c[view from before HistoryView, or a closed one: reopen it via the command]
     $jsonLoad[view;$getMessageVar[cachedHistory;$messageID]]
     $onlyIf[$isInstance[view];$interactionFail]
 
@@ -67,8 +67,8 @@ exports.default = new edge_1.Command({
       ]
 
       $case[sortingMenu;
-        $c[Sorting by a rare needs the rare first]
-        $if[$and[$selectMenuValues==3;$jsonGet[view;rareAnimalId]==];
+        $c[sorting by a rare needs a rare, ask for it first]
+        $if[$and[$selectMenuValues==history_sort_rareanimal;$jsonGet[view;rareAnimalId]==];
           $modal[showHistory-sortByRare-$authorID;$tl[ui.history.modalTitleSortByRare.$get[l]]]
           $addTextInput[modalInput;$tl[ui.history.modalDescriptionSortByRare.$get[l]];Short;true;$tl[ui.history.modalPlaceholderSortByRare.$get[l]]]
           $showModal
@@ -86,7 +86,7 @@ exports.default = new edge_1.Command({
         $onlyIf[$get[rareAnimalId]!=undefined;
           $newError[$tl[ui.history.invalidRare.$get[l]]]
         ]
-        $callMethod[view;sortBy;3;$get[rareAnimalId]]
+        $callMethod[view;sortBy;history_sort_rareanimal;$get[rareAnimalId]]
       ]
 
       $case[filterByRareButton;
@@ -132,7 +132,7 @@ exports.default = new edge_1.Command({
       ]
 
       $case[editPage;
-        $c[A new edit finds the page index again instead of reusing an earlier one]
+        $c[re-find the page index on every edit, don't reuse an old one]
         $deleteMessageVar[cachedHistoryPageIndex;$messageID]
         $jsonLoad[thisHistory;$callMethod[view;current]]
         $jsonLoad[history;$getField[view;history]]

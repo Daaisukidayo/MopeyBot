@@ -7,7 +7,7 @@ exports.default = new forgescript_1.BaseCommand({
     aliases: _commandsData_1.commandsData.command_hlsimulator.aliases,
     type: "messageCreate",
     code: `
-    $handleHlsimulator
+    $handleHLSimulator
   `,
 });
 //# sourceMappingURL=hlSimulator.js.map

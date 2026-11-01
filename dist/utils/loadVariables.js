@@ -7,7 +7,7 @@ exports.variables = void 0;
 exports.readVariables = readVariables;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-// Reads every res/config/<dir>/*.json into one object of global variables. Each call reads the files again
+// merges every res/config/<dir>/*.json into one globals object, rereads the files on every call
 function readVariables() {
     const variables = {};
     function assignVariable(key, value) {

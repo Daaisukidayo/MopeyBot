@@ -2,11 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "deleteLobbyProgress",
-  description: "Clears the progress and time for all players in the lobby.",
+  description: "wipes the progress and time of every lobby player",
   params: [
     {
       name: "allPlayers",
-      description: "The array of all lobby players",
+      description: "array of all lobby players",
       type: ArgType.Json,
     },
   ],

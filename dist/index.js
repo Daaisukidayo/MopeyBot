@@ -12,12 +12,16 @@ const forge_regex_1 = require("forge.regex");
 const forge_timers_1 = require("forge.timers");
 const forge_json_1 = require("forge.json");
 const forge_class_1 = require("forge.class");
+const forge_lint_1 = require("forge.lint");
 const edge_1 = require("@quoriel/edge");
 const shutdownSetup_js_1 = require("./utils/shutdownSetup.js");
 const loadVariables_js_1 = require("./utils/loadVariables.js");
 const path_1 = __importDefault(require("path"));
 process.loadEnvFile();
 // ========== EXTENTIONS CONFIGURATION ==========
+const FL = new forge_lint_1.ForgeLint({
+    stopOnError: true,
+});
 const FT = new forge_timers_1.ForgeTimers({
     intervalConfig: {
         restoredTicksLimit: 0,
@@ -48,7 +52,7 @@ const DB = new forge_db_1.ForgeDB({
 // ========== CLIENT CONFIGURATION ==========
 forgescript_1.FunctionManager.load(path_1.default.resolve(process.cwd(), "dist", "functions", "native")); // Native functions loader
 const BOT = new forgescript_1.ForgeClient({
-    extensions: [DB, TOP, QE, FT, new forge_regex_1.ForgeRegex(), new forge_canvas_1.ForgeCanvas(), new forge_json_1.ForgeJSON(), new forge_class_1.ForgeClass()],
+    extensions: [DB, TOP, QE, FT, FL, new forge_regex_1.ForgeRegex(), new forge_canvas_1.ForgeCanvas(), new forge_json_1.ForgeJSON(), new forge_class_1.ForgeClass()],
     prefixes: ["$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]"],
     logLevel: forgescript_1.LogPriority.High,
     token: process.env.TOKEN,

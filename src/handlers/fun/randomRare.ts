@@ -7,7 +7,7 @@ export default new ForgeFunction({
     $nomention
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 

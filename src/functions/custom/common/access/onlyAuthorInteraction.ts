@@ -2,7 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "onlyAuthorInteraction",
-  description: "Sends a warning message if the user is not the author.",
+  description: "warns the user they're not the author",
   code: `
     $let[l;$jsonGet[userProfile;language]]
     $ephemeral

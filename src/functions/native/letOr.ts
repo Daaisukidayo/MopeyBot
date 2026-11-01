@@ -2,20 +2,20 @@ import { ArgType, NativeFunction } from "@tryforge/forgescript"
 
 export default new NativeFunction({
   name: "$letOr",
-  description: "Overwrites the keyword value if the value doesn't exist, is empty, false, null, or undefined",
+  description: "sets the keyword only if it's missing, empty, false, null or undefined",
   unwrap: true,
   brackets: true,
   args: [
     {
       name: "key",
-      description: "The key name",
+      description: "the keyword's name",
       required: true,
       type: ArgType.String,
       rest: false,
     },
     {
       name: "value",
-      description: "The key value",
+      description: "the value",
       required: true,
       type: ArgType.String,
       rest: false,

@@ -2,18 +2,18 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "getSoccerDisplay",
-  description: "Returns the localized soccer name with its emoji",
+  description: "the soccer's localized name w/ its emoji",
   output: ArgType.String,
   brackets: true,
   params: [
     {
       name: "soccerType",
-      description: "The soccer type (e.g. 'pumpkin', 'umbrella', 'beachball')",
+      description: "the soccer type, like 'pumpkin', 'umbrella' or 'beachball'",
       type: ArgType.String,
     },
     {
       name: "soccerId",
-      description: "The ID of the soccer item",
+      description: "the soccer item's ID",
       type: ArgType.Number,
     },
   ],

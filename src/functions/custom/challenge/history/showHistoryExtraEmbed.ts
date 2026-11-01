@@ -2,11 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "showHistoryExtraEmbed",
-  description: "Displays an extra embed with page buttons, sort menu, etc.",
+  description: "the extra embed w/ page buttons, the sort menu and so on",
   params: [
     {
       name: "historyData",
-      description: "The cached history object.",
+      description: "the cached history object",
       type: ArgType.Json,
     },
   ],
@@ -21,9 +21,9 @@ export default new ForgeFunction({
     $let[disableEditing;$checkCondition[$get[entriesCount]==0]]
     $let[disablePages;$checkCondition[$get[entriesCount]<=1]]
 
-    $c[Each sort type has its emoji, sorting by a rare shows that rare]
+    $c[an emoji per sort type, rare sort shows the rare itself]
     $let[rareEmoji;$if[$get[rareAnimalId]!=;$getAnimalInfo[$get[rareAnimalId];emoji;0];$getGlobalVar[undefined]]]
-    $jsonLoad[sortEmojis;$arrayOf[📅;🔢;🎏;$get[rareEmoji]]]
+    $jsonLoad[sortEmojis;$objectOf[history_sort_endingdate;📅;history_sort_totalpoints;🔢;history_sort_totalrares;🎏;history_sort_rareanimal;$get[rareEmoji]]]
     $jsonLoad[sortingOrders;$getGlobalVar[sortingOrders]]
 
     $addContainer[

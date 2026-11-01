@@ -3,12 +3,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "lobbyLeaderboard",
   description:
-    "Returns the standings of the lobby loaded in 'lobby' as an object with keys: 'solo' (one team), 'lines' (a player, or a team with its players, per line) and 'winner'.",
+    "standings of the lobby in 'lobby': 'solo' (one team), 'lines' (a player, or a team w/ its players, per line) and 'winner'",
   output: ArgType.Json,
   params: [
     {
       name: "lobbyVar",
-      description: "The name of the variable that holds the lobby.",
+      description: "var w/ the lobby",
       type: ArgType.String,
     },
   ],
@@ -18,7 +18,7 @@ export default new ForgeFunction({
     $let[type;$jsonGet[$getGlobalVar[victoriesMap];$jsonGet[lobby;settings;victoryType]]]
     $let[solo;$checkCondition[$jsonSize[lobby;teams]==1]]
 
-    $c[Every progress is read once. A team counts the points and rares of its own players, so its total always matches the lines under it]
+    $c[read each progress once. team totals are summed from its own players so they always match the lines below]
     $jsonLoad[progresses;$objectOf]
     $arrayForEach[$callMethod[lobby;players];ID;
       $!jsonSet[progresses;$env[ID];$getProgress[$env[ID]]]
@@ -33,7 +33,7 @@ export default new ForgeFunction({
     ]]
     $jsonLoad[results;$arraySortBy[results;desc;$get[type]]]
 
-    $c[Everyone with the best result shares the first place]
+    $c[ties for best share 1st place]
     $let[topCount;$arrayCount[results;result;$jsonGet[result;$get[type]]==$jsonGet[results;0;$get[type]]]]
     $let[winner;$if[$get[topCount]>1;\`$tl[ui.lobby.friendship.$get[l]]\`;$if[$get[solo];\`$username[$jsonGet[results;0;userID]]\`;$tl[ui.lobby.team.$get[l];\`$math[$jsonGet[results;0;teamID] + 1]\`]]]]
 

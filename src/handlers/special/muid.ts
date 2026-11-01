@@ -6,7 +6,7 @@ export default new ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 
@@ -20,8 +20,8 @@ export default new ForgeFunction({
       $newError[$tl[ui.muid.largeNumber.$get[l]]]
     ]
 
-    $c[Saved profiles are read directly, so no user is looked up in Discord]
-    $let[userID;$arrayFind[$getGlobalVar[allUserIDs];ID;$jsonGet[$getUserVar[userProfile;$env[ID]];MUID]==$get[arg]]]
+    $c[read saved profiles directly, no Discord lookups]
+    $let[userID;$arrayFind[$getGlobalVar[allUserIDs];ID;$jsonGet[$getUserVar[userProfile;$env[ID]];muid]==$get[arg]]]
 
     $onlyIf[$and[$get[arg]>0;$get[userID]!=];
       $newError[$tl[ui.muid.userDoesNotExist.$get[l];$get[arg]]]
@@ -33,7 +33,7 @@ export default new ForgeFunction({
         $addThumbnail[$userAvatar[$get[userID]]]
       ]
       $addSeparator[Large]
-      $addTextDisplay[## \`$separate[$jsonGet[$getProfile[$get[userID]];MC]]\`$getGlobalVar[mopecoin]]
+      $addTextDisplay[## \`$separate[$jsonGet[$getProfile[$get[userID]];mope_coins]]\`$getGlobalVar[mopecoin]]
       $addTextDisplay[$tl[ui.muid.discordId.$get[l];$get[userID]]]
     ;$getGlobalVar[defaultColor]]
   `,

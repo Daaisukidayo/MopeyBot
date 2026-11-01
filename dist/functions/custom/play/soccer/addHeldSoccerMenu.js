@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "addHeldSoccerMenu",
-    description: "Adds the menus for a player holding a soccer: soccer actions + biome switch, or the actions menu once the tier XP is full (the soccer stays held for the upgrade)",
+    description: "adds the menus for a player holding a soccer: soccer actions + biome switch, or the actions menu once the tier XP is full (the soccer stays held for the upgrade)",
     params: [
         {
             name: "playDataVar",
-            description: "The name of the variable that holds the play data.",
+            description: "var w/ the play data",
             type: forgescript_1.ArgType.String,
         },
     ],
@@ -21,7 +21,7 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $arrayLoad[soccerData;_;$jsonGet[playData;held_soccer]]
-    $addSoccerActionsMenu[$env[soccerData];true]
+    $addSoccerActionsMenu[playData;$env[soccerData];true]
     $addBiomeMenu[playData]
   `,
 });

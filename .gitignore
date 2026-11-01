@@ -1,9 +1,9 @@
 #! files
 .env
-forgeconfig.json
-allies.json
 
 #? folders
 node_modules/
 database/
 dev/
+dist/
+tests/

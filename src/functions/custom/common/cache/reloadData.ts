@@ -2,8 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "reloadData",
-  description:
-    "Builds the animals data caches again from res/data/animals: the animals, the rares, the arena enemies and the tiers.",
+  description: "rebuilds the animal caches from res/data/animals: animals, rares, arena enemies and tiers",
   code: `
     $clearCache[animals]
     $clearCache[rares]

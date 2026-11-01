@@ -17,12 +17,7 @@
     "1": "rares"
   },
 
-  "allSettings": {
-    "hidePoints": 0,
-    "hideRares": 1,
-    "hideLimit": 2,
-    "hidePrediction": 3
-  },
+  "allSettings": ["hidePoints", "hideRares", "hideLimit", "hidePrediction"],
 
   "chartLimitsMap": {
     "0": {

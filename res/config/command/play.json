@@ -14,7 +14,7 @@
       "emoji": "🎭"
     }
   ],
-  "soccerActions": [0, 1, 2],
+  "soccerActions": ["soccer_action_hold", "soccer_action_ignore", "soccer_action_goal"],
 
   "soccerLossChances": {
     "stealBase": 50,
@@ -70,7 +70,7 @@
   },
 
   "downgradeReasons": {
-    "_c": "By the animal's biome, then by the biome it is in: the text of a downgrade in ui.play.downgrades. 'reasons' is a random one of them, 'blackDragon' is a lava animal in lava",
+    "_c": "by the animal's biome, then the biome it's in: the downgrade text in ui.play.downgrades. 'reasons' = pick a random one, 'blackDragon' = a lava animal in lava",
     "0": ["reasons", "intoLava", "oceanPredators", "reasons", "reasons", "intoLava"],
     "1": ["reasons", "intoLava", "oceanPredators", "reasons", "reasons", "intoLava"],
     "2": ["onLand", "intoLava", "onLand", "onLand", "onLand", "intoLava"],
@@ -123,7 +123,7 @@
   "raresButtonStyle": [
     [
       "Success", 
-      ["demon","helmeted_hornbill","spix","argentavis","black_lion","black_lioness","black_cub","black_rhinoceros","harpy","greater_spotted","shaheen","rare_snowman","rare_snowgirl","rare_bigfoot","rare_king_dragon"]
+      ["demon","helmeted_hornbill","spix","argentavis","black_lion","black_lioness","black_cub","black_rhinoceros","harpy","greater_spotted","shaheen","rare_snowman","rare_snowgirl","rare_bigfoot","king_dragon"]
     ],
     [
       "Danger", 
@@ -173,68 +173,12 @@
     ["rhinoceros", "white_rhinoceros", "black_rhinoceros"],
     ["eagle", "golden", "harpy", "greater_spotted"],
     ["yeti", "aqua", "forgotten_one"],
-    ["black_dragon", "rare_king_dragon"]
+    ["black_dragon", "king_dragon"]
   ],
 
   "playRewardPerUpgrade": 10,
 
-  "playRewardPerRare": {
-    "dove": 500,
-    "stinky": 13150,
-    "pinky": 500,
-    "golden_pheasant": 1000,
-    "marsh": 5000,
-    "doe": 100,
-    "musk": 15750,
-    "jackass": 3750,
-    "spix": 165000,
-    "blue": 100,
-    "girabie": 2650,
-    "momaffie_family": 1000,
-    "momaffie": 500,
-    "helmeted_hornbill": 165000,
-    "lava": 13150,
-    "fiery": 100,
-    "keel_billed": 0,
-    "choco": 0,
-    "black_panther": 13150,
-    "leopard": 3200,
-    "jaguar": 2650,
-    "demon": 10500,
-    "yellow": 50,
-    "black_tiger": 13120,
-    "white_tiger": 750,
-    "black_bear": 1250,
-    "black_lion": 55000,
-    "white_lion": 10500,
-    "black_maned": 3750,
-    "black_lioness": 55000,
-    "white_lioness": 10500,
-    "lioness": 500,
-    "black_cub": 55000,
-    "white_cub": 10500,
-    "cub": 1000,
-    "shaheen": 220000,
-    "predator": 4250,
-    "argentavis": 165000,
-    "big_goat": 2650,
-    "markhor": 0,
-    "black_rhinoceros": 27500,
-    "white_rhinoceros": 13150,
-    "greater_spotted": 275000,
-    "harpy": 275000,
-    "golden": 9450,
-    "family": 7350,
-    "white_giraffe": 1750,
-    "aqua": 1200,
-    "shop_bigfoot": 500,
-    "shop_snowman": 500,
-    "shop_snowgirl": 500,
-    "rare_bigfoot": 55000,
-    "rare_snowman": 55000,
-    "rare_snowgirl": 110000,
-    "rare_king_dragon": 55000
-  },
+  "playRewardPerChance": 55,
 
   "arenaXpReward": {
     "15": [1000000, 3000000],
@@ -281,7 +225,7 @@
   },
 
   "arenaMatrix": {
-    "_c": "[ chance% | actionDesc | who gets a bite: 0 — no one, 1 — player, 2 — enemy ]",
+    "_c": "chance% | actionDesc | who gets bitten: 0 = nobody, 1 = player, 2 = enemy",
     "0_0": [[67,0,0],[33,1,1],[0,2,2]],
     "0_1": [[40,3,2],[15,4,0],[0,5,1]],
     "0_2": [[40,6,1],[15,7,0],[0,8,2]],

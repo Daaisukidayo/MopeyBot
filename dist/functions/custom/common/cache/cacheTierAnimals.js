@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "cacheTierAnimals",
-    description: "Caches the animals of every tier: all of them, the common ones and the rares.",
+    description: "caches the animals of every tier: all, commons and rares",
     code: `
-    $c[Read by reference: never modify 'animals']
+    $c[shared ref, don't mutate 'animals']
     $cacheAnimalsData
     $getCache[animals;animalsData;animals]
 

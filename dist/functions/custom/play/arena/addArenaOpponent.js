@@ -3,22 +3,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "addArenaOpponent",
-    description: "Sets up an arena opponent with a random wardrobe and adds the arena intro with action buttons",
+    description: "sets up an arena opponent w/ a random wardrobe and adds the arena intro + action buttons",
     brackets: true,
     params: [
         {
             name: "playDataVar",
-            description: "The name of the variable that holds the play data.",
+            description: "var w/ the play data",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "opponentId",
-            description: "The animal ID of the opponent",
+            description: "the opponent's animal ID",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "opponentTier",
-            description: "The tier of the opponent (any existing tier, 1-17)",
+            description: "the opponent's tier (any existing one, 1-17)",
             type: forgescript_1.ArgType.Number,
         },
     ],
@@ -38,7 +38,7 @@ exports.default = new forgescript_1.ForgeFunction({
       $addThumbnail[$get[thumbnail]]
       $addTextDisplay[$tl[ui.play.arena.wentInArena.$get[l];$get[oppDisplay]]]
     ]
-    $addArenaActionButtons
+    $addArenaActionButtons[playData]
     $addArenaDevMenu[playData]
   `,
 });

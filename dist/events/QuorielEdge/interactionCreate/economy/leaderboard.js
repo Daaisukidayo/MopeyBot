@@ -4,29 +4,39 @@ const edge_1 = require("@quoriel/edge");
 exports.default = new edge_1.Command({
     name: "leaderboard",
     type: "interactionCreate",
-    allowed: ["button", "modal"],
+    allowed: ["button", "modal", "stringSelect"],
     code: `
     $arrayLoad[IID;-;$customID]
-    $onlyIf[$isOneOf[$jsonGet[IID;1];prevPage;nextPage;customPage;modal]]
+    $onlyIf[$isOneOf[$jsonGet[IID;1];prevPage;nextPage;customPage;modal;type]]
 
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
+    $c[id: leaderboard-action-page-rows-table-author. old msgs w/o a table show coins]
     $let[page;$jsonGet[IID;2]]
     $let[rowsPerPage;$jsonGet[IID;3]]
+    $let[type;$jsonGet[IID;4]]
+    $if[$jsonGet[$getGlobalVar[leaderboardTypes];$get[type]]==;$let[type;mc]]
 
-    $jsonLoad[LBlist;$getMessageVar[LBlist;$messageID]]
-    $onlyIf[$env[LBlist]!=;
-      $interactionFail
+    $if[$jsonGet[IID;1]==type;
+      $c[switch table, back to page 1]
+      $let[type;$selectMenuValues]
+      $onlyIf[$hasCache[leaderboard;$get[type]];$deferUpdate]
+      $getCache[leaderboard;$get[type];LBlist]
+      $setMessageVar[LBlist;$env[LBlist];$messageID]
+      $let[page;1]
+    ;
+      $jsonLoad[LBlist;$getMessageVar[LBlist;$messageID]]
+      $onlyIf[$env[LBlist]!=;
+        $interactionFail
+      ]
     ]
 
     $addCooldown[leaderboard;true]
 
     $let[maxPages;$arrayPageCount[LBlist;$get[rowsPerPage]]]
-
 
     $switch[$jsonGet[IID;1];
       $case[prevPage;
@@ -36,7 +46,7 @@ exports.default = new edge_1.Command({
         $letSum[page;1]
       ]
       $case[customPage;
-        $modal[leaderboard-modal-$get[page]-$get[rowsPerPage]-$authorID;$tl[ui.leaderboard.modalTitle.$get[l]]]
+        $modal[leaderboard-modal-$get[page]-$get[rowsPerPage]-$get[type]-$authorID;$tl[ui.leaderboard.modalTitle.$get[l]]]
         $addTextInput[pageInput;$tl[ui.leaderboard.modalDescriptionPage.$get[l]];Short;true]
         $showModal
         $stop
@@ -46,7 +56,6 @@ exports.default = new edge_1.Command({
         $onlyIf[$isNumber[$get[page]];
           $newError[$tl[ui.errors.notNumber.$get[l]]]
         ]
-        $c[A page can only be a whole number]
         $let[page;$floor[$get[page]]]
       ]
     ]
@@ -55,7 +64,7 @@ exports.default = new edge_1.Command({
 
     $jsonLoad[cachedLB;$arrayPage[LBlist;$get[page];$get[rowsPerPage]]]
 
-    $leaderboardEmbed[cachedLB;$get[page];$get[maxPages];$get[rowsPerPage]]
+    $leaderboardEmbed[cachedLB;$get[page];$get[maxPages];$get[rowsPerPage];$get[type]]
     $interactionUpdate
     $newLeaderboardTimeout
   `,

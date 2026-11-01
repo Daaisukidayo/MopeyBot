@@ -19,6 +19,13 @@ export default new ApplicationCommand({
     options: [
       { type: 4, required: false, min_value: 1, ...localized(options[0]) },
       { type: 4, required: false, min_value: 1, max_value: 10, ...localized(options[1]) },
+      {
+        type: 3,
+        required: false,
+        ...localized(options[2]),
+        // value = the table's key in leaderboardTypes
+        choices: options[2].choices.map((choice) => ({ ...localized(choice), value: String(choice.value) })),
+      },
     ],
   },
 })

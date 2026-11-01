@@ -3,28 +3,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "sortHistory",
-    description: "Sorts history pages based on the specified sort type.",
+    description: "sorts history pages by the given sort type",
     output: forgescript_1.ArgType.Json,
     params: [
         {
             name: "history",
-            description: "Array of history pages.",
+            description: "array of history pages",
             type: forgescript_1.ArgType.Json,
         },
         {
             name: "sortType",
-            description: "Type of sorting to apply.",
-            type: forgescript_1.ArgType.Number,
+            description: "one of sortingOptions",
+            type: forgescript_1.ArgType.String,
         },
         {
             name: "rareAnimalId",
-            description: "The rare to sort by, for the sort type 3.",
+            description: "the rare to sort by, for history_sort_rareanimal",
             type: forgescript_1.ArgType.String,
             required: false,
         },
         {
             name: "order",
-            description: "'asc' or 'desc' (the default).",
+            description: "'asc' or 'desc' (default)",
             type: forgescript_1.ArgType.String,
             required: false,
         },
@@ -32,18 +32,16 @@ exports.default = new forgescript_1.ForgeFunction({
     code: `
     $let[order;$if[$env[order]==asc;asc;desc]]
 
-    $c[Sorting puts a missing value last in both orders, so by a rare the ascending order is the reversed descending one]
-    $if[$and[$env[sortType]==3;$isOneOf[$env[rareAnimalId];null;]==false];
+    $c[missing values sort last either way, so for a rare sort asc is just desc reversed]
+    $if[$and[$env[sortType]==history_sort_rareanimal;$isOneOf[$env[rareAnimalId];null;]==false];
       $jsonLoad[byRare;$arraySortBy[history;desc;raresList;$env[rareAnimalId]]]
       $return[$if[$get[order]==asc;$arrayReverse[byRare];$env[byRare]]]
     ]
 
     $return[$switch[$env[sortType];
-      $case[-1;$arraySortBy[history;asc;endDate]]
-      $case[0;$arraySortBy[history;$get[order];endDate]]
-      $case[1;$arraySortBy[history;$get[order];points]]
-      $case[2;$arraySortBy[history;$get[order];rares]]
-      $case[3;$env[history]]
+      $case[history_sort_endingdate;$arraySortBy[history;$get[order];endDate]]
+      $case[history_sort_totalpoints;$arraySortBy[history;$get[order];points]]
+      $case[history_sort_totalrares;$arraySortBy[history;$get[order];rares]]
       $case[default;$env[history]]
     ]]
   `,

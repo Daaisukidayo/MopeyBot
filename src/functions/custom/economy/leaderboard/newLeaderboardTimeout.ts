@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "newLeaderboardTimeout",
-  description: "Deletes the leaderboard message and its pages after a while.",
+  description: "deletes the leaderboard msg and its pages after a while",
   brackets: false,
   params: [
     {
       name: "messageId",
-      description: "The leaderboard message (default: the message of the interaction).",
+      description: "the leaderboard msg (default: the interaction's msg)",
       type: ArgType.String,
       required: false,
     },

@@ -2,7 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "publishLobbyResults",
-  description: "Sends the lobby results and removes the lobby. Runs from the named timeout set by allPlayersFinished",
+  description: "sends the lobby results and removes the lobby. runs from the named timeout allPlayersFinished sets",
   code: `
     $jsonLoad[lobby;$getLobby]
     $if[$env[lobby]==;$return]

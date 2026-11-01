@@ -5,7 +5,7 @@ const slash = commandsData.command_showhistory.slash
 
 export default new ApplicationCommand({
   code: `
-    $handleshowHistory
+    $handleShowHistory
   `,
   data: {
     type: 1,

@@ -3,16 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "lobbyInfoMessage",
-    description: "Creates and sends a formatted lobby information message with author and content.",
+    description: "sends a lobby info msg w/ the author and some text",
     params: [
         {
             name: "lobbyVar",
-            description: "The name of the variable that holds the lobby.",
+            description: "var w/ the lobby",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "content",
-            description: "The content text to display in the lobby info message.",
+            description: "the text to show",
             type: forgescript_1.ArgType.String,
         },
     ],

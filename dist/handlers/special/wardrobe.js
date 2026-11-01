@@ -10,18 +10,18 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $checkProfile
 
-    $c[Optional for both slash and prefix: without it the menu opens]
+    $c[optional for slash and prefix, no arg opens the menu]
     $let[arg;$toCamelCase[$default[$option[option];$message]]]
 
     $addCooldown
 
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
-    $c[No option: the menu. new: every animal one by one, all or a tier: one skin pack for many animals, an animal: its skins]
+    $c[no option: the menu. new: every animal page by page. all or a tier: one pack for many. an animal: the page w/ it]
     $if[$get[arg]==;
       $wardrobeMenuEmbed
     ;$if[$get[arg]==new;
-      $animalsEmbed[userWardrobe;mouse;true]
+      $wardrobeAnimalsEmbed[userWardrobe;1]
     ;$if[$or[$get[arg]==all;$isNumber[$get[arg]]];
       $if[$get[arg]!=all;
         $onlyIf[$inRange[$get[arg];1;17];
@@ -35,8 +35,12 @@ exports.default = new forgescript_1.ForgeFunction({
       $onlyIf[$get[animalId]!=;
         $newError[$tl[ui.wardrobe.invalidAnimal.$get[l]]]
       ]
+      $let[page;$wardrobePageOf[animal;$get[animalId]]]
+      $onlyIf[$get[page]!=;
+        $newError[$tl[ui.wardrobe.notListed.$get[l];$getAnimalInfo[$get[animalId];fullName]]]
+      ]
 
-      $animalsEmbed[userWardrobe;$get[animalId];false]
+      $wardrobeAnimalsEmbed[userWardrobe;$get[page]]
     ]]]
 
     $newCommandTimeout

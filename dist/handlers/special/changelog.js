@@ -5,27 +5,27 @@ exports.default = [
     new forgescript_1.ForgeFunction({
         name: "handleChangelog",
         code: `
-    $reply
-    $jsonLoad[userProfile;$getProfile]
-    $let[l;$jsonGet[userProfile;language]]
+        $reply
+        $jsonLoad[userProfile;$getProfile]
+        $let[l;$jsonGet[userProfile;language]]
 
-    $checkProfile
-    $addCooldown
+        $checkProfile
+        $addCooldown
 
-    $defer
+        $defer
 
-    $jsonLoad[changelog;$jsonGet[$readFile[res/locale/changelog.json];$get[l]]]
+        $jsonLoad[changelog;$jsonGet[$readFile[res/locale/changelog.json];$get[l]]]
 
-    $changelogEmbed
-  `,
+        $changelogEmbed
+    `,
     }),
     new forgescript_1.ForgeFunction({
         name: "changelogEmbed",
         code: `
-    $addContainer[
-      $addTextDisplay[$arrayJoin[changelog;\n]]
-    ;$getGlobalVar[defaultColor]]
-  `,
+      $addContainer[
+        $addTextDisplay[$arrayJoin[changelog;\n]]
+      ;$getGlobalVar[defaultColor]]
+    `,
     }),
 ];
 //# sourceMappingURL=changelog.js.map

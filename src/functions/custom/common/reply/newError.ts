@@ -2,11 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "newError",
-  description: "Sends a V2 message with the specified error message.",
+  description: "sends a V2 error msg",
   params: [
     {
       name: "description",
-      description: "The error description to display in the embed.",
+      description: "the error text",
       type: ArgType.String,
     },
   ],

@@ -1,5 +1,5 @@
 {
-  "sortingOptions": [0, 1, 2, 3],
+  "sortingOptions": ["history_sort_endingdate", "history_sort_totalpoints", "history_sort_totalrares", "history_sort_rareanimal"],
 
   "sortingOrders": {
     "desc": "📉",

@@ -11,20 +11,20 @@ export default new Command({
     $let[l;$jsonGet[userProfile;language]]
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
-    $onlyIf[$jsonGet[userProfile;acceptedRules]==false;$!deleteMessage[$channelID;$messageID]]
+    $onlyIf[$jsonGet[userProfile;verified]==false;$!deleteMessage[$channelID;$messageID]]
 
-    $if[$jsonGet[userProfile;MUID]==-1;
+    $if[$jsonGet[userProfile;muid]==-1;
       $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
       $arrayPush[allUserIDs;$authorID]
       $setGlobalVar[allUserIDs;$env[allUserIDs]]
 
       $let[MUID;$math[$getGlobalVar[maxID] + 1]]
       $setGlobalVar[maxID;$get[MUID]]
-      $objectMerge[userProfile;$objectOf[MUID;$get[MUID];ID;"$authorID"]]
+      $objectMerge[userProfile;$objectOf[muid;$get[MUID];user_id;"$authorID"]]
     ]
 
-    $!jsonSet[userProfile;acceptedRules;true]
-    $saveProfile[$env[userProfile]]
+    $!jsonSet[userProfile;verified;true]
+    $callMethod[userProfile;save]
 
     $addContainer[
       $addAuthorDisplay

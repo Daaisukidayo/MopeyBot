@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "parseRaresList",
-    description: "Reads a history page's rares list, one '<abbreviation> = <count>' per line. Returns an object with keys: 'raresList', 'points' and 'rares'.",
+    description: "parses a history page's rares list, one '<abbreviation> = <count>' per line. returns 'raresList', 'points' and 'rares'",
     output: forgescript_1.ArgType.Json,
     params: [
         {
             name: "text",
-            description: "The list as the user wrote it.",
+            description: "the list as the user typed it",
             type: forgescript_1.ArgType.String,
             required: true,
         },
@@ -18,7 +18,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $jsonLoad[raresList;$objectOf]
     $arrayLoad[lines;\n;$trim[$trimLines[$env[text]]]]
 
-    $c[A count above 100 becomes 100, and a count of 0 leaves the rare out]
+    $c[clamp to 100, 0 = skip the rare]
     $arrayForEach[lines;line;
       $arrayLoad[keyValue;=;$trim[$env[line]]]
       $let[animalId;$getRareAnimalID[$trim[$jsonGet[keyValue;0]]]]

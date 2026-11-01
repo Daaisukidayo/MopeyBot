@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "closeInactiveLobby",
-  description: "Closes the channel's lobby if it has not started yet",
+  description: "closes the channel's lobby if it hasn't started yet",
   brackets: true,
   params: [
     {
       name: "locale",
-      description: "The language of the closing message",
+      description: "language of the closing msg",
       type: ArgType.String,
     },
   ],

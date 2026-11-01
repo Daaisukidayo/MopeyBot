@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "addBiomeMenu",
-    description: "Adds the menu to move to a neighbouring biome",
+    description: "adds the menu to move to a neighbouring biome",
     params: [
         {
             name: "playDataVar",
-            description: "The name of the variable that holds the play data.",
+            description: "var w/ the play data",
             type: forgescript_1.ArgType.String,
         },
     ],
@@ -17,7 +17,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[biome;$jsonGet[playData;biome]]
 
     $addActionRow
-    $addStringSelectMenu[play_moveToBiome-$authorID;$tl[ui.play.selectMenuPlaceholderSwitchBiome.$get[l]]]
+    $addStringSelectMenu[play_moveToBiome-$playID[playData];$tl[ui.play.selectMenuPlaceholderSwitchBiome.$get[l]]]
 
     $if[$get[biome]!=0;
       $addOption[$tl[data.biomes.0.$get[l]];;0;⛰️]

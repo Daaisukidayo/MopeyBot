@@ -6,7 +6,7 @@ exports.default = new forgescript_1.ForgeFunction({
     params: [
         {
             name: "playDataVar",
-            description: "The name of the variable that holds the play data.",
+            description: "var w/ the play data",
             type: forgescript_1.ArgType.String,
         },
     ],
@@ -15,7 +15,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $jsonLoad[currentApex;$jsonGet[playData;apex]]
     $jsonLoad[allApex;$getGlobalVar[allApex]]
     $jsonLoad[darkApexEmojis;$getGlobalVar[darkApexEmojis]]
-    $c[An apex the player has shows its emoji, the others their dark one]
+    $c[owned apexes get their emoji, the rest the dark version]
     $arrayMap[allApex;apex;
       $return[$if[$arrayIncludes[currentApex;$env[apex]];$getAnimalInfo[$env[apex];emoji;0];$jsonGet[darkApexEmojis;$env[apex]]]]
     ;totalApex]

@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "findAnimalId",
-    description: "Returns the ID of the animal or rare with this name or ID, in any case and with spaces or underscores, or nothing if there is none.",
+    description: "the ID of the animal or rare w/ this name or ID, any case, spaces or underscores. nothing if there's none",
     output: forgescript_1.ArgType.String,
     params: [
         {
             name: "text",
-            description: "The name or ID to look for",
+            description: "the name or ID to look for",
             type: forgescript_1.ArgType.String,
         },
     ],

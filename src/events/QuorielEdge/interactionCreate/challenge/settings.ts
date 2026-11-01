@@ -14,9 +14,9 @@ export default new Command({
 
     $addCooldown[settings;true]
 
-    $c[A button toggles a setting or picks a difficulty]
+    $c[button = toggle a setting or pick a difficulty]
     $let[value;$jsonGet[IID;1]]
-    $let[isSetting;$arrayIncludes[$jsonKeys[$getGlobalVar[allSettings]];$get[value]]]
+    $let[isSetting;$arrayIncludes[$getGlobalVar[allSettings];$get[value]]]
     $onlyIf[$or[$get[isSetting];$arrayIncludes[$getGlobalVar[difficulties];$get[value]]]]
 
     $if[$get[isSetting];
@@ -26,7 +26,7 @@ export default new Command({
     ;
       $!jsonSet[userProfile;challenge;difficulty;$get[value]]
 
-      $c[A solo challenge going on in this channel gets the new difficulty too]
+      $c[a running solo challenge in this channel gets the new difficulty too]
       $jsonLoad[challengeProgress;$getProgress]
       $if[$and[$env[challengeProgress]!=;$getChannelVar[lobby]==];
         $setField[challengeProgress;difficulty;$get[value]]
@@ -34,7 +34,7 @@ export default new Command({
       ]
     ]
 
-    $saveProfile[$env[userProfile]]
+    $callMethod[userProfile;save]
 
     $settingsEmbed
     $interactionUpdate

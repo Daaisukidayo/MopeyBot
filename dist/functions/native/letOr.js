@@ -3,20 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.NativeFunction({
     name: "$letOr",
-    description: "Overwrites the keyword value if the value doesn't exist, is empty, false, null, or undefined",
+    description: "sets the keyword only if it's missing, empty, false, null or undefined",
     unwrap: true,
     brackets: true,
     args: [
         {
             name: "key",
-            description: "The key name",
+            description: "the keyword's name",
             required: true,
             type: forgescript_1.ArgType.String,
             rest: false,
         },
         {
             name: "value",
-            description: "The key value",
+            description: "the value",
             required: true,
             type: forgescript_1.ArgType.String,
             rest: false,

@@ -19,13 +19,14 @@ exports.default = new edge_1.Command({
 
     $getCache[animals;tierAnimals;tierAnimals]
 
-    $c[Main menu: play_devActions-authorID | Sub menus: play_devActions-step-authorID or play_devActions-step-arg-authorID]
+    $c[ids: play_devActions-authorID for the main menu, play_devActions-step(-arg)-authorID for sub menus. menus also end w/ the screen (isPlaying checks it), modals don't]
+    $if[$jsonGet[IID;-1]!=$authorID;$!arrayPop[IID]]
     $let[step;$if[$jsonSize[IID]==2;main;$jsonGet[IID;1]]]
     $let[arg;$if[$jsonSize[IID]==4;$jsonGet[IID;2]]]
     $let[value;$selectMenuValues]
     $if[$get[value]==back;$let[step;back]]
 
-    $c[view: 'stats' shows desc + animal stats + actions menu, 'custom' shows desc + whatever the local function 'extra' adds]
+    $c[view 'stats' = desc + stats + actions menu, 'custom' = desc + whatever the local fn 'extra' adds]
     $let[view;stats]
 
     $switch[$get[step];
@@ -36,7 +37,7 @@ exports.default = new edge_1.Command({
             $let[desc;Choose a soccer type]
             $fn[extra;
               $addActionRow
-              $addStringSelectMenu[play_devActions-soccerType-$authorID;Soccer type]
+              $addStringSelectMenu[play_devActions-soccerType-$playID[playData];Soccer type]
               $arrayForEach[$getGlobalVar[soccerTypes];soccerType;
                 $addOption[$tl[data.playSoccers.$env[soccerType].0.$get[l]];;$env[soccerType];$jsonGet[$getPlaySoccer[$env[soccerType];0];emoji]]
               ]
@@ -49,7 +50,7 @@ exports.default = new edge_1.Command({
             $let[desc;Force the next Hold/Goal outcome (current: $default[$jsonGet[playData;dev;forcedSoccer];none])]
             $fn[extra;
               $addActionRow
-              $addStringSelectMenu[play_devActions-forceSoccer-$authorID;Soccer outcome]
+              $addStringSelectMenu[play_devActions-forceSoccer-$playID[playData];Soccer outcome]
               $addOption[Stolen;Hold and Goal;stolen;🥷]
               $addOption[Vanished;Hold only;vanished;💨]
               $addOption[Goal failed;Goal only;failed;❌]
@@ -64,7 +65,7 @@ exports.default = new edge_1.Command({
             $let[desc;Force the next farm event (current: $default[$jsonGet[playData;dev;forcedEvent];none])]
             $fn[extra;
               $addActionRow
-              $addStringSelectMenu[play_devActions-forceEvent-$authorID;Farm event]
+              $addStringSelectMenu[play_devActions-forceEvent-$playID[playData];Farm event]
               $addOption[Food;;food;🍖]
               $addOption[Prey;Falls back to food if there is no prey;prey;🐾]
               $addOption[Soccer;;soccer;⚽]
@@ -89,7 +90,7 @@ exports.default = new edge_1.Command({
             $let[desc;Choose the amount of coins]
             $fn[extra;
               $addActionRow
-              $addStringSelectMenu[play_devActions-giveMC-$authorID;Coins]
+              $addStringSelectMenu[play_devActions-giveMC-$playID[playData];Coins]
               $arrayForEach[$arrayOf[10000;100000;1000000];amount;
                 $addOption[$separate[$env[amount]];;$env[amount];$getGlobalVar[mopecoin]]
               ]
@@ -103,7 +104,7 @@ exports.default = new edge_1.Command({
             $fn[extra;
               $jsonLoad[biomeEmojis;$arrayOf[⛰️;🏜️;🌊;❄️;🌲;🌋]]
               $addActionRow
-              $addStringSelectMenu[play_devActions-teleport-$authorID;Biome]
+              $addStringSelectMenu[play_devActions-teleport-$playID[playData];Biome]
               $arrayForEach[$getGlobalVar[biomes];biome;
                 $addOption[$tl[data.biomes.$env[biome].$get[l]];;$env[biome];$jsonGet[biomeEmojis;$env[biome]]]
               ]
@@ -112,7 +113,7 @@ exports.default = new edge_1.Command({
           ]
 
           $case[summonAnimal;
-            $c[The animal and skin are typed in a modal (comes back as the summonAnimal step)]
+            $c[animal + skin are typed in a modal, comes back as the summonAnimal step]
             $modal[play_devActions-summonAnimal-$authorID;Summon animal]
             $addTextInput[animal;Animal or rare: its name or ID;Short;true;White Lion]
             $addTextInput[skin;Skin ID (optional);Short;false;white_lion.s2.0]
@@ -125,7 +126,7 @@ exports.default = new edge_1.Command({
             $let[desc;Choose the opponent's tier]
             $fn[extra;
               $addActionRow
-              $addStringSelectMenu[play_devActions-arenaTier-$authorID;Opponent tier]
+              $addStringSelectMenu[play_devActions-arenaTier-$playID[playData];Opponent tier]
               $arrayForEach[$jsonKeys[tierAnimals];tier;
                 $addOption[Tier $env[tier];;$env[tier]]
               ]
@@ -155,7 +156,7 @@ exports.default = new edge_1.Command({
         $let[desc;Choose a soccer]
         $fn[extra;
           $addActionRow
-          $addStringSelectMenu[play_devActions-spawnSoccer-$get[value]-$authorID;Soccer]
+          $addStringSelectMenu[play_devActions-spawnSoccer-$get[value]-$playID[playData];Soccer]
           $arrayForEach[$jsonGet[$readFile[res/data/playSoccers.json];$get[value]];item;
             $addOption[$tl[data.playSoccers.$get[value].$jsonGet[item;ID].$get[l]];ID $jsonGet[item;ID] • $jsonGet[item;chance]%;$jsonGet[item;ID];$jsonGet[item;emoji]]
           ]
@@ -204,7 +205,7 @@ exports.default = new edge_1.Command({
         $let[animalId;$findAnimalId[$input[animal]]]
         $onlyIf[$get[animalId]!=;$newError[Animal not found: $input[animal]]]
 
-        $c[A given skin must belong to the animal, and gets equipped]
+        $c[the skin has to belong to the animal, then it gets equipped]
         $let[skin;$input[skin]]
         $if[$get[skin]!=;
           $onlyIf[$getAnimalInfo[$get[animalId];id;$get[skin]]==$get[skin];$newError[$getAnimalInfo[$get[animalId];fullName] has no skin $get[skin]]]
@@ -212,7 +213,7 @@ exports.default = new edge_1.Command({
           $setUserVar[userWardrobe;$env[userWardrobe]]
         ]
 
-        $c[Become the animal: its biome, and the tier's lowest XP if the tier changes]
+        $c[become it: take its biome, and the min XP if the tier changes]
         $let[tier;$getAnimalInfo[$get[animalId];tier]]
         $if[$get[tier]!=$jsonGet[playData;tier];
           $setField[playData;tier;$get[tier]]
@@ -231,7 +232,7 @@ exports.default = new edge_1.Command({
         $let[desc;Choose a tier $get[value] opponent]
         $fn[extra;
           $addActionRow
-          $addStringSelectMenu[play_devActions-arena-$get[value]-$authorID;Opponent]
+          $addStringSelectMenu[play_devActions-arena-$get[value]-$playID[playData];Opponent]
           $arrayForEach[$jsonGet[tierAnimals;$get[value];allAnimals];oppId;
             $addOption[$getAnimalInfo[$env[oppId];name;0];;$env[oppId];$getAnimalInfo[$env[oppId];emoji;0]]
           ]
@@ -246,7 +247,7 @@ exports.default = new edge_1.Command({
         $fn[extra;
           $addArenaStatus[playData;userWardrobe]
           $addSeparator
-          $addArenaActionButtons
+          $addArenaActionButtons[playData]
           $addArenaDevMenu[playData]
         ]
       ]
@@ -258,7 +259,7 @@ exports.default = new edge_1.Command({
         $fn[extra;
           $addArenaStatus[playData;userWardrobe]
           $addSeparator
-          $addArenaActionButtons
+          $addArenaActionButtons[playData]
           $addArenaDevMenu[playData]
         ]
       ]

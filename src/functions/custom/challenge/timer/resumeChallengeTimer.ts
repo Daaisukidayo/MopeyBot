@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "resumeChallengeTimer",
-  description: "Resumes the paused 1 hour luck timer for the provided user from where it was paused.",
+  description: "resumes the user's paused 1h luck timer from where it stopped",
   brackets: false,
   params: [
     {
       name: "userId",
-      description: "ID of the user.",
+      description: "the user's ID",
       type: ArgType.User,
       required: false,
     },

@@ -23,14 +23,16 @@
       "packId": "lockedSP",
       "name": "Purple Mouse",
       "emoji": "<:PurpleMouse:1290701105243754531>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/3/3c/PurpleMouse.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/3/3c/PurpleMouse.png",
+      "cost": 30000
     },
     {
       "id": "mouse.goldenSP.0",
       "packId": "goldenSP",
       "name": "Golden Mouse",
       "emoji": "<:GoldenMouse:1290701057143472238>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/0/02/GoldenMouse.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/0/02/GoldenMouse.png",
+      "cost": 100000
     },
     {
       "id": "mouse.legacySP.0",
@@ -58,35 +60,47 @@
       "packId": "halloween2020SP",
       "name": "Robo Mouse",
       "emoji": "<:RoboMouse:1331666011967193138>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/5/51/RoboMouse.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/5/51/RoboMouse.png",
+      "cost": 125000
     },
     {
       "id": "mouse.summer2021SP.0",
       "packId": "summer2021SP",
       "name": "Bubbly Mouse",
       "emoji": "<:BubblyMouse:1331666787753787423>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/8/8b/BubblyMouse.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/8/8b/BubblyMouse.png",
+      "cost": 20000
     },
     {
       "id": "mouse.summer2022SP.0",
       "packId": "summer2022SP",
       "name": "Super Mouse",
       "emoji": "<:SuperMouse:1331675123236864001>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/2/24/SuperMouse.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/2/24/SuperMouse.png",
+      "cost": 15000
     },
     {
       "id": "mouse.halloween2021SP.0",
       "packId": "halloween2021SP",
       "name": "Light Plague Rat",
       "emoji": "<:LightPlagueRat:1331670155217866962>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/1/19/LightPlagueRat.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/1/19/LightPlagueRat.png",
+      "cost": 20000
     },
     {
       "id": "mouse.halloween2021SP.1",
       "packId": "halloween2021SP",
       "name": "Dark Plague Rat",
       "emoji": "<:DarkPlagueRat:1331670165120876574>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/1/15/DarkPlagueRat.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/1/15/DarkPlagueRat.png",
+      "cost": 20000
+    },
+    {
+      "id": "mouse.christmas2025SP.0",
+      "packId": "christmas2025SP",
+      "name": "Ornamental Mouse",
+      "emoji": "<:OrnamentalMouse:1563275124210139297>",
+      "cost": 10000
     }
   ],
   "kangaroo_rat": [
@@ -121,7 +135,8 @@
       "packId": "halloween2020SP",
       "name": "Cacti Rat",
       "emoji": "<:CactiRat:1331697830229966882>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/4/4b/CactiRat.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/4/4b/CactiRat.png",
+      "cost": 35000
     }
   ],
   "shrimp": [
@@ -169,14 +184,16 @@
       "packId": "storefrontSP",
       "name": "Deluxe Shrimp",
       "emoji": "<:DeluxeShrimp:1332054246866292888>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/0/00/DeluxeShrimp.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/0/00/DeluxeShrimp.png",
+      "cost": 2000
     },
     {
       "id": "shrimp.summer2021SP.0",
       "packId": "summer2021SP",
       "name": "Chef Shrimp",
       "emoji": "<:ChefShrimp:1332054266487246898>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/f/f3/ChefShrimp.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/f/f3/ChefShrimp.png",
+      "cost": 12000
     }
   ],
   "chipmunk": [
@@ -224,7 +241,8 @@
       "packId": "summer2021SP",
       "name": "Playful Munk",
       "emoji": "<:PlayfulMunk:1332391870776479764>",
-      "img": "https://static.wikia.nocookie.net/mopeio/images/f/fd/PlayfulMunk.png"
+      "img": "https://static.wikia.nocookie.net/mopeio/images/f/fd/PlayfulMunk.png",
+      "cost": 12000
     }
   ],
   "tarsier": [
@@ -253,6 +271,58 @@
       "packId": "s2w",
       "name": "Rabbit",
       "emoji": "<:RabbitS2Winter:1291427664296415297>"
+    },
+    {
+      "id": "rabbit.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Monochrome Rabbit",
+      "emoji": "<:MonochromeRabbit:1563274760660459681>",
+      "cost": 2000
+    },
+    {
+      "id": "rabbit.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Carrot Rabbit",
+      "emoji": "<:CarrotRabbit:1563274863219581000>",
+      "cost": 20000
+    },
+    {
+      "id": "rabbit.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Fairy Rabbit",
+      "emoji": "<:FairyRabbit:1563274916717928588>",
+      "cost": 20000
+    },
+    {
+      "id": "rabbit.christmas2022SP.0",
+      "packId": "christmas2022SP",
+      "name": "Jolly Rabbit",
+      "emoji": "<:JollyRabbit:1563275118233522197>",
+      "cost": 20220
+    },
+    {
+      "id": "rabbit.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Rabbit",
+      "emoji": "<:GoldTrimRabbit:1563275195563769976>"
+    },
+    {
+      "id": "rabbit.legacySP.0",
+      "packId": "legacySP",
+      "name": "Rabbit",
+      "emoji": "<:ClassicRabbit:1563275291273461951>"
+    },
+    {
+      "id": "rabbit.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Rabbit",
+      "emoji": "<:RabbitClassicWinter:1566398730918174731>"
+    },
+    {
+      "id": "rabbit.oldestSP.0",
+      "packId": "oldestSP",
+      "name": "Old Classic Winter Rabbit",
+      "emoji": "<:OldClassicWinterRabbit:1566406923312701522>"
     }
   ],
   "pigeon": [
@@ -273,6 +343,18 @@
       "packId": "s2w",
       "name": "Pigeon",
       "emoji": "<:PigeonS2Winter:1291427628632379423>"
+    },
+    {
+      "id": "pigeon.may2022.0",
+      "name": "Thug Pigeon",
+      "emoji": "<:ThugPigeon:1563275098927005747>",
+      "cost": 57000
+    },
+    {
+      "id": "pigeon.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Pigeon",
+      "emoji": "<:GoldTrimPigeon:1563275196859682939>"
     }
   ],
   "dove": [
@@ -307,6 +389,25 @@
       "packId": "s2w",
       "name": "Desert Chipmunk",
       "emoji": "<:DesertChipmunkS2Winter:1291427332396941352>"
+    },
+    {
+      "id": "desert_chipmunk.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Velvet Chipmunk",
+      "emoji": "<:VelvetChipmunk:1563274761990181098>",
+      "cost": 1000
+    },
+    {
+      "id": "desert_chipmunk.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Desert Chipmunk",
+      "emoji": "<:GoldTrimDesertChipmunk:1563275201632932001>"
+    },
+    {
+      "id": "desert_chipmunk.legacySP.0",
+      "packId": "legacySP",
+      "name": "Desert Chipmunk",
+      "emoji": "<:ClassicDesertChipmunk:1563275299012223218>"
     }
   ],
   "trout": [
@@ -327,6 +428,52 @@
       "packId": "s2w",
       "name": "Trout",
       "emoji": "<:TroutS2Winter:1291427833402363975>"
+    },
+    {
+      "id": "trout.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Clownfish",
+      "emoji": "<:Clownfish:1563274784803135608>",
+      "cost": 11000
+    },
+    {
+      "id": "trout.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Dr. Lochness",
+      "emoji": "<:DrLochness:1563274950058713228>",
+      "cost": 99990
+    },
+    {
+      "id": "trout.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Popsicle Trout",
+      "emoji": "<:PopsicleTrout:1563274974909698168>",
+      "cost": 24000
+    },
+    {
+      "id": "trout.christmas2022SP.0",
+      "packId": "christmas2022SP",
+      "name": "Ice Husk Trout",
+      "emoji": "<:IceHuskTrout:1563275119428640823>",
+      "cost": 30220
+    },
+    {
+      "id": "trout.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Trout",
+      "emoji": "<:GoldTrimTrout:1563275199086985226>"
+    },
+    {
+      "id": "trout.legacySP.0",
+      "packId": "legacySP",
+      "name": "Trout",
+      "emoji": "<:ClassicTrout:1563275296352899183>"
+    },
+    {
+      "id": "trout.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Trout",
+      "emoji": "<:TroutClassicWinter:1566398733053202463>"
     }
   ],
   "arctic_hare": [
@@ -347,6 +494,31 @@
       "packId": "s2w",
       "name": "Arctic Hare",
       "emoji": "<:ArcticHareS2Winter:1291427205989011527>"
+    },
+    {
+      "id": "arctic_hare.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Snow Cone Hare",
+      "emoji": "<:SnowConeHare:1563274971650986105>",
+      "cost": 22000
+    },
+    {
+      "id": "arctic_hare.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Arctic Hare",
+      "emoji": "<:GoldTrimArcticHare:1563275200437682307>"
+    },
+    {
+      "id": "arctic_hare.legacySP.0",
+      "packId": "legacySP",
+      "name": "Arctic Hare",
+      "emoji": "<:ClassicArcticHare:1563275297732689960>"
+    },
+    {
+      "id": "arctic_hare.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Arctic Hare",
+      "emoji": "<:ArcticHareClassicWinter:1566398734403637318>"
     }
   ],
   "chukar": [
@@ -375,6 +547,38 @@
       "packId": "s2w",
       "name": "Mole",
       "emoji": "<:MoleS2Winter:1291428295325388926>"
+    },
+    {
+      "id": "mole.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Zombie Mole",
+      "emoji": "<:ZombieMole:1563274808890888257>",
+      "cost": 45000
+    },
+    {
+      "id": "mole.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Cytokinetic Mole",
+      "emoji": "<:CytokineticMole:1563275067863994488>",
+      "cost": 30000
+    },
+    {
+      "id": "mole.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Mole",
+      "emoji": "<:GoldTrimMole:1563275202861867018>"
+    },
+    {
+      "id": "mole.legacySP.0",
+      "packId": "legacySP",
+      "name": "Mole",
+      "emoji": "<:ClassicMole:1563275300568039494>"
+    },
+    {
+      "id": "mole.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Mole",
+      "emoji": "<:MoleClassicWinter:1566398735909519390>"
     }
   ],
   "chicken": [
@@ -389,6 +593,26 @@
       "packId": "s2",
       "name": "Chicken",
       "emoji": "<:ChickenS2:1291428272915218442>"
+    },
+    {
+      "id": "chicken.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Countryside Chick",
+      "emoji": "<:CountrysideChick:1563274976398671992>",
+      "cost": 25000
+    },
+    {
+      "id": "chicken.summer2025SP.0",
+      "packId": "summer2025SP",
+      "name": "Mope Fried Chicken",
+      "emoji": "<:MopeFriedChicken:1563275095273635881>",
+      "cost": 80000
+    },
+    {
+      "id": "chicken.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Chicken",
+      "emoji": "<:GoldTrimChicken:1563275204413886464>"
     }
   ],
   "meerkat": [
@@ -409,6 +633,39 @@
       "packId": "s2w",
       "name": "Meerkat",
       "emoji": "<:MeerkatS2Winter:1291428095777177705>"
+    },
+    {
+      "id": "meerkat.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Puumpkat",
+      "emoji": "<:Puumpkat:1563274817820434524>",
+      "cost": 45000
+    },
+    {
+      "id": "meerkat.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Necromancer Meerkat",
+      "emoji": "<:NecromancerMeerkat:1563274874322165905>",
+      "cost": 30000
+    },
+    {
+      "id": "meerkat.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Scubakat",
+      "emoji": "<:Scubakat:1563274981150957598>",
+      "cost": 30000
+    },
+    {
+      "id": "meerkat.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Meerkat",
+      "emoji": "<:GoldTrimMeerkat:1563275208713052281>"
+    },
+    {
+      "id": "meerkat.legacySP.0",
+      "packId": "legacySP",
+      "name": "Meerkat",
+      "emoji": "<:ClassicMeerkat:1563275306154987600>"
     }
   ],
   "crab": [
@@ -429,6 +686,45 @@
       "packId": "s2w",
       "name": "Crab",
       "emoji": "<:CrabS2Winter:1291428685815087137>"
+    },
+    {
+      "id": "crab.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Metallic Crab",
+      "emoji": "<:MetallicCrab:1563274785927209033>",
+      "cost": 18000
+    },
+    {
+      "id": "crab.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Dark Matter Crab",
+      "emoji": "<:DarkMatterCrab:1563274878109614110>",
+      "cost": 30000
+    },
+    {
+      "id": "crab.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Coconut Crab",
+      "emoji": "<:CoconutCrab:1563274982715560056>",
+      "cost": 30000
+    },
+    {
+      "id": "crab.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Crab",
+      "emoji": "<:GoldTrimCrab:1563275205953060945>"
+    },
+    {
+      "id": "crab.legacySP.0",
+      "packId": "legacySP",
+      "name": "Crab",
+      "emoji": "<:ClassicCrab:1563275303281758228>"
+    },
+    {
+      "id": "crab.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Crab",
+      "emoji": "<:CrabClassicWinter:1566398737394303036>"
     }
   ],
   "penguin": [
@@ -449,6 +745,38 @@
       "packId": "s2w",
       "name": "Penguin",
       "emoji": "<:PenguinS2Winter:1291428006002429994>"
+    },
+    {
+      "id": "penguin.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Surfer Penguin",
+      "emoji": "<:SurferPenguin:1563274993738190859>",
+      "cost": 35000
+    },
+    {
+      "id": "penguin.christmas2025SP.0",
+      "packId": "christmas2025SP",
+      "name": "Gift Deliverer Penguin",
+      "emoji": "<:GiftDelivererPenguin:1563275125980266616>",
+      "cost": 15000
+    },
+    {
+      "id": "penguin.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Penguin",
+      "emoji": "<:GoldTrimPenguin:1563275207446364220>"
+    },
+    {
+      "id": "penguin.legacySP.0",
+      "packId": "legacySP",
+      "name": "Penguin",
+      "emoji": "<:ClassicPenguin:1563275304687108231>"
+    },
+    {
+      "id": "penguin.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Penguin",
+      "emoji": "<:PenguinClassicWinter:1566398738694672494>"
     }
   ],
   "flying_lizard": [
@@ -477,6 +805,72 @@
       "packId": "s2w",
       "name": "Pig",
       "emoji": "<:PigS2Winter:1291429334774452386>"
+    },
+    {
+      "id": "pig.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Hot Dog Pig",
+      "emoji": "<:HotDogPig:1563274864599638096>",
+      "cost": 20000
+    },
+    {
+      "id": "pig.halloween2021SP.1",
+      "packId": "halloween2021SP",
+      "name": "Butcher Pig",
+      "emoji": "<:ButcherPig:1563274881225728121>",
+      "cost": 50000
+    },
+    {
+      "id": "pig.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Fumigator Pig",
+      "emoji": "<:FumigatorPig:1563274920933326880>",
+      "cost": 30000
+    },
+    {
+      "id": "pig.halloween2025SP.0",
+      "packId": "halloween2025SP",
+      "name": "Hampire",
+      "emoji": "<:Hampire:1563274961408495676>",
+      "cost": 40000
+    },
+    {
+      "id": "pig.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Floaty Pig",
+      "emoji": "<:FloatyPig:1563274973383098488>",
+      "cost": 22000
+    },
+    {
+      "id": "pig.summer2025SP.0",
+      "packId": "summer2025SP",
+      "name": "Bacon Pig",
+      "emoji": "<:BaconPig:1563275080685846679>",
+      "cost": 40000
+    },
+    {
+      "id": "pig.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Pig",
+      "emoji": "<:GoldTrimPig:1563275210059284480>"
+    },
+    {
+      "id": "pig.legacySP.0",
+      "packId": "legacySP",
+      "name": "Pig",
+      "emoji": "<:ClassicPig:1563275307480391720>"
+    },
+    {
+      "id": "pig.promo.0",
+      "name": "Nation the Pig",
+      "emoji": "<:NationThePig:1566398741202608198>",
+      "cost": 0
+    },
+    {
+      "id": "pig.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Pig",
+      "emoji": "<:PigClassicWinter:1566398742666416168>"
     }
   ],
   "pinky": [
@@ -519,6 +913,19 @@
       "packId": "s2",
       "name": "Woodpecker",
       "emoji": "<:WoodpeckerS2:1291429347466412072>"
+    },
+    {
+      "id": "woodpecker.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Jackhammer",
+      "emoji": "<:Jackhammer:1563275074008780900>",
+      "cost": 67000
+    },
+    {
+      "id": "woodpecker.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Woodpecker",
+      "emoji": "<:GoldTrimWoodpecker:1563275212370350250>"
     }
   ],
   "armadillo": [
@@ -533,6 +940,12 @@
       "packId": "s2",
       "name": "Armadillo",
       "emoji": "<:ArmadilloS2:1291429055748640870>"
+    },
+    {
+      "id": "armadillo.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Armadillo",
+      "emoji": "<:GoldTrimArmadillo:1563275216560459850>"
     }
   ],
   "sea_horse": [
@@ -553,6 +966,38 @@
       "packId": "s2w",
       "name": "Sea Horse",
       "emoji": "<:SeahorseS2Winter:1291429453645484082>"
+    },
+    {
+      "id": "sea_horse.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Tully Monster",
+      "emoji": "<:TullyMonster:1563274763105734657>",
+      "cost": 5000
+    },
+    {
+      "id": "sea_horse.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Water Gun Horse",
+      "emoji": "<:WaterGunHorse:1563274978034720808>",
+      "cost": 25000
+    },
+    {
+      "id": "sea_horse.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Seahorse",
+      "emoji": "<:GoldTrimSeahorse:1563275214446665808>"
+    },
+    {
+      "id": "sea_horse.legacySP.0",
+      "packId": "legacySP",
+      "name": "Seahorse",
+      "emoji": "<:ClassicSeahorse:1563275310261338152>"
+    },
+    {
+      "id": "sea_horse.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Sea Horse",
+      "emoji": "<:SeaHorseClassicWinter:1566398744092737577>"
     }
   ],
   "seal": [
@@ -573,9 +1018,40 @@
       "packId": "s2w",
       "name": "Seal",
       "emoji": "<:SealS2Winter:1291429006503182358>"
+    },
+    {
+      "id": "seal.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Hawaiian Monk",
+      "emoji": "<:HawaiianMonk:1563274984686887093>",
+      "cost": 30000
+    },
+    {
+      "id": "seal.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Seal",
+      "emoji": "<:GoldTrimSeal:1563275215725920447>"
+    },
+    {
+      "id": "seal.legacySP.0",
+      "packId": "legacySP",
+      "name": "Seal",
+      "emoji": "<:ClassicSeal:1563275311448326145>"
+    },
+    {
+      "id": "seal.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Seal",
+      "emoji": "<:SealClassicWinter:1566398745480921108>"
     }
   ],
   "kakapo": [
+    {
+      "id": "kakapo.s1.0",
+      "packId": "s1",
+      "name": "Kakapo",
+      "emoji": "<:KakapoS1:1566398747347255326>"
+    },
     {
       "id": "kakapo.s2.0",
       "packId": "s2",
@@ -601,6 +1077,31 @@
       "packId": "s2w",
       "name": "Deer",
       "emoji": "<:DeerS2Winter:1291430228677103677>"
+    },
+    {
+      "id": "deer.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Wendigo",
+      "emoji": "<:Wendigo:1563274820626415696>",
+      "cost": 50000
+    },
+    {
+      "id": "deer.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Deer",
+      "emoji": "<:GoldTrimDeer:1563275218259017788>"
+    },
+    {
+      "id": "deer.legacySP.0",
+      "packId": "legacySP",
+      "name": "Deer",
+      "emoji": "<:ClassicDeer:1563275314237538514>"
+    },
+    {
+      "id": "deer.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Deer",
+      "emoji": "<:DeerClassicWinter:1566398749067055204>"
     }
   ],
   "doe": [
@@ -643,6 +1144,31 @@
       "packId": "s2",
       "name": "Gazelle",
       "emoji": "<:GazelleS2:1291429655978446920>"
+    },
+    {
+      "id": "gazelle.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Flammy Hart",
+      "emoji": "<:FlammyHart:1563274822384095323>",
+      "cost": 55000
+    },
+    {
+      "id": "gazelle.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Gazelle",
+      "emoji": "<:GoldTrimGazelle:1563275224462397551>"
+    },
+    {
+      "id": "gazelle.legacySP.0",
+      "packId": "legacySP",
+      "name": "Gazelle",
+      "emoji": "<:ClassicGazelle:1563275321967386664>"
+    },
+    {
+      "id": "gazelle.s2w.0",
+      "packId": "s2w",
+      "name": "Gazelle",
+      "emoji": "<:GazelleS2Winter:1566398750702833714>"
     }
   ],
   "squid": [
@@ -663,6 +1189,45 @@
       "packId": "s2w",
       "name": "Squid",
       "emoji": "<:SquidS2Winter:1291430528313987104>"
+    },
+    {
+      "id": "squid.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Cuttle Fish",
+      "emoji": "<:CuttleFish:1563274764439650466>",
+      "cost": 8000
+    },
+    {
+      "id": "squid.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Void Scuttling Squid",
+      "emoji": "<:VoidScuttlingSquid:1563274882115043473>",
+      "cost": 50000
+    },
+    {
+      "id": "squid.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Seacoast Squid",
+      "emoji": "<:SeacoastSquid:1563274996955226142>",
+      "cost": 40000
+    },
+    {
+      "id": "squid.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Squid",
+      "emoji": "<:GoldTrimSquid:1563275219408257064>"
+    },
+    {
+      "id": "squid.legacySP.0",
+      "packId": "legacySP",
+      "name": "Squid",
+      "emoji": "<:ClassicSquid:1563275316510593066>"
+    },
+    {
+      "id": "squid.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Squid",
+      "emoji": "<:SquidClassicWinter:1566398752225493022>"
     }
   ],
   "flamingo": [
@@ -677,6 +1242,19 @@
       "packId": "s2",
       "name": "Flamingo",
       "emoji": "<:FlamingoS2:1291430551206629447>"
+    },
+    {
+      "id": "flamingo.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Fly Mango",
+      "emoji": "<:FlyMango:1563275071093608623>",
+      "cost": 30000
+    },
+    {
+      "id": "flamingo.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Flamingo",
+      "emoji": "<:GoldTrimFlamingo:1563275220612026399>"
     }
   ],
   "reindeer": [
@@ -691,6 +1269,38 @@
       "packId": "s2",
       "name": "Reindeer",
       "emoji": "<:ReindeerS2:1291429559337484422>"
+    },
+    {
+      "id": "reindeer.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Spideer",
+      "emoji": "<:Spideer:1563274865916772482>",
+      "cost": 20000
+    },
+    {
+      "id": "reindeer.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Sunburn Reindeer",
+      "emoji": "<:SunburnReindeer:1563274986456612885>",
+      "cost": 30000
+    },
+    {
+      "id": "reindeer.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Reindeer",
+      "emoji": "<:GoldTrimReindeer:1563275222365507624>"
+    },
+    {
+      "id": "reindeer.legacySP.0",
+      "packId": "legacySP",
+      "name": "Reindeer",
+      "emoji": "<:ClassicReindeer:1563275320474210365>"
+    },
+    {
+      "id": "reindeer.s2w.0",
+      "packId": "s2w",
+      "name": "Reindeer",
+      "emoji": "<:ReindeerS2Winter:1566398761167486976>"
     }
   ],
   "musk": [
@@ -741,6 +1351,50 @@
       "packId": "s2w",
       "name": "Fox",
       "emoji": "<:FoxS2Winter:1291430796791648368>"
+    },
+    {
+      "id": "fox.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Night Thief",
+      "emoji": "<:NightThief:1563274765618258003>",
+      "cost": 10000
+    },
+    {
+      "id": "fox.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Black Asura Fox",
+      "emoji": "<:BlackAsuraFox:1563274879728492544>",
+      "cost": 35000
+    },
+    {
+      "id": "fox.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Fox",
+      "emoji": "<:GoldTrimFox:1563275225976672387>"
+    },
+    {
+      "id": "fox.legacySP.0",
+      "packId": "legacySP",
+      "name": "Fox",
+      "emoji": "<:ClassicFox:1563275323225939978>"
+    },
+    {
+      "id": "fox.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Fox",
+      "emoji": "<:FoxClassicWinter:1566398762367324280>"
+    },
+    {
+      "id": "fox.oldestSP.0",
+      "packId": "oldestSP",
+      "name": "Old Classic Winter Fox",
+      "emoji": "<:OldClassicWinterFox:1566406924965257358>"
+    },
+    {
+      "id": "fox.oldestSP.1",
+      "packId": "oldestSP",
+      "name": "Oldest Fox",
+      "emoji": "<:OldestFox:1566406989100351659>"
     }
   ],
   "hedgehog": [
@@ -761,6 +1415,18 @@
       "packId": "s2w",
       "name": "Hedgehog",
       "emoji": "<:HedgehogS2Winter:1291430839787458681>"
+    },
+    {
+      "id": "hedgehog.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Hedgehog",
+      "emoji": "<:GoldTrimHedgehog:1563275227428032713>"
+    },
+    {
+      "id": "hedgehog.legacySP.0",
+      "packId": "legacySP",
+      "name": "Hedgehog",
+      "emoji": "<:ClassicHedgehog:1563275324505202728>"
     }
   ],
   "peacock": [
@@ -775,6 +1441,19 @@
       "packId": "s2",
       "name": "Peacock",
       "emoji": "<:PeacockS2:1291430902898888704>"
+    },
+    {
+      "id": "peacock.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Plague Raptor",
+      "emoji": "<:PlagueRaptor:1563274788640788591>",
+      "cost": 25000
+    },
+    {
+      "id": "peacock.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Peacock",
+      "emoji": "<:GoldTrimPeacock:1563275228795117710>"
     }
   ],
   "fennec_fox": [
@@ -789,6 +1468,18 @@
       "packId": "s2",
       "name": "Fennec Fox",
       "emoji": "<:FennecFoxS2:1291430668667981834>"
+    },
+    {
+      "id": "fennec_fox.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Fennec Fox",
+      "emoji": "<:GoldTrimFennecFox:1563275233069375538>"
+    },
+    {
+      "id": "fennec_fox.legacySP.0",
+      "packId": "legacySP",
+      "name": "Fennec Fox",
+      "emoji": "<:ClassicFennecFox:1563275330473693275>"
     }
   ],
   "jellyfish": [
@@ -809,6 +1500,38 @@
       "packId": "s2w",
       "name": "Jellyfish",
       "emoji": "<:JellyfishS2Winter:1337044388056137819>"
+    },
+    {
+      "id": "jellyfish.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Seafoam Jellyfish",
+      "emoji": "<:SeafoamJellyfish:1563274991137587331>",
+      "cost": 34000
+    },
+    {
+      "id": "jellyfish.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Disco Jellyfish",
+      "emoji": "<:DiscoJellyfish:1563275072582455417>",
+      "cost": 65000
+    },
+    {
+      "id": "jellyfish.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Jellyfish",
+      "emoji": "<:GoldTrimJellyfish:1563275230234017954>"
+    },
+    {
+      "id": "jellyfish.legacySP.0",
+      "packId": "legacySP",
+      "name": "Jellyfish",
+      "emoji": "<:ClassicJellyfish:1563275326690173050>"
+    },
+    {
+      "id": "jellyfish.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Jellyfish",
+      "emoji": "<:JellyfishClassicWinter:1566398763646591036>"
     }
   ],
   "arctic_fox": [
@@ -829,6 +1552,38 @@
       "packId": "s2w",
       "name": "Arctic Fox",
       "emoji": "<:ArcticFoxS2Winter:1337048370576883742>"
+    },
+    {
+      "id": "arctic_fox.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Ice Fox",
+      "emoji": "<:IceFox:1563274767203696700>",
+      "cost": 6000
+    },
+    {
+      "id": "arctic_fox.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Forest Spirit Fox",
+      "emoji": "<:ForestSpiritFox:1563274979854786723>",
+      "cost": 25000
+    },
+    {
+      "id": "arctic_fox.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Arctic Fox",
+      "emoji": "<:GoldTrimArcticFox:1563275231563485296>"
+    },
+    {
+      "id": "arctic_fox.legacySP.0",
+      "packId": "legacySP",
+      "name": "Arctic Fox",
+      "emoji": "<:ClassicArcticFox:1563275328422420523>"
+    },
+    {
+      "id": "arctic_fox.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Arctic Fox",
+      "emoji": "<:ArcticFoxClassicWinter:1566398764925718558>"
     }
   ],
   "zebra": [
@@ -849,6 +1604,52 @@
       "packId": "s2w",
       "name": "Zebra",
       "emoji": "<:ZebraS2Winter:1291436268487704726>"
+    },
+    {
+      "id": "zebra.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Okapi",
+      "emoji": "<:Okapi:1563274746467057767>",
+      "cost": 70000
+    },
+    {
+      "id": "zebra.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Unicornze",
+      "emoji": "<:Unicornze:1563274834094456832>",
+      "cost": 75000
+    },
+    {
+      "id": "zebra.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Playground Zebra",
+      "emoji": "<:PlaygroundZebra:1563274992571916329>",
+      "cost": 34000
+    },
+    {
+      "id": "zebra.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Synth Zebra",
+      "emoji": "<:SynthZebra:1563275076596535449>",
+      "cost": 70000
+    },
+    {
+      "id": "zebra.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Zebra",
+      "emoji": "<:GoldTrimZebra:1563275235547947058>"
+    },
+    {
+      "id": "zebra.legacySP.0",
+      "packId": "legacySP",
+      "name": "Zebra",
+      "emoji": "<:ClassicZebra:1563275331874463744>"
+    },
+    {
+      "id": "zebra.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Zebra",
+      "emoji": "<:ZebraClassicWinter:1566398766217560065>"
     }
   ],
   "donkey": [
@@ -869,6 +1670,45 @@
       "packId": "s2w",
       "name": "Donkey",
       "emoji": "<:DonkeyS2Winter:1291436049758814280>"
+    },
+    {
+      "id": "donkey.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Zonkey",
+      "emoji": "<:Zonkey:1563274749004742726>",
+      "cost": 100000
+    },
+    {
+      "id": "donkey.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Equusthulhu",
+      "emoji": "<:Equusthulhu:1563274823189274636>",
+      "cost": 55000
+    },
+    {
+      "id": "donkey.mope10PartySP.0",
+      "packId": "mope10PartySP",
+      "name": "Big Pinata",
+      "emoji": "<:BigPinata:1563275194150297770>",
+      "cost": 80000
+    },
+    {
+      "id": "donkey.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Donkey",
+      "emoji": "<:GoldTrimDonkey:1563275234289651752>"
+    },
+    {
+      "id": "donkey.legacySP.0",
+      "packId": "legacySP",
+      "name": "Donkey",
+      "emoji": "<:ClassicDonkey:1563275333074030622>"
+    },
+    {
+      "id": "donkey.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Donkey",
+      "emoji": "<:DonkeyClassicWinter:1566398768075505825>"
     }
   ],
   "jackass": [
@@ -897,6 +1737,18 @@
       "packId": "s2",
       "name": "Macaw",
       "emoji": "<:MacawS2:1291435930338459658>"
+    },
+    {
+      "id": "macaw.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Macaw",
+      "emoji": "<:GoldTrimMacaw:1563275237083058378>"
+    },
+    {
+      "id": "macaw.legacySP.0",
+      "packId": "legacySP",
+      "name": "Macaw",
+      "emoji": "<:ClassicMacaw:1563275334340710403>"
     }
   ],
   "blue": [
@@ -931,18 +1783,6 @@
       "packId": "s2",
       "name": "Pakistan Macaw",
       "emoji": "<:PakistanMacawS2:1284540970876145704>"
-    },
-    {
-      "id": "spix.s1.2",
-      "packId": "s1",
-      "name": "USSR Macaw",
-      "emoji": "<:USSRMacawS1:1287125634539323463>"
-    },
-    {
-      "id": "spix.s2.1",
-      "packId": "s2",
-      "name": "USSR Macaw",
-      "emoji": "<:USSRMacawS2:1288058610655690804>"
     }
   ],
   "warthog": [
@@ -957,6 +1797,59 @@
       "packId": "s2",
       "name": "Warthog",
       "emoji": "<:WarthogS2:1291435861593952318>"
+    },
+    {
+      "id": "warthog.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "WarT. Hog",
+      "emoji": "<:WarTHog:1563274768361193507>",
+      "cost": 5000
+    },
+    {
+      "id": "warthog.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Burlone",
+      "emoji": "<:Burlone:1563274841149407323>",
+      "cost": 100000
+    },
+    {
+      "id": "warthog.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Candy Corn Warthog",
+      "emoji": "<:CandyCornWarthog:1563274867338383382>",
+      "cost": 20000
+    },
+    {
+      "id": "warthog.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Dark Matter Warthog",
+      "emoji": "<:DarkMatterWarthog:1563274915501707305>",
+      "cost": 20000
+    },
+    {
+      "id": "warthog.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Flame Tiki",
+      "emoji": "<:FlameTiki:1563274998699786361>",
+      "cost": 40000
+    },
+    {
+      "id": "warthog.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Warthog",
+      "emoji": "<:GoldTrimWarthog:1563275241181024298>"
+    },
+    {
+      "id": "warthog.legacySP.0",
+      "packId": "legacySP",
+      "name": "Warthog",
+      "emoji": "<:ClassicWarthog:1563275340204482621>"
+    },
+    {
+      "id": "warthog.s2w.0",
+      "packId": "s2w",
+      "name": "Warthog",
+      "emoji": "<:WarthogS2Winter:1566398769648508968>"
     }
   ],
   "turtle": [
@@ -977,6 +1870,45 @@
       "packId": "s2w",
       "name": "Turtle",
       "emoji": "<:TurtleS2Winter:1338158405579182203>"
+    },
+    {
+      "id": "turtle.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Leather Back Turtle",
+      "emoji": "<:LeatherBackTurtle:1563274779262328883>",
+      "cost": 10000
+    },
+    {
+      "id": "turtle.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Kiwi Turtle",
+      "emoji": "<:KiwiTurtle:1563274987681488988>",
+      "cost": 30000
+    },
+    {
+      "id": "turtle.summer2025SP.0",
+      "packId": "summer2025SP",
+      "name": "Trash Turtle",
+      "emoji": "<:TrashTurtle:1563275082271563896>",
+      "cost": 40000
+    },
+    {
+      "id": "turtle.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Turtle",
+      "emoji": "<:GoldTrimTurtle:1563275238593134702>"
+    },
+    {
+      "id": "turtle.legacySP.0",
+      "packId": "legacySP",
+      "name": "Turtle",
+      "emoji": "<:ClassicTurtle:1563275336131543060>"
+    },
+    {
+      "id": "turtle.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Turtle",
+      "emoji": "<:TurtleClassicWinter:1566398771917492254>"
     }
   ],
   "muskox": [
@@ -997,6 +1929,38 @@
       "packId": "s2w",
       "name": "Muskox",
       "emoji": "<:MuskoxS2Winter:1338159518609182900>"
+    },
+    {
+      "id": "muskox.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Brazen Bull",
+      "emoji": "<:BrazenBull:1563274775026081872>",
+      "cost": 45000
+    },
+    {
+      "id": "muskox.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Fireworks Ox",
+      "emoji": "<:FireworksOx:1563274995382222860>",
+      "cost": 35000
+    },
+    {
+      "id": "muskox.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Muskox",
+      "emoji": "<:GoldTrimMuskox:1563275239855628399>"
+    },
+    {
+      "id": "muskox.legacySP.0",
+      "packId": "legacySP",
+      "name": "Muskox",
+      "emoji": "<:ClassicMuskox:1563275338551656488>"
+    },
+    {
+      "id": "muskox.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Muskox",
+      "emoji": "<:MuskoxClassicWinter:1566398775138852874>"
     }
   ],
   "cobra": [
@@ -1017,6 +1981,38 @@
       "packId": "s2w",
       "name": "Cobra",
       "emoji": "<:CobraS2Winter:1361400218435977416>"
+    },
+    {
+      "id": "cobra.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Celestial Cobra",
+      "emoji": "<:CelestialCobra:1563274789706137660>",
+      "cost": 32000
+    },
+    {
+      "id": "cobra.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Wyrmous",
+      "emoji": "<:Wyrmous:1563274829816270958>",
+      "cost": 60000
+    },
+    {
+      "id": "cobra.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Cobra",
+      "emoji": "<:GoldTrimCobra:1563275242993090570>"
+    },
+    {
+      "id": "cobra.legacySP.0",
+      "packId": "legacySP",
+      "name": "Cobra",
+      "emoji": "<:ClassicCobra:1563275341441540126>"
+    },
+    {
+      "id": "cobra.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Cobra",
+      "emoji": "<:CobraClassicWinter:1566398776569102366>"
     }
   ],
   "cheetah": [
@@ -1037,6 +2033,51 @@
       "packId": "s2w",
       "name": "Cheetah",
       "emoji": "<:CheetahS2Winter:1361776168491155486>"
+    },
+    {
+      "id": "cheetah.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Big Cookie",
+      "emoji": "<:BigCookie:1563274826460831915>",
+      "cost": 55000
+    },
+    {
+      "id": "cheetah.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Genie Cheetah",
+      "emoji": "<:GenieCheetah:1563274883750952990>",
+      "cost": 70000
+    },
+    {
+      "id": "cheetah.halloween2025SP.0",
+      "packId": "halloween2025SP",
+      "name": "Witch Cat",
+      "emoji": "<:WitchCat:1563274970191110297>",
+      "cost": 120000
+    },
+    {
+      "id": "cheetah.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Cheetah",
+      "emoji": "<:GoldTrimCheetah:1563275244909887581>"
+    },
+    {
+      "id": "cheetah.legacySP.0",
+      "packId": "legacySP",
+      "name": "Cheetah",
+      "emoji": "<:ClassicCheetah:1563275343060803715>"
+    },
+    {
+      "id": "cheetah.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Cheetah",
+      "emoji": "<:CheetahClassicWinter:1566398778163073094>"
+    },
+    {
+      "id": "cheetah.oldestSP.0",
+      "packId": "oldestSP",
+      "name": "Old Classic Winter Cheetah",
+      "emoji": "<:OldClassicWinterCheetah:1566406934993838171>"
     }
   ],
   "jaguar": [
@@ -1093,6 +2134,38 @@
       "packId": "s2",
       "name": "Camel",
       "emoji": "<:CamelS2:1292124920658264086>"
+    },
+    {
+      "id": "camel.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Doomedarius",
+      "emoji": "<:Doomedarius:1563274831288475709>",
+      "cost": 60000
+    },
+    {
+      "id": "camel.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Balloon Warrior",
+      "emoji": "<:BalloonWarrior:1563275014982344794>",
+      "cost": 45000
+    },
+    {
+      "id": "camel.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Camel",
+      "emoji": "<:GoldTrimCamel:1563275250790309928>"
+    },
+    {
+      "id": "camel.legacySP.0",
+      "packId": "legacySP",
+      "name": "Camel",
+      "emoji": "<:ClassicCamel:1563275349025104004>"
+    },
+    {
+      "id": "camel.s2w.0",
+      "packId": "s2w",
+      "name": "Camel",
+      "emoji": "<:CamelS2Winter:1566398781317062682>"
     }
   ],
   "stingray": [
@@ -1107,6 +2180,51 @@
       "packId": "s2",
       "name": "Stingray",
       "emoji": "<:StingrayS2:1292125010886004854>"
+    },
+    {
+      "id": "stingray.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Phantom Ray",
+      "emoji": "<:PhantomRay:1563274832358150235>",
+      "cost": 65000
+    },
+    {
+      "id": "stingray.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Chocolate Ray",
+      "emoji": "<:ChocolateRay:1563274999790436434>",
+      "cost": 40000
+    },
+    {
+      "id": "stingray.valentine2023SP.0",
+      "packId": "valentine2023SP",
+      "name": "Valentine Stingray",
+      "emoji": "<:ValentineStingray:1563275135589294080>",
+      "cost": 199990
+    },
+    {
+      "id": "stingray.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Stingray",
+      "emoji": "<:GoldTrimStingray:1563275246436622477>"
+    },
+    {
+      "id": "stingray.legacySP.0",
+      "packId": "legacySP",
+      "name": "Stingray",
+      "emoji": "<:ClassicStingray:1563275344814014525>"
+    },
+    {
+      "id": "stingray.s2w.0",
+      "packId": "s2w",
+      "name": "Stingray",
+      "emoji": "<:StingrayS2Winter:1566398782827012196>"
+    },
+    {
+      "id": "stingray.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Stingray",
+      "emoji": "<:StingrayClassicWinter:1566398784672632873>"
     }
   ],
   "snowy_owl": [
@@ -1127,6 +2245,25 @@
       "packId": "s2w",
       "name": "Snowy Owl",
       "emoji": "<:SnowyOwlS2Winter:1361401644373377174>"
+    },
+    {
+      "id": "snowy_owl.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Owrigami",
+      "emoji": "<:Owrigami:1563274989426450687>",
+      "cost": 33000
+    },
+    {
+      "id": "snowy_owl.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Snowy Owl",
+      "emoji": "<:GoldTrimSnowyOwl:1563275249158455356>"
+    },
+    {
+      "id": "snowy_owl.legacySP.0",
+      "packId": "legacySP",
+      "name": "Snowy Owl",
+      "emoji": "<:ClassicSnowyOwl:1563275348056211569>"
     }
   ],
   "walrus": [
@@ -1147,6 +2284,45 @@
       "packId": "s2w",
       "name": "Walrus",
       "emoji": "<:WalrusS2Winter:1361401453838598407>"
+    },
+    {
+      "id": "walrus.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Candy Rus",
+      "emoji": "<:CandyRus:1563274828390203473>",
+      "cost": 55000
+    },
+    {
+      "id": "walrus.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Walrusmelon",
+      "emoji": "<:Walrusmelon:1563275013035917456>",
+      "cost": 44000
+    },
+    {
+      "id": "walrus.valentine2023SP.0",
+      "packId": "valentine2023SP",
+      "name": "Valentine Walrus",
+      "emoji": "<:ValentineWalrus:1563275136977739876>",
+      "cost": 199990
+    },
+    {
+      "id": "walrus.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Walrus",
+      "emoji": "<:GoldTrimWalrus:1563275268960030842>"
+    },
+    {
+      "id": "walrus.legacySP.0",
+      "packId": "legacySP",
+      "name": "Walrus",
+      "emoji": "<:ClassicWalrus:1563275365302931577>"
+    },
+    {
+      "id": "walrus.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Walrus",
+      "emoji": "<:WalrusClassicWinter:1566398787218309140>"
     }
   ],
   "raven": [
@@ -1161,6 +2337,12 @@
       "packId": "s2",
       "name": "Raven",
       "emoji": "<:RavenS2:1292124940912562256>"
+    },
+    {
+      "id": "raven.retired.0",
+      "name": "Muscipula Raven",
+      "emoji": "<:MuscipulaRaven:1566398842423877732>",
+      "cost": 30000
     }
   ],
   "toucan": [
@@ -1175,6 +2357,59 @@
       "packId": "s2",
       "name": "Toucan",
       "emoji": "<:ToucanS2:1292125146533990410>"
+    },
+    {
+      "id": "toucan.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Prisma Toucan",
+      "emoji": "<:PrismaToucan:1563274755107332218>",
+      "cost": 150000
+    },
+    {
+      "id": "toucan.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Ice Toucan",
+      "emoji": "<:IceToucan:1563274780457828372>",
+      "cost": 10000
+    },
+    {
+      "id": "toucan.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Dapper",
+      "emoji": "<:Dapper:1563274835566665788>",
+      "cost": 75000
+    },
+    {
+      "id": "toucan.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Molten Toucan",
+      "emoji": "<:MoltenToucan:1563274929074339871>",
+      "cost": 70000
+    },
+    {
+      "id": "toucan.summer2025SP.0",
+      "packId": "summer2025SP",
+      "name": "Coconut Toucan",
+      "emoji": "<:CoconutToucan:1563275084800458813>",
+      "cost": 80000
+    },
+    {
+      "id": "toucan.cosmic.0",
+      "name": "Starlight Toucan",
+      "emoji": "<:StarlightToucan:1563275152354185289>",
+      "cost": 65000
+    },
+    {
+      "id": "toucan.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Toucan",
+      "emoji": "<:GoldTrimToucan:1563275253835104396>"
+    },
+    {
+      "id": "toucan.legacySP.0",
+      "packId": "legacySP",
+      "name": "Toucan",
+      "emoji": "<:ClassicToucan:1563275352027963502>"
     }
   ],
   "choco": [
@@ -1251,18 +2486,6 @@
       "packId": "s2",
       "name": "Pakistan Toucan",
       "emoji": "<:PakistanToucanS2:1284567718351077386>"
-    },
-    {
-      "id": "helmeted_hornbill.legacySPw.0",
-      "packId": "legacySPw",
-      "name": "USSR Toucan",
-      "emoji": "<:USSRToucanLegacy:1287125672342454406>"
-    },
-    {
-      "id": "helmeted_hornbill.s2.1",
-      "packId": "s2",
-      "name": "USSR Toucan",
-      "emoji": "<:USSRToucanS2:1288058651075940382>"
     }
   ],
   "gorilla": [
@@ -1283,6 +2506,59 @@
       "packId": "s2w",
       "name": "Gorilla",
       "emoji": "<:GorillaS2Winter:1361776337634988224>"
+    },
+    {
+      "id": "gorilla.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Grim Ripper",
+      "emoji": "<:GrimRipper:1563274845091926076>",
+      "cost": 125000
+    },
+    {
+      "id": "gorilla.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Phantom Gorilla",
+      "emoji": "<:PhantomGorilla:1563274892357537833>",
+      "cost": 150000
+    },
+    {
+      "id": "gorilla.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Mafia Gorilla",
+      "emoji": "<:MafiaGorilla:1563274951262339122>",
+      "cost": 139990
+    },
+    {
+      "id": "gorilla.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Explorer Ape",
+      "emoji": "<:ExplorerApe:1563275027917312131>",
+      "cost": 55000
+    },
+    {
+      "id": "gorilla.valentine2023SP.0",
+      "packId": "valentine2023SP",
+      "name": "Valentine Gorilla",
+      "emoji": "<:ValentineGorilla:1563275138735149136>",
+      "cost": 199990
+    },
+    {
+      "id": "gorilla.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Gorilla",
+      "emoji": "<:GoldTrimGorilla:1563275252258045952>"
+    },
+    {
+      "id": "gorilla.legacySP.0",
+      "packId": "legacySP",
+      "name": "Gorilla",
+      "emoji": "<:ClassicGorilla:1563275350769672313>"
+    },
+    {
+      "id": "gorilla.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Gorilla",
+      "emoji": "<:GorillaClassicWinter:1566398788459827333>"
     }
   ],
   "rattle_snake": [
@@ -1297,6 +2573,31 @@
       "packId": "s2",
       "name": "Rattlesnake",
       "emoji": "<:RattleSnakeS2:1292125087201366067>"
+    },
+    {
+      "id": "rattle_snake.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Gummy Viper",
+      "emoji": "<:GummyViper:1563274838548938965>",
+      "cost": 85000
+    },
+    {
+      "id": "rattle_snake.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Rattlesnake",
+      "emoji": "<:GoldTrimRattlesnake:1563275262228037843>"
+    },
+    {
+      "id": "rattle_snake.legacySP.0",
+      "packId": "legacySP",
+      "name": "Rattlesnake",
+      "emoji": "<:ClassicRattlesnake:1563275356969115838>"
+    },
+    {
+      "id": "rattle_snake.s2w.0",
+      "packId": "s2w",
+      "name": "Rattlesnake",
+      "emoji": "<:RattlesnakeS2Winter:1566398789705670676>"
     }
   ],
   "pufferfish": [
@@ -1311,6 +2612,64 @@
       "packId": "s2",
       "name": "Pufferfish",
       "emoji": "<:PufferfishS2:1292125226083287090>"
+    },
+    {
+      "id": "pufferfish.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Puffermace",
+      "emoji": "<:Puffermace:1563274807754104915>",
+      "cost": 35000
+    },
+    {
+      "id": "pufferfish.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Omniball Puffer",
+      "emoji": "<:OmniballPuffer:1563275001283481792>",
+      "cost": 40000
+    },
+    {
+      "id": "pufferfish.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Balloon Pufferfish",
+      "emoji": "<:BalloonPufferfish:1563275066677133312>",
+      "cost": 20000
+    },
+    {
+      "id": "pufferfish.christmas2025SP.0",
+      "packId": "christmas2025SP",
+      "name": "Icicle Pufferfish",
+      "emoji": "<:IciclePufferfish:1563275134108958792>",
+      "cost": 50000
+    },
+    {
+      "id": "pufferfish.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Pufferfish",
+      "emoji": "<:GoldTrimPufferfish:1563275255370358804>"
+    },
+    {
+      "id": "pufferfish.legacySP.0",
+      "packId": "legacySP",
+      "name": "Pufferfish",
+      "emoji": "<:ClassicPufferfish:1563275353567535104>"
+    },
+    {
+      "id": "pufferfish.s2w.0",
+      "packId": "s2w",
+      "name": "Pufferfish",
+      "emoji": "<:PufferfishS2Winter:1566398790833803277>"
+    },
+    {
+      "id": "pufferfish.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Pufferfish",
+      "emoji": "<:PufferfishClassicWinter:1566398792348205177>"
+    },
+    {
+      "id": "pufferfish.oldestSP.0",
+      "packId": "oldestSP",
+      "name": "Beta Balloon Pufferfish",
+      "emoji": "<:BetaBalloonPufferfish:1566406980032004126>"
     }
   ],
   "yellow": [
@@ -1359,6 +2718,52 @@
       "packId": "s2w",
       "name": "Snow Leopard",
       "emoji": "<:SnowLeopardS2Winter:1361778296198533403>"
+    },
+    {
+      "id": "snow_leopard.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Frostaline",
+      "emoji": "<:Frostaline:1563274819166928959>",
+      "cost": 45000
+    },
+    {
+      "id": "snow_leopard.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Martian Leopard",
+      "emoji": "<:MartianLeopard:1563274868466655275>",
+      "cost": 20000
+    },
+    {
+      "id": "snow_leopard.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Coral Queen",
+      "emoji": "<:CoralQueen:1563275002856603708>",
+      "cost": 40000
+    },
+    {
+      "id": "snow_leopard.valentine2023SP.0",
+      "packId": "valentine2023SP",
+      "name": "Valentine Snow Leopard",
+      "emoji": "<:ValentineSnowLeopard:1563275140014411879>",
+      "cost": 199990
+    },
+    {
+      "id": "snow_leopard.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Snow Leopard",
+      "emoji": "<:GoldTrimSnowLeopard:1563275259384176732>"
+    },
+    {
+      "id": "snow_leopard.legacySP.0",
+      "packId": "legacySP",
+      "name": "Snow Leopard",
+      "emoji": "<:ClassicSnowLeopard:1563275355056242808>"
+    },
+    {
+      "id": "snow_leopard.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Snow Leopard",
+      "emoji": "<:SnowLeopardClassicWinter:1566398793891713155>"
     }
   ],
   "turkey": [
@@ -1387,6 +2792,44 @@
       "packId": "s2w",
       "name": "Bear",
       "emoji": "<:BearS2Winter:1362498863448985943>"
+    },
+    {
+      "id": "bear.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Panda",
+      "emoji": "<:Panda:1563274750233419816>",
+      "cost": 100000
+    },
+    {
+      "id": "bear.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Spooky Bear",
+      "emoji": "<:SpookyBear:1563274948842229920>",
+      "cost": 69690
+    },
+    {
+      "id": "bear.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Bear",
+      "emoji": "<:GoldTrimBear:1563275263675207700>"
+    },
+    {
+      "id": "bear.legacySP.0",
+      "packId": "legacySP",
+      "name": "Bear",
+      "emoji": "<:ClassicBear:1563275358638186546>"
+    },
+    {
+      "id": "bear.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Bear",
+      "emoji": "<:BearClassicWinter:1566398794944225433>"
+    },
+    {
+      "id": "bear.oldestSP.0",
+      "packId": "oldestSP",
+      "name": "Old Classic Winter Bear",
+      "emoji": "<:OldClassicWinterBear:1566406937090719744>"
     }
   ],
   "black_bear": [
@@ -1421,6 +2864,66 @@
       "packId": "s2w",
       "name": "Lion",
       "emoji": "<:LionS2Winter:1363245655858086269>"
+    },
+    {
+      "id": "lion.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Clowoud Lion",
+      "emoji": "<:ClowoudLion:1563274776787689472>",
+      "cost": 15000
+    },
+    {
+      "id": "lion.storefrontSP.1",
+      "packId": "storefrontSP",
+      "name": "Storm Clowoud Lion",
+      "emoji": "<:StormClowoudLion:1563274787449610322>",
+      "cost": 23000
+    },
+    {
+      "id": "lion.storefrontSP.2",
+      "packId": "storefrontSP",
+      "name": "Sunset Clowoud Lion",
+      "emoji": "<:SunsetClowoudLion:1563274793439068250>",
+      "cost": 36000
+    },
+    {
+      "id": "lion.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Mantilian",
+      "emoji": "<:Mantilian:1563274846299889745>",
+      "cost": 140000
+    },
+    {
+      "id": "lion.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Ghastly Jade Lion",
+      "emoji": "<:GhastlyJadeLion:1563274919553274038>",
+      "cost": 25000
+    },
+    {
+      "id": "lion.halloween2025SP.0",
+      "packId": "halloween2025SP",
+      "name": "Guardion",
+      "emoji": "<:Guardion:1563274966957432902>",
+      "cost": 80000
+    },
+    {
+      "id": "lion.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Lion",
+      "emoji": "<:GoldTrimLion:1563275264992092271>"
+    },
+    {
+      "id": "lion.legacySP.0",
+      "packId": "legacySP",
+      "name": "Lion",
+      "emoji": "<:ClassicLion:1563275360437805217>"
+    },
+    {
+      "id": "lion.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Lion",
+      "emoji": "<:LionClassicWinter:1566398796458622996>"
     }
   ],
   "lioness": [
@@ -1567,6 +3070,18 @@
       "packId": "s2w",
       "name": "Gobi Bear",
       "emoji": "<:GobiBearS2Winter:1362499574945550336>"
+    },
+    {
+      "id": "gobi_bear.may2022.0",
+      "name": "Gobee Bear",
+      "emoji": "<:GobeeBear:1563275102164881518>",
+      "cost": 69000
+    },
+    {
+      "id": "gobi_bear.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Gobi Bear",
+      "emoji": "<:GoldTrimGobiBear:1563275270490685553>"
     }
   ],
   "hyena": [
@@ -1587,6 +3102,19 @@
       "packId": "s2w",
       "name": "Hyena",
       "emoji": "<:HyenaS2Winter:1362499599226503319>"
+    },
+    {
+      "id": "hyena.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "DJ Hyena",
+      "emoji": "<:DJHyena:1563275038361260032>",
+      "cost": 78000
+    },
+    {
+      "id": "hyena.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Hyena",
+      "emoji": "<:GoldTrimHyena:1563275271841386627>"
     }
   ],
   "pelican": [
@@ -1601,6 +3129,19 @@
       "packId": "s2",
       "name": "Pelican",
       "emoji": "<:PelicanS2:1292125644909580289>"
+    },
+    {
+      "id": "pelican.summer2025SP.0",
+      "packId": "summer2025SP",
+      "name": "Oil Spill Pelican",
+      "emoji": "<:OilSpillPelican:1563275088961339524>",
+      "cost": 80000
+    },
+    {
+      "id": "pelican.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Pelican",
+      "emoji": "<:GoldTrimPelican:1563275267580100648>"
     }
   ],
   "swordfish": [
@@ -1621,6 +3162,45 @@
       "packId": "s2w",
       "name": "Swordfish",
       "emoji": "<:SwordfishS2Winter:1362500267492376766>"
+    },
+    {
+      "id": "swordfish.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Sodafish",
+      "emoji": "<:Sodafish:1563274953850232862>",
+      "cost": 179990
+    },
+    {
+      "id": "swordfish.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Surfboardfish",
+      "emoji": "<:Surfboardfish:1563275016513265796>",
+      "cost": 50000
+    },
+    {
+      "id": "swordfish.christmas2025SP.0",
+      "packId": "christmas2025SP",
+      "name": "Evergreen Swordfish",
+      "emoji": "<:EvergreenSwordfish:1563275129688031404>",
+      "cost": 50000
+    },
+    {
+      "id": "swordfish.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Swordfish",
+      "emoji": "<:GoldTrimSwordfish:1563275266099519529>"
+    },
+    {
+      "id": "swordfish.legacySP.0",
+      "packId": "legacySP",
+      "name": "Swordfish",
+      "emoji": "<:ClassicSwordfish:1563275362106871888>"
+    },
+    {
+      "id": "swordfish.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Swordfish",
+      "emoji": "<:SwordfishClassicWinter:1566398797867917382>"
     }
   ],
   "wolf": [
@@ -1635,6 +3215,45 @@
       "packId": "s2",
       "name": "Wolf",
       "emoji": "<:WolfS2:1292125538688696330>"
+    },
+    {
+      "id": "wolf.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Okami Wolf",
+      "emoji": "<:OkamiWolf:1563274923261038623>",
+      "cost": 40000
+    },
+    {
+      "id": "wolf.halloween2025SP.0",
+      "packId": "halloween2025SP",
+      "name": "Cerberus",
+      "emoji": "<:Cerberus:1563274965460189245>",
+      "cost": 100000
+    },
+    {
+      "id": "wolf.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Pineapple Wolf",
+      "emoji": "<:PineappleWolf:1563275004303638568>",
+      "cost": 40000
+    },
+    {
+      "id": "wolf.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Wolf",
+      "emoji": "<:GoldTrimWolf:1563275247732400239>"
+    },
+    {
+      "id": "wolf.legacySP.0",
+      "packId": "legacySP",
+      "name": "Wolf",
+      "emoji": "<:ClassicWolf:1563275346344808519>"
+    },
+    {
+      "id": "wolf.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Wolf",
+      "emoji": "<:WolfClassicWinter:1566398798979407933>"
     }
   ],
   "tiger": [
@@ -1655,6 +3274,31 @@
       "packId": "s2w",
       "name": "Tiger",
       "emoji": "<:TigerS2Winter:1362499098640388306>"
+    },
+    {
+      "id": "tiger.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Chimera Tiger",
+      "emoji": "<:ChimeraTiger:1563274890847723572>",
+      "cost": 150000
+    },
+    {
+      "id": "tiger.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Tiger",
+      "emoji": "<:GoldTrimTiger:1563275274458628206>"
+    },
+    {
+      "id": "tiger.legacySP.0",
+      "packId": "legacySP",
+      "name": "Tiger",
+      "emoji": "<:ClassicTiger:1563275373301465228>"
+    },
+    {
+      "id": "tiger.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Tiger",
+      "emoji": "<:TigerClassicWinter:1566398801072365739>"
     }
   ],
   "white_tiger": [
@@ -1703,6 +3347,71 @@
       "packId": "s2w",
       "name": "Crocodile",
       "emoji": "<:CrocodileS2Winter:1363245002247110757>"
+    },
+    {
+      "id": "crocodile.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Giant Crocodile",
+      "emoji": "<:GiantCrocodile:1563274751584247920>",
+      "cost": 100000
+    },
+    {
+      "id": "crocodile.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Uncle Sam",
+      "emoji": "<:UncleSam:1563274847524626576>",
+      "cost": 155000
+    },
+    {
+      "id": "crocodile.halloween2025SP.0",
+      "packId": "halloween2025SP",
+      "name": "Croco Slime",
+      "emoji": "<:CrocoSlime:1563274962612256799>",
+      "cost": 50000
+    },
+    {
+      "id": "crocodile.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Big Hoss",
+      "emoji": "<:BigHoss:1563275031172223086>",
+      "cost": 60000
+    },
+    {
+      "id": "crocodile.summer2025SP.0",
+      "packId": "summer2025SP",
+      "name": "Lemonade Croc",
+      "emoji": "<:LemonadeCroc:1563275090177564723>",
+      "cost": 80000
+    },
+    {
+      "id": "crocodile.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Crocodile",
+      "emoji": "<:GoldTrimCrocodile:1563275273095618710>"
+    },
+    {
+      "id": "crocodile.legacySP.0",
+      "packId": "legacySP",
+      "name": "Crocodile",
+      "emoji": "<:ClassicCrocodile:1563275371271557200>"
+    },
+    {
+      "id": "crocodile.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Crocodile",
+      "emoji": "<:CrocodileClassicWinter:1566398802443767859>"
+    },
+    {
+      "id": "crocodile.promo.0",
+      "name": "Sharkodile",
+      "emoji": "<:Sharkodile:1566398838430896258>",
+      "cost": 0
+    },
+    {
+      "id": "crocodile.oldestSP.0",
+      "packId": "oldestSP",
+      "name": "Oldest Crocodile",
+      "emoji": "<:OldestCrocodile:1566407000219459685>"
     }
   ],
   "falcon": [
@@ -1717,6 +3426,25 @@
       "packId": "s2",
       "name": "Falcon",
       "emoji": "<:FalconS2:1292125951127457802>"
+    },
+    {
+      "id": "falcon.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Meteor Falcon",
+      "emoji": "<:MeteorFalcon:1563275078181851189>",
+      "cost": 80000
+    },
+    {
+      "id": "falcon.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Falcon",
+      "emoji": "<:GoldTrimFalcon:1563275275477844051>"
+    },
+    {
+      "id": "falcon.legacySP.0",
+      "packId": "legacySP",
+      "name": "Falcon",
+      "emoji": "<:ClassicFalcon:1563275374761091222>"
     }
   ],
   "predator": [
@@ -1765,6 +3493,26 @@
       "packId": "s2w",
       "name": "Vulture",
       "emoji": "<:VultureS2Winter:1363454984011907092>"
+    },
+    {
+      "id": "vulture.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Vulgeist",
+      "emoji": "<:Vulgeist:1563274842612965416>",
+      "cost": 110000
+    },
+    {
+      "id": "vulture.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Acid Husk",
+      "emoji": "<:AcidHusk:1563274884942135336>",
+      "cost": 70000
+    },
+    {
+      "id": "vulture.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Vulture",
+      "emoji": "<:GoldTrimVulture:1563275282109046907>"
     }
   ],
   "argentavis": [
@@ -1785,18 +3533,6 @@
       "packId": "s2",
       "name": "Pakistan Vulture",
       "emoji": "<:PakistanVultureS2:1284568287971377233>"
-    },
-    {
-      "id": "argentavis.s1.2",
-      "packId": "s1",
-      "name": "USSR Vulture",
-      "emoji": "<:USSRVultureS1:1287125751207952455>"
-    },
-    {
-      "id": "argentavis.s2.1",
-      "packId": "s2",
-      "name": "USSR Vulture",
-      "emoji": "<:USSRVultureS2:1288058686241243157>"
     }
   ],
   "octopus": [
@@ -1817,6 +3553,44 @@
       "packId": "s2w",
       "name": "Octopus",
       "emoji": "<:OctopusS2Winter:1363467038823153807>"
+    },
+    {
+      "id": "octopus.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Vampire Squid",
+      "emoji": "<:VampireSquid:1563274770223726693>",
+      "cost": 23000
+    },
+    {
+      "id": "octopus.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Fuchsia Tiger",
+      "emoji": "<:FuchsiaTiger:1563275033529286666>",
+      "cost": 65000
+    },
+    {
+      "id": "octopus.may2022.0",
+      "name": "Na Kika",
+      "emoji": "<:NaKika:1563275104295723070>",
+      "cost": 100000
+    },
+    {
+      "id": "octopus.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Octopus",
+      "emoji": "<:GoldTrimOctopus:1563275276857901198>"
+    },
+    {
+      "id": "octopus.legacySP.0",
+      "packId": "legacySP",
+      "name": "Octopus",
+      "emoji": "<:ClassicOctopus:1563275376082419743>"
+    },
+    {
+      "id": "octopus.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Octopus",
+      "emoji": "<:OctopusClassicWinter:1566398803584491581>"
     }
   ],
   "markhor": [
@@ -1831,6 +3605,33 @@
       "packId": "s2",
       "name": "Markhor",
       "emoji": "<:MarkhorS2:1284568638170595459>"
+    },
+    {
+      "id": "markhor.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Golden Devil Goat",
+      "emoji": "<:GoldenDevilGoat:1563274886623920228>",
+      "cost": 85000
+    },
+    {
+      "id": "markhor.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Fruity Ice Markhor",
+      "emoji": "<:FruityIceMarkhor:1563275035223920690>",
+      "cost": 65000
+    },
+    {
+      "id": "markhor.christmas2025SP.0",
+      "packId": "christmas2025SP",
+      "name": "Krampus Markhor",
+      "emoji": "<:KrampusMarkhor:1563275128585060473>",
+      "cost": 40000
+    },
+    {
+      "id": "markhor.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Markhor",
+      "emoji": "<:GoldTrimMarkhor:1563275280833974404>"
     }
   ],
   "big_goat": [
@@ -1865,6 +3666,44 @@
       "packId": "s2w",
       "name": "Wolverine",
       "emoji": "<:WolverineS2Winter:1364671276957831178>"
+    },
+    {
+      "id": "wolverine.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Summoner Wolverine",
+      "emoji": "<:SummonerWolverine:1563274927564394590>",
+      "cost": 65000
+    },
+    {
+      "id": "wolverine.may2022.0",
+      "name": "Floral Wolverine",
+      "emoji": "<:FloralWolverine:1563275096846504022>",
+      "cost": 46000
+    },
+    {
+      "id": "wolverine.valentine2023SP.0",
+      "packId": "valentine2023SP",
+      "name": "Valentine Wolverine",
+      "emoji": "<:ValentineWolverine:1563275141637742612>",
+      "cost": 199990
+    },
+    {
+      "id": "wolverine.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Wolverine",
+      "emoji": "<:GoldTrimWolverine:1563275278174912532>"
+    },
+    {
+      "id": "wolverine.legacySP.0",
+      "packId": "legacySP",
+      "name": "Wolverine",
+      "emoji": "<:ClassicWolverine:1563275377151971331>"
+    },
+    {
+      "id": "wolverine.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Wolverine",
+      "emoji": "<:WolverineClassicWinter:1566398805128118312>"
     }
   ],
   "rhinoceros": [
@@ -1885,6 +3724,52 @@
       "packId": "s2w",
       "name": "Rhino",
       "emoji": "<:RhinoS2Winter:1364670704200581182>"
+    },
+    {
+      "id": "rhinoceros.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Woolly Rhino",
+      "emoji": "<:WoollyRhino:1563274745292660966>",
+      "cost": 50000
+    },
+    {
+      "id": "rhinoceros.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Acuti Rhino",
+      "emoji": "<:AcutiRhino:1563274889639624714>",
+      "cost": 120000
+    },
+    {
+      "id": "rhinoceros.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Ink Rhino",
+      "emoji": "<:InkRhino:1563274926410956960>",
+      "cost": 50000
+    },
+    {
+      "id": "rhinoceros.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Shrub Rhino",
+      "emoji": "<:ShrubRhino:1563275018241318983>",
+      "cost": 50000
+    },
+    {
+      "id": "rhinoceros.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Rhino",
+      "emoji": "<:GoldTrimRhino:1563275283564466217>"
+    },
+    {
+      "id": "rhinoceros.legacySP.0",
+      "packId": "legacySP",
+      "name": "Rhino",
+      "emoji": "<:ClassicRhino:1563275382797373593>"
+    },
+    {
+      "id": "rhinoceros.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Rhino",
+      "emoji": "<:RhinoClassicWinter:1566398806659043408>"
     }
   ],
   "white_rhinoceros": [
@@ -1933,6 +3818,44 @@
       "packId": "s2w",
       "name": "Eagle",
       "emoji": "<:BaldEagleS2Winter:1364670817975402547>"
+    },
+    {
+      "id": "eagle.mope10LegendsSP.0",
+      "packId": "mope10LegendsSP",
+      "name": "Red Firework Eagle",
+      "emoji": "<:RedFireworkEagle:1563275175661801483>",
+      "cost": 240000
+    },
+    {
+      "id": "eagle.mope10LegendsSP.1",
+      "packId": "mope10LegendsSP",
+      "name": "Blue Firework Eagle",
+      "emoji": "<:BlueFireworkEagle:1563275178476048498>",
+      "cost": 240000
+    },
+    {
+      "id": "eagle.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Eagle",
+      "emoji": "<:GoldTrimEagle:1563275286039109822>"
+    },
+    {
+      "id": "eagle.legacySP.0",
+      "packId": "legacySP",
+      "name": "Eagle",
+      "emoji": "<:ClassicEagle:1563275385771262137>"
+    },
+    {
+      "id": "eagle.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Eagle",
+      "emoji": "<:EagleClassicWinter:1566398807711940619>"
+    },
+    {
+      "id": "eagle.oldestSP.0",
+      "packId": "oldestSP",
+      "name": "Old Eagle",
+      "emoji": "<:OldEagle:1566406955751182429>"
     }
   ],
   "golden": [
@@ -1947,6 +3870,18 @@
       "packId": "s2",
       "name": "Golden Eagle",
       "emoji": "<:GoldenEagleS2:1284568352404279326>"
+    },
+    {
+      "id": "golden.oldestSP.0",
+      "packId": "oldestSP",
+      "name": "Old Golden Eagle",
+      "emoji": "<:OldGoldenEagle:1566406957798133841>"
+    },
+    {
+      "id": "golden.oldestSP.1",
+      "packId": "oldestSP",
+      "name": "Oldest Golden Eagle",
+      "emoji": "<:OldestGoldenEagle:1566407006892335114>"
     }
   ],
   "harpy": [
@@ -1995,6 +3930,30 @@
       "packId": "s2w",
       "name": "Giraffe",
       "emoji": "<:GiraffeS2Winter:1361400397939347511>"
+    },
+    {
+      "id": "giraffe.may2022.0",
+      "name": "Quilin Giraffe",
+      "emoji": "<:QuilinGiraffe:1563275100659257474>",
+      "cost": 57000
+    },
+    {
+      "id": "giraffe.landGTSP.0",
+      "packId": "landGTSP",
+      "name": "Giraffe",
+      "emoji": "<:GoldTrimGiraffe:1563275284826824784>"
+    },
+    {
+      "id": "giraffe.legacySP.0",
+      "packId": "legacySP",
+      "name": "Giraffe",
+      "emoji": "<:ClassicGiraffe:1563275384491999414>"
+    },
+    {
+      "id": "giraffe.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Giraffe",
+      "emoji": "<:GiraffeClassicWinter:1566398809112838164>"
     }
   ],
   "momaffie": [
@@ -2055,6 +4014,25 @@
       "packId": "s2w",
       "name": "Bison",
       "emoji": "<:BisonS2Winter:1364671192187011112>"
+    },
+    {
+      "id": "bison.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Titan Bison",
+      "emoji": "<:TitanBison:1563274791010566215>",
+      "cost": 35000
+    },
+    {
+      "id": "bison.desertGTSP.0",
+      "packId": "desertGTSP",
+      "name": "Bison",
+      "emoji": "<:GoldTrimBison:1563275289801269358>"
+    },
+    {
+      "id": "bison.legacySP.0",
+      "packId": "legacySP",
+      "name": "Bison",
+      "emoji": "<:ClassicBison:1563275391383117824>"
     }
   ],
   "shark": [
@@ -2069,6 +4047,58 @@
       "packId": "s2",
       "name": "Shark",
       "emoji": "<:SharkS2:1292126307143909476>"
+    },
+    {
+      "id": "shark.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Hammerhead Shark",
+      "emoji": "<:HammerheadShark:1563274752880021558>",
+      "cost": 100000
+    },
+    {
+      "id": "shark.lockedSP.1",
+      "packId": "lockedSP",
+      "name": "Tiger Shark",
+      "emoji": "<:TigerShark:1563274754386034830>",
+      "cost": 100000
+    },
+    {
+      "id": "shark.halloween2025SP.0",
+      "packId": "halloween2025SP",
+      "name": "Jawsome Shark",
+      "emoji": "<:JawsomeShark:1563274968484282520>",
+      "cost": 80000
+    },
+    {
+      "id": "shark.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Surfboard Chomper",
+      "emoji": "<:SurfboardChomper:1563275046766780537>",
+      "cost": 95000
+    },
+    {
+      "id": "shark.oceanGTSP.0",
+      "packId": "oceanGTSP",
+      "name": "Shark",
+      "emoji": "<:GoldTrimShark:1563275287318495272>"
+    },
+    {
+      "id": "shark.legacySP.0",
+      "packId": "legacySP",
+      "name": "Shark",
+      "emoji": "<:ClassicShark:1563275388963266610>"
+    },
+    {
+      "id": "shark.s2w.0",
+      "packId": "s2w",
+      "name": "Shark",
+      "emoji": "<:SharkS2Winter:1566398810681254061>"
+    },
+    {
+      "id": "shark.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Shark",
+      "emoji": "<:SharkClassicWinter:1566398813105823805>"
     }
   ],
   "polar_bear": [
@@ -2089,6 +4119,38 @@
       "packId": "s2w",
       "name": "Polar Bear",
       "emoji": "<:PolarBearS2Winter:1363467203026096288>"
+    },
+    {
+      "id": "polar_bear.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Cola Connoisseur",
+      "emoji": "<:ColaConnoisseur:1563275029821521940>",
+      "cost": 55000
+    },
+    {
+      "id": "polar_bear.christmas2025SP.0",
+      "packId": "christmas2025SP",
+      "name": "Ursa Major",
+      "emoji": "<:UrsaMajor:1563275131298648117>",
+      "cost": 30000
+    },
+    {
+      "id": "polar_bear.arcticGTSP.0",
+      "packId": "arcticGTSP",
+      "name": "Polar Bear",
+      "emoji": "<:GoldTrimPolarBear:1563275288555687936>"
+    },
+    {
+      "id": "polar_bear.legacySP.0",
+      "packId": "legacySP",
+      "name": "Polar Bear",
+      "emoji": "<:ClassicPolarBear:1563275390149988422>"
+    },
+    {
+      "id": "polar_bear.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Polar Bear",
+      "emoji": "<:PolarBearClassicWinter:1566398814514843659>"
     }
   ],
   "hippopotamus": [
@@ -2109,6 +4171,53 @@
       "packId": "s2w",
       "name": "Hippo",
       "emoji": "<:HippoS2Winter:1365717652114247770>"
+    },
+    {
+      "id": "hippopotamus.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Hippo",
+      "emoji": "<:GoldenHippo:1563274721183662292>",
+      "cost": 30000
+    },
+    {
+      "id": "hippopotamus.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Pygmy Hippo",
+      "emoji": "<:PygmyHippo:1563274734840578048>",
+      "cost": 1000
+    },
+    {
+      "id": "hippopotamus.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Swampster",
+      "emoji": "<:Swampster:1563274836845924534>",
+      "cost": 80000
+    },
+    {
+      "id": "hippopotamus.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Sun Hippo",
+      "emoji": "<:SunHippo:1563274888234541098>",
+      "cost": 105000
+    },
+    {
+      "id": "hippopotamus.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Planet Hippo",
+      "emoji": "<:PlanetHippo:1563275079670960218>",
+      "cost": 100000
+    },
+    {
+      "id": "hippopotamus.legacySP.0",
+      "packId": "legacySP",
+      "name": "Hippo",
+      "emoji": "<:ClassicHippo:1563275392918229093>"
+    },
+    {
+      "id": "hippopotamus.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Hippo",
+      "emoji": "<:HippoClassicWinter:1566398816092168303>"
     }
   ],
   "boa": [
@@ -2129,6 +4238,46 @@
       "packId": "s2w",
       "name": "Boa",
       "emoji": "<:BoaConstrictorS2Winter:1365717752983060511>"
+    },
+    {
+      "id": "boa.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Boa",
+      "emoji": "<:GoldenBoa:1563274719116001402>",
+      "cost": 30000
+    },
+    {
+      "id": "boa.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Tree Boa",
+      "emoji": "<:TreeBoa:1563274736220242060>",
+      "cost": 2000
+    },
+    {
+      "id": "boa.christmas2025SP.0",
+      "packId": "christmas2025SP",
+      "name": "Ssscarf Boa",
+      "emoji": "<:SsscarfBoa:1563275132590628974>",
+      "cost": 40000
+    },
+    {
+      "id": "boa.mope10PartySP.0",
+      "packId": "mope10PartySP",
+      "name": "Donut Boa",
+      "emoji": "<:DonutBoa:1563275187024302161>",
+      "cost": 140000
+    },
+    {
+      "id": "boa.legacySP.0",
+      "packId": "legacySP",
+      "name": "Boa",
+      "emoji": "<:ClassicBoa:1563275395443458098>"
+    },
+    {
+      "id": "boa.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Boa",
+      "emoji": "<:BoaClassicWinter:1566398817329352754>"
     }
   ],
   "ostrich": [
@@ -2143,6 +4292,34 @@
       "packId": "s2",
       "name": "Ostrich",
       "emoji": "<:OstrichS2:1292126412874055700>"
+    },
+    {
+      "id": "ostrich.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Ostrich",
+      "emoji": "<:GoldenOstrich:1563274724421668884>",
+      "cost": 40000
+    },
+    {
+      "id": "ostrich.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Ruffled Ostrich",
+      "emoji": "<:RuffledOstrich:1563274737587589161>",
+      "cost": 5000
+    },
+    {
+      "id": "ostrich.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Sunset Ostrich",
+      "emoji": "<:SunsetOstrich:1563274918177546360>",
+      "cost": 20000
+    },
+    {
+      "id": "ostrich.summer2025SP.0",
+      "packId": "summer2025SP",
+      "name": "Jogging Ostrich",
+      "emoji": "<:JoggingOstrich:1563275091398099054>",
+      "cost": 120000
     }
   ],
   "komodo_dragon": [
@@ -2157,6 +4334,40 @@
       "packId": "s2",
       "name": "Komodo Dragon",
       "emoji": "<:KomodoDragonS2:1292126362756190279>"
+    },
+    {
+      "id": "komodo_dragon.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Komodo",
+      "emoji": "<:GoldenKomodo:1563274722592952565>",
+      "cost": 40000
+    },
+    {
+      "id": "komodo_dragon.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Night Komodo",
+      "emoji": "<:NightKomodo:1563274740334993489>",
+      "cost": 12000
+    },
+    {
+      "id": "komodo_dragon.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Dowager Varande",
+      "emoji": "<:DowagerVarande:1563274778058694676>",
+      "cost": 20000
+    },
+    {
+      "id": "komodo_dragon.storefrontSP.1",
+      "packId": "storefrontSP",
+      "name": "Emperor Varande",
+      "emoji": "<:EmperorVarande:1563274794609156186>",
+      "cost": 40000
+    },
+    {
+      "id": "komodo_dragon.legacySP.0",
+      "packId": "legacySP",
+      "name": "Komodo Dragon",
+      "emoji": "<:ClassicKomodoDragon:1563275401671872573>"
     }
   ],
   "orca": [
@@ -2177,6 +4388,46 @@
       "packId": "s2w",
       "name": "Orca",
       "emoji": "<:KillerWhaleS2Winter:1365718194735812699>"
+    },
+    {
+      "id": "orca.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Orca",
+      "emoji": "<:GoldenOrca:1563274717815898163>",
+      "cost": 30000
+    },
+    {
+      "id": "orca.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Albino Orca",
+      "emoji": "<:AlbinoOrca:1563274756827127898>",
+      "cost": 150000
+    },
+    {
+      "id": "orca.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Lifeguard Orca",
+      "emoji": "<:LifeguardOrca:1563275031906226340>",
+      "cost": 60000
+    },
+    {
+      "id": "orca.valentine2023SP.0",
+      "packId": "valentine2023SP",
+      "name": "Valentine Orca",
+      "emoji": "<:ValentineOrca:1563275142929326202>",
+      "cost": 199990
+    },
+    {
+      "id": "orca.legacySP.0",
+      "packId": "legacySP",
+      "name": "Killerwhale",
+      "emoji": "<:ClassicKillerwhale:1563275398794584156>"
+    },
+    {
+      "id": "orca.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Orca",
+      "emoji": "<:OrcaClassicWinter:1566398820676276297>"
     }
   ],
   "sabertooth_tiger": [
@@ -2197,6 +4448,46 @@
       "packId": "s2w",
       "name": "Sabertooth Tiger",
       "emoji": "<:SabertoothTigerS2Winter:1365718485187166208>"
+    },
+    {
+      "id": "sabertooth_tiger.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Sabertooth",
+      "emoji": "<:GoldenSabertooth:1563274716444098620>",
+      "cost": 30000
+    },
+    {
+      "id": "sabertooth_tiger.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Margala Sabertooth",
+      "emoji": "<:MargalaSabertooth:1563274738741153933>",
+      "cost": 8000
+    },
+    {
+      "id": "sabertooth_tiger.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Techno Saber",
+      "emoji": "<:TechnoSaber:1563274771561451582>",
+      "cost": 9000
+    },
+    {
+      "id": "sabertooth_tiger.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Strawbertooth",
+      "emoji": "<:Strawbertooth:1563275036826009621>",
+      "cost": 70000
+    },
+    {
+      "id": "sabertooth_tiger.legacySP.0",
+      "packId": "legacySP",
+      "name": "Sabertooth",
+      "emoji": "<:ClassicSabertooth:1563275399922720770>"
+    },
+    {
+      "id": "sabertooth_tiger.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Sabertooth Tiger",
+      "emoji": "<:SabertoothTigerClassicWinter:1566398822580621442>"
     }
   ],
   "elephant": [
@@ -2211,6 +4502,53 @@
       "packId": "s2",
       "name": "Elephant",
       "emoji": "<:ElephantS2:1292127864971329646>"
+    },
+    {
+      "id": "elephant.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Elephant",
+      "emoji": "<:GoldenElephant:1563274732491767909>",
+      "cost": 150000
+    },
+    {
+      "id": "elephant.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "White Elephant",
+      "emoji": "<:WhiteElephant:1563274758135480480>",
+      "cost": 150000
+    },
+    {
+      "id": "elephant.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Lightwave Elephant",
+      "emoji": "<:LightwaveElephant:1563274931528011868>",
+      "cost": 80000
+    },
+    {
+      "id": "elephant.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Carnival Elephant",
+      "emoji": "<:CarnivalElephant:1563274952550121542>",
+      "cost": 159990
+    },
+    {
+      "id": "elephant.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Leiphant",
+      "emoji": "<:Leiphant:1563275052496191579>",
+      "cost": 100000
+    },
+    {
+      "id": "elephant.legacySP.0",
+      "packId": "legacySP",
+      "name": "Elephant",
+      "emoji": "<:ClassicElephant:1563275403055996989>"
+    },
+    {
+      "id": "elephant.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Elephant",
+      "emoji": "<:ElephantClassicWinter:1566398823776002258>"
     }
   ],
   "cassowary": [
@@ -2231,6 +4569,33 @@
       "packId": "s2w",
       "name": "Cassowary",
       "emoji": "<:CassowaryS2Winter:1365777226766880898>"
+    },
+    {
+      "id": "cassowary.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Cassowary",
+      "emoji": "<:GoldenCassowary:1563274730784686122>",
+      "cost": 85000
+    },
+    {
+      "id": "cassowary.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Cotton Cassowary",
+      "emoji": "<:CottonCassowary:1563274743765925929>",
+      "cost": 30000
+    },
+    {
+      "id": "cassowary.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Basilisk Cassowary",
+      "emoji": "<:BasiliskCassowary:1563274872858345536>",
+      "cost": 10000
+    },
+    {
+      "id": "cassowary.may2022.0",
+      "name": "Pastel Cassowary",
+      "emoji": "<:PastelCassowary:1563275103125635175>",
+      "cost": 90000
     }
   ],
   "giant_spider": [
@@ -2245,6 +4610,33 @@
       "packId": "s2",
       "name": "Giant Spider",
       "emoji": "<:GiantSpiderS2:1292127876803596411>"
+    },
+    {
+      "id": "giant_spider.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Spider",
+      "emoji": "<:GoldenSpider:1563274728536539298>",
+      "cost": 80000
+    },
+    {
+      "id": "giant_spider.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Goliath Spider",
+      "emoji": "<:GoliathSpider:1563274747687473323>",
+      "cost": 70000
+    },
+    {
+      "id": "giant_spider.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Smile Spider",
+      "emoji": "<:SmileSpider:1563274893879934996>",
+      "cost": 150000
+    },
+    {
+      "id": "giant_spider.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Giant Spider",
+      "emoji": "<:GiantSpiderClassicWinter:1566398825126428682>"
     }
   ],
   "black_widow": [
@@ -2259,6 +4651,34 @@
       "packId": "s2",
       "name": "Black Widow",
       "emoji": "<:BlackwidowSpiderS2:1292127821673791599>"
+    },
+    {
+      "id": "black_widow.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Blackwidow",
+      "emoji": "<:GoldenBlackwidow:1563274727324254208>",
+      "cost": 75000
+    },
+    {
+      "id": "black_widow.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Queen Blackwidow",
+      "emoji": "<:QueenBlackwidow:1563274742948044871>",
+      "cost": 30000
+    },
+    {
+      "id": "black_widow.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Bloodwidow Spider",
+      "emoji": "<:BloodwidowSpider:1563274870404415588>",
+      "cost": 20000
+    },
+    {
+      "id": "black_widow.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Bot X-303",
+      "emoji": "<:BotX303:1563274947588259970>",
+      "cost": 0
     }
   ],
   "blue_whale": [
@@ -2279,6 +4699,59 @@
       "packId": "s2w",
       "name": "Blue Whale",
       "emoji": "<:BlueWhaleS2Winter:1365777926796083260>"
+    },
+    {
+      "id": "blue_whale.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Blue Whale",
+      "emoji": "<:GoldenBlueWhale:1563274729845039205>",
+      "cost": 80000
+    },
+    {
+      "id": "blue_whale.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Albino Whale",
+      "emoji": "<:AlbinoWhale:1563274759356293250>"
+    },
+    {
+      "id": "blue_whale.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Molten Frost Whale",
+      "emoji": "<:MoltenFrostWhale:1563274955393728532>",
+      "cost": 199990
+    },
+    {
+      "id": "blue_whale.halloween2025SP.0",
+      "packId": "halloween2025SP",
+      "name": "Moby Dick",
+      "emoji": "<:MobyDick:1563274964356829236>",
+      "cost": 50000
+    },
+    {
+      "id": "blue_whale.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Mermaid Whale",
+      "emoji": "<:MermaidWhale:1563275039648911370>",
+      "cost": 85000
+    },
+    {
+      "id": "blue_whale.valentine2023SP.0",
+      "packId": "valentine2023SP",
+      "name": "Valentine Whale",
+      "emoji": "<:ValentineWhale:1563275144796045443>",
+      "cost": 199990
+    },
+    {
+      "id": "blue_whale.legacySP.0",
+      "packId": "legacySP",
+      "name": "Blue Whale",
+      "emoji": "<:ClassicBlueWhale:1563275407757807659>"
+    },
+    {
+      "id": "blue_whale.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Blue Whale",
+      "emoji": "<:BlueWhaleClassicWinter:1566398830038224986>"
     }
   ],
   "mammoth": [
@@ -2299,6 +4772,53 @@
       "packId": "s2w",
       "name": "Mammoth",
       "emoji": "<:MammothS2Winter:1365778107771916418>"
+    },
+    {
+      "id": "mammoth.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Mammoth",
+      "emoji": "<:GoldenMammoth:1563274725952594051>",
+      "cost": 40000
+    },
+    {
+      "id": "mammoth.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Black Mammoth",
+      "emoji": "<:BlackMammoth:1563274741458931843>",
+      "cost": 30000
+    },
+    {
+      "id": "mammoth.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Golem Mammoth",
+      "emoji": "<:GolemMammoth:1563274930571706409>",
+      "cost": 75000
+    },
+    {
+      "id": "mammoth.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Lost Tourist",
+      "emoji": "<:LostTourist:1563275044837396573>",
+      "cost": 90000
+    },
+    {
+      "id": "mammoth.valentine2023SP.0",
+      "packId": "valentine2023SP",
+      "name": "Valentine Mammoth",
+      "emoji": "<:ValentineMammoth:1563275146020520008>",
+      "cost": 199990
+    },
+    {
+      "id": "mammoth.legacySP.0",
+      "packId": "legacySP",
+      "name": "Mammoth",
+      "emoji": "<:ClassicMammoth:1563275408974291017>"
+    },
+    {
+      "id": "mammoth.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Mammoth",
+      "emoji": "<:MammothClassicWinter:1566398831384330301>"
     }
   ],
   "dragon": [
@@ -2313,6 +4833,153 @@
       "packId": "s2",
       "name": "Dragon",
       "emoji": "<:DragonS2:1292128309798244485>"
+    },
+    {
+      "id": "dragon.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Dragon",
+      "emoji": "<:GoldenDragon:1337848652483399843>",
+      "cost": 150000
+    },
+    {
+      "id": "dragon.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Knight Dragon",
+      "emoji": "<:KnightDragon:1337848505401737329>",
+      "cost": 70000
+    },
+    {
+      "id": "dragon.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Goofy Dragon",
+      "emoji": "<:GoofyDragon:1563274773528580189>",
+      "cost": 10000
+    },
+    {
+      "id": "dragon.storefrontSP.1",
+      "packId": "storefrontSP",
+      "name": "Desert Dragon",
+      "emoji": "<:DesertDragon:1563274781833302056>",
+      "cost": 10000
+    },
+    {
+      "id": "dragon.storefrontSP.2",
+      "packId": "storefrontSP",
+      "name": "Fiery Dragon",
+      "emoji": "<:FieryDragon:1563274798497402930>",
+      "cost": 55000
+    },
+    {
+      "id": "dragon.storefrontSP.3",
+      "packId": "storefrontSP",
+      "name": "Forge Dragon",
+      "emoji": "<:ForgeDragon:1563274799734849578>",
+      "cost": 65000
+    },
+    {
+      "id": "dragon.storefrontSP.4",
+      "packId": "storefrontSP",
+      "name": "Mythical Serpent",
+      "emoji": "<:MythicalSerpent:1563274802439921715>",
+      "cost": 75000
+    },
+    {
+      "id": "dragon.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Gargon",
+      "emoji": "<:Gargon:1563274848816595024>",
+      "cost": 155000
+    },
+    {
+      "id": "dragon.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Magma Dragon",
+      "emoji": "<:MagmaDragon:1563274871926956133>",
+      "cost": 20000
+    },
+    {
+      "id": "dragon.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Behemoth Hive Dragon",
+      "emoji": "<:BehemothHiveDragon:1563274942567678122>",
+      "cost": 150000
+    },
+    {
+      "id": "dragon.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Storm Dragon",
+      "emoji": "<:StormDragon:1563274957402673274>",
+      "cost": 249990
+    },
+    {
+      "id": "dragon.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Squishy Dragon",
+      "emoji": "<:SquishyDragon:1563275048444366898>",
+      "cost": 95000
+    },
+    {
+      "id": "dragon.may2022.0",
+      "name": "Aberrant Dragon",
+      "emoji": "<:AberrantDragon:1563275106053132328>",
+      "cost": 140000
+    },
+    {
+      "id": "dragon.march2025.0",
+      "name": "Purple Haze",
+      "emoji": "<:PurpleHaze:1563275148973449307>",
+      "cost": 240000
+    },
+    {
+      "id": "dragon.march2025.1",
+      "name": "Rose Dragon",
+      "emoji": "<:RoseDragon:1563275150202245270>",
+      "cost": 240000
+    },
+    {
+      "id": "dragon.cosmic.0",
+      "name": "Star Dragon",
+      "emoji": "<:StarDragon:1563275155151519866>",
+      "cost": 100000
+    },
+    {
+      "id": "dragon.mope10PartySP.0",
+      "packId": "mope10PartySP",
+      "name": "Baby Black Dragon",
+      "emoji": "<:BabyBlackDragon:1563275182829731941>",
+      "cost": 100000
+    },
+    {
+      "id": "dragon.mope10PartySP.1",
+      "packId": "mope10PartySP",
+      "name": "Pike Dragon",
+      "emoji": "<:PikeDragon:1563275191180591205>",
+      "cost": 150000
+    },
+    {
+      "id": "dragon.mope10PartySP.2",
+      "packId": "mope10PartySP",
+      "name": "Legacy Dragon",
+      "emoji": "<:LegacyDragon:1563275192787017829>",
+      "cost": 150000
+    },
+    {
+      "id": "dragon.legacySP.0",
+      "packId": "legacySP",
+      "name": "Dragon",
+      "emoji": "<:ClassicDragon:1563275411792855181>"
+    },
+    {
+      "id": "dragon.promo.1",
+      "name": "Santa Dragon",
+      "emoji": "<:SantaDragon:1563275434689302638>",
+      "cost": 0
+    },
+    {
+      "id": "dragon.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Dragon",
+      "emoji": "<:DragonClassicWinter:1566398832722313286>"
     }
   ],
   "trex": [
@@ -2327,6 +4994,67 @@
       "packId": "s2",
       "name": "T-Rex",
       "emoji": "<:TrexS2:1292128324801269880>"
+    },
+    {
+      "id": "trex.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden T-Rex",
+      "emoji": "<:GoldenTrex:1337848638562500608>",
+      "cost": 150000
+    },
+    {
+      "id": "trex.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Ember T-Rex",
+      "emoji": "<:EmberTRex:1337848460954833006>",
+      "cost": 75000
+    },
+    {
+      "id": "trex.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Kaiju Rex",
+      "emoji": "<:KaijuRex:1563274801177428079>",
+      "cost": 67000
+    },
+    {
+      "id": "trex.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Mr. Dollar",
+      "emoji": "<:MrDollar:1563274839928873006>",
+      "cost": 100000
+    },
+    {
+      "id": "trex.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Tartarus Rex",
+      "emoji": "<:TartarusRex:1563274909910564875>",
+      "cost": 200000
+    },
+    {
+      "id": "trex.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Bio Mutant T-Rex",
+      "emoji": "<:BioMutantTRex:1563274935109947572>",
+      "cost": 90000
+    },
+    {
+      "id": "trex.mope10PartySP.0",
+      "packId": "mope10PartySP",
+      "name": "Wrapped-tor",
+      "emoji": "<:WrappedTor:1563275189695946883>",
+      "cost": 180000
+    },
+    {
+      "id": "trex.legacySP.0",
+      "packId": "legacySP",
+      "name": "T-Rex",
+      "emoji": "<:ClassicTRex:1563275413306871809>"
+    },
+    {
+      "id": "trex.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "T-Rex",
+      "emoji": "<:TRexClassicWinter:1566398834056101898>"
     }
   ],
   "phoenix": [
@@ -2341,6 +5069,80 @@
       "packId": "s2",
       "name": "Phoenix",
       "emoji": "<:PhoenixS2:1292128384444530689>"
+    },
+    {
+      "id": "phoenix.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Phoenix",
+      "emoji": "<:GoldenPhoenix:1337848699241496697>",
+      "cost": 60000
+    },
+    {
+      "id": "phoenix.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Alpha Phoenix",
+      "emoji": "<:AlphaPhoenix:1337848371544592567>",
+      "cost": 40000
+    },
+    {
+      "id": "phoenix.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Aqua Phoenix",
+      "emoji": "<:AquaPhoenix:1563274783213232168>",
+      "cost": 10000
+    },
+    {
+      "id": "phoenix.storefrontSP.1",
+      "packId": "storefrontSP",
+      "name": "Ash Phoenix",
+      "emoji": "<:AshPhoenix:1563274792113676338>",
+      "cost": 35000
+    },
+    {
+      "id": "phoenix.storefrontSP.2",
+      "packId": "storefrontSP",
+      "name": "Red Giant Phoenix",
+      "emoji": "<:RedGiantPhoenix:1563274795875958856>",
+      "cost": 45000
+    },
+    {
+      "id": "phoenix.storefrontSP.3",
+      "packId": "storefrontSP",
+      "name": "Ice Phoenix",
+      "emoji": "<:IcePhoenix:1563274797020872804>",
+      "cost": 46000
+    },
+    {
+      "id": "phoenix.summer2025SP.0",
+      "packId": "summer2025SP",
+      "name": "Bonfire Phoenix",
+      "emoji": "<:BonfirePhoenix:1563275093772345459>",
+      "cost": 240000
+    },
+    {
+      "id": "phoenix.march2025.0",
+      "name": "Copper Phoenix",
+      "emoji": "<:CopperPhoenix:1563275147325079734>",
+      "cost": 120000
+    },
+    {
+      "id": "phoenix.cosmic.0",
+      "name": "Singularity Phoenix",
+      "emoji": "<:SingularityPhoenix:1563275151116607491>",
+      "cost": 50000
+    },
+    {
+      "id": "phoenix.cosmic.1",
+      "name": "Celestial Phoenix",
+      "emoji": "<:CelestialPhoenix:1563275156334321805>",
+      "cost": 100000
+    },
+    {
+      "id": "phoenix.mope10LegendsSP.0",
+      "packId": "mope10LegendsSP",
+      "name": "Sundown Flames",
+      "emoji": "<:SundownFlames:1563275160864170086>",
+      "cost": 300000
     }
   ],
   "pterodactyl": [
@@ -2355,6 +5157,27 @@
       "packId": "s2",
       "name": "Pterodactyl",
       "emoji": "<:PterodactylS2:1292128266559426724>"
+    },
+    {
+      "id": "pterodactyl.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Pterodactyl",
+      "emoji": "<:GoldenPterodactyl:1337848705197277224>",
+      "cost": 150000
+    },
+    {
+      "id": "pterodactyl.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Emerald Pterodactyl",
+      "emoji": "<:EmeraldPterodactyl:1337848472828907560>",
+      "cost": 30000
+    },
+    {
+      "id": "pterodactyl.halloween2020SP.0",
+      "packId": "halloween2020SP",
+      "name": "Carnageodactyl",
+      "emoji": "<:Carnageodactyl:1563274843875577988>",
+      "cost": 120000
     }
   ],
   "kraken": [
@@ -2369,6 +5192,87 @@
       "packId": "s2",
       "name": "Kraken",
       "emoji": "<:KrakenS2:1292128363690856541>"
+    },
+    {
+      "id": "kraken.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Kraken",
+      "emoji": "<:GoldenKraken:1337848613535219763>",
+      "cost": 100000
+    },
+    {
+      "id": "kraken.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Chromatic Kraken",
+      "emoji": "<:ChromaticKraken:1337848432571711508>",
+      "cost": 70000
+    },
+    {
+      "id": "kraken.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Cthulhu Kraken",
+      "emoji": "<:CthulhuKraken:1563274908094435420>",
+      "cost": 200000
+    },
+    {
+      "id": "kraken.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Dr. Brainiopod",
+      "emoji": "<:DrBrainiopod:1563274946325651547>",
+      "cost": 170000
+    },
+    {
+      "id": "kraken.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Beach Battle Kraken",
+      "emoji": "<:BeachBattleKraken:1563274956601827469>",
+      "cost": 219990
+    },
+    {
+      "id": "kraken.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Squishy Kraken",
+      "emoji": "<:SquishyKraken:1563275049732018288>",
+      "cost": 95000
+    },
+    {
+      "id": "kraken.summer2022SP.0",
+      "packId": "summer2022SP",
+      "name": "Giant Squid",
+      "emoji": "<:GiantSquid:1563275069289930772>",
+      "cost": 20000
+    },
+    {
+      "id": "kraken.may2022.0",
+      "name": "Hydrothoth Kraken",
+      "emoji": "<:HydrothothKraken:1563275116958453861>",
+      "cost": 197000
+    },
+    {
+      "id": "kraken.christmas2022SP.0",
+      "packId": "christmas2022SP",
+      "name": "Gingerbread Kraken",
+      "emoji": "<:GingerbreadKraken:1563275121001631774>",
+      "cost": 99990
+    },
+    {
+      "id": "kraken.mope10PartySP.0",
+      "packId": "mope10PartySP",
+      "name": "Volcanic Kraken",
+      "emoji": "<:VolcanicKraken:1563275184205471884>",
+      "cost": 200000
+    },
+    {
+      "id": "kraken.legacySP.0",
+      "packId": "legacySP",
+      "name": "Kraken",
+      "emoji": "<:ClassicKraken:1563275416536617080>"
+    },
+    {
+      "id": "kraken.legacySPw.0",
+      "packId": "legacySPw",
+      "name": "Kraken",
+      "emoji": "<:KrakenClassicWinter:1566398836782530580>"
     }
   ],
   "king_crab": [
@@ -2383,6 +5287,41 @@
       "packId": "s2",
       "name": "King Crab",
       "emoji": "<:KingCrabS2:1292128350961401897>"
+    },
+    {
+      "id": "king_crab.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Crab",
+      "emoji": "<:GoldenKingCrab:1337848599177859325>",
+      "cost": 90000
+    },
+    {
+      "id": "king_crab.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Amethyst Crab",
+      "emoji": "<:AmethystKingCrab:1337848394072326145>",
+      "cost": 70000
+    },
+    {
+      "id": "king_crab.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Plasma-core King Crab",
+      "emoji": "<:PlasmaCoreKingCrab:1563274903988478054>",
+      "cost": 170000
+    },
+    {
+      "id": "king_crab.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Star Crusher Crab",
+      "emoji": "<:StarCrusherCrab:1563274945075871786>",
+      "cost": 150000
+    },
+    {
+      "id": "king_crab.mope10PartySP.0",
+      "packId": "mope10PartySP",
+      "name": "Behemoth King Crab",
+      "emoji": "<:BehemothKingCrab:1563275185585524736>",
+      "cost": 170000
     }
   ],
   "yeti": [
@@ -2397,6 +5336,47 @@
       "packId": "s2",
       "name": "Yeti",
       "emoji": "<:YetiS2:1292128236096065690>"
+    },
+    {
+      "id": "yeti.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Yeti",
+      "emoji": "<:GoldenYeti:1337848713963507814>",
+      "cost": 70000
+    },
+    {
+      "id": "yeti.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Emerald Yeti",
+      "emoji": "<:EmeraldYeti:1337848485843566622>",
+      "cost": 70000
+    },
+    {
+      "id": "yeti.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Frost Wolf",
+      "emoji": "<:FrostWolf:1563274905301164073>",
+      "cost": 170000
+    },
+    {
+      "id": "yeti.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Glacial Demon",
+      "emoji": "<:GlacialDemon:1563274938344013974>",
+      "cost": 100000
+    },
+    {
+      "id": "yeti.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Squishy Yeti",
+      "emoji": "<:SquishyYeti:1563275051133042839>",
+      "cost": 95000
+    },
+    {
+      "id": "yeti.legacySP.0",
+      "packId": "legacySP",
+      "name": "Yeti",
+      "emoji": "<:ClassicYeti:1563275419439079464>"
     }
   ],
   "aqua": [
@@ -2493,6 +5473,40 @@
       "packId": "s2",
       "name": "Dino Monster",
       "emoji": "<:DinoMonsterS2:1292128471501242368>"
+    },
+    {
+      "id": "dino_monster.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Dino Monster",
+      "emoji": "<:GoldenDinoMonster:1337848568358240379>",
+      "cost": 150000
+    },
+    {
+      "id": "dino_monster.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Citrine Monster",
+      "emoji": "<:CitrineDinoMonster:1337848446240948376>",
+      "cost": 150000
+    },
+    {
+      "id": "dino_monster.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Ruby Devil",
+      "emoji": "<:RubyDevil:1563274806193815663>",
+      "cost": 120000
+    },
+    {
+      "id": "dino_monster.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Cordycera Dino",
+      "emoji": "<:CordyceraDino:1563274933398933665>",
+      "cost": 85000
+    },
+    {
+      "id": "dino_monster.legacySP.0",
+      "packId": "legacySP",
+      "name": "Dino Monster",
+      "emoji": "<:ClassicDinoMonster:1563275423453028382>"
     }
   ],
   "lava_monster": [
@@ -2507,6 +5521,66 @@
       "packId": "s2",
       "name": "Lava Monster",
       "emoji": "<:LandMonsterS2:1292128532889075757>"
+    },
+    {
+      "id": "lava_monster.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Lava Monster",
+      "emoji": "<:GoldenLandMonster:1337848681306783938>",
+      "cost": 160000
+    },
+    {
+      "id": "lava_monster.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Titanite Monster",
+      "emoji": "<:TitaniteMonster:1337848538142347325>",
+      "cost": 70000
+    },
+    {
+      "id": "lava_monster.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Necromus",
+      "emoji": "<:Necromus:1563274911408193537>",
+      "cost": 200000
+    },
+    {
+      "id": "lava_monster.halloween2021SP.1",
+      "packId": "halloween2021SP",
+      "name": "Planet Eater Monster",
+      "emoji": "<:PlanetEaterMonster:1563274914209730560>",
+      "cost": 250000
+    },
+    {
+      "id": "lava_monster.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Belphegor",
+      "emoji": "<:Belphegor:1563274943813132480>",
+      "cost": 150000
+    },
+    {
+      "id": "lava_monster.halloween2023SP.0",
+      "packId": "halloween2023SP",
+      "name": "Solar Wyvern",
+      "emoji": "<:SolarWyvern:1563274959059685446>",
+      "cost": 249990
+    },
+    {
+      "id": "lava_monster.christmas2022SP.0",
+      "packId": "christmas2022SP",
+      "name": "Peppermint Land Monster",
+      "emoji": "<:PeppermintLandMonster:1563275122062790709>"
+    },
+    {
+      "id": "lava_monster.cosmic.0",
+      "name": "Nebula Monster",
+      "emoji": "<:NebulaMonster:1563275153943695370>",
+      "cost": 80000
+    },
+    {
+      "id": "lava_monster.legacySP.0",
+      "packId": "legacySP",
+      "name": "Lava Monster",
+      "emoji": "<:ClassicLavaMonster:1563275424748937226>"
     }
   ],
   "giant_scorpion": [
@@ -2521,6 +5595,33 @@
       "packId": "s2",
       "name": "Giant Scorpion",
       "emoji": "<:GiantScorpionS2:1292128439603560499>"
+    },
+    {
+      "id": "giant_scorpion.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Scorpion",
+      "emoji": "<:GoldenGiantScorpion:1337848672825639023>",
+      "cost": 150000
+    },
+    {
+      "id": "giant_scorpion.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Carnelian Scorpion",
+      "emoji": "<:CarnelianScorpion:1337848422077825236>",
+      "cost": 150000
+    },
+    {
+      "id": "giant_scorpion.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Nebuladon Scorpion",
+      "emoji": "<:NebuladonScorpion:1563274941111992430>",
+      "cost": 130000
+    },
+    {
+      "id": "giant_scorpion.legacySP.0",
+      "packId": "legacySP",
+      "name": "Giant Scorpion",
+      "emoji": "<:ClassicGiantScorpion:1563275428658155650>"
     }
   ],
   "sea_monster": [
@@ -2535,6 +5636,47 @@
       "packId": "s2",
       "name": "Sea Monster",
       "emoji": "<:SeaMonsterS2:1292128514031616112>"
+    },
+    {
+      "id": "sea_monster.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Sea Monster",
+      "emoji": "<:GoldenSeaMonster:1337848626134908928>",
+      "cost": 155000
+    },
+    {
+      "id": "sea_monster.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Sapphire Monster",
+      "emoji": "<:SapphireSeaMonster:1337848525207113788>",
+      "cost": 80000
+    },
+    {
+      "id": "sea_monster.storefrontSP.0",
+      "packId": "storefrontSP",
+      "name": "Luckycharm Monster",
+      "emoji": "<:LuckycharmMonster:1563274803656396840>",
+      "cost": 175000
+    },
+    {
+      "id": "sea_monster.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Dimensional Monster",
+      "emoji": "<:DimensionalMonster:1563274939723817050>",
+      "cost": 120000
+    },
+    {
+      "id": "sea_monster.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Ancient Tortoise",
+      "emoji": "<:AncientTortoise:1563275065372704829>",
+      "cost": 150000
+    },
+    {
+      "id": "sea_monster.legacySP.0",
+      "packId": "legacySP",
+      "name": "Sea Monster",
+      "emoji": "<:ClassicSeaMonster:1563275426053234718>"
     }
   ],
   "ice_monster": [
@@ -2549,6 +5691,61 @@
       "packId": "s2",
       "name": "Ice Monster",
       "emoji": "<:IceMonsterS2:1292128414463037523>"
+    },
+    {
+      "id": "ice_monster.goldenSP.0",
+      "packId": "goldenSP",
+      "name": "Golden Ice Monster",
+      "emoji": "<:GoldenIceMonster:1337848583898271744>",
+      "cost": 60000
+    },
+    {
+      "id": "ice_monster.lockedSP.0",
+      "packId": "lockedSP",
+      "name": "Amethyst Monster",
+      "emoji": "<:AmethystIceMonster:1337848408941269053>",
+      "cost": 80000
+    },
+    {
+      "id": "ice_monster.halloween2021SP.0",
+      "packId": "halloween2021SP",
+      "name": "Blood Crystal Monster",
+      "emoji": "<:BloodCrystalMonster:1563274912284672111>",
+      "cost": 250000
+    },
+    {
+      "id": "ice_monster.halloween2022SP.0",
+      "packId": "halloween2022SP",
+      "name": "Blazing Ice Monster",
+      "emoji": "<:BlazingIceMonster:1563274936896720907>",
+      "cost": 95000
+    },
+    {
+      "id": "ice_monster.summer2021SP.0",
+      "packId": "summer2021SP",
+      "name": "Cryo Coach Monster",
+      "emoji": "<:CryoCoachMonster:1563275062671315034>",
+      "cost": 112000
+    },
+    {
+      "id": "ice_monster.summer2025SP.0",
+      "packId": "summer2025SP",
+      "name": "Ice Pop Monster",
+      "emoji": "<:IcePopMonster:1563275092748669039>",
+      "cost": 180000
+    },
+    {
+      "id": "ice_monster.mope10PartySP.0",
+      "packId": "mope10PartySP",
+      "name": "Cupcake Monster",
+      "emoji": "<:CupcakeMonster:1563275188362289172>",
+      "cost": 180000
+    },
+    {
+      "id": "ice_monster.legacySP.0",
+      "packId": "legacySP",
+      "name": "Ice Monster",
+      "emoji": "<:ClassicIceMonster:1563275427089350688>"
     }
   ],
   "black_dragon": [
@@ -2569,14 +5766,16 @@
       "packId": "lockedSP",
       "name": "Azure Bringer",
       "emoji": "<:AzureBringer:1327342827360751627>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366447268915580968/AzureBringer.png"
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366447268915580968/AzureBringer.png",
+      "cost": 300000
     },
     {
       "id": "black_dragon.goldenSP.0",
       "packId": "goldenSP",
       "name": "Golden Black Dragon",
       "emoji": "<:GoldenBlackDragon:1327342318818295848>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634510319676/GoldenBlackDragon.png"
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634510319676/GoldenBlackDragon.png",
+      "cost": 250000
     },
     {
       "id": "black_dragon.legacySP.0",
@@ -2584,69 +5783,38 @@
       "name": "Black Dragon",
       "emoji": "<:BlackDragonLegacy:1337845295794622587>",
       "img": "https://media.discordapp.net/attachments/701793335941136464/1366447269192138893/BlackDragon-Legacy.png"
-    }
-  ],
-  "rare_king_dragon": [
-    {
-      "id": "rare_king_dragon.s1.0",
-      "packId": "s1",
-      "name": "Rare King Dragon",
-      "emoji": "<:RareKingDragonS1:1284470623615189142>"
     },
     {
-      "id": "rare_king_dragon.s2.0",
-      "packId": "s2",
-      "name": "Rare King Dragon",
-      "emoji": "<:RareKingDragonS2:1280238249360494825>"
+      "id": "black_dragon.cosmic.0",
+      "name": "Aurora Black Dragon",
+      "emoji": "<:AuroraBlackDragon:1563275157760380988>",
+      "cost": 100000
     },
     {
-      "id": "rare_king_dragon.lockedSP.0",
-      "packId": "lockedSP",
-      "name": "Rare King Shah",
-      "emoji": "<:RareKingShah:1327340413685596170>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452034777108/KingShah.png"
+      "id": "black_dragon.mope10LegendsSP.0",
+      "packId": "mope10LegendsSP",
+      "name": "Streamline Black Dragon",
+      "emoji": "<:StreamlineBlackDragon:1563275180099239996>",
+      "cost": 360000
     },
     {
-      "id": "rare_king_dragon.lockedSP.1",
-      "packId": "lockedSP",
-      "name": "Rare King Stan",
-      "emoji": "<:RareKingStan:1327340402897977496>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452416331786/KingStan.png"
+      "id": "black_dragon.mope10PartySP.0",
+      "packId": "mope10PartySP",
+      "name": "Classic Colossal",
+      "emoji": "<:ClassicColossal:1563275181487816794>",
+      "cost": 1500000
     },
     {
-      "id": "rare_king_dragon.lockedSP.2",
-      "packId": "lockedSP",
-      "name": "Rare King Ripper",
-      "emoji": "<:RareKingRipper:1327340388566040669>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459451707494440/KingRipper.png"
+      "id": "black_dragon.retired.0",
+      "name": "Riptide Revenant",
+      "emoji": "<:RiptideRevenant:1566398844302786642>",
+      "cost": 200000
     },
     {
-      "id": "rare_king_dragon.lockedSP.3",
-      "packId": "lockedSP",
-      "name": "Rare Queen Celeste",
-      "emoji": "<:RareQueenCeleste:1327340428265259068>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452898803786/QueenCeleste.png"
-    },
-    {
-      "id": "rare_king_dragon.lockedSP.4",
-      "packId": "lockedSP",
-      "name": "Rare Queen Scarlet",
-      "emoji": "<:RareQueenScarlet:1327340439132442796>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453242609695/QueenScarlet.png"
-    },
-    {
-      "id": "rare_king_dragon.goldenSP.0",
-      "packId": "goldenSP",
-      "name": "Rare Golden King Dragon",
-      "emoji": "<:RareGoldenKingDragon:1327340203173744651>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634254471304/GoldenKingDragon.png"
-    },
-    {
-      "id": "rare_king_dragon.storefrontSP.0",
-      "packId": "storefrontSP",
-      "name": "Rare Queen Flame",
-      "emoji": "<:RareQueenFlame:1327340465166614559>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453657841755/QueenFlame.png"
+      "id": "black_dragon.oldestSP.0",
+      "packId": "oldestSP",
+      "name": "Classic Winter Black Dragon",
+      "emoji": "<:ClassicWinterBlackDragon:1566407014605651968>"
     }
   ],
   "king_dragon": [
@@ -2667,49 +5835,68 @@
       "packId": "lockedSP",
       "name": "King Shah",
       "emoji": "<:KingShah:1327340413685596170>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452034777108/KingShah.png"
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452034777108/KingShah.png",
+      "cost": 300000
     },
     {
       "id": "king_dragon.lockedSP.1",
       "packId": "lockedSP",
       "name": "King Stan",
       "emoji": "<:KingStan:1327340402897977496>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452416331786/KingStan.png"
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452416331786/KingStan.png",
+      "cost": 300000
     },
     {
       "id": "king_dragon.lockedSP.2",
       "packId": "lockedSP",
       "name": "King Ripper",
       "emoji": "<:KingRipper:1327340388566040669>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459451707494440/KingRipper.png"
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459451707494440/KingRipper.png",
+      "cost": 360000
     },
     {
       "id": "king_dragon.lockedSP.3",
       "packId": "lockedSP",
       "name": "Queen Celeste",
       "emoji": "<:QueenCeleste:1327340428265259068>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452898803786/QueenCeleste.png"
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459452898803786/QueenCeleste.png",
+      "cost": 300000
     },
     {
       "id": "king_dragon.lockedSP.4",
       "packId": "lockedSP",
       "name": "Queen Scarlet",
       "emoji": "<:QueenScarlet:1327340439132442796>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453242609695/QueenScarlet.png"
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453242609695/QueenScarlet.png",
+      "cost": 240000
     },
     {
       "id": "king_dragon.goldenSP.0",
       "packId": "goldenSP",
       "name": "Golden King Dragon",
       "emoji": "<:GoldenKingDragon:1327340203173744651>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634254471304/GoldenKingDragon.png"
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366446634254471304/GoldenKingDragon.png",
+      "cost": 200000
     },
     {
       "id": "king_dragon.storefrontSP.0",
       "packId": "storefrontSP",
       "name": "Queen Flame",
       "emoji": "<:QueenFlame:1327340465166614559>",
-      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453657841755/QueenFlame.png"
+      "img": "https://media.discordapp.net/attachments/701793335941136464/1366459453657841755/QueenFlame.png",
+      "cost": 240000
+    },
+    {
+      "id": "king_dragon.cosmic.0",
+      "name": "King Nightbringer",
+      "emoji": "<:KingNightbringer:1563275159492763810>",
+      "cost": 1000000
+    },
+    {
+      "id": "king_dragon.promo.0",
+      "name": "Birthday Mistik",
+      "emoji": "<:BirthdayMistik:1563275436341858404>",
+      "cost": 75000
     }
   ]
 }

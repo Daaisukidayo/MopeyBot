@@ -17,9 +17,9 @@ exports.default = new edge_1.Command({
 
     $switch[$jsonGet[IID;1];
       $case[confirm;
-        $let[desc;$tl[ui.clearcoins.deleted.$get[l];$separate[$jsonGet[userProfile;MC]]]]
-        $setCash[0]
-        $saveProfile[$env[userProfile]]
+        $let[desc;$tl[ui.clearcoins.deleted.$get[l];$separate[$jsonGet[userProfile;mope_coins]]]]
+        $callMethod[userProfile;setCoins;0]
+        $callMethod[userProfile;save]
       ]
 
       $case[decline;

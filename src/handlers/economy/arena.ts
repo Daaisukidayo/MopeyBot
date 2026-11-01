@@ -11,14 +11,14 @@ export default new ForgeFunction({
     $addCooldown
     $defer
 
-    $c[A random arena enemy in a random skin, beaten three times in four]
+    $c[random arena enemy w/ a random skin, you win 3 out of 4]
     $let[enemyAnimalID;$arraySample[$getCache[arena;arenaEnemies]]]
     $let[enemy;$getAnimalInfo[$get[enemyAnimalID];emoji;$arrayRandomIndex[$getAnimalInfo[$get[enemyAnimalID];skins]]]]
     $let[MC;200]
 
     $if[$random[0;100]>=25;
-      $sumCash[$get[MC]]
-      $saveProfile[$env[userProfile]]
+      $callMethod[userProfile;addCoins;$get[MC]]
+      $callMethod[userProfile;save]
       $let[desc;$tl[ui.arena.won.$get[l];$get[enemy];$separate[$get[MC]]]]
       $let[color;$getGlobalVar[defaultColor]]
     ;

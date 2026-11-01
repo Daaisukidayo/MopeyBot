@@ -2,6 +2,8 @@
   "balance_cooldown": 10000,
   "shop_cooldown": 60000,
   "leaderboard_cooldown": 60000,
+  "rolls_cooldown": 60000,
+  "halloffame_cooldown": 60000,
   "coinflip_cooldown": 10000,
   "slots_cooldown": 10000,
   "vote_cooldown": 10000,

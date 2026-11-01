@@ -12,7 +12,7 @@ exports.default = new edge_1.Command({
     $let[l;$jsonGet[userProfile;language]]
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
-    $onlyIf[$jsonGet[userProfile;acceptedRules]==false;$!deleteMessage[$channelID;$messageID]]
+    $onlyIf[$jsonGet[userProfile;verified]==false;$!deleteMessage[$channelID;$messageID]]
 
     $deleteUserVar[userProfile]
 

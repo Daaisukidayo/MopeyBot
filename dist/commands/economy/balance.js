@@ -6,7 +6,7 @@ const forgescript_1 = require("@tryforge/forgescript");
 const slash = _commandsData_1.commandsData.command_balance.slash;
 exports.default = new forgescript_1.ApplicationCommand({
     independent: true,
-    code: ` 
+    code: `
     $handleBalance
   `,
     data: {

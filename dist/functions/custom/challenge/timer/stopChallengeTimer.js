@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "stopChallengeTimer",
-    description: "Stops the active 1 hour luck timer for the provided user.",
+    description: "stops the user's running 1h luck timer",
     brackets: false,
     params: [
         {
             name: "userId",
-            description: "ID of the user.",
+            description: "the user's ID",
             type: forgescript_1.ArgType.User,
             required: false,
         },

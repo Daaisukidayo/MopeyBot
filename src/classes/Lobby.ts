@@ -25,28 +25,38 @@ export default new ForgeClassBuilder({
       `,
     },
 
-    players: `
-      $return[$arrayUnique[$getField[this;allPlayers]]]
-    `,
+    players: {
+      code: `
+        $return[$arrayUnique[$getField[this;allPlayers]]]
+      `,
+    },
 
     "private isPlayer": {
       params: [{ name: "userId", type: ParamType.String }],
-      code: `$return[$arrayIncludes[$getField[this;allPlayers];$env[userId]]]`,
+      code: `
+        $return[$arrayIncludes[$getField[this;allPlayers];$env[userId]]]
+      `,
     },
 
     teamOf: {
       params: [{ name: "userId", type: ParamType.String }],
-      code: `$return[$arrayFindIndex[$getField[this;teams];team;$arrayIncludes[$jsonGet[team;players];$env[userId]]]]`,
+      code: `
+        $return[$arrayFindIndex[$getField[this;teams];team;$arrayIncludes[$jsonGet[team;players];$env[userId]]]]
+      `,
     },
 
-    hostCandidates: `
-      $return[$arrayDiff[$callMethod[this;players];$arrayOf[$getField[this;host]]]]
-    `,
+    hostCandidates: {
+      code: `
+        $return[$arrayDiff[$callMethod[this;players];$arrayOf[$getField[this;host]]]]
+      `,
+    },
 
-    canStart: `
-      $jsonLoad[ready;$getField[this;ready]]
-      $return[$and[$jsonSize[this;allPlayers]>$jsonSize[this;teams];$arrayEvery[$getField[this;allPlayers];ID;$arrayIncludes[ready;$env[ID]]];$arraySome[$getField[this;teams];team;$jsonSize[team;players]==0]==false]]
-    `,
+    canStart: {
+      code: `
+        $jsonLoad[ready;$getField[this;ready]]
+        $return[$and[$jsonSize[this;allPlayers]>$jsonSize[this;teams];$arrayEvery[$getField[this;allPlayers];ID;$arrayIncludes[ready;$env[ID]]];$arraySome[$getField[this;teams];team;$jsonSize[team;players]==0]==false]]
+      `,
+    },
 
     join: {
       params: [
@@ -58,24 +68,24 @@ export default new ForgeClassBuilder({
         $let[l;$jsonGet[userProfile;language]]
         $let[isPlayer;$callMethod[this;isPlayer;$env[userId]]]
 
-        $c[A full lobby still lets its players switch teams. A tester adds an entry, so it needs a free place]
+        $c[a full lobby still allows team switching. testers add an entry tho, so they need a free slot]
         $onlyIf[$or[$and[$get[isPlayer];$env[tester]==false];$jsonSize[this;allPlayers]<$getGlobalVar[maxLobbyParticipants]];
           $newError[$tl[ui.lobby.lobbyFull.$get[l]]]
         ]
 
-        $c[Testers may join any team repeatedly to try the lobby alone: every join adds an entry]
+        $c[testers can join any team over and over to test solo, every join = a new entry]
         $onlyIf[$or[$env[tester];$arrayIncludes[$jsonGet[this;teams;$env[team];players];$env[userId]]==false];
           $newError[$tl[ui.lobby.alreadyInTeam.$get[l]]]
         ]
 
-        $c[Everyone else switches teams]
+        $c[everyone else just switches teams]
         $let[oldTeam;$callMethod[this;teamOf;$env[userId]]]
         $if[$and[$get[oldTeam]!=-1;$env[tester]==false];
           $!jsonSet[this;teams;$get[oldTeam];players;$arrayFilter[$jsonGet[this;teams;$get[oldTeam];players];ID;$env[ID]!=$env[userId]]]
         ]
         $arrayPushAt[this;teams;$env[team];players;$env[userId]]
 
-        $c[One entry per team entry (a tester gets one per join)]
+        $c[testers get one per join]
         $if[$or[$env[tester];$get[isPlayer]==false];
           $arrayPushAt[this;allPlayers;$env[userId]]
         ]
@@ -93,7 +103,7 @@ export default new ForgeClassBuilder({
           $newError[$tl[ui.lobby.notParticipant.$get[l]]]
         ]
 
-        $c[Quit only works on the team whose button was pressed]
+        $c[quit only touches the team whose button got pressed]
         $jsonLoad[players;$jsonGet[this;teams;$env[team];players]]
         $onlyIf[$arrayIncludes[players;$env[userId]];
           $newError[$tl[ui.lobby.notInThisTeam.$get[l]]]
@@ -101,7 +111,7 @@ export default new ForgeClassBuilder({
         $!arraySplice[players;$arrayIndexOf[players;$env[userId]];1]
         $!jsonSet[this;teams;$env[team];players;$env[players]]
 
-        $c[Each quit removes one entry. A tester stays ready while any entry is left]
+        $c[each quit drops one entry, testers stay ready while they still have one]
         $jsonLoad[allPlayers;$getField[this;allPlayers]]
         $!arraySplice[allPlayers;$arrayIndexOf[allPlayers;$env[userId]];1]
         $setField[this;allPlayers;$env[allPlayers]]
@@ -140,7 +150,7 @@ export default new ForgeClassBuilder({
             $setField[this;host;$env[value]]
           ]
           $case[mode;
-            $c[A new mode starts with empty teams, numbered from 0, and nobody in them]
+            $c[new mode = fresh empty teams, numbered from 0]
             $setField[this;teams;$arrayMap[$arrayRange[0;$env[value]];teamID;$return[$objectOf[teamID;$env[teamID];players;$arrayOf]]]]
             $setField[this;ready;$arrayOf]
             $setField[this;allPlayers;$arrayOf]

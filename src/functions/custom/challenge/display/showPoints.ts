@@ -2,12 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "showPoints",
-  description:
-    "Displays the total points of a 1 hour luck challenge in content format, hidden when the profile's settings say so.",
+  description: "total points of the 1h luck challenge, hidden if the profile settings say so",
   params: [
     {
       name: "progressVar",
-      description: "The name of the variable that holds the challenge progress.",
+      description: "var w/ the challenge progress",
       type: ArgType.String,
     },
   ],

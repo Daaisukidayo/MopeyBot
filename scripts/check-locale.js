@@ -5,7 +5,10 @@ const root = path.resolve(__dirname, "..")
 const read = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"))
 const main = read("res/config/core/main.json")
 const languages = Object.keys(main.allLocales)
-const endings = main.endingsMap
+// same category -> form index as $tl, so en needs 2 plural forms and ru 3
+const FORM_OF = { one: 0, two: 1, few: 1, other: 1, many: 2, zero: 2 }
+const formsNeeded = (language) =>
+  new Set(new Intl.PluralRules(language).resolvedOptions().pluralCategories.map((c) => FORM_OF[c])).size
 
 const locales = { ui: read("res/locale/ui.json"), data: read("res/locale/data.json") }
 const isText = (v) => v !== null && typeof v === "object" && !Array.isArray(v) && languages.some((l) => l in v)
@@ -17,7 +20,7 @@ const walk = (dir, ext) =>
   })
 const sources = [...walk("src", ".ts"), ...walk("res/config", ".json")].map((file) => ({
   file,
-  text: fs.readFileSync(path.join(root, file), "utf8")
+  text: fs.readFileSync(path.join(root, file), "utf8"),
 }))
 
 const errors = []
@@ -59,7 +62,9 @@ for (const { file, text } of sources) {
       if (!locale.includes("$")) errors.push(`${where}: unknown locale file '${locale}' in $tl[${parts.join(".")}]`)
       continue
     }
-    const keys = rest.slice(0, -1)
+    // the language at the end is optional: a known one or a built one ($get[l]) is dropped, w/o it the last part is a key
+    const last = rest[rest.length - 1] ?? ""
+    const keys = languages.includes(last) || last.includes("$") ? rest.slice(0, -1) : rest
     const dynamic = keys.findIndex((k) => k.includes("$"))
 
     if (dynamic === -1) {
@@ -122,8 +127,8 @@ const placeholders = (value) =>
       []
         .concat(value)
         .join("\n")
-        .match(/\{\d+(?=[}:])/g) ?? []
-    )
+        .match(/\{\d+(?=[}:|])/g) ?? []
+    ),
   ]
     .map((p) => p.slice(1))
     .sort()
@@ -132,13 +137,14 @@ const placeholders = (value) =>
 for (const [key, value] of texts) {
   for (const language of languages) {
     if (value[language] === undefined || value[language] === "") errors.push(`${key}: no '${language}' text`)
-    for (const [, ending] of []
-      .concat(value[language] ?? [])
-      .join("\n")
-      .matchAll(/\{\d+:([a-z]+)\}/g)) {
-      if (ending !== "ord" && !endings[language]?.[ending])
-        errors.push(`${key}: '${language}' uses the plural ending '${ending}', missing in endingsMap.${language}`)
+    const text = [].concat(value[language] ?? []).join("\n")
+    for (const [token, forms] of text.matchAll(/\{\d+\|([^{}]*)\}/g)) {
+      const count = forms.split("|").length
+      if (count !== formsNeeded(language))
+        errors.push(`${key}: '${language}' ${token} has ${count} forms, ${language} needs ${formsNeeded(language)}`)
     }
+    for (const [token] of text.matchAll(/\{\d+:(?!ord\})[a-z]+\}/g))
+      errors.push(`${key}: '${language}' still uses the old ending ${token}, write the forms instead: {0|form|forms}`)
   }
   const found = new Set(languages.filter((l) => value[l] !== undefined).map((l) => placeholders(value[l])))
   if (found.size > 1) warnings.push(`${key}: the languages use different placeholders`)

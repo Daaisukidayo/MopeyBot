@@ -5,7 +5,7 @@ import { readVariables } from "../../utils/loadVariables"
 export default new NativeFunction({
   name: "$reloadConfig",
   description:
-    "Reads res/config again and makes it the defaults of the global variables. A value set with $setGlobalVar stays in front of its default. Returns how many variables were read",
+    "rereads res/config and makes it the global var defaults. values set w/ setGlobalVar still win. returns how many vars were read",
   unwrap: false,
   output: ArgType.Number,
   execute() {

@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "addWardrobeBackButton",
-    description: "Adds a row with the wardrobe's Back button.",
+    description: "adds a row w/ the wardrobe's Back button",
     params: [
         {
             name: "target",
-            description: "Where it goes back to: 'menu' (the start menu), 'pack' or 'animal' (the tier choice for that), or a tier (its animals)",
+            description: "where it goes back to: 'menu' (start menu), 'pack' or 'animal' (the tier pick for that), or a tier (its animals)",
             type: forgescript_1.ArgType.String,
         },
     ],

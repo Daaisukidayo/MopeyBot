@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "deleteChallengeProgress",
-  description: "Deletes the user's challenge progress",
+  description: "deletes the user's challenge progress",
   brackets: false,
   params: [
     {
       name: "userId",
-      description: "The user ID",
+      description: "the user's ID",
       type: ArgType.User,
       required: false,
     },

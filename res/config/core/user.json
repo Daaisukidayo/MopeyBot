@@ -1,39 +1,6 @@
 {
-  "userProfile": {
-    "ID": "",
-    "MC": 0,
-    "MUID": -1,
-    "acceptedRules": false,
-    "testerMode": false,
-    "onSlowmode": false,
-    "isBanned": false,
-    "devMode": 0,
-    "hadAnn": false,
-    "rtMode": 0,
-    "language": "en-US",
-    "timezone": "Etc/UTC",
-
-    "limiters": {
-      "lastDailyDay": -1,
-      "lastWeeklyWeek": -1,
-      "lastClaimedDay": -1,
-      "lastDailyRaretry": -1,
-      "lastDailyRaretryrun": -1
-    },
-
-    "challenge": {
-      "settings": [],
-      "difficulty": 1
-    },
-
-    "userPacks": []
-  },
-
   "userWardrobe": {},
+  "userSkins": [],
   "challengeHistory": [],
-
-  "caughtRaresInRaretryrun": 0,
-  "caughtRaresInRaretry": 0,
-  "dailyStreak": 0,
   "userReminders": []
 }

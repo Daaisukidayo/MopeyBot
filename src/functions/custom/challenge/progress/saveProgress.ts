@@ -2,16 +2,16 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "saveProgress",
-  description: "Saves the luck challenge progress object for the user.",
+  description: "saves the user's luck challenge progress",
   params: [
     {
       name: "progress",
-      description: "Progress data.",
+      description: "the progress data",
       type: ArgType.Json,
     },
     {
       name: "userId",
-      description: "ID of the user.",
+      description: "the user's ID",
       type: ArgType.User,
       required: false,
     },

@@ -2,9 +2,9 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "cacheAnimalIndex",
-  description: "Caches the index of every animal in the animals list, and the luck groups of the hour simulator.",
+  description: "caches every animal's index in the list + the hour simulator's luck groups",
   code: `
-    $c[Read by reference: never modify 'animals']
+    $c[shared ref, don't mutate 'animals']
     $cacheAnimalsData
     $getCache[animals;animalsData;animals]
 
@@ -22,7 +22,7 @@ export default new ForgeFunction({
     ]
     $jsonLoad[data;$objectOf]
 
-    $c[Every animal of the groups once: true for the rares that count]
+    $c[each group animal once, true for the rares that count]
     $arrayForEach[$arrayUnique[$arrayFlat[hlKey]];animalId;
       $jsonSet[data;$env[animalId];$not[$or[$env[animalId]==null;$getAnimalInfo[$env[animalId];isRare]==false;$includes[$env[animalId];shop]]]]
     ]

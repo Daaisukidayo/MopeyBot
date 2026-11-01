@@ -43,7 +43,7 @@
     "related": [
       "command_showhistory"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_changelog": {
@@ -79,7 +79,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_arena": {
@@ -117,7 +117,7 @@
       "command_balance",
       "command_shop"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_balance": {
@@ -140,14 +140,14 @@
         "ru": "баланс"
       },
       "description": {
-        "default": "Displays your current balance and purchased skin packs!",
-        "en-US": "Displays your current balance and purchased skin packs!",
+        "default": "Displays your current balance and purchased bundles!",
+        "en-US": "Displays your current balance and purchased bundles!",
         "ru": "Показывает ваш текущий баланс и приобретённые наборы скинов!"
       }
     },
     "description": {
       "en-US": [
-        "## Displays your current balance and purchased skin packs!"
+        "## Displays your current balance and purchased bundles!"
       ],
       "ru": [
         "## Показывает ваш текущий баланс и приобретённые наборы скинов!"
@@ -156,7 +156,7 @@
     "related": [
       "command_shop"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_beachball": {
@@ -197,7 +197,7 @@
       "command_umbrella",
       "command_tornado"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_chart": {
@@ -237,7 +237,7 @@
       "command_start",
       "command_hlsimulator"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_checklist": {
@@ -275,7 +275,7 @@
       "command_raretryrun",
       "command_daily"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_clearcoins": {
@@ -310,7 +310,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_coinflip": {
@@ -395,7 +395,7 @@
     "related": [
       "command_slots"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_count": {
@@ -452,7 +452,7 @@
     "related": [
       "command_snora"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_createlobby": {
@@ -509,7 +509,7 @@
       "command_chart",
       "command_settings"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_credits": {
@@ -540,7 +540,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_daily": {
@@ -575,7 +575,7 @@
       "command_balance",
       "command_shop"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_editlist": {
@@ -671,7 +671,7 @@
       "command_showlist",
       "command_snora"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_end": {
@@ -706,7 +706,7 @@
     "related": [
       "command_start"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_help": {
@@ -753,7 +753,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_hlsimulator": {
@@ -811,7 +811,7 @@
       "command_start",
       "command_chart"
     ],
-    "category": 1
+    "category": "help_category_fun"
   },
 
   "command_howlucky": {
@@ -844,7 +844,7 @@
       ]
     },
     "related": [],
-    "category": 1
+    "category": "help_category_fun"
   },
 
   "command_invite": {
@@ -877,7 +877,7 @@
     "related": [
       "command_credits"
     ],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_kingdragon": {
@@ -916,7 +916,7 @@
       "command_balance",
       "command_shop"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_leaderboard": {
@@ -936,9 +936,9 @@
         "ru": "таблица-лидеров"
       },
       "description": {
-        "default": "Displays the leaderboard by the number of Mopecoins!",
-        "en-US": "Displays the leaderboard by the number of Mopecoins!",
-        "ru": "Показывает таблицу лидеров по количеству Мопкоинов!"
+        "default": "Displays the leaderboards: Mopecoins, rares, the rarest soccers and the collection!",
+        "en-US": "Displays the leaderboards: Mopecoins, rares, the rarest soccers and the collection!",
+        "ru": "Показывает таблицы лидеров: Мопкоины, редкие, самые редкие мячи и коллекция!"
       },
       "options": [
         {
@@ -964,29 +964,160 @@
             "en-US": "Choose how many users to display per page",
             "ru": "Выберите, сколько пользователей отображать на странице"
           }
+        },
+        {
+          "name": {
+            "default": "table",
+            "en-US": "table",
+            "ru": "таблица"
+          },
+          "description": {
+            "default": "Choose a table: Mopecoins by default",
+            "en-US": "Choose a table: Mopecoins by default",
+            "ru": "Выберите таблицу: по умолчанию Мопкоины"
+          },
+          "choices": [
+            { "value": "mc", "name": { "default": "Mopecoins", "en-US": "Mopecoins", "ru": "Мопкоины" } },
+            { "value": "raretry", "name": { "default": "Raretry rares", "en-US": "Raretry rares", "ru": "Редкие в попытке редких" } },
+            { "value": "raretryrun", "name": { "default": "Raretry Run rares", "en-US": "Raretry Run rares", "ru": "Редкие в попытке прохождения" } },
+            { "value": "pumpkin", "name": { "default": "Rarest pumpkin", "en-US": "Rarest pumpkin", "ru": "Самая редкая тыква" } },
+            { "value": "umbrella", "name": { "default": "Rarest umbrella", "en-US": "Rarest umbrella", "ru": "Самый редкий зонт" } },
+            { "value": "beachball", "name": { "default": "Rarest beachball", "en-US": "Rarest beachball", "ru": "Самый редкий пляжный мяч" } },
+            { "value": "collection", "name": { "default": "Soccer collection", "en-US": "Soccer collection", "ru": "Коллекция мячей" } }
+          ]
         }
       ]
     },
     "description": {
       "en-US": [
-        "## Displays the leaderboard by the number of Mopecoins!",
-        "## The leaderboard is updated every 5 minutes!",
-        "## Usage: `{PREFIX}leaderboard (<page>) (<rows>)`",
+        "## Displays the leaderboards: by Mopecoins, by rares caught in raretry and raretryrun, by the rarest pumpkin, umbrella and beachball, and by the soccer collection!",
+        "## The tables are updated every 5 minutes!",
+        "## Usage: `{PREFIX}leaderboard (<page>) (<rows>)`, the table is chosen in the menu under it",
         "### `page` - page to display",
         "### `rows` - number of rows per page, from 1 to 10"
       ],
       "ru": [
-        "## Показывает таблицу лидеров по количеству Мопкоинов!",
-        "## Таблица обновляется каждые 5 минут!",
-        "## Использование: `{PREFIX}leaderboard (<страница>) (<строк_на_странице>)`",
+        "## Показывает таблицы лидеров: по Мопкоинам, по редким из попыток редких и прохождений, по самой редкой тыкве, зонту и пляжному мячу и по коллекции мячей!",
+        "## Таблицы обновляются каждые 5 минут!",
+        "## Использование: `{PREFIX}leaderboard (<страница>) (<строк_на_странице>)`, таблица выбирается в меню под ней",
         "### `страница` - страница для отображения",
         "### `строк_на_странице` - число строк на странице, от 1 до 10"
       ]
     },
     "related": [
-      "command_balance"
+      "command_balance",
+      "command_rolls",
+      "command_halloffame"
     ],
-    "category": 0
+    "category": "help_category_economy"
+  },
+
+  "command_rolls": {
+    "name": "rolls",
+    "aliases": [
+      "rollhistory",
+      "rh"
+    ],
+    "detailedName": {
+      "en-US": "Roll History",
+      "ru": "История бросков"
+    },
+    "slash": {
+      "name": {
+        "default": "rolls",
+        "en-US": "rolls",
+        "ru": "броски"
+      },
+      "description": {
+        "default": "Shows your history and stats of raretry, raretryrun and the soccers!",
+        "en-US": "Shows your history and stats of raretry, raretryrun and the soccers!",
+        "ru": "Показывает вашу историю и статистику попыток редких, прохождений и мячей!"
+      },
+      "options": [
+        {
+          "name": {
+            "default": "game",
+            "en-US": "game",
+            "ru": "игра"
+          },
+          "description": {
+            "default": "Choose a game: raretry by default",
+            "en-US": "Choose a game: raretry by default",
+            "ru": "Выберите игру: по умолчанию попытка редких"
+          },
+          "choices": [
+            { "value": "raretry", "name": { "default": "Raretry", "en-US": "Raretry", "ru": "Попытка редких" } },
+            { "value": "raretryrun", "name": { "default": "Raretry Run", "en-US": "Raretry Run", "ru": "Попытка прохождения" } },
+            { "value": "pumpkin", "name": { "default": "Pumpkin", "en-US": "Pumpkin", "ru": "Тыква" } },
+            { "value": "umbrella", "name": { "default": "Umbrella", "en-US": "Umbrella", "ru": "Зонт" } },
+            { "value": "beachball", "name": { "default": "Beachball", "en-US": "Beachball", "ru": "Пляжный мяч" } }
+          ]
+        }
+      ]
+    },
+    "description": {
+      "en-US": [
+        "## Shows your history and stats of raretry, raretryrun, pumpkin, umbrella and beachball!",
+        "## The history keeps the last {ROLL_HISTORY_LENGTH} entries of each game. Ordinary rolls in a row, the usual soccer or a raretry without a catch, make one entry with their count",
+        "## Usage: `{PREFIX}rolls (<game>)`",
+        "### `game` - raretry, raretryrun, pumpkin, umbrella or beachball, or its number from 0 to 4"
+      ],
+      "ru": [
+        "## Показывает вашу историю и статистику попыток редких, прохождений, тыкв, зонтов и пляжных мячей!",
+        "## История хранит {ROLL_HISTORY_LENGTH} последних записей каждой игры. Обычные броски подряд, обычный мяч или попытка без улова, складываются в одну запись с их количеством",
+        "## Использование: `{PREFIX}rolls (<игра>)`",
+        "### `игра` - raretry, raretryrun, pumpkin, umbrella или beachball, либо её номер от 0 до 4"
+      ]
+    },
+    "related": [
+      "command_halloffame",
+      "command_leaderboard",
+      "command_raretry",
+      "command_raretryrun"
+    ],
+    "category": "help_category_economy"
+  },
+
+  "command_halloffame": {
+    "name": "halloffame",
+    "aliases": [
+      "hof",
+      "fame"
+    ],
+    "detailedName": {
+      "en-US": "Hall of Fame",
+      "ru": "Зал славы"
+    },
+    "slash": {
+      "name": {
+        "default": "halloffame",
+        "en-US": "halloffame",
+        "ru": "зал-славы"
+      },
+      "description": {
+        "default": "Shows the rarest rolls of every player!",
+        "en-US": "Shows the rarest rolls of every player!",
+        "ru": "Показывает самые редкие броски всех игроков!"
+      },
+      "options": []
+    },
+    "description": {
+      "en-US": [
+        "## Shows the hall of fame: the 100 rarest rolls of every player in raretry, raretryrun and the soccers!",
+        "## Only a very rare roll gets in: from `1/{HOF_MIN_CHANCE}` and rarer",
+        "## Usage: `{PREFIX}halloffame`, a game is chosen in the menu under the list"
+      ],
+      "ru": [
+        "## Показывает зал славы: 100 самых редких бросков всех игроков в попытках редких, прохождениях и мячах!",
+        "## Попадает только очень редкий бросок: от `1/{HOF_MIN_CHANCE}` и реже",
+        "## Использование: `{PREFIX}halloffame`, игра выбирается в меню под списком"
+      ]
+    },
+    "related": [
+      "command_rolls",
+      "command_leaderboard"
+    ],
+    "category": "help_category_economy"
   },
 
   "command_math": {
@@ -1037,7 +1168,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_muid": {
@@ -1089,7 +1220,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_pause": {
@@ -1125,7 +1256,7 @@
       "command_showlist",
       "command_end"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_ping": {
@@ -1156,7 +1287,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_play": {
@@ -1190,7 +1321,7 @@
       "command_wardrobe",
       "command_shop"
     ],
-    "category": 1
+    "category": "help_category_fun"
   },
 
   "command_showlist": {
@@ -1238,7 +1369,7 @@
       "command_snora",
       "command_end"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_prefix": {
@@ -1289,7 +1420,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_progress": {
@@ -1322,7 +1453,7 @@
     "related": [
       "command_createlobby"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_pumpkin": {
@@ -1363,7 +1494,7 @@
       "command_umbrella",
       "command_tornado"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_randomrare": {
@@ -1396,7 +1527,7 @@
       ]
     },
     "related": [],
-    "category": 1
+    "category": "help_category_fun"
   },
 
   "command_raretry": {
@@ -1451,7 +1582,7 @@
     "related": [
       "command_raretrymode"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_raretrymode": {
@@ -1489,7 +1620,7 @@
     "related": [
       "command_raretry"
     ],
-    "category": 1
+    "category": "help_category_fun"
   },
 
   "command_raretryrun": {
@@ -1526,7 +1657,7 @@
     "related": [
       "command_raretry"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_raretrysimulator": {
@@ -1595,7 +1726,7 @@
       "command_raretrymode",
       "command_hlsimulator"
     ],
-    "category": 1
+    "category": "help_category_fun"
   },
 
   "command_reminders": {
@@ -1630,7 +1761,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_report": {
@@ -1661,7 +1792,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_resume": {
@@ -1700,7 +1831,7 @@
       "command_showlist",
       "command_end"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_rules": {
@@ -1731,7 +1862,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_settings": {
@@ -1768,7 +1899,7 @@
       "command_start",
       "command_chart"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_shop": {
@@ -1785,18 +1916,20 @@
         "ru": "магазин"
       },
       "description": {
-        "default": "Purchase any skin pack you desire.",
-        "en-US": "Purchase any skin pack you desire.",
-        "ru": "Приобретайте любые наборы скинов, которые вы хотите."
+        "default": "Purchase bundles or single skins.",
+        "en-US": "Purchase bundles or single skins.",
+        "ru": "Приобретайте наборы скинов или отдельные скины."
       }
     },
     "description": {
       "en-US": [
-        "## Purchase any skin pack you desire.",
-        "### Note that some commands may not utilize certain packs."
+        "## Purchase bundles or single skins.",
+        "### Classic and Gold-trim skins come only in bundles.",
+        "### Note that some commands may not utilize certain bundles."
       ],
       "ru": [
-        "## Приобретайте любые наборы скинов, которые вы хотите.",
+        "## Приобретайте наборы скинов или отдельные скины.",
+        "### Классические и позолоченные скины продаются только наборами.",
         "### Обратите внимание, что некоторые команды могут не использовать определённые наборы."
       ]
     },
@@ -1804,7 +1937,7 @@
       "command_balance",
       "command_wardrobe"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_showhistory": {
@@ -1843,7 +1976,7 @@
       "command_start",
       "command_chart"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_slots": {
@@ -1898,7 +2031,7 @@
     "related": [
       "command_coinflip"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_snora": {
@@ -1936,7 +2069,7 @@
     "related": [
       "command_start"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_start": {
@@ -1981,7 +2114,7 @@
       "command_editlist",
       "command_end"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_switchlocale": {
@@ -2034,7 +2167,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_time": {
@@ -2090,7 +2223,7 @@
       "command_showlist",
       "command_end"
     ],
-    "category": 4
+    "category": "help_category_luckchallenge"
   },
 
   "command_timezone": {
@@ -2143,7 +2276,7 @@
       ]
     },
     "related": [],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_tornado": {
@@ -2182,7 +2315,7 @@
       "command_beachball",
       "command_umbrella"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_umbrella": {
@@ -2223,7 +2356,7 @@
       "command_beachball",
       "command_tornado"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_vote": {
@@ -2256,7 +2389,7 @@
     "related": [
       "command_checklist"
     ],
-    "category": 0
+    "category": "help_category_economy"
   },
 
   "command_wardrobe": {
@@ -2300,10 +2433,10 @@
         "### Usage: `{PREFIX}wardrobe [new|all|<tier>|<animal>]`",
         "### Without an option a menu with these options opens",
         "### Options:",
-        "### `[new]` - Equips your animals one by one with the chosen skins, from the mouse to the King Dragon",
-        "### `[all]` - Equips every animal with the chosen skin pack",
-        "### `[tier]` - Equips every animal of the chosen tier with the chosen skin pack",
-        "### `[animal]` - Equips the chosen animal with the chosen skin",
+        "### `[new]` - Opens every animal's skins, page by page",
+        "### `[all]` - Equips every animal with the chosen bundle",
+        "### `[tier]` - Equips every animal of the chosen tier with the chosen bundle",
+        "### `[animal]` - Opens the page with the chosen animal",
         "{BRACKETS_INFO}"
       ],
       "ru": [
@@ -2311,10 +2444,10 @@
         "### Использование: `{PREFIX}wardrobe [new|all|<tier>|<animal>]`",
         "### Без опции открывается меню с этими опциями",
         "### Опции:",
-        "### `[new]` - По очереди экипирует ваших животных выбранными скинами, от мыши до Королевского Дракона",
+        "### `[new]` - Открывает скины всех животных по страницам",
         "### `[all]` - Экипирует всех животных выбранным набором скинов",
         "### `[tier]` - Экипирует всех животных выбранного уровня выбранным набором скинов",
-        "### `[animal]` - Экипирует выбранное животное выбранным скином",
+        "### `[animal]` - Открывает страницу с выбранным животным",
         "{BRACKETS_INFO}"
       ]
     },
@@ -2322,7 +2455,7 @@
       "command_play",
       "command_shop"
     ],
-    "category": 2
+    "category": "help_category_special"
   },
 
   "command_weekly": {
@@ -2357,6 +2490,6 @@
       "command_balance",
       "command_shop"
     ],
-    "category": 0
+    "category": "help_category_economy"
   }
 }

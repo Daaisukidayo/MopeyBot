@@ -3,21 +3,21 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "showHistoryOption",
   description:
-    "Opens the form that changes a typed option of a history page (the play type and the difficulty have menus on the page). The answer comes as '<handler>-set-<author ID>-<option>'.",
+    "opens the form for a typed option of a history page (play type and difficulty have menus on the page instead). the answer comes back as '<handler>-set-<author ID>-<option>'",
   params: [
     {
       name: "handler",
-      description: "The interaction that gets the answer: addHistory or editHistory.",
+      description: "who gets the answer: addHistory or editHistory",
       type: ArgType.String,
     },
     {
       name: "option",
-      description: "The option: points, raresQuantity, endDate or raresList.",
+      description: "points, raresQuantity, endDate or raresList",
       type: ArgType.String,
     },
     {
       name: "page",
-      description: "The history page being made or edited.",
+      description: "the history page being made or edited",
       type: ArgType.Json,
     },
   ],
@@ -25,7 +25,6 @@ export default new ForgeFunction({
     $let[l;$jsonGet[userProfile;language]]
     $let[id;$env[handler]-set-$authorID-$env[option]]
 
-    $c[A form prefilled with the current value]
     $switch[$env[option];
       $case[points;
         $modal[$get[id];$tl[ui.history.modalTitlePoints.$get[l]]]

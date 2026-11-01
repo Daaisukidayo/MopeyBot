@@ -12,23 +12,22 @@ export default new ForgeFunction({
 
       $addSeparator[Large]
 
-      $arrayForEach[$jsonEntries[$getGlobalVar[allSettings]];entry;
-        $let[key;$jsonGet[entry;0]]
-        $let[hasKey;$arrayIncludes[$jsonGet[userProfile;challenge;settings];$get[key]]]
+      $arrayForEach[$getGlobalVar[allSettings];key;
+        $let[hasKey;$arrayIncludes[$jsonGet[userProfile;challenge;settings];$env[key]]]
 
         $addSection[
-          $addTextDisplay[## _$tl[data.allSettings.$jsonGet[entry;1].$get[l]]_]
-          $addButton[settings-$get[key]-$authorID;$tl[ui.settings.state$if[$get[hasKey];Enabled;Disabled].$get[l]];$if[$get[hasKey];Success;Danger]]
+          $addTextDisplay[## _$tl[data.allSettings.$env[key].$get[l]]_]
+          $addButton[settings-$env[key]-$authorID;$tl[ui.settings.state$if[$get[hasKey];Enabled;Disabled].$get[l]];$if[$get[hasKey];Success;Danger]]
         ]
       ]
-      
+
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.settings.difficulty.$get[l]]]
-      
+
       $addActionRow
       $arrayForEach[$getGlobalVar[difficulties];elem;
         $let[disabled;$checkCondition[$jsonGet[userProfile;challenge;difficulty]==$env[elem]]]
-        
+
         $let[style;$jsonGet[styles;$env[i]]]
         $addButton[settings-$env[elem]-$authorID;$tl[data.difficulties.$env[elem].$get[l]];$get[style];;$get[disabled]]
       ;i]

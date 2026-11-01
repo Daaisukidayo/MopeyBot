@@ -5,7 +5,7 @@ export default new BaseCommand({
   code: `
     $logger[Info;Bot $username[$botID] is ready]
 
-    $c[Each call shows both statuses for 15s, so a 30s interval keeps them alternating]
+    $c[each call flips through both statuses for 15s, so 30s keeps them alternating]
     $setInterval[$updateBotStatus;30s]
     $updateBotStatus
   `,

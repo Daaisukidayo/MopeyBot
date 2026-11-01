@@ -2,21 +2,21 @@ import { ArgType, NativeFunction } from "@tryforge/forgescript"
 
 export default new NativeFunction({
   name: "$isOneOf",
-  description: "Checks whether the string is equal to one of the other strings in the set",
+  description: "whether the string equals any of the others",
   output: ArgType.Boolean,
   brackets: true,
   unwrap: true,
   args: [
     {
       name: "string",
-      description: "The string to check for a match against any of the provided values",
+      description: "the string to check",
       type: ArgType.String,
       required: true,
       rest: false,
     },
     {
       name: "matches",
-      description: "One or more values (strings) to compare",
+      description: "one or more values to compare against",
       type: ArgType.String,
       required: true,
       rest: true,

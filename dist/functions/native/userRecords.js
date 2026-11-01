@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 const util_1 = require("@tryforge/forge.db/dist/util");
-// A saved value as JSON when it is JSON. A number too big for JavaScript (a Discord ID) keeps its exact digits
+// parse saved values as JSON when they are. numbers too big for JS (Discord IDs) keep their exact digits
 function parseValue(text) {
     try {
         return JSON.parse(text, (_key, value, context) => typeof value === "number" && !Number.isSafeInteger(value) && context
@@ -15,14 +15,14 @@ function parseValue(text) {
 }
 exports.default = new forgescript_1.NativeFunction({
     name: "$userRecords",
-    description: "Returns every saved variable of a user as formatted JSON: the user variables by name, the others by their type and server",
+    description: "every saved var of a user as formatted JSON: user vars by name, the rest by type and server",
     brackets: true,
     unwrap: true,
     output: forgescript_1.ArgType.String,
     args: [
         {
             name: "user ID",
-            description: "The user whose variables to return",
+            description: "whose vars to return",
             type: forgescript_1.ArgType.String,
             required: true,
             rest: false,

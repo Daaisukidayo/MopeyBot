@@ -10,7 +10,7 @@ exports.default = new edge_1.Command({
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
-    
+
     $jsonLoad[playData;$getPlayData]
     $onlyIf[$jsonGet[playData;is_started];
       $newError[$tl[ui.play.noSession.$get[l]]]

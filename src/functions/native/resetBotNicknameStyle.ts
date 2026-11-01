@@ -3,7 +3,7 @@ import { Routes } from "discord.js"
 
 export default new NativeFunction({
   name: "$resetBotNicknameStyle",
-  description: "Resets the bot's display name style for the specified guild, returns bool",
+  description: "resets the bot's display name style in a guild, returns a bool",
   aliases: ["$resetClientNicknameStyle", "$resetBotDisplayNameStyle", "$resetClientDisplayNameStyle"],
   unwrap: true,
   brackets: false,
@@ -11,7 +11,7 @@ export default new NativeFunction({
   args: [
     {
       name: "guild ID",
-      description: "The guild whose bot display name style should be reset",
+      description: "the guild to reset it in",
       rest: false,
       type: ArgType.Guild,
     },

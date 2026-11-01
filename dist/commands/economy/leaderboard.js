@@ -18,6 +18,13 @@ exports.default = new forgescript_1.ApplicationCommand({
         options: [
             { type: 4, required: false, min_value: 1, ...(0, getLocalization_js_1.localized)(options[0]) },
             { type: 4, required: false, min_value: 1, max_value: 10, ...(0, getLocalization_js_1.localized)(options[1]) },
+            {
+                type: 3,
+                required: false,
+                ...(0, getLocalization_js_1.localized)(options[2]),
+                // value = the table's key in leaderboardTypes
+                choices: options[2].choices.map((choice) => ({ ...(0, getLocalization_js_1.localized)(choice), value: String(choice.value) })),
+            },
         ],
     },
 });

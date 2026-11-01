@@ -5,7 +5,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "pageVar",
-      description: "The name of the variable that holds the history page being added.",
+      description: "var w/ the history page being added",
       type: ArgType.String,
     },
   ],

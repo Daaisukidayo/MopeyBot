@@ -5,12 +5,12 @@ export default new ForgeFunction({
   params: [
     {
       name: "pageVar",
-      description: "The name of the variable that holds the history page being edited.",
+      description: "var w/ the history page being edited",
       type: ArgType.String,
     },
     {
       name: "historyVar",
-      description: "The name of the variable that holds the shown history pages.",
+      description: "var w/ the shown history pages",
       type: ArgType.String,
     },
   ],

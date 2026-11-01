@@ -5,7 +5,7 @@ const slash = commandsData.command_balance.slash
 
 export default new ApplicationCommand({
   independent: true,
-  code: ` 
+  code: `
     $handleBalance
   `,
   data: {

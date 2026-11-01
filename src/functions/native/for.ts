@@ -8,32 +8,32 @@ import {
 
 export default new NativeFunction({
   name: "$for",
-  description: "Executes a traditional for loop",
+  description: "a classic for loop",
   unwrap: false,
   brackets: true,
   args: [
     {
       name: "init",
-      description: "The initialization code (runs once before the loop starts)",
+      description: "init code, runs once before the loop",
       rest: false,
       type: ArgType.String,
     },
     {
       name: "condition",
-      description: "The loop condition code (evaluated before each iteration)",
+      description: "the condition, checked before each round",
       condition: true,
       rest: false,
       type: ArgType.String,
     },
     {
       name: "step",
-      description: "The step expression code (runs at the end of each iteration)",
+      description: "the step code, runs at the end of each round",
       rest: false,
       type: ArgType.String,
     },
     {
       name: "code",
-      description: "The main code block to execute inside the loop",
+      description: "the loop body",
       rest: false,
       required: true,
       type: ArgType.String,

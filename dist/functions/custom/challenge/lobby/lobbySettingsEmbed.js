@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "lobbySettingsEmbed",
-    description: "Creates the settings of the lobby loaded in 'lobby': only its host can change them.",
+    description: "the settings of the lobby in 'lobby', only the host can change them",
     params: [
         {
             name: "lobbyVar",
-            description: "The name of the variable that holds the lobby.",
+            description: "var w/ the lobby",
             type: forgescript_1.ArgType.String,
         },
     ],

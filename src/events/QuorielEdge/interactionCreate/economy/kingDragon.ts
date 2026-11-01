@@ -17,7 +17,7 @@ export default new Command({
     $let[animalId;$jsonGet[IID;1]]
     $let[wrIndex;$jsonGet[IID;2]]
 
-    $c[A black dragon becomes the king dragon 60% of the time, otherwise it gets some coins]
+    $c[60% to become KD, else some coins]
     $if[$get[animalId]==black_dragon;
       $if[$random[1;100]<=60;
         $addContainer[
@@ -29,8 +29,8 @@ export default new Command({
         $newCommandTimeout[kingdragon]
       ;
         $let[MC;750]
-        $sumCash[$get[MC]]
-        $saveProfile[$env[userProfile]]
+        $callMethod[userProfile;addCoins;$get[MC]]
+        $callMethod[userProfile;save]
 
         $addContainer[
           $addAuthorDisplay
@@ -42,23 +42,23 @@ export default new Command({
       $stop
     ]
 
-    $c[The king dragon, or the rare one got by luck]
-    $onlyIf[$isOneOf[$get[animalId];king_dragon;rare_king_dragon]]
-    $let[rare;$checkCondition[$get[animalId]==rare_king_dragon]]
-    $let[MC;$if[$get[rare];250000;2500]]
-    $sumCash[$get[MC]]
-    $saveProfile[$env[userProfile]]
+    $c[KD, the lucky one if the button ends in -luck]
+    $onlyIf[$get[animalId]==king_dragon]
+    $let[luck;$checkCondition[$jsonGet[IID;4]==luck]]
+    $let[MC;$if[$get[luck];250000;2500]]
+    $callMethod[userProfile;addCoins;$get[MC]]
+    $callMethod[userProfile;save]
 
     $addContainer[
       $addAuthorDisplay
       $addSection[
-        $addTextDisplay[$tl[ui.kingdragon.$if[$get[rare];byLuckUpgrade;upgrade].$get[l];$getAnimalInfo[$get[animalId];name;$get[wrIndex]];$separate[$get[MC]]]]
+        $addTextDisplay[$tl[ui.kingdragon.$if[$get[luck];byLuckUpgrade;upgrade].$get[l];$getAnimalInfo[$get[animalId];name;$get[wrIndex]];$separate[$get[MC]]]]
         $addThumbnail[$animalImage[$get[animalId];$get[wrIndex]]]
       ]
-      $if[$get[rare];
-        $addTextDisplay[$tl[ui.kingdragon.rarity.$get[l];$getAnimalInfo[rare_king_dragon;rarity.0];$getAnimalInfo[rare_king_dragon;rarity.1]]]
+      $if[$get[luck];
+        $addTextDisplay[$tl[ui.kingdragon.rarity.$get[l];$getAnimalInfo[king_dragon;rarity.0];$getAnimalInfo[king_dragon;rarity.1]]]
       ]
-    ;$if[$get[rare];$getGlobalVar[rareKingDragonColor];$jsonGet[$getGlobalVar[kingDragonColors];$get[wrIndex]]]]
+    ;$if[$get[luck];$getGlobalVar[rareKingDragonColor];$jsonGet[$getGlobalVar[kingDragonColors];$get[wrIndex]]]]
 
     $interactionUpdate
     $!stopCommandTimeout[kingdragon]

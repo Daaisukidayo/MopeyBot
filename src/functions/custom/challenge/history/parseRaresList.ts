@@ -3,12 +3,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "parseRaresList",
   description:
-    "Reads a history page's rares list, one '<abbreviation> = <count>' per line. Returns an object with keys: 'raresList', 'points' and 'rares'.",
+    "parses a history page's rares list, one '<abbreviation> = <count>' per line. returns 'raresList', 'points' and 'rares'",
   output: ArgType.Json,
   params: [
     {
       name: "text",
-      description: "The list as the user wrote it.",
+      description: "the list as the user typed it",
       type: ArgType.String,
       required: true,
     },
@@ -18,7 +18,7 @@ export default new ForgeFunction({
     $jsonLoad[raresList;$objectOf]
     $arrayLoad[lines;\n;$trim[$trimLines[$env[text]]]]
 
-    $c[A count above 100 becomes 100, and a count of 0 leaves the rare out]
+    $c[clamp to 100, 0 = skip the rare]
     $arrayForEach[lines;line;
       $arrayLoad[keyValue;=;$trim[$env[line]]]
       $let[animalId;$getRareAnimalID[$trim[$jsonGet[keyValue;0]]]]

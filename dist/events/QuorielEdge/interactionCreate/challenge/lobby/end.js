@@ -15,7 +15,7 @@ exports.default = new edge_1.Command({
     $checkLobby
 
     $jsonLoad[lobby;$getLobby]
-    $c[Moderators can close it too]
+    $c[mods can close it too]
     $onlyIf[$or[$jsonGet[lobby;host]==$authorID;$hasPerms[$guildID;$authorID;ManageMessages]];$onlyAuthorInteraction]
 
     $let[mid;$jsonGet[lobby;messageID]]
@@ -27,7 +27,7 @@ exports.default = new edge_1.Command({
           $!deleteMessage[$channelID;$get[mid]]
         ]
 
-        $c[A started lobby ends the challenge of every player, and the results are sent once everyone has finished]
+        $c[ending a started lobby ends everyone's challenge, results go out once all are done]
         $if[$jsonGet[lobby;started];
           $arrayForEach[$callMethod[lobby;players];ID;
             $jsonLoad[progress;$getProgress[$env[ID]]]

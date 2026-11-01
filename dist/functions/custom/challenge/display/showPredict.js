@@ -3,16 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "showPredict",
-    description: "Displays the points prediction of a 1 hour luck challenge in content format, hidden when the profile's settings say so.",
+    description: "points prediction for the 1h luck challenge, hidden if the profile settings say so",
     params: [
         {
             name: "progressVar",
-            description: "The name of the variable that holds the challenge progress.",
+            description: "var w/ the challenge progress",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "userId",
-            description: "The user whose challenge timer is read (default: the author).",
+            description: "whose challenge timer to read (default: the author)",
             type: forgescript_1.ArgType.User,
             required: false,
         },
@@ -23,7 +23,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $jsonLoad[events;$jsonGet[progress;events]]
     $let[prediction;0]
 
-    $c[An event is [seconds, points\\]: every one after the first is compared with the one before it]
+    $c[an event is a seconds, points pair. each one gets compared w/ the previous]
     $if[$jsonSize[events]>5;
       $let[totalGain;0]
       $let[totalDelay;0]
@@ -36,7 +36,7 @@ exports.default = new forgescript_1.ForgeFunction({
         ]
       ;i]
 
-      $c[The points to come: the average gain for every average delay left in the hour]
+      $c[prediction = avg gain per avg delay, for the rest of the hour]
       $let[steps;$math[$jsonSize[events] - 1]]
       $let[averageDelay;$max[0.1;$math[$get[totalDelay] / $get[steps]]]]
       $let[inputsLeft;$math[(3600 - $getChallengeTimer[$env[userId;id]]) / $get[averageDelay]]]

@@ -1,5 +1,5 @@
 // ========== IMPORTS ==========
-import { ForgeTopGG, IForgeTopGGOptions } from "@tryforge/forge.topgg"
+import { ForgeTopGG } from "@tryforge/forge.topgg"
 import { ForgeClient, LogPriority, FunctionManager } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
 import { ForgeCanvas } from "@tryforge/forge.canvas"
@@ -7,6 +7,7 @@ import { ForgeRegex } from "forge.regex"
 import { ForgeTimers, TimerEvent } from "forge.timers"
 import { ForgeJSON } from "forge.json"
 import { ForgeClass } from "forge.class"
+import { ForgeLint } from "forge.lint"
 import { QuorielEdge } from "@quoriel/edge"
 
 import { shutdownSetup } from "./utils/shutdownSetup.js"
@@ -16,6 +17,10 @@ import path from "path"
 process.loadEnvFile()
 
 // ========== EXTENTIONS CONFIGURATION ==========
+const FL = new ForgeLint({
+  stopOnError: true,
+})
+
 const FT = new ForgeTimers({
   intervalConfig: {
     restoredTicksLimit: 0,
@@ -33,14 +38,14 @@ const QE = new QuorielEdge({
 })
 
 const TOP = new ForgeTopGG({
-  token: process.env.TOPTOKEN,
-  auth: process.env.TOPAUTH,
+  token: process.env.TOPTOKEN as string,
+  auth: process.env.TOPAUTH as string,
   events: ["error", "posted", "voted"],
   port: 1040,
   post: {
     interval: 3_600_000,
   },
-} as IForgeTopGGOptions)
+})
 
 const DB = new ForgeDB({
   events: ["connect"],
@@ -51,7 +56,7 @@ const DB = new ForgeDB({
 FunctionManager.load(path.resolve(process.cwd(), "dist", "functions", "native")) // Native functions loader
 
 const BOT: ForgeClient = new ForgeClient({
-  extensions: [DB, TOP, QE, FT, new ForgeRegex(), new ForgeCanvas(), new ForgeJSON(), new ForgeClass()],
+  extensions: [DB, TOP, QE, FT, FL, new ForgeRegex(), new ForgeCanvas(), new ForgeJSON(), new ForgeClass()],
 
   prefixes: ["$if[$guildID==;$getGlobalVar[prefix];$getGuildVar[prefix]]"],
 

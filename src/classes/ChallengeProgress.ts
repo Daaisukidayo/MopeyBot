@@ -27,11 +27,13 @@ export default new ForgeClassBuilder({
       `,
     },
 
-    "private recount": `
-      $jsonLoad[totals;$sumRaresList[$getField[this;raresList]]]
-      $setField[this;points;$jsonGet[totals;points]]
-      $setField[this;rares;$jsonGet[totals;rares]]
-    `,
+    "private recount": {
+      code: `
+        $jsonLoad[totals;$sumRaresList[$getField[this;raresList]]]
+        $setField[this;points;$jsonGet[totals;points]]
+        $setField[this;rares;$jsonGet[totals;rares]]
+      `,
+    },
 
     addRares: {
       params: [
@@ -39,7 +41,7 @@ export default new ForgeClassBuilder({
         { name: "animalIds", type: ParamType.Json },
       ],
       code: `
-        $c[Limits per difficulty (see cacheAllRares)]
+        $c[per-difficulty caps, built in cacheAllRares]
         $getCache[rares;categoryLimits;categoryLimits]
         $let[difficulty;$getField[this;difficulty]]
 
@@ -52,7 +54,7 @@ export default new ForgeClassBuilder({
           $let[limit;$jsonGet[categoryLimits;$get[difficulty];$jsonGet[rare;category]]]
           $let[count;$default[$jsonGet[this;raresList;$env[animalId]];0]]
 
-          $c[An unlimited rare is always added, a limited one only below its limit]
+          $c[uncapped rares always go in, capped ones only while under the cap]
           $if[$or[$get[limit]==;$get[count]<$get[limit]];
             $letSum[points;$jsonGet[rare;points]]
             $jsonMath[caught;$env[animalId];points;$jsonGet[rare;points]]
@@ -65,7 +67,7 @@ export default new ForgeClassBuilder({
           ]
         ]
 
-        $c[Totals come from the whole list, every message that adds is an event for the prediction]
+        $c[totals come from the whole list. each msg that adds = one event for the prediction]
         $if[$get[points]>0;
           $callMethod[this;recount]
           $arrayPushAt[this;events;$arrayOf[$env[seconds];$getField[this;points]]]
@@ -80,7 +82,7 @@ export default new ForgeClassBuilder({
         { name: "count", type: ParamType.Number },
       ],
       code: `
-        $c[Nothing left removes the rare. A count above the limit becomes the limit]
+        $c[0 left = drop the rare, anything over the cap gets clamped]
         $if[$env[count]<=0;
           $!jsonDelete[this;raresList;$env[animalId]]
         ;
@@ -98,9 +100,11 @@ export default new ForgeClassBuilder({
       `,
     },
 
-    historyPage: `
-      $c[A team progress was played in a lobby]
-      $return[$objectOf[points;$getField[this;points];rares;$getField[this;rares];endDate;$getTimestamp;playType;$if[$getField[this;teamID]==-1;0;1];difficulty;$getField[this;difficulty];raresList;$getField[this;raresList]]]
-    `,
+    historyPage: {
+      code: `
+        $c[teamed progress means it was a lobby game]
+        $return[$objectOf[points;$getField[this;points];rares;$getField[this;rares];endDate;$getTimestamp;playType;$if[$getField[this;teamID]==-1;0;1];difficulty;$getField[this;difficulty];raresList;$getField[this;raresList]]]
+      `,
+    },
   },
 })

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "addHistoryNewConfig",
-    description: "Creates a new config for the 'add history' command for the user: saves it and returns it.",
+    description: "makes a fresh config for the addhistory command, saves it and returns it",
     output: forgescript_1.ArgType.Json,
     code: `
     $jsonLoad[baseHistoryPage;$getGlobalVar[baseHistoryPage]]

@@ -2,17 +2,17 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "separate",
-  description: "Separates a number with a specified separator.",
+  description: "splits a number's digits into groups w/ a separator",
   output: ArgType.String,
   params: [
     {
       name: "number",
-      description: "The number to separate.",
+      description: "the number",
       type: ArgType.Number,
     },
     {
       name: "separator",
-      description: "The separator to use.",
+      description: "the separator (default numberSeparator)",
       type: ArgType.Unknown,
       required: false,
     },

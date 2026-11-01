@@ -2,7 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "updateBotStatus",
-  description: "Shows both bot statuses in turn, 15 seconds each (one call takes 15 seconds)",
+  description: "shows both bot statuses in turn, 15s each (one call takes 15s)",
   code: `
     $if[$getGlobalVar[botEnabled];
       $setStatus[idle;Watching;$guildCount servers!]

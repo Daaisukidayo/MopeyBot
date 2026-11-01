@@ -1,0 +1,32 @@
+{
+  "rollGames": ["raretry", "raretryrun", "pumpkin", "umbrella", "beachball"],
+
+  "rollStats": {},
+  "rollHistory": {},
+  "recordDevRolls": false,
+  "rollHistoryLength": 100,
+  "rollHistoryPageSize": 10,
+  "rollHistoryRaresShown": 6,
+
+  "hallOfFame": [],
+  "hallOfFameSize": 100,
+  "hallOfFamePageSize": 10,
+  "hallOfFameMinChance": {
+    "_c": "chance = N of 1 in N, anything this rare or rarer makes the hall of fame",
+    "raretry": 1000,
+    "raretryrun": 1000,
+    "pumpkin": 1000,
+    "umbrella": 1000,
+    "beachball": 1000
+  },
+
+  "leaderboardTypes": {
+    "mc":{ "value": "mope_coins", "everyone": true },
+    "raretry": { "value": "raretry", "tie": "raretry_plays" },
+    "raretryrun": { "value": "raretryrun", "tie": "raretryrun_plays" },
+    "pumpkin": { "value": "pumpkin", "tie": "pumpkin_at" },
+    "umbrella": { "value": "umbrella", "tie": "umbrella_at" },
+    "beachball": { "value": "beachball", "tie": "beachball_at" },
+    "collection": { "value": "collection", "tie": "collection_at" }
+  }
+}

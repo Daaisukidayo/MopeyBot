@@ -6,12 +6,12 @@ exports.default = new forgescript_1.ForgeFunction({
     params: [
         {
             name: "playDataVar",
-            description: "The name of the variable that holds the play data.",
+            description: "var w/ the play data",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "wardrobeVar",
-            description: "The name of the variable that holds the user's wardrobe.",
+            description: "var w/ the user's wardrobe",
             type: forgescript_1.ArgType.String,
         },
     ],
@@ -32,7 +32,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[MC;$jsonGet[playData;mope_coins]]
     $let[thumbnail;$animalImage[$get[animalId];$get[wardrobeIndex]]]
 
-    $c[One text for the three lines: a message holds 40 components at most, the arena win screen nears it]
+    $c[3 lines in one text, the arena win screen gets close to the 40 component cap]
     $addSection[
       $addTextDisplay[## $get[emoji] $get[animalName]\n## $separate[$get[MC]]$getGlobalVar[mopecoin]\n## $abbreviateNumber[$get[exp]] / $abbreviateNumber[$get[maxExp]] $tl[ui.play.xp.$get[l]]]
       $addThumbnail[$get[thumbnail]]

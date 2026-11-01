@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
 
-// Reads every res/config/<dir>/*.json into one object of global variables. Each call reads the files again
+// merges every res/config/<dir>/*.json into one globals object, rereads the files on every call
 export function readVariables(): Record<string, any> {
   const variables: Record<string, any> = {}
 

@@ -23,7 +23,7 @@ export default new ForgeFunction({
       ]]]
     ]
 
-    $c[Three equal emojis win the bet times their multiplier]
+    $c[3 of a kind wins bet x multiplier]
     $arrayLoad[emojis;,;<:WatermelonS2:1417213697738281091>,<:MelonS1:1417945198335623219>,$getGlobalVar[mopecoin],<:gem:1417945445916999842>]
     $jsonLoad[multipliers;$arrayOf[2;4;8;20]]
 
@@ -34,8 +34,8 @@ export default new ForgeFunction({
     $arrayMap[$arrayRange[1;3];o;$return[$arraySample[emojis]];output]
     $let[won;$checkCondition[$jsonSize[$arrayUnique[output]]==1]]
 
-    $subCash[$get[amount]]
-    $saveProfile[$env[userProfile]]
+    $callMethod[userProfile;takeCoins;$get[amount]]
+    $callMethod[userProfile;save]
 
     $addTextDisplay[$callFn[content]]
     $let[msgid;$send]
@@ -55,10 +55,10 @@ export default new ForgeFunction({
       $let[winAmount;$math[$get[amount] * $jsonGet[multipliers;$arrayIndexOf[emojis;$get[slot1]]]]]
       $let[outputContent;$tl[ui.slots.won.$get[l];$separate[$get[winAmount]]]]
 
-      $c[The profile is read again: it could have changed while the slots were spinning]
+      $c[re-read the profile, it might've changed mid-spin]
       $jsonLoad[userProfile;$getProfile]
-      $sumCash[$get[winAmount]]
-      $saveProfile[$env[userProfile]]
+      $callMethod[userProfile;addCoins;$get[winAmount]]
+      $callMethod[userProfile;save]
     ;
       $let[outputContent;$tl[ui.slots.lost.$get[l]]]
     ]

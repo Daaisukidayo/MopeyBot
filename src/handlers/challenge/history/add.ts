@@ -11,7 +11,7 @@ export default new ForgeFunction({
 
     $defer
 
-    $c[A page being added is kept until it is uploaded or canceled]
+    $c[the draft page sticks around until upload or cancel]
     $let[saved;$getUserVar[addHistorySavedConfig]]
     $jsonLoad[addHistorySavedConfig;$if[$get[saved]==;$addHistoryNewConfig;$get[saved]]]
 

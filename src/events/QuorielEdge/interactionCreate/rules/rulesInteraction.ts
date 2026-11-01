@@ -9,13 +9,13 @@ export default new Command({
 
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $c[The user's Discord language, when available]
+    $c[user's Discord locale if we have it]
     $jsonLoad[allLocales;$getGlobalVar[allLocales]]
-    $objectMerge[userProfile;$objectOf[language;$if[$jsonHas[allLocales;$locale];$locale;en-US];ID;"$authorID"]]
-    $saveProfile[$env[userProfile]]
+    $objectMerge[userProfile;$objectOf[language;$if[$jsonHas[allLocales;$locale];$locale;en-US];user_id;"$authorID"]]
+    $callMethod[userProfile;save]
     $rulesEmbed
     $interactionUpdate
   `,

@@ -14,7 +14,7 @@ export default new Command({
     $jsonLoad[lobby;$getLobby]
 
     $onlyIf[$jsonGet[lobby;host]==$authorID;$onlyAuthorInteraction]
-    $c[Settings can only change for a lobby that still has its message and has not started]
+    $c[settings are editable only while the lobby msg exists and it hasn't started]
     $onlyIf[$messageExists[$channelID;$jsonGet[lobby;messageID]];$interactionFail]
     $onlyIf[$jsonGet[lobby;started]==false;$interactionFail]
 
@@ -27,7 +27,7 @@ export default new Command({
     $lobbySettingsEmbed[lobby]
     $interactionUpdate
 
-    $c[A new host gets the notices and the closing of the lobby in their language]
+    $c[new host gets the notices and the closing in their language]
     $if[$get[setting]==host;
       $jsonLoad[userProfile;$getProfile[$get[value]]]
       $let[l;$jsonGet[userProfile;language]]

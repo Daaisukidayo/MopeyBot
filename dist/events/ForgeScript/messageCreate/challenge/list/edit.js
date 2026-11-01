@@ -7,7 +7,7 @@ exports.default = new forgescript_1.BaseCommand({
     aliases: _commandsData_1.commandsData.command_editlist.aliases,
     type: "messageCreate",
     code: `
-    $handleEditList
+    $handleEditlist
   `,
 });
 //# sourceMappingURL=edit.js.map

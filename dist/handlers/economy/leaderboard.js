@@ -10,17 +10,20 @@ exports.default = new forgescript_1.ForgeFunction({
 
     $checkProfile
 
-    $onlyIf[$hasCache[leaderboard;cachedLB];
+    $onlyIf[$hasCache[leaderboard;mc];
       $newError[$tl[ui.leaderboard.notReady.$get[l]]]
     ]
 
     $addCooldown
     $defer
 
-    $c[The cached array is shared, so a page is copied out of it without changing it. The message keeps the whole list, so its pages stay the same until it is deleted]
-    $getCache[leaderboard;cachedLB;LBlist]
+    $c[coins table by default, else the key from leaderboardTypes]
+    $let[type;$nullish[$option[table];mc]]
 
-    $c[10 rows and the first page, unless others are given]
+    $c[the cached array is shared, copy pages out, don't mutate. the msg keeps the whole list so its pages don't shift till it's deleted]
+    $getCache[leaderboard;$get[type];LBlist]
+
+    $c[defaults: 10 rows, page 1]
     $let[rows;$default[$option[rows];$message[1]]]
     $let[rowsPerPage;$if[$and[$isNumber[$get[rows]];$inRange[$get[rows];1;10]];$floor[$get[rows]];10]]
     $let[maxPages;$arrayPageCount[LBlist;$get[rowsPerPage]]]
@@ -28,13 +31,12 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[page;$if[$and[$isNumber[$get[page]];$inRange[$get[page];1;$get[maxPages]]];$floor[$get[page]];1]]
 
     $jsonLoad[cachedLB;$arrayPage[LBlist;$get[page];$get[rowsPerPage]]]
-    $leaderboardEmbed[cachedLB;$get[page];$get[maxPages];$get[rowsPerPage]]
+    $leaderboardEmbed[cachedLB;$get[page];$get[maxPages];$get[rowsPerPage];$get[type]]
     $let[msgID;$send]
 
-    $if[$get[maxPages]>1;
-      $setMessageVar[LBlist;$env[LBlist];$get[msgID]]
-      $newLeaderboardTimeout[$get[msgID]]
-    ]
+    $c[the table menu is always there, so always schedule the delete]
+    $setMessageVar[LBlist;$env[LBlist];$get[msgID]]
+    $newLeaderboardTimeout[$get[msgID]]
   `,
 });
 //# sourceMappingURL=leaderboard.js.map

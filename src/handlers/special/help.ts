@@ -15,7 +15,7 @@ export default new ForgeFunction({
     $jsonLoad[commandsData;$readFile[res/data/commandsData.json]]
     $jsonLoad[commandsEntries;$jsonEntries[commandsData]]
 
-    $c[No command given: every command by category]
+    $c[no arg: list everything by category]
     $if[$get[arg]==;
       $addContainer[
         $addTextDisplay[$tl[ui.help.allCommandsTitle.$get[l]]]
@@ -32,7 +32,7 @@ export default new ForgeFunction({
         $addTextDisplay[$tl[ui.help.assistance.$get[l];$getGlobalVar[discordServerInvite]]]
       ;$getGlobalVar[defaultColor]]
     ;
-      $c[A command is found by its name or any of its aliases]
+      $c[match by name or any alias]
       $jsonLoad[commandInfo;$arrayFind[commandsEntries;data;$or[$arrayIncludes[$jsonGet[data;1;aliases];$get[arg]];$jsonGet[data;1;name]==$get[arg]]]]
       $onlyIf[$env[commandInfo]!=;
         $newError[$tl[ui.help.noInfo.$get[l]]]
@@ -45,7 +45,7 @@ export default new ForgeFunction({
         $newError[$tl[ui.help.noInfo.$get[l]]]
       ]
 
-      $c[A placeholder like {PREFIX} is replaced with what its code gives, (N) with a new line]
+      $c[placeholders like {PREFIX} get replaced w/ their code's output, (N) w/ a newline]
       $arrayForEach[$getGlobalVar[helpReplacements];replacement;
         $if[$includes[$get[description];$jsonGet[replacement;0]];
           $let[description;$replace[$get[description];$jsonGet[replacement;0];$eval[$jsonGet[replacement;1];false];-1]]

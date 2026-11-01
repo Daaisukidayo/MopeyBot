@@ -12,11 +12,11 @@ export default new Command({
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $c[The price is taken from the shop, not from the menu]
-    $jsonLoad[shopItems;$getGlobalVar[shopItems]]
-    $jsonLoad[userPacks;$jsonGet[userProfile;userPacks]]
+    $c[price = shop data w/ the discount and owned skins off, never trust the menu]
+    $jsonLoad[userPacks;$jsonGet[userProfile;user_packs]]
+    $jsonLoad[userSkins;$getUserVar[userSkins]]
     $let[skinpack;$selectMenuValues]
-    $let[cost;$jsonGet[$arrayFind[shopItems;item;$jsonGet[item;id]==$get[skinpack]];cost]]
+    $let[cost;$packPrice[$get[skinpack];userSkins]]
 
     $onlyIf[$get[cost]!=;
       $newError[$tl[ui.shop.unknown.$get[l]]]
@@ -24,16 +24,24 @@ export default new Command({
     $onlyIf[$arrayIncludes[userPacks;$get[skinpack]]==false;
       $newError[$tl[ui.shop.alreadyBought.$get[l]]]
     ]
-    $onlyIf[$jsonGet[userProfile;MC]>=$get[cost];
+    $onlyIf[$hasAllPackSkins[userSkins;$get[skinpack]]==false;
+      $newError[$tl[ui.shop.allSkinsOwned.$get[l]]]
+    ]
+    $onlyIf[$jsonGet[userProfile;mope_coins]>=$get[cost];
       $newError[$tl[ui.shop.lowCash.$get[l]]]
     ]
 
     $addCooldown[shop;true]
 
-    $subCash[$get[cost]]
+    $callMethod[userProfile;takeCoins;$get[cost]]
     $arrayPush[userPacks;$get[skinpack]]
-    $!jsonSet[userProfile;userPacks;$env[userPacks]]
-    $saveProfile[$env[userProfile]]
+    $!jsonSet[userProfile;user_packs;$env[userPacks]]
+    $callMethod[userProfile;save]
+
+    $c[the pack's skins are theirs right away, no waiting for the startup sync]
+    $jsonLoad[boughtPacks;$arrayOf[$get[skinpack]]]
+    $!grantPackSkins[userSkins;boughtPacks]
+    $setUserVar[userSkins;$env[userSkins]]
 
     $shopEmbed
     $interactionUpdate

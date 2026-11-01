@@ -13,7 +13,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[maxAttempts;$getGlobalVar[maxRtsimAttempts]]
     $let[attempts;$toLowerCase[$nullish[$option[attempts];$message[0];100]]]
 
-    $c[The word for the maximum in any language means the most attempts]
+    $c['max' in any language = max attempts]
     $if[$arraySome[$jsonKeys[$getGlobalVar[allLocales]];locale;$get[attempts]==$tl[ui.special.maximum.$env[locale]]];
       $let[attempts;$get[maxAttempts]]
     ]
@@ -22,16 +22,16 @@ exports.default = new forgescript_1.ForgeFunction({
       $newError[$tl[ui.raretrysimulator.invalidNumber.$get[l]]]
     ]
 
-    $let[rtMode;$pickLocalizedOption[data.raretryModes;$nullish[$option[mode];$message[1];$jsonGet[userProfile;rtMode]];$getGlobalVar[raretryModes];ui.raretrysimulator.unknownMode]]
+    $let[rtMode;$pickLocalizedOption[data.raretryModes;$nullish[$option[mode];$message[1];$jsonGet[userProfile;raretry_mode]];$getGlobalVar[raretryModes];ui.raretrysimulator.unknownMode]]
 
     $addCooldown
     $defer
 
-    $jsonLoad[categories;$getGlobalVar[raretryCategories]]
+    $arrayMap[$getGlobalVar[raretryCategories];category;$return[$jsonGet[category;id]];categories]
     $jsonLoad[rarities;$getGlobalVar[raretryRarities]]
-    $jsonLoad[rareGroups;$readFile[res/data/raresInRaretry.json]]
+    $getCache[rares;raretryGroups;rareGroups]
 
-    $c[Only the categories that dropped something get an entry. Their keys are numbers, so they stay in order]
+    $c[only categories that dropped something get an entry]
     $jsonLoad[result;$objectOf]
 
     $loop[$get[attempts];
@@ -41,17 +41,19 @@ exports.default = new forgescript_1.ForgeFunction({
         $if[$random[1;$get[baseChance]]==1;
           $let[category;$jsonGet[categories;$env[i]]]
           $objectDefaults[result;$get[category];$objectOf[rarity;$arrayOf[1;$get[baseChance]];map;$objectOf]]
-          $jsonMath[result;$get[category];map;$arraySample[$jsonGet[group;animalIds]];1]
+          $jsonMath[result;$get[category];map;$arraySample[$env[group]];1]
         ]
       ;i]
     ]
 
-    $arrayMap[$jsonEntries[result];entry;
-      $arrayMap[$jsonEntries[$jsonGet[entry;1;map]];kv;
+    $c[category order, not drop order]
+    $arrayFilter[categories;category;$jsonGet[result;$env[category]]!=;dropped]
+    $arrayMap[dropped;category;
+      $arrayMap[$jsonEntries[$jsonGet[result;$env[category];map]];kv;
         $return[$getAnimalInfo[$jsonGet[kv;0];emoji;0]\`$jsonGet[kv;1]\`]
       ;contentInEntries]
 
-      $return[# _\`$tl[data.raretryCategories.$jsonGet[entry;0].$get[l]] ($jsonGet[entry;1;rarity;0]/$jsonGet[entry;1;rarity;1])\`_\n## $arrayJoin[contentInEntries; ]]
+      $return[# _\`$tl[data.raretryCategories.$env[category].$get[l]] ($jsonGet[result;$env[category];rarity;0]/$jsonGet[result;$env[category];rarity;1])\`_\n## $arrayJoin[contentInEntries; ]]
     ;content]
 
     $addContainer[

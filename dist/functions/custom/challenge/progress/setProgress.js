@@ -3,18 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "setProgress",
-    description: "Sets the luck challenge progress object for the user.",
+    description: "sets up the user's luck challenge progress",
     brackets: false,
     params: [
         {
             name: "userId",
-            description: "The ID of the user for whom progress is being set.",
+            description: "whose progress it is",
             type: forgescript_1.ArgType.User,
             required: false,
         },
         {
             name: "teamId",
-            description: "The ID of the team to which the progress belongs.",
+            description: "the team the progress belongs to",
             type: forgescript_1.ArgType.Number,
             required: false,
         },
@@ -23,7 +23,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[userId;$nullish[$env[userId;id];$authorID]]
     $let[teamId;$nullish[$env[teamId];-1]]
 
-    $c[A lobby player plays the lobby's difficulty, a solo player their own]
+    $c[lobby players use the lobby's difficulty, solo ones their own]
     $new[challengeProgress;ChallengeProgress;$get[userId];$get[teamId];$nullish[$jsonGet[$getChannelVar[lobby];settings;difficulty];$jsonGet[$getProfile[$get[userId]];challenge;difficulty]]]
     $saveProgress[$env[challengeProgress];$get[userId]]
   `,

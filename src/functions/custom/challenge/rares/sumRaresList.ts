@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "sumRaresList",
-  description: "Returns the totals of a rares list as an object with keys: 'points' and 'rares'.",
+  description: "totals of a rares list: 'points' and 'rares'",
   output: ArgType.Json,
   params: [
     {
       name: "raresList",
-      description: "Object of caught rare animals: their counts by their IDs.",
+      description: "caught rares as counts by ID",
       type: ArgType.Json,
     },
   ],

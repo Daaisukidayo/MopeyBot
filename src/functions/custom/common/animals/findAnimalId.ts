@@ -3,12 +3,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "findAnimalId",
   description:
-    "Returns the ID of the animal or rare with this name or ID, in any case and with spaces or underscores, or nothing if there is none.",
+    "the ID of the animal or rare w/ this name or ID, any case, spaces or underscores. nothing if there's none",
   output: ArgType.String,
   params: [
     {
       name: "text",
-      description: "The name or ID to look for",
+      description: "the name or ID to look for",
       type: ArgType.String,
     },
   ],

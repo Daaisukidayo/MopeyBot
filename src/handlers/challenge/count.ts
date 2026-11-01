@@ -6,12 +6,12 @@ export default new ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $addCooldown
 
     $getCache[rares;activeRares;activeRares]
-    
+
     $let[rares;$toLowerCase[$default[$option[rares];$message]]]
 
     $onlyIf[$get[rares]!=;
@@ -26,7 +26,7 @@ export default new ForgeFunction({
     $jsonLoad[rawList;$objectOf]
     $arrayLoad[unknownContent]
 
-    $c[A count above 100 becomes 100, a negative one becomes 1]
+    $c[clamp: over 100 becomes 100, negative becomes 1]
     $arrayForEach[caughtRares;caughtRare;
       $arrayLoad[keyValue;=;$env[caughtRare]]
       $let[value;$nullish[$jsonGet[keyValue;1];1]]

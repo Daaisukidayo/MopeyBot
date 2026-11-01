@@ -2,13 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "generateList",
-  description:
-    "Generates an object with keys: 'l' (list[] of rares, in the order of the animals), 'p' (points) and 'r' (rares).",
+  description: "returns 'l' (rares in the animals order), 'p' (points) and 'r' (rares)",
   output: ArgType.Json,
   params: [
     {
       name: "raresList",
-      description: "Object of caught rare animals.",
+      description: "caught rares",
       type: ArgType.Json,
     },
   ],

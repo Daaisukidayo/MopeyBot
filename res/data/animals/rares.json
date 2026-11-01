@@ -747,8 +747,8 @@
     "isRare": true,
     "common": "yeti",
     "rarity": [
-      25,
-      800
+      10,
+      300
     ],
     "challenge": {
       "category": 3,
@@ -777,8 +777,8 @@
       ]
     }
   },
-  "rare_king_dragon": {
-    "fullName": "Rare King Dragon",
+  "king_dragon": {
+    "fullName": "King Dragon",
     "isRare": true,
     "common": "black_dragon",
     "rarity": [
@@ -789,6 +789,7 @@
       "category": 6,
       "abbreviations": [
         "rkd",
+        "kingdragon",
         "rarekingdragon"
       ]
     }

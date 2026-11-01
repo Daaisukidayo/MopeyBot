@@ -9,7 +9,7 @@ export default new Command({
 
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
     $jsonLoad[userReminders;$getUserVar[userReminders]]

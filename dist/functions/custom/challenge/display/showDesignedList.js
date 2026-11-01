@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "showDesignedList",
-    description: "Displays the designed list of caught rare animals as the media gallery inside the V2 components.",
+    description: "shows the caught rares list as a media gallery inside V2 components",
     params: [
         {
             name: "list",
-            description: "Array of caught rare animals.",
+            description: "array of caught rares",
             type: forgescript_1.ArgType.Json,
         },
     ],
@@ -17,7 +17,7 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $let[imageName;row1]
-    $attachment[res/img/challenge/$get[imageName].png;$get[imageName].png]
+    $attachment[res/assets/challenge/$get[imageName].png;$get[imageName].png]
 
     $addMediaGallery[$addMediaItem[attachment://$get[imageName].png]]
     $addTextDisplay[# $arrayJoin[list; ]]

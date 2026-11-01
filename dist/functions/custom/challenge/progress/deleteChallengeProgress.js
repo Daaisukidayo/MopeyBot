@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "deleteChallengeProgress",
-    description: "Deletes the user's challenge progress",
+    description: "deletes the user's challenge progress",
     brackets: false,
     params: [
         {
             name: "userId",
-            description: "The user ID",
+            description: "the user's ID",
             type: forgescript_1.ArgType.User,
             required: false,
         },

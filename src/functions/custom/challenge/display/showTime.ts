@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "showTime",
-  description: "Displays the user's timer from the 1 hour luck challenge in content format, in the caller's language.",
+  description: "the user's 1h luck challenge timer, in the caller's language",
   brackets: false,
   params: [
     {
       name: "userId",
-      description: "The user ID to show the time for.",
+      description: "whose time to show",
       type: ArgType.User,
       required: false,
     },

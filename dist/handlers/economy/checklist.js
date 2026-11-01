@@ -17,25 +17,26 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[maxRaretry;$getGlobalVar[maxRaretryRares]]
     $let[maxRaretryrun;$getGlobalVar[maxRaretryrunRares]]
 
-    $let[dailyDone;$checkCondition[$jsonGet[userProfile;limiters;lastDailyDay]==$get[day]]]
+    $c[stale counters read as 0, a missed day shows streak 0]
+    $callMethod[userProfile;refreshChecklist]
+    $let[dailyDone;$checkCondition[$jsonGet[userProfile;rewards;daily_day]==$get[day]]]
     $let[hasVoted;$hasVoted[$authorID]]
-    $let[raretryDone;$checkCondition[$jsonGet[userProfile;limiters;lastDailyRaretry]==$get[day]]]
-    $let[raretryrunDone;$checkCondition[$jsonGet[userProfile;limiters;lastDailyRaretryrun]==$get[day]]]
+    $let[raretryDone;$checkCondition[$jsonGet[userProfile;checklist;raretry_rares]>=$get[maxRaretry]]]
+    $let[raretryrunDone;$checkCondition[$jsonGet[userProfile;checklist;raretryrun_rares]>=$get[maxRaretryrun]]]
 
     $fn[status;
       $return[$if[$env[done];$tl[ui.checklist.completed.$get[l]];$tl[ui.checklist.inProgress.$get[l];$env[progress]]]]
     ;done;progress]
 
-    $c[The reward is given once a day, when every task is done]
-    $if[$jsonGet[userProfile;limiters;lastClaimedDay]==$get[day];
+    $c[reward once a day, once all tasks are done]
+    $if[$jsonGet[userProfile;checklist;claimed_day]==$get[day];
       $let[content;$tl[ui.checklist.allRewardsReceived.$get[l]]]
     ;$if[$and[$get[dailyDone];$get[hasVoted];$get[raretryDone];$get[raretryrunDone]];
-      $sumCash[$get[reward]]
-      $!jsonSet[userProfile;limiters;lastClaimedDay;$get[day]]
-      $saveProfile[$env[userProfile]]
-      $deleteUserVar[caughtRaresInRaretry]
-      $deleteUserVar[caughtRaresInRaretryrun]
-      $setUserVar[dailyStreak;$math[$getUserVar[dailyStreak] + 1]]
+      $callMethod[userProfile;addCoins;$get[reward]]
+      $!jsonSet[userProfile;checklist;claimed_day;$get[day]]
+      $c[a missed day zeroed the streak above, so this restarts it at 1]
+      $jsonMath[userProfile;checklist;streak;1]
+      $callMethod[userProfile;save]
       $let[content;$tl[ui.checklist.allTasksCompleted.$get[l];$separate[$get[reward]]]]
     ;
       $let[content;$tl[ui.checklist.completeTasks.$get[l];$separate[$get[reward]]]]
@@ -56,16 +57,16 @@ exports.default = new forgescript_1.ForgeFunction({
       $addSeparator[Small;false]
 
       $addTextDisplay[$tl[ui.checklist.catchRaretry.$get[l];$get[maxRaretry]]]
-      $addTextDisplay[$callFn[status;$get[raretryDone];($getUserVar[caughtRaresInRaretry]/$get[maxRaretry])]]
+      $addTextDisplay[$callFn[status;$get[raretryDone];($jsonGet[userProfile;checklist;raretry_rares]/$get[maxRaretry])]]
       $addSeparator[Small;false]
 
       $addTextDisplay[$tl[ui.checklist.catchRaretryrun.$get[l];$get[maxRaretryrun]]]
-      $addTextDisplay[$callFn[status;$get[raretryrunDone];($getUserVar[caughtRaresInRaretryrun]/$get[maxRaretryrun])]]
+      $addTextDisplay[$callFn[status;$get[raretryrunDone];($jsonGet[userProfile;checklist;raretryrun_rares]/$get[maxRaretryrun])]]
 
       $addSeparator[Large]
       $addTextDisplay[$get[content]]
       $addSeparator[Large]
-      $addTextDisplay[$tl[ui.checklist.streak.$get[l];$getUserVar[dailyStreak]]]
+      $addTextDisplay[$tl[ui.checklist.streak.$get[l];$jsonGet[userProfile;checklist;streak]]]
     ;$getGlobalVar[defaultColor]]
   `,
 });

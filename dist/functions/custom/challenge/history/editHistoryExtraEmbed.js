@@ -6,12 +6,12 @@ exports.default = new forgescript_1.ForgeFunction({
     params: [
         {
             name: "pageVar",
-            description: "The name of the variable that holds the history page being edited.",
+            description: "var w/ the history page being edited",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "historyVar",
-            description: "The name of the variable that holds the shown history pages.",
+            description: "var w/ the shown history pages",
             type: forgescript_1.ArgType.String,
         },
     ],

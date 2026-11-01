@@ -23,7 +23,7 @@ exports.default = new edge_1.Command({
 
     $switch[$selectMenuValues;
       $case[downgrade;
-        $c[The downgrade reason depends on the animal's biome and the current biome (see downgradeReasons)]
+        $c[downgrade reason = animal's biome vs the current one, see downgradeReasons]
         $let[reason;$jsonGet[$getGlobalVar[downgradeReasons];$get[animalBiome];$get[currentBiome]]]
         $let[desc;$switch[$get[reason];
           $case[reasons;$arraySample[$tl[ui.play.downgrades.reasons.$get[l]]]]
@@ -46,7 +46,7 @@ exports.default = new edge_1.Command({
         $jsonLoad[expBase;$readFile[res/data/expBase.json]]
         $jsonLoad[expData;$readFile[res/data/expData.json]]
 
-        $c[Find chances are in percent, death chances are in per-mille (see play.json)]
+        $c[find chances are %, death chances are per-mille (play.json)]
         $jsonLoad[farmChances;$getGlobalVar[farmChances]]
         $jsonLoad[deathChances;$getGlobalVar[farmDeathChances]]
 
@@ -76,7 +76,7 @@ exports.default = new edge_1.Command({
           ]
         ]
 
-        $c[Tier rules: dragonTier15 and tier17 replace the chance, tier16Reduction lowers it]
+        $c[dragonTier15/tier17 replace the chance, tier16Reduction lowers it]
         $switch[$get[tier];
           $case[15;$if[$get[animalId]==dragon;$let[deathChance;$jsonGet[deathChances;dragonTier15]]]]
           $case[16;$letSub[deathChance;$jsonGet[deathChances;tier16Reduction]]]
@@ -85,7 +85,7 @@ exports.default = new edge_1.Command({
 
         $let[event;$if[$get[findSoccerRarity]<=$get[findSoccerChance];soccer;food]]
 
-        $c[Dev overrides: a forced event is used once and beats immortality]
+        $c[dev overrides: a forced event is one-shot and beats immortality]
         $let[forcedEvent;$jsonGet[playData;dev;forcedEvent]]
         $if[$get[forcedEvent]!=;
           $!jsonSet[playData;dev;forcedEvent;null]
@@ -116,7 +116,7 @@ exports.default = new edge_1.Command({
               $jsonLoad[biomeSoccers;$jsonGet[$getGlobalVar[soccerInBiome];$get[currentBiome]]]
               $let[spottedSoccer;$arraySample[biomeSoccers]]
 
-              $c[An item is picked by its chance in percent]
+              $c[pick an item by its % chance]
               $jsonLoad[soccerItem;$arrayWeightedRandom[$jsonGet[$readFile[res/data/playSoccers.json];$get[spottedSoccer]];chance]]
 
               $addFoundSoccer[playData;userWardrobe;$get[spottedSoccer];$jsonGet[soccerItem;ID]]
@@ -133,7 +133,7 @@ exports.default = new edge_1.Command({
 
               $onlyIf[$jsonSize[foodIndexes]>0]
 
-              $c[1 to 4 random foods, the same food can repeat]
+              $c[1-4 random foods, repeats allowed]
               $arrayMap[$arrayRange[1;$random[1;4]];n;
                 $jsonLoad[food;$jsonGet[foodBase;$arraySample[foodIndexes]]]
                 $letSum[xp;$round[$math[$random[$jsonGet[food;XP;0];$jsonGet[food;XP;1]] * $get[multiplier]]]]
@@ -153,7 +153,7 @@ exports.default = new edge_1.Command({
                 $let[xp;$random[$jsonGet[xpArr;0];$jsonGet[xpArr;1]]]
 
                 $let[content;$tl[ui.play.ate.$get[l];$get[preyName] $get[preyEmoji];$separate[$get[xp]]]]
-                
+
               ]
 
               $callMethod[playData;addXp;$get[xp]]
@@ -172,20 +172,20 @@ exports.default = new edge_1.Command({
       ]
 
       $case[arena;
-        $c[All chances are in percent (see play.json)]
+        $c[all %, see play.json]
         $jsonLoad[arenaChances;$getGlobalVar[arenaChances]]
         $jsonLoad[rareOpponents;$getGlobalVar[arenaRareOpponents]]
 
         $if[$random[1;100]<=$jsonGet[arenaChances;accept];
 
-          $c[Opponent tier: 17 and 16 have their own chances, the rest is 15]
+          $c[opponent tier: 17 and 16 roll their own chance, else 15]
           $let[tierR;$random[1;100]]
           $let[opponentTier;$if[$get[tierR]<=$jsonGet[arenaChances;tier17];17;$if[$get[tierR]<=$math[$jsonGet[arenaChances;tier17] + $jsonGet[arenaChances;tier16]];16;15]]]
 
           $jsonLoad[paths;$jsonGet[$getGlobalVar[arenaOpponents];$get[opponentTier];$get[currentBiome]]]
           $let[oppID;$arraySample[paths]]
 
-          $c[Some opponents can be replaced with their rare animal]
+          $c[some opponents can roll their rare version]
           $if[$jsonGet[rareOpponents;$get[oppID]]!=;
             $if[$random[1;100]<=$jsonGet[rareOpponents;$get[oppID];chance];
               $let[oppID;$jsonGet[rareOpponents;$get[oppID];id]]
@@ -234,14 +234,14 @@ exports.default = new edge_1.Command({
 
       $case[kingDragonUpg;
         $let[animalId;king_dragon]
-        $let[trig;play_upgradeAnimal-$get[animalId]-$authorID]
+        $let[trig;play_upgradeAnimal-$get[animalId]-$playID[playData]]
         $let[wrI;$nullish[$jsonGet[userWardrobe;$get[animalId]];0]]
         $let[name;$getAnimalInfo[$get[animalId];name;$get[wrI]]]
         $let[emoji;$getAnimalInfo[$get[animalId];emoji;$get[wrI]]]
 
         $addContainer[
           $addAuthorDisplay
-          
+
           $addTextDisplay[$tl[ui.play.chooseUpgrade.$get[l]]]
 
           $addActionRow
@@ -254,7 +254,7 @@ exports.default = new edge_1.Command({
       ]
 
       $case[showApex;
-        $c[The message is sent again with its own components so the menu lets go of the choice. No attachments are sent, so the pictures stay: a Forge update always replaces them. The apexes come in a message only the player sees]
+        $c[resend the msg w/ its own components so the menu drops the selection. no attachments sent, so the pics survive (a Forge update always nukes them). apexes go in an ephemeral]
         $!djsEval[ctx.interaction.update({ components: ctx.interaction.message.components })]
 
         $jsonLoad[apexData;$getCurrentApexData[playData]]

@@ -3,22 +3,22 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "setHistoryOption",
   description:
-    "Returns the history page with an option changed to a typed or chosen value. Stops the command with an error if the value is wrong.",
+    "returns the history page w/ one option set to a typed or picked value. bad value = the command stops w/ an error",
   output: ArgType.Json,
   params: [
     {
       name: "page",
-      description: "The history page being made or edited.",
+      description: "the history page being made or edited",
       type: ArgType.Json,
     },
     {
       name: "option",
-      description: "The option: points, raresQuantity, playType, difficulty, endDate or raresList.",
+      description: "points, raresQuantity, playType, difficulty, endDate or raresList",
       type: ArgType.String,
     },
     {
       name: "value",
-      description: "The value from the form or the menu.",
+      description: "the value from the form or the menu",
       type: ArgType.String,
     },
   ],
@@ -58,7 +58,7 @@ export default new ForgeFunction({
       ]
 
       $case[raresList;
-        $c[The field holds the whole list, so it is rebuilt from it: a removed line removes that rare. Points and rares follow]
+        $c[the field is the whole list, rebuild from it (deleted line = rare gone). points and rares follow]
         $!jsonSet[page;raresList;$objectOf]
         $objectMerge[page;$parseRaresList[$get[value]]]
       ]

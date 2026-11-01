@@ -6,7 +6,7 @@ export default new ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $jsonLoad[challengeProgress;$getProgress]
     $isActiveChallenge[challengeProgress]
@@ -17,21 +17,21 @@ export default new ForgeFunction({
 
     $if[$get[newTime]!=;
 
-      $c[Seconds, or minutes and seconds like 30:00, or a duration like 30m 5s]
+      $c[seconds, mm:ss like 30:00, or a duration like 30m 5s]
       $if[$includes[$get[newTime];:];
         $let[newTime;$math[$unparseDigital[$get[newTime]] / 1000]]
       ;$if[$and[$isNumber[$get[newTime]]==false;$includes[$get[newTime];m;s]];
         $let[newTime;$math[$parseString[$get[newTime]] / 1000]]
       ]]
 
-      $c[Typed or parsed, the time must be 0 to 3600 seconds]
+      $c[either way it has to be 0-3600s]
       $onlyIf[$and[$isNumber[$get[newTime]];$inRange[$get[newTime];0;3600]];
         $newError[$tl[ui.time.invalidTime.$get[l]]]
       ]
 
       $setChallengeTimer[$get[newTime]]
 
-      $c[3600 ends the hour right away, so the challenge is no longer paused]
+      $c[3600 ends the hour now, so it's not paused anymore]
       $if[$get[newTime]>=3600;
         $setField[challengeProgress;paused;false]
         $let[paused;false]
@@ -51,7 +51,7 @@ export default new ForgeFunction({
       $addTextDisplay[$showTime]
     ;$getGlobalVar[luckyColor]]
 
-    $c[No timer is set for a reached milestone, so the end of the hour is told here, in its own message after the reply]
+    $c[reached milestones get no timer, so announce the end here, as its own msg after the reply]
     $if[$get[hourOver]==true;
       $!send
       $sendMessage[$channelID;$addHourOverContainer[$authorID;$get[l]]]

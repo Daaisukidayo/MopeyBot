@@ -4,14 +4,14 @@ const BigIntFormatRegex = /^\d+n$/
 
 export default new NativeFunction({
   name: "$boolean",
-  description: "Converts an argument into its real boolean representation.",
+  description: "turns the argument into a real boolean",
   output: ArgType.Boolean,
   brackets: true,
   unwrap: true,
   args: [
     {
       name: "argument",
-      description: "The argument to convert to a boolean.",
+      description: "what to convert",
       type: ArgType.String,
       required: true,
       rest: false,

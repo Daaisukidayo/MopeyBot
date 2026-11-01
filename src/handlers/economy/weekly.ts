@@ -11,17 +11,17 @@ export default new ForgeFunction({
 
     $calendar[Iso8601]
     $let[week;$calendarWeek]
-    $c[Once a week, any time for a developer]
-    $onlyIf[$or[$jsonGet[userProfile;limiters;lastWeeklyWeek]!=$get[week];$isDev];
+    $c[once a week, devs bypass it]
+    $onlyIf[$or[$jsonGet[userProfile;rewards;weekly_week]!=$get[week];$isDev];
       $newCooldown[$msUntilNextWeek]
     ]
 
     $defer
 
     $let[MC;$getGlobalVar[weeklyReward]]
-    $!jsonSet[userProfile;limiters;lastWeeklyWeek;$get[week]]
-    $sumCash[$get[MC]]
-    $saveProfile[$env[userProfile]]
+    $!jsonSet[userProfile;rewards;weekly_week;$get[week]]
+    $callMethod[userProfile;addCoins;$get[MC]]
+    $callMethod[userProfile;save]
 
     $addContainer[
       $addAuthorDisplay

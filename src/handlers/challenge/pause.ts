@@ -6,7 +6,7 @@ export default new ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
     $jsonLoad[challengeProgress;$getProgress]
     $isActiveChallenge[challengeProgress]
@@ -18,13 +18,13 @@ export default new ForgeFunction({
     $onlyIf[$getChallengeTimer<3600;
       $newError[$tl[ui.pause.timesUp.$get[l]]]
     ]
-    
+
     $setField[challengeProgress;paused;true]
     $saveProgress[$env[challengeProgress]]
     $pauseChallengeTimer
 
     $addContainer[
-      $addAuthorDisplay  
+      $addAuthorDisplay
       $addTextDisplay[$tl[ui.pause.paused.$get[l]]]
       $addSeparator[Large]
       $addTextDisplay[$showPoints[challengeProgress]]

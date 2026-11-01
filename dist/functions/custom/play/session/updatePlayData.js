@@ -6,7 +6,7 @@ exports.default = new forgescript_1.ForgeFunction({
     params: [
         {
             name: "playDataVar",
-            description: "The name of the variable that holds the play data.",
+            description: "var w/ the play data",
             type: forgescript_1.ArgType.String,
         },
     ],

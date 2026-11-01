@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "isActiveChallenge",
-    description: "Stops the command with an error if the challenge loaded in 'challengeProgress' is not going on",
+    description: "stops the command w/ an error if the challenge in 'challengeProgress' isn't going on",
     params: [
         {
             name: "progressVar",
-            description: "The name of the variable that holds the challenge progress.",
+            description: "var w/ the challenge progress",
             type: forgescript_1.ArgType.String,
         },
     ],

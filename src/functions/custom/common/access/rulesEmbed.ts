@@ -2,7 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "rulesEmbed",
-  description: "Adds a rules embed.",
+  description: "adds the rules embed",
   code: `
     $let[l;$jsonGet[userProfile;language]]
     $addContainer[

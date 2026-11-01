@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "addChallengeCompletedContainer",
-    description: "Adds a designed container displaying a completed challenge summary: its points, rares and list.",
+    description: "adds the 'challenge done' container: points, rares and the list",
     params: [
         {
             name: "raresList",
-            description: "Object of the caught rare animals: their counts by their IDs.",
+            description: "caught rares as counts by ID",
             type: forgescript_1.ArgType.Json,
         },
     ],

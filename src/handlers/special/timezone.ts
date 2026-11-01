@@ -12,7 +12,7 @@ export default new ForgeFunction({
 
     $let[tz;$default[$option[new-timezone];$message]]
 
-    $c[Any timezone of the list, in any letter case: the list's own spelling is saved. A new one can be set once a week]
+    $c[any tz from the list, case-insensitive, saved in the list's spelling. changeable once a week]
     $if[$get[tz]!=;
       $let[zoneName;$jsonGet[$arrayFind[$readFile[res/data/timezones.json];zone;$toLowerCase[$jsonGet[zone;zoneName]]==$toLowerCase[$get[tz]]];zoneName]]
       $onlyIf[$get[zoneName]!=;
@@ -25,7 +25,7 @@ export default new ForgeFunction({
         ]
       ]
       $!jsonSet[userProfile;timezone;$get[zoneName]]
-      $saveProfile[$env[userProfile]]
+      $callMethod[userProfile;save]
     ]
 
     $addContainer[

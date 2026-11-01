@@ -3,27 +3,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "leaderboardEmbed",
-    description: "Displays a page of the leaderboard with the buttons to the other pages.",
+    description: "a page of a leaderboard table w/ the page buttons and the table menu",
     params: [
         {
             name: "rowsVar",
-            description: "The name of the variable that holds the rows of the page.",
+            description: "var w/ the page's rows",
             type: forgescript_1.ArgType.String,
         },
         {
             name: "page",
-            description: "The number of the page.",
+            description: "the page number",
             type: forgescript_1.ArgType.Number,
         },
         {
             name: "maxPages",
-            description: "How many pages there are.",
+            description: "how many pages there are",
             type: forgescript_1.ArgType.Number,
         },
         {
             name: "rowsPerPage",
-            description: "How many rows a page has.",
+            description: "how many rows per page",
             type: forgescript_1.ArgType.Number,
+        },
+        {
+            name: "type",
+            description: "the table, a key of leaderboardTypes",
+            type: forgescript_1.ArgType.String,
         },
     ],
     code: `
@@ -31,29 +36,48 @@ exports.default = new forgescript_1.ForgeFunction({
     $let[l;$jsonGet[userProfile;language]]
     $let[page;$env[page]]
     $let[rowsPerPage;$env[rowsPerPage]]
+    $let[type;$env[type]]
+    $c[collection = every item across all 3 soccer games]
+    $let[collectionSize;$math[$jsonSize[$readFile[res/data/pumpkins.json]] + $jsonSize[$readFile[res/data/umbrellas.json]] + $jsonSize[$readFile[res/data/beachballs.json]]]]
 
     $arrayMap[rows;elem;
-      $return[$tl[ui.leaderboard.contentLine.$get[l];$getPositionEmoji[$jsonGet[elem;pos]];$username[$jsonGet[elem;ID]];$jsonGet[elem;MUID];$separate[$jsonGet[elem;MC]]]]
+      $let[pos;$getPositionEmoji[$jsonGet[elem;pos]]]
+      $let[name;$username[$jsonGet[elem;user_id]]]
+      $let[MUID;$jsonGet[elem;muid]]
+      $if[$get[type]==mc;
+        $return[$tl[ui.leaderboard.lines.mc.$get[l];$get[pos];$get[name];$get[MUID];$separate[$jsonGet[elem;mope_coins]]]]
+      ]
+      $if[$get[type]==collection;
+        $return[$tl[ui.leaderboard.lines.collection.$get[l];$get[pos];$get[name];$get[MUID];$jsonGet[elem;collection];$get[collectionSize]]]
+      ]
+      $if[$isOneOf[$get[type];raretry;raretryrun];
+        $return[$tl[ui.leaderboard.lines.rares.$get[l];$get[pos];$get[name];$get[MUID];$jsonGet[elem;$get[type]]]]
+      ]
+      $return[$tl[ui.leaderboard.lines.soccer.$get[l];$get[pos];$get[name];$get[MUID];$rollDisplay[$get[type];$jsonGet[elem;$get[type]_item]];$separate[$jsonGet[elem;$get[type]]]]]
     ;content]
-    
+
     $addContainer[
-      $attachment[res/img/leaderboard/thumbnail.png;thumbnail.png]
+      $attachment[res/assets/leaderboard/thumbnail.png;thumbnail.png]
       $addSection[
-        $addTextDisplay[$tl[ui.leaderboard.title.$get[l]]]
+        $addTextDisplay[$tl[ui.leaderboard.title.$get[l]]\n$tl[ui.leaderboard.subtitle.$get[l];$tl[data.leaderboardTypes.$get[type].$get[l]]]]
         $addThumbnail[attachment://thumbnail.png]
       ]
 
       $addSeparator[Large]
 
-      $addTextDisplay[$arrayJoin[content;\n]]
+      $addTextDisplay[$if[$jsonSize[content]>0;$arrayJoin[content;\n];$tl[ui.leaderboard.empty.$get[l]]]]
 
+      $addSeparator[Large]
       $if[$env[maxPages]>1;
-        $addSeparator[Large]
-
         $addActionRow
-        $addButton[leaderboard-prevPage-$get[page]-$get[rowsPerPage]-$authorID;;Primary;⬅️]
-        $addButton[leaderboard-customPage-$get[page]-$get[rowsPerPage]-$authorID;$tl[ui.leaderboard.pageButton.$get[l];$get[page];$env[maxPages]];Primary]
-        $addButton[leaderboard-nextPage-$get[page]-$get[rowsPerPage]-$authorID;;Primary;➡️]
+        $addButton[leaderboard-prevPage-$get[page]-$get[rowsPerPage]-$get[type]-$authorID;;Primary;⬅️]
+        $addButton[leaderboard-customPage-$get[page]-$get[rowsPerPage]-$get[type]-$authorID;$tl[ui.leaderboard.pageButton.$get[l];$get[page];$env[maxPages]];Primary]
+        $addButton[leaderboard-nextPage-$get[page]-$get[rowsPerPage]-$get[type]-$authorID;;Primary;➡️]
+      ]
+      $addActionRow
+      $addStringSelectMenu[leaderboard-type-$get[page]-$get[rowsPerPage]-$get[type]-$authorID;$tl[ui.leaderboard.typeMenu.$get[l]]]
+      $arrayForEach[$jsonKeys[$getGlobalVar[leaderboardTypes]];table;
+        $addOption[$tl[data.leaderboardTypes.$env[table].$get[l]];;$env[table];;$checkCondition[$env[table]==$get[type]]]
       ]
     ;$getGlobalVar[defaultColor]]
   `,

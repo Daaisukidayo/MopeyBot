@@ -4,7 +4,7 @@ export default new ForgeClassBuilder({
   name: "HistoryView",
   fields: {
     page: 1,
-    sortType: 0,
+    sortType: "history_sort_endingdate",
     sortOrder: "desc",
     rareAnimalId: null,
     filter: false,
@@ -14,19 +14,21 @@ export default new ForgeClassBuilder({
     constructor: {
       params: [{ name: "pages", type: ParamType.Json }],
       code: `
-        $c[A new view starts on the first page, newest first]
-        $setField[this;history;$sortHistory[$env[pages];0]]
+        $c[fresh view: page 1, newest first]
+        $setField[this;history;$sortHistory[$env[pages];history_sort_endingdate]]
       `,
     },
 
-    current: `
-      $return[$jsonGet[this;history;$math[$getField[this;page] - 1]]]
-    `,
+    current: {
+      code: `
+        $return[$jsonGet[this;history;$math[$getField[this;page] - 1]]]
+      `,
+    },
 
     setPage: {
       params: [{ name: "page", type: ParamType.Number }],
       code: `
-        $c[Pages wrap around]
+        $c[wraps around]
         $let[count;$jsonSize[this;history]]
         $setField[this;page;$if[$env[page]<=0;$get[count];$if[$env[page]>$get[count];1;$env[page]]]]
       `,
@@ -39,7 +41,7 @@ export default new ForgeClassBuilder({
 
     sortBy: {
       params: [
-        { name: "sortType", type: ParamType.Number },
+        { name: "sortType", type: ParamType.String },
         { name: "rareAnimalId", type: ParamType.String, required: false },
       ],
       code: `
@@ -63,7 +65,7 @@ export default new ForgeClassBuilder({
         { name: "pages", type: ParamType.Json, required: false },
       ],
       code: `
-        $c[A new rare is filtered from all the pages, without one the chosen rare filters what is shown]
+        $c[new rare: filter all pages. no rare: refilter what's shown by the picked one]
         $if[$env[rareAnimalId]!=;$setField[this;rareAnimalId;$env[rareAnimalId]]]
         $if[$env[pages]!=;$setField[this;history;$env[pages]]]
         $setField[this;filter;true]
@@ -95,14 +97,16 @@ export default new ForgeClassBuilder({
       code: `$!jsonSet[this;history;$math[$getField[this;page] - 1];$env[page]]`,
     },
 
-    "private refresh": `
-      $c[When filtered, only pages with the chosen rare are shown, in the chosen order]
-      $let[rareAnimalId;$jsonGet[this;rareAnimalId]]
-      $if[$getField[this;filter];
-        $setField[this;history;$arrayFilter[$getField[this;history];page;$jsonGet[page;raresList;$get[rareAnimalId]]!=]]
-      ]
-      $setField[this;history;$sortHistory[$getField[this;history];$getField[this;sortType];$get[rareAnimalId];$getField[this;sortOrder]]]
-      $callMethod[this;setPage;$getField[this;page]]
-    `,
+    "private refresh": {
+      code: `
+        $c[filtered = only pages w/ the chosen rare, in the chosen order]
+        $let[rareAnimalId;$jsonGet[this;rareAnimalId]]
+        $if[$getField[this;filter];
+          $setField[this;history;$arrayFilter[$getField[this;history];page;$jsonGet[page;raresList;$get[rareAnimalId]]!=]]
+        ]
+        $setField[this;history;$sortHistory[$getField[this;history];$getField[this;sortType];$get[rareAnimalId];$getField[this;sortOrder]]]
+        $callMethod[this;setPage;$getField[this;page]]
+      `,
+    },
   },
 })

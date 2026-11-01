@@ -12,7 +12,7 @@ export default new Command({
 
     $jsonLoad[playData;$getPlayData]
     $isPlaying[playData]
-    
+
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
     $let[biome;$selectMenuValues]
@@ -21,7 +21,7 @@ export default new Command({
 
     $let[color;$getBiomeColor[playData;$get[biome]]]
 
-    $c[Moving with a soccer in hands counts as holding it]
+    $c[moving while holding a soccer counts as a hold]
     $let[heldSoccer;$jsonGet[playData;held_soccer]]
     $if[$get[heldSoccer]!=;
       $arrayLoad[soccerData;_;$get[heldSoccer]]

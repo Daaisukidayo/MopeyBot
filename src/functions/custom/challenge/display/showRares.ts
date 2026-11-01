@@ -2,12 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "showRares",
-  description:
-    "Displays the count of total rares of a 1 hour luck challenge in content format, hidden when the profile's settings say so.",
+  description: "total rares count of the 1h luck challenge, hidden if the profile settings say so",
   params: [
     {
       name: "progressVar",
-      description: "The name of the variable that holds the challenge progress.",
+      description: "var w/ the challenge progress",
       type: ArgType.String,
     },
   ],

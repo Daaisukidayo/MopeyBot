@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addWardrobeBackButton",
-  description: "Adds a row with the wardrobe's Back button.",
+  description: "adds a row w/ the wardrobe's Back button",
   params: [
     {
       name: "target",
       description:
-        "Where it goes back to: 'menu' (the start menu), 'pack' or 'animal' (the tier choice for that), or a tier (its animals)",
+        "where it goes back to: 'menu' (start menu), 'pack' or 'animal' (the tier pick for that), or a tier (its animals)",
       type: ArgType.String,
     },
   ],

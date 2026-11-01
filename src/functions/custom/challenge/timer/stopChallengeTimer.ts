@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "stopChallengeTimer",
-  description: "Stops the active 1 hour luck timer for the provided user.",
+  description: "stops the user's running 1h luck timer",
   brackets: false,
   params: [
     {
       name: "userId",
-      description: "ID of the user.",
+      description: "the user's ID",
       type: ArgType.User,
       required: false,
     },

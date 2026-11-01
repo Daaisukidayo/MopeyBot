@@ -6,6 +6,6 @@ export default new BaseCommand({
   aliases: commandsData.command_editlist.aliases,
   type: "messageCreate",
   code: `
-    $handleEditList
+    $handleEditlist
   `,
 })

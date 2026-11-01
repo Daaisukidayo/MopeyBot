@@ -6,7 +6,7 @@ export default new ForgeFunction({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    
+
     $checkProfile
 
     $onlyIf[$guildID!=;
@@ -29,7 +29,7 @@ export default new ForgeFunction({
 
     $setGuildVar[prefix;$get[newPrefix]]
     $let[guildIcon;$guildIcon]
-    
+
     $addContainer[
       $if[$get[guildIcon]==;
         $addTextDisplay[# $guildName]

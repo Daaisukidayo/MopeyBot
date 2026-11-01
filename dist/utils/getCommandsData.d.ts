@@ -13,6 +13,7 @@ export type SlashCommandOptionName = AllLocales;
 export type SlashCommandOptionDescription = AllLocales;
 export type SlashCommandOptionChoiceName = AllLocales;
 export interface SlashCommandOptionChoice {
+    value?: string;
     name: SlashCommandOptionChoiceName;
 }
 export interface SlashCommandOption {
@@ -33,7 +34,7 @@ export interface commandInfo {
         slash: SlashCommandInfo;
         description: LocalesPropArray;
         related: string[];
-        category: number;
+        category: string;
     };
 }
 export declare const commandsData: commandInfo;

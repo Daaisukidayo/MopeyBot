@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
 exports.default = new forgescript_1.ForgeFunction({
     name: "addActionsMenu",
-    description: "Adds action and biome selection menus for a player's play session",
+    description: "adds the action and biome menus",
     params: [
         {
             name: "playDataVar",
-            description: "The name of the variable that holds the play data.",
+            description: "var w/ the play data",
             type: forgescript_1.ArgType.String,
         },
     ],
@@ -24,7 +24,7 @@ exports.default = new forgescript_1.ForgeFunction({
     $jsonLoad[xpPerTier;$getGlobalVar[xpPerTier]]
 
     $addActionRow
-    $addStringSelectMenu[play_actions-$authorID;$tl[ui.play.selectMenuPlaceholderActions.$get[l]]]
+    $addStringSelectMenu[play_actions-$playID[playData];$tl[ui.play.selectMenuPlaceholderActions.$get[l]]]
 
     $if[$jsonGet[playData;is_dead];
       $addOption[$tl[ui.play.optionNameRespawn.$get[l]];;respawn;🔄]
@@ -40,13 +40,13 @@ exports.default = new forgescript_1.ForgeFunction({
       $addOption[$tl[ui.play.optionNameUpgrade.$get[l]];;upgrade;⬆️]
       $return
     ]
-    
+
     $addOption[$tl[ui.play.optionNameFarmXp.$get[l]];;farmXP;🍴]
 
     $if[$get[tier]>=15;
       $addOption[$tl[ui.play.optionNameArena.$get[l]];;arena;⚔️]
     ]
-      
+
     $addOption[$tl[ui.play.optionNameDowngrade.$get[l]];;downgrade;⬇️]
 
     $if[$and[$get[tier]==17;$get[animalId]==black_dragon];
@@ -54,10 +54,10 @@ exports.default = new forgescript_1.ForgeFunction({
     ]
 
     $addBiomeMenu[playData]
-    
-    $if[$jsonGet[userProfile;testerMode];
+
+    $if[$jsonGet[userProfile;tester];
       $addActionRow
-      $addStringSelectMenu[play_devActions-$authorID;Dev tools]
+      $addStringSelectMenu[play_devActions-$playID[playData];Dev tools]
       $addOption[Spawn soccer;;spawnSoccer;⚽]
       $addOption[Force next soccer outcome;;forceSoccer;🎯]
       $addOption[Force next farm event;;forceEvent;🎲]
