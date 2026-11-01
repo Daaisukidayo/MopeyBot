@@ -3,18 +3,6 @@ import { ForgeClassBuilder, ParamType } from "forge.class"
 export default new ForgeClassBuilder({
   name: "UserProfile",
   fields: {
-    // pre-class profiles had camelCase keys, $upgradeProfile renames them w/ this
-    "static oldKeys": {
-      MC: "mope_coins",
-      MUID: "muid",
-      acceptedRules: "verified",
-      testerMode: "tester",
-      isBanned: "banned",
-      devMode: "dev_mode",
-      rtMode: "raretry_mode",
-      userPacks: "user_packs",
-    },
-
     user_id: null,
     mope_coins: 0,
     muid: -1,

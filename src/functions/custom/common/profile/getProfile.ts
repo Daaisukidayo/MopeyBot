@@ -21,11 +21,8 @@ export default new ForgeFunction({
       $return[$env[profile]]
     ]
 
-    $c[pre-class profiles get upgraded on the fly, migrateProfiles saves them for good]
-    $jsonLoad[profile;$get[saved]]
-    $if[$isInstance[profile]==false;$upgradeProfile[profile;$get[id]]]
-
     $c[backfill fields added to the class later]
+    $jsonLoad[profile;$get[saved]]
     $new[fresh;UserProfile;$get[id]]
     $objectDefaults[profile;$env[fresh]]
     $return[$env[profile]]
