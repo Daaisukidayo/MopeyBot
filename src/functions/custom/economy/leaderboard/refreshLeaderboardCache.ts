@@ -5,7 +5,7 @@ export default new ForgeFunction({
   description: "rebuilds the cached leaderboard tables: coins and the roll game tables (see leaderboardTypes)",
   code: `
     $c[one row per user w/ everything a table sorts by: coins, rares caught, rarest soccers, collection]
-    $arrayMap[$getGlobalVar[allUserIDs];id;
+    $arrayMap[$allUserIDs;id;
       $jsonLoad[profile;$getProfile[$env[id]]]
       $jsonLoad[stats;$getUserVar[rollStats;$env[id]]]
       $jsonLoad[row;$objectPick[profile;mope_coins;user_id;muid]]

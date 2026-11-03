@@ -10,7 +10,7 @@ export default new ForgeFunction({
     $if[$getGlobalVar[lastCheckedDayInReady;-1]==$get[day];$return]
     $setGlobalVar[lastCheckedDayInReady;$get[day]]
 
-    $arrayForEach[$getGlobalVar[allUserIDs];id;
+    $arrayForEach[$allUserIDs;id;
       $jsonLoad[userProfile;$getProfile[$env[id]]]
 
       $c[only folks who haven't claimed today and want the reminder. check DMs last bc that hits Discord]

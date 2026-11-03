@@ -10,7 +10,7 @@ export default new ForgeFunction({
     $if[$getGlobalVar[lastCheckedWeeklyInReady;-1]==$get[week];$return]
     $setGlobalVar[lastCheckedWeeklyInReady;$get[week]]
 
-    $arrayForEach[$getGlobalVar[allUserIDs];id;
+    $arrayForEach[$allUserIDs;id;
       $jsonLoad[userProfile;$getProfile[$env[id]]]
 
       $c[only folks who haven't claimed this week and want the reminder. check DMs last bc that hits Discord]

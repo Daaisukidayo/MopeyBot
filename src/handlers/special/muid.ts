@@ -20,10 +20,14 @@ export default new ForgeFunction({
       $newError[$tl[ui.muid.largeNumber.$get[l]]]
     ]
 
-    $c[read saved profiles directly, no Discord lookups]
-    $let[userID;$arrayFind[$getGlobalVar[allUserIDs];ID;$jsonGet[$getUserVar[userProfile;$env[ID]];muid]==$get[arg]]]
+    $onlyIf[$get[arg]>0;
+      $newError[$tl[ui.muid.userDoesNotExist.$get[l];$get[arg]]]
+    ]
 
-    $onlyIf[$and[$get[arg]>0;$get[userID]!=];
+    $c[read saved profiles directly]
+    $let[userID;$arrayFind[$allUserIDs;ID;$jsonGet[$getUserVar[userProfile;$env[ID]];muid]==$get[arg]]]
+
+    $onlyIf[$get[userID]!=;
       $newError[$tl[ui.muid.userDoesNotExist.$get[l];$get[arg]]]
     ]
 

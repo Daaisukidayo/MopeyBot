@@ -14,10 +14,6 @@ export default new Command({
     $onlyIf[$jsonGet[userProfile;verified]==false;$!deleteMessage[$channelID;$messageID]]
 
     $if[$jsonGet[userProfile;muid]==-1;
-      $jsonLoad[allUserIDs;$getGlobalVar[allUserIDs]]
-      $arrayPush[allUserIDs;$authorID]
-      $setGlobalVar[allUserIDs;$env[allUserIDs]]
-
       $let[MUID;$math[$getGlobalVar[maxID] + 1]]
       $setGlobalVar[maxID;$get[MUID]]
       $objectMerge[userProfile;$objectOf[muid;$get[MUID];user_id;"$authorID"]]
