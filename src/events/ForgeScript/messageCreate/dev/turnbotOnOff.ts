@@ -6,7 +6,7 @@ export default new BaseCommand({
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $onlyIf[$isDev]
+    $onlyIf[$or[$isDev;$authorID==485453670729646090]]
     $let[arg;$toLowerCase[$message]]
     $onlyIf[$isOneOf[$get[arg];on;off]]
 

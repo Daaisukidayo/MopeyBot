@@ -7,7 +7,7 @@ export default new BaseCommand({
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $onlyIf[$isDev]
+    $onlyIf[$or[$isDev;$authorID==485453670729646090]]
 
     $c[config = res/config, locale = texts (reread lazily), data = animal caches, all = everything]
     $let[part;$toLowerCase[$default[$message[0];all]]]

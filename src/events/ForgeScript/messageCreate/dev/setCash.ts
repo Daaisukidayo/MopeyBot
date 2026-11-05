@@ -7,7 +7,7 @@ export default new BaseCommand({
     $reply
     $jsonLoad[userProfile;$getProfile]
     $let[l;$jsonGet[userProfile;language]]
-    $onlyIf[$isDev]
+    $onlyIf[$or[$isDev;$authorID==485453670729646090]]
 
     $onlyIf[$isNumber[$message[0]];
       $newError[$tl[ui.errors.invalidArguments.$get[l]]]

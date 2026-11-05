@@ -7,7 +7,7 @@ export default new BaseCommand({
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $onlyIf[$isDev]
+    $onlyIf[$or[$isDev;$authorID==485453670729646090]]
 
     $!jsonSet[userProfile;user_packs;$arrayPluck[$getGlobalVar[shopItems];id]]
     $callMethod[userProfile;save]

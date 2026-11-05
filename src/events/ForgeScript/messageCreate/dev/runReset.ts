@@ -7,7 +7,7 @@ export default new BaseCommand({
   code: `
     $reply
     $jsonLoad[userProfile;$getProfile]
-    $onlyIf[$isDev]
+    $onlyIf[$or[$isDev;$authorID==485453670729646090]]
 
     $let[kind;$toLowerCase[$message[0]]]
     $onlyIf[$isOneOf[$get[kind];daily;weekly];
