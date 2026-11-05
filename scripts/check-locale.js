@@ -5,7 +5,6 @@ const root = path.resolve(__dirname, "..")
 const read = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"))
 const main = read("res/config/core/main.json")
 const languages = Object.keys(main.allLocales)
-// same category -> form index as $tl, so en needs 2 plural forms and ru 3
 const FORM_OF = { one: 0, two: 1, few: 1, other: 1, many: 2, zero: 2 }
 const formsNeeded = (language) =>
   new Set(new Intl.PluralRules(language).resolvedOptions().pluralCategories.map((c) => FORM_OF[c])).size
@@ -62,7 +61,6 @@ for (const { file, text } of sources) {
       if (!locale.includes("$")) errors.push(`${where}: unknown locale file '${locale}' in $tl[${parts.join(".")}]`)
       continue
     }
-    // the language at the end is optional: a known one or a built one ($get[l]) is dropped, w/o it the last part is a key
     const last = rest[rest.length - 1] ?? ""
     const keys = languages.includes(last) || last.includes("$") ? rest.slice(0, -1) : rest
     const dynamic = keys.findIndex((k) => k.includes("$"))
