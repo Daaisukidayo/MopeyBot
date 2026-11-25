@@ -3,7 +3,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "setHistoryOption",
   description:
-    "returns the history page w/ one option set to a typed or picked value. bad value = the command stops w/ an error",
+    "returns the history page with one option set to a typed or picked value. bad value = the command stops with an error",
   output: ArgType.Json,
   params: [
     {

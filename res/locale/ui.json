@@ -56,29 +56,24 @@
   },
   
   "balance": {
-    "mc": {
-      "en-US": "## {EMOJI} _Mopecoins: `{0}`_",
-      "ru": "## {EMOJI} _Мопкоинов: `{0}`_"
+    "cardPacks": {
+      "en-US": "{0} {0|bundle|bundles}",
+      "ru": "{0} {0|набор|набора|наборов}"
     },
-  
+
+    "cardSkinFor": {
+      "en-US": "For {0}",
+      "ru": "Для {0}"
+    },
+
+    "cardSkins": {
+      "en-US": "{0} {0|skin|skins}",
+      "ru": "{0} {0|скин|скина|скинов}"
+    },
+
     "none": {
       "en-US": "None",
       "ru": "Пусто"
-    },
-  
-    "purchased": {
-      "en-US": "## 📦 _Bundles:_",
-      "ru": "## 📦 _Наборы:_"
-    },
-
-    "skins": {
-      "en-US": "## 👕 _Skins: `{0}`_",
-      "ru": "## 👕 _Скины: `{0}`_"
-    },
-
-    "title": {
-      "en-US": "# ___BALANCE___",
-      "ru": "# ___БАЛАНС___"
     }
   },
   
@@ -851,28 +846,14 @@
   },
   
   "leaderboard": {
+    "cardRares": {
+      "en-US": "{0} {0|rare|rares}",
+      "ru": "{0} {0|редкое|редких|редких}"
+    },
+
     "empty": {
       "en-US": "## _Nobody is in this table yet!_",
       "ru": "## _В этой таблице пока никого нет!_"
-    },
-
-    "lines": {
-      "collection": {
-        "en-US": "## {0} ➤ `{1}#{2}` — `{3}/{4}`",
-        "ru": "## {0} ➤ `{1}#{2}` — `{3}/{4}`"
-      },
-      "mc": {
-        "en-US": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}",
-        "ru": "## {0} ➤ `{1}#{2}` — `{3}`{EMOJI}"
-      },
-      "rares": {
-        "en-US": "## {0} ➤ `{1}#{2}` — `{3}` {3|rare|rares}",
-        "ru": "## {0} ➤ `{1}#{2}` — `{3}` {3|редкое|редких|редких}"
-      },
-      "soccer": {
-        "en-US": "## {0} ➤ `{1}#{2}` — {3} `1/{4}`",
-        "ru": "## {0} ➤ `{1}#{2}` — {3} `1/{4}`"
-      }
     },
 
     "modalDescriptionPage": {
@@ -1387,7 +1368,7 @@
   
     "ate": {
       "en-US": "## _You ate __{0}__ and gained `{1}`XP!_",
-      "ru": "## _Вы съели __{0}__ и получили `{1}` ОП!_"
+      "ru": "## _Съедено: __{0}__. Получено `{1}` ОП!_"
     },
   
     "buttonLabelCantFind": {
@@ -1714,21 +1695,6 @@
   },
   
   "raretry": {
-    "category": {
-      "en-US": "**• _Category: `{0}`_**",
-      "ru": "**• _Категория: `{0}`_**"
-    },
-  
-    "earned": {
-      "en-US": "### _Earned: `{0}`{EMOJI}_",
-      "ru": "### _Получено: `{0}`{EMOJI}_"
-    },
-  
-    "gotRares": {
-      "en-US": "## _You tried to get rares and you got __{0}__!_",
-      "ru": "## _Вы пытались получить редких и в итоге получили __{0}__!_"
-    },
-  
     "mode": {
       "en-US": "**• _Mode: `{0}`_**",
       "ru": "**• _Режим: `{0}`_**"
@@ -1737,11 +1703,6 @@
     "nothing": {
       "en-US": "## _You tried to get rares but you got nothing._",
       "ru": "## _Вы пытались получить редких, но ничего не поймали._"
-    },
-  
-    "rarity": {
-      "en-US": "**• _Rarity: `{0}/{1}`_**",
-      "ru": "**• _Редкость: `{0}/{1}`_**"
     },
   
     "unknownMode": {
@@ -2079,11 +2040,6 @@
       "ru": "## _Успешно приобретен «`{0}`»!_"
     },
   
-    "selectMenuSkinsPacksPlaceholder": {
-      "en-US": "Select a bundle",
-      "ru": "Выберите набор скинов"
-    },
-  
     "title": {
       "en-US": "# ___Shop___",
       "ru": "# ___Магазин___"
@@ -2109,14 +2065,9 @@
       "ru": "У Вас уже есть все скины этого набора!"
     },
 
-    "packDiscount": {
-      "en-US": "{0} -{1}%",
-      "ru": "{0} -{1}%"
-    },
-
-    "packOwnedSkins": {
-      "en-US": "{0} · {1}/{2} skins owned",
-      "ru": "{0} · {1}/{2} скинов уже есть"
+    "cardPackOwned": {
+      "en-US": "{0} {0|skin|skins} · {1} owned",
+      "ru": "{0} {0|скин|скина|скинов} · {1} уже есть"
     },
 
     "views": {
@@ -2143,11 +2094,6 @@
     "skinsEmpty": {
       "en-US": "## _There are no skins left for you to buy!_",
       "ru": "## _Больше нет скинов, которые можно купить!_"
-    },
-
-    "skinLine": {
-      "en-US": "## {0} {1}\n-# For {2}",
-      "ru": "## {0} {1}\n-# Для {2}"
     },
 
     "free": {
@@ -2367,6 +2313,11 @@
   },
   
   "wardrobe": {
+    "cardOwned": {
+      "en-US": "{0}/{1} {1|skin|skins}",
+      "ru": "{0}/{1} {1|скин|скина|скинов}"
+    },
+
     "allTitle": {
       "en-US": "# _Equipping `all` animals, select a bundle_",
       "ru": "# _Экипировка `всех` животных._"

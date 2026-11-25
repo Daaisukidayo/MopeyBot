@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addSkinpacksMenu",
-  description: "a page of the user's skin packs for one tier or all of them, each w/ an Equip button",
+  description: "a page of the user's skin packs for one tier or all of them, each with an Equip button",
   params: [
     {
       name: "tier",

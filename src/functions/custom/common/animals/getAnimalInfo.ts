@@ -17,7 +17,8 @@ export default new ForgeFunction({
     },
     {
       name: "skin",
-      description: "optional: skin index in 'animal.skins' or a skin id (like lion.s2.0). w/o it you get the base info",
+      description:
+        "optional: skin index in 'animal.skins' or a skin id (like lion.s2.0). without it you get the base info",
       type: ArgType.String,
       required: false,
     },

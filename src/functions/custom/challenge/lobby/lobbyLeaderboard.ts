@@ -3,12 +3,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "lobbyLeaderboard",
   description:
-    "standings of the lobby in 'lobby': 'solo' (one team), 'lines' (a player, or a team w/ its players, per line) and 'winner'",
+    "standings of the lobby in 'lobby': 'solo' (one team), 'lines' (a player, or a team with its players, per line) and 'winner'",
   output: ArgType.Json,
   params: [
     {
       name: "lobbyVar",
-      description: "var w/ the lobby",
+      description: "var with the lobby",
       type: ArgType.String,
     },
   ],

@@ -16,10 +16,12 @@ export default new ForgeFunction({
 
     $jsonLoad[userWardrobe;$getUserVar[userWardrobe]]
 
-    $c[no option: the menu. new: every animal page by page. all or a tier: one pack for many. an animal: the page w/ it]
+    $c[no option: the menu. new: every animal page by page. all or a tier: one pack for many. an animal: the page with it]
     $if[$get[arg]==;
       $wardrobeMenuEmbed
     ;$if[$get[arg]==new;
+      $c[the animal pages draw a card, like the other card commands. the defer goes after the error checks, otherwise errors stop being ephemeral]
+      $defer
       $wardrobeAnimalsEmbed[userWardrobe;1]
     ;$if[$or[$get[arg]==all;$isNumber[$get[arg]]];
       $if[$get[arg]!=all;
@@ -39,6 +41,7 @@ export default new ForgeFunction({
         $newError[$tl[ui.wardrobe.notListed.$get[l];$getAnimalInfo[$get[animalId];fullName]]]
       ]
 
+      $defer
       $wardrobeAnimalsEmbed[userWardrobe;$get[page]]
     ]]]
 

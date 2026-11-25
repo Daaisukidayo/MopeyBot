@@ -195,6 +195,181 @@
     }
   },
 
+  "foods": {
+    "small_meat": {
+      "en-US": "Small Meat",
+      "ru": "Маленькое мясо"
+    },
+    "medium_meat": {
+      "en-US": "Medium Meat",
+      "ru": "Среднее мясо"
+    },
+    "big_meat": {
+      "en-US": "Big Meat",
+      "ru": "Большое мясо"
+    },
+    "berry": {
+      "en-US": "Berry",
+      "ru": "Ягода"
+    },
+    "honeycomb": {
+      "en-US": "Honeycomb",
+      "ru": "Медовые соты"
+    },
+    "date": {
+      "en-US": "Date",
+      "ru": "Финик"
+    },
+    "plankton": {
+      "en-US": "Plankton",
+      "ru": "Планктон"
+    },
+    "arctic_berry": {
+      "en-US": "Arctic Berry",
+      "ru": "Арктическая ягода"
+    },
+    "carrot": {
+      "en-US": "Carrot",
+      "ru": "Морковь"
+    },
+    "mushroom": {
+      "en-US": "Brown Mushroom",
+      "ru": "Коричневый гриб"
+    },
+    "red_mushroom": {
+      "en-US": "Red Mushroom",
+      "ru": "Красный гриб"
+    },
+    "mushroom_bush": {
+      "en-US": "Mushroom Bush",
+      "ru": "Грибной куст"
+    },
+    "raspberry": {
+      "en-US": "Raspberry",
+      "ru": "Малина"
+    },
+    "sea_weed": {
+      "en-US": "Seaweed",
+      "ru": "Морская водоросль"
+    },
+    "kelp": {
+      "en-US": "Kelp",
+      "ru": "Ламинария"
+    },
+    "cloud_berry": {
+      "en-US": "Cloudberry",
+      "ru": "Морошка"
+    },
+    "lilypad": {
+      "en-US": "Lilypad",
+      "ru": "Кувшинка"
+    },
+    "starfish": {
+      "en-US": "Starfish",
+      "ru": "Морская звезда"
+    },
+    "nut": {
+      "en-US": "Arctic Nut",
+      "ru": "Арктический орех"
+    },
+    "pear": {
+      "en-US": "Pear",
+      "ru": "Груша"
+    },
+    "banana": {
+      "en-US": "Banana",
+      "ru": "Банан"
+    },
+    "watermelon_slice": {
+      "en-US": "Watermelon Slice",
+      "ru": "Долька арбуза"
+    },
+    "watermelon": {
+      "en-US": "Watermelon",
+      "ru": "Арбуз"
+    },
+    "coconut": {
+      "en-US": "Coconut",
+      "ru": "Кокос"
+    },
+    "clam": {
+      "en-US": "Clam",
+      "ru": "Моллюск"
+    },
+    "conch": {
+      "en-US": "Conch",
+      "ru": "Раковина"
+    },
+    "snail": {
+      "en-US": "Snail",
+      "ru": "Улитка"
+    },
+    "lemming": {
+      "en-US": "Lemming",
+      "ru": "Лемминг"
+    },
+    "duck_egg": {
+      "en-US": "Egg",
+      "ru": "Яйцо"
+    },
+    "golden_egg": {
+      "en-US": "Golden Egg",
+      "ru": "Золотое яйцо"
+    },
+    "duckling": {
+      "en-US": "Duckling",
+      "ru": "Утёнок"
+    },
+    "duck": {
+      "en-US": "Duck",
+      "ru": "Утка"
+    },
+    "arctic_duck": {
+      "en-US": "Arctic Duck",
+      "ru": "Арктическая утка"
+    },
+    "mango": {
+      "en-US": "Mango",
+      "ru": "Манго"
+    },
+    "orange": {
+      "en-US": "Orange",
+      "ru": "Апельсин"
+    },
+    "cactus_pear": {
+      "en-US": "Cactus Pear",
+      "ru": "Опунция"
+    },
+    "melon": {
+      "en-US": "Melon",
+      "ru": "Дыня"
+    },
+    "melon_slice": {
+      "en-US": "Melon Slice",
+      "ru": "Долька дыни"
+    },
+    "aloevera": {
+      "en-US": "Aloe Vera",
+      "ru": "Алоэ вера"
+    },
+    "aloevera_leaf": {
+      "en-US": "Aloe Vera Leaf",
+      "ru": "Лист алоэ"
+    },
+    "cactus": {
+      "en-US": "Cactus",
+      "ru": "Кактус"
+    },
+    "goose": {
+      "en-US": "Goose",
+      "ru": "Гусь"
+    },
+    "pepper": {
+      "en-US": "Chili Pepper",
+      "ru": "Перец чили"
+    }
+  },
+
   "helpCategories": {
     "help_category_economy": {
       "en-US": "Economy",
@@ -434,6 +609,33 @@
     }
   },
 
+  "skinRarities": {
+    "common": {
+      "en-US": "Common",
+      "ru": "Обычный"
+    },
+    "uncommon": {
+      "en-US": "Uncommon",
+      "ru": "Необычный"
+    },
+    "rare": {
+      "en-US": "Rare",
+      "ru": "Редкий"
+    },
+    "epic": {
+      "en-US": "Epic",
+      "ru": "Эпический"
+    },
+    "legendary": {
+      "en-US": "Legendary",
+      "ru": "Легендарный"
+    },
+    "mythic": {
+      "en-US": "Mythic",
+      "ru": "Мифический"
+    }
+  },
+
   "raretryModes": {
     "0": {
       "en-US": "Default",
@@ -452,6 +654,10 @@
       "ru": "Безумный"
     },
     "4": {
+      "en-US": "Extreme",
+      "ru": "Экстремальный"
+    },
+    "5": {
       "en-US": "Impossible",
       "ru": "Невозможный"
     }

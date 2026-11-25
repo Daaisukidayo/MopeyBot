@@ -101,7 +101,8 @@
       "discount": 25
     }
   ],
-  "shopSkinsPageSize": 5,
+  "shopSkinsPageSize": 8,
+  "shopPacksPageSize": 3,
   "shopSortingOptions": ["shop_sort_collection", "shop_sort_price", "shop_sort_tier", "shop_sort_name"],
   "skinCollections": ["may2022", "march2025", "cosmic", "promo", "retired"]
 }

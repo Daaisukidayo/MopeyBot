@@ -12,7 +12,7 @@ export default new ForgeFunction({
 
     $let[tz;$default[$option[new-timezone];$message]]
 
-    $c[any tz from the list, case-insensitive, saved in the list's spelling. changeable once a week]
+    $c[any timezone from the list, case-insensitive, saved in the list's spelling. changeable once a week]
     $if[$get[tz]!=;
       $let[zoneName;$jsonGet[$arrayFind[$readFile[res/data/timezones.json];zone;$toLowerCase[$jsonGet[zone;zoneName]]==$toLowerCase[$get[tz]]];zoneName]]
       $onlyIf[$get[zoneName]!=;

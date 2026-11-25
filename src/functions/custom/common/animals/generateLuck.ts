@@ -24,7 +24,7 @@ export default new ForgeFunction({
 
     $if[$jsonType[groups]!=array;$return[$objectOf]]
 
-    $c[group = common animal (or null) followed by its rares. pool = all of them w/ weights, a null common means nothing drops]
+    $c[group = common animal (or null) followed by its rares. pool = all of them with weights, a null common means nothing drops]
     $arrayForEach[groups;group;
       $c[the anchor animal gives the total (rarity.1)]
       $let[anchor;$nullish[$jsonGet[group;0];$jsonGet[group;1]]]

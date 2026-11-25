@@ -6,7 +6,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "lobbyVar",
-      description: "var w/ the lobby",
+      description: "var with the lobby",
       type: ArgType.String,
     },
   ],

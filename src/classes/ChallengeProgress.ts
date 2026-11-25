@@ -67,7 +67,7 @@ export default new ForgeClassBuilder({
           ]
         ]
 
-        $c[totals come from the whole list. each msg that adds = one event for the prediction]
+        $c[totals come from the whole list. each message that adds = one event for the prediction]
         $if[$get[points]>0;
           $callMethod[this;recount]
           $arrayPushAt[this;events;$arrayOf[$env[seconds];$getField[this;points]]]

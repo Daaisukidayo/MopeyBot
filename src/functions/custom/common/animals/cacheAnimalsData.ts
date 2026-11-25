@@ -2,7 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "cacheAnimalsData",
-  description: "loads res/data/animals into the cache once. read it w/ getCache animals animalsData",
+  description: "loads res/data/animals into the cache once. read it with getCache animals animalsData",
   code: `
     $if[$hasCache[animals;animalsData];$return]
 
@@ -39,7 +39,7 @@ export default new ForgeFunction({
       $!jsonSet[animal;skins;$jsonGet[skins;$jsonGet[animal;ID]]]
       $arrayPushJSON[animals;$env[animal]]
 
-      $c[rares skip what they share w/ their common (tier, biome, canFly), fill it back in here]
+      $c[rares skip what they share with their common (tier, biome, canFly), fill it back in here]
       $jsonLoad[shared;$objectPick[animal;canFly;biome;tier]]
       $arrayForEach[animalRares;rareId;
         $jsonLoad[rare;$objectOf[ID;$env[rareId]]]
@@ -51,7 +51,7 @@ export default new ForgeFunction({
     ]
 
     $c[every pack's skin ids, for buying + syncing packs. legacy brings its winter + oldest skins along]
-    $c[skins w/ a cost sell alone too, grouped by collection (the middle bit of the skin id). animalIndex is for the tier sort]
+    $c[skins with a cost sell alone too, grouped by collection (the middle bit of the skin id). animalIndex is for the tier sort]
     $c[skinInfo = every skin someone can own by id, same shape, for sorting the owned ones. free packs skipped]
     $jsonLoad[packSkins;$objectOf]
     $jsonLoad[skinCatalog;$objectOf]

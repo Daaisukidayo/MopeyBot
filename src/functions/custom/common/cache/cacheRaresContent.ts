@@ -2,7 +2,7 @@ import { ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "cacheRaresContent",
-  description: "caches the lines of the live rares w/ their rarity, for the rares list",
+  description: "caches the lines of the live rares with their rarity, for the rares list",
   code: `
     $c[shared ref, don't mutate 'animals']
     $cacheAnimalsData

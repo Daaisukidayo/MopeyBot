@@ -17,7 +17,7 @@ export default new ForgeFunction({
     },
   ],
   code: `
-    $c[gcd, good old Euclid]
+    $c[gcd via Euclid's algorithm]
     $let[a;$env[numerator]]
     $let[b;$env[denominator]]
     $while[$get[b]!=0;

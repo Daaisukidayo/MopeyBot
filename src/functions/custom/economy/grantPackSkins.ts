@@ -7,12 +7,12 @@ export default new ForgeFunction({
   params: [
     {
       name: "skinsVar",
-      description: "var w/ the user's skins",
+      description: "var with the user's skins",
       type: ArgType.String,
     },
     {
       name: "packsVar",
-      description: "var w/ the pack ids",
+      description: "var with the pack ids",
       type: ArgType.String,
     },
   ],

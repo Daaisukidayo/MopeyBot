@@ -45,7 +45,7 @@ export default new ForgeFunction({
         $newError[$tl[ui.help.noInfo.$get[l]]]
       ]
 
-      $c[placeholders like {PREFIX} get replaced w/ their code's output, (N) w/ a newline]
+      $c[placeholders like {PREFIX} get replaced with their code's output, (N) with a newline]
       $arrayForEach[$getGlobalVar[helpReplacements];replacement;
         $if[$includes[$get[description];$jsonGet[replacement;0]];
           $let[description;$replace[$get[description];$jsonGet[replacement;0];$eval[$jsonGet[replacement;1];false];-1]]

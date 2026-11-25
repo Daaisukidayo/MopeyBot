@@ -13,7 +13,7 @@ export default new BaseCommand({
       $addTextDisplay[## _Updating..._]
     ;$getGlobalVar[defaultColor]]
 
-    $c[in the background bc it takes minutes and has to outlive the restart. the script reports here itself]
+    $c[in the background because it takes minutes and has to outlive the restart. the script reports here itself]
     $!exec[(cd ~/bot && node scripts/update.js $channelID) > ~/update.log 2>&1 &]
   `,
 })

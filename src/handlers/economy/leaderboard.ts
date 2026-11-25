@@ -19,7 +19,7 @@ export default new ForgeFunction({
     $c[coins table by default, else the key from leaderboardTypes]
     $let[type;$nullish[$option[table];mc]]
 
-    $c[the cached array is shared, copy pages out, don't mutate. the msg keeps the whole list so its pages don't shift till it's deleted]
+    $c[the cached array is shared, copy pages out, don't mutate. the message keeps the whole list so its pages don't shift until it's deleted]
     $getCache[leaderboard;$get[type];LBlist]
 
     $c[defaults: 10 rows, page 1]

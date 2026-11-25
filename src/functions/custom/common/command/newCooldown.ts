@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "newCooldown",
-  description: "sends the cooldown msg",
+  description: "sends the cooldown message",
   params: [
     {
       name: "cooldownTime",
@@ -22,7 +22,7 @@ export default new ForgeFunction({
       $addTextDisplay[## > _$tl[ui.cooldown.description.$get[l];$discordTimestamp[$math[$get[cooldownTime] + $getTimestamp + 1000];RelativeTime]]_]
     ;$getGlobalVar[cooldownColor]]
 
-    $c[the msg dies when the cooldown ends, 15s max]
+    $c[the message is deleted when the cooldown ends, 15s max]
     $let[deleteTime;$if[$or[$get[cooldownTime]>15000;$get[cooldownTime]==0];15000;$get[cooldownTime]]]
 
     $if[$isPrefixCommand;

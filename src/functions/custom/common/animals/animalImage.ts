@@ -3,7 +3,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "animalImage",
   description:
-    "the pic of an animal's skin for a thumbnail. the skin's file in res/assets/skins gets attached, a skin w/o one gives its old link",
+    "the picture of an animal's skin for a thumbnail. the skin's file in res/assets/skins gets attached, a skin without one gives its old link",
   output: ArgType.String,
   params: [
     {
@@ -19,19 +19,12 @@ export default new ForgeFunction({
     },
   ],
   code: `
-    $c[no skin passed comes in as 'undefined']
-    $let[skin;$nullish[$env[skin];0]]
-    $let[skinId;$getAnimalInfo[$env[animalId];id;$get[skin]]]
-
-    $c[same layout as the game: biome/animal/skinId.png, rares in biome/commonAnimal/rare/ (the common's biome)]
-    $let[common;$nullish[$getAnimalInfo[$env[animalId];common];$env[animalId]]]
-    $let[biome;$jsonGet[$arrayOf[land;desert;ocean;arctic;forest;volcano];$getAnimalInfo[$get[common];biome]]]
-    $let[file;res/assets/skins/$get[biome]/$get[common]$if[$get[common]!=$env[animalId];/$env[animalId]]/$get[skinId].png]
-
-    $if[$fileExists[$get[file]];
-      $attachment[$get[file];$get[skinId].png]
-      $return[attachment://$get[skinId].png]
+    $let[path;$animalImagePath[$env[animalId];$env[skin]]]
+    $if[$fileExists[$get[path]];
+      $let[name;$getAnimalInfo[$env[animalId];id;$nullish[$env[skin];0]].png]
+      $attachment[$get[path];$get[name]]
+      $return[attachment://$get[name]]
     ]
-    $return[$getAnimalInfo[$env[animalId];img;$get[skin]]]
+    $return[$get[path]]
   `,
 })

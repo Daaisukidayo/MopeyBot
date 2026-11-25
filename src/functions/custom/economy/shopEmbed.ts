@@ -1,8 +1,16 @@
-import { ForgeFunction } from "@tryforge/forgescript"
+import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "shopEmbed",
-  description: "the shop's bundles tab: packs the user can still buy",
+  description: "the shop's bundles tab: a page of packs the user can still buy, each a picture with its buy button",
+  params: [
+    {
+      name: "page",
+      description: "the page, wraps around when out of range. 1 by default",
+      type: ArgType.Number,
+      required: false,
+    },
+  ],
   code: `
     $let[l;$jsonGet[userProfile;language]]
     $jsonLoad[userPacks;$jsonGet[userProfile;user_packs]]
@@ -10,29 +18,36 @@ export default new ForgeFunction({
     $c[no selling packs the user has or already got every skin of one by one]
     $arrayFilter[$getGlobalVar[shopItems];item;$and[$arrayIncludes[userPacks;$jsonGet[item;id]]==false;$hasAllPackSkins[userSkins;$jsonGet[item;id]]==false];forSale]
 
+    $c[pages wrap around]
+    $let[pageSize;$getGlobalVar[shopPacksPageSize]]
+    $let[pages;$max[1;$arrayPageCount[forSale;$get[pageSize]]]]
+    $let[page;$nullish[$env[page];1]]
+    $let[page;$if[$get[page]<1;$get[pages];$if[$get[page]>$get[pages];1;$get[page]]]]
+
     $addContainer[
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.shop.title.$get[l]]]
       $addShopViewMenu[packs]
 
-      $c[nothing left = a line instead of the menu, like the skins tab]
+      $c[nothing left = a line instead of the packs, like the skins tab]
       $if[$jsonSize[forSale]==0;
         $addTextDisplay[$tl[ui.shop.empty.$get[l]]]
-      ;
+      ]
+      $c[a picture per pack, its buy button right under it. the price is the discounted one with owned skins taken off, greyed out while the user can't afford it]
+      $arrayForEach[$arrayPage[forSale;$get[page];$get[pageSize]];item;
+        $let[packId;$jsonGet[item;id]]
+        $let[cost;$packPrice[$get[packId];userSkins]]
+        $addMediaGallery[$addMediaItem[$shopPackCard[$get[packId];userSkins;$env[i]];$tl[data.shopSkinPacks.$get[packId].$get[l]]]]
         $addActionRow
-        $addStringSelectMenu[purchasingSkinpacks-$authorID;$tl[ui.shop.selectMenuSkinsPacksPlaceholder.$get[l]]]
-        $c[discounts go next to the name, owned skins make the pack cheaper and the menu says how many]
-        $cacheAnimalsData
-        $getCache[animals;packSkins;packSkins]
-        $arrayForEach[forSale;item;
-          $let[packId;$jsonGet[item;id]]
-          $let[name;$tl[data.shopSkinPacks.$get[packId].$get[l]]]
-          $let[discount;$default[$jsonGet[item;discount];0]]
-          $let[price;$separate[$packPrice[$get[packId];userSkins]]]
-          $jsonLoad[packIds;$default[$jsonGet[packSkins;$get[packId]];$arrayOf]]
-          $let[owned;$arrayCount[packIds;skinId;$arrayIncludes[userSkins;$env[skinId]]]]
-          $addOption[$if[$get[discount]>0;$tl[ui.shop.packDiscount.$get[l];$get[name];$get[discount]];$get[name]];$if[$get[owned]>0;$tl[ui.shop.packOwnedSkins.$get[l];$get[price];$get[owned];$jsonSize[packIds]];$get[price]];$get[packId];$getGlobalVar[mopecoin]]
-        ]
+        $addButton[purchasingSkinpacks-$get[packId]-$get[page]-$authorID;$separate[$get[cost]];Success;$getGlobalVar[mopecoin];$checkCondition[$jsonGet[userProfile;mope_coins]<$get[cost]]]
+      ;i]
+
+      $if[$get[pages]>1;
+        $addSeparator[Large]
+        $addActionRow
+        $addButton[shopSkins-packsPage-$math[$get[page] - 1]-$authorID;;Primary;⬅️]
+        $addButton[shopSkins-packsPageModal-$authorID;$tl[ui.shop.pageButton.$get[l];$get[page];$get[pages]];Primary;🔎]
+        $addButton[shopSkins-packsPage-$math[$get[page] + 1]-$authorID;;Primary;➡️]
       ]
       $addSeparator[Large]
       $addTextDisplay[$tl[ui.shop.available.$get[l];$separate[$jsonGet[userProfile;mope_coins]]]]

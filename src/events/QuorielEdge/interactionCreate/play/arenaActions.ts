@@ -57,7 +57,7 @@ export default new Command({
 
       $addArenaStatus[playData;userWardrobe]
       $addSeparator
-      $c[merge consecutive lines into one text, 40 components max per msg]
+      $c[merge consecutive lines into one text, 40 components max per message]
       $addTextDisplay[$tl[ui.play.arena.table.userChose.$get[l];$tl[data.arenaActions.$get[playerAction].$get[l]]]\n$tl[ui.play.arena.table.opponentChose.$get[l];$tl[data.arenaActions.$get[opponentAction].$get[l]]]]
       $addSeparator
       $addTextDisplay[$tl[ui.play.arena.actions.$jsonGet[rule;1].$get[l]]]

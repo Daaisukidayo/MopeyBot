@@ -12,7 +12,7 @@ export default new ForgeFunction({
     },
     {
       name: "skinsVar",
-      description: "var w/ the user's skins. w/o it you get the whole pack's price",
+      description: "var with the user's skins. without it you get the whole pack's price",
       type: ArgType.String,
       required: false,
     },
@@ -23,7 +23,7 @@ export default new ForgeFunction({
     $if[$get[index]==-1;$return]
     $let[price;$math[$jsonGet[items;$get[index];cost] * (100 - $default[$jsonGet[items;$get[index];discount];0]) / 100]]
 
-    $c[packs w/o skins sold one by one, like Classic, never shrink]
+    $c[packs without skins sold one by one, like Classic, never shrink]
     $cacheAnimalsData
     $getCache[animals;skinCatalog;catalog]
     $jsonLoad[priced;$default[$jsonGet[catalog;$env[packId]];$arrayOf]]

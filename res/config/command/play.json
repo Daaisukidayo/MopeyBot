@@ -57,6 +57,14 @@
     "prey": 12
   },
 
+  "playFoodWeight": {
+    "_c": "food pick weight (res/data/foods.json): the newest food a tier can find in its biome weighs 'new', 'perTier' less per tier older, at least 'min'. 'fixed' ones always weigh that, meat is rare",
+    "new": 10,
+    "perTier": 1,
+    "min": 1,
+    "fixed": { "small_meat": 1, "medium_meat": 1, "big_meat": 1 }
+  },
+
   "farmDeathChances": {
     "base": 15,
     "rareReduction": 4,

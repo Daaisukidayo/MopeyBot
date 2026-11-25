@@ -12,7 +12,7 @@ export default new ForgeFunction({
     },
   ],
   code: `
-    $c[check the list first, user input could be stuff like 'constructor']
+    $c[check the list first, user input could be something like 'constructor']
     $getCache[rares;allRares;allRares]
     $if[$arrayIncludes[allRares;$env[alias]]==false;$return[undefined]]
 

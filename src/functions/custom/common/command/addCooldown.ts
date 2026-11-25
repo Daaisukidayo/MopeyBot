@@ -35,7 +35,7 @@ export default new ForgeFunction({
     $cooldown[$get[command]-$authorID;$get[time];
       $let[cooldownTime;$getCooldownTime[$get[command]-$authorID]]
 
-      $c[prefix cmds show the cooldown msg at most once per 10s]
+      $c[prefix commands show the cooldown message at most once per 10s]
       $if[$isPrefixCommand;
         $cooldown[cooldownEmbed;10s;
           $wait[$min[$get[cooldownTime];10000]]

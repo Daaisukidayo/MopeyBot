@@ -18,14 +18,14 @@ export default new Command({
 
     $getCache[animals;tierAnimals;tierAnimals]
 
-    $c[ids: play_devActions-authorID for the main menu, play_devActions-step(-arg)-authorID for sub menus. menus also end w/ the screen (isPlaying checks it), modals don't]
+    $c[ids: play_devActions-authorID for the main menu, play_devActions-step(-arg)-authorID for sub menus. menus also end with the screen (isPlaying checks it), modals don't]
     $if[$jsonGet[IID;-1]!=$authorID;$!arrayPop[IID]]
     $let[step;$if[$jsonSize[IID]==2;main;$jsonGet[IID;1]]]
     $let[arg;$if[$jsonSize[IID]==4;$jsonGet[IID;2]]]
     $let[value;$selectMenuValues]
     $if[$get[value]==back;$let[step;back]]
 
-    $c[view 'stats' = desc + stats + actions menu, 'custom' = desc + whatever the local fn 'extra' adds]
+    $c[view 'stats' = desc + stats + actions menu, 'custom' = desc + whatever the local function 'extra' adds]
     $let[view;stats]
 
     $switch[$get[step];

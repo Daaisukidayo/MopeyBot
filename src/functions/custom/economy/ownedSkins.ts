@@ -7,7 +7,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "skinsVar",
-      description: "var w/ the user's skins",
+      description: "var with the user's skins",
       type: ArgType.String,
     },
     {
@@ -37,7 +37,7 @@ export default new ForgeFunction({
     $getCache[animals;skinCatalog;catalog]
     $getCache[animals;skinInfo;skinInfo]
 
-    $c[collection order like the shop's: packs, then the packless groups. packs go by packSkins bc the catalog only has skins sold alone, legacy's winter + oldest skins ride along]
+    $c[collection order like the shop's: packs, then the packless groups. packs go by packSkins because the catalog only has skins sold alone, legacy's winter + oldest skins come with it]
     $jsonLoad[collections;$arrayPluck[$getGlobalVar[shopItems];id]]
     $arrayForEach[$getGlobalVar[skinCollections];collection;$arrayPush[collections;$env[collection]]]
     $arrayLoad[added]

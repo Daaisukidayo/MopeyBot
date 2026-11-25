@@ -6,7 +6,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "progressVar",
-      description: "var w/ the challenge progress",
+      description: "var with the challenge progress",
       type: ArgType.String,
     },
     {
@@ -22,7 +22,7 @@ export default new ForgeFunction({
     $jsonLoad[events;$jsonGet[progress;events]]
     $let[prediction;0]
 
-    $c[an event is a seconds, points pair. each one gets compared w/ the previous]
+    $c[an event is a seconds, points pair. each one gets compared with the previous]
     $if[$jsonSize[events]>5;
       $let[totalGain;0]
       $let[totalDelay;0]
@@ -35,7 +35,7 @@ export default new ForgeFunction({
         ]
       ;i]
 
-      $c[prediction = avg gain per avg delay, for the rest of the hour]
+      $c[prediction = average gain per average delay, for the rest of the hour]
       $let[steps;$math[$jsonSize[events] - 1]]
       $let[averageDelay;$max[0.1;$math[$get[totalDelay] / $get[steps]]]]
       $let[inputsLeft;$math[(3600 - $getChallengeTimer[$env[userId;id]]) / $get[averageDelay]]]

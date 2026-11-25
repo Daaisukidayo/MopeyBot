@@ -5,7 +5,7 @@ export default new ForgeFunction({
   code: `
     $let[l;$jsonGet[userProfile;language]]
     $!stopTimeout[lobby-$channelID]
-    $c[the stored timeout just calls a fn, so code changes hit pending ones too]
+    $c[the stored timeout just calls a function, so code changes hit pending ones too]
     $setTimeout[$closeInactiveLobby[$get[l]];$getGlobalVar[lobbyInactiveTime];lobby-$channelID]
   `,
 })

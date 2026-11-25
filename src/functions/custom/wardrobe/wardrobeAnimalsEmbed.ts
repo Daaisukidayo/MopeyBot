@@ -6,7 +6,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "wardrobeVar",
-      description: "var w/ the user's wardrobe",
+      description: "var with the user's wardrobe",
       type: ArgType.String,
     },
     {
@@ -31,8 +31,11 @@ export default new ForgeFunction({
     $addContainer[
       $addAuthorDisplay
       $addTextDisplay[$tl[ui.wardrobe.listTitle.$get[l]]]
+      $jsonLoad[pageIds;$arrayPage[ids;$get[page];$get[pageSize]]]
+      $c[the worn skins' names for screen readers, nothing in the wardrobe = the first skin like on the card]
+      $addMediaGallery[$addMediaItem[$wardrobeCard[pageIds;$env[wardrobeVar]];$arrayJoin[$arrayMap[pageIds;id;$return[$getAnimalInfo[$env[id];name;$default[$jsonGet[wardrobe;$env[id]];$getAnimalInfo[$env[id];id;0]]]]];, ]]]
 
-      $c[the worn skin is picked, nothing in the wardrobe = the first skin. owned only, cut to 25 cuz that's all a select fits]
+      $c[the worn skin is picked, nothing in the wardrobe = the first skin. owned only, cut to 25 because that's all a select menu fits]
       $arrayForEach[$arrayPage[ids;$get[page];$get[pageSize]];id;
         $let[current;$default[$jsonGet[wardrobe;$env[id]];$getAnimalInfo[$env[id];id;0]]]
         $addTextDisplay[### $getAnimalInfo[$env[id];fullName]]

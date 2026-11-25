@@ -1,613 +1,205 @@
 {
   "1": {
-    "d": [
-      {
-        "b": 0,
-        "f": [0, 3, 4],
-        "p": []
-      },
-      {
-        "b": 1,
-        "f": [0, 5],
-        "p": []
-      },
-      {
-        "b": 2,
-        "f": [0, 6],
-        "p": []
-      },
-      {
-        "b": 3,
-        "f": [0, 7],
-        "p": []
-      },
-      {
-        "b": 4,
-        "f": [0, 3, 4],
-        "p": []
-      },
-      {
-        "b": 5,
-        "f": [],
-        "p": []
-      }
-    ],
-    "m": 1.1
+    "m": 1.1,
+    "prey": {
+      "0": [],
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
   },
-  
+
   "2": {
-    "d": [
-      {
-        "b": 0,
-        "f": [0, 3, 4, 8],
-        "p": [0]
-      },
-      {
-        "b": 1,
-        "f": [0, 5],
-        "p": [1]
-      },
-      {
-        "b": 2,
-        "f": [0, 6],
-        "p": [2]
-      },
-      {
-        "b": 3,
-        "f": [0, 7, 27],
-        "p": [3]
-      },
-      {
-        "b": 4,
-        "f": [0, 3, 4],
-        "p": [0, 4]
-      },
-      {
-        "b": 5,
-        "f": [],
-        "p": []
-      }
-    ],
-    "m": 1.2
+    "m": 1.2,
+    "prey": {
+      "0": ["mouse"],
+      "1": ["kangaroo_rat"],
+      "2": ["shrimp"],
+      "3": ["chipmunk"],
+      "4": ["mouse", "tarsier"],
+      "5": []
+    }
   },
 
   "3": {
-    "d": [
-      {
-        "b": 0,
-        "f": [0, 3, 4, 8, 12, 28, 29],
-        "p": [0, 5, 6, 7]
-      },
-      {
-        "b": 1,
-        "f": [0, 5],
-        "p": [1, 8]
-      },
-      {
-        "b": 2,
-        "f": [0, 6],
-        "p": [2, 9]
-      },
-      {
-        "b": 3,
-        "f": [0, 7, 12, 27, 28, 29],
-        "p": [3, 10]
-      },
-      {
-        "b": 4,
-        "f": [0, 3, 4],
-        "p": [0, 4, 5, 6, 7]
-      },
-      {
-        "b": 5,
-        "f": [],
-        "p": []
-      }
-    ],
-    "m": 1.3
+    "m": 1.3,
+    "prey": {
+      "0": ["mouse", "rabbit", "pigeon", "dove"],
+      "1": ["kangaroo_rat", "desert_chipmunk"],
+      "2": ["shrimp", "trout"],
+      "3": ["chipmunk", "arctic_hare"],
+      "4": ["mouse", "tarsier", "rabbit", "pigeon", "dove"],
+      "5": []
+    }
   },
 
   "4": {
-    "d": [
-      {
-        "b": 0,
-        "f": [0, 3, 4, 8, 9, 12, 28, 29, 30],
-        "p": [0, 5, 6, 7, 12, 13]
-      },
-      {
-        "b": 1,
-        "f": [0, 5, 33, 35, 39],
-        "p": [1, 8, 14]
-      },
-      {
-        "b": 2,
-        "f": [0, 6, 13],
-        "p": [2, 9, 15]
-      },
-      {
-        "b": 3,
-        "f": [0, 9, 12, 27, 28, 29, 30],
-        "p": [3, 10, 16]
-      },
-      {
-        "b": 4,
-        "f": [0, 3, 4, 9],
-        "p": [0, 4, 5, 6, 7, 17]
-      },
-      {
-        "b": 5,
-        "f": [],
-        "p": []
-      }
-    ],
-    "m": 1.4
+    "m": 1.4,
+    "prey": {
+      "0": ["mouse", "rabbit", "pigeon", "dove", "mole", "chicken"],
+      "1": ["kangaroo_rat", "desert_chipmunk", "meerkat"],
+      "2": ["shrimp", "trout", "crab"],
+      "3": ["chipmunk", "arctic_hare", "penguin"],
+      "4": ["mouse", "tarsier", "rabbit", "pigeon", "dove", "flying_lizard"],
+      "5": []
+    }
   },
 
   "5": {
-    "d": [
-      {
-        "b": 0,
-        "f": [0, 3, 4, 8, 9, 12, 16, 28, 29, 30],
-        "p": [0, 5, 6, 7, 12, 13, 18, 19, 20, 21]
-      },
-      {
-        "b": 1,
-        "f": [0, 33, 35, 39],
-        "p": [1, 8, 14, 22]
-      },
-      {
-        "b": 2,
-        "f": [0, 6, 13],
-        "p": [2, 9, 15, 23]
-      },
-      {
-        "b": 3,
-        "f": [0, 9, 15, 16, 27, 28, 29, 30],
-        "p": [3, 10, 16, 24]
-      },
-      {
-        "b": 4,
-        "f": [0, 3, 4, 9],
-        "p": [0, 4, 5, 6, 7, 17, 25]
-      },
-      {
-        "b": 5,
-        "f": [],
-        "p": []
-      }
-    ],
-    "m": 1.5
+    "m": 1.5,
+    "prey": {
+      "0": ["mouse", "rabbit", "pigeon", "dove", "mole", "chicken", "pig", "pinky", "stinky", "woodpecker"],
+      "1": ["kangaroo_rat", "desert_chipmunk", "meerkat", "armadillo"],
+      "2": ["shrimp", "trout", "crab", "sea_horse"],
+      "3": ["chipmunk", "arctic_hare", "penguin", "seal"],
+      "4": ["mouse", "tarsier", "rabbit", "pigeon", "dove", "flying_lizard", "kakapo"],
+      "5": []
+    }
   },
 
   "6": {
-    "d": [
-      {
-        "b": 0,
-        "f": [1, 3, 4, 8, 9, 10, 12, 16, 28, 29, 30],
-        "p": [5, 6, 7, 12, 13, 18, 19, 20, 21, 26, 27, 28]
-      },
-      {
-        "b": 1,
-        "f": [1, 21, 37],
-        "p": [8, 14, 22, 29]
-      },
-      {
-        "b": 2,
-        "f": [6, 13, 14, 17],
-        "p": [9, 15, 23, 30, 31]
-      },
-      {
-        "b": 3,
-        "f": [1, 9, 15, 16, 27, 28, 29, 30],
-        "p": [10, 16, 24, 32, 33]
-      },
-      {
-        "b": 4,
-        "f": [1, 3, 4, 9],
-        "p": [5, 6, 7, 17, 25, 34]
-      },
-      {
-        "b": 5,
-        "f": [21],
-        "p": []
-      }
-    ],
-    "m": 1.6
+    "m": 1.6,
+    "prey": {
+      "0": ["rabbit", "pigeon", "dove", "mole", "chicken", "pig", "pinky", "stinky", "woodpecker", "deer", "doe", "marsh"],
+      "1": ["desert_chipmunk", "meerkat", "armadillo", "gazelle"],
+      "2": ["trout", "crab", "sea_horse", "squid", "flamingo"],
+      "3": ["arctic_hare", "penguin", "seal", "reindeer", "musk"],
+      "4": ["rabbit", "pigeon", "dove", "flying_lizard", "kakapo", "swinehoe"],
+      "5": []
+    }
   },
 
   "7": {
-    "d": [
-      {
-        "b": 0,
-        "f": [1, 11, 16, 19, 31, 41],
-        "p": [5, 6, 7, 12, 13, 18, 19, 20, 21, 26, 27, 28, 36, 37, 38]
-      },
-      {
-        "b": 1,
-        "f": [1, 21, 37],
-        "p": [8, 14, 22, 29, 39]
-      },
-      {
-        "b": 2,
-        "f": [6, 13, 14, 17],
-        "p": [9, 15, 23, 30, 31, 40]
-      },
-      {
-        "b": 3,
-        "f": [1, 11, 18, 19, 32, 41],
-        "p": [16, 24, 32, 33, 41]
-      },
-      {
-        "b": 4,
-        "f": [1, 11, 20],
-        "p": [5, 6, 7, 17, 25, 34]
-      },
-      {
-        "b": 5,
-        "f": [21],
-        "p": []
-      }
-    ],
-    "m": 1.7
+    "m": 1.7,
+    "prey": {
+      "0": ["rabbit", "pigeon", "dove", "mole", "chicken", "pig", "pinky", "stinky", "woodpecker", "deer", "doe", "marsh", "fox", "hedgehog", "peacock"],
+      "1": ["desert_chipmunk", "meerkat", "armadillo", "gazelle", "fennec_fox"],
+      "2": ["trout", "crab", "sea_horse", "squid", "flamingo", "jellyfish"],
+      "3": ["penguin", "seal", "reindeer", "musk", "arctic_fox"],
+      "4": ["rabbit", "pigeon", "dove", "flying_lizard", "kakapo", "swinehoe"],
+      "5": []
+    }
   },
 
   "8": {
-    "d": [
-      {
-        "b": 0,
-        "f": [1, 11, 16, 19, 31, 41],
-        "p": [12, 13, 18, 19, 20, 21, 26, 27, 28, 36, 37, 38, 42, 43, 45, 46]
-      },
-      {
-        "b": 1,
-        "f": [1, 5, 21, 34, 37],
-        "p": [14, 22, 29, 39, 48]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17],
-        "p": [15, 23, 30, 31, 40, 49]
-      },
-      {
-        "b": 3,
-        "f": [1, 11, 18, 19, 32, 41],
-        "p": [16, 24, 32, 33, 41, 50]
-      },
-      {
-        "b": 4,
-        "f": [1, 11, 20],
-        "p": [17, 25, 34]
-      },
-      {
-        "b": 5,
-        "f": [21],
-        "p": []
-      }
-    ],
-    "m": 1.8
+    "m": 1.8,
+    "prey": {
+      "0": ["mole", "chicken", "pig", "pinky", "stinky", "woodpecker", "deer", "doe", "marsh", "fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue"],
+      "1": ["meerkat", "armadillo", "gazelle", "fennec_fox", "warthog"],
+      "2": ["crab", "sea_horse", "squid", "flamingo", "jellyfish", "turtle"],
+      "3": ["penguin", "seal", "reindeer", "musk", "arctic_fox", "muskox"],
+      "4": ["flying_lizard", "kakapo", "swinehoe"],
+      "5": []
+    }
   },
 
   "9": {
-    "d": [
-      {
-        "b": 0,
-        "f": [1, 11, 16, 19, 31, 41],
-        "p": [12, 13, 18, 19, 20, 21, 26, 27, 28, 36, 37, 38, 42, 43, 45, 46, 51, 52]
-      },
-      {
-        "b": 1,
-        "f": [1, 21, 34, 36, 37],
-        "p": [14, 22, 29, 39, 48, 56]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17, 25],
-        "p": [15, 23, 30, 31, 40, 49, 57]
-      },
-      {
-        "b": 3,
-        "f": [1, 11, 18, 19, 32, 41],
-        "p": [16, 24, 32, 33, 41, 50, 58, 59]
-      },
-      {
-        "b": 4,
-        "f": [1, 11, 20],
-        "p": [17, 25, 34, 60]
-      },
-      {
-        "b": 5,
-        "f": [21],
-        "p": []
-      }
-    ],
-    "m": 1.9
+    "m": 1.9,
+    "prey": {
+      "0": ["mole", "chicken", "pig", "pinky", "stinky", "woodpecker", "deer", "doe", "marsh", "fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe"],
+      "1": ["meerkat", "armadillo", "gazelle", "fennec_fox", "warthog", "camel"],
+      "2": ["crab", "sea_horse", "squid", "flamingo", "jellyfish", "turtle", "stingray"],
+      "3": ["penguin", "seal", "reindeer", "musk", "arctic_fox", "muskox", "snowy_owl", "walrus"],
+      "4": ["flying_lizard", "kakapo", "swinehoe", "raven"],
+      "5": []
+    }
   },
 
   "10": {
-    "d": [
-      {
-        "b": 0,
-        "f": [1, 11, 16, 19, 31, 41],
-        "p": [12, 13, 18, 19, 20, 21, 26, 27, 28, 36, 37, 38, 42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69]
-      },
-      {
-        "b": 1,
-        "f": [1, 21, 34, 36, 37],
-        "p": [14, 22, 29, 39, 48, 56, 72]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17, 25],
-        "p": [15, 23, 30, 31, 40, 49, 57, 73, 74]
-      },
-      {
-        "b": 3,
-        "f": [1, 11, 18, 19, 32, 41],
-        "p": [16, 24, 32, 33, 41, 50, 58, 59, 76]
-      },
-      {
-        "b": 4,
-        "f": [1, 11, 20],
-        "p": [17, 25, 34, 60, 77]
-      },
-      {
-        "b": 5,
-        "f": [21],
-        "p": []
-      }
-    ],
-    "m": 2
+    "m": 2,
+    "prey": {
+      "0": ["mole", "chicken", "pig", "pinky", "stinky", "woodpecker", "deer", "doe", "marsh", "fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery"],
+      "1": ["meerkat", "armadillo", "gazelle", "fennec_fox", "warthog", "camel", "rattle_snake"],
+      "2": ["crab", "sea_horse", "squid", "flamingo", "jellyfish", "turtle", "stingray", "pufferfish", "yellow"],
+      "3": ["penguin", "seal", "reindeer", "musk", "arctic_fox", "muskox", "snowy_owl", "walrus", "snow_leopard"],
+      "4": ["flying_lizard", "kakapo", "swinehoe", "raven", "turkey"],
+      "5": []
+    }
   },
 
   "11": {
-    "d": [
-      {
-        "b": 0,
-        "f": [1, 2, 11, 16, 23, 31, 41, 42],
-        "p": [18, 19, 20, 21, 26, 27, 28, 36, 37, 38, 42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80]
-      },
-      {
-        "b": 1,
-        "f": [1, 2, 22, 36, 38, 42],
-        "p": [22, 29, 39, 48, 56, 72, 83, 84]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17, 24, 25],
-        "p": [23, 30, 31, 40, 49, 57, 73, 74, 85, 86]
-      },
-      {
-        "b": 3,
-        "f": [1, 2, 11, 18, 19, 32, 41],
-        "p": [24, 32, 33, 41, 50, 58, 59, 76, 87]
-      },
-      {
-        "b": 4,
-        "f": [1, 2, 11, 20],
-        "p": [25, 34, 60, 77]
-      },
-      {
-        "b": 5,
-        "f": [21, 22],
-        "p": []
-      }
-    ],
-    "m": 2.1
+    "m": 2.1,
+    "prey": {
+      "0": ["pig", "pinky", "stinky", "woodpecker", "deer", "doe", "marsh", "fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger"],
+      "1": ["armadillo", "gazelle", "fennec_fox", "warthog", "camel", "rattle_snake", "gobi_bear", "hyena"],
+      "2": ["sea_horse", "squid", "flamingo", "jellyfish", "turtle", "stingray", "pufferfish", "yellow", "pelican", "swordfish"],
+      "3": ["seal", "reindeer", "musk", "arctic_fox", "muskox", "snowy_owl", "walrus", "snow_leopard", "wolf"],
+      "4": ["kakapo", "swinehoe", "raven", "turkey"],
+      "5": []
+    }
   },
 
   "12": {
-    "d": [
-      {
-        "b": 0,
-        "f": [1, 2, 11, 16, 23, 31, 41, 42],
-        "p": [26, 27, 28, 36, 37, 38, 42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80, 88, 89, 91, 92, 93, 95, 96, 98, 99]
-      },
-      {
-        "b": 1,
-        "f": [1, 2, 38, 40],
-        "p": [29, 39, 48, 56, 72, 83, 84, 102]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17, 24, 25],
-        "p": [30, 31, 40, 49, 57, 73, 74, 85, 86, 104]
-      },
-      {
-        "b": 3,
-        "f": [1, 2, 11, 18, 19, 32, 41],
-        "p": [32, 33, 41, 50, 58, 59, 76, 87, 105]
-      },
-      {
-        "b": 4,
-        "f": [1, 2, 11, 20],
-        "p": [34, 60, 77]
-      },
-      {
-        "b": 5,
-        "f": [],
-        "p": []
-      }
-    ],
-    "m": 2.2
+    "m": 2.2,
+    "prey": {
+      "0": ["deer", "doe", "marsh", "fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger", "crocodile", "lion", "cub", "black_maned", "white_cub", "white_lion", "black_cub", "black_lion", "falcon"],
+      "1": ["gazelle", "fennec_fox", "warthog", "camel", "rattle_snake", "gobi_bear", "hyena", "vulture"],
+      "2": ["squid", "flamingo", "jellyfish", "turtle", "stingray", "pufferfish", "yellow", "pelican", "swordfish", "octopus"],
+      "3": ["reindeer", "musk", "arctic_fox", "muskox", "snowy_owl", "walrus", "snow_leopard", "wolf", "polar_bear"],
+      "4": ["swinehoe", "raven", "turkey"],
+      "5": []
+    }
   },
 
   "13": {
-    "d": [
-      {
-        "b": 0,
-        "f": [2, 11, 16, 31, 41, 42],
-        "p": [26, 27, 28, 36, 37, 38, 42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80, 88, 89, 91, 92, 93, 95, 96, 98, 99, 106, 109]
-      },
-      {
-        "b": 1,
-        "f": [2, 38, 40],
-        "p": [29, 39, 48, 56, 72, 83, 84, 102, 113]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17, 24, 25],
-        "p": [30, 31, 40, 49, 57, 73, 74, 85, 86, 104, 114]
-      },
-      {
-        "b": 3,
-        "f": [1, 2, 11, 18, 19, 32, 41],
-        "p": [32, 33, 41, 50, 58, 59, 76, 87, 105, 115, 117]
-      },
-      {
-        "b": 4,
-        "f": [1, 2, 11, 20],
-        "p": [34, 60, 77]
-      },
-      {
-        "b": 5,
-        "f": [],
-        "p": []
-      }
-    ],
-    "m": 2.3
+    "m": 2.3,
+    "prey": {
+      "0": ["deer", "doe", "marsh", "fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger", "crocodile", "lion", "cub", "black_maned", "white_cub", "white_lion", "black_cub", "black_lion", "falcon", "rhinoceros", "eagle"],
+      "1": ["gazelle", "fennec_fox", "warthog", "camel", "rattle_snake", "gobi_bear", "hyena", "vulture", "bison"],
+      "2": ["squid", "flamingo", "jellyfish", "turtle", "stingray", "pufferfish", "yellow", "pelican", "swordfish", "octopus", "shark"],
+      "3": ["reindeer", "musk", "arctic_fox", "muskox", "snowy_owl", "walrus", "snow_leopard", "wolf", "polar_bear", "markhor", "wolverine"],
+      "4": ["swinehoe", "raven", "turkey"],
+      "5": []
+    }
   },
 
   "14": {
-    "d": [
-      {
-        "b": 0,
-        "f": [2, 11, 16, 31, 41, 42],
-        "p": [36, 37, 38, 42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80, 88, 89, 91, 92, 93, 95, 96, 98, 99, 106, 109, 118, 119, 120]
-      },
-      {
-        "b": 1,
-        "f": [2, 38, 40],
-        "p": [39, 48, 56, 72, 83, 84, 102, 113, 121]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17, 24, 25],
-        "p": [40, 49, 57, 73, 74, 85, 86, 104, 114, 122]
-      },
-      {
-        "b": 3,
-        "f": [1, 2, 11, 18, 19, 32, 41],
-        "p": [41, 50, 58, 59, 76, 87, 105, 115, 117, 123]
-      },
-      {
-        "b": 4,
-        "f": [1, 2, 11, 20],
-        "p": [60, 77, 124, 125]
-      },
-      {
-        "b": 5,
-        "f": [],
-        "p": []
-      }
-    ],
-    "m": 2.4
+    "m": 2.4,
+    "prey": {
+      "0": ["fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger", "crocodile", "lion", "cub", "black_maned", "white_cub", "white_lion", "black_cub", "black_lion", "falcon", "rhinoceros", "eagle", "hippopotamus", "boa", "ostrich"],
+      "1": ["fennec_fox", "warthog", "camel", "rattle_snake", "gobi_bear", "hyena", "vulture", "bison", "komodo_dragon"],
+      "2": ["jellyfish", "turtle", "stingray", "pufferfish", "yellow", "pelican", "swordfish", "octopus", "shark", "orca"],
+      "3": ["arctic_fox", "muskox", "snowy_owl", "walrus", "snow_leopard", "wolf", "polar_bear", "markhor", "wolverine", "sabertooth_tiger"],
+      "4": ["raven", "turkey", "white_giraffe", "family"],
+      "5": []
+    }
   },
 
   "15": {
-    "d": [
-      {
-        "b": 0,
-        "f": [2, 11, 16, 31, 41, 42],
-        "p": [36, 37, 38, 42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80, 88, 89, 91, 92, 93, 95, 96, 98, 99, 106, 109, 118, 119, 120, 126, 127, 128, 132, 133, 135]
-      },
-      {
-        "b": 1,
-        "f": [2, 38, 40],
-        "p": [39, 48, 56, 72, 83, 84, 102, 113, 121, 129, 135]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17, 24, 25],
-        "p": [40, 49, 57, 73, 74, 85, 86, 104, 114, 122, 130, 136, 137]
-      },
-      {
-        "b": 3,
-        "f": [1, 2, 11, 18, 19, 32, 41],
-        "p": [41, 50, 58, 59, 76, 87, 105, 115, 117, 123, 131, 138, 139]
-      },
-      {
-        "b": 4,
-        "f": [1, 2, 11, 20],
-        "p": [60, 77, 124, 125]
-      },
-      {
-        "b": 5,
-        "f": [21, 22],
-        "p": [36, 37, 38, 42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80, 88, 89, 91, 92, 93, 95, 96, 98, 99, 106, 109, 118, 119, 120, 126, 127, 128, 132, 134]
-      }
-    ],
-    "m": 2.5
+    "m": 2.5,
+    "prey": {
+      "0": ["fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger", "crocodile", "lion", "cub", "black_maned", "white_cub", "white_lion", "black_cub", "black_lion", "falcon", "rhinoceros", "eagle", "hippopotamus", "boa", "ostrich", "elephant", "cassowary", "giant_spider", "dragon", "trex", "pterodactyl"],
+      "1": ["fennec_fox", "warthog", "camel", "rattle_snake", "gobi_bear", "hyena", "vulture", "bison", "komodo_dragon", "black_widow", "pterodactyl"],
+      "2": ["jellyfish", "turtle", "stingray", "pufferfish", "yellow", "pelican", "swordfish", "octopus", "shark", "orca", "blue_whale", "kraken", "king_crab"],
+      "3": ["arctic_fox", "muskox", "snowy_owl", "walrus", "snow_leopard", "wolf", "polar_bear", "markhor", "wolverine", "sabertooth_tiger", "mammoth", "yeti", "aqua"],
+      "4": ["raven", "turkey", "white_giraffe", "family"],
+      "5": ["fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger", "crocodile", "lion", "cub", "black_maned", "white_cub", "white_lion", "black_cub", "black_lion", "falcon", "rhinoceros", "eagle", "hippopotamus", "boa", "ostrich", "elephant", "cassowary", "giant_spider", "dragon", "phoenix"]
+    }
   },
 
   "16": {
-    "d": [
-      {
-        "b": 0,
-        "f": [2, 11, 16, 31, 41],
-        "p": [42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80, 88, 89, 91, 92, 93, 95, 96, 98, 99, 106, 109, 118, 119, 120, 126, 127, 128, 132, 133, 135, 146]
-      },
-      {
-        "b": 1,
-        "f": [2, 38, 40],
-        "p": [48, 56, 72, 83, 84, 102, 113, 121, 129, 135, 148]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17, 24, 25],
-        "p": [49, 57, 73, 74, 85, 86, 104, 114, 122, 130, 136, 137, 149]
-      },
-      {
-        "b": 3,
-        "f": [1, 2, 11, 18, 19, 32, 41],
-        "p": [50, 58, 59, 76, 87, 105, 115, 117, 123, 131, 138, 139, 150]
-      },
-      {
-        "b": 4,
-        "f": [1, 2, 11, 20],
-        "p": [60, 77, 124, 125]
-      },
-      {
-        "b": 5,
-        "f": [21, 22],
-        "p": [36, 37, 38, 42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80, 88, 89, 91, 92, 93, 95, 96, 98, 99, 106, 109, 118, 119, 120, 126, 127, 128, 132, 134, 147]
-      }
-    ],
-    "m": 2.75
+    "m": 2.75,
+    "prey": {
+      "0": ["zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger", "crocodile", "lion", "cub", "black_maned", "white_cub", "white_lion", "black_cub", "black_lion", "falcon", "rhinoceros", "eagle", "hippopotamus", "boa", "ostrich", "elephant", "cassowary", "giant_spider", "dragon", "trex", "pterodactyl", "dino_monster"],
+      "1": ["warthog", "camel", "rattle_snake", "gobi_bear", "hyena", "vulture", "bison", "komodo_dragon", "black_widow", "pterodactyl", "giant_scorpion"],
+      "2": ["turtle", "stingray", "pufferfish", "yellow", "pelican", "swordfish", "octopus", "shark", "orca", "blue_whale", "kraken", "king_crab", "sea_monster"],
+      "3": ["muskox", "snowy_owl", "walrus", "snow_leopard", "wolf", "polar_bear", "markhor", "wolverine", "sabertooth_tiger", "mammoth", "yeti", "aqua", "ice_monster"],
+      "4": ["raven", "turkey", "white_giraffe", "family"],
+      "5": ["fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger", "crocodile", "lion", "cub", "black_maned", "white_cub", "white_lion", "black_cub", "black_lion", "falcon", "rhinoceros", "eagle", "hippopotamus", "boa", "ostrich", "elephant", "cassowary", "giant_spider", "dragon", "phoenix", "lava_monster"]
+    }
   },
 
   "17": {
-    "d": [
-      {
-        "b": 0,
-        "f": [2, 11, 16, 31, 41],
-        "p": [42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80, 88, 89, 91, 92, 93, 95, 96, 98, 99, 106, 109, 118, 119, 120, 126, 127, 128, 132, 133, 135, 146, 151]
-      },
-      {
-        "b": 1,
-        "f": [2, 38, 40],
-        "p": [48, 56, 72, 83, 84, 102, 113, 121, 129, 135, 148]
-      },
-      {
-        "b": 2,
-        "f": [13, 14, 17, 24, 25],
-        "p": [49, 57, 73, 74, 85, 86, 104, 114, 122, 130, 136, 137, 149]
-      },
-      {
-        "b": 3,
-        "f": [1, 2, 11, 18, 19, 32, 41],
-        "p": [50, 58, 59, 76, 87, 105, 115, 117, 123, 131, 138, 139, 150]
-      },
-      {
-        "b": 4,
-        "f": [1, 2, 11, 20],
-        "p": [60, 77, 124, 125]
-      },
-      {
-        "b": 5,
-        "f": [21, 22],
-        "p": [36, 37, 38, 42, 43, 45, 46, 51, 52, 61, 62, 63, 65, 66, 67, 68, 69, 78, 78, 80, 88, 89, 91, 92, 93, 95, 96, 98, 99, 106, 109, 118, 119, 120, 126, 127, 128, 132, 134, 147, 151]
-      }
-    ],
-    "m": 3
+    "m": 3,
+    "prey": {
+      "0": ["zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger", "crocodile", "lion", "cub", "black_maned", "white_cub", "white_lion", "black_cub", "black_lion", "falcon", "rhinoceros", "eagle", "hippopotamus", "boa", "ostrich", "elephant", "cassowary", "giant_spider", "dragon", "trex", "pterodactyl", "dino_monster", "black_dragon"],
+      "1": ["warthog", "camel", "rattle_snake", "gobi_bear", "hyena", "vulture", "bison", "komodo_dragon", "black_widow", "pterodactyl", "giant_scorpion"],
+      "2": ["turtle", "stingray", "pufferfish", "yellow", "pelican", "swordfish", "octopus", "shark", "orca", "blue_whale", "kraken", "king_crab", "sea_monster"],
+      "3": ["muskox", "snowy_owl", "walrus", "snow_leopard", "wolf", "polar_bear", "markhor", "wolverine", "sabertooth_tiger", "mammoth", "yeti", "aqua", "ice_monster"],
+      "4": ["raven", "turkey", "white_giraffe", "family"],
+      "5": ["fox", "hedgehog", "peacock", "zebra", "donkey", "macaw", "blue", "cobra", "giraffe", "cheetah", "jaguar", "leopard", "gorilla", "toucan", "choco", "keel_billed", "fiery", "bear", "bear", "tiger", "crocodile", "lion", "cub", "black_maned", "white_cub", "white_lion", "black_cub", "black_lion", "falcon", "rhinoceros", "eagle", "hippopotamus", "boa", "ostrich", "elephant", "cassowary", "giant_spider", "dragon", "phoenix", "lava_monster", "black_dragon"]
+    }
   }
 }

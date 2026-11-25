@@ -3,7 +3,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "parseBet",
   description:
-    "parses a game bet: 'all' = the max, no number = the min, more than the balance = the whole balance. a bet that can't be made stops the command w/ an error",
+    "parses a game bet: 'all' = the max, no number = the min, more than the balance = the whole balance. a bet that can't be made stops the command with an error",
   output: ArgType.Number,
   params: [
     {

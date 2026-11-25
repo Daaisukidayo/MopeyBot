@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addWardrobeBackButton",
-  description: "adds a row w/ the wardrobe's Back button",
+  description: "adds a row with the wardrobe's Back button",
   params: [
     {
       name: "target",

@@ -6,7 +6,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "progressVar",
-      description: "var w/ the challenge progress",
+      description: "var with the challenge progress",
       type: ArgType.String,
     },
   ],

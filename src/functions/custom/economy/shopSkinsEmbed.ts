@@ -41,21 +41,21 @@ export default new ForgeFunction({
       $addTextDisplay[$tl[ui.shop.title.$get[l]]]
       $addShopViewMenu[skins]
       $if[$jsonSize[skins]==0;$addTextDisplay[$tl[ui.shop.skinsEmpty.$get[l]]]]
-      $c[price goes on the button, greyed out while the user's broke. 6 skins bc the separators around the menus eat into the 40 components max]
-      $arrayForEach[$arrayPage[skins;$get[page];$get[pageSize]];skin;
-        $let[skinId;$jsonGet[skin;id]]
-        $let[animalId;$jsonGet[skin;animal]]
-        $let[cost;$jsonGet[skin;cost]]
-        $let[buyId;shopSkins-buy-$get[skinId]-$get[sort]-$get[order]-$get[page]-$authorID]
-        $addSection[
-          $addTextDisplay[$tl[ui.shop.skinLine.$get[l];$getAnimalInfo[$get[animalId];emoji;$get[skinId]];$jsonGet[skin;name];$getAnimalInfo[$get[animalId];fullName]]]
+      $c[a picture of 4 skins, then their 4 buy buttons in the same order. the button only has the price, greyed out while the user can't afford it]
+      $jsonLoad[pageSkins;$arrayPage[skins;$get[page];$get[pageSize]]]
+      $arrayForEach[$arrayChunk[pageSkins;4];row;
+        $addMediaGallery[$addMediaItem[$shopSkinsCard[row;$env[r]];$arrayJoin[$arrayMap[row;skin;$return[$jsonGet[skin;name]]];, ]]]
+        $addActionRow
+        $arrayForEach[row;skin;
+          $let[cost;$jsonGet[skin;cost]]
+          $let[buyId;shopSkins-buy-$jsonGet[skin;id]-$get[sort]-$get[order]-$get[page]-$authorID]
           $if[$get[cost]==0;
             $addButton[$get[buyId];$tl[ui.shop.free.$get[l]];Success]
           ;
             $addButton[$get[buyId];$separate[$get[cost]];Success;$getGlobalVar[mopecoin];$checkCondition[$jsonGet[userProfile;mope_coins]<$get[cost]]]
           ]
         ]
-      ]
+      ;r]
 
       $c[menus under the skins, then the pages. nothing to sort = no menus]
       $if[$jsonSize[skins]>0;

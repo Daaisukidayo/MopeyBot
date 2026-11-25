@@ -47,7 +47,7 @@ export default new ForgeClassBuilder({
         { name: "messageId", type: ParamType.Message },
       ],
       code: `
-        $c[msg link format: guild/channel/message]
+        $c[message link format: guild/channel/message]
         $setField[this;path;$env[guildId;id]/$env[channelId;id]/$env[messageId;id]]
         $setField[this;is_started;true]
       `,

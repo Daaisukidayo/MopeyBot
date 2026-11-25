@@ -6,7 +6,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "rollsVar",
-      description: "var w/ the user's Rolls",
+      description: "var with the user's Rolls",
       type: ArgType.String,
     },
     {

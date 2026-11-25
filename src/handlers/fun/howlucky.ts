@@ -11,7 +11,7 @@ export default new ForgeFunction({
     $addCooldown
     $defer
 
-    $c[rolled once a day, the profile keeps the number + desc till tomorrow]
+    $c[rolled once a day, the profile keeps the number + desc until tomorrow]
     $if[$jsonGet[userProfile;howlucky;day]!=$calendarDay;
       $let[r;$random[0;100]]
       $c[thresholds go down to 0 so something always matches]

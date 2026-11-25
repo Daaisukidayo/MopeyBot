@@ -4,7 +4,7 @@ export default new ForgeFunction({
   name: "refreshLeaderboardCache",
   description: "rebuilds the cached leaderboard tables: coins and the roll game tables (see leaderboardTypes)",
   code: `
-    $c[one row per user w/ everything a table sorts by: coins, rares caught, rarest soccers, collection]
+    $c[one row per user with everything a table sorts by: coins, rares caught, rarest soccers, collection]
     $arrayMap[$allUserIDs;id;
       $jsonLoad[profile;$getProfile[$env[id]]]
       $jsonLoad[stats;$getUserVar[rollStats;$env[id]]]
@@ -28,7 +28,7 @@ export default new ForgeFunction({
       $return[$env[row]]
     ;players]
 
-    $c[tables only keep users w/ a value, highest first, ties go to the lower tie key (fewer plays or earlier). coins keeps everyone]
+    $c[tables only keep users with a value, highest first, ties go to the lower tie key (fewer plays or earlier). coins keeps everyone]
     $arrayForEach[$jsonEntries[$getGlobalVar[leaderboardTypes]];table;
       $let[type;$jsonGet[table;0]]
       $let[key;$jsonGet[table;1;value]]

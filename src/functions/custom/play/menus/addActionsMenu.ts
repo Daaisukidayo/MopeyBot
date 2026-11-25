@@ -6,7 +6,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "playDataVar",
-      description: "var w/ the play data",
+      description: "var with the play data",
       type: ArgType.String,
     },
   ],

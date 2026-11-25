@@ -3,7 +3,7 @@ import { Command } from "@quoriel/edge"
 export default new Command({
   name: "purchasingSkinpacks",
   type: "interactionCreate",
-  allowed: ["stringSelect"],
+  allowed: ["button"],
   code: `
     $arrayLoad[IID;-;$customID]
 
@@ -12,10 +12,10 @@ export default new Command({
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $c[price = shop data w/ the discount and owned skins off, never trust the menu]
+    $c[id: purchasingSkinpacks-pack-page-author. price = shop data with the discount and owned skins off, never trust the button]
     $jsonLoad[userPacks;$jsonGet[userProfile;user_packs]]
     $jsonLoad[userSkins;$getUserVar[userSkins]]
-    $let[skinpack;$selectMenuValues]
+    $let[skinpack;$jsonGet[IID;1]]
     $let[cost;$packPrice[$get[skinpack];userSkins]]
 
     $onlyIf[$get[cost]!=;
@@ -38,12 +38,16 @@ export default new Command({
     $!jsonSet[userProfile;user_packs;$env[userPacks]]
     $callMethod[userProfile;save]
 
+    $c[the follow-up card shows the pack as bought: the price paid, skins owned before]
+    $jsonLoad[skinsBefore;$env[userSkins]]
+
     $c[the pack's skins are theirs right away, no waiting for the startup sync]
     $jsonLoad[boughtPacks;$arrayOf[$get[skinpack]]]
     $!grantPackSkins[userSkins;boughtPacks]
     $setUserVar[userSkins;$env[userSkins]]
 
-    $shopEmbed
+    $c[back on the same page, it wraps if the bought pack was the last one there]
+    $shopEmbed[$jsonGet[IID;2]]
     $interactionUpdate
     $newCommandTimeout[shop]
 
@@ -52,6 +56,7 @@ export default new Command({
       $addContainer[
         $addAuthorDisplay
         $addTextDisplay[$tl[ui.shop.purchaseSuccess.$get[l];$tl[data.shopSkinPacks.$get[skinpack].$get[l]]]]
+        $addMediaGallery[$addMediaItem[$shopPackCard[$get[skinpack];skinsBefore;0];$tl[data.shopSkinPacks.$get[skinpack].$get[l]]]]
       ;$getGlobalVar[defaultColor]]
     ]
   `,

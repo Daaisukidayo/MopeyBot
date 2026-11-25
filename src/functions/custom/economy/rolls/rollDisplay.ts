@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "rollDisplay",
-  description: "what a roll got, w/ its emoji: a raretry/raretryrun rare or a soccer's item",
+  description: "what a roll got, with its emoji: a raretry/raretryrun rare or a soccer's item",
   output: ArgType.String,
   params: [
     {

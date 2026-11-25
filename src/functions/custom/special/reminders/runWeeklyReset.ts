@@ -13,7 +13,7 @@ export default new ForgeFunction({
     $arrayForEach[$allUserIDs;id;
       $jsonLoad[userProfile;$getProfile[$env[id]]]
 
-      $c[only folks who haven't claimed this week and want the reminder. check DMs last bc that hits Discord]
+      $c[only users who haven't claimed this week and want the reminder. check DMs last because that calls the Discord API]
       $if[$and[$jsonGet[userProfile;rewards;weekly_week]!=$get[week];$arrayIncludes[$getUserVar[userReminders;$env[id]];1]];
         $if[$isUserDMEnabled[$env[id]];
           $sendRewardReminder[$env[id];1;$jsonGet[userProfile;language]]

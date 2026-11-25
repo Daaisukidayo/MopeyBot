@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "wardrobePageOf",
-  description: "the all animals page w/ an animal, or w/ a tier's first one. empty if it's not on the list",
+  description: "the all animals page with an animal, or with a tier's first one. empty if it's not on the list",
   output: ArgType.Number,
   params: [
     {

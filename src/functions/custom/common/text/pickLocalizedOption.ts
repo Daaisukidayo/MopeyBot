@@ -3,7 +3,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "pickLocalizedOption",
   description:
-    "turns an option typed as its number or its name in any language into its key in the locale group. unknown option = the command stops w/ an error listing the names",
+    "turns an option typed as its number or its name in any language into its key in the locale group. unknown option = the command stops with an error listing the names",
   output: ArgType.String,
   params: [
     {

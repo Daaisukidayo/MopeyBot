@@ -2,11 +2,11 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "lobbyEmbed",
-  description: "the lobby msg for the lobby in 'lobby', in the host's language",
+  description: "the lobby message for the lobby in 'lobby', in the host's language",
   params: [
     {
       name: "lobbyVar",
-      description: "var w/ the lobby",
+      description: "var with the lobby",
       type: ArgType.String,
     },
   ],
@@ -25,7 +25,7 @@ export default new ForgeFunction({
         $addThumbnail[$userAvatar[$get[host]]]
       ]
 
-      $c[teams w/ players, ready ones in green. the team index is an env var bc as a keyword it came out empty and every team got the same button ids]
+      $c[teams with players, ready ones in green. the team index is an env var because as a keyword it came out empty and every team got the same button ids]
       $arrayForEach[teams;team;
         $addSeparator
         $addTextDisplay[$if[$get[solo];$tl[ui.lobby.participantsTitle.$get[l]];$tl[ui.lobby.teamTitle.$get[l];$math[$env[i] + 1]]]]

@@ -2,16 +2,16 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addArenaStatus",
-  description: "adds the arena scoreboard: player and opponent w/ their bites",
+  description: "adds the arena scoreboard: player and opponent with their bites",
   params: [
     {
       name: "playDataVar",
-      description: "var w/ the play data",
+      description: "var with the play data",
       type: ArgType.String,
     },
     {
       name: "wardrobeVar",
-      description: "var w/ the user's wardrobe",
+      description: "var with the user's wardrobe",
       type: ArgType.String,
     },
   ],
@@ -28,11 +28,11 @@ export default new ForgeFunction({
     $let[playerDisplay;$getAnimalInfo[$get[currentAnimal];emoji;$get[wrI]] $userDisplayName]
     $let[opponentDisplay;$getAnimalInfo[$get[opponentAnimal];emoji;$get[opponentWardrobe]] $getAnimalInfo[$get[opponentAnimal];name;$get[opponentWardrobe]]]
 
-    $c[each side shows its pic, same skin on both sides = attach once]
+    $c[each side shows its picture, same skin on both sides = attach once]
     $let[playerImage;$animalImage[$get[currentAnimal];$get[wrI]]]
     $let[opponentImage;$if[$getAnimalInfo[$get[currentAnimal];id;$get[wrI]]==$getAnimalInfo[$get[opponentAnimal];id;$get[opponentWardrobe]];$get[playerImage];$animalImage[$get[opponentAnimal];$get[opponentWardrobe]]]]
 
-    $c[name + bites in one text, 40 components max per msg]
+    $c[name + bites in one text, 40 components max per message]
     $addSection[
       $addThumbnail[$get[playerImage]]
       $addTextDisplay[$tl[ui.play.arena.table.player.$get[l];$get[playerDisplay]]\n$tl[ui.play.arena.table.bites.$get[l];$jsonGet[playData;arena;player;bites]]]

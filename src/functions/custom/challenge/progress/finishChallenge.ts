@@ -7,7 +7,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "progressVar",
-      description: "var w/ the challenge progress",
+      description: "var with the challenge progress",
       type: ArgType.String,
     },
   ],
@@ -15,7 +15,7 @@ export default new ForgeFunction({
     $ref[progress;$env[progressVar]]
     $stopChallengeTimer
 
-    $c[solo runs can share a channel w/ a lobby, so go by the team, not the lobby]
+    $c[solo runs can share a channel with a lobby, so go by the team, not the lobby]
     $if[$jsonGet[progress;teamID]==-1;
       $deleteChallengeProgress
     ;

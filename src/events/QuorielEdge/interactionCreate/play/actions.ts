@@ -42,9 +42,6 @@ export default new Command({
       ]
 
       $case[farmXP;
-        $jsonLoad[expBase;$readFile[res/data/expBase.json]]
-        $jsonLoad[expData;$readFile[res/data/expData.json]]
-
         $c[find chances are %, death chances are per-mille (play.json)]
         $jsonLoad[farmChances;$getGlobalVar[farmChances]]
         $jsonLoad[deathChances;$getGlobalVar[farmDeathChances]]
@@ -121,29 +118,25 @@ export default new Command({
               $addFoundSoccer[playData;userWardrobe;$get[spottedSoccer];$jsonGet[soccerItem;ID]]
             ;
 
+              $c[meat's in every biome, so the pool is never empty]
+              $jsonLoad[pool;$foodPool[$get[tier];$get[currentBiome]]]
+              $getCache[animals;foods;foods]
+              $getCache[animals;expData;expData]
               $let[multiplier;$jsonGet[expData;$get[tier];m]]
+              $jsonLoad[prey;$jsonGet[expData;$get[tier];prey;$get[currentBiome]]]
 
-              $jsonLoad[data;$jsonGet[expData;$get[tier];d;$get[currentBiome]]]
-              $jsonLoad[foodIndexes;$jsonGet[data;f]]
-              $jsonLoad[preyIndexes;$jsonGet[data;p]]
-
-              $jsonLoad[foodBase;$jsonGet[expBase;f]]
-              $jsonLoad[preyBase;$jsonGet[expBase;p]]
-
-              $onlyIf[$jsonSize[foodIndexes]>0]
-
-              $c[1-4 random foods, repeats allowed]
+              $c[1-4 foods by weight, repeats allowed]
               $arrayMap[$arrayRange[1;$random[1;4]];n;
-                $jsonLoad[food;$jsonGet[foodBase;$arraySample[foodIndexes]]]
-                $letSum[xp;$round[$math[$random[$jsonGet[food;XP;0];$jsonGet[food;XP;1]] * $get[multiplier]]]]
-                $return[$jsonGet[food;name]]
+                $let[foodId;$jsonGet[$arrayWeightedRandom[$env[pool];weight];ID]]
+                $letSum[xp;$round[$math[$random[$jsonGet[foods;$get[foodId];xp;0];$jsonGet[foods;$get[foodId];xp;1]] * $get[multiplier]]]]
+                $return[$tl[data.foods.$get[foodId].$get[l]]]
               ;eaten]
 
               $let[content;$tl[ui.play.ate.$get[l];$arrayJoin[eaten;, ];$separate[$get[xp]]]]
 
-              $if[$and[$get[preyRoll]<=$get[findPreyChance];$jsonSize[preyIndexes]>0];
+              $if[$and[$get[preyRoll]<=$get[findPreyChance];$jsonSize[prey]>0];
 
-                $let[preyID;$jsonGet[preyBase;$arraySample[preyIndexes];name]]
+                $let[preyID;$arraySample[prey]]
                 $let[preyName;$getAnimalInfo[$get[preyID];name;0]]
                 $let[preyEmoji;$getAnimalInfo[$get[preyID];emoji;0]]
                 $let[preyTier;$getAnimalInfo[$get[preyID];tier]]
@@ -253,7 +246,7 @@ export default new Command({
       ]
 
       $case[showApex;
-        $c[resend the msg w/ its own components so the menu drops the selection. no attachments sent, so the pics survive (a Forge update always nukes them). apexes go in an ephemeral]
+        $c[resend the message with its own components so the menu drops the selection. no attachments sent, so the pictures survive (a Forge update always removes them). apexes go in an ephemeral]
         $!djsEval[ctx.interaction.update({ components: ctx.interaction.message.components })]
 
         $jsonLoad[apexData;$getCurrentApexData[playData]]

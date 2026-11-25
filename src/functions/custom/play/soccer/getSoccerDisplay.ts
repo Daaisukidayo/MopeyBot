@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "getSoccerDisplay",
-  description: "the soccer's localized name w/ its emoji",
+  description: "the soccer's localized name with its emoji",
   output: ArgType.String,
   brackets: true,
   params: [

@@ -13,7 +13,7 @@ export default new Command({
 
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $c[id: leaderboard-action-page-rows-table-author. old msgs w/o a table show coins]
+    $c[id: leaderboard-action-page-rows-table-author. old messages without a table show coins]
     $let[page;$jsonGet[IID;2]]
     $let[rowsPerPage;$jsonGet[IID;3]]
     $let[type;$jsonGet[IID;4]]
@@ -60,6 +60,9 @@ export default new Command({
     ]
 
     $let[page;$if[$get[page]<=0;$get[maxPages];$if[$get[page]>$get[maxPages];1;$get[page]]]]
+
+    $c[the card loads up to 10 avatars, which can take longer than discord waits. after the modal case, a modal can't follow a defer]
+    $deferUpdate
 
     $jsonLoad[cachedLB;$arrayPage[LBlist;$get[page];$get[rowsPerPage]]]
 

@@ -12,7 +12,7 @@ export default new ForgeFunction({
 
     $defer
 
-    $shopEmbed
+    $shopEmbed[1]
     $newCommandTimeout
   `,
 })

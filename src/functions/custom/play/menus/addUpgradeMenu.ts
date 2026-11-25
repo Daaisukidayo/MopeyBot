@@ -6,12 +6,12 @@ export default new ForgeFunction({
   params: [
     {
       name: "playDataVar",
-      description: "var w/ the play data",
+      description: "var with the play data",
       type: ArgType.String,
     },
     {
       name: "wardrobeVar",
-      description: "var w/ the user's wardrobe",
+      description: "var with the user's wardrobe",
       type: ArgType.String,
     },
   ],
@@ -39,7 +39,7 @@ export default new ForgeFunction({
         $jsonLoad[rolled;$arrayWeightedRandom[$jsonGet[allRareAttemptsInfo;$env[animalId];pool];weight]]
         $let[chosenAnimal;$jsonGet[rolled;id]]
 
-        $c[null roll hides the button, same for shop animals w/o the locked pack]
+        $c[null roll hides the button, same for shop animals without the locked pack]
         $let[hidden;$or[$isOneOf[$get[chosenAnimal];null;];$and[$includes[$get[chosenAnimal];shop];$arrayIncludes[$jsonGet[userProfile;user_packs];lockedSP]==false]]]
         $if[$get[hidden]==false;$return[$get[chosenAnimal]]]
       ;

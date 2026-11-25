@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "showHistoryExtraEmbed",
-  description: "the extra embed w/ page buttons, the sort menu and so on",
+  description: "the extra embed with page buttons, the sort menu and so on",
   params: [
     {
       name: "historyData",

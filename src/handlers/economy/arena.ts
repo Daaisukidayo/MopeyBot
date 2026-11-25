@@ -11,7 +11,7 @@ export default new ForgeFunction({
     $addCooldown
     $defer
 
-    $c[random arena enemy w/ a random skin, you win 3 out of 4]
+    $c[random arena enemy with a random skin, you win 3 out of 4]
     $let[enemyAnimalID;$arraySample[$getCache[arena;arenaEnemies]]]
     $let[enemy;$getAnimalInfo[$get[enemyAnimalID];emoji;$arrayRandomIndex[$getAnimalInfo[$get[enemyAnimalID];skins]]]]
     $let[MC;200]

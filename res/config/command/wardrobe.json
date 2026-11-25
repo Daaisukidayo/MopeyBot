@@ -1,5 +1,13 @@
 {
   "freeSkinPacks": ["s1", "s2", "s2w"],
   "wardrobePacksPageSize": 8,
-  "wardrobeAnimalsPageSize": 4
+  "wardrobeAnimalsPageSize": 4,
+  "skinRarityColors": {
+    "common": "#b7c6bb",
+    "uncommon": "#7ee38c",
+    "rare": "#55b4ff",
+    "epic": "#b678ff",
+    "legendary": "#ffc83d",
+    "mythic": "#ff5f8a"
+  }
 }

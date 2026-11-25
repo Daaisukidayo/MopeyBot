@@ -7,7 +7,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "listVar",
-      description: "var w/ the skins, in collection order",
+      description: "var with the skins, in collection order",
       type: ArgType.String,
     },
     {

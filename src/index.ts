@@ -2,7 +2,7 @@
 import { ForgeTopGG } from "@tryforge/forge.topgg"
 import { ForgeClient, LogPriority, FunctionManager } from "@tryforge/forgescript"
 import { ForgeDB } from "@tryforge/forge.db"
-import { ForgeCanvas } from "@tryforge/forge.canvas"
+import { ForgeCanvas, registerFonts } from "@tryforge/forge.canvas"
 import { ForgeRegex } from "forge.regex"
 import { ForgeTimers, TimerEvent } from "forge.timers"
 import { ForgeJSON } from "forge.json"
@@ -174,6 +174,9 @@ const BOT: ForgeClient = new ForgeClient({
 
 // ========== LOAD VARIABLES ==========
 DB.variables(variables)
+
+// ========== LOAD FONTS ==========
+registerFonts([{ src: "res/assets/fonts/Nunito.ttf", name: "Nunito" }], true)
 
 // ========== LOAD CLASSES ==========
 BOT.classes.load("dist/classes/")

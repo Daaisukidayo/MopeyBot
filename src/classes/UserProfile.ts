@@ -24,7 +24,7 @@ export default new ForgeClassBuilder({
     },
     user_packs: [],
     // /checklist: the counters only count for day (refreshChecklist zeroes them on a new one),
-    // streak = days in a row w/ the reward
+    // streak = days in a row with the reward
     checklist: {
       day: -1,
       raretry_rares: 0,
@@ -32,7 +32,7 @@ export default new ForgeClassBuilder({
       claimed_day: -1,
       streak: 0,
     },
-    // today's /howlucky roll, kept till tomorrow
+    // today's /howlucky roll, kept until tomorrow
     howlucky: {
       day: -1,
       number: 0,

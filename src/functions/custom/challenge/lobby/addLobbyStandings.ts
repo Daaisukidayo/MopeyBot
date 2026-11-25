@@ -6,7 +6,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "lobbyVar",
-      description: "var w/ the lobby",
+      description: "var with the lobby",
       type: ArgType.String,
     },
     {
@@ -18,7 +18,7 @@ export default new ForgeFunction({
   code: `
     $ref[lobby;$env[lobbyVar]]
     $let[l;$jsonGet[userProfile;language]]
-    $c[1 team: list players. more: teams w/ their players under them]
+    $c[1 team: list players. more: teams with their players under them]
     $arrayForEach[$jsonGet[standings;lines];line;
       $addTextDisplay[$env[line]]
       $if[$jsonGet[standings;solo];$addSeparator[Small;false];$addSeparator[Large]]

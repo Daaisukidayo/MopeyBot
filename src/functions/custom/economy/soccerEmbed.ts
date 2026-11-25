@@ -27,7 +27,7 @@ export default new ForgeFunction({
     $callMethod[userProfile;addCoins;$get[MC]]
     $callMethod[userProfile;save]
 
-    $c[log it to history/stats unless a dev forced the item, recordDevRolls turns that off for testing]
+    $c[log it to history/stats unless a dev forced the item, recordDevRolls records them anyway for testing]
     $if[$or[$get[target]==-1;$getGlobalVar[recordDevRolls]];
       $recordRoll[$get[cmd];$objectOf[at;$getTimestamp;item;$jsonGet[data;id];chance;$get[rarity];mope_coins;$get[MC]]]
     ]

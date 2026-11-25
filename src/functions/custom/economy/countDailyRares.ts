@@ -3,7 +3,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "countDailyRares",
   description:
-    "adds raretry/raretryrun catches to today's quest, capped at its max. finishing it sends the cmd reply (has to be ready) + a notice in a new msg",
+    "adds raretry/raretryrun catches to today's quest, capped at its max. finishing it sends the command reply (has to be ready) + a notice in a new message",
   params: [
     {
       name: "command",
@@ -30,7 +30,7 @@ export default new ForgeFunction({
     $!jsonSet[userProfile;checklist;$get[counter];$min[$get[now];$get[max]]]
     $if[$get[now]<$get[max];$return]
 
-    $c[send the cmd reply first, then the notice as its own msg]
+    $c[send the command reply first, then the notice as its own message]
     $!send
     $sendMessage[$channelID;
       $addTextDisplay[$tl[ui.special.caughtRares.$jsonGet[userProfile;language];<@$authorID>;$get[max];$env[command]]]

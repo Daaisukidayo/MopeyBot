@@ -16,7 +16,7 @@ export default new ForgeFunction({
     $cacheAnimalsData
     $getCache[animals;animalsData;animals]
 
-    $c[history knows every animal w/ a challenge block, but new challenges only count live rares]
+    $c[history knows every animal with a challenge block, but new challenges only count live rares]
     $arrayFilter[animals;animal;$jsonHas[animal;challenge];challengeAnimals]
     $arrayForEach[challengeAnimals;animal;
       $let[id;$jsonGet[animal;ID]]

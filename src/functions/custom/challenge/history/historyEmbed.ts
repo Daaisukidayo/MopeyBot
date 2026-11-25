@@ -6,12 +6,12 @@ export default new ForgeFunction({
   params: [
     {
       name: "historyData",
-      description: "the history object w/ the data",
+      description: "the history object with the data",
       type: ArgType.Json,
     },
     {
       name: "editHandler",
-      description: "the interaction that edits the page (addHistory or editHistory). w/o it the page is just shown",
+      description: "the interaction that edits the page (addHistory or editHistory). without it the page is just shown",
       type: ArgType.String,
       required: false,
     },
@@ -40,7 +40,7 @@ export default new ForgeFunction({
           $addTextDisplay[$tl[ui.history.raresListLabel.$get[l]]]
           $showDesignedList[$env[list]]
         ;
-          $c[edit mode: typed values get an Edit button w/ a form, play type and difficulty get menus that save right away]
+          $c[edit mode: typed values get an Edit button with a form, play type and difficulty get menus that save right away]
           $let[editId;$get[handler]-edit-$authorID]
           $let[editLabel;$tl[ui.history.buttonLabelEdit.$get[l]]]
 

@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addHourOverContainer",
-  description: "adds the 'hour's over' notice w/ the button that ends the challenge",
+  description: "adds the 'hour's over' notice with the button that ends the challenge",
   brackets: true,
   params: [
     {

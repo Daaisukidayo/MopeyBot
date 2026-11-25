@@ -8,6 +8,8 @@ export default [
         $jsonLoad[userProfile;$getProfile]
         $let[l;$jsonGet[userProfile;language]]
 
+        $c[seen before checkProfile, otherwise it also sends the changelog on its own]
+        $setUserVar[changelogSeen;$jsonGet[$readFile[package.json];version]]
         $checkProfile
         $addCooldown
 

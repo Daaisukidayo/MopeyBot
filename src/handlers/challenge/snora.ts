@@ -17,7 +17,7 @@ export default new ForgeFunction({
     $addContainer[
       $addTextDisplay[$codeBlock[Abbreviations  ➡️ Rare Animal]]
       $arrayForEach[$jsonEntries[$getCache[animals;tierAnimals]];entry;
-        $c[only rares w/ abbreviations, those are what challenges accept]
+        $c[only rares with abbreviations, those are what challenges accept]
         $arrayMap[$jsonGet[entry;1;rareAnimals];animalId;
           $let[abbreviations;$getAnimalInfo[$env[animalId];challenge.abbreviations]]
           $if[$get[abbreviations]!=undefined;

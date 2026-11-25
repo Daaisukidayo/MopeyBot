@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addArenaOpponent",
-  description: "sets up an arena opponent w/ a random wardrobe and adds the arena intro + action buttons",
+  description: "sets up an arena opponent with a random wardrobe and adds the arena intro + action buttons",
   brackets: true,
   params: [
     {
       name: "playDataVar",
-      description: "var w/ the play data",
+      description: "var with the play data",
       type: ArgType.String,
     },
     {

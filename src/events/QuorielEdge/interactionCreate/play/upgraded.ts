@@ -18,7 +18,7 @@ export default new Command({
     $let[animalId;$jsonGet[IID;1]]
 
     $let[bonusPerUpgrade;$getGlobalVar[playRewardPerUpgrade]]
-    $c[rares pay playRewardPerChance x N (1 in N in their luck group), like raretryrun. group total = the common's, old event animals w/o one use their own]
+    $c[rares pay playRewardPerChance x N (1 in N in their luck group), like raretryrun. group total = the common's, old event animals without one use their own]
     $c[only menu picks count: BD's apex upgrade into KD stays in tier 17, so no rare bonus]
     $let[bonusPerRare;0]
     $if[$and[$getAnimalInfo[$get[animalId];isRare]==true;$jsonGet[playData;tier]<$getAnimalInfo[$get[animalId];tier]];

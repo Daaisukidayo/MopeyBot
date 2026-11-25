@@ -8,7 +8,7 @@ export default new ForgeFunction({
     {
       name: "path",
       description:
-        "the path + the language, like 'ui.errors.test.en-US'. w/o the language it's the caller's userProfile one, else the default",
+        "the path + the language, like 'ui.errors.test.en-US'. without the language it's the caller's userProfile one, else the default",
       type: ArgType.String,
     },
     {
@@ -35,7 +35,7 @@ export default new ForgeFunction({
       ]
     ]
 
-    $c[a text w/o the language at the end gets the caller's profile one, else the default. a whole group comes back as it is]
+    $c[a text without the language at the end gets the caller's profile one, else the default. a whole group comes back as it is]
     $if[$jsonGet[$getGlobalVar[allLocales];$get[locale]]==;
       $if[$jsonGet[$getCache[locale;$get[type]];$spread[$arrayJoin[rawPath;.];.];$getGlobalVar[defaultLocale]]!=;
         $let[locale;$default[$env[userProfile;language];$getGlobalVar[defaultLocale]]]

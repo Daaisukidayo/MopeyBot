@@ -3,16 +3,16 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "addPlayScreen",
   description:
-    "adds the game's current screen to a container: the fight, the first animal pick, or the animal w/ its menus",
+    "adds the game's current screen to a container: the fight, the first animal pick, or the animal with its menus",
   params: [
     {
       name: "playDataVar",
-      description: "var w/ the play data",
+      description: "var with the play data",
       type: ArgType.String,
     },
     {
       name: "wardrobeVar",
-      description: "var w/ the user's wardrobe",
+      description: "var with the user's wardrobe",
       type: ArgType.String,
     },
   ],

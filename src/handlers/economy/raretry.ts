@@ -20,7 +20,7 @@ export default new ForgeFunction({
     $getCache[rares;raretryGroups;rareGroups]
     $let[li;$math[$jsonSize[rareGroups] - 1]]
     $let[multiplier;$jsonGet[$getGlobalVar[raretryMultipliers];$get[rtMode]]]
-    $let[modeLine;$tl[ui.raretry.mode.$get[l];$tl[data.raretryModes.$get[rtMode].$get[l]]]]
+    $let[modeName;$tl[data.raretryModes.$get[rtMode].$get[l]]]
 
     $c[devs can force a category by index]
     $let[arg;$message[1]]
@@ -29,18 +29,14 @@ export default new ForgeFunction({
     $fn[embed;
       $addContainer[
         $addAuthorDisplay
-
+        $c[a catch has everything on its card]
         $if[$get[image]!=;
-          $addSection[
-            $addTextDisplay[$get[desc]]
-            $addThumbnail[$get[image]]
-          ]
+          $addMediaGallery[$addMediaItem[$get[image];$get[alt]]]
         ;
-          $addTextDisplay[$get[desc]]
+          $addTextDisplay[$tl[ui.raretry.nothing.$get[l]]]
+          $addSeparator[Large]
+          $addTextDisplay[$tl[ui.raretry.mode.$get[l];$get[modeName]]]
         ]
-
-        $addSeparator[Large]
-        $addTextDisplay[$get[footer]]
       ;$get[color]]
     ]
 
@@ -48,7 +44,7 @@ export default new ForgeFunction({
     $arrayLoad[caught]
     $let[totalMC;0]
 
-    $c[rarest category first so the best catch shows on top. everyone except a dev w/ a target rolls 1/chance]
+    $c[rarest category first so the best catch shows on top. everyone except a dev with a target rolls 1/chance]
     $arrayForEach[$arrayRange[$get[li];0;-1];i;
       $let[rtIndex;$math[$env[i] + $get[rtMode]]]
       $let[baseChance;$jsonGet[rarities;$get[rtIndex]]]
@@ -57,38 +53,36 @@ export default new ForgeFunction({
         $letSum[caughtCount;1]
 
         $let[animalId;$arraySample[$jsonGet[rareGroups;$env[i]]]]
-        $let[image;$animalImage[$get[animalId]]]
         $let[color;$jsonGet[categories;$env[i];color]]
-        $let[desc;$tl[ui.raretry.gotRares.$get[l];$getAnimalInfo[$get[animalId];name;0]]]
-
+        $let[category;$tl[data.raretryCategories.$jsonGet[categories;$env[i];id].$get[l]]]
         $arrayPushJSON[caught;$objectOf[id;$get[animalId];chance;$get[baseChance]]]
 
-        $c[some modes pay 0]
-        $let[MC;$math[$jsonGet[rewards;$get[rtIndex]] * $get[multiplier]]]
+        $c[some modes pay 0. x1.25 and x1.75 give fractions that separate crashes on]
+        $let[MC;$round[$math[$jsonGet[rewards;$get[rtIndex]] * $get[multiplier]]]]
         $letSum[totalMC;$get[MC]]
-        $if[$get[MC]!=0;
-          $let[desc;$get[desc]\n$tl[ui.raretry.earned.$get[l];$separate[$get[MC]]]]
-          $callMethod[userProfile;addCoins;$get[MC]]
-        ]
+        $if[$get[MC]!=0;$callMethod[userProfile;addCoins;$get[MC]]]
 
-        $let[footer;$tl[ui.raretry.rarity.$get[l];1;$separate[$get[baseChance]]]\n$tl[ui.raretry.category.$get[l];$tl[data.raretryCategories.$jsonGet[categories;$env[i];id].$get[l]]]\n$get[modeLine]]
+        $c[modes take category colors in order: default = common, extreme = legendary, impossible = mythic]
+        $let[image;$raretryCard[$get[animalId];1/$separate[$get[baseChance]] · $get[category];$get[MC];$get[modeName];$jsonGet[categories;$get[rtMode];color];$get[color];$env[i]]]
+        $c[the card's text for screen readers, plain numbers read better than the separator]
+        $let[alt;$getAnimalInfo[$get[animalId];name;0] · 1/$get[baseChance] · $get[category]]
+        $if[$get[MC]!=0;$let[alt;$get[alt] · $tl[data.leaderboardTypes.mc.$get[l]]: $get[MC]]]
+        $let[alt;$get[alt] · $get[modeName]]
         $callFn[embed]
       ]
     ]
 
-    $c[log to history/stats unless a dev forced the category, recordDevRolls turns that off for testing]
+    $c[dev-forced rolls stay out of history/stats, recordDevRolls lets them in for testing]
     $if[$or[$get[targetID]==-1;$getGlobalVar[recordDevRolls]];
       $recordRoll[raretry;$objectOf[at;$getTimestamp;mode;$get[rtMode];rares;$env[caught];mope_coins;$get[totalMC]]]
     ]
 
-    $c[count catches for the daily quest till it's done]
+    $c[count catches for the daily quest until it's done]
     $if[$get[caughtCount]>0;
       $countDailyRares[raretry;$get[caughtCount]]
       $callMethod[userProfile;save]
     ;
       $let[color;$getGlobalVar[errorColor]]
-      $let[desc;$tl[ui.raretry.nothing.$get[l]]]
-      $let[footer;$get[modeLine]]
       $callFn[embed]
     ]
   `,

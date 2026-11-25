@@ -10,7 +10,7 @@ export default new Command({
     $let[l;$jsonGet[userProfile;language]]
     $onlyIf[$arrayIncludes[IID;$authorID];$onlyAuthorInteraction]
 
-    $c[view = the tab buttons, sort/order = the menus (back to page 1), page = the arrows w/ sort + order in the id, pageModal + pageInput = jump to a typed page like in the shop]
+    $c[view = the tab buttons, sort/order = the menus (back to page 1), page = the arrows with sort + order in the id, pageModal + pageInput = jump to a typed page like in the shop]
     $switch[$jsonGet[IID;1];
       $case[view;$balanceEmbed[$jsonGet[IID;2]]]
       $case[sort;$balanceEmbed[skins;$selectMenuValues;$jsonGet[IID;2];1]]

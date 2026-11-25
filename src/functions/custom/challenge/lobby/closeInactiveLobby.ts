@@ -7,7 +7,7 @@ export default new ForgeFunction({
   params: [
     {
       name: "locale",
-      description: "language of the closing msg",
+      description: "language of the closing message",
       type: ArgType.String,
     },
   ],

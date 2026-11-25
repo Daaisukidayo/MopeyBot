@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "newError",
-  description: "sends a V2 error msg",
+  description: "sends a V2 error message",
   params: [
     {
       name: "description",

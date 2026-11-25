@@ -14,9 +14,22 @@ export default new Command({
 
     $addCooldown[shop;true]
 
-    $c[view = the tab buttons, sort/order = the menus (back to page 1), page = the arrows, pageModal + pageInput = jump to a typed page like in history. buying's below]
+    $c[view = the tab buttons, sort/order = the menus (back to page 1), page = the arrows, pageModal + pageInput = jump to a typed page like in history, packsPage* = the same for the bundles tab. buying's below]
     $switch[$jsonGet[IID;1];
-      $case[view;$if[$jsonGet[IID;2]==packs;$shopEmbed;$shopSkinsEmbed[shop_sort_collection;asc;1]]]
+      $case[view;$if[$jsonGet[IID;2]==packs;$shopEmbed[1];$shopSkinsEmbed[shop_sort_collection;asc;1]]]
+      $case[packsPage;$shopEmbed[$jsonGet[IID;2]]]
+      $case[packsPageModal;
+        $modal[shopSkins-packsPageInput-$authorID;$tl[ui.shop.modalTitlePage.$get[l]]]
+        $addTextInput[pageInput;$tl[ui.shop.modalDescriptionPage.$get[l]];Short;true;;;1;5]
+        $showModal
+        $stop
+      ]
+      $case[packsPageInput;
+        $onlyIf[$isNumber[$input[pageInput]];
+          $newError[$tl[ui.errors.notNumber.$get[l]]]
+        ]
+        $shopEmbed[$floor[$input[pageInput]]]
+      ]
       $case[sort;$shopSkinsEmbed[$selectMenuValues;$jsonGet[IID;2];1]]
       $case[order;$shopSkinsEmbed[$jsonGet[IID;2];$selectMenuValues;1]]
       $case[page;$shopSkinsEmbed[$jsonGet[IID;2];$jsonGet[IID;3];$jsonGet[IID;4]]]
@@ -73,6 +86,8 @@ export default new Command({
       $addContainer[
         $addAuthorDisplay
         $addTextDisplay[$tl[ui.shop.purchaseSuccess.$get[l];$getAnimalInfo[$get[animalId];name;$get[skinId]]]]
+        $jsonLoad[bought;$arrayFind[forSale;skin;$jsonGet[skin;id]==$get[skinId]]]
+        $addMediaGallery[$addMediaItem[$shopSkinCard[bought];$jsonGet[bought;name]]]
       ;$getGlobalVar[defaultColor]]
     ]
   `,

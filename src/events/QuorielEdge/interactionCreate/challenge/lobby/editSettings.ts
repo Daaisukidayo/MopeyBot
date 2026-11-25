@@ -14,7 +14,7 @@ export default new Command({
     $jsonLoad[lobby;$getLobby]
 
     $onlyIf[$jsonGet[lobby;host]==$authorID;$onlyAuthorInteraction]
-    $c[settings are editable only while the lobby msg exists and it hasn't started]
+    $c[settings are editable only while the lobby message exists and it hasn't started]
     $onlyIf[$messageExists[$channelID;$jsonGet[lobby;messageID]];$interactionFail]
     $onlyIf[$jsonGet[lobby;started]==false;$interactionFail]
 

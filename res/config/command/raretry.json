@@ -1,6 +1,6 @@
 {
-  "raretryRewards": [275, 825, 5500, 27500, 165000, 330000, 660000, 1375000, 2750000, 5500000],
-  "raretryRarities": [5, 15, 100, 500, 3000, 6000, 12000, 25000, 50000, 100000],
+  "raretryRewards": [275, 825, 5500, 27500, 165000, 330000, 660000, 1375000, 2750000, 5500000, 11000000],
+  "raretryRarities": [5, 15, 100, 500, 3000, 6000, 12000, 25000, 50000, 100000, 200000],
   "raretryCategories": [
     { "id": "raretry_category_common", "maxChance": 9, "color": "e6e7e8", "emoji": "⚪" },
     { "id": "raretry_category_uncommon", "maxChance": 50, "color": "7ee38c", "emoji": "🟢" },
@@ -9,6 +9,6 @@
     { "id": "raretry_category_legendary", "maxChance": 3000, "color": "ffc83d", "emoji": "🟡" },
     { "id": "raretry_category_mythic", "color": "ff5f8a", "emoji": "🔴" }
   ],
-  "raretryModes": [0, 1, 2, 3, 4],
-  "raretryMultipliers": [1, 1.25, 1.5, 1.75, 2]
+  "raretryModes": [0, 1, 2, 3, 4, 5],
+  "raretryMultipliers": [1, 1.25, 1.5, 1.75, 2, 2.25]
 }

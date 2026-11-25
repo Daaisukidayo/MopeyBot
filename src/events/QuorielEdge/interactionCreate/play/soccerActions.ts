@@ -41,7 +41,7 @@ export default new Command({
 
     $let[value;$selectMenuValues]
 
-    $c[hold-ish actions fill 'holdResult' (see holdSoccer), the rest drop the soccer and set 'desc']
+    $c[hold-type actions fill 'holdResult' (see holdSoccer), the rest drop the soccer and set 'desc']
     $switch[$get[value];
       $case[soccer_action_hold;
         $jsonLoad[holdResult;$callMethod[playData;holdSoccer;$get[soccerType];$get[id]]]

@@ -2,12 +2,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "newHistoryTimeout",
-  description: "deletes the history msg and its cached stuff after a while",
+  description: "deletes the history message and its cached data after a while",
   brackets: false,
   params: [
     {
       name: "messageId",
-      description: "the history msg (default: the interaction's msg)",
+      description: "the history message (default: the interaction's message)",
       type: ArgType.String,
       required: false,
     },

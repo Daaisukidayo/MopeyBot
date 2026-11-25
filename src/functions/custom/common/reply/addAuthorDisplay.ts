@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addAuthorDisplay",
-  description: "adds a text w/ the author's username and MUID",
+  description: "adds a text with the author's username and MUID",
   brackets: false,
   params: [
     {

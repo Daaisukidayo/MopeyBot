@@ -1,73 +1,34 @@
 import fs from "fs"
 import path from "path"
 
-// merges every res/config/<dir>/*.json into one globals object, rereads the files on every call
-export function readVariables(): Record<string, any> {
-  const variables: Record<string, any> = {}
+const varsPath = ["res", "config"]
 
-  function assignVariable(key: string, value: any): void {
-    if (Object.hasOwn(variables, key)) {
-      throw new Error(`Name collision! Variable "${key}" is already defined.`)
+export function readVariables(): Record<string, unknown> {
+  const root = path.join(process.cwd(), ...varsPath)
+  const variables: Record<string, unknown> = {}
+
+  const files = fs.readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
+    if (!entry.isDirectory()) return [entry.name]
+    if (entry.name.startsWith("_") || entry.name.startsWith(".")) return []
+    return fs.readdirSync(path.join(root, entry.name)).map((file) => `${entry.name}/${file}`)
+  })
+
+  for (const file of files.filter((f) => f.endsWith(".json"))) {
+    const where = varsPath.join("/") + `/${file}`
+    let data: unknown
+    try {
+      data = JSON.parse(fs.readFileSync(path.join(root, file), "utf-8"))
+    } catch (err) {
+      throw new Error(`${where}: ${(err as Error).message}`, { cause: err })
     }
-    variables[key] = value
+    if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error(`${where} must be a JSON object`)
+
+    for (const [key, value] of Object.entries(data)) {
+      if (Object.hasOwn(variables, key)) throw new Error(`Variable "${key}" in ${where} is already defined`)
+      variables[key] = value
+    }
   }
-
-  try {
-    const configRootPath = path.join(process.cwd(), "res", "config")
-
-    if (!fs.existsSync(configRootPath)) {
-      console.warn(`⚠️ Configuration directory not found at: ${configRootPath}`)
-      return variables
-    }
-
-    const entries = fs.readdirSync(configRootPath, { withFileTypes: true })
-
-    const dirs = entries
-      .filter((entry) => entry.isDirectory() && (!entry.name.startsWith("_") || !entry.name.startsWith(".")))
-      .map((entry) => entry.name)
-
-    if (dirs.length === 0) {
-      console.warn("⚠️ No valid sub-directories found in res/config.")
-      return variables
-    }
-
-    for (const dir of dirs) {
-      const dirPath = path.join(configRootPath, dir)
-
-      const allFiles = fs.readdirSync(dirPath)
-      const jsonFiles = allFiles.filter((file) => file.endsWith(".json"))
-
-      if (jsonFiles.length === 0) {
-        console.info(`ℹ️ Skipped empty directory "${dir}"`)
-        continue
-      }
-
-      for (const file of jsonFiles) {
-        const filePath = path.join(dirPath, file)
-
-        try {
-          const fileContent = fs.readFileSync(filePath, "utf-8")
-          const jsonData = JSON.parse(fileContent)
-
-          if (jsonData && typeof jsonData === "object" && !Array.isArray(jsonData)) {
-            for (const [key, value] of Object.entries(jsonData)) {
-              assignVariable(key, value)
-            }
-          } else {
-            console.warn(`⚠️ File [${dir}/${file}] must contain a valid JSON object.`)
-          }
-        } catch (err: any) {
-          console.error(`❌ Error parsing JSON in [${dir}/${file}]:`, err.message)
-        }
-      }
-    }
-  } catch (err: any) {
-    console.error("❌ Critical failure during configuration loading:", err)
-  }
-
   return variables
 }
 
-const variables = readVariables()
-
-export { variables }
+export const variables = readVariables()

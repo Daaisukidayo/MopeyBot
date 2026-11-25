@@ -5,12 +5,12 @@ export default new ForgeFunction({
   params: [
     {
       name: "playDataVar",
-      description: "var w/ the play data",
+      description: "var with the play data",
       type: ArgType.String,
     },
     {
       name: "wardrobeVar",
-      description: "var w/ the user's wardrobe",
+      description: "var with the user's wardrobe",
       type: ArgType.String,
     },
   ],

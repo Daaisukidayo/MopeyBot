@@ -2,7 +2,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 
 export default new ForgeFunction({
   name: "addSoccerSection",
-  description: "adds a text w/ the soccer's pic (res/assets/play/soccer) as its thumbnail",
+  description: "adds a text with the soccer's picture (res/assets/play/soccer) as its thumbnail",
   brackets: true,
   params: [
     {
@@ -17,7 +17,7 @@ export default new ForgeFunction({
     },
     {
       name: "text",
-      description: "the text next to the pic",
+      description: "the text next to the picture",
       type: ArgType.String,
     },
   ],

@@ -3,7 +3,7 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "commandKey",
   description:
-    "the name a command's cooldown and timeout go by: the given one, or the running command's (a slash subcommand w/ its group, no spaces)",
+    "the name a command's cooldown and timeout go by: the given one, or the running command's (a slash subcommand with its group, no spaces)",
   output: ArgType.String,
   brackets: false,
   params: [

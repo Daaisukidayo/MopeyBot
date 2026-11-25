@@ -51,7 +51,7 @@ export default new ForgeFunction({
       $addTextDisplay[$showTime]
     ;$getGlobalVar[luckyColor]]
 
-    $c[reached milestones get no timer, so announce the end here, as its own msg after the reply]
+    $c[reached milestones get no timer, so announce the end here, as its own message after the reply]
     $if[$get[hourOver]==true;
       $!send
       $sendMessage[$channelID;$addHourOverContainer[$authorID;$get[l]]]

@@ -5,13 +5,13 @@ export default new ForgeFunction({
   params: [
     {
       name: "playDataVar",
-      description: "var w/ the play data",
+      description: "var with the play data",
       type: ArgType.String,
     },
   ],
   code: `
     $ref[playData;$env[playDataVar]]
-    $c[the game has to be in this exact msg]
+    $c[the game has to be in this exact message]
     $onlyIf[$and[$jsonGet[playData;is_started];$jsonGet[playData;path]==$guildID/$channelID/$messageID];$interactionFail]
 
     $c[held soccer got removed from the game? drop it]
@@ -22,7 +22,7 @@ export default new ForgeFunction({
       ]
     ]
 
-    $c[component ids end w/ their screen (see playID), modal ids w/ the author since the click that opened it was already checked. a stale screen (missed update, double click) just redraws the current one]
+    $c[component ids end with their screen (see playID), modal ids with the author since the click that opened it was already checked. a stale screen (missed update, double click) just redraws the current one]
     $arrayLoad[clickedID;-;$customID]
     $let[clickedScreen;$jsonGet[clickedID;-1]]
     $let[isOldScreen;$and[$get[clickedScreen]!=$authorID;$get[clickedScreen]!=$jsonGet[playData;screen]]]

@@ -3,12 +3,12 @@ import { ArgType, ForgeFunction } from "@tryforge/forgescript"
 export default new ForgeFunction({
   name: "playID",
   description:
-    "the end of a game msg custom ID: the author, then the screen number, so isPlaying can spot stale components",
+    "the end of a game message custom ID: the author, then the screen number, so isPlaying can spot stale components",
   output: ArgType.String,
   params: [
     {
       name: "playDataVar",
-      description: "var w/ the play data",
+      description: "var with the play data",
       type: ArgType.String,
     },
   ],

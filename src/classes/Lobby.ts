@@ -68,7 +68,7 @@ export default new ForgeClassBuilder({
         $let[l;$jsonGet[userProfile;language]]
         $let[isPlayer;$callMethod[this;isPlayer;$env[userId]]]
 
-        $c[a full lobby still allows team switching. testers add an entry tho, so they need a free slot]
+        $c[a full lobby still allows team switching. testers add an entry though, so they need a free slot]
         $onlyIf[$or[$and[$get[isPlayer];$env[tester]==false];$jsonSize[this;allPlayers]<$getGlobalVar[maxLobbyParticipants]];
           $newError[$tl[ui.lobby.lobbyFull.$get[l]]]
         ]
